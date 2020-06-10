@@ -101,7 +101,7 @@ class GetGatewayConnectionResult:
             raise TypeError("Expected argument 'shared_key' to be a str")
         __self__.shared_key = shared_key
         """
-        The shared IPSec key. 
+        The shared IPSec key.
         """
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")

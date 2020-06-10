@@ -50,7 +50,7 @@ namespace Pulumi.Azure.DataFactory
     public sealed class GetFactoryArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies the name of the Data Factory to retrieve information about. 
+        /// Specifies the name of the Data Factory to retrieve information about.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

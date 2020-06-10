@@ -34,7 +34,9 @@ class FirewallRule(pulumi.CustomResource):
         """
         Manages a Firewall Rule for a MySQL Server
 
-        ## Example Usage (Single IP Address)
+        ## Example Usage
+
+        ### Single IP Address)
 
         ```python
         import pulumi
@@ -50,7 +52,7 @@ class FirewallRule(pulumi.CustomResource):
             end_ip_address="40.112.8.12")
         ```
 
-        ## Example Usage (IP Range)
+        ### IP Range)
 
         ```python
         import pulumi
@@ -65,6 +67,7 @@ class FirewallRule(pulumi.CustomResource):
             start_ip_address="40.112.0.0",
             end_ip_address="40.112.255.255")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

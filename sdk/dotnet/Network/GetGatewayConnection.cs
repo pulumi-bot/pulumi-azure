@@ -122,7 +122,7 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public readonly int RoutingWeight;
         /// <summary>
-        /// The shared IPSec key. 
+        /// The shared IPSec key.
         /// </summary>
         public readonly string SharedKey;
         /// <summary>

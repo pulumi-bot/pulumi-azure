@@ -89,7 +89,7 @@ namespace Pulumi.Azure.MariaDB
         public readonly string Name;
         public readonly string ResourceGroupName;
         /// <summary>
-        /// The SKU Name for this MariaDB Server. 
+        /// The SKU Name for this MariaDB Server.
         /// </summary>
         public readonly string SkuName;
         /// <summary>

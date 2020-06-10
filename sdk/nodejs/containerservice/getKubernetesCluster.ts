@@ -48,7 +48,7 @@ export interface GetKubernetesClusterArgs {
      */
     readonly name: string;
     /**
-     * If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+     * If the cluster has the Kubernetes API only exposed on internal IP addresses.
      */
     readonly privateClusterEnabled?: boolean;
     /**
@@ -110,7 +110,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly kubeConfigs: outputs.containerservice.GetKubernetesClusterKubeConfig[];
     /**
-     * A `kubeletIdentity` block as documented below.  
+     * A `kubeletIdentity` block as documented below.
      */
     readonly kubeletIdentities: outputs.containerservice.GetKubernetesClusterKubeletIdentity[];
     /**
@@ -138,11 +138,11 @@ export interface GetKubernetesClusterResult {
      */
     readonly nodeResourceGroup: string;
     /**
-     * If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+     * If the cluster has the Kubernetes API only exposed on internal IP addresses.
      */
     readonly privateClusterEnabled: boolean;
     /**
-     * The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located                   
+     * The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located
      */
     readonly privateFqdn: string;
     /**

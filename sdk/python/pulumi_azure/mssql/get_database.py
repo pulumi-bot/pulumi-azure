@@ -18,7 +18,7 @@ class GetDatabaseResult:
             raise TypeError("Expected argument 'collation' to be a str")
         __self__.collation = collation
         """
-        The collation of the database. 
+        The collation of the database.
         """
         if elastic_pool_id and not isinstance(elastic_pool_id, str):
             raise TypeError("Expected argument 'elastic_pool_id' to be a str")
@@ -51,7 +51,7 @@ class GetDatabaseResult:
             raise TypeError("Expected argument 'read_replica_count' to be a float")
         __self__.read_replica_count = read_replica_count
         """
-        The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. 
+        The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed.
         """
         if read_scale and not isinstance(read_scale, bool):
             raise TypeError("Expected argument 'read_scale' to be a bool")

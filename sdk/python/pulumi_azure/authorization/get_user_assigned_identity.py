@@ -68,7 +68,9 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing User Assigned Identity.
 
-    ## Example Usage (reference an existing)
+    ## Example Usage
+
+    ### Reference An Existing)
 
     ```python
     import pulumi
@@ -79,6 +81,7 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     pulumi.export("uaiClientId", example.client_id)
     pulumi.export("uaiPrincipalId", example.principal_id)
     ```
+
 
 
     :param str name: The name of the User Assigned Identity.

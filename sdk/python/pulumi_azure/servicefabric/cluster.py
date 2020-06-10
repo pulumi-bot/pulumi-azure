@@ -42,7 +42,7 @@ class Cluster(pulumi.CustomResource):
     """
     client_certificate_common_names: pulumi.Output[list]
     """
-    A `client_certificate_common_name` block as defined below. 
+    A `client_certificate_common_name` block as defined below.
 
       * `commonName` (`str`)
       * `isAdmin` (`bool`) - Does the Client Certificate have Admin Access to the cluster? Non-admin clients can only perform read only operations on the cluster.
@@ -50,7 +50,7 @@ class Cluster(pulumi.CustomResource):
     """
     client_certificate_thumbprints: pulumi.Output[list]
     """
-    One or two `client_certificate_thumbprint` blocks as defined below. 
+    One or two `client_certificate_thumbprint` blocks as defined below.
 
       * `isAdmin` (`bool`) - Does the Client Certificate have Admin Access to the cluster? Non-admin clients can only perform read only operations on the cluster.
       * `thumbprint` (`str`) - The Thumbprint associated with the Client Certificate.
@@ -179,8 +179,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] azure_active_directory: An `azure_active_directory` block as defined below.
         :param pulumi.Input[dict] certificate: A `certificate` block as defined below. Conflicts with `certificate_common_names`.
         :param pulumi.Input[dict] certificate_common_names: A `certificate_common_names` block as defined below. Conflicts with `certificate`.
-        :param pulumi.Input[list] client_certificate_common_names: A `client_certificate_common_name` block as defined below. 
-        :param pulumi.Input[list] client_certificate_thumbprints: One or two `client_certificate_thumbprint` blocks as defined below. 
+        :param pulumi.Input[list] client_certificate_common_names: A `client_certificate_common_name` block as defined below.
+        :param pulumi.Input[list] client_certificate_thumbprints: One or two `client_certificate_thumbprint` blocks as defined below.
         :param pulumi.Input[str] cluster_code_version: Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
         :param pulumi.Input[dict] diagnostics_config: A `diagnostics_config` block as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[list] fabric_settings: One or more `fabric_settings` blocks as defined below.
@@ -333,8 +333,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] azure_active_directory: An `azure_active_directory` block as defined below.
         :param pulumi.Input[dict] certificate: A `certificate` block as defined below. Conflicts with `certificate_common_names`.
         :param pulumi.Input[dict] certificate_common_names: A `certificate_common_names` block as defined below. Conflicts with `certificate`.
-        :param pulumi.Input[list] client_certificate_common_names: A `client_certificate_common_name` block as defined below. 
-        :param pulumi.Input[list] client_certificate_thumbprints: One or two `client_certificate_thumbprint` blocks as defined below. 
+        :param pulumi.Input[list] client_certificate_common_names: A `client_certificate_common_name` block as defined below.
+        :param pulumi.Input[list] client_certificate_thumbprints: One or two `client_certificate_thumbprint` blocks as defined below.
         :param pulumi.Input[str] cluster_code_version: Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
         :param pulumi.Input[str] cluster_endpoint: The Cluster Endpoint for this Service Fabric Cluster.
         :param pulumi.Input[dict] diagnostics_config: A `diagnostics_config` block as defined below. Changing this forces a new resource to be created.

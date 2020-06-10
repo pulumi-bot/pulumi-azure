@@ -82,7 +82,9 @@ def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None
     """
     Use this data source to access information about an existing Public IP Prefix.
 
-    ## Example Usage (reference an existing)
+    ## Example Usage
+
+    ### Reference An Existing)
 
     ```python
     import pulumi
@@ -92,6 +94,7 @@ def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None
         resource_group_name="name_of_resource_group")
     pulumi.export("publicIpPrefix", example.ip_prefix)
     ```
+
 
 
     :param str name: Specifies the name of the public IP prefix.

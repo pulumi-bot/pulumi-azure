@@ -14,8 +14,8 @@ class CustomProvider(pulumi.CustomResource):
     """
     Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.
 
-      * `endpoint` (`str`) - Specifies the endpoint of the action. 
-      * `name` (`str`) - Specifies the name of the action. 
+      * `endpoint` (`str`) - Specifies the endpoint of the action.
+      * `name` (`str`) - Specifies the name of the action.
     """
     location: pulumi.Output[str]
     """
@@ -33,9 +33,9 @@ class CustomProvider(pulumi.CustomResource):
     """
     Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
 
-      * `endpoint` (`str`) - Specifies the endpoint of the route definition. 
-      * `name` (`str`) - Specifies the name of the route definition. 
-      * `routingType` (`str`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+      * `endpoint` (`str`) - Specifies the endpoint of the route definition.
+      * `name` (`str`) - Specifies the name of the route definition.
+      * `routingType` (`str`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
     """
     tags: pulumi.Output[dict]
     """
@@ -45,7 +45,7 @@ class CustomProvider(pulumi.CustomResource):
     """
     Any number of `validation` block as defined below.
 
-      * `specification` (`str`) - The endpoint where the validation specification is located. 
+      * `specification` (`str`) - The endpoint where the validation specification is located.
     """
     def __init__(__self__, resource_name, opts=None, actions=None, location=None, name=None, resource_group_name=None, resource_types=None, tags=None, validations=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -82,18 +82,18 @@ class CustomProvider(pulumi.CustomResource):
 
         The **actions** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the action. 
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the action. 
+          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the action.
+          * `name` (`pulumi.Input[str]`) - Specifies the name of the action.
 
         The **resource_types** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the route definition. 
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the route definition. 
-          * `routingType` (`pulumi.Input[str]`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the route definition.
+          * `name` (`pulumi.Input[str]`) - Specifies the name of the route definition.
+          * `routingType` (`pulumi.Input[str]`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
 
         The **validations** object supports the following:
 
-          * `specification` (`pulumi.Input[str]`) - The endpoint where the validation specification is located. 
+          * `specification` (`pulumi.Input[str]`) - The endpoint where the validation specification is located.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -146,18 +146,18 @@ class CustomProvider(pulumi.CustomResource):
 
         The **actions** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the action. 
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the action. 
+          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the action.
+          * `name` (`pulumi.Input[str]`) - Specifies the name of the action.
 
         The **resource_types** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the route definition. 
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the route definition. 
-          * `routingType` (`pulumi.Input[str]`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+          * `endpoint` (`pulumi.Input[str]`) - Specifies the endpoint of the route definition.
+          * `name` (`pulumi.Input[str]`) - Specifies the name of the route definition.
+          * `routingType` (`pulumi.Input[str]`) - The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
 
         The **validations** object supports the following:
 
-          * `specification` (`pulumi.Input[str]`) - The endpoint where the validation specification is located. 
+          * `specification` (`pulumi.Input[str]`) - The endpoint where the validation specification is located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

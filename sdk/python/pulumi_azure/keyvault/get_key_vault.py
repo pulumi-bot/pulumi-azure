@@ -75,7 +75,7 @@ class GetKeyVaultResult:
             raise TypeError("Expected argument 'soft_delete_enabled' to be a bool")
         __self__.soft_delete_enabled = soft_delete_enabled
         """
-        Is soft delete enabled on this Key Vault? 
+        Is soft delete enabled on this Key Vault?
         """
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")

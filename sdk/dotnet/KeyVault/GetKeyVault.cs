@@ -106,7 +106,7 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public readonly string SkuName;
         /// <summary>
-        /// Is soft delete enabled on this Key Vault? 
+        /// Is soft delete enabled on this Key Vault?
         /// </summary>
         public readonly bool SoftDeleteEnabled;
         /// <summary>

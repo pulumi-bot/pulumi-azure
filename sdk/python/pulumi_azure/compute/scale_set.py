@@ -225,7 +225,9 @@ class ScaleSet(pulumi.CustomResource):
 
         > **Note:** The `compute.ScaleSet` resource has been superseded by the `compute.LinuxVirtualMachineScaleSet` and `compute.WindowsVirtualMachineScaleSet` resources. The existing `compute.ScaleSet` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `compute.LinuxVirtualMachineScaleSet` and `compute.WindowsVirtualMachineScaleSet` resources.
 
-        ## Example Usage with Managed Disks (Recommended)
+        ## Example Usage
+
+        ### With Managed Disks (Recommended)
 
         ```python
         import pulumi
@@ -334,7 +336,7 @@ class ScaleSet(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage with Unmanaged Disks
+        ### With Unmanaged Disks
 
         ```python
         import pulumi

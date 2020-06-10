@@ -59,7 +59,9 @@ class SubscriptionRule(pulumi.CustomResource):
         """
         Manages a ServiceBus Subscription Rule.
 
-        ## Example Usage (SQL Filter)
+        ## Example Usage
+
+        ### SQL Filter)
 
         ```python
         import pulumi
@@ -91,7 +93,7 @@ class SubscriptionRule(pulumi.CustomResource):
             sql_filter="colour = 'red'")
         ```
 
-        ## Example Usage (Correlation Filter)
+        ### Correlation Filter)
 
         ```python
         import pulumi
@@ -125,6 +127,7 @@ class SubscriptionRule(pulumi.CustomResource):
                 "label": "red",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

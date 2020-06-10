@@ -90,7 +90,7 @@ namespace Pulumi.Azure.Sql
     public sealed class GetDatabaseResult
     {
         /// <summary>
-        /// The name of the collation. 
+        /// The name of the collation.
         /// </summary>
         public readonly string Collation;
         /// <summary>

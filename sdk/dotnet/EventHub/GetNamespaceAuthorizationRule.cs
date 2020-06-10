@@ -51,7 +51,7 @@ namespace Pulumi.Azure.EventHub
     public sealed class GetNamespaceAuthorizationRuleArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the EventHub Authorization Rule resource. 
+        /// The name of the EventHub Authorization Rule resource.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

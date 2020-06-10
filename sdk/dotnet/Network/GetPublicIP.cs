@@ -14,7 +14,11 @@ namespace Pulumi.Azure.Network
         /// <summary>
         /// Use this data source to access information about an existing Public IP Address.
         /// 
-        /// ## Example Usage (reference an existing)
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// 
+        /// {{% example %}}
+        /// ### Reference An Existing)
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -39,6 +43,10 @@ namespace Pulumi.Azure.Network
         ///     public Output&lt;string&gt; PublicIpAddress { get; set; }
         /// }
         /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPublicIPResult> InvokeAsync(GetPublicIPArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicIPResult>("azure:network/getPublicIP:getPublicIP", args ?? new GetPublicIPArgs(), options.WithVersion());

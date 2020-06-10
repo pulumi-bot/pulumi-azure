@@ -67,7 +67,9 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
         """
         Manages an ExpressRoute Circuit Peering.
 
-        ## Example Usage (Creating a Microsoft Peering)
+        ## Example Usage
+
+        ### Creating A Microsoft Peering)
 
         ```python
         import pulumi
@@ -100,6 +102,7 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
                 "advertisedPublicPrefixes": ["123.1.0.0/24"],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

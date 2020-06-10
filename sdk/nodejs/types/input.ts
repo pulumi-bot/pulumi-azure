@@ -1290,7 +1290,7 @@ export namespace appservice {
 
     export interface AppServiceSiteConfigIpRestriction {
         /**
-         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.  
+         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
          */
         action?: pulumi.Input<string>;
         /**
@@ -5391,7 +5391,7 @@ export namespace containerservice {
          */
         logAnalyticsWorkspaceId?: pulumi.Input<string>;
         /**
-         * An `omsAgentIdentity` block as defined below.  
+         * An `omsAgentIdentity` block as defined below.
          */
         omsAgentIdentities?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterAddonProfileOmsAgentOmsAgentIdentity>[]>;
     }
@@ -5727,33 +5727,33 @@ export namespace containerservice {
 export namespace core {
     export interface CustomProviderAction {
         /**
-         * Specifies the endpoint of the action. 
+         * Specifies the endpoint of the action.
          */
         endpoint: pulumi.Input<string>;
         /**
-         * Specifies the name of the action. 
+         * Specifies the name of the action.
          */
         name: pulumi.Input<string>;
     }
 
     export interface CustomProviderResourceType {
         /**
-         * Specifies the endpoint of the route definition. 
+         * Specifies the endpoint of the route definition.
          */
         endpoint: pulumi.Input<string>;
         /**
-         * Specifies the name of the route definition. 
+         * Specifies the name of the route definition.
          */
         name: pulumi.Input<string>;
         /**
-         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
          */
         routingType?: pulumi.Input<string>;
     }
 
     export interface CustomProviderValidation {
         /**
-         * The endpoint where the validation specification is located. 
+         * The endpoint where the validation specification is located.
          */
         specification: pulumi.Input<string>;
     }
@@ -6405,7 +6405,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<boolean>;
     }
@@ -6416,7 +6416,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6427,7 +6427,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6449,7 +6449,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6460,7 +6460,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6868,7 +6868,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<boolean>;
     }
@@ -6879,7 +6879,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6890,7 +6890,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6912,7 +6912,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6923,7 +6923,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }

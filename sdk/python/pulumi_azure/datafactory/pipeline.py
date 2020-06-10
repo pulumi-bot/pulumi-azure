@@ -63,7 +63,7 @@ class Pipeline(pulumi.CustomResource):
             data_factory_name=example_factory.name)
         ```
 
-        ## Example Usage with Activities
+        ### With Activities
 
         ```python
         import pulumi
@@ -89,6 +89,7 @@ class Pipeline(pulumi.CustomResource):
         ]
         \"\"\")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

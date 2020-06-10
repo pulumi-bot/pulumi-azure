@@ -71,7 +71,7 @@ namespace Pulumi.Azure.MSSql
     public sealed class GetDatabaseResult
     {
         /// <summary>
-        /// The collation of the database. 
+        /// The collation of the database.
         /// </summary>
         public readonly string Collation;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.Azure.MSSql
         public readonly int MaxSizeGb;
         public readonly string Name;
         /// <summary>
-        /// The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. 
+        /// The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed.
         /// </summary>
         public readonly int ReadReplicaCount;
         /// <summary>

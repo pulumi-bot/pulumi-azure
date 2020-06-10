@@ -111,7 +111,7 @@ class FunctionApp(pulumi.CustomResource):
     """
     os_type: pulumi.Output[str]
     """
-    A string indicating the Operating System type for this function app. 
+    A string indicating the Operating System type for this function app.
     """
     outbound_ip_addresses: pulumi.Output[str]
     """
@@ -177,7 +177,9 @@ class FunctionApp(pulumi.CustomResource):
         """
         Manages a Function App.
 
-        ## Example Usage (with App Service Plan)
+        ## Example Usage
+
+        ### With App Service Plan)
 
         ```python
         import pulumi
@@ -202,7 +204,8 @@ class FunctionApp(pulumi.CustomResource):
             app_service_plan_id=example_plan.id,
             storage_connection_string=example_account.primary_connection_string)
         ```
-        ## Example Usage (in a Consumption Plan)
+
+        ### In A Consumption Plan)
 
         ```python
         import pulumi
@@ -228,7 +231,8 @@ class FunctionApp(pulumi.CustomResource):
             app_service_plan_id=example_plan.id,
             storage_connection_string=example_account.primary_connection_string)
         ```
-        ## Example Usage (Linux)
+
+        ### Linux)
 
         ```python
         import pulumi
@@ -257,6 +261,7 @@ class FunctionApp(pulumi.CustomResource):
             os_type="linux")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_plan_id: The ID of the App Service Plan within which to create this Function App.
@@ -271,7 +276,7 @@ class FunctionApp(pulumi.CustomResource):
         :param pulumi.Input[dict] identity: An `identity` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Function App. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] os_type: A string indicating the Operating System type for this function app. 
+        :param pulumi.Input[str] os_type: A string indicating the Operating System type for this function app.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Function App.
         :param pulumi.Input[dict] site_config: A `site_config` object as defined below.
         :param pulumi.Input[str] storage_account_access_key: The access key which will be used to access the backend storage account for the Function App.
@@ -426,7 +431,7 @@ class FunctionApp(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The Function App kind - such as `functionapp,linux,container`
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Function App. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] os_type: A string indicating the Operating System type for this function app. 
+        :param pulumi.Input[str] os_type: A string indicating the Operating System type for this function app.
         :param pulumi.Input[str] outbound_ip_addresses: A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
         :param pulumi.Input[str] possible_outbound_ip_addresses: A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Function App.

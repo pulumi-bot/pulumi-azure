@@ -35,7 +35,7 @@ class ResourceGroupExport(pulumi.CustomResource):
     """
     recurrence_period_end: pulumi.Output[str]
     """
-    The date the export will stop capturing information. 
+    The date the export will stop capturing information.
     """
     recurrence_period_start: pulumi.Output[str]
     """
@@ -90,7 +90,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         :param pulumi.Input[dict] delivery_info: A `delivery_info` block as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
         :param pulumi.Input[dict] query: A `query` block as defined below.
-        :param pulumi.Input[str] recurrence_period_end: The date the export will stop capturing information. 
+        :param pulumi.Input[str] recurrence_period_end: The date the export will stop capturing information.
         :param pulumi.Input[str] recurrence_period_start: The date the export will start capturing information.
         :param pulumi.Input[str] recurrence_type: How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group in which to export information.
@@ -162,7 +162,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         :param pulumi.Input[dict] delivery_info: A `delivery_info` block as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
         :param pulumi.Input[dict] query: A `query` block as defined below.
-        :param pulumi.Input[str] recurrence_period_end: The date the export will stop capturing information. 
+        :param pulumi.Input[str] recurrence_period_end: The date the export will stop capturing information.
         :param pulumi.Input[str] recurrence_period_start: The date the export will start capturing information.
         :param pulumi.Input[str] recurrence_type: How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group in which to export information.

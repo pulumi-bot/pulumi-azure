@@ -17,15 +17,15 @@ class EventSubscription(pulumi.CustomResource):
 
       * `boolEquals` (`list`) - Compares a value of an event using a single boolean value.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-        * `value` (`bool`) - Specifies a single value to compare to when using a single value operator. 
+        * `value` (`bool`) - Specifies a single value to compare to when using a single value operator.
 
       * `numberGreaterThanOrEquals` (`list`) - Compares a value of an event using a single floating point number.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-        * `value` (`float`) - Specifies a single value to compare to when using a single value operator. 
+        * `value` (`float`) - Specifies a single value to compare to when using a single value operator.
 
       * `numberGreaterThans` (`list`) - Compares a value of an event using a single floating point number.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-        * `value` (`float`) - Specifies a single value to compare to when using a single value operator. 
+        * `value` (`float`) - Specifies a single value to compare to when using a single value operator.
 
       * `numberIns` (`list`) - Compares a value of an event using multiple floating point numbers.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -33,11 +33,11 @@ class EventSubscription(pulumi.CustomResource):
 
       * `numberLessThanOrEquals` (`list`) - Compares a value of an event using a single floating point number.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-        * `value` (`float`) - Specifies a single value to compare to when using a single value operator. 
+        * `value` (`float`) - Specifies a single value to compare to when using a single value operator.
 
       * `numberLessThans` (`list`) - Compares a value of an event using a single floating point number.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-        * `value` (`float`) - Specifies a single value to compare to when using a single value operator. 
+        * `value` (`float`) - Specifies a single value to compare to when using a single value operator.
 
       * `numberNotIns` (`list`) - Compares a value of an event using multiple floating point numbers.
         * `key` (`str`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -212,15 +212,15 @@ class EventSubscription(pulumi.CustomResource):
 
           * `boolEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single boolean value.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[bool]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[bool]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberGreaterThanOrEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberGreaterThans` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberIns` (`pulumi.Input[list]`) - Compares a value of an event using multiple floating point numbers.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -228,11 +228,11 @@ class EventSubscription(pulumi.CustomResource):
 
           * `numberLessThanOrEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberLessThans` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberNotIns` (`pulumi.Input[list]`) - Compares a value of an event using multiple floating point numbers.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -375,15 +375,15 @@ class EventSubscription(pulumi.CustomResource):
 
           * `boolEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single boolean value.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[bool]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[bool]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberGreaterThanOrEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberGreaterThans` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberIns` (`pulumi.Input[list]`) - Compares a value of an event using multiple floating point numbers.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -391,11 +391,11 @@ class EventSubscription(pulumi.CustomResource):
 
           * `numberLessThanOrEquals` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberLessThans` (`pulumi.Input[list]`) - Compares a value of an event using a single floating point number.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator. 
+            * `value` (`pulumi.Input[float]`) - Specifies a single value to compare to when using a single value operator.
 
           * `numberNotIns` (`pulumi.Input[list]`) - Compares a value of an event using multiple floating point numbers.
             * `key` (`pulumi.Input[str]`) - Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.

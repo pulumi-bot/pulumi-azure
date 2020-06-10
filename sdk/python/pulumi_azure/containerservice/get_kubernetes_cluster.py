@@ -84,7 +84,7 @@ class GetKubernetesClusterResult:
             raise TypeError("Expected argument 'kubelet_identities' to be a list")
         __self__.kubelet_identities = kubelet_identities
         """
-        A `kubelet_identity` block as documented below.  
+        A `kubelet_identity` block as documented below.
         """
         if kubernetes_version and not isinstance(kubernetes_version, str):
             raise TypeError("Expected argument 'kubernetes_version' to be a str")
@@ -126,13 +126,13 @@ class GetKubernetesClusterResult:
             raise TypeError("Expected argument 'private_cluster_enabled' to be a bool")
         __self__.private_cluster_enabled = private_cluster_enabled
         """
-        If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+        If the cluster has the Kubernetes API only exposed on internal IP addresses.
         """
         if private_fqdn and not isinstance(private_fqdn, str):
             raise TypeError("Expected argument 'private_fqdn' to be a str")
         __self__.private_fqdn = private_fqdn
         """
-        The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located                   
+        The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located
         """
         if private_link_enabled and not isinstance(private_link_enabled, bool):
             raise TypeError("Expected argument 'private_link_enabled' to be a bool")
@@ -219,7 +219,7 @@ def get_kubernetes_cluster(name=None,private_cluster_enabled=None,private_link_e
 
 
     :param str name: The name of the managed Kubernetes Cluster.
-    :param bool private_cluster_enabled: If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+    :param bool private_cluster_enabled: If the cluster has the Kubernetes API only exposed on internal IP addresses.
     :param str resource_group_name: The name of the Resource Group in which the managed Kubernetes Cluster exists.
     """
     __args__ = dict()

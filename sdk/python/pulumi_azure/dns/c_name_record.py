@@ -60,7 +60,7 @@ class CNameRecord(pulumi.CustomResource):
             record="contoso.com")
         ```
 
-        ## Example Usage (Alias Record)
+        ### Alias Record)
 
         ```python
         import pulumi
@@ -79,6 +79,7 @@ class CNameRecord(pulumi.CustomResource):
             ttl=300,
             target_resource_id=target.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

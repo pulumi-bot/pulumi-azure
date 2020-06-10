@@ -280,7 +280,7 @@ class Account(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage with Network Rules
+        ### With Network Rules
 
         ```python
         import pulumi
@@ -313,6 +313,7 @@ class Account(pulumi.CustomResource):
                 "environment": "staging",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

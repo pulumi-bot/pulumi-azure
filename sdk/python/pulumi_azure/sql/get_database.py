@@ -18,7 +18,7 @@ class GetDatabaseResult:
             raise TypeError("Expected argument 'collation' to be a str")
         __self__.collation = collation
         """
-        The name of the collation. 
+        The name of the collation.
         """
         if default_secondary_location and not isinstance(default_secondary_location, str):
             raise TypeError("Expected argument 'default_secondary_location' to be a str")

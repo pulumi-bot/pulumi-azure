@@ -79,7 +79,7 @@ namespace Pulumi.Azure.Batch
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The `key_vault_reference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode. 
+        /// The `key_vault_reference` block that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountKeyVaultReferenceResult> KeyVaultReferences;
         /// <summary>

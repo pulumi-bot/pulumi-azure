@@ -59,7 +59,7 @@ class AaaaRecord(pulumi.CustomResource):
             ttl=300)
         ```
 
-        ## Example Usage (Alias Record)
+        ### Alias Record)
 
         ```python
         import pulumi
@@ -78,6 +78,7 @@ class AaaaRecord(pulumi.CustomResource):
             ttl=300,
             target_resource_id=example_public_ip.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

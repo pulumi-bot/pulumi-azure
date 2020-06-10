@@ -111,7 +111,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.containerservice.KubernetesClusterKubeConfig[]>;
     /**
-     * A `kubeletIdentity` block as defined below.  
+     * A `kubeletIdentity` block as defined below.
      */
     public /*out*/ readonly kubeletIdentities!: pulumi.Output<outputs.containerservice.KubernetesClusterKubeletIdentity[]>;
     /**
@@ -307,7 +307,7 @@ export interface KubernetesClusterState {
      */
     readonly kubeConfigs?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterKubeConfig>[]>;
     /**
-     * A `kubeletIdentity` block as defined below.  
+     * A `kubeletIdentity` block as defined below.
      */
     readonly kubeletIdentities?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterKubeletIdentity>[]>;
     /**
