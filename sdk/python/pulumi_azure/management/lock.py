@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Lock(pulumi.CustomResource):
     lock_level: pulumi.Output[str]
     """
@@ -137,9 +138,9 @@ class Lock(pulumi.CustomResource):
         __props__["notes"] = notes
         __props__["scope"] = scope
         return Lock(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

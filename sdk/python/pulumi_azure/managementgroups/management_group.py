@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
+
 class ManagementGroup(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     """
@@ -121,9 +122,9 @@ class ManagementGroup(pulumi.CustomResource):
         __props__["parent_management_group_id"] = parent_management_group_id
         __props__["subscription_ids"] = subscription_ids
         return ManagementGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

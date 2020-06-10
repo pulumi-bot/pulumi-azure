@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class CertificateOrder(pulumi.CustomResource):
     app_service_certificate_not_renewable_reasons: pulumi.Output[list]
     """
@@ -229,9 +230,9 @@ class CertificateOrder(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["validity_in_years"] = validity_in_years
         return CertificateOrder(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

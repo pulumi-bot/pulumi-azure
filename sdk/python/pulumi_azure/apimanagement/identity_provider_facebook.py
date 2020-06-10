@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityProviderFacebook(pulumi.CustomResource):
     api_management_name: pulumi.Output[str]
     """
@@ -118,9 +119,9 @@ class IdentityProviderFacebook(pulumi.CustomResource):
         __props__["app_secret"] = app_secret
         __props__["resource_group_name"] = resource_group_name
         return IdentityProviderFacebook(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

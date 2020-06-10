@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReplicatedVM(pulumi.CustomResource):
     managed_disks: pulumi.Output[list]
     """
@@ -188,9 +189,9 @@ class ReplicatedVM(pulumi.CustomResource):
         __props__["target_recovery_protection_container_id"] = target_recovery_protection_container_id
         __props__["target_resource_group_id"] = target_resource_group_id
         return ReplicatedVM(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
