@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace", DeprecationWarning)
+
 class Namespace(pulumi.CustomResource):
     capacity: pulumi.Output[float]
     """
@@ -175,9 +176,9 @@ class Namespace(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["zone_redundant"] = zone_redundant
         return Namespace(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

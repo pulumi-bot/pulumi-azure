@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Controller(pulumi.CustomResource):
     data_plane_fqdn: pulumi.Output[str]
     """
@@ -135,9 +136,9 @@ class Controller(pulumi.CustomResource):
         __props__["target_container_host_credentials_base64"] = target_container_host_credentials_base64
         __props__["target_container_host_resource_id"] = target_container_host_resource_id
         return Controller(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

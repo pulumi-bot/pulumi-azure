@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessPolicy(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -164,9 +165,9 @@ class AccessPolicy(pulumi.CustomResource):
         __props__["storage_permissions"] = storage_permissions
         __props__["tenant_id"] = tenant_id
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

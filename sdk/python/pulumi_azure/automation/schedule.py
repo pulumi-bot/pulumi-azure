@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Schedule(pulumi.CustomResource):
     automation_account_name: pulumi.Output[str]
     """
@@ -197,9 +198,9 @@ class Schedule(pulumi.CustomResource):
         __props__["timezone"] = timezone
         __props__["week_days"] = week_days
         return Schedule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

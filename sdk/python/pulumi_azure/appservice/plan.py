@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Plan(pulumi.CustomResource):
     app_service_environment_id: pulumi.Output[str]
     """
@@ -234,9 +235,9 @@ class Plan(pulumi.CustomResource):
         __props__["sku"] = sku
         __props__["tags"] = tags
         return Plan(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

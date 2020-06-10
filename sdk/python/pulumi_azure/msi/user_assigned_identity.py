@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
+
 class UserAssignedIdentity(pulumi.CustomResource):
     client_id: pulumi.Output[str]
     """
@@ -130,9 +131,9 @@ class UserAssignedIdentity(pulumi.CustomResource):
         __props__["resource_group_name"] = resource_group_name
         __props__["tags"] = tags
         return UserAssignedIdentity(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
