@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ProtectedFileShare(pulumi.CustomResource):
     backup_policy_id: pulumi.Output[str]
     """
@@ -151,9 +152,9 @@ class ProtectedFileShare(pulumi.CustomResource):
         __props__["source_file_share_name"] = source_file_share_name
         __props__["source_storage_account_id"] = source_storage_account_id
         return ProtectedFileShare(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

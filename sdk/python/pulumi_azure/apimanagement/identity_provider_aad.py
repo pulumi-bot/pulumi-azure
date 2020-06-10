@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityProviderAad(pulumi.CustomResource):
     allowed_tenants: pulumi.Output[list]
     """
@@ -129,9 +130,9 @@ class IdentityProviderAad(pulumi.CustomResource):
         __props__["client_secret"] = client_secret
         __props__["resource_group_name"] = resource_group_name
         return IdentityProviderAad(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription", DeprecationWarning)
+
 class Subscription(pulumi.CustomResource):
     auto_delete_on_idle: pulumi.Output[str]
     """
@@ -198,9 +199,9 @@ class Subscription(pulumi.CustomResource):
         __props__["resource_group_name"] = resource_group_name
         __props__["topic_name"] = topic_name
         return Subscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

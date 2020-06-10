@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SubnetNatGatewayAssociation(pulumi.CustomResource):
     nat_gateway_id: pulumi.Output[str]
     """
@@ -101,9 +102,9 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
         __props__["nat_gateway_id"] = nat_gateway_id
         __props__["subnet_id"] = subnet_id
         return SubnetNatGatewayAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
