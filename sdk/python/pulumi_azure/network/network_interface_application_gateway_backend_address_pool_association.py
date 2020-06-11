@@ -114,7 +114,6 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation(pulumi.Cus
             backend_address_pool_id=network.backend_address_pools[0]["id"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_address_pool_id: The ID of the Application Gateway's Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.

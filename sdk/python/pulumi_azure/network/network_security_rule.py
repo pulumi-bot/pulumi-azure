@@ -115,7 +115,6 @@ class NetworkSecurityRule(pulumi.CustomResource):
             network_security_group_name=example_network_security_group.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access: Specifies whether network traffic is allowed or denied. Possible values are `Allow` and `Deny`.

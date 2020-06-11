@@ -64,7 +64,7 @@ class Server(pulumi.CustomResource):
     """
     restore_point_in_time: pulumi.Output[str]
     """
-    When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`. 
+    When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`.
     """
     sku_name: pulumi.Output[str]
     """
@@ -86,7 +86,7 @@ class Server(pulumi.CustomResource):
     storage_profile: pulumi.Output[dict]
     tags: pulumi.Output[dict]
     """
-    A mapping of tags to assign to the resource.  
+    A mapping of tags to assign to the resource.
     """
     threat_detection_policy: pulumi.Output[dict]
     """
@@ -133,7 +133,6 @@ class Server(pulumi.CustomResource):
             ssl_minimal_tls_version_enforced="TLS1_2")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the PostgreSQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.
@@ -148,12 +147,12 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] public_network_access_enabled: Whether or not public network access is allowed for this server. Defaults to `true`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the PostgreSQL Server. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] restore_point_in_time: When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`. 
+        :param pulumi.Input[str] restore_point_in_time: When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`.
         :param pulumi.Input[str] sku_name: Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#sku).
         :param pulumi.Input[bool] ssl_enforcement_enabled: Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
         :param pulumi.Input[str] ssl_minimal_tls_version_enforced: The mimimun TLS version to support on the sever. Possible values are `TLSEnforcementDisabled`, `TLS1_0`, `TLS1_1`, and `TLS1_2`. Defaults to `TLSEnforcementDisabled`.
         :param pulumi.Input[float] storage_mb: Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#StorageProfile).
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.  
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[dict] threat_detection_policy: Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threat_detection_policy` block supports fields documented below.
         :param pulumi.Input[str] version: Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10`, `10.0`, and `11`. Changing this forces a new resource to be created.
 
@@ -210,15 +209,15 @@ class Server(pulumi.CustomResource):
                 raise TypeError("Missing required property 'sku_name'")
             __props__['sku_name'] = sku_name
             if ssl_enforcement is not None:
-                warnings.warn("this has been renamed to the boolean `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.", DeprecationWarning)
-                pulumi.log.warn("ssl_enforcement is deprecated: this has been renamed to the boolean `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.")
+                warnings.warn("this has been renamed to the boolean `[sslEnforcementEnabled](#/resources/azure:postgresql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.", DeprecationWarning)
+                pulumi.log.warn("ssl_enforcement is deprecated: this has been renamed to the boolean `[sslEnforcementEnabled](#/resources/azure:postgresql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.")
             __props__['ssl_enforcement'] = ssl_enforcement
             __props__['ssl_enforcement_enabled'] = ssl_enforcement_enabled
             __props__['ssl_minimal_tls_version_enforced'] = ssl_minimal_tls_version_enforced
             __props__['storage_mb'] = storage_mb
             if storage_profile is not None:
-                warnings.warn("all storage_profile properties have been move to the top level. This block will be removed in version 3.0 of the provider.", DeprecationWarning)
-                pulumi.log.warn("storage_profile is deprecated: all storage_profile properties have been move to the top level. This block will be removed in version 3.0 of the provider.")
+                warnings.warn("all [storageProfile](#/resources/azure:postgresql%2Fserver:Server/inputProperties/storageProfile) properties have been move to the top level. This block will be removed in version 3.0 of the provider.", DeprecationWarning)
+                pulumi.log.warn("storage_profile is deprecated: all [storageProfile](#/resources/azure:postgresql%2Fserver:Server/inputProperties/storageProfile) properties have been move to the top level. This block will be removed in version 3.0 of the provider.")
             __props__['storage_profile'] = storage_profile
             __props__['tags'] = tags
             __props__['threat_detection_policy'] = threat_detection_policy
@@ -254,12 +253,12 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] public_network_access_enabled: Whether or not public network access is allowed for this server. Defaults to `true`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the PostgreSQL Server. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] restore_point_in_time: When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`. 
+        :param pulumi.Input[str] restore_point_in_time: When `create_mode` is `PointInTimeRestore` the point in time to restore from `creation_source_server_id`.
         :param pulumi.Input[str] sku_name: Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#sku).
         :param pulumi.Input[bool] ssl_enforcement_enabled: Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
         :param pulumi.Input[str] ssl_minimal_tls_version_enforced: The mimimun TLS version to support on the sever. Possible values are `TLSEnforcementDisabled`, `TLS1_0`, `TLS1_1`, and `TLS1_2`. Defaults to `TLSEnforcementDisabled`.
         :param pulumi.Input[float] storage_mb: Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#StorageProfile).
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.  
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[dict] threat_detection_policy: Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threat_detection_policy` block supports fields documented below.
         :param pulumi.Input[str] version: Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10`, `10.0`, and `11`. Changing this forces a new resource to be created.
 

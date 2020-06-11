@@ -59,7 +59,7 @@ class AaaaRecord(pulumi.CustomResource):
             ttl=300)
         ```
 
-        ## Example Usage (Alias Record)
+        ### Alias Record)
 
         ```python
         import pulumi

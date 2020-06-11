@@ -1652,7 +1652,7 @@ export namespace appservice {
 
     export interface AppServiceSiteConfigIpRestriction {
         /**
-         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.  
+         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
          */
         action?: string;
         /**
@@ -2404,7 +2404,7 @@ export namespace appservice {
          */
         name: string;
         /**
-         * The type of the Connection String. 
+         * The type of the Connection String.
          */
         type: string;
         /**
@@ -5985,7 +5985,7 @@ export namespace containerservice {
          */
         logAnalyticsWorkspaceId: string;
         /**
-         * An `omsAgentIdentity` block as defined below.  
+         * An `omsAgentIdentity` block as defined below.
          */
         omsAgentIdentities: outputs.containerservice.GetKubernetesClusterAddonProfileOmsAgentOmsAgentIdentity[];
     }
@@ -6550,7 +6550,7 @@ export namespace containerservice {
          */
         logAnalyticsWorkspaceId?: string;
         /**
-         * An `omsAgentIdentity` block as defined below.  
+         * An `omsAgentIdentity` block as defined below.
          */
         omsAgentIdentities: outputs.containerservice.KubernetesClusterAddonProfileOmsAgentOmsAgentIdentity[];
     }
@@ -6886,33 +6886,33 @@ export namespace containerservice {
 export namespace core {
     export interface CustomProviderAction {
         /**
-         * Specifies the endpoint of the action. 
+         * Specifies the endpoint of the action.
          */
         endpoint: string;
         /**
-         * Specifies the name of the action. 
+         * Specifies the name of the action.
          */
         name: string;
     }
 
     export interface CustomProviderResourceType {
         /**
-         * Specifies the endpoint of the route definition. 
+         * Specifies the endpoint of the route definition.
          */
         endpoint: string;
         /**
-         * Specifies the name of the route definition. 
+         * Specifies the name of the route definition.
          */
         name: string;
         /**
-         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
          */
         routingType?: string;
     }
 
     export interface CustomProviderValidation {
         /**
-         * The endpoint where the validation specification is located. 
+         * The endpoint where the validation specification is located.
          */
         specification: string;
     }
@@ -7303,7 +7303,7 @@ export namespace datafactory {
          */
         branchName: string;
         /**
-         * The GitHub Enterprise host name. 
+         * The GitHub Enterprise host name.
          */
         gitUrl: string;
         /**
@@ -7788,7 +7788,7 @@ export namespace eventgrid {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: boolean;
     }
@@ -7799,7 +7799,7 @@ export namespace eventgrid {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -7810,7 +7810,7 @@ export namespace eventgrid {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -7832,7 +7832,7 @@ export namespace eventgrid {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -7843,7 +7843,7 @@ export namespace eventgrid {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -8251,7 +8251,7 @@ export namespace eventhub {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: boolean;
     }
@@ -8262,7 +8262,7 @@ export namespace eventhub {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -8273,7 +8273,7 @@ export namespace eventhub {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -8295,7 +8295,7 @@ export namespace eventhub {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -8306,7 +8306,7 @@ export namespace eventhub {
          */
         key: string;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: number;
     }
@@ -10301,11 +10301,11 @@ export namespace hdinsight {
 export namespace healthcare {
     export interface GetServiceAuthenticationConfiguration {
         /**
-         * The intended audience to receive authentication tokens for the service. 
+         * The intended audience to receive authentication tokens for the service.
          */
         audience: string;
         /**
-         * The Azure Active Directory (tenant) that serves as the authentication authority to access the service. 
+         * The Azure Active Directory (tenant) that serves as the authentication authority to access the service.
          */
         authority: string;
         /**
@@ -11148,7 +11148,7 @@ export namespace mariadb {
 
     export interface ServerStorageProfile {
         /**
-         * @deprecated this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
          */
         autoGrow: string;
         /**
@@ -11158,7 +11158,7 @@ export namespace mariadb {
          */
         backupRetentionDays: number;
         /**
-         * @deprecated this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
          */
         geoRedundantBackup: string;
         /**
@@ -12495,7 +12495,7 @@ export namespace mssql {
 export namespace mysql {
     export interface ServerStorageProfile {
         /**
-         * @deprecated this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
          */
         autoGrow: string;
         /**
@@ -12505,7 +12505,7 @@ export namespace mysql {
          */
         backupRetentionDays: number;
         /**
-         * @deprecated this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
          */
         geoRedundantBackup: string;
         /**
@@ -12553,19 +12553,19 @@ export namespace netapp {
         /**
          * Is the CIFS protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         cifsEnabled: boolean;
         /**
          * Is the NFSv3 protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         nfsv3Enabled: boolean;
         /**
          * Is the NFSv4 protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         nfsv4Enabled: boolean;
         /**

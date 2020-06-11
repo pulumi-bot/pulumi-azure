@@ -11,13 +11,13 @@ import (
 )
 
 type ServerStorageProfile struct {
-	// Deprecated: this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
 	AutoGrow *string `pulumi:"autoGrow"`
 	// Backup retention days for the server, supported values are between `7` and `35` days.
 	//
 	// Deprecated: this has been moved to the top level and will be removed in version 3.0 of the provider.
 	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
-	// Deprecated: this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
 	// Max storage allowed for a server. Possible values are between `5120` MB (5GB) and `1024000`MB (1TB) for the Basic SKU and between `5120` MB (5GB) and `4096000` MB (4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mariadb/servers/create#storageprofile).
 	//
@@ -38,13 +38,13 @@ type ServerStorageProfileInput interface {
 }
 
 type ServerStorageProfileArgs struct {
-	// Deprecated: this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
 	AutoGrow pulumi.StringPtrInput `pulumi:"autoGrow"`
 	// Backup retention days for the server, supported values are between `7` and `35` days.
 	//
 	// Deprecated: this has been moved to the top level and will be removed in version 3.0 of the provider.
 	BackupRetentionDays pulumi.IntPtrInput `pulumi:"backupRetentionDays"`
-	// Deprecated: this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
 	GeoRedundantBackup pulumi.StringPtrInput `pulumi:"geoRedundantBackup"`
 	// Max storage allowed for a server. Possible values are between `5120` MB (5GB) and `1024000`MB (1TB) for the Basic SKU and between `5120` MB (5GB) and `4096000` MB (4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mariadb/servers/create#storageprofile).
 	//
@@ -130,7 +130,7 @@ func (o ServerStorageProfileOutput) ToServerStorageProfilePtrOutputWithContext(c
 	}).(ServerStorageProfilePtrOutput)
 }
 
-// Deprecated: this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+// Deprecated: this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
 func (o ServerStorageProfileOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerStorageProfile) *string { return v.AutoGrow }).(pulumi.StringPtrOutput)
 }
@@ -142,7 +142,7 @@ func (o ServerStorageProfileOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerStorageProfile) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// Deprecated: this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+// Deprecated: this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
 func (o ServerStorageProfileOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerStorageProfile) *string { return v.GeoRedundantBackup }).(pulumi.StringPtrOutput)
 }
@@ -172,7 +172,7 @@ func (o ServerStorageProfilePtrOutput) Elem() ServerStorageProfileOutput {
 	return o.ApplyT(func(v *ServerStorageProfile) ServerStorageProfile { return *v }).(ServerStorageProfileOutput)
 }
 
-// Deprecated: this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+// Deprecated: this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
 func (o ServerStorageProfilePtrOutput) AutoGrow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerStorageProfile) *string {
 		if v == nil {
@@ -194,7 +194,7 @@ func (o ServerStorageProfilePtrOutput) BackupRetentionDays() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Deprecated: this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+// Deprecated: this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
 func (o ServerStorageProfilePtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerStorageProfile) *string {
 		if v == nil {

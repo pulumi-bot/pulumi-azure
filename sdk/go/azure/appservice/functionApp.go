@@ -11,6 +11,174 @@ import (
 )
 
 // Manages a Function App.
+//
+// ## Example Usage
+//
+// ### With App Service Plan)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
+// 			Location: pulumi.String("westus2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleAccount, err := storage.NewAccount(ctx, "exampleAccount", &storage.AccountArgs{
+// 			ResourceGroupName:      exampleResourceGroup.Name,
+// 			Location:               exampleResourceGroup.Location,
+// 			AccountTier:            pulumi.String("Standard"),
+// 			AccountReplicationType: pulumi.String("LRS"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			Sku: &appservice.PlanSkuArgs{
+// 				Tier: pulumi.String("Standard"),
+// 				Size: pulumi.String("S1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 			Location:                exampleResourceGroup.Location,
+// 			ResourceGroupName:       exampleResourceGroup.Name,
+// 			AppServicePlanId:        examplePlan.ID(),
+// 			StorageConnectionString: exampleAccount.PrimaryConnectionString,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### In A Consumption Plan)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
+// 			Location: pulumi.String("westus2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleAccount, err := storage.NewAccount(ctx, "exampleAccount", &storage.AccountArgs{
+// 			ResourceGroupName:      exampleResourceGroup.Name,
+// 			Location:               exampleResourceGroup.Location,
+// 			AccountTier:            pulumi.String("Standard"),
+// 			AccountReplicationType: pulumi.String("LRS"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			Kind:              pulumi.String("FunctionApp"),
+// 			Sku: &appservice.PlanSkuArgs{
+// 				Tier: pulumi.String("Dynamic"),
+// 				Size: pulumi.String("Y1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 			Location:                exampleResourceGroup.Location,
+// 			ResourceGroupName:       exampleResourceGroup.Name,
+// 			AppServicePlanId:        examplePlan.ID(),
+// 			StorageConnectionString: exampleAccount.PrimaryConnectionString,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Linux)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
+// 			Location: pulumi.String("westus2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleAccount, err := storage.NewAccount(ctx, "exampleAccount", &storage.AccountArgs{
+// 			ResourceGroupName:      exampleResourceGroup.Name,
+// 			Location:               exampleResourceGroup.Location,
+// 			AccountTier:            pulumi.String("Standard"),
+// 			AccountReplicationType: pulumi.String("LRS"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			Kind:              pulumi.String("FunctionApp"),
+// 			Reserved:          pulumi.Bool(true),
+// 			Sku: &appservice.PlanSkuArgs{
+// 				Tier: pulumi.String("Dynamic"),
+// 				Size: pulumi.String("Y1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 			Location:                exampleResourceGroup.Location,
+// 			ResourceGroupName:       exampleResourceGroup.Name,
+// 			AppServicePlanId:        examplePlan.ID(),
+// 			StorageConnectionString: exampleAccount.PrimaryConnectionString,
+// 			OsType:                  pulumi.String("linux"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type FunctionApp struct {
 	pulumi.CustomResourceState
 
@@ -60,7 +228,7 @@ type FunctionApp struct {
 	StorageAccountName pulumi.StringOutput `pulumi:"storageAccountName"`
 	// The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
 	//
-	// Deprecated: Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+	// Deprecated: Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountAccessKey)`
 	StorageConnectionString pulumi.StringOutput `pulumi:"storageConnectionString"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -148,7 +316,7 @@ type functionAppState struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
 	//
-	// Deprecated: Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+	// Deprecated: Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountAccessKey)`
 	StorageConnectionString *string `pulumi:"storageConnectionString"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -203,7 +371,7 @@ type FunctionAppState struct {
 	StorageAccountName pulumi.StringPtrInput
 	// The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
 	//
-	// Deprecated: Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+	// Deprecated: Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountAccessKey)`
 	StorageConnectionString pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -252,7 +420,7 @@ type functionAppArgs struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 	// The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
 	//
-	// Deprecated: Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+	// Deprecated: Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountAccessKey)`
 	StorageConnectionString *string `pulumi:"storageConnectionString"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -298,7 +466,7 @@ type FunctionAppArgs struct {
 	StorageAccountName pulumi.StringPtrInput
 	// The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
 	//
-	// Deprecated: Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+	// Deprecated: Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountAccessKey)`
 	StorageConnectionString pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput

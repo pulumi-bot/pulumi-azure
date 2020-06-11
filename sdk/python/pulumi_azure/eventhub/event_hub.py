@@ -78,7 +78,6 @@ class EventHub(pulumi.CustomResource):
             message_retention=1)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] capture_description: A `capture_description` block as defined below.

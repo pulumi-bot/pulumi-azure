@@ -62,7 +62,6 @@ class VirtualNetworkSwiftConnection(pulumi.CustomResource):
             subnet_id=test1.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_id: The ID of the App Service to associate to the VNet. Changing this forces a new resource to be created.

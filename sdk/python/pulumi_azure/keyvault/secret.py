@@ -46,8 +46,6 @@ class Secret(pulumi.CustomResource):
         """
         Manages a Key Vault Secret.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: Specifies the content type for the Key Vault Secret.

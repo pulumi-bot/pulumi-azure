@@ -54,7 +54,6 @@ class ZoneVirtualNetworkLink(pulumi.CustomResource):
             virtual_network_id=azurerm_virtual_network["example"]["id"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Private DNS Zone Virtual Network Link. Changing this forces a new resource to be created.

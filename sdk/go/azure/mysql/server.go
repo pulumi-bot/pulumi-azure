@@ -11,6 +11,51 @@ import (
 )
 
 // Manages a MySQL Server.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
+// 			Location: pulumi.String("West Europe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServer, err := mysql.NewServer(ctx, "exampleServer", &mysql.ServerArgs{
+// 			Location:                        exampleResourceGroup.Location,
+// 			ResourceGroupName:               exampleResourceGroup.Name,
+// 			AdministratorLogin:              pulumi.String("mysqladminun"),
+// 			AdministratorLoginPassword:      pulumi.String("H@Sh1CoR3!"),
+// 			SkuName:                         pulumi.String("B_Gen5_2"),
+// 			StorageMb:                       pulumi.Int(5120),
+// 			Version:                         pulumi.String("5.7"),
+// 			AutoGrowEnabled:                 pulumi.Bool(true),
+// 			BackupRetentionDays:             pulumi.Int(7),
+// 			GeoRedundantBackupEnabled:       pulumi.Bool(true),
+// 			InfrastructureEncryptionEnabled: pulumi.Bool(true),
+// 			PublicNetworkAccessEnabled:      pulumi.Bool(false),
+// 			SslEnforcementEnabled:           pulumi.Bool(true),
+// 			SslMinimalTlsVersionEnforced:    pulumi.String("TLS1_2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -44,7 +89,7 @@ type Server struct {
 	RestorePointInTime pulumi.StringPtrOutput `pulumi:"restorePointInTime"`
 	// Specifies the SKU Name for this MySQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#sku).
 	SkuName pulumi.StringOutput `pulumi:"skuName"`
-	// Deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
 	SslEnforcement pulumi.StringOutput `pulumi:"sslEnforcement"`
 	// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
 	SslEnforcementEnabled pulumi.BoolOutput `pulumi:"sslEnforcementEnabled"`
@@ -52,7 +97,7 @@ type Server struct {
 	SslMinimalTlsVersionEnforced pulumi.StringPtrOutput `pulumi:"sslMinimalTlsVersionEnforced"`
 	// Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#StorageProfile).
 	StorageMb pulumi.IntOutput `pulumi:"storageMb"`
-	// Deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+	// Deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/properties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
 	StorageProfile ServerStorageProfileOutput `pulumi:"storageProfile"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -127,7 +172,7 @@ type serverState struct {
 	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Specifies the SKU Name for this MySQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#sku).
 	SkuName *string `pulumi:"skuName"`
-	// Deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
 	SslEnforcement *string `pulumi:"sslEnforcement"`
 	// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
 	SslEnforcementEnabled *bool `pulumi:"sslEnforcementEnabled"`
@@ -135,7 +180,7 @@ type serverState struct {
 	SslMinimalTlsVersionEnforced *string `pulumi:"sslMinimalTlsVersionEnforced"`
 	// Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#StorageProfile).
 	StorageMb *int `pulumi:"storageMb"`
-	// Deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+	// Deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/properties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
 	StorageProfile *ServerStorageProfile `pulumi:"storageProfile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -174,7 +219,7 @@ type ServerState struct {
 	RestorePointInTime pulumi.StringPtrInput
 	// Specifies the SKU Name for this MySQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#sku).
 	SkuName pulumi.StringPtrInput
-	// Deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
 	SslEnforcement pulumi.StringPtrInput
 	// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
 	SslEnforcementEnabled pulumi.BoolPtrInput
@@ -182,7 +227,7 @@ type ServerState struct {
 	SslMinimalTlsVersionEnforced pulumi.StringPtrInput
 	// Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#StorageProfile).
 	StorageMb pulumi.IntPtrInput
-	// Deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+	// Deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/properties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
 	StorageProfile ServerStorageProfilePtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -223,7 +268,7 @@ type serverArgs struct {
 	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Specifies the SKU Name for this MySQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#sku).
 	SkuName string `pulumi:"skuName"`
-	// Deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
 	SslEnforcement *string `pulumi:"sslEnforcement"`
 	// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
 	SslEnforcementEnabled *bool `pulumi:"sslEnforcementEnabled"`
@@ -231,7 +276,7 @@ type serverArgs struct {
 	SslMinimalTlsVersionEnforced *string `pulumi:"sslMinimalTlsVersionEnforced"`
 	// Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#StorageProfile).
 	StorageMb *int `pulumi:"storageMb"`
-	// Deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+	// Deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/inputProperties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
 	StorageProfile *ServerStorageProfile `pulumi:"storageProfile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -269,7 +314,7 @@ type ServerArgs struct {
 	RestorePointInTime pulumi.StringPtrInput
 	// Specifies the SKU Name for this MySQL Server. The name of the SKU, follows the `tier` + `family` + `cores` pattern (e.g. `B_Gen4_1`, `GP_Gen5_8`). For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#sku).
 	SkuName pulumi.StringInput
-	// Deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+	// Deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
 	SslEnforcement pulumi.StringPtrInput
 	// Specifies if SSL should be enforced on connections. Possible values are `true` and `false`.
 	SslEnforcementEnabled pulumi.BoolPtrInput
@@ -277,7 +322,7 @@ type ServerArgs struct {
 	SslMinimalTlsVersionEnforced pulumi.StringPtrInput
 	// Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/mysql/servers/create#StorageProfile).
 	StorageMb pulumi.IntPtrInput
-	// Deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+	// Deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/inputProperties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
 	StorageProfile ServerStorageProfilePtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput

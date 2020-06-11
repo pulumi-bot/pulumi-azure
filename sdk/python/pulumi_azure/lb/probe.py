@@ -75,7 +75,6 @@ class Probe(pulumi.CustomResource):
             port=22)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] interval_in_seconds: The interval, in seconds between probes to the backend endpoint for health status. The default value is 15, the minimum value is 5.

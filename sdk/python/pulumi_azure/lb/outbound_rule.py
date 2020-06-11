@@ -88,7 +88,6 @@ class OutboundRule(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] allocated_outbound_ports: The number of outbound ports to be used for NAT.

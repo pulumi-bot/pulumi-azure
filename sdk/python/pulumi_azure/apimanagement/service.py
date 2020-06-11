@@ -213,7 +213,6 @@ class Service(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] additional_locations: One or more `additional_location` blocks as defined below.

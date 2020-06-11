@@ -68,7 +68,6 @@ class LinkedServiceSqlServer(pulumi.CustomResource):
             connection_string="Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service SQL Server.

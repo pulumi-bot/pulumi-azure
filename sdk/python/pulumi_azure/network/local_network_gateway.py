@@ -70,7 +70,6 @@ class LocalNetworkGateway(pulumi.CustomResource):
             address_spaces=["10.0.0.0/16"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] address_spaces: The list of string CIDRs representing the

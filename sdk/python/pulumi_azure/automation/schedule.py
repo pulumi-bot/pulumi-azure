@@ -91,7 +91,6 @@ class Schedule(pulumi.CustomResource):
             week_days=["Friday"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Schedule is created. Changing this forces a new resource to be created.

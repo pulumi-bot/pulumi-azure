@@ -82,8 +82,6 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
         """
         Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] action: An `action` block as defined below.

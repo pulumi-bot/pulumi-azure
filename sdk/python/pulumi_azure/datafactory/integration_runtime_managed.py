@@ -93,7 +93,6 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
             node_size="Standard_D8_v3")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] catalog_info: A `catalog_info` block as defined below.

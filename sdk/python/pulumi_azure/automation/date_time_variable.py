@@ -60,7 +60,6 @@ class DateTimeVariable(pulumi.CustomResource):
             value="2019-04-24T21:40:54.074Z")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.

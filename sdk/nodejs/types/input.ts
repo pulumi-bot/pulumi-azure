@@ -1290,7 +1290,7 @@ export namespace appservice {
 
     export interface AppServiceSiteConfigIpRestriction {
         /**
-         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.  
+         * Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
          */
         action?: pulumi.Input<string>;
         /**
@@ -5391,7 +5391,7 @@ export namespace containerservice {
          */
         logAnalyticsWorkspaceId?: pulumi.Input<string>;
         /**
-         * An `omsAgentIdentity` block as defined below.  
+         * An `omsAgentIdentity` block as defined below.
          */
         omsAgentIdentities?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterAddonProfileOmsAgentOmsAgentIdentity>[]>;
     }
@@ -5727,33 +5727,33 @@ export namespace containerservice {
 export namespace core {
     export interface CustomProviderAction {
         /**
-         * Specifies the endpoint of the action. 
+         * Specifies the endpoint of the action.
          */
         endpoint: pulumi.Input<string>;
         /**
-         * Specifies the name of the action. 
+         * Specifies the name of the action.
          */
         name: pulumi.Input<string>;
     }
 
     export interface CustomProviderResourceType {
         /**
-         * Specifies the endpoint of the route definition. 
+         * Specifies the endpoint of the route definition.
          */
         endpoint: pulumi.Input<string>;
         /**
-         * Specifies the name of the route definition. 
+         * Specifies the name of the route definition.
          */
         name: pulumi.Input<string>;
         /**
-         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`. 
+         * The routing type that is supported for the resource request. Valid values are `ResourceTypeRoutingProxy` or `ResourceTypeRoutingProxyCache`. This value defaults to `ResourceTypeRoutingProxy`.
          */
         routingType?: pulumi.Input<string>;
     }
 
     export interface CustomProviderValidation {
         /**
-         * The endpoint where the validation specification is located. 
+         * The endpoint where the validation specification is located.
          */
         specification: pulumi.Input<string>;
     }
@@ -6405,7 +6405,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<boolean>;
     }
@@ -6416,7 +6416,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6427,7 +6427,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6449,7 +6449,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6460,7 +6460,7 @@ export namespace eventgrid {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6868,7 +6868,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<boolean>;
     }
@@ -6879,7 +6879,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6890,7 +6890,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6912,7 +6912,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -6923,7 +6923,7 @@ export namespace eventhub {
          */
         key: pulumi.Input<string>;
         /**
-         * Specifies a single value to compare to when using a single value operator. 
+         * Specifies a single value to compare to when using a single value operator.
          */
         value: pulumi.Input<number>;
     }
@@ -9613,7 +9613,7 @@ export namespace managedapplication {
 export namespace mariadb {
     export interface ServerStorageProfile {
         /**
-         * @deprecated this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
          */
         autoGrow?: pulumi.Input<string>;
         /**
@@ -9623,7 +9623,7 @@ export namespace mariadb {
          */
         backupRetentionDays?: pulumi.Input<number>;
         /**
-         * @deprecated this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
          */
         geoRedundantBackup?: pulumi.Input<string>;
         /**
@@ -10704,7 +10704,7 @@ export namespace mssql {
 export namespace mysql {
     export interface ServerStorageProfile {
         /**
-         * @deprecated this has been moved to the top level boolean attribute `auto_grow_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``autoGrowEnabled`` and will be removed in version 3.0 of the provider.
          */
         autoGrow?: pulumi.Input<string>;
         /**
@@ -10714,7 +10714,7 @@ export namespace mysql {
          */
         backupRetentionDays?: pulumi.Input<number>;
         /**
-         * @deprecated this has been moved to the top level boolean attribute `geo_redundant_backup_enabled` and will be removed in version 3.0 of the provider.
+         * @deprecated this has been moved to the top level boolean attribute ``geoRedundantBackupEnabled`` and will be removed in version 3.0 of the provider.
          */
         geoRedundantBackup?: pulumi.Input<string>;
         /**
@@ -10762,19 +10762,19 @@ export namespace netapp {
         /**
          * Is the CIFS protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         cifsEnabled?: pulumi.Input<boolean>;
         /**
          * Is the NFSv3 protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         nfsv3Enabled?: pulumi.Input<boolean>;
         /**
          * Is the NFSv4 protocol allowed?
          *
-         * @deprecated Deprecated in favour of `protocols_enabled`
+         * @deprecated Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
          */
         nfsv4Enabled?: pulumi.Input<boolean>;
         /**

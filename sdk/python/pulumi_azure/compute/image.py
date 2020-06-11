@@ -66,7 +66,9 @@ class Image(pulumi.CustomResource):
         """
         Manages a custom virtual machine image that can be used to create virtual machines.
 
-        ## Example Usage Creating from VHD
+        ## Example Usage
+
+        ### Creating From VHD
 
         ```python
         import pulumi
@@ -84,7 +86,7 @@ class Image(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage Creating from Virtual Machine (VM must be generalized beforehand)
+        ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 
         ```python
         import pulumi

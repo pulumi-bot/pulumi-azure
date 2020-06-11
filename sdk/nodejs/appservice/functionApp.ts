@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Function App.
  *
- * ## Example Usage (with App Service Plan)
+ * ## Example Usage
+ *
+ * ### With App Service Plan)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +39,8 @@ import * as utilities from "../utilities";
  *     storageConnectionString: exampleAccount.primaryConnectionString,
  * });
  * ```
- * ## Example Usage (in a Consumption Plan)
+ *
+ * ### In A Consumption Plan)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +69,8 @@ import * as utilities from "../utilities";
  *     storageConnectionString: exampleAccount.primaryConnectionString,
  * });
  * ```
- * ## Example Usage (Linux)
+ *
+ * ### Linux)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -183,7 +187,7 @@ export class FunctionApp extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A string indicating the Operating System type for this function app. 
+     * A string indicating the Operating System type for this function app.
      */
     public readonly osType!: pulumi.Output<string | undefined>;
     /**
@@ -217,7 +221,7 @@ export class FunctionApp extends pulumi.CustomResource {
     /**
      * The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
      *
-     * @deprecated Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+     * @deprecated Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountAccessKey)`
      */
     public readonly storageConnectionString!: pulumi.Output<string>;
     /**
@@ -372,7 +376,7 @@ export interface FunctionAppState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A string indicating the Operating System type for this function app. 
+     * A string indicating the Operating System type for this function app.
      */
     readonly osType?: pulumi.Input<string>;
     /**
@@ -406,7 +410,7 @@ export interface FunctionAppState {
     /**
      * The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
      *
-     * @deprecated Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+     * @deprecated Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/properties/storageAccountAccessKey)`
      */
     readonly storageConnectionString?: pulumi.Input<string>;
     /**
@@ -472,7 +476,7 @@ export interface FunctionAppArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A string indicating the Operating System type for this function app. 
+     * A string indicating the Operating System type for this function app.
      */
     readonly osType?: pulumi.Input<string>;
     /**
@@ -494,7 +498,7 @@ export interface FunctionAppArgs {
     /**
      * The connection string to the backend storage account which will be used by this Function App (such as the dashboard, logs). Typically set to the `primaryConnectionString` of a storage account resource.
      *
-     * @deprecated Deprecated in favor of `storage_account_name` and `storage_account_access_key`
+     * @deprecated Deprecated in favor of `[storageAccountName](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountName)` and `[storageAccountAccessKey](#/resources/azure:appservice%2FfunctionApp:FunctionApp/inputProperties/storageAccountAccessKey)`
      */
     readonly storageConnectionString?: pulumi.Input<string>;
     /**

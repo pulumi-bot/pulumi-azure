@@ -88,7 +88,6 @@ class EndpointStorageContainer(pulumi.CustomResource):
             encoding="JSON")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] batch_frequency_in_seconds: Time interval at which blobs are written to storage. Value should be between 60 and 720 seconds. Default value is 300 seconds.

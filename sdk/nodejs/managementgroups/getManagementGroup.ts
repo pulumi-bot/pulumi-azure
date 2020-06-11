@@ -47,7 +47,7 @@ export interface GetManagementGroupArgs {
     /**
      * Specifies the name or UUID of this Management Group.
      *
-     * @deprecated Deprecated in favour of `name`
+     * @deprecated Deprecated in favour of `[name](#/functions/azure:managementgroups%2FgetManagementGroup:getManagementGroup/inputs/Properties/name)`
      */
     readonly groupId?: string;
     /**
@@ -65,7 +65,7 @@ export interface GetManagementGroupResult {
      */
     readonly displayName: string;
     /**
-     * @deprecated Deprecated in favour of `name`
+     * @deprecated Deprecated in favour of `[name](#/functions/azure:managementgroups%2FgetManagementGroup:getManagementGroup/inputs/Properties/name)`
      */
     readonly groupId: string;
     /**

@@ -47,7 +47,6 @@ class StoreFile(pulumi.CustomResource):
             remote_file_path="/path/created/for/remote/file")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Data Lake Store for which the File should created.

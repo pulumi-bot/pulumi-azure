@@ -30,8 +30,6 @@ class CustomerManagedKey(pulumi.CustomResource):
         """
         Manages a Customer Managed Key for a Storage Account.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_name: The name of Key Vault Key.

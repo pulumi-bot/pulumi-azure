@@ -20,7 +20,7 @@ type Subnet struct {
 
 	// The address prefix to use for the subnet.
 	//
-	// Deprecated: Use the `address_prefixes` property instead.
+	// Deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/properties/addressPrefixes)` property instead.
 	AddressPrefix pulumi.StringOutput `pulumi:"addressPrefix"`
 	// The address prefixes to use for the subnet.
 	AddressPrefixes pulumi.StringArrayOutput `pulumi:"addressPrefixes"`
@@ -76,7 +76,7 @@ func GetSubnet(ctx *pulumi.Context,
 type subnetState struct {
 	// The address prefix to use for the subnet.
 	//
-	// Deprecated: Use the `address_prefixes` property instead.
+	// Deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/properties/addressPrefixes)` property instead.
 	AddressPrefix *string `pulumi:"addressPrefix"`
 	// The address prefixes to use for the subnet.
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
@@ -99,7 +99,7 @@ type subnetState struct {
 type SubnetState struct {
 	// The address prefix to use for the subnet.
 	//
-	// Deprecated: Use the `address_prefixes` property instead.
+	// Deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/properties/addressPrefixes)` property instead.
 	AddressPrefix pulumi.StringPtrInput
 	// The address prefixes to use for the subnet.
 	AddressPrefixes pulumi.StringArrayInput
@@ -126,7 +126,7 @@ func (SubnetState) ElementType() reflect.Type {
 type subnetArgs struct {
 	// The address prefix to use for the subnet.
 	//
-	// Deprecated: Use the `address_prefixes` property instead.
+	// Deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/inputProperties/addressPrefixes)` property instead.
 	AddressPrefix *string `pulumi:"addressPrefix"`
 	// The address prefixes to use for the subnet.
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
@@ -150,7 +150,7 @@ type subnetArgs struct {
 type SubnetArgs struct {
 	// The address prefix to use for the subnet.
 	//
-	// Deprecated: Use the `address_prefixes` property instead.
+	// Deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/inputProperties/addressPrefixes)` property instead.
 	AddressPrefix pulumi.StringPtrInput
 	// The address prefixes to use for the subnet.
 	AddressPrefixes pulumi.StringArrayInput

@@ -280,7 +280,7 @@ class Account(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage with Network Rules
+        ### With Network Rules
 
         ```python
         import pulumi

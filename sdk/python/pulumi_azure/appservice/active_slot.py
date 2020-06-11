@@ -53,7 +53,6 @@ class ActiveSlot(pulumi.CustomResource):
             app_service_slot_name=example_slot.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_name: The name of the App Service within which the Slot exists.  Changing this forces a new resource to be created.

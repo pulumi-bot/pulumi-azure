@@ -75,7 +75,6 @@ class Firewall(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] ip_configurations: A `ip_configuration` block as documented below.

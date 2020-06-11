@@ -107,7 +107,6 @@ class Definition(pulumi.CustomResource):
             policy_type="Custom")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the policy definition.
@@ -151,8 +150,8 @@ class Definition(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             if management_group_id is not None:
-                warnings.warn("Deprecated in favour of `management_group_name`", DeprecationWarning)
-                pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `management_group_name`")
+                warnings.warn("Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/inputProperties/managementGroupName)`", DeprecationWarning)
+                pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/inputProperties/managementGroupName)`")
             __props__['management_group_id'] = management_group_id
             __props__['management_group_name'] = management_group_name
             __props__['metadata'] = metadata

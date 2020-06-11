@@ -81,7 +81,6 @@ class NatPool(pulumi.CustomResource):
             frontend_ip_configuration_name="PublicIPAddress")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] backend_port: The port used for the internal endpoint. Possible values range between 1 and 65535, inclusive.

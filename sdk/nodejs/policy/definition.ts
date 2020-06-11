@@ -89,7 +89,7 @@ export class Definition extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * @deprecated Deprecated in favour of `management_group_name`
+     * @deprecated Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/properties/managementGroupName)`
      */
     public readonly managementGroupId!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface DefinitionState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * @deprecated Deprecated in favour of `management_group_name`
+     * @deprecated Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/properties/managementGroupName)`
      */
     readonly managementGroupId?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface DefinitionArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * @deprecated Deprecated in favour of `management_group_name`
+     * @deprecated Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/inputProperties/managementGroupName)`
      */
     readonly managementGroupId?: pulumi.Input<string>;
     /**

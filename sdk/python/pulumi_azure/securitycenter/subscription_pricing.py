@@ -33,7 +33,6 @@ class SubscriptionPricing(pulumi.CustomResource):
         example = azure.securitycenter.SubscriptionPricing("example", tier="Standard")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] tier: The pricing tier to use. Possible values are `Free` and `Standard`.

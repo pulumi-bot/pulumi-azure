@@ -50,7 +50,6 @@ class TriggerCustom(pulumi.CustomResource):
         \"\"\")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: Specifies the JSON Blob defining the Body of this Custom Trigger.

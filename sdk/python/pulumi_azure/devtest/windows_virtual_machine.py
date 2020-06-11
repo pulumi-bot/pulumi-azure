@@ -95,8 +95,6 @@ class WindowsVirtualMachine(pulumi.CustomResource):
         """
         Manages a Windows Virtual Machine within a Dev Test Lab.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_claim: Can this Virtual Machine be claimed by users? Defaults to `true`.

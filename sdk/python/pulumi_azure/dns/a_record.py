@@ -60,7 +60,7 @@ class ARecord(pulumi.CustomResource):
             records=["10.0.180.17"])
         ```
 
-        ## Example Usage (Alias Record)
+        ### Alias Record)
 
         ```python
         import pulumi

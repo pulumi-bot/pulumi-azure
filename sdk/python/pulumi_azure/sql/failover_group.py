@@ -101,7 +101,6 @@ class FailoverGroup(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] databases: A list of database ids to add to the failover group

@@ -70,7 +70,6 @@ class Hub(pulumi.CustomResource):
             location=example_resource_group.location)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] apns_credential: A `apns_credential` block as defined below.

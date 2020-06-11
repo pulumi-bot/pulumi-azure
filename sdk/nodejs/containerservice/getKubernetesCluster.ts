@@ -48,11 +48,11 @@ export interface GetKubernetesClusterArgs {
      */
     readonly name: string;
     /**
-     * If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+     * If the cluster has the Kubernetes API only exposed on internal IP addresses.
      */
     readonly privateClusterEnabled?: boolean;
     /**
-     * @deprecated Deprecated in favor of `private_cluster_enabled`
+     * @deprecated Deprecated in favor of `[privateClusterEnabled](#/functions/azure:containerservice%2FgetKubernetesCluster:getKubernetesCluster/inputs/Properties/privateClusterEnabled)`
      */
     readonly privateLinkEnabled?: boolean;
     /**
@@ -110,7 +110,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly kubeConfigs: outputs.containerservice.GetKubernetesClusterKubeConfig[];
     /**
-     * A `kubeletIdentity` block as documented below.  
+     * A `kubeletIdentity` block as documented below.
      */
     readonly kubeletIdentities: outputs.containerservice.GetKubernetesClusterKubeletIdentity[];
     /**
@@ -138,15 +138,15 @@ export interface GetKubernetesClusterResult {
      */
     readonly nodeResourceGroup: string;
     /**
-     * If the cluster has the Kubernetes API only exposed on internal IP addresses.                           
+     * If the cluster has the Kubernetes API only exposed on internal IP addresses.
      */
     readonly privateClusterEnabled: boolean;
     /**
-     * The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located                   
+     * The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located
      */
     readonly privateFqdn: string;
     /**
-     * @deprecated Deprecated in favor of `private_cluster_enabled`
+     * @deprecated Deprecated in favor of `[privateClusterEnabled](#/functions/azure:containerservice%2FgetKubernetesCluster:getKubernetesCluster/inputs/Properties/privateClusterEnabled)`
      */
     readonly privateLinkEnabled: boolean;
     readonly resourceGroupName: string;

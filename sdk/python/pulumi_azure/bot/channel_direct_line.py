@@ -18,8 +18,6 @@ class ChannelDirectLine(pulumi.CustomResource):
         """
         Manages a Directline integration for a Bot Channel
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
 

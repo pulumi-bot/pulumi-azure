@@ -86,7 +86,9 @@ class Certifiate(pulumi.CustomResource):
         """
         Manages a Key Vault Certificate.
 
-        ## Example Usage (Generating a new certificate)
+        ## Example Usage
+
+        ### Generating A New Certificate)
 
         ```python
         import pulumi

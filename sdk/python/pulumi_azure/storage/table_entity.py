@@ -63,7 +63,6 @@ class TableEntity(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.

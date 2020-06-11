@@ -110,7 +110,6 @@ class DataDiskAttachment(pulumi.CustomResource):
             caching="ReadWrite")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] caching: Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.

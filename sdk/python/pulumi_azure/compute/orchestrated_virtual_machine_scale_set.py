@@ -65,7 +65,6 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
             zones=["1"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure location where the Orchestrated Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.

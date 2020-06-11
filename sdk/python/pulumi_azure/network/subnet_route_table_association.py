@@ -53,7 +53,6 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
             route_table_id=example_route_table.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.

@@ -79,7 +79,7 @@ export class EventSubscription extends pulumi.CustomResource {
     /**
      * A `eventhubEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `eventhub_endpoint_id`
+     * @deprecated Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/eventhubEndpointId)`
      */
     public readonly eventhubEndpoint!: pulumi.Output<outputs.eventhub.EventSubscriptionEventhubEndpoint>;
     /**
@@ -93,7 +93,7 @@ export class EventSubscription extends pulumi.CustomResource {
     /**
      * A `hybridConnectionEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `hybrid_connection_endpoint_id`
+     * @deprecated Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/hybridConnectionEndpointId)`
      */
     public readonly hybridConnectionEndpoint!: pulumi.Output<outputs.eventhub.EventSubscriptionHybridConnectionEndpoint>;
     /**
@@ -234,7 +234,7 @@ export interface EventSubscriptionState {
     /**
      * A `eventhubEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `eventhub_endpoint_id`
+     * @deprecated Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/eventhubEndpointId)`
      */
     readonly eventhubEndpoint?: pulumi.Input<inputs.eventhub.EventSubscriptionEventhubEndpoint>;
     /**
@@ -248,7 +248,7 @@ export interface EventSubscriptionState {
     /**
      * A `hybridConnectionEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `hybrid_connection_endpoint_id`
+     * @deprecated Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/hybridConnectionEndpointId)`
      */
     readonly hybridConnectionEndpoint?: pulumi.Input<inputs.eventhub.EventSubscriptionHybridConnectionEndpoint>;
     /**
@@ -320,7 +320,7 @@ export interface EventSubscriptionArgs {
     /**
      * A `eventhubEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `eventhub_endpoint_id`
+     * @deprecated Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/eventhubEndpointId)`
      */
     readonly eventhubEndpoint?: pulumi.Input<inputs.eventhub.EventSubscriptionEventhubEndpoint>;
     /**
@@ -334,7 +334,7 @@ export interface EventSubscriptionArgs {
     /**
      * A `hybridConnectionEndpoint` block as defined below.
      *
-     * @deprecated Deprecated in favour of `hybrid_connection_endpoint_id`
+     * @deprecated Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/hybridConnectionEndpointId)`
      */
     readonly hybridConnectionEndpoint?: pulumi.Input<inputs.eventhub.EventSubscriptionHybridConnectionEndpoint>;
     /**

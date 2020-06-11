@@ -42,7 +42,9 @@ class Assignment(pulumi.CustomResource):
         """
         Assigns a given Principal (User or Group) to a given Role.
 
-        ## Example Usage (using a built-in Role)
+        ## Example Usage
+
+        ### Using A Built-In Role)
 
         ```python
         import pulumi
@@ -56,7 +58,7 @@ class Assignment(pulumi.CustomResource):
             principal_id=example_client_config.object_id)
         ```
 
-        ## Example Usage (Custom Role & Service Principal)
+        ### Custom Role & Service Principal)
 
         ```python
         import pulumi
@@ -79,7 +81,7 @@ class Assignment(pulumi.CustomResource):
             principal_id=example_client_config.object_id)
         ```
 
-        ## Example Usage (Custom Role & User)
+        ### Custom Role & User)
 
         ```python
         import pulumi
@@ -102,7 +104,7 @@ class Assignment(pulumi.CustomResource):
             principal_id=example_client_config.client_id)
         ```
 
-        ## Example Usage (Custom Role & Management Group)
+        ### Custom Role & Management Group)
 
         ```python
         import pulumi
@@ -121,7 +123,7 @@ class Assignment(pulumi.CustomResource):
             assignable_scopes=[primary.id])
         example_assignment = azure.authorization.Assignment("exampleAssignment",
             name="00000000-0000-0000-0000-000000000000",
-            scope=data["management.Group"]["primary"]["id"],
+            scope=data["azurerm_management_group"]["primary"]["id"],
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.client_id)
         ```

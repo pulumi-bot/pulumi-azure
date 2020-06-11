@@ -59,7 +59,6 @@ class TriggerHttpRequest(pulumi.CustomResource):
         \"\"\")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] logic_app_id: Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.

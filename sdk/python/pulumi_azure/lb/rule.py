@@ -102,7 +102,6 @@ class Rule(pulumi.CustomResource):
             frontend_ip_configuration_name="PublicIPAddress")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_address_pool_id: A reference to a Backend Address Pool over which this Load Balancing Rule operates.

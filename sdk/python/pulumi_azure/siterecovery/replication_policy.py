@@ -54,7 +54,6 @@ class ReplicationPolicy(pulumi.CustomResource):
             application_consistent_snapshot_frequency_in_minutes=4 * 60)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] application_consistent_snapshot_frequency_in_minutes: Specifies the frequency(in minutes) at which to create application consistent recovery points.

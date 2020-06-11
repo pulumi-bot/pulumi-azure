@@ -83,7 +83,7 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
      *
-     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
      */
     public readonly publicIpAddressIds!: pulumi.Output<string[]>;
     /**
@@ -179,7 +179,7 @@ export interface NatGatewayState {
     /**
      * A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
      *
-     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
      */
     readonly publicIpAddressIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -227,7 +227,7 @@ export interface NatGatewayArgs {
     /**
      * A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
      *
-     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+     * @deprecated Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
      */
     readonly publicIpAddressIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

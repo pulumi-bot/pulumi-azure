@@ -63,7 +63,7 @@ class Pipeline(pulumi.CustomResource):
             data_factory_name=example_factory.name)
         ```
 
-        ## Example Usage with Activities
+        ### With Activities
 
         ```python
         import pulumi

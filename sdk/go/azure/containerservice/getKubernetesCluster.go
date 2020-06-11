@@ -8,6 +8,31 @@ import (
 )
 
 // Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := containerservice.LookupKubernetesCluster(ctx, &containerservice.LookupKubernetesClusterArgs{
+// 			Name:              "myakscluster",
+// 			ResourceGroupName: "my-example-resource-group",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterResult, error) {
 	var rv LookupKubernetesClusterResult
 	err := ctx.Invoke("azure:containerservice/getKubernetesCluster:getKubernetesCluster", args, &rv, opts...)
@@ -23,7 +48,7 @@ type LookupKubernetesClusterArgs struct {
 	Name string `pulumi:"name"`
 	// If the cluster has the Kubernetes API only exposed on internal IP addresses.
 	PrivateClusterEnabled *bool `pulumi:"privateClusterEnabled"`
-	// Deprecated: Deprecated in favor of `private_cluster_enabled`
+	// Deprecated: Deprecated in favor of `[privateClusterEnabled](#/functions/azure:containerservice%2FgetKubernetesCluster:getKubernetesCluster/inputs/Properties/privateClusterEnabled)`
 	PrivateLinkEnabled *bool `pulumi:"privateLinkEnabled"`
 	// The name of the Resource Group in which the managed Kubernetes Cluster exists.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -71,7 +96,7 @@ type LookupKubernetesClusterResult struct {
 	PrivateClusterEnabled bool `pulumi:"privateClusterEnabled"`
 	// The FQDN of this Kubernetes Cluster when private link has been enabled. This name is only resolvable inside the Virtual Network where the Azure Kubernetes Service is located
 	PrivateFqdn string `pulumi:"privateFqdn"`
-	// Deprecated: Deprecated in favor of `private_cluster_enabled`
+	// Deprecated: Deprecated in favor of `[privateClusterEnabled](#/functions/azure:containerservice%2FgetKubernetesCluster:getKubernetesCluster/inputs/Properties/privateClusterEnabled)`
 	PrivateLinkEnabled bool   `pulumi:"privateLinkEnabled"`
 	ResourceGroupName  string `pulumi:"resourceGroupName"`
 	// A `roleBasedAccessControl` block as documented below.

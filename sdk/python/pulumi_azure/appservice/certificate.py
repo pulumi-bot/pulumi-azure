@@ -67,8 +67,6 @@ class Certificate(pulumi.CustomResource):
         """
         Manages an App Service certificate.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_vault_secret_id: The ID of the Key Vault secret. Changing this forces a new resource to be created.

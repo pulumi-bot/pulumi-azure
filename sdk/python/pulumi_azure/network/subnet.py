@@ -88,7 +88,6 @@ class Subnet(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_prefix: The address prefix to use for the subnet.
@@ -126,8 +125,8 @@ class Subnet(pulumi.CustomResource):
             __props__ = dict()
 
             if address_prefix is not None:
-                warnings.warn("Use the `address_prefixes` property instead.", DeprecationWarning)
-                pulumi.log.warn("address_prefix is deprecated: Use the `address_prefixes` property instead.")
+                warnings.warn("Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/inputProperties/addressPrefixes)` property instead.", DeprecationWarning)
+                pulumi.log.warn("address_prefix is deprecated: Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/inputProperties/addressPrefixes)` property instead.")
             __props__['address_prefix'] = address_prefix
             __props__['address_prefixes'] = address_prefixes
             __props__['delegations'] = delegations

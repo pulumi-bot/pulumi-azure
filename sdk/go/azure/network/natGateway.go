@@ -11,6 +11,73 @@ import (
 )
 
 // Manages a Azure NAT Gateway.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
+// 			Location: pulumi.String("eastus2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		examplePublicIp, err := network.NewPublicIp(ctx, "examplePublicIp", &network.PublicIpArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			AllocationMethod:  pulumi.String("Static"),
+// 			Sku:               pulumi.String("Standard"),
+// 			Zones: pulumi.String(pulumi.String{
+// 				pulumi.String("1"),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		examplePublicIpPrefix, err := network.NewPublicIpPrefix(ctx, "examplePublicIpPrefix", &network.PublicIpPrefixArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			PrefixLength:      pulumi.Int(30),
+// 			Zones: pulumi.String(pulumi.String{
+// 				pulumi.String("1"),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleNatGateway, err := network.NewNatGateway(ctx, "exampleNatGateway", &network.NatGatewayArgs{
+// 			Location:          exampleResourceGroup.Location,
+// 			ResourceGroupName: exampleResourceGroup.Name,
+// 			PublicIpAddressIds: pulumi.StringArray{
+// 				examplePublicIp.ID(),
+// 			},
+// 			PublicIpPrefixIds: pulumi.StringArray{
+// 				examplePublicIpPrefix.ID(),
+// 			},
+// 			SkuName:              pulumi.String("Standard"),
+// 			IdleTimeoutInMinutes: pulumi.Int(10),
+// 			Zones: pulumi.StringArray{
+// 				pulumi.String("1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NatGateway struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +89,7 @@ type NatGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
 	//
-	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
 	PublicIpAddressIds pulumi.StringArrayOutput `pulumi:"publicIpAddressIds"`
 	// A list of Public IP Prefix ID's which should be associated with the NAT Gateway resource.
 	PublicIpPrefixIds pulumi.StringArrayOutput `pulumi:"publicIpPrefixIds"`
@@ -77,7 +144,7 @@ type natGatewayState struct {
 	Name *string `pulumi:"name"`
 	// A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
 	//
-	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
 	PublicIpAddressIds []string `pulumi:"publicIpAddressIds"`
 	// A list of Public IP Prefix ID's which should be associated with the NAT Gateway resource.
 	PublicIpPrefixIds []string `pulumi:"publicIpPrefixIds"`
@@ -102,7 +169,7 @@ type NatGatewayState struct {
 	Name pulumi.StringPtrInput
 	// A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
 	//
-	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
 	PublicIpAddressIds pulumi.StringArrayInput
 	// A list of Public IP Prefix ID's which should be associated with the NAT Gateway resource.
 	PublicIpPrefixIds pulumi.StringArrayInput
@@ -131,7 +198,7 @@ type natGatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
 	//
-	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
 	PublicIpAddressIds []string `pulumi:"publicIpAddressIds"`
 	// A list of Public IP Prefix ID's which should be associated with the NAT Gateway resource.
 	PublicIpPrefixIds []string `pulumi:"publicIpPrefixIds"`
@@ -155,7 +222,7 @@ type NatGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
 	//
-	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.
+	// Deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.
 	PublicIpAddressIds pulumi.StringArrayInput
 	// A list of Public IP Prefix ID's which should be associated with the NAT Gateway resource.
 	PublicIpPrefixIds pulumi.StringArrayInput

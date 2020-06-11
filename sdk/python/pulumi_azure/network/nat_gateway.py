@@ -84,7 +84,6 @@ class NatGateway(pulumi.CustomResource):
             zones=["1"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.
@@ -118,8 +117,8 @@ class NatGateway(pulumi.CustomResource):
             __props__['location'] = location
             __props__['name'] = name
             if public_ip_address_ids is not None:
-                warnings.warn("Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.", DeprecationWarning)
-                pulumi.log.warn("public_ip_address_ids is deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `azurerm_nat_gateway_public_ip_association` resource. This field will be removed in the next major version of the Azure Provider.")
+                warnings.warn("Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.", DeprecationWarning)
+                pulumi.log.warn("public_ip_address_ids is deprecated: Inline Public IP Address ID Deprecations have been deprecated in favour of the `[azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation](#/resources/azure:network%252FnatGatewayPublicIpAssociation:NatGatewayPublicIpAssociation)` resource. This field will be removed in the next major version of the Azure Provider.")
             __props__['public_ip_address_ids'] = public_ip_address_ids
             __props__['public_ip_prefix_ids'] = public_ip_prefix_ids
             if resource_group_name is None:

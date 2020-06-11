@@ -56,7 +56,6 @@ class CnameRecord(pulumi.CustomResource):
             record="contoso.com")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS CNAME Record.

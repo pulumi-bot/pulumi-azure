@@ -51,7 +51,6 @@ class Table(pulumi.CustomResource):
         example_table = azure.storage.Table("exampleTable", storage_account_name=example_account.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] acls: One or more `acl` blocks as defined below.

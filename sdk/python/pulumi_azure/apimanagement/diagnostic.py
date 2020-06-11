@@ -63,7 +63,6 @@ class Diagnostic(pulumi.CustomResource):
             api_management_logger_id=example_logger.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_logger_id: The id of the target API Management Logger where the API Management Diagnostic should be saved.

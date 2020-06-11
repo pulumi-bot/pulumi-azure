@@ -94,7 +94,6 @@ class AlertRuleScheduled(pulumi.CustomResource):
         \"\"\")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of this Sentinel Scheduled Alert Rule.

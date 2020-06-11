@@ -109,7 +109,6 @@ class NetworkInterface(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dns_servers: A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.

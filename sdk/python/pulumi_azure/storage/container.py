@@ -64,7 +64,6 @@ class Container(pulumi.CustomResource):
             container_access_type="private")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_access_type: The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.

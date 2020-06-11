@@ -64,7 +64,6 @@ class VirtualWan(pulumi.CustomResource):
             location=example_resource_group.location)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_branch_to_branch_traffic: Boolean flag to specify whether branch to branch traffic is allowed. Defaults to `true`.

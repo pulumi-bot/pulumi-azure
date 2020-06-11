@@ -73,7 +73,6 @@ class VpnGateway(pulumi.CustomResource):
             virtual_hub_id=example_virtual_hub.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] bgp_settings: A `bgp_settings` block as defined below.

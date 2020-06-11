@@ -243,15 +243,15 @@ type VolumeExportPolicyRule struct {
 	AllowedClients []string `pulumi:"allowedClients"`
 	// Is the CIFS protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	CifsEnabled *bool `pulumi:"cifsEnabled"`
 	// Is the NFSv3 protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	Nfsv3Enabled *bool `pulumi:"nfsv3Enabled"`
 	// Is the NFSv4 protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	Nfsv4Enabled *bool `pulumi:"nfsv4Enabled"`
 	// A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only one value is supported at this time. This replaces the previous arguments: `cifsEnabled`, `nfsv3Enabled` and `nfsv4Enabled`.
 	ProtocolsEnabled *string `pulumi:"protocolsEnabled"`
@@ -280,15 +280,15 @@ type VolumeExportPolicyRuleArgs struct {
 	AllowedClients pulumi.StringArrayInput `pulumi:"allowedClients"`
 	// Is the CIFS protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	CifsEnabled pulumi.BoolPtrInput `pulumi:"cifsEnabled"`
 	// Is the NFSv3 protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	Nfsv3Enabled pulumi.BoolPtrInput `pulumi:"nfsv3Enabled"`
 	// Is the NFSv4 protocol allowed?
 	//
-	// Deprecated: Deprecated in favour of `protocols_enabled`
+	// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 	Nfsv4Enabled pulumi.BoolPtrInput `pulumi:"nfsv4Enabled"`
 	// A list of allowed protocols. Valid values include `CIFS`, `NFSv3`, or `NFSv4.1`. Only one value is supported at this time. This replaces the previous arguments: `cifsEnabled`, `nfsv3Enabled` and `nfsv4Enabled`.
 	ProtocolsEnabled pulumi.StringPtrInput `pulumi:"protocolsEnabled"`
@@ -359,21 +359,21 @@ func (o VolumeExportPolicyRuleOutput) AllowedClients() pulumi.StringArrayOutput 
 
 // Is the CIFS protocol allowed?
 //
-// Deprecated: Deprecated in favour of `protocols_enabled`
+// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 func (o VolumeExportPolicyRuleOutput) CifsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *bool { return v.CifsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Is the NFSv3 protocol allowed?
 //
-// Deprecated: Deprecated in favour of `protocols_enabled`
+// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 func (o VolumeExportPolicyRuleOutput) Nfsv3Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *bool { return v.Nfsv3Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Is the NFSv4 protocol allowed?
 //
-// Deprecated: Deprecated in favour of `protocols_enabled`
+// Deprecated: Deprecated in favour of `[protocolsEnabled](#/types/azure:netapp%2FVolumeExportPolicyRule:VolumeExportPolicyRule/properties/protocolsEnabled)`
 func (o VolumeExportPolicyRuleOutput) Nfsv4Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *bool { return v.Nfsv4Enabled }).(pulumi.BoolPtrOutput)
 }

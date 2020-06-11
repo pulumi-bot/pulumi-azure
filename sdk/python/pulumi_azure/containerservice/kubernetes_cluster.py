@@ -31,7 +31,7 @@ class KubernetesCluster(pulumi.CustomResource):
       * `omsAgent` (`dict`) - A `oms_agent` block as defined below. For more details, please visit [How to onboard Azure Monitor for containers](https://docs.microsoft.com/en-us/azure/monitoring/monitoring-container-insights-onboard).
         * `enabled` (`bool`) - Is the OMS Agent Enabled?
         * `log_analytics_workspace_id` (`str`) - The ID of the Log Analytics Workspace which the OMS Agent should send data to. Must be present if `enabled` is `true`.
-        * `omsAgentIdentities` (`list`) - An `oms_agent_identity` block as defined below.  
+        * `omsAgentIdentities` (`list`) - An `oms_agent_identity` block as defined below.
           * `client_id` (`str`) - The Client ID for the Service Principal.
           * `object_id` (`str`) - The Object ID of the user-defined Managed Identity used by the OMS Agents.
           * `userAssignedIdentityId` (`str`) - The ID of the User Assigned Identity used by the OMS Agents.
@@ -112,7 +112,7 @@ class KubernetesCluster(pulumi.CustomResource):
     """
     kubelet_identities: pulumi.Output[list]
     """
-    A `kubelet_identity` block as defined below.  
+    A `kubelet_identity` block as defined below.
 
       * `client_id` (`str`) - The Client ID for the Service Principal.
       * `object_id` (`str`) - The Object ID of the user-defined Managed Identity used by the OMS Agents.
@@ -236,7 +236,6 @@ class KubernetesCluster(pulumi.CustomResource):
         pulumi.export("kubeConfig", example_kubernetes_cluster.kube_config_raw)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] addon_profile: A `addon_profile` block as defined below.
@@ -277,7 +276,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `omsAgent` (`pulumi.Input[dict]`) - A `oms_agent` block as defined below. For more details, please visit [How to onboard Azure Monitor for containers](https://docs.microsoft.com/en-us/azure/monitoring/monitoring-container-insights-onboard).
             * `enabled` (`pulumi.Input[bool]`) - Is the OMS Agent Enabled?
             * `log_analytics_workspace_id` (`pulumi.Input[str]`) - The ID of the Log Analytics Workspace which the OMS Agent should send data to. Must be present if `enabled` is `true`.
-            * `omsAgentIdentities` (`pulumi.Input[list]`) - An `oms_agent_identity` block as defined below.  
+            * `omsAgentIdentities` (`pulumi.Input[list]`) - An `oms_agent_identity` block as defined below.
               * `client_id` (`pulumi.Input[str]`) - The Client ID for the Service Principal.
               * `object_id` (`pulumi.Input[str]`) - The Object ID of the user-defined Managed Identity used by the OMS Agents.
               * `userAssignedIdentityId` (`pulumi.Input[str]`) - The ID of the User Assigned Identity used by the OMS Agents.
@@ -384,8 +383,8 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__['node_resource_group'] = node_resource_group
             __props__['private_cluster_enabled'] = private_cluster_enabled
             if private_link_enabled is not None:
-                warnings.warn("Deprecated in favor of `private_cluster_enabled`", DeprecationWarning)
-                pulumi.log.warn("private_link_enabled is deprecated: Deprecated in favor of `private_cluster_enabled`")
+                warnings.warn("Deprecated in favor of `[privateClusterEnabled](#/resources/azure:containerservice%2FkubernetesCluster:KubernetesCluster/inputProperties/privateClusterEnabled)`", DeprecationWarning)
+                pulumi.log.warn("private_link_enabled is deprecated: Deprecated in favor of `[privateClusterEnabled](#/resources/azure:containerservice%2FkubernetesCluster:KubernetesCluster/inputProperties/privateClusterEnabled)`")
             __props__['private_link_enabled'] = private_link_enabled
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
@@ -427,7 +426,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[list] kube_admin_configs: A `kube_admin_config` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled.
         :param pulumi.Input[str] kube_config_raw: Raw Kubernetes config to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools
         :param pulumi.Input[list] kube_configs: A `kube_config` block as defined below.
-        :param pulumi.Input[list] kubelet_identities: A `kubelet_identity` block as defined below.  
+        :param pulumi.Input[list] kubelet_identities: A `kubelet_identity` block as defined below.
         :param pulumi.Input[str] kubernetes_version: Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade).
         :param pulumi.Input[dict] linux_profile: A `linux_profile` block as defined below.
         :param pulumi.Input[str] location: The location where the Managed Kubernetes Cluster should be created. Changing this forces a new resource to be created.
@@ -461,7 +460,7 @@ class KubernetesCluster(pulumi.CustomResource):
           * `omsAgent` (`pulumi.Input[dict]`) - A `oms_agent` block as defined below. For more details, please visit [How to onboard Azure Monitor for containers](https://docs.microsoft.com/en-us/azure/monitoring/monitoring-container-insights-onboard).
             * `enabled` (`pulumi.Input[bool]`) - Is the OMS Agent Enabled?
             * `log_analytics_workspace_id` (`pulumi.Input[str]`) - The ID of the Log Analytics Workspace which the OMS Agent should send data to. Must be present if `enabled` is `true`.
-            * `omsAgentIdentities` (`pulumi.Input[list]`) - An `oms_agent_identity` block as defined below.  
+            * `omsAgentIdentities` (`pulumi.Input[list]`) - An `oms_agent_identity` block as defined below.
               * `client_id` (`pulumi.Input[str]`) - The Client ID for the Service Principal.
               * `object_id` (`pulumi.Input[str]`) - The Object ID of the user-defined Managed Identity used by the OMS Agents.
               * `userAssignedIdentityId` (`pulumi.Input[str]`) - The ID of the User Assigned Identity used by the OMS Agents.

@@ -122,7 +122,6 @@ class Server(pulumi.CustomResource):
             ssl_minimal_tls_version_enforced="TLS1_2")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the MySQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.
@@ -188,15 +187,15 @@ class Server(pulumi.CustomResource):
                 raise TypeError("Missing required property 'sku_name'")
             __props__['sku_name'] = sku_name
             if ssl_enforcement is not None:
-                warnings.warn("this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.", DeprecationWarning)
-                pulumi.log.warn("ssl_enforcement is deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.")
+                warnings.warn("this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.", DeprecationWarning)
+                pulumi.log.warn("ssl_enforcement is deprecated: this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mysql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.")
             __props__['ssl_enforcement'] = ssl_enforcement
             __props__['ssl_enforcement_enabled'] = ssl_enforcement_enabled
             __props__['ssl_minimal_tls_version_enforced'] = ssl_minimal_tls_version_enforced
             __props__['storage_mb'] = storage_mb
             if storage_profile is not None:
-                warnings.warn("all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.", DeprecationWarning)
-                pulumi.log.warn("storage_profile is deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.")
+                warnings.warn("all [storageProfile](#/resources/azure:mysql%2Fserver:Server/inputProperties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.", DeprecationWarning)
+                pulumi.log.warn("storage_profile is deprecated: all [storageProfile](#/resources/azure:mysql%2Fserver:Server/inputProperties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.")
             __props__['storage_profile'] = storage_profile
             __props__['tags'] = tags
             if version is None:

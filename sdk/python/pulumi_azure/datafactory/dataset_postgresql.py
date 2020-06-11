@@ -84,7 +84,6 @@ class DatasetPostgresql(pulumi.CustomResource):
             linked_service_name=example_linked_service_postgresql.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Dataset PostgreSQL.

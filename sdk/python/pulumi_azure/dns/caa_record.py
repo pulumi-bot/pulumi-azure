@@ -87,7 +87,6 @@ class CaaRecord(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS CAA Record. If you are creating the record in the apex of the zone use `"@"` as the name.

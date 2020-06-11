@@ -169,7 +169,6 @@ class Dashboard(pulumi.CustomResource):
         \"\"\")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dashboard_properties: JSON data representing dashboard body. See above for details on how to obtain this from the Portal.

@@ -116,7 +116,7 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
-     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`. 
+     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`.
      */
     public readonly restorePointInTime!: pulumi.Output<string | undefined>;
     /**
@@ -124,7 +124,7 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly skuName!: pulumi.Output<string>;
     /**
-     * @deprecated this has been renamed to the boolean `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been renamed to the boolean `[sslEnforcementEnabled](#/resources/azure:postgresql%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     public readonly sslEnforcement!: pulumi.Output<string>;
     /**
@@ -140,11 +140,11 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly storageMb!: pulumi.Output<number>;
     /**
-     * @deprecated all storage_profile properties have been move to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:postgresql%2Fserver:Server/properties/storageProfile) properties have been move to the top level. This block will be removed in version 3.0 of the provider.
      */
     public readonly storageProfile!: pulumi.Output<outputs.postgresql.ServerStorageProfile>;
     /**
-     * A mapping of tags to assign to the resource.  
+     * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -294,7 +294,7 @@ export interface ServerState {
      */
     readonly resourceGroupName?: pulumi.Input<string>;
     /**
-     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`. 
+     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`.
      */
     readonly restorePointInTime?: pulumi.Input<string>;
     /**
@@ -302,7 +302,7 @@ export interface ServerState {
      */
     readonly skuName?: pulumi.Input<string>;
     /**
-     * @deprecated this has been renamed to the boolean `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been renamed to the boolean `[sslEnforcementEnabled](#/resources/azure:postgresql%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     readonly sslEnforcement?: pulumi.Input<string>;
     /**
@@ -318,11 +318,11 @@ export interface ServerState {
      */
     readonly storageMb?: pulumi.Input<number>;
     /**
-     * @deprecated all storage_profile properties have been move to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:postgresql%2Fserver:Server/properties/storageProfile) properties have been move to the top level. This block will be removed in version 3.0 of the provider.
      */
     readonly storageProfile?: pulumi.Input<inputs.postgresql.ServerStorageProfile>;
     /**
-     * A mapping of tags to assign to the resource.  
+     * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -388,7 +388,7 @@ export interface ServerArgs {
      */
     readonly resourceGroupName: pulumi.Input<string>;
     /**
-     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`. 
+     * When `createMode` is `PointInTimeRestore` the point in time to restore from `creationSourceServerId`.
      */
     readonly restorePointInTime?: pulumi.Input<string>;
     /**
@@ -396,7 +396,7 @@ export interface ServerArgs {
      */
     readonly skuName: pulumi.Input<string>;
     /**
-     * @deprecated this has been renamed to the boolean `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been renamed to the boolean `[sslEnforcementEnabled](#/resources/azure:postgresql%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     readonly sslEnforcement?: pulumi.Input<string>;
     /**
@@ -412,11 +412,11 @@ export interface ServerArgs {
      */
     readonly storageMb?: pulumi.Input<number>;
     /**
-     * @deprecated all storage_profile properties have been move to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:postgresql%2Fserver:Server/inputProperties/storageProfile) properties have been move to the top level. This block will be removed in version 3.0 of the provider.
      */
     readonly storageProfile?: pulumi.Input<inputs.postgresql.ServerStorageProfile>;
     /**
-     * A mapping of tags to assign to the resource.  
+     * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -61,7 +61,6 @@ class ProtectedVM(pulumi.CustomResource):
             backup_policy_id=example_policy_vm.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_policy_id: Specifies the id of the backup policy to use.

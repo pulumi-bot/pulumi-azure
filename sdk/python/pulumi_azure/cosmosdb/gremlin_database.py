@@ -46,7 +46,6 @@ class GremlinDatabase(pulumi.CustomResource):
             throughput=400)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the CosmosDB Account to create the Gremlin Database within. Changing this forces a new resource to be created.

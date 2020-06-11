@@ -61,7 +61,6 @@ class Credential(pulumi.CustomResource):
             description="This is an example credential")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Credential is created. Changing this forces a new resource to be created.

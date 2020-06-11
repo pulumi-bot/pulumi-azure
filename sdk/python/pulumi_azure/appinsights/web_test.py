@@ -65,8 +65,6 @@ class WebTest(pulumi.CustomResource):
         """
         Manages an Application Insights WebTest.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the WebTest operates. Changing this forces a new resource to be created.

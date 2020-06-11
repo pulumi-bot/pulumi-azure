@@ -53,7 +53,6 @@ class StoreFirewallRule(pulumi.CustomResource):
             end_ip_address="2.3.4.5")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Data Lake Store for which the Firewall Rule should take effect.

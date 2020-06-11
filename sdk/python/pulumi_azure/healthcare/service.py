@@ -70,7 +70,7 @@ class Service(pulumi.CustomResource):
             access_policy_object_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
             authentication_configuration={
                 "audience": "https://azurehealthcareapis.com/",
-                "authority": "https://login.microsoftonline.com/$$%7Bdata.azurerm_client_config.current.tenant_id%7D",
+                "authority": "https://login.microsoftonline.com/$%7Bdata.azurerm_client_config.current.tenant_id%7D",
                 "smartProxyEnabled": "true",
             },
             cors_configuration={
@@ -98,7 +98,6 @@ class Service(pulumi.CustomResource):
                 "purpose": "AcceptanceTests",
             })
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

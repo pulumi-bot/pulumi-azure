@@ -136,8 +136,6 @@ class Pool(pulumi.CustomResource):
         """
         Manages an Azure Batch pool.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.

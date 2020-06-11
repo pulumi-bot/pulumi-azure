@@ -49,7 +49,7 @@ export interface GetPolicyDefintionArgs {
      */
     readonly displayName?: string;
     /**
-     * @deprecated Deprecated in favour of `management_group_name`
+     * @deprecated Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`
      */
     readonly managementGroupId?: string;
     /**
@@ -76,7 +76,7 @@ export interface GetPolicyDefintionResult {
      */
     readonly id: string;
     /**
-     * @deprecated Deprecated in favour of `management_group_name`
+     * @deprecated Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`
      */
     readonly managementGroupId?: string;
     readonly managementGroupName?: string;

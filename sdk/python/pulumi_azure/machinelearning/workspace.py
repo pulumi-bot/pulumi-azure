@@ -101,7 +101,6 @@ class Workspace(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.

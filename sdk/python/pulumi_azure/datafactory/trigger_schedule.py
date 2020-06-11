@@ -77,7 +77,6 @@ class TriggerSchedule(pulumi.CustomResource):
             frequency="Day")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.

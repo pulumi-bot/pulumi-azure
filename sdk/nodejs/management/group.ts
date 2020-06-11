@@ -63,7 +63,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
      *
-     * @deprecated Deprecated in favour of `name`
+     * @deprecated Deprecated in favour of `[name](#/resources/azure:management%2Fgroup:Group/properties/name)`
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
@@ -128,7 +128,7 @@ export interface GroupState {
     /**
      * The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
      *
-     * @deprecated Deprecated in favour of `name`
+     * @deprecated Deprecated in favour of `[name](#/resources/azure:management%2Fgroup:Group/properties/name)`
      */
     readonly groupId?: pulumi.Input<string>;
     /**
@@ -156,7 +156,7 @@ export interface GroupArgs {
     /**
      * The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
      *
-     * @deprecated Deprecated in favour of `name`
+     * @deprecated Deprecated in favour of `[name](#/resources/azure:management%2Fgroup:Group/inputProperties/name)`
      */
     readonly groupId?: pulumi.Input<string>;
     /**

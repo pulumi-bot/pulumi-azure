@@ -53,7 +53,6 @@ class Group(pulumi.CustomResource):
         # other subscription IDs can go here
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: A friendly name for this Management Group. If not specified, this'll be the same as the `name`.
@@ -81,8 +80,8 @@ class Group(pulumi.CustomResource):
 
             __props__['display_name'] = display_name
             if group_id is not None:
-                warnings.warn("Deprecated in favour of `name`", DeprecationWarning)
-                pulumi.log.warn("group_id is deprecated: Deprecated in favour of `name`")
+                warnings.warn("Deprecated in favour of `[name](#/resources/azure:management%2Fgroup:Group/inputProperties/name)`", DeprecationWarning)
+                pulumi.log.warn("group_id is deprecated: Deprecated in favour of `[name](#/resources/azure:management%2Fgroup:Group/inputProperties/name)`")
             __props__['group_id'] = group_id
             __props__['name'] = name
             __props__['parent_management_group_id'] = parent_management_group_id

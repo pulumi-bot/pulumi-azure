@@ -101,7 +101,6 @@ class ActionRuleActionGroup(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_group_id: Specifies the resource id of monitor action group.

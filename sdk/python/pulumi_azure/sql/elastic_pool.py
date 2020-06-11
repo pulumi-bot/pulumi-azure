@@ -86,7 +86,6 @@ class ElasticPool(pulumi.CustomResource):
             pool_size=5000)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] db_dtu_max: The maximum DTU which will be guaranteed to all databases in the elastic pool to be created.

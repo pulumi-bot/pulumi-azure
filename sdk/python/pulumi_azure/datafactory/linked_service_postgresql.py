@@ -68,7 +68,6 @@ class LinkedServicePostgresql(pulumi.CustomResource):
             connection_string="Host=example;Port=5432;Database=example;UID=example;EncryptionMethod=0;Password=example")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service PostgreSQL.

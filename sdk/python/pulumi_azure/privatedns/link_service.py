@@ -117,7 +117,6 @@ class LinkService(pulumi.CustomResource):
             ])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] auto_approval_subscription_ids: A list of Subscription UUID/GUID's that will be automatically be able to use this Private Link Service.

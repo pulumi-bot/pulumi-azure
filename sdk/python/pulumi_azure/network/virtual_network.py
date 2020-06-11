@@ -118,7 +118,6 @@ class VirtualNetwork(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] address_spaces: The address space that is used the virtual

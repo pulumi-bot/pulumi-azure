@@ -56,7 +56,6 @@ class PTRRecord(pulumi.CustomResource):
             records=["test.example.com"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS PTR Record. Changing this forces a new resource to be created.

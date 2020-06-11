@@ -56,7 +56,6 @@ class ARecord(pulumi.CustomResource):
             records=["10.0.180.17"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS A Record.

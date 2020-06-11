@@ -57,7 +57,6 @@ class IdentityProviderAad(pulumi.CustomResource):
             allowed_tenants=["00000000-0000-0000-0000-000000000000"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allowed_tenants: List of allowed AAD Tenants.

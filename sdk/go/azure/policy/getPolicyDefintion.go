@@ -8,6 +8,31 @@ import (
 )
 
 // Use this data source to access information about a Policy Definition, both custom and built in. Retrieves Policy Definitions from your current subscription by default.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := policy.LookupPolicyDefintion(ctx, &policy.LookupPolicyDefintionArgs{
+// 			DisplayName: "Allowed resource types",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("id", example.Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetPolicyDefintion(ctx *pulumi.Context, args *GetPolicyDefintionArgs, opts ...pulumi.InvokeOption) (*GetPolicyDefintionResult, error) {
 	var rv GetPolicyDefintionResult
 	err := ctx.Invoke("azure:policy/getPolicyDefintion:getPolicyDefintion", args, &rv, opts...)
@@ -21,7 +46,7 @@ func GetPolicyDefintion(ctx *pulumi.Context, args *GetPolicyDefintionArgs, opts 
 type GetPolicyDefintionArgs struct {
 	// Specifies the display name of the Policy Definition. Conflicts with `name`.
 	DisplayName *string `pulumi:"displayName"`
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`
 	ManagementGroupId *string `pulumi:"managementGroupId"`
 	// Only retrieve Policy Definitions from this Management Group.
 	ManagementGroupName *string `pulumi:"managementGroupName"`
@@ -36,7 +61,7 @@ type GetPolicyDefintionResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`
 	ManagementGroupId   *string `pulumi:"managementGroupId"`
 	ManagementGroupName *string `pulumi:"managementGroupName"`
 	// Any Metadata defined in the Policy.

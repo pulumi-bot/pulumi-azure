@@ -30,8 +30,6 @@ class IotHubCertificate(pulumi.CustomResource):
         """
         Manages an IotHub Device Provisioning Service Certificate. 
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_content: The Base-64 representation of the X509 leaf certificate .cer file or just a .pem file content.

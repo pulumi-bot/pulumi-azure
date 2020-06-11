@@ -62,7 +62,6 @@ class Application(pulumi.CustomResource):
             account_name=example_batch / account_account["name"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Batch account. Changing this forces a new resource to be created.

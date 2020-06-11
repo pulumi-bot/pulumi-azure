@@ -41,7 +41,6 @@ class SourceCodeToken(pulumi.CustomResource):
             type="GitHub")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] token: The OAuth access token.

@@ -101,15 +101,14 @@ class AuthorizationServer(pulumi.CustomResource):
             resource_group_name="search-service",
             revision="2")
         example_authorization_server = azure.apimanagement.AuthorizationServer("exampleAuthorizationServer",
-            api_management_name=data["apimanagement.Service"]["example"]["name"],
-            resource_group_name=data["apimanagement.Service"]["example"]["resource_group_name"],
+            api_management_name=data["azurerm_api_management"]["example"]["name"],
+            resource_group_name=data["azurerm_api_management"]["example"]["resource_group_name"],
             display_name="Test Server",
             authorization_endpoint="https://example.mydomain.com/client/authorize",
             client_id="42424242-4242-4242-4242-424242424242",
             client_registration_endpoint="https://example.mydomain.com/client/register",
             grant_types=["authorizationCode"])
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

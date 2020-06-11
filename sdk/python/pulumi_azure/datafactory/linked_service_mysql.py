@@ -68,7 +68,6 @@ class LinkedServiceMysql(pulumi.CustomResource):
             connection_string="Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service MySQL.

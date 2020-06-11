@@ -64,7 +64,6 @@ class DataSourceWindowsPerformanceCounter(pulumi.CustomResource):
             interval_seconds=10)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] counter_name: The friendly name of the performance counter.

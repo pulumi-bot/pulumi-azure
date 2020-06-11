@@ -77,7 +77,6 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
             }))
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade_minor_version: Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.

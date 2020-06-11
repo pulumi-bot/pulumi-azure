@@ -60,7 +60,7 @@ class CNameRecord(pulumi.CustomResource):
             record="contoso.com")
         ```
 
-        ## Example Usage (Alias Record)
+        ### Alias Record)
 
         ```python
         import pulumi

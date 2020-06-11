@@ -74,7 +74,6 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable_disk_encryption: Specifies if the cluster's disks are encrypted.

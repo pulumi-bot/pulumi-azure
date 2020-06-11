@@ -69,7 +69,6 @@ class FirewallRule(pulumi.CustomResource):
             end_ip="2.3.4.5")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip: The highest IP address included in the range.

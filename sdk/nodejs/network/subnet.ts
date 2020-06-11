@@ -75,7 +75,7 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * The address prefix to use for the subnet.
      *
-     * @deprecated Use the `address_prefixes` property instead.
+     * @deprecated Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/properties/addressPrefixes)` property instead.
      */
     public readonly addressPrefix!: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface SubnetState {
     /**
      * The address prefix to use for the subnet.
      *
-     * @deprecated Use the `address_prefixes` property instead.
+     * @deprecated Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/properties/addressPrefixes)` property instead.
      */
     readonly addressPrefix?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface SubnetArgs {
     /**
      * The address prefix to use for the subnet.
      *
-     * @deprecated Use the `address_prefixes` property instead.
+     * @deprecated Use the `[addressPrefixes](#/resources/azure:network%2Fsubnet:Subnet/inputProperties/addressPrefixes)` property instead.
      */
     readonly addressPrefix?: pulumi.Input<string>;
     /**

@@ -194,7 +194,6 @@ class Frontdoor(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backend_pool_health_probes: A `backend_pool_health_probe` block as defined below.

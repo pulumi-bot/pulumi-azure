@@ -54,7 +54,6 @@ class Embedded(pulumi.CustomResource):
             administrators=["azsdktest@microsoft.com"])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] administrators: A set of administrator user identities, which manages the Power BI Embedded and must be a member user or a service principal in your AAD tenant.

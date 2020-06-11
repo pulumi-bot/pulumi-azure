@@ -84,7 +84,6 @@ class Server(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] admin_users: List of email addresses of admin users.

@@ -78,7 +78,6 @@ class Connection(pulumi.CustomResource):
             client_secret="exampleSecret")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bot_name: The name of the Bot Resource this connection will be associated with. Changing this forces a new resource to be created.

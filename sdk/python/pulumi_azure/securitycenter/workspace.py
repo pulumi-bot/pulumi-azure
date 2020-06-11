@@ -44,7 +44,6 @@ class Workspace(pulumi.CustomResource):
             workspace_id=example_analytics_workspace.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] scope: The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.

@@ -86,7 +86,6 @@ class ProtectionContainerMapping(pulumi.CustomResource):
             recovery_replication_policy_id=policy.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the network mapping.

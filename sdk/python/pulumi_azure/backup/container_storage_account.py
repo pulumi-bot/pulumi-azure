@@ -52,7 +52,6 @@ class ContainerStorageAccount(pulumi.CustomResource):
             storage_account_id=sa.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] recovery_vault_name: The name of the vault where the storage account will be registered.

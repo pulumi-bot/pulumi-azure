@@ -32,8 +32,8 @@ class GetPolicyDefintionResult:
         if management_group_id and not isinstance(management_group_id, str):
             raise TypeError("Expected argument 'management_group_id' to be a str")
         if management_group_id is not None:
-            warnings.warn("Deprecated in favour of `management_group_name`", DeprecationWarning)
-            pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `management_group_name`")
+            warnings.warn("Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`", DeprecationWarning)
+            pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `[managementGroupName](#/functions/azure:policy%2FgetPolicyDefintion:getPolicyDefintion/inputs/Properties/managementGroupName)`")
         __self__.management_group_id = management_group_id
         if management_group_name and not isinstance(management_group_name, str):
             raise TypeError("Expected argument 'management_group_name' to be a str")
@@ -104,7 +104,6 @@ def get_policy_defintion(display_name=None,management_group_id=None,management_g
     example = azure.policy.get_policy_defintion(display_name="Allowed resource types")
     pulumi.export("id", example.id)
     ```
-
 
 
     :param str display_name: Specifies the display name of the Policy Definition. Conflicts with `name`.

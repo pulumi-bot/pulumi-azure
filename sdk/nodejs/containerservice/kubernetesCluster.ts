@@ -111,7 +111,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.containerservice.KubernetesClusterKubeConfig[]>;
     /**
-     * A `kubeletIdentity` block as defined below.  
+     * A `kubeletIdentity` block as defined below.
      */
     public /*out*/ readonly kubeletIdentities!: pulumi.Output<outputs.containerservice.KubernetesClusterKubeletIdentity[]>;
     /**
@@ -147,7 +147,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateFqdn!: pulumi.Output<string>;
     /**
-     * @deprecated Deprecated in favor of `private_cluster_enabled`
+     * @deprecated Deprecated in favor of `[privateClusterEnabled](#/resources/azure:containerservice%2FkubernetesCluster:KubernetesCluster/properties/privateClusterEnabled)`
      */
     public readonly privateLinkEnabled!: pulumi.Output<boolean>;
     /**
@@ -307,7 +307,7 @@ export interface KubernetesClusterState {
      */
     readonly kubeConfigs?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterKubeConfig>[]>;
     /**
-     * A `kubeletIdentity` block as defined below.  
+     * A `kubeletIdentity` block as defined below.
      */
     readonly kubeletIdentities?: pulumi.Input<pulumi.Input<inputs.containerservice.KubernetesClusterKubeletIdentity>[]>;
     /**
@@ -343,7 +343,7 @@ export interface KubernetesClusterState {
      */
     readonly privateFqdn?: pulumi.Input<string>;
     /**
-     * @deprecated Deprecated in favor of `private_cluster_enabled`
+     * @deprecated Deprecated in favor of `[privateClusterEnabled](#/resources/azure:containerservice%2FkubernetesCluster:KubernetesCluster/properties/privateClusterEnabled)`
      */
     readonly privateLinkEnabled?: pulumi.Input<boolean>;
     /**
@@ -425,7 +425,7 @@ export interface KubernetesClusterArgs {
      */
     readonly privateClusterEnabled?: pulumi.Input<boolean>;
     /**
-     * @deprecated Deprecated in favor of `private_cluster_enabled`
+     * @deprecated Deprecated in favor of `[privateClusterEnabled](#/resources/azure:containerservice%2FkubernetesCluster:KubernetesCluster/inputProperties/privateClusterEnabled)`
      */
     readonly privateLinkEnabled?: pulumi.Input<boolean>;
     /**

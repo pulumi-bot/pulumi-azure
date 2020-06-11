@@ -52,7 +52,6 @@ class ShareDirectory(pulumi.CustomResource):
             storage_account_name=example_account.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] metadata: A mapping of metadata to assign to this Directory.

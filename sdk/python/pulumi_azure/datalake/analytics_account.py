@@ -56,7 +56,6 @@ class AnalyticsAccount(pulumi.CustomResource):
             default_store_account_name=example_store.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_store_account_name: Specifies the data lake store to use by default. Changing this forces a new resource to be created.

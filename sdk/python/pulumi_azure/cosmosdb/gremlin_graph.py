@@ -98,7 +98,6 @@ class GremlinGraph(pulumi.CustomResource):
             }])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.

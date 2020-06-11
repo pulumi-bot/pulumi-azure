@@ -44,8 +44,6 @@ class DiskEncryptionSet(pulumi.CustomResource):
 
         > **NOTE:** At this time the Key Vault used to store the Active Key for this Disk Encryption Set must have both Soft Delete & Purge Protection enabled - which are not yet supported by this provider.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] identity: A `identity` block defined below.

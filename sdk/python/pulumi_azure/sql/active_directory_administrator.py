@@ -58,7 +58,6 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
             object_id=current.object_id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] login: The login name of the principal to set as the server administrator

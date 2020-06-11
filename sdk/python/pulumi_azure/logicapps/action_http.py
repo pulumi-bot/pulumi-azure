@@ -63,7 +63,6 @@ class ActionHttp(pulumi.CustomResource):
             uri="http://example.com/some-webhook")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.

@@ -123,7 +123,6 @@ class KeyVault(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] access_policies: A list of up to 16 objects describing access policies, as described below.

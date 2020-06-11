@@ -64,7 +64,6 @@ class VirtualHub(pulumi.CustomResource):
             address_prefix="10.0.1.0/24")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_prefix: The Address Prefix which should be used for this Virtual Hub.

@@ -20,7 +20,7 @@ type Definition struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy definition.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/properties/managementGroupName)`
 	ManagementGroupId pulumi.StringOutput `pulumi:"managementGroupId"`
 	// The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
 	ManagementGroupName pulumi.StringOutput `pulumi:"managementGroupName"`
@@ -88,7 +88,7 @@ type definitionState struct {
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
 	DisplayName *string `pulumi:"displayName"`
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/properties/managementGroupName)`
 	ManagementGroupId *string `pulumi:"managementGroupId"`
 	// The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
 	ManagementGroupName *string `pulumi:"managementGroupName"`
@@ -120,7 +120,7 @@ type DefinitionState struct {
 	Description pulumi.StringPtrInput
 	// The display name of the policy definition.
 	DisplayName pulumi.StringPtrInput
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/properties/managementGroupName)`
 	ManagementGroupId pulumi.StringPtrInput
 	// The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
 	ManagementGroupName pulumi.StringPtrInput
@@ -156,7 +156,7 @@ type definitionArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
 	DisplayName string `pulumi:"displayName"`
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/inputProperties/managementGroupName)`
 	ManagementGroupId *string `pulumi:"managementGroupId"`
 	// The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
 	ManagementGroupName *string `pulumi:"managementGroupName"`
@@ -189,7 +189,7 @@ type DefinitionArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the policy definition.
 	DisplayName pulumi.StringInput
-	// Deprecated: Deprecated in favour of `management_group_name`
+	// Deprecated: Deprecated in favour of `[managementGroupName](#/resources/azure:policy%2Fdefinition:Definition/inputProperties/managementGroupName)`
 	ManagementGroupId pulumi.StringPtrInput
 	// The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
 	ManagementGroupName pulumi.StringPtrInput

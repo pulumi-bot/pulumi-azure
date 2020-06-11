@@ -47,7 +47,6 @@ class Contact(pulumi.CustomResource):
             phone="+1-555-555-5555")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] alert_notifications: Whether to send security alerts notifications to the security contact.

@@ -85,7 +85,6 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
             enrollment_read=True)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enrollment_read: Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.

@@ -163,7 +163,9 @@ class Slot(pulumi.CustomResource):
         > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `appservice.AppService` resource will be overwritten when promoting a Slot using the `appservice.ActiveSlot` resource.
 
 
-        ## Example Usage (.net 4.x)
+        ## Example Usage
+
+        ### Net 4.X)
 
         ```python
         import pulumi
@@ -216,7 +218,7 @@ class Slot(pulumi.CustomResource):
             }])
         ```
 
-        ## Example Usage (Java 1.8)
+        ### Java 1.8)
 
         ```python
         import pulumi

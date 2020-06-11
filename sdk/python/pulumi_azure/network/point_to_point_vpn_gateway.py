@@ -66,7 +66,6 @@ class PointToPointVpnGateway(pulumi.CustomResource):
             scale_unit=1)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] connection_configuration: A `connection_configuration` block as defined below.

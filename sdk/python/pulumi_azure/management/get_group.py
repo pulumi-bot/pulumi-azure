@@ -23,8 +23,8 @@ class GetGroupResult:
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         if group_id is not None:
-            warnings.warn("Deprecated in favour of `name`", DeprecationWarning)
-            pulumi.log.warn("group_id is deprecated: Deprecated in favour of `name`")
+            warnings.warn("Deprecated in favour of `[name](#/functions/azure:management%2FgetGroup:getGroup/inputs/Properties/name)`", DeprecationWarning)
+            pulumi.log.warn("group_id is deprecated: Deprecated in favour of `[name](#/functions/azure:management%2FgetGroup:getGroup/inputs/Properties/name)`")
         __self__.group_id = group_id
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -75,7 +75,6 @@ def get_group(group_id=None,name=None,opts=None):
     example = azure.management.get_group(name="00000000-0000-0000-0000-000000000000")
     pulumi.export("displayName", example.display_name)
     ```
-
 
 
     :param str group_id: Specifies the name or UUID of this Management Group.

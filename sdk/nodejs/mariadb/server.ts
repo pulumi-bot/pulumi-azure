@@ -119,7 +119,7 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly skuName!: pulumi.Output<string>;
     /**
-     * @deprecated this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mariadb%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     public readonly sslEnforcement!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly storageMb!: pulumi.Output<number>;
     /**
-     * @deprecated all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:mariadb%2Fserver:Server/properties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
      */
     public readonly storageProfile!: pulumi.Output<outputs.mariadb.ServerStorageProfile>;
     /**
@@ -279,7 +279,7 @@ export interface ServerState {
      */
     readonly skuName?: pulumi.Input<string>;
     /**
-     * @deprecated this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mariadb%2Fserver:Server/properties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     readonly sslEnforcement?: pulumi.Input<string>;
     /**
@@ -291,7 +291,7 @@ export interface ServerState {
      */
     readonly storageMb?: pulumi.Input<number>;
     /**
-     * @deprecated all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:mariadb%2Fserver:Server/properties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
      */
     readonly storageProfile?: pulumi.Input<inputs.mariadb.ServerStorageProfile>;
     /**
@@ -361,7 +361,7 @@ export interface ServerArgs {
      */
     readonly skuName: pulumi.Input<string>;
     /**
-     * @deprecated this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.
+     * @deprecated this has been moved to the boolean attribute `[sslEnforcementEnabled](#/resources/azure:mariadb%2Fserver:Server/inputProperties/sslEnforcementEnabled)` and will be removed in version 3.0 of the provider.
      */
     readonly sslEnforcement?: pulumi.Input<string>;
     /**
@@ -373,7 +373,7 @@ export interface ServerArgs {
      */
     readonly storageMb?: pulumi.Input<number>;
     /**
-     * @deprecated all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
+     * @deprecated all [storageProfile](#/resources/azure:mariadb%2Fserver:Server/inputProperties/storageProfile) properties have been moved to the top level. This block will be removed in version 3.0 of the provider.
      */
     readonly storageProfile?: pulumi.Input<inputs.mariadb.ServerStorageProfile>;
     /**

@@ -51,7 +51,6 @@ class Zone(pulumi.CustomResource):
         example_private = azure.privatedns.Zone("example-private", resource_group_name=example.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS Zone. Must be a valid domain name.

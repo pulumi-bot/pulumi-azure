@@ -47,7 +47,6 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
             nat_gateway_id=example_nat_gateway.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] nat_gateway_id: The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.

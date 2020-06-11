@@ -46,8 +46,6 @@ class Certificate(pulumi.CustomResource):
         """
         Manages an Certificate within an API Management Service.
 
-
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where this Service should be created. Changing this forces a new resource to be created.

@@ -22,7 +22,7 @@ type EventSubscription struct {
 	EventDeliverySchema pulumi.StringPtrOutput `pulumi:"eventDeliverySchema"`
 	// A `eventhubEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `eventhub_endpoint_id`
+	// Deprecated: Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/eventhubEndpointId)`
 	EventhubEndpoint EventSubscriptionEventhubEndpointOutput `pulumi:"eventhubEndpoint"`
 	// Specifies the id where the Event Hub is located.
 	EventhubEndpointId pulumi.StringOutput `pulumi:"eventhubEndpointId"`
@@ -30,7 +30,7 @@ type EventSubscription struct {
 	ExpirationTimeUtc pulumi.StringPtrOutput `pulumi:"expirationTimeUtc"`
 	// A `hybridConnectionEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`
+	// Deprecated: Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/hybridConnectionEndpointId)`
 	HybridConnectionEndpoint EventSubscriptionHybridConnectionEndpointOutput `pulumi:"hybridConnectionEndpoint"`
 	// Specifies the id where the Hybrid Connection is located.
 	HybridConnectionEndpointId pulumi.StringOutput `pulumi:"hybridConnectionEndpointId"`
@@ -97,7 +97,7 @@ type eventSubscriptionState struct {
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
 	// A `eventhubEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `eventhub_endpoint_id`
+	// Deprecated: Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/eventhubEndpointId)`
 	EventhubEndpoint *EventSubscriptionEventhubEndpoint `pulumi:"eventhubEndpoint"`
 	// Specifies the id where the Event Hub is located.
 	EventhubEndpointId *string `pulumi:"eventhubEndpointId"`
@@ -105,7 +105,7 @@ type eventSubscriptionState struct {
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// A `hybridConnectionEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`
+	// Deprecated: Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/hybridConnectionEndpointId)`
 	HybridConnectionEndpoint *EventSubscriptionHybridConnectionEndpoint `pulumi:"hybridConnectionEndpoint"`
 	// Specifies the id where the Hybrid Connection is located.
 	HybridConnectionEndpointId *string `pulumi:"hybridConnectionEndpointId"`
@@ -142,7 +142,7 @@ type EventSubscriptionState struct {
 	EventDeliverySchema pulumi.StringPtrInput
 	// A `eventhubEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `eventhub_endpoint_id`
+	// Deprecated: Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/eventhubEndpointId)`
 	EventhubEndpoint EventSubscriptionEventhubEndpointPtrInput
 	// Specifies the id where the Event Hub is located.
 	EventhubEndpointId pulumi.StringPtrInput
@@ -150,7 +150,7 @@ type EventSubscriptionState struct {
 	ExpirationTimeUtc pulumi.StringPtrInput
 	// A `hybridConnectionEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`
+	// Deprecated: Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/properties/hybridConnectionEndpointId)`
 	HybridConnectionEndpoint EventSubscriptionHybridConnectionEndpointPtrInput
 	// Specifies the id where the Hybrid Connection is located.
 	HybridConnectionEndpointId pulumi.StringPtrInput
@@ -191,7 +191,7 @@ type eventSubscriptionArgs struct {
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
 	// A `eventhubEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `eventhub_endpoint_id`
+	// Deprecated: Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/eventhubEndpointId)`
 	EventhubEndpoint *EventSubscriptionEventhubEndpoint `pulumi:"eventhubEndpoint"`
 	// Specifies the id where the Event Hub is located.
 	EventhubEndpointId *string `pulumi:"eventhubEndpointId"`
@@ -199,7 +199,7 @@ type eventSubscriptionArgs struct {
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// A `hybridConnectionEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`
+	// Deprecated: Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/hybridConnectionEndpointId)`
 	HybridConnectionEndpoint *EventSubscriptionHybridConnectionEndpoint `pulumi:"hybridConnectionEndpoint"`
 	// Specifies the id where the Hybrid Connection is located.
 	HybridConnectionEndpointId *string `pulumi:"hybridConnectionEndpointId"`
@@ -237,7 +237,7 @@ type EventSubscriptionArgs struct {
 	EventDeliverySchema pulumi.StringPtrInput
 	// A `eventhubEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `eventhub_endpoint_id`
+	// Deprecated: Deprecated in favour of `[eventhubEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/eventhubEndpointId)`
 	EventhubEndpoint EventSubscriptionEventhubEndpointPtrInput
 	// Specifies the id where the Event Hub is located.
 	EventhubEndpointId pulumi.StringPtrInput
@@ -245,7 +245,7 @@ type EventSubscriptionArgs struct {
 	ExpirationTimeUtc pulumi.StringPtrInput
 	// A `hybridConnectionEndpoint` block as defined below.
 	//
-	// Deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`
+	// Deprecated: Deprecated in favour of `[hybridConnectionEndpointId](#/resources/azure:eventhub%2FeventSubscription:EventSubscription/inputProperties/hybridConnectionEndpointId)`
 	HybridConnectionEndpoint EventSubscriptionHybridConnectionEndpointPtrInput
 	// Specifies the id where the Hybrid Connection is located.
 	HybridConnectionEndpointId pulumi.StringPtrInput

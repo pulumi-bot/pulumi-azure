@@ -131,7 +131,6 @@ class NetworkConnectionMonitor(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_start: Specifies whether the connection monitor will start automatically once created. Defaults to `true`. Changing this forces a new resource to be created.

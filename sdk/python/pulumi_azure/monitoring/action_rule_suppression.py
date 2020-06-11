@@ -117,7 +117,6 @@ class ActionRuleSuppression(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] condition: A `condition` block as defined below.
