@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup", DeprecationWarning)
+
 class EventHubConsumerGroup(pulumi.CustomResource):
     eventhub_name: pulumi.Output[str]
     """
@@ -134,9 +135,9 @@ class EventHubConsumerGroup(pulumi.CustomResource):
         __props__["resource_group_name"] = resource_group_name
         __props__["user_metadata"] = user_metadata
         return EventHubConsumerGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

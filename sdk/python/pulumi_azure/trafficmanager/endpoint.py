@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint", DeprecationWarning)
+
 class Endpoint(pulumi.CustomResource):
     custom_headers: pulumi.Output[list]
     """
@@ -321,9 +322,9 @@ class Endpoint(pulumi.CustomResource):
         __props__["type"] = type
         __props__["weight"] = weight
         return Endpoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

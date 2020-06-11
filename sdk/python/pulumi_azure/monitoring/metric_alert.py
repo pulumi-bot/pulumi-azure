@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MetricAlert(pulumi.CustomResource):
     actions: pulumi.Output[list]
     """
@@ -250,9 +251,9 @@ class MetricAlert(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["window_size"] = window_size
         return MetricAlert(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
