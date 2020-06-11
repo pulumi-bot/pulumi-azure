@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TrafficManagerProfile(pulumi.CustomResource):
     dns_config: pulumi.Output[dict]
     """
@@ -217,9 +218,9 @@ class TrafficManagerProfile(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["traffic_routing_method"] = traffic_routing_method
         return TrafficManagerProfile(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

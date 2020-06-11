@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResourceGroupExport(pulumi.CustomResource):
     active: pulumi.Output[bool]
     """
@@ -191,9 +192,9 @@ class ResourceGroupExport(pulumi.CustomResource):
         __props__["recurrence_type"] = recurrence_type
         __props__["resource_group_id"] = resource_group_id
         return ResourceGroupExport(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

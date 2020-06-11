@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Store(pulumi.CustomResource):
     encryption_state: pulumi.Output[str]
     """
@@ -153,9 +154,9 @@ class Store(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["tier"] = tier
         return Store(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
