@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Share(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -151,9 +152,9 @@ class Share(pulumi.CustomResource):
         __props__["snapshot_schedule"] = snapshot_schedule
         __props__["terms"] = terms
         return Share(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

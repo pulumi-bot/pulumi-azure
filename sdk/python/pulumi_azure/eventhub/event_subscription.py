@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription", DeprecationWarning)
+
 class EventSubscription(pulumi.CustomResource):
     advanced_filter: pulumi.Output[dict]
     """
@@ -478,9 +479,9 @@ class EventSubscription(pulumi.CustomResource):
         __props__["topic_name"] = topic_name
         __props__["webhook_endpoint"] = webhook_endpoint
         return EventSubscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

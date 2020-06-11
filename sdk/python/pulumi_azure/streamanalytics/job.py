@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Job(pulumi.CustomResource):
     compatibility_level: pulumi.Output[str]
     """
@@ -193,9 +194,9 @@ class Job(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["transformation_query"] = transformation_query
         return Job(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
