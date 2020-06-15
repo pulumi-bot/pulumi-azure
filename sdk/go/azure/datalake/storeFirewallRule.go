@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleStoreFirewallRule, err := datalake.NewStoreFirewallRule(ctx, "exampleStoreFirewallRule", &datalake.StoreFirewallRuleArgs{
+// 		_, err = datalake.NewStoreFirewallRule(ctx, "exampleStoreFirewallRule", &datalake.StoreFirewallRuleArgs{
 // 			AccountName:       exampleStore.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			StartIpAddress:    pulumi.String("1.2.3.4"),

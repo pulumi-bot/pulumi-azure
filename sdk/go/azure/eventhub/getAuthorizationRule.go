@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := eventhub.LookupAuthorizationRule(ctx, &eventhub.LookupAuthorizationRuleArgs{
+// 		_, err := eventhub.LookupAuthorizationRule(ctx, &eventhub.LookupAuthorizationRuleArgs{
 // 			EventhubName:      azurerm_eventhub.Test.Name,
 // 			Name:              "test",
 // 			NamespaceName:     azurerm_eventhub_namespace.Test.Name,

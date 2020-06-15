@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleProductGroup, err := apimanagement.NewProductGroup(ctx, "exampleProductGroup", &apimanagement.ProductGroupArgs{
+// 		_, err = apimanagement.NewProductGroup(ctx, "exampleProductGroup", &apimanagement.ProductGroupArgs{
 // 			ProductId:         pulumi.String(exampleProduct.ProductId),
 // 			GroupName:         pulumi.String(exampleGroup.Name),
 // 			ApiManagementName: pulumi.String(exampleService.Name),
