@@ -50,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubscription, err := apimanagement.NewSubscription(ctx, "exampleSubscription", &apimanagement.SubscriptionArgs{
+// 		_, err = apimanagement.NewSubscription(ctx, "exampleSubscription", &apimanagement.SubscriptionArgs{
 // 			ApiManagementName: pulumi.String(exampleService.Name),
 // 			ResourceGroupName: pulumi.String(exampleService.ResourceGroupName),
 // 			UserId:            pulumi.String(exampleUser.Id),

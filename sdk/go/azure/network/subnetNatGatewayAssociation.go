@@ -60,7 +60,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubnetNatGatewayAssociation, err := network.NewSubnetNatGatewayAssociation(ctx, "exampleSubnetNatGatewayAssociation", &network.SubnetNatGatewayAssociationArgs{
+// 		_, err = network.NewSubnetNatGatewayAssociation(ctx, "exampleSubnetNatGatewayAssociation", &network.SubnetNatGatewayAssociationArgs{
 // 			SubnetId:     exampleSubnet.ID(),
 // 			NatGatewayId: exampleNatGateway.ID(),
 // 		})

@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleQueue, err := servicebus.NewQueue(ctx, "exampleQueue", &servicebus.QueueArgs{
+// 		_, err = servicebus.NewQueue(ctx, "exampleQueue", &servicebus.QueueArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      exampleNamespace.Name,
 // 			EnablePartitioning: pulumi.Bool(true),

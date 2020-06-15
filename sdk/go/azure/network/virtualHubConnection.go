@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := network.NewVirtualWan(ctx, "test", &network.VirtualWanArgs{
+// 		_, err = network.NewVirtualWan(ctx, "test", &network.VirtualWanArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 		})
@@ -59,7 +59,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualHubConnection, err := network.NewVirtualHubConnection(ctx, "exampleVirtualHubConnection", &network.VirtualHubConnectionArgs{
+// 		_, err = network.NewVirtualHubConnection(ctx, "exampleVirtualHubConnection", &network.VirtualHubConnectionArgs{
 // 			VirtualHubId:           exampleVirtualHub.ID(),
 // 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID(),
 // 		})

@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAuthorizationServer, err := apimanagement.NewAuthorizationServer(ctx, "exampleAuthorizationServer", &apimanagement.AuthorizationServerArgs{
+// 		_, err = apimanagement.NewAuthorizationServer(ctx, "exampleAuthorizationServer", &apimanagement.AuthorizationServerArgs{
 // 			ApiManagementName:          pulumi.String(data.Azurerm_api_management.Example.Name),
 // 			ResourceGroupName:          pulumi.String(data.Azurerm_api_management.Example.Resource_group_name),
 // 			DisplayName:                pulumi.String("Test Server"),

@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleARecord, err := privatedns.NewARecord(ctx, "exampleARecord", &privatedns.ARecordArgs{
+// 		_, err = privatedns.NewARecord(ctx, "exampleARecord", &privatedns.ARecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

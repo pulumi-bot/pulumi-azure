@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
+// 		_, err = dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -87,7 +87,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
+// 		_, err = dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

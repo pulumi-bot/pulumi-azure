@@ -56,7 +56,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := streamanalytics.NewReferenceInputBlob(ctx, "test", &streamanalytics.ReferenceInputBlobArgs{
+// 		_, err = streamanalytics.NewReferenceInputBlob(ctx, "test", &streamanalytics.ReferenceInputBlobArgs{
 // 			StreamAnalyticsJobName: pulumi.String(exampleJob.Name),
 // 			ResourceGroupName:      pulumi.String(exampleJob.ResourceGroupName),
 // 			StorageAccountName:     exampleAccount.Name,
