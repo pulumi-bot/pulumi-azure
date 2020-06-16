@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
+// 		_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
 // 			Name:              "my-snapshot",
 // 			ResourceGroupName: "my-resource-group",
 // 		}, nil)

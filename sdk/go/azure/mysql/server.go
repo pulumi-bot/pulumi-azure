@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleServer, err := mysql.NewServer(ctx, "exampleServer", &mysql.ServerArgs{
+// 		_, err = mysql.NewServer(ctx, "exampleServer", &mysql.ServerArgs{
 // 			Location:                        exampleResourceGroup.Location,
 // 			ResourceGroupName:               exampleResourceGroup.Name,
 // 			AdministratorLogin:              pulumi.String("mysqladminun"),

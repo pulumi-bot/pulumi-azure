@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleActionRuleSuppression, err := monitoring.NewActionRuleSuppression(ctx, "exampleActionRuleSuppression", &monitoring.ActionRuleSuppressionArgs{
+// 		_, err = monitoring.NewActionRuleSuppression(ctx, "exampleActionRuleSuppression", &monitoring.ActionRuleSuppressionArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Scope: &monitoring.ActionRuleSuppressionScopeArgs{
 // 				Type: pulumi.String("ResourceGroup"),

@@ -54,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAuthorizationRule, err := eventhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &eventhub.AuthorizationRuleArgs{
+// 		_, err = eventhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &eventhub.AuthorizationRuleArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			EventhubName:      exampleEventHub.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
