@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAaaaRecord, err := dns.NewAaaaRecord(ctx, "exampleAaaaRecord", &dns.AaaaRecordArgs{
+// 		_, err = dns.NewAaaaRecord(ctx, "exampleAaaaRecord", &dns.AaaaRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -87,7 +87,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAaaaRecord, err := dns.NewAaaaRecord(ctx, "exampleAaaaRecord", &dns.AaaaRecordArgs{
+// 		_, err = dns.NewAaaaRecord(ctx, "exampleAaaaRecord", &dns.AaaaRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

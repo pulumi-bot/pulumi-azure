@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iot.LookupDpsSharedAccessPolicy(ctx, &iot.LookupDpsSharedAccessPolicyArgs{
+// 		_, err := iot.LookupDpsSharedAccessPolicy(ctx, &iot.LookupDpsSharedAccessPolicyArgs{
 // 			Name:              "example",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
 // 			IothubDpsName:     azurerm_iothub_dps.Example.Name,

@@ -51,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopicAuthorizationRule, err := servicebus.NewTopicAuthorizationRule(ctx, "exampleTopicAuthorizationRule", &servicebus.TopicAuthorizationRuleArgs{
+// 		_, err = servicebus.NewTopicAuthorizationRule(ctx, "exampleTopicAuthorizationRule", &servicebus.TopicAuthorizationRuleArgs{
 // 			NamespaceName:     exampleNamespace.Name,
 // 			TopicName:         exampleTopic.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,

@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		acr, err := containerservice.NewRegistry(ctx, "acr", &containerservice.RegistryArgs{
+// 		_, err = containerservice.NewRegistry(ctx, "acr", &containerservice.RegistryArgs{
 // 			ResourceGroupName: rg.Name,
 // 			Location:          rg.Location,
 // 			Sku:               pulumi.String("Premium"),

@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleWorkspace, err := databricks.NewWorkspace(ctx, "exampleWorkspace", &databricks.WorkspaceArgs{
+// 		_, err = databricks.NewWorkspace(ctx, "exampleWorkspace", &databricks.WorkspaceArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			Sku:               pulumi.String("standard"),

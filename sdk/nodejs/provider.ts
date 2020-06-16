@@ -44,14 +44,14 @@ export class Provider extends pulumi.ProviderResource {
         inputs["clientSecret"] = args ? args.clientSecret : undefined;
         inputs["disableCorrelationRequestId"] = pulumi.output(args ? args.disableCorrelationRequestId : undefined).apply(JSON.stringify);
         inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
-        inputs["environment"] = (args ? args.environment : undefined) || (utilities.getEnv("AZURE_ENVIRONMENT", "ARM_ENVIRONMENT") || "public");
+        inputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("AZURE_ENVIRONMENT", "ARM_ENVIRONMENT") || "public");
         inputs["features"] = pulumi.output(args ? args.features : undefined).apply(JSON.stringify);
         inputs["msiEndpoint"] = args ? args.msiEndpoint : undefined;
         inputs["partnerId"] = args ? args.partnerId : undefined;
         inputs["skipCredentialsValidation"] = pulumi.output(args ? args.skipCredentialsValidation : undefined).apply(JSON.stringify);
-        inputs["skipProviderRegistration"] = pulumi.output((args ? args.skipProviderRegistration : undefined) || (<any>utilities.getEnvBoolean("ARM_SKIP_PROVIDER_REGISTRATION") || false)).apply(JSON.stringify);
-        inputs["storageUseAzuread"] = pulumi.output((args ? args.storageUseAzuread : undefined) || (<any>utilities.getEnvBoolean("ARM_STORAGE_USE_AZUREAD") || false)).apply(JSON.stringify);
-        inputs["subscriptionId"] = (args ? args.subscriptionId : undefined) || (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
+        inputs["skipProviderRegistration"] = pulumi.output((args ? args.skipProviderRegistration : undefined) ?? (<any>utilities.getEnvBoolean("ARM_SKIP_PROVIDER_REGISTRATION") || false)).apply(JSON.stringify);
+        inputs["storageUseAzuread"] = pulumi.output((args ? args.storageUseAzuread : undefined) ?? (<any>utilities.getEnvBoolean("ARM_STORAGE_USE_AZUREAD") || false)).apply(JSON.stringify);
+        inputs["subscriptionId"] = (args ? args.subscriptionId : undefined) ?? (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
         inputs["tenantId"] = args ? args.tenantId : undefined;
         inputs["useMsi"] = pulumi.output(args ? args.useMsi : undefined).apply(JSON.stringify);
         if (!opts) {
