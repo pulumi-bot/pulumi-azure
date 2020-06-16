@@ -44,9 +44,7 @@ class Assignment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, principal_id=None, role_definition_id=None, role_definition_name=None, scope=None, skip_service_principal_aad_check=None, __props__=None, __name__=None, __opts__=None):
         """
         Assigns a given Principal (User or Group) to a given Role.
-
         ## Example Usage
-
         ### Using A Built-In Role)
 
         ```python
@@ -60,7 +58,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_name="Reader",
             principal_id=example_client_config.object_id)
         ```
-
         ### Custom Role & Service Principal)
 
         ```python
@@ -83,7 +80,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.object_id)
         ```
-
         ### Custom Role & User)
 
         ```python
@@ -106,7 +102,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.client_id)
         ```
-
         ### Custom Role & Management Group)
 
         ```python
@@ -130,6 +125,9 @@ class Assignment(pulumi.CustomResource):
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.client_id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

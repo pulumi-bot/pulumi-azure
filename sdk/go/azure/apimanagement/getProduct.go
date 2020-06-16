@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing API Management Product.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	var rv LookupProductResult
 	err := ctx.Invoke("azure:apimanagement/getProduct:getProduct", args, &rv, opts...)

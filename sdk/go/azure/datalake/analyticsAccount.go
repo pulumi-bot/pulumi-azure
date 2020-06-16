@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Azure Data Lake Analytics Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -40,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAnalyticsAccount, err := datalake.NewAnalyticsAccount(ctx, "exampleAnalyticsAccount", &datalake.AnalyticsAccountArgs{
+// 		_, err = datalake.NewAnalyticsAccount(ctx, "exampleAnalyticsAccount", &datalake.AnalyticsAccountArgs{
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			Location:                exampleResourceGroup.Location,
 // 			DefaultStoreAccountName: exampleStore.Name,
@@ -52,6 +49,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type AnalyticsAccount struct {
 	pulumi.CustomResourceState
 

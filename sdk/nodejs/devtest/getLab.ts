@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing Dev Test Lab.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  * });
  * export const uniqueIdentifier = example.then(example => example.uniqueIdentifier);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResult> {
     if (!opts) {

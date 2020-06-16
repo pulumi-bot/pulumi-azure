@@ -35,10 +35,7 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, dashboard_properties=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a shared dashboard in the Azure Portal.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -169,6 +166,12 @@ class Dashboard(pulumi.CustomResource):
         }}
         \"\"\")
         ```
+
+        It is recommended to follow the steps outlined
+        [here](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards-create-programmatically#fetch-the-json-representation-of-the-dashboard) to create a Dashboard in the Portal and extract the relevant JSON to use in this resource. From the extracted JSON, the contents of the `properties: {}` object can used. Variables can be injected as needed - see above example.
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

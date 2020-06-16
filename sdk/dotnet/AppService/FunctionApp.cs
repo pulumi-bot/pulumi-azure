@@ -11,9 +11,7 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages a Function App.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### With App Service Plan)
     /// 
     /// ```csharp
@@ -56,7 +54,6 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
-    /// 
     /// ### In A Consumption Plan)
     /// 
     /// ```csharp
@@ -100,7 +97,6 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
-    /// 
     /// ### Linux)
     /// 
     /// ```csharp
@@ -146,6 +142,9 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FunctionApp : Pulumi.CustomResource
     {

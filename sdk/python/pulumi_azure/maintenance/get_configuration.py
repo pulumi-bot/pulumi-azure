@@ -60,10 +60,7 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
 def get_configuration(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Maintenance Configuration.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -73,6 +70,9 @@ def get_configuration(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("id", azurerm_maintenance_configuration["existing"]["id"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Maintenance Configuration.

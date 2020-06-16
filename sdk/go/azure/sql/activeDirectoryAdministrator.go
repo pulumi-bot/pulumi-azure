@@ -11,6 +11,10 @@ import (
 )
 
 // Allows you to set a user or group as the AD administrator for an Azure SQL server
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ActiveDirectoryAdministrator struct {
 	pulumi.CustomResourceState
 

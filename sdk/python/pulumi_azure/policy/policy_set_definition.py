@@ -48,10 +48,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         Manages a policy set definition.
 
         > **NOTE:**  Policy set definitions (also known as policy initiatives) do not take effect until they are assigned to a scope using a Policy Set Assignment.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -85,6 +82,9 @@ class PolicySetDefinition(pulumi.CustomResource):
         \"\"\",
             policy_type="Custom")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

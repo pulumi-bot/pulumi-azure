@@ -106,10 +106,7 @@ class AwaitableGetSharedImageResult(GetSharedImageResult):
 def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -119,6 +116,9 @@ def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=N
         name="my-image",
         resource_group_name="example-resources")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str gallery_name: The name of the Shared Image Gallery in which the Shared Image exists.

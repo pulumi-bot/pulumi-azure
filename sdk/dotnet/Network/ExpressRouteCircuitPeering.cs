@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages an ExpressRoute Circuit Peering.
+    /// ## Example Usage
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ExpressRouteCircuitPeering : Pulumi.CustomResource
     {

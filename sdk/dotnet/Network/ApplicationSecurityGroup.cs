@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages an Application Security Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,9 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ApplicationSecurityGroup : Pulumi.CustomResource
     {

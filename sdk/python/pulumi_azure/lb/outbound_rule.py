@@ -55,10 +55,7 @@ class OutboundRule(pulumi.CustomResource):
         Manages a Load Balancer Outbound Rule.
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration and a Backend Address Pool Attached.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -88,6 +85,9 @@ class OutboundRule(pulumi.CustomResource):
                 "name": "PublicIPAddress",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

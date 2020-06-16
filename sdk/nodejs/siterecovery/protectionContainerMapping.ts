@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure recovery vault protection container mapping. A protection container mapping decides how to translate the protection container when a VM is migrated from one region to another.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,6 +54,9 @@ import * as utilities from "../utilities";
  *     recoveryReplicationPolicyId: policy.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ProtectionContainerMapping extends pulumi.CustomResource {
     /**

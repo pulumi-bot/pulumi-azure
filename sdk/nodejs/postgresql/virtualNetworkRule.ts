@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a PostgreSQL Virtual Network Rule.
  *
  * > **NOTE:** PostgreSQL Virtual Network Rules [can only be used with SKU Tiers of `GeneralPurpose` or `MemoryOptimized`](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-vnet)
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +47,9 @@ import * as utilities from "../utilities";
  *     ignoreMissingVnetServiceEndpoint: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**

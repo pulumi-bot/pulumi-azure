@@ -56,10 +56,7 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         Manages an Extension for a Virtual Machine Scale Set.
 
         > **NOTE:** This resource is not intended to be used with the `compute.ScaleSet` resource - instead it's intended for this to be used with the `compute.LinuxVirtualMachineScaleSet` and `compute.WindowsVirtualMachineScaleSet` resources.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -77,6 +74,9 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
                 "commandToExecute": "echo $HOSTNAME",
             }))
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

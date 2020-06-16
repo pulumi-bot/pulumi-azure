@@ -11,6 +11,10 @@ import (
 )
 
 // Assigns a given Principal (User or Group) to a given Role.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment
 type Assignment struct {

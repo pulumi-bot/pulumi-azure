@@ -30,10 +30,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, name=None, resource_group_name=None, throughput=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Table within a Cosmos DB Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -46,6 +43,9 @@ class Table(pulumi.CustomResource):
             account_name=example_account.name,
             throughput=400)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

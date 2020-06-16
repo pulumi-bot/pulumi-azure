@@ -38,11 +38,7 @@ class DateTimeVariable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, description=None, encrypted=None, name=None, resource_group_name=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a DateTime variable in Azure Automation
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -60,6 +56,9 @@ class DateTimeVariable(pulumi.CustomResource):
             automation_account_name=example_account.name,
             value="2019-04-24T21:40:54.074Z")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

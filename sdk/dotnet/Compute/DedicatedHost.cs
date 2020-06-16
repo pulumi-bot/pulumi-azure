@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Compute
 {
     /// <summary>
     /// Manage a Dedicated Host within a Dedicated Host Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +42,9 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DedicatedHost : Pulumi.CustomResource
     {

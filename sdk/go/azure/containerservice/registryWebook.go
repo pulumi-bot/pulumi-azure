@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Azure Container Registry Webhook.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		webhook, err := containerservice.NewRegistryWebhook(ctx, "webhook", &containerservice.RegistryWebhookArgs{
+// 		_, err = containerservice.NewRegistryWebhook(ctx, "webhook", &containerservice.RegistryWebhookArgs{
 // 			ResourceGroupName: rg.Name,
 // 			RegistryName:      acr.Name,
 // 			Location:          rg.Location,
@@ -63,6 +60,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook
 type RegistryWebook struct {

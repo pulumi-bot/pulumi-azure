@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a ServiceBus Namespace Network Rule Set Set.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +47,9 @@ import * as utilities from "../utilities";
  *     ipRules: ["1.1.1.1"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**

@@ -52,10 +52,7 @@ class ServerSecurityAlertPolicy(pulumi.CustomResource):
         Manages a Security Alert Policy for a MSSQL Server.
 
         > **NOTE** Security Alert Policy is currently only available for MS SQL databases.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -85,6 +82,9 @@ class ServerSecurityAlertPolicy(pulumi.CustomResource):
             ],
             retention_days=20)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

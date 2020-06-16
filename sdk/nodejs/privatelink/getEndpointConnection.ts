@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to access the connection status information about an existing Private Endpoint Connection.
  *
  * > **NOTE** Private Endpoint is currently in Public Preview.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  * });
  * export const privateEndpointStatus = example.then(example => example.privateServiceConnections[0].status);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getEndpointConnection(args: GetEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointConnectionResult> {
     if (!opts) {

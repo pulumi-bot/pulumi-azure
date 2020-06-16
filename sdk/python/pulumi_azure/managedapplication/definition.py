@@ -65,10 +65,7 @@ class Definition(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, authorizations=None, create_ui_definition=None, description=None, display_name=None, location=None, lock_level=None, main_template=None, name=None, package_enabled=None, package_file_uri=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Managed Application Definition.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -88,6 +85,9 @@ class Definition(pulumi.CustomResource):
                 "role_definition_id": "a094b430-dad3-424d-ae58-13f72fd72591",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,10 +8,7 @@ import (
 )
 
 // Uses this data source to access information about an API Version Set within an API Management Service.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupApiVersionSet(ctx *pulumi.Context, args *LookupApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionSetResult, error) {
 	var rv LookupApiVersionSetResult
 	err := ctx.Invoke("azure:apimanagement/getApiVersionSet:getApiVersionSet", args, &rv, opts...)

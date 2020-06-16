@@ -221,10 +221,9 @@ class AppService(pulumi.CustomResource):
         Manages an App Service (within an App Service Plan).
 
         > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `appservice.AppService` resource will be overwritten when promoting a Slot using the `appservice.ActiveSlot` resource.
-
         ## Example Usage
 
-
+        This example provisions a Windows App Service.
 
         ```python
         import pulumi
@@ -255,6 +254,9 @@ class AppService(pulumi.CustomResource):
                 "value": "Server=some-server.mydomain.com;Integrated Security=SSPI",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

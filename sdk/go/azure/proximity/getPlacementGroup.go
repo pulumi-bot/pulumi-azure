@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Proximity Placement Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupPlacementGroup(ctx *pulumi.Context, args *LookupPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPlacementGroupResult, error) {
 	var rv LookupPlacementGroupResult
 	err := ctx.Invoke("azure:proximity/getPlacementGroup:getPlacementGroup", args, &rv, opts...)

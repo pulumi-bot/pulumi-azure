@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing Logic App Workflow.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  * });
  * export const accessEndpoint = example.then(example => example.accessEndpoint);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     if (!opts) {

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a connection in an existing Virtual Network Gateway.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VirtualNetworkGatewayConnection struct {
 	pulumi.CustomResourceState
 

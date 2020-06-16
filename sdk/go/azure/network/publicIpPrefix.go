@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Public IP Prefix.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePublicIpPrefix, err := network.NewPublicIpPrefix(ctx, "examplePublicIpPrefix", &network.PublicIpPrefixArgs{
+// 		_, err = network.NewPublicIpPrefix(ctx, "examplePublicIpPrefix", &network.PublicIpPrefixArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			PrefixLength:      pulumi.Int(31),
@@ -48,6 +45,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type PublicIpPrefix struct {
 	pulumi.CustomResourceState
 

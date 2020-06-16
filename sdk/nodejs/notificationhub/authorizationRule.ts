@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Authorization Rule associated with a Notification Hub within a Notification Hub Namespace.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     listen: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AuthorizationRule extends pulumi.CustomResource {
     /**

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Key Vault Certificate.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate
 type Certifiate struct {

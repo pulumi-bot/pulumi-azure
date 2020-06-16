@@ -15,10 +15,7 @@ import (
 // > **NOTE on Route Tables and Routes:** This provider currently
 // provides both a standalone Route resource, and allows for Routes to be defined in-line within the Route Table resource.
 // At this time you cannot use a Route Table with in-line Routes in conjunction with any Route resources. Doing so will cause a conflict of Route configurations and will overwrite Routes.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRoute, err := network.NewRoute(ctx, "exampleRoute", &network.RouteArgs{
+// 		_, err = network.NewRoute(ctx, "exampleRoute", &network.RouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			RouteTableName:    exampleRouteTable.Name,
 // 			AddressPrefix:     pulumi.String("10.1.0.0/16"),
@@ -57,6 +54,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Route struct {
 	pulumi.CustomResourceState
 

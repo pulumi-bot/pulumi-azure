@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppPlatform
 {
     /// <summary>
     /// Manage an Azure Spring Cloud Application.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Azure.AppPlatform
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SpringCloudApp : Pulumi.CustomResource
     {

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppInsights
 {
     /// <summary>
     /// Manages an Application Insights component.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +41,9 @@ namespace Pulumi.Azure.AppInsights
     ///     public Output&lt;string&gt; AppId { get; set; }
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Insights : Pulumi.CustomResource
     {

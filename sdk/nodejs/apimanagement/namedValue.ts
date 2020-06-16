@@ -6,11 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Named Value.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +27,9 @@ import * as utilities from "../utilities";
  *     value: "Example Value",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NamedValue extends pulumi.CustomResource {
     /**

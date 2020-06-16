@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Virtual Machine Scale Set.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetVirtualMachineScaleSet(ctx *pulumi.Context, args *GetVirtualMachineScaleSetArgs, opts ...pulumi.InvokeOption) (*GetVirtualMachineScaleSetResult, error) {
 	var rv GetVirtualMachineScaleSetResult
 	err := ctx.Invoke("azure:compute/getVirtualMachineScaleSet:getVirtualMachineScaleSet", args, &rv, opts...)

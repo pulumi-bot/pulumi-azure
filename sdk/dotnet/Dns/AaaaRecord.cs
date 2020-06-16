@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Dns
 {
     /// <summary>
     /// Enables you to manage DNS AAAA Records within Azure DNS.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,7 +39,6 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
-    /// 
     /// ### Alias Record)
     /// 
     /// ```csharp
@@ -79,6 +75,9 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AaaaRecord : Pulumi.CustomResource
     {

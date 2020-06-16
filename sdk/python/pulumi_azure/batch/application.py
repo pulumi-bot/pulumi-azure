@@ -38,10 +38,7 @@ class Application(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, allow_updates=None, default_version=None, display_name=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages Azure Batch Application instance.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -62,6 +59,9 @@ class Application(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             account_name=example_batch / account_account["name"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

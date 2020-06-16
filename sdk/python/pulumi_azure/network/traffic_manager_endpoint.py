@@ -101,10 +101,7 @@ class TrafficManagerEndpoint(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_headers=None, endpoint_location=None, endpoint_status=None, geo_mappings=None, min_child_endpoints=None, name=None, priority=None, profile_name=None, resource_group_name=None, subnets=None, target=None, target_resource_id=None, type=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Traffic Manager Endpoint.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -141,6 +138,9 @@ class TrafficManagerEndpoint(pulumi.CustomResource):
             type="externalEndpoints",
             weight=100)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

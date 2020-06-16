@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Configures a Network Connection Monitor to monitor communication between a Virtual Machine and an endpoint using a Network Watcher.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,6 +86,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > **NOTE:** This Resource requires that [the Network Watcher Agent Virtual Machine Extension](https://docs.microsoft.com/en-us/azure/network-watcher/connection-monitor) is installed on the Virtual Machine before monitoring can be started. The extension can be installed via the `azure.compute.Extension` resource.
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkConnectionMonitor extends pulumi.CustomResource {
     /**

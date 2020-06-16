@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a MySQL Dataset inside a Azure Data Factory.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServiceMysql.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DatasetMysql extends pulumi.CustomResource {
     /**

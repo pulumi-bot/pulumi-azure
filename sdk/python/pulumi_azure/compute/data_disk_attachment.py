@@ -42,10 +42,7 @@ class DataDiskAttachment(pulumi.CustomResource):
         > **NOTE:** Data Disks can be attached either directly on the `compute.VirtualMachine` resource, or using the `compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
 
         > **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storage_data_disk` block in the `compute.VirtualMachine` resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -110,6 +107,9 @@ class DataDiskAttachment(pulumi.CustomResource):
             lun="10",
             caching="ReadWrite")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

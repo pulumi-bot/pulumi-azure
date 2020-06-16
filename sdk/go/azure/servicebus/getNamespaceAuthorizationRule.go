@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing ServiceBus Namespace Authorization Rule.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure:servicebus/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule", args, &rv, opts...)

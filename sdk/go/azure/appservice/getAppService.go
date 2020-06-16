@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing App Service.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupAppService(ctx *pulumi.Context, args *LookupAppServiceArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceResult, error) {
 	var rv LookupAppServiceResult
 	err := ctx.Invoke("azure:appservice/getAppService:getAppService", args, &rv, opts...)

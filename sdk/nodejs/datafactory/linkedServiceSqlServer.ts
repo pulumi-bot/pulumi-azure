@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Linked Service (connection) between a SQL Server and Azure Data Factory.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     connectionString: "Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LinkedServiceSqlServer extends pulumi.CustomResource {
     /**

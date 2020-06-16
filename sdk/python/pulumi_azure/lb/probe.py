@@ -49,10 +49,7 @@ class Probe(pulumi.CustomResource):
         Manages a LoadBalancer Probe Resource.
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -75,6 +72,9 @@ class Probe(pulumi.CustomResource):
             loadbalancer_id=example_load_balancer.id,
             port=22)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

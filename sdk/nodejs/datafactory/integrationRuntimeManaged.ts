@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Data Factory Managed Integration Runtime.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +26,9 @@ import * as utilities from "../utilities";
  *     nodeSize: "Standard_D8_v3",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IntegrationRuntimeManaged extends pulumi.CustomResource {
     /**

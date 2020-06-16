@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Uses this data source to access information about an API Version Set within an API Management Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  * });
  * export const apiManagementApiVersionSetId = example.then(example => example.id);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getApiVersionSet(args: GetApiVersionSetArgs, opts?: pulumi.InvokeOptions): Promise<GetApiVersionSetResult> {
     if (!opts) {

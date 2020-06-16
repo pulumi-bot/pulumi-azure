@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a CDN Profile to create a collection of CDN Endpoints.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Profile extends pulumi.CustomResource {
     /**

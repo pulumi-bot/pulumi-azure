@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Bot Connection.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Connection struct {
 	pulumi.CustomResourceState
 

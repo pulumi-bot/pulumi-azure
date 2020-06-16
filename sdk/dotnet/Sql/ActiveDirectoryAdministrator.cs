@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Sql
 {
     /// <summary>
     /// Allows you to set a user or group as the AD administrator for an Azure SQL server
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ActiveDirectoryAdministrator : Pulumi.CustomResource
     {

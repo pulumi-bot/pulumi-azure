@@ -42,10 +42,7 @@ class NsRecord(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, records=None, resource_group_name=None, tags=None, ttl=None, zone_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Enables you to manage DNS NS Records within Azure DNS.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -65,6 +62,9 @@ class NsRecord(pulumi.CustomResource):
                 "Environment": "Production",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

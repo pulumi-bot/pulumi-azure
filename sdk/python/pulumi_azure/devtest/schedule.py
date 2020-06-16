@@ -50,11 +50,7 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, daily_recurrence=None, hourly_recurrence=None, lab_name=None, location=None, name=None, notification_settings=None, resource_group_name=None, status=None, tags=None, task_type=None, time_zone_id=None, weekly_recurrence=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages automated startup and shutdown schedules for Azure Dev Test Lab.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -82,6 +78,9 @@ class Schedule(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

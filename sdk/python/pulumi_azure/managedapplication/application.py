@@ -60,10 +60,7 @@ class Application(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_definition_id=None, kind=None, location=None, managed_resource_group_name=None, name=None, parameters=None, plan=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Managed Application.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -95,6 +92,9 @@ class Application(pulumi.CustomResource):
                 "storage_account_type": "Standard_LRS",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

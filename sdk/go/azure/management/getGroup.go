@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Management Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("azure:management/getGroup:getGroup", args, &rv, opts...)

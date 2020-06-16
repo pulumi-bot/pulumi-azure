@@ -104,10 +104,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_pause_delay_in_minutes=None, collation=None, create_mode=None, creation_source_database_id=None, elastic_pool_id=None, extended_auditing_policy=None, license_type=None, max_size_gb=None, min_capacity=None, name=None, read_replica_count=None, read_scale=None, restore_point_in_time=None, sample_name=None, server_id=None, sku_name=None, tags=None, threat_detection_policy=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a MS SQL Database.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -143,6 +140,9 @@ class Database(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

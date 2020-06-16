@@ -34,10 +34,7 @@ class HybridConnection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, relay_namespace_name=None, requires_client_authorization=None, resource_group_name=None, user_metadata=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Relay Hybrid Connection.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -57,6 +54,9 @@ class HybridConnection(pulumi.CustomResource):
             requires_client_authorization=False,
             user_metadata="testmetadata")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

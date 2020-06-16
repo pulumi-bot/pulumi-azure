@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Storage
 {
     /// <summary>
     /// Manages a Queue within an Azure Storage Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +40,9 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {

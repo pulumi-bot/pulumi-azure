@@ -46,10 +46,7 @@ class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
 def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=None):
     """
     Use this data source to access information about all the Subscriptions currently available.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -59,6 +56,9 @@ def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=N
     pulumi.export("availableSubscriptions", available.subscriptions)
     pulumi.export("firstAvailableSubscriptionDisplayName", available.subscriptions[0]["display_name"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str display_name_contains: A case-insensitive value which must be contained within the `display_name` field, used to filter the results

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an ExpressRoute gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ExpressRouteGateway extends pulumi.CustomResource {
     /**

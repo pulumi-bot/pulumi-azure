@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a MySQL Dataset inside a Azure Data Factory.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -48,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDatasetMysql, err := datafactory.NewDatasetMysql(ctx, "exampleDatasetMysql", &datafactory.DatasetMysqlArgs{
+// 		_, err = datafactory.NewDatasetMysql(ctx, "exampleDatasetMysql", &datafactory.DatasetMysqlArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			DataFactoryName:   exampleFactory.Name,
 // 			LinkedServiceName: exampleLinkedServiceMysql.Name,
@@ -60,6 +57,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type DatasetMysql struct {
 	pulumi.CustomResourceState
 

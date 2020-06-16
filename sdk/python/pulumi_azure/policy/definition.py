@@ -62,10 +62,7 @@ class Definition(pulumi.CustomResource):
         Manages a policy rule definition on a management group or your provider subscription.
 
         Policy definitions do not take effect until they are assigned to a scope using a Policy Assignment.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -107,6 +104,9 @@ class Definition(pulumi.CustomResource):
         \"\"\",
             policy_type="Custom")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,9 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Public IP Prefix.
-//
 // ## Example Usage
-//
 // ### Reference An Existing)
 //
 // ```go
@@ -34,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupPublicIpPrefix(ctx *pulumi.Context, args *LookupPublicIpPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPublicIpPrefixResult, error) {
 	var rv LookupPublicIpPrefixResult
 	err := ctx.Invoke("azure:network/getPublicIpPrefix:getPublicIpPrefix", args, &rv, opts...)

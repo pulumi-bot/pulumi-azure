@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Relay
 {
     /// <summary>
     /// Manages an Azure Relay Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Azure.Relay
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

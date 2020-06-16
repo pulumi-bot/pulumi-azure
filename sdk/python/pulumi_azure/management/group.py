@@ -34,10 +34,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, display_name=None, group_id=None, name=None, parent_management_group_id=None, subscription_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Management Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -53,6 +50,9 @@ class Group(pulumi.CustomResource):
             subscription_ids=[current.subscription_id])
         # other subscription IDs can go here
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -30,10 +30,7 @@ class ProductGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, group_name=None, product_id=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Product Assignment to a Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -53,6 +50,9 @@ class ProductGroup(pulumi.CustomResource):
             api_management_name=example_service.name,
             resource_group_name=example_service.resource_group_name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

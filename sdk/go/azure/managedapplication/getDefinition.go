@@ -8,10 +8,7 @@ import (
 )
 
 // Uses this data source to access information about an existing Managed Application Definition.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupDefinition(ctx *pulumi.Context, args *LookupDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupDefinitionResult, error) {
 	var rv LookupDefinitionResult
 	err := ctx.Invoke("azure:managedapplication/getDefinition:getDefinition", args, &rv, opts...)

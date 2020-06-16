@@ -51,10 +51,7 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, create_option=None, disk_size_gb=None, encryption_settings=None, location=None, name=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Disk Snapshot.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -73,6 +70,9 @@ class Snapshot(pulumi.CustomResource):
             create_option="Copy",
             source_uri=example_managed_disk.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

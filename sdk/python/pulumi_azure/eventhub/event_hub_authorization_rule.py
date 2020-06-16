@@ -68,10 +68,7 @@ class EventHubAuthorizationRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, eventhub_name=None, listen=None, manage=None, name=None, namespace_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Event Hubs authorization Rule within an Event Hub.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -99,6 +96,9 @@ class EventHubAuthorizationRule(pulumi.CustomResource):
             send=False,
             manage=False)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

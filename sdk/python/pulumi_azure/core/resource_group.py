@@ -26,10 +26,7 @@ class ResourceGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Resource Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -37,6 +34,9 @@ class ResourceGroup(pulumi.CustomResource):
 
         example = azure.core.ResourceGroup("example", location="West Europe")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EventGrid Event Subscription
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription
  */

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Stream Analytics Job.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +32,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Job extends pulumi.CustomResource {
     /**

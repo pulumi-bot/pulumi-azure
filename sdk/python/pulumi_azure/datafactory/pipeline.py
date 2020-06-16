@@ -46,10 +46,7 @@ class Pipeline(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, activities_json=None, annotations=None, data_factory_name=None, description=None, name=None, parameters=None, resource_group_name=None, variables=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Pipeline inside a Azure Data Factory.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -63,7 +60,6 @@ class Pipeline(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             data_factory_name=example_factory.name)
         ```
-
         ### With Activities
 
         ```python
@@ -90,6 +86,9 @@ class Pipeline(pulumi.CustomResource):
         ]
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

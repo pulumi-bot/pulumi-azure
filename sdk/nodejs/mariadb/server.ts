@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a MariaDB Server.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     sslEnforcementEnabled: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Server extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages a Connection for a Virtual Hub.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -58,6 +55,9 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualHubConnection : Pulumi.CustomResource
     {

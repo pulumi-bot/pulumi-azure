@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing ExpressRoute circuit.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  * export const expressRouteCircuitId = example.then(example => example.id);
  * export const serviceKey = example.then(example => example.serviceKey);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getExpressRouteCircuit(args: GetExpressRouteCircuitArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitResult> {
     if (!opts) {

@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about existing resources.
+ * ## Example Usage
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getResources(args?: GetResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcesResult> {
     args = args || {};

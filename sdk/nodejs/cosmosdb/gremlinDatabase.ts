@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Gremlin Database within a Cosmos DB Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class GremlinDatabase extends pulumi.CustomResource {
     /**

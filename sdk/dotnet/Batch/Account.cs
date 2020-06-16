@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Batch
 {
     /// <summary>
     /// Manages an Azure Batch account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.Batch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

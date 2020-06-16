@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a ServiceBus Subscription.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     maxDeliveryCount: 1,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Subscription extends pulumi.CustomResource {
     /**

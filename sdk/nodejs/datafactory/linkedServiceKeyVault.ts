@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Linked Service (connection) between Key Vault and Azure Data Factory.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     keyVaultId: exampleKeyVault.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LinkedServiceKeyVault extends pulumi.CustomResource {
     /**

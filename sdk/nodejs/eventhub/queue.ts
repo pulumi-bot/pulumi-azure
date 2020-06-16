@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a ServiceBus Queue.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     enablePartitioning: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue
  */

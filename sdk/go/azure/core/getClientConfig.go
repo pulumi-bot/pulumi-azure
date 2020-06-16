@@ -8,6 +8,10 @@ import (
 )
 
 // Use this data source to access the configuration of the AzureRM provider.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	var rv GetClientConfigResult
 	err := ctx.Invoke("azure:core/getClientConfig:getClientConfig", nil, &rv, opts...)

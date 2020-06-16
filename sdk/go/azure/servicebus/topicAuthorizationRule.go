@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -51,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopicAuthorizationRule, err := servicebus.NewTopicAuthorizationRule(ctx, "exampleTopicAuthorizationRule", &servicebus.TopicAuthorizationRuleArgs{
+// 		_, err = servicebus.NewTopicAuthorizationRule(ctx, "exampleTopicAuthorizationRule", &servicebus.TopicAuthorizationRuleArgs{
 // 			NamespaceName:     exampleNamespace.Name,
 // 			TopicName:         exampleTopic.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
@@ -66,6 +63,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 

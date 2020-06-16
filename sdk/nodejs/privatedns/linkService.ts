@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages a Private Link Service.
  *
  * > **NOTE** Private Link is now in [GA](https://docs.microsoft.com/en-gb/azure/private-link/).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,6 +67,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LinkService extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Subnet within a Virtual Network.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
 	err := ctx.Invoke("azure:network/getSubnet:getSubnet", args, &rv, opts...)

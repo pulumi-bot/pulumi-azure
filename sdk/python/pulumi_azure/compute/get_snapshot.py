@@ -83,10 +83,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
 def get_snapshot(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Snapshot.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -95,6 +92,9 @@ def get_snapshot(name=None,resource_group_name=None,opts=None):
     example = azure.compute.get_snapshot(name="my-snapshot",
         resource_group_name="my-resource-group")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Snapshot.

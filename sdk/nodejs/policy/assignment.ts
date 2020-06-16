@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Configures the specified Policy Definition at the specified Scope. Also, Policy Set Definitions are supported.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,6 +56,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Assignment extends pulumi.CustomResource {
     /**

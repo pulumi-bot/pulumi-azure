@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Linked Service (connection) between Key Vault and Azure Data Factory.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type LinkedServiceKeyVault struct {
 	pulumi.CustomResourceState
 

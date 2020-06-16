@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Azure Machine Learning Workspace
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Workspace struct {
 	pulumi.CustomResourceState
 

@@ -54,10 +54,7 @@ class Assignment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, display_name=None, identity=None, location=None, name=None, not_scopes=None, parameters=None, policy_definition_id=None, scope=None, __props__=None, __name__=None, __opts__=None):
         """
         Configures the specified Policy Definition at the specified Scope. Also, Policy Set Definitions are supported.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -103,6 +100,9 @@ class Assignment(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

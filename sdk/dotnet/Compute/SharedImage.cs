@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Compute
 {
     /// <summary>
     /// Manages a Shared Image within a Shared Image Gallery.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +53,9 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SharedImage : Pulumi.CustomResource
     {

@@ -13,10 +13,7 @@ import (
 // Manages a ServiceBus Topic.
 //
 // **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -46,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopic, err := servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
+// 		_, err = servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      exampleNamespace.Name,
 // 			EnablePartitioning: pulumi.Bool(true),
@@ -58,6 +55,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Topic struct {
 	pulumi.CustomResourceState
 

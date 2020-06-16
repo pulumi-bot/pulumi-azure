@@ -11,10 +11,7 @@ namespace Pulumi.Azure.LogicApps
 {
     /// <summary>
     /// Manages a HTTP Request Trigger within a Logic App Workflow
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TriggerHttpRequest : Pulumi.CustomResource
     {

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing Management Group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  * });
  * export const displayName = example.then(example => example.displayName);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup */
 export function getManagementGroup(args?: GetManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupResult> {

@@ -81,10 +81,7 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
 def get_virtual_network(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Network.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -94,6 +91,9 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("virtualNetworkId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Virtual Network.

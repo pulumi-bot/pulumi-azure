@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataLake
 {
     /// <summary>
     /// Manages an Azure Data Lake Store.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Store : Pulumi.CustomResource
     {

@@ -43,10 +43,7 @@ class RoleDefinition(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, assignable_scopes=None, description=None, name=None, permissions=None, role_definition_id=None, scope=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -62,6 +59,9 @@ class RoleDefinition(pulumi.CustomResource):
             }],
             assignable_scopes=[primary.id])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about a Platform Image.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -36,6 +33,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetPlatformImage(ctx *pulumi.Context, args *GetPlatformImageArgs, opts ...pulumi.InvokeOption) (*GetPlatformImageResult, error) {
 	var rv GetPlatformImageResult
 	err := ctx.Invoke("azure:compute/getPlatformImage:getPlatformImage", args, &rv, opts...)

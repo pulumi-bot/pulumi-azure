@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Custom Trigger within a Logic App Workflow
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TriggerCustom extends pulumi.CustomResource {
     /**

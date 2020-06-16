@@ -11,10 +11,7 @@ namespace Pulumi.Azure.LogAnalytics
 {
     /// <summary>
     /// Manages a Log Analytics (formally Operational Insights) Windows Performance Counter DataSource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Azure.LogAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DataSourceWindowsPerformanceCounter : Pulumi.CustomResource
     {

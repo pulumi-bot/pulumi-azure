@@ -11,10 +11,7 @@ import (
 )
 
 // Manage a Dedicated Host Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDedicatedHostGroup, err := compute.NewDedicatedHostGroup(ctx, "exampleDedicatedHostGroup", &compute.DedicatedHostGroupArgs{
+// 		_, err = compute.NewDedicatedHostGroup(ctx, "exampleDedicatedHostGroup", &compute.DedicatedHostGroupArgs{
 // 			ResourceGroupName:        exampleResourceGroup.Name,
 // 			Location:                 exampleResourceGroup.Location,
 // 			PlatformFaultDomainCount: pulumi.Int(1),
@@ -45,6 +42,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type DedicatedHostGroup struct {
 	pulumi.CustomResourceState
 

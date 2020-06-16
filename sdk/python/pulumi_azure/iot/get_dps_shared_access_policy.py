@@ -71,10 +71,7 @@ class AwaitableGetDpsSharedAccessPolicyResult(GetDpsSharedAccessPolicyResult):
 def get_dps_shared_access_policy(iothub_dps_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing IotHub Device Provisioning Service Shared Access Policy
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -84,6 +81,9 @@ def get_dps_shared_access_policy(iothub_dps_name=None,name=None,resource_group_n
         resource_group_name=azurerm_resource_group["example"]["name"],
         iothub_dps_name=azurerm_iothub_dps["example"]["name"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str iothub_dps_name: Specifies the name of the IoT Hub Device Provisioning service to which the Shared Access Policy belongs.

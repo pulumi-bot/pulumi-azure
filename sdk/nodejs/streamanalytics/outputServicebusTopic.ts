@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Stream Analytics Output to a ServiceBus Topic.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,6 +43,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class OutputServicebusTopic extends pulumi.CustomResource {
     /**

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS CNAME Records within Azure DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +21,6 @@ import * as utilities from "../utilities";
  *     record: "contoso.com",
  * });
  * ```
- *
  * ### Alias Record)
  *
  * ```typescript
@@ -46,6 +42,9 @@ import * as utilities from "../utilities";
  *     targetResourceId: target.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class CNameRecord extends pulumi.CustomResource {
     /**

@@ -38,10 +38,7 @@ class SharedImageGallery(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Shared Image Gallery.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -57,6 +54,9 @@ class SharedImageGallery(pulumi.CustomResource):
                 "World": "Example",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

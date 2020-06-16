@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Traffic Manager Endpoint.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type TrafficManagerEndpoint struct {
 	pulumi.CustomResourceState
 

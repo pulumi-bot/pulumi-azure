@@ -53,10 +53,7 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Data Share Account.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -66,6 +63,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resource-group")
     pulumi.export("id", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of this Data Share Account.

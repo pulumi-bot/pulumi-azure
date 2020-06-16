@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
+// 		_, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
 // 			GalleryName:       "my-image-gallery",
 // 			Name:              "my-image",
 // 			ResourceGroupName: "example-resources",
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupSharedImage(ctx *pulumi.Context, args *LookupSharedImageArgs, opts ...pulumi.InvokeOption) (*LookupSharedImageResult, error) {
 	var rv LookupSharedImageResult
 	err := ctx.Invoke("azure:compute/getSharedImage:getSharedImage", args, &rv, opts...)

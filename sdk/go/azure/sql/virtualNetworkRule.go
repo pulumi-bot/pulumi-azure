@@ -11,10 +11,7 @@ import (
 )
 
 // Allows you to add, update, or remove an Azure SQL server to a subnet of a virtual network.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -65,7 +62,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sqlvnetrule, err := sql.NewVirtualNetworkRule(ctx, "sqlvnetrule", &sql.VirtualNetworkRuleArgs{
+// 		_, err = sql.NewVirtualNetworkRule(ctx, "sqlvnetrule", &sql.VirtualNetworkRuleArgs{
 // 			ResourceGroupName: example.Name,
 // 			ServerName:        sqlserver.Name,
 // 			SubnetId:          subnet.ID(),
@@ -77,6 +74,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 

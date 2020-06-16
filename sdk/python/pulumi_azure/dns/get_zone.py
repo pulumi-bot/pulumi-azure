@@ -67,10 +67,7 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing DNS Zone.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -80,6 +77,9 @@ def get_zone(name=None,resource_group_name=None,opts=None):
         resource_group_name="search-service")
     pulumi.export("dnsZoneId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the DNS Zone.

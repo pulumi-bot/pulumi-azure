@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Kusto (also known as Azure Data Explorer) Database
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  *     softDeletePeriod: "P31D",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Database extends pulumi.CustomResource {
     /**

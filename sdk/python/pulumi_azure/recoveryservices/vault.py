@@ -38,10 +38,7 @@ class Vault(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, sku=None, soft_delete_enabled=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Recovery Services Vault.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -54,6 +51,9 @@ class Vault(pulumi.CustomResource):
             sku="Standard",
             soft_delete_enabled=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

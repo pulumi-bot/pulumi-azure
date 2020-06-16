@@ -144,10 +144,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing API Management Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -157,6 +154,9 @@ def get_service(name=None,resource_group_name=None,opts=None):
         resource_group_name="search-service")
     pulumi.export("apiManagementId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the API Management service.

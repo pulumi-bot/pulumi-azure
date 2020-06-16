@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to set a user or group as the AD administrator for an Azure SQL server
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  *     objectId: current.then(current => current.objectId),
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     /**

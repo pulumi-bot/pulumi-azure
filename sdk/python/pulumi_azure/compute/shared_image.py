@@ -66,10 +66,7 @@ class SharedImage(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, eula=None, gallery_name=None, hyper_v_generation=None, identifier=None, location=None, name=None, os_type=None, privacy_statement_uri=None, release_note_uri=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Shared Image within a Shared Image Gallery.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -95,6 +92,9 @@ class SharedImage(pulumi.CustomResource):
                 "sku": "ExampleSku",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

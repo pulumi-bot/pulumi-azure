@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a Load Balancer Backend Address Pool.
  *
  * > **NOTE:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     loadbalancerId: exampleLoadBalancer.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class BackendAddressPool extends pulumi.CustomResource {
     /**

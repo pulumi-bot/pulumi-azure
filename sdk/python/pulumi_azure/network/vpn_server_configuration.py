@@ -87,10 +87,7 @@ class VpnServerConfiguration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, azure_active_directory_authentications=None, client_revoked_certificates=None, client_root_certificates=None, ipsec_policy=None, location=None, name=None, radius_server=None, resource_group_name=None, tags=None, vpn_authentication_types=None, vpn_protocols=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VPN Server Configuration.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -126,6 +123,9 @@ class VpnServerConfiguration(pulumi.CustomResource):
         \"\"\",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

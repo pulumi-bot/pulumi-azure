@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Point-to-Site VPN Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     scaleUnit: 1,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PointToPointVpnGateway extends pulumi.CustomResource {
     /**

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Azure Backup for an Azure VM
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     backupPolicyId: examplePolicyVM.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ProtectedVM extends pulumi.CustomResource {
     /**

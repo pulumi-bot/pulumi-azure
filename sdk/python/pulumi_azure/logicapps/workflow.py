@@ -66,10 +66,7 @@ class Workflow(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, logic_app_integration_account_id=None, name=None, parameters=None, resource_group_name=None, tags=None, workflow_schema=None, workflow_version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Logic App Workflow.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -80,6 +77,9 @@ class Workflow(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -42,10 +42,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Enables you to manage Private DNS zones within Azure DNS. These zones are hosted on Azure's name servers.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -54,6 +51,9 @@ class Zone(pulumi.CustomResource):
         example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
         example_zone = azure.privatedns.Zone("exampleZone", resource_group_name=example_resource_group.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

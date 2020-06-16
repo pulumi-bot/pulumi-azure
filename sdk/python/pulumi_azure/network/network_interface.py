@@ -82,10 +82,7 @@ class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, dns_servers=None, enable_accelerated_networking=None, enable_ip_forwarding=None, internal_dns_name_label=None, ip_configurations=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Network Interface.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -109,6 +106,9 @@ class NetworkInterface(pulumi.CustomResource):
                 "privateIpAddressAllocation": "Dynamic",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

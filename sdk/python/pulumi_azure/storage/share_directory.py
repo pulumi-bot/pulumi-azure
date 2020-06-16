@@ -30,10 +30,7 @@ class ShareDirectory(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, metadata=None, name=None, share_name=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Directory within an Azure Storage File Share.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -52,6 +49,9 @@ class ShareDirectory(pulumi.CustomResource):
             share_name=example_share.name,
             storage_account_name=example_account.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

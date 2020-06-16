@@ -53,10 +53,7 @@ class AwaitableGetNetworkWatcherResult(GetNetworkWatcherResult):
 def get_network_watcher(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Watcher.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -66,6 +63,9 @@ def get_network_watcher(name=None,resource_group_name=None,opts=None):
         resource_group_name=azurerm_resource_group["example"]["name"])
     pulumi.export("networkWatcherId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the Network Watcher.

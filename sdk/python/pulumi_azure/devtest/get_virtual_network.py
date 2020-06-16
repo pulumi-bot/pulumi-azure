@@ -64,10 +64,7 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
 def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Dev Test Lab Virtual Network.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -78,6 +75,9 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
         resource_group_name="example-resource")
     pulumi.export("labSubnetName", example.allowed_subnets[0]["lab_subnet_name"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str lab_name: Specifies the name of the Dev Test Lab.

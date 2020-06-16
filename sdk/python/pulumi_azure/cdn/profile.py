@@ -36,10 +36,7 @@ class Profile(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a CDN Profile to create a collection of CDN Endpoints.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -55,6 +52,9 @@ class Profile(pulumi.CustomResource):
                 "cost_center": "MSFT",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

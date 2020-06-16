@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Management Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {

@@ -63,10 +63,7 @@ class Profile(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, dns_config=None, monitor_config=None, name=None, profile_status=None, resource_group_name=None, tags=None, traffic_routing_method=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Traffic Manager Profile to which multiple endpoints can be attached.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -98,6 +95,9 @@ class Profile(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

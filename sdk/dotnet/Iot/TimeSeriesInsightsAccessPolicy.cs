@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages an Azure IoT Time Series Insights Access Policy.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +45,9 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TimeSeriesInsightsAccessPolicy : Pulumi.CustomResource
     {

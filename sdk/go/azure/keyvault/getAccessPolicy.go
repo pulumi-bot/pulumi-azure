@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about the permissions from the Management Key Vault Templates.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	var rv LookupAccessPolicyResult
 	err := ctx.Invoke("azure:keyvault/getAccessPolicy:getAccessPolicy", args, &rv, opts...)

@@ -75,10 +75,7 @@ class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
 def get_api_version_set(api_management_name=None,name=None,resource_group_name=None,opts=None):
     """
     Uses this data source to access information about an API Version Set within an API Management Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -89,6 +86,9 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
         name="example-api-version-set")
     pulumi.export("apiManagementApiVersionSetId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str api_management_name: The name of the API Management Service where the API Version Set exists.

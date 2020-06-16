@@ -50,10 +50,7 @@ class LinkedServicePostgresql(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, connection_string=None, data_factory_name=None, description=None, integration_runtime_name=None, name=None, parameters=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Linked Service (connection) between PostgreSQL and Azure Data Factory.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -68,6 +65,9 @@ class LinkedServicePostgresql(pulumi.CustomResource):
             data_factory_name=example_factory.name,
             connection_string="Host=example;Port=5432;Database=example;UID=example;EncryptionMethod=0;Password=example")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

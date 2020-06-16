@@ -51,10 +51,7 @@ class AwaitableGetPlatformImageResult(GetPlatformImageResult):
 def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=None,opts=None):
     """
     Use this data source to access information about a Platform Image.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -66,6 +63,9 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
         sku="16.04-LTS")
     pulumi.export("id", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str location: Specifies the Location to pull information about this Platform Image from.

@@ -145,10 +145,7 @@ class Frontdoor(pulumi.CustomResource):
         * Use Front Door to improve application scale and availability with instant multi-region failover
         * Use Front Door to improve application performance with SSL offload and routing requests to the fastest available application backend.
         * Use Front Door for application layer security and DDoS protection for your application.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -194,6 +191,9 @@ class Frontdoor(pulumi.CustomResource):
                 "customHttpsProvisioningEnabled": False,
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

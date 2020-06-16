@@ -34,10 +34,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, login=None, object_id=None, resource_group_name=None, server_name=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows you to set a user or group as the AD administrator for an Azure SQL server
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -58,6 +55,9 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
             tenant_id=current.tenant_id,
             object_id=current.object_id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

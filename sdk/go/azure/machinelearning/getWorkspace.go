@@ -18,7 +18,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := machinelearning.LookupWorkspace(ctx, &machinelearning.LookupWorkspaceArgs{
+// 		_, err := machinelearning.LookupWorkspace(ctx, &machinelearning.LookupWorkspaceArgs{
 // 			Name:              "example-workspace",
 // 			ResourceGroupName: "example-resources",
 // 		}, nil)

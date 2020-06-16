@@ -11,10 +11,7 @@ namespace Pulumi.Azure.ApiManagement
 {
     /// <summary>
     /// Manages an OpenID Connect Provider within a API Management Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +45,9 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class OpenIdConnectProvider : Pulumi.CustomResource
     {

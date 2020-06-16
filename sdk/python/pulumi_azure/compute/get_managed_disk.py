@@ -120,10 +120,7 @@ class AwaitableGetManagedDiskResult(GetManagedDiskResult):
 def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
     """
     Use this data source to access information about an existing Managed Disk.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -133,6 +130,9 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
         resource_group_name="example-resources")
     pulumi.export("id", existing.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Managed Disk.

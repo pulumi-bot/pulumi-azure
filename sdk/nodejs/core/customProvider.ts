@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Custom Provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class CustomProvider extends pulumi.CustomResource {
     /**

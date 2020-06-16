@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to manage an Azure SQL Database
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +46,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -115,10 +115,7 @@ class Account(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capabilities=None, consistency_policy=None, enable_automatic_failover=None, enable_multiple_write_locations=None, geo_locations=None, ip_range_filter=None, is_virtual_network_filter_enabled=None, kind=None, location=None, name=None, offer_type=None, resource_group_name=None, tags=None, virtual_network_rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a CosmosDB (formally DocumentDB) Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -152,6 +149,9 @@ class Account(pulumi.CustomResource):
                 },
             ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

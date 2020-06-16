@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Facebook Identity Provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     appSecret: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IdentityProviderFacebook extends pulumi.CustomResource {
     /**

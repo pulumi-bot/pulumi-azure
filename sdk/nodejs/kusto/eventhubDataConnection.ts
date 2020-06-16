@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Kusto (also known as Azure Data Explorer) EventHub Data Connection
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,6 +57,9 @@ import * as utilities from "../utilities";
  * });
  * //(Optional)
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class EventhubDataConnection extends pulumi.CustomResource {
     /**

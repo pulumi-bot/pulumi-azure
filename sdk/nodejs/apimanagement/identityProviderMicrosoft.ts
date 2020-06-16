@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Microsoft Identity Provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     clientSecret: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IdentityProviderMicrosoft extends pulumi.CustomResource {
     /**

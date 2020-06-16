@@ -11,9 +11,7 @@ namespace Pulumi.Azure.Authorization
 {
     /// <summary>
     /// Assigns a given Principal (User or Group) to a given Role.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Using A Built-In Role)
     /// 
     /// ```csharp
@@ -36,7 +34,6 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; Service Principal)
     /// 
     /// ```csharp
@@ -80,7 +77,6 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; User)
     /// 
     /// ```csharp
@@ -124,7 +120,6 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; Management Group)
     /// 
     /// ```csharp
@@ -169,6 +164,9 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Assignment : Pulumi.CustomResource
     {

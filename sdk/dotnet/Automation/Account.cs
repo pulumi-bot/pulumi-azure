@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a Automation Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Azure.Automation
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

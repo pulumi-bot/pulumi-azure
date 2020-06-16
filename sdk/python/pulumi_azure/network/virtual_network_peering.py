@@ -61,10 +61,7 @@ class VirtualNetworkPeering(pulumi.CustomResource):
         """
         Manages a virtual network peering which allows resources to access other
         resources in the linked virtual network.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -89,6 +86,8 @@ class VirtualNetworkPeering(pulumi.CustomResource):
             remote_virtual_network_id=example_1_virtual_network.id)
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Note
 
         Virtual Network peerings cannot be created, updated or deleted concurrently.

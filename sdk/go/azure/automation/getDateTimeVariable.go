@@ -8,11 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Automation Datetime Variable.
-//
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -36,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupDateTimeVariable(ctx *pulumi.Context, args *LookupDateTimeVariableArgs, opts ...pulumi.InvokeOption) (*LookupDateTimeVariableResult, error) {
 	var rv LookupDateTimeVariableResult
 	err := ctx.Invoke("azure:automation/getDateTimeVariable:getDateTimeVariable", args, &rv, opts...)

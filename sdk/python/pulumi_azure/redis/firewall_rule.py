@@ -34,10 +34,7 @@ class FirewallRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, end_ip=None, name=None, redis_cache_name=None, resource_group_name=None, start_ip=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Firewall Rule associated with a Redis Cache.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -69,6 +66,9 @@ class FirewallRule(pulumi.CustomResource):
             start_ip="1.2.3.4",
             end_ip="2.3.4.5")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

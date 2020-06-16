@@ -106,10 +106,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Azure SignalR service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -118,6 +115,9 @@ def get_service(name=None,resource_group_name=None,opts=None):
     example = azure.signalr.get_service(name="test-signalr",
         resource_group_name="signalr-resource-group")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the SignalR service.

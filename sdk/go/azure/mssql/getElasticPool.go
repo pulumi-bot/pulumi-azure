@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing SQL elastic pool.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupElasticPool(ctx *pulumi.Context, args *LookupElasticPoolArgs, opts ...pulumi.InvokeOption) (*LookupElasticPoolResult, error) {
 	var rv LookupElasticPoolResult
 	err := ctx.Invoke("azure:mssql/getElasticPool:getElasticPool", args, &rv, opts...)

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Storage Management Policy.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,14 +19,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
+// 		_, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
 // 			Name:              "storageaccountname",
 // 			ResourceGroupName: "resourcegroupname",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePolicy, err := storage.LookupPolicy(ctx, &storage.LookupPolicyArgs{
+// 		_, err := storage.LookupPolicy(ctx, &storage.LookupPolicyArgs{
 // 			StorageAccountId: azurerm_storage_account.Example.Id,
 // 		}, nil)
 // 		if err != nil {
@@ -39,6 +36,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetPolicy(ctx *pulumi.Context, args *GetPolicyArgs, opts ...pulumi.InvokeOption) (*GetPolicyResult, error) {
 	var rv GetPolicyResult
 	err := ctx.Invoke("azure:storage/getPolicy:getPolicy", args, &rv, opts...)

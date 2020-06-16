@@ -50,10 +50,7 @@ class VirtualWan(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allow_branch_to_branch_traffic=None, allow_vnet_to_vnet_traffic=None, disable_vpn_encryption=None, location=None, name=None, office365_local_breakout_category=None, resource_group_name=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Virtual WAN.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -64,6 +61,9 @@ class VirtualWan(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

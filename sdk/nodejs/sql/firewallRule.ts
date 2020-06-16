@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to manage an Azure SQL Firewall Rule
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     endIpAddress: "10.0.17.62",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

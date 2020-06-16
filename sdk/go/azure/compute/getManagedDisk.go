@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Managed Disk.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupManagedDisk(ctx *pulumi.Context, args *LookupManagedDiskArgs, opts ...pulumi.InvokeOption) (*LookupManagedDiskResult, error) {
 	var rv LookupManagedDiskResult
 	err := ctx.Invoke("azure:compute/getManagedDisk:getManagedDisk", args, &rv, opts...)

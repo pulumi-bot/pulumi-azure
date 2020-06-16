@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * ## Disclaimers
  *
  * > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,9 @@ import * as utilities from "../utilities";
  *     value: "on",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Configuration extends pulumi.CustomResource {
     /**

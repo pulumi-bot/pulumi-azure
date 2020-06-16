@@ -26,10 +26,7 @@ class Workspace(pulumi.CustomResource):
         > **NOTE:** Owner access permission is required.
 
         > **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -44,6 +41,9 @@ class Workspace(pulumi.CustomResource):
             scope="/subscriptions/00000000-0000-0000-0000-000000000000",
             workspace_id=example_analytics_workspace.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

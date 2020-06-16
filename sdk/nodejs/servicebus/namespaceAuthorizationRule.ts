@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**

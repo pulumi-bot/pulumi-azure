@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management AAD Identity Provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,9 @@ import * as utilities from "../utilities";
  *     allowedTenants: ["00000000-0000-0000-0000-000000000000"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IdentityProviderAad extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Sentinel Alert Rule.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -41,6 +38,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetAlertRule(ctx *pulumi.Context, args *GetAlertRuleArgs, opts ...pulumi.InvokeOption) (*GetAlertRuleResult, error) {
 	var rv GetAlertRuleResult
 	err := ctx.Invoke("azure:sentinel/getAlertRule:getAlertRule", args, &rv, opts...)

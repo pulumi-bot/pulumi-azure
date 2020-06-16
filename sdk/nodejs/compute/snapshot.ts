@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Disk Snapshot.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  *     sourceUri: exampleManagedDisk.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Snapshot extends pulumi.CustomResource {
     /**

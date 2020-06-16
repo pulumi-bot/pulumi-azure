@@ -63,10 +63,9 @@ class VirtualMachine(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_patching=None, key_vault_credential=None, r_services_enabled=None, sql_connectivity_port=None, sql_connectivity_type=None, sql_connectivity_update_password=None, sql_connectivity_update_username=None, sql_license_type=None, tags=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Microsoft SQL Virtual Machine
-
         ## Example Usage
 
-
+        This example provisions a brief Managed MsSql Virtual Machine.
 
         ```python
         import pulumi
@@ -88,6 +87,9 @@ class VirtualMachine(pulumi.CustomResource):
                 "maintenanceWindowStartingHour": 2,
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

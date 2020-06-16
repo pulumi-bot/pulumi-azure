@@ -72,10 +72,7 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_rules=None, location=None, managed_rules=None, name=None, policy_settings=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Azure Web Application Firewall Policy instance.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -159,6 +156,9 @@ class Policy(pulumi.CustomResource):
                 }],
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

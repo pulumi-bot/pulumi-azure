@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Azure IoT Time Series Insights Access Policy.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTimeSeriesInsightsAccessPolicy, err := iot.NewTimeSeriesInsightsAccessPolicy(ctx, "exampleTimeSeriesInsightsAccessPolicy", &iot.TimeSeriesInsightsAccessPolicyArgs{
+// 		_, err = iot.NewTimeSeriesInsightsAccessPolicy(ctx, "exampleTimeSeriesInsightsAccessPolicy", &iot.TimeSeriesInsightsAccessPolicyArgs{
 // 			TimeSeriesInsightsEnvironmentId: exampleTimeSeriesInsightsStandardEnvironment.Name,
 // 			PrincipalObjectId:               pulumi.String("aGUID"),
 // 			Roles: pulumi.StringArray{
@@ -56,6 +53,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type TimeSeriesInsightsAccessPolicy struct {
 	pulumi.CustomResourceState
 

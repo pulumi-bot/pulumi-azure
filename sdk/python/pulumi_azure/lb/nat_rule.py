@@ -60,10 +60,7 @@ class NatRule(pulumi.CustomResource):
         > **NOTE:** This resource cannot be used with with virtual machine scale sets, instead use the `lb.NatPool` resource.
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -89,6 +86,9 @@ class NatRule(pulumi.CustomResource):
             backend_port=3389,
             frontend_ip_configuration_name="PublicIPAddress")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

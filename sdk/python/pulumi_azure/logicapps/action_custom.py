@@ -26,10 +26,7 @@ class ActionCustom(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, body=None, logic_app_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Custom Action within a Logic App Workflow
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -57,6 +54,9 @@ class ActionCustom(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

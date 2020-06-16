@@ -122,10 +122,7 @@ class ActionGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, arm_role_receivers=None, automation_runbook_receivers=None, azure_app_push_receivers=None, azure_function_receivers=None, email_receivers=None, enabled=None, itsm_receivers=None, logic_app_receivers=None, name=None, resource_group_name=None, short_name=None, sms_receivers=None, tags=None, voice_receivers=None, webhook_receivers=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Action Group within Azure Monitor.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -200,6 +197,9 @@ class ActionGroup(pulumi.CustomResource):
                 "useCommonAlertSchema": True,
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

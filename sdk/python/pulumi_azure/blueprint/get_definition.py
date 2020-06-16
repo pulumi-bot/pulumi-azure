@@ -83,10 +83,7 @@ def get_definition(name=None,scope_id=None,opts=None):
     Use this data source to access information about an existing Azure Blueprint Definition
 
     > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -97,6 +94,9 @@ def get_definition(name=None,scope_id=None,opts=None):
     example = azure.blueprint.get_definition(name="exampleManagementGroupBP",
         scope_id=root.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Blueprint

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppInsights
 {
     /// <summary>
     /// Manages an Application Insights API key.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -95,6 +92,9 @@ namespace Pulumi.Azure.AppInsights
     ///     public Output&lt;string&gt; FullPermissionsApiKey { get; set; }
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ApiKey : Pulumi.CustomResource
     {

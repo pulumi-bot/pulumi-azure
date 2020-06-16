@@ -46,10 +46,7 @@ class DedicatedHost(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_replace_on_failure=None, dedicated_host_group_id=None, license_type=None, location=None, name=None, platform_fault_domain=None, sku_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage a Dedicated Host within a Dedicated Host Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -66,6 +63,9 @@ class DedicatedHost(pulumi.CustomResource):
             sku_name="DSv3-Type1",
             platform_fault_domain=1)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Twitter Identity Provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     apiSecretKey: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IdentityProviderTwitter extends pulumi.CustomResource {
     /**

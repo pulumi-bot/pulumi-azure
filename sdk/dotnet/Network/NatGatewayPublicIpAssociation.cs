@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages the association between a Nat Gateway and a Public IP.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NatGatewayPublicIpAssociation : Pulumi.CustomResource
     {

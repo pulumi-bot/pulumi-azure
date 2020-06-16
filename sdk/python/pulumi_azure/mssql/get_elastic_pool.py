@@ -99,10 +99,7 @@ class AwaitableGetElasticPoolResult(GetElasticPoolResult):
 def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=None):
     """
     Use this data source to access information about an existing SQL elastic pool.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -113,6 +110,9 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
         server_name="example-sql-server")
     pulumi.export("elasticpoolId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the elastic pool.

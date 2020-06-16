@@ -42,10 +42,7 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, inputs=None, name=None, output=None, resource_group_name=None, script=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -68,6 +65,9 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
                 "type": "bigint",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

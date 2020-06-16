@@ -11,10 +11,7 @@ namespace Pulumi.Azure.LogicApps
 {
     /// <summary>
     /// Manages a Logic App Integration Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IntegrationAccount : Pulumi.CustomResource
     {

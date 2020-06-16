@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Container within an Azure Storage Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     containerAccessType: "private",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Container extends pulumi.CustomResource {
     /**

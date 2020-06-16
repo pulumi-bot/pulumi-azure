@@ -12,8 +12,10 @@ import (
 
 // Manages a virtual network peering which allows resources to access other
 // resources in the linked virtual network.
+// ## Example Usage
 //
-//
+// {{% examples %}}
+// {{% /examples %}}
 // ## Note
 //
 // Virtual Network peerings cannot be created, updated or deleted concurrently.

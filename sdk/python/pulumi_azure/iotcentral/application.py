@@ -46,10 +46,7 @@ class Application(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, display_name=None, location=None, name=None, resource_group_name=None, sku=None, sub_domain=None, tags=None, template=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an IoT Central Application
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -67,6 +64,9 @@ class Application(pulumi.CustomResource):
                 "Foo": "Bar",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

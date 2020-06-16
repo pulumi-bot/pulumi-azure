@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an App Service Environment.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -52,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		gateway, err := network.NewSubnet(ctx, "gateway", &network.SubnetArgs{
+// 		_, err = network.NewSubnet(ctx, "gateway", &network.SubnetArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			VirtualNetworkName: exampleVirtualNetwork.Name,
 // 			AddressPrefix:      pulumi.String("10.0.2.0/24"),
@@ -60,7 +57,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEnvironment, err := appservice.NewEnvironment(ctx, "exampleEnvironment", &appservice.EnvironmentArgs{
+// 		_, err = appservice.NewEnvironment(ctx, "exampleEnvironment", &appservice.EnvironmentArgs{
 // 			SubnetId:            ase.ID(),
 // 			PricingTier:         pulumi.String("I2"),
 // 			FrontEndScaleFactor: pulumi.Int(10),
@@ -72,6 +69,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Environment struct {
 	pulumi.CustomResourceState
 

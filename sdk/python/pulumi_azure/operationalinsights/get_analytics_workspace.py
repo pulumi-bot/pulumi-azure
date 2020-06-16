@@ -92,10 +92,7 @@ class AwaitableGetAnalyticsWorkspaceResult(GetAnalyticsWorkspaceResult):
 def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -105,6 +102,9 @@ def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
         resource_group_name="acctest")
     pulumi.export("logAnalyticsWorkspaceId", example.workspace_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Log Analytics Workspace.

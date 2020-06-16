@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Core
 {
     /// <summary>
     /// Manages a Resource Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Azure.Core
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource
     {

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Data Lake Store.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupStore(ctx *pulumi.Context, args *LookupStoreArgs, opts ...pulumi.InvokeOption) (*LookupStoreResult, error) {
 	var rv LookupStoreResult
 	err := ctx.Invoke("azure:datalake/getStore:getStore", args, &rv, opts...)

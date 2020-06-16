@@ -30,10 +30,7 @@ class IdentityProviderMicrosoft(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, client_id=None, client_secret=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Microsoft Identity Provider.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -52,6 +49,9 @@ class IdentityProviderMicrosoft(pulumi.CustomResource):
             client_id="00000000-0000-0000-0000-000000000000",
             client_secret="00000000000000000000000000000000")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

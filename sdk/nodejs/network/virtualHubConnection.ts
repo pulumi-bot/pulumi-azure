@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Connection for a Virtual Hub.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     remoteVirtualNetworkId: exampleVirtualNetwork.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VirtualHubConnection extends pulumi.CustomResource {
     /**

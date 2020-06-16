@@ -54,10 +54,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, confirmation=None, email=None, first_name=None, last_name=None, note=None, password=None, resource_group_name=None, state=None, user_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management User.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -79,6 +76,9 @@ class User(pulumi.CustomResource):
             email="user@example.com",
             state="active")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

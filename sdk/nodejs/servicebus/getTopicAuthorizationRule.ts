@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *
  * export const servicebusAuthorizationRuleId = azurem_servicebus_topic_authorization_rule_example.id;
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getTopicAuthorizationRule(args: GetTopicAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicAuthorizationRuleResult> {
     if (!opts) {

@@ -92,10 +92,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
 def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts=None):
     """
     Use this data source to access information about an existing Subnet within a Virtual Network.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -106,6 +103,9 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
         resource_group_name="networking")
     pulumi.export("subnetId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Subnet.

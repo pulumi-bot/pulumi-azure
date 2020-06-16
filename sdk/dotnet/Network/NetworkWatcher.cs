@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages a Network Watcher.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +34,9 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NetworkWatcher : Pulumi.CustomResource
     {

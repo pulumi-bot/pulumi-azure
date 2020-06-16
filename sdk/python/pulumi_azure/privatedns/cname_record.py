@@ -39,10 +39,7 @@ class CnameRecord(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, record=None, resource_group_name=None, tags=None, ttl=None, zone_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Enables you to manage DNS CNAME Records within Azure Private DNS.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -56,6 +53,9 @@ class CnameRecord(pulumi.CustomResource):
             ttl=300,
             record="contoso.com")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

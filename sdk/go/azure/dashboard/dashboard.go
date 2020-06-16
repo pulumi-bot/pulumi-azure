@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a shared dashboard in the Azure Portal.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Dashboard struct {
 	pulumi.CustomResourceState
 

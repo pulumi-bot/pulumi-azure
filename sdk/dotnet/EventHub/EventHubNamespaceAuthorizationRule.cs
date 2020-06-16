@@ -11,10 +11,7 @@ namespace Pulumi.Azure.EventHub
 {
     /// <summary>
     /// Manages an Authorization Rule for an Event Hub Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +48,9 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventHubNamespaceAuthorizationRule : Pulumi.CustomResource
     {

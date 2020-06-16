@@ -70,10 +70,7 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
 def get_route_table(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Route Table.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -82,6 +79,9 @@ def get_route_table(name=None,resource_group_name=None,opts=None):
     example = azure.network.get_route_table(name="myroutetable",
         resource_group_name="some-resource-group")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Route Table.

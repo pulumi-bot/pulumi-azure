@@ -13,10 +13,7 @@ import (
 // Manages an EventGrid Topic
 //
 // > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopic, err := eventgrid.NewTopic(ctx, "exampleTopic", &eventgrid.TopicArgs{
+// 		_, err = eventgrid.NewTopic(ctx, "exampleTopic", &eventgrid.TopicArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Tags: map[string]interface{}{
@@ -49,6 +46,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic
 type EventGridTopic struct {

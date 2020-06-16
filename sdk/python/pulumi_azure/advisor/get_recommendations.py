@@ -46,10 +46,7 @@ class AwaitableGetRecommendationsResult(GetRecommendationsResult):
 def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None,opts=None):
     """
     Use this data source to access information about an existing Advisor Recommendations.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -62,6 +59,9 @@ def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None
         filter_by_resource_groups=["example-resgroups"])
     pulumi.export("recommendations", example.recommendations)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filter_by_categories: Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.

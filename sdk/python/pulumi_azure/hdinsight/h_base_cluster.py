@@ -108,10 +108,7 @@ class HBaseCluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_version=None, component_version=None, gateway=None, location=None, name=None, resource_group_name=None, roles=None, storage_account_gen2=None, storage_accounts=None, tags=None, tier=None, tls_min_version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a HDInsight HBase Cluster.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -163,6 +160,9 @@ class HBaseCluster(pulumi.CustomResource):
                 },
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

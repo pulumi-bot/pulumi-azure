@@ -8,11 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Automation Bool Variable.
-//
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -36,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupBoolVariable(ctx *pulumi.Context, args *LookupBoolVariableArgs, opts ...pulumi.InvokeOption) (*LookupBoolVariableResult, error) {
 	var rv LookupBoolVariableResult
 	err := ctx.Invoke("azure:automation/getBoolVariable:getBoolVariable", args, &rv, opts...)

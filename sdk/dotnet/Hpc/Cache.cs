@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Hpc
     /// Manages a HPC Cache.
     /// 
     /// &gt; **Note**: During the first several months of the GA release, a request must be made to the Azure HPC Cache team to add your subscription to the access list before it can be used to create a cache instance. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -57,6 +54,9 @@ namespace Pulumi.Azure.Hpc
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cache : Pulumi.CustomResource
     {

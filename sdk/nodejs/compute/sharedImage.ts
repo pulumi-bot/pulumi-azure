@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Shared Image within a Shared Image Gallery.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SharedImage extends pulumi.CustomResource {
     /**

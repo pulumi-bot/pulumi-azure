@@ -187,10 +187,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, additional_locations=None, certificates=None, hostname_configuration=None, identity=None, location=None, name=None, notification_sender_email=None, policy=None, protocols=None, publisher_email=None, publisher_name=None, resource_group_name=None, security=None, sign_in=None, sign_up=None, sku_name=None, tags=None, virtual_network_configuration=None, virtual_network_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -213,6 +210,9 @@ class Service(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

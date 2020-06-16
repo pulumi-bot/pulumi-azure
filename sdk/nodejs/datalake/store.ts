@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Data Lake Store.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     encryptionType: "ServiceManaged",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Store extends pulumi.CustomResource {
     /**

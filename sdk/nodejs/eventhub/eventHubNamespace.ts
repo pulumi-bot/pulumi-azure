@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EventHub Namespace.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class EventHubNamespace extends pulumi.CustomResource {
     /**

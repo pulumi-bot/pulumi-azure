@@ -34,10 +34,7 @@ class Remediation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location_filters=None, name=None, policy_assignment_id=None, policy_definition_reference_id=None, scope=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Policy Remediation at the specified Scope.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -87,6 +84,9 @@ class Remediation(pulumi.CustomResource):
             policy_assignment_id=example_assignment.id,
             location_filters=["West Europe"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

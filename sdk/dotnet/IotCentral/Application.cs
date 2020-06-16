@@ -11,10 +11,7 @@ namespace Pulumi.Azure.IotCentral
 {
     /// <summary>
     /// Manages an IoT Central Application
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +42,9 @@ namespace Pulumi.Azure.IotCentral
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

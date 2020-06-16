@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an ExpressRoute Circuit Peering.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ExpressRouteCircuitPeering struct {
 	pulumi.CustomResourceState
 

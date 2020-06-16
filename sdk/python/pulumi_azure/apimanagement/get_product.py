@@ -92,10 +92,7 @@ class AwaitableGetProductResult(GetProductResult):
 def get_product(api_management_name=None,product_id=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing API Management Product.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -106,6 +103,9 @@ def get_product(api_management_name=None,product_id=None,resource_group_name=Non
         resource_group_name="search-service")
     pulumi.export("productTerms", example.terms)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str api_management_name: The Name of the API Management Service in which this Product exists.

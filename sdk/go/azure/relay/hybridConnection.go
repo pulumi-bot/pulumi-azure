@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Azure Relay Hybrid Connection.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleHybridConnection, err := relay.NewHybridConnection(ctx, "exampleHybridConnection", &relay.HybridConnectionArgs{
+// 		_, err = relay.NewHybridConnection(ctx, "exampleHybridConnection", &relay.HybridConnectionArgs{
 // 			ResourceGroupName:           exampleResourceGroup.Name,
 // 			RelayNamespaceName:          exampleNamespace.Name,
 // 			RequiresClientAuthorization: pulumi.Bool(false),
@@ -57,6 +54,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type HybridConnection struct {
 	pulumi.CustomResourceState
 

@@ -95,10 +95,7 @@ class AwaitableGetRegistryResult(GetRegistryResult):
 def get_registry(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Container Registry.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -108,6 +105,9 @@ def get_registry(name=None,resource_group_name=None,opts=None):
         resource_group_name="test")
     pulumi.export("loginServer", example.login_server)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Container Registry.

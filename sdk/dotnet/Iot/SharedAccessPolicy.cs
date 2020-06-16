@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages an IotHub Shared Access Policy
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SharedAccessPolicy : Pulumi.CustomResource
     {

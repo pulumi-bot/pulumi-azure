@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Automation Credential.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,9 @@ import * as utilities from "../utilities";
  *     description: "This is an example credential",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Credential extends pulumi.CustomResource {
     /**

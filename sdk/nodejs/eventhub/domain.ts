@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EventGrid Domain
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain
  */

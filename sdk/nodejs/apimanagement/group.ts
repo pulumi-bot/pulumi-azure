@@ -6,11 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Group.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +27,9 @@ import * as utilities from "../utilities";
  *     description: "This is an example API management group.",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Group extends pulumi.CustomResource {
     /**

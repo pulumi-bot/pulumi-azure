@@ -42,10 +42,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_name=None, hot_cache_period=None, location=None, name=None, resource_group_name=None, soft_delete_period=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Kusto (also known as Azure Data Explorer) Database
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -66,6 +63,9 @@ class Database(pulumi.CustomResource):
             hot_cache_period="P7D",
             soft_delete_period="P31D")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

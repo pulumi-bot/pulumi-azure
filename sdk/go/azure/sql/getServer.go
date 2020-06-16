@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing SQL Azure Database Server.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetServer(ctx *pulumi.Context, args *GetServerArgs, opts ...pulumi.InvokeOption) (*GetServerResult, error) {
 	var rv GetServerResult
 	err := ctx.Invoke("azure:sql/getServer:getServer", args, &rv, opts...)

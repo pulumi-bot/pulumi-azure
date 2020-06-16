@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS AAAA Records within Azure Private DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AAAARecord extends pulumi.CustomResource {
     /**

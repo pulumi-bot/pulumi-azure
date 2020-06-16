@@ -11,9 +11,7 @@ import (
 )
 
 // Manages an App Service Plan component.
-//
 // ## Example Usage
-//
 // ### Dedicated)
 //
 // ```go
@@ -33,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku: &appservice.PlanSkuArgs{
@@ -48,7 +46,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Shared / Consumption Plan)
 //
 // ```go
@@ -68,7 +65,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("FunctionApp"),
@@ -84,7 +81,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Linux)
 //
 // ```go
@@ -104,7 +100,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("Linux"),
@@ -121,7 +117,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Windows Container)
 //
 // ```go
@@ -141,7 +136,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("xenon"),
@@ -158,6 +153,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Plan struct {
 	pulumi.CustomResourceState
 

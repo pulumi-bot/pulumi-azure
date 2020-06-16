@@ -67,9 +67,7 @@ class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
 def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing User Assigned Identity.
-
     ## Example Usage
-
     ### Reference An Existing)
 
     ```python
@@ -81,6 +79,9 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     pulumi.export("uaiClientId", example.client_id)
     pulumi.export("uaiPrincipalId", example.principal_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the User Assigned Identity.

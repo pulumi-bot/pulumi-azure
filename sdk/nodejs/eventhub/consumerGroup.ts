@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Event Hubs Consumer Group as a nested resource within an Event Hub.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +35,9 @@ import * as utilities from "../utilities";
  *     userMetadata: "some-meta-data",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ConsumerGroup extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a ServiceBus Namespace.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNamespace, err := servicebus.NewNamespace(ctx, "exampleNamespace", &servicebus.NamespaceArgs{
+// 		_, err = servicebus.NewNamespace(ctx, "exampleNamespace", &servicebus.NamespaceArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku:               pulumi.String("Standard"),
@@ -48,6 +45,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace
 type Namespace struct {

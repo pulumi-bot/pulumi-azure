@@ -84,10 +84,7 @@ class Topic(pulumi.CustomResource):
         Manages a ServiceBus Topic.
 
         **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -106,6 +103,9 @@ class Topic(pulumi.CustomResource):
             namespace_name=example_namespace.name,
             enable_partitioning=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

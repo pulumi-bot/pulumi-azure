@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an IotHub Shared Access Policy
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,9 @@ import * as utilities from "../utilities";
  *     registryWrite: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SharedAccessPolicy extends pulumi.CustomResource {
     /**

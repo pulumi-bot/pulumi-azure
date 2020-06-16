@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Backup VM Backup Policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +59,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PolicyVM extends pulumi.CustomResource {
     /**

@@ -49,10 +49,7 @@ class AwaitableGetResourceGroupResult(GetResourceGroupResult):
 def get_resource_group(name=None,opts=None):
     """
     Use this data source to access information about an existing Resource Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -61,6 +58,9 @@ def get_resource_group(name=None,opts=None):
     example = azure.core.get_resource_group(name="existing")
     pulumi.export("id", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The Name of this Resource Group.

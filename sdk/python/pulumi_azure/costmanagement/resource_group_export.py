@@ -53,10 +53,7 @@ class ResourceGroupExport(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, active=None, delivery_info=None, name=None, query=None, recurrence_period_end=None, recurrence_period_start=None, recurrence_type=None, resource_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Cost Management Export for a Resource Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -83,6 +80,9 @@ class ResourceGroupExport(pulumi.CustomResource):
                 "timeFrame": "WeekToDate",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

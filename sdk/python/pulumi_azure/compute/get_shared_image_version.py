@@ -85,10 +85,7 @@ class AwaitableGetSharedImageVersionResult(GetSharedImageVersionResult):
 def get_shared_image_version(gallery_name=None,image_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Version of a Shared Image within a Shared Image Gallery.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -99,6 +96,9 @@ def get_shared_image_version(gallery_name=None,image_name=None,name=None,resourc
         name="1.0.0",
         resource_group_name="example-resources")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str gallery_name: The name of the Shared Image in which the Shared Image exists.

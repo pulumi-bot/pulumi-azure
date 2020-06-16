@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** This resource requires the `Owner` permission on the Subscription.
  *
  * > **NOTE:** Deletion of this resource does not change or reset the pricing tier to `Free`
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     tier: "Standard",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SubscriptionPricing extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages a Hostname Binding within an App Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,6 +60,9 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class CustomHostnameBinding : Pulumi.CustomResource
     {

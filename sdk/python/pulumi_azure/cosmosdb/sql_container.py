@@ -48,10 +48,7 @@ class SqlContainer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, database_name=None, default_ttl=None, name=None, partition_key_path=None, resource_group_name=None, throughput=None, unique_keys=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a SQL Container within a Cosmos DB Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -70,6 +67,9 @@ class SqlContainer(pulumi.CustomResource):
                 ],
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

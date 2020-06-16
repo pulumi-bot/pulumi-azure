@@ -81,10 +81,7 @@ class AwaitableGetInsightsResult(GetInsightsResult):
 def get_insights(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Application Insights component.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -94,6 +91,9 @@ def get_insights(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("applicationInsightsInstrumentationKey", example.instrumentation_key)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Application Insights component.

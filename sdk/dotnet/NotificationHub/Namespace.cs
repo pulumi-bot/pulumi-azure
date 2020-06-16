@@ -11,10 +11,7 @@ namespace Pulumi.Azure.NotificationHub
 {
     /// <summary>
     /// Manages a Notification Hub Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.NotificationHub
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

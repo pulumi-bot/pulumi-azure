@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Kusto (also known as Azure Data Explorer) Database Principal
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type DatabasePrincipal struct {
 	pulumi.CustomResourceState
 

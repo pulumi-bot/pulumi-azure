@@ -126,10 +126,7 @@ class AwaitableGetActionGroupResult(GetActionGroupResult):
 def get_action_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access the properties of an Action Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -139,6 +136,9 @@ def get_action_group(name=None,resource_group_name=None,opts=None):
         name="tfex-actiongroup")
     pulumi.export("actionGroupId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Action Group.

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Authorization Rule for a ServiceBus Queue.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +35,9 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class QueueAuthorizationRule extends pulumi.CustomResource {
     /**

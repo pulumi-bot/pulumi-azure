@@ -56,10 +56,7 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
 def get_access_policy(name=None,opts=None):
     """
     Use this data source to access information about the permissions from the Management Key Vault Templates.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -68,6 +65,9 @@ def get_access_policy(name=None,opts=None):
     contributor = azure.keyvault.get_access_policy(name="Key Management")
     pulumi.export("accessPolicyKeyPermissions", contributor.key_permissions)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Management Template. Possible values are: `Key Management`,

@@ -17,6 +17,10 @@ import (
 // > **NOTE:** Only one `storage.AccountNetworkRules` can be tied to an `storage.Account`. Spurious changes will occur if more than `storage.AccountNetworkRules` is tied to the same `storage.Account`.
 //
 // > **NOTE:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type AccountNetworkRules struct {
 	pulumi.CustomResourceState
 

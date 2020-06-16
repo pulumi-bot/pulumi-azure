@@ -6,9 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Firewall Rule for a PostgreSQL Server
- *
  * ## Example Usage
- *
  * ### Single IP Address)
  *
  * ```typescript
@@ -25,7 +23,6 @@ import * as utilities from "../utilities";
  *     endIpAddress: "40.112.8.12",
  * });
  * ```
- *
  * ### IP Range)
  *
  * ```typescript
@@ -42,6 +39,9 @@ import * as utilities from "../utilities";
  *     endIpAddress: "40.112.255.255",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

@@ -60,10 +60,7 @@ class AwaitableGetVaultResult(GetVaultResult):
 def get_vault(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Recovery Services Vault.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -72,6 +69,9 @@ def get_vault(name=None,resource_group_name=None,opts=None):
     vault = azure.recoveryservices.get_vault(name="tfex-recovery_vault",
         resource_group_name="tfex-resource_group")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Recovery Services Vault.

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a CDN Profile to create a collection of CDN Endpoints.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleProfile, err := cdn.NewProfile(ctx, "exampleProfile", &cdn.ProfileArgs{
+// 		_, err = cdn.NewProfile(ctx, "exampleProfile", &cdn.ProfileArgs{
 // 			Location:          pulumi.String("West US"),
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku:               pulumi.String("Standard_Verizon"),
@@ -49,6 +46,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Profile struct {
 	pulumi.CustomResourceState
 

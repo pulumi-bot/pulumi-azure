@@ -11,10 +11,7 @@ namespace Pulumi.Azure.LogAnalytics
 {
     /// <summary>
     /// Manages a Log Analytics Windows Event DataSource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +45,9 @@ namespace Pulumi.Azure.LogAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DataSourceWindowsEvent : Pulumi.CustomResource
     {

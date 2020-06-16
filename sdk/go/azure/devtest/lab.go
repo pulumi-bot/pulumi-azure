@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Dev Test Lab.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleLab, err := devtest.NewLab(ctx, "exampleLab", &devtest.LabArgs{
+// 		_, err = devtest.NewLab(ctx, "exampleLab", &devtest.LabArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Tags: map[string]interface{}{
@@ -47,6 +44,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Lab struct {
 	pulumi.CustomResourceState
 

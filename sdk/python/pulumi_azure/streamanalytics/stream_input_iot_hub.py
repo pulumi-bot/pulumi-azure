@@ -54,10 +54,7 @@ class StreamInputIotHub(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, endpoint=None, eventhub_consumer_group_name=None, iothub_namespace=None, name=None, resource_group_name=None, serialization=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Stream Analytics Stream Input IoTHub.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -86,6 +83,9 @@ class StreamInputIotHub(pulumi.CustomResource):
                 "encoding": "UTF8",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

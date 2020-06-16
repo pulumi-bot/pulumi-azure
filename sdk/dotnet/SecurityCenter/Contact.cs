@@ -13,10 +13,7 @@ namespace Pulumi.Azure.SecurityCenter
     /// Manages the subscription's Security Center Contact.
     /// 
     /// &gt; **NOTE:** Owner access permission is required.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +34,9 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Contact : Pulumi.CustomResource
     {

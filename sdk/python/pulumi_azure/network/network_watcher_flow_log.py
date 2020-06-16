@@ -55,10 +55,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enabled=None, network_security_group_id=None, network_watcher_name=None, resource_group_name=None, retention_policy=None, storage_account_id=None, traffic_analytics=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Network Watcher Flow Log.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -100,6 +97,9 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
                 "intervalInMinutes": 10,
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

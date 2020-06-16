@@ -34,9 +34,7 @@ class FirewallRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, end_ip_address=None, name=None, resource_group_name=None, server_name=None, start_ip_address=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Firewall Rule for a MariaDB Server
-
         ## Example Usage
-
         ### Single IP Address)
 
         ```python
@@ -49,7 +47,6 @@ class FirewallRule(pulumi.CustomResource):
             server_name="test-server",
             start_ip_address="40.112.8.12")
         ```
-
         ### IP Range)
 
         ```python
@@ -62,6 +59,9 @@ class FirewallRule(pulumi.CustomResource):
             server_name="test-server",
             start_ip_address="40.112.0.0")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

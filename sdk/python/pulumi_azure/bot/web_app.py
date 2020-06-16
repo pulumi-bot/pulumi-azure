@@ -66,10 +66,7 @@ class WebApp(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, developer_app_insights_api_key=None, developer_app_insights_application_id=None, developer_app_insights_key=None, display_name=None, endpoint=None, location=None, luis_app_ids=None, luis_key=None, microsoft_app_id=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Bot Web App.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -83,6 +80,9 @@ class WebApp(pulumi.CustomResource):
             sku="F0",
             microsoft_app_id=current.client_id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

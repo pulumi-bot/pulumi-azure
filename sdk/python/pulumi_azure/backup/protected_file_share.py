@@ -38,10 +38,7 @@ class ProtectedFileShare(pulumi.CustomResource):
         > **NOTE:** Azure Backup for Azure File Shares is currently in public preview. During the preview, the service is subject to additional limitations and unsupported backup scenarios. [Read More](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files#limitations-for-azure-file-share-backup-during-preview)
 
         > **NOTE** Azure Backup for Azure File Shares does not support Soft Delete at this time. Deleting this resource will also delete all associated backup data. Please exercise caution. Consider using [`protect`](https://www.pulumi.com/docs/intro/concepts/programming-model/#protect) to guard against accidental deletion.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -79,6 +76,9 @@ class ProtectedFileShare(pulumi.CustomResource):
             source_file_share_name=example_share.name,
             backup_policy_id=example_policy_file_share.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -58,10 +58,7 @@ class QueueAuthorizationRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, listen=None, manage=None, name=None, namespace_name=None, queue_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Authorization Rule for a ServiceBus Queue.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -87,6 +84,9 @@ class QueueAuthorizationRule(pulumi.CustomResource):
             send=True,
             manage=False)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

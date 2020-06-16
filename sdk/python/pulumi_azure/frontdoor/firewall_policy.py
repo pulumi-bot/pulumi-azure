@@ -103,10 +103,7 @@ class FirewallPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_block_response_body=None, custom_block_response_status_code=None, custom_rules=None, enabled=None, managed_rules=None, mode=None, name=None, redirect_url=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Front Door Web Application Firewall Policy instance.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -211,6 +208,9 @@ class FirewallPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

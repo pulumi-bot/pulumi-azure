@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Resource Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
 	var rv LookupResourceGroupResult
 	err := ctx.Invoke("azure:core/getResourceGroup:getResourceGroup", args, &rv, opts...)

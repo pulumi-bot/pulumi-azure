@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Bot
 {
     /// <summary>
     /// Manages a Bot Connection.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

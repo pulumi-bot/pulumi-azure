@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a CosmosDB (formally DocumentDB) Account.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Account struct {
 	pulumi.CustomResourceState
 

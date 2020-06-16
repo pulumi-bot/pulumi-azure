@@ -60,10 +60,7 @@ class AwaitableGetProfileResult(GetProfileResult):
 def get_profile(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing CDN Profile.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -73,6 +70,9 @@ def get_profile(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("cdnProfileId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the CDN Profile.

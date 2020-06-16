@@ -54,10 +54,7 @@ class AwaitableGetPublicIPsResult(GetPublicIPsResult):
 def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about a set of existing Public IP Addresses.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -66,6 +63,9 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     example = azure.network.get_public_i_ps(attached=False,
         resource_group_name="pip-test")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str allocation_type: The Allocation Type for the Public IP Address. Possible values include `Static` or `Dynamic`.

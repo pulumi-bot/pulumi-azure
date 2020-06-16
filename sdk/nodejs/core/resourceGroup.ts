@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Resource Group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +16,9 @@ import * as utilities from "../utilities";
  *     location: "West Europe",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

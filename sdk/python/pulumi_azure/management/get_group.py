@@ -63,10 +63,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(group_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Management Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -75,6 +72,9 @@ def get_group(group_id=None,name=None,opts=None):
     example = azure.management.get_group(name="00000000-0000-0000-0000-000000000000")
     pulumi.export("displayName", example.display_name)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str group_id: Specifies the name or UUID of this Management Group.

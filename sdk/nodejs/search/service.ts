@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Search Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     sku: "standard",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Service extends pulumi.CustomResource {
     /**

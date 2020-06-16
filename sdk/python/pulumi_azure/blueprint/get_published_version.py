@@ -81,11 +81,7 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
     Use this data source to access information about an existing Azure Blueprint Published Version
 
     > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
-
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -96,6 +92,9 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
         blueprint_name="exampleBluePrint",
         version="dev_v2.3")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str blueprint_name: The name of the Blueprint Definition

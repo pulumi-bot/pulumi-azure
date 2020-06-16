@@ -63,10 +63,7 @@ class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
 def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Spring Cloud Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -76,6 +73,9 @@ def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
         resource_group_name=azurerm_spring_cloud_service["example"]["resource_group_name"])
     pulumi.export("springCloudServiceId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies The name of the Spring Cloud Service resource.

@@ -128,10 +128,7 @@ class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResu
 def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access the properties of an AlertingAction scheduled query rule.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -141,6 +138,9 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
         resource_group_name="example-rg")
     pulumi.export("queryRuleId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the scheduled query rule.

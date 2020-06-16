@@ -43,10 +43,7 @@ class AwaitableGetDefinitionResult(GetDefinitionResult):
 def get_definition(name=None,resource_group_name=None,opts=None):
     """
     Uses this data source to access information about an existing Managed Application Definition.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -56,6 +53,9 @@ def get_definition(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("id", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Managed Application Definition.

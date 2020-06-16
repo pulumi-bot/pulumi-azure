@@ -104,10 +104,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
 def get_namespace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing ServiceBus Namespace.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -117,6 +114,9 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("location", example.location)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the ServiceBus Namespace.

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Management Group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  * });
  * // other subscription IDs can go here
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Group extends pulumi.CustomResource {
     /**

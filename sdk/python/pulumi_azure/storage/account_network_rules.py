@@ -44,10 +44,7 @@ class AccountNetworkRules(pulumi.CustomResource):
         > **NOTE:** Only one `storage.AccountNetworkRules` can be tied to an `storage.Account`. Spurious changes will occur if more than `storage.AccountNetworkRules` is tied to the same `storage.Account`.
 
         > **NOTE:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -79,6 +76,9 @@ class AccountNetworkRules(pulumi.CustomResource):
             virtual_network_subnet_ids=[azurerm_subnet["test"]["id"]],
             bypasses=["Metrics"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

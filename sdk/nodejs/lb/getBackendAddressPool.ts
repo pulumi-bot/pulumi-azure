@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing Load Balancer's Backend Address Pool.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  * export const backendAddressPoolId = exampleBackendAddressPool.then(exampleBackendAddressPool => exampleBackendAddressPool.id);
  * export const backendIpConfigurationIds = data.azurerm_lb_backend_address_pool.beap.backend_ip_configurations.map(__item => __item.id);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getBackendAddressPool(args: GetBackendAddressPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendAddressPoolResult> {
     if (!opts) {

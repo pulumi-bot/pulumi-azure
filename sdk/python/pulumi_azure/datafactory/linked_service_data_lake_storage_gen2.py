@@ -62,10 +62,7 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, data_factory_name=None, description=None, integration_runtime_name=None, name=None, parameters=None, resource_group_name=None, service_principal_id=None, service_principal_key=None, tenant=None, url=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Linked Service (connection) between Data Lake Storage Gen2 and Azure Data Factory.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -84,6 +81,9 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
             tenant="11111111-1111-1111-1111-111111111111",
             url="https://datalakestoragegen2")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

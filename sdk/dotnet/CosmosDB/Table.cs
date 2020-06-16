@@ -11,10 +11,7 @@ namespace Pulumi.Azure.CosmosDB
 {
     /// <summary>
     /// Manages a Table within a Cosmos DB Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {

@@ -11,10 +11,9 @@ import (
 )
 
 // Links an Automation Runbook and Schedule.
-//
 // ## Example Usage
 //
-//
+// This is an example of just the Job Schedule.
 //
 // ```go
 // package main
@@ -26,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := automation.NewJobSchedule(ctx, "example", &automation.JobScheduleArgs{
+// 		_, err = automation.NewJobSchedule(ctx, "example", &automation.JobScheduleArgs{
 // 			AutomationAccountName: pulumi.String("tf-automation-account"),
 // 			Parameters: map[string]interface{}{
 // 				"resourcegroup": "tf-rgr-vm",
@@ -43,6 +42,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type JobSchedule struct {
 	pulumi.CustomResourceState
 

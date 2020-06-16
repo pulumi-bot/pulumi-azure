@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Relay
 {
     /// <summary>
     /// Manages an Azure Relay Hybrid Connection.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Azure.Relay
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HybridConnection : Pulumi.CustomResource
     {

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Kusto (also known as Azure Data Explorer) Database Principal
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +39,9 @@ import * as utilities from "../utilities";
  *     objectId: current.then(current => current.clientId),
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DatabasePrincipal extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Kusto (also known as Azure Data Explorer) Database
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		database, err := kusto.NewDatabase(ctx, "database", &kusto.DatabaseArgs{
+// 		_, err = kusto.NewDatabase(ctx, "database", &kusto.DatabaseArgs{
 // 			ResourceGroupName: rg.Name,
 // 			Location:          rg.Location,
 // 			ClusterName:       cluster.Name,
@@ -58,6 +55,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Database struct {
 	pulumi.CustomResourceState
 

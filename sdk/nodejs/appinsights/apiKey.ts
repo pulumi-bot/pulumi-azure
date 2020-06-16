@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Application Insights API key.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,6 +53,9 @@ import * as utilities from "../utilities";
  * export const authenticateSdkControlChannel = authenticateSdkControlChannelApiKey.apiKey;
  * export const fullPermissionsApiKey = fullPermissions.apiKey;
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ApiKey extends pulumi.CustomResource {
     /**

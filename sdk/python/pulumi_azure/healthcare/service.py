@@ -58,10 +58,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_policy_object_ids=None, authentication_configuration=None, cors_configuration=None, cosmosdb_throughput=None, kind=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Healthcare Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -99,6 +96,9 @@ class Service(pulumi.CustomResource):
                 "purpose": "AcceptanceTests",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Batch
 {
     /// <summary>
     /// Manages Azure Batch Application instance.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +48,9 @@ namespace Pulumi.Azure.Batch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

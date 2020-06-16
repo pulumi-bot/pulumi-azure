@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Azure Spatial Anchors Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSpatialAnchorsAccount, err := mixedreality.NewSpatialAnchorsAccount(ctx, "exampleSpatialAnchorsAccount", &mixedreality.SpatialAnchorsAccountArgs{
+// 		_, err = mixedreality.NewSpatialAnchorsAccount(ctx, "exampleSpatialAnchorsAccount", &mixedreality.SpatialAnchorsAccountArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 		})
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type SpatialAnchorsAccount struct {
 	pulumi.CustomResourceState
 

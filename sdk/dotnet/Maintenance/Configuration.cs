@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Maintenance
 {
     /// <summary>
     /// Manages a maintenance configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Azure.Maintenance
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

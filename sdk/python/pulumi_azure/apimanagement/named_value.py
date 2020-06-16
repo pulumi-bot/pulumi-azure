@@ -42,11 +42,7 @@ class NamedValue(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, display_name=None, name=None, resource_group_name=None, secret=None, tags=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Named Value.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -65,6 +61,9 @@ class NamedValue(pulumi.CustomResource):
             display_name="ExampleProperty",
             value="Example Value")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

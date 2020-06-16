@@ -10,10 +10,7 @@ import (
 // Use this data source to access endpoint connection information about an existing Private Link Service.
 //
 // > **NOTE** Private Link is currently in Public Preview.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -36,6 +33,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetServiceEndpointConnections(ctx *pulumi.Context, args *GetServiceEndpointConnectionsArgs, opts ...pulumi.InvokeOption) (*GetServiceEndpointConnectionsResult, error) {
 	var rv GetServiceEndpointConnectionsResult
 	err := ctx.Invoke("azure:privatelink/getServiceEndpointConnections:getServiceEndpointConnections", args, &rv, opts...)

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an App Service Certificate Order.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCertificateOrder, err := appservice.NewCertificateOrder(ctx, "exampleCertificateOrder", &appservice.CertificateOrderArgs{
+// 		_, err = appservice.NewCertificateOrder(ctx, "exampleCertificateOrder", &appservice.CertificateOrderArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          pulumi.String("global"),
 // 			DistinguishedName: pulumi.String("CN=example.com"),
@@ -46,6 +43,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type CertificateOrder struct {
 	pulumi.CustomResourceState
 

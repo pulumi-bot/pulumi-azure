@@ -10,10 +10,9 @@ import * as utilities from "../utilities";
  * Manages an App Service (within an App Service Plan).
  *
  * > **Note:** When using Slots - the `appSettings`, `connectionString` and `siteConfig` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
- *
  * ## Example Usage
  *
- *
+ * This example provisions a Windows App Service.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,6 +45,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AppService extends pulumi.CustomResource {
     /**

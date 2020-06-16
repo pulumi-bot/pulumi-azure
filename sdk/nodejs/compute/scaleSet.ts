@@ -12,9 +12,7 @@ import * as utilities from "../utilities";
  * ## Disclaimers
  *
  * > **Note:** The `azure.compute.ScaleSet` resource has been superseded by the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources. The existing `azure.compute.ScaleSet` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources.
- *
  * ## Example Usage
- *
  * ### With Managed Disks (Recommended)
  *
  * ```typescript
@@ -132,7 +130,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### With Unmanaged Disks
  *
  * ```typescript
@@ -208,6 +205,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Example of storageProfileImageReference with id
  *
  * ```typescript

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.ServiceBus
 {
     /// <summary>
     /// Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NamespaceAuthorizationRule : Pulumi.CustomResource
     {

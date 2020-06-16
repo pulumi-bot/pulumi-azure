@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetAppServicePlan(ctx *pulumi.Context, args *GetAppServicePlanArgs, opts ...pulumi.InvokeOption) (*GetAppServicePlanResult, error) {
 	var rv GetAppServicePlanResult
 	err := ctx.Invoke("azure:appservice/getAppServicePlan:getAppServicePlan", args, &rv, opts...)

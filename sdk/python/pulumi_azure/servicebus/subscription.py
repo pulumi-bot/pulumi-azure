@@ -66,10 +66,7 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_delete_on_idle=None, dead_lettering_on_message_expiration=None, default_message_ttl=None, enable_batched_operations=None, forward_dead_lettered_messages_to=None, forward_to=None, lock_duration=None, max_delivery_count=None, name=None, namespace_name=None, requires_session=None, resource_group_name=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a ServiceBus Subscription.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,6 +90,9 @@ class Subscription(pulumi.CustomResource):
             topic_name=example_topic.name,
             max_delivery_count=1)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

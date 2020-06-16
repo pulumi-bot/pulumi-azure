@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages an App Service Environment.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -59,6 +56,9 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {

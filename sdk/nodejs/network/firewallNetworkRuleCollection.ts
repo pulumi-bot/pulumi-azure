@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Network Rule Collection within an Azure Firewall.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,6 +60,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class FirewallNetworkRuleCollection extends pulumi.CustomResource {
     /**

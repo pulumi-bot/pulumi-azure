@@ -73,10 +73,7 @@ class Rule(pulumi.CustomResource):
         Manages a Load Balancer Rule.
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -102,6 +99,9 @@ class Rule(pulumi.CustomResource):
             backend_port=3389,
             frontend_ip_configuration_name="PublicIPAddress")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

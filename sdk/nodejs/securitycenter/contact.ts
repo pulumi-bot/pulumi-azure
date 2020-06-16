@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages the subscription's Security Center Contact.
  *
  * > **NOTE:** Owner access permission is required.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     phone: "+1-555-555-5555",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Contact extends pulumi.CustomResource {
     /**

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure NAT Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,9 @@ import * as utilities from "../utilities";
  *     zones: ["1"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NatGateway extends pulumi.CustomResource {
     /**

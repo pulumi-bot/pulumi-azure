@@ -45,10 +45,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, action=None, azure_firewall_name=None, name=None, priority=None, resource_group_name=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Network Rule Collection within an Azure Firewall.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -95,6 +92,9 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
                 ],
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

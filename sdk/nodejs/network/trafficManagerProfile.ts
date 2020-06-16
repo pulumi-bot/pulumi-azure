@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Traffic Manager Profile to which multiple endpoints can be attached.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,6 +42,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TrafficManagerProfile extends pulumi.CustomResource {
     /**

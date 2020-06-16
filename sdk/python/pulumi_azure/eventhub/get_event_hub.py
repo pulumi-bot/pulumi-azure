@@ -57,10 +57,7 @@ class AwaitableGetEventHubResult(GetEventHubResult):
 def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing EventHub.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -71,6 +68,9 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
         namespace_name="search-eventhubns")
     pulumi.export("eventhubId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of this EventHub.

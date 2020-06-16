@@ -60,7 +60,10 @@ class AwaitableGetResourcesResult(GetResourcesResult):
 def get_resources(name=None,required_tags=None,resource_group_name=None,type=None,opts=None):
     """
     Use this data source to access information about existing resources.
+    ## Example Usage
 
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Resource.

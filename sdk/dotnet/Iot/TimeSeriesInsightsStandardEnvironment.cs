@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages an Azure IoT Time Series Insights Standard Environment.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TimeSeriesInsightsStandardEnvironment : Pulumi.CustomResource
     {

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Management
 {
     /// <summary>
     /// Manages a Management Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Azure.Management
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

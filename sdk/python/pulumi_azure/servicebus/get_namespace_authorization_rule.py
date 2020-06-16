@@ -71,10 +71,7 @@ class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRule
 def get_namespace_authorization_rule(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing ServiceBus Namespace Authorization Rule.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -85,6 +82,9 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
         resource_group_name="example-resources")
     pulumi.export("ruleId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the ServiceBus Namespace Authorization Rule.

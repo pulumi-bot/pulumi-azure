@@ -13,10 +13,7 @@ namespace Pulumi.Azure.ServiceBus
     /// Manages a ServiceBus Topic.
     /// 
     /// **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

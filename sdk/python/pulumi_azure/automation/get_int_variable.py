@@ -64,11 +64,7 @@ class AwaitableGetIntVariableResult(GetIntVariableResult):
 def get_int_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Automation Int Variable.
-
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -79,6 +75,9 @@ def get_int_variable(automation_account_name=None,name=None,resource_group_name=
         automation_account_name="tfex-example-account")
     pulumi.export("variableId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str automation_account_name: The name of the automation account in which the Automation Variable exists.

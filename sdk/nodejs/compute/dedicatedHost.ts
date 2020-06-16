@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manage a Dedicated Host within a Dedicated Host Group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     platformFaultDomain: 1,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DedicatedHost extends pulumi.CustomResource {
     /**

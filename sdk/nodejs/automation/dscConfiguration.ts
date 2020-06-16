@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Automation DSC Configuration.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     contentEmbedded: "configuration test {}",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DscConfiguration extends pulumi.CustomResource {
     /**

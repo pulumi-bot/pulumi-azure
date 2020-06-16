@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Azure Batch Application instance.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     accountName: exampleBatch / accountAccount.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Application extends pulumi.CustomResource {
     /**

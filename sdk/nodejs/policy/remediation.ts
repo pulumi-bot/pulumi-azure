@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Policy Remediation at the specified Scope.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +59,9 @@ import * as utilities from "../utilities";
  *     locationFilters: ["West Europe"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Remediation extends pulumi.CustomResource {
     /**

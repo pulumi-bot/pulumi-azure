@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages a connection in an existing Virtual Network Gateway.
+    /// ## Example Usage
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualNetworkGatewayConnection : Pulumi.CustomResource
     {

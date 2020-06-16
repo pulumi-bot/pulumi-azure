@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages an App Service Certificate Order.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class CertificateOrder : Pulumi.CustomResource
     {

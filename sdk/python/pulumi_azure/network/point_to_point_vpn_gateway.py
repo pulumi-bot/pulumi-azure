@@ -50,10 +50,7 @@ class PointToPointVpnGateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, connection_configuration=None, location=None, name=None, resource_group_name=None, scale_unit=None, tags=None, virtual_hub_id=None, vpn_server_configuration_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Point-to-Site VPN Gateway.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -66,6 +63,9 @@ class PointToPointVpnGateway(pulumi.CustomResource):
             vpn_server_configuration_id=azurerm_vpn_server_configuration["example"]["id"],
             scale_unit=1)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

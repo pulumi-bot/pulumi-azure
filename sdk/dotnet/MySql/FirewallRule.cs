@@ -11,9 +11,7 @@ namespace Pulumi.Azure.MySql
 {
     /// <summary>
     /// Manages a Firewall Rule for a MySQL Server
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Single IP Address)
     /// 
     /// ```csharp
@@ -43,7 +41,6 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
-    /// 
     /// ### IP Range)
     /// 
     /// ```csharp
@@ -73,6 +70,9 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

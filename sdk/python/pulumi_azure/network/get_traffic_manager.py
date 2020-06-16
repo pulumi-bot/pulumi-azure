@@ -35,9 +35,7 @@ class AwaitableGetTrafficManagerResult(GetTrafficManagerResult):
 def get_traffic_manager(name=None,opts=None):
     """
     Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
-
     ## Example Usage
-
     ### World)
 
     ```python
@@ -47,6 +45,9 @@ def get_traffic_manager(name=None,opts=None):
     example = azure.network.get_traffic_manager(name="World")
     pulumi.export("locationCode", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Location, for example `World`, `Europe` or `Germany`.

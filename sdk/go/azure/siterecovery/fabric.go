@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Azure Site Recovery Replication Fabric within a Recovery Services vault. Only Azure fabrics are supported at this time. Replication Fabrics serve as a container within an Azure region for other Site Recovery resources such as protection containers, protected items, network mappings.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -48,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fabric, err := siterecovery.NewFabric(ctx, "fabric", &siterecovery.FabricArgs{
+// 		_, err = siterecovery.NewFabric(ctx, "fabric", &siterecovery.FabricArgs{
 // 			ResourceGroupName: secondary.Name,
 // 			RecoveryVaultName: vault.Name,
 // 			Location:          primary.Location,
@@ -60,6 +57,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Fabric struct {
 	pulumi.CustomResourceState
 

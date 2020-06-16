@@ -55,10 +55,7 @@ def get_endpoint_connection(name=None,resource_group_name=None,opts=None):
     Use this data source to access the connection status information about an existing Private Endpoint Connection.
 
     > **NOTE** Private Endpoint is currently in Public Preview.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -68,6 +65,9 @@ def get_endpoint_connection(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-rg")
     pulumi.export("privateEndpointStatus", example.private_service_connections[0]["status"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the private endpoint.

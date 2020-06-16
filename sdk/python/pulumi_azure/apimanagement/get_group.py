@@ -71,10 +71,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(api_management_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing API Management Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -85,6 +82,9 @@ def get_group(api_management_name=None,name=None,resource_group_name=None,opts=N
         resource_group_name="search-service")
     pulumi.export("groupType", example.type)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str api_management_name: The Name of the API Management Service in which this Group exists.

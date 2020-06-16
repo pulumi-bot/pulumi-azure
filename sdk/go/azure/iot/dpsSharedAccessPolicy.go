@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an IotHub Device Provisioning Service Shared Access Policy
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDpsSharedAccessPolicy, err := iot.NewDpsSharedAccessPolicy(ctx, "exampleDpsSharedAccessPolicy", &iot.DpsSharedAccessPolicyArgs{
+// 		_, err = iot.NewDpsSharedAccessPolicy(ctx, "exampleDpsSharedAccessPolicy", &iot.DpsSharedAccessPolicyArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubDpsName:     exampleIotHubDps.Name,
 // 			EnrollmentWrite:   pulumi.Bool(true),
@@ -57,6 +54,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type DpsSharedAccessPolicy struct {
 	pulumi.CustomResourceState
 

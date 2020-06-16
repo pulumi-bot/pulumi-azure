@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Log Analytics Windows Event DataSource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     eventTypes: ["error"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DataSourceWindowsEvent extends pulumi.CustomResource {
     /**

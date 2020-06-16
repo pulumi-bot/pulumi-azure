@@ -11,10 +11,7 @@ import (
 )
 
 // Enables you to manage Private DNS zones within Azure DNS. These zones are hosted on Azure's name servers.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleZone, err := privatedns.NewZone(ctx, "exampleZone", &privatedns.ZoneArgs{
+// 		_, err = privatedns.NewZone(ctx, "exampleZone", &privatedns.ZoneArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 		})
 // 		if err != nil {
@@ -43,6 +40,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Zone struct {
 	pulumi.CustomResourceState
 

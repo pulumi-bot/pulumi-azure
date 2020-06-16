@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a local network gateway connection over which specific connections can be configured.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     addressSpaces: ["10.0.0.0/16"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LocalNetworkGateway extends pulumi.CustomResource {
     /**

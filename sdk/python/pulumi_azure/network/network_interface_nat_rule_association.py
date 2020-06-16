@@ -26,10 +26,7 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ip_configuration_name=None, nat_rule_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages the association between a Network Interface and a Load Balancer's NAT Rule.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -75,6 +72,9 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
             ip_configuration_name="testconfiguration1",
             nat_rule_id=example_nat_rule.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

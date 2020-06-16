@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataLake
 {
     /// <summary>
     /// Manages a Azure Data Lake Analytics Firewall Rule.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AnalyticsFirewallRule : Pulumi.CustomResource
     {

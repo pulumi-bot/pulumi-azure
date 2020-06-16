@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an ExpressRoute Circuit Authorization.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
     /**

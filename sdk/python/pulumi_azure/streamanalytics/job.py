@@ -66,10 +66,7 @@ class Job(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, compatibility_level=None, data_locale=None, events_late_arrival_max_delay_in_seconds=None, events_out_of_order_max_delay_in_seconds=None, events_out_of_order_policy=None, location=None, name=None, output_error_policy=None, resource_group_name=None, streaming_units=None, tags=None, transformation_query=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Stream Analytics Job.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -94,6 +91,9 @@ class Job(pulumi.CustomResource):
             FROM [YourInputAlias]
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

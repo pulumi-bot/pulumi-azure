@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS PTR Records within Azure Private DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     records: ["test.example.com"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PTRRecord extends pulumi.CustomResource {
     /**

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to add, update, or remove an Azure SQL server to a subnet of a virtual network.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,9 @@ import * as utilities from "../utilities";
  *     subnetId: subnet.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**

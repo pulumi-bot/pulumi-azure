@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Search
 {
     /// <summary>
     /// Manages a Search Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +35,9 @@ namespace Pulumi.Azure.Search
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

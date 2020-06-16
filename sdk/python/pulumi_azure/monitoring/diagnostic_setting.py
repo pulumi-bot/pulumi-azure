@@ -62,10 +62,7 @@ class DiagnosticSetting(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, eventhub_authorization_rule_id=None, eventhub_name=None, log_analytics_destination_type=None, log_analytics_workspace_id=None, logs=None, metrics=None, name=None, storage_account_id=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Diagnostic Setting for an existing Resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,6 +90,9 @@ class DiagnosticSetting(pulumi.CustomResource):
                 },
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -84,10 +84,7 @@ class ActionRuleSuppression(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, condition=None, description=None, enabled=None, name=None, resource_group_name=None, scope=None, suppression=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Monitor Action Rule which type is suppression.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -117,6 +114,9 @@ class ActionRuleSuppression(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

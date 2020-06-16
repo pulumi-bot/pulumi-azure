@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access the properties of an AlertingAction scheduled query rule.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupScheduledQueryRulesAlert(ctx *pulumi.Context, args *LookupScheduledQueryRulesAlertArgs, opts ...pulumi.InvokeOption) (*LookupScheduledQueryRulesAlertResult, error) {
 	var rv LookupScheduledQueryRulesAlertResult
 	err := ctx.Invoke("azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert", args, &rv, opts...)

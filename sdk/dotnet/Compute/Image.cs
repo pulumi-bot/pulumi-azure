@@ -11,9 +11,7 @@ namespace Pulumi.Azure.Compute
 {
     /// <summary>
     /// Manages a custom virtual machine image that can be used to create virtual machines.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
     /// 
     /// ```csharp
@@ -38,6 +36,9 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {

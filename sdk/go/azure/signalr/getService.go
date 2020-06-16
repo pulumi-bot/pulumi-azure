@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Azure SignalR service.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := signalr.LookupService(ctx, &signalr.LookupServiceArgs{
+// 		_, err := signalr.LookupService(ctx, &signalr.LookupServiceArgs{
 // 			Name:              "test-signalr",
 // 			ResourceGroupName: "signalr-resource-group",
 // 		}, nil)
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("azure:signalr/getService:getService", args, &rv, opts...)

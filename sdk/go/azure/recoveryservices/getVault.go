@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Recovery Services Vault.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vault, err := recoveryservices.LookupVault(ctx, &recoveryservices.LookupVaultArgs{
+// 		_, err := recoveryservices.LookupVault(ctx, &recoveryservices.LookupVaultArgs{
 // 			Name:              "tfex-recovery_vault",
 // 			ResourceGroupName: "tfex-resource_group",
 // 		}, nil)
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("azure:recoveryservices/getVault:getVault", args, &rv, opts...)

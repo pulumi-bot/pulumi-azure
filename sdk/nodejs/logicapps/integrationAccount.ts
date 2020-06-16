@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Logic App Integration Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IntegrationAccount extends pulumi.CustomResource {
     /**

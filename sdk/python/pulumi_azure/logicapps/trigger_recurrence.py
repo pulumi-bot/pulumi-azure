@@ -34,10 +34,7 @@ class TriggerRecurrence(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, frequency=None, interval=None, logic_app_id=None, name=None, start_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Recurrence Trigger within a Logic App Workflow
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -52,6 +49,9 @@ class TriggerRecurrence(pulumi.CustomResource):
             frequency="Day",
             interval=1)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

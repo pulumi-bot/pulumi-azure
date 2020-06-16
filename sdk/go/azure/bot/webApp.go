@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Bot Web App.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type WebApp struct {
 	pulumi.CustomResourceState
 

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a policy set definition.
  *
  * > **NOTE:**  Policy set definitions (also known as policy initiatives) do not take effect until they are assigned to a scope using a Policy Set Assignment.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +41,9 @@ import * as utilities from "../utilities";
  *     policyType: "Custom",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PolicySetDefinition extends pulumi.CustomResource {
     /**

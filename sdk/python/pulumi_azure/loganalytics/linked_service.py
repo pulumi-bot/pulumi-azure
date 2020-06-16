@@ -38,10 +38,7 @@ class LinkedService(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, linked_service_name=None, resource_group_name=None, resource_id=None, tags=None, workspace_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Links a Log Analytics (formally Operational Insights) Workspace to another resource. The (currently) only linkable service is an Azure Automation Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -67,6 +64,9 @@ class LinkedService(pulumi.CustomResource):
             workspace_name=example_analytics_workspace.name,
             resource_id=example_account.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Application Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,6 +88,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ApplicationGateway extends pulumi.CustomResource {
     /**

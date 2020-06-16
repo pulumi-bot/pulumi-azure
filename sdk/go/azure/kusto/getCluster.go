@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Kusto (also known as Azure Data Explorer) Cluster
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := kusto.LookupCluster(ctx, &kusto.LookupClusterArgs{
+// 		_, err := kusto.LookupCluster(ctx, &kusto.LookupClusterArgs{
 // 			Name:              "kustocluster",
 // 			ResourceGroupName: "test_resource_group",
 // 		}, nil)
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("azure:kusto/getCluster:getCluster", args, &rv, opts...)

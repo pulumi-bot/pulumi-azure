@@ -54,10 +54,7 @@ class StreamInputEventHub(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, eventhub_consumer_group_name=None, eventhub_name=None, name=None, resource_group_name=None, serialization=None, servicebus_namespace=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Stream Analytics Stream Input EventHub.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,6 +90,9 @@ class StreamInputEventHub(pulumi.CustomResource):
                 "encoding": "UTF8",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

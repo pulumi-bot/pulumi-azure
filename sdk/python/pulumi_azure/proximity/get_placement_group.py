@@ -47,10 +47,7 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
 def get_placement_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Proximity Placement Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -60,6 +57,9 @@ def get_placement_group(name=None,resource_group_name=None,opts=None):
         resource_group_name="my-resource-group")
     pulumi.export("proximityPlacementGroupId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Proximity Placement Group.

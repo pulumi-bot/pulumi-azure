@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about the permissions from the Management Key Vault Templates.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  * });
  * export const accessPolicyKeyPermissions = contributor.then(contributor => contributor.keyPermissions);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getAccessPolicy(args: GetAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyResult> {
     if (!opts) {

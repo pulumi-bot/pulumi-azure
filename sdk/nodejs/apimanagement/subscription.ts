@@ -6,11 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Subscription within a API Management Service.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +34,9 @@ import * as utilities from "../utilities";
  *     displayName: "Parser API",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Subscription extends pulumi.CustomResource {
     /**

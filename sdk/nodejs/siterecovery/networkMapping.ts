@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a site recovery network mapping on Azure. A network mapping decides how to translate connected netwroks when a VM is migrated from one region to another.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,6 +49,9 @@ import * as utilities from "../utilities";
  *     targetNetworkId: secondaryVirtualNetwork.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkMapping extends pulumi.CustomResource {
     /**

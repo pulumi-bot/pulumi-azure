@@ -15,10 +15,7 @@ namespace Pulumi.Azure.SecurityCenter
     /// &gt; **NOTE:** Owner access permission is required.
     /// 
     /// &gt; **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

@@ -67,10 +67,7 @@ class AwaitableGetLogProfileResult(GetLogProfileResult):
 def get_log_profile(name=None,opts=None):
     """
     Use this data source to access the properties of a Log Profile.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -79,6 +76,9 @@ def get_log_profile(name=None,opts=None):
     example = azure.monitoring.get_log_profile(name="test-logprofile")
     pulumi.export("logProfileStorageAccountId", example.storage_account_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the Log Profile.

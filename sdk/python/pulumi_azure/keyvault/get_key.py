@@ -88,10 +88,7 @@ class AwaitableGetKeyResult(GetKeyResult):
 def get_key(key_vault_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Key Vault Key.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -101,6 +98,9 @@ def get_key(key_vault_id=None,name=None,opts=None):
         key_vault_id=data["azurerm_key_vault"]["existing"]["id"])
     pulumi.export("keyType", example.key_type)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str key_vault_id: Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.

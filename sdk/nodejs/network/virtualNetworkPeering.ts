@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Manages a virtual network peering which allows resources to access other
  * resources in the linked virtual network.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Note
  *
  * Virtual Network peerings cannot be created, updated or deleted concurrently.

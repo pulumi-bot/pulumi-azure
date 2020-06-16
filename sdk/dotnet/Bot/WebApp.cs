@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Bot
 {
     /// <summary>
     /// Manages a Bot Web App.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +37,9 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class WebApp : Pulumi.CustomResource
     {

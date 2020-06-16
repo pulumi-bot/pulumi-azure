@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Policy within a Dev Test Policy Set.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Azure.DevTest
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

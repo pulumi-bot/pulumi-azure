@@ -42,10 +42,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(storage_account_id=None,opts=None):
     """
     Use this data source to access information about an existing Storage Management Policy.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -55,6 +52,9 @@ def get_policy(storage_account_id=None,opts=None):
         resource_group_name="resourcegroupname")
     example_policy = azure.storage.get_policy(storage_account_id=azurerm_storage_account["example"]["id"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str storage_account_id: Specifies the id of the storage account to retrieve the management policy for.

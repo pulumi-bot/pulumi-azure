@@ -71,10 +71,7 @@ class AwaitableGetSharedAccessPolicyResult(GetSharedAccessPolicyResult):
 def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing IotHub Shared Access Policy
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -84,6 +81,9 @@ def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None
         resource_group_name=azurerm_resource_group["example"]["name"],
         iothub_name=azurerm_iothub["example"]["name"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str iothub_name: The name of the IoTHub to which this Shared Access Policy belongs.

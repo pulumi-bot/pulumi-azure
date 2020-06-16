@@ -11,6 +11,10 @@ namespace Pulumi.Azure.KeyVault
 {
     /// <summary>
     /// Manages a Key Vault Certificate.
+    /// ## Example Usage
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

@@ -36,10 +36,7 @@ class VirtualNetworkRule(pulumi.CustomResource):
         Manages a PostgreSQL Virtual Network Rule.
 
         > **NOTE:** PostgreSQL Virtual Network Rules [can only be used with SKU Tiers of `GeneralPurpose` or `MemoryOptimized`](https://docs.microsoft.com/en-us/azure/postgresql/concepts-data-access-and-security-vnet)
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -74,6 +71,9 @@ class VirtualNetworkRule(pulumi.CustomResource):
             subnet_id=internal.id,
             ignore_missing_vnet_service_endpoint=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

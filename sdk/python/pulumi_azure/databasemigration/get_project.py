@@ -71,10 +71,7 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     """
     Use this data source to access information about an existing Database Migration Project.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -85,6 +82,9 @@ def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
         service_name="example-dbms")
     pulumi.export("name", example.name)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Name of the database migration project.

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manage an Azure Spring Cloud Application.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     serviceName: exampleSpringCloudService.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SpringCloudApp extends pulumi.CustomResource {
     /**

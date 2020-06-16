@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Associates a Network Security Group with a Subnet within a Virtual Network.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,6 +43,9 @@ import * as utilities from "../utilities";
  *     networkSecurityGroupId: exampleNetworkSecurityGroup.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     /**

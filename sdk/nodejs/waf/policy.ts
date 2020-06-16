@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure Web Application Firewall Policy instance.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,6 +93,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Policy extends pulumi.CustomResource {
     /**

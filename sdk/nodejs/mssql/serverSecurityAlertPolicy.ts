@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a Security Alert Policy for a MSSQL Server.
  *
  * > **NOTE** Security Alert Policy is currently only available for MS SQL databases.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +41,9 @@ import * as utilities from "../utilities";
  *     retentionDays: 20,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     /**

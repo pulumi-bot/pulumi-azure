@@ -100,10 +100,7 @@ def get_service(name=None,resource_group_name=None,opts=None):
     Use this data source to access information about an existing Private Link Service.
 
     > **NOTE** Private Link is currently in Public Preview.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -113,6 +110,9 @@ def get_service(name=None,resource_group_name=None,opts=None):
         resource_group_name="PrivateLinkServiceRG")
     pulumi.export("privateLinkServiceId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the private link service.

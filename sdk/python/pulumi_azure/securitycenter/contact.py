@@ -32,10 +32,7 @@ class Contact(pulumi.CustomResource):
         Manages the subscription's Security Center Contact.
 
         > **NOTE:** Owner access permission is required.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -47,6 +44,9 @@ class Contact(pulumi.CustomResource):
             email="contact@example.com",
             phone="+1-555-555-5555")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

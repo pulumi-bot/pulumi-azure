@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Blob Target within a HPC Cache.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type CacheBlobTarget struct {
 	pulumi.CustomResourceState
 

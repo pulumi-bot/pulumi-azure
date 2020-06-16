@@ -22,10 +22,7 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, network_security_group_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Associates a Network Security Group with a Subnet within a Virtual Network.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -58,6 +55,9 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
             subnet_id=example_subnet.id,
             network_security_group_id=example_network_security_group.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

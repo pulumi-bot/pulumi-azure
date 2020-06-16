@@ -60,10 +60,7 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Automation Account.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -73,6 +70,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("automationAccountId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Automation Account.

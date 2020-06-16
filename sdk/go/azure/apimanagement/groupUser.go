@@ -11,11 +11,7 @@ import (
 )
 
 // Manages an API Management User Assignment to a Group.
-//
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGroupUser, err := apimanagement.NewGroupUser(ctx, "exampleGroupUser", &apimanagement.GroupUserArgs{
+// 		_, err = apimanagement.NewGroupUser(ctx, "exampleGroupUser", &apimanagement.GroupUserArgs{
 // 			UserId:            pulumi.String(exampleUser.Id),
 // 			GroupName:         pulumi.String("example-group"),
 // 			ResourceGroupName: pulumi.String(exampleUser.ResourceGroupName),
@@ -48,6 +44,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type GroupUser struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Traffic Manager Profile to which multiple endpoints can be attached.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile
 type Profile struct {

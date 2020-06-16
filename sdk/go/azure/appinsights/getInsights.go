@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Application Insights component.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupInsights(ctx *pulumi.Context, args *LookupInsightsArgs, opts ...pulumi.InvokeOption) (*LookupInsightsResult, error) {
 	var rv LookupInsightsResult
 	err := ctx.Invoke("azure:appinsights/getInsights:getInsights", args, &rv, opts...)

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages Azure Backup for an Azure VM
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -53,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		vm1, err := backup.NewProtectedVM(ctx, "vm1", &backup.ProtectedVMArgs{
+// 		_, err = backup.NewProtectedVM(ctx, "vm1", &backup.ProtectedVMArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			RecoveryVaultName: exampleVault.Name,
 // 			SourceVmId:        pulumi.String(azurerm_virtual_machine.Example.Id),
@@ -66,6 +63,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ProtectedVM struct {
 	pulumi.CustomResourceState
 

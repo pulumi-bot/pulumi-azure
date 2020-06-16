@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to access information about an existing Private Link Service.
  *
  * > **NOTE** Private Link is currently in Public Preview.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  * });
  * export const privateLinkServiceId = example.then(example => example.id);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {

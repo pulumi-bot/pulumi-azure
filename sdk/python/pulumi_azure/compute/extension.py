@@ -62,10 +62,7 @@ class Extension(pulumi.CustomResource):
         > **NOTE:** Custom Script Extensions for Linux & Windows require that the `commandToExecute` returns a `0` exit code to be classified as successfully deployed. You can achieve this by appending `exit 0` to the end of your `commandToExecute`.
 
         > **NOTE:** Custom Script Extensions require that the Azure Virtual Machine Guest Agent is running on the Virtual Machine.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -140,6 +137,9 @@ class Extension(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

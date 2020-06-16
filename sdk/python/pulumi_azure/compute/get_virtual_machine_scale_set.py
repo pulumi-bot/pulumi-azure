@@ -50,10 +50,7 @@ class AwaitableGetVirtualMachineScaleSetResult(GetVirtualMachineScaleSetResult):
 def get_virtual_machine_scale_set(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Machine Scale Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -63,6 +60,9 @@ def get_virtual_machine_scale_set(name=None,resource_group_name=None,opts=None):
         resource_group_name="existing")
     pulumi.export("id", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of this Virtual Machine Scale Set.

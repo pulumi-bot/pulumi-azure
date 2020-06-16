@@ -35,10 +35,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, charset=None, collation=None, name=None, resource_group_name=None, server_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a MariaDB Database within a MariaDB Server
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -62,6 +59,9 @@ class Database(pulumi.CustomResource):
             charset="utf8",
             collation="utf8_general_ci")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

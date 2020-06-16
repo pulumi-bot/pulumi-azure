@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure Data Lake Store Firewall Rule.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     endIpAddress: "2.3.4.5",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class StoreFirewallRule extends pulumi.CustomResource {
     /**

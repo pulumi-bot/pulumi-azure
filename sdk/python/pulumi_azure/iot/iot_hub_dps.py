@@ -63,10 +63,7 @@ class IotHubDps(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, linked_hubs=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an IotHub Device Provisioning Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -81,6 +78,9 @@ class IotHubDps(pulumi.CustomResource):
                 "capacity": "1",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

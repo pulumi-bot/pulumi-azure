@@ -113,10 +113,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing HDInsight Cluster.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -126,6 +123,9 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("httpsEndpoint", example.https_endpoint)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of this HDInsight Cluster.

@@ -62,10 +62,7 @@ class DatasetSqlServerTable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, data_factory_name=None, description=None, folder=None, linked_service_name=None, name=None, parameters=None, resource_group_name=None, schema_columns=None, table_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a SQL Server Table Dataset inside a Azure Data Factory.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -84,6 +81,9 @@ class DatasetSqlServerTable(pulumi.CustomResource):
             data_factory_name=example_factory.name,
             linked_service_name=example_linked_service_sql_server.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

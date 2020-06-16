@@ -127,10 +127,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, collation=None, create_mode=None, edition=None, elastic_pool_name=None, extended_auditing_policy=None, import_=None, location=None, max_size_bytes=None, max_size_gb=None, name=None, read_scale=None, requested_service_objective_id=None, requested_service_objective_name=None, resource_group_name=None, restore_point_in_time=None, server_name=None, source_database_deletion_date=None, source_database_id=None, tags=None, threat_detection_policy=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows you to manage an Azure SQL Database
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -165,6 +162,9 @@ class Database(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Log Analytics (formally Operational Insights) Solution.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type AnalyticsSolution struct {
 	pulumi.CustomResourceState
 

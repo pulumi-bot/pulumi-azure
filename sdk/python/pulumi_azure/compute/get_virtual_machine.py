@@ -50,10 +50,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
 def get_virtual_machine(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Machine.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -63,6 +60,9 @@ def get_virtual_machine(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("virtualMachineId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Virtual Machine.

@@ -28,10 +28,7 @@ class ActiveSlot(pulumi.CustomResource):
         Promotes an App Service Slot to Production within an App Service.
 
         > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `appservice.AppService` resource will be overwritten when promoting a Slot using the `appservice.ActiveSlot` resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -53,6 +50,9 @@ class ActiveSlot(pulumi.CustomResource):
             app_service_name=example_app_service.name,
             app_service_slot_name=example_slot.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

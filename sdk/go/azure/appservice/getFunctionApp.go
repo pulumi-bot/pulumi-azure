@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about a Function App.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appservice.LookupFunctionApp(ctx, &appservice.LookupFunctionAppArgs{
+// 		_, err := appservice.LookupFunctionApp(ctx, &appservice.LookupFunctionAppArgs{
 // 			Name:              "test-azure-functions",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
 // 		}, nil)
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupFunctionApp(ctx *pulumi.Context, args *LookupFunctionAppArgs, opts ...pulumi.InvokeOption) (*LookupFunctionAppResult, error) {
 	var rv LookupFunctionAppResult
 	err := ctx.Invoke("azure:appservice/getFunctionApp:getFunctionApp", args, &rv, opts...)

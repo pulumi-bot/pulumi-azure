@@ -13,10 +13,7 @@ namespace Pulumi.Azure.DatabaseMigration
     /// Manages a Azure Database Migration Service.
     /// 
     /// &gt; **NOTE:** Destroying a Database Migration Service will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provide.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +53,9 @@ namespace Pulumi.Azure.DatabaseMigration
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

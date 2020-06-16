@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Bot
     /// Manages a Slack integration for a Bot Channel
     /// 
     /// &gt; **Note** A bot can only have a single Slack Channel associated with it.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +48,9 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ChannelSlack : Pulumi.CustomResource
     {

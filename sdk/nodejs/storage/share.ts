@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a File Share within Azure Storage.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Share extends pulumi.CustomResource {
     /**

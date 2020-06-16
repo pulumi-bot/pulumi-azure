@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages the association between a Network Interface and a Application Gateway's Backend Address Pool.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,6 +98,9 @@ import * as utilities from "../utilities";
  *     backendAddressPoolId: network.backendAddressPools.apply(backendAddressPools => backendAddressPools[0].id),
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pulumi.CustomResource {
     /**

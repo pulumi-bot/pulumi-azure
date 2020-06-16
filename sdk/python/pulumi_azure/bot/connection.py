@@ -54,10 +54,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bot_name=None, client_id=None, client_secret=None, location=None, name=None, parameters=None, resource_group_name=None, scopes=None, service_provider_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Bot Connection.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -78,6 +75,9 @@ class Connection(pulumi.CustomResource):
             client_id="exampleId",
             client_secret="exampleSecret")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -30,10 +30,7 @@ class IdentityProviderTwitter(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_key=None, api_management_name=None, api_secret_key=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Twitter Identity Provider.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -52,6 +49,9 @@ class IdentityProviderTwitter(pulumi.CustomResource):
             api_key="00000000000000000000000000000000",
             api_secret_key="00000000000000000000000000000000")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,6 +8,10 @@ import (
 )
 
 // Use this data source to access information about existing resources.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetResources(ctx *pulumi.Context, args *GetResourcesArgs, opts ...pulumi.InvokeOption) (*GetResourcesResult, error) {
 	var rv GetResourcesResult
 	err := ctx.Invoke("azure:core/getResources:getResources", args, &rv, opts...)

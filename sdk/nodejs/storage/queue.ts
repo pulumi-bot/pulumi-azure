@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Queue within an Azure Storage Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  * });
  * const exampleQueue = new azure.storage.Queue("exampleQueue", {storageAccountName: exampleAccount.name});
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Queue extends pulumi.CustomResource {
     /**

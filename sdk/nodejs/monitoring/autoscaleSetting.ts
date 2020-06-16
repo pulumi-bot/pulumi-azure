@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a AutoScale Setting which can be applied to Virtual Machine Scale Sets, App Services and other scalable resources.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +76,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Repeating On Weekends)
  *
  * ```typescript
@@ -158,7 +154,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### For Fixed Dates)
  *
  * ```typescript
@@ -233,6 +228,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AutoscaleSetting extends pulumi.CustomResource {
     /**

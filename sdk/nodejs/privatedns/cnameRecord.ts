@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS CNAME Records within Azure Private DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     record: "contoso.com",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class CnameRecord extends pulumi.CustomResource {
     /**

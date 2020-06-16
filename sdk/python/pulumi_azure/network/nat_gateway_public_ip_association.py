@@ -22,10 +22,7 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, nat_gateway_id=None, public_ip_address_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages the association between a Nat Gateway and a Public IP.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -45,6 +42,9 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
             nat_gateway_id=example_nat_gateway.id,
             public_ip_address_id=example_public_ip.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

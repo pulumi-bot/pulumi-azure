@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages an EventGrid Topic
  *
  * > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Topic extends pulumi.CustomResource {
     /**

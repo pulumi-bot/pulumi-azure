@@ -88,10 +88,7 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account Blob Container.
 
     Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account Blob Container.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -127,6 +124,9 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
         content_type="application/json"))
     pulumi.export("sasUrlQueryString", example.sas)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str cache_control: The `Cache-Control` response header that is sent when this SAS token is used.

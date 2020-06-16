@@ -158,10 +158,7 @@ class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
 def get_certificate_order(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Service Certificate Order.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -171,6 +168,9 @@ def get_certificate_order(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("certificateOrderId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the App Service.

@@ -87,11 +87,7 @@ class AuthorizationServer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, authorization_endpoint=None, authorization_methods=None, bearer_token_sending_methods=None, client_authentication_methods=None, client_id=None, client_registration_endpoint=None, client_secret=None, default_scope=None, description=None, display_name=None, grant_types=None, name=None, resource_group_name=None, resource_owner_password=None, resource_owner_username=None, support_state=None, token_body_parameters=None, token_endpoint=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Authorization Server within an API Management Service.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -110,6 +106,9 @@ class AuthorizationServer(pulumi.CustomResource):
             client_registration_endpoint="https://example.mydomain.com/client/register",
             grant_types=["authorizationCode"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

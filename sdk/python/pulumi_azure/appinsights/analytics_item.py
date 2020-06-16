@@ -50,10 +50,7 @@ class AnalyticsItem(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_insights_id=None, content=None, function_alias=None, name=None, scope=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Application Insights Analytics Item component.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -70,6 +67,9 @@ class AnalyticsItem(pulumi.CustomResource):
             scope="shared",
             type="query")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

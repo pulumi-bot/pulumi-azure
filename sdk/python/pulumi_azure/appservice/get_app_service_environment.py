@@ -67,10 +67,7 @@ class AwaitableGetAppServiceEnvironmentResult(GetAppServiceEnvironmentResult):
 def get_app_service_environment(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Service Environment
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -80,6 +77,9 @@ def get_app_service_environment(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-rg")
     pulumi.export("appServiceEnvironmentId", data["azurerm_app_service_environment"]["id"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the App Service Environment.

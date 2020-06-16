@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Load Balancer's Backend Address Pool.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,6 +39,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupBackendAddressPool(ctx *pulumi.Context, args *LookupBackendAddressPoolArgs, opts ...pulumi.InvokeOption) (*LookupBackendAddressPoolResult, error) {
 	var rv LookupBackendAddressPoolResult
 	err := ctx.Invoke("azure:lb/getBackendAddressPool:getBackendAddressPool", args, &rv, opts...)

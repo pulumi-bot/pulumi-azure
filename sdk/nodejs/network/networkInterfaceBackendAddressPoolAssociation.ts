@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages the association between a Network Interface and a Load Balancer's Backend Address Pool.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,6 +55,9 @@ import * as utilities from "../utilities";
  *     backendAddressPoolId: exampleBackendAddressPool.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResource {
     /**

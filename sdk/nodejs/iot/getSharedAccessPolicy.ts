@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing IotHub Shared Access Policy
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     iothubName: azurerm_iothub.example.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getSharedAccessPolicy(args: GetSharedAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedAccessPolicyResult> {
     if (!opts) {

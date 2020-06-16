@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a VPN Server Configuration.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +45,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VpnServerConfiguration extends pulumi.CustomResource {
     /**

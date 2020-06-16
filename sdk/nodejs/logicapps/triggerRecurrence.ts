@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Recurrence Trigger within a Logic App Workflow
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     interval: 1,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TriggerRecurrence extends pulumi.CustomResource {
     /**

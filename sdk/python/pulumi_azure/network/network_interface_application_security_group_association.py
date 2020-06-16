@@ -22,10 +22,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
     def __init__(__self__, resource_name, opts=None, application_security_group_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages the association between a Network Interface and a Application Security Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -56,6 +53,9 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
             network_interface_id=example_network_interface.id,
             application_security_group_id=example_application_security_group.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

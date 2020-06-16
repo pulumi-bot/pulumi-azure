@@ -71,7 +71,10 @@ class AwaitableGetRoleDefinitionResult(GetRoleDefinitionResult):
 def get_role_definition(name=None,role_definition_id=None,scope=None,opts=None):
     """
     Use this data source to access information about an existing Role Definition.
+    ## Example Usage
 
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of either a built-in or custom Role Definition.

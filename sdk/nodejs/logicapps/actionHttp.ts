@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an HTTP Action within a Logic App Workflow
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     uri: "http://example.com/some-webhook",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ActionHttp extends pulumi.CustomResource {
     /**

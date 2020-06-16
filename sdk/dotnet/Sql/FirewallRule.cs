@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Sql
 {
     /// <summary>
     /// Allows you to manage an Azure SQL Firewall Rule
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

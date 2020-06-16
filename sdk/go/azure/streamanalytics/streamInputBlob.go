@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Stream Analytics Stream Input Blob.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -27,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		_, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
 // 			Name: "example-resources",
 // 		}, nil)
 // 		if err != nil {
@@ -56,7 +53,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleStreamInputBlob, err := streamanalytics.NewStreamInputBlob(ctx, "exampleStreamInputBlob", &streamanalytics.StreamInputBlobArgs{
+// 		_, err = streamanalytics.NewStreamInputBlob(ctx, "exampleStreamInputBlob", &streamanalytics.StreamInputBlobArgs{
 // 			StreamAnalyticsJobName: pulumi.String(exampleJob.Name),
 // 			ResourceGroupName:      pulumi.String(exampleJob.ResourceGroupName),
 // 			StorageAccountName:     exampleAccount.Name,
@@ -77,6 +74,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type StreamInputBlob struct {
 	pulumi.CustomResourceState
 

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a LoadBalancer Probe Resource.
  *
  * > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     port: 22,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Probe extends pulumi.CustomResource {
     /**

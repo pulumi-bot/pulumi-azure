@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing User Assigned Identity.
- *
  * ## Example Usage
- *
  * ### Reference An Existing)
  *
  * ```typescript
@@ -24,6 +22,9 @@ import * as utilities from "../utilities";
  * export const uaiClientId = example.then(example => example.clientId);
  * export const uaiPrincipalId = example.then(example => example.principalId);
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated azure.core.getUserAssignedIdentity has been deprecated in favor of azure.authorization.getUserAssignedIdentity */
 export function getUserAssignedIdentity(args: GetUserAssignedIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetUserAssignedIdentityResult> {

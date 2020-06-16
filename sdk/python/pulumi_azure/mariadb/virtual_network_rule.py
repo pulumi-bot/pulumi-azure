@@ -32,10 +32,7 @@ class VirtualNetworkRule(pulumi.CustomResource):
         Manages a MariaDB Virtual Network Rule.
 
         > **NOTE:** MariaDB Virtual Network Rules [can only be used with SKU Tiers of `GeneralPurpose` or `MemoryOptimized`](https://docs.microsoft.com/en-us/azure/mariadb/concepts-data-access-security-vnet)
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -69,6 +66,9 @@ class VirtualNetworkRule(pulumi.CustomResource):
             server_name=example_server.name,
             subnet_id=internal.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

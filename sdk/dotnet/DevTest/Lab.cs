@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Dev Test Lab.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,9 @@ namespace Pulumi.Azure.DevTest
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Lab : Pulumi.CustomResource
     {

@@ -41,10 +41,7 @@ class TimeSeriesInsightsReferenceDataSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, data_string_comparison_behavior=None, key_properties=None, location=None, name=None, tags=None, time_series_insights_environment_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure IoT Time Series Insights Reference Data Set.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -64,6 +61,9 @@ class TimeSeriesInsightsReferenceDataSet(pulumi.CustomResource):
                 "type": "String",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

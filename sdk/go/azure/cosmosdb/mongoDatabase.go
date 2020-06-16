@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Mongo Database within a Cosmos DB Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleMongoDatabase, err := cosmosdb.NewMongoDatabase(ctx, "exampleMongoDatabase", &cosmosdb.MongoDatabaseArgs{
+// 		_, err = cosmosdb.NewMongoDatabase(ctx, "exampleMongoDatabase", &cosmosdb.MongoDatabaseArgs{
 // 			ResourceGroupName: pulumi.String(exampleAccount.ResourceGroupName),
 // 			AccountName:       pulumi.String(exampleAccount.Name),
 // 			Throughput:        pulumi.Int(400),
@@ -45,6 +42,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type MongoDatabase struct {
 	pulumi.CustomResourceState
 

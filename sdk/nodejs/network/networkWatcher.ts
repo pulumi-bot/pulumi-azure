@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Network Watcher.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkWatcher extends pulumi.CustomResource {
     /**

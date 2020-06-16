@@ -136,10 +136,7 @@ class IoTHub(pulumi.CustomResource):
         > **NOTE:** Routes can be defined either directly on the `iot.IoTHub` resource, or using the `iot.Route` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 
         > **NOTE:** Fallback route can be defined either directly on the `iot.IoTHub` resource, or using the `iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -212,6 +209,9 @@ class IoTHub(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

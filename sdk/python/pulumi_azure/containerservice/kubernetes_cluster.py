@@ -235,10 +235,9 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, addon_profile=None, api_server_authorized_ip_ranges=None, auto_scaler_profile=None, default_node_pool=None, disk_encryption_set_id=None, dns_prefix=None, enable_pod_security_policy=None, identity=None, kubernetes_version=None, linux_profile=None, location=None, name=None, network_profile=None, node_resource_group=None, private_cluster_enabled=None, private_link_enabled=None, resource_group_name=None, role_based_access_control=None, service_principal=None, sku_tier=None, tags=None, windows_profile=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Managed Kubernetes Cluster (also known as AKS / Azure Kubernetes Service)
-
         ## Example Usage
 
-
+        This example provisions a basic Managed Kubernetes Cluster.
 
         ```python
         import pulumi
@@ -263,6 +262,9 @@ class KubernetesCluster(pulumi.CustomResource):
         pulumi.export("clientCertificate", example_kubernetes_cluster.kube_configs[0]["clientCertificate"])
         pulumi.export("kubeConfig", example_kubernetes_cluster.kube_config_raw)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

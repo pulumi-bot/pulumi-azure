@@ -36,10 +36,7 @@ class ChannelTeams(pulumi.CustomResource):
         Manages a MS Teams integration for a Bot Channel
 
         > **Note** A bot can only have a single MS Teams Channel associated with it.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -57,6 +54,9 @@ class ChannelTeams(pulumi.CustomResource):
             location=example_channels_registration.location,
             resource_group_name=example_resource_group.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

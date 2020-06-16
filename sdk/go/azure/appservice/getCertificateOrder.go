@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing App Service Certificate Order.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupCertificateOrder(ctx *pulumi.Context, args *LookupCertificateOrderArgs, opts ...pulumi.InvokeOption) (*LookupCertificateOrderResult, error) {
 	var rv LookupCertificateOrderResult
 	err := ctx.Invoke("azure:appservice/getCertificateOrder:getCertificateOrder", args, &rv, opts...)

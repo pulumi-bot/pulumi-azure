@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Associates a NAT Gateway with a Subnet within a Virtual Network.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +32,9 @@ import * as utilities from "../utilities";
  *     natGatewayId: exampleNatGateway.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SubnetNatGatewayAssociation extends pulumi.CustomResource {
     /**

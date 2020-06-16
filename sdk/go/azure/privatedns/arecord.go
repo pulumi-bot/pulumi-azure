@@ -11,10 +11,7 @@ import (
 )
 
 // Enables you to manage DNS A Records within Azure Private DNS.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -39,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleARecord, err := privatedns.NewARecord(ctx, "exampleARecord", &privatedns.ARecordArgs{
+// 		_, err = privatedns.NewARecord(ctx, "exampleARecord", &privatedns.ARecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -54,6 +51,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ARecord struct {
 	pulumi.CustomResourceState
 

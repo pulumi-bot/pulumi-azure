@@ -66,10 +66,7 @@ class Workspace(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_insights_id=None, container_registry_id=None, description=None, friendly_name=None, identity=None, key_vault_id=None, location=None, name=None, resource_group_name=None, sku_name=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Azure Machine Learning Workspace
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -101,6 +98,9 @@ class Workspace(pulumi.CustomResource):
                 "type": "SystemAssigned",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

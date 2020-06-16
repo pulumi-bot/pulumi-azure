@@ -74,10 +74,7 @@ class AwaitableGetStorageContainerResult(GetStorageContainerResult):
 def get_storage_container(metadata=None,name=None,storage_account_name=None,opts=None):
     """
     Use this data source to access information about an existing Storage Container.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -86,6 +83,9 @@ def get_storage_container(metadata=None,name=None,storage_account_name=None,opts
     example = azure.storage.get_storage_container(name="example-container-name",
         storage_account_name="example-storage-account-name")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param dict metadata: A mapping of MetaData for this Container.

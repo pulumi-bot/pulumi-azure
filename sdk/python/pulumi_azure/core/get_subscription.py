@@ -80,10 +80,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
 def get_subscription(subscription_id=None,opts=None):
     """
     Use this data source to access information about an existing Subscription.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -92,6 +89,9 @@ def get_subscription(subscription_id=None,opts=None):
     current = azure.core.get_subscription()
     pulumi.export("currentSubscriptionDisplayName", current.display_name)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str subscription_id: Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.

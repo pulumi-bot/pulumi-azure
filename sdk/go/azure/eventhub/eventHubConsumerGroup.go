@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Event Hubs Consumer Group as a nested resource within an Event Hub.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -54,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleConsumerGroup, err := eventhub.NewConsumerGroup(ctx, "exampleConsumerGroup", &eventhub.ConsumerGroupArgs{
+// 		_, err = eventhub.NewConsumerGroup(ctx, "exampleConsumerGroup", &eventhub.ConsumerGroupArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			EventhubName:      exampleEventHub.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
@@ -67,6 +64,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup
 type EventHubConsumerGroup struct {

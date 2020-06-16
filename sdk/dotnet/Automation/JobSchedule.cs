@@ -11,10 +11,9 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Links an Automation Runbook and Schedule.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// This is an example of just the Job Schedule.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +39,9 @@ namespace Pulumi.Azure.Automation
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class JobSchedule : Pulumi.CustomResource
     {

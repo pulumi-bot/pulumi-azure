@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Traffic Manager Endpoint.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +48,9 @@ import * as utilities from "../utilities";
  *     weight: 100,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint
  */

@@ -81,10 +81,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
 def get_namespace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Notification Hub Namespace.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -94,6 +91,9 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
         resource_group_name="my-resource-group")
     pulumi.export("servicebusEndpoint", example.servicebus_endpoint)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the Notification Hub Namespace.

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Storage
 {
     /// <summary>
     /// Manages a Directory within an Azure Storage File Share.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ShareDirectory : Pulumi.CustomResource
     {

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a ServiceBus Queue.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleQueue, err := servicebus.NewQueue(ctx, "exampleQueue", &servicebus.QueueArgs{
+// 		_, err = servicebus.NewQueue(ctx, "exampleQueue", &servicebus.QueueArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      exampleNamespace.Name,
 // 			EnablePartitioning: pulumi.Bool(true),
@@ -56,6 +53,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue
 type Queue struct {

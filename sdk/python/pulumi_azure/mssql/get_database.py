@@ -102,10 +102,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
 def get_database(name=None,server_id=None,opts=None):
     """
     Use this data source to access information about an existing SQL database.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -115,6 +112,9 @@ def get_database(name=None,server_id=None,opts=None):
         server_id="example-mssql-server-id")
     pulumi.export("databaseId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Ms SQL Database.

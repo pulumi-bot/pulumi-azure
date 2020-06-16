@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API within an API Management Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +35,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Api extends pulumi.CustomResource {
     /**

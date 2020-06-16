@@ -78,10 +78,7 @@ class AwaitableGetDpsResult(GetDpsResult):
 def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing IotHub Device Provisioning Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -90,6 +87,9 @@ def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     example = azure.iot.get_dps(name="iot_hub_dps_test",
         resource_group_name="iothub_dps_rg")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Iot Device Provisioning Service resource.

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.NotificationHub
 {
     /// <summary>
     /// Manages an Authorization Rule associated with a Notification Hub within a Notification Hub Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Azure.NotificationHub
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AuthorizationRule : Pulumi.CustomResource
     {

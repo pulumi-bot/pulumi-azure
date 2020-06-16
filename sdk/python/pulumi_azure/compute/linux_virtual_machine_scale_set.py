@@ -256,10 +256,9 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
         > **Note** This provider will automatically update & reimage the nodes in the Scale Set (if Required) during an Update - this behaviour can be configured using the `features` configuration within the Provider configuration block.
 
         > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `compute.ScaleSet` resource instead
-
         ## Example Usage
 
-
+        This example provisions a basic Linux Virtual Machine Scale Set on an internal network.
 
         ```python
         import pulumi
@@ -304,6 +303,9 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
                 }],
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

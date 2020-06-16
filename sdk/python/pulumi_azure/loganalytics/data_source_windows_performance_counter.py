@@ -42,10 +42,7 @@ class DataSourceWindowsPerformanceCounter(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, counter_name=None, instance_name=None, interval_seconds=None, name=None, object_name=None, resource_group_name=None, workspace_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Log Analytics (formally Operational Insights) Windows Performance Counter DataSource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -64,6 +61,9 @@ class DataSourceWindowsPerformanceCounter(pulumi.CustomResource):
             counter_name="CPU",
             interval_seconds=10)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

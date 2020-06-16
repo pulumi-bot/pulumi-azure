@@ -49,10 +49,7 @@ class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
 def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Load Balancer's Backend Address Pool.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -65,6 +62,9 @@ def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
     pulumi.export("backendAddressPoolId", example_backend_address_pool.id)
     pulumi.export("backendIpConfigurationIds", [__item["id"] for __item in data["azurerm_lb_backend_address_pool"]["beap"]["backend_ip_configurations"]])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str loadbalancer_id: The ID of the Load Balancer in which the Backend Address Pool exists.

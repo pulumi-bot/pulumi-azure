@@ -87,10 +87,7 @@ class Api(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, description=None, display_name=None, import_=None, name=None, path=None, protocols=None, resource_group_name=None, revision=None, service_url=None, soap_pass_through=None, subscription_key_parameter_names=None, version=None, version_set_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API within an API Management Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -115,6 +112,9 @@ class Api(pulumi.CustomResource):
                 "contentValue": "http://conferenceapi.azurewebsites.net/?format=json",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -34,10 +34,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acls=None, name=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Table within an Azure Storage Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -51,6 +48,9 @@ class Table(pulumi.CustomResource):
             account_replication_type="LRS")
         example_table = azure.storage.Table("exampleTable", storage_account_name=example_account.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

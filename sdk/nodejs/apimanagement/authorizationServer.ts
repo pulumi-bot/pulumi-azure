@@ -8,11 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Authorization Server within an API Management Service.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +30,9 @@ import * as utilities from "../utilities";
  *     grantTypes: ["authorizationCode"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AuthorizationServer extends pulumi.CustomResource {
     /**

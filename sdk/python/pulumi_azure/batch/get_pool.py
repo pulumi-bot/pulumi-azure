@@ -124,10 +124,7 @@ class AwaitableGetPoolResult(GetPoolResult):
 def get_pool(account_name=None,certificates=None,name=None,network_configuration=None,resource_group_name=None,start_task=None,opts=None):
     """
     Use this data source to access information about an existing Batch pool
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -137,6 +134,9 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
         name="testbatchpool",
         resource_group_name="test")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str account_name: The name of the Batch account.

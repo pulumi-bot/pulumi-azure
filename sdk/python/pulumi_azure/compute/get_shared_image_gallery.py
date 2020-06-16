@@ -64,10 +64,7 @@ class AwaitableGetSharedImageGalleryResult(GetSharedImageGalleryResult):
 def get_shared_image_gallery(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Shared Image Gallery.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -76,6 +73,9 @@ def get_shared_image_gallery(name=None,resource_group_name=None,opts=None):
     example = azure.compute.get_shared_image_gallery(name="my-image-gallery",
         resource_group_name="example-resources")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Shared Image Gallery.

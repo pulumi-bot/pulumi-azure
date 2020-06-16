@@ -34,10 +34,7 @@ class Configuration(pulumi.CustomResource):
         ## Disclaimers
 
         > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -62,6 +59,9 @@ class Configuration(pulumi.CustomResource):
             server_name=example_server.name,
             value="600")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

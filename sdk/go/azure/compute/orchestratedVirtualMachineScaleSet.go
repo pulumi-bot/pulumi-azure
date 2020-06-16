@@ -13,10 +13,7 @@ import (
 // Manages an Orchestrated Virtual Machine Scale Set.
 //
 // > **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOrchestratedVirtualMachineScaleSet, err := compute.NewOrchestratedVirtualMachineScaleSet(ctx, "exampleOrchestratedVirtualMachineScaleSet", &compute.OrchestratedVirtualMachineScaleSetArgs{
+// 		_, err = compute.NewOrchestratedVirtualMachineScaleSet(ctx, "exampleOrchestratedVirtualMachineScaleSet", &compute.OrchestratedVirtualMachineScaleSetArgs{
 // 			Location:                 exampleResourceGroup.Location,
 // 			ResourceGroupName:        exampleResourceGroup.Name,
 // 			PlatformFaultDomainCount: pulumi.Int(5),
@@ -51,6 +48,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type OrchestratedVirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 

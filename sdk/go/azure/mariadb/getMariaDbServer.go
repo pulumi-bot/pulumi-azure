@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing MariaDB Server.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dbServer, err := mariadb.LookupMariaDbServer(ctx, &mariadb.LookupMariaDbServerArgs{
+// 		_, err := mariadb.LookupMariaDbServer(ctx, &mariadb.LookupMariaDbServerArgs{
 // 			Name:              "mariadb-server",
 // 			ResourceGroupName: azurerm_mariadb_server.Example.Resource_group_name,
 // 		}, nil)
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetMariaDbServer(ctx *pulumi.Context, args *GetMariaDbServerArgs, opts ...pulumi.InvokeOption) (*GetMariaDbServerResult, error) {
 	var rv GetMariaDbServerResult
 	err := ctx.Invoke("azure:mariadb/getMariaDbServer:getMariaDbServer", args, &rv, opts...)

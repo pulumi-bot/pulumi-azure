@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Key Vault Certificate.
- *
  * ## Example Usage
- *
  * ### Generating A New Certificate)
  *
  * ```typescript
@@ -119,6 +117,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate
  */

@@ -133,10 +133,7 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
 def get_network_interface(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Interface.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -146,6 +143,9 @@ def get_network_interface(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("networkInterfaceId", example.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Network Interface.

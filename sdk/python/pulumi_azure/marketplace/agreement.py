@@ -28,10 +28,7 @@ class Agreement(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, offer=None, plan=None, publisher=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows accepting the Legal Terms for a Marketplace Image.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -42,6 +39,9 @@ class Agreement(pulumi.CustomResource):
             plan="hourly",
             publisher="barracudanetworks")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -62,10 +62,7 @@ class LinkService(pulumi.CustomResource):
         Manages a Private Link Service.
 
         > **NOTE** Private Link is now in [GA](https://docs.microsoft.com/en-gb/azure/private-link/).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -117,6 +114,9 @@ class LinkService(pulumi.CustomResource):
                 },
             ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

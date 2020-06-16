@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an ExpressRoute circuit.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**

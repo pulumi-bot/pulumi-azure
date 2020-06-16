@@ -68,10 +68,7 @@ class Blob(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_tier=None, content_type=None, metadata=None, name=None, parallelism=None, size=None, source=None, source_content=None, source_uri=None, storage_account_name=None, storage_container_name=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Blob within a Storage Container.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -92,6 +89,9 @@ class Blob(pulumi.CustomResource):
             type="Block",
             source=pulumi.FileAsset("some-local-file.zip"))
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -53,10 +53,7 @@ class MongoCollection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, database_name=None, default_ttl_seconds=None, indices=None, name=None, resource_group_name=None, shard_key=None, throughput=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Mongo Collection within a Cosmos DB Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -75,6 +72,9 @@ class MongoCollection(pulumi.CustomResource):
             shard_key="uniqueKey",
             throughput=400)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

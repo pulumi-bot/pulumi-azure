@@ -8,9 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing User Assigned Identity.
-//
 // ## Example Usage
-//
 // ### Reference An Existing)
 //
 // ```go
@@ -35,6 +33,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
 	var rv LookupUserAssignedIdentityResult
 	err := ctx.Invoke("azure:authorization/getUserAssignedIdentity:getUserAssignedIdentity", args, &rv, opts...)

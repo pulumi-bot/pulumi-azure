@@ -38,10 +38,7 @@ class CustomHostnameBinding(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, app_service_name=None, hostname=None, resource_group_name=None, ssl_state=None, thumbprint=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Hostname Binding within an App Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -70,6 +67,9 @@ class CustomHostnameBinding(pulumi.CustomResource):
             app_service_name=example_app_service.name,
             resource_group_name=example_resource_group.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,10 +11,7 @@ import (
 //
 // > **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("azure:keyvault/getCertificate:getCertificate", args, &rv, opts...)

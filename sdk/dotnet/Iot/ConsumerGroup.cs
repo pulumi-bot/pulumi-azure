@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages a Consumer Group within an IotHub
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,6 +49,9 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ConsumerGroup : Pulumi.CustomResource
     {

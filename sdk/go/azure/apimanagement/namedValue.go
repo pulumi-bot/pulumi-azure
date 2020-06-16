@@ -11,11 +11,7 @@ import (
 )
 
 // Manages an API Management Named Value.
-//
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNamedValue, err := apimanagement.NewNamedValue(ctx, "exampleNamedValue", &apimanagement.NamedValueArgs{
+// 		_, err = apimanagement.NewNamedValue(ctx, "exampleNamedValue", &apimanagement.NamedValueArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			DisplayName:       pulumi.String("ExampleProperty"),
@@ -57,6 +53,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type NamedValue struct {
 	pulumi.CustomResourceState
 

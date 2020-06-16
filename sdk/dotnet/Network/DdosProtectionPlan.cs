@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Network
     /// Manages an AzureNetwork DDoS Protection Plan.
     /// 
     /// &gt; **NOTE** Azure only allows `one` DDoS Protection Plan per region.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +36,9 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DdosProtectionPlan : Pulumi.CustomResource
     {
