@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Cdn
 {
     /// <summary>
     /// Manages a CDN Profile to create a collection of CDN Endpoints.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

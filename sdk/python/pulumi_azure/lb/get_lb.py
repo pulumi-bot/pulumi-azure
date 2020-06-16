@@ -84,10 +84,7 @@ class AwaitableGetLBResult(GetLBResult):
 def get_lb(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Load Balancer
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -60,10 +60,7 @@ class AwaitableGetNetworkDdosProtectionPlanResult(GetNetworkDdosProtectionPlanRe
 def get_network_ddos_protection_plan(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing Azure Network DDoS Protection Plan.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages a Trigger Schedule inside a Azure Data Factory.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

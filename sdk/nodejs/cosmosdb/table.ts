@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Table within a Cosmos DB Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

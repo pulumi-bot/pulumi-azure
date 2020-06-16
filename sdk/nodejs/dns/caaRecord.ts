@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS CAA Records within Azure DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

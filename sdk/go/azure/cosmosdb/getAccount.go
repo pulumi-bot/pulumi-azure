@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cosmosdb.LookupAccount(ctx, &cosmosdb.LookupAccountArgs{
+// 		_, err := cosmosdb.LookupAccount(ctx, &cosmosdb.LookupAccountArgs{
 // 			Name:              "tfex-cosmosdb-account",
 // 			ResourceGroupName: "tfex-cosmosdb-account-rg",
 // 		}, nil)

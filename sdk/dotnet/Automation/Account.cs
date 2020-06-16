@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a Automation Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

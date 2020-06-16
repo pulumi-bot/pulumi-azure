@@ -65,10 +65,7 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, description=None, expiry_time=None, frequency=None, interval=None, month_days=None, monthly_occurrences=None, name=None, resource_group_name=None, start_time=None, timezone=None, week_days=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Automation Schedule.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

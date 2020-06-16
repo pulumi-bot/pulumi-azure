@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Disaster Recovery Config for an Event Hub Namespace.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages an IotHub Shared Access Policy
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

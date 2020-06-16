@@ -39,10 +39,7 @@ class AwaitableGetAlertRuleResult(GetAlertRuleResult):
 def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Sentinel Alert Rule.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

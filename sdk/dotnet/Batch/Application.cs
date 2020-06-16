@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Batch
 {
     /// <summary>
     /// Manages Azure Batch Application instance.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

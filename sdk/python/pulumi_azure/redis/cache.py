@@ -122,10 +122,9 @@ class Cache(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capacity=None, enable_non_ssl_port=None, family=None, location=None, minimum_tls_version=None, name=None, patch_schedules=None, private_static_ip_address=None, redis_configuration=None, resource_group_name=None, shard_count=None, sku_name=None, subnet_id=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Redis Cache.
-
         ## Example Usage
 
-
+        This example provisions a Standard Redis Cache.
 
         ```python
         import pulumi
@@ -143,7 +142,6 @@ class Cache(pulumi.CustomResource):
             minimum_tls_version="1.2",
             redis_configuration={})
         ```
-
         ## Default Redis Configuration Values
 
         | Redis Value                     | Basic        | Standard     | Premium      |
@@ -156,7 +154,7 @@ class Cache(pulumi.CustomResource):
 
         > **NOTE:** The `maxmemory_reserved`, `maxmemory_delta` and `maxfragmentationmemory-reserved` settings are only available for Standard and Premium caches. More details are available in the Relevant Links section below._
 
-        ---
+        ***
 
         A `patch_schedule` block supports the following:
 

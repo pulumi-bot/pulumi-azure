@@ -57,10 +57,7 @@ class AwaitableGetDedicatedHostResult(GetDedicatedHostResult):
 def get_dedicated_host(dedicated_host_group_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Dedicated Host.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

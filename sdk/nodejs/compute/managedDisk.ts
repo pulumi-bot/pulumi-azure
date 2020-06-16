@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a managed disk.
- *
  * ## Example Usage
- *
  * ### With Create Empty
  *
  * ```typescript
@@ -29,7 +27,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### With Create Copy
  *
  * ```typescript

@@ -59,10 +59,7 @@ class Server(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_users=None, backup_blob_container_uri=None, enable_power_bi_service=None, ipv4_firewall_rules=None, location=None, name=None, querypool_connection_mode=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Analysis Services Server.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -84,6 +81,8 @@ class Server(pulumi.CustomResource):
                 "abc": 123,
             })
         ```
+
+        > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

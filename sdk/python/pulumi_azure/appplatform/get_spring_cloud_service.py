@@ -63,10 +63,7 @@ class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
 def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Spring Cloud Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

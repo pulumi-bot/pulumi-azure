@@ -11,6 +11,7 @@ import (
 )
 
 // Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
+// ## Example Usage
 type RoleDefinition struct {
 	pulumi.CustomResourceState
 

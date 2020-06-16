@@ -47,10 +47,7 @@ class DscConfiguration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, content_embedded=None, description=None, location=None, log_verbose=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Automation DSC Configuration.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

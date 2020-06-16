@@ -174,9 +174,7 @@ class FunctionAppSlot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, app_service_plan_id=None, app_settings=None, auth_settings=None, client_affinity_enabled=None, connection_strings=None, daily_memory_time_quota=None, enable_builtin_logging=None, enabled=None, function_app_name=None, https_only=None, identity=None, location=None, name=None, os_type=None, resource_group_name=None, site_config=None, storage_account_access_key=None, storage_account_name=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Function App deployment Slot.
-
         ## Example Usage
-
         ### With App Service Plan)
 
         ```python

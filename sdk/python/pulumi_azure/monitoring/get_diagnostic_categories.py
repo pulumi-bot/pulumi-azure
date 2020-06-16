@@ -49,10 +49,7 @@ class AwaitableGetDiagnosticCategoriesResult(GetDiagnosticCategoriesResult):
 def get_diagnostic_categories(resource_id=None,opts=None):
     """
     Use this data source to access information about the Monitor Diagnostics Categories supported by an existing Resource.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

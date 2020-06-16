@@ -63,10 +63,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(group_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Management Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

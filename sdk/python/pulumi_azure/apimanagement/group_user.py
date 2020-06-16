@@ -30,11 +30,7 @@ class GroupUser(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, group_name=None, resource_group_name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management User Assignment to a Group.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Application Insights Analytics Item component.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

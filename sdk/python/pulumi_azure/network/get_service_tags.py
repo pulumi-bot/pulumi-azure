@@ -50,10 +50,7 @@ class AwaitableGetServiceTagsResult(GetServiceTagsResult):
 def get_service_tags(location=None,location_filter=None,service=None,opts=None):
     """
     Use this data source to access information about Service Tags.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

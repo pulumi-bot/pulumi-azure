@@ -46,10 +46,7 @@ class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
 def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=None):
     """
     Use this data source to access information about all the Subscriptions currently available.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

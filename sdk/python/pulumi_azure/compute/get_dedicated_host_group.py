@@ -67,10 +67,7 @@ class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
 def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Dedicated Host Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS MX Records within Azure Private DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -36,10 +36,7 @@ class ManagementGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, display_name=None, group_id=None, name=None, parent_management_group_id=None, subscription_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Management Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

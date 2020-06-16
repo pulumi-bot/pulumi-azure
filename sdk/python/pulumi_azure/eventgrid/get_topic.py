@@ -68,10 +68,7 @@ class AwaitableGetTopicResult(GetTopicResult):
 def get_topic(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing EventGrid Topic
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -36,10 +36,7 @@ class TableEntity(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, entity=None, partition_key=None, row_key=None, storage_account_name=None, table_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Entity within a Table in an Azure Storage Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

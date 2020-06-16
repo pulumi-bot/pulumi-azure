@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataLake
 {
     /// <summary>
     /// Manages an Azure Data Lake Store.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

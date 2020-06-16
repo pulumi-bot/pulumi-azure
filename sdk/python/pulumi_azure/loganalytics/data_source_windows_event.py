@@ -34,10 +34,7 @@ class DataSourceWindowsEvent(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, event_log_name=None, event_types=None, name=None, resource_group_name=None, workspace_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Log Analytics Windows Event DataSource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

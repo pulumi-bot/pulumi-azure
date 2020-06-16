@@ -46,10 +46,7 @@ class AvailabilitySet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, managed=None, name=None, platform_fault_domain_count=None, platform_update_domain_count=None, proximity_placement_group_id=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Availability Set for Virtual Machines.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

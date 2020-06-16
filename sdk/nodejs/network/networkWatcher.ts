@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Network Watcher.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

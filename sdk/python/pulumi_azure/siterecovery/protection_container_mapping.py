@@ -42,10 +42,7 @@ class ProtectionContainerMapping(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, recovery_fabric_name=None, recovery_replication_policy_id=None, recovery_source_protection_container_name=None, recovery_target_protection_container_id=None, recovery_vault_name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Azure recovery vault protection container mapping. A protection container mapping decides how to translate the protection container when a VM is migrated from one region to another.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

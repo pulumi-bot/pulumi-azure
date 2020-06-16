@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EventGrid Domain
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

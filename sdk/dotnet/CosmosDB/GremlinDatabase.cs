@@ -11,10 +11,7 @@ namespace Pulumi.Azure.CosmosDB
 {
     /// <summary>
     /// Manages a Gremlin Database within a Cosmos DB Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

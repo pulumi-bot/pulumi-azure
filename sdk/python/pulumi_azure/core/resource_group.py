@@ -26,10 +26,7 @@ class ResourceGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Resource Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

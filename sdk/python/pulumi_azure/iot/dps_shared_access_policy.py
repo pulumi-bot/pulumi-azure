@@ -62,10 +62,7 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enrollment_read=None, enrollment_write=None, iothub_dps_name=None, name=None, registration_read=None, registration_write=None, resource_group_name=None, service_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an IotHub Device Provisioning Service Shared Access Policy
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

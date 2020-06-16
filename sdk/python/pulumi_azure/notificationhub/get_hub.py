@@ -71,10 +71,7 @@ class AwaitableGetHubResult(GetHubResult):
 def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

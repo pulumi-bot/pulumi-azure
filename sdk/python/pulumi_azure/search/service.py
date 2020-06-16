@@ -57,10 +57,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, partition_count=None, replica_count=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Search Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

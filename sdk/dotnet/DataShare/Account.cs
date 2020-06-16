@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataShare
 {
     /// <summary>
     /// Manages a Data Share Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

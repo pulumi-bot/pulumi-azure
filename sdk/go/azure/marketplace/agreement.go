@@ -11,10 +11,7 @@ import (
 )
 
 // Allows accepting the Legal Terms for a Marketplace Image.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		barracuda, err := marketplace.NewAgreement(ctx, "barracuda", &marketplace.AgreementArgs{
+// 		_, err = marketplace.NewAgreement(ctx, "barracuda", &marketplace.AgreementArgs{
 // 			Offer:     pulumi.String("waf"),
 // 			Plan:      pulumi.String("hourly"),
 // 			Publisher: pulumi.String("barracudanetworks"),

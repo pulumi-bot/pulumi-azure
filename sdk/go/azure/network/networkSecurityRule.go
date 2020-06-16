@@ -15,10 +15,7 @@ import (
 // > **NOTE on Network Security Groups and Network Security Rules:** This provider currently
 // provides both a standalone Network Security Rule resource, and allows for Network Security Rules to be defined in-line within the Network Security Group resource.
 // At this time you cannot use a Network Security Group with in-line Network Security Rules in conjunction with any Network Security Rule resources. Doing so will cause a conflict of rule settings and will overwrite rules.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNetworkSecurityRule, err := network.NewNetworkSecurityRule(ctx, "exampleNetworkSecurityRule", &network.NetworkSecurityRuleArgs{
+// 		_, err = network.NewNetworkSecurityRule(ctx, "exampleNetworkSecurityRule", &network.NetworkSecurityRuleArgs{
 // 			Priority:                 pulumi.Int(100),
 // 			Direction:                pulumi.String("Outbound"),
 // 			Access:                   pulumi.String("Allow"),

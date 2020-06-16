@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Hpc
 {
     /// <summary>
     /// Manages a Blob Target within a HPC Cache.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

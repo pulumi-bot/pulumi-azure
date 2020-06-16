@@ -96,10 +96,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an App Service Certificate.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppPlatform
 {
     /// <summary>
     /// Manage an Azure Spring Cloud Application.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

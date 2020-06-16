@@ -42,10 +42,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(storage_account_id=None,opts=None):
     """
     Use this data source to access information about an existing Storage Management Policy.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

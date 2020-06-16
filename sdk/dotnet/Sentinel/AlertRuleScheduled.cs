@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Sentinel
 {
     /// <summary>
     /// Manages a Sentinel Scheduled Alert Rule.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

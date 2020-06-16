@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages an App Service Environment.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

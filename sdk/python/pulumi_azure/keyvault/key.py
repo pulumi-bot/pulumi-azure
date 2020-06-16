@@ -70,10 +70,7 @@ class Key(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, curve=None, expiration_date=None, key_opts=None, key_size=None, key_type=None, key_vault_id=None, name=None, not_before_date=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Key Vault Key.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

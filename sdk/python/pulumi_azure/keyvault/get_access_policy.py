@@ -56,10 +56,7 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
 def get_access_policy(name=None,opts=None):
     """
     Use this data source to access information about the permissions from the Management Key Vault Templates.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

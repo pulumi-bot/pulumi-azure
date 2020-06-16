@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Subnet within a Virtual Network.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

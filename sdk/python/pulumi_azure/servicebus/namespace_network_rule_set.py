@@ -37,10 +37,7 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, default_action=None, ip_rules=None, namespace_name=None, network_rules=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a ServiceBus Namespace Network Rule Set Set.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

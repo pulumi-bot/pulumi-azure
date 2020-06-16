@@ -72,10 +72,7 @@ class PolicyVM(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backup=None, name=None, recovery_vault_name=None, resource_group_name=None, retention_daily=None, retention_monthly=None, retention_weekly=None, retention_yearly=None, tags=None, timezone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Backup VM Backup Policy.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

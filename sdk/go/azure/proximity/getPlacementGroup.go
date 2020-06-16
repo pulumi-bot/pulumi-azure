@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Proximity Placement Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

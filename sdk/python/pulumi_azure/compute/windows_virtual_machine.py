@@ -216,10 +216,9 @@ class WindowsVirtualMachine(pulumi.CustomResource):
         > **Note** This resource does not support attaching existing OS Disks. You can instead capture an image of the OS Disk or continue to use the `compute.VirtualMachine` resource instead.
 
         > In this release there's a known issue where the `public_ip_address` and `public_ip_addresses` fields may not be fully populated for Dynamic Public IP's.
-
         ## Example Usage
 
-
+        This example provisions a basic Windows Virtual Machine on an internal network.
 
         ```python
         import pulumi

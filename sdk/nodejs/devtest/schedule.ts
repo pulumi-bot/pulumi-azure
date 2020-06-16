@@ -8,11 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages automated startup and shutdown schedules for Azure Dev Test Lab.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

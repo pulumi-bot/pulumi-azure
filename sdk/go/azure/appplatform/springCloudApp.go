@@ -11,10 +11,7 @@ import (
 )
 
 // Manage an Azure Spring Cloud Application.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -40,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSpringCloudApp, err := appplatform.NewSpringCloudApp(ctx, "exampleSpringCloudApp", &appplatform.SpringCloudAppArgs{
+// 		_, err = appplatform.NewSpringCloudApp(ctx, "exampleSpringCloudApp", &appplatform.SpringCloudAppArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ServiceName:       exampleSpringCloudService.Name,
 // 		})

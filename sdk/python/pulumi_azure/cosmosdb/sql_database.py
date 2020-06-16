@@ -30,10 +30,7 @@ class SqlDatabase(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, name=None, resource_group_name=None, throughput=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a SQL Database within a Cosmos DB Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

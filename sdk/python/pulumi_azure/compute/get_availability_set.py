@@ -74,10 +74,7 @@ class AwaitableGetAvailabilitySetResult(GetAvailabilitySetResult):
 def get_availability_set(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Availability Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

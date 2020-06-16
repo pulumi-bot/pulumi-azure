@@ -11,9 +11,7 @@ import (
 )
 
 // Manages a ServiceBus Subscription Rule.
-//
 // ## Example Usage
-//
 // ### SQL Filter)
 //
 // ```go
@@ -61,7 +59,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubscriptionRule, err := servicebus.NewSubscriptionRule(ctx, "exampleSubscriptionRule", &servicebus.SubscriptionRuleArgs{
+// 		_, err = servicebus.NewSubscriptionRule(ctx, "exampleSubscriptionRule", &servicebus.SubscriptionRuleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			NamespaceName:     exampleNamespace.Name,
 // 			TopicName:         exampleTopic.Name,

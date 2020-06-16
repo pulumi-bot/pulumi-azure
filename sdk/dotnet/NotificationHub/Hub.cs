@@ -11,10 +11,7 @@ namespace Pulumi.Azure.NotificationHub
 {
     /// <summary>
     /// Manages a Notification Hub within a Notification Hub Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

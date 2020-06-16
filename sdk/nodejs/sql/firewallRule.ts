@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to manage an Azure SQL Firewall Rule
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

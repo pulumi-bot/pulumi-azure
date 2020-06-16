@@ -45,10 +45,7 @@ class ActionHttp(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, body=None, headers=None, logic_app_id=None, method=None, name=None, run_afters=None, uri=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an HTTP Action within a Logic App Workflow
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

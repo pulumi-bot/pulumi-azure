@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

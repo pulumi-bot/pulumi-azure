@@ -65,10 +65,7 @@ class RunBook(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, content=None, description=None, location=None, log_progress=None, log_verbose=None, name=None, publish_content_link=None, resource_group_name=None, runbook_type=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Automation Runbook.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

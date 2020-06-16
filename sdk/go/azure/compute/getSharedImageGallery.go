@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Shared Image Gallery.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSharedImageGallery(ctx, &compute.LookupSharedImageGalleryArgs{
+// 		_, err := compute.LookupSharedImageGallery(ctx, &compute.LookupSharedImageGalleryArgs{
 // 			Name:              "my-image-gallery",
 // 			ResourceGroupName: "example-resources",
 // 		}, nil)

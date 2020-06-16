@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

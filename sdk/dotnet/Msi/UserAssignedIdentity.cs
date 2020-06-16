@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Msi
 {
     /// <summary>
     /// Manages a user assigned identity.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -49,10 +49,7 @@ class AwaitableGetResourceGroupResult(GetResourceGroupResult):
 def get_resource_group(name=None,opts=None):
     """
     Use this data source to access information about an existing Resource Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

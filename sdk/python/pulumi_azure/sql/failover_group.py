@@ -63,10 +63,7 @@ class FailoverGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, databases=None, name=None, partner_servers=None, read_write_endpoint_failover_policy=None, readonly_endpoint_failover_policy=None, resource_group_name=None, server_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a failover group of databases on a collection of Azure SQL servers.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

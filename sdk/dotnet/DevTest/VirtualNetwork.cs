@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Virtual Network within a DevTest Lab.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

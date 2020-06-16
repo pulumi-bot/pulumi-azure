@@ -61,10 +61,7 @@ class ExpressRouteCircuit(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allow_classic_operations=None, bandwidth_in_mbps=None, location=None, name=None, peering_location=None, resource_group_name=None, service_provider_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an ExpressRoute circuit.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

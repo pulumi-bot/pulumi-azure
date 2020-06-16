@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Sets a MariaDB Configuration value on a MariaDB Server.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

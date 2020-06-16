@@ -64,10 +64,7 @@ class Insights(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_type=None, daily_data_cap_in_gb=None, daily_data_cap_notifications_disabled=None, disable_ip_masking=None, location=None, name=None, resource_group_name=None, retention_in_days=None, sampling_percentage=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Application Insights component.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

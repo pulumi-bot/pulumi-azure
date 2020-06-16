@@ -120,10 +120,7 @@ class AwaitableGetKeyVaultResult(GetKeyVaultResult):
 def get_key_vault(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Key Vault.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

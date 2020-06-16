@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Sentinel Scheduled Alert Rule.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

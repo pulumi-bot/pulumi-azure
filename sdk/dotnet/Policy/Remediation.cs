@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Policy
 {
     /// <summary>
     /// Manages an Azure Policy Remediation at the specified Scope.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

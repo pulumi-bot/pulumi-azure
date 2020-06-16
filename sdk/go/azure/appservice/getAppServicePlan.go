@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

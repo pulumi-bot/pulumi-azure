@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a proximity placement group for virtual machines, virtual machine scale sets and availability sets.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

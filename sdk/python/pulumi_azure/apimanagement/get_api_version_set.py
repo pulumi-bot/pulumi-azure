@@ -75,10 +75,7 @@ class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
 def get_api_version_set(api_management_name=None,name=None,resource_group_name=None,opts=None):
     """
     Uses this data source to access information about an API Version Set within an API Management Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

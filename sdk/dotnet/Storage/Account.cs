@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Storage
 {
     /// <summary>
     /// Manages an Azure Storage Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

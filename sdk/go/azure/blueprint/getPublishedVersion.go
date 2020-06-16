@@ -10,6 +10,7 @@ import (
 // Use this data source to access information about an existing Azure Blueprint Published Version
 //
 // > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
+// ## Example Usage
 func GetPublishedVersion(ctx *pulumi.Context, args *GetPublishedVersionArgs, opts ...pulumi.InvokeOption) (*GetPublishedVersionResult, error) {
 	var rv GetPublishedVersionResult
 	err := ctx.Invoke("azure:blueprint/getPublishedVersion:getPublishedVersion", args, &rv, opts...)

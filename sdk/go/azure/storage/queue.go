@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Queue within an Azure Storage Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleQueue, err := storage.NewQueue(ctx, "exampleQueue", &storage.QueueArgs{
+// 		_, err = storage.NewQueue(ctx, "exampleQueue", &storage.QueueArgs{
 // 			StorageAccountName: exampleAccount.Name,
 // 		})
 // 		if err != nil {

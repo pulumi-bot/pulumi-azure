@@ -46,10 +46,7 @@ class AwaitableGetRecommendationsResult(GetRecommendationsResult):
 def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None,opts=None):
     """
     Use this data source to access information about an existing Advisor Recommendations.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

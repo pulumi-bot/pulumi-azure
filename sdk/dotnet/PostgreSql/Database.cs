@@ -11,10 +11,7 @@ namespace Pulumi.Azure.PostgreSql
 {
     /// <summary>
     /// Manages a PostgreSQL Database within a PostgreSQL Server
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

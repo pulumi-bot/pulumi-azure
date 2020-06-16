@@ -58,10 +58,7 @@ class DatabasePrincipal(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, client_id=None, cluster_name=None, database_name=None, object_id=None, resource_group_name=None, role=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Kusto (also known as Azure Data Explorer) Database Principal
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

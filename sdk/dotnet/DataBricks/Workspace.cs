@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataBricks
 {
     /// <summary>
     /// Manages a Databricks Workspace
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

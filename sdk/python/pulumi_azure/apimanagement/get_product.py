@@ -92,10 +92,7 @@ class AwaitableGetProductResult(GetProductResult):
 def get_product(api_management_name=None,product_id=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing API Management Product.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

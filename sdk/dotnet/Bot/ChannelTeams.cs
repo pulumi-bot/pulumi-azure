@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Bot
     /// Manages a MS Teams integration for a Bot Channel
     /// 
     /// &gt; **Note** A bot can only have a single MS Teams Channel associated with it.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

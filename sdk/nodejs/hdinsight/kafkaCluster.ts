@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a HDInsight Kafka Cluster.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

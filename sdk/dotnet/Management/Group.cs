@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Management
 {
     /// <summary>
     /// Manages a Management Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

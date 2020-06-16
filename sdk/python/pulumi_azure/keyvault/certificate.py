@@ -84,9 +84,7 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, certificate=None, certificate_policy=None, key_vault_id=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Key Vault Certificate.
-
         ## Example Usage
-
         ### Generating A New Certificate)
 
         ```python

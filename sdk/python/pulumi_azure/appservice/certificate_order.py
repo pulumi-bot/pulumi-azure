@@ -95,10 +95,7 @@ class CertificateOrder(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_renew=None, csr=None, distinguished_name=None, key_size=None, location=None, name=None, product_type=None, resource_group_name=None, tags=None, validity_in_years=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an App Service Certificate Order.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

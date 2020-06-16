@@ -109,10 +109,7 @@ class AwaitableGetJobResult(GetJobResult):
 def get_job(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Stream Analytics Job.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

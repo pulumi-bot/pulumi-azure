@@ -78,10 +78,7 @@ class AwaitableGetPolicySetDefinitionResult(GetPolicySetDefinitionResult):
 def get_policy_set_definition(display_name=None,management_group_name=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Policy Set Definition.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

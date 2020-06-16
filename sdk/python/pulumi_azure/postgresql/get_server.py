@@ -74,10 +74,7 @@ class AwaitableGetServerResult(GetServerResult):
 def get_server(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing PostgreSQL Azure Database Server.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

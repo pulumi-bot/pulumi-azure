@@ -11,10 +11,7 @@ namespace Pulumi.Azure.LogicApps
 {
     /// <summary>
     /// Manages an HTTP Action within a Logic App Workflow
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages the association between a Network Interface and a Load Balancer's NAT Rule.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

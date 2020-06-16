@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a Slack integration for a Bot Channel
  *
  * > **Note** A bot can only have a single Slack Channel associated with it.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

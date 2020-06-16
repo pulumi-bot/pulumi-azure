@@ -17,10 +17,7 @@ import (
 // > **Note:** Fallback route can be defined either directly on the `iot.IoTHub` resource, or using the `iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 //
 // > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -83,7 +80,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFallbackRoute, err := iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
+// 		_, err = iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			Condition:         pulumi.String("true"),

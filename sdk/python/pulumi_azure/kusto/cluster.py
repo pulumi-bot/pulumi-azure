@@ -53,10 +53,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enable_disk_encryption=None, enable_streaming_ingest=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Kusto (also known as Azure Data Explorer) Cluster
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

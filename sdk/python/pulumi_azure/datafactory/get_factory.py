@@ -75,10 +75,7 @@ class AwaitableGetFactoryResult(GetFactoryResult):
 def get_factory(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Azure Data Factory (Version 2).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

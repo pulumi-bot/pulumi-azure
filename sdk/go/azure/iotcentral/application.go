@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an IoT Central Application
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleApplication, err := iotcentral.NewApplication(ctx, "exampleApplication", &iotcentral.ApplicationArgs{
+// 		_, err = iotcentral.NewApplication(ctx, "exampleApplication", &iotcentral.ApplicationArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			SubDomain:         pulumi.String("example-iotcentral-app-subdomain"),

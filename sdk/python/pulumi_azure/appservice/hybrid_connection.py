@@ -55,10 +55,9 @@ class HybridConnection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, app_service_name=None, hostname=None, port=None, relay_id=None, resource_group_name=None, send_key_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
-
         ## Example Usage
 
-
+        This example provisions an App Service, a Relay Hybrid Connection, and a Service Bus using their outputs to create the App Service Hybrid Connection.
 
         ```python
         import pulumi

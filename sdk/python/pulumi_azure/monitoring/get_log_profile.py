@@ -67,10 +67,7 @@ class AwaitableGetLogProfileResult(GetLogProfileResult):
 def get_log_profile(name=None,opts=None):
     """
     Use this data source to access the properties of a Log Profile.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

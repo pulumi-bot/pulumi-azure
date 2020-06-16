@@ -59,10 +59,7 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, frontend_ip_configurations=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Load Balancer Resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Relay
 {
     /// <summary>
     /// Manages an Azure Relay Namespace.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

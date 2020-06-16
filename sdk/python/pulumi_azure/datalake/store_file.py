@@ -29,10 +29,7 @@ class StoreFile(pulumi.CustomResource):
 
         > **Note:** If you want to change the data in the remote file without changing the `local_file_path`, then
         taint the resource so the `datalake.StoreFile` gets recreated with the new data.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

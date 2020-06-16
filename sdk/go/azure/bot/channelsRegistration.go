@@ -11,6 +11,7 @@ import (
 )
 
 // Manages a Bot Channels Registration.
+// ## Example Usage
 type ChannelsRegistration struct {
 	pulumi.CustomResourceState
 

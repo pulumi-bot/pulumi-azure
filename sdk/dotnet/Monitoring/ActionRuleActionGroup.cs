@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Monitoring
 {
     /// <summary>
     /// Manages an Monitor Action Rule which type is action group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

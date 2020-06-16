@@ -82,10 +82,7 @@ class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
 def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access the properties of a LogToMetricAction scheduled query rule.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -38,10 +38,7 @@ class ApiSchema(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, api_name=None, content_type=None, resource_group_name=None, schema_id=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Schema within an API Management Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

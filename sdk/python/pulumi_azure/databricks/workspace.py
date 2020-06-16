@@ -59,10 +59,7 @@ class Workspace(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_parameters=None, location=None, managed_resource_group_name=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Databricks Workspace
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

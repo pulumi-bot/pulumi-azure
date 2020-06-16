@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an HTTP Action within a Logic App Workflow
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Backup
 {
     /// <summary>
     /// Manages Azure Backup for an Azure VM
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

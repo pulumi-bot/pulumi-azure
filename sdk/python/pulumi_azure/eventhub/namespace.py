@@ -64,10 +64,7 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capacity=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a ServiceBus Namespace.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -108,10 +108,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
 def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing SQL Azure Database.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Stream Analytics Output to a ServiceBus Queue.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

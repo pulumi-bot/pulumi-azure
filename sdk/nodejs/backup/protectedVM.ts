@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Azure Backup for an Azure VM
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

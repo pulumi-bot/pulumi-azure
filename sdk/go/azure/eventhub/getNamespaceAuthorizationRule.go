@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := eventhub.LookupNamespaceAuthorizationRule(ctx, &eventhub.LookupNamespaceAuthorizationRuleArgs{
+// 		_, err := eventhub.LookupNamespaceAuthorizationRule(ctx, &eventhub.LookupNamespaceAuthorizationRuleArgs{
 // 			Name:              "navi",
 // 			ResourceGroupName: "example-resources",
 // 			NamespaceName:     "example-ns",

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure Data Lake Store Firewall Rule.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

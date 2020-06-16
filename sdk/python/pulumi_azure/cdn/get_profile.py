@@ -60,10 +60,7 @@ class AwaitableGetProfileResult(GetProfileResult):
 def get_profile(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing CDN Profile.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

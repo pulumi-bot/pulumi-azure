@@ -54,10 +54,7 @@ class TriggerSchedule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, annotations=None, data_factory_name=None, end_time=None, frequency=None, interval=None, name=None, pipeline_name=None, pipeline_parameters=None, resource_group_name=None, start_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Trigger Schedule inside a Azure Data Factory.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

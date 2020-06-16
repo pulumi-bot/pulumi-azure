@@ -28,10 +28,7 @@ class SourceCodeToken(pulumi.CustomResource):
         Manages an App Service source control token.
 
         > **NOTE:** Source Control Tokens are configured at the subscription level, not on each App Service - as such this can only be configured Subscription-wide
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

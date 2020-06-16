@@ -113,10 +113,7 @@ class AwaitableGetFunctionAppResult(GetFunctionAppResult):
 def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about a Function App.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

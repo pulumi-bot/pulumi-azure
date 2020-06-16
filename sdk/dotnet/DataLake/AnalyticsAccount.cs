@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataLake
 {
     /// <summary>
     /// Manages an Azure Data Lake Analytics Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

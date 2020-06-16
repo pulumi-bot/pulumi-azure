@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Table within an Azure Storage Account.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTable, err := storage.NewTable(ctx, "exampleTable", &storage.TableArgs{
+// 		_, err = storage.NewTable(ctx, "exampleTable", &storage.TableArgs{
 // 			StorageAccountName: exampleAccount.Name,
 // 		})
 // 		if err != nil {

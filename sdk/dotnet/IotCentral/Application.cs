@@ -11,10 +11,7 @@ namespace Pulumi.Azure.IotCentral
 {
     /// <summary>
     /// Manages an IoT Central Application
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

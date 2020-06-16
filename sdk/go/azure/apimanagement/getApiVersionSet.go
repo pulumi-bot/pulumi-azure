@@ -8,10 +8,7 @@ import (
 )
 
 // Uses this data source to access information about an API Version Set within an API Management Service.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Maps
 {
     /// <summary>
     /// Manages an Azure Maps Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

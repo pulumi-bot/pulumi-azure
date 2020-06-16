@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := servicebus.LookupTopicAuthorizationRule(ctx, &servicebus.LookupTopicAuthorizationRuleArgs{
+// 		_, err := servicebus.LookupTopicAuthorizationRule(ctx, &servicebus.LookupTopicAuthorizationRuleArgs{
 // 			Name:              "example-tfex_name",
 // 			NamespaceName:     "example-namespace",
 // 			ResourceGroupName: "example-resources",

@@ -53,10 +53,7 @@ class AwaitableGetNetworkWatcherResult(GetNetworkWatcherResult):
 def get_network_watcher(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Watcher.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

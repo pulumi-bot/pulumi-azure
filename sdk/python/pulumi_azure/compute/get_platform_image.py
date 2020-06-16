@@ -51,10 +51,7 @@ class AwaitableGetPlatformImageResult(GetPlatformImageResult):
 def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=None,opts=None):
     """
     Use this data source to access information about a Platform Image.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

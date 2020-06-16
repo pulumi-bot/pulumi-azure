@@ -13,10 +13,7 @@ import (
 // Manages a HPC Cache.
 //
 // > **Note**: During the first several months of the GA release, a request must be made to the Azure HPC Cache team to add your subscription to the access list before it can be used to create a cache instance. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -54,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCache, err := hpc.NewCache(ctx, "exampleCache", &hpc.CacheArgs{
+// 		_, err = hpc.NewCache(ctx, "exampleCache", &hpc.CacheArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			CacheSizeInGb:     pulumi.Int(3072),

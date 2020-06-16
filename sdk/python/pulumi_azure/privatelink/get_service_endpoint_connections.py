@@ -56,10 +56,7 @@ def get_service_endpoint_connections(resource_group_name=None,service_id=None,op
     Use this data source to access endpoint connection information about an existing Private Link Service.
 
     > **NOTE** Private Link is currently in Public Preview.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

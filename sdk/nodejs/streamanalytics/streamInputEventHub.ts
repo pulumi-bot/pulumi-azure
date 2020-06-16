@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Stream Analytics Stream Input EventHub.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

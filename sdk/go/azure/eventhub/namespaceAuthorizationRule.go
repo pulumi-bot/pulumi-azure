@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -44,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNamespaceAuthorizationRule, err := servicebus.NewNamespaceAuthorizationRule(ctx, "exampleNamespaceAuthorizationRule", &servicebus.NamespaceAuthorizationRuleArgs{
+// 		_, err = servicebus.NewNamespaceAuthorizationRule(ctx, "exampleNamespaceAuthorizationRule", &servicebus.NamespaceAuthorizationRuleArgs{
 // 			NamespaceName:     exampleNamespace.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Listen:            pulumi.Bool(true),

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access the properties of an Action Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

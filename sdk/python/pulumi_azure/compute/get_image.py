@@ -85,10 +85,7 @@ class AwaitableGetImageResult(GetImageResult):
 def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending=None,opts=None):
     """
     Use this data source to access information about an existing Image.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

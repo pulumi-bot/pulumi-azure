@@ -43,10 +43,7 @@ class OutputMssql(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, database=None, name=None, password=None, resource_group_name=None, server=None, stream_analytics_job_name=None, table=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Stream Analytics Output to Microsoft SQL Server Database.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

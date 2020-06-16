@@ -11,10 +11,7 @@ namespace Pulumi.Azure.MariaDB
 {
     /// <summary>
     /// Manages a MariaDB Server.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

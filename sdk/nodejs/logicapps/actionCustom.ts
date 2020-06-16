@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Custom Action within a Logic App Workflow
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

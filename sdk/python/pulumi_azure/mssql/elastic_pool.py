@@ -66,10 +66,7 @@ class ElasticPool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, license_type=None, location=None, max_size_bytes=None, max_size_gb=None, name=None, per_database_settings=None, resource_group_name=None, server_name=None, sku=None, tags=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows you to manage an Azure SQL Elastic Pool via the `v3.0` API which allows for `vCore` and `DTU` based configurations.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

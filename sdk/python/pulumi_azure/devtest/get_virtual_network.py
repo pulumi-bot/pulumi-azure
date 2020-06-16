@@ -64,10 +64,7 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
 def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Dev Test Lab Virtual Network.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

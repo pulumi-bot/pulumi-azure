@@ -22,10 +22,7 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, route_table_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Associates a Route Table with a Subnet within a Virtual Network.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

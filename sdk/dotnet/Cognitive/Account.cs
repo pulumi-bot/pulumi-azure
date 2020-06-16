@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Cognitive
 {
     /// <summary>
     /// Manages a Cognitive Services Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

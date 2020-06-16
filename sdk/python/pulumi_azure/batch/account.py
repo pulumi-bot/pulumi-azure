@@ -57,10 +57,7 @@ class Account(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, key_vault_reference=None, location=None, name=None, pool_allocation_mode=None, resource_group_name=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Batch account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

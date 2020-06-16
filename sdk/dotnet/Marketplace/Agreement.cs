@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Marketplace
 {
     /// <summary>
     /// Allows accepting the Legal Terms for a Marketplace Image.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

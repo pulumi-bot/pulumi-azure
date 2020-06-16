@@ -32,10 +32,7 @@ class Contact(pulumi.CustomResource):
         Manages the subscription's Security Center Contact.
 
         > **NOTE:** Owner access permission is required.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

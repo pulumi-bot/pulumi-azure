@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manage a Dedicated Host within a Dedicated Host Group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

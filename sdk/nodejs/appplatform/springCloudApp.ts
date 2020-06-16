@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manage an Azure Spring Cloud Application.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

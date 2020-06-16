@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Application Insights component.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

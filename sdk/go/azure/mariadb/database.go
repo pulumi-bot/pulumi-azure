@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a MariaDB Database within a MariaDB Server
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -48,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDatabase, err := mariadb.NewDatabase(ctx, "exampleDatabase", &mariadb.DatabaseArgs{
+// 		_, err = mariadb.NewDatabase(ctx, "exampleDatabase", &mariadb.DatabaseArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ServerName:        exampleServer.Name,
 // 			Charset:           pulumi.String("utf8"),

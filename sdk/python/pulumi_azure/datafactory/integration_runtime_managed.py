@@ -74,10 +74,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, catalog_info=None, custom_setup_script=None, data_factory_name=None, description=None, edition=None, license_type=None, location=None, max_parallel_executions_per_node=None, name=None, node_size=None, number_of_nodes=None, resource_group_name=None, vnet_integration=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Data Factory Managed Integration Runtime.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

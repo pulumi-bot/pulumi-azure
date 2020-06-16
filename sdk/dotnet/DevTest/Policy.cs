@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Policy within a Dev Test Policy Set.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

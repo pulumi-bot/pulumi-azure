@@ -11,10 +11,7 @@ import (
 )
 
 // Enables you to manage DNS A Records within Azure DNS.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -39,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleARecord, err := dns.NewARecord(ctx, "exampleARecord", &dns.ARecordArgs{
+// 		_, err = dns.NewARecord(ctx, "exampleARecord", &dns.ARecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -54,7 +51,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Alias Record)
 //
 // ```go
@@ -90,7 +86,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleARecord, err := dns.NewARecord(ctx, "exampleARecord", &dns.ARecordArgs{
+// 		_, err = dns.NewARecord(ctx, "exampleARecord", &dns.ARecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

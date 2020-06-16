@@ -38,10 +38,7 @@ class VirtualHubConnection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, hub_to_vitual_network_traffic_allowed=None, internet_security_enabled=None, name=None, remote_virtual_network_id=None, virtual_hub_id=None, vitual_network_to_hub_gateways_traffic_allowed=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Connection for a Virtual Hub.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

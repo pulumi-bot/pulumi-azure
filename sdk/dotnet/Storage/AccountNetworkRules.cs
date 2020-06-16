@@ -17,10 +17,7 @@ namespace Pulumi.Azure.Storage
     /// &gt; **NOTE:** Only one `azure.storage.AccountNetworkRules` can be tied to an `azure.storage.Account`. Spurious changes will occur if more than `azure.storage.AccountNetworkRules` is tied to the same `azure.storage.Account`.
     /// 
     /// &gt; **NOTE:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

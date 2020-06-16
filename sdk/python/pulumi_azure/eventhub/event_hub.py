@@ -54,10 +54,7 @@ class EventHub(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capture_description=None, message_retention=None, name=None, namespace_name=None, partition_count=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Event Hubs as a nested resource within a Event Hubs namespace.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

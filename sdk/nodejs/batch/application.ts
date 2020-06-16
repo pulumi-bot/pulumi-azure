@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Azure Batch Application instance.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

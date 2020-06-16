@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages a ServiceBus Topic.
  *
  * **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -46,10 +46,7 @@ class ApiVersionSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, description=None, display_name=None, name=None, resource_group_name=None, version_header_name=None, version_query_name=None, versioning_scheme=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Version Set within an API Management Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

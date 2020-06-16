@@ -34,10 +34,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, charset=None, collation=None, name=None, resource_group_name=None, server_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a MySQL Database within a MySQL Server
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

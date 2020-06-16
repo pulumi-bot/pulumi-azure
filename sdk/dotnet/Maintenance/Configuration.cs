@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Maintenance
 {
     /// <summary>
     /// Manages a maintenance configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

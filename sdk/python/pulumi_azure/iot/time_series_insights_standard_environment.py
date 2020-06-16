@@ -46,10 +46,7 @@ class TimeSeriesInsightsStandardEnvironment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, data_retention_time=None, location=None, name=None, partition_key=None, resource_group_name=None, sku_name=None, storage_limit_exceeded_behavior=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure IoT Time Series Insights Standard Environment.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

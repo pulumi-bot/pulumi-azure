@@ -141,10 +141,7 @@ class AwaitableGetAppServiceResult(GetAppServiceResult):
 def get_app_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

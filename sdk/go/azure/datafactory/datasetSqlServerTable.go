@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a SQL Server Table Dataset inside a Azure Data Factory.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -48,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDatasetSqlServerTable, err := datafactory.NewDatasetSqlServerTable(ctx, "exampleDatasetSqlServerTable", &datafactory.DatasetSqlServerTableArgs{
+// 		_, err = datafactory.NewDatasetSqlServerTable(ctx, "exampleDatasetSqlServerTable", &datafactory.DatasetSqlServerTableArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			DataFactoryName:   exampleFactory.Name,
 // 			LinkedServiceName: exampleLinkedServiceSqlServer.Name,

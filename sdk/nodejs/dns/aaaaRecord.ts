@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS AAAA Records within Azure DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +20,6 @@ import * as utilities from "../utilities";
  *     ttl: 300,
  * });
  * ```
- *
  * ### Alias Record)
  *
  * ```typescript

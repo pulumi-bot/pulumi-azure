@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a MySQL Dataset inside a Azure Data Factory.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

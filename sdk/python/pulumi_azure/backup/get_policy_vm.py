@@ -50,10 +50,7 @@ class AwaitableGetPolicyVMResult(GetPolicyVMResult):
 def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing VM Backup Policy.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

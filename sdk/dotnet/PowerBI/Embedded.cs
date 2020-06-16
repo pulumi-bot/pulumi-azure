@@ -11,10 +11,7 @@ namespace Pulumi.Azure.PowerBI
 {
     /// <summary>
     /// Manages a PowerBI Embedded.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

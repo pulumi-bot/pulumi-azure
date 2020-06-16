@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access the properties of a Log Profile.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

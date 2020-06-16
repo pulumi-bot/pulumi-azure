@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages the association between a Nat Gateway and a Public IP.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.RecoveryServices
 {
     /// <summary>
     /// Manages an Recovery Services Vault.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

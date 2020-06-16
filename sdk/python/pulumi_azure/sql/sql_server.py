@@ -67,10 +67,7 @@ class SqlServer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, administrator_login=None, administrator_login_password=None, connection_policy=None, extended_auditing_policy=None, identity=None, location=None, name=None, resource_group_name=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Microsoft SQL Azure Database Server.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -66,9 +66,7 @@ class Image(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, data_disks=None, hyper_v_generation=None, location=None, name=None, os_disk=None, resource_group_name=None, source_virtual_machine_id=None, tags=None, zone_resilient=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a custom virtual machine image that can be used to create virtual machines.
-
         ## Example Usage
-
         ### Creating From VHD
 
         ```python
@@ -86,7 +84,6 @@ class Image(pulumi.CustomResource):
                 "sizeGb": 30,
             })
         ```
-
         ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 
         ```python

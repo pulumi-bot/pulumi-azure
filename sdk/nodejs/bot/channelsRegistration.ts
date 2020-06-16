@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Bot Channels Registration.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

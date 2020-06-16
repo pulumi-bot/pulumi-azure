@@ -121,10 +121,7 @@ class ApiOperation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, api_name=None, description=None, display_name=None, method=None, operation_id=None, request=None, resource_group_name=None, responses=None, template_parameters=None, url_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Operation within an API Management Service.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

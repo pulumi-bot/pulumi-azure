@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Availability Set for Virtual Machines.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

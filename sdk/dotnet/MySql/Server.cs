@@ -11,10 +11,7 @@ namespace Pulumi.Azure.MySql
 {
     /// <summary>
     /// Manages a MySQL Server.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

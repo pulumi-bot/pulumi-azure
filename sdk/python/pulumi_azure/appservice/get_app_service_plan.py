@@ -109,10 +109,7 @@ class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
 def get_app_service_plan(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -176,10 +176,7 @@ class AwaitableGetClusterNodePoolResult(GetClusterNodePoolResult):
 def get_cluster_node_pool(kubernetes_cluster_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Kubernetes Cluster Node Pool.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

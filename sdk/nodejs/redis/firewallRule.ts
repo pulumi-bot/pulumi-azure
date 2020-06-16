@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Firewall Rule associated with a Redis Cache.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

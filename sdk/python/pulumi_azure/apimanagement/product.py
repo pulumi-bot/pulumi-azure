@@ -54,10 +54,7 @@ class Product(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, approval_required=None, description=None, display_name=None, product_id=None, published=None, resource_group_name=None, subscription_required=None, subscriptions_limit=None, terms=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Product.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

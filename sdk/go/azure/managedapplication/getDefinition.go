@@ -8,10 +8,7 @@ import (
 )
 
 // Uses this data source to access information about an existing Managed Application Definition.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

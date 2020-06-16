@@ -70,10 +70,7 @@ class EventGridTopic(pulumi.CustomResource):
         Manages an EventGrid Topic
 
         > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

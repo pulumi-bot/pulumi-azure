@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Load Balancer's Backend Address Pool.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -38,10 +38,7 @@ class ManagementPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, rules=None, storage_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Storage Account Management Policy.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

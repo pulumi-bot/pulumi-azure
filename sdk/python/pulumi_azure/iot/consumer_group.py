@@ -30,10 +30,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, eventhub_endpoint_name=None, iothub_name=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Consumer Group within an IotHub
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

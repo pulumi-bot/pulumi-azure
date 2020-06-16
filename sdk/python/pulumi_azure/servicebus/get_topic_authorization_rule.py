@@ -87,10 +87,7 @@ class AwaitableGetTopicAuthorizationRuleResult(GetTopicAuthorizationRuleResult):
 def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_name=None,topic_name=None,opts=None):
     """
     Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -127,10 +127,7 @@ class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
 def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Network Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -57,10 +57,7 @@ class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsRe
 def get_kubernetes_service_versions(include_preview=None,location=None,version_prefix=None,opts=None):
     """
     Use this data source to retrieve the version of Kubernetes supported by Azure Kubernetes Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

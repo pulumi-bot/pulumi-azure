@@ -30,10 +30,7 @@ class ProtectionContainer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, recovery_fabric_name=None, recovery_vault_name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Azure Site Recovery protection container. Protection containers serve as containers for replicated VMs and belong to a single region / recovery fabric. Protection containers can contain more than one replicated VM. To replicate a VM, a container must exist in both the source and target Azure regions.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

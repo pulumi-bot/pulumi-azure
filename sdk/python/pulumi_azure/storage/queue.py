@@ -26,10 +26,7 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, metadata=None, name=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Queue within an Azure Storage Account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

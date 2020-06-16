@@ -11,10 +11,7 @@ namespace Pulumi.Azure.SignalR
 {
     /// <summary>
     /// Manages an Azure SignalR service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

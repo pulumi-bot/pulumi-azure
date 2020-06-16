@@ -72,10 +72,7 @@ class PublicIp(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allocation_method=None, domain_name_label=None, idle_timeout_in_minutes=None, ip_version=None, location=None, name=None, public_ip_prefix_id=None, resource_group_name=None, reverse_fqdn=None, sku=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Public IP Address.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

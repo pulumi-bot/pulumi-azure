@@ -6,11 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Named Value.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

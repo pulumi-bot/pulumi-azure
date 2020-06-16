@@ -54,10 +54,7 @@ class SharedImageVersion(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, exclude_from_latest=None, gallery_name=None, image_name=None, location=None, managed_image_id=None, name=None, resource_group_name=None, tags=None, target_regions=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Version of a Shared Image within a Shared Image Gallery.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

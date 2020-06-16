@@ -10,6 +10,7 @@ import (
 // Use this data source to access information about an existing Azure Blueprint Definition
 //
 // > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
+// ## Example Usage
 func GetDefinition(ctx *pulumi.Context, args *GetDefinitionArgs, opts ...pulumi.InvokeOption) (*GetDefinitionResult, error) {
 	var rv GetDefinitionResult
 	err := ctx.Invoke("azure:blueprint/getDefinition:getDefinition", args, &rv, opts...)

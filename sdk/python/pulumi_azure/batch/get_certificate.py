@@ -71,10 +71,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 def get_certificate(account_name=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing certificate in a Batch Account.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

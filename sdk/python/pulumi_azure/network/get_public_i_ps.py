@@ -54,10 +54,7 @@ class AwaitableGetPublicIPsResult(GetPublicIPsResult):
 def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about a set of existing Public IP Addresses.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

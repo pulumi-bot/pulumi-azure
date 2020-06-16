@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Event Hubs as a nested resource within a Event Hubs namespace.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

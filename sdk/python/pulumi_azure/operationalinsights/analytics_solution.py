@@ -43,10 +43,7 @@ class AnalyticsSolution(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, plan=None, resource_group_name=None, solution_name=None, workspace_name=None, workspace_resource_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Log Analytics (formally Operational Insights) Solution.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

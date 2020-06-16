@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Function App deployment Slot.
- *
  * ## Example Usage
- *
  * ### With App Service Plan)
  *
  * ```typescript

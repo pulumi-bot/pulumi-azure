@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Authorization Rule for an Event Hub Namespace.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -45,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEventHubNamespaceAuthorizationRule, err := eventhub.NewEventHubNamespaceAuthorizationRule(ctx, "exampleEventHubNamespaceAuthorizationRule", &eventhub.EventHubNamespaceAuthorizationRuleArgs{
+// 		_, err = eventhub.NewEventHubNamespaceAuthorizationRule(ctx, "exampleEventHubNamespaceAuthorizationRule", &eventhub.EventHubNamespaceAuthorizationRuleArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Listen:            pulumi.Bool(true),

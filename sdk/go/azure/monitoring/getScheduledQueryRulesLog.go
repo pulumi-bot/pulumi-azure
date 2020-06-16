@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access the properties of a LogToMetricAction scheduled query rule.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -34,10 +34,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, eventhub_name=None, name=None, namespace_name=None, resource_group_name=None, user_metadata=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Event Hubs Consumer Group as a nested resource within an Event Hub.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

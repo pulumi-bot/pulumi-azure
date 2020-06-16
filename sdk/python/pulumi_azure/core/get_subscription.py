@@ -80,10 +80,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
 def get_subscription(subscription_id=None,opts=None):
     """
     Use this data source to access information about an existing Subscription.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

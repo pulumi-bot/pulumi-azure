@@ -95,10 +95,7 @@ class AwaitableGetConfigurationStoreResult(GetConfigurationStoreResult):
 def get_configuration_store(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Configuration.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

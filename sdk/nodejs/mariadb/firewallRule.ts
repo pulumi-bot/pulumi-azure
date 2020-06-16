@@ -6,9 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Firewall Rule for a MariaDB Server
- *
  * ## Example Usage
- *
  * ### Single IP Address)
  *
  * ```typescript
@@ -22,7 +20,6 @@ import * as utilities from "../utilities";
  *     startIpAddress: "40.112.8.12",
  * });
  * ```
- *
  * ### IP Range)
  *
  * ```typescript

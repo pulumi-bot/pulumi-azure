@@ -70,10 +70,7 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
 def get_route_table(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Route Table.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

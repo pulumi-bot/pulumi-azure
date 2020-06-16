@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Activity Log Alert within Azure Monitor.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

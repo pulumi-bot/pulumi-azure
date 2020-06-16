@@ -81,10 +81,7 @@ class AwaitableGetInsightsResult(GetInsightsResult):
 def get_insights(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Application Insights component.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

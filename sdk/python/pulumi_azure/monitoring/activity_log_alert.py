@@ -60,10 +60,7 @@ class ActivityLogAlert(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, actions=None, criteria=None, description=None, enabled=None, name=None, resource_group_name=None, scopes=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Activity Log Alert within Azure Monitor.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

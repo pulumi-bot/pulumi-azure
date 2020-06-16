@@ -6,10 +6,9 @@ import * as utilities from "../utilities";
 
 /**
  * Links an Automation Runbook and Schedule.
- *
  * ## Example Usage
  *
- *
+ * This is an example of just the Job Schedule.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

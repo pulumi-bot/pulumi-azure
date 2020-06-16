@@ -49,10 +49,7 @@ class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
 def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Load Balancer's Backend Address Pool.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

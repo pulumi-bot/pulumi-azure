@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Compute
     /// Manages an Orchestrated Virtual Machine Scale Set.
     /// 
     /// &gt; **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

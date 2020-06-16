@@ -53,10 +53,7 @@ class RegistryWebook(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, actions=None, custom_headers=None, location=None, name=None, registry_name=None, resource_group_name=None, scope=None, service_uri=None, status=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Container Registry Webhook.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

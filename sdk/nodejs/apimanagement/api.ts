@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API within an API Management Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,6 +11,7 @@ import (
 )
 
 // Assigns a given Principal (User or Group) to a given Role.
+// ## Example Usage
 type Assignment struct {
 	pulumi.CustomResourceState
 

@@ -11,9 +11,7 @@ import (
 )
 
 // Manages a custom virtual machine image that can be used to create virtual machines.
-//
 // ## Example Usage
-//
 // ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 //
 // ```go
@@ -33,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleImage, err := compute.NewImage(ctx, "exampleImage", &compute.ImageArgs{
+// 		_, err = compute.NewImage(ctx, "exampleImage", &compute.ImageArgs{
 // 			Location:               pulumi.String("West US"),
 // 			ResourceGroupName:      exampleResourceGroup.Name,
 // 			SourceVirtualMachineId: pulumi.String("{vm_id}"),

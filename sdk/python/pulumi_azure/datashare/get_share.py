@@ -70,10 +70,7 @@ class AwaitableGetShareResult(GetShareResult):
 def get_share(account_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Data Share.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

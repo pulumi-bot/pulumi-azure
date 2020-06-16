@@ -162,10 +162,7 @@ class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
 def get_gateway_connection(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Network Gateway Connection.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

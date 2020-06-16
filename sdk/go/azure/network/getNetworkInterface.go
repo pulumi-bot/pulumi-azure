@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Network Interface.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

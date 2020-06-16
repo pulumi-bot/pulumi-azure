@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about a Platform Image.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an ExpressRoute Circuit Authorization.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -51,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleExpressRouteCircuitAuthorization, err := network.NewExpressRouteCircuitAuthorization(ctx, "exampleExpressRouteCircuitAuthorization", &network.ExpressRouteCircuitAuthorizationArgs{
+// 		_, err = network.NewExpressRouteCircuitAuthorization(ctx, "exampleExpressRouteCircuitAuthorization", &network.ExpressRouteCircuitAuthorizationArgs{
 // 			ExpressRouteCircuitName: exampleExpressRouteCircuit.Name,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 		})

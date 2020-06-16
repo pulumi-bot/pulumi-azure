@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Allows accepting the Legal Terms for a Marketplace Image.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

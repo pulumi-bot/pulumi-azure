@@ -60,10 +60,7 @@ class AwaitableGetIntegrationAccountResult(GetIntegrationAccountResult):
 def get_integration_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Logic App Integration Account.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

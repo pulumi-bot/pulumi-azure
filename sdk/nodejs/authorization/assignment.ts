@@ -6,9 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Assigns a given Principal (User or Group) to a given Role.
- *
  * ## Example Usage
- *
  * ### Using A Built-In Role)
  *
  * ```typescript
@@ -23,7 +21,6 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.objectId),
  * });
  * ```
- *
  * ### Custom Role & Service Principal)
  *
  * ```typescript
@@ -48,7 +45,6 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.objectId),
  * });
  * ```
- *
  * ### Custom Role & User)
  *
  * ```typescript
@@ -73,7 +69,6 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.clientId),
  * });
  * ```
- *
  * ### Custom Role & Management Group)
  *
  * ```typescript

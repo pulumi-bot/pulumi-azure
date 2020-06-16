@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Network Profile.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

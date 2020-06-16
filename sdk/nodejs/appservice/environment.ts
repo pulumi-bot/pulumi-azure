@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an App Service Environment.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

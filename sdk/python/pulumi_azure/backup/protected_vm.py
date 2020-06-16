@@ -34,10 +34,7 @@ class ProtectedVM(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backup_policy_id=None, recovery_vault_name=None, resource_group_name=None, source_vm_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages Azure Backup for an Azure VM
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

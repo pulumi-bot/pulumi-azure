@@ -22,10 +22,7 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, nat_gateway_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Associates a NAT Gateway with a Subnet within a Virtual Network.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

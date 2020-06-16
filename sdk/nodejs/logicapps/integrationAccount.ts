@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Logic App Integration Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

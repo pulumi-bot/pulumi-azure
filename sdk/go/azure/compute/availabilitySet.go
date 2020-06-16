@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Availability Set for Virtual Machines.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAvailabilitySet, err := compute.NewAvailabilitySet(ctx, "exampleAvailabilitySet", &compute.AvailabilitySetArgs{
+// 		_, err = compute.NewAvailabilitySet(ctx, "exampleAvailabilitySet", &compute.AvailabilitySetArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Tags: map[string]interface{}{

@@ -58,10 +58,7 @@ class ChannelsRegistration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, developer_app_insights_api_key=None, developer_app_insights_application_id=None, developer_app_insights_key=None, display_name=None, endpoint=None, location=None, microsoft_app_id=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Bot Channels Registration.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

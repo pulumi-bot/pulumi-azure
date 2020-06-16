@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing PostgreSQL Azure Database Server.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

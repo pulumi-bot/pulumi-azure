@@ -26,10 +26,7 @@ class NetworkInterfaceBackendAddressPoolAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_address_pool_id=None, ip_configuration_name=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages the association between a Network Interface and a Load Balancer's Backend Address Pool.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

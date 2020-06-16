@@ -11,6 +11,7 @@ import (
 )
 
 // Manages a Hostname Binding within an App Service.
+// ## Example Usage
 type CustomHostnameBinding struct {
 	pulumi.CustomResourceState
 

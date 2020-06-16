@@ -88,10 +88,7 @@ class Server(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, administrator_login=None, administrator_login_password=None, auto_grow_enabled=None, backup_retention_days=None, create_mode=None, creation_source_server_id=None, geo_redundant_backup_enabled=None, location=None, name=None, public_network_access_enabled=None, resource_group_name=None, restore_point_in_time=None, sku_name=None, ssl_enforcement=None, ssl_enforcement_enabled=None, storage_mb=None, storage_profile=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a MariaDB Server.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

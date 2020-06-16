@@ -77,10 +77,7 @@ class ActionRuleActionGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, action_group_id=None, condition=None, description=None, enabled=None, name=None, resource_group_name=None, scope=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Monitor Action Rule which type is action group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

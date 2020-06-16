@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** Owner access permission is required.
  *
  * > **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

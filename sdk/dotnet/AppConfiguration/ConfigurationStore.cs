@@ -11,10 +11,7 @@ namespace Pulumi.Azure.AppConfiguration
 {
     /// <summary>
     /// Manages an Azure App Configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

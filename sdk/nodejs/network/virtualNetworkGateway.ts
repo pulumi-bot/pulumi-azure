@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages a Virtual Network Gateway to establish secure, cross-premises connectivity.
  *
  * > **Note:** Please be aware that provisioning a Virtual Network Gateway takes a long time (between 30 minutes and 1 hour)
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

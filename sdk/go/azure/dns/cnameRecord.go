@@ -11,10 +11,7 @@ import (
 )
 
 // Enables you to manage DNS CNAME Records within Azure DNS.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -39,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
+// 		_, err = dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -52,7 +49,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Alias Record)
 //
 // ```go
@@ -87,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
+// 		_, err = dns.NewCNameRecord(ctx, "exampleCNameRecord", &dns.CNameRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

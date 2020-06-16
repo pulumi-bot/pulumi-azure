@@ -50,10 +50,7 @@ class Share(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acls=None, metadata=None, name=None, quota=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a File Share within Azure Storage.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

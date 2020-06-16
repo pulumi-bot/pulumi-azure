@@ -47,11 +47,7 @@ class Logger(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, application_insights=None, buffered=None, description=None, eventhub=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Logger within an API Management Service.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

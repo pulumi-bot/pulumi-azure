@@ -11,6 +11,7 @@ import (
 )
 
 // Manages automated startup and shutdown schedules for Azure Dev Test Lab.
+// ## Example Usage
 type Schedule struct {
 	pulumi.CustomResourceState
 

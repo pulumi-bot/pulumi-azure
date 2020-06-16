@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Azure Data Factory (Version 2).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datafactory.LookupFactory(ctx, &datafactory.LookupFactoryArgs{
+// 		_, err := datafactory.LookupFactory(ctx, &datafactory.LookupFactoryArgs{
 // 			Name:              azurerm_data_factory.Example.Name,
 // 			ResourceGroupName: azurerm_data_factory.Example.Resource_group_name,
 // 		}, nil)

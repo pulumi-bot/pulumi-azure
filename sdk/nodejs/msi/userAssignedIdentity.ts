@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a user assigned identity.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

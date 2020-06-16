@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Log Analytics (formally Operational Insights) Windows Performance Counter DataSource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -42,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDataSourceWindowsPerformanceCounter, err := loganalytics.NewDataSourceWindowsPerformanceCounter(ctx, "exampleDataSourceWindowsPerformanceCounter", &loganalytics.DataSourceWindowsPerformanceCounterArgs{
+// 		_, err = loganalytics.NewDataSourceWindowsPerformanceCounter(ctx, "exampleDataSourceWindowsPerformanceCounter", &loganalytics.DataSourceWindowsPerformanceCounterArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			WorkspaceName:     exampleAnalyticsWorkspace.Name,
 // 			ObjectName:        pulumi.String("CPU"),

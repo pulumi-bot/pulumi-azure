@@ -67,10 +67,7 @@ class AwaitableGetSecretResult(GetSecretResult):
 def get_secret(key_vault_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Key Vault Secret.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -105,10 +105,7 @@ class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
 def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,namespace_name=None,resource_group_name=None,send=None,opts=None):
     """
     Use this data source to access information about an existing Event Hubs Authorization Rule within an Event Hub.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

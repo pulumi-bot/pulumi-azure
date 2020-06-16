@@ -67,9 +67,7 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, express_route_circuit_name=None, microsoft_peering_config=None, peer_asn=None, peering_type=None, primary_peer_address_prefix=None, resource_group_name=None, secondary_peer_address_prefix=None, shared_key=None, vlan_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an ExpressRoute Circuit Peering.
-
         ## Example Usage
-
         ### Creating A Microsoft Peering)
 
         ```python

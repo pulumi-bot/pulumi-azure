@@ -63,10 +63,7 @@ class AwaitableGetNetworkSecurityGroupResult(GetNetworkSecurityGroupResult):
 def get_network_security_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Security Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Manages as an Azure Container Group instance.
- *
  * ## Example Usage
  *
- *
+ * This example provisions a Basic Container.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

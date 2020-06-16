@@ -102,10 +102,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
 def get_database(name=None,server_id=None,opts=None):
     """
     Use this data source to access information about an existing SQL database.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

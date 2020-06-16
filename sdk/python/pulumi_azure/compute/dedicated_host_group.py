@@ -38,10 +38,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, platform_fault_domain_count=None, resource_group_name=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage a Dedicated Host Group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

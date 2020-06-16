@@ -54,10 +54,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
 def get_firewall(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Azure Firewall.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

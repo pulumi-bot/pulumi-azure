@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Notification Hub within a Notification Hub Namespace.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

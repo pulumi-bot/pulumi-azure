@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Core
 {
     /// <summary>
     /// Manages a Resource Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

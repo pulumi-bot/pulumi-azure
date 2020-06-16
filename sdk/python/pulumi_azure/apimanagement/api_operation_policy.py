@@ -35,11 +35,7 @@ class ApiOperationPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, api_name=None, operation_id=None, resource_group_name=None, xml_content=None, xml_link=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management API Operation Policy
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

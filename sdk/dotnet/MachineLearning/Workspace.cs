@@ -11,10 +11,7 @@ namespace Pulumi.Azure.MachineLearning
 {
     /// <summary>
     /// Manages a Azure Machine Learning Workspace
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

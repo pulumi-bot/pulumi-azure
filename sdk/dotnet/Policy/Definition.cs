@@ -13,10 +13,7 @@ namespace Pulumi.Azure.Policy
     /// Manages a policy rule definition on a management group or your provider subscription.
     /// 
     /// Policy definitions do not take effect until they are assigned to a scope using a Policy Assignment.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

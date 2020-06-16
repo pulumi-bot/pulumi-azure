@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Application Rule Collection within an Azure Firewall.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

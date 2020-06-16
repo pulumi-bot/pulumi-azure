@@ -87,10 +87,7 @@ class EventHubNamespace(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_inflate_enabled=None, capacity=None, location=None, maximum_throughput_units=None, name=None, network_rulesets=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an EventHub Namespace.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

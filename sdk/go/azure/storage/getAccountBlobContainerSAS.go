@@ -10,10 +10,7 @@ import (
 // Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account Blob Container.
 //
 // Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account Blob Container.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -22,10 +22,7 @@ class AdvancedThreatProtection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enabled=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a resources Advanced Threat Protection setting.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

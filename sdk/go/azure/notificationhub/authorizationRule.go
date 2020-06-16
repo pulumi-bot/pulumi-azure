@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Authorization Rule associated with a Notification Hub within a Notification Hub Namespace.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -50,7 +47,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAuthorizationRule, err := notificationhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &notificationhub.AuthorizationRuleArgs{
+// 		_, err = notificationhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &notificationhub.AuthorizationRuleArgs{
 // 			NotificationHubName: exampleHub.Name,
 // 			NamespaceName:       exampleNamespace.Name,
 // 			ResourceGroupName:   exampleResourceGroup.Name,

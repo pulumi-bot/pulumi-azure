@@ -245,10 +245,7 @@ class Endpoint(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, content_types_to_compresses=None, delivery_rules=None, geo_filters=None, global_delivery_rule=None, is_compression_enabled=None, is_http_allowed=None, is_https_allowed=None, location=None, name=None, optimization_type=None, origin_host_header=None, origin_path=None, origins=None, probe_path=None, profile_name=None, querystring_caching_behaviour=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A CDN Endpoint is the entity within a CDN Profile containing configuration information regarding caching behaviours and origins. The CDN Endpoint is exposed using the URL format <endpointname>.azureedge.net.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

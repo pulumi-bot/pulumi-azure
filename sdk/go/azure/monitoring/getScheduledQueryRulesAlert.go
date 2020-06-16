@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access the properties of an AlertingAction scheduled query rule.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -11,10 +11,7 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages a Pipeline inside a Azure Data Factory.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,7 +39,6 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
-    /// 
     /// ### With Activities
     /// 
     /// ```csharp

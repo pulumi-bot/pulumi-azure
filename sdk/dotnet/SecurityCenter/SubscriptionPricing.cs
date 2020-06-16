@@ -15,10 +15,7 @@ namespace Pulumi.Azure.SecurityCenter
     /// &gt; **NOTE:** This resource requires the `Owner` permission on the Subscription.
     /// 
     /// &gt; **NOTE:** Deletion of this resource does not change or reset the pricing tier to `Free`
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

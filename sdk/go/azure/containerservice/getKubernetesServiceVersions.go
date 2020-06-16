@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to retrieve the version of Kubernetes supported by Azure Kubernetes Service.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

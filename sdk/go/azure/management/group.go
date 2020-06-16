@@ -10,6 +10,7 @@ import (
 )
 
 // Manages a Management Group.
+// ## Example Usage
 type Group struct {
 	pulumi.CustomResourceState
 

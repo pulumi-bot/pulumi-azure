@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an OpenID Connect Provider within a API Management Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

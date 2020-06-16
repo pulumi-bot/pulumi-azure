@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Virtual Hub within a Virtual WAN.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -40,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualHub, err := network.NewVirtualHub(ctx, "exampleVirtualHub", &network.VirtualHubArgs{
+// 		_, err = network.NewVirtualHub(ctx, "exampleVirtualHub", &network.VirtualHubArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			VirtualWanId:      exampleVirtualWan.ID(),

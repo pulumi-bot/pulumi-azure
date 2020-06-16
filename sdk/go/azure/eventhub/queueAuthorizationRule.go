@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Authorization Rule for a ServiceBus Queue.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -52,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleQueueAuthorizationRule, err := servicebus.NewQueueAuthorizationRule(ctx, "exampleQueueAuthorizationRule", &servicebus.QueueAuthorizationRuleArgs{
+// 		_, err = servicebus.NewQueueAuthorizationRule(ctx, "exampleQueueAuthorizationRule", &servicebus.QueueAuthorizationRuleArgs{
 // 			NamespaceName:     exampleNamespace.Name,
 // 			QueueName:         exampleQueue.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,

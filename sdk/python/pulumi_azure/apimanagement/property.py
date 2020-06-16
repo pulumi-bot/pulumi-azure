@@ -42,11 +42,7 @@ class Property(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_management_name=None, display_name=None, name=None, resource_group_name=None, secret=None, tags=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Management Property.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

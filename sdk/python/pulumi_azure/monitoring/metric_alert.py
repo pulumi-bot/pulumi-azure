@@ -76,10 +76,7 @@ class MetricAlert(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, actions=None, auto_mitigate=None, criterias=None, description=None, enabled=None, frequency=None, name=None, resource_group_name=None, scopes=None, severity=None, tags=None, window_size=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Metric Alert within Azure Monitor.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

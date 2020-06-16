@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an App Service Certificate.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

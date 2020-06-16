@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Policy
 {
     /// <summary>
     /// Configures the specified Policy Definition at the specified Scope. Also, Policy Set Definitions are supported.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

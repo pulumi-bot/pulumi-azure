@@ -75,10 +75,7 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
 
     > **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
     [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -11,9 +11,7 @@ namespace Pulumi.Azure.Role
 {
     /// <summary>
     /// Assigns a given Principal (User or Group) to a given Role.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Using A Built-In Role)
     /// 
     /// ```csharp
@@ -36,7 +34,6 @@ namespace Pulumi.Azure.Role
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; Service Principal)
     /// 
     /// ```csharp
@@ -80,7 +77,6 @@ namespace Pulumi.Azure.Role
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; User)
     /// 
     /// ```csharp
@@ -124,7 +120,6 @@ namespace Pulumi.Azure.Role
     /// 
     /// }
     /// ```
-    /// 
     /// ### Custom Role &amp; Management Group)
     /// 
     /// ```csharp

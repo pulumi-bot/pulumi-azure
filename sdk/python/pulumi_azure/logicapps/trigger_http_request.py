@@ -34,10 +34,7 @@ class TriggerHttpRequest(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, logic_app_id=None, method=None, name=None, relative_path=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a HTTP Request Trigger within a Logic App Workflow
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

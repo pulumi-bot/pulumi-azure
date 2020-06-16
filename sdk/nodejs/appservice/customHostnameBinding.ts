@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Hostname Binding within an App Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

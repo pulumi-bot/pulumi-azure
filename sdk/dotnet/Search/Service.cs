@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Search
 {
     /// <summary>
     /// Manages a Search Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

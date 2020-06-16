@@ -36,10 +36,7 @@ class Module(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, module_link=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Automation Module.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -58,10 +58,7 @@ class Lab(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, storage_type=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Dev Test Lab.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

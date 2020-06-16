@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Azure Firewall.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

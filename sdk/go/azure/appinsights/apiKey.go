@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an Application Insights API key.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

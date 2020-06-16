@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a resources Advanced Threat Protection setting.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

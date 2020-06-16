@@ -11,10 +11,7 @@ namespace Pulumi.Azure.Healthcare
 {
     /// <summary>
     /// Manages a Healthcare Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

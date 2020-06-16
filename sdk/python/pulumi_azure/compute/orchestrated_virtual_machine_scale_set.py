@@ -48,10 +48,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         Manages an Orchestrated Virtual Machine Scale Set.
 
         > **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -14,10 +14,9 @@ import * as utilities from "../utilities";
  * > **Note** This provider will automatically update & reimage the nodes in the Scale Set (if Required) during an Update - this behaviour can be configured using the `features` configuration within the Provider configuration block.
  *
  * > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `azure.compute.ScaleSet` resource instead
- *
  * ## Example Usage
  *
- *
+ * This example provisions a basic Linux Virtual Machine Scale Set on an internal network.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

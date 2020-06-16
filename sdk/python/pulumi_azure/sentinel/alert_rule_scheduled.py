@@ -70,10 +70,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, display_name=None, enabled=None, log_analytics_workspace_id=None, name=None, query=None, query_frequency=None, query_period=None, severity=None, suppression_duration=None, suppression_enabled=None, tactics=None, trigger_operator=None, trigger_threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Sentinel Scheduled Alert Rule.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

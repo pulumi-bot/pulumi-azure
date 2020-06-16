@@ -46,10 +46,7 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, display_name=None, enabled=None, log_analytics_workspace_id=None, name=None, product_filter=None, severity_filters=None, text_whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Sentinel MS Security Incident Alert Rule.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -42,10 +42,7 @@ class Share(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, description=None, kind=None, name=None, snapshot_schedule=None, terms=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Data Share.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Key Vault Certificate.
- *
  * ## Example Usage
- *
  * ### Generating A New Certificate)
  *
  * ```typescript

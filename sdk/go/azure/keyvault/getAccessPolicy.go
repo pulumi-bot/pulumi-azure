@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about the permissions from the Management Key Vault Templates.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

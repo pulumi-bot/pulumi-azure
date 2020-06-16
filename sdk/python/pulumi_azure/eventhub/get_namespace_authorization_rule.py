@@ -106,10 +106,7 @@ class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRule
 def get_namespace_authorization_rule(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

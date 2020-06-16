@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS A Records within Azure DNS.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +21,6 @@ import * as utilities from "../utilities";
  *     records: ["10.0.180.17"],
  * });
  * ```
- *
  * ### Alias Record)
  *
  * ```typescript

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to access information about an existing Dedicated Host Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

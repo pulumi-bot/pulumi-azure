@@ -38,11 +38,7 @@ class StringVariable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, automation_account_name=None, description=None, encrypted=None, name=None, resource_group_name=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a string variable in Azure Automation
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

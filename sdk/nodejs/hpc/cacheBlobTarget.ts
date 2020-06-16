@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Blob Target within a HPC Cache.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

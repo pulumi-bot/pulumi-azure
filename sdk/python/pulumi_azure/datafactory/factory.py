@@ -59,10 +59,7 @@ class Factory(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, github_configuration=None, identity=None, location=None, name=None, resource_group_name=None, tags=None, vsts_configuration=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Azure Data Factory (Version 2).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

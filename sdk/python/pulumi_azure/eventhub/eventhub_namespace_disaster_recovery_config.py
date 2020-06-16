@@ -34,10 +34,7 @@ class EventhubNamespaceDisasterRecoveryConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, alternate_name=None, name=None, namespace_name=None, partner_namespace_id=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Disaster Recovery Config for an Event Hub Namespace.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

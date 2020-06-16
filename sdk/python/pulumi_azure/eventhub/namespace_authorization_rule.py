@@ -56,10 +56,7 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, listen=None, manage=None, name=None, namespace_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

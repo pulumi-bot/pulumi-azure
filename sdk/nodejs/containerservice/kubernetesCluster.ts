@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Managed Kubernetes Cluster (also known as AKS / Azure Kubernetes Service)
- *
  * ## Example Usage
  *
- *
+ * This example provisions a basic Managed Kubernetes Cluster.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

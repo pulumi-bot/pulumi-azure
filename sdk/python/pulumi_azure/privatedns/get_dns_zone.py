@@ -74,10 +74,7 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
 def get_dns_zone(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Private DNS Zone.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

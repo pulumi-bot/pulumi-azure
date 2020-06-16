@@ -10,10 +10,7 @@ import (
 // Use this data source to access the connection status information about an existing Private Endpoint Connection.
 //
 // > **NOTE** Private Endpoint is currently in Public Preview.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

@@ -50,10 +50,7 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, evaluator_type=None, fact_data=None, lab_name=None, name=None, policy_set_name=None, resource_group_name=None, tags=None, threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Policy within a Dev Test Policy Set.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

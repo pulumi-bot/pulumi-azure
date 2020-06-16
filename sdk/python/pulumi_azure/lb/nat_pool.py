@@ -51,10 +51,7 @@ class NatPool(pulumi.CustomResource):
         > **NOTE:** This resource cannot be used with with virtual machines, instead use the `lb.NatRule` resource.
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

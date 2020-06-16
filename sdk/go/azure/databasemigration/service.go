@@ -13,10 +13,7 @@ import (
 // Manages a Azure Database Migration Service.
 //
 // > **NOTE:** Destroying a Database Migration Service will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provide.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -54,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := databasemigration.NewService(ctx, "exampleService", &databasemigration.ServiceArgs{
+// 		_, err = databasemigration.NewService(ctx, "exampleService", &databasemigration.ServiceArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			SubnetId:          exampleSubnet.ID(),

@@ -58,10 +58,7 @@ class SharedAccessPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, device_connect=None, iothub_name=None, name=None, registry_read=None, registry_write=None, resource_group_name=None, service_connect=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an IotHub Shared Access Policy
-
         ## Example Usage
-
-
 
         ```python
         import pulumi

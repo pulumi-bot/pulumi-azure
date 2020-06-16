@@ -91,9 +91,7 @@ class ManagedDisk(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, create_option=None, disk_encryption_set_id=None, disk_iops_read_write=None, disk_mbps_read_write=None, disk_size_gb=None, encryption_settings=None, image_reference_id=None, location=None, name=None, os_type=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, storage_account_type=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a managed disk.
-
         ## Example Usage
-
         ### With Create Empty
 
         ```python
@@ -111,7 +109,6 @@ class ManagedDisk(pulumi.CustomResource):
                 "environment": "staging",
             })
         ```
-
         ### With Create Copy
 
         ```python

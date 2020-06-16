@@ -10,11 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to access information about an existing Azure Blueprint Published Version
  *
  * > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

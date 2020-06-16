@@ -58,10 +58,7 @@ class AwaitableGetConsumeGroupResult(GetConsumeGroupResult):
 def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Event Hubs Consumer Group within an Event Hub.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
