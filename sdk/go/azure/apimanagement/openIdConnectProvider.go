@@ -12,9 +12,9 @@ import (
 
 // Manages an OpenID Connect Provider within a API Management Service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOpenIdConnectProvider, err := apimanagement.NewOpenIdConnectProvider(ctx, "exampleOpenIdConnectProvider", &apimanagement.OpenIdConnectProviderArgs{
+// 		_, err = apimanagement.NewOpenIdConnectProvider(ctx, "exampleOpenIdConnectProvider", &apimanagement.OpenIdConnectProviderArgs{
 // 			ApiManagementName: exampleService.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ClientId:          pulumi.String("00001111-2222-3333-4444-555566667777"),
@@ -57,6 +57,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type OpenIdConnectProvider struct {
 	pulumi.CustomResourceState
 

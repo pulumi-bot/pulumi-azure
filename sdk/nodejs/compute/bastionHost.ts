@@ -11,9 +11,11 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Bastion Hosts are a preview feature in Azure, and therefore are only supported in a select number of regions. [Read more](https://docs.microsoft.com/en-us/azure/bastion/bastion-faq).
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example deploys an Azure Bastion Host Instance to a target virtual network.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,6 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BastionHost extends pulumi.CustomResource {
     /**

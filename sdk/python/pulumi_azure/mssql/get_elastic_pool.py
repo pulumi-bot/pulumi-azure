@@ -100,9 +100,9 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     """
     Use this data source to access information about an existing SQL elastic pool.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -113,6 +113,8 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
         server_name="example-sql-server")
     pulumi.export("elasticpoolId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the elastic pool.

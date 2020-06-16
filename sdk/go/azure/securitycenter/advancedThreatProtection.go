@@ -12,9 +12,9 @@ import (
 
 // Manages a resources Advanced Threat Protection setting.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rg, err := core.NewResourceGroup(ctx, "rg", &core.ResourceGroupArgs{
+// 		_, err = core.NewResourceGroup(ctx, "rg", &core.ResourceGroupArgs{
 // 			Location: pulumi.String("northeurope"),
 // 		})
 // 		if err != nil {
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAdvancedThreatProtection, err := securitycenter.NewAdvancedThreatProtection(ctx, "exampleAdvancedThreatProtection", &securitycenter.AdvancedThreatProtectionArgs{
+// 		_, err = securitycenter.NewAdvancedThreatProtection(ctx, "exampleAdvancedThreatProtection", &securitycenter.AdvancedThreatProtectionArgs{
 // 			TargetResourceId: exampleAccount.ID(),
 // 			Enabled:          pulumi.Bool(true),
 // 		})
@@ -57,6 +57,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AdvancedThreatProtection struct {
 	pulumi.CustomResourceState
 

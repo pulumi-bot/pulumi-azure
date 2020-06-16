@@ -12,9 +12,9 @@ import (
 
 // Manages a Event Hubs authorization Rule within an Event Hub.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -54,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAuthorizationRule, err := eventhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &eventhub.AuthorizationRuleArgs{
+// 		_, err = eventhub.NewAuthorizationRule(ctx, "exampleAuthorizationRule", &eventhub.AuthorizationRuleArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			EventhubName:      exampleEventHub.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
@@ -69,6 +69,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule
 type EventHubAuthorizationRule struct {

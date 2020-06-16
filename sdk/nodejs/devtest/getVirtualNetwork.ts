@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an existing Dev Test Lab Virtual Network.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * export const labSubnetName = example.then(example => example.allowedSubnets[0].labSubnetName);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVirtualNetwork(args: GetVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkResult> {
     if (!opts) {

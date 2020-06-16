@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Management Product Assignment to a Group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleService.then(exampleService => exampleService.resourceGroupName),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ProductGroup extends pulumi.CustomResource {
     /**

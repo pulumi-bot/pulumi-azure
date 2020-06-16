@@ -185,9 +185,12 @@ class VirtualMachine(pulumi.CustomResource):
 
         > **Note:** Data Disks can be attached either directly on the `compute.VirtualMachine` resource, or using the `compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### From An Azure Platform Image)
+
+        This example provisions a Virtual Machine with Managed Disks.
 
         ```python
         import pulumi
@@ -243,6 +246,8 @@ class VirtualMachine(pulumi.CustomResource):
                 "environment": "staging",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

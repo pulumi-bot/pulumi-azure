@@ -132,9 +132,9 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing EventHub Namespace.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -144,6 +144,8 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
         resource_group_name="search-service")
     pulumi.export("eventhubNamespaceId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the EventHub Namespace.

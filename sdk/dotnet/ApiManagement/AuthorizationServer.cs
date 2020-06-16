@@ -12,10 +12,9 @@ namespace Pulumi.Azure.ApiManagement
     /// <summary>
     /// Manages an Authorization Server within an API Management Service.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +48,8 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AuthorizationServer : Pulumi.CustomResource
     {

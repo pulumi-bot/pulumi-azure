@@ -43,9 +43,9 @@ class Container(pulumi.CustomResource):
         """
         Manages a Container within an Azure Storage Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class Container(pulumi.CustomResource):
             storage_account_name=example_account.name,
             container_access_type="private")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

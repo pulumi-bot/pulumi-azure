@@ -61,9 +61,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Automation Account.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -73,6 +73,8 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("automationAccountId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Automation Account.

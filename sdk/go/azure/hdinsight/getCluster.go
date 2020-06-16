@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing HDInsight Cluster.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetCluster(ctx *pulumi.Context, args *GetClusterArgs, opts ...pulumi.InvokeOption) (*GetClusterResult, error) {
 	var rv GetClusterResult
 	err := ctx.Invoke("azure:hdinsight/getCluster:getCluster", args, &rv, opts...)

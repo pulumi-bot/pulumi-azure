@@ -51,9 +51,9 @@ class AuthorizationRule(pulumi.CustomResource):
         """
         Manages an Authorization Rule associated with a Notification Hub within a Notification Hub Namespace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class AuthorizationRule(pulumi.CustomResource):
             send=True,
             listen=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

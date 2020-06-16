@@ -236,9 +236,11 @@ class KubernetesCluster(pulumi.CustomResource):
         """
         Manages a Managed Kubernetes Cluster (also known as AKS / Azure Kubernetes Service)
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This example provisions a basic Managed Kubernetes Cluster.
 
         ```python
         import pulumi
@@ -263,6 +265,8 @@ class KubernetesCluster(pulumi.CustomResource):
         pulumi.export("clientCertificate", example_kubernetes_cluster.kube_configs[0]["clientCertificate"])
         pulumi.export("kubeConfig", example_kubernetes_cluster.kube_config_raw)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

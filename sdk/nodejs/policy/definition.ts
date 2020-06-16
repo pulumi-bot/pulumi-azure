@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * Policy definitions do not take effect until they are assigned to a scope using a Policy Assignment.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +51,8 @@ import * as utilities from "../utilities";
  *     policyType: "Custom",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Definition extends pulumi.CustomResource {
     /**

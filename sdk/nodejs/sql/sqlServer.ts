@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Microsoft SQL Azure Database Server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SqlServer extends pulumi.CustomResource {
     /**

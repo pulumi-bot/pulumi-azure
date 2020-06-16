@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Cdn
     /// <summary>
     /// Manages a CDN Profile to create a collection of CDN Endpoints.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Azure.Cdn
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Profile : Pulumi.CustomResource
     {

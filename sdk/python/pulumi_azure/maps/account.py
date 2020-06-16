@@ -43,9 +43,9 @@ class Account(pulumi.CustomResource):
         """
         Manages an Azure Maps Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -59,6 +59,8 @@ class Account(pulumi.CustomResource):
                 "environment": "Test",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

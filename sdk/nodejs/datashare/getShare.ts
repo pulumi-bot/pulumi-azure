@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an existing Data Share.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * export const id = exampleShare.then(exampleShare => exampleShare.id);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getShare(args: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     if (!opts) {

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an App Service Certificate.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * export const appServiceCertificateId = example.then(example => example.id);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {

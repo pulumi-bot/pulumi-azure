@@ -76,9 +76,9 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
     > **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
     [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -90,6 +90,8 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
         key_vault_id=example_key_vault.id)
     pulumi.export("certificateThumbprint", example_certificate.thumbprint)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str key_vault_id: Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.

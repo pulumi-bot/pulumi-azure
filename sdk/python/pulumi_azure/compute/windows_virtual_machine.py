@@ -217,9 +217,11 @@ class WindowsVirtualMachine(pulumi.CustomResource):
 
         > In this release there's a known issue where the `public_ip_address` and `public_ip_addresses` fields may not be fully populated for Dynamic Public IP's.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This example provisions a basic Windows Virtual Machine on an internal network.
 
         ```python
         import pulumi
@@ -260,6 +262,8 @@ class WindowsVirtualMachine(pulumi.CustomResource):
                 "version": "latest",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

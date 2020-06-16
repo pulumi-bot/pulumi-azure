@@ -12,8 +12,9 @@ import (
 
 // Manages an App Service Plan component.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Dedicated)
 //
 // ```go
@@ -33,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku: &appservice.PlanSkuArgs{
@@ -48,7 +49,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Shared / Consumption Plan)
 //
 // ```go
@@ -68,7 +70,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("FunctionApp"),
@@ -84,7 +86,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Linux)
 //
 // ```go
@@ -104,7 +107,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("Linux"),
@@ -121,7 +124,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Windows Container)
 //
 // ```go
@@ -141,7 +145,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlan, err := appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
+// 		_, err = appservice.NewPlan(ctx, "examplePlan", &appservice.PlanArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Kind:              pulumi.String("xenon"),
@@ -158,6 +162,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Plan struct {
 	pulumi.CustomResourceState
 

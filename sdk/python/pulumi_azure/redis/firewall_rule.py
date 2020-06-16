@@ -35,9 +35,9 @@ class FirewallRule(pulumi.CustomResource):
         """
         Manages a Firewall Rule associated with a Redis Cache.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -69,6 +69,8 @@ class FirewallRule(pulumi.CustomResource):
             start_ip="1.2.3.4",
             end_ip="2.3.4.5")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

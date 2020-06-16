@@ -12,9 +12,9 @@ namespace Pulumi.Azure.RecoveryServices
     /// <summary>
     /// Manages an Recovery Services Vault.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +39,8 @@ namespace Pulumi.Azure.RecoveryServices
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {

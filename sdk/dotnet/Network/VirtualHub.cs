@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Network
     /// <summary>
     /// Manages a Virtual Hub within a Virtual WAN.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualHub : Pulumi.CustomResource
     {

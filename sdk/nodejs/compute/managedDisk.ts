@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a managed disk.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With Create Empty
  *
  * ```typescript
@@ -29,7 +30,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### With Create Copy
  *
  * ```typescript
@@ -59,6 +61,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ManagedDisk extends pulumi.CustomResource {
     /**

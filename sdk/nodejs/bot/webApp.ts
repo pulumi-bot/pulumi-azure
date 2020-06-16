@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Bot Web App.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     microsoftAppId: current.then(current => current.clientId),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class WebApp extends pulumi.CustomResource {
     /**

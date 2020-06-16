@@ -105,9 +105,9 @@ class Database(pulumi.CustomResource):
         """
         Manages a MS SQL Database.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -143,6 +143,8 @@ class Database(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

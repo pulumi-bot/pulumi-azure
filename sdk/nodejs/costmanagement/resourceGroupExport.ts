@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure Cost Management Export for a Resource Group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ResourceGroupExport extends pulumi.CustomResource {
     /**

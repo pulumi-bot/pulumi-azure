@@ -36,9 +36,9 @@ class Database(pulumi.CustomResource):
         """
         Manages a MariaDB Database within a MariaDB Server
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +62,8 @@ class Database(pulumi.CustomResource):
             charset="utf8",
             collation="utf8_general_ci")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

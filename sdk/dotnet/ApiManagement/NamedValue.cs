@@ -12,10 +12,9 @@ namespace Pulumi.Azure.ApiManagement
     /// <summary>
     /// Manages an API Management Named Value.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +47,8 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NamedValue : Pulumi.CustomResource
     {

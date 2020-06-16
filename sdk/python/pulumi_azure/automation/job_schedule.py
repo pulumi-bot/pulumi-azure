@@ -40,9 +40,11 @@ class JobSchedule(pulumi.CustomResource):
         """
         Links an Automation Runbook and Schedule.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This is an example of just the Job Schedule.
 
         ```python
         import pulumi
@@ -58,6 +60,8 @@ class JobSchedule(pulumi.CustomResource):
             runbook_name="Get-VirtualMachine",
             schedule_name="hour")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

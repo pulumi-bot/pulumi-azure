@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Compute
     /// <summary>
     /// Manages an Availability Set for Virtual Machines.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AvailabilitySet : Pulumi.CustomResource
     {

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access the properties of a LogToMetricAction scheduled query rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *
  * export const queryRuleId = example.id;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getScheduledQueryRulesLog(args: GetScheduledQueryRulesLogArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledQueryRulesLogResult> {
     if (!opts) {

@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Monitoring
     /// <summary>
     /// Manages an Monitor Action Rule which type is suppression.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -64,6 +64,8 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ActionRuleSuppression : Pulumi.CustomResource
     {

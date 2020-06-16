@@ -55,9 +55,9 @@ class User(pulumi.CustomResource):
         """
         Manages an API Management User.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -79,6 +79,8 @@ class User(pulumi.CustomResource):
             email="user@example.com",
             state="active")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

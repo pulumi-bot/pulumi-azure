@@ -12,9 +12,9 @@ import (
 
 // Manages a Search Service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := search.NewService(ctx, "exampleService", &search.ServiceArgs{
+// 		_, err = search.NewService(ctx, "exampleService", &search.ServiceArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			Sku:               pulumi.String("standard"),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Service struct {
 	pulumi.CustomResourceState
 

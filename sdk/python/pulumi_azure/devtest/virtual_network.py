@@ -47,9 +47,9 @@ class VirtualNetwork(pulumi.CustomResource):
         """
         Manages a Virtual Network within a DevTest Lab.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -70,6 +70,8 @@ class VirtualNetwork(pulumi.CustomResource):
                 "useInVirtualMachineCreation": "Allow",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

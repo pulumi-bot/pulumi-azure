@@ -12,8 +12,9 @@ namespace Pulumi.Azure.Compute
     /// <summary>
     /// Manages a managed disk.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### With Create Empty
     /// 
     /// ```csharp
@@ -44,7 +45,8 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### With Create Copy
     /// 
     /// ```csharp
@@ -88,6 +90,8 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ManagedDisk : Pulumi.CustomResource
     {

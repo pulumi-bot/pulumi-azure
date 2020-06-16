@@ -12,9 +12,9 @@ import (
 
 // Manages an API Management User.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleUser, err := apimanagement.NewUser(ctx, "exampleUser", &apimanagement.UserArgs{
+// 		_, err = apimanagement.NewUser(ctx, "exampleUser", &apimanagement.UserArgs{
 // 			UserId:            pulumi.String("5931a75ae4bbd512288c680b"),
 // 			ApiManagementName: exampleService.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
@@ -59,6 +59,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type User struct {
 	pulumi.CustomResourceState
 

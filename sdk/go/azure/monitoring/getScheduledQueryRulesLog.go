@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access the properties of a LogToMetricAction scheduled query rule.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupScheduledQueryRulesLog(ctx *pulumi.Context, args *LookupScheduledQueryRulesLogArgs, opts ...pulumi.InvokeOption) (*LookupScheduledQueryRulesLogResult, error) {
 	var rv LookupScheduledQueryRulesLogResult
 	err := ctx.Invoke("azure:monitoring/getScheduledQueryRulesLog:getScheduledQueryRulesLog", args, &rv, opts...)

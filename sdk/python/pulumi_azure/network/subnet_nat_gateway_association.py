@@ -23,9 +23,9 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
         """
         Associates a NAT Gateway with a Subnet within a Virtual Network.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -47,6 +47,8 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
             subnet_id=example_subnet.id,
             nat_gateway_id=example_nat_gateway.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

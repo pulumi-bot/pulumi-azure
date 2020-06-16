@@ -47,9 +47,9 @@ class VpnGateway(pulumi.CustomResource):
         """
         Manages a VPN Gateway within a Virtual Hub, which enables Site-to-Site communication.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -73,6 +73,8 @@ class VpnGateway(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             virtual_hub_id=example_virtual_hub.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

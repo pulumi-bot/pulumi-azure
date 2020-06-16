@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Spring Cloud Service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupSpringCloudService(ctx *pulumi.Context, args *LookupSpringCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupSpringCloudServiceResult, error) {
 	var rv LookupSpringCloudServiceResult
 	err := ctx.Invoke("azure:appplatform/getSpringCloudService:getSpringCloudService", args, &rv, opts...)

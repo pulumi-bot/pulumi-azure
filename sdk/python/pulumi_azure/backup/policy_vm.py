@@ -73,9 +73,9 @@ class PolicyVM(pulumi.CustomResource):
         """
         Manages an Azure Backup VM Backup Policy.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -124,6 +124,8 @@ class PolicyVM(pulumi.CustomResource):
                 "months": ["January"],
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

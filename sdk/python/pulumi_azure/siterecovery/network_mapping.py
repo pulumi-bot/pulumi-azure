@@ -43,9 +43,9 @@ class NetworkMapping(pulumi.CustomResource):
         """
         Manages a site recovery network mapping on Azure. A network mapping decides how to translate connected netwroks when a VM is migrated from one region to another.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -82,6 +82,8 @@ class NetworkMapping(pulumi.CustomResource):
             source_network_id=primary_virtual_network.id,
             target_network_id=secondary_virtual_network.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

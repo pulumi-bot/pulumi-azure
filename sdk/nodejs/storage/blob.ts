@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Blob within a Storage Container.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     source: new pulumi.asset.FileAsset("some-local-file.zip"),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Blob extends pulumi.CustomResource {
     /**

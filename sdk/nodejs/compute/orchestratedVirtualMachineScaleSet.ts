@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     zones: ["1"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     /**

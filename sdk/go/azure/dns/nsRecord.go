@@ -12,9 +12,9 @@ import (
 
 // Enables you to manage DNS NS Records within Azure DNS.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNsRecord, err := dns.NewNsRecord(ctx, "exampleNsRecord", &dns.NsRecordArgs{
+// 		_, err = dns.NewNsRecord(ctx, "exampleNsRecord", &dns.NsRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -58,6 +58,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type NsRecord struct {
 	pulumi.CustomResourceState
 

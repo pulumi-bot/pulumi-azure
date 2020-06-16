@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Stream Analytics Stream Input Blob.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StreamInputBlob extends pulumi.CustomResource {
     /**

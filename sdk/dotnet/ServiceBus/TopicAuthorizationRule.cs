@@ -12,9 +12,9 @@ namespace Pulumi.Azure.ServiceBus
     /// <summary>
     /// Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +56,8 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TopicAuthorizationRule : Pulumi.CustomResource
     {

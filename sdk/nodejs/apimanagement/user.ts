@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Management User.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     state: "active",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class User extends pulumi.CustomResource {
     /**

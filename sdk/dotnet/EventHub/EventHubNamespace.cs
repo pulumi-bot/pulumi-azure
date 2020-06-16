@@ -12,9 +12,9 @@ namespace Pulumi.Azure.EventHub
     /// <summary>
     /// Manages an EventHub Namespace.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventHubNamespace : Pulumi.CustomResource
     {

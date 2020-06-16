@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Network Interface.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**

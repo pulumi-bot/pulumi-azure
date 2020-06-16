@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Snapshot.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
+// 		_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
 // 			Name:              "my-snapshot",
 // 			ResourceGroupName: "my-resource-group",
 // 		}, nil)
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("azure:compute/getSnapshot:getSnapshot", args, &rv, opts...)

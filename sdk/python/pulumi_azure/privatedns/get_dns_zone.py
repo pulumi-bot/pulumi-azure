@@ -75,9 +75,9 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Private DNS Zone.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -87,6 +87,8 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
         resource_group_name="contoso-dns")
     pulumi.export("privateDnsZoneId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Private DNS Zone.

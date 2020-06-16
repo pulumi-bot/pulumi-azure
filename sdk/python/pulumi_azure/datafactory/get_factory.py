@@ -76,9 +76,9 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Azure Data Factory (Version 2).
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -88,6 +88,8 @@ def get_factory(name=None,resource_group_name=None,opts=None):
         resource_group_name=azurerm_data_factory["example"]["resource_group_name"])
     pulumi.export("dataFactoryId", azurerm_data_factory["example"]["id"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Data Factory to retrieve information about.

@@ -55,9 +55,9 @@ class EventhubDataConnection(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) EventHub Data Connection
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -102,6 +102,8 @@ class EventhubDataConnection(pulumi.CustomResource):
             data_format="JSON")
         #(Optional)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

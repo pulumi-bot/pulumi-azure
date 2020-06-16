@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Authorization Rule for an Event Hub Namespace.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
     /**

@@ -31,9 +31,9 @@ class PlacementGroup(pulumi.CustomResource):
         """
         Manages a proximity placement group for virtual machines, virtual machine scale sets and availability sets.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -47,6 +47,8 @@ class PlacementGroup(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

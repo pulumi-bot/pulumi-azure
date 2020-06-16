@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE:** Owner access permission is required.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := securitycenter.NewContact(ctx, "example", &securitycenter.ContactArgs{
+// 		_, err = securitycenter.NewContact(ctx, "example", &securitycenter.ContactArgs{
 // 			AlertNotifications: pulumi.Bool(true),
 // 			AlertsToAdmins:     pulumi.Bool(true),
 // 			Email:              pulumi.String("contact@example.com"),
@@ -41,6 +41,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Contact struct {
 	pulumi.CustomResourceState
 

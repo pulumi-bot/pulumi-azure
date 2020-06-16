@@ -65,10 +65,9 @@ def get_bool_variable(automation_account_name=None,name=None,resource_group_name
     """
     Use this data source to access information about an existing Automation Bool Variable.
 
-
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -79,6 +78,8 @@ def get_bool_variable(automation_account_name=None,name=None,resource_group_name
         automation_account_name="tfex-example-account")
     pulumi.export("variableId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str automation_account_name: The name of the automation account in which the Automation Variable exists.

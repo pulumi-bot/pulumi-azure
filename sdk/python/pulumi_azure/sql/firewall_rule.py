@@ -36,9 +36,9 @@ class FirewallRule(pulumi.CustomResource):
         """
         Allows you to manage an Azure SQL Firewall Rule
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -57,6 +57,8 @@ class FirewallRule(pulumi.CustomResource):
             start_ip_address="10.0.17.62",
             end_ip_address="10.0.17.62")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

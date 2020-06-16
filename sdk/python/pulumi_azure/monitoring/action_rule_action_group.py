@@ -78,9 +78,9 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         """
         Manages an Monitor Action Rule which type is action group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -101,6 +101,8 @@ class ActionRuleActionGroup(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

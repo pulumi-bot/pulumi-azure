@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a PowerBI Embedded.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     administrators: ["azsdktest@microsoft.com"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Embedded extends pulumi.CustomResource {
     /**

@@ -47,9 +47,9 @@ class Account(pulumi.CustomResource):
         """
         Manages a Automation Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class Account(pulumi.CustomResource):
                 "environment": "development",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

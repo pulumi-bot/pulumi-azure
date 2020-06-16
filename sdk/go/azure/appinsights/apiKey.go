@@ -12,9 +12,9 @@ import (
 
 // Manages an Application Insights API key.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -97,6 +97,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ApiKey struct {
 	pulumi.CustomResourceState
 

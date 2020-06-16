@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Links a Log Analytics (formally Operational Insights) Workspace to another resource. The (currently) only linkable service is an Azure Automation Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     resourceId: exampleAccount.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinkedService extends pulumi.CustomResource {
     /**

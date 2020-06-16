@@ -35,9 +35,9 @@ class Database(pulumi.CustomResource):
         """
         Manages a MySQL Database within a MySQL Server
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +63,8 @@ class Database(pulumi.CustomResource):
             charset="utf8",
             collation="utf8_unicode_ci")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

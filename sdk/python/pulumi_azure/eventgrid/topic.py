@@ -69,9 +69,9 @@ class Topic(pulumi.CustomResource):
 
         > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -85,6 +85,8 @@ class Topic(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

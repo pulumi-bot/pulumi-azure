@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Log Analytics (formally Operational Insights) Workspace.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     retentionInDays: 30,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AnalyticsWorkspace extends pulumi.CustomResource {
     /**

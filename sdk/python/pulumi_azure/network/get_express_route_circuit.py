@@ -82,9 +82,9 @@ def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing ExpressRoute circuit.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -95,6 +95,8 @@ def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
     pulumi.export("expressRouteCircuitId", example.id)
     pulumi.export("serviceKey", example.service_key)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the ExpressRoute circuit.

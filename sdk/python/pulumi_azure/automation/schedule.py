@@ -66,9 +66,9 @@ class Schedule(pulumi.CustomResource):
         """
         Manages a Automation Schedule.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -91,6 +91,8 @@ class Schedule(pulumi.CustomResource):
             description="This is an example schedule",
             week_days=["Friday"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

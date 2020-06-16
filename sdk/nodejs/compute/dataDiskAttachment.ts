@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storageDataDisk` block in the `azure.compute.VirtualMachine` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,6 +82,8 @@ import * as utilities from "../utilities";
  *     caching: "ReadWrite",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DataDiskAttachment extends pulumi.CustomResource {
     /**

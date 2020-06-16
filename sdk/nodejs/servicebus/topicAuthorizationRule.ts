@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TopicAuthorizationRule extends pulumi.CustomResource {
     /**

@@ -59,9 +59,9 @@ class DatabasePrincipal(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Database Principal
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -91,6 +91,8 @@ class DatabasePrincipal(pulumi.CustomResource):
             client_id=current.tenant_id,
             object_id=current.client_id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

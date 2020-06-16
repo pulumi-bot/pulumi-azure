@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a MySQL Database within a MySQL Server
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     collation: "utf8_unicode_ci",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Database extends pulumi.CustomResource {
     /**

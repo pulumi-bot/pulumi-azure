@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Diagnostic Setting for an existing Resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DiagnosticSetting extends pulumi.CustomResource {
     /**

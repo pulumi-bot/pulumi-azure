@@ -177,9 +177,9 @@ def get_cluster_node_pool(kubernetes_cluster_name=None,name=None,resource_group_
     """
     Use this data source to access information about an existing Kubernetes Cluster Node Pool.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -190,6 +190,8 @@ def get_cluster_node_pool(kubernetes_cluster_name=None,name=None,resource_group_
         resource_group_name="existing-resource-group")
     pulumi.export("id", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str kubernetes_cluster_name: The Name of the Kubernetes Cluster where this Node Pool is located.

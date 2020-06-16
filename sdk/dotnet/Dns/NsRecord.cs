@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Dns
     /// <summary>
     /// Enables you to manage DNS NS Records within Azure DNS.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +51,8 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NsRecord : Pulumi.CustomResource
     {

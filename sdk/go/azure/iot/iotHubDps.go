@@ -12,9 +12,9 @@ import (
 
 // Manages an IotHub Device Provisioning Service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIotHubDps, err := iot.NewIotHubDps(ctx, "exampleIotHubDps", &iot.IotHubDpsArgs{
+// 		_, err = iot.NewIotHubDps(ctx, "exampleIotHubDps", &iot.IotHubDpsArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			Sku: &iot.IotHubDpsSkuArgs{
@@ -48,6 +48,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type IotHubDps struct {
 	pulumi.CustomResourceState
 

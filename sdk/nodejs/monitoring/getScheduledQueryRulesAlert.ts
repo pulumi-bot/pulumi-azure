@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access the properties of an AlertingAction scheduled query rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *
  * export const queryRuleId = example.id;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getScheduledQueryRulesAlert(args: GetScheduledQueryRulesAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledQueryRulesAlertResult> {
     if (!opts) {

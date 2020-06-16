@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Disaster Recovery Config for an Event Hub Namespace.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     partnerNamespaceId: secondary.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     /**

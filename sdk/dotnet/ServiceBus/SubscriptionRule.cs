@@ -12,8 +12,9 @@ namespace Pulumi.Azure.ServiceBus
     /// <summary>
     /// Manages a ServiceBus Subscription Rule.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### SQL Filter)
     /// 
     /// ```csharp
@@ -64,6 +65,8 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SubscriptionRule : Pulumi.CustomResource
     {

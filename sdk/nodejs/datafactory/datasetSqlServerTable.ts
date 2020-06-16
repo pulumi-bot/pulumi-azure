@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a SQL Server Table Dataset inside a Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServiceSqlServer.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DatasetSqlServerTable extends pulumi.CustomResource {
     /**

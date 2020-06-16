@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Function App deployment Slot.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With App Service Plan)
  *
  * ```typescript
@@ -48,6 +49,8 @@ import * as utilities from "../utilities";
  *     storageAccountAccessKey: exampleAccount.primaryAccessKey,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FunctionAppSlot extends pulumi.CustomResource {
     /**

@@ -134,9 +134,9 @@ def get_network_interface(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Interface.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -146,6 +146,8 @@ def get_network_interface(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("networkInterfaceId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Network Interface.

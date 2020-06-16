@@ -12,9 +12,9 @@ import (
 
 // Manages an ExpressRoute Circuit Authorization.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -51,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleExpressRouteCircuitAuthorization, err := network.NewExpressRouteCircuitAuthorization(ctx, "exampleExpressRouteCircuitAuthorization", &network.ExpressRouteCircuitAuthorizationArgs{
+// 		_, err = network.NewExpressRouteCircuitAuthorization(ctx, "exampleExpressRouteCircuitAuthorization", &network.ExpressRouteCircuitAuthorizationArgs{
 // 			ExpressRouteCircuitName: exampleExpressRouteCircuit.Name,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 		})
@@ -62,6 +62,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ExpressRouteCircuitAuthorization struct {
 	pulumi.CustomResourceState
 

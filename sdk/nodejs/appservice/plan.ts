@@ -11,8 +11,9 @@ import {Kind} from "./index";
 /**
  * Manages an App Service Plan component.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Dedicated)
  *
  * ```typescript
@@ -29,7 +30,8 @@ import {Kind} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Shared / Consumption Plan)
  *
  * ```typescript
@@ -47,7 +49,8 @@ import {Kind} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Linux)
  *
  * ```typescript
@@ -66,7 +69,8 @@ import {Kind} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Windows Container)
  *
  * ```typescript
@@ -85,6 +89,8 @@ import {Kind} from "./index";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Plan extends pulumi.CustomResource {
     /**

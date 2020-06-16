@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an existing Public IP Address.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Reference An Existing)
  *
  * ```typescript
@@ -24,7 +25,8 @@ import * as utilities from "../utilities";
  * export const domainNameLabel = example.then(example => example.domainNameLabel);
  * export const publicIpAddress = example.then(example => example.ipAddress);
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Retrieve The Dynamic Public IP Of A New VM)
  *
  * ```typescript
@@ -74,6 +76,8 @@ import * as utilities from "../utilities";
  * }));
  * export const publicIpAddress = examplePublicIp.ipAddress;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getPublicIP(args: GetPublicIPArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIPResult> {
     if (!opts) {

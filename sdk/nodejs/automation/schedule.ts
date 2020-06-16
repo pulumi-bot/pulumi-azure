@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Automation Schedule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     weekDays: ["Friday"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Schedule extends pulumi.CustomResource {
     /**

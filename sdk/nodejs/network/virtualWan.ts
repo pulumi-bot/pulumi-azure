@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Virtual WAN.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     location: exampleResourceGroup.location,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualWan extends pulumi.CustomResource {
     /**

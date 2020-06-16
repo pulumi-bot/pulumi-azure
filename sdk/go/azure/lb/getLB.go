@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Load Balancer
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetLB(ctx *pulumi.Context, args *GetLBArgs, opts ...pulumi.InvokeOption) (*GetLBResult, error) {
 	var rv GetLBResult
 	err := ctx.Invoke("azure:lb/getLB:getLB", args, &rv, opts...)

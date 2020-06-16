@@ -61,9 +61,9 @@ class Application(pulumi.CustomResource):
         """
         Manages a Managed Application.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -95,6 +95,8 @@ class Application(pulumi.CustomResource):
                 "storage_account_type": "Standard_LRS",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

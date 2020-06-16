@@ -97,9 +97,9 @@ class Server(pulumi.CustomResource):
         """
         Manages a MySQL Server.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -122,6 +122,8 @@ class Server(pulumi.CustomResource):
             ssl_enforcement_enabled=True,
             ssl_minimal_tls_version_enforced="TLS1_2")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

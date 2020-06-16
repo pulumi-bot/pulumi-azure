@@ -63,9 +63,9 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
         """
         Manages an IotHub Device Provisioning Service Shared Access Policy
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -85,6 +85,8 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
             enrollment_write=True,
             enrollment_read=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

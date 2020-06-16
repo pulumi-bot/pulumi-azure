@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an IotHub Device Provisioning Service.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IotHubDps extends pulumi.CustomResource {
     /**

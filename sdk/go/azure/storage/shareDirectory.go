@@ -12,9 +12,9 @@ import (
 
 // Manages a Directory within an Azure Storage File Share.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleShareDirectory, err := storage.NewShareDirectory(ctx, "exampleShareDirectory", &storage.ShareDirectoryArgs{
+// 		_, err = storage.NewShareDirectory(ctx, "exampleShareDirectory", &storage.ShareDirectoryArgs{
 // 			ShareName:          exampleShare.Name,
 // 			StorageAccountName: exampleAccount.Name,
 // 		})
@@ -60,6 +60,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ShareDirectory struct {
 	pulumi.CustomResourceState
 

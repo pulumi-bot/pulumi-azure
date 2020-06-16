@@ -52,9 +52,9 @@ class Snapshot(pulumi.CustomResource):
         """
         Manages a Disk Snapshot.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -73,6 +73,8 @@ class Snapshot(pulumi.CustomResource):
             create_option="Copy",
             source_uri=example_managed_disk.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

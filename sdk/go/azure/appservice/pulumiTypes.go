@@ -44,8 +44,7 @@ type AppServiceAuthSettings struct {
 // AppServiceAuthSettingsInput is an input type that accepts AppServiceAuthSettingsArgs and AppServiceAuthSettingsOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsInput` via:
 //
-// 		 AppServiceAuthSettingsArgs{...}
-//
+//          AppServiceAuthSettingsArgs{...}
 type AppServiceAuthSettingsInput interface {
 	pulumi.Input
 
@@ -107,12 +106,11 @@ func (i AppServiceAuthSettingsArgs) ToAppServiceAuthSettingsPtrOutputWithContext
 // AppServiceAuthSettingsPtrInput is an input type that accepts AppServiceAuthSettingsArgs, AppServiceAuthSettingsPtr and AppServiceAuthSettingsPtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsPtrInput` via:
 //
-// 		 AppServiceAuthSettingsArgs{...}
+//          AppServiceAuthSettingsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsPtrInput interface {
 	pulumi.Input
 
@@ -402,8 +400,7 @@ type AppServiceAuthSettingsActiveDirectory struct {
 // AppServiceAuthSettingsActiveDirectoryInput is an input type that accepts AppServiceAuthSettingsActiveDirectoryArgs and AppServiceAuthSettingsActiveDirectoryOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsActiveDirectoryInput` via:
 //
-// 		 AppServiceAuthSettingsActiveDirectoryArgs{...}
-//
+//          AppServiceAuthSettingsActiveDirectoryArgs{...}
 type AppServiceAuthSettingsActiveDirectoryInput interface {
 	pulumi.Input
 
@@ -443,12 +440,11 @@ func (i AppServiceAuthSettingsActiveDirectoryArgs) ToAppServiceAuthSettingsActiv
 // AppServiceAuthSettingsActiveDirectoryPtrInput is an input type that accepts AppServiceAuthSettingsActiveDirectoryArgs, AppServiceAuthSettingsActiveDirectoryPtr and AppServiceAuthSettingsActiveDirectoryPtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsActiveDirectoryPtrInput` via:
 //
-// 		 AppServiceAuthSettingsActiveDirectoryArgs{...}
+//          AppServiceAuthSettingsActiveDirectoryArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsActiveDirectoryPtrInput interface {
 	pulumi.Input
 
@@ -573,8 +569,7 @@ type AppServiceAuthSettingsFacebook struct {
 // AppServiceAuthSettingsFacebookInput is an input type that accepts AppServiceAuthSettingsFacebookArgs and AppServiceAuthSettingsFacebookOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsFacebookInput` via:
 //
-// 		 AppServiceAuthSettingsFacebookArgs{...}
-//
+//          AppServiceAuthSettingsFacebookArgs{...}
 type AppServiceAuthSettingsFacebookInput interface {
 	pulumi.Input
 
@@ -614,12 +609,11 @@ func (i AppServiceAuthSettingsFacebookArgs) ToAppServiceAuthSettingsFacebookPtrO
 // AppServiceAuthSettingsFacebookPtrInput is an input type that accepts AppServiceAuthSettingsFacebookArgs, AppServiceAuthSettingsFacebookPtr and AppServiceAuthSettingsFacebookPtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsFacebookPtrInput` via:
 //
-// 		 AppServiceAuthSettingsFacebookArgs{...}
+//          AppServiceAuthSettingsFacebookArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsFacebookPtrInput interface {
 	pulumi.Input
 
@@ -744,8 +738,7 @@ type AppServiceAuthSettingsGoogle struct {
 // AppServiceAuthSettingsGoogleInput is an input type that accepts AppServiceAuthSettingsGoogleArgs and AppServiceAuthSettingsGoogleOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsGoogleInput` via:
 //
-// 		 AppServiceAuthSettingsGoogleArgs{...}
-//
+//          AppServiceAuthSettingsGoogleArgs{...}
 type AppServiceAuthSettingsGoogleInput interface {
 	pulumi.Input
 
@@ -785,12 +778,11 @@ func (i AppServiceAuthSettingsGoogleArgs) ToAppServiceAuthSettingsGooglePtrOutpu
 // AppServiceAuthSettingsGooglePtrInput is an input type that accepts AppServiceAuthSettingsGoogleArgs, AppServiceAuthSettingsGooglePtr and AppServiceAuthSettingsGooglePtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsGooglePtrInput` via:
 //
-// 		 AppServiceAuthSettingsGoogleArgs{...}
+//          AppServiceAuthSettingsGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsGooglePtrInput interface {
 	pulumi.Input
 
@@ -915,8 +907,7 @@ type AppServiceAuthSettingsMicrosoft struct {
 // AppServiceAuthSettingsMicrosoftInput is an input type that accepts AppServiceAuthSettingsMicrosoftArgs and AppServiceAuthSettingsMicrosoftOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsMicrosoftInput` via:
 //
-// 		 AppServiceAuthSettingsMicrosoftArgs{...}
-//
+//          AppServiceAuthSettingsMicrosoftArgs{...}
 type AppServiceAuthSettingsMicrosoftInput interface {
 	pulumi.Input
 
@@ -956,12 +947,11 @@ func (i AppServiceAuthSettingsMicrosoftArgs) ToAppServiceAuthSettingsMicrosoftPt
 // AppServiceAuthSettingsMicrosoftPtrInput is an input type that accepts AppServiceAuthSettingsMicrosoftArgs, AppServiceAuthSettingsMicrosoftPtr and AppServiceAuthSettingsMicrosoftPtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsMicrosoftPtrInput` via:
 //
-// 		 AppServiceAuthSettingsMicrosoftArgs{...}
+//          AppServiceAuthSettingsMicrosoftArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsMicrosoftPtrInput interface {
 	pulumi.Input
 
@@ -1082,8 +1072,7 @@ type AppServiceAuthSettingsTwitter struct {
 // AppServiceAuthSettingsTwitterInput is an input type that accepts AppServiceAuthSettingsTwitterArgs and AppServiceAuthSettingsTwitterOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsTwitterInput` via:
 //
-// 		 AppServiceAuthSettingsTwitterArgs{...}
-//
+//          AppServiceAuthSettingsTwitterArgs{...}
 type AppServiceAuthSettingsTwitterInput interface {
 	pulumi.Input
 
@@ -1119,12 +1108,11 @@ func (i AppServiceAuthSettingsTwitterArgs) ToAppServiceAuthSettingsTwitterPtrOut
 // AppServiceAuthSettingsTwitterPtrInput is an input type that accepts AppServiceAuthSettingsTwitterArgs, AppServiceAuthSettingsTwitterPtr and AppServiceAuthSettingsTwitterPtrOutput values.
 // You can construct a concrete instance of `AppServiceAuthSettingsTwitterPtrInput` via:
 //
-// 		 AppServiceAuthSettingsTwitterArgs{...}
+//          AppServiceAuthSettingsTwitterArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceAuthSettingsTwitterPtrInput interface {
 	pulumi.Input
 
@@ -1231,8 +1219,7 @@ type AppServiceBackup struct {
 // AppServiceBackupInput is an input type that accepts AppServiceBackupArgs and AppServiceBackupOutput values.
 // You can construct a concrete instance of `AppServiceBackupInput` via:
 //
-// 		 AppServiceBackupArgs{...}
-//
+//          AppServiceBackupArgs{...}
 type AppServiceBackupInput interface {
 	pulumi.Input
 
@@ -1274,12 +1261,11 @@ func (i AppServiceBackupArgs) ToAppServiceBackupPtrOutputWithContext(ctx context
 // AppServiceBackupPtrInput is an input type that accepts AppServiceBackupArgs, AppServiceBackupPtr and AppServiceBackupPtrOutput values.
 // You can construct a concrete instance of `AppServiceBackupPtrInput` via:
 //
-// 		 AppServiceBackupArgs{...}
+//          AppServiceBackupArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceBackupPtrInput interface {
 	pulumi.Input
 
@@ -1423,8 +1409,7 @@ type AppServiceBackupSchedule struct {
 // AppServiceBackupScheduleInput is an input type that accepts AppServiceBackupScheduleArgs and AppServiceBackupScheduleOutput values.
 // You can construct a concrete instance of `AppServiceBackupScheduleInput` via:
 //
-// 		 AppServiceBackupScheduleArgs{...}
-//
+//          AppServiceBackupScheduleArgs{...}
 type AppServiceBackupScheduleInput interface {
 	pulumi.Input
 
@@ -1468,12 +1453,11 @@ func (i AppServiceBackupScheduleArgs) ToAppServiceBackupSchedulePtrOutputWithCon
 // AppServiceBackupSchedulePtrInput is an input type that accepts AppServiceBackupScheduleArgs, AppServiceBackupSchedulePtr and AppServiceBackupSchedulePtrOutput values.
 // You can construct a concrete instance of `AppServiceBackupSchedulePtrInput` via:
 //
-// 		 AppServiceBackupScheduleArgs{...}
+//          AppServiceBackupScheduleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceBackupSchedulePtrInput interface {
 	pulumi.Input
 
@@ -1628,8 +1612,7 @@ type AppServiceConnectionString struct {
 // AppServiceConnectionStringInput is an input type that accepts AppServiceConnectionStringArgs and AppServiceConnectionStringOutput values.
 // You can construct a concrete instance of `AppServiceConnectionStringInput` via:
 //
-// 		 AppServiceConnectionStringArgs{...}
-//
+//          AppServiceConnectionStringArgs{...}
 type AppServiceConnectionStringInput interface {
 	pulumi.Input
 
@@ -1661,8 +1644,7 @@ func (i AppServiceConnectionStringArgs) ToAppServiceConnectionStringOutputWithCo
 // AppServiceConnectionStringArrayInput is an input type that accepts AppServiceConnectionStringArray and AppServiceConnectionStringArrayOutput values.
 // You can construct a concrete instance of `AppServiceConnectionStringArrayInput` via:
 //
-// 		 AppServiceConnectionStringArray{ AppServiceConnectionStringArgs{...} }
-//
+//          AppServiceConnectionStringArray{ AppServiceConnectionStringArgs{...} }
 type AppServiceConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -1747,8 +1729,7 @@ type AppServiceIdentity struct {
 // AppServiceIdentityInput is an input type that accepts AppServiceIdentityArgs and AppServiceIdentityOutput values.
 // You can construct a concrete instance of `AppServiceIdentityInput` via:
 //
-// 		 AppServiceIdentityArgs{...}
-//
+//          AppServiceIdentityArgs{...}
 type AppServiceIdentityInput interface {
 	pulumi.Input
 
@@ -1790,12 +1771,11 @@ func (i AppServiceIdentityArgs) ToAppServiceIdentityPtrOutputWithContext(ctx con
 // AppServiceIdentityPtrInput is an input type that accepts AppServiceIdentityArgs, AppServiceIdentityPtr and AppServiceIdentityPtrOutput values.
 // You can construct a concrete instance of `AppServiceIdentityPtrInput` via:
 //
-// 		 AppServiceIdentityArgs{...}
+//          AppServiceIdentityArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceIdentityPtrInput interface {
 	pulumi.Input
 
@@ -1933,8 +1913,7 @@ type AppServiceLogs struct {
 // AppServiceLogsInput is an input type that accepts AppServiceLogsArgs and AppServiceLogsOutput values.
 // You can construct a concrete instance of `AppServiceLogsInput` via:
 //
-// 		 AppServiceLogsArgs{...}
-//
+//          AppServiceLogsArgs{...}
 type AppServiceLogsInput interface {
 	pulumi.Input
 
@@ -1972,12 +1951,11 @@ func (i AppServiceLogsArgs) ToAppServiceLogsPtrOutputWithContext(ctx context.Con
 // AppServiceLogsPtrInput is an input type that accepts AppServiceLogsArgs, AppServiceLogsPtr and AppServiceLogsPtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsPtrInput` via:
 //
-// 		 AppServiceLogsArgs{...}
+//          AppServiceLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsPtrInput interface {
 	pulumi.Input
 
@@ -2083,8 +2061,7 @@ type AppServiceLogsApplicationLogs struct {
 // AppServiceLogsApplicationLogsInput is an input type that accepts AppServiceLogsApplicationLogsArgs and AppServiceLogsApplicationLogsOutput values.
 // You can construct a concrete instance of `AppServiceLogsApplicationLogsInput` via:
 //
-// 		 AppServiceLogsApplicationLogsArgs{...}
-//
+//          AppServiceLogsApplicationLogsArgs{...}
 type AppServiceLogsApplicationLogsInput interface {
 	pulumi.Input
 
@@ -2120,12 +2097,11 @@ func (i AppServiceLogsApplicationLogsArgs) ToAppServiceLogsApplicationLogsPtrOut
 // AppServiceLogsApplicationLogsPtrInput is an input type that accepts AppServiceLogsApplicationLogsArgs, AppServiceLogsApplicationLogsPtr and AppServiceLogsApplicationLogsPtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsApplicationLogsPtrInput` via:
 //
-// 		 AppServiceLogsApplicationLogsArgs{...}
+//          AppServiceLogsApplicationLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsApplicationLogsPtrInput interface {
 	pulumi.Input
 
@@ -2222,8 +2198,7 @@ type AppServiceLogsApplicationLogsAzureBlobStorage struct {
 // AppServiceLogsApplicationLogsAzureBlobStorageInput is an input type that accepts AppServiceLogsApplicationLogsAzureBlobStorageArgs and AppServiceLogsApplicationLogsAzureBlobStorageOutput values.
 // You can construct a concrete instance of `AppServiceLogsApplicationLogsAzureBlobStorageInput` via:
 //
-// 		 AppServiceLogsApplicationLogsAzureBlobStorageArgs{...}
-//
+//          AppServiceLogsApplicationLogsAzureBlobStorageArgs{...}
 type AppServiceLogsApplicationLogsAzureBlobStorageInput interface {
 	pulumi.Input
 
@@ -2263,12 +2238,11 @@ func (i AppServiceLogsApplicationLogsAzureBlobStorageArgs) ToAppServiceLogsAppli
 // AppServiceLogsApplicationLogsAzureBlobStoragePtrInput is an input type that accepts AppServiceLogsApplicationLogsAzureBlobStorageArgs, AppServiceLogsApplicationLogsAzureBlobStoragePtr and AppServiceLogsApplicationLogsAzureBlobStoragePtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsApplicationLogsAzureBlobStoragePtrInput` via:
 //
-// 		 AppServiceLogsApplicationLogsAzureBlobStorageArgs{...}
+//          AppServiceLogsApplicationLogsAzureBlobStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsApplicationLogsAzureBlobStoragePtrInput interface {
 	pulumi.Input
 
@@ -2393,8 +2367,7 @@ type AppServiceLogsHttpLogs struct {
 // AppServiceLogsHttpLogsInput is an input type that accepts AppServiceLogsHttpLogsArgs and AppServiceLogsHttpLogsOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsInput` via:
 //
-// 		 AppServiceLogsHttpLogsArgs{...}
-//
+//          AppServiceLogsHttpLogsArgs{...}
 type AppServiceLogsHttpLogsInput interface {
 	pulumi.Input
 
@@ -2432,12 +2405,11 @@ func (i AppServiceLogsHttpLogsArgs) ToAppServiceLogsHttpLogsPtrOutputWithContext
 // AppServiceLogsHttpLogsPtrInput is an input type that accepts AppServiceLogsHttpLogsArgs, AppServiceLogsHttpLogsPtr and AppServiceLogsHttpLogsPtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsPtrInput` via:
 //
-// 		 AppServiceLogsHttpLogsArgs{...}
+//          AppServiceLogsHttpLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsHttpLogsPtrInput interface {
 	pulumi.Input
 
@@ -2545,8 +2517,7 @@ type AppServiceLogsHttpLogsAzureBlobStorage struct {
 // AppServiceLogsHttpLogsAzureBlobStorageInput is an input type that accepts AppServiceLogsHttpLogsAzureBlobStorageArgs and AppServiceLogsHttpLogsAzureBlobStorageOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsAzureBlobStorageInput` via:
 //
-// 		 AppServiceLogsHttpLogsAzureBlobStorageArgs{...}
-//
+//          AppServiceLogsHttpLogsAzureBlobStorageArgs{...}
 type AppServiceLogsHttpLogsAzureBlobStorageInput interface {
 	pulumi.Input
 
@@ -2584,12 +2555,11 @@ func (i AppServiceLogsHttpLogsAzureBlobStorageArgs) ToAppServiceLogsHttpLogsAzur
 // AppServiceLogsHttpLogsAzureBlobStoragePtrInput is an input type that accepts AppServiceLogsHttpLogsAzureBlobStorageArgs, AppServiceLogsHttpLogsAzureBlobStoragePtr and AppServiceLogsHttpLogsAzureBlobStoragePtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsAzureBlobStoragePtrInput` via:
 //
-// 		 AppServiceLogsHttpLogsAzureBlobStorageArgs{...}
+//          AppServiceLogsHttpLogsAzureBlobStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsHttpLogsAzureBlobStoragePtrInput interface {
 	pulumi.Input
 
@@ -2697,8 +2667,7 @@ type AppServiceLogsHttpLogsFileSystem struct {
 // AppServiceLogsHttpLogsFileSystemInput is an input type that accepts AppServiceLogsHttpLogsFileSystemArgs and AppServiceLogsHttpLogsFileSystemOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsFileSystemInput` via:
 //
-// 		 AppServiceLogsHttpLogsFileSystemArgs{...}
-//
+//          AppServiceLogsHttpLogsFileSystemArgs{...}
 type AppServiceLogsHttpLogsFileSystemInput interface {
 	pulumi.Input
 
@@ -2736,12 +2705,11 @@ func (i AppServiceLogsHttpLogsFileSystemArgs) ToAppServiceLogsHttpLogsFileSystem
 // AppServiceLogsHttpLogsFileSystemPtrInput is an input type that accepts AppServiceLogsHttpLogsFileSystemArgs, AppServiceLogsHttpLogsFileSystemPtr and AppServiceLogsHttpLogsFileSystemPtrOutput values.
 // You can construct a concrete instance of `AppServiceLogsHttpLogsFileSystemPtrInput` via:
 //
-// 		 AppServiceLogsHttpLogsFileSystemArgs{...}
+//          AppServiceLogsHttpLogsFileSystemArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceLogsHttpLogsFileSystemPtrInput interface {
 	pulumi.Input
 
@@ -2853,7 +2821,7 @@ type AppServiceSiteConfig struct {
 	DotnetFrameworkVersion *string `pulumi:"dotnetFrameworkVersion"`
 	// State of FTP / FTPS service for this App Service. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
 	FtpsState *string `pulumi:"ftpsState"`
-	// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)).
+	// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](<https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)>).
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// Is HTTP2 Enabled on this App Service? Defaults to `false`.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
@@ -2894,8 +2862,7 @@ type AppServiceSiteConfig struct {
 // AppServiceSiteConfigInput is an input type that accepts AppServiceSiteConfigArgs and AppServiceSiteConfigOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigInput` via:
 //
-// 		 AppServiceSiteConfigArgs{...}
-//
+//          AppServiceSiteConfigArgs{...}
 type AppServiceSiteConfigInput interface {
 	pulumi.Input
 
@@ -2917,7 +2884,7 @@ type AppServiceSiteConfigArgs struct {
 	DotnetFrameworkVersion pulumi.StringPtrInput `pulumi:"dotnetFrameworkVersion"`
 	// State of FTP / FTPS service for this App Service. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
 	FtpsState pulumi.StringPtrInput `pulumi:"ftpsState"`
-	// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)).
+	// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](<https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)>).
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
 	// Is HTTP2 Enabled on this App Service? Defaults to `false`.
 	Http2Enabled pulumi.BoolPtrInput `pulumi:"http2Enabled"`
@@ -2978,12 +2945,11 @@ func (i AppServiceSiteConfigArgs) ToAppServiceSiteConfigPtrOutputWithContext(ctx
 // AppServiceSiteConfigPtrInput is an input type that accepts AppServiceSiteConfigArgs, AppServiceSiteConfigPtr and AppServiceSiteConfigPtrOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigPtrInput` via:
 //
-// 		 AppServiceSiteConfigArgs{...}
+//          AppServiceSiteConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceSiteConfigPtrInput interface {
 	pulumi.Input
 
@@ -3067,7 +3033,7 @@ func (o AppServiceSiteConfigOutput) FtpsState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppServiceSiteConfig) *string { return v.FtpsState }).(pulumi.StringPtrOutput)
 }
 
-// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)).
+// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](<https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)>).
 func (o AppServiceSiteConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppServiceSiteConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
@@ -3244,7 +3210,7 @@ func (o AppServiceSiteConfigPtrOutput) FtpsState() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)).
+// The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](<https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)>).
 func (o AppServiceSiteConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppServiceSiteConfig) *string {
 		if v == nil {
@@ -3434,8 +3400,7 @@ type AppServiceSiteConfigCors struct {
 // AppServiceSiteConfigCorsInput is an input type that accepts AppServiceSiteConfigCorsArgs and AppServiceSiteConfigCorsOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigCorsInput` via:
 //
-// 		 AppServiceSiteConfigCorsArgs{...}
-//
+//          AppServiceSiteConfigCorsArgs{...}
 type AppServiceSiteConfigCorsInput interface {
 	pulumi.Input
 
@@ -3473,12 +3438,11 @@ func (i AppServiceSiteConfigCorsArgs) ToAppServiceSiteConfigCorsPtrOutputWithCon
 // AppServiceSiteConfigCorsPtrInput is an input type that accepts AppServiceSiteConfigCorsArgs, AppServiceSiteConfigCorsPtr and AppServiceSiteConfigCorsPtrOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigCorsPtrInput` via:
 //
-// 		 AppServiceSiteConfigCorsArgs{...}
+//          AppServiceSiteConfigCorsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AppServiceSiteConfigCorsPtrInput interface {
 	pulumi.Input
 
@@ -3592,8 +3556,7 @@ type AppServiceSiteConfigIpRestriction struct {
 // AppServiceSiteConfigIpRestrictionInput is an input type that accepts AppServiceSiteConfigIpRestrictionArgs and AppServiceSiteConfigIpRestrictionOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigIpRestrictionInput` via:
 //
-// 		 AppServiceSiteConfigIpRestrictionArgs{...}
-//
+//          AppServiceSiteConfigIpRestrictionArgs{...}
 type AppServiceSiteConfigIpRestrictionInput interface {
 	pulumi.Input
 
@@ -3629,8 +3592,7 @@ func (i AppServiceSiteConfigIpRestrictionArgs) ToAppServiceSiteConfigIpRestricti
 // AppServiceSiteConfigIpRestrictionArrayInput is an input type that accepts AppServiceSiteConfigIpRestrictionArray and AppServiceSiteConfigIpRestrictionArrayOutput values.
 // You can construct a concrete instance of `AppServiceSiteConfigIpRestrictionArrayInput` via:
 //
-// 		 AppServiceSiteConfigIpRestrictionArray{ AppServiceSiteConfigIpRestrictionArgs{...} }
-//
+//          AppServiceSiteConfigIpRestrictionArray{ AppServiceSiteConfigIpRestrictionArgs{...} }
 type AppServiceSiteConfigIpRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -3721,8 +3683,7 @@ type AppServiceSiteCredential struct {
 // AppServiceSiteCredentialInput is an input type that accepts AppServiceSiteCredentialArgs and AppServiceSiteCredentialOutput values.
 // You can construct a concrete instance of `AppServiceSiteCredentialInput` via:
 //
-// 		 AppServiceSiteCredentialArgs{...}
-//
+//          AppServiceSiteCredentialArgs{...}
 type AppServiceSiteCredentialInput interface {
 	pulumi.Input
 
@@ -3752,8 +3713,7 @@ func (i AppServiceSiteCredentialArgs) ToAppServiceSiteCredentialOutputWithContex
 // AppServiceSiteCredentialArrayInput is an input type that accepts AppServiceSiteCredentialArray and AppServiceSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `AppServiceSiteCredentialArrayInput` via:
 //
-// 		 AppServiceSiteCredentialArray{ AppServiceSiteCredentialArgs{...} }
-//
+//          AppServiceSiteCredentialArray{ AppServiceSiteCredentialArgs{...} }
 type AppServiceSiteCredentialArrayInput interface {
 	pulumi.Input
 
@@ -3829,8 +3789,7 @@ type AppServiceSourceControl struct {
 // AppServiceSourceControlInput is an input type that accepts AppServiceSourceControlArgs and AppServiceSourceControlOutput values.
 // You can construct a concrete instance of `AppServiceSourceControlInput` via:
 //
-// 		 AppServiceSourceControlArgs{...}
-//
+//          AppServiceSourceControlArgs{...}
 type AppServiceSourceControlInput interface {
 	pulumi.Input
 
@@ -3860,8 +3819,7 @@ func (i AppServiceSourceControlArgs) ToAppServiceSourceControlOutputWithContext(
 // AppServiceSourceControlArrayInput is an input type that accepts AppServiceSourceControlArray and AppServiceSourceControlArrayOutput values.
 // You can construct a concrete instance of `AppServiceSourceControlArrayInput` via:
 //
-// 		 AppServiceSourceControlArray{ AppServiceSourceControlArgs{...} }
-//
+//          AppServiceSourceControlArray{ AppServiceSourceControlArgs{...} }
 type AppServiceSourceControlArrayInput interface {
 	pulumi.Input
 
@@ -3945,8 +3903,7 @@ type AppServiceStorageAccount struct {
 // AppServiceStorageAccountInput is an input type that accepts AppServiceStorageAccountArgs and AppServiceStorageAccountOutput values.
 // You can construct a concrete instance of `AppServiceStorageAccountInput` via:
 //
-// 		 AppServiceStorageAccountArgs{...}
-//
+//          AppServiceStorageAccountArgs{...}
 type AppServiceStorageAccountInput interface {
 	pulumi.Input
 
@@ -3984,8 +3941,7 @@ func (i AppServiceStorageAccountArgs) ToAppServiceStorageAccountOutputWithContex
 // AppServiceStorageAccountArrayInput is an input type that accepts AppServiceStorageAccountArray and AppServiceStorageAccountArrayOutput values.
 // You can construct a concrete instance of `AppServiceStorageAccountArrayInput` via:
 //
-// 		 AppServiceStorageAccountArray{ AppServiceStorageAccountArgs{...} }
-//
+//          AppServiceStorageAccountArray{ AppServiceStorageAccountArgs{...} }
 type AppServiceStorageAccountArrayInput interface {
 	pulumi.Input
 
@@ -4085,8 +4041,7 @@ type CertificateOrderCertificate struct {
 // CertificateOrderCertificateInput is an input type that accepts CertificateOrderCertificateArgs and CertificateOrderCertificateOutput values.
 // You can construct a concrete instance of `CertificateOrderCertificateInput` via:
 //
-// 		 CertificateOrderCertificateArgs{...}
-//
+//          CertificateOrderCertificateArgs{...}
 type CertificateOrderCertificateInput interface {
 	pulumi.Input
 
@@ -4120,8 +4075,7 @@ func (i CertificateOrderCertificateArgs) ToCertificateOrderCertificateOutputWith
 // CertificateOrderCertificateArrayInput is an input type that accepts CertificateOrderCertificateArray and CertificateOrderCertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateOrderCertificateArrayInput` via:
 //
-// 		 CertificateOrderCertificateArray{ CertificateOrderCertificateArgs{...} }
-//
+//          CertificateOrderCertificateArray{ CertificateOrderCertificateArgs{...} }
 type CertificateOrderCertificateArrayInput interface {
 	pulumi.Input
 
@@ -4231,8 +4185,7 @@ type FunctionAppAuthSettings struct {
 // FunctionAppAuthSettingsInput is an input type that accepts FunctionAppAuthSettingsArgs and FunctionAppAuthSettingsOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsInput` via:
 //
-// 		 FunctionAppAuthSettingsArgs{...}
-//
+//          FunctionAppAuthSettingsArgs{...}
 type FunctionAppAuthSettingsInput interface {
 	pulumi.Input
 
@@ -4294,12 +4247,11 @@ func (i FunctionAppAuthSettingsArgs) ToFunctionAppAuthSettingsPtrOutputWithConte
 // FunctionAppAuthSettingsPtrInput is an input type that accepts FunctionAppAuthSettingsArgs, FunctionAppAuthSettingsPtr and FunctionAppAuthSettingsPtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsPtrInput` via:
 //
-// 		 FunctionAppAuthSettingsArgs{...}
+//          FunctionAppAuthSettingsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsPtrInput interface {
 	pulumi.Input
 
@@ -4589,8 +4541,7 @@ type FunctionAppAuthSettingsActiveDirectory struct {
 // FunctionAppAuthSettingsActiveDirectoryInput is an input type that accepts FunctionAppAuthSettingsActiveDirectoryArgs and FunctionAppAuthSettingsActiveDirectoryOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsActiveDirectoryInput` via:
 //
-// 		 FunctionAppAuthSettingsActiveDirectoryArgs{...}
-//
+//          FunctionAppAuthSettingsActiveDirectoryArgs{...}
 type FunctionAppAuthSettingsActiveDirectoryInput interface {
 	pulumi.Input
 
@@ -4630,12 +4581,11 @@ func (i FunctionAppAuthSettingsActiveDirectoryArgs) ToFunctionAppAuthSettingsAct
 // FunctionAppAuthSettingsActiveDirectoryPtrInput is an input type that accepts FunctionAppAuthSettingsActiveDirectoryArgs, FunctionAppAuthSettingsActiveDirectoryPtr and FunctionAppAuthSettingsActiveDirectoryPtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsActiveDirectoryPtrInput` via:
 //
-// 		 FunctionAppAuthSettingsActiveDirectoryArgs{...}
+//          FunctionAppAuthSettingsActiveDirectoryArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsActiveDirectoryPtrInput interface {
 	pulumi.Input
 
@@ -4760,8 +4710,7 @@ type FunctionAppAuthSettingsFacebook struct {
 // FunctionAppAuthSettingsFacebookInput is an input type that accepts FunctionAppAuthSettingsFacebookArgs and FunctionAppAuthSettingsFacebookOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsFacebookInput` via:
 //
-// 		 FunctionAppAuthSettingsFacebookArgs{...}
-//
+//          FunctionAppAuthSettingsFacebookArgs{...}
 type FunctionAppAuthSettingsFacebookInput interface {
 	pulumi.Input
 
@@ -4801,12 +4750,11 @@ func (i FunctionAppAuthSettingsFacebookArgs) ToFunctionAppAuthSettingsFacebookPt
 // FunctionAppAuthSettingsFacebookPtrInput is an input type that accepts FunctionAppAuthSettingsFacebookArgs, FunctionAppAuthSettingsFacebookPtr and FunctionAppAuthSettingsFacebookPtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsFacebookPtrInput` via:
 //
-// 		 FunctionAppAuthSettingsFacebookArgs{...}
+//          FunctionAppAuthSettingsFacebookArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsFacebookPtrInput interface {
 	pulumi.Input
 
@@ -4931,8 +4879,7 @@ type FunctionAppAuthSettingsGoogle struct {
 // FunctionAppAuthSettingsGoogleInput is an input type that accepts FunctionAppAuthSettingsGoogleArgs and FunctionAppAuthSettingsGoogleOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsGoogleInput` via:
 //
-// 		 FunctionAppAuthSettingsGoogleArgs{...}
-//
+//          FunctionAppAuthSettingsGoogleArgs{...}
 type FunctionAppAuthSettingsGoogleInput interface {
 	pulumi.Input
 
@@ -4972,12 +4919,11 @@ func (i FunctionAppAuthSettingsGoogleArgs) ToFunctionAppAuthSettingsGooglePtrOut
 // FunctionAppAuthSettingsGooglePtrInput is an input type that accepts FunctionAppAuthSettingsGoogleArgs, FunctionAppAuthSettingsGooglePtr and FunctionAppAuthSettingsGooglePtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsGooglePtrInput` via:
 //
-// 		 FunctionAppAuthSettingsGoogleArgs{...}
+//          FunctionAppAuthSettingsGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsGooglePtrInput interface {
 	pulumi.Input
 
@@ -5102,8 +5048,7 @@ type FunctionAppAuthSettingsMicrosoft struct {
 // FunctionAppAuthSettingsMicrosoftInput is an input type that accepts FunctionAppAuthSettingsMicrosoftArgs and FunctionAppAuthSettingsMicrosoftOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsMicrosoftInput` via:
 //
-// 		 FunctionAppAuthSettingsMicrosoftArgs{...}
-//
+//          FunctionAppAuthSettingsMicrosoftArgs{...}
 type FunctionAppAuthSettingsMicrosoftInput interface {
 	pulumi.Input
 
@@ -5143,12 +5088,11 @@ func (i FunctionAppAuthSettingsMicrosoftArgs) ToFunctionAppAuthSettingsMicrosoft
 // FunctionAppAuthSettingsMicrosoftPtrInput is an input type that accepts FunctionAppAuthSettingsMicrosoftArgs, FunctionAppAuthSettingsMicrosoftPtr and FunctionAppAuthSettingsMicrosoftPtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsMicrosoftPtrInput` via:
 //
-// 		 FunctionAppAuthSettingsMicrosoftArgs{...}
+//          FunctionAppAuthSettingsMicrosoftArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsMicrosoftPtrInput interface {
 	pulumi.Input
 
@@ -5269,8 +5213,7 @@ type FunctionAppAuthSettingsTwitter struct {
 // FunctionAppAuthSettingsTwitterInput is an input type that accepts FunctionAppAuthSettingsTwitterArgs and FunctionAppAuthSettingsTwitterOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsTwitterInput` via:
 //
-// 		 FunctionAppAuthSettingsTwitterArgs{...}
-//
+//          FunctionAppAuthSettingsTwitterArgs{...}
 type FunctionAppAuthSettingsTwitterInput interface {
 	pulumi.Input
 
@@ -5306,12 +5249,11 @@ func (i FunctionAppAuthSettingsTwitterArgs) ToFunctionAppAuthSettingsTwitterPtrO
 // FunctionAppAuthSettingsTwitterPtrInput is an input type that accepts FunctionAppAuthSettingsTwitterArgs, FunctionAppAuthSettingsTwitterPtr and FunctionAppAuthSettingsTwitterPtrOutput values.
 // You can construct a concrete instance of `FunctionAppAuthSettingsTwitterPtrInput` via:
 //
-// 		 FunctionAppAuthSettingsTwitterArgs{...}
+//          FunctionAppAuthSettingsTwitterArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppAuthSettingsTwitterPtrInput interface {
 	pulumi.Input
 
@@ -5416,8 +5358,7 @@ type FunctionAppConnectionString struct {
 // FunctionAppConnectionStringInput is an input type that accepts FunctionAppConnectionStringArgs and FunctionAppConnectionStringOutput values.
 // You can construct a concrete instance of `FunctionAppConnectionStringInput` via:
 //
-// 		 FunctionAppConnectionStringArgs{...}
-//
+//          FunctionAppConnectionStringArgs{...}
 type FunctionAppConnectionStringInput interface {
 	pulumi.Input
 
@@ -5449,8 +5390,7 @@ func (i FunctionAppConnectionStringArgs) ToFunctionAppConnectionStringOutputWith
 // FunctionAppConnectionStringArrayInput is an input type that accepts FunctionAppConnectionStringArray and FunctionAppConnectionStringArrayOutput values.
 // You can construct a concrete instance of `FunctionAppConnectionStringArrayInput` via:
 //
-// 		 FunctionAppConnectionStringArray{ FunctionAppConnectionStringArgs{...} }
-//
+//          FunctionAppConnectionStringArray{ FunctionAppConnectionStringArgs{...} }
 type FunctionAppConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -5535,8 +5475,7 @@ type FunctionAppIdentity struct {
 // FunctionAppIdentityInput is an input type that accepts FunctionAppIdentityArgs and FunctionAppIdentityOutput values.
 // You can construct a concrete instance of `FunctionAppIdentityInput` via:
 //
-// 		 FunctionAppIdentityArgs{...}
-//
+//          FunctionAppIdentityArgs{...}
 type FunctionAppIdentityInput interface {
 	pulumi.Input
 
@@ -5578,12 +5517,11 @@ func (i FunctionAppIdentityArgs) ToFunctionAppIdentityPtrOutputWithContext(ctx c
 // FunctionAppIdentityPtrInput is an input type that accepts FunctionAppIdentityArgs, FunctionAppIdentityPtr and FunctionAppIdentityPtrOutput values.
 // You can construct a concrete instance of `FunctionAppIdentityPtrInput` via:
 //
-// 		 FunctionAppIdentityArgs{...}
+//          FunctionAppIdentityArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppIdentityPtrInput interface {
 	pulumi.Input
 
@@ -5737,8 +5675,7 @@ type FunctionAppSiteConfig struct {
 // FunctionAppSiteConfigInput is an input type that accepts FunctionAppSiteConfigArgs and FunctionAppSiteConfigOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigInput` via:
 //
-// 		 FunctionAppSiteConfigArgs{...}
-//
+//          FunctionAppSiteConfigArgs{...}
 type FunctionAppSiteConfigInput interface {
 	pulumi.Input
 
@@ -5792,12 +5729,11 @@ func (i FunctionAppSiteConfigArgs) ToFunctionAppSiteConfigPtrOutputWithContext(c
 // FunctionAppSiteConfigPtrInput is an input type that accepts FunctionAppSiteConfigArgs, FunctionAppSiteConfigPtr and FunctionAppSiteConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigPtrInput` via:
 //
-// 		 FunctionAppSiteConfigArgs{...}
+//          FunctionAppSiteConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSiteConfigPtrInput interface {
 	pulumi.Input
 
@@ -6025,8 +5961,7 @@ type FunctionAppSiteConfigCors struct {
 // FunctionAppSiteConfigCorsInput is an input type that accepts FunctionAppSiteConfigCorsArgs and FunctionAppSiteConfigCorsOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigCorsInput` via:
 //
-// 		 FunctionAppSiteConfigCorsArgs{...}
-//
+//          FunctionAppSiteConfigCorsArgs{...}
 type FunctionAppSiteConfigCorsInput interface {
 	pulumi.Input
 
@@ -6064,12 +5999,11 @@ func (i FunctionAppSiteConfigCorsArgs) ToFunctionAppSiteConfigCorsPtrOutputWithC
 // FunctionAppSiteConfigCorsPtrInput is an input type that accepts FunctionAppSiteConfigCorsArgs, FunctionAppSiteConfigCorsPtr and FunctionAppSiteConfigCorsPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigCorsPtrInput` via:
 //
-// 		 FunctionAppSiteConfigCorsArgs{...}
+//          FunctionAppSiteConfigCorsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSiteConfigCorsPtrInput interface {
 	pulumi.Input
 
@@ -6177,8 +6111,7 @@ type FunctionAppSiteConfigIpRestriction struct {
 // FunctionAppSiteConfigIpRestrictionInput is an input type that accepts FunctionAppSiteConfigIpRestrictionArgs and FunctionAppSiteConfigIpRestrictionOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigIpRestrictionInput` via:
 //
-// 		 FunctionAppSiteConfigIpRestrictionArgs{...}
-//
+//          FunctionAppSiteConfigIpRestrictionArgs{...}
 type FunctionAppSiteConfigIpRestrictionInput interface {
 	pulumi.Input
 
@@ -6208,8 +6141,7 @@ func (i FunctionAppSiteConfigIpRestrictionArgs) ToFunctionAppSiteConfigIpRestric
 // FunctionAppSiteConfigIpRestrictionArrayInput is an input type that accepts FunctionAppSiteConfigIpRestrictionArray and FunctionAppSiteConfigIpRestrictionArrayOutput values.
 // You can construct a concrete instance of `FunctionAppSiteConfigIpRestrictionArrayInput` via:
 //
-// 		 FunctionAppSiteConfigIpRestrictionArray{ FunctionAppSiteConfigIpRestrictionArgs{...} }
-//
+//          FunctionAppSiteConfigIpRestrictionArray{ FunctionAppSiteConfigIpRestrictionArgs{...} }
 type FunctionAppSiteConfigIpRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -6285,8 +6217,7 @@ type FunctionAppSiteCredential struct {
 // FunctionAppSiteCredentialInput is an input type that accepts FunctionAppSiteCredentialArgs and FunctionAppSiteCredentialOutput values.
 // You can construct a concrete instance of `FunctionAppSiteCredentialInput` via:
 //
-// 		 FunctionAppSiteCredentialArgs{...}
-//
+//          FunctionAppSiteCredentialArgs{...}
 type FunctionAppSiteCredentialInput interface {
 	pulumi.Input
 
@@ -6316,8 +6247,7 @@ func (i FunctionAppSiteCredentialArgs) ToFunctionAppSiteCredentialOutputWithCont
 // FunctionAppSiteCredentialArrayInput is an input type that accepts FunctionAppSiteCredentialArray and FunctionAppSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `FunctionAppSiteCredentialArrayInput` via:
 //
-// 		 FunctionAppSiteCredentialArray{ FunctionAppSiteCredentialArgs{...} }
-//
+//          FunctionAppSiteCredentialArray{ FunctionAppSiteCredentialArgs{...} }
 type FunctionAppSiteCredentialArrayInput interface {
 	pulumi.Input
 
@@ -6417,8 +6347,7 @@ type FunctionAppSlotAuthSettings struct {
 // FunctionAppSlotAuthSettingsInput is an input type that accepts FunctionAppSlotAuthSettingsArgs and FunctionAppSlotAuthSettingsOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsArgs{...}
-//
+//          FunctionAppSlotAuthSettingsArgs{...}
 type FunctionAppSlotAuthSettingsInput interface {
 	pulumi.Input
 
@@ -6480,12 +6409,11 @@ func (i FunctionAppSlotAuthSettingsArgs) ToFunctionAppSlotAuthSettingsPtrOutputW
 // FunctionAppSlotAuthSettingsPtrInput is an input type that accepts FunctionAppSlotAuthSettingsArgs, FunctionAppSlotAuthSettingsPtr and FunctionAppSlotAuthSettingsPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsPtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsArgs{...}
+//          FunctionAppSlotAuthSettingsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsPtrInput interface {
 	pulumi.Input
 
@@ -6777,8 +6705,7 @@ type FunctionAppSlotAuthSettingsActiveDirectory struct {
 // FunctionAppSlotAuthSettingsActiveDirectoryInput is an input type that accepts FunctionAppSlotAuthSettingsActiveDirectoryArgs and FunctionAppSlotAuthSettingsActiveDirectoryOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsActiveDirectoryInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsActiveDirectoryArgs{...}
-//
+//          FunctionAppSlotAuthSettingsActiveDirectoryArgs{...}
 type FunctionAppSlotAuthSettingsActiveDirectoryInput interface {
 	pulumi.Input
 
@@ -6818,12 +6745,11 @@ func (i FunctionAppSlotAuthSettingsActiveDirectoryArgs) ToFunctionAppSlotAuthSet
 // FunctionAppSlotAuthSettingsActiveDirectoryPtrInput is an input type that accepts FunctionAppSlotAuthSettingsActiveDirectoryArgs, FunctionAppSlotAuthSettingsActiveDirectoryPtr and FunctionAppSlotAuthSettingsActiveDirectoryPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsActiveDirectoryPtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsActiveDirectoryArgs{...}
+//          FunctionAppSlotAuthSettingsActiveDirectoryArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsActiveDirectoryPtrInput interface {
 	pulumi.Input
 
@@ -6950,8 +6876,7 @@ type FunctionAppSlotAuthSettingsFacebook struct {
 // FunctionAppSlotAuthSettingsFacebookInput is an input type that accepts FunctionAppSlotAuthSettingsFacebookArgs and FunctionAppSlotAuthSettingsFacebookOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsFacebookInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsFacebookArgs{...}
-//
+//          FunctionAppSlotAuthSettingsFacebookArgs{...}
 type FunctionAppSlotAuthSettingsFacebookInput interface {
 	pulumi.Input
 
@@ -6991,12 +6916,11 @@ func (i FunctionAppSlotAuthSettingsFacebookArgs) ToFunctionAppSlotAuthSettingsFa
 // FunctionAppSlotAuthSettingsFacebookPtrInput is an input type that accepts FunctionAppSlotAuthSettingsFacebookArgs, FunctionAppSlotAuthSettingsFacebookPtr and FunctionAppSlotAuthSettingsFacebookPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsFacebookPtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsFacebookArgs{...}
+//          FunctionAppSlotAuthSettingsFacebookArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsFacebookPtrInput interface {
 	pulumi.Input
 
@@ -7121,8 +7045,7 @@ type FunctionAppSlotAuthSettingsGoogle struct {
 // FunctionAppSlotAuthSettingsGoogleInput is an input type that accepts FunctionAppSlotAuthSettingsGoogleArgs and FunctionAppSlotAuthSettingsGoogleOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsGoogleInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsGoogleArgs{...}
-//
+//          FunctionAppSlotAuthSettingsGoogleArgs{...}
 type FunctionAppSlotAuthSettingsGoogleInput interface {
 	pulumi.Input
 
@@ -7162,12 +7085,11 @@ func (i FunctionAppSlotAuthSettingsGoogleArgs) ToFunctionAppSlotAuthSettingsGoog
 // FunctionAppSlotAuthSettingsGooglePtrInput is an input type that accepts FunctionAppSlotAuthSettingsGoogleArgs, FunctionAppSlotAuthSettingsGooglePtr and FunctionAppSlotAuthSettingsGooglePtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsGooglePtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsGoogleArgs{...}
+//          FunctionAppSlotAuthSettingsGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsGooglePtrInput interface {
 	pulumi.Input
 
@@ -7292,8 +7214,7 @@ type FunctionAppSlotAuthSettingsMicrosoft struct {
 // FunctionAppSlotAuthSettingsMicrosoftInput is an input type that accepts FunctionAppSlotAuthSettingsMicrosoftArgs and FunctionAppSlotAuthSettingsMicrosoftOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsMicrosoftInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsMicrosoftArgs{...}
-//
+//          FunctionAppSlotAuthSettingsMicrosoftArgs{...}
 type FunctionAppSlotAuthSettingsMicrosoftInput interface {
 	pulumi.Input
 
@@ -7333,12 +7254,11 @@ func (i FunctionAppSlotAuthSettingsMicrosoftArgs) ToFunctionAppSlotAuthSettingsM
 // FunctionAppSlotAuthSettingsMicrosoftPtrInput is an input type that accepts FunctionAppSlotAuthSettingsMicrosoftArgs, FunctionAppSlotAuthSettingsMicrosoftPtr and FunctionAppSlotAuthSettingsMicrosoftPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsMicrosoftPtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsMicrosoftArgs{...}
+//          FunctionAppSlotAuthSettingsMicrosoftArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsMicrosoftPtrInput interface {
 	pulumi.Input
 
@@ -7459,8 +7379,7 @@ type FunctionAppSlotAuthSettingsTwitter struct {
 // FunctionAppSlotAuthSettingsTwitterInput is an input type that accepts FunctionAppSlotAuthSettingsTwitterArgs and FunctionAppSlotAuthSettingsTwitterOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsTwitterInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsTwitterArgs{...}
-//
+//          FunctionAppSlotAuthSettingsTwitterArgs{...}
 type FunctionAppSlotAuthSettingsTwitterInput interface {
 	pulumi.Input
 
@@ -7496,12 +7415,11 @@ func (i FunctionAppSlotAuthSettingsTwitterArgs) ToFunctionAppSlotAuthSettingsTwi
 // FunctionAppSlotAuthSettingsTwitterPtrInput is an input type that accepts FunctionAppSlotAuthSettingsTwitterArgs, FunctionAppSlotAuthSettingsTwitterPtr and FunctionAppSlotAuthSettingsTwitterPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotAuthSettingsTwitterPtrInput` via:
 //
-// 		 FunctionAppSlotAuthSettingsTwitterArgs{...}
+//          FunctionAppSlotAuthSettingsTwitterArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotAuthSettingsTwitterPtrInput interface {
 	pulumi.Input
 
@@ -7606,8 +7524,7 @@ type FunctionAppSlotConnectionString struct {
 // FunctionAppSlotConnectionStringInput is an input type that accepts FunctionAppSlotConnectionStringArgs and FunctionAppSlotConnectionStringOutput values.
 // You can construct a concrete instance of `FunctionAppSlotConnectionStringInput` via:
 //
-// 		 FunctionAppSlotConnectionStringArgs{...}
-//
+//          FunctionAppSlotConnectionStringArgs{...}
 type FunctionAppSlotConnectionStringInput interface {
 	pulumi.Input
 
@@ -7639,8 +7556,7 @@ func (i FunctionAppSlotConnectionStringArgs) ToFunctionAppSlotConnectionStringOu
 // FunctionAppSlotConnectionStringArrayInput is an input type that accepts FunctionAppSlotConnectionStringArray and FunctionAppSlotConnectionStringArrayOutput values.
 // You can construct a concrete instance of `FunctionAppSlotConnectionStringArrayInput` via:
 //
-// 		 FunctionAppSlotConnectionStringArray{ FunctionAppSlotConnectionStringArgs{...} }
-//
+//          FunctionAppSlotConnectionStringArray{ FunctionAppSlotConnectionStringArgs{...} }
 type FunctionAppSlotConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -7725,8 +7641,7 @@ type FunctionAppSlotIdentity struct {
 // FunctionAppSlotIdentityInput is an input type that accepts FunctionAppSlotIdentityArgs and FunctionAppSlotIdentityOutput values.
 // You can construct a concrete instance of `FunctionAppSlotIdentityInput` via:
 //
-// 		 FunctionAppSlotIdentityArgs{...}
-//
+//          FunctionAppSlotIdentityArgs{...}
 type FunctionAppSlotIdentityInput interface {
 	pulumi.Input
 
@@ -7768,12 +7683,11 @@ func (i FunctionAppSlotIdentityArgs) ToFunctionAppSlotIdentityPtrOutputWithConte
 // FunctionAppSlotIdentityPtrInput is an input type that accepts FunctionAppSlotIdentityArgs, FunctionAppSlotIdentityPtr and FunctionAppSlotIdentityPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotIdentityPtrInput` via:
 //
-// 		 FunctionAppSlotIdentityArgs{...}
+//          FunctionAppSlotIdentityArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotIdentityPtrInput interface {
 	pulumi.Input
 
@@ -7927,8 +7841,7 @@ type FunctionAppSlotSiteConfig struct {
 // FunctionAppSlotSiteConfigInput is an input type that accepts FunctionAppSlotSiteConfigArgs and FunctionAppSlotSiteConfigOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigInput` via:
 //
-// 		 FunctionAppSlotSiteConfigArgs{...}
-//
+//          FunctionAppSlotSiteConfigArgs{...}
 type FunctionAppSlotSiteConfigInput interface {
 	pulumi.Input
 
@@ -7982,12 +7895,11 @@ func (i FunctionAppSlotSiteConfigArgs) ToFunctionAppSlotSiteConfigPtrOutputWithC
 // FunctionAppSlotSiteConfigPtrInput is an input type that accepts FunctionAppSlotSiteConfigArgs, FunctionAppSlotSiteConfigPtr and FunctionAppSlotSiteConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigPtrInput` via:
 //
-// 		 FunctionAppSlotSiteConfigArgs{...}
+//          FunctionAppSlotSiteConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotSiteConfigPtrInput interface {
 	pulumi.Input
 
@@ -8215,8 +8127,7 @@ type FunctionAppSlotSiteConfigCors struct {
 // FunctionAppSlotSiteConfigCorsInput is an input type that accepts FunctionAppSlotSiteConfigCorsArgs and FunctionAppSlotSiteConfigCorsOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigCorsInput` via:
 //
-// 		 FunctionAppSlotSiteConfigCorsArgs{...}
-//
+//          FunctionAppSlotSiteConfigCorsArgs{...}
 type FunctionAppSlotSiteConfigCorsInput interface {
 	pulumi.Input
 
@@ -8254,12 +8165,11 @@ func (i FunctionAppSlotSiteConfigCorsArgs) ToFunctionAppSlotSiteConfigCorsPtrOut
 // FunctionAppSlotSiteConfigCorsPtrInput is an input type that accepts FunctionAppSlotSiteConfigCorsArgs, FunctionAppSlotSiteConfigCorsPtr and FunctionAppSlotSiteConfigCorsPtrOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigCorsPtrInput` via:
 //
-// 		 FunctionAppSlotSiteConfigCorsArgs{...}
+//          FunctionAppSlotSiteConfigCorsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type FunctionAppSlotSiteConfigCorsPtrInput interface {
 	pulumi.Input
 
@@ -8367,8 +8277,7 @@ type FunctionAppSlotSiteConfigIpRestriction struct {
 // FunctionAppSlotSiteConfigIpRestrictionInput is an input type that accepts FunctionAppSlotSiteConfigIpRestrictionArgs and FunctionAppSlotSiteConfigIpRestrictionOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigIpRestrictionInput` via:
 //
-// 		 FunctionAppSlotSiteConfigIpRestrictionArgs{...}
-//
+//          FunctionAppSlotSiteConfigIpRestrictionArgs{...}
 type FunctionAppSlotSiteConfigIpRestrictionInput interface {
 	pulumi.Input
 
@@ -8398,8 +8307,7 @@ func (i FunctionAppSlotSiteConfigIpRestrictionArgs) ToFunctionAppSlotSiteConfigI
 // FunctionAppSlotSiteConfigIpRestrictionArrayInput is an input type that accepts FunctionAppSlotSiteConfigIpRestrictionArray and FunctionAppSlotSiteConfigIpRestrictionArrayOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteConfigIpRestrictionArrayInput` via:
 //
-// 		 FunctionAppSlotSiteConfigIpRestrictionArray{ FunctionAppSlotSiteConfigIpRestrictionArgs{...} }
-//
+//          FunctionAppSlotSiteConfigIpRestrictionArray{ FunctionAppSlotSiteConfigIpRestrictionArgs{...} }
 type FunctionAppSlotSiteConfigIpRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -8475,8 +8383,7 @@ type FunctionAppSlotSiteCredential struct {
 // FunctionAppSlotSiteCredentialInput is an input type that accepts FunctionAppSlotSiteCredentialArgs and FunctionAppSlotSiteCredentialOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteCredentialInput` via:
 //
-// 		 FunctionAppSlotSiteCredentialArgs{...}
-//
+//          FunctionAppSlotSiteCredentialArgs{...}
 type FunctionAppSlotSiteCredentialInput interface {
 	pulumi.Input
 
@@ -8506,8 +8413,7 @@ func (i FunctionAppSlotSiteCredentialArgs) ToFunctionAppSlotSiteCredentialOutput
 // FunctionAppSlotSiteCredentialArrayInput is an input type that accepts FunctionAppSlotSiteCredentialArray and FunctionAppSlotSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `FunctionAppSlotSiteCredentialArrayInput` via:
 //
-// 		 FunctionAppSlotSiteCredentialArray{ FunctionAppSlotSiteCredentialArgs{...} }
-//
+//          FunctionAppSlotSiteCredentialArray{ FunctionAppSlotSiteCredentialArgs{...} }
 type FunctionAppSlotSiteCredentialArrayInput interface {
 	pulumi.Input
 
@@ -8585,8 +8491,7 @@ type PlanSku struct {
 // PlanSkuInput is an input type that accepts PlanSkuArgs and PlanSkuOutput values.
 // You can construct a concrete instance of `PlanSkuInput` via:
 //
-// 		 PlanSkuArgs{...}
-//
+//          PlanSkuArgs{...}
 type PlanSkuInput interface {
 	pulumi.Input
 
@@ -8626,12 +8531,11 @@ func (i PlanSkuArgs) ToPlanSkuPtrOutputWithContext(ctx context.Context) PlanSkuP
 // PlanSkuPtrInput is an input type that accepts PlanSkuArgs, PlanSkuPtr and PlanSkuPtrOutput values.
 // You can construct a concrete instance of `PlanSkuPtrInput` via:
 //
-// 		 PlanSkuArgs{...}
+//          PlanSkuArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PlanSkuPtrInput interface {
 	pulumi.Input
 
@@ -8778,8 +8682,7 @@ type SlotAuthSettings struct {
 // SlotAuthSettingsInput is an input type that accepts SlotAuthSettingsArgs and SlotAuthSettingsOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsInput` via:
 //
-// 		 SlotAuthSettingsArgs{...}
-//
+//          SlotAuthSettingsArgs{...}
 type SlotAuthSettingsInput interface {
 	pulumi.Input
 
@@ -8841,12 +8744,11 @@ func (i SlotAuthSettingsArgs) ToSlotAuthSettingsPtrOutputWithContext(ctx context
 // SlotAuthSettingsPtrInput is an input type that accepts SlotAuthSettingsArgs, SlotAuthSettingsPtr and SlotAuthSettingsPtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsPtrInput` via:
 //
-// 		 SlotAuthSettingsArgs{...}
+//          SlotAuthSettingsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsPtrInput interface {
 	pulumi.Input
 
@@ -9136,8 +9038,7 @@ type SlotAuthSettingsActiveDirectory struct {
 // SlotAuthSettingsActiveDirectoryInput is an input type that accepts SlotAuthSettingsActiveDirectoryArgs and SlotAuthSettingsActiveDirectoryOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsActiveDirectoryInput` via:
 //
-// 		 SlotAuthSettingsActiveDirectoryArgs{...}
-//
+//          SlotAuthSettingsActiveDirectoryArgs{...}
 type SlotAuthSettingsActiveDirectoryInput interface {
 	pulumi.Input
 
@@ -9177,12 +9078,11 @@ func (i SlotAuthSettingsActiveDirectoryArgs) ToSlotAuthSettingsActiveDirectoryPt
 // SlotAuthSettingsActiveDirectoryPtrInput is an input type that accepts SlotAuthSettingsActiveDirectoryArgs, SlotAuthSettingsActiveDirectoryPtr and SlotAuthSettingsActiveDirectoryPtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsActiveDirectoryPtrInput` via:
 //
-// 		 SlotAuthSettingsActiveDirectoryArgs{...}
+//          SlotAuthSettingsActiveDirectoryArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsActiveDirectoryPtrInput interface {
 	pulumi.Input
 
@@ -9307,8 +9207,7 @@ type SlotAuthSettingsFacebook struct {
 // SlotAuthSettingsFacebookInput is an input type that accepts SlotAuthSettingsFacebookArgs and SlotAuthSettingsFacebookOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsFacebookInput` via:
 //
-// 		 SlotAuthSettingsFacebookArgs{...}
-//
+//          SlotAuthSettingsFacebookArgs{...}
 type SlotAuthSettingsFacebookInput interface {
 	pulumi.Input
 
@@ -9348,12 +9247,11 @@ func (i SlotAuthSettingsFacebookArgs) ToSlotAuthSettingsFacebookPtrOutputWithCon
 // SlotAuthSettingsFacebookPtrInput is an input type that accepts SlotAuthSettingsFacebookArgs, SlotAuthSettingsFacebookPtr and SlotAuthSettingsFacebookPtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsFacebookPtrInput` via:
 //
-// 		 SlotAuthSettingsFacebookArgs{...}
+//          SlotAuthSettingsFacebookArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsFacebookPtrInput interface {
 	pulumi.Input
 
@@ -9478,8 +9376,7 @@ type SlotAuthSettingsGoogle struct {
 // SlotAuthSettingsGoogleInput is an input type that accepts SlotAuthSettingsGoogleArgs and SlotAuthSettingsGoogleOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsGoogleInput` via:
 //
-// 		 SlotAuthSettingsGoogleArgs{...}
-//
+//          SlotAuthSettingsGoogleArgs{...}
 type SlotAuthSettingsGoogleInput interface {
 	pulumi.Input
 
@@ -9519,12 +9416,11 @@ func (i SlotAuthSettingsGoogleArgs) ToSlotAuthSettingsGooglePtrOutputWithContext
 // SlotAuthSettingsGooglePtrInput is an input type that accepts SlotAuthSettingsGoogleArgs, SlotAuthSettingsGooglePtr and SlotAuthSettingsGooglePtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsGooglePtrInput` via:
 //
-// 		 SlotAuthSettingsGoogleArgs{...}
+//          SlotAuthSettingsGoogleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsGooglePtrInput interface {
 	pulumi.Input
 
@@ -9649,8 +9545,7 @@ type SlotAuthSettingsMicrosoft struct {
 // SlotAuthSettingsMicrosoftInput is an input type that accepts SlotAuthSettingsMicrosoftArgs and SlotAuthSettingsMicrosoftOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsMicrosoftInput` via:
 //
-// 		 SlotAuthSettingsMicrosoftArgs{...}
-//
+//          SlotAuthSettingsMicrosoftArgs{...}
 type SlotAuthSettingsMicrosoftInput interface {
 	pulumi.Input
 
@@ -9690,12 +9585,11 @@ func (i SlotAuthSettingsMicrosoftArgs) ToSlotAuthSettingsMicrosoftPtrOutputWithC
 // SlotAuthSettingsMicrosoftPtrInput is an input type that accepts SlotAuthSettingsMicrosoftArgs, SlotAuthSettingsMicrosoftPtr and SlotAuthSettingsMicrosoftPtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsMicrosoftPtrInput` via:
 //
-// 		 SlotAuthSettingsMicrosoftArgs{...}
+//          SlotAuthSettingsMicrosoftArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsMicrosoftPtrInput interface {
 	pulumi.Input
 
@@ -9816,8 +9710,7 @@ type SlotAuthSettingsTwitter struct {
 // SlotAuthSettingsTwitterInput is an input type that accepts SlotAuthSettingsTwitterArgs and SlotAuthSettingsTwitterOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsTwitterInput` via:
 //
-// 		 SlotAuthSettingsTwitterArgs{...}
-//
+//          SlotAuthSettingsTwitterArgs{...}
 type SlotAuthSettingsTwitterInput interface {
 	pulumi.Input
 
@@ -9853,12 +9746,11 @@ func (i SlotAuthSettingsTwitterArgs) ToSlotAuthSettingsTwitterPtrOutputWithConte
 // SlotAuthSettingsTwitterPtrInput is an input type that accepts SlotAuthSettingsTwitterArgs, SlotAuthSettingsTwitterPtr and SlotAuthSettingsTwitterPtrOutput values.
 // You can construct a concrete instance of `SlotAuthSettingsTwitterPtrInput` via:
 //
-// 		 SlotAuthSettingsTwitterArgs{...}
+//          SlotAuthSettingsTwitterArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotAuthSettingsTwitterPtrInput interface {
 	pulumi.Input
 
@@ -9963,8 +9855,7 @@ type SlotConnectionString struct {
 // SlotConnectionStringInput is an input type that accepts SlotConnectionStringArgs and SlotConnectionStringOutput values.
 // You can construct a concrete instance of `SlotConnectionStringInput` via:
 //
-// 		 SlotConnectionStringArgs{...}
-//
+//          SlotConnectionStringArgs{...}
 type SlotConnectionStringInput interface {
 	pulumi.Input
 
@@ -9996,8 +9887,7 @@ func (i SlotConnectionStringArgs) ToSlotConnectionStringOutputWithContext(ctx co
 // SlotConnectionStringArrayInput is an input type that accepts SlotConnectionStringArray and SlotConnectionStringArrayOutput values.
 // You can construct a concrete instance of `SlotConnectionStringArrayInput` via:
 //
-// 		 SlotConnectionStringArray{ SlotConnectionStringArgs{...} }
-//
+//          SlotConnectionStringArray{ SlotConnectionStringArgs{...} }
 type SlotConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -10080,8 +9970,7 @@ type SlotIdentity struct {
 // SlotIdentityInput is an input type that accepts SlotIdentityArgs and SlotIdentityOutput values.
 // You can construct a concrete instance of `SlotIdentityInput` via:
 //
-// 		 SlotIdentityArgs{...}
-//
+//          SlotIdentityArgs{...}
 type SlotIdentityInput interface {
 	pulumi.Input
 
@@ -10121,12 +10010,11 @@ func (i SlotIdentityArgs) ToSlotIdentityPtrOutputWithContext(ctx context.Context
 // SlotIdentityPtrInput is an input type that accepts SlotIdentityArgs, SlotIdentityPtr and SlotIdentityPtrOutput values.
 // You can construct a concrete instance of `SlotIdentityPtrInput` via:
 //
-// 		 SlotIdentityArgs{...}
+//          SlotIdentityArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotIdentityPtrInput interface {
 	pulumi.Input
 
@@ -10260,8 +10148,7 @@ type SlotLogs struct {
 // SlotLogsInput is an input type that accepts SlotLogsArgs and SlotLogsOutput values.
 // You can construct a concrete instance of `SlotLogsInput` via:
 //
-// 		 SlotLogsArgs{...}
-//
+//          SlotLogsArgs{...}
 type SlotLogsInput interface {
 	pulumi.Input
 
@@ -10299,12 +10186,11 @@ func (i SlotLogsArgs) ToSlotLogsPtrOutputWithContext(ctx context.Context) SlotLo
 // SlotLogsPtrInput is an input type that accepts SlotLogsArgs, SlotLogsPtr and SlotLogsPtrOutput values.
 // You can construct a concrete instance of `SlotLogsPtrInput` via:
 //
-// 		 SlotLogsArgs{...}
+//          SlotLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsPtrInput interface {
 	pulumi.Input
 
@@ -10410,8 +10296,7 @@ type SlotLogsApplicationLogs struct {
 // SlotLogsApplicationLogsInput is an input type that accepts SlotLogsApplicationLogsArgs and SlotLogsApplicationLogsOutput values.
 // You can construct a concrete instance of `SlotLogsApplicationLogsInput` via:
 //
-// 		 SlotLogsApplicationLogsArgs{...}
-//
+//          SlotLogsApplicationLogsArgs{...}
 type SlotLogsApplicationLogsInput interface {
 	pulumi.Input
 
@@ -10447,12 +10332,11 @@ func (i SlotLogsApplicationLogsArgs) ToSlotLogsApplicationLogsPtrOutputWithConte
 // SlotLogsApplicationLogsPtrInput is an input type that accepts SlotLogsApplicationLogsArgs, SlotLogsApplicationLogsPtr and SlotLogsApplicationLogsPtrOutput values.
 // You can construct a concrete instance of `SlotLogsApplicationLogsPtrInput` via:
 //
-// 		 SlotLogsApplicationLogsArgs{...}
+//          SlotLogsApplicationLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsApplicationLogsPtrInput interface {
 	pulumi.Input
 
@@ -10547,8 +10431,7 @@ type SlotLogsApplicationLogsAzureBlobStorage struct {
 // SlotLogsApplicationLogsAzureBlobStorageInput is an input type that accepts SlotLogsApplicationLogsAzureBlobStorageArgs and SlotLogsApplicationLogsAzureBlobStorageOutput values.
 // You can construct a concrete instance of `SlotLogsApplicationLogsAzureBlobStorageInput` via:
 //
-// 		 SlotLogsApplicationLogsAzureBlobStorageArgs{...}
-//
+//          SlotLogsApplicationLogsAzureBlobStorageArgs{...}
 type SlotLogsApplicationLogsAzureBlobStorageInput interface {
 	pulumi.Input
 
@@ -10588,12 +10471,11 @@ func (i SlotLogsApplicationLogsAzureBlobStorageArgs) ToSlotLogsApplicationLogsAz
 // SlotLogsApplicationLogsAzureBlobStoragePtrInput is an input type that accepts SlotLogsApplicationLogsAzureBlobStorageArgs, SlotLogsApplicationLogsAzureBlobStoragePtr and SlotLogsApplicationLogsAzureBlobStoragePtrOutput values.
 // You can construct a concrete instance of `SlotLogsApplicationLogsAzureBlobStoragePtrInput` via:
 //
-// 		 SlotLogsApplicationLogsAzureBlobStorageArgs{...}
+//          SlotLogsApplicationLogsAzureBlobStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsApplicationLogsAzureBlobStoragePtrInput interface {
 	pulumi.Input
 
@@ -10716,8 +10598,7 @@ type SlotLogsHttpLogs struct {
 // SlotLogsHttpLogsInput is an input type that accepts SlotLogsHttpLogsArgs and SlotLogsHttpLogsOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsInput` via:
 //
-// 		 SlotLogsHttpLogsArgs{...}
-//
+//          SlotLogsHttpLogsArgs{...}
 type SlotLogsHttpLogsInput interface {
 	pulumi.Input
 
@@ -10755,12 +10636,11 @@ func (i SlotLogsHttpLogsArgs) ToSlotLogsHttpLogsPtrOutputWithContext(ctx context
 // SlotLogsHttpLogsPtrInput is an input type that accepts SlotLogsHttpLogsArgs, SlotLogsHttpLogsPtr and SlotLogsHttpLogsPtrOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsPtrInput` via:
 //
-// 		 SlotLogsHttpLogsArgs{...}
+//          SlotLogsHttpLogsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsHttpLogsPtrInput interface {
 	pulumi.Input
 
@@ -10868,8 +10748,7 @@ type SlotLogsHttpLogsAzureBlobStorage struct {
 // SlotLogsHttpLogsAzureBlobStorageInput is an input type that accepts SlotLogsHttpLogsAzureBlobStorageArgs and SlotLogsHttpLogsAzureBlobStorageOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsAzureBlobStorageInput` via:
 //
-// 		 SlotLogsHttpLogsAzureBlobStorageArgs{...}
-//
+//          SlotLogsHttpLogsAzureBlobStorageArgs{...}
 type SlotLogsHttpLogsAzureBlobStorageInput interface {
 	pulumi.Input
 
@@ -10907,12 +10786,11 @@ func (i SlotLogsHttpLogsAzureBlobStorageArgs) ToSlotLogsHttpLogsAzureBlobStorage
 // SlotLogsHttpLogsAzureBlobStoragePtrInput is an input type that accepts SlotLogsHttpLogsAzureBlobStorageArgs, SlotLogsHttpLogsAzureBlobStoragePtr and SlotLogsHttpLogsAzureBlobStoragePtrOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsAzureBlobStoragePtrInput` via:
 //
-// 		 SlotLogsHttpLogsAzureBlobStorageArgs{...}
+//          SlotLogsHttpLogsAzureBlobStorageArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsHttpLogsAzureBlobStoragePtrInput interface {
 	pulumi.Input
 
@@ -11020,8 +10898,7 @@ type SlotLogsHttpLogsFileSystem struct {
 // SlotLogsHttpLogsFileSystemInput is an input type that accepts SlotLogsHttpLogsFileSystemArgs and SlotLogsHttpLogsFileSystemOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsFileSystemInput` via:
 //
-// 		 SlotLogsHttpLogsFileSystemArgs{...}
-//
+//          SlotLogsHttpLogsFileSystemArgs{...}
 type SlotLogsHttpLogsFileSystemInput interface {
 	pulumi.Input
 
@@ -11059,12 +10936,11 @@ func (i SlotLogsHttpLogsFileSystemArgs) ToSlotLogsHttpLogsFileSystemPtrOutputWit
 // SlotLogsHttpLogsFileSystemPtrInput is an input type that accepts SlotLogsHttpLogsFileSystemArgs, SlotLogsHttpLogsFileSystemPtr and SlotLogsHttpLogsFileSystemPtrOutput values.
 // You can construct a concrete instance of `SlotLogsHttpLogsFileSystemPtrInput` via:
 //
-// 		 SlotLogsHttpLogsFileSystemArgs{...}
+//          SlotLogsHttpLogsFileSystemArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotLogsHttpLogsFileSystemPtrInput interface {
 	pulumi.Input
 
@@ -11214,8 +11090,7 @@ type SlotSiteConfig struct {
 // SlotSiteConfigInput is an input type that accepts SlotSiteConfigArgs and SlotSiteConfigOutput values.
 // You can construct a concrete instance of `SlotSiteConfigInput` via:
 //
-// 		 SlotSiteConfigArgs{...}
-//
+//          SlotSiteConfigArgs{...}
 type SlotSiteConfigInput interface {
 	pulumi.Input
 
@@ -11295,12 +11170,11 @@ func (i SlotSiteConfigArgs) ToSlotSiteConfigPtrOutputWithContext(ctx context.Con
 // SlotSiteConfigPtrInput is an input type that accepts SlotSiteConfigArgs, SlotSiteConfigPtr and SlotSiteConfigPtrOutput values.
 // You can construct a concrete instance of `SlotSiteConfigPtrInput` via:
 //
-// 		 SlotSiteConfigArgs{...}
+//          SlotSiteConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotSiteConfigPtrInput interface {
 	pulumi.Input
 
@@ -11745,8 +11619,7 @@ type SlotSiteConfigCors struct {
 // SlotSiteConfigCorsInput is an input type that accepts SlotSiteConfigCorsArgs and SlotSiteConfigCorsOutput values.
 // You can construct a concrete instance of `SlotSiteConfigCorsInput` via:
 //
-// 		 SlotSiteConfigCorsArgs{...}
-//
+//          SlotSiteConfigCorsArgs{...}
 type SlotSiteConfigCorsInput interface {
 	pulumi.Input
 
@@ -11784,12 +11657,11 @@ func (i SlotSiteConfigCorsArgs) ToSlotSiteConfigCorsPtrOutputWithContext(ctx con
 // SlotSiteConfigCorsPtrInput is an input type that accepts SlotSiteConfigCorsArgs, SlotSiteConfigCorsPtr and SlotSiteConfigCorsPtrOutput values.
 // You can construct a concrete instance of `SlotSiteConfigCorsPtrInput` via:
 //
-// 		 SlotSiteConfigCorsArgs{...}
+//          SlotSiteConfigCorsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SlotSiteConfigCorsPtrInput interface {
 	pulumi.Input
 
@@ -11901,8 +11773,7 @@ type SlotSiteConfigIpRestriction struct {
 // SlotSiteConfigIpRestrictionInput is an input type that accepts SlotSiteConfigIpRestrictionArgs and SlotSiteConfigIpRestrictionOutput values.
 // You can construct a concrete instance of `SlotSiteConfigIpRestrictionInput` via:
 //
-// 		 SlotSiteConfigIpRestrictionArgs{...}
-//
+//          SlotSiteConfigIpRestrictionArgs{...}
 type SlotSiteConfigIpRestrictionInput interface {
 	pulumi.Input
 
@@ -11936,8 +11807,7 @@ func (i SlotSiteConfigIpRestrictionArgs) ToSlotSiteConfigIpRestrictionOutputWith
 // SlotSiteConfigIpRestrictionArrayInput is an input type that accepts SlotSiteConfigIpRestrictionArray and SlotSiteConfigIpRestrictionArrayOutput values.
 // You can construct a concrete instance of `SlotSiteConfigIpRestrictionArrayInput` via:
 //
-// 		 SlotSiteConfigIpRestrictionArray{ SlotSiteConfigIpRestrictionArgs{...} }
-//
+//          SlotSiteConfigIpRestrictionArray{ SlotSiteConfigIpRestrictionArgs{...} }
 type SlotSiteConfigIpRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -12026,8 +11896,7 @@ type SlotSiteCredential struct {
 // SlotSiteCredentialInput is an input type that accepts SlotSiteCredentialArgs and SlotSiteCredentialOutput values.
 // You can construct a concrete instance of `SlotSiteCredentialInput` via:
 //
-// 		 SlotSiteCredentialArgs{...}
-//
+//          SlotSiteCredentialArgs{...}
 type SlotSiteCredentialInput interface {
 	pulumi.Input
 
@@ -12057,8 +11926,7 @@ func (i SlotSiteCredentialArgs) ToSlotSiteCredentialOutputWithContext(ctx contex
 // SlotSiteCredentialArrayInput is an input type that accepts SlotSiteCredentialArray and SlotSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `SlotSiteCredentialArrayInput` via:
 //
-// 		 SlotSiteCredentialArray{ SlotSiteCredentialArgs{...} }
-//
+//          SlotSiteCredentialArray{ SlotSiteCredentialArgs{...} }
 type SlotSiteCredentialArrayInput interface {
 	pulumi.Input
 
@@ -12136,8 +12004,7 @@ type GetAppServiceConnectionString struct {
 // GetAppServiceConnectionStringInput is an input type that accepts GetAppServiceConnectionStringArgs and GetAppServiceConnectionStringOutput values.
 // You can construct a concrete instance of `GetAppServiceConnectionStringInput` via:
 //
-// 		 GetAppServiceConnectionStringArgs{...}
-//
+//          GetAppServiceConnectionStringArgs{...}
 type GetAppServiceConnectionStringInput interface {
 	pulumi.Input
 
@@ -12169,8 +12036,7 @@ func (i GetAppServiceConnectionStringArgs) ToGetAppServiceConnectionStringOutput
 // GetAppServiceConnectionStringArrayInput is an input type that accepts GetAppServiceConnectionStringArray and GetAppServiceConnectionStringArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceConnectionStringArrayInput` via:
 //
-// 		 GetAppServiceConnectionStringArray{ GetAppServiceConnectionStringArgs{...} }
-//
+//          GetAppServiceConnectionStringArray{ GetAppServiceConnectionStringArgs{...} }
 type GetAppServiceConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -12253,8 +12119,7 @@ type GetAppServicePlanSku struct {
 // GetAppServicePlanSkuInput is an input type that accepts GetAppServicePlanSkuArgs and GetAppServicePlanSkuOutput values.
 // You can construct a concrete instance of `GetAppServicePlanSkuInput` via:
 //
-// 		 GetAppServicePlanSkuArgs{...}
-//
+//          GetAppServicePlanSkuArgs{...}
 type GetAppServicePlanSkuInput interface {
 	pulumi.Input
 
@@ -12366,8 +12231,7 @@ type GetAppServiceSiteConfig struct {
 // GetAppServiceSiteConfigInput is an input type that accepts GetAppServiceSiteConfigArgs and GetAppServiceSiteConfigOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigInput` via:
 //
-// 		 GetAppServiceSiteConfigArgs{...}
-//
+//          GetAppServiceSiteConfigArgs{...}
 type GetAppServiceSiteConfigInput interface {
 	pulumi.Input
 
@@ -12441,8 +12305,7 @@ func (i GetAppServiceSiteConfigArgs) ToGetAppServiceSiteConfigOutputWithContext(
 // GetAppServiceSiteConfigArrayInput is an input type that accepts GetAppServiceSiteConfigArray and GetAppServiceSiteConfigArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigArrayInput` via:
 //
-// 		 GetAppServiceSiteConfigArray{ GetAppServiceSiteConfigArgs{...} }
-//
+//          GetAppServiceSiteConfigArray{ GetAppServiceSiteConfigArgs{...} }
 type GetAppServiceSiteConfigArrayInput interface {
 	pulumi.Input
 
@@ -12628,8 +12491,7 @@ type GetAppServiceSiteConfigCor struct {
 // GetAppServiceSiteConfigCorInput is an input type that accepts GetAppServiceSiteConfigCorArgs and GetAppServiceSiteConfigCorOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigCorInput` via:
 //
-// 		 GetAppServiceSiteConfigCorArgs{...}
-//
+//          GetAppServiceSiteConfigCorArgs{...}
 type GetAppServiceSiteConfigCorInput interface {
 	pulumi.Input
 
@@ -12659,8 +12521,7 @@ func (i GetAppServiceSiteConfigCorArgs) ToGetAppServiceSiteConfigCorOutputWithCo
 // GetAppServiceSiteConfigCorArrayInput is an input type that accepts GetAppServiceSiteConfigCorArray and GetAppServiceSiteConfigCorArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigCorArrayInput` via:
 //
-// 		 GetAppServiceSiteConfigCorArray{ GetAppServiceSiteConfigCorArgs{...} }
-//
+//          GetAppServiceSiteConfigCorArray{ GetAppServiceSiteConfigCorArgs{...} }
 type GetAppServiceSiteConfigCorArrayInput interface {
 	pulumi.Input
 
@@ -12741,8 +12602,7 @@ type GetAppServiceSiteConfigIpRestriction struct {
 // GetAppServiceSiteConfigIpRestrictionInput is an input type that accepts GetAppServiceSiteConfigIpRestrictionArgs and GetAppServiceSiteConfigIpRestrictionOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigIpRestrictionInput` via:
 //
-// 		 GetAppServiceSiteConfigIpRestrictionArgs{...}
-//
+//          GetAppServiceSiteConfigIpRestrictionArgs{...}
 type GetAppServiceSiteConfigIpRestrictionInput interface {
 	pulumi.Input
 
@@ -12777,8 +12637,7 @@ func (i GetAppServiceSiteConfigIpRestrictionArgs) ToGetAppServiceSiteConfigIpRes
 // GetAppServiceSiteConfigIpRestrictionArrayInput is an input type that accepts GetAppServiceSiteConfigIpRestrictionArray and GetAppServiceSiteConfigIpRestrictionArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteConfigIpRestrictionArrayInput` via:
 //
-// 		 GetAppServiceSiteConfigIpRestrictionArray{ GetAppServiceSiteConfigIpRestrictionArgs{...} }
-//
+//          GetAppServiceSiteConfigIpRestrictionArray{ GetAppServiceSiteConfigIpRestrictionArgs{...} }
 type GetAppServiceSiteConfigIpRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -12866,8 +12725,7 @@ type GetAppServiceSiteCredential struct {
 // GetAppServiceSiteCredentialInput is an input type that accepts GetAppServiceSiteCredentialArgs and GetAppServiceSiteCredentialOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteCredentialInput` via:
 //
-// 		 GetAppServiceSiteCredentialArgs{...}
-//
+//          GetAppServiceSiteCredentialArgs{...}
 type GetAppServiceSiteCredentialInput interface {
 	pulumi.Input
 
@@ -12895,8 +12753,7 @@ func (i GetAppServiceSiteCredentialArgs) ToGetAppServiceSiteCredentialOutputWith
 // GetAppServiceSiteCredentialArrayInput is an input type that accepts GetAppServiceSiteCredentialArray and GetAppServiceSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceSiteCredentialArrayInput` via:
 //
-// 		 GetAppServiceSiteCredentialArray{ GetAppServiceSiteCredentialArgs{...} }
-//
+//          GetAppServiceSiteCredentialArray{ GetAppServiceSiteCredentialArgs{...} }
 type GetAppServiceSiteCredentialArrayInput interface {
 	pulumi.Input
 
@@ -12968,8 +12825,7 @@ type GetAppServiceSourceControl struct {
 // GetAppServiceSourceControlInput is an input type that accepts GetAppServiceSourceControlArgs and GetAppServiceSourceControlOutput values.
 // You can construct a concrete instance of `GetAppServiceSourceControlInput` via:
 //
-// 		 GetAppServiceSourceControlArgs{...}
-//
+//          GetAppServiceSourceControlArgs{...}
 type GetAppServiceSourceControlInput interface {
 	pulumi.Input
 
@@ -12997,8 +12853,7 @@ func (i GetAppServiceSourceControlArgs) ToGetAppServiceSourceControlOutputWithCo
 // GetAppServiceSourceControlArrayInput is an input type that accepts GetAppServiceSourceControlArray and GetAppServiceSourceControlArrayOutput values.
 // You can construct a concrete instance of `GetAppServiceSourceControlArrayInput` via:
 //
-// 		 GetAppServiceSourceControlArray{ GetAppServiceSourceControlArgs{...} }
-//
+//          GetAppServiceSourceControlArray{ GetAppServiceSourceControlArgs{...} }
 type GetAppServiceSourceControlArrayInput interface {
 	pulumi.Input
 
@@ -13076,8 +12931,7 @@ type GetCertificateOrderCertificate struct {
 // GetCertificateOrderCertificateInput is an input type that accepts GetCertificateOrderCertificateArgs and GetCertificateOrderCertificateOutput values.
 // You can construct a concrete instance of `GetCertificateOrderCertificateInput` via:
 //
-// 		 GetCertificateOrderCertificateArgs{...}
-//
+//          GetCertificateOrderCertificateArgs{...}
 type GetCertificateOrderCertificateInput interface {
 	pulumi.Input
 
@@ -13111,8 +12965,7 @@ func (i GetCertificateOrderCertificateArgs) ToGetCertificateOrderCertificateOutp
 // GetCertificateOrderCertificateArrayInput is an input type that accepts GetCertificateOrderCertificateArray and GetCertificateOrderCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificateOrderCertificateArrayInput` via:
 //
-// 		 GetCertificateOrderCertificateArray{ GetCertificateOrderCertificateArgs{...} }
-//
+//          GetCertificateOrderCertificateArray{ GetCertificateOrderCertificateArgs{...} }
 type GetCertificateOrderCertificateArrayInput interface {
 	pulumi.Input
 
@@ -13200,8 +13053,7 @@ type GetFunctionAppConnectionString struct {
 // GetFunctionAppConnectionStringInput is an input type that accepts GetFunctionAppConnectionStringArgs and GetFunctionAppConnectionStringOutput values.
 // You can construct a concrete instance of `GetFunctionAppConnectionStringInput` via:
 //
-// 		 GetFunctionAppConnectionStringArgs{...}
-//
+//          GetFunctionAppConnectionStringArgs{...}
 type GetFunctionAppConnectionStringInput interface {
 	pulumi.Input
 
@@ -13233,8 +13085,7 @@ func (i GetFunctionAppConnectionStringArgs) ToGetFunctionAppConnectionStringOutp
 // GetFunctionAppConnectionStringArrayInput is an input type that accepts GetFunctionAppConnectionStringArray and GetFunctionAppConnectionStringArrayOutput values.
 // You can construct a concrete instance of `GetFunctionAppConnectionStringArrayInput` via:
 //
-// 		 GetFunctionAppConnectionStringArray{ GetFunctionAppConnectionStringArgs{...} }
-//
+//          GetFunctionAppConnectionStringArray{ GetFunctionAppConnectionStringArgs{...} }
 type GetFunctionAppConnectionStringArrayInput interface {
 	pulumi.Input
 
@@ -13315,8 +13166,7 @@ type GetFunctionAppSiteCredential struct {
 // GetFunctionAppSiteCredentialInput is an input type that accepts GetFunctionAppSiteCredentialArgs and GetFunctionAppSiteCredentialOutput values.
 // You can construct a concrete instance of `GetFunctionAppSiteCredentialInput` via:
 //
-// 		 GetFunctionAppSiteCredentialArgs{...}
-//
+//          GetFunctionAppSiteCredentialArgs{...}
 type GetFunctionAppSiteCredentialInput interface {
 	pulumi.Input
 
@@ -13346,8 +13196,7 @@ func (i GetFunctionAppSiteCredentialArgs) ToGetFunctionAppSiteCredentialOutputWi
 // GetFunctionAppSiteCredentialArrayInput is an input type that accepts GetFunctionAppSiteCredentialArray and GetFunctionAppSiteCredentialArrayOutput values.
 // You can construct a concrete instance of `GetFunctionAppSiteCredentialArrayInput` via:
 //
-// 		 GetFunctionAppSiteCredentialArray{ GetFunctionAppSiteCredentialArgs{...} }
-//
+//          GetFunctionAppSiteCredentialArray{ GetFunctionAppSiteCredentialArgs{...} }
 type GetFunctionAppSiteCredentialArrayInput interface {
 	pulumi.Input
 

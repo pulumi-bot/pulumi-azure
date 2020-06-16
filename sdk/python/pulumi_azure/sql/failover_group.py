@@ -64,9 +64,9 @@ class FailoverGroup(pulumi.CustomResource):
         """
         Create a failover group of databases on a collection of Azure SQL servers.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -101,6 +101,8 @@ class FailoverGroup(pulumi.CustomResource):
                 "graceMinutes": 60,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

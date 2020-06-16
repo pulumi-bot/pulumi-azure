@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a custom virtual machine image that can be used to create virtual machines.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Creating From VHD
  *
  * ```typescript
@@ -29,7 +30,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
  *
  * ```typescript
@@ -43,6 +45,8 @@ import * as utilities from "../utilities";
  *     sourceVirtualMachineId: "{vm_id}",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Image extends pulumi.CustomResource {
     /**

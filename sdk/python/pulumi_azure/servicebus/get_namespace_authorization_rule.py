@@ -72,9 +72,9 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
     """
     Use this data source to access information about an existing ServiceBus Namespace Authorization Rule.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -85,6 +85,8 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
         resource_group_name="example-resources")
     pulumi.export("ruleId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the ServiceBus Namespace Authorization Rule.

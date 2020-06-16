@@ -72,9 +72,9 @@ def get_certificate(account_name=None,name=None,resource_group_name=None,opts=No
     """
     Use this data source to access information about an existing certificate in a Batch Account.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -85,6 +85,8 @@ def get_certificate(account_name=None,name=None,resource_group_name=None,opts=No
         resource_group_name="example")
     pulumi.export("thumbprint", example.thumbprint)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str account_name: The name of the Batch account.

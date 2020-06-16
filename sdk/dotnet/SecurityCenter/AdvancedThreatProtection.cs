@@ -12,9 +12,9 @@ namespace Pulumi.Azure.SecurityCenter
     /// <summary>
     /// Manages a resources Advanced Threat Protection setting.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AdvancedThreatProtection : Pulumi.CustomResource
     {

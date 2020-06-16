@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### World)
  *
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * export const locationCode = example.then(example => example.id);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getTrafficManager(args: GetTrafficManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficManagerResult> {
     if (!opts) {

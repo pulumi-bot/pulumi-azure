@@ -41,9 +41,9 @@ class Service(pulumi.CustomResource):
 
         > **NOTE:** Destroying a Database Migration Service will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provide.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class Service(pulumi.CustomResource):
             subnet_id=example_subnet.id,
             sku_name="Standard_1vCores")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

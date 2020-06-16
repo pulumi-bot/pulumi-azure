@@ -12,9 +12,9 @@ namespace Pulumi.Azure.EventHub
     /// <summary>
     /// Manages an Disaster Recovery Config for an Event Hub Namespace.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +50,8 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventhubNamespaceDisasterRecoveryConfig : Pulumi.CustomResource
     {

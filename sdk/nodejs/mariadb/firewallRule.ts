@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Firewall Rule for a MariaDB Server
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Single IP Address)
  *
  * ```typescript
@@ -22,7 +23,8 @@ import * as utilities from "../utilities";
  *     startIpAddress: "40.112.8.12",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### IP Range)
  *
  * ```typescript
@@ -36,6 +38,8 @@ import * as utilities from "../utilities";
  *     startIpAddress: "40.112.0.0",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

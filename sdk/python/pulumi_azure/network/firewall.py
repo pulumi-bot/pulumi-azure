@@ -44,9 +44,9 @@ class Firewall(pulumi.CustomResource):
         """
         Manages an Azure Firewall.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +75,8 @@ class Firewall(pulumi.CustomResource):
                 "public_ip_address_id": example_public_ip.id,
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

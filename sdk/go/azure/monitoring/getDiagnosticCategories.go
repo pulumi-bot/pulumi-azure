@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about the Monitor Diagnostics Categories supported by an existing Resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -29,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDiagnosticCategories, err := monitoring.LookupDiagnosticCategories(ctx, &monitoring.LookupDiagnosticCategoriesArgs{
+// 		_, err := monitoring.LookupDiagnosticCategories(ctx, &monitoring.LookupDiagnosticCategoriesArgs{
 // 			ResourceId: exampleKeyVault.Id,
 // 		}, nil)
 // 		if err != nil {
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetDiagnosticCategories(ctx *pulumi.Context, args *GetDiagnosticCategoriesArgs, opts ...pulumi.InvokeOption) (*GetDiagnosticCategoriesResult, error) {
 	var rv GetDiagnosticCategoriesResult
 	err := ctx.Invoke("azure:monitoring/getDiagnosticCategories:getDiagnosticCategories", args, &rv, opts...)

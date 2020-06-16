@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing App Service Environment
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appservice.LookupAppServiceEnvironment(ctx, &appservice.LookupAppServiceEnvironmentArgs{
+// 		_, err := appservice.LookupAppServiceEnvironment(ctx, &appservice.LookupAppServiceEnvironmentArgs{
 // 			Name:              "example-ase",
 // 			ResourceGroupName: "example-rg",
 // 		}, nil)
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetAppServiceEnvironment(ctx *pulumi.Context, args *GetAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*GetAppServiceEnvironmentResult, error) {
 	var rv GetAppServiceEnvironmentResult
 	err := ctx.Invoke("azure:appservice/getAppServiceEnvironment:getAppServiceEnvironment", args, &rv, opts...)

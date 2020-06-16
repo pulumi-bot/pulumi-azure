@@ -102,9 +102,9 @@ class TrafficManagerEndpoint(pulumi.CustomResource):
         """
         Manages a Traffic Manager Endpoint.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -141,6 +141,8 @@ class TrafficManagerEndpoint(pulumi.CustomResource):
             type="externalEndpoints",
             weight=100)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

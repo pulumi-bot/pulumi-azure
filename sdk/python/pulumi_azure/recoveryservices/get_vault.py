@@ -61,9 +61,9 @@ def get_vault(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Recovery Services Vault.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -72,6 +72,8 @@ def get_vault(name=None,resource_group_name=None,opts=None):
     vault = azure.recoveryservices.get_vault(name="tfex-recovery_vault",
         resource_group_name="tfex-resource_group")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Recovery Services Vault.

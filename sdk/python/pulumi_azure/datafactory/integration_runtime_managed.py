@@ -75,9 +75,9 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         """
         Manages an Azure Data Factory Managed Integration Runtime.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -93,6 +93,8 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
             location=example_resource_group.location,
             node_size="Standard_D8_v3")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

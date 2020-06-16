@@ -69,9 +69,9 @@ def get_topic(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing EventGrid Topic
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -80,6 +80,8 @@ def get_topic(name=None,resource_group_name=None,tags=None,opts=None):
     example = azure.eventgrid.get_topic(name="my-eventgrid-topic",
         resource_group_name="example-resources")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the EventGrid Topic resource.

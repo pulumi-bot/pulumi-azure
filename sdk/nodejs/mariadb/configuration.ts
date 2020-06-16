@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Sets a MariaDB Configuration value on a MariaDB Server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     value: "600",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Configuration extends pulumi.CustomResource {
     /**

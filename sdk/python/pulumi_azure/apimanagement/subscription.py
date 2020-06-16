@@ -45,10 +45,9 @@ class Subscription(pulumi.CustomResource):
         """
         Manages a Subscription within a API Management Service.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -69,6 +68,8 @@ class Subscription(pulumi.CustomResource):
             product_id=example_product.id,
             display_name="Parser API")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

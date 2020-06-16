@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic
  */

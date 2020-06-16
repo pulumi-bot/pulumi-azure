@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Sentinel
     /// <summary>
     /// Manages a Sentinel MS Security Incident Alert Rule.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Azure.Sentinel
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AlertRuleMsSecurityIncident : Pulumi.CustomResource
     {

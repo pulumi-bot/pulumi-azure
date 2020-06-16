@@ -44,9 +44,9 @@ class AnalyticsSolution(pulumi.CustomResource):
         """
         Manages a Log Analytics (formally Operational Insights) Solution.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -74,6 +74,8 @@ class AnalyticsSolution(pulumi.CustomResource):
                 "product": "OMSGallery/ContainerInsights",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

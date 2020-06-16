@@ -85,8 +85,9 @@ class Certificate(pulumi.CustomResource):
         """
         Manages a Key Vault Certificate.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Generating A New Certificate)
 
         ```python
@@ -193,6 +194,8 @@ class Certificate(pulumi.CustomResource):
                 },
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

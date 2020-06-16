@@ -58,9 +58,9 @@ class Service(pulumi.CustomResource):
         """
         Manages a Search Service.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -72,6 +72,8 @@ class Service(pulumi.CustomResource):
             location=example_resource_group.location,
             sku="standard")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Allows accepting the Legal Terms for a Marketplace Image.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     publisher: "barracudanetworks",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Agreement extends pulumi.CustomResource {
     /**

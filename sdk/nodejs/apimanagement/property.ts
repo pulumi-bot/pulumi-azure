@@ -7,10 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Management Property.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +30,8 @@ import * as utilities from "../utilities";
  *     value: "Example Value",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Property extends pulumi.CustomResource {
     /**

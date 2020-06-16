@@ -9,8 +9,9 @@ import (
 
 // Use this data source to access information about an existing Public IP Address.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Reference An Existing)
 //
 // ```go
@@ -35,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetPublicIP(ctx *pulumi.Context, args *GetPublicIPArgs, opts ...pulumi.InvokeOption) (*GetPublicIPResult, error) {
 	var rv GetPublicIPResult
 	err := ctx.Invoke("azure:network/getPublicIP:getPublicIP", args, &rv, opts...)

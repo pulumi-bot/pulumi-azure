@@ -14,9 +14,9 @@ import (
 //
 // **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopic, err := servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
+// 		_, err = servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      exampleNamespace.Name,
 // 			EnablePartitioning: pulumi.Bool(true),
@@ -58,6 +58,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic
 type Topic struct {

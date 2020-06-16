@@ -64,9 +64,9 @@ def get_network_security_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Network Security Group.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -76,6 +76,8 @@ def get_network_security_group(name=None,resource_group_name=None,opts=None):
         resource_group_name=azurerm_resource_group["example"]["name"])
     pulumi.export("location", example.location)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the Network Security Group.

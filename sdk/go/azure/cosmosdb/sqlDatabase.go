@@ -12,9 +12,9 @@ import (
 
 // Manages a SQL Database within a Cosmos DB Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSqlDatabase, err := cosmosdb.NewSqlDatabase(ctx, "exampleSqlDatabase", &cosmosdb.SqlDatabaseArgs{
+// 		_, err = cosmosdb.NewSqlDatabase(ctx, "exampleSqlDatabase", &cosmosdb.SqlDatabaseArgs{
 // 			ResourceGroupName: pulumi.String(exampleAccount.ResourceGroupName),
 // 			AccountName:       pulumi.String(exampleAccount.Name),
 // 			Throughput:        pulumi.Int(400),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SqlDatabase struct {
 	pulumi.CustomResourceState
 

@@ -31,9 +31,9 @@ class IdentityProviderGoogle(pulumi.CustomResource):
         """
         Manages an API Management Google Identity Provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -52,6 +52,8 @@ class IdentityProviderGoogle(pulumi.CustomResource):
             client_id="00000000.apps.googleusercontent.com",
             client_secret="00000000000000000000000000000000")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

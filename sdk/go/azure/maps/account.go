@@ -12,9 +12,9 @@ import (
 
 // Manages an Azure Maps Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAccount, err := maps.NewAccount(ctx, "exampleAccount", &maps.AccountArgs{
+// 		_, err = maps.NewAccount(ctx, "exampleAccount", &maps.AccountArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			SkuName:           pulumi.String("S1"),
 // 			Tags: map[string]interface{}{
@@ -47,6 +47,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Account struct {
 	pulumi.CustomResourceState
 

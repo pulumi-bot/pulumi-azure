@@ -59,9 +59,9 @@ class ChannelsRegistration(pulumi.CustomResource):
         """
         Manages a Bot Channels Registration.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +75,8 @@ class ChannelsRegistration(pulumi.CustomResource):
             sku="F0",
             microsoft_app_id=current.client_id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

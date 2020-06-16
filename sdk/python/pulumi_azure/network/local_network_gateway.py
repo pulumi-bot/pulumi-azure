@@ -55,9 +55,9 @@ class LocalNetworkGateway(pulumi.CustomResource):
         """
         Manages a local network gateway connection over which specific connections can be configured.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -70,6 +70,8 @@ class LocalNetworkGateway(pulumi.CustomResource):
             gateway_address="12.13.14.15",
             address_spaces=["10.0.0.0/16"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

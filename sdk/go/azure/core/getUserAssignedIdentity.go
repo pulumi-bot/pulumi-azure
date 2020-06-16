@@ -9,8 +9,9 @@ import (
 
 // Use this data source to access information about an existing User Assigned Identity.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Reference An Existing)
 //
 // ```go
@@ -35,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.core.getUserAssignedIdentity has been deprecated in favor of azure.authorization.getUserAssignedIdentity
 func GetUserAssignedIdentity(ctx *pulumi.Context, args *GetUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*GetUserAssignedIdentityResult, error) {

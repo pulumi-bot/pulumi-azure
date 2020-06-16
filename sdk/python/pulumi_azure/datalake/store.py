@@ -55,9 +55,9 @@ class Store(pulumi.CustomResource):
         """
         Manages an Azure Data Lake Store.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -70,6 +70,8 @@ class Store(pulumi.CustomResource):
             encryption_state="Enabled",
             encryption_type="ServiceManaged")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

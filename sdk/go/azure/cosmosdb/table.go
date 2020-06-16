@@ -12,9 +12,9 @@ import (
 
 // Manages a Table within a Cosmos DB Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTable, err := cosmosdb.NewTable(ctx, "exampleTable", &cosmosdb.TableArgs{
+// 		_, err = cosmosdb.NewTable(ctx, "exampleTable", &cosmosdb.TableArgs{
 // 			ResourceGroupName: pulumi.String(exampleAccount.ResourceGroupName),
 // 			AccountName:       pulumi.String(exampleAccount.Name),
 // 			Throughput:        pulumi.Int(400),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Table struct {
 	pulumi.CustomResourceState
 

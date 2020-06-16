@@ -7,10 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a integer variable in Azure Automation
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +29,8 @@ import * as utilities from "../utilities";
  *     value: 1234,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IntVariable extends pulumi.CustomResource {
     /**

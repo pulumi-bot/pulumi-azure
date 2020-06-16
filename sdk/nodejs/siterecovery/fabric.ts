@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Azure Site Recovery Replication Fabric within a Recovery Services vault. Only Azure fabrics are supported at this time. Replication Fabrics serve as a container within an Azure region for other Site Recovery resources such as protection containers, protected items, network mappings.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     location: primary.location,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Fabric extends pulumi.CustomResource {
     /**

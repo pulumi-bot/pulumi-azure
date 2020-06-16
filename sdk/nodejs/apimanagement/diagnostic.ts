@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Management Service Diagnostic.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     apiManagementLoggerId: exampleLogger.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Diagnostic extends pulumi.CustomResource {
     /**

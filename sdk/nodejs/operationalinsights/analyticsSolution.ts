@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Log Analytics (formally Operational Insights) Solution.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AnalyticsSolution extends pulumi.CustomResource {
     /**

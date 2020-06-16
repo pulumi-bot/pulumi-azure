@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Subscription Rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### SQL Filter)
  *
  * ```typescript
@@ -46,7 +47,8 @@ import * as utilities from "../utilities";
  *     sqlFilter: "colour = 'red'",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Correlation Filter)
  *
  * ```typescript
@@ -85,6 +87,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SubscriptionRule extends pulumi.CustomResource {
     /**

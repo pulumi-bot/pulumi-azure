@@ -46,9 +46,9 @@ class ActionHttp(pulumi.CustomResource):
         """
         Manages an HTTP Action within a Logic App Workflow
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +63,8 @@ class ActionHttp(pulumi.CustomResource):
             method="GET",
             uri="http://example.com/some-webhook")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

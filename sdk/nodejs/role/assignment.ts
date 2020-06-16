@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Assigns a given Principal (User or Group) to a given Role.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Using A Built-In Role)
  *
  * ```typescript
@@ -23,7 +24,8 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.objectId),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Custom Role & Service Principal)
  *
  * ```typescript
@@ -48,7 +50,8 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.objectId),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Custom Role & User)
  *
  * ```typescript
@@ -73,7 +76,8 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.clientId),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Custom Role & Management Group)
  *
  * ```typescript
@@ -99,6 +103,8 @@ import * as utilities from "../utilities";
  *     principalId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.clientId),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment
  */

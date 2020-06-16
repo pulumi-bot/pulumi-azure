@@ -86,9 +86,9 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     """
     Use this data source to access information about an existing Image.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -98,6 +98,8 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
         resource_group_name="packerimages")
     pulumi.export("imageId", search.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Image.

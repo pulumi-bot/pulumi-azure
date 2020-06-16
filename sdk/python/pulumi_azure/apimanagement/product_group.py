@@ -31,9 +31,9 @@ class ProductGroup(pulumi.CustomResource):
         """
         Manages an API Management Product Assignment to a Group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +53,8 @@ class ProductGroup(pulumi.CustomResource):
             api_management_name=example_service.name,
             resource_group_name=example_service.resource_group_name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

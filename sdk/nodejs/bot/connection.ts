@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Bot Connection.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     clientSecret: "exampleSecret",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Connection extends pulumi.CustomResource {
     /**

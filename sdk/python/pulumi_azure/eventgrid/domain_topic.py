@@ -27,9 +27,9 @@ class DomainTopic(pulumi.CustomResource):
         """
         Manages an EventGrid Domain Topic
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -46,6 +46,8 @@ class DomainTopic(pulumi.CustomResource):
             domain_name=example_domain.name,
             resource_group_name=example_resource_group.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

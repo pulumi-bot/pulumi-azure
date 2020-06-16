@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  *
  * > In this release there's a known issue where the `publicIpAddress` and `publicIpAddresses` fields may not be fully populated for Dynamic Public IP's.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example provisions a basic Windows Virtual Machine on an internal network.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,6 +68,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class WindowsVirtualMachine extends pulumi.CustomResource {
     /**

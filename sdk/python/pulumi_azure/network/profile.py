@@ -45,9 +45,9 @@ class Profile(pulumi.CustomResource):
         """
         Manages a Network Profile.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -80,6 +80,8 @@ class Profile(pulumi.CustomResource):
                 }],
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

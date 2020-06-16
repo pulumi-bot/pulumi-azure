@@ -39,9 +39,9 @@ class DedicatedHostGroup(pulumi.CustomResource):
         """
         Manage a Dedicated Host Group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +53,8 @@ class DedicatedHostGroup(pulumi.CustomResource):
             location=example_resource_group.location,
             platform_fault_domain_count=1)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

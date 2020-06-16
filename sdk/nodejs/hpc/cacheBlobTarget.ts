@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Blob Target within a HPC Cache.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,6 +61,8 @@ import * as utilities from "../utilities";
  *     namespacePath: "/blob_storage",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CacheBlobTarget extends pulumi.CustomResource {
     /**

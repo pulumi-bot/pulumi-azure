@@ -12,9 +12,9 @@ import (
 
 // Manages a PostgreSQL Server.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleServer, err := postgresql.NewServer(ctx, "exampleServer", &postgresql.ServerArgs{
+// 		_, err = postgresql.NewServer(ctx, "exampleServer", &postgresql.ServerArgs{
 // 			Location:                     exampleResourceGroup.Location,
 // 			ResourceGroupName:            exampleResourceGroup.Name,
 // 			AdministratorLogin:           pulumi.String("psqladminun"),
@@ -55,6 +55,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Server struct {
 	pulumi.CustomResourceState
 

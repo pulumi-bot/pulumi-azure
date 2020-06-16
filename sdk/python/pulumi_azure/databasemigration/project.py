@@ -45,9 +45,9 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Destroying a Database Migration Project will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -74,6 +74,8 @@ class Project(pulumi.CustomResource):
             source_platform="SQL",
             target_platform="SQLDB")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

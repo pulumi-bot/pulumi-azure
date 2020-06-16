@@ -12,8 +12,9 @@ import (
 
 // Manages a Function App.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### With App Service Plan)
 //
 // ```go
@@ -54,7 +55,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),
@@ -67,7 +68,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### In A Consumption Plan)
 //
 // ```go
@@ -109,7 +111,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),
@@ -122,7 +124,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Linux)
 //
 // ```go
@@ -165,7 +168,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),
@@ -179,6 +182,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type FunctionApp struct {
 	pulumi.CustomResourceState
 

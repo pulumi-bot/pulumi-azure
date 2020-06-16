@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure IoT Time Series Insights Access Policy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     roles: ["Reader"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TimeSeriesInsightsAccessPolicy extends pulumi.CustomResource {
     /**

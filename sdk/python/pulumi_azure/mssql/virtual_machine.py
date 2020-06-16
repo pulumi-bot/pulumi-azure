@@ -64,9 +64,11 @@ class VirtualMachine(pulumi.CustomResource):
         """
         Manages a Microsoft SQL Virtual Machine
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This example provisions a brief Managed MsSql Virtual Machine.
 
         ```python
         import pulumi
@@ -88,6 +90,8 @@ class VirtualMachine(pulumi.CustomResource):
                 "maintenanceWindowStartingHour": 2,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

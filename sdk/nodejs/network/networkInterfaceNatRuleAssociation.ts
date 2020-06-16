@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages the association between a Network Interface and a Load Balancer's NAT Rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +62,8 @@ import * as utilities from "../utilities";
  *     natRuleId: exampleNatRule.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     /**

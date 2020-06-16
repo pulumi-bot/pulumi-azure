@@ -59,9 +59,9 @@ class StreamInputBlob(pulumi.CustomResource):
         """
         Manages a Stream Analytics Stream Input Blob.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -92,6 +92,8 @@ class StreamInputBlob(pulumi.CustomResource):
                 "encoding": "UTF8",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

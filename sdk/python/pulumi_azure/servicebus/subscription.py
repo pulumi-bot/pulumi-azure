@@ -67,9 +67,9 @@ class Subscription(pulumi.CustomResource):
         """
         Manages a ServiceBus Subscription.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -93,6 +93,8 @@ class Subscription(pulumi.CustomResource):
             topic_name=example_topic.name,
             max_delivery_count=1)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

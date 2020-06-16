@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Healthcare
     /// <summary>
     /// Manages a Healthcare Service.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -70,6 +70,8 @@ namespace Pulumi.Azure.Healthcare
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

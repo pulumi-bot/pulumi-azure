@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an existing Public IP Prefix.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Reference An Existing)
  *
  * ```typescript
@@ -23,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * export const publicIpPrefix = example.then(example => example.ipPrefix);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getPublicIpPrefix(args: GetPublicIpPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpPrefixResult> {
     if (!opts) {

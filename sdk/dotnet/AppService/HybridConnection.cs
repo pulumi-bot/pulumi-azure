@@ -12,9 +12,11 @@ namespace Pulumi.Azure.AppService
     /// <summary>
     /// Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// This example provisions an App Service, a Relay Hybrid Connection, and a Service Bus using their outputs to create the App Service Hybrid Connection.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -69,6 +71,8 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HybridConnection : Pulumi.CustomResource
     {

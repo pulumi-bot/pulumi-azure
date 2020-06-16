@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access information about an existing Automation Bool Variable.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * export const variableId = example.then(example => example.id);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getBoolVariable(args: GetBoolVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetBoolVariableResult> {
     if (!opts) {

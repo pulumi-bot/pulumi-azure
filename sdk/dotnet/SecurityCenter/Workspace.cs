@@ -16,9 +16,9 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// &gt; **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,8 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

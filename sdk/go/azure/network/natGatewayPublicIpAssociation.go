@@ -12,9 +12,9 @@ import (
 
 // Manages the association between a Nat Gateway and a Public IP.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -50,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNatGatewayPublicIpAssociation, err := network.NewNatGatewayPublicIpAssociation(ctx, "exampleNatGatewayPublicIpAssociation", &network.NatGatewayPublicIpAssociationArgs{
+// 		_, err = network.NewNatGatewayPublicIpAssociation(ctx, "exampleNatGatewayPublicIpAssociation", &network.NatGatewayPublicIpAssociationArgs{
 // 			NatGatewayId:      exampleNatGateway.ID(),
 // 			PublicIpAddressId: examplePublicIp.ID(),
 // 		})
@@ -61,6 +61,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type NatGatewayPublicIpAssociation struct {
 	pulumi.CustomResourceState
 

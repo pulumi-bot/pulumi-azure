@@ -12,9 +12,9 @@ namespace Pulumi.Azure.MariaDB
     /// <summary>
     /// Manages a MariaDB Server.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,8 @@ namespace Pulumi.Azure.MariaDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Server : Pulumi.CustomResource
     {

@@ -12,9 +12,9 @@ namespace Pulumi.Azure.MySql
     /// <summary>
     /// Manages a MySQL Server.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +49,8 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Server : Pulumi.CustomResource
     {

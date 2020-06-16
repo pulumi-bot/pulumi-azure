@@ -101,9 +101,9 @@ def get_service(name=None,resource_group_name=None,opts=None):
 
     > **NOTE** Private Link is currently in Public Preview.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -113,6 +113,8 @@ def get_service(name=None,resource_group_name=None,opts=None):
         resource_group_name="PrivateLinkServiceRG")
     pulumi.export("privateLinkServiceId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the private link service.

@@ -54,9 +54,9 @@ class Cluster(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Cluster
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -74,6 +74,8 @@ class Cluster(pulumi.CustomResource):
                 "Environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

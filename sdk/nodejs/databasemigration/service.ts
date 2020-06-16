@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Destroying a Database Migration Service will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provide.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     skuName: "Standard_1vCores",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Service extends pulumi.CustomResource {
     /**

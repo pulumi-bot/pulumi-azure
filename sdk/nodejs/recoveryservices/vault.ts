@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Recovery Services Vault.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     softDeleteEnabled: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Vault extends pulumi.CustomResource {
     /**

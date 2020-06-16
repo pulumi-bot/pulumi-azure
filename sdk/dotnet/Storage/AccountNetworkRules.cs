@@ -18,9 +18,9 @@ namespace Pulumi.Azure.Storage
     /// 
     /// &gt; **NOTE:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -86,6 +86,8 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AccountNetworkRules : Pulumi.CustomResource
     {

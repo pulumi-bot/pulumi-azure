@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Queue.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     enablePartitioning: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Queue extends pulumi.CustomResource {
     /**

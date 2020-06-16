@@ -11,9 +11,9 @@ import (
 //
 // > **NOTE** Private Link is currently in Public Preview.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetServiceEndpointConnections(ctx *pulumi.Context, args *GetServiceEndpointConnectionsArgs, opts ...pulumi.InvokeOption) (*GetServiceEndpointConnectionsResult, error) {
 	var rv GetServiceEndpointConnectionsResult
 	err := ctx.Invoke("azure:privatelink/getServiceEndpointConnections:getServiceEndpointConnections", args, &rv, opts...)

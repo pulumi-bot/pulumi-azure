@@ -58,9 +58,9 @@ class Account(pulumi.CustomResource):
         """
         Manages an Azure Batch account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -81,6 +81,8 @@ class Account(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -12,9 +12,9 @@ import (
 
 // Enables you to manage DNS AAAA Records within Azure Private DNS.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testAAAARecord, err := privatedns.NewAAAARecord(ctx, "testAAAARecord", &privatedns.AAAARecordArgs{
+// 		_, err = privatedns.NewAAAARecord(ctx, "testAAAARecord", &privatedns.AAAARecordArgs{
 // 			ZoneName:          testZone.Name,
 // 			ResourceGroupName: testResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -55,6 +55,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AAAARecord struct {
 	pulumi.CustomResourceState
 

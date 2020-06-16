@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Stream Analytics Output to an EventHub.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OutputEventHub extends pulumi.CustomResource {
     /**

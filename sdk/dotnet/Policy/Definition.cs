@@ -14,9 +14,9 @@ namespace Pulumi.Azure.Policy
     /// 
     /// Policy definitions do not take effect until they are assigned to a scope using a Policy Assignment.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -67,6 +67,8 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Definition : Pulumi.CustomResource
     {

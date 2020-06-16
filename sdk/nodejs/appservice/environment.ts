@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an App Service Environment.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     frontEndScaleFactor: 10,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Environment extends pulumi.CustomResource {
     /**

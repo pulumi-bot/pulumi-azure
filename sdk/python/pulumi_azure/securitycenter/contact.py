@@ -33,9 +33,9 @@ class Contact(pulumi.CustomResource):
 
         > **NOTE:** Owner access permission is required.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -47,6 +47,8 @@ class Contact(pulumi.CustomResource):
             email="contact@example.com",
             phone="+1-555-555-5555")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

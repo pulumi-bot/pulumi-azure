@@ -71,9 +71,9 @@ def get_share(account_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Data Share.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -85,6 +85,8 @@ def get_share(account_id=None,name=None,opts=None):
         account_id=data["azurerm_data_share_account"]["exmaple"]["id"])
     pulumi.export("id", example_share.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str account_id: The ID of the Data Share account in which the Data Share is created.

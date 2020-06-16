@@ -99,9 +99,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Batch Account.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -111,6 +111,8 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="test")
     pulumi.export("poolAllocationMode", example.pool_allocation_mode)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Batch account.

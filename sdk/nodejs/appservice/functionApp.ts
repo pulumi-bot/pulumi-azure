@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Function App.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With App Service Plan)
  *
  * ```typescript
@@ -39,7 +40,8 @@ import * as utilities from "../utilities";
  *     storageConnectionString: exampleAccount.primaryConnectionString,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### In A Consumption Plan)
  *
  * ```typescript
@@ -69,7 +71,8 @@ import * as utilities from "../utilities";
  *     storageConnectionString: exampleAccount.primaryConnectionString,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Linux)
  *
  * ```typescript
@@ -101,6 +104,8 @@ import * as utilities from "../utilities";
  *     osType: "linux",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FunctionApp extends pulumi.CustomResource {
     /**

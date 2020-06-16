@@ -47,9 +47,9 @@ class TimeSeriesInsightsStandardEnvironment(pulumi.CustomResource):
         """
         Manages an Azure IoT Time Series Insights Standard Environment.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +62,8 @@ class TimeSeriesInsightsStandardEnvironment(pulumi.CustomResource):
             sku_name="S1_1",
             data_retention_time="P30D")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

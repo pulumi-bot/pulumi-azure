@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Application Insights component.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * export const instrumentationKey = exampleInsights.instrumentationKey;
  * export const appId = exampleInsights.appId;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Insights extends pulumi.CustomResource {
     /**

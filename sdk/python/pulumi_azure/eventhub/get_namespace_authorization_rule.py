@@ -107,9 +107,9 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
     """
     Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -120,6 +120,8 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
         namespace_name="example-ns")
     pulumi.export("eventhubAuthorizationRuleId", data["azurem_eventhub_namespace_authorization_rule"]["example"]["id"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the EventHub Authorization Rule resource.

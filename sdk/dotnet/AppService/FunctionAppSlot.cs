@@ -12,8 +12,9 @@ namespace Pulumi.Azure.AppService
     /// <summary>
     /// Manages a Function App deployment Slot.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### With App Service Plan)
     /// 
     /// ```csharp
@@ -66,6 +67,8 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FunctionAppSlot : Pulumi.CustomResource
     {

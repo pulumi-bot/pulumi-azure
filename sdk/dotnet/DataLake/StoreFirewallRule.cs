@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DataLake
     /// <summary>
     /// Manages a Azure Data Lake Store Firewall Rule.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class StoreFirewallRule : Pulumi.CustomResource
     {

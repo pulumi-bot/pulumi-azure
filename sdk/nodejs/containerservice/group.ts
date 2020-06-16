@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Manages as an Azure Container Group instance.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example provisions a Basic Container.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Group extends pulumi.CustomResource {
     /**

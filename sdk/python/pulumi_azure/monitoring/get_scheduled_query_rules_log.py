@@ -83,9 +83,9 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access the properties of a LogToMetricAction scheduled query rule.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -95,6 +95,8 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-rg")
     pulumi.export("queryRuleId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the scheduled query rule.

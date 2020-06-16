@@ -58,9 +58,9 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
     """
     Use this data source to access information about an existing EventHub.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -71,6 +71,8 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
         namespace_name="search-eventhubns")
     pulumi.export("eventhubId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of this EventHub.

@@ -12,9 +12,9 @@ import (
 
 // Manages an API Management AAD Identity Provider.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIdentityProviderAad, err := apimanagement.NewIdentityProviderAad(ctx, "exampleIdentityProviderAad", &apimanagement.IdentityProviderAadArgs{
+// 		_, err = apimanagement.NewIdentityProviderAad(ctx, "exampleIdentityProviderAad", &apimanagement.IdentityProviderAadArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			ClientId:          pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -59,6 +59,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type IdentityProviderAad struct {
 	pulumi.CustomResourceState
 

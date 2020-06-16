@@ -12,9 +12,9 @@ namespace Pulumi.Azure.PostgreSql
     /// <summary>
     /// Manages a PostgreSQL Server.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Server : Pulumi.CustomResource
     {

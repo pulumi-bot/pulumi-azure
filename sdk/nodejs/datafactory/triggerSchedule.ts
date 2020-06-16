@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Trigger Schedule inside a Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     frequency: "Day",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TriggerSchedule extends pulumi.CustomResource {
     /**

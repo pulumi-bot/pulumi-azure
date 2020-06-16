@@ -35,9 +35,9 @@ class CacheBlobTarget(pulumi.CustomResource):
         """
         Manages a Blob Target within a HPC Cache.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -80,6 +80,8 @@ class CacheBlobTarget(pulumi.CustomResource):
             storage_container_id=example_container.resource_manager_id,
             namespace_path="/blob_storage")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

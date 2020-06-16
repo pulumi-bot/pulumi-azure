@@ -12,9 +12,9 @@ namespace Pulumi.Azure.PrivateDns
     /// <summary>
     /// Enables you to manage Private DNS zones within Azure DNS. These zones are hosted on Azure's name servers.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +36,8 @@ namespace Pulumi.Azure.PrivateDns
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

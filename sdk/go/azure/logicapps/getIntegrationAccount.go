@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Logic App Integration Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupIntegrationAccount(ctx *pulumi.Context, args *LookupIntegrationAccountArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountResult, error) {
 	var rv LookupIntegrationAccountResult
 	err := ctx.Invoke("azure:logicapps/getIntegrationAccount:getIntegrationAccount", args, &rv, opts...)

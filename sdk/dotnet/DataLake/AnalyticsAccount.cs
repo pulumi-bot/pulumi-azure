@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DataLake
     /// <summary>
     /// Manages an Azure Data Lake Analytics Account.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AnalyticsAccount : Pulumi.CustomResource
     {

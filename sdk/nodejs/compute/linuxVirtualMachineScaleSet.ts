@@ -15,9 +15,11 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `azure.compute.ScaleSet` resource instead
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example provisions a basic Linux Virtual Machine Scale Set on an internal network.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,6 +68,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     /**

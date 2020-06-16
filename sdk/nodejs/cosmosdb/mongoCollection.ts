@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Mongo Collection within a Cosmos DB Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class MongoCollection extends pulumi.CustomResource {
     /**

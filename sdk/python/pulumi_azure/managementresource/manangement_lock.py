@@ -33,8 +33,9 @@ class ManangementLock(pulumi.CustomResource):
         """
         Manages a Management Lock which is scoped to a Subscription, Resource Group or Resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Subscription Level Lock)
 
         ```python
@@ -48,6 +49,20 @@ class ManangementLock(pulumi.CustomResource):
             notes="Items can't be deleted in this subscription!")
         ```
 
+        ## Example Usage (Resource Group Level Lock)
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+
+        example = azure.core.ResourceGroup("example", location="West Europe")
+        resource_group_level = azure.management.Lock("resource-group-level",
+            scope=example.id,
+            lock_level="ReadOnly",
+            notes="This Resource Group is Read-Only")
+        ```
+        {{% /example %}}
+        {{% example %}}
         ### Resource Level Lock)
 
         ```python
@@ -65,6 +80,8 @@ class ManangementLock(pulumi.CustomResource):
             lock_level="CanNotDelete",
             notes="Locked because it's needed by a third-party")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -12,9 +12,9 @@ import (
 
 // Manages an API Management Google Identity Provider.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIdentityProviderGoogle, err := apimanagement.NewIdentityProviderGoogle(ctx, "exampleIdentityProviderGoogle", &apimanagement.IdentityProviderGoogleArgs{
+// 		_, err = apimanagement.NewIdentityProviderGoogle(ctx, "exampleIdentityProviderGoogle", &apimanagement.IdentityProviderGoogleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			ClientId:          pulumi.String("00000000.apps.googleusercontent.com"),
@@ -56,6 +56,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type IdentityProviderGoogle struct {
 	pulumi.CustomResourceState
 

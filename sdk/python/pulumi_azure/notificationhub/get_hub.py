@@ -72,9 +72,9 @@ def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -85,6 +85,8 @@ def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
         resource_group_name="resource-group-name")
     pulumi.export("id", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the Name of the Notification Hub.

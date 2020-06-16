@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Directory within an Azure Storage File Share.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     storageAccountName: exampleAccount.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ShareDirectory extends pulumi.CustomResource {
     /**

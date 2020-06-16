@@ -86,9 +86,9 @@ def get_shared_image_version(gallery_name=None,image_name=None,name=None,resourc
     """
     Use this data source to access information about an existing Version of a Shared Image within a Shared Image Gallery.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -99,6 +99,8 @@ def get_shared_image_version(gallery_name=None,image_name=None,name=None,resourc
         name="1.0.0",
         resource_group_name="example-resources")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str gallery_name: The name of the Shared Image in which the Shared Image exists.

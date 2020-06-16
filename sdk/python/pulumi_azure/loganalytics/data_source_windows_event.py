@@ -35,9 +35,9 @@ class DataSourceWindowsEvent(pulumi.CustomResource):
         """
         Manages a Log Analytics Windows Event DataSource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -54,6 +54,8 @@ class DataSourceWindowsEvent(pulumi.CustomResource):
             event_log_name="Application",
             event_types=["error"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

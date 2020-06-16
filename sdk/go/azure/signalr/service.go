@@ -12,9 +12,9 @@ import (
 
 // Manages an Azure SignalR service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := signalr.NewService(ctx, "exampleService", &signalr.ServiceArgs{
+// 		_, err = signalr.NewService(ctx, "exampleService", &signalr.ServiceArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku: &signalr.ServiceSkuArgs{
@@ -61,6 +61,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Service struct {
 	pulumi.CustomResourceState
 

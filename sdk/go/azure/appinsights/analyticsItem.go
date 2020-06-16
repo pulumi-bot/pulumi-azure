@@ -12,9 +12,9 @@ import (
 
 // Manages an Application Insights Analytics Item component.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAnalyticsItem, err := appinsights.NewAnalyticsItem(ctx, "exampleAnalyticsItem", &appinsights.AnalyticsItemArgs{
+// 		_, err = appinsights.NewAnalyticsItem(ctx, "exampleAnalyticsItem", &appinsights.AnalyticsItemArgs{
 // 			ApplicationInsightsId: exampleInsights.ID(),
 // 			Content:               pulumi.String("requests //simple example query"),
 // 			Scope:                 pulumi.String("shared"),
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AnalyticsItem struct {
 	pulumi.CustomResourceState
 

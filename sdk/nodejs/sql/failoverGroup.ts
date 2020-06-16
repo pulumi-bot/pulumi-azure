@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Create a failover group of databases on a collection of Azure SQL servers.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +50,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FailoverGroup extends pulumi.CustomResource {
     /**

@@ -31,9 +31,9 @@ class IdentityProviderMicrosoft(pulumi.CustomResource):
         """
         Manages an API Management Microsoft Identity Provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -52,6 +52,8 @@ class IdentityProviderMicrosoft(pulumi.CustomResource):
             client_id="00000000-0000-0000-0000-000000000000",
             client_secret="00000000000000000000000000000000")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

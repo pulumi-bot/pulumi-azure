@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DevTest
     /// <summary>
     /// Manages a Virtual Network within a DevTest Lab.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +51,8 @@ namespace Pulumi.Azure.DevTest
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualNetwork : Pulumi.CustomResource
     {

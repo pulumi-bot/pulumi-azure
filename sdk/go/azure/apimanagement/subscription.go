@@ -12,10 +12,9 @@ import (
 
 // Manages a Subscription within a API Management Service.
 //
-//
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -50,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubscription, err := apimanagement.NewSubscription(ctx, "exampleSubscription", &apimanagement.SubscriptionArgs{
+// 		_, err = apimanagement.NewSubscription(ctx, "exampleSubscription", &apimanagement.SubscriptionArgs{
 // 			ApiManagementName: pulumi.String(exampleService.Name),
 // 			ResourceGroupName: pulumi.String(exampleService.ResourceGroupName),
 // 			UserId:            pulumi.String(exampleUser.Id),
@@ -64,6 +63,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Subscription struct {
 	pulumi.CustomResourceState
 

@@ -63,9 +63,9 @@ class DatasetMysql(pulumi.CustomResource):
         """
         Manages a MySQL Dataset inside a Azure Data Factory.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -84,6 +84,8 @@ class DatasetMysql(pulumi.CustomResource):
             data_factory_name=example_factory.name,
             linked_service_name=example_linked_service_mysql.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

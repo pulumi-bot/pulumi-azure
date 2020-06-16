@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Traffic Manager Endpoint.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +51,8 @@ import * as utilities from "../utilities";
  *     weight: 100,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TrafficManagerEndpoint extends pulumi.CustomResource {
     /**

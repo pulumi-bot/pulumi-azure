@@ -16,9 +16,9 @@ import (
 //
 // > **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleWorkspace, err := securitycenter.NewWorkspace(ctx, "exampleWorkspace", &securitycenter.WorkspaceArgs{
+// 		_, err = securitycenter.NewWorkspace(ctx, "exampleWorkspace", &securitycenter.WorkspaceArgs{
 // 			Scope:       pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000"),
 // 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
 // 		})
@@ -57,6 +57,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Workspace struct {
 	pulumi.CustomResourceState
 

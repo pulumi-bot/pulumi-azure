@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Maintenance Configuration.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := maintenance.LookupConfiguration(ctx, &maintenance.LookupConfigurationArgs{
+// 		_, err := maintenance.LookupConfiguration(ctx, &maintenance.LookupConfigurationArgs{
 // 			Name:              "example-mc",
 // 			ResourceGroupName: "example-resources",
 // 		}, nil)
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("azure:maintenance/getConfiguration:getConfiguration", args, &rv, opts...)

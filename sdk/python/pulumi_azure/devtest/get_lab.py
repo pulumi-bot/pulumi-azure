@@ -103,9 +103,9 @@ def get_lab(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Dev Test Lab.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -115,6 +115,8 @@ def get_lab(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("uniqueIdentifier", example.unique_identifier)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Dev Test Lab.

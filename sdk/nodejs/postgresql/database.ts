@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a PostgreSQL Database within a PostgreSQL Server
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     collation: "English_United States.1252",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -90,9 +90,9 @@ class AutoscaleSetting(pulumi.CustomResource):
         """
         Manages a AutoScale Setting which can be applied to Virtual Machine Scale Sets, App Services and other scalable resources.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -159,7 +159,8 @@ class AutoscaleSetting(pulumi.CustomResource):
                 },
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Repeating On Weekends)
 
         ```python
@@ -237,7 +238,8 @@ class AutoscaleSetting(pulumi.CustomResource):
                 },
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### For Fixed Dates)
 
         ```python
@@ -311,6 +313,8 @@ class AutoscaleSetting(pulumi.CustomResource):
                 },
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

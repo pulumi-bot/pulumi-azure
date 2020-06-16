@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Linked Service (connection) between Data Lake Storage Gen2 and Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     url: "https://datalakestoragegen2",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
     /**

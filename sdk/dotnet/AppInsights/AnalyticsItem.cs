@@ -12,9 +12,9 @@ namespace Pulumi.Azure.AppInsights
     /// <summary>
     /// Manages an Application Insights Analytics Item component.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +45,8 @@ namespace Pulumi.Azure.AppInsights
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AnalyticsItem : Pulumi.CustomResource
     {

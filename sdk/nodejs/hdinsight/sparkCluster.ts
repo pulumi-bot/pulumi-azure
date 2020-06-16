@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a HDInsight Spark Cluster.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,6 +66,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SparkCluster extends pulumi.CustomResource {
     /**

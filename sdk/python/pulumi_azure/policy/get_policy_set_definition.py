@@ -79,9 +79,9 @@ def get_policy_set_definition(display_name=None,management_group_name=None,name=
     """
     Use this data source to access information about an existing Policy Set Definition.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -90,6 +90,8 @@ def get_policy_set_definition(display_name=None,management_group_name=None,name=
     example = azure.policy.get_policy_set_definition(display_name="Policy Set Definition Example")
     pulumi.export("id", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str display_name: Specifies the display name of the Policy Set Definition. Conflicts with `name`.

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure App Configuration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     location: rg.location,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ConfigurationStore extends pulumi.CustomResource {
     /**

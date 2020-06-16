@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Network Watcher Flow Log.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkWatcherFlowLog extends pulumi.CustomResource {
     /**

@@ -88,9 +88,9 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
     """
     Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -102,6 +102,8 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
         topic_name="example-servicebus_topic")
     pulumi.export("servicebusAuthorizationRuleId", data["azurem_servicebus_topic_authorization_rule"]["example"]["id"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the ServiceBus Topic Authorization Rule resource.

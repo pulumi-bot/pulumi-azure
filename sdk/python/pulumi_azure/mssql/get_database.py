@@ -103,9 +103,9 @@ def get_database(name=None,server_id=None,opts=None):
     """
     Use this data source to access information about an existing SQL database.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -115,6 +115,8 @@ def get_database(name=None,server_id=None,opts=None):
         server_id="example-mssql-server-id")
     pulumi.export("databaseId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Ms SQL Database.

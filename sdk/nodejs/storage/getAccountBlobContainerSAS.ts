@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account Blob Container.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +53,8 @@ import * as utilities from "../utilities";
  * }));
  * export const sasUrlQueryString = example.sas;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getAccountBlobContainerSAS(args: GetAccountBlobContainerSASArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountBlobContainerSASResult> {
     if (!opts) {

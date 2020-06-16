@@ -45,9 +45,9 @@ class Cache(pulumi.CustomResource):
 
         > **Note**: During the first several months of the GA release, a request must be made to the Azure HPC Cache team to add your subscription to the access list before it can be used to create a cache instance. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -69,6 +69,8 @@ class Cache(pulumi.CustomResource):
             subnet_id=example_subnet.id,
             sku_name="Standard_2G")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     frontendIpConfigurationName: "PublicIPAddress",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Rule extends pulumi.CustomResource {
     /**

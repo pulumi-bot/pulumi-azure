@@ -96,9 +96,9 @@ class CertificateOrder(pulumi.CustomResource):
         """
         Manages an App Service Certificate Order.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -111,6 +111,8 @@ class CertificateOrder(pulumi.CustomResource):
             distinguished_name="CN=example.com",
             product_type="Standard")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

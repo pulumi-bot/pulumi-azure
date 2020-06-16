@@ -12,9 +12,9 @@ namespace Pulumi.Azure.LogicApps
     /// <summary>
     /// Manages a Logic App Workflow.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Workflow : Pulumi.CustomResource
     {

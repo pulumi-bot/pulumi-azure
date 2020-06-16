@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Sql
     /// <summary>
     /// Allows you to add, update, or remove an Azure SQL server to a subnet of a virtual network.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,6 +65,8 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualNetworkRule : Pulumi.CustomResource
     {

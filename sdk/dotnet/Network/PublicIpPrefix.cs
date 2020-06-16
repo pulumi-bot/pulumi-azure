@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Network
     /// <summary>
     /// Manages a Public IP Prefix.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PublicIpPrefix : Pulumi.CustomResource
     {

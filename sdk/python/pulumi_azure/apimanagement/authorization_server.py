@@ -88,10 +88,9 @@ class AuthorizationServer(pulumi.CustomResource):
         """
         Manages an Authorization Server within an API Management Service.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -110,6 +109,8 @@ class AuthorizationServer(pulumi.CustomResource):
             client_registration_endpoint="https://example.mydomain.com/client/register",
             grant_types=["authorizationCode"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

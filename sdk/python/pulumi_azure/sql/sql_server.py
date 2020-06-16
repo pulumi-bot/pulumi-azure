@@ -68,9 +68,9 @@ class SqlServer(pulumi.CustomResource):
         """
         Manages a Microsoft SQL Azure Database Server.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -98,6 +98,8 @@ class SqlServer(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

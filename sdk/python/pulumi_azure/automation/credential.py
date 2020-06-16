@@ -39,9 +39,9 @@ class Credential(pulumi.CustomResource):
         """
         Manages a Automation Credential.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -61,6 +61,8 @@ class Credential(pulumi.CustomResource):
             password="example_pwd",
             description="This is an example credential")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Analysis Services Server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Server extends pulumi.CustomResource {
     /**

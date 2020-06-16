@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Namespace.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace
  */

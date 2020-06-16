@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Backup
     /// <summary>
     /// Manages Azure Backup for an Azure VM
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -55,6 +55,8 @@ namespace Pulumi.Azure.Backup
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ProtectedVM : Pulumi.CustomResource
     {

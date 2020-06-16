@@ -67,8 +67,9 @@ class Image(pulumi.CustomResource):
         """
         Manages a custom virtual machine image that can be used to create virtual machines.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Creating From VHD
 
         ```python
@@ -86,7 +87,8 @@ class Image(pulumi.CustomResource):
                 "sizeGb": 30,
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 
         ```python
@@ -99,6 +101,8 @@ class Image(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             source_virtual_machine_id="{vm_id}")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

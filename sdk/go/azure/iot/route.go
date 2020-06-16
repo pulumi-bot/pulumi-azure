@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE:** Routes can be defined either directly on the `iot.IoTHub` resource, or using the `iot.Route` resourcs - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -79,7 +79,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRoute, err := iot.NewRoute(ctx, "exampleRoute", &iot.RouteArgs{
+// 		_, err = iot.NewRoute(ctx, "exampleRoute", &iot.RouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			Source:            pulumi.String("DeviceMessages"),
@@ -96,6 +96,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Route struct {
 	pulumi.CustomResourceState
 

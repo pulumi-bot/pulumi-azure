@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupHub(ctx *pulumi.Context, args *LookupHubArgs, opts ...pulumi.InvokeOption) (*LookupHubResult, error) {
 	var rv LookupHubResult
 	err := ctx.Invoke("azure:notificationhub/getHub:getHub", args, &rv, opts...)

@@ -12,9 +12,9 @@ import (
 
 // Manages a Gremlin Database within a Cosmos DB Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGremlinDatabase, err := cosmosdb.NewGremlinDatabase(ctx, "exampleGremlinDatabase", &cosmosdb.GremlinDatabaseArgs{
+// 		_, err = cosmosdb.NewGremlinDatabase(ctx, "exampleGremlinDatabase", &cosmosdb.GremlinDatabaseArgs{
 // 			ResourceGroupName: pulumi.String(exampleAccount.ResourceGroupName),
 // 			AccountName:       pulumi.String(exampleAccount.Name),
 // 			Throughput:        pulumi.Int(400),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type GremlinDatabase struct {
 	pulumi.CustomResourceState
 

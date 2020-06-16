@@ -35,9 +35,9 @@ class IdentityProviderAad(pulumi.CustomResource):
         """
         Manages an API Management AAD Identity Provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -57,6 +57,8 @@ class IdentityProviderAad(pulumi.CustomResource):
             client_secret="00000000000000000000000000000000",
             allowed_tenants=["00000000-0000-0000-0000-000000000000"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

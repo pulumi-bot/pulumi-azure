@@ -51,9 +51,9 @@ class LinkedServiceSqlServer(pulumi.CustomResource):
         """
         Manages a Linked Service (connection) between a SQL Server and Azure Data Factory.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -68,6 +68,8 @@ class LinkedServiceSqlServer(pulumi.CustomResource):
             data_factory_name=example_factory.name,
             connection_string="Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

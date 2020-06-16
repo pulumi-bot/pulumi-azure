@@ -12,9 +12,9 @@ import (
 
 // Manages an Monitor Action Rule which type is action group.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleActionRuleActionGroup, err := monitoring.NewActionRuleActionGroup(ctx, "exampleActionRuleActionGroup", &monitoring.ActionRuleActionGroupArgs{
+// 		_, err = monitoring.NewActionRuleActionGroup(ctx, "exampleActionRuleActionGroup", &monitoring.ActionRuleActionGroupArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ActionGroupId:     exampleActionGroup.ID(),
 // 			Scope: &monitoring.ActionRuleActionGroupScopeArgs{
@@ -60,6 +60,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ActionRuleActionGroup struct {
 	pulumi.CustomResourceState
 

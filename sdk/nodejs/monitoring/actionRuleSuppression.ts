@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Monitor Action Rule which type is suppression.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ActionRuleSuppression extends pulumi.CustomResource {
     /**

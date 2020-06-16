@@ -67,9 +67,9 @@ class ElasticPool(pulumi.CustomResource):
         """
         Allows you to manage an Azure SQL Elastic Pool via the `v3.0` API which allows for `vCore` and `DTU` based configurations.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -99,6 +99,8 @@ class ElasticPool(pulumi.CustomResource):
                 "maxCapacity": 4,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

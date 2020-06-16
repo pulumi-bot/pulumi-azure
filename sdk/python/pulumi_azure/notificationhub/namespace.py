@@ -47,9 +47,9 @@ class Namespace(pulumi.CustomResource):
         """
         Manages a Notification Hub Namespace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +62,8 @@ class Namespace(pulumi.CustomResource):
             namespace_type="NotificationHub",
             sku_name="Free")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

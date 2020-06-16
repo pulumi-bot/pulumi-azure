@@ -63,9 +63,9 @@ class EventHubNamespaceAuthorizationRule(pulumi.CustomResource):
         """
         Manages an Authorization Rule for an Event Hub Namespace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -87,6 +87,8 @@ class EventHubNamespaceAuthorizationRule(pulumi.CustomResource):
             send=False,
             manage=False)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

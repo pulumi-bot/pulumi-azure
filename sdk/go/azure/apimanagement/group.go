@@ -12,10 +12,9 @@ import (
 
 // Manages an API Management Group.
 //
-//
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -44,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGroup, err := apimanagement.NewGroup(ctx, "exampleGroup", &apimanagement.GroupArgs{
+// 		_, err = apimanagement.NewGroup(ctx, "exampleGroup", &apimanagement.GroupArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			DisplayName:       pulumi.String("Example Group"),
@@ -57,6 +56,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Group struct {
 	pulumi.CustomResourceState
 

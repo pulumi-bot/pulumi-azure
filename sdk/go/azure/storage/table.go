@@ -12,9 +12,9 @@ import (
 
 // Manages a Table within an Azure Storage Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTable, err := storage.NewTable(ctx, "exampleTable", &storage.TableArgs{
+// 		_, err = storage.NewTable(ctx, "exampleTable", &storage.TableArgs{
 // 			StorageAccountName: exampleAccount.Name,
 // 		})
 // 		if err != nil {
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Table struct {
 	pulumi.CustomResourceState
 

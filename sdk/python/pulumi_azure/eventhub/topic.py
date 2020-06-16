@@ -87,9 +87,9 @@ class Topic(pulumi.CustomResource):
 
         **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -108,6 +108,8 @@ class Topic(pulumi.CustomResource):
             namespace_name=example_namespace.name,
             enable_partitioning=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

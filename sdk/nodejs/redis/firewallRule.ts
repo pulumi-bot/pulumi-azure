@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Firewall Rule associated with a Redis Cache.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     endIp: "2.3.4.5",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

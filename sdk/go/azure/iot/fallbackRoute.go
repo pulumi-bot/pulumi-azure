@@ -18,9 +18,9 @@ import (
 //
 // > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -83,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFallbackRoute, err := iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
+// 		_, err = iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			Condition:         pulumi.String("true"),
@@ -99,6 +99,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type FallbackRoute struct {
 	pulumi.CustomResourceState
 

@@ -60,9 +60,9 @@ class Workspace(pulumi.CustomResource):
         """
         Manages a Databricks Workspace
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class Workspace(pulumi.CustomResource):
                 "Environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

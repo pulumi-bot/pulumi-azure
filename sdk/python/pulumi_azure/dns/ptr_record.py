@@ -43,9 +43,9 @@ class PtrRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS PTR Records within Azure DNS.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -59,6 +59,8 @@ class PtrRecord(pulumi.CustomResource):
             ttl=300,
             records=["yourdomain.com"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

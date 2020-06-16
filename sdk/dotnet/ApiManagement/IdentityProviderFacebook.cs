@@ -12,9 +12,9 @@ namespace Pulumi.Azure.ApiManagement
     /// <summary>
     /// Manages an API Management Facebook Identity Provider.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,8 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IdentityProviderFacebook : Pulumi.CustomResource
     {

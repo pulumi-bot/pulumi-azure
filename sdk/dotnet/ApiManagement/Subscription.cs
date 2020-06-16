@@ -12,10 +12,9 @@ namespace Pulumi.Azure.ApiManagement
     /// <summary>
     /// Manages a Subscription within a API Management Service.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -64,6 +63,8 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

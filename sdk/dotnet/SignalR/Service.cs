@@ -12,9 +12,9 @@ namespace Pulumi.Azure.SignalR
     /// <summary>
     /// Manages an Azure SignalR service.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -60,6 +60,8 @@ namespace Pulumi.Azure.SignalR
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

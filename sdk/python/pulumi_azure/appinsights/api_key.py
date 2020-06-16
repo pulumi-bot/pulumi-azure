@@ -36,9 +36,9 @@ class ApiKey(pulumi.CustomResource):
         """
         Manages an Application Insights API key.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -80,6 +80,8 @@ class ApiKey(pulumi.CustomResource):
         pulumi.export("authenticateSdkControlChannel", authenticate_sdk_control_channel_api_key.api_key)
         pulumi.export("fullPermissionsApiKey", full_permissions.api_key)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

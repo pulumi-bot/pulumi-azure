@@ -52,9 +52,9 @@ class OutputEventHub(pulumi.CustomResource):
         """
         Manages a Stream Analytics Output to an EventHub.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -84,6 +84,8 @@ class OutputEventHub(pulumi.CustomResource):
                 "type": "Avro",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

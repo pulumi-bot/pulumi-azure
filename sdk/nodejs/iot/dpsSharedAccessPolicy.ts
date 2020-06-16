@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an IotHub Device Provisioning Service Shared Access Policy
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     enrollmentRead: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DpsSharedAccessPolicy extends pulumi.CustomResource {
     /**

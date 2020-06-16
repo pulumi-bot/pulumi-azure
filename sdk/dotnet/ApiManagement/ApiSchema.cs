@@ -12,9 +12,9 @@ namespace Pulumi.Azure.ApiManagement
     /// <summary>
     /// Manages an API Schema within an API Management Service.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -45,6 +45,8 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ApiSchema : Pulumi.CustomResource
     {

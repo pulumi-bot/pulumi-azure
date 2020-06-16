@@ -61,9 +61,9 @@ class NetworkPacketCapture(pulumi.CustomResource):
         """
         Configures Network Packet Capturing against a Virtual Machine using a Network Watcher.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -135,6 +135,10 @@ class NetworkPacketCapture(pulumi.CustomResource):
                 "storage_account_id": example_account.id,
             })
         ```
+
+        > **NOTE:** This Resource requires that [the Network Watcher Virtual Machine Extension](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal#before-you-begin) is installed on the Virtual Machine before capturing can be enabled which can be installed via the `compute.Extension` resource.
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

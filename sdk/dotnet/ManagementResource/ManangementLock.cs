@@ -12,8 +12,9 @@ namespace Pulumi.Azure.ManagementResource
     /// <summary>
     /// Manages a Management Lock which is scoped to a Subscription, Resource Group or Resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Subscription Level Lock)
     /// 
     /// ```csharp
@@ -36,6 +37,32 @@ namespace Pulumi.Azure.ManagementResource
     /// }
     /// ```
     /// 
+    /// ## Example Usage (Resource Group Level Lock)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Azure.Core.ResourceGroup("example", new Azure.Core.ResourceGroupArgs
+    ///         {
+    ///             Location = "West Europe",
+    ///         });
+    ///         var resource_group_level = new Azure.Management.Lock("resource-group-level", new Azure.Management.LockArgs
+    ///         {
+    ///             Scope = example.Id,
+    ///             LockLevel = "ReadOnly",
+    ///             Notes = "This Resource Group is Read-Only",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Resource Level Lock)
     /// 
     /// ```csharp
@@ -67,6 +94,8 @@ namespace Pulumi.Azure.ManagementResource
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     [Obsolete(@"azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock")]
     public partial class ManangementLock : Pulumi.CustomResource

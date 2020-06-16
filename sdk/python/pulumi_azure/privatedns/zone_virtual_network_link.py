@@ -39,9 +39,9 @@ class ZoneVirtualNetworkLink(pulumi.CustomResource):
         """
         Enables you to manage Private DNS zone Virtual Network Links. These Links enable DNS resolution and registration inside Azure Virtual Networks using Azure Private DNS.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -54,6 +54,8 @@ class ZoneVirtualNetworkLink(pulumi.CustomResource):
             private_dns_zone_name=example_zone.name,
             virtual_network_id=azurerm_virtual_network["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

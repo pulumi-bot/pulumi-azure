@@ -12,9 +12,9 @@ import (
 
 // Manages an Disaster Recovery Config for an Event Hub Namespace.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEventhubNamespaceDisasterRecoveryConfig, err := eventhub.NewEventhubNamespaceDisasterRecoveryConfig(ctx, "exampleEventhubNamespaceDisasterRecoveryConfig", &eventhub.EventhubNamespaceDisasterRecoveryConfigArgs{
+// 		_, err = eventhub.NewEventhubNamespaceDisasterRecoveryConfig(ctx, "exampleEventhubNamespaceDisasterRecoveryConfig", &eventhub.EventhubNamespaceDisasterRecoveryConfigArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      primary.Name,
 // 			PartnerNamespaceId: secondary.ID(),
@@ -61,6 +61,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EventhubNamespaceDisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 

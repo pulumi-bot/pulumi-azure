@@ -89,9 +89,9 @@ class Server(pulumi.CustomResource):
         """
         Manages a MariaDB Server.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -112,6 +112,8 @@ class Server(pulumi.CustomResource):
             public_network_access_enabled=False,
             ssl_enforcement_enabled=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

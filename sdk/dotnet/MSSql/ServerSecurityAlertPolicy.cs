@@ -14,9 +14,9 @@ namespace Pulumi.Azure.MSSql
     /// 
     /// &gt; **NOTE** Security Alert Policy is currently only available for MS SQL databases.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,6 +63,8 @@ namespace Pulumi.Azure.MSSql
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ServerSecurityAlertPolicy : Pulumi.CustomResource
     {

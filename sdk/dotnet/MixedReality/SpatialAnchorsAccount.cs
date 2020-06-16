@@ -12,9 +12,9 @@ namespace Pulumi.Azure.MixedReality
     /// <summary>
     /// Manages an Azure Spatial Anchors Account.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Azure.MixedReality
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SpatialAnchorsAccount : Pulumi.CustomResource
     {

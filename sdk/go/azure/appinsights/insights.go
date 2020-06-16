@@ -12,9 +12,9 @@ import (
 
 // Manages an Application Insights component.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -47,6 +47,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Insights struct {
 	pulumi.CustomResourceState
 

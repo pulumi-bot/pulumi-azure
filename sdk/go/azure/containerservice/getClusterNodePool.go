@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Kubernetes Cluster Node Pool.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetClusterNodePool(ctx *pulumi.Context, args *GetClusterNodePoolArgs, opts ...pulumi.InvokeOption) (*GetClusterNodePoolResult, error) {
 	var rv GetClusterNodePoolResult
 	err := ctx.Invoke("azure:containerservice/getClusterNodePool:getClusterNodePool", args, &rv, opts...)

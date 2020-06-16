@@ -55,9 +55,9 @@ class NatGateway(pulumi.CustomResource):
         """
         Manages a Azure NAT Gateway.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -84,6 +84,8 @@ class NatGateway(pulumi.CustomResource):
             idle_timeout_in_minutes=10,
             zones=["1"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

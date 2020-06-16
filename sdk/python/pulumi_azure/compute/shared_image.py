@@ -67,9 +67,9 @@ class SharedImage(pulumi.CustomResource):
         """
         Manages a Shared Image within a Shared Image Gallery.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -95,6 +95,8 @@ class SharedImage(pulumi.CustomResource):
                 "sku": "ExampleSku",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

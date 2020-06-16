@@ -12,8 +12,9 @@ import (
 
 // Manages a ServiceBus Subscription Rule.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### SQL Filter)
 //
 // ```go
@@ -61,7 +62,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubscriptionRule, err := servicebus.NewSubscriptionRule(ctx, "exampleSubscriptionRule", &servicebus.SubscriptionRuleArgs{
+// 		_, err = servicebus.NewSubscriptionRule(ctx, "exampleSubscriptionRule", &servicebus.SubscriptionRuleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			NamespaceName:     exampleNamespace.Name,
 // 			TopicName:         exampleTopic.Name,
@@ -76,6 +77,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SubscriptionRule struct {
 	pulumi.CustomResourceState
 

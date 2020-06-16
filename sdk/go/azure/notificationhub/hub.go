@@ -12,9 +12,9 @@ import (
 
 // Manages a Notification Hub within a Notification Hub Namespace.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleHub, err := notificationhub.NewHub(ctx, "exampleHub", &notificationhub.HubArgs{
+// 		_, err = notificationhub.NewHub(ctx, "exampleHub", &notificationhub.HubArgs{
 // 			NamespaceName:     exampleNamespace.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Hub struct {
 	pulumi.CustomResourceState
 

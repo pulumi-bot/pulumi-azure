@@ -51,9 +51,9 @@ class Share(pulumi.CustomResource):
         """
         Manages a File Share within Azure Storage.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class Share(pulumi.CustomResource):
                 }],
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

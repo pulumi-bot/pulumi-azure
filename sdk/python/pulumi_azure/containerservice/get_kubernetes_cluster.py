@@ -211,9 +211,9 @@ def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -222,6 +222,8 @@ def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     example = azure.containerservice.get_kubernetes_cluster(name="myakscluster",
         resource_group_name="my-example-resource-group")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the managed Kubernetes Cluster.

@@ -14,9 +14,9 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +50,8 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     [Obsolete(@"azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic")]
     public partial class Topic : Pulumi.CustomResource

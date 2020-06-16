@@ -92,9 +92,9 @@ class Queue(pulumi.CustomResource):
         """
         Manages a ServiceBus Queue.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -113,6 +113,8 @@ class Queue(pulumi.CustomResource):
             namespace_name=example_namespace.name,
             enable_partitioning=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

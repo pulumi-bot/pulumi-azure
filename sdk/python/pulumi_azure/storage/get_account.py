@@ -331,9 +331,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Storage Account.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -343,6 +343,8 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="packer-storage")
     pulumi.export("storageAccountTier", example.account_tier)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Storage Account

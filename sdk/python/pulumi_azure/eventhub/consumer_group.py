@@ -35,9 +35,9 @@ class ConsumerGroup(pulumi.CustomResource):
         """
         Manages a Event Hubs Consumer Group as a nested resource within an Event Hub.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +63,8 @@ class ConsumerGroup(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             user_metadata="some-meta-data")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

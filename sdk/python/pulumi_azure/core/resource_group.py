@@ -27,9 +27,9 @@ class ResourceGroup(pulumi.CustomResource):
         """
         Manages a Resource Group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -37,6 +37,8 @@ class ResourceGroup(pulumi.CustomResource):
 
         example = azure.core.ResourceGroup("example", location="West Europe")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

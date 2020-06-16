@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Enables you to manage DNS TXT Records within Azure Private DNS.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TxtRecord extends pulumi.CustomResource {
     /**

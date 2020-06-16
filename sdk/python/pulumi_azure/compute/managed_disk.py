@@ -92,8 +92,9 @@ class ManagedDisk(pulumi.CustomResource):
         """
         Manages a managed disk.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### With Create Empty
 
         ```python
@@ -111,7 +112,8 @@ class ManagedDisk(pulumi.CustomResource):
                 "environment": "staging",
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### With Create Copy
 
         ```python
@@ -139,6 +141,8 @@ class ManagedDisk(pulumi.CustomResource):
                 "environment": "staging",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

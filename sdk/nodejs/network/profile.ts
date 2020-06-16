@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Network Profile.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Profile extends pulumi.CustomResource {
     /**

@@ -123,9 +123,9 @@ class ActionGroup(pulumi.CustomResource):
         """
         Manages an Action Group within Azure Monitor.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -200,6 +200,8 @@ class ActionGroup(pulumi.CustomResource):
                 "useCommonAlertSchema": True,
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

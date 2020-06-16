@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Virtual Network Gateway Connection.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetGatewayConnection(ctx *pulumi.Context, args *GetGatewayConnectionArgs, opts ...pulumi.InvokeOption) (*GetGatewayConnectionResult, error) {
 	var rv GetGatewayConnectionResult
 	err := ctx.Invoke("azure:network/getGatewayConnection:getGatewayConnection", args, &rv, opts...)

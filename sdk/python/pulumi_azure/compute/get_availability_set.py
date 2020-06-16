@@ -75,9 +75,9 @@ def get_availability_set(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Availability Set.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -87,6 +87,8 @@ def get_availability_set(name=None,resource_group_name=None,opts=None):
         resource_group_name="my-resource-group")
     pulumi.export("availabilitySetId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Availability Set.

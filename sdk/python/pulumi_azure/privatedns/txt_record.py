@@ -42,9 +42,9 @@ class TxtRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS TXT Records within Azure Private DNS.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -60,6 +60,8 @@ class TxtRecord(pulumi.CustomResource):
                 "value": "v=spf1 mx ~all",
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

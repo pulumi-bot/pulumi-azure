@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Proximity
     /// <summary>
     /// Manages a proximity placement group for virtual machines, virtual machine scale sets and availability sets.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Azure.Proximity
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PlacementGroup : Pulumi.CustomResource
     {

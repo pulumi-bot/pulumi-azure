@@ -93,9 +93,9 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     """
     Use this data source to access information about an existing Subnet within a Virtual Network.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -106,6 +106,8 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
         resource_group_name="networking")
     pulumi.export("subnetId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Subnet.

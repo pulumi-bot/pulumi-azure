@@ -39,9 +39,9 @@ class Embedded(pulumi.CustomResource):
         """
         Manages a PowerBI Embedded.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -54,6 +54,8 @@ class Embedded(pulumi.CustomResource):
             sku_name="A1",
             administrators=["azsdktest@microsoft.com"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

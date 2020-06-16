@@ -96,9 +96,9 @@ def get_configuration_store(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing App Configuration.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -108,6 +108,8 @@ def get_configuration_store(name=None,resource_group_name=None,opts=None):
         resource_group_name="existing")
     pulumi.export("id", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The Name of this App Configuration.

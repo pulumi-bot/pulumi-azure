@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Network
     /// <summary>
     /// Manages a Azure NAT Gateway.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -72,6 +72,8 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NatGateway : Pulumi.CustomResource
     {

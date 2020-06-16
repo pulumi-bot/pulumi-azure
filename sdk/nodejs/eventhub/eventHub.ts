@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Event Hubs as a nested resource within a Event Hubs namespace.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     messageRetention: 1,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventHub extends pulumi.CustomResource {
     /**

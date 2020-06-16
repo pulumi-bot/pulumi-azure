@@ -167,9 +167,9 @@ def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -179,6 +179,8 @@ def get_account(name=None,resource_group_name=None,opts=None):
         resource_group_name="tfex-cosmosdb-account-rg")
     pulumi.export("cosmosdbAccountEndpoint", data["azurerm_cosmosdb_account"]["jobs"]["endpoint"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the CosmosDB Account.

@@ -39,9 +39,9 @@ class ApiSchema(pulumi.CustomResource):
         """
         Manages an API Schema within an API Management Service.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -59,6 +59,8 @@ class ApiSchema(pulumi.CustomResource):
             content_type="application/vnd.ms-azure-apim.xsd+xml",
             value=(lambda path: open(path).read())("api_management_api_schema.xml"))
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

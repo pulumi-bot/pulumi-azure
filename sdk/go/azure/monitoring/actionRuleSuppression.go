@@ -12,9 +12,9 @@ import (
 
 // Manages an Monitor Action Rule which type is suppression.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleActionRuleSuppression, err := monitoring.NewActionRuleSuppression(ctx, "exampleActionRuleSuppression", &monitoring.ActionRuleSuppressionArgs{
+// 		_, err = monitoring.NewActionRuleSuppression(ctx, "exampleActionRuleSuppression", &monitoring.ActionRuleSuppressionArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Scope: &monitoring.ActionRuleSuppressionScopeArgs{
 // 				Type: pulumi.String("ResourceGroup"),
@@ -65,6 +65,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ActionRuleSuppression struct {
 	pulumi.CustomResourceState
 

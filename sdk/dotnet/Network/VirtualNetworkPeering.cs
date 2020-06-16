@@ -13,9 +13,9 @@ namespace Pulumi.Azure.Network
     /// Manages a virtual network peering which allows resources to access other
     /// resources in the linked virtual network.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,7 +63,8 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Note
     /// 
     /// Virtual Network peerings cannot be created, updated or deleted concurrently.

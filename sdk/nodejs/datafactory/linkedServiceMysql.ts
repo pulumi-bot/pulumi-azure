@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Linked Service (connection) between MySQL and Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     connectionString: "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinkedServiceMysql extends pulumi.CustomResource {
     /**

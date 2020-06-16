@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages the association between a Nat Gateway and a Public IP.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     publicIpAddressId: examplePublicIp.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
     /**

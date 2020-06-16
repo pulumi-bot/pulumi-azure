@@ -83,9 +83,9 @@ class Server(pulumi.CustomResource):
         > **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -117,6 +117,8 @@ class Server(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

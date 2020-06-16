@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Sentinel Scheduled Alert Rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AlertRuleScheduled extends pulumi.CustomResource {
     /**

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** When using Slots - the `appSettings`, `connectionString` and `siteConfig` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     appServiceSlotName: exampleSlot.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ActiveSlot extends pulumi.CustomResource {
     /**

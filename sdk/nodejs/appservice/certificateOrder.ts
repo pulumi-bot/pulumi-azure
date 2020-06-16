@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an App Service Certificate Order.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     productType: "Standard",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CertificateOrder extends pulumi.CustomResource {
     /**

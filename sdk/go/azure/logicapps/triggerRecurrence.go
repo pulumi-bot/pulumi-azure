@@ -12,9 +12,9 @@ import (
 
 // Manages a Recurrence Trigger within a Logic App Workflow
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTriggerRecurrence, err := logicapps.NewTriggerRecurrence(ctx, "exampleTriggerRecurrence", &logicapps.TriggerRecurrenceArgs{
+// 		_, err = logicapps.NewTriggerRecurrence(ctx, "exampleTriggerRecurrence", &logicapps.TriggerRecurrenceArgs{
 // 			LogicAppId: exampleWorkflow.ID(),
 // 			Frequency:  pulumi.String("Day"),
 // 			Interval:   pulumi.Int(1),
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type TriggerRecurrence struct {
 	pulumi.CustomResourceState
 

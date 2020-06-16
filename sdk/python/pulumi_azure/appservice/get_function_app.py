@@ -114,9 +114,9 @@ def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
     """
     Use this data source to access information about a Function App.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -125,6 +125,8 @@ def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
     example = azure.appservice.get_function_app(name="test-azure-functions",
         resource_group_name=azurerm_resource_group["example"]["name"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Function App resource.

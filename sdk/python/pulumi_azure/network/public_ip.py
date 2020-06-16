@@ -73,9 +73,9 @@ class PublicIp(pulumi.CustomResource):
         """
         Manages a Public IP Address.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -90,6 +90,8 @@ class PublicIp(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

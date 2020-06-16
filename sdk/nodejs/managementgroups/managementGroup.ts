@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Management Group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * // other subscription IDs can go here
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group
  */

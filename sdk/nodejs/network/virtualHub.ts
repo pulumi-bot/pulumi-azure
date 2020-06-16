@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Virtual Hub within a Virtual WAN.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     addressPrefix: "10.0.1.0/24",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualHub extends pulumi.CustomResource {
     /**

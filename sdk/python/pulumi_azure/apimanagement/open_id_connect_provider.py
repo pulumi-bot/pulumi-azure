@@ -47,9 +47,9 @@ class OpenIdConnectProvider(pulumi.CustomResource):
         """
         Manages an OpenID Connect Provider within a API Management Service.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -69,6 +69,8 @@ class OpenIdConnectProvider(pulumi.CustomResource):
             display_name="Example Provider",
             metadata_endpoint="https://example.com/example")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

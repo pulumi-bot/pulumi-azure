@@ -59,9 +59,9 @@ class Lab(pulumi.CustomResource):
         """
         Manages a Dev Test Lab.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +75,8 @@ class Lab(pulumi.CustomResource):
                 "Sydney": "Australia",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

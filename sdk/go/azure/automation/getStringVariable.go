@@ -9,10 +9,9 @@ import (
 
 // Use this data source to access information about an existing Automation String Variable.
 //
-//
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -36,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupStringVariable(ctx *pulumi.Context, args *LookupStringVariableArgs, opts ...pulumi.InvokeOption) (*LookupStringVariableResult, error) {
 	var rv LookupStringVariableResult
 	err := ctx.Invoke("azure:automation/getStringVariable:getStringVariable", args, &rv, opts...)

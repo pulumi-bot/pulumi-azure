@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure Relay Hybrid Connection.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     userMetadata: "testmetadata",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

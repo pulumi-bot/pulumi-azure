@@ -12,9 +12,9 @@ import (
 
 // Manages an ExpressRoute circuit.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleExpressRouteCircuit, err := network.NewExpressRouteCircuit(ctx, "exampleExpressRouteCircuit", &network.ExpressRouteCircuitArgs{
+// 		_, err = network.NewExpressRouteCircuit(ctx, "exampleExpressRouteCircuit", &network.ExpressRouteCircuitArgs{
 // 			ResourceGroupName:   exampleResourceGroup.Name,
 // 			Location:            exampleResourceGroup.Location,
 // 			ServiceProviderName: pulumi.String("Equinix"),
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 

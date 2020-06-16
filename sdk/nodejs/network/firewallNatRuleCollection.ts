@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a NAT Rule Collection within an Azure Firewall.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +62,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirewallNatRuleCollection extends pulumi.CustomResource {
     /**

@@ -14,9 +14,9 @@ namespace Pulumi.Azure.Policy
     /// 
     /// &gt; **NOTE:**  Policy set definitions (also known as policy initiatives) do not take effect until they are assigned to a scope using a Policy Set Assignment.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -59,6 +59,8 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PolicySetDefinition : Pulumi.CustomResource
     {

@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DataFactory
     /// <summary>
     /// Manages a PostgreSQL Dataset inside a Azure Data Factory.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +49,8 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DatasetPostgresql : Pulumi.CustomResource
     {

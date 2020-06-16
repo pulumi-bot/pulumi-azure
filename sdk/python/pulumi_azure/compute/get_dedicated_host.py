@@ -58,9 +58,9 @@ def get_dedicated_host(dedicated_host_group_name=None,name=None,resource_group_n
     """
     Use this data source to access information about an existing Dedicated Host.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -71,6 +71,8 @@ def get_dedicated_host(dedicated_host_group_name=None,name=None,resource_group_n
         resource_group_name="example-resources")
     pulumi.export("dedicatedHostId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str dedicated_host_group_name: Specifies the name of the Dedicated Host Group the Dedicated Host is located in.

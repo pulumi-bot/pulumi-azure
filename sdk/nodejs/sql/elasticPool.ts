@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** -  This version of the `Elasticpool` resource is being **deprecated** and should no longer be used. Please use the azure.mssql.ElasticPool version instead.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     poolSize: 5000,
  * });
  * ```
+ *
+ * > **NOTE on `azure.sql.ElasticPool`:** -  The values of `edition`, `dtu`, and `poolSize` must be consistent with the [Azure SQL Database Service Tiers](https://docs.microsoft.com/en-gb/azure/sql-database/sql-database-service-tiers#elastic-pool-service-tiers-and-performance-in-edtus). Any inconsistent argument configuration will be rejected.
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ElasticPool extends pulumi.CustomResource {
     /**

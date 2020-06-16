@@ -12,9 +12,9 @@ namespace Pulumi.Azure.PowerBI
     /// <summary>
     /// Manages a PowerBI Embedded.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Azure.PowerBI
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Embedded : Pulumi.CustomResource
     {

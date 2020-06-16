@@ -39,9 +39,9 @@ class VirtualHubConnection(pulumi.CustomResource):
         """
         Manages a Connection for a Virtual Hub.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class VirtualHubConnection(pulumi.CustomResource):
             virtual_hub_id=example_virtual_hub.id,
             remote_virtual_network_id=example_virtual_network.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

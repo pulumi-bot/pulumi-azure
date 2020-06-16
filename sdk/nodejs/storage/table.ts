@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Table within an Azure Storage Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  * });
  * const exampleTable = new azure.storage.Table("exampleTable", {storageAccountName: exampleAccount.name});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Table extends pulumi.CustomResource {
     /**

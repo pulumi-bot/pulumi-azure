@@ -12,9 +12,9 @@ import (
 
 // Manages a Azure Data Lake Store Firewall Rule.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleStoreFirewallRule, err := datalake.NewStoreFirewallRule(ctx, "exampleStoreFirewallRule", &datalake.StoreFirewallRuleArgs{
+// 		_, err = datalake.NewStoreFirewallRule(ctx, "exampleStoreFirewallRule", &datalake.StoreFirewallRuleArgs{
 // 			AccountName:       exampleStore.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			StartIpAddress:    pulumi.String("1.2.3.4"),
@@ -53,6 +53,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type StoreFirewallRule struct {
 	pulumi.CustomResourceState
 

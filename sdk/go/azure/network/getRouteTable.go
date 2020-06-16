@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Route Table.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupRouteTable(ctx, &network.LookupRouteTableArgs{
+// 		_, err := network.LookupRouteTable(ctx, &network.LookupRouteTableArgs{
 // 			Name:              "myroutetable",
 // 			ResourceGroupName: "some-resource-group",
 // 		}, nil)
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("azure:network/getRouteTable:getRouteTable", args, &rv, opts...)

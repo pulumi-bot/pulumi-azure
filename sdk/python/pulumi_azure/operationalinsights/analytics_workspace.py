@@ -55,9 +55,9 @@ class AnalyticsWorkspace(pulumi.CustomResource):
         """
         Manages a Log Analytics (formally Operational Insights) Workspace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -70,6 +70,8 @@ class AnalyticsWorkspace(pulumi.CustomResource):
             sku="PerGB2018",
             retention_in_days=30)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

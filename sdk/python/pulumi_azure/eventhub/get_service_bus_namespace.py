@@ -106,9 +106,9 @@ def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing ServiceBus Namespace.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -118,6 +118,8 @@ def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-resources")
     pulumi.export("location", example.location)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the ServiceBus Namespace.

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an OpenID Connect Provider within a API Management Service.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     metadataEndpoint: "https://example.com/example",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OpenIdConnectProvider extends pulumi.CustomResource {
     /**

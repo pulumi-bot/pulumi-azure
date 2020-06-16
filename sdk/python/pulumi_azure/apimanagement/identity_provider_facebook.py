@@ -31,9 +31,9 @@ class IdentityProviderFacebook(pulumi.CustomResource):
         """
         Manages an API Management Facebook Identity Provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -52,6 +52,8 @@ class IdentityProviderFacebook(pulumi.CustomResource):
             app_id="00000000000000000000000000000000",
             app_secret="00000000000000000000000000000000")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

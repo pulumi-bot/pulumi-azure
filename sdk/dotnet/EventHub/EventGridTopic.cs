@@ -14,9 +14,9 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// &gt; **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     [Obsolete(@"azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic")]
     public partial class EventGridTopic : Pulumi.CustomResource

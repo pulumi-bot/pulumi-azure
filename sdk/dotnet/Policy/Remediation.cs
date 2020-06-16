@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Policy
     /// <summary>
     /// Manages an Azure Policy Remediation at the specified Scope.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -83,6 +83,8 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Remediation : Pulumi.CustomResource
     {

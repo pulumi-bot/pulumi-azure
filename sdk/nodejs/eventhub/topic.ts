@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     enablePartitioning: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic
  */

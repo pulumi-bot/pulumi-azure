@@ -12,9 +12,9 @@ namespace Pulumi.Azure.OperationalInsights
     /// <summary>
     /// Manages a Log Analytics (formally Operational Insights) Workspace.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +39,8 @@ namespace Pulumi.Azure.OperationalInsights
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AnalyticsWorkspace : Pulumi.CustomResource
     {

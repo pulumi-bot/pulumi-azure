@@ -55,9 +55,9 @@ class EventHub(pulumi.CustomResource):
         """
         Manages a Event Hubs as a nested resource within a Event Hubs namespace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -78,6 +78,8 @@ class EventHub(pulumi.CustomResource):
             partition_count=2,
             message_retention=1)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

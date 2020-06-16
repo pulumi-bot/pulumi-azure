@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Associates a Route Table with a Subnet within a Virtual Network.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     routeTableId: exampleRouteTable.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SubnetRouteTableAssociation extends pulumi.CustomResource {
     /**

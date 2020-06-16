@@ -76,9 +76,9 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
     """
     Uses this data source to access information about an API Version Set within an API Management Service.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -89,6 +89,8 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
         name="example-api-version-set")
     pulumi.export("apiManagementApiVersionSetId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str api_management_name: The name of the API Management Service where the API Version Set exists.

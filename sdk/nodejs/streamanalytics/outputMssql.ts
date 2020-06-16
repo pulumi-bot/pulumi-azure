@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Stream Analytics Output to Microsoft SQL Server Database.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     table: "ExampleTable",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OutputMssql extends pulumi.CustomResource {
     /**

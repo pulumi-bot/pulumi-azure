@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Firewall Rule for a MySQL Server
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Single IP Address)
  *
  * ```typescript
@@ -25,7 +26,8 @@ import * as utilities from "../utilities";
  *     endIpAddress: "40.112.8.12",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### IP Range)
  *
  * ```typescript
@@ -42,6 +44,8 @@ import * as utilities from "../utilities";
  *     endIpAddress: "40.112.255.255",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

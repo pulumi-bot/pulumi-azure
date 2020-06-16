@@ -48,9 +48,9 @@ def get_placement_group(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Proximity Placement Group.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -60,6 +60,8 @@ def get_placement_group(name=None,resource_group_name=None,opts=None):
         resource_group_name="my-resource-group")
     pulumi.export("proximityPlacementGroupId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Proximity Placement Group.

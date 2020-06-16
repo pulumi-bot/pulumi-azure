@@ -49,9 +49,9 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
 
         > **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -65,6 +65,8 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
             single_placement_group=True,
             zones=["1"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -12,9 +12,9 @@ import (
 
 // Manages a MariaDB Server.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleServer, err := mariadb.NewServer(ctx, "exampleServer", &mariadb.ServerArgs{
+// 		_, err = mariadb.NewServer(ctx, "exampleServer", &mariadb.ServerArgs{
 // 			Location:                   exampleResourceGroup.Location,
 // 			ResourceGroupName:          exampleResourceGroup.Name,
 // 			AdministratorLogin:         pulumi.String("mariadbadmin"),
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Server struct {
 	pulumi.CustomResourceState
 

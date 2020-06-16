@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure Data Factory (Version 2).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Factory extends pulumi.CustomResource {
     /**

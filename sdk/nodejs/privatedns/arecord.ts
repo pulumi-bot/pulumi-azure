@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Enables you to manage DNS A Records within Azure Private DNS.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     records: ["10.0.180.17"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ARecord extends pulumi.CustomResource {
     /**

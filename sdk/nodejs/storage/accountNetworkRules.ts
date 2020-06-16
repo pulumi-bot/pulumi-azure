@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Deleting this resource updates the storage account back to the default values it had when the storage account was created.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +51,8 @@ import * as utilities from "../utilities";
  *     bypasses: ["Metrics"],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AccountNetworkRules extends pulumi.CustomResource {
     /**

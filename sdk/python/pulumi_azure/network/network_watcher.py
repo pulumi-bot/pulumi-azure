@@ -31,9 +31,9 @@ class NetworkWatcher(pulumi.CustomResource):
         """
         Manages a Network Watcher.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -44,6 +44,8 @@ class NetworkWatcher(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

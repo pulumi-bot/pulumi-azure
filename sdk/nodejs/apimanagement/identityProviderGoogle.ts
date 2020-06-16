@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Management Google Identity Provider.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     clientSecret: "00000000000000000000000000000000",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IdentityProviderGoogle extends pulumi.CustomResource {
     /**

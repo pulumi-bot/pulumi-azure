@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a HDInsight RServer Cluster.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,6 +69,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RServerCluster extends pulumi.CustomResource {
     /**

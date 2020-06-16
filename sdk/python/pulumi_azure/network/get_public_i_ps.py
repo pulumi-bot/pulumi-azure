@@ -55,9 +55,9 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     """
     Use this data source to access information about a set of existing Public IP Addresses.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -66,6 +66,8 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     example = azure.network.get_public_i_ps(attached=False,
         resource_group_name="pip-test")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str allocation_type: The Allocation Type for the Public IP Address. Possible values include `Static` or `Dynamic`.

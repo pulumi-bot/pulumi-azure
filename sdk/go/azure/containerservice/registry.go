@@ -12,9 +12,9 @@ import (
 
 // Manages an Azure Container Registry.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		acr, err := containerservice.NewRegistry(ctx, "acr", &containerservice.RegistryArgs{
+// 		_, err = containerservice.NewRegistry(ctx, "acr", &containerservice.RegistryArgs{
 // 			ResourceGroupName: rg.Name,
 // 			Location:          rg.Location,
 // 			Sku:               pulumi.String("Premium"),
@@ -50,6 +50,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Registry struct {
 	pulumi.CustomResourceState
 

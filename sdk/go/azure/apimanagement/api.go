@@ -12,9 +12,9 @@ import (
 
 // Manages an API within an API Management Service.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleApi, err := apimanagement.NewApi(ctx, "exampleApi", &apimanagement.ApiArgs{
+// 		_, err = apimanagement.NewApi(ctx, "exampleApi", &apimanagement.ApiArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			Revision:          pulumi.String("1"),
@@ -64,6 +64,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Api struct {
 	pulumi.CustomResourceState
 

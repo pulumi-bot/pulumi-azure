@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Authorization
     /// <summary>
     /// Manages a user assigned identity.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class UserAssignedIdentity : Pulumi.CustomResource
     {

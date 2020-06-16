@@ -86,9 +86,9 @@ def get_store(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Data Lake Store.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -98,6 +98,8 @@ def get_store(name=None,resource_group_name=None,opts=None):
         resource_group_name="testdatalake")
     pulumi.export("dataLakeStoreId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Data Lake Store.

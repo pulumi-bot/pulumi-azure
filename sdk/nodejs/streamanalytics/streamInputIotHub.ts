@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Stream Analytics Stream Input IoTHub.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StreamInputIotHub extends pulumi.CustomResource {
     /**

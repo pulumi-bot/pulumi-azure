@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a VPN Gateway within a Virtual Hub, which enables Site-to-Site communication.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     virtualHubId: exampleVirtualHub.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpnGateway extends pulumi.CustomResource {
     /**

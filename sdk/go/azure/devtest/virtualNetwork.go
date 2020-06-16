@@ -12,9 +12,9 @@ import (
 
 // Manages a Virtual Network within a DevTest Lab.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualNetwork, err := devtest.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &devtest.VirtualNetworkArgs{
+// 		_, err = devtest.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &devtest.VirtualNetworkArgs{
 // 			LabName:           exampleLab.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Subnet: &devtest.VirtualNetworkSubnetArgs{
@@ -58,6 +58,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 

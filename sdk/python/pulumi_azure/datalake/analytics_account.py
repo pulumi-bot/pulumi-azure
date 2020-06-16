@@ -39,9 +39,9 @@ class AnalyticsAccount(pulumi.CustomResource):
         """
         Manages an Azure Data Lake Analytics Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -56,6 +56,8 @@ class AnalyticsAccount(pulumi.CustomResource):
             location=example_resource_group.location,
             default_store_account_name=example_store.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

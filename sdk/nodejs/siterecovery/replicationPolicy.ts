@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Azure Site Recovery replication policy within a recovery vault. Replication policies define the frequency at which recovery points are created and how long they are stored.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     applicationConsistentSnapshotFrequencyInMinutes: 4 * 60,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ReplicationPolicy extends pulumi.CustomResource {
     /**

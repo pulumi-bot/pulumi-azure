@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Advisor Recommendations.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetRecommendations(ctx *pulumi.Context, args *GetRecommendationsArgs, opts ...pulumi.InvokeOption) (*GetRecommendationsResult, error) {
 	var rv GetRecommendationsResult
 	err := ctx.Invoke("azure:advisor/getRecommendations:getRecommendations", args, &rv, opts...)

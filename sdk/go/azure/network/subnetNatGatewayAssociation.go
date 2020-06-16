@@ -12,9 +12,9 @@ import (
 
 // Associates a NAT Gateway with a Subnet within a Virtual Network.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -60,7 +60,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubnetNatGatewayAssociation, err := network.NewSubnetNatGatewayAssociation(ctx, "exampleSubnetNatGatewayAssociation", &network.SubnetNatGatewayAssociationArgs{
+// 		_, err = network.NewSubnetNatGatewayAssociation(ctx, "exampleSubnetNatGatewayAssociation", &network.SubnetNatGatewayAssociationArgs{
 // 			SubnetId:     exampleSubnet.ID(),
 // 			NatGatewayId: exampleNatGateway.ID(),
 // 		})
@@ -71,6 +71,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SubnetNatGatewayAssociation struct {
 	pulumi.CustomResourceState
 

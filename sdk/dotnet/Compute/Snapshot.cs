@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Compute
     /// <summary>
     /// Manages a Disk Snapshot.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,8 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

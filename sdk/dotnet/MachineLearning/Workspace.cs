@@ -12,9 +12,9 @@ namespace Pulumi.Azure.MachineLearning
     /// <summary>
     /// Manages a Azure Machine Learning Workspace
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,6 +65,8 @@ namespace Pulumi.Azure.MachineLearning
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

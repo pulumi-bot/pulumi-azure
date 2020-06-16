@@ -64,9 +64,9 @@ class IotHubDps(pulumi.CustomResource):
         """
         Manages an IotHub Device Provisioning Service.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -81,6 +81,8 @@ class IotHubDps(pulumi.CustomResource):
                 "capacity": "1",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

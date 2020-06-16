@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a HDInsight ML Services Cluster.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,6 +69,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class MLServicesCluster extends pulumi.CustomResource {
     /**

@@ -61,9 +61,9 @@ class TopicAuthorizationRule(pulumi.CustomResource):
         """
         Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -88,6 +88,8 @@ class TopicAuthorizationRule(pulumi.CustomResource):
             send=False,
             manage=False)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

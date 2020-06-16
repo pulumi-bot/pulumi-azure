@@ -23,9 +23,9 @@ class VirtualNetworkSwiftConnection(pulumi.CustomResource):
         """
         Manages an App Service Virtual Network Association (this is for the [Regional VNet Integration](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#regional-vnet-integration) which is still in preview).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +62,8 @@ class VirtualNetworkSwiftConnection(pulumi.CustomResource):
             app_service_id=test_app_service.id,
             subnet_id=test1.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

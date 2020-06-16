@@ -82,9 +82,9 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Virtual Network.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -94,6 +94,8 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
         resource_group_name="networking")
     pulumi.export("virtualNetworkId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Virtual Network.

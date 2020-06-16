@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Storage
     /// <summary>
     /// Manages a Blob within a Storage Container.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +51,8 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Blob : Pulumi.CustomResource
     {

@@ -175,8 +175,9 @@ class FunctionAppSlot(pulumi.CustomResource):
         """
         Manages a Function App deployment Slot.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### With App Service Plan)
 
         ```python
@@ -210,6 +211,8 @@ class FunctionAppSlot(pulumi.CustomResource):
             storage_account_name=example_account.name,
             storage_account_access_key=example_account.primary_access_key)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

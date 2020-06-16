@@ -12,9 +12,9 @@ namespace Pulumi.Azure.CosmosDB
     /// <summary>
     /// Manages a Mongo Database within a Cosmos DB Account.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +39,8 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class MongoDatabase : Pulumi.CustomResource
     {

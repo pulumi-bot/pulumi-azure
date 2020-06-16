@@ -12,9 +12,9 @@ import (
 
 // Manages a Consumer Group within an IotHub
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -47,7 +47,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleConsumerGroup, err := iot.NewConsumerGroup(ctx, "exampleConsumerGroup", &iot.ConsumerGroupArgs{
+// 		_, err = iot.NewConsumerGroup(ctx, "exampleConsumerGroup", &iot.ConsumerGroupArgs{
 // 			IothubName:           exampleIoTHub.Name,
 // 			EventhubEndpointName: pulumi.String("events"),
 // 			ResourceGroupName:    exampleResourceGroup.Name,
@@ -59,6 +59,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
 

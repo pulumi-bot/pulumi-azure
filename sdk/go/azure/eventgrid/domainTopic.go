@@ -12,9 +12,9 @@ import (
 
 // Manages an EventGrid Domain Topic
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDomainTopic, err := eventgrid.NewDomainTopic(ctx, "exampleDomainTopic", &eventgrid.DomainTopicArgs{
+// 		_, err = eventgrid.NewDomainTopic(ctx, "exampleDomainTopic", &eventgrid.DomainTopicArgs{
 // 			DomainName:        exampleDomain.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 		})
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type DomainTopic struct {
 	pulumi.CustomResourceState
 

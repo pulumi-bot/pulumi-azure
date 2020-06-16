@@ -60,9 +60,9 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Manages a Load Balancer Resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -81,6 +81,8 @@ class LoadBalancer(pulumi.CustomResource):
                 "public_ip_address_id": example_public_ip.id,
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

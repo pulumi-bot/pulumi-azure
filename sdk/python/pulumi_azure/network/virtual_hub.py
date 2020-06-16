@@ -46,9 +46,9 @@ class VirtualHub(pulumi.CustomResource):
         """
         Manages a Virtual Hub within a Virtual WAN.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class VirtualHub(pulumi.CustomResource):
             virtual_wan_id=example_virtual_wan.id,
             address_prefix="10.0.1.0/24")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

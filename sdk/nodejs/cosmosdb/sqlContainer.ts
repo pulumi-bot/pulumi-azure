@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a SQL Container within a Cosmos DB Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SqlContainer extends pulumi.CustomResource {
     /**

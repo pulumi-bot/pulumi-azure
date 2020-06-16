@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Monitoring
     /// <summary>
     /// Manages an Monitor Action Rule which type is action group.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +54,8 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ActionRuleActionGroup : Pulumi.CustomResource
     {

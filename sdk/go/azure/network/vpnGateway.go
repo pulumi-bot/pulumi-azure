@@ -12,9 +12,9 @@ import (
 
 // Manages a VPN Gateway within a Virtual Hub, which enables Site-to-Site communication.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualNetwork, err := network.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &network.VirtualNetworkArgs{
+// 		_, err = network.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &network.VirtualNetworkArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			AddressSpaces: pulumi.StringArray{
@@ -59,7 +59,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVpnGateway, err := network.NewVpnGateway(ctx, "exampleVpnGateway", &network.VpnGatewayArgs{
+// 		_, err = network.NewVpnGateway(ctx, "exampleVpnGateway", &network.VpnGatewayArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			VirtualHubId:      exampleVirtualHub.ID(),
@@ -71,6 +71,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VpnGateway struct {
 	pulumi.CustomResourceState
 

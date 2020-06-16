@@ -83,9 +83,9 @@ def get_service(location=None,name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Healthcare Service
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -96,6 +96,8 @@ def get_service(location=None,name=None,resource_group_name=None,opts=None):
         location="westus2")
     pulumi.export("healthcareServiceId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str location: The Azure Region where the Service is located.

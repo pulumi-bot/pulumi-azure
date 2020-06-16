@@ -40,9 +40,9 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing Sentinel Alert Rule.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -54,6 +54,8 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
         log_analytics_workspace_id=example_analytics_workspace.id)
     pulumi.export("id", example_alert_rule.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str log_analytics_workspace_id: The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.

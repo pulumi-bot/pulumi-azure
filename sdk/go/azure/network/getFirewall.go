@@ -9,9 +9,9 @@ import (
 
 // Use this data source to access information about an existing Azure Firewall.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
 	var rv LookupFirewallResult
 	err := ctx.Invoke("azure:network/getFirewall:getFirewall", args, &rv, opts...)

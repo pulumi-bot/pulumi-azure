@@ -82,10 +82,9 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
 
     > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
 
-
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -96,6 +95,8 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
         blueprint_name="exampleBluePrint",
         version="dev_v2.3")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str blueprint_name: The name of the Blueprint Definition

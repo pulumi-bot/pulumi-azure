@@ -65,9 +65,9 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
     """
     Use this data source to access information about an existing Dev Test Lab Virtual Network.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -78,6 +78,8 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
         resource_group_name="example-resource")
     pulumi.export("labSubnetName", example.allowed_subnets[0]["lab_subnet_name"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str lab_name: Specifies the name of the Dev Test Lab.

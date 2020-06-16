@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE** Private Link is currently in Public Preview.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  * });
  * export const privateEndpointStatus = example.then(example => example.privateEndpointConnections[0].status);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getServiceEndpointConnections(args: GetServiceEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceEndpointConnectionsResult> {
     if (!opts) {

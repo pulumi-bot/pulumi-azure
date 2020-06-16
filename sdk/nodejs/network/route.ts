@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * provides both a standalone Route resource, and allows for Routes to be defined in-line within the Route Table resource.
  * At this time you cannot use a Route Table with in-line Routes in conjunction with any Route resources. Doing so will cause a conflict of Route configurations and will overwrite Routes.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     nextHopType: "vnetlocal",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Route extends pulumi.CustomResource {
     /**

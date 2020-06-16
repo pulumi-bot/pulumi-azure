@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages automated startup and shutdown schedules for Azure Dev Test Lab.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +41,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Schedule extends pulumi.CustomResource {
     /**

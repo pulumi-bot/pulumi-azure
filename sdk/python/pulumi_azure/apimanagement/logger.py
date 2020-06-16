@@ -48,10 +48,9 @@ class Logger(pulumi.CustomResource):
         """
         Manages a Logger within an API Management Service.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +74,8 @@ class Logger(pulumi.CustomResource):
                 "instrumentation_key": example_insights.instrumentation_key,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

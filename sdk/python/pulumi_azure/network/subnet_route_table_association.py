@@ -23,9 +23,9 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
         """
         Associates a Route Table with a Subnet within a Virtual Network.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +53,8 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
             subnet_id=example_subnet.id,
             route_table_id=example_route_table.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

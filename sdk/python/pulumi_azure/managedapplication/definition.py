@@ -66,9 +66,9 @@ class Definition(pulumi.CustomResource):
         """
         Manages a Managed Application Definition.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -88,6 +88,8 @@ class Definition(pulumi.CustomResource):
                 "role_definition_id": "a094b430-dad3-424d-ae58-13f72fd72591",
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

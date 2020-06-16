@@ -12,9 +12,9 @@ import (
 
 // Manages a ServiceBus Subscription.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -52,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSubscription, err := servicebus.NewSubscription(ctx, "exampleSubscription", &servicebus.SubscriptionArgs{
+// 		_, err = servicebus.NewSubscription(ctx, "exampleSubscription", &servicebus.SubscriptionArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			NamespaceName:     exampleNamespace.Name,
 // 			TopicName:         exampleTopic.Name,
@@ -65,6 +65,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription
 type Subscription struct {

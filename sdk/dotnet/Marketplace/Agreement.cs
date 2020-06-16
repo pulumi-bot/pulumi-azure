@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Marketplace
     /// <summary>
     /// Allows accepting the Legal Terms for a Marketplace Image.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,8 @@ namespace Pulumi.Azure.Marketplace
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Agreement : Pulumi.CustomResource
     {

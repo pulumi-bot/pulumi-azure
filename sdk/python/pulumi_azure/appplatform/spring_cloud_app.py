@@ -27,9 +27,9 @@ class SpringCloudApp(pulumi.CustomResource):
         """
         Manage an Azure Spring Cloud Application.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -43,6 +43,8 @@ class SpringCloudApp(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             service_name=example_spring_cloud_service.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

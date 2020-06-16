@@ -43,10 +43,9 @@ class Property(pulumi.CustomResource):
         """
         Manages an API Management Property.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -65,6 +64,8 @@ class Property(pulumi.CustomResource):
             display_name="ExampleProperty",
             value="Example Value")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

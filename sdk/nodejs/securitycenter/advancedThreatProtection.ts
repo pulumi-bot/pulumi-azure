@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a resources Advanced Threat Protection setting.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AdvancedThreatProtection extends pulumi.CustomResource {
     /**

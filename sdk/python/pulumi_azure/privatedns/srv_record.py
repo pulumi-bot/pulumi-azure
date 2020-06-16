@@ -45,9 +45,9 @@ class SRVRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS SRV Records within Azure Private DNS.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class SRVRecord(pulumi.CustomResource):
                 "Environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

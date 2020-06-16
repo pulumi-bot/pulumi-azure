@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Policy
     /// <summary>
     /// Configures the specified Policy Definition at the specified Scope. Also, Policy Set Definitions are supported.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -74,6 +74,8 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Assignment : Pulumi.CustomResource
     {

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a PostgreSQL Dataset inside a Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServicePostgresql.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DatasetPostgresql extends pulumi.CustomResource {
     /**

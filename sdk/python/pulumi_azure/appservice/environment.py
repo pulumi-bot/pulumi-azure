@@ -47,9 +47,9 @@ class Environment(pulumi.CustomResource):
         """
         Manages an App Service Environment.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -73,6 +73,8 @@ class Environment(pulumi.CustomResource):
             pricing_tier="I2",
             front_end_scale_factor=10)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

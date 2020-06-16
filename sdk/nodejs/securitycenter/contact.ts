@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Owner access permission is required.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     phone: "+1-555-555-5555",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Contact extends pulumi.CustomResource {
     /**

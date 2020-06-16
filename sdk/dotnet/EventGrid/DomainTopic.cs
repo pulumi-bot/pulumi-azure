@@ -12,9 +12,9 @@ namespace Pulumi.Azure.EventGrid
     /// <summary>
     /// Manages an EventGrid Domain Topic
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +46,8 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DomainTopic : Pulumi.CustomResource
     {

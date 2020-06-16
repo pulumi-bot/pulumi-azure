@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DataBricks
     /// <summary>
     /// Manages a Databricks Workspace
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Azure.DataBricks
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

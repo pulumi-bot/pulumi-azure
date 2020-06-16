@@ -44,9 +44,9 @@ class CNameRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS CNAME Records within Azure DNS.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -60,7 +60,8 @@ class CNameRecord(pulumi.CustomResource):
             ttl=300,
             record="contoso.com")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Alias Record)
 
         ```python
@@ -80,6 +81,8 @@ class CNameRecord(pulumi.CustomResource):
             ttl=300,
             target_resource_id=target.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

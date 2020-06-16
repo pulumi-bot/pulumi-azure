@@ -84,9 +84,9 @@ def get_definition(name=None,scope_id=None,opts=None):
 
     > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -97,6 +97,8 @@ def get_definition(name=None,scope_id=None,opts=None):
     example = azure.blueprint.get_definition(name="exampleManagementGroupBP",
         scope_id=root.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Blueprint

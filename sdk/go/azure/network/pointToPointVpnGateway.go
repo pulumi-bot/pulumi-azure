@@ -12,9 +12,9 @@ import (
 
 // Manages a Point-to-Site VPN Gateway.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.NewPointToPointVpnGateway(ctx, "example", &network.PointToPointVpnGatewayArgs{
+// 		_, err = network.NewPointToPointVpnGateway(ctx, "example", &network.PointToPointVpnGatewayArgs{
 // 			Location:                 pulumi.String(azurerm_resource_group.Example.Location),
 // 			ResourceGroupName:        pulumi.String(azurerm_resource_group.Example.Resource_group_name),
 // 			VirtualHubId:             pulumi.String(azurerm_virtual_hub.Example.Id),
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type PointToPointVpnGateway struct {
 	pulumi.CustomResourceState
 

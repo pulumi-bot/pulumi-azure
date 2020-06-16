@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Enables you to manage DNS AAAA Records within Azure DNS.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,8 @@ import * as utilities from "../utilities";
  *     ttl: 300,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Alias Record)
  *
  * ```typescript
@@ -45,6 +46,8 @@ import * as utilities from "../utilities";
  *     targetResourceId: examplePublicIp.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AaaaRecord extends pulumi.CustomResource {
     /**

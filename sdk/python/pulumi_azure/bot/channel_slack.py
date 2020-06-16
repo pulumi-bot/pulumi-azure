@@ -45,9 +45,9 @@ class ChannelSlack(pulumi.CustomResource):
 
         > **Note** A bot can only have a single Slack Channel associated with it.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -68,6 +68,8 @@ class ChannelSlack(pulumi.CustomResource):
             client_secret="exampleSecret",
             verification_token="exampleVerificationToken")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

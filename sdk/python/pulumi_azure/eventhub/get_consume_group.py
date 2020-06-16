@@ -59,9 +59,9 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
     """
     Use this data source to access information about an existing Event Hubs Consumer Group within an Event Hub.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -72,6 +72,8 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
         namespace_name=azurerm_eventhub_namespace["test"]["name"],
         resource_group_name=azurerm_resource_group["test"]["name"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str eventhub_name: Specifies the name of the EventHub.

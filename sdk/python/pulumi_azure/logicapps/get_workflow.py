@@ -117,9 +117,9 @@ def get_workflow(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Logic App Workflow.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -129,6 +129,8 @@ def get_workflow(name=None,resource_group_name=None,opts=None):
         resource_group_name="my-resource-group")
     pulumi.export("accessEndpoint", example.access_endpoint)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Logic App Workflow.

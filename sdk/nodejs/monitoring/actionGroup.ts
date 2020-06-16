@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Action Group within Azure Monitor.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,6 +87,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ActionGroup extends pulumi.CustomResource {
     /**

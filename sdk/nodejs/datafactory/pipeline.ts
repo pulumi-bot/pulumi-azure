@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Pipeline inside a Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +25,8 @@ import * as utilities from "../utilities";
  *     dataFactoryName: exampleFactory.name,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### With Activities
  *
  * ```typescript
@@ -53,6 +54,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Pipeline extends pulumi.CustomResource {
     /**

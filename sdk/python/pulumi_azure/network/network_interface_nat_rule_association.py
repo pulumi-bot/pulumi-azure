@@ -27,9 +27,9 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
         """
         Manages the association between a Network Interface and a Load Balancer's NAT Rule.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +75,8 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
             ip_configuration_name="testconfiguration1",
             nat_rule_id=example_nat_rule.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

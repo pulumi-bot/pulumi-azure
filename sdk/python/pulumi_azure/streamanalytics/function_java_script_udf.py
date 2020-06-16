@@ -43,9 +43,9 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
         """
         Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -68,6 +68,8 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
                 "type": "bigint",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

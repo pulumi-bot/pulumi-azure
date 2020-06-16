@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE** Azure only allows `one` DDoS Protection Plan per region.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DdosProtectionPlan extends pulumi.CustomResource {
     /**

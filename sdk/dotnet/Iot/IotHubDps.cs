@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Iot
     /// <summary>
     /// Manages an IotHub Device Provisioning Service.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IotHubDps : Pulumi.CustomResource
     {

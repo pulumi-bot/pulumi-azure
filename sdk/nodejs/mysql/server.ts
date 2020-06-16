@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a MySQL Server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     sslMinimalTlsVersionEnforced: "TLS1_2",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Server extends pulumi.CustomResource {
     /**

@@ -102,8 +102,9 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     """
     Use this data source to access information about an existing Public IP Address.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### Reference An Existing)
 
     ```python
@@ -115,7 +116,8 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     pulumi.export("domainNameLabel", example.domain_name_label)
     pulumi.export("publicIpAddress", example.ip_address)
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### Retrieve The Dynamic Public IP Of A New VM)
 
     ```python
@@ -158,6 +160,8 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
         resource_group_name=resource_group_name))
     pulumi.export("publicIpAddress", example_public_ip.ip_address)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the public IP address.

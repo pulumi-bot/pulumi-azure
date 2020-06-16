@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Hpc
     /// <summary>
     /// Manages a Blob Target within a HPC Cache.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -90,6 +90,8 @@ namespace Pulumi.Azure.Hpc
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class CacheBlobTarget : Pulumi.CustomResource
     {

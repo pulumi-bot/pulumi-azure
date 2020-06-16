@@ -37,9 +37,9 @@ class TableEntity(pulumi.CustomResource):
         """
         Manages an Entity within a Table in an Azure Storage Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +63,8 @@ class TableEntity(pulumi.CustomResource):
                 "example": "example",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

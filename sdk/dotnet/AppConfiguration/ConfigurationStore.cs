@@ -12,9 +12,9 @@ namespace Pulumi.Azure.AppConfiguration
     /// <summary>
     /// Manages an Azure App Configuration.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Azure.AppConfiguration
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ConfigurationStore : Pulumi.CustomResource
     {

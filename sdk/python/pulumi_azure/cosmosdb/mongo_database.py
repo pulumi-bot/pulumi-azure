@@ -31,9 +31,9 @@ class MongoDatabase(pulumi.CustomResource):
         """
         Manages a Mongo Database within a Cosmos DB Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -46,6 +46,8 @@ class MongoDatabase(pulumi.CustomResource):
             account_name=example_account.name,
             throughput=400)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

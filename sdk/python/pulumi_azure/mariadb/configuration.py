@@ -31,9 +31,9 @@ class Configuration(pulumi.CustomResource):
         """
         Sets a MariaDB Configuration value on a MariaDB Server.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -58,6 +58,8 @@ class Configuration(pulumi.CustomResource):
             server_name=example_server.name,
             value="600")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

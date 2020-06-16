@@ -16,9 +16,9 @@ import (
 //
 // > **NOTE:** Deletion of this resource does not change or reset the pricing tier to `Free`
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := securitycenter.NewSubscriptionPricing(ctx, "example", &securitycenter.SubscriptionPricingArgs{
+// 		_, err = securitycenter.NewSubscriptionPricing(ctx, "example", &securitycenter.SubscriptionPricingArgs{
 // 			Tier: pulumi.String("Standard"),
 // 		})
 // 		if err != nil {
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SubscriptionPricing struct {
 	pulumi.CustomResourceState
 

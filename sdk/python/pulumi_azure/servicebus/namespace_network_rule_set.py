@@ -38,9 +38,9 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         """
         Manages a ServiceBus Namespace Network Rule Set Set.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +75,8 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
             }],
             ip_rules=["1.1.1.1"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -60,9 +60,9 @@ class Server(pulumi.CustomResource):
         """
         Manages an Analysis Services Server.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -84,6 +84,10 @@ class Server(pulumi.CustomResource):
                 "abc": 123,
             })
         ```
+
+        > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

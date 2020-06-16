@@ -173,9 +173,9 @@ class EventSubscription(pulumi.CustomResource):
         """
         Manages an EventGrid Event Subscription
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -198,6 +198,8 @@ class EventSubscription(pulumi.CustomResource):
                 "queue_name": default_queue.name,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

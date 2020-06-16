@@ -58,9 +58,9 @@ class NetworkConnectionMonitor(pulumi.CustomResource):
         """
         Configures a Network Connection Monitor to monitor communication between a Virtual Machine and an endpoint using a Network Watcher.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -131,6 +131,10 @@ class NetworkConnectionMonitor(pulumi.CustomResource):
                 "port": 80,
             })
         ```
+
+        > **NOTE:** This Resource requires that [the Network Watcher Agent Virtual Machine Extension](https://docs.microsoft.com/en-us/azure/network-watcher/connection-monitor) is installed on the Virtual Machine before monitoring can be started. The extension can be installed via the `compute.Extension` resource.
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

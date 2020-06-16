@@ -37,9 +37,9 @@ class ExpressRouteCircuitAuthorization(pulumi.CustomResource):
         """
         Manages an ExpressRoute Circuit Authorization.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -64,6 +64,8 @@ class ExpressRouteCircuitAuthorization(pulumi.CustomResource):
             express_route_circuit_name=example_express_route_circuit.name,
             resource_group_name=example_resource_group.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

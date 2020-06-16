@@ -54,9 +54,9 @@ class ResourceGroupExport(pulumi.CustomResource):
         """
         Manages an Azure Cost Management Export for a Resource Group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -83,6 +83,8 @@ class ResourceGroupExport(pulumi.CustomResource):
                 "timeFrame": "WeekToDate",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -12,9 +12,9 @@ namespace Pulumi.Azure.DataFactory
     /// <summary>
     /// Manages an Azure Data Factory Managed Integration Runtime.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IntegrationRuntimeManaged : Pulumi.CustomResource
     {

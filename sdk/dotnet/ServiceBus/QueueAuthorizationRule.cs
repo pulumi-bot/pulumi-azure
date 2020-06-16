@@ -12,9 +12,9 @@ namespace Pulumi.Azure.ServiceBus
     /// <summary>
     /// Manages an Authorization Rule for a ServiceBus Queue.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -57,6 +57,8 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class QueueAuthorizationRule : Pulumi.CustomResource
     {

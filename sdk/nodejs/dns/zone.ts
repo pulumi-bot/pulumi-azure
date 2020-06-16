@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Enables you to manage DNS zones within Azure DNS. These zones are hosted on Azure's name servers to which you can delegate the zone from the parent domain.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * const example_public = new azure.dns.Zone("example-public", {resourceGroupName: example.name});
  * const example_private = new azure.privatedns.Zone("example-private", {resourceGroupName: example.name});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Zone extends pulumi.CustomResource {
     /**

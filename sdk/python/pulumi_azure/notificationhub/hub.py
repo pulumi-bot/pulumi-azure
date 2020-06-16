@@ -51,9 +51,9 @@ class Hub(pulumi.CustomResource):
         """
         Manages a Notification Hub within a Notification Hub Namespace.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -70,6 +70,8 @@ class Hub(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

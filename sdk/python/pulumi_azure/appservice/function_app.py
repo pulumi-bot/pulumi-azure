@@ -178,8 +178,9 @@ class FunctionApp(pulumi.CustomResource):
         """
         Manages a Function App.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### With App Service Plan)
 
         ```python
@@ -205,7 +206,8 @@ class FunctionApp(pulumi.CustomResource):
             app_service_plan_id=example_plan.id,
             storage_connection_string=example_account.primary_connection_string)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### In A Consumption Plan)
 
         ```python
@@ -232,7 +234,8 @@ class FunctionApp(pulumi.CustomResource):
             app_service_plan_id=example_plan.id,
             storage_connection_string=example_account.primary_connection_string)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Linux)
 
         ```python
@@ -261,6 +264,8 @@ class FunctionApp(pulumi.CustomResource):
             storage_connection_string=example_account.primary_connection_string,
             os_type="linux")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

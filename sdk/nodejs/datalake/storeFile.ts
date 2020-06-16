@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * > **Note:** If you want to change the data in the remote file without changing the `localFilePath`, then
  * taint the resource so the `azure.datalake.StoreFile` gets recreated with the new data.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     remoteFilePath: "/path/created/for/remote/file",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StoreFile extends pulumi.CustomResource {
     /**

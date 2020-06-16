@@ -51,9 +51,9 @@ class Policy(pulumi.CustomResource):
         """
         Manages a Policy within a Dev Test Policy Set.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class Policy(pulumi.CustomResource):
                 "Acceptance": "Test",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

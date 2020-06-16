@@ -257,9 +257,11 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
 
         > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `compute.ScaleSet` resource instead
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This example provisions a basic Linux Virtual Machine Scale Set on an internal network.
 
         ```python
         import pulumi
@@ -304,6 +306,8 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
                 }],
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -35,9 +35,9 @@ class ProtectedVM(pulumi.CustomResource):
         """
         Manages Azure Backup for an Azure VM
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -61,6 +61,8 @@ class ProtectedVM(pulumi.CustomResource):
             source_vm_id=azurerm_virtual_machine["example"]["id"],
             backup_policy_id=example_policy_vm.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

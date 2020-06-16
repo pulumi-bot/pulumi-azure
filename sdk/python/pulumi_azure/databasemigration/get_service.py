@@ -68,10 +68,9 @@ def get_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Database Migration Service.
 
-
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -81,6 +80,8 @@ def get_service(name=None,resource_group_name=None,opts=None):
         resource_group_name="example-rg")
     pulumi.export("azurermDmsId", example.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specify the name of the database migration service.

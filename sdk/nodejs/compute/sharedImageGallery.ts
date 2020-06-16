@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Shared Image Gallery.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SharedImageGallery extends pulumi.CustomResource {
     /**

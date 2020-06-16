@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Azure Storage Account Management Policy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,6 +70,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ManagementPolicy extends pulumi.CustomResource {
     /**

@@ -55,9 +55,9 @@ class TriggerSchedule(pulumi.CustomResource):
         """
         Manages a Trigger Schedule inside a Azure Data Factory.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +77,8 @@ class TriggerSchedule(pulumi.CustomResource):
             interval=5,
             frequency="Day")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

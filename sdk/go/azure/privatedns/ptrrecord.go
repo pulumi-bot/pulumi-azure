@@ -12,9 +12,9 @@ import (
 
 // Enables you to manage DNS PTR Records within Azure Private DNS.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePTRRecord, err := privatedns.NewPTRRecord(ctx, "examplePTRRecord", &privatedns.PTRRecordArgs{
+// 		_, err = privatedns.NewPTRRecord(ctx, "examplePTRRecord", &privatedns.PTRRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type PTRRecord struct {
 	pulumi.CustomResourceState
 

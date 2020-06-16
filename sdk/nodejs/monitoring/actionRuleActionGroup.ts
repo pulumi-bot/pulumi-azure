@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Monitor Action Rule which type is action group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ActionRuleActionGroup extends pulumi.CustomResource {
     /**

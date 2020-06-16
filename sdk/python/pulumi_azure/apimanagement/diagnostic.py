@@ -32,9 +32,9 @@ class Diagnostic(pulumi.CustomResource):
         """
         Manages an API Management Service Diagnostic.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +63,8 @@ class Diagnostic(pulumi.CustomResource):
             api_management_name=example_service.name,
             api_management_logger_id=example_logger.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

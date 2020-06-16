@@ -97,9 +97,9 @@ def get_maria_db_server(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing MariaDB Server.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -109,6 +109,8 @@ def get_maria_db_server(name=None,resource_group_name=None,opts=None):
         resource_group_name=azurerm_mariadb_server["example"]["resource_group_name"])
     pulumi.export("mariadbServerId", data["azurerm_mariadb_server"]["example"]["id"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the MariaDB Server to retrieve information about.

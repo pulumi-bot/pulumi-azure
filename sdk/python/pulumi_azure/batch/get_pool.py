@@ -125,9 +125,9 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
     """
     Use this data source to access information about an existing Batch pool
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -137,6 +137,8 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
         name="testbatchpool",
         resource_group_name="test")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str account_name: The name of the Batch account.

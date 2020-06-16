@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE** Security Alert Policy is currently only available for MS SQL databases.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -56,7 +56,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleServerSecurityAlertPolicy, err := mssql.NewServerSecurityAlertPolicy(ctx, "exampleServerSecurityAlertPolicy", &mssql.ServerSecurityAlertPolicyArgs{
+// 		_, err = mssql.NewServerSecurityAlertPolicy(ctx, "exampleServerSecurityAlertPolicy", &mssql.ServerSecurityAlertPolicyArgs{
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			ServerName:              exampleSqlServer.Name,
 // 			State:                   pulumi.String("Enabled"),
@@ -75,6 +75,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ServerSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 

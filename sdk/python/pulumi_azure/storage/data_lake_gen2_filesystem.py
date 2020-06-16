@@ -29,9 +29,9 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
 
         > **NOTE:** This Resource requires using Azure Active Directory to connect to Azure Storage, which in turn requires the `Storage` specific roles - which are not granted by default.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -51,6 +51,8 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
                 "hello": "aGVsbG8=",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

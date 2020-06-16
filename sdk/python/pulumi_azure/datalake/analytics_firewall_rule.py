@@ -35,9 +35,9 @@ class AnalyticsFirewallRule(pulumi.CustomResource):
         """
         Manages a Azure Data Lake Analytics Firewall Rule.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -57,6 +57,8 @@ class AnalyticsFirewallRule(pulumi.CustomResource):
             start_ip_address="1.2.3.4",
             end_ip_address="2.3.4.5")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

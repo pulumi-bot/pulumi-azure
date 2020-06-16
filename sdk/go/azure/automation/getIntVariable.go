@@ -9,10 +9,9 @@ import (
 
 // Use this data source to access information about an existing Automation Int Variable.
 //
-//
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -36,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupIntVariable(ctx *pulumi.Context, args *LookupIntVariableArgs, opts ...pulumi.InvokeOption) (*LookupIntVariableResult, error) {
 	var rv LookupIntVariableResult
 	err := ctx.Invoke("azure:automation/getIntVariable:getIntVariable", args, &rv, opts...)

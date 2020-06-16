@@ -128,9 +128,13 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
         """
         Manages a connection in an existing Virtual Network Gateway.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Site-to-Site connection
+
+        The following example shows a connection between an Azure virtual network
+        and an on-premises VPN device and network.
 
         ```python
         import pulumi
@@ -175,8 +179,12 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             local_network_gateway_id=onpremise_local_network_gateway.id,
             shared_key="4-v3ry-53cr37-1p53c-5h4r3d-k3y")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### VNet-to-VNet connection
+
+        The following example shows a connection between two Azure virtual network
+        in different locations/regions.
 
         ```python
         import pulumi
@@ -245,6 +253,8 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             peer_virtual_network_gateway_id=us_virtual_network_gateway.id,
             shared_key="4-v3ry-53cr37-1p53c-5h4r3d-k3y")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

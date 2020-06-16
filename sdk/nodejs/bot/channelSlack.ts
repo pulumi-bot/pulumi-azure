@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note** A bot can only have a single Slack Channel associated with it.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     verificationToken: "exampleVerificationToken",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ChannelSlack extends pulumi.CustomResource {
     /**

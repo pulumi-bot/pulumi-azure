@@ -12,8 +12,9 @@ namespace Pulumi.Azure.PostgreSql
     /// <summary>
     /// Manages a Firewall Rule for a PostgreSQL Server
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Single IP Address)
     /// 
     /// ```csharp
@@ -43,7 +44,8 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### IP Range)
     /// 
     /// ```csharp
@@ -73,6 +75,8 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

@@ -12,9 +12,9 @@ import (
 
 // Manages a Stream Analytics Output to Microsoft SQL Server Database.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,13 +27,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		_, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
 // 			Name: "example-resources",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleJob, err := streamanalytics.LookupJob(ctx, &streamanalytics.LookupJobArgs{
+// 		_, err := streamanalytics.LookupJob(ctx, &streamanalytics.LookupJobArgs{
 // 			Name:              "example-job",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
 // 		}, nil)
@@ -62,7 +62,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOutputMssql, err := streamanalytics.NewOutputMssql(ctx, "exampleOutputMssql", &streamanalytics.OutputMssqlArgs{
+// 		_, err = streamanalytics.NewOutputMssql(ctx, "exampleOutputMssql", &streamanalytics.OutputMssqlArgs{
 // 			StreamAnalyticsJobName: pulumi.String(azurerm_stream_analytics_job.Example.Name),
 // 			ResourceGroupName:      pulumi.String(azurerm_stream_analytics_job.Example.Resource_group_name),
 // 			Server:                 exampleSqlServer.FullyQualifiedDomainName,
@@ -78,6 +78,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type OutputMssql struct {
 	pulumi.CustomResourceState
 

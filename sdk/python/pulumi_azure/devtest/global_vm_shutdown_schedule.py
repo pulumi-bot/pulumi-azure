@@ -42,9 +42,9 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         this resource applies only to standard VMs, not DevTest Lab VMs. To manage automated shutdown schedules for DevTest Lab VMs, reference the
         `devtest.Schedule` resource
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -98,6 +98,8 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
                 "webhookUrl": "https://sample-webhook-url.example.com",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages the association between a Network Interface and a Network Security Group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  *     networkSecurityGroupId: exampleNetworkSecurityGroup.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     /**

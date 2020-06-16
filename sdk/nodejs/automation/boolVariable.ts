@@ -7,10 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a boolean variable in Azure Automation
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +29,8 @@ import * as utilities from "../utilities";
  *     value: false,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BoolVariable extends pulumi.CustomResource {
     /**

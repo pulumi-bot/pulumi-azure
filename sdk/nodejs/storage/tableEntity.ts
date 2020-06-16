@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Entity within a Table in an Azure Storage Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TableEntity extends pulumi.CustomResource {
     /**

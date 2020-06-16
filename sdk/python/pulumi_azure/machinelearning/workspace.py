@@ -67,9 +67,9 @@ class Workspace(pulumi.CustomResource):
         """
         Manages a Azure Machine Learning Workspace
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -101,6 +101,8 @@ class Workspace(pulumi.CustomResource):
                 "type": "SystemAssigned",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

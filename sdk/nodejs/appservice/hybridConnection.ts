@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example provisions an App Service, a Relay Hybrid Connection, and a Service Bus using their outputs to create the App Service Hybrid Connection.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +50,8 @@ import * as utilities from "../utilities";
  *     sendKeyName: "exampleSharedAccessKey",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

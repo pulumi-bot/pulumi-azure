@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Manages a Microsoft SQL Virtual Machine
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * This example provisions a brief Managed MsSql Virtual Machine.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +38,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**

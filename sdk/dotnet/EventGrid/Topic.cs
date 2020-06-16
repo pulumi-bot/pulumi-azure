@@ -14,9 +14,9 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// &gt; **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an ExpressRoute Circuit Peering.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Creating A Microsoft Peering)
  *
  * ```typescript
@@ -46,6 +47,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**

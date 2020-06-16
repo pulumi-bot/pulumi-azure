@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Subscription.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     maxDeliveryCount: 1,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription
  */

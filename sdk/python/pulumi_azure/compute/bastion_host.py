@@ -45,9 +45,11 @@ class BastionHost(pulumi.CustomResource):
 
         > **Note:** Bastion Hosts are a preview feature in Azure, and therefore are only supported in a select number of regions. [Read more](https://docs.microsoft.com/en-us/azure/bastion/bastion-faq).
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        This example deploys an Azure Bastion Host Instance to a target virtual network.
 
         ```python
         import pulumi
@@ -76,6 +78,8 @@ class BastionHost(pulumi.CustomResource):
                 "public_ip_address_id": example_public_ip.id,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -51,9 +51,9 @@ def get_service_tags(location=None,location_filter=None,service=None,opts=None):
     """
     Use this data source to access information about Service Tags.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -64,6 +64,8 @@ def get_service_tags(location=None,location_filter=None,service=None,opts=None):
         location_filter="northeurope")
     pulumi.export("addressPrefixes", data["azurerm_service_tags"]["example"]["address_prefixes"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str location: The Azure Region where the Service Tags exists. This value is not used to filter the results but for specifying the region to request. For filtering by region use `location_filter` instead.  More information can be found here: [Service Tags URL parameters](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/servicetags/list#uri-parameters).

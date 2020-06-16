@@ -55,9 +55,9 @@ class SharedImageVersion(pulumi.CustomResource):
         """
         Manages a Version of a Shared Image within a Shared Image Gallery.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -80,6 +80,8 @@ class SharedImageVersion(pulumi.CustomResource):
                 "storage_account_type": "Standard_LRS",
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

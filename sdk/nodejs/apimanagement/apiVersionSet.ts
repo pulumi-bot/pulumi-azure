@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an API Version Set within an API Management Service.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     versioningScheme: "Segment",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ApiVersionSet extends pulumi.CustomResource {
     /**

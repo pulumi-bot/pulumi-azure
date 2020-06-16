@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an Application Rule Collection within an Azure Firewall.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirewallApplicationRuleCollection extends pulumi.CustomResource {
     /**

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Logic App Workflow.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Workflow extends pulumi.CustomResource {
     /**

@@ -121,9 +121,9 @@ def get_key_vault(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Key Vault.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -133,6 +133,8 @@ def get_key_vault(name=None,resource_group_name=None,opts=None):
         resource_group_name="some-resource-group")
     pulumi.export("vaultUri", example.vault_uri)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Key Vault.

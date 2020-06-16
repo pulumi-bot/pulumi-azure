@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to access the properties of a Log Profile.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * });
  * export const logProfileStorageAccountId = example.then(example => example.storageAccountId);
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getLogProfile(args: GetLogProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetLogProfileResult> {
     if (!opts) {

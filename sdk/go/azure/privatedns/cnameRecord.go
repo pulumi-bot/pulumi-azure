@@ -12,9 +12,9 @@ import (
 
 // Enables you to manage DNS CNAME Records within Azure Private DNS.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCnameRecord, err := privatedns.NewCnameRecord(ctx, "exampleCnameRecord", &privatedns.CnameRecordArgs{
+// 		_, err = privatedns.NewCnameRecord(ctx, "exampleCnameRecord", &privatedns.CnameRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type CnameRecord struct {
 	pulumi.CustomResourceState
 

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Log Analytics (formally Operational Insights) Windows Performance Counter DataSource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     intervalSeconds: 10,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
     /**

@@ -12,9 +12,9 @@ import (
 
 // Manages a MySQL Server.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleServer, err := mysql.NewServer(ctx, "exampleServer", &mysql.ServerArgs{
+// 		_, err = mysql.NewServer(ctx, "exampleServer", &mysql.ServerArgs{
 // 			Location:                        exampleResourceGroup.Location,
 // 			ResourceGroupName:               exampleResourceGroup.Name,
 // 			AdministratorLogin:              pulumi.String("mysqladminun"),
@@ -56,6 +56,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Server struct {
 	pulumi.CustomResourceState
 

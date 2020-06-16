@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     scopeId: root.id,
  * }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getDefinition(args: GetDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetDefinitionResult> {
     if (!opts) {

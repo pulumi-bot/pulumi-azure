@@ -64,8 +64,9 @@ class Plan(pulumi.CustomResource):
         """
         Manages an App Service Plan component.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Dedicated)
 
         ```python
@@ -81,7 +82,8 @@ class Plan(pulumi.CustomResource):
                 "size": "S1",
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Shared / Consumption Plan)
 
         ```python
@@ -98,7 +100,8 @@ class Plan(pulumi.CustomResource):
                 "size": "Y1",
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Linux)
 
         ```python
@@ -116,7 +119,8 @@ class Plan(pulumi.CustomResource):
                 "size": "S1",
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Windows Container)
 
         ```python
@@ -134,6 +138,8 @@ class Plan(pulumi.CustomResource):
                 "size": "PC2",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

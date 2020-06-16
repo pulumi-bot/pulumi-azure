@@ -12,9 +12,9 @@ namespace Pulumi.Azure.Sentinel
     /// <summary>
     /// Manages a Sentinel Scheduled Alert Rule.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +49,8 @@ namespace Pulumi.Azure.Sentinel
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AlertRuleScheduled : Pulumi.CustomResource
     {

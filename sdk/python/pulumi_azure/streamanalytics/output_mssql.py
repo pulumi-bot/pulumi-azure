@@ -44,9 +44,9 @@ class OutputMssql(pulumi.CustomResource):
         """
         Manages a Stream Analytics Output to Microsoft SQL Server Database.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -78,6 +78,8 @@ class OutputMssql(pulumi.CustomResource):
             database=example_database.name,
             table="ExampleTable")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

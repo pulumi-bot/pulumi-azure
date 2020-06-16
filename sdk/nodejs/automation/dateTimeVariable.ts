@@ -7,10 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a DateTime variable in Azure Automation
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +29,8 @@ import * as utilities from "../utilities";
  *     value: "2019-04-24T21:40:54.074Z",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DateTimeVariable extends pulumi.CustomResource {
     /**

@@ -62,9 +62,9 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Kusto (also known as Azure Data Explorer) Cluster
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -73,6 +73,8 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     example = azure.kusto.get_cluster(name="kustocluster",
         resource_group_name="test_resource_group")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specifies the name of the Kusto Cluster.

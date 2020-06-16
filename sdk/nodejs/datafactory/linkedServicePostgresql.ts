@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Linked Service (connection) between PostgreSQL and Azure Data Factory.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     connectionString: "Host=example;Port=5432;Database=example;UID=example;EncryptionMethod=0;Password=example",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinkedServicePostgresql extends pulumi.CustomResource {
     /**
