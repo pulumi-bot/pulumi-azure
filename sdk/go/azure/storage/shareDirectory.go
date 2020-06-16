@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleShareDirectory, err := storage.NewShareDirectory(ctx, "exampleShareDirectory", &storage.ShareDirectoryArgs{
+// 		_, err = storage.NewShareDirectory(ctx, "exampleShareDirectory", &storage.ShareDirectoryArgs{
 // 			ShareName:          exampleShare.Name,
 // 			StorageAccountName: exampleAccount.Name,
 // 		})
