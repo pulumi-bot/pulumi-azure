@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		vault, err := recoveryservices.NewVault(ctx, "vault", &recoveryservices.VaultArgs{
+// 		_, err = recoveryservices.NewVault(ctx, "vault", &recoveryservices.VaultArgs{
 // 			Location:          rg.Location,
 // 			ResourceGroupName: rg.Name,
 // 			Sku:               pulumi.String("Standard"),

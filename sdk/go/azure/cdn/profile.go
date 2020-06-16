@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleProfile, err := cdn.NewProfile(ctx, "exampleProfile", &cdn.ProfileArgs{
+// 		_, err = cdn.NewProfile(ctx, "exampleProfile", &cdn.ProfileArgs{
 // 			Location:          pulumi.String("West US"),
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Sku:               pulumi.String("Standard_Verizon"),
