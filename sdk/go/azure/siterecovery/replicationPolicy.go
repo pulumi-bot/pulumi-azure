@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := siterecovery.NewReplicationPolicy(ctx, "policy", &siterecovery.ReplicationPolicyArgs{
+// 		_, err = siterecovery.NewReplicationPolicy(ctx, "policy", &siterecovery.ReplicationPolicyArgs{
 // 			ResourceGroupName:                               secondary.Name,
 // 			RecoveryVaultName:                               vault.Name,
 // 			RecoveryPointRetentionInMinutes:                 pulumi.Int(24 * 60),

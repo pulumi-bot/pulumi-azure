@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		database, err := kusto.NewDatabase(ctx, "database", &kusto.DatabaseArgs{
+// 		_, err = kusto.NewDatabase(ctx, "database", &kusto.DatabaseArgs{
 // 			ResourceGroupName: rg.Name,
 // 			Location:          rg.Location,
 // 			ClusterName:       cluster.Name,

@@ -35,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOrchestratedVirtualMachineScaleSet, err := compute.NewOrchestratedVirtualMachineScaleSet(ctx, "exampleOrchestratedVirtualMachineScaleSet", &compute.OrchestratedVirtualMachineScaleSetArgs{
+// 		_, err = compute.NewOrchestratedVirtualMachineScaleSet(ctx, "exampleOrchestratedVirtualMachineScaleSet", &compute.OrchestratedVirtualMachineScaleSetArgs{
 // 			Location:                 exampleResourceGroup.Location,
 // 			ResourceGroupName:        exampleResourceGroup.Name,
 // 			PlatformFaultDomainCount: pulumi.Int(5),

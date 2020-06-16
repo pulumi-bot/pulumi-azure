@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDatasetPostgresql, err := datafactory.NewDatasetPostgresql(ctx, "exampleDatasetPostgresql", &datafactory.DatasetPostgresqlArgs{
+// 		_, err = datafactory.NewDatasetPostgresql(ctx, "exampleDatasetPostgresql", &datafactory.DatasetPostgresqlArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			DataFactoryName:   exampleFactory.Name,
 // 			LinkedServiceName: exampleLinkedServicePostgresql.Name,

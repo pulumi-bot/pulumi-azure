@@ -10,6 +10,37 @@ import (
 // Use this data source to access information about an existing Azure Blueprint Published Version
 //
 // > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
+//
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := core.LookupSubscription(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err := blueprint.LookupPublishedVersion(ctx, &blueprint.LookupPublishedVersionArgs{
+// 			ScopeId:       current.Id,
+// 			BlueprintName: "exampleBluePrint",
+// 			Version:       "dev_v2.3",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetPublishedVersion(ctx *pulumi.Context, args *GetPublishedVersionArgs, opts ...pulumi.InvokeOption) (*GetPublishedVersionResult, error) {
 	var rv GetPublishedVersionResult
 	err := ctx.Invoke("azure:blueprint/getPublishedVersion:getPublishedVersion", args, &rv, opts...)

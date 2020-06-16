@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDataSourceWindowsPerformanceCounter, err := loganalytics.NewDataSourceWindowsPerformanceCounter(ctx, "exampleDataSourceWindowsPerformanceCounter", &loganalytics.DataSourceWindowsPerformanceCounterArgs{
+// 		_, err = loganalytics.NewDataSourceWindowsPerformanceCounter(ctx, "exampleDataSourceWindowsPerformanceCounter", &loganalytics.DataSourceWindowsPerformanceCounterArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			WorkspaceName:     exampleAnalyticsWorkspace.Name,
 // 			ObjectName:        pulumi.String("CPU"),

@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleActionHttp, err := logicapps.NewActionHttp(ctx, "exampleActionHttp", &logicapps.ActionHttpArgs{
+// 		_, err = logicapps.NewActionHttp(ctx, "exampleActionHttp", &logicapps.ActionHttpArgs{
 // 			LogicAppId: exampleWorkflow.ID(),
 // 			Method:     pulumi.String("GET"),
 // 			Uri:        pulumi.String("http://example.com/some-webhook"),

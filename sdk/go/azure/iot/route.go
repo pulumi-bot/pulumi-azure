@@ -79,7 +79,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRoute, err := iot.NewRoute(ctx, "exampleRoute", &iot.RouteArgs{
+// 		_, err = iot.NewRoute(ctx, "exampleRoute", &iot.RouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			Source:            pulumi.String("DeviceMessages"),
