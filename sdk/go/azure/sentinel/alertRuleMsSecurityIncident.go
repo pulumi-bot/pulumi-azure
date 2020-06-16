@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAlertRuleMsSecurityIncident, err := sentinel.NewAlertRuleMsSecurityIncident(ctx, "exampleAlertRuleMsSecurityIncident", &sentinel.AlertRuleMsSecurityIncidentArgs{
+// 		_, err = sentinel.NewAlertRuleMsSecurityIncident(ctx, "exampleAlertRuleMsSecurityIncident", &sentinel.AlertRuleMsSecurityIncidentArgs{
 // 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
 // 			ProductFilter:           pulumi.String("Microsoft Cloud App Security"),
 // 			DisplayName:             pulumi.String("example rule"),

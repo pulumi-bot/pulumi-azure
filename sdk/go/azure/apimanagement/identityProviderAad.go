@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIdentityProviderAad, err := apimanagement.NewIdentityProviderAad(ctx, "exampleIdentityProviderAad", &apimanagement.IdentityProviderAadArgs{
+// 		_, err = apimanagement.NewIdentityProviderAad(ctx, "exampleIdentityProviderAad", &apimanagement.IdentityProviderAadArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			ClientId:          pulumi.String("00000000-0000-0000-0000-000000000000"),

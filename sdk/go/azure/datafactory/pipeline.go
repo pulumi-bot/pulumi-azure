@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePipeline, err := datafactory.NewPipeline(ctx, "examplePipeline", &datafactory.PipelineArgs{
+// 		_, err = datafactory.NewPipeline(ctx, "examplePipeline", &datafactory.PipelineArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			DataFactoryName:   exampleFactory.Name,
 // 		})

@@ -39,10 +39,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleZoneVirtualNetworkLink, err := privatedns.NewZoneVirtualNetworkLink(ctx, "exampleZoneVirtualNetworkLink", &privatedns.ZoneVirtualNetworkLinkArgs{
+// 		_, err = privatedns.NewZoneVirtualNetworkLink(ctx, "exampleZoneVirtualNetworkLink", &privatedns.ZoneVirtualNetworkLinkArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			PrivateDnsZoneName: exampleZone.Name,
-// 			VirtualNetworkId:   pulumi.String(azurerm_virtual_network.Example.Id),
+// 			VirtualNetworkId:   dynamic(azurerm_virtual_network.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
