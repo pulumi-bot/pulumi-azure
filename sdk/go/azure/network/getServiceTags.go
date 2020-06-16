@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupServiceTags(ctx, &network.LookupServiceTagsArgs{
+// 		_, err := network.LookupServiceTags(ctx, &network.LookupServiceTagsArgs{
 // 			Location:       "West Europe",
 // 			Service:        "AzureKeyVault",
 // 			LocationFilter: "northeurope",

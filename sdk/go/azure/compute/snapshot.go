@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSnapshot, err := compute.NewSnapshot(ctx, "exampleSnapshot", &compute.SnapshotArgs{
+// 		_, err = compute.NewSnapshot(ctx, "exampleSnapshot", &compute.SnapshotArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			CreateOption:      pulumi.String("Copy"),

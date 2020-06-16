@@ -80,12 +80,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		eventhubConnection, err := kusto.NewEventhubDataConnection(ctx, "eventhubConnection", &kusto.EventhubDataConnectionArgs{
+// 		_, err = kusto.NewEventhubDataConnection(ctx, "eventhubConnection", &kusto.EventhubDataConnectionArgs{
 // 			ResourceGroupName: rg.Name,
 // 			Location:          rg.Location,
 // 			ClusterName:       cluster.Name,
 // 			DatabaseName:      database.Name,
-// 			EventhubId:        pulumi.String(azurerm_eventhub.Evenhub.Id),
+// 			EventhubId:        dynamic(azurerm_eventhub.Evenhub.Id),
 // 			ConsumerGroup:     consumerGroup.Name,
 // 			TableName:         pulumi.String("my-table"),
 // 			MappingRuleName:   pulumi.String("my-table-mapping"),

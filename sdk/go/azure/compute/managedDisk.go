@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleManagedDisk, err := compute.NewManagedDisk(ctx, "exampleManagedDisk", &compute.ManagedDiskArgs{
+// 		_, err = compute.NewManagedDisk(ctx, "exampleManagedDisk", &compute.ManagedDiskArgs{
 // 			Location:           pulumi.String("West US 2"),
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			StorageAccountType: pulumi.String("Standard_LRS"),
@@ -83,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		copy, err := compute.NewManagedDisk(ctx, "copy", &compute.ManagedDiskArgs{
+// 		_, err = compute.NewManagedDisk(ctx, "copy", &compute.ManagedDiskArgs{
 // 			Location:           pulumi.String("West US 2"),
 // 			ResourceGroupName:  example.Name,
 // 			StorageAccountType: pulumi.String("Standard_LRS"),

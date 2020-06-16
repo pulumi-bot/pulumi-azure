@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		_, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
 // 			Name: "example-resources",
 // 		}, nil)
 // 		if err != nil {
@@ -41,8 +41,8 @@ import (
 // 			return err
 // 		}
 // 		exampleAccount, err := storage.NewAccount(ctx, "exampleAccount", &storage.AccountArgs{
-// 			ResourceGroupName:      pulumi.String(azurerm_resource_group.Example.Name),
-// 			Location:               pulumi.String(azurerm_resource_group.Example.Location),
+// 			ResourceGroupName:      dynamic(azurerm_resource_group.Example.Name),
+// 			Location:               dynamic(azurerm_resource_group.Example.Location),
 // 			AccountTier:            pulumi.String("Standard"),
 // 			AccountReplicationType: pulumi.String("LRS"),
 // 		})
@@ -56,7 +56,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := streamanalytics.NewReferenceInputBlob(ctx, "test", &streamanalytics.ReferenceInputBlobArgs{
+// 		_, err = streamanalytics.NewReferenceInputBlob(ctx, "test", &streamanalytics.ReferenceInputBlobArgs{
 // 			StreamAnalyticsJobName: pulumi.String(exampleJob.Name),
 // 			ResourceGroupName:      pulumi.String(exampleJob.ResourceGroupName),
 // 			StorageAccountName:     exampleAccount.Name,

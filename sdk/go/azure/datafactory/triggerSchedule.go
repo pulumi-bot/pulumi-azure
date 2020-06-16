@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFactory, err := datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
+// 		_, err = datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 		})
@@ -41,15 +41,15 @@ import (
 // 			return err
 // 		}
 // 		testPipeline, err := datafactory.NewPipeline(ctx, "testPipeline", &datafactory.PipelineArgs{
-// 			ResourceGroupName: pulumi.String(azurerm_resource_group.Test.Name),
-// 			DataFactoryName:   pulumi.String(azurerm_data_factory.Test.Name),
+// 			ResourceGroupName: dynamic(azurerm_resource_group.Test.Name),
+// 			DataFactoryName:   dynamic(azurerm_data_factory.Test.Name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testTriggerSchedule, err := datafactory.NewTriggerSchedule(ctx, "testTriggerSchedule", &datafactory.TriggerScheduleArgs{
-// 			DataFactoryName:   pulumi.String(azurerm_data_factory.Test.Name),
-// 			ResourceGroupName: pulumi.String(azurerm_resource_group.Test.Name),
+// 		_, err = datafactory.NewTriggerSchedule(ctx, "testTriggerSchedule", &datafactory.TriggerScheduleArgs{
+// 			DataFactoryName:   dynamic(azurerm_data_factory.Test.Name),
+// 			ResourceGroupName: dynamic(azurerm_resource_group.Test.Name),
 // 			PipelineName:      testPipeline.Name,
 // 			Interval:          pulumi.Int(5),
 // 			Frequency:         pulumi.String("Day"),

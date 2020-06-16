@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := network.NewVirtualWan(ctx, "test", &network.VirtualWanArgs{
+// 		_, err = network.NewVirtualWan(ctx, "test", &network.VirtualWanArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 		})
@@ -53,13 +53,13 @@ import (
 // 		exampleVirtualHub, err := network.NewVirtualHub(ctx, "exampleVirtualHub", &network.VirtualHubArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
-// 			VirtualWanId:      pulumi.String(azurerm_virtual_wan.Example.Id),
+// 			VirtualWanId:      dynamic(azurerm_virtual_wan.Example.Id),
 // 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualHubConnection, err := network.NewVirtualHubConnection(ctx, "exampleVirtualHubConnection", &network.VirtualHubConnectionArgs{
+// 		_, err = network.NewVirtualHubConnection(ctx, "exampleVirtualHubConnection", &network.VirtualHubConnectionArgs{
 // 			VirtualHubId:           exampleVirtualHub.ID(),
 // 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID(),
 // 		})

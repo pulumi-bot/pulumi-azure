@@ -37,7 +37,11 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("backendAddressPoolId", exampleBackendAddressPool.Id)
-// 		ctx.Export("backendIpConfigurationIds")
+// 		var splat0 []dynamic
+// 		for _, val0 := range data.Azurerm_lb_backend_address_pool.Beap.Backend_ip_configurations {
+// 			splat0 = append(splat0, val0.Id)
+// 		}
+// 		ctx.Export("backendIpConfigurationIds", splat0)
 // 		return nil
 // 	})
 // }

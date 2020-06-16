@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := maintenance.LookupConfiguration(ctx, &maintenance.LookupConfigurationArgs{
+// 		_, err := maintenance.LookupConfiguration(ctx, &maintenance.LookupConfigurationArgs{
 // 			Name:              "example-mc",
 // 			ResourceGroupName: "example-resources",
 // 		}, nil)
