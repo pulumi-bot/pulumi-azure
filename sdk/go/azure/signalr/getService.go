@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := signalr.LookupService(ctx, &signalr.LookupServiceArgs{
+// 		_, err := signalr.LookupService(ctx, &signalr.LookupServiceArgs{
 // 			Name:              "test-signalr",
 // 			ResourceGroupName: "signalr-resource-group",
 // 		}, nil)

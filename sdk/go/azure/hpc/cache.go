@@ -54,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCache, err := hpc.NewCache(ctx, "exampleCache", &hpc.CacheArgs{
+// 		_, err = hpc.NewCache(ctx, "exampleCache", &hpc.CacheArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
 // 			CacheSizeInGb:     pulumi.Int(3072),

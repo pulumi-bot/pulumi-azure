@@ -54,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := databasemigration.NewService(ctx, "exampleService", &databasemigration.ServiceArgs{
+// 		_, err = databasemigration.NewService(ctx, "exampleService", &databasemigration.ServiceArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			SubnetId:          exampleSubnet.ID(),

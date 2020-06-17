@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupPublicIPs(ctx, &network.LookupPublicIPsArgs{
+// 		_, err := network.LookupPublicIPs(ctx, &network.LookupPublicIPsArgs{
 // 			Attached:          false,
 // 			ResourceGroupName: "pip-test",
 // 		}, nil)

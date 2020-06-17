@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEventHubNamespaceAuthorizationRule, err := eventhub.NewEventHubNamespaceAuthorizationRule(ctx, "exampleEventHubNamespaceAuthorizationRule", &eventhub.EventHubNamespaceAuthorizationRuleArgs{
+// 		_, err = eventhub.NewEventHubNamespaceAuthorizationRule(ctx, "exampleEventHubNamespaceAuthorizationRule", &eventhub.EventHubNamespaceAuthorizationRuleArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Listen:            pulumi.Bool(true),

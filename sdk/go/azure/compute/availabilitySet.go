@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAvailabilitySet, err := compute.NewAvailabilitySet(ctx, "exampleAvailabilitySet", &compute.AvailabilitySetArgs{
+// 		_, err = compute.NewAvailabilitySet(ctx, "exampleAvailabilitySet", &compute.AvailabilitySetArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Tags: map[string]interface{}{

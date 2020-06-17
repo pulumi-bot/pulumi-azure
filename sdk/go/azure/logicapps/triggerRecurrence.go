@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTriggerRecurrence, err := logicapps.NewTriggerRecurrence(ctx, "exampleTriggerRecurrence", &logicapps.TriggerRecurrenceArgs{
+// 		_, err = logicapps.NewTriggerRecurrence(ctx, "exampleTriggerRecurrence", &logicapps.TriggerRecurrenceArgs{
 // 			LogicAppId: exampleWorkflow.ID(),
 // 			Frequency:  pulumi.String("Day"),
 // 			Interval:   pulumi.Int(1),

@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		policy, err := backup.LookupPolicyVM(ctx, &backup.LookupPolicyVMArgs{
+// 		_, err := backup.LookupPolicyVM(ctx, &backup.LookupPolicyVMArgs{
 // 			Name:              "policy",
 // 			RecoveryVaultName: "recovery_vault",
 // 			ResourceGroupName: "resource_group",

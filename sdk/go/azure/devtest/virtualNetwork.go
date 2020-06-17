@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVirtualNetwork, err := devtest.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &devtest.VirtualNetworkArgs{
+// 		_, err = devtest.NewVirtualNetwork(ctx, "exampleVirtualNetwork", &devtest.VirtualNetworkArgs{
 // 			LabName:           exampleLab.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Subnet: &devtest.VirtualNetworkSubnetArgs{

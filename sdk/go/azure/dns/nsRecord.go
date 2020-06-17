@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNsRecord, err := dns.NewNsRecord(ctx, "exampleNsRecord", &dns.NsRecordArgs{
+// 		_, err = dns.NewNsRecord(ctx, "exampleNsRecord", &dns.NsRecordArgs{
 // 			ZoneName:          exampleZone.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Ttl:               pulumi.Int(300),

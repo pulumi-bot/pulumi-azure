@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dbServer, err := mariadb.LookupMariaDbServer(ctx, &mariadb.LookupMariaDbServerArgs{
+// 		_, err := mariadb.LookupMariaDbServer(ctx, &mariadb.LookupMariaDbServerArgs{
 // 			Name:              "mariadb-server",
 // 			ResourceGroupName: azurerm_mariadb_server.Example.Resource_group_name,
 // 		}, nil)
