@@ -9,10 +9,7 @@ import (
 
 // Use this data source to access information about an existing Database Migration Service.
 //
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

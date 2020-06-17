@@ -95,8 +95,6 @@ def get_policy_defintion(display_name=None,management_group_id=None,management_g
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_azure as azure

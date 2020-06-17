@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storage.LookupStorageContainer(ctx, &storage.LookupStorageContainerArgs{
+// 		_, err := storage.LookupStorageContainer(ctx, &storage.LookupStorageContainerArgs{
 // 			Name:               "example-container-name",
 // 			StorageAccountName: "example-storage-account-name",
 // 		}, nil)

@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -58,7 +56,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOutputEventHub, err := streamanalytics.NewOutputEventHub(ctx, "exampleOutputEventHub", &streamanalytics.OutputEventHubArgs{
+// 		_, err = streamanalytics.NewOutputEventHub(ctx, "exampleOutputEventHub", &streamanalytics.OutputEventHubArgs{
 // 			StreamAnalyticsJobName: pulumi.String(exampleJob.Name),
 // 			ResourceGroupName:      pulumi.String(exampleJob.ResourceGroupName),
 // 			EventhubName:           exampleEventHub.Name,

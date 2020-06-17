@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -44,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleHybridConnection, err := relay.NewHybridConnection(ctx, "exampleHybridConnection", &relay.HybridConnectionArgs{
+// 		_, err = relay.NewHybridConnection(ctx, "exampleHybridConnection", &relay.HybridConnectionArgs{
 // 			ResourceGroupName:           exampleResourceGroup.Name,
 // 			RelayNamespaceName:          exampleNamespace.Name,
 // 			RequiresClientAuthorization: pulumi.Bool(false),

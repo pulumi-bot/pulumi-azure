@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -43,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDomainTopic, err := eventgrid.NewDomainTopic(ctx, "exampleDomainTopic", &eventgrid.DomainTopicArgs{
+// 		_, err = eventgrid.NewDomainTopic(ctx, "exampleDomainTopic", &eventgrid.DomainTopicArgs{
 // 			DomainName:        exampleDomain.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 		})

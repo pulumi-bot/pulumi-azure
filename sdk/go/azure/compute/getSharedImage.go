@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
+// 		_, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
 // 			GalleryName:       "my-image-gallery",
 // 			Name:              "my-image",
 // 			ResourceGroupName: "example-resources",

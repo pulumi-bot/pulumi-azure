@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iot.LookupDps(ctx, &iot.LookupDpsArgs{
+// 		_, err := iot.LookupDps(ctx, &iot.LookupDpsArgs{
 // 			Name:              "iot_hub_dps_test",
 // 			ResourceGroupName: "iothub_dps_rg",
 // 		}, nil)
