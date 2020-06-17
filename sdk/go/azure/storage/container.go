@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -45,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleContainer, err := storage.NewContainer(ctx, "exampleContainer", &storage.ContainerArgs{
+// 		_, err = storage.NewContainer(ctx, "exampleContainer", &storage.ContainerArgs{
 // 			StorageAccountName:  exampleAccount.Name,
 // 			ContainerAccessType: pulumi.String("private"),
 // 		})

@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -45,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "exampleEventHub", &eventhub.EventHubArgs{
+// 		_, err = eventhub.NewEventHub(ctx, "exampleEventHub", &eventhub.EventHubArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			PartitionCount:    pulumi.Int(2),
