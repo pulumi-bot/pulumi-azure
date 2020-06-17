@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic", DeprecationWarning)
-
 class EventGridTopic(pulumi.CustomResource):
     endpoint: pulumi.Output[str]
     """

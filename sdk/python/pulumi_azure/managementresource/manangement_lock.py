@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock", DeprecationWarning)
-
 class ManangementLock(pulumi.CustomResource):
     lock_level: pulumi.Output[str]
     """

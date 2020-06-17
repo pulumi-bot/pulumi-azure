@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDatasetMysql, err := datafactory.NewDatasetMysql(ctx, "exampleDatasetMysql", &datafactory.DatasetMysqlArgs{
+// 		_, err = datafactory.NewDatasetMysql(ctx, "exampleDatasetMysql", &datafactory.DatasetMysqlArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			DataFactoryName:   exampleFactory.Name,
 // 			LinkedServiceName: exampleLinkedServiceMysql.Name,

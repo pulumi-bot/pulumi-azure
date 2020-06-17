@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate", DeprecationWarning)
-
 class Certifiate(pulumi.CustomResource):
     certificate: pulumi.Output[dict]
     """

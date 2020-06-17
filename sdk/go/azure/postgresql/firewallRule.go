@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFirewallRule, err := postgresql.NewFirewallRule(ctx, "exampleFirewallRule", &postgresql.FirewallRuleArgs{
+// 		_, err = postgresql.NewFirewallRule(ctx, "exampleFirewallRule", &postgresql.FirewallRuleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ServerName:        exampleServer.Name,
 // 			StartIpAddress:    pulumi.String("40.112.8.12"),
@@ -74,7 +74,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFirewallRule, err := postgresql.NewFirewallRule(ctx, "exampleFirewallRule", &postgresql.FirewallRuleArgs{
+// 		_, err = postgresql.NewFirewallRule(ctx, "exampleFirewallRule", &postgresql.FirewallRuleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ServerName:        exampleServer.Name,
 // 			StartIpAddress:    pulumi.String("40.112.0.0"),

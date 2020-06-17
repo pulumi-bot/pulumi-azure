@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
-
 class Definition(pulumi.CustomResource):
     assignable_scopes: pulumi.Output[list]
     """

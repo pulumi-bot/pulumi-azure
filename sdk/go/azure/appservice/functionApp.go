@@ -54,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),
@@ -109,7 +109,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),
@@ -165,7 +165,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunctionApp, err := appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
+// 		_, err = appservice.NewFunctionApp(ctx, "exampleFunctionApp", &appservice.FunctionAppArgs{
 // 			Location:                exampleResourceGroup.Location,
 // 			ResourceGroupName:       exampleResourceGroup.Name,
 // 			AppServicePlanId:        examplePlan.ID(),

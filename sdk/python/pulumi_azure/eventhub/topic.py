@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
-
 class Topic(pulumi.CustomResource):
     auto_delete_on_idle: pulumi.Output[str]
     """

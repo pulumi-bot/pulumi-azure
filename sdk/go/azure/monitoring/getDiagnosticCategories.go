@@ -29,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDiagnosticCategories, err := monitoring.LookupDiagnosticCategories(ctx, &monitoring.LookupDiagnosticCategoriesArgs{
+// 		_, err := monitoring.LookupDiagnosticCategories(ctx, &monitoring.LookupDiagnosticCategoriesArgs{
 // 			ResourceId: exampleKeyVault.Id,
 // 		}, nil)
 // 		if err != nil {

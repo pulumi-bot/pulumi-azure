@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint", DeprecationWarning)
-
 class Endpoint(pulumi.CustomResource):
     custom_headers: pulumi.Output[list]
     """

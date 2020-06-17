@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule", DeprecationWarning)
-
 class QueueAuthorizationRule(pulumi.CustomResource):
     listen: pulumi.Output[bool]
     """

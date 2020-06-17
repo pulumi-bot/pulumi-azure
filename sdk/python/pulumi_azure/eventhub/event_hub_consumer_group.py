@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup", DeprecationWarning)
-
 class EventHubConsumerGroup(pulumi.CustomResource):
     eventhub_name: pulumi.Output[str]
     """

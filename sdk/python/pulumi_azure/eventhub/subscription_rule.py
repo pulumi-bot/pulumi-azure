@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule", DeprecationWarning)
-
 class SubscriptionRule(pulumi.CustomResource):
     action: pulumi.Output[str]
     """

@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment", DeprecationWarning)
-
 class Assignment(pulumi.CustomResource):
     name: pulumi.Output[str]
     """

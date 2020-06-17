@@ -83,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFallbackRoute, err := iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
+// 		_, err = iot.NewFallbackRoute(ctx, "exampleFallbackRoute", &iot.FallbackRouteArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			Condition:         pulumi.String("true"),

@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleMongoCollection, err := cosmosdb.NewMongoCollection(ctx, "exampleMongoCollection", &cosmosdb.MongoCollectionArgs{
+// 		_, err = cosmosdb.NewMongoCollection(ctx, "exampleMongoCollection", &cosmosdb.MongoCollectionArgs{
 // 			ResourceGroupName: pulumi.String(exampleAccount.ResourceGroupName),
 // 			AccountName:       pulumi.String(exampleAccount.Name),
 // 			DatabaseName:      exampleMongoDatabase.Name,

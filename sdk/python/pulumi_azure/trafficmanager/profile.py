@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile", DeprecationWarning)
-
 class Profile(pulumi.CustomResource):
     dns_config: pulumi.Output[dict]
     """
