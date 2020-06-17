@@ -224,7 +224,7 @@ class AppService(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        This example provisions a Windows App Service.
 
         ```python
         import pulumi

@@ -11,6 +11,8 @@ import (
 )
 
 // Manages a Linked Service (connection) between Data Lake Storage Gen2 and Azure Data Factory.
+//
+// ## Example Usage
 type LinkedServiceDataLakeStorageGen2 struct {
 	pulumi.CustomResourceState
 

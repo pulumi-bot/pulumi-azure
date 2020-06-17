@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -33,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		example, err := kusto.NewCluster(ctx, "example", &kusto.ClusterArgs{
+// 		_, err = kusto.NewCluster(ctx, "example", &kusto.ClusterArgs{
 // 			Location:          rg.Location,
 // 			ResourceGroupName: rg.Name,
 // 			Sku: &kusto.ClusterSkuArgs{

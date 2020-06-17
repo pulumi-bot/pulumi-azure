@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to access information about an existing Subscription.
+//
+// ## Example Usage
 func GetSubscription(ctx *pulumi.Context, args *GetSubscriptionArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionResult, error) {
 	var rv GetSubscriptionResult
 	err := ctx.Invoke("azure:core/getSubscription:getSubscription", args, &rv, opts...)

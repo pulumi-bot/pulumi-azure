@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -79,7 +77,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEndpointEventhub, err := iot.NewEndpointEventhub(ctx, "exampleEndpointEventhub", &iot.EndpointEventhubArgs{
+// 		_, err = iot.NewEndpointEventhub(ctx, "exampleEndpointEventhub", &iot.EndpointEventhubArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			ConnectionString:  exampleAuthorizationRule.PrimaryConnectionString,
