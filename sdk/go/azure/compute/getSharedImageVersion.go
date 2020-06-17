@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupSharedImageVersion(ctx, &compute.LookupSharedImageVersionArgs{
+// 		_, err := compute.LookupSharedImageVersion(ctx, &compute.LookupSharedImageVersionArgs{
 // 			GalleryName:       "my-image-gallery",
 // 			ImageName:         "my-image",
 // 			Name:              "1.0.0",

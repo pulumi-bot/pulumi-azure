@@ -11,6 +11,8 @@ import (
 )
 
 // Manages a Managed Application Definition.
+//
+// ## Example Usage
 type Definition struct {
 	pulumi.CustomResourceState
 

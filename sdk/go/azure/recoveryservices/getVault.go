@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vault, err := recoveryservices.LookupVault(ctx, &recoveryservices.LookupVaultArgs{
+// 		_, err := recoveryservices.LookupVault(ctx, &recoveryservices.LookupVaultArgs{
 // 			Name:              "tfex-recovery_vault",
 // 			ResourceGroupName: "tfex-resource_group",
 // 		}, nil)

@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appservice.LookupAppServiceEnvironment(ctx, &appservice.LookupAppServiceEnvironmentArgs{
+// 		_, err := appservice.LookupAppServiceEnvironment(ctx, &appservice.LookupAppServiceEnvironmentArgs{
 // 			Name:              "example-ase",
 // 			ResourceGroupName: "example-rg",
 // 		}, nil)
