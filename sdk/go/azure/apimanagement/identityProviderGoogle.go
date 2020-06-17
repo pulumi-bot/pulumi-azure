@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIdentityProviderGoogle, err := apimanagement.NewIdentityProviderGoogle(ctx, "exampleIdentityProviderGoogle", &apimanagement.IdentityProviderGoogleArgs{
+// 		_, err = apimanagement.NewIdentityProviderGoogle(ctx, "exampleIdentityProviderGoogle", &apimanagement.IdentityProviderGoogleArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			ApiManagementName: exampleService.Name,
 // 			ClientId:          pulumi.String("00000000.apps.googleusercontent.com"),
