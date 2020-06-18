@@ -10,7 +10,6 @@ import (
 // Use this data source to access information about an existing Public IP Prefix.
 //
 // ## Example Usage
-//
 // ### Reference An Existing)
 //
 // ```go
