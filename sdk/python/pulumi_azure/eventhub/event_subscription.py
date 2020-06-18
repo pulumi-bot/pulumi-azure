@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription", DeprecationWarning)
-
 class EventSubscription(pulumi.CustomResource):
     advanced_filter: pulumi.Output[dict]
     """
@@ -174,8 +173,6 @@ class EventSubscription(pulumi.CustomResource):
         Manages an EventGrid Event Subscription
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
