@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -33,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePlacementGroup, err := proximity.NewPlacementGroup(ctx, "examplePlacementGroup", &proximity.PlacementGroupArgs{
+// 		_, err = proximity.NewPlacementGroup(ctx, "examplePlacementGroup", &proximity.PlacementGroupArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Tags: map[string]interface{}{

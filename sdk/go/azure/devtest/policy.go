@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -43,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePolicy, err := devtest.NewPolicy(ctx, "examplePolicy", &devtest.PolicyArgs{
+// 		_, err = devtest.NewPolicy(ctx, "examplePolicy", &devtest.PolicyArgs{
 // 			PolicySetName:     pulumi.String("default"),
 // 			LabName:           exampleLab.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
