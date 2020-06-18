@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -78,7 +76,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEndpointServicebusQueue, err := iot.NewEndpointServicebusQueue(ctx, "exampleEndpointServicebusQueue", &iot.EndpointServicebusQueueArgs{
+// 		_, err = iot.NewEndpointServicebusQueue(ctx, "exampleEndpointServicebusQueue", &iot.EndpointServicebusQueueArgs{
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			IothubName:        exampleIoTHub.Name,
 // 			ConnectionString:  exampleQueueAuthorizationRule.PrimaryConnectionString,

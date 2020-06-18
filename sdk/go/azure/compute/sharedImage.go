@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -45,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSharedImage, err := compute.NewSharedImage(ctx, "exampleSharedImage", &compute.SharedImageArgs{
+// 		_, err = compute.NewSharedImage(ctx, "exampleSharedImage", &compute.SharedImageArgs{
 // 			GalleryName:       exampleSharedImageGallery.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			Location:          exampleResourceGroup.Location,
