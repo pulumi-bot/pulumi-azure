@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment", DeprecationWarning)
-
 class Assignment(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -46,7 +45,6 @@ class Assignment(pulumi.CustomResource):
         Assigns a given Principal (User or Group) to a given Role.
 
         ## Example Usage
-
         ### Using A Built-In Role)
 
         ```python
@@ -60,7 +58,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_name="Reader",
             principal_id=example_client_config.object_id)
         ```
-
         ### Custom Role & Service Principal)
 
         ```python
@@ -83,7 +80,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.object_id)
         ```
-
         ### Custom Role & User)
 
         ```python
@@ -106,7 +102,6 @@ class Assignment(pulumi.CustomResource):
             role_definition_id=example_role_definition.id,
             principal_id=example_client_config.client_id)
         ```
-
         ### Custom Role & Management Group)
 
         ```python
