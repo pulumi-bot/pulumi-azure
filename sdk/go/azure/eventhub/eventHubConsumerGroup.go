@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -54,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleConsumerGroup, err := eventhub.NewConsumerGroup(ctx, "exampleConsumerGroup", &eventhub.ConsumerGroupArgs{
+// 		_, err = eventhub.NewConsumerGroup(ctx, "exampleConsumerGroup", &eventhub.ConsumerGroupArgs{
 // 			NamespaceName:     exampleEventHubNamespace.Name,
 // 			EventhubName:      exampleEventHub.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,

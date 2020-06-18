@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace", DeprecationWarning)
-
 class Namespace(pulumi.CustomResource):
     capacity: pulumi.Output[float]
     """
@@ -66,8 +65,6 @@ class Namespace(pulumi.CustomResource):
         Manages a ServiceBus Namespace.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

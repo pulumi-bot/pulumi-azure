@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
-
 class NamespaceAuthorizationRule(pulumi.CustomResource):
     listen: pulumi.Output[bool]
     """
@@ -58,8 +57,6 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
         Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

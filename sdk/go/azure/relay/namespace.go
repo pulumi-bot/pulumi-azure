@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -33,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNamespace, err := relay.NewNamespace(ctx, "exampleNamespace", &relay.NamespaceArgs{
+// 		_, err = relay.NewNamespace(ctx, "exampleNamespace", &relay.NamespaceArgs{
 // 			Location:          exampleResourceGroup.Location,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			SkuName:           pulumi.String("Standard"),

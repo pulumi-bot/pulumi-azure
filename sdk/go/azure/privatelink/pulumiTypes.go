@@ -28,8 +28,7 @@ type EndpointPrivateServiceConnection struct {
 // EndpointPrivateServiceConnectionInput is an input type that accepts EndpointPrivateServiceConnectionArgs and EndpointPrivateServiceConnectionOutput values.
 // You can construct a concrete instance of `EndpointPrivateServiceConnectionInput` via:
 //
-// 		 EndpointPrivateServiceConnectionArgs{...}
-//
+//          EndpointPrivateServiceConnectionArgs{...}
 type EndpointPrivateServiceConnectionInput interface {
 	pulumi.Input
 
@@ -75,12 +74,11 @@ func (i EndpointPrivateServiceConnectionArgs) ToEndpointPrivateServiceConnection
 // EndpointPrivateServiceConnectionPtrInput is an input type that accepts EndpointPrivateServiceConnectionArgs, EndpointPrivateServiceConnectionPtr and EndpointPrivateServiceConnectionPtrOutput values.
 // You can construct a concrete instance of `EndpointPrivateServiceConnectionPtrInput` via:
 //
-// 		 EndpointPrivateServiceConnectionArgs{...}
+//          EndpointPrivateServiceConnectionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EndpointPrivateServiceConnectionPtrInput interface {
 	pulumi.Input
 
@@ -257,8 +255,7 @@ type GetEndpointConnectionPrivateServiceConnection struct {
 // GetEndpointConnectionPrivateServiceConnectionInput is an input type that accepts GetEndpointConnectionPrivateServiceConnectionArgs and GetEndpointConnectionPrivateServiceConnectionOutput values.
 // You can construct a concrete instance of `GetEndpointConnectionPrivateServiceConnectionInput` via:
 //
-// 		 GetEndpointConnectionPrivateServiceConnectionArgs{...}
-//
+//          GetEndpointConnectionPrivateServiceConnectionArgs{...}
 type GetEndpointConnectionPrivateServiceConnectionInput interface {
 	pulumi.Input
 
@@ -297,8 +294,7 @@ func (i GetEndpointConnectionPrivateServiceConnectionArgs) ToGetEndpointConnecti
 // GetEndpointConnectionPrivateServiceConnectionArrayInput is an input type that accepts GetEndpointConnectionPrivateServiceConnectionArray and GetEndpointConnectionPrivateServiceConnectionArrayOutput values.
 // You can construct a concrete instance of `GetEndpointConnectionPrivateServiceConnectionArrayInput` via:
 //
-// 		 GetEndpointConnectionPrivateServiceConnectionArray{ GetEndpointConnectionPrivateServiceConnectionArgs{...} }
-//
+//          GetEndpointConnectionPrivateServiceConnectionArray{ GetEndpointConnectionPrivateServiceConnectionArgs{...} }
 type GetEndpointConnectionPrivateServiceConnectionArrayInput interface {
 	pulumi.Input
 
@@ -399,8 +395,7 @@ type GetServiceEndpointConnectionsPrivateEndpointConnection struct {
 // GetServiceEndpointConnectionsPrivateEndpointConnectionInput is an input type that accepts GetServiceEndpointConnectionsPrivateEndpointConnectionArgs and GetServiceEndpointConnectionsPrivateEndpointConnectionOutput values.
 // You can construct a concrete instance of `GetServiceEndpointConnectionsPrivateEndpointConnectionInput` via:
 //
-// 		 GetServiceEndpointConnectionsPrivateEndpointConnectionArgs{...}
-//
+//          GetServiceEndpointConnectionsPrivateEndpointConnectionArgs{...}
 type GetServiceEndpointConnectionsPrivateEndpointConnectionInput interface {
 	pulumi.Input
 
@@ -440,8 +435,7 @@ func (i GetServiceEndpointConnectionsPrivateEndpointConnectionArgs) ToGetService
 // GetServiceEndpointConnectionsPrivateEndpointConnectionArrayInput is an input type that accepts GetServiceEndpointConnectionsPrivateEndpointConnectionArray and GetServiceEndpointConnectionsPrivateEndpointConnectionArrayOutput values.
 // You can construct a concrete instance of `GetServiceEndpointConnectionsPrivateEndpointConnectionArrayInput` via:
 //
-// 		 GetServiceEndpointConnectionsPrivateEndpointConnectionArray{ GetServiceEndpointConnectionsPrivateEndpointConnectionArgs{...} }
-//
+//          GetServiceEndpointConnectionsPrivateEndpointConnectionArray{ GetServiceEndpointConnectionsPrivateEndpointConnectionArgs{...} }
 type GetServiceEndpointConnectionsPrivateEndpointConnectionArrayInput interface {
 	pulumi.Input
 
@@ -548,8 +542,7 @@ type GetServiceNatIpConfiguration struct {
 // GetServiceNatIpConfigurationInput is an input type that accepts GetServiceNatIpConfigurationArgs and GetServiceNatIpConfigurationOutput values.
 // You can construct a concrete instance of `GetServiceNatIpConfigurationInput` via:
 //
-// 		 GetServiceNatIpConfigurationArgs{...}
-//
+//          GetServiceNatIpConfigurationArgs{...}
 type GetServiceNatIpConfigurationInput interface {
 	pulumi.Input
 
@@ -585,8 +578,7 @@ func (i GetServiceNatIpConfigurationArgs) ToGetServiceNatIpConfigurationOutputWi
 // GetServiceNatIpConfigurationArrayInput is an input type that accepts GetServiceNatIpConfigurationArray and GetServiceNatIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetServiceNatIpConfigurationArrayInput` via:
 //
-// 		 GetServiceNatIpConfigurationArray{ GetServiceNatIpConfigurationArgs{...} }
-//
+//          GetServiceNatIpConfigurationArray{ GetServiceNatIpConfigurationArgs{...} }
 type GetServiceNatIpConfigurationArrayInput interface {
 	pulumi.Input
 
