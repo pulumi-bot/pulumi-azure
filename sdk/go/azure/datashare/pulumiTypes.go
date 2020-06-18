@@ -22,8 +22,7 @@ type AccountIdentity struct {
 // AccountIdentityInput is an input type that accepts AccountIdentityArgs and AccountIdentityOutput values.
 // You can construct a concrete instance of `AccountIdentityInput` via:
 //
-// 		 AccountIdentityArgs{...}
-//
+//          AccountIdentityArgs{...}
 type AccountIdentityInput interface {
 	pulumi.Input
 
@@ -63,12 +62,11 @@ func (i AccountIdentityArgs) ToAccountIdentityPtrOutputWithContext(ctx context.C
 // AccountIdentityPtrInput is an input type that accepts AccountIdentityArgs, AccountIdentityPtr and AccountIdentityPtrOutput values.
 // You can construct a concrete instance of `AccountIdentityPtrInput` via:
 //
-// 		 AccountIdentityArgs{...}
+//          AccountIdentityArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AccountIdentityPtrInput interface {
 	pulumi.Input
 
@@ -193,8 +191,7 @@ type ShareSnapshotSchedule struct {
 // ShareSnapshotScheduleInput is an input type that accepts ShareSnapshotScheduleArgs and ShareSnapshotScheduleOutput values.
 // You can construct a concrete instance of `ShareSnapshotScheduleInput` via:
 //
-// 		 ShareSnapshotScheduleArgs{...}
-//
+//          ShareSnapshotScheduleArgs{...}
 type ShareSnapshotScheduleInput interface {
 	pulumi.Input
 
@@ -234,12 +231,11 @@ func (i ShareSnapshotScheduleArgs) ToShareSnapshotSchedulePtrOutputWithContext(c
 // ShareSnapshotSchedulePtrInput is an input type that accepts ShareSnapshotScheduleArgs, ShareSnapshotSchedulePtr and ShareSnapshotSchedulePtrOutput values.
 // You can construct a concrete instance of `ShareSnapshotSchedulePtrInput` via:
 //
-// 		 ShareSnapshotScheduleArgs{...}
+//          ShareSnapshotScheduleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ShareSnapshotSchedulePtrInput interface {
 	pulumi.Input
 
@@ -364,8 +360,7 @@ type GetAccountIdentity struct {
 // GetAccountIdentityInput is an input type that accepts GetAccountIdentityArgs and GetAccountIdentityOutput values.
 // You can construct a concrete instance of `GetAccountIdentityInput` via:
 //
-// 		 GetAccountIdentityArgs{...}
-//
+//          GetAccountIdentityArgs{...}
 type GetAccountIdentityInput interface {
 	pulumi.Input
 
@@ -397,8 +392,7 @@ func (i GetAccountIdentityArgs) ToGetAccountIdentityOutputWithContext(ctx contex
 // GetAccountIdentityArrayInput is an input type that accepts GetAccountIdentityArray and GetAccountIdentityArrayOutput values.
 // You can construct a concrete instance of `GetAccountIdentityArrayInput` via:
 //
-// 		 GetAccountIdentityArray{ GetAccountIdentityArgs{...} }
-//
+//          GetAccountIdentityArray{ GetAccountIdentityArgs{...} }
 type GetAccountIdentityArrayInput interface {
 	pulumi.Input
 
@@ -481,8 +475,7 @@ type GetShareSnapshotSchedule struct {
 // GetShareSnapshotScheduleInput is an input type that accepts GetShareSnapshotScheduleArgs and GetShareSnapshotScheduleOutput values.
 // You can construct a concrete instance of `GetShareSnapshotScheduleInput` via:
 //
-// 		 GetShareSnapshotScheduleArgs{...}
-//
+//          GetShareSnapshotScheduleArgs{...}
 type GetShareSnapshotScheduleInput interface {
 	pulumi.Input
 
@@ -514,8 +507,7 @@ func (i GetShareSnapshotScheduleArgs) ToGetShareSnapshotScheduleOutputWithContex
 // GetShareSnapshotScheduleArrayInput is an input type that accepts GetShareSnapshotScheduleArray and GetShareSnapshotScheduleArrayOutput values.
 // You can construct a concrete instance of `GetShareSnapshotScheduleArrayInput` via:
 //
-// 		 GetShareSnapshotScheduleArray{ GetShareSnapshotScheduleArgs{...} }
-//
+//          GetShareSnapshotScheduleArray{ GetShareSnapshotScheduleArgs{...} }
 type GetShareSnapshotScheduleArrayInput interface {
 	pulumi.Input
 
