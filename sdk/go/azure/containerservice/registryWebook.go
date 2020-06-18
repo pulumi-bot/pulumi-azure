@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -42,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		webhook, err := containerservice.NewRegistryWebhook(ctx, "webhook", &containerservice.RegistryWebhookArgs{
+// 		_, err = containerservice.NewRegistryWebhook(ctx, "webhook", &containerservice.RegistryWebhookArgs{
 // 			ResourceGroupName: rg.Name,
 // 			RegistryName:      acr.Name,
 // 			Location:          rg.Location,

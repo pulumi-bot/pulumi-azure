@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
-
 class ZipBlob(pulumi.CustomResource):
     access_tier: pulumi.Output[str]
     content: pulumi.Output[pulumi.Archive]
