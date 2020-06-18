@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -46,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTopic, err := servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
+// 		_, err = servicebus.NewTopic(ctx, "exampleTopic", &servicebus.TopicArgs{
 // 			ResourceGroupName:  exampleResourceGroup.Name,
 // 			NamespaceName:      exampleNamespace.Name,
 // 			EnablePartitioning: pulumi.Bool(true),

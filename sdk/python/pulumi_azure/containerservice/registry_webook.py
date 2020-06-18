@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook", DeprecationWarning)
-
 class RegistryWebook(pulumi.CustomResource):
     actions: pulumi.Output[list]
     """
@@ -55,8 +54,6 @@ class RegistryWebook(pulumi.CustomResource):
         Manages an Azure Container Registry Webhook.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

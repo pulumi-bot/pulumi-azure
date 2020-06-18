@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule", DeprecationWarning)
-
 class EventHubAuthorizationRule(pulumi.CustomResource):
     eventhub_name: pulumi.Output[str]
     """
@@ -70,8 +69,6 @@ class EventHubAuthorizationRule(pulumi.CustomResource):
         Manages a Event Hubs authorization Rule within an Event Hub.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

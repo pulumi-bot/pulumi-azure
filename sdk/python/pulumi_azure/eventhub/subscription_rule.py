@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule", DeprecationWarning)
-
 class SubscriptionRule(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
@@ -63,7 +62,6 @@ class SubscriptionRule(pulumi.CustomResource):
         Manages a ServiceBus Subscription Rule.
 
         ## Example Usage
-
         ### SQL Filter)
 
         ```python
@@ -95,7 +93,6 @@ class SubscriptionRule(pulumi.CustomResource):
             filter_type="SqlFilter",
             sql_filter="colour = 'red'")
         ```
-
         ### Correlation Filter)
 
         ```python

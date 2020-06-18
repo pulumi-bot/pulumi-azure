@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := eventhub.LookupConsumeGroup(ctx, &eventhub.LookupConsumeGroupArgs{
+// 		_, err := eventhub.LookupConsumeGroup(ctx, &eventhub.LookupConsumeGroupArgs{
 // 			EventhubName:      azurerm_eventhub.Test.Name,
 // 			Name:              azurerm_eventhub_consumer_group.Test.Name,
 // 			NamespaceName:     azurerm_eventhub_namespace.Test.Name,

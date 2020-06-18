@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -56,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOutputBlob, err := streamanalytics.NewOutputBlob(ctx, "exampleOutputBlob", &streamanalytics.OutputBlobArgs{
+// 		_, err = streamanalytics.NewOutputBlob(ctx, "exampleOutputBlob", &streamanalytics.OutputBlobArgs{
 // 			StreamAnalyticsJobName: pulumi.String(exampleJob.Name),
 // 			ResourceGroupName:      pulumi.String(exampleJob.ResourceGroupName),
 // 			StorageAccountName:     exampleAccount.Name,

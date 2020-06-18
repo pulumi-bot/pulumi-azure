@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue", DeprecationWarning)
-
 class Queue(pulumi.CustomResource):
     auto_delete_on_idle: pulumi.Output[str]
     """
@@ -93,8 +92,6 @@ class Queue(pulumi.CustomResource):
         Manages a ServiceBus Queue.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
