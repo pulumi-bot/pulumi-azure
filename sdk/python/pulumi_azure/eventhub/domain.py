@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain", DeprecationWarning)
-
 class Domain(pulumi.CustomResource):
     endpoint: pulumi.Output[str]
     """
@@ -69,8 +68,6 @@ class Domain(pulumi.CustomResource):
         Manages an EventGrid Domain
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

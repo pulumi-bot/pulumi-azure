@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule", DeprecationWarning)
-
 class TopicAuthorizationRule(pulumi.CustomResource):
     listen: pulumi.Output[bool]
     """
@@ -62,8 +61,6 @@ class TopicAuthorizationRule(pulumi.CustomResource):
         Manages a ServiceBus Topic authorization Rule within a ServiceBus Topic.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

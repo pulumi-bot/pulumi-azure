@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription", DeprecationWarning)
-
 class Subscription(pulumi.CustomResource):
     auto_delete_on_idle: pulumi.Output[str]
     """
@@ -70,8 +69,6 @@ class Subscription(pulumi.CustomResource):
         Manages a ServiceBus Subscription.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

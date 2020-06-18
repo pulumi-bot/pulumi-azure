@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
-
 class ManagementGroup(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     """
@@ -38,8 +37,6 @@ class ManagementGroup(pulumi.CustomResource):
         Manages a Management Group.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
