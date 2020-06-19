@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
-
 class Definition(pulumi.CustomResource):
     assignable_scopes: pulumi.Output[list]
     """
@@ -47,8 +46,6 @@ class Definition(pulumi.CustomResource):
         Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi

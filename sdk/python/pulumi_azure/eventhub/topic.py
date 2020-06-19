@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
-
 class Topic(pulumi.CustomResource):
     auto_delete_on_idle: pulumi.Output[str]
     """
@@ -88,8 +87,6 @@ class Topic(pulumi.CustomResource):
         **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
