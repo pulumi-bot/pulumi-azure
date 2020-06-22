@@ -11,25 +11,24 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
+// 		_, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
 // 			Name:              "storageaccountname",
 // 			ResourceGroupName: "resourcegroupname",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePolicy, err := storage.LookupPolicy(ctx, &storage.LookupPolicyArgs{
+// 		_, err := storage.GetPolicy(ctx, &storage.GetPolicyArgs{
 // 			StorageAccountId: azurerm_storage_account.Example.Id,
 // 		}, nil)
 // 		if err != nil {
