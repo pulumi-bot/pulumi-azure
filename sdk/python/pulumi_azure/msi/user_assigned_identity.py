@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
-
 class UserAssignedIdentity(pulumi.CustomResource):
     client_id: pulumi.Output[str]
     """
@@ -45,8 +44,6 @@ class UserAssignedIdentity(pulumi.CustomResource):
         Manages a user assigned identity.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
