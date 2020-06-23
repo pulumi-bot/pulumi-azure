@@ -6,3 +6,4 @@
 from .alert_rule_ms_security_incident import *
 from .alert_rule_scheduled import *
 from .get_alert_rule import *
+

@@ -38,3 +38,4 @@ from .virtual_machine import *
 from .virtual_machine_scale_set_extension import *
 from .windows_virtual_machine import *
 from .windows_virtual_machine_scale_set import *
+
