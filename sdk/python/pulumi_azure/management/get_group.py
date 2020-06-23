@@ -63,8 +63,6 @@ def get_group(display_name=None,group_id=None,name=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_azure as azure

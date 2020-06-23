@@ -10,7 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile", DeprecationWarning)
-
 class Profile(pulumi.CustomResource):
     dns_config: pulumi.Output[dict]
     """
@@ -65,8 +64,6 @@ class Profile(pulumi.CustomResource):
         Manages a Traffic Manager Profile to which multiple endpoints can be attached.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
