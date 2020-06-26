@@ -36,7 +36,7 @@ import (
 // 			Location:               exampleResourceGroup.Location,
 // 			AccountTier:            pulumi.String("Standard"),
 // 			AccountReplicationType: pulumi.String("GRS"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"environment": pulumi.String("staging"),
 // 			},
 // 		})

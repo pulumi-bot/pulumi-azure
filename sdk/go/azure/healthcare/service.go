@@ -55,7 +55,7 @@ import (
 // 			Kind:               pulumi.String("fhir-R4"),
 // 			Location:           pulumi.String("westus2"),
 // 			ResourceGroupName:  pulumi.String("sample-resource-group"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"environment": pulumi.String("testenv"),
 // 				"purpose":     pulumi.String("AcceptanceTests"),
 // 			},
