@@ -61,8 +61,6 @@ def get_resources(name=None,required_tags=None,resource_group_name=None,type=Non
     """
     Use this data source to access information about existing resources.
 
-    ## Example Usage
-
 
     :param str name: The name of the Resource.
     :param dict required_tags: A mapping of tags which the resource has to have in order to be included in the result.
