@@ -37,7 +37,7 @@ import (
 // 			Location:               pulumi.String(azurerm_resource_group.Example.Location),
 // 			AccountTier:            pulumi.String("Standard"),
 // 			AccountReplicationType: pulumi.String("LRS"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"environment": pulumi.String("example"),
 // 			},
 // 		})
