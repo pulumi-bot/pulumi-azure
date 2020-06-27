@@ -83,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = siterecovery.NewNetworkMapping(ctx, "recovery-mapping", &siterecovery.NetworkMappingArgs{
+// 		_, err = siterecovery.NewNetworkMapping(ctx, "recovery_mapping", &siterecovery.NetworkMappingArgs{
 // 			ResourceGroupName:        secondaryResourceGroup.Name,
 // 			RecoveryVaultName:        vault.Name,
 // 			SourceRecoveryFabricName: pulumi.String("primary-fabric"),
