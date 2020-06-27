@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = healthcare.NewService(ctx, "example", &healthcare.ServiceArgs{
+// 		_, err := healthcare.NewService(ctx, "example", &healthcare.ServiceArgs{
 // 			AccessPolicyObjectIds: pulumi.StringArray{
 // 				pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 // 			},
