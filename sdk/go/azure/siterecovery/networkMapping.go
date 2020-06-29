@@ -59,7 +59,9 @@ import (
 // 			ResourceGroupName: secondaryResourceGroup.Name,
 // 			RecoveryVaultName: vault.Name,
 // 			Location:          secondaryResourceGroup.Location,
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			primaryFabric,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
