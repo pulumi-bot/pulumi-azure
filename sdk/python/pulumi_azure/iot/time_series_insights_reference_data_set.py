@@ -57,7 +57,7 @@ class TimeSeriesInsightsReferenceDataSet(pulumi.CustomResource):
         example_time_series_insights_reference_data_set = azure.iot.TimeSeriesInsightsReferenceDataSet("exampleTimeSeriesInsightsReferenceDataSet",
             time_series_insights_environment_id=example_time_series_insights_standard_environment.id,
             location=example_resource_group.location,
-            key_property=[{
+            key_properties=[{
                 "name": "keyProperty1",
                 "type": "String",
             }])

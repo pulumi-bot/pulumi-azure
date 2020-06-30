@@ -173,7 +173,7 @@ class IoTHub(pulumi.CustomResource):
                 "name": "S1",
                 "capacity": "1",
             },
-            endpoint=[
+            endpoints=[
                 {
                     "type": "AzureIotHub.StorageContainer",
                     "connection_string": example_account.primary_blob_connection_string,
@@ -190,7 +190,7 @@ class IoTHub(pulumi.CustomResource):
                     "name": "export2",
                 },
             ],
-            route=[
+            routes=[
                 {
                     "name": "export",
                     "source": "DeviceMessages",

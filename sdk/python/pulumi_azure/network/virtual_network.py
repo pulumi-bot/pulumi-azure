@@ -97,7 +97,7 @@ class VirtualNetwork(pulumi.CustomResource):
                 "id": example_ddos_protection_plan.id,
                 "enable": True,
             },
-            subnet=[
+            subnets=[
                 {
                     "name": "subnet1",
                     "address_prefix": "10.0.1.0/24",

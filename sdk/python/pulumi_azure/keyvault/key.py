@@ -90,7 +90,7 @@ class Key(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             tenant_id=current.tenant_id,
             sku_name="premium",
-            access_policy=[{
+            access_policies=[{
                 "tenant_id": current.tenant_id,
                 "object_id": current.object_id,
                 "key_permissions": [

@@ -41,7 +41,7 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
         example_route_table = azure.network.RouteTable("exampleRouteTable",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            route=[{
+            routes=[{
                 "name": "example",
                 "address_prefix": "10.100.0.0/14",
                 "next_hop_type": "VirtualAppliance",

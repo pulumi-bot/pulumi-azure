@@ -57,7 +57,7 @@ class SRVRecord(pulumi.CustomResource):
             resource_group_name=azurerm_resource_group["test"]["name"],
             zone_name=test_zone.name,
             ttl=300,
-            record=[
+            records=[
                 {
                     "priority": 1,
                     "weight": 5,

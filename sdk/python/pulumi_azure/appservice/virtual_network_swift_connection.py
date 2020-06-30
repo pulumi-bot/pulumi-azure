@@ -38,9 +38,9 @@ class VirtualNetworkSwiftConnection(pulumi.CustomResource):
             resource_group_name=test_resource_group.name,
             virtual_network_name=test_virtual_network.name,
             address_prefix="10.0.1.0/24",
-            delegation=[{
+            delegations=[{
                 "name": "acctestdelegation",
-                "service_delegation": {
+                "serviceDelegation": {
                     "name": "Microsoft.Web/serverFarms",
                     "actions": ["Microsoft.Network/virtualNetworks/subnets/action"],
                 },

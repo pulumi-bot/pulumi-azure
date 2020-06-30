@@ -66,7 +66,7 @@ class DataDiskAttachment(pulumi.CustomResource):
         main_network_interface = azure.network.NetworkInterface("mainNetworkInterface",
             location=main_resource_group.location,
             resource_group_name=main_resource_group.name,
-            ip_configuration=[{
+            ip_configurations=[{
                 "name": "internal",
                 "subnet_id": internal.id,
                 "privateIpAddressAllocation": "Dynamic",

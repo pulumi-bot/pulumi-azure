@@ -66,7 +66,7 @@ class NatPool(pulumi.CustomResource):
         example_load_balancer = azure.lb.LoadBalancer("exampleLoadBalancer",
             location="West US",
             resource_group_name=example_resource_group.name,
-            frontend_ip_configuration=[{
+            frontend_ip_configurations=[{
                 "name": "PublicIPAddress",
                 "public_ip_address_id": example_public_ip.id,
             }])

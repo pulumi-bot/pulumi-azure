@@ -54,7 +54,7 @@ class ManagementPolicy(pulumi.CustomResource):
             account_kind="BlobStorage")
         example_management_policy = azure.storage.ManagementPolicy("exampleManagementPolicy",
             storage_account_id=example_account.id,
-            rule=[
+            rules=[
                 {
                     "name": "rule1",
                     "enabled": True,
@@ -63,7 +63,7 @@ class ManagementPolicy(pulumi.CustomResource):
                         "blobTypes": ["blockBlob"],
                     },
                     "actions": {
-                        "base_blob": {
+                        "baseBlob": {
                             "tierToCoolAfterDaysSinceModificationGreaterThan": 10,
                             "tierToArchiveAfterDaysSinceModificationGreaterThan": 50,
                             "deleteAfterDaysSinceModificationGreaterThan": 100,
@@ -84,7 +84,7 @@ class ManagementPolicy(pulumi.CustomResource):
                         "blobTypes": ["blockBlob"],
                     },
                     "actions": {
-                        "base_blob": {
+                        "baseBlob": {
                             "tierToCoolAfterDaysSinceModificationGreaterThan": 11,
                             "tierToArchiveAfterDaysSinceModificationGreaterThan": 51,
                             "deleteAfterDaysSinceModificationGreaterThan": 101,

@@ -307,10 +307,10 @@ class WindowsVirtualMachineScaleSet(pulumi.CustomResource):
                 "storage_account_type": "Standard_LRS",
                 "caching": "ReadWrite",
             },
-            network_interface=[{
+            network_interfaces=[{
                 "name": "example",
                 "primary": True,
-                "ip_configuration": [{
+                "ip_configurations": [{
                     "name": "internal",
                     "primary": True,
                     "subnet_id": internal.id,

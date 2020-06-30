@@ -106,7 +106,7 @@ class KeyVault(pulumi.CustomResource):
             soft_delete_enabled=True,
             purge_protection_enabled=False,
             sku_name="standard",
-            access_policy=[{
+            access_policies=[{
                 "tenant_id": current.tenant_id,
                 "object_id": current.object_id,
                 "key_permissions": ["get"],

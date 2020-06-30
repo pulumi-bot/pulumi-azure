@@ -79,17 +79,17 @@ class GremlinGraph(pulumi.CustomResource):
             database_name=example_gremlin_database.name,
             partition_key_path="/Example",
             throughput=400,
-            index_policy=[{
+            index_policies=[{
                 "automatic": True,
                 "indexingMode": "Consistent",
                 "includedPaths": ["/*"],
                 "excludedPaths": ["/\"_etag\"/?"],
             }],
-            conflict_resolution_policy=[{
+            conflict_resolution_policies=[{
                 "mode": "LastWriterWins",
                 "conflictResolutionPath": "/_ts",
             }],
-            unique_key=[{
+            unique_keys=[{
                 "paths": [
                     "/definition/id1",
                     "/definition/id2",

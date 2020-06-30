@@ -141,7 +141,7 @@ class ApiOperation(pulumi.CustomResource):
             method="DELETE",
             url_template="/users/{id}/delete",
             description="This can only be done by the logged in user.",
-            response=[{
+            responses=[{
                 "statusCode": 200,
             }])
         ```

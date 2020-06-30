@@ -77,14 +77,14 @@ class DiagnosticSetting(pulumi.CustomResource):
         example_diagnostic_setting = azure.monitoring.DiagnosticSetting("exampleDiagnosticSetting",
             target_resource_id=example_key_vault.id,
             storage_account_id=example_account.id,
-            log=[{
+            logs=[{
                 "category": "AuditEvent",
                 "enabled": False,
                 "retention_policy": {
                     "enabled": False,
                 },
             }],
-            metric=[{
+            metrics=[{
                 "category": "AllMetrics",
                 "retention_policy": {
                     "enabled": False,

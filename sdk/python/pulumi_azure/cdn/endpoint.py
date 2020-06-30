@@ -261,7 +261,7 @@ class Endpoint(pulumi.CustomResource):
             profile_name=example_profile.name,
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            origin=[{
+            origins=[{
                 "name": "example",
                 "host_name": "www.example.com",
             }])

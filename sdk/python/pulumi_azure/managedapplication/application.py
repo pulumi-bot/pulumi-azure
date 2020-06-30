@@ -77,7 +77,7 @@ class Application(pulumi.CustomResource):
             package_file_uri="https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip",
             display_name="TestManagedAppDefinition",
             description="Test Managed App Definition",
-            authorization=[{
+            authorizations=[{
                 "service_principal_id": current.object_id,
                 "role_definition_id": builtin.id.split("/")[len(builtin.id.split("/")) - 1],
             }])

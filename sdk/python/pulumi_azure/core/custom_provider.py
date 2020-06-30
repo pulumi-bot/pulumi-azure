@@ -62,7 +62,7 @@ class CustomProvider(pulumi.CustomResource):
         example_custom_provider = azure.core.CustomProvider("exampleCustomProvider",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            resource_type=[{
+            resource_types=[{
                 "name": "dEf1",
                 "endpoint": "https://testendpoint.com/",
             }])

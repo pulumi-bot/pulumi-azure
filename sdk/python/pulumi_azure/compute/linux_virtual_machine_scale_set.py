@@ -280,7 +280,7 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
             sku="Standard_F2",
             instances=1,
             admin_username="adminuser",
-            admin_ssh_key=[{
+            admin_ssh_keys=[{
                 "username": "adminuser",
                 "publicKey": (lambda path: open(path).read())("~/.ssh/id_rsa.pub"),
             }],
@@ -294,10 +294,10 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
                 "storage_account_type": "Standard_LRS",
                 "caching": "ReadWrite",
             },
-            network_interface=[{
+            network_interfaces=[{
                 "name": "example",
                 "primary": True,
-                "ip_configuration": [{
+                "ip_configurations": [{
                     "name": "internal",
                     "primary": True,
                     "subnet_id": internal.id,
