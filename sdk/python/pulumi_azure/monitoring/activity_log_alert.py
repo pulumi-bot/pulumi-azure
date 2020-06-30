@@ -74,7 +74,7 @@ class ActivityLogAlert(pulumi.CustomResource):
         main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
             resource_group_name=main_resource_group.name,
             short_name="p0action",
-            webhook_receiver=[{
+            webhook_receivers=[{
                 "name": "callmyapi",
                 "service_uri": "http://example.com/alert",
             }])
@@ -92,7 +92,7 @@ class ActivityLogAlert(pulumi.CustomResource):
                 "operationName": "Microsoft.Storage/storageAccounts/write",
                 "category": "Recommendation",
             },
-            action=[{
+            actions=[{
                 "action_group_id": main_action_group.id,
                 "webhookProperties": {
                     "from": "source",

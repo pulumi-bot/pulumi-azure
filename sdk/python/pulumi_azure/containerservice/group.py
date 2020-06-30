@@ -153,7 +153,7 @@ class Group(pulumi.CustomResource):
             ip_address_type="public",
             dns_name_label="aci-label",
             os_type="Linux",
-            container=[
+            containers=[
                 {
                     "name": "hello-world",
                     "image": "microsoft/aci-helloworld:latest",

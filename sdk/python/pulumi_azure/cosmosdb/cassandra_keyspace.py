@@ -48,7 +48,7 @@ class CassandraKeyspace(pulumi.CustomResource):
             consistency_policy={
                 "consistencyLevel": "Strong",
             },
-            geo_location=[{
+            geo_locations=[{
                 "location": "West US",
                 "failoverPriority": 0,
             }])

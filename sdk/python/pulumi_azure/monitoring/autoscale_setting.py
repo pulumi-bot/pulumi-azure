@@ -103,16 +103,16 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profile=[{
+            profiles=[{
                 "name": "defaultProfile",
                 "capacity": {
                     "default": 1,
                     "minimum": 1,
                     "maximum": 10,
                 },
-                "rule": [
+                "rules": [
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -122,7 +122,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "GreaterThan",
                             "threshold": 75,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Increase",
                             "type": "ChangeCount",
                             "value": "1",
@@ -130,7 +130,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                         },
                     },
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -140,7 +140,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "LessThan",
                             "threshold": 25,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Decrease",
                             "type": "ChangeCount",
                             "value": "1",
@@ -170,16 +170,16 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profile=[{
+            profiles=[{
                 "name": "Weekends",
                 "capacity": {
                     "default": 1,
                     "minimum": 1,
                     "maximum": 10,
                 },
-                "rule": [
+                "rules": [
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -189,7 +189,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "GreaterThan",
                             "threshold": 90,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Increase",
                             "type": "ChangeCount",
                             "value": "2",
@@ -197,7 +197,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                         },
                     },
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -207,7 +207,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "LessThan",
                             "threshold": 10,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Decrease",
                             "type": "ChangeCount",
                             "value": "2",
@@ -248,16 +248,16 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profile=[{
+            profiles=[{
                 "name": "forJuly",
                 "capacity": {
                     "default": 1,
                     "minimum": 1,
                     "maximum": 10,
                 },
-                "rule": [
+                "rules": [
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -267,7 +267,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "GreaterThan",
                             "threshold": 90,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Increase",
                             "type": "ChangeCount",
                             "value": "2",
@@ -275,7 +275,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                         },
                     },
                     {
-                        "metric_trigger": {
+                        "metricTrigger": {
                             "metricName": "Percentage CPU",
                             "metricResourceId": example_scale_set.id,
                             "timeGrain": "PT1M",
@@ -285,7 +285,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                             "operator": "LessThan",
                             "threshold": 10,
                         },
-                        "scale_action": {
+                        "scaleAction": {
                             "direction": "Decrease",
                             "type": "ChangeCount",
                             "value": "2",
@@ -293,7 +293,7 @@ class AutoscaleSetting(pulumi.CustomResource):
                         },
                     },
                 ],
-                "fixed_date": {
+                "fixedDate": {
                     "timezone": "Pacific Standard Time",
                     "start": "2020-07-01T00:00:00Z",
                     "end": "2020-07-31T23:59:59Z",

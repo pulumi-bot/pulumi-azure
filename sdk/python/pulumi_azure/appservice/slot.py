@@ -202,7 +202,7 @@ class Slot(pulumi.CustomResource):
             app_settings={
                 "SOME_KEY": "some-value",
             },
-            connection_string=[{
+            connection_strings=[{
                 "name": "Database",
                 "type": "SQLServer",
                 "value": "Server=some-server.mydomain.com;Integrated Security=SSPI",
@@ -218,7 +218,7 @@ class Slot(pulumi.CustomResource):
             app_settings={
                 "SOME_KEY": "some-value",
             },
-            connection_string=[{
+            connection_strings=[{
                 "name": "Database",
                 "type": "SQLServer",
                 "value": "Server=some-server.mydomain.com;Integrated Security=SSPI",

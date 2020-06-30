@@ -59,7 +59,7 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
           return in;
         }
         \"\"\",
-            input=[{
+            inputs=[{
                 "type": "bigint",
             }],
             output={

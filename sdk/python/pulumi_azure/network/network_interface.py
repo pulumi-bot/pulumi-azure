@@ -101,7 +101,7 @@ class NetworkInterface(pulumi.CustomResource):
         example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configuration=[{
+            ip_configurations=[{
                 "name": "internal",
                 "subnet_id": example_subnet.id,
                 "privateIpAddressAllocation": "Dynamic",

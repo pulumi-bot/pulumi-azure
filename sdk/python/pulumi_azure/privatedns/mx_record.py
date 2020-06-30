@@ -55,7 +55,7 @@ class MxRecord(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             zone_name=example_zone.name,
             ttl=300,
-            record=[
+            records=[
                 {
                     "preference": 10,
                     "exchange": "mx1.contoso.com",

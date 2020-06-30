@@ -69,7 +69,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
         example_firewall = azure.network.Firewall("exampleFirewall",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configuration=[{
+            ip_configurations=[{
                 "name": "configuration",
                 "subnet_id": example_subnet.id,
                 "public_ip_address_id": example_public_ip.id,
@@ -79,7 +79,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             priority=100,
             action="Allow",
-            rule=[{
+            rules=[{
                 "name": "testrule",
                 "sourceAddresses": ["10.0.0.0/16"],
                 "destinationPorts": ["53"],

@@ -99,7 +99,7 @@ class VpnServerConfiguration(pulumi.CustomResource):
             resource_group_name=example.name,
             location=example.location,
             vpn_authentication_types=["Certificate"],
-            client_root_certificate=[{
+            client_root_certificates=[{
                 "name": "DigiCert-Federated-ID-Root-CA",
                 "publicCertData": \"\"\"MIIDuzCCAqOgAwIBAgIQCHTZWCM+IlfFIRXIvyKSrjANBgkqhkiG9w0BAQsFADBn
         MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3

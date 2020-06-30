@@ -59,7 +59,7 @@ class CaaRecord(pulumi.CustomResource):
             zone_name=example_zone.name,
             resource_group_name=example_resource_group.name,
             ttl=300,
-            record=[
+            records=[
                 {
                     "flags": 0,
                     "tag": "issue",

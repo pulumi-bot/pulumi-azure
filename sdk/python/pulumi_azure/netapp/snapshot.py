@@ -58,9 +58,9 @@ class Snapshot(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             virtual_network_name=example_virtual_network.name,
             address_prefix="10.0.2.0/24",
-            delegation=[{
+            delegations=[{
                 "name": "netapp",
-                "service_delegation": {
+                "serviceDelegation": {
                     "name": "Microsoft.Netapp/volumes",
                     "actions": [
                         "Microsoft.Network/networkinterfaces/*",

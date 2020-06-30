@@ -140,7 +140,7 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
         location=example_resource_group.location,
         resource_group_name=example_resource_group.name,
-        ip_configuration=[{
+        ip_configurations=[{
             "name": "testconfiguration1",
             "subnet_id": example_subnet.id,
             "privateIpAddressAllocation": "Static",

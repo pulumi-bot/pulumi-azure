@@ -62,7 +62,7 @@ class RouteTable(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             disable_bgp_route_propagation=False,
-            route=[{
+            routes=[{
                 "name": "route1",
                 "address_prefix": "10.1.0.0/16",
                 "next_hop_type": "vnetlocal",

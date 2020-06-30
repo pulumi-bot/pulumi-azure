@@ -138,7 +138,7 @@ class Account(pulumi.CustomResource):
                 "maxIntervalInSeconds": 10,
                 "maxStalenessPrefix": 200,
             },
-            geo_location=[
+            geo_locations=[
                 {
                     "location": var["failover_location"],
                     "failoverPriority": 1,

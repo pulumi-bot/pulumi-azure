@@ -41,7 +41,7 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
         example_network_security_group = azure.network.NetworkSecurityGroup("exampleNetworkSecurityGroup",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            security_rule=[{
+            security_rules=[{
                 "name": "test123",
                 "priority": 100,
                 "direction": "Inbound",

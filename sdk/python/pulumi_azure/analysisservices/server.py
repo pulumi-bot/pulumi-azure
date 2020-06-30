@@ -73,7 +73,7 @@ class Server(pulumi.CustomResource):
             sku="S0",
             admin_users=["myuser@domain.tld"],
             enable_power_bi_service=True,
-            ipv4_firewall_rule=[{
+            ipv4_firewall_rules=[{
                 "name": "myRule1",
                 "rangeStart": "210.117.252.0",
                 "rangeEnd": "210.117.252.255",

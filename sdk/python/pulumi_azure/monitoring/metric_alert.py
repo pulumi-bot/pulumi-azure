@@ -92,7 +92,7 @@ class MetricAlert(pulumi.CustomResource):
         main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
             resource_group_name=main_resource_group.name,
             short_name="exampleact",
-            webhook_receiver=[{
+            webhook_receivers=[{
                 "name": "callmyapi",
                 "service_uri": "http://example.com/alert",
             }])
@@ -100,19 +100,19 @@ class MetricAlert(pulumi.CustomResource):
             resource_group_name=main_resource_group.name,
             scopes=[to_monitor.id],
             description="Action will be triggered when Transactions count is greater than 50.",
-            criteria=[{
+            criterias=[{
                 "metricNamespace": "Microsoft.Storage/storageAccounts",
                 "metricName": "Transactions",
                 "aggregation": "Total",
                 "operator": "GreaterThan",
                 "threshold": 50,
-                "dimension": [{
+                "dimensions": [{
                     "name": "ApiName",
                     "operator": "Include",
                     "values": ["*"],
                 }],
             }],
-            action=[{
+            actions=[{
                 "action_group_id": main_action_group.id,
             }])
         ```
