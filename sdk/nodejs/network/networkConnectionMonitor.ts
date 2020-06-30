@@ -85,6 +85,8 @@ import * as utilities from "../utilities";
  *         address: "exmaple.com",
  *         port: 80,
  *     },
+ * }, {
+ *     dependsOn: [exampleExtension],
  * });
  * ```
  *

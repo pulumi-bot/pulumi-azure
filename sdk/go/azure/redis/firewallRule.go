@@ -11,8 +11,6 @@ import (
 )
 
 // Manages a Firewall Rule associated with a Redis Cache.
-//
-// ## Example Usage
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
