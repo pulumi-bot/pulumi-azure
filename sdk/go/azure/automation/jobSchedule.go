@@ -28,7 +28,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = automation.NewJobSchedule(ctx, "example", &automation.JobScheduleArgs{
 // 			AutomationAccountName: pulumi.String("tf-automation-account"),
-// 			Parameters: pulumi.Map{
+// 			Parameters: pulumi.StringMap{
 // 				"resourcegroup": pulumi.String("tf-rgr-vm"),
 // 				"vmname":        pulumi.String("TF-VM-01"),
 // 			},
