@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *         subscriptionId: "00000000-0000-0000-0000-000000000000",
  *     },
  *     filePath: "myfile.txt",
+ * }, {
+ *     dependsOn: [exampleAssignment],
  * });
  * ```
  */
