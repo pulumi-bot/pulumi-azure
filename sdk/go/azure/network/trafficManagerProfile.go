@@ -11,8 +11,6 @@ import (
 )
 
 // Manages a Traffic Manager Profile to which multiple endpoints can be attached.
-//
-// ## Example Usage
 type TrafficManagerProfile struct {
 	pulumi.CustomResourceState
 
