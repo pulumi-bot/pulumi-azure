@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const exampleLoadBalancer = new azure.lb.LoadBalancer("exampleLoadBalancer", {
  *     location: exampleResourceGroup.location,
  *     resourceGroupName: exampleResourceGroup.name,
- *     frontend_ip_configuration: [{
+ *     frontendIpConfiguration: [{
  *         name: "primary",
  *         publicIpAddressId: examplePublicIp.id,
  *     }],
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * const exampleNetworkInterface = new azure.network.NetworkInterface("exampleNetworkInterface", {
  *     location: exampleResourceGroup.location,
  *     resourceGroupName: exampleResourceGroup.name,
- *     ip_configuration: [{
+ *     ipConfiguration: [{
  *         name: "testconfiguration1",
  *         subnetId: exampleSubnet.id,
  *         privateIpAddressAllocation: "Dynamic",

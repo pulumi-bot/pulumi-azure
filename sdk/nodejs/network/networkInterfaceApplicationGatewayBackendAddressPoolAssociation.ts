@@ -48,35 +48,35 @@ import * as utilities from "../utilities";
  *         tier: "Standard",
  *         capacity: 2,
  *     },
- *     gateway_ip_configuration: [{
+ *     gatewayIpConfiguration: [{
  *         name: "my-gateway-ip-configuration",
  *         subnetId: frontend.id,
  *     }],
- *     frontend_port: [{
+ *     frontendPort: [{
  *         name: frontendPortName,
  *         port: 80,
  *     }],
- *     frontend_ip_configuration: [{
+ *     frontendIpConfiguration: [{
  *         name: frontendIpConfigurationName,
  *         publicIpAddressId: examplePublicIp.id,
  *     }],
- *     backend_address_pool: [{
+ *     backendAddressPool: [{
  *         name: backendAddressPoolName,
  *     }],
- *     backend_http_settings: [{
+ *     backendHttpSettings: [{
  *         name: httpSettingName,
  *         cookieBasedAffinity: "Disabled",
  *         port: 80,
  *         protocol: "Http",
  *         requestTimeout: 1,
  *     }],
- *     http_listener: [{
+ *     httpListener: [{
  *         name: listenerName,
  *         frontendIpConfigurationName: frontendIpConfigurationName,
  *         frontendPortName: frontendPortName,
  *         protocol: "Http",
  *     }],
- *     request_routing_rule: [{
+ *     requestRoutingRule: [{
  *         name: requestRoutingRuleName,
  *         ruleType: "Basic",
  *         httpListenerName: listenerName,
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * const exampleNetworkInterface = new azure.network.NetworkInterface("exampleNetworkInterface", {
  *     location: exampleResourceGroup.location,
  *     resourceGroupName: exampleResourceGroup.name,
- *     ip_configuration: [{
+ *     ipConfiguration: [{
  *         name: "testconfiguration1",
  *         subnetId: frontend.id,
  *         privateIpAddressAllocation: "Dynamic",

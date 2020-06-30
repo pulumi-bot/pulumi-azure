@@ -88,8 +88,8 @@ class Policy(pulumi.CustomResource):
                     "name": "Rule1",
                     "priority": 1,
                     "ruleType": "MatchRule",
-                    "match_conditions": [{
-                        "match_variables": [{
+                    "matchConditions": [{
+                        "matchVariables": [{
                             "variableName": "RemoteAddr",
                         }],
                         "operator": "IPMatch",
@@ -105,9 +105,9 @@ class Policy(pulumi.CustomResource):
                     "name": "Rule2",
                     "priority": 2,
                     "ruleType": "MatchRule",
-                    "match_conditions": [
+                    "matchConditions": [
                         {
-                            "match_variables": [{
+                            "matchVariables": [{
                                 "variableName": "RemoteAddr",
                             }],
                             "operator": "IPMatch",
@@ -115,7 +115,7 @@ class Policy(pulumi.CustomResource):
                             "matchValues": ["192.168.1.0/24"],
                         },
                         {
-                            "match_variables": [{
+                            "matchVariables": [{
                                 "variableName": "RequestHeaders",
                                 "selector": "UserAgent",
                             }],
@@ -144,10 +144,10 @@ class Policy(pulumi.CustomResource):
                         "selectorMatchOperator": "EndsWith",
                     },
                 ],
-                "managed_rule_set": [{
+                "managedRuleSet": [{
                     "type": "OWASP",
                     "version": "3.1",
-                    "rule_group_override": [{
+                    "ruleGroupOverride": [{
                         "ruleGroupName": "REQUEST-920-PROTOCOL-ENFORCEMENT",
                         "disabledRules": [
                             "920300",

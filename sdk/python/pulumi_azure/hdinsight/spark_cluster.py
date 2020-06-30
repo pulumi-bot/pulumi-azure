@@ -143,18 +143,18 @@ class SparkCluster(pulumi.CustomResource):
                 "isDefault": True,
             }],
             roles={
-                "head_node": {
+                "headNode": {
                     "vm_size": "Standard_A3",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                 },
-                "worker_node": {
+                "workerNode": {
                     "vm_size": "Standard_A3",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                     "targetInstanceCount": 3,
                 },
-                "zookeeper_node": {
+                "zookeeperNode": {
                     "vm_size": "Medium",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",

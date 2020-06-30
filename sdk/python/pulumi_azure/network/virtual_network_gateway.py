@@ -163,7 +163,7 @@ class VirtualNetworkGateway(pulumi.CustomResource):
             }],
             vpn_client_configuration={
                 "address_spaces": ["10.2.0.0/24"],
-                "root_certificate": [{
+                "rootCertificate": [{
                     "name": "DigiCert-Federated-ID-Root-CA",
                     "publicCertData": \"\"\"MIIDuzCCAqOgAwIBAgIQCHTZWCM+IlfFIRXIvyKSrjANBgkqhkiG9w0BAQsFADBn
         MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
@@ -187,7 +187,7 @@ class VirtualNetworkGateway(pulumi.CustomResource):
         M/s/1JRtO3bDSzD9TazRVzn2oBqzSa8VgIo5C1nOnoAKJTlsClJKvIhnRlaLQqk=
         \"\"\",
                 }],
-                "revoked_certificate": [{
+                "revokedCertificate": [{
                     "name": "Verizon-Global-Root-CA",
                     "thumbprint": "912198EEF23DCAC40939312FEE97DD560BAE49B1",
                 }],

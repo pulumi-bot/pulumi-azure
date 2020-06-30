@@ -164,7 +164,7 @@ class Frontdoor(pulumi.CustomResource):
                 ],
                 "patternsToMatches": ["/*"],
                 "frontend_endpoints": ["exampleFrontendEndpoint1"],
-                "forwarding_configuration": {
+                "forwardingConfiguration": {
                     "forwardingProtocol": "MatchRequest",
                     "backendPoolName": "exampleBackendBing",
                 },

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     addressPrefix: "10.0.2.0/24",
  *     delegation: [{
  *         name: "netapp",
- *         service_delegation: {
+ *         serviceDelegation: {
  *             name: "Microsoft.Netapp/volumes",
  *             actions: [
  *                 "Microsoft.Network/networkinterfaces/*",

@@ -30,13 +30,13 @@ import * as utilities from "../utilities";
  *     log: [{
  *         category: "AuditEvent",
  *         enabled: false,
- *         retention_policy: {
+ *         retentionPolicy: {
  *             enabled: false,
  *         },
  *     }],
  *     metric: [{
  *         category: "AllMetrics",
- *         retention_policy: {
+ *         retentionPolicy: {
  *             enabled: false,
  *         },
  *     }],

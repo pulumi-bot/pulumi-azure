@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     clusterCodeVersion: "6.5.639.9590",
  *     vmImage: "Windows",
  *     managementEndpoint: "https://example:80",
- *     node_type: [{
+ *     nodeType: [{
  *         name: "first",
  *         instanceCount: 3,
  *         isPrimary: true,

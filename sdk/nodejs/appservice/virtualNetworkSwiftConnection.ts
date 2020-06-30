@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     addressPrefix: "10.0.1.0/24",
  *     delegation: [{
  *         name: "acctestdelegation",
- *         service_delegation: {
+ *         serviceDelegation: {
  *             name: "Microsoft.Web/serverFarms",
  *             actions: ["Microsoft.Network/virtualNetworks/subnets/action"],
  *         },

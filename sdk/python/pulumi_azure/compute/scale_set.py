@@ -315,7 +315,7 @@ class ScaleSet(pulumi.CustomResource):
             },
             os_profile_linux_config={
                 "disable_password_authentication": True,
-                "ssh_keys": [{
+                "sshKeys": [{
                     "path": "/home/myadmin/.ssh/authorized_keys",
                     "keyData": (lambda path: open(path).read())("~/.ssh/demo_key.pub"),
                 }],
@@ -376,7 +376,7 @@ class ScaleSet(pulumi.CustomResource):
             },
             os_profile_linux_config={
                 "disable_password_authentication": True,
-                "ssh_keys": [{
+                "sshKeys": [{
                     "path": "/home/myadmin/.ssh/authorized_keys",
                     "keyData": (lambda path: open(path).read())("~/.ssh/demo_key.pub"),
                 }],

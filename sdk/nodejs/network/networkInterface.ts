@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const exampleNetworkInterface = new azure.network.NetworkInterface("exampleNetworkInterface", {
  *     location: exampleResourceGroup.location,
  *     resourceGroupName: exampleResourceGroup.name,
- *     ip_configuration: [{
+ *     ipConfiguration: [{
  *         name: "internal",
  *         subnetId: exampleSubnet.id,
  *         privateIpAddressAllocation: "Dynamic",

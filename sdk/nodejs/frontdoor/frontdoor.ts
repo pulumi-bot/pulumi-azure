@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const exampleFrontdoor = new azure.frontdoor.Frontdoor("exampleFrontdoor", {
  *     resourceGroupName: exampleResourceGroup.name,
  *     enforceBackendPoolsCertificateNameCheck: false,
- *     routing_rule: [{
+ *     routingRule: [{
  *         name: "exampleRoutingRule1",
  *         acceptedProtocols: [
  *             "Http",
@@ -34,18 +34,18 @@ import * as utilities from "../utilities";
  *         ],
  *         patternsToMatches: ["/*"],
  *         frontendEndpoints: ["exampleFrontendEndpoint1"],
- *         forwarding_configuration: {
+ *         forwardingConfiguration: {
  *             forwardingProtocol: "MatchRequest",
  *             backendPoolName: "exampleBackendBing",
  *         },
  *     }],
- *     backend_pool_load_balancing: [{
+ *     backendPoolLoadBalancing: [{
  *         name: "exampleLoadBalancingSettings1",
  *     }],
- *     backend_pool_health_probe: [{
+ *     backendPoolHealthProbe: [{
  *         name: "exampleHealthProbeSetting1",
  *     }],
- *     backend_pool: [{
+ *     backendPool: [{
  *         name: "exampleBackendBing",
  *         backend: [{
  *             hostHeader: "www.bing.com",
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *         loadBalancingName: "exampleLoadBalancingSettings1",
  *         healthProbeName: "exampleHealthProbeSetting1",
  *     }],
- *     frontend_endpoint: [{
+ *     frontendEndpoint: [{
  *         name: "exampleFrontendEndpoint1",
  *         hostName: "example-FrontDoor.azurefd.net",
  *         customHttpsProvisioningEnabled: false,

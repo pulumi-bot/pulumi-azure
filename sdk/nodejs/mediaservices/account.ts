@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const exampleMediaservices_accountAccount = new azure.mediaservices.Account("exampleMediaservices/accountAccount", {
  *     location: exampleResourceGroup.location,
  *     resourceGroupName: exampleResourceGroup.name,
- *     storage_account: [{
+ *     storageAccount: [{
  *         id: exampleAccount.id,
  *         isPrimary: true,
  *     }],

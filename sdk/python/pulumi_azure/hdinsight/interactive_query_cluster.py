@@ -143,18 +143,18 @@ class InteractiveQueryCluster(pulumi.CustomResource):
                 "isDefault": True,
             }],
             roles={
-                "head_node": {
+                "headNode": {
                     "vm_size": "Standard_D13_V2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                 },
-                "worker_node": {
+                "workerNode": {
                     "vm_size": "Standard_D14_V2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                     "targetInstanceCount": 3,
                 },
-                "zookeeper_node": {
+                "zookeeperNode": {
                     "vm_size": "Standard_A4_V2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",

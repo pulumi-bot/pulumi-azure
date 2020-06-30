@@ -127,7 +127,7 @@ class FirewallPolicy(pulumi.CustomResource):
                     "rateLimitThreshold": 10,
                     "type": "MatchRule",
                     "action": "Block",
-                    "match_condition": [{
+                    "matchCondition": [{
                         "matchVariable": "RemoteAddr",
                         "operator": "IPMatch",
                         "negationCondition": False,
@@ -145,7 +145,7 @@ class FirewallPolicy(pulumi.CustomResource):
                     "rateLimitThreshold": 10,
                     "type": "MatchRule",
                     "action": "Block",
-                    "match_condition": [
+                    "matchCondition": [
                         {
                             "matchVariable": "RemoteAddr",
                             "operator": "IPMatch",

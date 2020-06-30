@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     redirectUrl: "https://www.contoso.com",
  *     customBlockResponseStatusCode: 403,
  *     customBlockResponseBody: "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
- *     custom_rule: [
+ *     customRule: [
  *         {
  *             name: "Rule1",
  *             enabled: true,
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *             rateLimitThreshold: 10,
  *             type: "MatchRule",
  *             action: "Block",
- *             match_condition: [{
+ *             matchCondition: [{
  *                 matchVariable: "RemoteAddr",
  *                 operator: "IPMatch",
  *                 negationCondition: false,
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *             rateLimitThreshold: 10,
  *             type: "MatchRule",
  *             action: "Block",
- *             match_condition: [
+ *             matchCondition: [
  *                 {
  *                     matchVariable: "RemoteAddr",
  *                     operator: "IPMatch",
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     ],
- *     managed_rule: [
+ *     managedRule: [
  *         {
  *             type: "DefaultRuleSet",
  *             version: "1.0",

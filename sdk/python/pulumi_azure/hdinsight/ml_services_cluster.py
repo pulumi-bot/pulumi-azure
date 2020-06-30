@@ -142,23 +142,23 @@ class MLServicesCluster(pulumi.CustomResource):
                 "isDefault": True,
             }],
             roles={
-                "head_node": {
+                "headNode": {
                     "vm_size": "Standard_D3_v2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                 },
-                "worker_node": {
+                "workerNode": {
                     "vm_size": "Standard_D4_V2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                     "targetInstanceCount": 3,
                 },
-                "zookeeper_node": {
+                "zookeeperNode": {
                     "vm_size": "Standard_D3_v2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",
                 },
-                "edge_node": {
+                "edgeNode": {
                     "vm_size": "Standard_D3_v2",
                     "username": "acctestusrvm",
                     "password": "AccTestvdSC4daf986!",

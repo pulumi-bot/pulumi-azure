@@ -77,7 +77,7 @@ class Subnet(pulumi.CustomResource):
             address_prefixes=["10.0.1.0/24"],
             delegation=[{
                 "name": "acctestdelegation",
-                "service_delegation": {
+                "serviceDelegation": {
                     "name": "Microsoft.ContainerInstance/containerGroups",
                     "actions": [
                         "Microsoft.Network/virtualNetworks/subnets/join/action",

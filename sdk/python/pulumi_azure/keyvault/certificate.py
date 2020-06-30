@@ -151,7 +151,7 @@ class Certificate(pulumi.CustomResource):
         example_certificate = azure.keyvault.Certificate("exampleCertificate",
             key_vault_id=example_key_vault.id,
             certificate_policy={
-                "issuer_parameters": {
+                "issuerParameters": {
                     "name": "Self",
                 },
                 "key_properties": {
@@ -160,7 +160,7 @@ class Certificate(pulumi.CustomResource):
                     "key_type": "RSA",
                     "reuseKey": True,
                 },
-                "lifetime_action": [{
+                "lifetimeAction": [{
                     "action": {
                         "actionType": "AutoRenew",
                     },
@@ -168,10 +168,10 @@ class Certificate(pulumi.CustomResource):
                         "daysBeforeExpiry": 30,
                     },
                 }],
-                "secret_properties": {
+                "secretProperties": {
                     "content_type": "application/x-pkcs12",
                 },
-                "x509_certificate_properties": {
+                "x509CertificateProperties": {
                     "extendedKeyUsages": ["1.3.6.1.5.5.7.3.1"],
                     "keyUsages": [
                         "cRLSign",
@@ -181,7 +181,7 @@ class Certificate(pulumi.CustomResource):
                         "keyCertSign",
                         "keyEncipherment",
                     ],
-                    "subject_alternative_names": {
+                    "subjectAlternativeNames": {
                         "dnsNames": [
                             "internal.contoso.com",
                             "domain.hello.world",

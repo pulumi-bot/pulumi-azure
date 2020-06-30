@@ -17,6 +17,32 @@ namespace Pulumi.Azure.Compute
     /// &gt; **Note:** The `azure.compute.ScaleSet` resource has been superseded by the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources. The existing `azure.compute.ScaleSet` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources.
     /// 
     /// ## Example Usage
+    /// ## Example of storage_profile_image_reference with id
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleImage = new Azure.Compute.Image("exampleImage", new Azure.Compute.ImageArgs
+    ///         {
+    ///         });
+    ///         // ...
+    ///         var exampleScaleSet = new Azure.Compute.ScaleSet("exampleScaleSet", new Azure.Compute.ScaleSetArgs
+    ///         {
+    ///             StorageProfileImageReference = new Azure.Compute.Inputs.ScaleSetStorageProfileImageReferenceArgs
+    ///             {
+    ///                 Id = exampleImage.Id,
+    ///             },
+    ///         });
+    ///         // ...
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ScaleSet : Pulumi.CustomResource
     {

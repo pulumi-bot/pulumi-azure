@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const exampleLoadBalancer = new azure.lb.LoadBalancer("exampleLoadBalancer", {
  *     location: "West US",
  *     resourceGroupName: exampleResourceGroup.name,
- *     frontend_ip_configuration: [{
+ *     frontendIpConfiguration: [{
  *         name: "PublicIPAddress",
  *         publicIpAddressId: examplePublicIp.id,
  *     }],

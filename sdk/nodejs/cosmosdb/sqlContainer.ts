@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     databaseName: azurerm_cosmosdb_sql_database.example.name,
  *     partitionKeyPath: "/definition/id",
  *     throughput: 400,
- *     unique_key: [{
+ *     uniqueKey: [{
  *         paths: [
  *             "/definition/idlong",
  *             "/definition/idshort",

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const mainActionGroup = new azure.monitoring.ActionGroup("mainActionGroup", {
  *     resourceGroupName: mainResourceGroup.name,
  *     shortName: "exampleact",
- *     webhook_receiver: [{
+ *     webhookReceiver: [{
  *         name: "callmyapi",
  *         serviceUri: "http://example.com/alert",
  *     }],

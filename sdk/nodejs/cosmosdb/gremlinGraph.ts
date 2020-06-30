@@ -29,17 +29,17 @@ import * as utilities from "../utilities";
  *     databaseName: exampleGremlinDatabase.name,
  *     partitionKeyPath: "/Example",
  *     throughput: 400,
- *     index_policy: [{
+ *     indexPolicy: [{
  *         automatic: true,
  *         indexingMode: "Consistent",
  *         includedPaths: ["/*"],
  *         excludedPaths: ["/\"_etag\"/?"],
  *     }],
- *     conflict_resolution_policy: [{
+ *     conflictResolutionPolicy: [{
  *         mode: "LastWriterWins",
  *         conflictResolutionPath: "/_ts",
  *     }],
- *     unique_key: [{
+ *     uniqueKey: [{
  *         paths: [
  *             "/definition/id1",
  *             "/definition/id2",

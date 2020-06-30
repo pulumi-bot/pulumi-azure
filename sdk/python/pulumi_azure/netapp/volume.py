@@ -93,7 +93,7 @@ class Volume(pulumi.CustomResource):
             address_prefix="10.0.2.0/24",
             delegation=[{
                 "name": "netapp",
-                "service_delegation": {
+                "serviceDelegation": {
                     "name": "Microsoft.Netapp/volumes",
                     "actions": [
                         "Microsoft.Network/networkinterfaces/*",

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     quota: 50,
  *     acl: [{
  *         id: "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
- *         access_policy: [{
+ *         accessPolicy: [{
  *             permissions: "rwdl",
  *             start: "2019-07-02T09:38:21.0000000Z",
  *             expiry: "2019-07-02T10:38:21.0000000Z",

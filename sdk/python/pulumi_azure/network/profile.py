@@ -62,7 +62,7 @@ class Profile(pulumi.CustomResource):
             address_prefix="10.1.0.0/24",
             delegation=[{
                 "name": "delegation",
-                "service_delegation": {
+                "serviceDelegation": {
                     "name": "Microsoft.ContainerInstance/containerGroups",
                     "actions": ["Microsoft.Network/virtualNetworks/subnets/action"],
                 },
