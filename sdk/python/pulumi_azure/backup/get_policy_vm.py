@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetPolicyVMResult:
     """
@@ -75,7 +75,7 @@ def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,op
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:backup/getPolicyVM:getPolicyVM', __args__, opts=opts).value
 
     return AwaitableGetPolicyVMResult(

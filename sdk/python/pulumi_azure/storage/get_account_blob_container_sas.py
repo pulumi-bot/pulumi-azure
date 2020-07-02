@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetAccountBlobContainerSASResult:
     """
@@ -166,7 +166,7 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccountBlobContainerSAS:getAccountBlobContainerSAS', __args__, opts=opts).value
 
     return AwaitableGetAccountBlobContainerSASResult(

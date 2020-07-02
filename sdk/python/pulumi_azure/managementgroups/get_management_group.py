@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup", DeprecationWarning)
 class GetManagementGroupResult:
@@ -87,7 +87,7 @@ def get_management_group(display_name=None,group_id=None,name=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:managementgroups/getManagementGroup:getManagementGroup', __args__, opts=opts).value
 
     return AwaitableGetManagementGroupResult(

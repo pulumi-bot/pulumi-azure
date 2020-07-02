@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetAuthorizationRuleResult:
     """
@@ -136,7 +136,7 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getAuthorizationRule:getAuthorizationRule', __args__, opts=opts).value
 
     return AwaitableGetAuthorizationRuleResult(

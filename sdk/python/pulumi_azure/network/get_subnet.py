@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetSubnetResult:
     """
@@ -118,7 +118,7 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getSubnet:getSubnet', __args__, opts=opts).value
 
     return AwaitableGetSubnetResult(

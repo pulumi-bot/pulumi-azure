@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetNetworkDdosProtectionPlanResult:
     """
@@ -85,7 +85,7 @@ def get_network_ddos_protection_plan(name=None,resource_group_name=None,tags=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getNetworkDdosProtectionPlan:getNetworkDdosProtectionPlan', __args__, opts=opts).value
 
     return AwaitableGetNetworkDdosProtectionPlanResult(

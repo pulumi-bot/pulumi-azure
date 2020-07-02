@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetEventHubResult:
     """
@@ -83,7 +83,7 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventHub:getEventHub', __args__, opts=opts).value
 
     return AwaitableGetEventHubResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetSharedAccessPolicyResult:
     """
@@ -96,7 +96,7 @@ def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:iot/getSharedAccessPolicy:getSharedAccessPolicy', __args__, opts=opts).value
 
     return AwaitableGetSharedAccessPolicyResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetRecommendationsResult:
     """
@@ -72,7 +72,7 @@ def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:advisor/getRecommendations:getRecommendations', __args__, opts=opts).value
 
     return AwaitableGetRecommendationsResult(
