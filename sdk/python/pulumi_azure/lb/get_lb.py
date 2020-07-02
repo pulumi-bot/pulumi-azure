@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLBResult:
     """
     A collection of values returned by getLB.
@@ -64,6 +65,8 @@ class GetLBResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetLBResult(GetLBResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,6 +82,7 @@ class AwaitableGetLBResult(GetLBResult):
             resource_group_name=self.resource_group_name,
             sku=self.sku,
             tags=self.tags)
+
 
 def get_lb(name=None,resource_group_name=None,opts=None):
     """
@@ -100,7 +104,6 @@ def get_lb(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Load Balancer exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

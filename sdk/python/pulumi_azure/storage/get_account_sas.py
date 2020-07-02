@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountSASResult:
     """
     A collection of values returned by getAccountSAS.
@@ -46,6 +47,8 @@ class GetAccountSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountSASResult(GetAccountSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,6 +64,7 @@ class AwaitableGetAccountSASResult(GetAccountSASResult):
             sas=self.sas,
             services=self.services,
             start=self.start)
+
 
 def get_account_sas(connection_string=None,expiry=None,https_only=None,permissions=None,resource_types=None,services=None,start=None,opts=None):
     """
@@ -148,7 +152,6 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
       * `table` (`bool`) - Should permission be granted to `table` services within this storage account?
     """
     __args__ = dict()
-
 
     __args__['connectionString'] = connection_string
     __args__['expiry'] = expiry

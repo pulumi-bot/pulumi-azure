@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualNetworkResult:
     """
     A collection of values returned by getVirtualNetwork.
@@ -46,6 +47,8 @@ class GetVirtualNetworkResult:
         """
         The unique immutable identifier of the virtual network.
         """
+
+
 class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
             resource_group_name=self.resource_group_name,
             subnet_overrides=self.subnet_overrides,
             unique_identifier=self.unique_identifier)
+
 
 def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -82,7 +86,6 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
     :param str resource_group_name: Specifies the name of the resource group that contains the Virtual Network.
     """
     __args__ = dict()
-
 
     __args__['labName'] = lab_name
     __args__['name'] = name

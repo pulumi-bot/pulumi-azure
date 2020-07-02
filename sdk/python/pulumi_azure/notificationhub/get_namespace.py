@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
@@ -61,6 +62,8 @@ class GetNamespaceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,6 +79,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             servicebus_endpoint=self.servicebus_endpoint,
             sku=self.sku,
             tags=self.tags)
+
 
 def get_namespace(name=None,resource_group_name=None,opts=None):
     """
@@ -97,7 +101,6 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.trafficmanager.getGeographicalLocation has been deprecated in favor of azure.network.getTrafficManager", DeprecationWarning)
+
 class GetGeographicalLocationResult:
     """
     A collection of values returned by getGeographicalLocation.
@@ -23,6 +24,8 @@ class GetGeographicalLocationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetGeographicalLocationResult(GetGeographicalLocationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,6 +34,7 @@ class AwaitableGetGeographicalLocationResult(GetGeographicalLocationResult):
         return GetGeographicalLocationResult(
             id=self.id,
             name=self.name)
+
 
 def get_geographical_location(name=None,opts=None):
     """
@@ -52,7 +56,6 @@ def get_geographical_location(name=None,opts=None):
     """
     pulumi.log.warn("get_geographical_location is deprecated: azure.trafficmanager.getGeographicalLocation has been deprecated in favor of azure.network.getTrafficManager")
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

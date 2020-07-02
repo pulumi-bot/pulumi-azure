@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPlatformImageResult:
     """
     A collection of values returned by getPlatformImage.
@@ -34,6 +35,8 @@ class GetPlatformImageResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPlatformImageResult(GetPlatformImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,6 +49,7 @@ class AwaitableGetPlatformImageResult(GetPlatformImageResult):
             publisher=self.publisher,
             sku=self.sku,
             version=self.version)
+
 
 def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=None,opts=None):
     """
@@ -72,7 +76,6 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
     :param str version: The version of the Platform Image.
     """
     __args__ = dict()
-
 
     __args__['location'] = location
     __args__['offer'] = offer

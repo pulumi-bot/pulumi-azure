@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetProfileResult:
     """
     A collection of values returned by getProfile.
@@ -43,6 +44,8 @@ class GetProfileResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetProfileResult(GetProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,6 +58,7 @@ class AwaitableGetProfileResult(GetProfileResult):
             resource_group_name=self.resource_group_name,
             sku=self.sku,
             tags=self.tags)
+
 
 def get_profile(name=None,resource_group_name=None,opts=None):
     """
@@ -76,7 +80,6 @@ def get_profile(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the CDN Profile exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

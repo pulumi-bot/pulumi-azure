@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAuthorizationRuleResult:
     """
     A collection of values returned by getAuthorizationRule.
@@ -79,6 +80,8 @@ class GetAuthorizationRuleResult:
         if send and not isinstance(send, bool):
             raise TypeError("Expected argument 'send' to be a bool")
         __self__.send = send
+
+
 class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +103,7 @@ class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
             secondary_connection_string_alias=self.secondary_connection_string_alias,
             secondary_key=self.secondary_key,
             send=self.send)
+
 
 def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,namespace_name=None,resource_group_name=None,send=None,opts=None):
     """
@@ -124,7 +128,6 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     :param str resource_group_name: The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
     """
     __args__ = dict()
-
 
     __args__['eventhubName'] = eventhub_name
     __args__['listen'] = listen

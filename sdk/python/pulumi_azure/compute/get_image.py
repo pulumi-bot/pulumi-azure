@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetImageResult:
     """
     A collection of values returned by getImage.
@@ -64,6 +65,8 @@ class GetImageResult:
         """
         is zone resiliency enabled?
         """
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,6 +83,7 @@ class AwaitableGetImageResult(GetImageResult):
             sort_descending=self.sort_descending,
             tags=self.tags,
             zone_resilient=self.zone_resilient)
+
 
 def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending=None,opts=None):
     """
@@ -103,7 +107,6 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     :param bool sort_descending: By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['nameRegex'] = name_regex

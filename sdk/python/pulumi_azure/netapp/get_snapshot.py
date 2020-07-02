@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
@@ -40,6 +41,8 @@ class GetSnapshotResult:
         if volume_name and not isinstance(volume_name, str):
             raise TypeError("Expected argument 'volume_name' to be a str")
         __self__.volume_name = volume_name
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,6 +56,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             pool_name=self.pool_name,
             resource_group_name=self.resource_group_name,
             volume_name=self.volume_name)
+
 
 def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=None,volume_name=None,opts=None):
     """
@@ -80,7 +84,6 @@ def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=
     :param str volume_name: The name of the NetApp Volume where the NetApp Snapshot exists.
     """
     __args__ = dict()
-
 
     __args__['accountName'] = account_name
     __args__['name'] = name

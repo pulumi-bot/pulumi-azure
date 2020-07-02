@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetConsumeGroupResult:
     """
     A collection of values returned by getConsumeGroup.
@@ -40,6 +41,8 @@ class GetConsumeGroupResult:
         """
         Specifies the user metadata.
         """
+
+
 class AwaitableGetConsumeGroupResult(GetConsumeGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,6 +56,7 @@ class AwaitableGetConsumeGroupResult(GetConsumeGroupResult):
             namespace_name=self.namespace_name,
             resource_group_name=self.resource_group_name,
             user_metadata=self.user_metadata)
+
 
 def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
@@ -77,7 +81,6 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
     :param str resource_group_name: The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
     """
     __args__ = dict()
-
 
     __args__['eventhubName'] = eventhub_name
     __args__['name'] = name

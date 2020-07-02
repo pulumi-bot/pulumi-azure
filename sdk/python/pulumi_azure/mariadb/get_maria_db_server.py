@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetMariaDbServerResult:
     """
     A collection of values returned by getMariaDbServer.
@@ -74,6 +75,8 @@ class GetMariaDbServerResult:
         """
         The version of MariaDB being used.
         """
+
+
 class AwaitableGetMariaDbServerResult(GetMariaDbServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,6 +94,7 @@ class AwaitableGetMariaDbServerResult(GetMariaDbServerResult):
             storage_profiles=self.storage_profiles,
             tags=self.tags,
             version=self.version)
+
 
 def get_maria_db_server(name=None,resource_group_name=None,opts=None):
     """
@@ -112,7 +116,6 @@ def get_maria_db_server(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the MariaDB Server exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

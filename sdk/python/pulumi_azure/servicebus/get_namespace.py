@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
@@ -81,6 +82,8 @@ class GetNamespaceResult:
         """
         Whether or not this ServiceBus Namespace is zone redundant.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -99,6 +102,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             sku=self.sku,
             tags=self.tags,
             zone_redundant=self.zone_redundant)
+
 
 def get_namespace(name=None,resource_group_name=None,opts=None):
     """
@@ -120,7 +124,6 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the ServiceBus Namespace exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

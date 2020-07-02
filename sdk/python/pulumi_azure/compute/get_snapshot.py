@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
@@ -61,6 +62,8 @@ class GetSnapshotResult:
         if time_created and not isinstance(time_created, str):
             raise TypeError("Expected argument 'time_created' to be a str")
         __self__.time_created = time_created
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,6 +81,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_uri=self.source_uri,
             storage_account_id=self.storage_account_id,
             time_created=self.time_created)
+
 
 def get_snapshot(name=None,resource_group_name=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_snapshot(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Snapshot is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

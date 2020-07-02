@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
@@ -34,6 +35,8 @@ class GetVirtualMachineResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             location=self.location,
             name=self.name,
             resource_group_name=self.resource_group_name)
+
 
 def get_virtual_machine(name=None,resource_group_name=None,opts=None):
     """
@@ -66,7 +70,6 @@ def get_virtual_machine(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Machine is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

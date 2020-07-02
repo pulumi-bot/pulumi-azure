@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -43,6 +44,8 @@ class GetClusterResult:
         """
         The FQDN of the Azure Kusto Cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,6 +59,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags,
             uri=self.uri)
+
 
 def get_cluster(name=None,resource_group_name=None,opts=None):
     """
@@ -76,7 +80,6 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Kusto Cluster exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

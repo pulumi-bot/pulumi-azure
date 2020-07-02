@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSharedImageVersionsResult:
     """
     A collection of values returned by getSharedImageVersions.
@@ -37,6 +38,8 @@ class GetSharedImageVersionsResult:
         if tags_filter and not isinstance(tags_filter, dict):
             raise TypeError("Expected argument 'tags_filter' to be a dict")
         __self__.tags_filter = tags_filter
+
+
 class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
             images=self.images,
             resource_group_name=self.resource_group_name,
             tags_filter=self.tags_filter)
+
 
 def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_name=None,tags_filter=None,opts=None):
     """
@@ -72,7 +76,6 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     :param dict tags_filter: A mapping of tags to filter the list of images against.
     """
     __args__ = dict()
-
 
     __args__['galleryName'] = gallery_name
     __args__['imageName'] = image_name

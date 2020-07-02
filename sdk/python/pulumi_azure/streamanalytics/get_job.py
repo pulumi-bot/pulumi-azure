@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetJobResult:
     """
     A collection of values returned by getJob.
@@ -85,6 +86,8 @@ class GetJobResult:
         """
         The query that will be run in the streaming job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
         """
+
+
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,6 +107,7 @@ class AwaitableGetJobResult(GetJobResult):
             resource_group_name=self.resource_group_name,
             streaming_units=self.streaming_units,
             transformation_query=self.transformation_query)
+
 
 def get_job(name=None,resource_group_name=None,opts=None):
     """
@@ -125,7 +129,6 @@ def get_job(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Stream Analytics Job is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

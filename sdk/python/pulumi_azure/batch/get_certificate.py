@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
@@ -52,6 +53,8 @@ class GetCertificateResult:
         """
         The algorithm of the certificate thumbprint.
         """
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             resource_group_name=self.resource_group_name,
             thumbprint=self.thumbprint,
             thumbprint_algorithm=self.thumbprint_algorithm)
+
 
 def get_certificate(account_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_certificate(account_name=None,name=None,resource_group_name=None,opts=No
     :param str resource_group_name: The Name of the Resource Group where this Batch account exists.
     """
     __args__ = dict()
-
 
     __args__['accountName'] = account_name
     __args__['name'] = name

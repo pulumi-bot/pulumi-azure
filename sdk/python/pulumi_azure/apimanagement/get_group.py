@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetGroupResult:
     """
     A collection of values returned by getGroup.
@@ -52,6 +53,8 @@ class GetGroupResult:
         """
         The type of this API Management Group, such as `custom` or `external`.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             type=self.type)
+
 
 def get_group(api_management_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_group(api_management_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
 
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name

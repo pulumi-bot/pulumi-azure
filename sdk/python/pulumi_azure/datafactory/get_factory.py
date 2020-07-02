@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetFactoryResult:
     """
     A collection of values returned by getFactory.
@@ -56,6 +57,8 @@ class GetFactoryResult:
         """
         A `vsts_configuration` block as defined below.
         """
+
+
 class AwaitableGetFactoryResult(GetFactoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,6 +73,7 @@ class AwaitableGetFactoryResult(GetFactoryResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags,
             vsts_configurations=self.vsts_configurations)
+
 
 def get_factory(name=None,resource_group_name=None,opts=None):
     """
@@ -91,7 +95,6 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the Data Factory exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

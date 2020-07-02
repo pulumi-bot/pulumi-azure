@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -31,6 +32,8 @@ class GetAccountResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             location=self.location,
             name=self.name,
             resource_group_name=self.resource_group_name)
+
 
 def get_account(name=None,resource_group_name=None,opts=None):
     """
@@ -62,7 +66,6 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the NetApp Account exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetManagedDiskResult:
     """
     A collection of values returned by getManagedDisk.
@@ -94,6 +95,8 @@ class GetManagedDiskResult:
         """
         A list of Availability Zones where the Managed Disk exists.
         """
+
+
 class AwaitableGetManagedDiskResult(GetManagedDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,6 +118,7 @@ class AwaitableGetManagedDiskResult(GetManagedDiskResult):
             storage_account_type=self.storage_account_type,
             tags=self.tags,
             zones=self.zones)
+
 
 def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
     """
@@ -138,7 +142,6 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
     :param list zones: A list of Availability Zones where the Managed Disk exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

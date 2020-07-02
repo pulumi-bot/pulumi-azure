@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetFirewallResult:
     """
     A collection of values returned by getFirewall.
@@ -37,6 +38,8 @@ class GetFirewallResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetFirewallResult(GetFirewallResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_firewall(name=None,resource_group_name=None,opts=None):
     """
@@ -70,7 +74,6 @@ def get_firewall(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Azure Firewall exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

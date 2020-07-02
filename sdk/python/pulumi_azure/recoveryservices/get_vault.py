@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVaultResult:
     """
     A collection of values returned by getVault.
@@ -43,6 +44,8 @@ class GetVaultResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetVaultResult(GetVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,6 +58,7 @@ class AwaitableGetVaultResult(GetVaultResult):
             resource_group_name=self.resource_group_name,
             sku=self.sku,
             tags=self.tags)
+
 
 def get_vault(name=None,resource_group_name=None,opts=None):
     """
@@ -75,7 +79,6 @@ def get_vault(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Recovery Services Vault resides.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

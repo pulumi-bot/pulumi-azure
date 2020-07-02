@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
@@ -70,6 +71,8 @@ class GetSubnetResult:
         if virtual_network_name and not isinstance(virtual_network_name, str):
             raise TypeError("Expected argument 'virtual_network_name' to be a str")
         __self__.virtual_network_name = virtual_network_name
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,6 +90,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             route_table_id=self.route_table_id,
             service_endpoints=self.service_endpoints,
             virtual_network_name=self.virtual_network_name)
+
 
 def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts=None):
     """
@@ -110,7 +114,6 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     :param str virtual_network_name: Specifies the name of the Virtual Network this Subnet is located within.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

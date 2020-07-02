@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountBlobContainerSASResult:
     """
     A collection of values returned by getAccountBlobContainerSAS.
@@ -61,6 +62,8 @@ class GetAccountBlobContainerSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,6 +84,7 @@ class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult
             permissions=self.permissions,
             sas=self.sas,
             start=self.start)
+
 
 def get_account_blob_container_sas(cache_control=None,connection_string=None,container_name=None,content_disposition=None,content_encoding=None,content_language=None,content_type=None,expiry=None,https_only=None,ip_address=None,permissions=None,start=None,opts=None):
     """
@@ -149,7 +153,6 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
       * `write` (`bool`) - Should Write permissions be enabled for this SAS?
     """
     __args__ = dict()
-
 
     __args__['cacheControl'] = cache_control
     __args__['connectionString'] = connection_string

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAlertRuleResult:
     """
     A collection of values returned by getAlertRule.
@@ -25,6 +26,8 @@ class GetAlertRuleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetAlertRuleResult(GetAlertRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,6 +37,7 @@ class AwaitableGetAlertRuleResult(GetAlertRuleResult):
             id=self.id,
             log_analytics_workspace_id=self.log_analytics_workspace_id,
             name=self.name)
+
 
 def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     """
@@ -57,7 +61,6 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     :param str name: The name which should be used for this Sentinel Alert Rule.
     """
     __args__ = dict()
-
 
     __args__['logAnalyticsWorkspaceId'] = log_analytics_workspace_id
     __args__['name'] = name

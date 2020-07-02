@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPolicyDefintionResult:
     """
     A collection of values returned by getPolicyDefintion.
@@ -71,6 +72,8 @@ class GetPolicyDefintionResult:
         """
         The Type of Policy.
         """
+
+
 class AwaitableGetPolicyDefintionResult(GetPolicyDefintionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,6 +91,7 @@ class AwaitableGetPolicyDefintionResult(GetPolicyDefintionResult):
             policy_rule=self.policy_rule,
             policy_type=self.policy_type,
             type=self.type)
+
 
 def get_policy_defintion(display_name=None,management_group_id=None,management_group_name=None,name=None,opts=None):
     """
@@ -109,7 +113,6 @@ def get_policy_defintion(display_name=None,management_group_id=None,management_g
     :param str name: Specifies the name of the Policy Definition. Conflicts with `display_name`.
     """
     __args__ = dict()
-
 
     __args__['displayName'] = display_name
     __args__['managementGroupId'] = management_group_id

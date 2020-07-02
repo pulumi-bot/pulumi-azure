@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetShareResult:
     """
     A collection of values returned by getShare.
@@ -52,6 +53,8 @@ class GetShareResult:
         """
         The terms of the Data Share.
         """
+
+
 class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,6 +68,7 @@ class AwaitableGetShareResult(GetShareResult):
             name=self.name,
             snapshot_schedules=self.snapshot_schedules,
             terms=self.terms)
+
 
 def get_share(account_id=None,name=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_share(account_id=None,name=None,opts=None):
     :param str name: The name of this Data Share.
     """
     __args__ = dict()
-
 
     __args__['accountId'] = account_id
     __args__['name'] = name

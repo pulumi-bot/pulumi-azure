@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPublicIpPrefixResult:
     """
     A collection of values returned by getPublicIpPrefix.
@@ -61,6 +62,8 @@ class GetPublicIpPrefixResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetPublicIpPrefixResult(GetPublicIpPrefixResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,6 +79,7 @@ class AwaitableGetPublicIpPrefixResult(GetPublicIpPrefixResult):
             sku=self.sku,
             tags=self.tags,
             zones=self.zones)
+
 
 def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDiagnosticCategoriesResult:
     """
     A collection of values returned by getDiagnosticCategories.
@@ -34,6 +35,8 @@ class GetDiagnosticCategoriesResult:
         if resource_id and not isinstance(resource_id, str):
             raise TypeError("Expected argument 'resource_id' to be a str")
         __self__.resource_id = resource_id
+
+
 class AwaitableGetDiagnosticCategoriesResult(GetDiagnosticCategoriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,6 +47,7 @@ class AwaitableGetDiagnosticCategoriesResult(GetDiagnosticCategoriesResult):
             logs=self.logs,
             metrics=self.metrics,
             resource_id=self.resource_id)
+
 
 def get_diagnostic_categories(resource_id=None,opts=None):
     """
@@ -64,7 +68,6 @@ def get_diagnostic_categories(resource_id=None,opts=None):
     :param str resource_id: The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
     """
     __args__ = dict()
-
 
     __args__['resourceId'] = resource_id
     if opts is None:

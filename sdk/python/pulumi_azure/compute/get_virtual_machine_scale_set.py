@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualMachineScaleSetResult:
     """
     A collection of values returned by getVirtualMachineScaleSet.
@@ -34,6 +35,8 @@ class GetVirtualMachineScaleSetResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetVirtualMachineScaleSetResult(GetVirtualMachineScaleSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetVirtualMachineScaleSetResult(GetVirtualMachineScaleSetResult):
             location=self.location,
             name=self.name,
             resource_group_name=self.resource_group_name)
+
 
 def get_virtual_machine_scale_set(name=None,resource_group_name=None,opts=None):
     """
@@ -66,7 +70,6 @@ def get_virtual_machine_scale_set(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Virtual Machine Scale Set exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

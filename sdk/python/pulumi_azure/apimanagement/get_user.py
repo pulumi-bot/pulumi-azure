@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetUserResult:
     """
     A collection of values returned by getUser.
@@ -58,6 +59,8 @@ class GetUserResult:
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         __self__.user_id = user_id
+
+
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,6 +77,7 @@ class AwaitableGetUserResult(GetUserResult):
             state=self.state,
             user_id=self.user_id)
 
+
 def get_user(api_management_name=None,resource_group_name=None,user_id=None,opts=None):
     """
     Use this data source to access information about an existing API Management User.
@@ -84,7 +88,6 @@ def get_user(api_management_name=None,resource_group_name=None,user_id=None,opts
     :param str user_id: The Identifier for the User.
     """
     __args__ = dict()
-
 
     __args__['apiManagementName'] = api_management_name
     __args__['resourceGroupName'] = resource_group_name

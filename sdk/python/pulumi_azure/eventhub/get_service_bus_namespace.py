@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.getServiceBusNamespace has been deprecated in favor of azure.servicebus.getNamespace", DeprecationWarning)
+
 class GetServiceBusNamespaceResult:
     """
     A collection of values returned by getServiceBusNamespace.
@@ -82,6 +83,8 @@ class GetServiceBusNamespaceResult:
         """
         Whether or not this ServiceBus Namespace is zone redundant.
         """
+
+
 class AwaitableGetServiceBusNamespaceResult(GetServiceBusNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +103,7 @@ class AwaitableGetServiceBusNamespaceResult(GetServiceBusNamespaceResult):
             sku=self.sku,
             tags=self.tags,
             zone_redundant=self.zone_redundant)
+
 
 def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
     """
@@ -122,7 +126,6 @@ def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_service_bus_namespace is deprecated: azure.eventhub.getServiceBusNamespace has been deprecated in favor of azure.servicebus.getNamespace")
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

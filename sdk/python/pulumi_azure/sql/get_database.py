@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
@@ -85,6 +86,8 @@ class GetDatabaseResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,6 +106,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             resource_group_name=self.resource_group_name,
             server_name=self.server_name,
             tags=self.tags)
+
 
 def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
     """
@@ -127,7 +131,6 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     :param dict tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

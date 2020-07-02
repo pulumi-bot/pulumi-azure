@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPoolResult:
     """
     A collection of values returned by getPool.
@@ -46,6 +47,8 @@ class GetPoolResult:
         """
         Provisioned size of the pool in TB.
         """
+
+
 class AwaitableGetPoolResult(GetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetPoolResult(GetPoolResult):
             resource_group_name=self.resource_group_name,
             service_level=self.service_level,
             size_in_tb=self.size_in_tb)
+
 
 def get_pool(account_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -82,7 +86,6 @@ def get_pool(account_name=None,name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the NetApp Pool exists.
     """
     __args__ = dict()
-
 
     __args__['accountName'] = account_name
     __args__['name'] = name

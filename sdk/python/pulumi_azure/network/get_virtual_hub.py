@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualHubResult:
     """
     A collection of values returned by getVirtualHub.
@@ -49,6 +50,8 @@ class GetVirtualHubResult:
         """
         The ID of the Virtual WAN within which the Virtual Hub exists.
         """
+
+
 class AwaitableGetVirtualHubResult(GetVirtualHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,6 +65,7 @@ class AwaitableGetVirtualHubResult(GetVirtualHubResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags,
             virtual_wan_id=self.virtual_wan_id)
+
 
 def get_virtual_hub(name=None,resource_group_name=None,opts=None):
     """
@@ -83,7 +87,6 @@ def get_virtual_hub(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Virtual Hub exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

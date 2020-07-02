@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetScheduledQueryRulesAlertResult:
     """
     A collection of values returned by getScheduledQueryRulesAlert.
@@ -100,6 +101,8 @@ class GetScheduledQueryRulesAlertResult:
         """
         A `trigger` block as defined below.
         """
+
+
 class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -124,6 +127,7 @@ class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResu
             time_window=self.time_window,
             triggers=self.triggers)
 
+
 def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access the properties of an AlertingAction scheduled query rule.
@@ -144,7 +148,6 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

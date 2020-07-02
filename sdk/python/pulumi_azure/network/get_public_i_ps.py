@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPublicIPsResult:
     """
     A collection of values returned by getPublicIPs.
@@ -37,6 +38,8 @@ class GetPublicIPsResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetPublicIPsResult(GetPublicIPsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetPublicIPsResult(GetPublicIPsResult):
             name_prefix=self.name_prefix,
             public_ips=self.public_ips,
             resource_group_name=self.resource_group_name)
+
 
 def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource_group_name=None,opts=None):
     """
@@ -71,7 +75,6 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     :param str resource_group_name: Specifies the name of the resource group.
     """
     __args__ = dict()
-
 
     __args__['allocationType'] = allocation_type
     __args__['attached'] = attached

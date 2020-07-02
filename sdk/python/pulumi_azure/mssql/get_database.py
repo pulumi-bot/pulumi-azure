@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
@@ -79,6 +80,8 @@ class GetDatabaseResult:
         """
         Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,6 +100,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             sku_name=self.sku_name,
             tags=self.tags,
             zone_redundant=self.zone_redundant)
+
 
 def get_database(name=None,server_id=None,opts=None):
     """
@@ -118,7 +122,6 @@ def get_database(name=None,server_id=None,opts=None):
     :param str server_id: The id of the Ms SQL Server on which to create the database.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['serverId'] = server_id

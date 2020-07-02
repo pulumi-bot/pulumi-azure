@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRecommendationsResult:
     """
     A collection of values returned by getRecommendations.
@@ -31,6 +32,8 @@ class GetRecommendationsResult:
         """
         One or more `recommendations` blocks as defined below.
         """
+
+
 class AwaitableGetRecommendationsResult(GetRecommendationsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetRecommendationsResult(GetRecommendationsResult):
             filter_by_resource_groups=self.filter_by_resource_groups,
             id=self.id,
             recommendations=self.recommendations)
+
 
 def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None,opts=None):
     """
@@ -65,7 +69,6 @@ def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None
     :param list filter_by_resource_groups: Specifies a list of resource groups about which the Advisor Recommendations will be listed.
     """
     __args__ = dict()
-
 
     __args__['filterByCategories'] = filter_by_categories
     __args__['filterByResourceGroups'] = filter_by_resource_groups

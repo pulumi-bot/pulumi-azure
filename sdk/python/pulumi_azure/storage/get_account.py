@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -275,6 +276,8 @@ class GetAccountResult:
         """
         A mapping of tags to assigned to the resource.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -326,6 +329,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             secondary_web_host=self.secondary_web_host,
             tags=self.tags)
 
+
 def get_account(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Storage Account.
@@ -346,7 +350,6 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Storage Account is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

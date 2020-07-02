@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetApplicationSecurityGroupResult:
     """
     A collection of values returned by getApplicationSecurityGroup.
@@ -37,6 +38,8 @@ class GetApplicationSecurityGroupResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetApplicationSecurityGroupResult(GetApplicationSecurityGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,6 +51,7 @@ class AwaitableGetApplicationSecurityGroupResult(GetApplicationSecurityGroupResu
             name=self.name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_application_security_group(name=None,resource_group_name=None,opts=None):
     """
@@ -69,7 +73,6 @@ def get_application_security_group(name=None,resource_group_name=None,opts=None)
     :param str resource_group_name: The name of the resource group in which the Application Security Group exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualNetworkResult:
     """
     A collection of values returned by getVirtualNetwork.
@@ -61,6 +62,8 @@ class GetVirtualNetworkResult:
         """
         A mapping of name - virtual network id of the virtual network peerings.
         """
+
+
 class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,6 +79,7 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
             resource_group_name=self.resource_group_name,
             subnets=self.subnets,
             vnet_peerings=self.vnet_peerings)
+
 
 def get_virtual_network(name=None,resource_group_name=None,opts=None):
     """
@@ -97,7 +101,6 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

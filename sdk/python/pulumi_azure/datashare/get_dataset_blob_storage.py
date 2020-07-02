@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDatasetBlobStorageResult:
     """
     A collection of values returned by getDatasetBlobStorage.
@@ -58,6 +59,8 @@ class GetDatasetBlobStorageResult:
         """
         A `storage_account` block as defined below.
         """
+
+
 class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +75,7 @@ class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
             id=self.id,
             name=self.name,
             storage_accounts=self.storage_accounts)
+
 
 def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
     """
@@ -93,7 +97,6 @@ def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
     :param str name: The name of this Data Share Blob Storage Dataset.
     """
     __args__ = dict()
-
 
     __args__['dataShareId'] = data_share_id
     __args__['name'] = name

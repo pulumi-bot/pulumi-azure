@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKeyVaultResult:
     """
     A collection of values returned by getKeyVault.
@@ -94,6 +95,8 @@ class GetKeyVaultResult:
         """
         The URI of the vault for performing operations on keys and secrets.
         """
+
+
 class AwaitableGetKeyVaultResult(GetKeyVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,6 +119,7 @@ class AwaitableGetKeyVaultResult(GetKeyVaultResult):
             tenant_id=self.tenant_id,
             vault_uri=self.vault_uri)
 
+
 def get_key_vault(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Key Vault.
@@ -136,7 +140,6 @@ def get_key_vault(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Key Vault exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

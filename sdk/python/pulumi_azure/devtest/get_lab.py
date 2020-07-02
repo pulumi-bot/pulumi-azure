@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLabResult:
     """
     A collection of values returned by getLab.
@@ -79,6 +80,8 @@ class GetLabResult:
         """
         The unique immutable identifier of the Dev Test Lab.
         """
+
+
 class AwaitableGetLabResult(GetLabResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,6 +100,7 @@ class AwaitableGetLabResult(GetLabResult):
             storage_type=self.storage_type,
             tags=self.tags,
             unique_identifier=self.unique_identifier)
+
 
 def get_lab(name=None,resource_group_name=None,opts=None):
     """
@@ -118,7 +122,6 @@ def get_lab(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Dev Test Lab exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

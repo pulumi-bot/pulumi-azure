@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetUserAssignedIdentityResult:
     """
     A collection of values returned by getUserAssignedIdentity.
@@ -49,6 +50,8 @@ class GetUserAssignedIdentityResult:
         """
         A mapping of tags assigned to the User Assigned Identity.
         """
+
+
 class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,6 +65,7 @@ class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
             principal_id=self.principal_id,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     """
@@ -85,7 +89,6 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the User Assigned Identity exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKubernetesServiceVersionsResult:
     """
     A collection of values returned by getKubernetesServiceVersions.
@@ -40,6 +41,8 @@ class GetKubernetesServiceVersionsResult:
         """
         The list of all supported versions.
         """
+
+
 class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,6 +55,7 @@ class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsRe
             location=self.location,
             version_prefix=self.version_prefix,
             versions=self.versions)
+
 
 def get_kubernetes_service_versions(include_preview=None,location=None,version_prefix=None,opts=None):
     """
@@ -74,7 +78,6 @@ def get_kubernetes_service_versions(include_preview=None,location=None,version_p
     :param str version_prefix: A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
     """
     __args__ = dict()
-
 
     __args__['includePreview'] = include_preview
     __args__['location'] = location

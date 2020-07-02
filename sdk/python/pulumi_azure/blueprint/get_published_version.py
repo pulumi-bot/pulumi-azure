@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPublishedVersionResult:
     """
     A collection of values returned by getPublishedVersion.
@@ -58,6 +59,8 @@ class GetPublishedVersionResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPublishedVersionResult(GetPublishedVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,6 +77,7 @@ class AwaitableGetPublishedVersionResult(GetPublishedVersionResult):
             time_created=self.time_created,
             type=self.type,
             version=self.version)
+
 
 def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=None):
     """
@@ -99,7 +103,6 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
     :param str version: The Version name of the Published Version of the Blueprint Definition
     """
     __args__ = dict()
-
 
     __args__['blueprintName'] = blueprint_name
     __args__['scopeId'] = scope_id

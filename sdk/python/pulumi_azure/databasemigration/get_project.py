@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetProjectResult:
     """
     A collection of values returned by getProject.
@@ -52,6 +53,8 @@ class GetProjectResult:
         """
         The platform type of the migration target.
         """
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             source_platform=self.source_platform,
             tags=self.tags,
             target_platform=self.target_platform)
+
 
 def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     :param str service_name: Name of the database migration service where resource belongs to.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServerResult:
     """
     A collection of values returned by getServer.
@@ -55,6 +56,8 @@ class GetServerResult:
         """
         The version of the PostgreSQL Server.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,6 +72,7 @@ class AwaitableGetServerResult(GetServerResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags,
             version=self.version)
+
 
 def get_server(name=None,resource_group_name=None,opts=None):
     """
@@ -90,7 +94,6 @@ def get_server(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the PostgreSQL Server exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

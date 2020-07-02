@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDiskEncryptionSetResult:
     """
     A collection of values returned by getDiskEncryptionSet.
@@ -37,6 +38,8 @@ class GetDiskEncryptionSetResult:
         """
         A mapping of tags assigned to the Disk Encryption Set.
         """
+
+
 class AwaitableGetDiskEncryptionSetResult(GetDiskEncryptionSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetDiskEncryptionSetResult(GetDiskEncryptionSetResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
+
 def get_disk_encryption_set(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Disk Encryption Set.
@@ -58,7 +62,6 @@ def get_disk_encryption_set(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Disk Encryption Set exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

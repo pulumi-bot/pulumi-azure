@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceResult:
     """
     A collection of values returned by getService.
@@ -61,6 +62,8 @@ class GetServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,6 +80,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_service(location=None,name=None,resource_group_name=None,opts=None):
     """
@@ -100,7 +104,6 @@ def get_service(location=None,name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Healthcare Service exists.
     """
     __args__ = dict()
-
 
     __args__['location'] = location
     __args__['name'] = name

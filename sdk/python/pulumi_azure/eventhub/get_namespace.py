@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
@@ -104,6 +105,8 @@ class GetNamespaceResult:
         """
         A mapping of tags to assign to the EventHub Namespace.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -127,6 +130,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             sku=self.sku,
             tags=self.tags)
 
+
 def get_namespace(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing EventHub Namespace.
@@ -147,7 +151,6 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the EventHub Namespace exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

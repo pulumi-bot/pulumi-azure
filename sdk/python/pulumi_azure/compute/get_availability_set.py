@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAvailabilitySetResult:
     """
     A collection of values returned by getAvailabilitySet.
@@ -55,6 +56,8 @@ class GetAvailabilitySetResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAvailabilitySetResult(GetAvailabilitySetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,6 +72,7 @@ class AwaitableGetAvailabilitySetResult(GetAvailabilitySetResult):
             platform_update_domain_count=self.platform_update_domain_count,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_availability_set(name=None,resource_group_name=None,opts=None):
     """
@@ -90,7 +94,6 @@ def get_availability_set(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Availability Set exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

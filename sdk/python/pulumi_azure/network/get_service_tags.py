@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceTagsResult:
     """
     A collection of values returned by getServiceTags.
@@ -34,6 +35,8 @@ class GetServiceTagsResult:
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         __self__.service = service
+
+
 class AwaitableGetServiceTagsResult(GetServiceTagsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetServiceTagsResult(GetServiceTagsResult):
             location=self.location,
             location_filter=self.location_filter,
             service=self.service)
+
 
 def get_service_tags(location=None,location_filter=None,service=None,opts=None):
     """
@@ -68,7 +72,6 @@ def get_service_tags(location=None,location_filter=None,service=None,opts=None):
     :param str service: The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview#available-service-tags).
     """
     __args__ = dict()
-
 
     __args__['location'] = location
     __args__['locationFilter'] = location_filter

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLogProfileResult:
     """
     A collection of values returned by getLogProfile.
@@ -49,6 +50,8 @@ class GetLogProfileResult:
         """
         The resource id of the storage account in which the Activity Log is stored.
         """
+
+
 class AwaitableGetLogProfileResult(GetLogProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,6 +65,7 @@ class AwaitableGetLogProfileResult(GetLogProfileResult):
             retention_policies=self.retention_policies,
             servicebus_rule_id=self.servicebus_rule_id,
             storage_account_id=self.storage_account_id)
+
 
 def get_log_profile(name=None,opts=None):
     """
@@ -81,7 +85,6 @@ def get_log_profile(name=None,opts=None):
     :param str name: Specifies the Name of the Log Profile.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

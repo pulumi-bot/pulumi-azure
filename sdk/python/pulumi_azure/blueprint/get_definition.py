@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDefinitionResult:
     """
     A collection of values returned by getDefinition.
@@ -61,6 +62,8 @@ class GetDefinitionResult:
         """
         A list of versions published for this Blueprint Definition.
         """
+
+
 class AwaitableGetDefinitionResult(GetDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,6 +79,7 @@ class AwaitableGetDefinitionResult(GetDefinitionResult):
             target_scope=self.target_scope,
             time_created=self.time_created,
             versions=self.versions)
+
 
 def get_definition(name=None,scope_id=None,opts=None):
     """
@@ -100,7 +104,6 @@ def get_definition(name=None,scope_id=None,opts=None):
     :param str scope_id: The Resource ID of the scope at which the blueprint definition is stored. This will be with either a Subscription ID or Management Group ID.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['scopeId'] = scope_id

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSharedAccessPolicyResult:
     """
     A collection of values returned by getSharedAccessPolicy.
@@ -52,6 +53,8 @@ class GetSharedAccessPolicyResult:
         """
         The secondary key used to create the authentication token.
         """
+
+
 class AwaitableGetSharedAccessPolicyResult(GetSharedAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetSharedAccessPolicyResult(GetSharedAccessPolicyResult):
             resource_group_name=self.resource_group_name,
             secondary_connection_string=self.secondary_connection_string,
             secondary_key=self.secondary_key)
+
 
 def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None
     :param str resource_group_name: The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
     """
     __args__ = dict()
-
 
     __args__['iothubName'] = iothub_name
     __args__['name'] = name

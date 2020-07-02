@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetScheduledQueryRulesLogResult:
     """
     A collection of values returned by getScheduledQueryRulesLog.
@@ -61,6 +62,8 @@ class GetScheduledQueryRulesLogResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,6 +80,7 @@ class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

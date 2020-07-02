@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetWorkflowResult:
     """
     A collection of values returned by getWorkflow.
@@ -91,6 +92,8 @@ class GetWorkflowResult:
         """
         The version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`.
         """
+
+
 class AwaitableGetWorkflowResult(GetWorkflowResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -112,6 +115,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             workflow_schema=self.workflow_schema,
             workflow_version=self.workflow_version)
 
+
 def get_workflow(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Logic App Workflow.
@@ -132,7 +136,6 @@ def get_workflow(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Logic App Workflow exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

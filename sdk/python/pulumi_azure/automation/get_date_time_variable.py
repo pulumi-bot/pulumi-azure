@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDateTimeVariableResult:
     """
     A collection of values returned by getDateTimeVariable.
@@ -46,6 +47,8 @@ class GetDateTimeVariableResult:
         """
         The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
         """
+
+
 class AwaitableGetDateTimeVariableResult(GetDateTimeVariableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetDateTimeVariableResult(GetDateTimeVariableResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             value=self.value)
+
 
 def get_date_time_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -82,7 +86,6 @@ def get_date_time_variable(automation_account_name=None,name=None,resource_group
     :param str resource_group_name: The Name of the Resource Group where the automation account exists.
     """
     __args__ = dict()
-
 
     __args__['automationAccountName'] = automation_account_name
     __args__['name'] = name

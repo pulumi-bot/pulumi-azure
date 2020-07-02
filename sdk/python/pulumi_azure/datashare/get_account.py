@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -37,6 +38,8 @@ class GetAccountResult:
         """
         A mapping of tags assigned to the Data Share Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,6 +51,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_account(name=None,resource_group_name=None,opts=None):
     """
@@ -69,7 +73,6 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Data Share Account exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

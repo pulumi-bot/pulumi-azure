@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -43,6 +44,8 @@ class GetAccountResult:
         """
         The Secondary Access Key for the Automation Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,6 +58,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             primary_key=self.primary_key,
             resource_group_name=self.resource_group_name,
             secondary_key=self.secondary_key)
+
 
 def get_account(name=None,resource_group_name=None,opts=None):
     """
@@ -76,7 +80,6 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the Automation Account exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

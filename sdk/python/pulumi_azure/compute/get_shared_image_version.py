@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSharedImageVersionResult:
     """
     A collection of values returned by getSharedImageVersion.
@@ -64,6 +65,8 @@ class GetSharedImageVersionResult:
         """
         One or more `target_region` blocks as documented below.
         """
+
+
 class AwaitableGetSharedImageVersionResult(GetSharedImageVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,6 +83,7 @@ class AwaitableGetSharedImageVersionResult(GetSharedImageVersionResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags,
             target_regions=self.target_regions)
+
 
 def get_shared_image_version(gallery_name=None,image_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -104,7 +108,6 @@ def get_shared_image_version(gallery_name=None,image_name=None,name=None,resourc
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
     """
     __args__ = dict()
-
 
     __args__['galleryName'] = gallery_name
     __args__['imageName'] = image_name

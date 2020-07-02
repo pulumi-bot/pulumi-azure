@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDpsResult:
     """
     A collection of values returned by getDps.
@@ -58,6 +59,8 @@ class GetDpsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDpsResult(GetDpsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,6 +76,7 @@ class AwaitableGetDpsResult(GetDpsResult):
             resource_group_name=self.resource_group_name,
             service_operations_host_name=self.service_operations_host_name,
             tags=self.tags)
+
 
 def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     """
@@ -93,7 +97,6 @@ def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group under which the Iot Device Provisioning Service is located in.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

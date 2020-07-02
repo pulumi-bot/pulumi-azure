@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
@@ -173,6 +174,8 @@ class GetKubernetesClusterResult:
         """
         A `windows_profile` block as documented below.
         """
+
+
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -207,6 +210,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             tags=self.tags,
             windows_profiles=self.windows_profiles)
 
+
 def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
@@ -226,7 +230,6 @@ def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the managed Kubernetes Cluster exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

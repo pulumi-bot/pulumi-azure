@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetStringVariableResult:
     """
     A collection of values returned by getStringVariable.
@@ -46,6 +47,8 @@ class GetStringVariableResult:
         """
         The value of the Automation Variable as a `string`.
         """
+
+
 class AwaitableGetStringVariableResult(GetStringVariableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetStringVariableResult(GetStringVariableResult):
             name=self.name,
             resource_group_name=self.resource_group_name,
             value=self.value)
+
 
 def get_string_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
     """
@@ -82,7 +86,6 @@ def get_string_variable(automation_account_name=None,name=None,resource_group_na
     :param str resource_group_name: The Name of the Resource Group where the automation account exists.
     """
     __args__ = dict()
-
 
     __args__['automationAccountName'] = automation_account_name
     __args__['name'] = name

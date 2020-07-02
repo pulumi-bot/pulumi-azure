@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPolicyVMResult:
     """
     A collection of values returned by getPolicyVM.
@@ -34,6 +35,8 @@ class GetPolicyVMResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetPolicyVMResult(GetPolicyVMResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetPolicyVMResult(GetPolicyVMResult):
             recovery_vault_name=self.recovery_vault_name,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,opts=None):
     """
@@ -67,7 +71,6 @@ def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,op
     :param str resource_group_name: The name of the resource group in which the VM Backup Policy resides.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['recoveryVaultName'] = recovery_vault_name

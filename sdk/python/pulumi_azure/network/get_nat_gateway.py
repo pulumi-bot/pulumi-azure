@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNatGatewayResult:
     """
     A collection of values returned by getNatGateway.
@@ -73,6 +74,8 @@ class GetNatGatewayResult:
         """
         A list of Availability Zones which the NAT Gateway exists in.
         """
+
+
 class AwaitableGetNatGatewayResult(GetNatGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,6 +94,7 @@ class AwaitableGetNatGatewayResult(GetNatGatewayResult):
             tags=self.tags,
             zones=self.zones)
 
+
 def get_nat_gateway(name=None,public_ip_address_ids=None,public_ip_prefix_ids=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing NAT Gateway.
@@ -102,7 +106,6 @@ def get_nat_gateway(name=None,public_ip_address_ids=None,public_ip_prefix_ids=No
     :param str resource_group_name: Specifies the name of the Resource Group where the NAT Gateway exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['publicIpAddressIds'] = public_ip_address_ids

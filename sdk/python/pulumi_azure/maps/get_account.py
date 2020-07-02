@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -52,6 +53,8 @@ class GetAccountResult:
         """
         A unique identifier for the Maps Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             sku_name=self.sku_name,
             tags=self.tags,
             x_ms_client_id=self.x_ms_client_id)
+
 
 def get_account(name=None,resource_group_name=None,tags=None,opts=None):
     """
@@ -87,7 +91,6 @@ def get_account(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group in which the Maps Account is located.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

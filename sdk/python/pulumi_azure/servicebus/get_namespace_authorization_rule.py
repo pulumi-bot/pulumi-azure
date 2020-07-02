@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNamespaceAuthorizationRuleResult:
     """
     A collection of values returned by getNamespaceAuthorizationRule.
@@ -52,6 +53,8 @@ class GetNamespaceAuthorizationRuleResult:
         """
         The secondary access key for the authorization rule.
         """
+
+
 class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRule
             resource_group_name=self.resource_group_name,
             secondary_connection_string=self.secondary_connection_string,
             secondary_key=self.secondary_key)
+
 
 def get_namespace_authorization_rule(name=None,namespace_name=None,resource_group_name=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
     :param str resource_group_name: Specifies the name of the Resource Group where the ServiceBus Namespace exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetZoneResult:
     """
     A collection of values returned by getZone.
@@ -49,6 +50,8 @@ class GetZoneResult:
         """
         A mapping of tags to assign to the EventHub Namespace.
         """
+
+
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,6 +65,7 @@ class AwaitableGetZoneResult(GetZoneResult):
             number_of_record_sets=self.number_of_record_sets,
             resource_group_name=self.resource_group_name,
             tags=self.tags)
+
 
 def get_zone(name=None,resource_group_name=None,opts=None):
     """
@@ -85,7 +89,6 @@ def get_zone(name=None,resource_group_name=None,opts=None):
            in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceResult:
     """
     A collection of values returned by getService.
@@ -121,6 +122,8 @@ class GetServiceResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -147,6 +150,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             sku_name=self.sku_name,
             tags=self.tags)
 
+
 def get_service(name=None,resource_group_name=None,opts=None):
     """
     Use this data source to access information about an existing API Management Service.
@@ -167,7 +171,6 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
