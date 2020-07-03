@@ -6,7 +6,7 @@ require (
 	github.com/Azure/go-autorest/autorest/azure/cli v0.3.1
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.5.2
-	github.com/pulumi/pulumi/sdk/v2 v2.5.1-0.20200630091945-bb358c4d2173
+	github.com/pulumi/pulumi/sdk/v2 v2.5.1-0.20200701223250-45d2fa95d60b
 	github.com/terraform-providers/terraform-provider-azurerm v1.44.0
 )
 
@@ -17,3 +17,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-azurerm => github.com/pulumi/terraform-provider-azurerm v1.41.1-0.20200625194413-c3c442d8990f
 )
+
+replace github.com/pulumi/pulumi-terraform-bridge/v2 => ../../pulumi-terraform-bridge
