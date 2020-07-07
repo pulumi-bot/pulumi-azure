@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSpringCloudServiceResult:
     """
     A collection of values returned by getSpringCloudService.
@@ -46,6 +47,8 @@ class GetSpringCloudServiceResult:
         """
         A mapping of tags assigned to Spring Cloud Service.
         """
+
+
 class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
+
+def get_spring_cloud_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Spring Cloud Service.
 
@@ -79,8 +83,6 @@ def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the Spring Cloud Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
