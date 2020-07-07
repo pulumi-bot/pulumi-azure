@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPoolResult:
     """
     A collection of values returned by getPool.
@@ -97,6 +98,8 @@ class GetPoolResult:
         """
         The size of the VM created in the Batch pool.
         """
+
+
 class AwaitableGetPoolResult(GetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -120,7 +123,8 @@ class AwaitableGetPoolResult(GetPoolResult):
             storage_image_references=self.storage_image_references,
             vm_size=self.vm_size)
 
-def get_pool(account_name=None,certificates=None,name=None,network_configuration=None,resource_group_name=None,start_task=None,opts=None):
+
+def get_pool(account_name=None, certificates=None, name=None, network_configuration=None, resource_group_name=None, start_task=None, opts=None):
     """
     Use this data source to access information about an existing Batch pool
 
@@ -186,8 +190,6 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
       * `waitForSuccess` (`bool`) - A flag that indicates if the Batch pool should wait for the start task to be completed.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['certificates'] = certificates
     __args__['name'] = name
