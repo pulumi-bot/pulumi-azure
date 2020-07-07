@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDnsZoneResult:
     """
     A collection of values returned by getDnsZone.
@@ -55,6 +56,8 @@ class GetDnsZoneResult:
         """
         A mapping of tags for the zone.
         """
+
+
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +73,8 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_dns_zone(name=None,resource_group_name=None,opts=None):
+
+def get_dns_zone(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Private DNS Zone.
 
@@ -92,8 +96,6 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
            DNS Zones in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
