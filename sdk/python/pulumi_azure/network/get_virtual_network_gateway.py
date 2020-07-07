@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVirtualNetworkGatewayResult:
     """
     A collection of values returned by getVirtualNetworkGateway.
@@ -101,6 +102,8 @@ class GetVirtualNetworkGatewayResult:
         """
         The routing type of the Virtual Network Gateway.
         """
+
+
 class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +126,8 @@ class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
             vpn_client_configurations=self.vpn_client_configurations,
             vpn_type=self.vpn_type)
 
-def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network_gateway(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Virtual Network Gateway.
 
@@ -143,8 +147,6 @@ def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

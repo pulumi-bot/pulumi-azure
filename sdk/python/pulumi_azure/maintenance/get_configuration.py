@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetConfigurationResult:
     """
     A collection of values returned by getConfiguration.
@@ -43,6 +44,8 @@ class GetConfigurationResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetConfigurationResult(GetConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +59,8 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
             scope=self.scope,
             tags=self.tags)
 
-def get_configuration(name=None,resource_group_name=None,opts=None):
+
+def get_configuration(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Maintenance Configuration.
 
@@ -76,8 +80,6 @@ def get_configuration(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where this Maintenance Configuration exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
