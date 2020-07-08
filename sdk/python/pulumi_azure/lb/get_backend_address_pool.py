@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetBackendAddressPoolResult:
     """
     A collection of values returned by getBackendAddressPool.
@@ -34,6 +35,8 @@ class GetBackendAddressPoolResult:
         """
         The name of the Backend Address Pool.
         """
+
+
 class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +48,8 @@ class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
             loadbalancer_id=self.loadbalancer_id,
             name=self.name)
 
-def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
+
+def get_backend_address_pool(loadbalancer_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Load Balancer's Backend Address Pool.
 
@@ -68,8 +72,6 @@ def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Backend Address Pool.
     """
     __args__ = dict()
-
-
     __args__['loadbalancerId'] = loadbalancer_id
     __args__['name'] = name
     if opts is None:

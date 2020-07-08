@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRoleDefinitionResult:
     """
     A collection of values returned by getRoleDefinition.
@@ -52,6 +53,8 @@ class GetRoleDefinitionResult:
         """
         the Type of the Role.
         """
+
+
 class AwaitableGetRoleDefinitionResult(GetRoleDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetRoleDefinitionResult(GetRoleDefinitionResult):
             scope=self.scope,
             type=self.type)
 
-def get_role_definition(name=None,role_definition_id=None,scope=None,opts=None):
+
+def get_role_definition(name=None, role_definition_id=None, scope=None, opts=None):
     """
     Use this data source to access information about an existing Role Definition.
 
@@ -77,8 +81,6 @@ def get_role_definition(name=None,role_definition_id=None,scope=None,opts=None):
     :param str scope: Specifies the Scope at which the Custom Role Definition exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['roleDefinitionId'] = role_definition_id
     __args__['scope'] = scope
