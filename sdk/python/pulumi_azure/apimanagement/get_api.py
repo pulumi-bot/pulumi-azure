@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetApiResult:
     """
     A collection of values returned by getApi.
@@ -103,6 +104,8 @@ class GetApiResult:
         """
         The ID of the Version Set which this API is associated with.
         """
+
+
 class AwaitableGetApiResult(GetApiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -127,7 +130,8 @@ class AwaitableGetApiResult(GetApiResult):
             version=self.version,
             version_set_id=self.version_set_id)
 
-def get_api(api_management_name=None,name=None,resource_group_name=None,revision=None,opts=None):
+
+def get_api(api_management_name=None, name=None, resource_group_name=None, revision=None, opts=None):
     """
     Use this data source to access information about an existing API Management API.
 
@@ -151,8 +155,6 @@ def get_api(api_management_name=None,name=None,resource_group_name=None,revision
     :param str revision: The Revision of the API Management API.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
