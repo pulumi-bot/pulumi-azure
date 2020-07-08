@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAppServicePlanResult:
     """
     A collection of values returned by getAppServicePlan.
@@ -85,6 +86,8 @@ class GetAppServicePlanResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +108,8 @@ class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_app_service_plan(name=None,resource_group_name=None,opts=None):
+
+def get_app_service_plan(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 
@@ -125,8 +129,6 @@ def get_app_service_plan(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service Plan exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

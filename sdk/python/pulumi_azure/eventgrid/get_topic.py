@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetTopicResult:
     """
     A collection of values returned by getTopic.
@@ -49,6 +50,8 @@ class GetTopicResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,7 +67,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             secondary_access_key=self.secondary_access_key,
             tags=self.tags)
 
-def get_topic(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_topic(name=None, resource_group_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an existing EventGrid Topic
 
@@ -83,8 +87,6 @@ def get_topic(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the EventGrid Topic exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
