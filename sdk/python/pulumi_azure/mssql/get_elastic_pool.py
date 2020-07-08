@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetElasticPoolResult:
     """
     A collection of values returned by getElasticPool.
@@ -76,6 +77,8 @@ class GetElasticPoolResult:
         """
         Whether or not this elastic pool is zone redundant.
         """
+
+
 class AwaitableGetElasticPoolResult(GetElasticPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -95,7 +98,8 @@ class AwaitableGetElasticPoolResult(GetElasticPoolResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=None):
+
+def get_elastic_pool(name=None, resource_group_name=None, server_name=None, opts=None):
     """
     Use this data source to access information about an existing SQL elastic pool.
 
@@ -117,8 +121,6 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     :param str server_name: The name of the SQL Server which contains the elastic pool.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name

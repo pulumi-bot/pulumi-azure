@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetIntegrationAccountResult:
     """
     A collection of values returned by getIntegrationAccount.
@@ -43,6 +44,8 @@ class GetIntegrationAccountResult:
         """
         A mapping of tags assigned to the Logic App Integration Account.
         """
+
+
 class AwaitableGetIntegrationAccountResult(GetIntegrationAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +59,8 @@ class AwaitableGetIntegrationAccountResult(GetIntegrationAccountResult):
             sku_name=self.sku_name,
             tags=self.tags)
 
-def get_integration_account(name=None,resource_group_name=None,opts=None):
+
+def get_integration_account(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Logic App Integration Account.
 
@@ -76,8 +80,6 @@ def get_integration_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Logic App Integration Account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
