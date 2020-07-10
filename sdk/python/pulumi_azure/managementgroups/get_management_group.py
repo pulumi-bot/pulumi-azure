@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup", DeprecationWarning)
+
 class GetManagementGroupResult:
     """
     A collection of values returned by getManagementGroup.
@@ -45,6 +46,8 @@ class GetManagementGroupResult:
         """
         A list of Subscription IDs which are assigned to the Management Group.
         """
+
+
 class AwaitableGetManagementGroupResult(GetManagementGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,7 +61,8 @@ class AwaitableGetManagementGroupResult(GetManagementGroupResult):
             parent_management_group_id=self.parent_management_group_id,
             subscription_ids=self.subscription_ids)
 
-def get_management_group(display_name=None,group_id=None,name=None,opts=None):
+
+def get_management_group(display_name=None, group_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Management Group.
 
@@ -79,8 +83,6 @@ def get_management_group(display_name=None,group_id=None,name=None,opts=None):
     """
     pulumi.log.warn("get_management_group is deprecated: azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup")
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['groupId'] = group_id
     __args__['name'] = name

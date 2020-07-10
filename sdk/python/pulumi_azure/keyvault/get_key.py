@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKeyResult:
     """
     A collection of values returned by getKey.
@@ -67,6 +68,8 @@ class GetKeyResult:
         """
         The current version of the Key Vault Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -84,7 +87,8 @@ class AwaitableGetKeyResult(GetKeyResult):
             tags=self.tags,
             version=self.version)
 
-def get_key(key_vault_id=None,name=None,opts=None):
+
+def get_key(key_vault_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Key.
 
@@ -104,8 +108,6 @@ def get_key(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Key.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:

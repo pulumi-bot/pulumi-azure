@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceEndpointConnectionsResult:
     """
     A collection of values returned by getServiceEndpointConnections.
@@ -37,6 +38,8 @@ class GetServiceEndpointConnectionsResult:
         """
         The name of the private link service.
         """
+
+
 class AwaitableGetServiceEndpointConnectionsResult(GetServiceEndpointConnectionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +53,8 @@ class AwaitableGetServiceEndpointConnectionsResult(GetServiceEndpointConnections
             service_id=self.service_id,
             service_name=self.service_name)
 
-def get_service_endpoint_connections(resource_group_name=None,service_id=None,opts=None):
+
+def get_service_endpoint_connections(resource_group_name=None, service_id=None, opts=None):
     """
     Use this data source to access endpoint connection information about an existing Private Link Service.
 
@@ -72,8 +76,6 @@ def get_service_endpoint_connections(resource_group_name=None,service_id=None,op
     :param str service_id: The resource ID of the private link service.
     """
     __args__ = dict()
-
-
     __args__['resourceGroupName'] = resource_group_name
     __args__['serviceId'] = service_id
     if opts is None:

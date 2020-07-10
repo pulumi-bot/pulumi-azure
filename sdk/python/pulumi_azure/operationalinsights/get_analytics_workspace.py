@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAnalyticsWorkspaceResult:
     """
     A collection of values returned by getAnalyticsWorkspace.
@@ -70,6 +71,8 @@ class GetAnalyticsWorkspaceResult:
         """
         The Workspace (or Customer) ID for the Log Analytics Workspace.
         """
+
+
 class AwaitableGetAnalyticsWorkspaceResult(GetAnalyticsWorkspaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +91,8 @@ class AwaitableGetAnalyticsWorkspaceResult(GetAnalyticsWorkspaceResult):
             tags=self.tags,
             workspace_id=self.workspace_id)
 
-def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
+
+def get_analytics_workspace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
 
@@ -108,8 +112,6 @@ def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Log Analytics workspace is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
