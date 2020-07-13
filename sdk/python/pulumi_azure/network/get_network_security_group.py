@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNetworkSecurityGroupResult:
     """
     A collection of values returned by getNetworkSecurityGroup.
@@ -46,6 +47,8 @@ class GetNetworkSecurityGroupResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetNetworkSecurityGroupResult(GetNetworkSecurityGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetNetworkSecurityGroupResult(GetNetworkSecurityGroupResult):
             security_rules=self.security_rules,
             tags=self.tags)
 
-def get_network_security_group(name=None,resource_group_name=None,opts=None):
+
+def get_network_security_group(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Network Security Group.
 
@@ -79,8 +83,6 @@ def get_network_security_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Network Security Group exists
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

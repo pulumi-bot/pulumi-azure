@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.role.getRoleDefinition has been deprecated in favor of azure.authorization.getRoleDefinition", DeprecationWarning)
+
 class GetRoleDefinitionResult:
     """
     A collection of values returned by getRoleDefinition.
@@ -41,6 +42,8 @@ class GetRoleDefinitionResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
+
+
 class AwaitableGetRoleDefinitionResult(GetRoleDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,14 +59,13 @@ class AwaitableGetRoleDefinitionResult(GetRoleDefinitionResult):
             scope=self.scope,
             type=self.type)
 
-def get_role_definition(name=None,role_definition_id=None,scope=None,opts=None):
+
+def get_role_definition(name=None, role_definition_id=None, scope=None, opts=None):
     """
     Use this data source to access information about an existing resource.
     """
     pulumi.log.warn("get_role_definition is deprecated: azure.role.getRoleDefinition has been deprecated in favor of azure.authorization.getRoleDefinition")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['roleDefinitionId'] = role_definition_id
     __args__['scope'] = scope
