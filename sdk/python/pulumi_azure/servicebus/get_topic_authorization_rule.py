@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetTopicAuthorizationRuleResult:
     """
     A collection of values returned by getTopicAuthorizationRule.
@@ -64,6 +65,8 @@ class GetTopicAuthorizationRuleResult:
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         __self__.topic_name = topic_name
+
+
 class AwaitableGetTopicAuthorizationRuleResult(GetTopicAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,7 +86,8 @@ class AwaitableGetTopicAuthorizationRuleResult(GetTopicAuthorizationRuleResult):
             send=self.send,
             topic_name=self.topic_name)
 
-def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_name=None,topic_name=None,opts=None):
+
+def get_topic_authorization_rule(name=None, namespace_name=None, resource_group_name=None, topic_name=None, opts=None):
     """
     Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
 
@@ -107,8 +111,6 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
     :param str topic_name: The name of the ServiceBus Topic.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name

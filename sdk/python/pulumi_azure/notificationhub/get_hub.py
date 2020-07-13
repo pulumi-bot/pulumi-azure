@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetHubResult:
     """
     A collection of values returned by getHub.
@@ -52,6 +53,8 @@ class GetHubResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetHubResult(GetHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetHubResult(GetHubResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_hub(name=None, namespace_name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
 
@@ -89,8 +93,6 @@ def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name

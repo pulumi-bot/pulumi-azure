@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace", DeprecationWarning)
+
 class GetEventhubNamespaceResult:
     """
     A collection of values returned by getEventhubNamespace.
@@ -117,6 +118,8 @@ class GetEventhubNamespaceResult:
         """
         Is this EventHub Namespace deployed across Availability Zones?
         """
+
+
 class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -142,7 +145,8 @@ class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_eventhub_namespace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing EventHub Namespace.
 
@@ -163,8 +167,6 @@ def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_eventhub_namespace is deprecated: azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

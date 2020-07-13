@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
@@ -52,6 +53,8 @@ class GetCertificateResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +71,8 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             thumbprint=self.thumbprint,
             version=self.version)
 
-def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
+
+def get_certificate(key_vault_id=None, name=None, version=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Certificate.
 
@@ -94,8 +98,6 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
     :param str version: Specifies the version of the certificate to look up.  (Defaults to latest)
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     __args__['version'] = version
