@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
@@ -28,6 +29,8 @@ class GetPolicyResult:
         if storage_account_id and not isinstance(storage_account_id, str):
             raise TypeError("Expected argument 'storage_account_id' to be a str")
         __self__.storage_account_id = storage_account_id
+
+
 class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +41,8 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             rules=self.rules,
             storage_account_id=self.storage_account_id)
 
-def get_policy(storage_account_id=None,opts=None):
+
+def get_policy(storage_account_id=None, opts=None):
     """
     Use this data source to access information about an existing Storage Management Policy.
 
@@ -57,8 +61,6 @@ def get_policy(storage_account_id=None,opts=None):
     :param str storage_account_id: Specifies the id of the storage account to retrieve the management policy for.
     """
     __args__ = dict()
-
-
     __args__['storageAccountId'] = storage_account_id
     if opts is None:
         opts = pulumi.InvokeOptions()

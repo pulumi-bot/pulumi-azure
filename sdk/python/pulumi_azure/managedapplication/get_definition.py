@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDefinitionResult:
     """
     A collection of values returned by getDefinition.
@@ -28,6 +29,8 @@ class GetDefinitionResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetDefinitionResult(GetDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +42,8 @@ class AwaitableGetDefinitionResult(GetDefinitionResult):
             name=self.name,
             resource_group_name=self.resource_group_name)
 
-def get_definition(name=None,resource_group_name=None,opts=None):
+
+def get_definition(name=None, resource_group_name=None, opts=None):
     """
     Uses this data source to access information about an existing Managed Application Definition.
 
@@ -59,8 +63,6 @@ def get_definition(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where this Managed Application Definition exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

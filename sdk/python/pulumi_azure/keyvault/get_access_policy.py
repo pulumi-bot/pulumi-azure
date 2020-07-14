@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccessPolicyResult:
     """
     A collection of values returned by getAccessPolicy.
@@ -40,6 +41,8 @@ class GetAccessPolicyResult:
         """
         the secret permissions for the access policy
         """
+
+
 class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +55,8 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
             name=self.name,
             secret_permissions=self.secret_permissions)
 
-def get_access_policy(name=None,opts=None):
+
+def get_access_policy(name=None, opts=None):
     """
     Use this data source to access information about the permissions from the Management Key Vault Templates.
 
@@ -72,8 +76,6 @@ def get_access_policy(name=None,opts=None):
            `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
