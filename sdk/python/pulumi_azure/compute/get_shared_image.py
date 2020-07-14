@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSharedImageResult:
     """
     A collection of values returned by getSharedImage.
@@ -88,6 +89,8 @@ class GetSharedImageResult:
         """
         A mapping of tags assigned to the Shared Image.
         """
+
+
 class AwaitableGetSharedImageResult(GetSharedImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +112,8 @@ class AwaitableGetSharedImageResult(GetSharedImageResult):
             specialized=self.specialized,
             tags=self.tags)
 
-def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_shared_image(gallery_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
 
@@ -130,8 +134,6 @@ def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
     """
     __args__ = dict()
-
-
     __args__['galleryName'] = gallery_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

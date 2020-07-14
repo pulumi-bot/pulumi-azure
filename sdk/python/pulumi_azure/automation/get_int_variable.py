@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetIntVariableResult:
     """
     A collection of values returned by getIntVariable.
@@ -46,6 +47,8 @@ class GetIntVariableResult:
         """
         The value of the Automation Variable as a `integer`.
         """
+
+
 class AwaitableGetIntVariableResult(GetIntVariableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetIntVariableResult(GetIntVariableResult):
             resource_group_name=self.resource_group_name,
             value=self.value)
 
-def get_int_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_int_variable(automation_account_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Automation Int Variable.
 
@@ -82,8 +86,6 @@ def get_int_variable(automation_account_name=None,name=None,resource_group_name=
     :param str resource_group_name: The Name of the Resource Group where the automation account exists.
     """
     __args__ = dict()
-
-
     __args__['automationAccountName'] = automation_account_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name

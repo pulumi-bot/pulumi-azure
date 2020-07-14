@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetGroupResult:
     """
     A collection of values returned by getGroup.
@@ -44,6 +45,8 @@ class GetGroupResult:
         """
         A list of Subscription IDs which are assigned to the Management Group.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +60,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             parent_management_group_id=self.parent_management_group_id,
             subscription_ids=self.subscription_ids)
 
-def get_group(display_name=None,group_id=None,name=None,opts=None):
+
+def get_group(display_name=None, group_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Management Group.
 
@@ -77,8 +81,6 @@ def get_group(display_name=None,group_id=None,name=None,opts=None):
     :param str name: Specifies the name or UUID of this Management Group.
     """
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['groupId'] = group_id
     __args__['name'] = name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSecretResult:
     """
     A collection of values returned by getSecret.
@@ -49,6 +50,8 @@ class GetSecretResult:
         """
         The current version of the Key Vault Secret.
         """
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetSecretResult(GetSecretResult):
             value=self.value,
             version=self.version)
 
-def get_secret(key_vault_id=None,name=None,opts=None):
+
+def get_secret(key_vault_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Secret.
 
@@ -83,8 +87,6 @@ def get_secret(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Secret.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
