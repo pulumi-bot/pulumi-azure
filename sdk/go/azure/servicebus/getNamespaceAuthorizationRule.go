@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := servicebus.LookupNamespaceAuthorizationRule(ctx, &servicebus.LookupNamespaceAuthorizationRuleArgs{
+// 		example, err := servicebus.LookupNamespaceAuthorizationRule(ctx, "azure:servicebus:getNamespaceAuthorizationRule", &servicebus.LookupNamespaceAuthorizationRuleArgs{
 // 			Name:              "examplerule",
 // 			NamespaceName:     "examplenamespace",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

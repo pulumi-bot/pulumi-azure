@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.GetTrafficManager(ctx, &network.GetTrafficManagerArgs{
+// 		example, err := network.GetTrafficManager(ctx, "azure:network:getTrafficManager", &network.GetTrafficManagerArgs{
 // 			Name: "World",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
+// 		_, err := compute.LookupSharedImage(ctx, "azure:compute:getSharedImage", &compute.LookupSharedImageArgs{
 // 			GalleryName:       "my-image-gallery",
 // 			Name:              "my-image",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

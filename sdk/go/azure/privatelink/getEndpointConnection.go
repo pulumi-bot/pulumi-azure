@@ -23,10 +23,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetEndpointConnection(ctx, &privatelink.GetEndpointConnectionArgs{
+// 		example, err := privatelink.GetEndpointConnection(ctx, "azure:privatelink:getEndpointConnection", &privatelink.GetEndpointConnectionArgs{
 // 			Name:              "example-private-endpoint",
 // 			ResourceGroupName: "example-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

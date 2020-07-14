@@ -22,10 +22,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "search-service"
-// 		example, err := dns.LookupZone(ctx, &dns.LookupZoneArgs{
+// 		example, err := dns.LookupZone(ctx, "azure:dns:getZone", &dns.LookupZoneArgs{
 // 			Name:              "search-eventhubns",
 // 			ResourceGroupName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

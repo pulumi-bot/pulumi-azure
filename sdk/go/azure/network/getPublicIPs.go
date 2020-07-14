@@ -22,10 +22,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := false
-// 		_, err := network.GetPublicIPs(ctx, &network.GetPublicIPsArgs{
+// 		_, err := network.GetPublicIPs(ctx, "azure:network:getPublicIPs", &network.GetPublicIPsArgs{
 // 			Attached:          &opt0,
 // 			ResourceGroupName: "pip-test",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

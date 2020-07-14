@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := maps.LookupAccount(ctx, &maps.LookupAccountArgs{
+// 		example, err := maps.LookupAccount(ctx, "azure:maps:getAccount", &maps.LookupAccountArgs{
 // 			Name:              "production",
 // 			ResourceGroupName: "maps",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

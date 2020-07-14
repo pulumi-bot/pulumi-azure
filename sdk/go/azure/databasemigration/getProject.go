@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := databasemigration.LookupProject(ctx, &databasemigration.LookupProjectArgs{
+// 		example, err := databasemigration.LookupProject(ctx, "azure:databasemigration:getProject", &databasemigration.LookupProjectArgs{
 // 			Name:              "example-dbms-project",
 // 			ResourceGroupName: "example-rg",
 // 			ServiceName:       "example-dbms",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

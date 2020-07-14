@@ -24,18 +24,18 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apimanagement.LookupApi(ctx, &apimanagement.LookupApiArgs{
+// 		_, err := apimanagement.LookupApi(ctx, "azure:apimanagement:getApi", &apimanagement.LookupApiArgs{
 // 			Name:              "search-api",
 // 			ApiManagementName: "search-api-management",
 // 			ResourceGroupName: "search-service",
 // 			Revision:          "2",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = apimanagement.NewAuthorizationServer(ctx, "exampleAuthorizationServer", &apimanagement.AuthorizationServerArgs{
-// 			ApiManagementName:          pulumi.String(data.Azurerm_api_management.Example.Name),
-// 			ResourceGroupName:          pulumi.String(data.Azurerm_api_management.Example.Resource_group_name),
+// 			ApiManagementName:          pulumi.Any(data.Azurerm_api_management.Example.Name),
+// 			ResourceGroupName:          pulumi.Any(data.Azurerm_api_management.Example.Resource_group_name),
 // 			DisplayName:                pulumi.String("Test Server"),
 // 			AuthorizationEndpoint:      pulumi.String("https://example.mydomain.com/client/authorize"),
 // 			ClientId:                   pulumi.String("42424242-4242-4242-4242-424242424242"),

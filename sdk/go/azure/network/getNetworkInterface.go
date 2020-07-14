@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupNetworkInterface(ctx, &network.LookupNetworkInterfaceArgs{
+// 		example, err := network.LookupNetworkInterface(ctx, "azure:network:getNetworkInterface", &network.LookupNetworkInterfaceArgs{
 // 			Name:              "acctest-nic",
 // 			ResourceGroupName: "networking",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

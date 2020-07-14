@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupAvailabilitySet(ctx, &compute.LookupAvailabilitySetArgs{
+// 		example, err := compute.LookupAvailabilitySet(ctx, "azure:compute:getAvailabilitySet", &compute.LookupAvailabilitySetArgs{
 // 			Name:              "tf-appsecuritygroup",
 // 			ResourceGroupName: "my-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := hdinsight.GetCluster(ctx, &hdinsight.GetClusterArgs{
+// 		example, err := hdinsight.GetCluster(ctx, "azure:hdinsight:getCluster", &hdinsight.GetClusterArgs{
 // 			Name:              "example",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

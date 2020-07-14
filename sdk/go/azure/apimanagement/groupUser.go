@@ -24,11 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleUser, err := apimanagement.LookupUser(ctx, &apimanagement.LookupUserArgs{
+// 		exampleUser, err := apimanagement.LookupUser(ctx, "azure:apimanagement:getUser", &apimanagement.LookupUserArgs{
 // 			UserId:            "my-user",
 // 			ApiManagementName: "example-apim",
 // 			ResourceGroupName: "search-service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

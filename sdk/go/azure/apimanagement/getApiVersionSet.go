@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := apimanagement.LookupApiVersionSet(ctx, &apimanagement.LookupApiVersionSetArgs{
+// 		example, err := apimanagement.LookupApiVersionSet(ctx, "azure:apimanagement:getApiVersionSet", &apimanagement.LookupApiVersionSetArgs{
 // 			ResourceGroupName: "example-resources",
 // 			ApiManagementName: "example-api",
 // 			Name:              "example-api-version-set",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

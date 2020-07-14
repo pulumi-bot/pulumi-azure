@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetFirewallPolicyResult:
     """
     A collection of values returned by getFirewallPolicy.
@@ -31,6 +32,8 @@ class GetFirewallPolicyResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_firewall_policy(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_firewall_policy(name=None, resource_group_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an existing Web Application Firewall Policy.
 
@@ -63,8 +67,6 @@ def get_firewall_policy(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Web Application Firewall Policy exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags

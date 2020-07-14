@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupVirtualMachine(ctx, &compute.LookupVirtualMachineArgs{
+// 		example, err := compute.LookupVirtualMachine(ctx, "azure:compute:getVirtualMachine", &compute.LookupVirtualMachineArgs{
 // 			Name:              "production",
 // 			ResourceGroupName: "networking",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

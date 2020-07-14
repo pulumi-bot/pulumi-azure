@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datashare.LookupAccount(ctx, &datashare.LookupAccountArgs{
+// 		example, err := datashare.LookupAccount(ctx, "azure:datashare:getAccount", &datashare.LookupAccountArgs{
 // 			Name:              "example-account",
 // 			ResourceGroupName: "example-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

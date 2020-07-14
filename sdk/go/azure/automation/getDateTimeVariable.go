@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := automation.LookupDateTimeVariable(ctx, &automation.LookupDateTimeVariableArgs{
+// 		example, err := automation.LookupDateTimeVariable(ctx, "azure:automation:getDateTimeVariable", &automation.LookupDateTimeVariableArgs{
 // 			Name:                  "tfex-example-var",
 // 			ResourceGroupName:     "tfex-example-rg",
 // 			AutomationAccountName: "tfex-example-account",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.LookupSnapshot(ctx, &compute.LookupSnapshotArgs{
+// 		_, err := compute.LookupSnapshot(ctx, "azure:compute:getSnapshot", &compute.LookupSnapshotArgs{
 // 			Name:              "my-snapshot",
 // 			ResourceGroupName: "my-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

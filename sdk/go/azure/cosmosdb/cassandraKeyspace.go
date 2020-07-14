@@ -25,9 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		exampleResourceGroup, err := core.LookupResourceGroup(ctx, "azure:core:getResourceGroup", &core.LookupResourceGroupArgs{
 // 			Name: "tflex-cosmosdb-account-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

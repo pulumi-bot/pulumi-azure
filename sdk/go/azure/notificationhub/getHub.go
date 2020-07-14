@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := notificationhub.LookupHub(ctx, &notificationhub.LookupHubArgs{
+// 		example, err := notificationhub.LookupHub(ctx, "azure:notificationhub:getHub", &notificationhub.LookupHubArgs{
 // 			Name:              "notification-hub",
 // 			NamespaceName:     "namespace-name",
 // 			ResourceGroupName: "resource-group-name",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

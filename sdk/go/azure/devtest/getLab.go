@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := devtest.LookupLab(ctx, &devtest.LookupLabArgs{
+// 		example, err := devtest.LookupLab(ctx, "azure:devtest:getLab", &devtest.LookupLabArgs{
 // 			Name:              "example-lab",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

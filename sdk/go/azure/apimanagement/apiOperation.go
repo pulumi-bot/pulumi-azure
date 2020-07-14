@@ -24,12 +24,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApi, err := apimanagement.LookupApi(ctx, &apimanagement.LookupApiArgs{
+// 		exampleApi, err := apimanagement.LookupApi(ctx, "azure:apimanagement:getApi", &apimanagement.LookupApiArgs{
 // 			Name:              "search-api",
 // 			ApiManagementName: "search-api-management",
 // 			ResourceGroupName: "search-service",
 // 			Revision:          "2",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

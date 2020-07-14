@@ -22,16 +22,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "resourcegroupname"
-// 		_, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
+// 		_, err := storage.LookupAccount(ctx, "azure:storage:getAccount", &storage.LookupAccountArgs{
 // 			Name:              "storageaccountname",
 // 			ResourceGroupName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.GetPolicy(ctx, &storage.GetPolicyArgs{
+// 		_, err = storage.GetPolicy(ctx, "azure:storage:getPolicy", &storage.GetPolicyArgs{
 // 			StorageAccountId: azurerm_storage_account.Example.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

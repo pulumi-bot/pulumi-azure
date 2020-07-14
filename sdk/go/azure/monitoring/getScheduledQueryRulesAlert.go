@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := monitoring.LookupScheduledQueryRulesAlert(ctx, &monitoring.LookupScheduledQueryRulesAlertArgs{
+// 		example, err := monitoring.LookupScheduledQueryRulesAlert(ctx, "azure:monitoring:getScheduledQueryRulesAlert", &monitoring.LookupScheduledQueryRulesAlertArgs{
 // 			Name:              "tfex-queryrule",
 // 			ResourceGroupName: "example-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

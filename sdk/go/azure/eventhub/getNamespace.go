@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := eventhub.LookupNamespace(ctx, &eventhub.LookupNamespaceArgs{
+// 		example, err := eventhub.LookupNamespace(ctx, "azure:eventhub:getNamespace", &eventhub.LookupNamespaceArgs{
 // 			Name:              "search-eventhubns",
 // 			ResourceGroupName: "search-service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

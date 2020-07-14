@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := batch.LookupPool(ctx, &batch.LookupPoolArgs{
+// 		_, err := batch.LookupPool(ctx, "azure:batch:getPool", &batch.LookupPoolArgs{
 // 			AccountName:       "testbatchaccount",
 // 			Name:              "testbatchpool",
 // 			ResourceGroupName: "test",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

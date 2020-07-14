@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupVirtualHub(ctx, &network.LookupVirtualHubArgs{
+// 		example, err := network.LookupVirtualHub(ctx, "azure:network:getVirtualHub", &network.LookupVirtualHubArgs{
 // 			Name:              "example-hub",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

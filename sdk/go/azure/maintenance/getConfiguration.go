@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := maintenance.LookupConfiguration(ctx, &maintenance.LookupConfigurationArgs{
+// 		_, err := maintenance.LookupConfiguration(ctx, "azure:maintenance:getConfiguration", &maintenance.LookupConfigurationArgs{
 // 			Name:              "example-mc",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

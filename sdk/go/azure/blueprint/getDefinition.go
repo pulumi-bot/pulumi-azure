@@ -25,21 +25,21 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetClientConfig(ctx, nil, nil)
+// 		current, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt0 := current.TenantId
-// 		root, err := management.LookupGroup(ctx, &management.LookupGroupArgs{
+// 		root, err := management.LookupGroup(ctx, "azure:management:getGroup", &management.LookupGroupArgs{
 // 			Name: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = blueprint.GetDefinition(ctx, &blueprint.GetDefinitionArgs{
+// 		_, err = blueprint.GetDefinition(ctx, "azure:blueprint:getDefinition", &blueprint.GetDefinitionArgs{
 // 			Name:    "exampleManagementGroupBP",
 // 			ScopeId: root.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

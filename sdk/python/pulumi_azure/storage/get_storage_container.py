@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetStorageContainerResult:
     """
     A collection of values returned by getStorageContainer.
@@ -55,6 +56,8 @@ class GetStorageContainerResult:
         if storage_account_name and not isinstance(storage_account_name, str):
             raise TypeError("Expected argument 'storage_account_name' to be a str")
         __self__.storage_account_name = storage_account_name
+
+
 class AwaitableGetStorageContainerResult(GetStorageContainerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +73,8 @@ class AwaitableGetStorageContainerResult(GetStorageContainerResult):
             resource_manager_id=self.resource_manager_id,
             storage_account_name=self.storage_account_name)
 
-def get_storage_container(metadata=None,name=None,storage_account_name=None,opts=None):
+
+def get_storage_container(metadata=None, name=None, storage_account_name=None, opts=None):
     """
     Use this data source to access information about an existing Storage Container.
 
@@ -90,8 +94,6 @@ def get_storage_container(metadata=None,name=None,storage_account_name=None,opts
     :param str storage_account_name: The name of the Storage Account where the Container exists.
     """
     __args__ = dict()
-
-
     __args__['metadata'] = metadata
     __args__['name'] = name
     __args__['storageAccountName'] = storage_account_name

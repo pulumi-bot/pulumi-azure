@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datalake.LookupStore(ctx, &datalake.LookupStoreArgs{
+// 		example, err := datalake.LookupStore(ctx, "azure:datalake:getStore", &datalake.LookupStoreArgs{
 // 			Name:              "testdatalake",
 // 			ResourceGroupName: "testdatalake",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

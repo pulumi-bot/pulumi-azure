@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datashare.LookupDatasetBlobStorage(ctx, &datashare.LookupDatasetBlobStorageArgs{
+// 		example, err := datashare.LookupDatasetBlobStorage(ctx, "azure:datashare:getDatasetBlobStorage", &datashare.LookupDatasetBlobStorageArgs{
 // 			Name:        "example-dsbsds",
 // 			DataShareId: "example-share-id",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

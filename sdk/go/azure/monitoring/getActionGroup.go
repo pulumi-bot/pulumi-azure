@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := monitoring.LookupActionGroup(ctx, &monitoring.LookupActionGroupArgs{
+// 		example, err := monitoring.LookupActionGroup(ctx, "azure:monitoring:getActionGroup", &monitoring.LookupActionGroupArgs{
 // 			ResourceGroupName: "example-rg",
 // 			Name:              "tfex-actiongroup",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := advisor.GetRecommendations(ctx, &advisor.GetRecommendationsArgs{
+// 		example, err := advisor.GetRecommendations(ctx, "azure:advisor:getRecommendations", &advisor.GetRecommendationsArgs{
 // 			FilterByCategories: []string{
 // 				"security",
 // 				"cost",
@@ -29,7 +29,7 @@ import (
 // 			FilterByResourceGroups: []string{
 // 				"example-resgroups",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

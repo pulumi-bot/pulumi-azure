@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := eventhub.LookupEventHub(ctx, &eventhub.LookupEventHubArgs{
+// 		example, err := eventhub.LookupEventHub(ctx, "azure:eventhub:getEventHub", &eventhub.LookupEventHubArgs{
 // 			Name:              "search-eventhub",
 // 			ResourceGroupName: "search-service",
 // 			NamespaceName:     "search-eventhubns",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

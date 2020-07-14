@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
@@ -76,6 +77,8 @@ class GetAccountResult:
         """
         A map of tags assigned to the Batch account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,7 +97,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             storage_account_id=self.storage_account_id,
             tags=self.tags)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Batch Account.
 
@@ -114,8 +118,6 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where this Batch account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.LookupDedicatedHost(ctx, &compute.LookupDedicatedHostArgs{
+// 		example, err := compute.LookupDedicatedHost(ctx, "azure:compute:getDedicatedHost", &compute.LookupDedicatedHostArgs{
 // 			Name:                   "example-host",
 // 			DedicatedHostGroupName: "example-host-group",
 // 			ResourceGroupName:      "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

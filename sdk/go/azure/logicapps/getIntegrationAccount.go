@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := logicapps.LookupIntegrationAccount(ctx, &logicapps.LookupIntegrationAccountArgs{
+// 		example, err := logicapps.LookupIntegrationAccount(ctx, "azure:logicapps:getIntegrationAccount", &logicapps.LookupIntegrationAccountArgs{
 // 			Name:              "example-account",
 // 			ResourceGroupName: "example-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -28,22 +28,22 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		_, err := core.LookupResourceGroup(ctx, "azure:core:getResourceGroup", &core.LookupResourceGroupArgs{
 // 			Name: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleJob, err := streamanalytics.LookupJob(ctx, &streamanalytics.LookupJobArgs{
+// 		exampleJob, err := streamanalytics.LookupJob(ctx, "azure:streamanalytics:getJob", &streamanalytics.LookupJobArgs{
 // 			Name:              "example-job",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		exampleIoTHub, err := iot.NewIoTHub(ctx, "exampleIoTHub", &iot.IoTHubArgs{
-// 			ResourceGroupName: pulumi.String(azurerm_resource_group.Example.Name),
-// 			Location:          pulumi.String(azurerm_resource_group.Example.Location),
+// 			ResourceGroupName: pulumi.Any(azurerm_resource_group.Example.Name),
+// 			Location:          pulumi.Any(azurerm_resource_group.Example.Location),
 // 			Sku: &iot.IoTHubSkuArgs{
 // 				Name:     pulumi.String("S1"),
 // 				Capacity: pulumi.Int(1),

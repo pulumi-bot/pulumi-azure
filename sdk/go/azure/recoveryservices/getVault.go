@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recoveryservices.LookupVault(ctx, &recoveryservices.LookupVaultArgs{
+// 		_, err := recoveryservices.LookupVault(ctx, "azure:recoveryservices:getVault", &recoveryservices.LookupVaultArgs{
 // 			Name:              "tfex-recovery_vault",
 // 			ResourceGroupName: "tfex-resource_group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

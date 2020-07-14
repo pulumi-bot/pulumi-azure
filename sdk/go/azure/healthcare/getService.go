@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := healthcare.LookupService(ctx, &healthcare.LookupServiceArgs{
+// 		example, err := healthcare.LookupService(ctx, "azure:healthcare:getService", &healthcare.LookupServiceArgs{
 // 			Name:              "example-healthcare_service",
 // 			ResourceGroupName: "example-resources",
 // 			Location:          "westus2",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

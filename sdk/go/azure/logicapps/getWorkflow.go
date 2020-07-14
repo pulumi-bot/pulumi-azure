@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := logicapps.LookupWorkflow(ctx, &logicapps.LookupWorkflowArgs{
+// 		example, err := logicapps.LookupWorkflow(ctx, "azure:logicapps:getWorkflow", &logicapps.LookupWorkflowArgs{
 // 			Name:              "workflow1",
 // 			ResourceGroupName: "my-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

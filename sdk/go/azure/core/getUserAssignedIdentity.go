@@ -22,10 +22,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := authorization.LookupUserAssignedIdentity(ctx, &authorization.LookupUserAssignedIdentityArgs{
+// 		example, err := authorization.LookupUserAssignedIdentity(ctx, "azure:authorization:getUserAssignedIdentity", &authorization.LookupUserAssignedIdentityArgs{
 // 			Name:              "name_of_user_assigned_identity",
 // 			ResourceGroupName: "name_of_resource_group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

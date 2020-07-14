@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iot.LookupSharedAccessPolicy(ctx, &iot.LookupSharedAccessPolicyArgs{
+// 		_, err := iot.LookupSharedAccessPolicy(ctx, "azure:iot:getSharedAccessPolicy", &iot.LookupSharedAccessPolicyArgs{
 // 			Name:              "example",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
 // 			IothubName:        azurerm_iothub.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mssql.LookupElasticPool(ctx, &mssql.LookupElasticPoolArgs{
+// 		example, err := mssql.LookupElasticPool(ctx, "azure:mssql:getElasticPool", &mssql.LookupElasticPoolArgs{
 // 			Name:              "mssqlelasticpoolname",
 // 			ResourceGroupName: "example-resources",
 // 			ServerName:        "example-sql-server",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

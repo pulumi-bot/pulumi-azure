@@ -21,12 +21,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.GetPlatformImage(ctx, &compute.GetPlatformImageArgs{
+// 		example, err := compute.GetPlatformImage(ctx, "azure:compute:getPlatformImage", &compute.GetPlatformImageArgs{
 // 			Location:  "West Europe",
 // 			Publisher: "Canonical",
 // 			Offer:     "UbuntuServer",
 // 			Sku:       "16.04-LTS",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
