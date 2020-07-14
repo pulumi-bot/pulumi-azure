@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
@@ -73,6 +74,8 @@ class GetCertificateResult:
         """
         The thumbprint for the certificate.
         """
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -92,7 +95,8 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             tags=self.tags,
             thumbprint=self.thumbprint)
 
-def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_certificate(name=None, resource_group_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an App Service Certificate.
 
@@ -112,8 +116,6 @@ def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group in which to create the certificate.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags

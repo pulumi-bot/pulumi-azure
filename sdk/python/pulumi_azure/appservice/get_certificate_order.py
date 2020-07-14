@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateOrderResult:
     """
     A collection of values returned by getCertificateOrder.
@@ -127,6 +128,8 @@ class GetCertificateOrderResult:
         """
         Duration in years (must be between 1 and 3).
         """
+
+
 class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -154,7 +157,8 @@ class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
             tags=self.tags,
             validity_in_years=self.validity_in_years)
 
-def get_certificate_order(name=None,resource_group_name=None,opts=None):
+
+def get_certificate_order(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service Certificate Order.
 
@@ -174,8 +178,6 @@ def get_certificate_order(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

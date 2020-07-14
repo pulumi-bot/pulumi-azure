@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDedicatedHostGroupResult:
     """
     A collection of values returned by getDedicatedHostGroup.
@@ -49,6 +50,8 @@ class GetDedicatedHostGroupResult:
         """
         The Availability Zones in which this Dedicated Host Group is located.
         """
+
+
 class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
+
+def get_dedicated_host_group(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Dedicated Host Group.
 
@@ -83,8 +87,6 @@ def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

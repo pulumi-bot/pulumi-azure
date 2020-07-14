@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSubscriptionsResult:
     """
     A collection of values returned by getSubscriptions.
@@ -31,6 +32,8 @@ class GetSubscriptionsResult:
         """
         One or more `subscription` blocks as defined below.
         """
+
+
 class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
             id=self.id,
             subscriptions=self.subscriptions)
 
-def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=None):
+
+def get_subscriptions(display_name_contains=None, display_name_prefix=None, opts=None):
     """
     Use this data source to access information about all the Subscriptions currently available.
 
@@ -62,8 +66,6 @@ def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=N
     :param str display_name_prefix: A case-insensitive prefix which can be used to filter on the `display_name` field
     """
     __args__ = dict()
-
-
     __args__['displayNameContains'] = display_name_contains
     __args__['displayNamePrefix'] = display_name_prefix
     if opts is None:
