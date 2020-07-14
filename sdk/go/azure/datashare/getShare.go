@@ -21,17 +21,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datashare.LookupAccount(ctx, &datashare.LookupAccountArgs{
+// 		_, err := datashare.LookupAccount(ctx, "azure:datashare:getAccount", &datashare.LookupAccountArgs{
 // 			Name:              "example-account",
 // 			ResourceGroupName: "example-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleShare, err := datashare.LookupShare(ctx, &datashare.LookupShareArgs{
+// 		exampleShare, err := datashare.LookupShare(ctx, "azure:datashare:getShare", &datashare.LookupShareArgs{
 // 			Name:      "existing",
 // 			AccountId: data.Azurerm_data_share_account.Exmaple.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

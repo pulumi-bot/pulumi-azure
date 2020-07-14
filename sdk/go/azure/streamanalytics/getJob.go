@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := streamanalytics.LookupJob(ctx, &streamanalytics.LookupJobArgs{
+// 		example, err := streamanalytics.LookupJob(ctx, "azure:streamanalytics:getJob", &streamanalytics.LookupJobArgs{
 // 			Name:              "example-job",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

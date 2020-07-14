@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := operationalinsights.LookupAnalyticsWorkspace(ctx, &operationalinsights.LookupAnalyticsWorkspaceArgs{
+// 		example, err := operationalinsights.LookupAnalyticsWorkspace(ctx, "azure:operationalinsights:getAnalyticsWorkspace", &operationalinsights.LookupAnalyticsWorkspaceArgs{
 // 			Name:              "acctest-01",
 // 			ResourceGroupName: "acctest",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

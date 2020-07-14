@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := compute.LookupManagedDisk(ctx, &compute.LookupManagedDiskArgs{
+// 		existing, err := compute.LookupManagedDisk(ctx, "azure:compute:getManagedDisk", &compute.LookupManagedDiskArgs{
 // 			Name:              "example-datadisk",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

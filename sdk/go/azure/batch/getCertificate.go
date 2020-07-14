@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := batch.LookupCertificate(ctx, &batch.LookupCertificateArgs{
+// 		example, err := batch.LookupCertificate(ctx, "azure:batch:getCertificate", &batch.LookupCertificateArgs{
 // 			Name:              "SHA1-42C107874FD0E4A9583292A2F1098E8FE4B2EDDA",
 // 			AccountName:       "examplebatchaccount",
 // 			ResourceGroupName: "example",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

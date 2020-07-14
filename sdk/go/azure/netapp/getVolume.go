@@ -21,12 +21,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := netapp.LookupVolume(ctx, &netapp.LookupVolumeArgs{
+// 		example, err := netapp.LookupVolume(ctx, "azure:netapp:getVolume", &netapp.LookupVolumeArgs{
 // 			ResourceGroupName: "acctestRG",
 // 			AccountName:       "acctestnetappaccount",
 // 			PoolName:          "acctestnetapppool",
 // 			Name:              "example-volume",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

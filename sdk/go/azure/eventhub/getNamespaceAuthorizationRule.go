@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eventhub.LookupNamespaceAuthorizationRule(ctx, &eventhub.LookupNamespaceAuthorizationRuleArgs{
+// 		_, err := eventhub.LookupNamespaceAuthorizationRule(ctx, "azure:eventhub:getNamespaceAuthorizationRule", &eventhub.LookupNamespaceAuthorizationRuleArgs{
 // 			Name:              "navi",
 // 			ResourceGroupName: "example-resources",
 // 			NamespaceName:     "example-ns",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

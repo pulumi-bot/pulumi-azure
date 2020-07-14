@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetSubscription(ctx, nil, nil)
+// 		current, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}

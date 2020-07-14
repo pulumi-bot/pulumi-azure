@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "Allowed resource types"
-// 		example, err := policy.GetPolicyDefintion(ctx, &policy.GetPolicyDefintionArgs{
+// 		example, err := policy.GetPolicyDefintion(ctx, "azure:policy:getPolicyDefintion", &policy.GetPolicyDefintionArgs{
 // 			DisplayName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

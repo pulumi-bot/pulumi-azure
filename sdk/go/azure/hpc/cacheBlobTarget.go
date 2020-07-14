@@ -79,9 +79,9 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "HPC Cache Resource Provider"
-// 		exampleServicePrincipal, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+// 		exampleServicePrincipal, err := azuread.LookupServicePrincipal(ctx, "azuread::getServicePrincipal", &azuread.LookupServicePrincipalArgs{
 // 			DisplayName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

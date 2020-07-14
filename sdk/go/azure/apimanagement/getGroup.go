@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := apimanagement.LookupGroup(ctx, &apimanagement.LookupGroupArgs{
+// 		example, err := apimanagement.LookupGroup(ctx, "azure:apimanagement:getGroup", &apimanagement.LookupGroupArgs{
 // 			Name:              "my-group",
 // 			ApiManagementName: "example-apim",
 // 			ResourceGroupName: "search-service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

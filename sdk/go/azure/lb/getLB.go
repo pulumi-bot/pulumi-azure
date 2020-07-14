@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lb.GetLB(ctx, &lb.GetLBArgs{
+// 		example, err := lb.GetLB(ctx, "azure:lb:getLB", &lb.GetLBArgs{
 // 			Name:              "example-lb",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

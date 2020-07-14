@@ -21,17 +21,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleKeyVault, err := keyvault.LookupKeyVault(ctx, &keyvault.LookupKeyVaultArgs{
+// 		exampleKeyVault, err := keyvault.LookupKeyVault(ctx, "azure:keyvault:getKeyVault", &keyvault.LookupKeyVaultArgs{
 // 			Name:              "mykeyvault",
 // 			ResourceGroupName: "some-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCertificateIssuer, err := keyvault.LookupCertificateIssuer(ctx, &keyvault.LookupCertificateIssuerArgs{
+// 		exampleCertificateIssuer, err := keyvault.LookupCertificateIssuer(ctx, "azure:keyvault:getCertificateIssuer", &keyvault.LookupCertificateIssuerArgs{
 // 			Name:       "existing",
 // 			KeyVaultId: exampleKeyVault.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

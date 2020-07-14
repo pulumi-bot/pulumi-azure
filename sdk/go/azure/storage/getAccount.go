@@ -22,10 +22,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "packer-storage"
-// 		example, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
+// 		example, err := storage.LookupAccount(ctx, "azure:storage:getAccount", &storage.LookupAccountArgs{
 // 			Name:              "packerimages",
 // 			ResourceGroupName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		contributor, err := keyvault.LookupAccessPolicy(ctx, &keyvault.LookupAccessPolicyArgs{
+// 		contributor, err := keyvault.LookupAccessPolicy(ctx, "azure:keyvault:getAccessPolicy", &keyvault.LookupAccessPolicyArgs{
 // 			Name: "Key Management",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

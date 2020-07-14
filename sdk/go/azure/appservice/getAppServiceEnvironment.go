@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appservice.GetAppServiceEnvironment(ctx, &appservice.GetAppServiceEnvironmentArgs{
+// 		_, err := appservice.GetAppServiceEnvironment(ctx, "azure:appservice:getAppServiceEnvironment", &appservice.GetAppServiceEnvironmentArgs{
 // 			Name:              "example-ase",
 // 			ResourceGroupName: "example-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

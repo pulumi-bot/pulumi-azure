@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupSubnet(ctx, &network.LookupSubnetArgs{
+// 		example, err := network.LookupSubnet(ctx, "azure:network:getSubnet", &network.LookupSubnetArgs{
 // 			Name:               "backend",
 // 			VirtualNetworkName: "production",
 // 			ResourceGroupName:  "networking",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

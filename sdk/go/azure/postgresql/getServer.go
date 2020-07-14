@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := postgresql.LookupServer(ctx, &postgresql.LookupServerArgs{
+// 		example, err := postgresql.LookupServer(ctx, "azure:postgresql:getServer", &postgresql.LookupServerArgs{
 // 			Name:              "postgresql-server-1",
 // 			ResourceGroupName: "api-rg-pro",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

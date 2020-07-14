@@ -23,10 +23,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetServiceEndpointConnections(ctx, &privatelink.GetServiceEndpointConnectionsArgs{
+// 		example, err := privatelink.GetServiceEndpointConnections(ctx, "azure:privatelink:getServiceEndpointConnections", &privatelink.GetServiceEndpointConnectionsArgs{
 // 			ServiceId:         azurerm_private_link_service.Example.Id,
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

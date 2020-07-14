@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appinsights.LookupInsights(ctx, &appinsights.LookupInsightsArgs{
+// 		example, err := appinsights.LookupInsights(ctx, "azure:appinsights:getInsights", &appinsights.LookupInsightsArgs{
 // 			Name:              "production",
 // 			ResourceGroupName: "networking",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

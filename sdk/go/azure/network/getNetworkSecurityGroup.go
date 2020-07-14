@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupNetworkSecurityGroup(ctx, &network.LookupNetworkSecurityGroupArgs{
+// 		example, err := network.LookupNetworkSecurityGroup(ctx, "azure:network:getNetworkSecurityGroup", &network.LookupNetworkSecurityGroupArgs{
 // 			Name:              azurerm_network_security_group.Example.Name,
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

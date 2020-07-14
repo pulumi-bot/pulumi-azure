@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetResourcesResult:
     """
     A collection of values returned by getResources.
@@ -43,6 +44,8 @@ class GetResourcesResult:
         """
         The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
         """
+
+
 class AwaitableGetResourcesResult(GetResourcesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +59,8 @@ class AwaitableGetResourcesResult(GetResourcesResult):
             resources=self.resources,
             type=self.type)
 
-def get_resources(name=None,required_tags=None,resource_group_name=None,type=None,opts=None):
+
+def get_resources(name=None, required_tags=None, resource_group_name=None, type=None, opts=None):
     """
     Use this data source to access information about existing resources.
 
@@ -67,8 +71,6 @@ def get_resources(name=None,required_tags=None,resource_group_name=None,type=Non
     :param str type: The Resource Type of the Resources you want to list (e.g. `Microsoft.Network/virtualNetworks`). A full list of available Resource Types can be found [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/azure-services-resource-providers).
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['requiredTags'] = required_tags
     __args__['resourceGroupName'] = resource_group_name

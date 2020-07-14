@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appservice.LookupCertificateOrder(ctx, &appservice.LookupCertificateOrderArgs{
+// 		example, err := appservice.LookupCertificateOrder(ctx, "azure:appservice:getCertificateOrder", &appservice.LookupCertificateOrderArgs{
 // 			Name:              "example-cert-order",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

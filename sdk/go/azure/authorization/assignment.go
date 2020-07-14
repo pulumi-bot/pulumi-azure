@@ -26,11 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := core.GetSubscription(ctx, nil, nil)
+// 		primary, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleClientConfig, err := core.GetClientConfig(ctx, nil, nil)
+// 		exampleClientConfig, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -59,11 +59,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := core.GetSubscription(ctx, nil, nil)
+// 		primary, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleClientConfig, err := core.GetClientConfig(ctx, nil, nil)
+// 		exampleClientConfig, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -111,11 +111,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := core.GetSubscription(ctx, nil, nil)
+// 		primary, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleClientConfig, err := core.GetClientConfig(ctx, nil, nil)
+// 		exampleClientConfig, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -164,15 +164,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := core.GetSubscription(ctx, nil, nil)
+// 		primary, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleClientConfig, err := core.GetClientConfig(ctx, nil, nil)
+// 		exampleClientConfig, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.LookupGroup(ctx, nil, nil)
+// 		_, err = management.LookupGroup(ctx, "azure:management:getGroup", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -196,7 +196,7 @@ import (
 // 		}
 // 		_, err = authorization.NewAssignment(ctx, "exampleAssignment", &authorization.AssignmentArgs{
 // 			Name:             pulumi.String("00000000-0000-0000-0000-000000000000"),
-// 			Scope:            pulumi.String(data.Azurerm_management_group.Primary.Id),
+// 			Scope:            pulumi.Any(data.Azurerm_management_group.Primary.Id),
 // 			RoleDefinitionId: exampleRoleDefinition.ID(),
 // 			PrincipalId:      pulumi.String(exampleClientConfig.ClientId),
 // 		})

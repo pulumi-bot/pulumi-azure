@@ -24,15 +24,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetSubscription(ctx, nil, nil)
+// 		current, err := core.GetSubscription(ctx, "azure:core:getSubscription", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = blueprint.GetPublishedVersion(ctx, &blueprint.GetPublishedVersionArgs{
+// 		_, err = blueprint.GetPublishedVersion(ctx, "azure:blueprint:getPublishedVersion", &blueprint.GetPublishedVersionArgs{
 // 			ScopeId:       current.Id,
 // 			BlueprintName: "exampleBluePrint",
 // 			Version:       "dev_v2.3",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datafactory.LookupFactory(ctx, &datafactory.LookupFactoryArgs{
+// 		_, err := datafactory.LookupFactory(ctx, "azure:datafactory:getFactory", &datafactory.LookupFactoryArgs{
 // 			Name:              azurerm_data_factory.Example.Name,
 // 			ResourceGroupName: azurerm_data_factory.Example.Resource_group_name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

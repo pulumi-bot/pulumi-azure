@@ -22,11 +22,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "northeurope"
-// 		_, err := network.GetServiceTags(ctx, &network.GetServiceTagsArgs{
+// 		_, err := network.GetServiceTags(ctx, "azure:network:getServiceTags", &network.GetServiceTagsArgs{
 // 			Location:       "westcentralus",
 // 			Service:        "AzureKeyVault",
 // 			LocationFilter: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

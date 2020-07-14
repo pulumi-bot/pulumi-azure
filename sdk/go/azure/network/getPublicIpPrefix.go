@@ -22,10 +22,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupPublicIpPrefix(ctx, &network.LookupPublicIpPrefixArgs{
+// 		example, err := network.LookupPublicIpPrefix(ctx, "azure:network:getPublicIpPrefix", &network.LookupPublicIpPrefixArgs{
 // 			Name:              "name_of_public_ip",
 // 			ResourceGroupName: "name_of_resource_group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

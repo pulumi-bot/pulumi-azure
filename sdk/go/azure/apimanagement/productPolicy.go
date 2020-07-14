@@ -26,11 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProduct, err := apimanagement.LookupProduct(ctx, &apimanagement.LookupProductArgs{
+// 		exampleProduct, err := apimanagement.LookupProduct(ctx, "azure:apimanagement:getProduct", &apimanagement.LookupProductArgs{
 // 			ProductId:         "my-product",
 // 			ApiManagementName: "example-apim",
 // 			ResourceGroupName: "search-service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

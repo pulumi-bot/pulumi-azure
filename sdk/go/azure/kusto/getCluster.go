@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kusto.LookupCluster(ctx, &kusto.LookupClusterArgs{
+// 		_, err := kusto.LookupCluster(ctx, "azure:kusto:getCluster", &kusto.LookupClusterArgs{
 // 			Name:              "kustocluster",
 // 			ResourceGroupName: "test_resource_group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

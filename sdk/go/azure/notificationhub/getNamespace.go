@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := notificationhub.LookupNamespace(ctx, &notificationhub.LookupNamespaceArgs{
+// 		example, err := notificationhub.LookupNamespace(ctx, "azure:notificationhub:getNamespace", &notificationhub.LookupNamespaceArgs{
 // 			Name:              "my-namespace",
 // 			ResourceGroupName: "my-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

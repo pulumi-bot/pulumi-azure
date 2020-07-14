@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupFirewall(ctx, &network.LookupFirewallArgs{
+// 		example, err := network.LookupFirewall(ctx, "azure:network:getFirewall", &network.LookupFirewallArgs{
 // 			Name:              "firewall1",
 // 			ResourceGroupName: "firewall-RG",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

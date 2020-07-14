@@ -27,10 +27,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleVirtualMachine, err := compute.LookupVirtualMachine(ctx, &compute.LookupVirtualMachineArgs{
+// 		exampleVirtualMachine, err := compute.LookupVirtualMachine(ctx, "azure:compute:getVirtualMachine", &compute.LookupVirtualMachineArgs{
 // 			Name:              "example-vm",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

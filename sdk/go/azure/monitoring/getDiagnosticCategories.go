@@ -22,16 +22,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleKeyVault, err := keyvault.LookupKeyVault(ctx, &keyvault.LookupKeyVaultArgs{
+// 		exampleKeyVault, err := keyvault.LookupKeyVault(ctx, "azure:keyvault:getKeyVault", &keyvault.LookupKeyVaultArgs{
 // 			Name:              azurerm_key_vault.Example.Name,
 // 			ResourceGroupName: azurerm_key_vault.Example.Resource_group_name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = monitoring.GetDiagnosticCategories(ctx, &monitoring.GetDiagnosticCategoriesArgs{
+// 		_, err = monitoring.GetDiagnosticCategories(ctx, "azure:monitoring:getDiagnosticCategories", &monitoring.GetDiagnosticCategoriesArgs{
 // 			ResourceId: exampleKeyVault.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

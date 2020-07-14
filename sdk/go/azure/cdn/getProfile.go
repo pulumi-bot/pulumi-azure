@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cdn.LookupProfile(ctx, &cdn.LookupProfileArgs{
+// 		example, err := cdn.LookupProfile(ctx, "azure:cdn:getProfile", &cdn.LookupProfileArgs{
 // 			Name:              "myfirstcdnprofile",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

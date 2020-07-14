@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := keyvault.LookupKeyVault(ctx, &keyvault.LookupKeyVaultArgs{
+// 		example, err := keyvault.LookupKeyVault(ctx, "azure:keyvault:getKeyVault", &keyvault.LookupKeyVaultArgs{
 // 			Name:              "mykeyvault",
 // 			ResourceGroupName: "some-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

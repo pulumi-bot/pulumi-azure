@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sql.GetServer(ctx, &sql.GetServerArgs{
+// 		example, err := sql.GetServer(ctx, "azure:sql:getServer", &sql.GetServerArgs{
 // 			Name:              "examplesqlservername",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

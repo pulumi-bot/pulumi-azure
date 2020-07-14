@@ -22,10 +22,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "search-api"
-// 		search, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 		search, err := compute.LookupImage(ctx, "azure:compute:getImage", &compute.LookupImageArgs{
 // 			Name:              &opt0,
 // 			ResourceGroupName: "packerimages",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

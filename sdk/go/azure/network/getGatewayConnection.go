@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.GetGatewayConnection(ctx, &network.GetGatewayConnectionArgs{
+// 		example, err := network.GetGatewayConnection(ctx, "azure:network:getGatewayConnection", &network.GetGatewayConnectionArgs{
 // 			Name:              "production",
 // 			ResourceGroupName: "networking",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

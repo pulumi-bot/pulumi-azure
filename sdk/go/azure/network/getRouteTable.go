@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := network.LookupRouteTable(ctx, &network.LookupRouteTableArgs{
+// 		_, err := network.LookupRouteTable(ctx, "azure:network:getRouteTable", &network.LookupRouteTableArgs{
 // 			Name:              "myroutetable",
 // 			ResourceGroupName: "some-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

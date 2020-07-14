@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := network.LookupNetworkWatcher(ctx, &network.LookupNetworkWatcherArgs{
+// 		example, err := network.LookupNetworkWatcher(ctx, "azure:network:getNetworkWatcher", &network.LookupNetworkWatcherArgs{
 // 			Name:              azurerm_network_watcher.Example.Name,
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

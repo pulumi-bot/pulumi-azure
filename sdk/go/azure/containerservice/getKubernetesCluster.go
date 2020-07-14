@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := containerservice.LookupKubernetesCluster(ctx, &containerservice.LookupKubernetesClusterArgs{
+// 		_, err := containerservice.LookupKubernetesCluster(ctx, "azure:containerservice:getKubernetesCluster", &containerservice.LookupKubernetesClusterArgs{
 // 			Name:              "myakscluster",
 // 			ResourceGroupName: "my-example-resource-group",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

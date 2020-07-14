@@ -24,10 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := cosmosdb.LookupAccount(ctx, &cosmosdb.LookupAccountArgs{
+// 		exampleAccount, err := cosmosdb.LookupAccount(ctx, "azure:cosmosdb:getAccount", &cosmosdb.LookupAccountArgs{
 // 			Name:              "tfex-cosmosdb-account",
 // 			ResourceGroupName: "tfex-cosmosdb-account-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -39,8 +39,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = cosmosdb.NewGremlinGraph(ctx, "exampleGremlinGraph", &cosmosdb.GremlinGraphArgs{
-// 			ResourceGroupName: pulumi.String(azurerm_cosmosdb_account.Example.Resource_group_name),
-// 			AccountName:       pulumi.String(azurerm_cosmosdb_account.Example.Name),
+// 			ResourceGroupName: pulumi.Any(azurerm_cosmosdb_account.Example.Resource_group_name),
+// 			AccountName:       pulumi.Any(azurerm_cosmosdb_account.Example.Name),
 // 			DatabaseName:      exampleGremlinDatabase.Name,
 // 			PartitionKeyPath:  pulumi.String("/Example"),
 // 			Throughput:        pulumi.Int(400),

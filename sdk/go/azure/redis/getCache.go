@@ -19,10 +19,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := redis.LookupCache(ctx, &redis.LookupCacheArgs{
+// 		example, err := redis.LookupCache(ctx, "azure:redis:getCache", &redis.LookupCacheArgs{
 // 			Name:              "myrediscache",
 // 			ResourceGroupName: "redis-cache",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

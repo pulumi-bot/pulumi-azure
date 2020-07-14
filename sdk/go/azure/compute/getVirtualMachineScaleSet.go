@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := compute.GetVirtualMachineScaleSet(ctx, &compute.GetVirtualMachineScaleSetArgs{
+// 		example, err := compute.GetVirtualMachineScaleSet(ctx, "azure:compute:getVirtualMachineScaleSet", &compute.GetVirtualMachineScaleSetArgs{
 // 			Name:              "existing",
 // 			ResourceGroupName: "existing",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

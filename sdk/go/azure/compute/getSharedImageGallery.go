@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.LookupSharedImageGallery(ctx, &compute.LookupSharedImageGalleryArgs{
+// 		_, err := compute.LookupSharedImageGallery(ctx, "azure:compute:getSharedImageGallery", &compute.LookupSharedImageGalleryArgs{
 // 			Name:              "my-image-gallery",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

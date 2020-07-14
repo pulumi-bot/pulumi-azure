@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appconfiguration.LookupConfigurationStore(ctx, &appconfiguration.LookupConfigurationStoreArgs{
+// 		example, err := appconfiguration.LookupConfigurationStore(ctx, "azure:appconfiguration:getConfigurationStore", &appconfiguration.LookupConfigurationStoreArgs{
 // 			Name:              "existing",
 // 			ResourceGroupName: "existing",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

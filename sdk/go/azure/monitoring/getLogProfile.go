@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := monitoring.LookupLogProfile(ctx, &monitoring.LookupLogProfileArgs{
+// 		example, err := monitoring.LookupLogProfile(ctx, "azure:monitoring:getLogProfile", &monitoring.LookupLogProfileArgs{
 // 			Name: "test-logprofile",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

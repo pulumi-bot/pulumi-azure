@@ -21,12 +21,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicebus.LookupTopicAuthorizationRule(ctx, &servicebus.LookupTopicAuthorizationRuleArgs{
+// 		_, err := servicebus.LookupTopicAuthorizationRule(ctx, "azure:servicebus:getTopicAuthorizationRule", &servicebus.LookupTopicAuthorizationRuleArgs{
 // 			Name:              "example-tfex_name",
 // 			NamespaceName:     "example-namespace",
 // 			ResourceGroupName: "example-resources",
 // 			TopicName:         "example-servicebus_topic",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

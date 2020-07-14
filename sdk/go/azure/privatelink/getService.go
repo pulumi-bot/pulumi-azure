@@ -23,10 +23,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetService(ctx, &privatelink.GetServiceArgs{
+// 		example, err := privatelink.GetService(ctx, "azure:privatelink:getService", &privatelink.GetServiceArgs{
 // 			Name:              "myPrivateLinkService",
 // 			ResourceGroupName: "PrivateLinkServiceRG",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

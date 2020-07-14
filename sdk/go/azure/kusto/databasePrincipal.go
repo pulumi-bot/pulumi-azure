@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetClientConfig(ctx, nil, nil)
+// 		current, err := core.GetClientConfig(ctx, "azure:core:getClientConfig", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -61,7 +61,7 @@ import (
 // 		_, err = kusto.NewDatabasePrincipal(ctx, "principal", &kusto.DatabasePrincipalArgs{
 // 			ResourceGroupName: rg.Name,
 // 			ClusterName:       cluster.Name,
-// 			DatabaseName:      pulumi.String(azurerm_kusto_database.Test.Name),
+// 			DatabaseName:      pulumi.Any(azurerm_kusto_database.Test.Name),
 // 			Role:              pulumi.String("Viewer"),
 // 			Type:              pulumi.String("User"),
 // 			ClientId:          pulumi.String(current.TenantId),

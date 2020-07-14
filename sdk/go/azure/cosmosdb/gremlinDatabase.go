@@ -24,10 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccount, err := cosmosdb.LookupAccount(ctx, &cosmosdb.LookupAccountArgs{
+// 		exampleAccount, err := cosmosdb.LookupAccount(ctx, "azure:cosmosdb:getAccount", &cosmosdb.LookupAccountArgs{
 // 			Name:              "tfex-cosmosdb-account",
 // 			ResourceGroupName: "tfex-cosmosdb-account-rg",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

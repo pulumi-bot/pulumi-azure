@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := containerservice.LookupRegistry(ctx, &containerservice.LookupRegistryArgs{
+// 		example, err := containerservice.LookupRegistry(ctx, "azure:containerservice:getRegistry", &containerservice.LookupRegistryArgs{
 // 			Name:              "testacr",
 // 			ResourceGroupName: "test",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

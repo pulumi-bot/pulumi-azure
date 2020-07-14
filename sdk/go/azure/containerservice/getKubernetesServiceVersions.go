@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := containerservice.GetKubernetesServiceVersions(ctx, &containerservice.GetKubernetesServiceVersionsArgs{
+// 		current, err := containerservice.GetKubernetesServiceVersions(ctx, "azure:containerservice:getKubernetesServiceVersions", &containerservice.GetKubernetesServiceVersionsArgs{
 // 			Location: "West Europe",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

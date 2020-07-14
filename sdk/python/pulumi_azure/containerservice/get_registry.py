@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRegistryResult:
     """
     A collection of values returned by getRegistry.
@@ -73,6 +74,8 @@ class GetRegistryResult:
         """
         A map of tags assigned to the Container Registry.
         """
+
+
 class AwaitableGetRegistryResult(GetRegistryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +94,8 @@ class AwaitableGetRegistryResult(GetRegistryResult):
             storage_account_id=self.storage_account_id,
             tags=self.tags)
 
-def get_registry(name=None,resource_group_name=None,opts=None):
+
+def get_registry(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Container Registry.
 
@@ -111,8 +115,6 @@ def get_registry(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where this Container Registry exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

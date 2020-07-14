@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.GetFirewallPolicy(ctx, &waf.GetFirewallPolicyArgs{
+// 		example, err := waf.GetFirewallPolicy(ctx, "azure:waf:getFirewallPolicy", &waf.GetFirewallPolicyArgs{
 // 			ResourceGroupName: "existing",
 // 			Name:              "existing",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

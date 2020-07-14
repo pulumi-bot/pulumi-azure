@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := netapp.LookupPool(ctx, &netapp.LookupPoolArgs{
+// 		example, err := netapp.LookupPool(ctx, "azure:netapp:getPool", &netapp.LookupPoolArgs{
 // 			ResourceGroupName: "acctestRG",
 // 			AccountName:       "acctestnetappaccount",
 // 			Name:              "acctestnetapppool",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

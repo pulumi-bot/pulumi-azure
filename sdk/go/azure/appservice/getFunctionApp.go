@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appservice.LookupFunctionApp(ctx, &appservice.LookupFunctionAppArgs{
+// 		_, err := appservice.LookupFunctionApp(ctx, "azure:appservice:getFunctionApp", &appservice.LookupFunctionAppArgs{
 // 			Name:              "test-azure-functions",
 // 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

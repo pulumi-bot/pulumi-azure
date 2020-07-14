@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := servicebus.LookupNamespace(ctx, &servicebus.LookupNamespaceArgs{
+// 		example, err := servicebus.LookupNamespace(ctx, "azure:servicebus:getNamespace", &servicebus.LookupNamespaceArgs{
 // 			Name:              "examplenamespace",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

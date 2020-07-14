@@ -24,26 +24,26 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleService, err := apimanagement.LookupService(ctx, &apimanagement.LookupServiceArgs{
+// 		exampleService, err := apimanagement.LookupService(ctx, "azure:apimanagement:getService", &apimanagement.LookupServiceArgs{
 // 			Name:              "example-apim",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleProduct, err := apimanagement.LookupProduct(ctx, &apimanagement.LookupProductArgs{
+// 		exampleProduct, err := apimanagement.LookupProduct(ctx, "azure:apimanagement:getProduct", &apimanagement.LookupProductArgs{
 // 			ProductId:         "00000000-0000-0000-0000-000000000000",
 // 			ApiManagementName: exampleService.Name,
 // 			ResourceGroupName: exampleService.ResourceGroupName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleUser, err := apimanagement.LookupUser(ctx, &apimanagement.LookupUserArgs{
+// 		exampleUser, err := apimanagement.LookupUser(ctx, "azure:apimanagement:getUser", &apimanagement.LookupUserArgs{
 // 			UserId:            "11111111-1111-1111-1111-111111111111",
 // 			ApiManagementName: exampleService.Name,
 // 			ResourceGroupName: exampleService.ResourceGroupName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

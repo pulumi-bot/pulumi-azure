@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+// 		example, err := core.LookupResourceGroup(ctx, "azure:core:getResourceGroup", &core.LookupResourceGroupArgs{
 // 			Name: "existing",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

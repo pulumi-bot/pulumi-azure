@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := appservice.GetAppServicePlan(ctx, &appservice.GetAppServicePlanArgs{
+// 		example, err := appservice.GetAppServicePlan(ctx, "azure:appservice:getAppServicePlan", &appservice.GetAppServicePlanArgs{
 // 			Name:              "search-app-service-plan",
 // 			ResourceGroupName: "search-service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

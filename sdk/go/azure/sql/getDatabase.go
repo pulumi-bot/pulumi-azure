@@ -21,11 +21,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sql.LookupDatabase(ctx, &sql.LookupDatabaseArgs{
+// 		example, err := sql.LookupDatabase(ctx, "azure:sql:getDatabase", &sql.LookupDatabaseArgs{
 // 			Name:              "example_db",
 // 			ServerName:        "example_db_server",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

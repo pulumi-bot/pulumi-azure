@@ -22,17 +22,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAnalyticsWorkspace, err := operationalinsights.LookupAnalyticsWorkspace(ctx, &operationalinsights.LookupAnalyticsWorkspaceArgs{
+// 		exampleAnalyticsWorkspace, err := operationalinsights.LookupAnalyticsWorkspace(ctx, "azure:operationalinsights:getAnalyticsWorkspace", &operationalinsights.LookupAnalyticsWorkspaceArgs{
 // 			Name:              "example",
 // 			ResourceGroupName: "example-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAlertRule, err := sentinel.GetAlertRule(ctx, &sentinel.GetAlertRuleArgs{
+// 		exampleAlertRule, err := sentinel.GetAlertRule(ctx, "azure:sentinel:getAlertRule", &sentinel.GetAlertRuleArgs{
 // 			Name:                    "existing",
 // 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

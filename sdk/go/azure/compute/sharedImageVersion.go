@@ -25,18 +25,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "search-api"
-// 		existingImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 		existingImage, err := compute.LookupImage(ctx, "azure:compute:getImage", &compute.LookupImageArgs{
 // 			Name:              &opt0,
 // 			ResourceGroupName: "packerimages",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		existingSharedImage, err := compute.LookupSharedImage(ctx, &compute.LookupSharedImageArgs{
+// 		existingSharedImage, err := compute.LookupSharedImage(ctx, "azure:compute:getSharedImage", &compute.LookupSharedImageArgs{
 // 			Name:              "existing-image",
 // 			GalleryName:       "existing_gallery",
 // 			ResourceGroupName: "existing-resources",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
