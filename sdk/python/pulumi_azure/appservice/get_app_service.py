@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAppServiceResult:
     """
     A collection of values returned by getAppService.
@@ -112,6 +113,8 @@ class GetAppServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetAppServiceResult(GetAppServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -137,7 +140,8 @@ class AwaitableGetAppServiceResult(GetAppServiceResult):
             source_controls=self.source_controls,
             tags=self.tags)
 
-def get_app_service(name=None,resource_group_name=None,opts=None):
+
+def get_app_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service.
 
@@ -157,8 +161,6 @@ def get_app_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetActionGroupResult:
     """
     A collection of values returned by getActionGroup.
@@ -100,6 +101,8 @@ class GetActionGroupResult:
         """
         One or more `webhook_receiver` blocks as defined below.
         """
+
+
 class AwaitableGetActionGroupResult(GetActionGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +125,8 @@ class AwaitableGetActionGroupResult(GetActionGroupResult):
             voice_receivers=self.voice_receivers,
             webhook_receivers=self.webhook_receivers)
 
-def get_action_group(name=None,resource_group_name=None,opts=None):
+
+def get_action_group(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access the properties of an Action Group.
 
@@ -142,8 +146,6 @@ def get_action_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Action Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
