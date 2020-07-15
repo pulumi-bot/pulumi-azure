@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateIssuerResult:
     """
     A collection of values returned by getCertificateIssuer.
@@ -49,6 +50,8 @@ class GetCertificateIssuerResult:
         """
         The name of the third-party Certificate Issuer.
         """
+
+
 class AwaitableGetCertificateIssuerResult(GetCertificateIssuerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetCertificateIssuerResult(GetCertificateIssuerResult):
             org_id=self.org_id,
             provider_name=self.provider_name)
 
-def get_certificate_issuer(key_vault_id=None,name=None,opts=None):
+
+def get_certificate_issuer(key_vault_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Certificate Issuer.
 
@@ -85,8 +89,6 @@ def get_certificate_issuer(key_vault_id=None,name=None,opts=None):
     :param str name: The name of the Key Vault Certificate Issuer.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
