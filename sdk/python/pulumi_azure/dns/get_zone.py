@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetZoneResult:
     """
@@ -49,6 +50,8 @@ class GetZoneResult:
         """
         A mapping of tags to assign to the EventHub Namespace.
         """
+
+
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetZoneResult(GetZoneResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_zone(name=None,resource_group_name=None,opts=None):
+
+def get_zone(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing DNS Zone.
 
@@ -85,14 +89,12 @@ def get_zone(name=None,resource_group_name=None,opts=None):
            in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:dns/getZone:getZone', __args__, opts=opts).value
 
     return AwaitableGetZoneResult(
