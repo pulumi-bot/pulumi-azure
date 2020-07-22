@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPlacementGroupResult:
     """
@@ -31,6 +32,8 @@ class GetPlacementGroupResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_placement_group(name=None,resource_group_name=None,opts=None):
+
+def get_placement_group(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Proximity Placement Group.
 
@@ -63,14 +67,12 @@ def get_placement_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Proximity Placement Group exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:proximity/getPlacementGroup:getPlacementGroup', __args__, opts=opts).value
 
     return AwaitableGetPlacementGroupResult(
