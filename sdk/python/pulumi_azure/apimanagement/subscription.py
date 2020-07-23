@@ -5,42 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Subscription(pulumi.CustomResource):
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The display name of this Subscription.
     """
-    primary_key: pulumi.Output[str]
-    product_id: pulumi.Output[str]
+    primary_key: pulumi.Output[str] = pulumi.output_property("primaryKey")
+    product_id: pulumi.Output[Optional[str]] = pulumi.output_property("productId")
     """
     The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
     """
-    secondary_key: pulumi.Output[str]
-    state: pulumi.Output[str]
+    secondary_key: pulumi.Output[str] = pulumi.output_property("secondaryKey")
+    state: pulumi.Output[Optional[str]] = pulumi.output_property("state")
     """
     The state of this Subscription. Possible values are `active`, `cancelled`, `expired`, `rejected`, `submitted` and `suspended`. Defaults to `submitted`.
     """
-    subscription_id: pulumi.Output[str]
+    subscription_id: pulumi.Output[str] = pulumi.output_property("subscriptionId")
     """
     An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
     """
-    user_id: pulumi.Output[str]
+    user_id: pulumi.Output[str] = pulumi.output_property("userId")
     """
     The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, api_management_name=None, display_name=None, primary_key=None, product_id=None, resource_group_name=None, secondary_key=None, state=None, subscription_id=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_management_name=None, display_name=None, primary_key=None, product_id=None, resource_group_name=None, secondary_key=None, state=None, subscription_id=None, user_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Subscription within a API Management Service.
 
@@ -87,7 +88,7 @@ class Subscription(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -149,7 +150,8 @@ class Subscription(pulumi.CustomResource):
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

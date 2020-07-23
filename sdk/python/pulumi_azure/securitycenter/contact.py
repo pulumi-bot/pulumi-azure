@@ -5,28 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Contact(pulumi.CustomResource):
-    alert_notifications: pulumi.Output[bool]
+    alert_notifications: pulumi.Output[bool] = pulumi.output_property("alertNotifications")
     """
     Whether to send security alerts notifications to the security contact.
     """
-    alerts_to_admins: pulumi.Output[bool]
+    alerts_to_admins: pulumi.Output[bool] = pulumi.output_property("alertsToAdmins")
     """
     Whether to send security alerts notifications to subscription admins.
     """
-    email: pulumi.Output[str]
+    email: pulumi.Output[str] = pulumi.output_property("email")
     """
     The email of the Security Center Contact.
     """
-    phone: pulumi.Output[str]
+    phone: pulumi.Output[Optional[str]] = pulumi.output_property("phone")
     """
     The phone number of the Security Center Contact.
     """
-    def __init__(__self__, resource_name, opts=None, alert_notifications=None, alerts_to_admins=None, email=None, phone=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, alert_notifications=None, alerts_to_admins=None, email=None, phone=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages the subscription's Security Center Contact.
 
@@ -63,7 +64,7 @@ class Contact(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -110,7 +111,8 @@ class Contact(pulumi.CustomResource):
         return Contact(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

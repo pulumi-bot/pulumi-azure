@@ -5,15 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup", DeprecationWarning)
+
 class GetManagementGroupResult:
     """
     A collection of values returned by getManagementGroup.
     """
-    def __init__(__self__, display_name=None, group_id=None, id=None, name=None, parent_management_group_id=None, subscription_ids=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, display_name=None, group_id=None, id=None, name=None, parent_management_group_id=None, subscription_ids=None) -> None:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
@@ -45,6 +47,8 @@ class GetManagementGroupResult:
         """
         A list of Subscription IDs which are assigned to the Management Group.
         """
+
+
 class AwaitableGetManagementGroupResult(GetManagementGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,7 +62,8 @@ class AwaitableGetManagementGroupResult(GetManagementGroupResult):
             parent_management_group_id=self.parent_management_group_id,
             subscription_ids=self.subscription_ids)
 
-def get_management_group(display_name=None,group_id=None,name=None,opts=None):
+
+def get_management_group(display_name=None, group_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Management Group.
 
@@ -79,15 +84,13 @@ def get_management_group(display_name=None,group_id=None,name=None,opts=None):
     """
     pulumi.log.warn("get_management_group is deprecated: azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup")
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['groupId'] = group_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:managementgroups/getManagementGroup:getManagementGroup', __args__, opts=opts).value
 
     return AwaitableGetManagementGroupResult(

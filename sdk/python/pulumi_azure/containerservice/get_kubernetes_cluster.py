@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, addon_profiles=None, agent_pool_profiles=None, api_server_authorized_ip_ranges=None, disk_encryption_set_id=None, dns_prefix=None, fqdn=None, id=None, identities=None, kube_admin_config_raw=None, kube_admin_configs=None, kube_config_raw=None, kube_configs=None, kubelet_identities=None, kubernetes_version=None, linux_profiles=None, location=None, name=None, network_profiles=None, node_resource_group=None, private_cluster_enabled=None, private_fqdn=None, private_link_enabled=None, resource_group_name=None, role_based_access_controls=None, service_principals=None, tags=None, windows_profiles=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, addon_profiles=None, agent_pool_profiles=None, api_server_authorized_ip_ranges=None, disk_encryption_set_id=None, dns_prefix=None, fqdn=None, id=None, identities=None, kube_admin_config_raw=None, kube_admin_configs=None, kube_config_raw=None, kube_configs=None, kubelet_identities=None, kubernetes_version=None, linux_profiles=None, location=None, name=None, network_profiles=None, node_resource_group=None, private_cluster_enabled=None, private_fqdn=None, private_link_enabled=None, resource_group_name=None, role_based_access_controls=None, service_principals=None, tags=None, windows_profiles=None) -> None:
         if addon_profiles and not isinstance(addon_profiles, list):
             raise TypeError("Expected argument 'addon_profiles' to be a list")
         __self__.addon_profiles = addon_profiles
@@ -173,6 +176,8 @@ class GetKubernetesClusterResult:
         """
         A `windows_profile` block as documented below.
         """
+
+
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -207,7 +212,8 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             tags=self.tags,
             windows_profiles=self.windows_profiles)
 
-def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
+
+def get_kubernetes_cluster(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
 
@@ -226,14 +232,12 @@ def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the managed Kubernetes Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value
 
     return AwaitableGetKubernetesClusterResult(

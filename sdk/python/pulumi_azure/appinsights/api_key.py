@@ -5,33 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ApiKey(pulumi.CustomResource):
-    api_key: pulumi.Output[str]
+    api_key: pulumi.Output[str] = pulumi.output_property("apiKey")
     """
     The API Key secret (Sensitive).
     """
-    application_insights_id: pulumi.Output[str]
+    application_insights_id: pulumi.Output[str] = pulumi.output_property("applicationInsightsId")
     """
     The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Application Insights API key. Changing this forces a
     new resource to be created.
     """
-    read_permissions: pulumi.Output[list]
+    read_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("readPermissions")
     """
     Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
     """
-    write_permissions: pulumi.Output[list]
+    write_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("writePermissions")
     """
     Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, application_insights_id=None, name=None, read_permissions=None, write_permissions=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_insights_id=None, name=None, read_permissions=None, write_permissions=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Application Insights API key.
 
@@ -83,8 +84,8 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights API key. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[list] read_permissions: Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] write_permissions: Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] read_permissions: Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] write_permissions: Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +98,7 @@ class ApiKey(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,8 +130,8 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights API key. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[list] read_permissions: Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] write_permissions: Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] read_permissions: Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] write_permissions: Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -144,7 +145,8 @@ class ApiKey(pulumi.CustomResource):
         return ApiKey(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

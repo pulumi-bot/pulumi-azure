@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The Azure location where the Orchestrated Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Orchestrated Virtual Machine Scale Set. Changing this forces a new resource to be created.
     """
-    platform_fault_domain_count: pulumi.Output[float]
+    platform_fault_domain_count: pulumi.Output[float] = pulumi.output_property("platformFaultDomainCount")
     """
     Specifies the number of fault domains that are used by this Orchestrated Virtual Machine Scale Set. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the Orchestrated Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
     """
-    single_placement_group: pulumi.Output[bool]
+    single_placement_group: pulumi.Output[Optional[bool]] = pulumi.output_property("singlePlacementGroup")
     """
     Should the Orchestrated Virtual Machine Scale Set use single placement group?
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags which should be assigned to this Orchestrated Virtual Machine Scale Set.
     """
-    unique_id: pulumi.Output[str]
+    unique_id: pulumi.Output[str] = pulumi.output_property("uniqueId")
     """
     The Unique ID for the Orchestrated Virtual Machine Scale Set.
     """
-    zones: pulumi.Output[str]
+    zones: pulumi.Output[Optional[str]] = pulumi.output_property("zones")
     """
     A list of Availability Zones in which the Virtual Machines in this Scale Set should be created in. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, platform_fault_domain_count=None, resource_group_name=None, single_placement_group=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location=None, name=None, platform_fault_domain_count=None, resource_group_name=None, single_placement_group=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Create a OrchestratedVirtualMachineScaleSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -52,7 +53,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         :param pulumi.Input[float] platform_fault_domain_count: Specifies the number of fault domains that are used by this Orchestrated Virtual Machine Scale Set. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Orchestrated Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] single_placement_group: Should the Orchestrated Virtual Machine Scale Set use single placement group?
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to this Orchestrated Virtual Machine Scale Set.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to this Orchestrated Virtual Machine Scale Set.
         :param pulumi.Input[str] zones: A list of Availability Zones in which the Virtual Machines in this Scale Set should be created in. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
@@ -66,7 +67,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -107,7 +108,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         :param pulumi.Input[float] platform_fault_domain_count: Specifies the number of fault domains that are used by this Orchestrated Virtual Machine Scale Set. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Orchestrated Virtual Machine Scale Set should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] single_placement_group: Should the Orchestrated Virtual Machine Scale Set use single placement group?
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to this Orchestrated Virtual Machine Scale Set.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to this Orchestrated Virtual Machine Scale Set.
         :param pulumi.Input[str] unique_id: The Unique ID for the Orchestrated Virtual Machine Scale Set.
         :param pulumi.Input[str] zones: A list of Availability Zones in which the Virtual Machines in this Scale Set should be created in. Changing this forces a new resource to be created.
         """
@@ -126,7 +127,8 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         return OrchestratedVirtualMachineScaleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

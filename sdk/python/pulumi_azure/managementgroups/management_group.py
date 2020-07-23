@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
 
 
 class ManagementGroup(pulumi.CustomResource):
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     A friendly name for this Management Group. If not specified, this'll be the same as the `name`.
     """
-    group_id: pulumi.Output[str]
+    group_id: pulumi.Output[str] = pulumi.output_property("groupId")
     """
     The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
     """
-    parent_management_group_id: pulumi.Output[str]
+    parent_management_group_id: pulumi.Output[str] = pulumi.output_property("parentManagementGroupId")
     """
     The ID of the Parent Management Group. Changing this forces a new resource to be created.
     """
-    subscription_ids: pulumi.Output[list]
+    subscription_ids: pulumi.Output[Optional[List[str]]] = pulumi.output_property("subscriptionIds")
     """
     A list of Subscription GUIDs which should be assigned to the Management Group.
     """
     warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, display_name=None, group_id=None, name=None, parent_management_group_id=None, subscription_ids=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, display_name=None, group_id=None, name=None, parent_management_group_id=None, subscription_ids=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Management Group.
 
@@ -61,7 +62,7 @@ class ManagementGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
         :param pulumi.Input[str] parent_management_group_id: The ID of the Parent Management Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] subscription_ids: A list of Subscription GUIDs which should be assigned to the Management Group.
+        :param pulumi.Input[List[pulumi.Input[str]]] subscription_ids: A list of Subscription GUIDs which should be assigned to the Management Group.
         """
         pulumi.log.warn("ManagementGroup is deprecated: azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group")
         if __name__ is not None:
@@ -75,7 +76,7 @@ class ManagementGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -108,7 +109,7 @@ class ManagementGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
         :param pulumi.Input[str] parent_management_group_id: The ID of the Parent Management Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] subscription_ids: A list of Subscription GUIDs which should be assigned to the Management Group.
+        :param pulumi.Input[List[pulumi.Input[str]]] subscription_ids: A list of Subscription GUIDs which should be assigned to the Management Group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -122,7 +123,8 @@ class ManagementGroup(pulumi.CustomResource):
         return ManagementGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

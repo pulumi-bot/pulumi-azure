@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetAppServicePlanResult:
     """
     A collection of values returned by getAppServicePlan.
     """
-    def __init__(__self__, app_service_environment_id=None, id=None, is_xenon=None, kind=None, location=None, maximum_elastic_worker_count=None, maximum_number_of_workers=None, name=None, per_site_scaling=None, reserved=None, resource_group_name=None, sku=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, app_service_environment_id=None, id=None, is_xenon=None, kind=None, location=None, maximum_elastic_worker_count=None, maximum_number_of_workers=None, name=None, per_site_scaling=None, reserved=None, resource_group_name=None, sku=None, tags=None) -> None:
         if app_service_environment_id and not isinstance(app_service_environment_id, str):
             raise TypeError("Expected argument 'app_service_environment_id' to be a str")
         __self__.app_service_environment_id = app_service_environment_id
@@ -85,6 +88,8 @@ class GetAppServicePlanResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +110,8 @@ class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_app_service_plan(name=None,resource_group_name=None,opts=None):
+
+def get_app_service_plan(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 
@@ -125,14 +131,12 @@ def get_app_service_plan(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service Plan exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getAppServicePlan:getAppServicePlan', __args__, opts=opts).value
 
     return AwaitableGetAppServicePlanResult(

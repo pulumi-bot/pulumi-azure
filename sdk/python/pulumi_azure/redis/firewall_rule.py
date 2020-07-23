@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class FirewallRule(pulumi.CustomResource):
-    end_ip: pulumi.Output[str]
+    end_ip: pulumi.Output[str] = pulumi.output_property("endIp")
     """
     The highest IP address included in the range.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Firewall Rule. Changing this forces a new resource to be created.
     """
-    redis_cache_name: pulumi.Output[str]
+    redis_cache_name: pulumi.Output[str] = pulumi.output_property("redisCacheName")
     """
     The name of the Redis Cache. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which this Redis Cache exists.
     """
-    start_ip: pulumi.Output[str]
+    start_ip: pulumi.Output[str] = pulumi.output_property("startIp")
     """
     The lowest IP address included in the range
     """
-    def __init__(__self__, resource_name, opts=None, end_ip=None, name=None, redis_cache_name=None, resource_group_name=None, start_ip=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, end_ip=None, name=None, redis_cache_name=None, resource_group_name=None, start_ip=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Firewall Rule associated with a Redis Cache.
 
@@ -86,7 +87,7 @@ class FirewallRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -138,7 +139,8 @@ class FirewallRule(pulumi.CustomResource):
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

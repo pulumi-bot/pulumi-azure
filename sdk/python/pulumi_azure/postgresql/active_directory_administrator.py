@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ActiveDirectoryAdministrator(pulumi.CustomResource):
-    login: pulumi.Output[str]
+    login: pulumi.Output[str] = pulumi.output_property("login")
     """
     The login name of the principal to set as the server administrator
     """
-    object_id: pulumi.Output[str]
+    object_id: pulumi.Output[str] = pulumi.output_property("objectId")
     """
     The ID of the principal to set as the server administrator
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group for the PostgreSQL server. Changing this forces a new resource to be created.
     """
-    server_name: pulumi.Output[str]
+    server_name: pulumi.Output[str] = pulumi.output_property("serverName")
     """
     The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
     """
-    tenant_id: pulumi.Output[str]
+    tenant_id: pulumi.Output[str] = pulumi.output_property("tenantId")
     """
     The Azure Tenant ID
     """
-    def __init__(__self__, resource_name, opts=None, login=None, object_id=None, resource_group_name=None, server_name=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, login=None, object_id=None, resource_group_name=None, server_name=None, tenant_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Allows you to set a user or group as the AD administrator for an PostgreSQL server in Azure
 
@@ -75,7 +76,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,7 +130,8 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
         return ActiveDirectoryAdministrator(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

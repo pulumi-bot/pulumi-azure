@@ -5,63 +5,59 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class RunBook(pulumi.CustomResource):
-    automation_account_name: pulumi.Output[str]
+    automation_account_name: pulumi.Output[str] = pulumi.output_property("automationAccountName")
     """
     The name of the automation account in which the Runbook is created. Changing this forces a new resource to be created.
     """
-    content: pulumi.Output[str]
+    content: pulumi.Output[str] = pulumi.output_property("content")
     """
     The desired content of the runbook.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description for this credential.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    log_progress: pulumi.Output[bool]
+    log_progress: pulumi.Output[bool] = pulumi.output_property("logProgress")
     """
     Progress log option.
     """
-    log_verbose: pulumi.Output[bool]
+    log_verbose: pulumi.Output[bool] = pulumi.output_property("logVerbose")
     """
     Verbose log option.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Runbook. Changing this forces a new resource to be created.
     """
-    publish_content_link: pulumi.Output[dict]
+    publish_content_link: pulumi.Output[Optional['outputs.RunBookPublishContentLink']] = pulumi.output_property("publishContentLink")
     """
     The published runbook content link.
-
-      * `hash` (`dict`)
-        * `algorithm` (`str`)
-        * `value` (`str`)
-
-      * `uri` (`str`) - The uri of the runbook content.
-      * `version` (`str`)
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
     """
-    runbook_type: pulumi.Output[str]
+    runbook_type: pulumi.Output[str] = pulumi.output_property("runbookType")
     """
     The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell` or `Script`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, automation_account_name=None, content=None, description=None, location=None, log_progress=None, log_verbose=None, name=None, publish_content_link=None, resource_group_name=None, runbook_type=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, automation_account_name=None, content=None, description=None, location=None, log_progress=None, log_verbose=None, name=None, publish_content_link=None, resource_group_name=None, runbook_type=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Automation Runbook.
 
@@ -100,19 +96,10 @@ class RunBook(pulumi.CustomResource):
         :param pulumi.Input[bool] log_progress: Progress log option.
         :param pulumi.Input[bool] log_verbose: Verbose log option.
         :param pulumi.Input[str] name: Specifies the name of the Runbook. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] publish_content_link: The published runbook content link.
+        :param pulumi.Input['RunBookPublishContentLinkArgs'] publish_content_link: The published runbook content link.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] runbook_type: The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell` or `Script`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **publish_content_link** object supports the following:
-
-          * `hash` (`pulumi.Input[dict]`)
-            * `algorithm` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `uri` (`pulumi.Input[str]`) - The uri of the runbook content.
-          * `version` (`pulumi.Input[str]`)
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,7 +112,7 @@ class RunBook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -174,19 +161,10 @@ class RunBook(pulumi.CustomResource):
         :param pulumi.Input[bool] log_progress: Progress log option.
         :param pulumi.Input[bool] log_verbose: Verbose log option.
         :param pulumi.Input[str] name: Specifies the name of the Runbook. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] publish_content_link: The published runbook content link.
+        :param pulumi.Input['RunBookPublishContentLinkArgs'] publish_content_link: The published runbook content link.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Runbook is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] runbook_type: The type of the runbook - can be either `Graph`, `GraphPowerShell`, `GraphPowerShellWorkflow`, `PowerShellWorkflow`, `PowerShell` or `Script`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **publish_content_link** object supports the following:
-
-          * `hash` (`pulumi.Input[dict]`)
-            * `algorithm` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `uri` (`pulumi.Input[str]`) - The uri of the runbook content.
-          * `version` (`pulumi.Input[str]`)
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -206,7 +184,8 @@ class RunBook(pulumi.CustomResource):
         return RunBook(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,63 +5,63 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Definition(pulumi.CustomResource):
-    authorizations: pulumi.Output[list]
+    authorizations: pulumi.Output[Optional[List['outputs.DefinitionAuthorization']]] = pulumi.output_property("authorizations")
     """
     One or more `authorization` block defined below.
-
-      * `role_definition_id` (`str`) - Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
-      * `service_principal_id` (`str`) - Specifies a service principal identifier for the provider. This is the identity that the provider will use to call ARM to manage the managed application resources.
     """
-    create_ui_definition: pulumi.Output[str]
+    create_ui_definition: pulumi.Output[Optional[str]] = pulumi.output_property("createUiDefinition")
     """
     Specifies the `createUiDefinition` json for the backing template with `Microsoft.Solutions/applications` resource.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     Specifies the managed application definition description.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     Specifies the managed application definition display name.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    lock_level: pulumi.Output[str]
+    lock_level: pulumi.Output[str] = pulumi.output_property("lockLevel")
     """
     Specifies the managed application lock level. Valid values include `CanNotDelete`, `None`, `ReadOnly`. Changing this forces a new resource to be created.
     """
-    main_template: pulumi.Output[str]
+    main_template: pulumi.Output[Optional[str]] = pulumi.output_property("mainTemplate")
     """
     Specifies the inline main template json which has resources to be provisioned.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Managed Application Definition. Changing this forces a new resource to be created.
     """
-    package_enabled: pulumi.Output[bool]
+    package_enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("packageEnabled")
     """
     Is the package enabled? Defaults to `true`.
     """
-    package_file_uri: pulumi.Output[str]
+    package_file_uri: pulumi.Output[Optional[str]] = pulumi.output_property("packageFileUri")
     """
     Specifies the managed application definition package file Uri.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, authorizations=None, create_ui_definition=None, description=None, display_name=None, location=None, lock_level=None, main_template=None, name=None, package_enabled=None, package_file_uri=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, authorizations=None, create_ui_definition=None, description=None, display_name=None, location=None, lock_level=None, main_template=None, name=None, package_enabled=None, package_file_uri=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Managed Application Definition.
 
@@ -88,7 +88,7 @@ class Definition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorizations: One or more `authorization` block defined below.
+        :param pulumi.Input[List[pulumi.Input['DefinitionAuthorizationArgs']]] authorizations: One or more `authorization` block defined below.
         :param pulumi.Input[str] create_ui_definition: Specifies the `createUiDefinition` json for the backing template with `Microsoft.Solutions/applications` resource.
         :param pulumi.Input[str] description: Specifies the managed application definition description.
         :param pulumi.Input[str] display_name: Specifies the managed application definition display name.
@@ -99,12 +99,7 @@ class Definition(pulumi.CustomResource):
         :param pulumi.Input[bool] package_enabled: Is the package enabled? Defaults to `true`.
         :param pulumi.Input[str] package_file_uri: Specifies the managed application definition package file Uri.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **authorizations** object supports the following:
-
-          * `role_definition_id` (`pulumi.Input[str]`) - Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
-          * `service_principal_id` (`pulumi.Input[str]`) - Specifies a service principal identifier for the provider. This is the identity that the provider will use to call ARM to manage the managed application resources.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +112,7 @@ class Definition(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -156,7 +151,7 @@ class Definition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorizations: One or more `authorization` block defined below.
+        :param pulumi.Input[List[pulumi.Input['DefinitionAuthorizationArgs']]] authorizations: One or more `authorization` block defined below.
         :param pulumi.Input[str] create_ui_definition: Specifies the `createUiDefinition` json for the backing template with `Microsoft.Solutions/applications` resource.
         :param pulumi.Input[str] description: Specifies the managed application definition description.
         :param pulumi.Input[str] display_name: Specifies the managed application definition display name.
@@ -167,12 +162,7 @@ class Definition(pulumi.CustomResource):
         :param pulumi.Input[bool] package_enabled: Is the package enabled? Defaults to `true`.
         :param pulumi.Input[str] package_file_uri: Specifies the managed application definition package file Uri.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **authorizations** object supports the following:
-
-          * `role_definition_id` (`pulumi.Input[str]`) - Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
-          * `service_principal_id` (`pulumi.Input[str]`) - Specifies a service principal identifier for the provider. This is the identity that the provider will use to call ARM to manage the managed application resources.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -193,7 +183,8 @@ class Definition(pulumi.CustomResource):
         return Definition(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

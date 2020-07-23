@@ -5,33 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Database(pulumi.CustomResource):
-    charset: pulumi.Output[str]
+    charset: pulumi.Output[str] = pulumi.output_property("charset")
     """
     Specifies the Charset for the MariaDB Database, which needs [to be a valid MariaDB Charset](https://mariadb.com/kb/en/library/setting-character-sets-and-collations). Changing this forces a new resource to be created.
     """
-    collation: pulumi.Output[str]
+    collation: pulumi.Output[str] = pulumi.output_property("collation")
     """
     Specifies the Collation for the MariaDB Database, which needs [to be a valid MariaDB Collation](https://mariadb.com/kb/en/library/setting-character-sets-and-collations). Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the MariaDB Database, which needs [to be a valid MariaDB identifier](https://mariadb.com/kb/en/library/identifier-names/). Changing this forces a
     new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the MariaDB Server exists. Changing this forces a new resource to be created.
     """
-    server_name: pulumi.Output[str]
+    server_name: pulumi.Output[str] = pulumi.output_property("serverName")
     """
     Specifies the name of the MariaDB Server. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, charset=None, collation=None, name=None, resource_group_name=None, server_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, charset=None, collation=None, name=None, resource_group_name=None, server_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a MariaDB Database within a MariaDB Server
 
@@ -80,7 +81,7 @@ class Database(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -133,7 +134,8 @@ class Database(pulumi.CustomResource):
         return Database(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetNamespaceResult:
     """
     A collection of values returned by getNamespace.
     """
-    def __init__(__self__, enabled=None, id=None, location=None, name=None, namespace_type=None, resource_group_name=None, servicebus_endpoint=None, sku=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, enabled=None, id=None, location=None, name=None, namespace_type=None, resource_group_name=None, servicebus_endpoint=None, sku=None, tags=None) -> None:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         __self__.enabled = enabled
@@ -61,6 +64,8 @@ class GetNamespaceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +82,8 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_namespace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Notification Hub Namespace.
 
@@ -97,14 +103,12 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:notificationhub/getNamespace:getNamespace', __args__, opts=opts).value
 
     return AwaitableGetNamespaceResult(

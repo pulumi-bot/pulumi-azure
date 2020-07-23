@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetSharedImageVersionsResult:
     """
     A collection of values returned by getSharedImageVersions.
     """
-    def __init__(__self__, gallery_name=None, id=None, image_name=None, images=None, resource_group_name=None, tags_filter=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, gallery_name=None, id=None, image_name=None, images=None, resource_group_name=None, tags_filter=None) -> None:
         if gallery_name and not isinstance(gallery_name, str):
             raise TypeError("Expected argument 'gallery_name' to be a str")
         __self__.gallery_name = gallery_name
@@ -37,6 +40,8 @@ class GetSharedImageVersionsResult:
         if tags_filter and not isinstance(tags_filter, dict):
             raise TypeError("Expected argument 'tags_filter' to be a dict")
         __self__.tags_filter = tags_filter
+
+
 class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +55,8 @@ class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
             resource_group_name=self.resource_group_name,
             tags_filter=self.tags_filter)
 
-def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_name=None,tags_filter=None,opts=None):
+
+def get_shared_image_versions(gallery_name=None, image_name=None, resource_group_name=None, tags_filter=None, opts=None):
     """
     Use this data source to access information about existing Versions of a Shared Image within a Shared Image Gallery.
 
@@ -69,11 +75,9 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     :param str gallery_name: The name of the Shared Image in which the Shared Image exists.
     :param str image_name: The name of the Shared Image in which this Version exists.
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
-    :param dict tags_filter: A mapping of tags to filter the list of images against.
+    :param Dict[str, str] tags_filter: A mapping of tags to filter the list of images against.
     """
     __args__ = dict()
-
-
     __args__['galleryName'] = gallery_name
     __args__['imageName'] = image_name
     __args__['resourceGroupName'] = resource_group_name
@@ -81,7 +85,7 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImageVersions:getSharedImageVersions', __args__, opts=opts).value
 
     return AwaitableGetSharedImageVersionsResult(

@@ -5,29 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
 
 
 class ZipBlob(pulumi.CustomResource):
-    access_tier: pulumi.Output[str]
-    content: pulumi.Output[pulumi.Archive]
-    content_type: pulumi.Output[str]
-    metadata: pulumi.Output[dict]
-    name: pulumi.Output[str]
-    parallelism: pulumi.Output[float]
-    size: pulumi.Output[float]
-    source_content: pulumi.Output[str]
-    source_uri: pulumi.Output[str]
-    storage_account_name: pulumi.Output[str]
-    storage_container_name: pulumi.Output[str]
-    type: pulumi.Output[str]
-    url: pulumi.Output[str]
+    access_tier: pulumi.Output[str] = pulumi.output_property("accessTier")
+    content: pulumi.Output[Optional[pulumi.Archive]] = pulumi.output_property("content")
+    content_type: pulumi.Output[Optional[str]] = pulumi.output_property("contentType")
+    metadata: pulumi.Output[Dict[str, str]] = pulumi.output_property("metadata")
+    name: pulumi.Output[str] = pulumi.output_property("name")
+    parallelism: pulumi.Output[Optional[float]] = pulumi.output_property("parallelism")
+    size: pulumi.Output[Optional[float]] = pulumi.output_property("size")
+    source_content: pulumi.Output[Optional[str]] = pulumi.output_property("sourceContent")
+    source_uri: pulumi.Output[Optional[str]] = pulumi.output_property("sourceUri")
+    storage_account_name: pulumi.Output[str] = pulumi.output_property("storageAccountName")
+    storage_container_name: pulumi.Output[str] = pulumi.output_property("storageContainerName")
+    type: pulumi.Output[str] = pulumi.output_property("type")
+    url: pulumi.Output[str] = pulumi.output_property("url")
     warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, access_tier=None, content=None, content_type=None, metadata=None, name=None, parallelism=None, size=None, source_content=None, source_uri=None, storage_account_name=None, storage_container_name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, access_tier=None, content=None, content_type=None, metadata=None, name=None, parallelism=None, size=None, source_content=None, source_uri=None, storage_account_name=None, storage_container_name=None, type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Create a ZipBlob resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -45,7 +46,7 @@ class ZipBlob(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -106,7 +107,8 @@ class ZipBlob(pulumi.CustomResource):
         return ZipBlob(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

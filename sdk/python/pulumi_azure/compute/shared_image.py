@@ -5,68 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class SharedImage(pulumi.CustomResource):
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description of this Shared Image.
     """
-    eula: pulumi.Output[str]
+    eula: pulumi.Output[Optional[str]] = pulumi.output_property("eula")
     """
     The End User Licence Agreement for the Shared Image.
     """
-    gallery_name: pulumi.Output[str]
+    gallery_name: pulumi.Output[str] = pulumi.output_property("galleryName")
     """
     Specifies the name of the Shared Image Gallery in which this Shared Image should exist. Changing this forces a new resource to be created.
     """
-    hyper_v_generation: pulumi.Output[str]
+    hyper_v_generation: pulumi.Output[Optional[str]] = pulumi.output_property("hyperVGeneration")
     """
     The generation of HyperV that the Virtual Machine used to create the Shared Image is based on. Possible values are `V1` and `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
     """
-    identifier: pulumi.Output[dict]
+    identifier: pulumi.Output['outputs.SharedImageIdentifier'] = pulumi.output_property("identifier")
     """
     An `identifier` block as defined below.
-
-      * `offer` (`str`) - The Offer Name for this Shared Image.
-      * `publisher` (`str`) - The Publisher Name for this Gallery Image.
-      * `sku` (`str`) - The Name of the SKU for this Gallery Image.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the Shared Image Gallery exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Shared Image. Changing this forces a new resource to be created.
     """
-    os_type: pulumi.Output[str]
+    os_type: pulumi.Output[str] = pulumi.output_property("osType")
     """
     The type of Operating System present in this Shared Image. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
     """
-    privacy_statement_uri: pulumi.Output[str]
+    privacy_statement_uri: pulumi.Output[Optional[str]] = pulumi.output_property("privacyStatementUri")
     """
     The URI containing the Privacy Statement associated with this Shared Image.
     """
-    release_note_uri: pulumi.Output[str]
+    release_note_uri: pulumi.Output[Optional[str]] = pulumi.output_property("releaseNoteUri")
     """
     The URI containing the Release Notes associated with this Shared Image.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
     """
-    specialized: pulumi.Output[bool]
+    specialized: pulumi.Output[Optional[bool]] = pulumi.output_property("specialized")
     """
     Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Defaults to `false`. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the Shared Image.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, eula=None, gallery_name=None, hyper_v_generation=None, identifier=None, location=None, name=None, os_type=None, privacy_statement_uri=None, release_note_uri=None, resource_group_name=None, specialized=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, eula=None, gallery_name=None, hyper_v_generation=None, identifier=None, location=None, name=None, os_type=None, privacy_statement_uri=None, release_note_uri=None, resource_group_name=None, specialized=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Shared Image within a Shared Image Gallery.
 
@@ -103,7 +102,7 @@ class SharedImage(pulumi.CustomResource):
         :param pulumi.Input[str] eula: The End User Licence Agreement for the Shared Image.
         :param pulumi.Input[str] gallery_name: Specifies the name of the Shared Image Gallery in which this Shared Image should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] hyper_v_generation: The generation of HyperV that the Virtual Machine used to create the Shared Image is based on. Possible values are `V1` and `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] identifier: An `identifier` block as defined below.
+        :param pulumi.Input['SharedImageIdentifierArgs'] identifier: An `identifier` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Shared Image Gallery exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Shared Image. Changing this forces a new resource to be created.
         :param pulumi.Input[str] os_type: The type of Operating System present in this Shared Image. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
@@ -111,13 +110,7 @@ class SharedImage(pulumi.CustomResource):
         :param pulumi.Input[str] release_note_uri: The URI containing the Release Notes associated with this Shared Image.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] specialized: Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Defaults to `false`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Shared Image.
-
-        The **identifier** object supports the following:
-
-          * `offer` (`pulumi.Input[str]`) - The Offer Name for this Shared Image.
-          * `publisher` (`pulumi.Input[str]`) - The Publisher Name for this Gallery Image.
-          * `sku` (`pulumi.Input[str]`) - The Name of the SKU for this Gallery Image.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Shared Image.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,7 +123,7 @@ class SharedImage(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -176,7 +169,7 @@ class SharedImage(pulumi.CustomResource):
         :param pulumi.Input[str] eula: The End User Licence Agreement for the Shared Image.
         :param pulumi.Input[str] gallery_name: Specifies the name of the Shared Image Gallery in which this Shared Image should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] hyper_v_generation: The generation of HyperV that the Virtual Machine used to create the Shared Image is based on. Possible values are `V1` and `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] identifier: An `identifier` block as defined below.
+        :param pulumi.Input['SharedImageIdentifierArgs'] identifier: An `identifier` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Shared Image Gallery exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Shared Image. Changing this forces a new resource to be created.
         :param pulumi.Input[str] os_type: The type of Operating System present in this Shared Image. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
@@ -184,13 +177,7 @@ class SharedImage(pulumi.CustomResource):
         :param pulumi.Input[str] release_note_uri: The URI containing the Release Notes associated with this Shared Image.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] specialized: Specifies that the Operating System used inside this Image has not been Generalized (for example, `sysprep` on Windows has not been run). Defaults to `false`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Shared Image.
-
-        The **identifier** object supports the following:
-
-          * `offer` (`pulumi.Input[str]`) - The Offer Name for this Shared Image.
-          * `publisher` (`pulumi.Input[str]`) - The Publisher Name for this Gallery Image.
-          * `sku` (`pulumi.Input[str]`) - The Name of the SKU for this Gallery Image.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Shared Image.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,7 +199,8 @@ class SharedImage(pulumi.CustomResource):
         return SharedImage(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

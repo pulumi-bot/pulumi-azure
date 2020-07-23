@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetSharedImageResult:
     """
     A collection of values returned by getSharedImage.
     """
-    def __init__(__self__, description=None, eula=None, gallery_name=None, hyper_v_generation=None, id=None, identifiers=None, location=None, name=None, os_type=None, privacy_statement_uri=None, release_note_uri=None, resource_group_name=None, specialized=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, description=None, eula=None, gallery_name=None, hyper_v_generation=None, id=None, identifiers=None, location=None, name=None, os_type=None, privacy_statement_uri=None, release_note_uri=None, resource_group_name=None, specialized=None, tags=None) -> None:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -88,6 +91,8 @@ class GetSharedImageResult:
         """
         A mapping of tags assigned to the Shared Image.
         """
+
+
 class AwaitableGetSharedImageResult(GetSharedImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +114,8 @@ class AwaitableGetSharedImageResult(GetSharedImageResult):
             specialized=self.specialized,
             tags=self.tags)
 
-def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_shared_image(gallery_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
 
@@ -130,15 +136,13 @@ def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
     """
     __args__ = dict()
-
-
     __args__['galleryName'] = gallery_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImage:getSharedImage', __args__, opts=opts).value
 
     return AwaitableGetSharedImageResult(

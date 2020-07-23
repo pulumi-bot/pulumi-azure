@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetAuthorizationRuleResult:
     """
     A collection of values returned by getAuthorizationRule.
     """
-    def __init__(__self__, eventhub_name=None, id=None, listen=None, location=None, manage=None, name=None, namespace_name=None, primary_connection_string=None, primary_connection_string_alias=None, primary_key=None, resource_group_name=None, secondary_connection_string=None, secondary_connection_string_alias=None, secondary_key=None, send=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, eventhub_name=None, id=None, listen=None, location=None, manage=None, name=None, namespace_name=None, primary_connection_string=None, primary_connection_string_alias=None, primary_key=None, resource_group_name=None, secondary_connection_string=None, secondary_connection_string_alias=None, secondary_key=None, send=None) -> None:
         if eventhub_name and not isinstance(eventhub_name, str):
             raise TypeError("Expected argument 'eventhub_name' to be a str")
         __self__.eventhub_name = eventhub_name
@@ -79,6 +81,8 @@ class GetAuthorizationRuleResult:
         if send and not isinstance(send, bool):
             raise TypeError("Expected argument 'send' to be a bool")
         __self__.send = send
+
+
 class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +105,8 @@ class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
             secondary_key=self.secondary_key,
             send=self.send)
 
-def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,namespace_name=None,resource_group_name=None,send=None,opts=None):
+
+def get_authorization_rule(eventhub_name=None, listen=None, manage=None, name=None, namespace_name=None, resource_group_name=None, send=None, opts=None):
     """
     Use this data source to access information about an existing Event Hubs Authorization Rule within an Event Hub.
 
@@ -124,8 +129,6 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     :param str resource_group_name: The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
     """
     __args__ = dict()
-
-
     __args__['eventhubName'] = eventhub_name
     __args__['listen'] = listen
     __args__['manage'] = manage
@@ -136,7 +139,7 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getAuthorizationRule:getAuthorizationRule', __args__, opts=opts).value
 
     return AwaitableGetAuthorizationRuleResult(

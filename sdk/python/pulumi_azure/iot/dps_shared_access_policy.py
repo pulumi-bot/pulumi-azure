@@ -5,60 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class DpsSharedAccessPolicy(pulumi.CustomResource):
-    enrollment_read: pulumi.Output[bool]
+    enrollment_read: pulumi.Output[Optional[bool]] = pulumi.output_property("enrollmentRead")
     """
     Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.
     """
-    enrollment_write: pulumi.Output[bool]
+    enrollment_write: pulumi.Output[Optional[bool]] = pulumi.output_property("enrollmentWrite")
     """
     Adds `EnrollmentWrite` permission to this Shared Access Account. It allows write access to enrollment data.
     """
-    iothub_dps_name: pulumi.Output[str]
+    iothub_dps_name: pulumi.Output[str] = pulumi.output_property("iothubDpsName")
     """
     The name of the IoT Hub Device Provisioning service to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
     """
-    primary_connection_string: pulumi.Output[str]
+    primary_connection_string: pulumi.Output[str] = pulumi.output_property("primaryConnectionString")
     """
     The primary connection string of the Shared Access Policy.
     """
-    primary_key: pulumi.Output[str]
+    primary_key: pulumi.Output[str] = pulumi.output_property("primaryKey")
     """
     The primary key used to create the authentication token.
     """
-    registration_read: pulumi.Output[bool]
+    registration_read: pulumi.Output[Optional[bool]] = pulumi.output_property("registrationRead")
     """
     Adds `RegistrationStatusRead` permission to this Shared Access Account. It allows read access to device registrations.
     """
-    registration_write: pulumi.Output[bool]
+    registration_write: pulumi.Output[Optional[bool]] = pulumi.output_property("registrationWrite")
     """
     Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
     """
-    secondary_connection_string: pulumi.Output[str]
+    secondary_connection_string: pulumi.Output[str] = pulumi.output_property("secondaryConnectionString")
     """
     The secondary connection string of the Shared Access Policy.
     """
-    secondary_key: pulumi.Output[str]
+    secondary_key: pulumi.Output[str] = pulumi.output_property("secondaryKey")
     """
     The secondary key used to create the authentication token.
     """
-    service_config: pulumi.Output[bool]
+    service_config: pulumi.Output[Optional[bool]] = pulumi.output_property("serviceConfig")
     """
     Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
     """
-    def __init__(__self__, resource_name, opts=None, enrollment_read=None, enrollment_write=None, iothub_dps_name=None, name=None, registration_read=None, registration_write=None, resource_group_name=None, service_config=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, enrollment_read=None, enrollment_write=None, iothub_dps_name=None, name=None, registration_read=None, registration_write=None, resource_group_name=None, service_config=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an IotHub Device Provisioning Service Shared Access Policy
 
@@ -105,7 +106,7 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -174,7 +175,8 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
         return DpsSharedAccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

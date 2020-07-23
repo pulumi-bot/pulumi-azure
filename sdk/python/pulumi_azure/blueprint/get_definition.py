@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetDefinitionResult:
     """
     A collection of values returned by getDefinition.
     """
-    def __init__(__self__, description=None, display_name=None, id=None, last_modified=None, name=None, scope_id=None, target_scope=None, time_created=None, versions=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, description=None, display_name=None, id=None, last_modified=None, name=None, scope_id=None, target_scope=None, time_created=None, versions=None) -> None:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -61,6 +63,8 @@ class GetDefinitionResult:
         """
         A list of versions published for this Blueprint Definition.
         """
+
+
 class AwaitableGetDefinitionResult(GetDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +81,8 @@ class AwaitableGetDefinitionResult(GetDefinitionResult):
             time_created=self.time_created,
             versions=self.versions)
 
-def get_definition(name=None,scope_id=None,opts=None):
+
+def get_definition(name=None, scope_id=None, opts=None):
     """
     Use this data source to access information about an existing Azure Blueprint Definition
 
@@ -100,14 +105,12 @@ def get_definition(name=None,scope_id=None,opts=None):
     :param str scope_id: The Resource ID of the scope at which the blueprint definition is stored. This will be with either a Subscription ID or Management Group ID.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['scopeId'] = scope_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:blueprint/getDefinition:getDefinition', __args__, opts=opts).value
 
     return AwaitableGetDefinitionResult(

@@ -5,40 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Share(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[str] = pulumi.output_property("accountId")
     """
     The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The Data Share's description.
     """
-    kind: pulumi.Output[str]
+    kind: pulumi.Output[str] = pulumi.output_property("kind")
     """
     The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
     """
-    snapshot_schedule: pulumi.Output[dict]
+    snapshot_schedule: pulumi.Output[Optional['outputs.ShareSnapshotSchedule']] = pulumi.output_property("snapshotSchedule")
     """
     A `snapshot_schedule` block as defined below.
-
-      * `name` (`str`) - The name of the snapshot schedule.
-      * `recurrence` (`str`) - The interval of the synchronization with the source data. Possible values are `Hour` and `Day`.
-      * `start_time` (`str`) - The synchronization with the source data's start time.
     """
-    terms: pulumi.Output[str]
+    terms: pulumi.Output[Optional[str]] = pulumi.output_property("terms")
     """
     The terms of the Data Share.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, description=None, kind=None, name=None, snapshot_schedule=None, terms=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, description=None, kind=None, name=None, snapshot_schedule=None, terms=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Data Share.
 
@@ -73,14 +72,8 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Data Share's description.
         :param pulumi.Input[str] kind: The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
-        :param pulumi.Input[dict] snapshot_schedule: A `snapshot_schedule` block as defined below.
+        :param pulumi.Input['ShareSnapshotScheduleArgs'] snapshot_schedule: A `snapshot_schedule` block as defined below.
         :param pulumi.Input[str] terms: The terms of the Data Share.
-
-        The **snapshot_schedule** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the snapshot schedule.
-          * `recurrence` (`pulumi.Input[str]`) - The interval of the synchronization with the source data. Possible values are `Hour` and `Day`.
-          * `start_time` (`pulumi.Input[str]`) - The synchronization with the source data's start time.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +86,7 @@ class Share(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,14 +121,8 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Data Share's description.
         :param pulumi.Input[str] kind: The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
-        :param pulumi.Input[dict] snapshot_schedule: A `snapshot_schedule` block as defined below.
+        :param pulumi.Input['ShareSnapshotScheduleArgs'] snapshot_schedule: A `snapshot_schedule` block as defined below.
         :param pulumi.Input[str] terms: The terms of the Data Share.
-
-        The **snapshot_schedule** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the snapshot schedule.
-          * `recurrence` (`pulumi.Input[str]`) - The interval of the synchronization with the source data. Possible values are `Hour` and `Day`.
-          * `start_time` (`pulumi.Input[str]`) - The synchronization with the source data's start time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,7 +137,8 @@ class Share(pulumi.CustomResource):
         return Share(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

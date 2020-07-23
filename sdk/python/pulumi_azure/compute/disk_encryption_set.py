@@ -5,40 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class DiskEncryptionSet(pulumi.CustomResource):
-    identity: pulumi.Output[dict]
+    identity: pulumi.Output['outputs.DiskEncryptionSetIdentity'] = pulumi.output_property("identity")
     """
     A `identity` block defined below.
-
-      * `principal_id` (`str`) - The (Client) ID of the Service Principal.
-      * `tenant_id` (`str`) - The ID of the Tenant the Service Principal is assigned in.
-      * `type` (`str`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
     """
-    key_vault_key_id: pulumi.Output[str]
+    key_vault_key_id: pulumi.Output[str] = pulumi.output_property("keyVaultKeyId")
     """
     Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret).
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the Azure Region where the Disk Encryption Set exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Disk Encryption Set. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the Disk Encryption Set.
     """
-    def __init__(__self__, resource_name, opts=None, identity=None, key_vault_key_id=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, identity=None, key_vault_key_id=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Disk Encryption Set.
 
@@ -46,18 +45,12 @@ class DiskEncryptionSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] identity: A `identity` block defined below.
+        :param pulumi.Input['DiskEncryptionSetIdentityArgs'] identity: A `identity` block defined below.
         :param pulumi.Input[str] key_vault_key_id: Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret).
         :param pulumi.Input[str] location: Specifies the Azure Region where the Disk Encryption Set exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the Disk Encryption Set. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Disk Encryption Set.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The (Client) ID of the Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Disk Encryption Set.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,7 +63,7 @@ class DiskEncryptionSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -103,18 +96,12 @@ class DiskEncryptionSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] identity: A `identity` block defined below.
+        :param pulumi.Input['DiskEncryptionSetIdentityArgs'] identity: A `identity` block defined below.
         :param pulumi.Input[str] key_vault_key_id: Specifies the URL to a Key Vault Key (either from a Key Vault Key, or the Key URL for the Key Vault Secret).
         :param pulumi.Input[str] location: Specifies the Azure Region where the Disk Encryption Set exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the Disk Encryption Set. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Disk Encryption Set.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The (Client) ID of the Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Disk Encryption Set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,7 +116,8 @@ class DiskEncryptionSet(pulumi.CustomResource):
         return DiskEncryptionSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

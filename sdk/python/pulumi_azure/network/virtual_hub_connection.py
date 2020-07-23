@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class VirtualHubConnection(pulumi.CustomResource):
-    hub_to_vitual_network_traffic_allowed: pulumi.Output[bool]
+    hub_to_vitual_network_traffic_allowed: pulumi.Output[Optional[bool]] = pulumi.output_property("hubToVitualNetworkTrafficAllowed")
     """
     Is the Virtual Hub traffic allowed to transit via the Remote Virtual Network? Changing this forces a new resource to be created.
     """
-    internet_security_enabled: pulumi.Output[bool]
+    internet_security_enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("internetSecurityEnabled")
     """
     Should Internet Security be enabled to secure internet traffic? Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The Name which should be used for this Connection, which must be unique within the Virtual Hub. Changing this forces a new resource to be created.
     """
-    remote_virtual_network_id: pulumi.Output[str]
+    remote_virtual_network_id: pulumi.Output[str] = pulumi.output_property("remoteVirtualNetworkId")
     """
     The ID of the Virtual Network which the Virtual Hub should be connected to. Changing this forces a new resource to be created.
     """
-    virtual_hub_id: pulumi.Output[str]
+    virtual_hub_id: pulumi.Output[str] = pulumi.output_property("virtualHubId")
     """
     The ID of the Virtual Hub within which this connection should be created. Changing this forces a new resource to be created.
     """
-    vitual_network_to_hub_gateways_traffic_allowed: pulumi.Output[bool]
+    vitual_network_to_hub_gateways_traffic_allowed: pulumi.Output[Optional[bool]] = pulumi.output_property("vitualNetworkToHubGatewaysTrafficAllowed")
     """
     Is Remote Virtual Network traffic allowed to transit the Hub's Virtual Network Gateway's? Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, hub_to_vitual_network_traffic_allowed=None, internet_security_enabled=None, name=None, remote_virtual_network_id=None, virtual_hub_id=None, vitual_network_to_hub_gateways_traffic_allowed=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, hub_to_vitual_network_traffic_allowed=None, internet_security_enabled=None, name=None, remote_virtual_network_id=None, virtual_hub_id=None, vitual_network_to_hub_gateways_traffic_allowed=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Connection for a Virtual Hub.
 
@@ -82,7 +83,7 @@ class VirtualHubConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -133,7 +134,8 @@ class VirtualHubConnection(pulumi.CustomResource):
         return VirtualHubConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

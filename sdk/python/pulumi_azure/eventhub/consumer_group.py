@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ConsumerGroup(pulumi.CustomResource):
-    eventhub_name: pulumi.Output[str]
+    eventhub_name: pulumi.Output[str] = pulumi.output_property("eventhubName")
     """
     Specifies the name of the EventHub. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the EventHub Consumer Group resource. Changing this forces a new resource to be created.
     """
-    namespace_name: pulumi.Output[str]
+    namespace_name: pulumi.Output[str] = pulumi.output_property("namespaceName")
     """
     Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. Changing this forces a new resource to be created.
     """
-    user_metadata: pulumi.Output[str]
+    user_metadata: pulumi.Output[Optional[str]] = pulumi.output_property("userMetadata")
     """
     Specifies the user metadata.
     """
-    def __init__(__self__, resource_name, opts=None, eventhub_name=None, name=None, namespace_name=None, resource_group_name=None, user_metadata=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, eventhub_name=None, name=None, namespace_name=None, resource_group_name=None, user_metadata=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Event Hubs Consumer Group as a nested resource within an Event Hub.
 
@@ -80,7 +81,7 @@ class ConsumerGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,7 +133,8 @@ class ConsumerGroup(pulumi.CustomResource):
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

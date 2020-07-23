@@ -5,61 +5,62 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Definition(pulumi.CustomResource):
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of the policy definition.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The display name of the policy definition.
     """
-    management_group_id: pulumi.Output[str]
+    management_group_id: pulumi.Output[str] = pulumi.output_property("managementGroupId")
     """
     The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
     """
-    management_group_name: pulumi.Output[str]
+    management_group_name: pulumi.Output[str] = pulumi.output_property("managementGroupName")
     """
     The name of the Management Group where this policy should be defined. Changing this forces a new resource to be created.
     """
-    metadata: pulumi.Output[str]
+    metadata: pulumi.Output[str] = pulumi.output_property("metadata")
     """
     The metadata for the policy definition. This
     is a json object representing additional metadata that should be stored
     with the policy definition.
     """
-    mode: pulumi.Output[str]
+    mode: pulumi.Output[str] = pulumi.output_property("mode")
     """
     The policy mode that allows you to specify which resource
     types will be evaluated.  The value can be "All", "Indexed" or
     "NotSpecified". Changing this resource forces a new resource to be
     created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the policy definition. Changing this forces a
     new resource to be created.
     """
-    parameters: pulumi.Output[str]
+    parameters: pulumi.Output[Optional[str]] = pulumi.output_property("parameters")
     """
     Parameters for the policy definition. This field
     is a json object that allows you to parameterize your policy definition.
     """
-    policy_rule: pulumi.Output[str]
+    policy_rule: pulumi.Output[Optional[str]] = pulumi.output_property("policyRule")
     """
     The policy rule for the policy definition. This
     is a json object representing the rule that contains an if and
     a then block.
     """
-    policy_type: pulumi.Output[str]
+    policy_type: pulumi.Output[str] = pulumi.output_property("policyType")
     """
     The policy type. Possible values are `BuiltIn`, `Custom` and `NotSpecified`. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, display_name=None, management_group_id=None, management_group_name=None, metadata=None, mode=None, name=None, parameters=None, policy_rule=None, policy_type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, display_name=None, management_group_id=None, management_group_name=None, metadata=None, mode=None, name=None, parameters=None, policy_rule=None, policy_type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a policy rule definition on a management group or your provider subscription.
 
@@ -141,7 +142,7 @@ class Definition(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -218,7 +219,8 @@ class Definition(pulumi.CustomResource):
         return Definition(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

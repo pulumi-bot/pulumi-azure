@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetAccessPolicyResult:
     """
     A collection of values returned by getAccessPolicy.
     """
-    def __init__(__self__, certificate_permissions=None, id=None, key_permissions=None, name=None, secret_permissions=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, certificate_permissions=None, id=None, key_permissions=None, name=None, secret_permissions=None) -> None:
         if certificate_permissions and not isinstance(certificate_permissions, list):
             raise TypeError("Expected argument 'certificate_permissions' to be a list")
         __self__.certificate_permissions = certificate_permissions
@@ -40,6 +42,8 @@ class GetAccessPolicyResult:
         """
         the secret permissions for the access policy
         """
+
+
 class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +56,8 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
             name=self.name,
             secret_permissions=self.secret_permissions)
 
-def get_access_policy(name=None,opts=None):
+
+def get_access_policy(name=None, opts=None):
     """
     Use this data source to access information about the permissions from the Management Key Vault Templates.
 
@@ -72,13 +77,11 @@ def get_access_policy(name=None,opts=None):
            `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:keyvault/getAccessPolicy:getAccessPolicy', __args__, opts=opts).value
 
     return AwaitableGetAccessPolicyResult(

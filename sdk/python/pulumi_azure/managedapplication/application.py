@@ -5,58 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Application(pulumi.CustomResource):
-    application_definition_id: pulumi.Output[str]
+    application_definition_id: pulumi.Output[Optional[str]] = pulumi.output_property("applicationDefinitionId")
     """
     The application definition ID to deploy.
     """
-    kind: pulumi.Output[str]
+    kind: pulumi.Output[str] = pulumi.output_property("kind")
     """
     The kind of the managed application to deploy. Possible values are `MarketPlace` and `ServiceCatalog`. Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    managed_resource_group_name: pulumi.Output[str]
+    managed_resource_group_name: pulumi.Output[str] = pulumi.output_property("managedResourceGroupName")
     """
     The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Managed Application. Changing this forces a new resource to be created.
     """
-    outputs: pulumi.Output[dict]
+    outputs: pulumi.Output[Dict[str, str]] = pulumi.output_property("outputs")
     """
     The name and value pairs that define the managed application outputs.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     A mapping of name and value pairs to pass to the managed application as parameters.
     """
-    plan: pulumi.Output[dict]
+    plan: pulumi.Output[Optional['outputs.ApplicationPlan']] = pulumi.output_property("plan")
     """
     One `plan` block as defined below.
-
-      * `name` (`str`) - Specifies the name of the plan from the marketplace.
-      * `product` (`str`) - Specifies the product of the plan from the marketplace.
-      * `promotionCode` (`str`) - Specifies the promotion code to use with the plan.
-      * `publisher` (`str`) - Specifies the publisher of the plan.
-      * `version` (`str`) - Specifies the version of the plan from the marketplace.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, application_definition_id=None, kind=None, location=None, managed_resource_group_name=None, name=None, parameters=None, plan=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_definition_id=None, kind=None, location=None, managed_resource_group_name=None, name=None, parameters=None, plan=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Managed Application.
 
@@ -100,18 +97,10 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] managed_resource_group_name: The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Managed Application. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] parameters: A mapping of name and value pairs to pass to the managed application as parameters.
-        :param pulumi.Input[dict] plan: One `plan` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A mapping of name and value pairs to pass to the managed application as parameters.
+        :param pulumi.Input['ApplicationPlanArgs'] plan: One `plan` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **plan** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the plan from the marketplace.
-          * `product` (`pulumi.Input[str]`) - Specifies the product of the plan from the marketplace.
-          * `promotionCode` (`pulumi.Input[str]`) - Specifies the promotion code to use with the plan.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the publisher of the plan.
-          * `version` (`pulumi.Input[str]`) - Specifies the version of the plan from the marketplace.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,7 +113,7 @@ class Application(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -166,19 +155,11 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] managed_resource_group_name: The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Managed Application. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] outputs: The name and value pairs that define the managed application outputs.
-        :param pulumi.Input[dict] parameters: A mapping of name and value pairs to pass to the managed application as parameters.
-        :param pulumi.Input[dict] plan: One `plan` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] outputs: The name and value pairs that define the managed application outputs.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A mapping of name and value pairs to pass to the managed application as parameters.
+        :param pulumi.Input['ApplicationPlanArgs'] plan: One `plan` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **plan** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the plan from the marketplace.
-          * `product` (`pulumi.Input[str]`) - Specifies the product of the plan from the marketplace.
-          * `promotionCode` (`pulumi.Input[str]`) - Specifies the promotion code to use with the plan.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the publisher of the plan.
-          * `version` (`pulumi.Input[str]`) - Specifies the version of the plan from the marketplace.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -197,7 +178,8 @@ class Application(pulumi.CustomResource):
         return Application(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetDatasetBlobStorageResult:
     """
     A collection of values returned by getDatasetBlobStorage.
     """
-    def __init__(__self__, container_name=None, data_share_id=None, display_name=None, file_path=None, folder_path=None, id=None, name=None, storage_accounts=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, container_name=None, data_share_id=None, display_name=None, file_path=None, folder_path=None, id=None, name=None, storage_accounts=None) -> None:
         if container_name and not isinstance(container_name, str):
             raise TypeError("Expected argument 'container_name' to be a str")
         __self__.container_name = container_name
@@ -58,6 +61,8 @@ class GetDatasetBlobStorageResult:
         """
         A `storage_account` block as defined below.
         """
+
+
 class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +78,8 @@ class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
             name=self.name,
             storage_accounts=self.storage_accounts)
 
-def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
+
+def get_dataset_blob_storage(data_share_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Data Share Blob Storage Dataset.
 
@@ -93,14 +99,12 @@ def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
     :param str name: The name of this Data Share Blob Storage Dataset.
     """
     __args__ = dict()
-
-
     __args__['dataShareId'] = data_share_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage', __args__, opts=opts).value
 
     return AwaitableGetDatasetBlobStorageResult(

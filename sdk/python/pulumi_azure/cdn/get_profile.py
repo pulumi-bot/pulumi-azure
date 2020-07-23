@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetProfileResult:
     """
     A collection of values returned by getProfile.
     """
-    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, sku=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, sku=None, tags=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -43,6 +45,8 @@ class GetProfileResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetProfileResult(GetProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +60,8 @@ class AwaitableGetProfileResult(GetProfileResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_profile(name=None,resource_group_name=None,opts=None):
+
+def get_profile(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing CDN Profile.
 
@@ -76,14 +81,12 @@ def get_profile(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the CDN Profile exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:cdn/getProfile:getProfile', __args__, opts=opts).value
 
     return AwaitableGetProfileResult(

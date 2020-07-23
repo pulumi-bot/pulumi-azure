@@ -5,60 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
-    additional_properties: pulumi.Output[dict]
+    additional_properties: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("additionalProperties")
     """
     A map of additional properties to associate with the Data Factory Linked Service MySQL.
     """
-    annotations: pulumi.Output[list]
+    annotations: pulumi.Output[Optional[List[str]]] = pulumi.output_property("annotations")
     """
     List of tags that can be used for describing the Data Factory Linked Service MySQL.
     """
-    data_factory_name: pulumi.Output[str]
+    data_factory_name: pulumi.Output[str] = pulumi.output_property("dataFactoryName")
     """
     The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description for the Data Factory Linked Service MySQL.
     """
-    integration_runtime_name: pulumi.Output[str]
+    integration_runtime_name: pulumi.Output[Optional[str]] = pulumi.output_property("integrationRuntimeName")
     """
     The integration runtime reference to associate with the Data Factory Linked Service MySQL.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     A map of parameters to associate with the Data Factory Linked Service MySQL.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Data Factory Linked Service MySQL. Changing this forces a new resource
     """
-    service_principal_id: pulumi.Output[str]
+    service_principal_id: pulumi.Output[str] = pulumi.output_property("servicePrincipalId")
     """
     The service principal id in which to authenticate against the Azure Data Lake Storage Gen2 account.
     """
-    service_principal_key: pulumi.Output[str]
+    service_principal_key: pulumi.Output[str] = pulumi.output_property("servicePrincipalKey")
     """
     The service principal key in which to authenticate against the Azure Data Lake Storage Gen2 account.
     """
-    tenant: pulumi.Output[str]
+    tenant: pulumi.Output[str] = pulumi.output_property("tenant")
     """
     The tenant id or name in which to authenticate against the Azure Data Lake Storage Gen2 account.
     """
-    url: pulumi.Output[str]
+    url: pulumi.Output[str] = pulumi.output_property("url")
     """
     The endpoint for the Azure Data Lake Storage Gen2 service.
     """
-    def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, data_factory_name=None, description=None, integration_runtime_name=None, name=None, parameters=None, resource_group_name=None, service_principal_id=None, service_principal_key=None, tenant=None, url=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, additional_properties=None, annotations=None, data_factory_name=None, description=None, integration_runtime_name=None, name=None, parameters=None, resource_group_name=None, service_principal_id=None, service_principal_key=None, tenant=None, url=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Linked Service (connection) between Data Lake Storage Gen2 and Azure Data Factory.
 
@@ -84,13 +85,13 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service MySQL.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service MySQL.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service MySQL.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linked Service MySQL.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service MySQL. Changing this forces a new resource
         :param pulumi.Input[str] service_principal_id: The service principal id in which to authenticate against the Azure Data Lake Storage Gen2 account.
         :param pulumi.Input[str] service_principal_key: The service principal key in which to authenticate against the Azure Data Lake Storage Gen2 account.
@@ -108,7 +109,7 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -153,13 +154,13 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service MySQL.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service MySQL.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service MySQL.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service MySQL. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linked Service MySQL.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linked Service MySQL.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service MySQL. Changing this forces a new resource
         :param pulumi.Input[str] service_principal_id: The service principal id in which to authenticate against the Azure Data Lake Storage Gen2 account.
         :param pulumi.Input[str] service_principal_key: The service principal key in which to authenticate against the Azure Data Lake Storage Gen2 account.
@@ -185,7 +186,8 @@ class LinkedServiceDataLakeStorageGen2(pulumi.CustomResource):
         return LinkedServiceDataLakeStorageGen2(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetSpringCloudServiceResult:
     """
     A collection of values returned by getSpringCloudService.
     """
-    def __init__(__self__, config_server_git_settings=None, id=None, location=None, name=None, resource_group_name=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, config_server_git_settings=None, id=None, location=None, name=None, resource_group_name=None, tags=None) -> None:
         if config_server_git_settings and not isinstance(config_server_git_settings, list):
             raise TypeError("Expected argument 'config_server_git_settings' to be a list")
         __self__.config_server_git_settings = config_server_git_settings
@@ -46,6 +49,8 @@ class GetSpringCloudServiceResult:
         """
         A mapping of tags assigned to Spring Cloud Service.
         """
+
+
 class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +64,8 @@ class AwaitableGetSpringCloudServiceResult(GetSpringCloudServiceResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
+
+def get_spring_cloud_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Spring Cloud Service.
 
@@ -79,14 +85,12 @@ def get_spring_cloud_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the Spring Cloud Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appplatform/getSpringCloudService:getSpringCloudService', __args__, opts=opts).value
 
     return AwaitableGetSpringCloudServiceResult(

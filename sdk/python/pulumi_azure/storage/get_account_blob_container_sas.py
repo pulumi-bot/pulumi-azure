@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetAccountBlobContainerSASResult:
     """
     A collection of values returned by getAccountBlobContainerSAS.
     """
-    def __init__(__self__, cache_control=None, connection_string=None, container_name=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, expiry=None, https_only=None, id=None, ip_address=None, permissions=None, sas=None, start=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, cache_control=None, connection_string=None, container_name=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, expiry=None, https_only=None, id=None, ip_address=None, permissions=None, sas=None, start=None) -> None:
         if cache_control and not isinstance(cache_control, str):
             raise TypeError("Expected argument 'cache_control' to be a str")
         __self__.cache_control = cache_control
@@ -61,6 +65,8 @@ class GetAccountBlobContainerSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -82,7 +88,8 @@ class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult
             sas=self.sas,
             start=self.start)
 
-def get_account_blob_container_sas(cache_control=None,connection_string=None,container_name=None,content_disposition=None,content_encoding=None,content_language=None,content_type=None,expiry=None,https_only=None,ip_address=None,permissions=None,start=None,opts=None):
+
+def get_account_blob_container_sas(cache_control=None, connection_string=None, container_name=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, expiry=None, https_only=None, ip_address=None, permissions=None, start=None, opts=None):
     """
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account Blob Container.
 
@@ -136,21 +143,10 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     :param str expiry: The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
     :param bool https_only: Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
     :param str ip_address: Single ipv4 address or range (connected with a dash) of ipv4 addresses.
-    :param dict permissions: A `permissions` block as defined below.
+    :param 'GetAccountBlobContainerSASPermissionsArgs' permissions: A `permissions` block as defined below.
     :param str start: The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
-
-    The **permissions** object supports the following:
-
-      * `add` (`bool`) - Should Add permissions be enabled for this SAS?
-      * `create` (`bool`) - Should Create permissions be enabled for this SAS?
-      * `delete` (`bool`) - Should Delete permissions be enabled for this SAS?
-      * `list` (`bool`) - Should List permissions be enabled for this SAS?
-      * `read` (`bool`) - Should Read permissions be enabled for this SAS?
-      * `write` (`bool`) - Should Write permissions be enabled for this SAS?
     """
     __args__ = dict()
-
-
     __args__['cacheControl'] = cache_control
     __args__['connectionString'] = connection_string
     __args__['containerName'] = container_name
@@ -166,7 +162,7 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccountBlobContainerSAS:getAccountBlobContainerSAS', __args__, opts=opts).value
 
     return AwaitableGetAccountBlobContainerSASResult(

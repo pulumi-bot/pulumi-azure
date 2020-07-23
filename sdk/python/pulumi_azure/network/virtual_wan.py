@@ -5,48 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class VirtualWan(pulumi.CustomResource):
-    allow_branch_to_branch_traffic: pulumi.Output[bool]
+    allow_branch_to_branch_traffic: pulumi.Output[Optional[bool]] = pulumi.output_property("allowBranchToBranchTraffic")
     """
     Boolean flag to specify whether branch to branch traffic is allowed. Defaults to `true`.
     """
-    allow_vnet_to_vnet_traffic: pulumi.Output[bool]
+    allow_vnet_to_vnet_traffic: pulumi.Output[Optional[bool]] = pulumi.output_property("allowVnetToVnetTraffic")
     """
     Boolean flag to specify whether VNet to VNet traffic is allowed. Defaults to `false`.
     """
-    disable_vpn_encryption: pulumi.Output[bool]
+    disable_vpn_encryption: pulumi.Output[Optional[bool]] = pulumi.output_property("disableVpnEncryption")
     """
     Boolean flag to specify whether VPN encryption is disabled. Defaults to `false`.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Virtual WAN. Changing this forces a new resource to be created.
     """
-    office365_local_breakout_category: pulumi.Output[str]
+    office365_local_breakout_category: pulumi.Output[Optional[str]] = pulumi.output_property("office365LocalBreakoutCategory")
     """
     Specifies the Office365 local breakout category. Possible values include: `Optimize`, `OptimizeAndAllow`, `All`, `None`. Defaults to `None`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Virtual WAN. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the Virtual WAN.
     """
-    type: pulumi.Output[str]
+    type: pulumi.Output[Optional[str]] = pulumi.output_property("type")
     """
     Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
     """
-    def __init__(__self__, resource_name, opts=None, allow_branch_to_branch_traffic=None, allow_vnet_to_vnet_traffic=None, disable_vpn_encryption=None, location=None, name=None, office365_local_breakout_category=None, resource_group_name=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, allow_branch_to_branch_traffic=None, allow_vnet_to_vnet_traffic=None, disable_vpn_encryption=None, location=None, name=None, office365_local_breakout_category=None, resource_group_name=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Virtual WAN.
 
@@ -71,7 +72,7 @@ class VirtualWan(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Virtual WAN. Changing this forces a new resource to be created.
         :param pulumi.Input[str] office365_local_breakout_category: Specifies the Office365 local breakout category. Possible values include: `Optimize`, `OptimizeAndAllow`, `All`, `None`. Defaults to `None`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Virtual WAN. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Virtual WAN.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Virtual WAN.
         :param pulumi.Input[str] type: Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
         """
         if __name__ is not None:
@@ -85,7 +86,7 @@ class VirtualWan(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -124,7 +125,7 @@ class VirtualWan(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Virtual WAN. Changing this forces a new resource to be created.
         :param pulumi.Input[str] office365_local_breakout_category: Specifies the Office365 local breakout category. Possible values include: `Optimize`, `OptimizeAndAllow`, `All`, `None`. Defaults to `None`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Virtual WAN. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Virtual WAN.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Virtual WAN.
         :param pulumi.Input[str] type: Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -143,7 +144,8 @@ class VirtualWan(pulumi.CustomResource):
         return VirtualWan(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

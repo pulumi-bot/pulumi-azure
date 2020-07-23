@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetPoolResult:
     """
     A collection of values returned by getPool.
     """
-    def __init__(__self__, account_name=None, id=None, location=None, name=None, resource_group_name=None, service_level=None, size_in_tb=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, account_name=None, id=None, location=None, name=None, resource_group_name=None, service_level=None, size_in_tb=None) -> None:
         if account_name and not isinstance(account_name, str):
             raise TypeError("Expected argument 'account_name' to be a str")
         __self__.account_name = account_name
@@ -46,6 +48,8 @@ class GetPoolResult:
         """
         Provisioned size of the pool in TB.
         """
+
+
 class AwaitableGetPoolResult(GetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +64,8 @@ class AwaitableGetPoolResult(GetPoolResult):
             service_level=self.service_level,
             size_in_tb=self.size_in_tb)
 
-def get_pool(account_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_pool(account_name=None, name=None, resource_group_name=None, opts=None):
     """
     Uses this data source to access information about an existing NetApp Pool.
 
@@ -82,15 +87,13 @@ def get_pool(account_name=None,name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the NetApp Pool exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:netapp/getPool:getPool', __args__, opts=opts).value
 
     return AwaitableGetPoolResult(

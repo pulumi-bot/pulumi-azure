@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
     """
-    def __init__(__self__, id=None, rules=None, storage_account_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, rules=None, storage_account_id=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -28,6 +31,8 @@ class GetPolicyResult:
         if storage_account_id and not isinstance(storage_account_id, str):
             raise TypeError("Expected argument 'storage_account_id' to be a str")
         __self__.storage_account_id = storage_account_id
+
+
 class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +43,8 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             rules=self.rules,
             storage_account_id=self.storage_account_id)
 
-def get_policy(storage_account_id=None,opts=None):
+
+def get_policy(storage_account_id=None, opts=None):
     """
     Use this data source to access information about an existing Storage Management Policy.
 
@@ -57,13 +63,11 @@ def get_policy(storage_account_id=None,opts=None):
     :param str storage_account_id: Specifies the id of the storage account to retrieve the management policy for.
     """
     __args__ = dict()
-
-
     __args__['storageAccountId'] = storage_account_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getPolicy:getPolicy', __args__, opts=opts).value
 
     return AwaitableGetPolicyResult(

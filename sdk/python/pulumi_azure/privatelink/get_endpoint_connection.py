@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetEndpointConnectionResult:
     """
     A collection of values returned by getEndpointConnection.
     """
-    def __init__(__self__, id=None, location=None, name=None, private_service_connections=None, resource_group_name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, location=None, name=None, private_service_connections=None, resource_group_name=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -37,6 +40,8 @@ class GetEndpointConnectionResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetEndpointConnectionResult(GetEndpointConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +54,8 @@ class AwaitableGetEndpointConnectionResult(GetEndpointConnectionResult):
             private_service_connections=self.private_service_connections,
             resource_group_name=self.resource_group_name)
 
-def get_endpoint_connection(name=None,resource_group_name=None,opts=None):
+
+def get_endpoint_connection(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access the connection status information about an existing Private Endpoint Connection.
 
@@ -71,14 +77,12 @@ def get_endpoint_connection(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the private endpoint exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:privatelink/getEndpointConnection:getEndpointConnection', __args__, opts=opts).value
 
     return AwaitableGetEndpointConnectionResult(

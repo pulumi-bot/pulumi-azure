@@ -5,15 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("azure.trafficmanager.getGeographicalLocation has been deprecated in favor of azure.network.getTrafficManager", DeprecationWarning)
+
 class GetGeographicalLocationResult:
     """
     A collection of values returned by getGeographicalLocation.
     """
-    def __init__(__self__, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, name=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -23,6 +25,8 @@ class GetGeographicalLocationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetGeographicalLocationResult(GetGeographicalLocationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -32,7 +36,8 @@ class AwaitableGetGeographicalLocationResult(GetGeographicalLocationResult):
             id=self.id,
             name=self.name)
 
-def get_geographical_location(name=None,opts=None):
+
+def get_geographical_location(name=None, opts=None):
     """
     Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
 
@@ -52,13 +57,11 @@ def get_geographical_location(name=None,opts=None):
     """
     pulumi.log.warn("get_geographical_location is deprecated: azure.trafficmanager.getGeographicalLocation has been deprecated in favor of azure.network.getTrafficManager")
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:trafficmanager/getGeographicalLocation:getGeographicalLocation', __args__, opts=opts).value
 
     return AwaitableGetGeographicalLocationResult(

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, creation_option=None, disk_size_gb=None, encryption_settings=None, id=None, name=None, os_type=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, time_created=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, creation_option=None, disk_size_gb=None, encryption_settings=None, id=None, name=None, os_type=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, time_created=None) -> None:
         if creation_option and not isinstance(creation_option, str):
             raise TypeError("Expected argument 'creation_option' to be a str")
         __self__.creation_option = creation_option
@@ -61,6 +64,8 @@ class GetSnapshotResult:
         if time_created and not isinstance(time_created, str):
             raise TypeError("Expected argument 'time_created' to be a str")
         __self__.time_created = time_created
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,7 +84,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             storage_account_id=self.storage_account_id,
             time_created=self.time_created)
 
-def get_snapshot(name=None,resource_group_name=None,opts=None):
+
+def get_snapshot(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Snapshot.
 
@@ -98,14 +104,12 @@ def get_snapshot(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Snapshot is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(

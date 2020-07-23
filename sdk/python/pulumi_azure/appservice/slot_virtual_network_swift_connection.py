@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
-    app_service_id: pulumi.Output[str]
+    app_service_id: pulumi.Output[str] = pulumi.output_property("appServiceId")
     """
     The ID of the App Service to associate to the VNet. Changing this forces a new resource to be created.
     """
-    slot_name: pulumi.Output[str]
+    slot_name: pulumi.Output[str] = pulumi.output_property("slotName")
     """
     The name of the App Service Slot. Changing this forces a new resource to be created.
     """
-    subnet_id: pulumi.Output[str]
+    subnet_id: pulumi.Output[str] = pulumi.output_property("subnetId")
     """
     The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
     """
-    def __init__(__self__, resource_name, opts=None, app_service_id=None, slot_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, app_service_id=None, slot_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an App Service Slot's Virtual Network Association (this is for the [Regional VNet Integration](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#regional-vnet-integration) which is still in preview).
 
@@ -87,7 +88,7 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -131,7 +132,8 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
         return SlotVirtualNetworkSwiftConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,58 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class PacketCapture(pulumi.CustomResource):
-    filters: pulumi.Output[list]
+    filters: pulumi.Output[Optional[List['outputs.PacketCaptureFilter']]] = pulumi.output_property("filters")
     """
     One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-
-      * `localIpAddress` (`str`) - The local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-      * `localPort` (`str`) - The local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-      * `protocol` (`str`) - The Protocol to be filtered on. Possible values include `Any`, `TCP` and `UDP`. Changing this forces a new resource to be created.
-      * `remoteIpAddress` (`str`) - The remote IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported.. Changing this forces a new resource to be created.
-      * `remotePort` (`str`) - The remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
     """
-    maximum_bytes_per_packet: pulumi.Output[float]
+    maximum_bytes_per_packet: pulumi.Output[Optional[float]] = pulumi.output_property("maximumBytesPerPacket")
     """
     The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
     """
-    maximum_bytes_per_session: pulumi.Output[float]
+    maximum_bytes_per_session: pulumi.Output[Optional[float]] = pulumi.output_property("maximumBytesPerSession")
     """
     Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
     """
-    maximum_capture_duration: pulumi.Output[float]
+    maximum_capture_duration: pulumi.Output[Optional[float]] = pulumi.output_property("maximumCaptureDuration")
     """
     The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name to use for this Packet Capture. Changing this forces a new resource to be created.
     """
-    network_watcher_name: pulumi.Output[str]
+    network_watcher_name: pulumi.Output[str] = pulumi.output_property("networkWatcherName")
     """
     The name of the Network Watcher. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Network Watcher exists. Changing this forces a new resource to be created.
     """
-    storage_location: pulumi.Output[dict]
+    storage_location: pulumi.Output['outputs.PacketCaptureStorageLocation'] = pulumi.output_property("storageLocation")
     """
     A `storage_location` block as defined below. Changing this forces a new resource to be created.
-
-      * `file_path` (`str`) - A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with `/var/captures`.
-      * `storage_account_id` (`str`) - The ID of the storage account to save the packet capture session
-      * `storagePath` (`str`) - The URI of the storage path to save the packet capture.
     """
-    target_resource_id: pulumi.Output[str]
+    target_resource_id: pulumi.Output[str] = pulumi.output_property("targetResourceId")
     """
     The ID of the Resource to capture packets from. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, filters=None, maximum_bytes_per_packet=None, maximum_bytes_per_session=None, maximum_capture_duration=None, name=None, network_watcher_name=None, resource_group_name=None, storage_location=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, filters=None, maximum_bytes_per_packet=None, maximum_bytes_per_session=None, maximum_capture_duration=None, name=None, network_watcher_name=None, resource_group_name=None, storage_location=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Configures Packet Capturing against a Virtual Machine using a Network Watcher.
 
@@ -140,29 +133,15 @@ class PacketCapture(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input['PacketCaptureFilterArgs']]] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name to use for this Packet Capture. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] storage_location: A `storage_location` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input['PacketCaptureStorageLocationArgs'] storage_location: A `storage_location` block as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_resource_id: The ID of the Resource to capture packets from. Changing this forces a new resource to be created.
-
-        The **filters** object supports the following:
-
-          * `localIpAddress` (`pulumi.Input[str]`) - The local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-          * `localPort` (`pulumi.Input[str]`) - The local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-          * `protocol` (`pulumi.Input[str]`) - The Protocol to be filtered on. Possible values include `Any`, `TCP` and `UDP`. Changing this forces a new resource to be created.
-          * `remoteIpAddress` (`pulumi.Input[str]`) - The remote IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported.. Changing this forces a new resource to be created.
-          * `remotePort` (`pulumi.Input[str]`) - The remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-
-        The **storage_location** object supports the following:
-
-          * `file_path` (`pulumi.Input[str]`) - A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with `/var/captures`.
-          * `storage_account_id` (`pulumi.Input[str]`) - The ID of the storage account to save the packet capture session
-          * `storagePath` (`pulumi.Input[str]`) - The URI of the storage path to save the packet capture.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -175,7 +154,7 @@ class PacketCapture(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -213,29 +192,15 @@ class PacketCapture(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input['PacketCaptureFilterArgs']]] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
         :param pulumi.Input[float] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name to use for this Packet Capture. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] storage_location: A `storage_location` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input['PacketCaptureStorageLocationArgs'] storage_location: A `storage_location` block as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_resource_id: The ID of the Resource to capture packets from. Changing this forces a new resource to be created.
-
-        The **filters** object supports the following:
-
-          * `localIpAddress` (`pulumi.Input[str]`) - The local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-          * `localPort` (`pulumi.Input[str]`) - The local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-          * `protocol` (`pulumi.Input[str]`) - The Protocol to be filtered on. Possible values include `Any`, `TCP` and `UDP`. Changing this forces a new resource to be created.
-          * `remoteIpAddress` (`pulumi.Input[str]`) - The remote IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported.. Changing this forces a new resource to be created.
-          * `remotePort` (`pulumi.Input[str]`) - The remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Changing this forces a new resource to be created.
-
-        The **storage_location** object supports the following:
-
-          * `file_path` (`pulumi.Input[str]`) - A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with `/var/captures`.
-          * `storage_account_id` (`pulumi.Input[str]`) - The ID of the storage account to save the packet capture session
-          * `storagePath` (`pulumi.Input[str]`) - The URI of the storage path to save the packet capture.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -253,7 +218,8 @@ class PacketCapture(pulumi.CustomResource):
         return PacketCapture(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetPublicIPsResult:
     """
     A collection of values returned by getPublicIPs.
     """
-    def __init__(__self__, allocation_type=None, attached=None, id=None, name_prefix=None, public_ips=None, resource_group_name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, allocation_type=None, attached=None, id=None, name_prefix=None, public_ips=None, resource_group_name=None) -> None:
         if allocation_type and not isinstance(allocation_type, str):
             raise TypeError("Expected argument 'allocation_type' to be a str")
         __self__.allocation_type = allocation_type
@@ -37,6 +40,8 @@ class GetPublicIPsResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetPublicIPsResult(GetPublicIPsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +55,8 @@ class AwaitableGetPublicIPsResult(GetPublicIPsResult):
             public_ips=self.public_ips,
             resource_group_name=self.resource_group_name)
 
-def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource_group_name=None,opts=None):
+
+def get_public_i_ps(allocation_type=None, attached=None, name_prefix=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about a set of existing Public IP Addresses.
 
@@ -71,8 +77,6 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     :param str resource_group_name: Specifies the name of the resource group.
     """
     __args__ = dict()
-
-
     __args__['allocationType'] = allocation_type
     __args__['attached'] = attached
     __args__['namePrefix'] = name_prefix
@@ -80,7 +84,7 @@ def get_public_i_ps(allocation_type=None,attached=None,name_prefix=None,resource
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getPublicIPs:getPublicIPs', __args__, opts=opts).value
 
     return AwaitableGetPublicIPsResult(

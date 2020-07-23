@@ -5,48 +5,44 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Share(pulumi.CustomResource):
-    acls: pulumi.Output[list]
+    acls: pulumi.Output[Optional[List['outputs.ShareAcl']]] = pulumi.output_property("acls")
     """
     One or more `acl` blocks as defined below.
-
-      * `access_policies` (`list`) - An `access_policy` block as defined below.
-        * `expiry` (`str`) - The time at which this Access Policy should be valid until, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-        * `permissions` (`str`) - The permissions which should be associated with this Shared Identifier. Possible value is combination of `d` (delete), `l` (list), `r` (read) and `w` (write).
-        * `start` (`str`) - The time at which this Access Policy should be valid from, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
-      * `id` (`str`) - The ID which should be used for this Shared Identifier.
     """
-    metadata: pulumi.Output[dict]
+    metadata: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("metadata")
     """
     A mapping of MetaData for this File Share.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the share. Must be unique within the storage account where the share is located.
     """
-    quota: pulumi.Output[float]
+    quota: pulumi.Output[Optional[float]] = pulumi.output_property("quota")
     """
     The maximum size of the share, in gigabytes. For Standard storage accounts, this must be greater than 0 and less than 5120 GB (5 TB). For Premium FileStorage storage accounts, this must be greater than 100 GB and less than 102400 GB (100 TB). Default is 5120.
     """
-    resource_manager_id: pulumi.Output[str]
+    resource_manager_id: pulumi.Output[str] = pulumi.output_property("resourceManagerId")
     """
     The Resource Manager ID of this File Share.
     """
-    storage_account_name: pulumi.Output[str]
+    storage_account_name: pulumi.Output[str] = pulumi.output_property("storageAccountName")
     """
     Specifies the storage account in which to create the share.
     Changing this forces a new resource to be created.
     """
-    url: pulumi.Output[str]
+    url: pulumi.Output[str] = pulumi.output_property("url")
     """
     The URL of the File Share
     """
-    def __init__(__self__, resource_name, opts=None, acls=None, metadata=None, name=None, quota=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, acls=None, metadata=None, name=None, quota=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a File Share within Azure Storage.
 
@@ -77,21 +73,12 @@ class Share(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] acls: One or more `acl` blocks as defined below.
-        :param pulumi.Input[dict] metadata: A mapping of MetaData for this File Share.
+        :param pulumi.Input[List[pulumi.Input['ShareAclArgs']]] acls: One or more `acl` blocks as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] metadata: A mapping of MetaData for this File Share.
         :param pulumi.Input[str] name: The name of the share. Must be unique within the storage account where the share is located.
         :param pulumi.Input[float] quota: The maximum size of the share, in gigabytes. For Standard storage accounts, this must be greater than 0 and less than 5120 GB (5 TB). For Premium FileStorage storage accounts, this must be greater than 100 GB and less than 102400 GB (100 TB). Default is 5120.
         :param pulumi.Input[str] storage_account_name: Specifies the storage account in which to create the share.
                Changing this forces a new resource to be created.
-
-        The **acls** object supports the following:
-
-          * `access_policies` (`pulumi.Input[list]`) - An `access_policy` block as defined below.
-            * `expiry` (`pulumi.Input[str]`) - The time at which this Access Policy should be valid until, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-            * `permissions` (`pulumi.Input[str]`) - The permissions which should be associated with this Shared Identifier. Possible value is combination of `d` (delete), `l` (list), `r` (read) and `w` (write).
-            * `start` (`pulumi.Input[str]`) - The time at which this Access Policy should be valid from, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
-          * `id` (`pulumi.Input[str]`) - The ID which should be used for this Shared Identifier.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -104,7 +91,7 @@ class Share(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -134,23 +121,14 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] acls: One or more `acl` blocks as defined below.
-        :param pulumi.Input[dict] metadata: A mapping of MetaData for this File Share.
+        :param pulumi.Input[List[pulumi.Input['ShareAclArgs']]] acls: One or more `acl` blocks as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] metadata: A mapping of MetaData for this File Share.
         :param pulumi.Input[str] name: The name of the share. Must be unique within the storage account where the share is located.
         :param pulumi.Input[float] quota: The maximum size of the share, in gigabytes. For Standard storage accounts, this must be greater than 0 and less than 5120 GB (5 TB). For Premium FileStorage storage accounts, this must be greater than 100 GB and less than 102400 GB (100 TB). Default is 5120.
         :param pulumi.Input[str] resource_manager_id: The Resource Manager ID of this File Share.
         :param pulumi.Input[str] storage_account_name: Specifies the storage account in which to create the share.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] url: The URL of the File Share
-
-        The **acls** object supports the following:
-
-          * `access_policies` (`pulumi.Input[list]`) - An `access_policy` block as defined below.
-            * `expiry` (`pulumi.Input[str]`) - The time at which this Access Policy should be valid until, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-            * `permissions` (`pulumi.Input[str]`) - The permissions which should be associated with this Shared Identifier. Possible value is combination of `d` (delete), `l` (list), `r` (read) and `w` (write).
-            * `start` (`pulumi.Input[str]`) - The time at which this Access Policy should be valid from, in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
-          * `id` (`pulumi.Input[str]`) - The ID which should be used for this Shared Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -166,7 +144,8 @@ class Share(pulumi.CustomResource):
         return Share(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

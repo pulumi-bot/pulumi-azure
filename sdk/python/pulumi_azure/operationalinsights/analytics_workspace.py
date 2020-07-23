@@ -5,52 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class AnalyticsWorkspace(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Log Analytics Workspace. Workspace name should include 4-63 letters, digits or '-'. The '-' shouldn't be the first or the last symbol. Changing this forces a new resource to be created.
     """
-    portal_url: pulumi.Output[str]
+    portal_url: pulumi.Output[str] = pulumi.output_property("portalUrl")
     """
     The Portal URL for the Log Analytics Workspace.
     """
-    primary_shared_key: pulumi.Output[str]
+    primary_shared_key: pulumi.Output[str] = pulumi.output_property("primarySharedKey")
     """
     The Primary shared key for the Log Analytics Workspace.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Log Analytics workspace is created. Changing this forces a new resource to be created.
     """
-    retention_in_days: pulumi.Output[float]
+    retention_in_days: pulumi.Output[float] = pulumi.output_property("retentionInDays")
     """
     The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730.
     """
-    secondary_shared_key: pulumi.Output[str]
+    secondary_shared_key: pulumi.Output[str] = pulumi.output_property("secondarySharedKey")
     """
     The Secondary shared key for the Log Analytics Workspace.
     """
-    sku: pulumi.Output[str]
+    sku: pulumi.Output[str] = pulumi.output_property("sku")
     """
     Specifies the Sku of the Log Analytics Workspace. Possible values are `Free`, `PerNode`, `Premium`, `Standard`, `Standalone`, `Unlimited`, and `PerGB2018` (new Sku as of `2018-04-03`).
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    workspace_id: pulumi.Output[str]
+    workspace_id: pulumi.Output[str] = pulumi.output_property("workspaceId")
     """
     The Workspace (or Customer) ID for the Log Analytics Workspace.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, retention_in_days=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location=None, name=None, resource_group_name=None, retention_in_days=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Log Analytics (formally Operational Insights) Workspace.
 
@@ -75,7 +76,7 @@ class AnalyticsWorkspace(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Log Analytics workspace is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] retention_in_days: The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730.
         :param pulumi.Input[str] sku: Specifies the Sku of the Log Analytics Workspace. Possible values are `Free`, `PerNode`, `Premium`, `Standard`, `Standalone`, `Unlimited`, and `PerGB2018` (new Sku as of `2018-04-03`).
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +89,7 @@ class AnalyticsWorkspace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -131,7 +132,7 @@ class AnalyticsWorkspace(pulumi.CustomResource):
         :param pulumi.Input[float] retention_in_days: The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730.
         :param pulumi.Input[str] secondary_shared_key: The Secondary shared key for the Log Analytics Workspace.
         :param pulumi.Input[str] sku: Specifies the Sku of the Log Analytics Workspace. Possible values are `Free`, `PerNode`, `Premium`, `Standard`, `Standalone`, `Unlimited`, and `PerGB2018` (new Sku as of `2018-04-03`).
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] workspace_id: The Workspace (or Customer) ID for the Log Analytics Workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -151,7 +152,8 @@ class AnalyticsWorkspace(pulumi.CustomResource):
         return AnalyticsWorkspace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

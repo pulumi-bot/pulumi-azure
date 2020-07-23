@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class NetworkMapping(pulumi.CustomResource):
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the network mapping.
     """
-    recovery_vault_name: pulumi.Output[str]
+    recovery_vault_name: pulumi.Output[str] = pulumi.output_property("recoveryVaultName")
     """
     The name of the vault that should be updated.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Name of the resource group where the vault that should be updated is located.
     """
-    source_network_id: pulumi.Output[str]
+    source_network_id: pulumi.Output[str] = pulumi.output_property("sourceNetworkId")
     """
     The id of the primary network.
     """
-    source_recovery_fabric_name: pulumi.Output[str]
+    source_recovery_fabric_name: pulumi.Output[str] = pulumi.output_property("sourceRecoveryFabricName")
     """
     Specifies the ASR fabric where mapping should be created.
     """
-    target_network_id: pulumi.Output[str]
+    target_network_id: pulumi.Output[str] = pulumi.output_property("targetNetworkId")
     """
     The id of the recovery network.
     """
-    target_recovery_fabric_name: pulumi.Output[str]
+    target_recovery_fabric_name: pulumi.Output[str] = pulumi.output_property("targetRecoveryFabricName")
     """
     The Azure Site Recovery fabric object corresponding to the recovery Azure region.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, recovery_vault_name=None, resource_group_name=None, source_network_id=None, source_recovery_fabric_name=None, target_network_id=None, target_recovery_fabric_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name=None, recovery_vault_name=None, resource_group_name=None, source_network_id=None, source_recovery_fabric_name=None, target_network_id=None, target_recovery_fabric_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a site recovery network mapping on Azure. A network mapping decides how to translate connected netwroks when a VM is migrated from one region to another.
 
@@ -102,7 +103,7 @@ class NetworkMapping(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -164,7 +165,8 @@ class NetworkMapping(pulumi.CustomResource):
         return NetworkMapping(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

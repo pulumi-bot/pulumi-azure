@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, cluster_version=None, component_versions=None, edge_ssh_endpoint=None, gateways=None, https_endpoint=None, id=None, kind=None, location=None, name=None, resource_group_name=None, ssh_endpoint=None, tags=None, tier=None, tls_min_version=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, cluster_version=None, component_versions=None, edge_ssh_endpoint=None, gateways=None, https_endpoint=None, id=None, kind=None, location=None, name=None, resource_group_name=None, ssh_endpoint=None, tags=None, tier=None, tls_min_version=None) -> None:
         if cluster_version and not isinstance(cluster_version, str):
             raise TypeError("Expected argument 'cluster_version' to be a str")
         __self__.cluster_version = cluster_version
@@ -88,6 +91,8 @@ class GetClusterResult:
         if tls_min_version and not isinstance(tls_min_version, str):
             raise TypeError("Expected argument 'tls_min_version' to be a str")
         __self__.tls_min_version = tls_min_version
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +114,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             tier=self.tier,
             tls_min_version=self.tls_min_version)
 
-def get_cluster(name=None,resource_group_name=None,opts=None):
+
+def get_cluster(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing HDInsight Cluster.
 
@@ -129,14 +135,12 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group in which this HDInsight Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:hdinsight/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

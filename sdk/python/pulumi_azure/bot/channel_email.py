@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ChannelEmail(pulumi.CustomResource):
-    bot_name: pulumi.Output[str]
+    bot_name: pulumi.Output[str] = pulumi.output_property("botName")
     """
     The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
     """
-    email_address: pulumi.Output[str]
+    email_address: pulumi.Output[str] = pulumi.output_property("emailAddress")
     """
     The email address that the Bot will authenticate with.
     """
-    email_password: pulumi.Output[str]
+    email_password: pulumi.Output[str] = pulumi.output_property("emailPassword")
     """
     The email password that the Bot will authenticate with.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, bot_name=None, email_address=None, email_password=None, location=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, bot_name=None, email_address=None, email_password=None, location=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Email integration for a Bot Channel
 
@@ -55,7 +56,7 @@ class ChannelEmail(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -107,7 +108,8 @@ class ChannelEmail(pulumi.CustomResource):
         return ChannelEmail(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

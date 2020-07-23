@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetFactoryResult:
     """
     A collection of values returned by getFactory.
     """
-    def __init__(__self__, github_configurations=None, id=None, identities=None, location=None, name=None, resource_group_name=None, tags=None, vsts_configurations=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, github_configurations=None, id=None, identities=None, location=None, name=None, resource_group_name=None, tags=None, vsts_configurations=None) -> None:
         if github_configurations and not isinstance(github_configurations, list):
             raise TypeError("Expected argument 'github_configurations' to be a list")
         __self__.github_configurations = github_configurations
@@ -56,6 +59,8 @@ class GetFactoryResult:
         """
         A `vsts_configuration` block as defined below.
         """
+
+
 class AwaitableGetFactoryResult(GetFactoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +76,8 @@ class AwaitableGetFactoryResult(GetFactoryResult):
             tags=self.tags,
             vsts_configurations=self.vsts_configurations)
 
-def get_factory(name=None,resource_group_name=None,opts=None):
+
+def get_factory(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Azure Data Factory (Version 2).
 
@@ -91,14 +97,12 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the Data Factory exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datafactory/getFactory:getFactory', __args__, opts=opts).value
 
     return AwaitableGetFactoryResult(

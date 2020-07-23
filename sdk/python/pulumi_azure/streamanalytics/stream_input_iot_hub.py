@@ -5,52 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class StreamInputIotHub(pulumi.CustomResource):
-    endpoint: pulumi.Output[str]
+    endpoint: pulumi.Output[str] = pulumi.output_property("endpoint")
     """
     The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
     """
-    eventhub_consumer_group_name: pulumi.Output[str]
+    eventhub_consumer_group_name: pulumi.Output[str] = pulumi.output_property("eventhubConsumerGroupName")
     """
     The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub.
     """
-    iothub_namespace: pulumi.Output[str]
+    iothub_namespace: pulumi.Output[str] = pulumi.output_property("iothubNamespace")
     """
     The name or the URI of the IoT Hub.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
     """
-    serialization: pulumi.Output[dict]
+    serialization: pulumi.Output['outputs.StreamInputIotHubSerialization'] = pulumi.output_property("serialization")
     """
     A `serialization` block as defined below.
-
-      * `encoding` (`str`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-      * `fieldDelimiter` (`str`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-      * `type` (`str`) - The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
     """
-    shared_access_policy_key: pulumi.Output[str]
+    shared_access_policy_key: pulumi.Output[str] = pulumi.output_property("sharedAccessPolicyKey")
     """
     The shared access policy key for the specified shared access policy.
     """
-    shared_access_policy_name: pulumi.Output[str]
+    shared_access_policy_name: pulumi.Output[str] = pulumi.output_property("sharedAccessPolicyName")
     """
     The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
     """
-    stream_analytics_job_name: pulumi.Output[str]
+    stream_analytics_job_name: pulumi.Output[str] = pulumi.output_property("streamAnalyticsJobName")
     """
     The name of the Stream Analytics Job. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, endpoint=None, eventhub_consumer_group_name=None, iothub_namespace=None, name=None, resource_group_name=None, serialization=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, endpoint=None, eventhub_consumer_group_name=None, iothub_namespace=None, name=None, resource_group_name=None, serialization=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Stream Analytics Stream Input IoTHub.
 
@@ -91,16 +90,10 @@ class StreamInputIotHub(pulumi.CustomResource):
         :param pulumi.Input[str] iothub_namespace: The name or the URI of the IoT Hub.
         :param pulumi.Input[str] name: The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input['StreamInputIotHubSerializationArgs'] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] shared_access_policy_key: The shared access policy key for the specified shared access policy.
         :param pulumi.Input[str] shared_access_policy_name: The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +106,7 @@ class StreamInputIotHub(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -164,16 +157,10 @@ class StreamInputIotHub(pulumi.CustomResource):
         :param pulumi.Input[str] iothub_namespace: The name or the URI of the IoT Hub.
         :param pulumi.Input[str] name: The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input['StreamInputIotHubSerializationArgs'] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] shared_access_policy_key: The shared access policy key for the specified shared access policy.
         :param pulumi.Input[str] shared_access_policy_name: The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -191,7 +178,8 @@ class StreamInputIotHub(pulumi.CustomResource):
         return StreamInputIotHub(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

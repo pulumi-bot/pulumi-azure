@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource):
-    application_security_group_id: pulumi.Output[str]
+    application_security_group_id: pulumi.Output[str] = pulumi.output_property("applicationSecurityGroupId")
     """
     The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.
     """
-    network_interface_id: pulumi.Output[str]
+    network_interface_id: pulumi.Output[str] = pulumi.output_property("networkInterfaceId")
     """
     The ID of the Network Interface. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, application_security_group_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_security_group_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages the association between a Network Interface and a Application Security Group.
 
@@ -70,7 +71,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -109,7 +110,8 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
         return NetworkInterfaceApplicationSecurityGroupAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

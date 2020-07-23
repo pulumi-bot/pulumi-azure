@@ -5,49 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Snapshot(pulumi.CustomResource):
-    create_option: pulumi.Output[str]
+    create_option: pulumi.Output[str] = pulumi.output_property("createOption")
     """
     Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`. Changing this forces a new resource to be created.
     """
-    disk_size_gb: pulumi.Output[float]
+    disk_size_gb: pulumi.Output[float] = pulumi.output_property("diskSizeGb")
     """
     The size of the Snapshotted Disk in GB.
     """
-    encryption_settings: pulumi.Output[dict]
-    location: pulumi.Output[str]
+    encryption_settings: pulumi.Output[Optional['outputs.SnapshotEncryptionSettings']] = pulumi.output_property("encryptionSettings")
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Snapshot resource. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Snapshot. Changing this forces a new resource to be created.
     """
-    source_resource_id: pulumi.Output[str]
+    source_resource_id: pulumi.Output[Optional[str]] = pulumi.output_property("sourceResourceId")
     """
     Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
     """
-    source_uri: pulumi.Output[str]
+    source_uri: pulumi.Output[Optional[str]] = pulumi.output_property("sourceUri")
     """
     Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
     """
-    storage_account_id: pulumi.Output[str]
+    storage_account_id: pulumi.Output[Optional[str]] = pulumi.output_property("storageAccountId")
     """
     Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, create_option=None, disk_size_gb=None, encryption_settings=None, location=None, name=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, create_option=None, disk_size_gb=None, encryption_settings=None, location=None, name=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Disk Snapshot.
 
@@ -81,18 +84,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] source_resource_id: Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_uri: Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_id: Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **encryption_settings** object supports the following:
-
-          * `diskEncryptionKey` (`pulumi.Input[dict]`)
-            * `secretUrl` (`pulumi.Input[str]`)
-            * `sourceVaultId` (`pulumi.Input[str]`)
-
-          * `enabled` (`pulumi.Input[bool]`)
-          * `keyEncryptionKey` (`pulumi.Input[dict]`)
-            * `keyUrl` (`pulumi.Input[str]`)
-            * `sourceVaultId` (`pulumi.Input[str]`)
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +97,7 @@ class Snapshot(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,18 +140,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] source_resource_id: Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_uri: Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_id: Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **encryption_settings** object supports the following:
-
-          * `diskEncryptionKey` (`pulumi.Input[dict]`)
-            * `secretUrl` (`pulumi.Input[str]`)
-            * `sourceVaultId` (`pulumi.Input[str]`)
-
-          * `enabled` (`pulumi.Input[bool]`)
-          * `keyEncryptionKey` (`pulumi.Input[dict]`)
-            * `keyUrl` (`pulumi.Input[str]`)
-            * `sourceVaultId` (`pulumi.Input[str]`)
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -178,7 +159,8 @@ class Snapshot(pulumi.CustomResource):
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

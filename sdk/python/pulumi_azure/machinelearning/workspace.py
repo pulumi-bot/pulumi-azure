@@ -5,64 +5,63 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Workspace(pulumi.CustomResource):
-    application_insights_id: pulumi.Output[str]
+    application_insights_id: pulumi.Output[str] = pulumi.output_property("applicationInsightsId")
     """
     The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
     """
-    container_registry_id: pulumi.Output[str]
+    container_registry_id: pulumi.Output[Optional[str]] = pulumi.output_property("containerRegistryId")
     """
     The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of this Machine Learning Workspace.
     """
-    friendly_name: pulumi.Output[str]
+    friendly_name: pulumi.Output[Optional[str]] = pulumi.output_property("friendlyName")
     """
     Friendly name for this Machine Learning Workspace.
     """
-    identity: pulumi.Output[dict]
+    identity: pulumi.Output['outputs.WorkspaceIdentity'] = pulumi.output_property("identity")
     """
     An `identity` block defined below.
-
-      * `principal_id` (`str`) - The (Client) ID of the Service Principal.
-      * `tenant_id` (`str`) - The ID of the Tenant the Service Principal is assigned in.
-      * `type` (`str`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
     """
-    key_vault_id: pulumi.Output[str]
+    key_vault_id: pulumi.Output[str] = pulumi.output_property("keyVaultId")
     """
     The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
     """
-    sku_name: pulumi.Output[str]
+    sku_name: pulumi.Output[Optional[str]] = pulumi.output_property("skuName")
     """
     SKU/edition of the Machine Learning Workspace, possible values are `Basic` for a basic workspace or `Enterprise` for a feature rich workspace. Defaults to `Basic`.
     """
-    storage_account_id: pulumi.Output[str]
+    storage_account_id: pulumi.Output[str] = pulumi.output_property("storageAccountId")
     """
     The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, application_insights_id=None, container_registry_id=None, description=None, friendly_name=None, identity=None, key_vault_id=None, location=None, name=None, resource_group_name=None, sku_name=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_insights_id=None, container_registry_id=None, description=None, friendly_name=None, identity=None, key_vault_id=None, location=None, name=None, resource_group_name=None, sku_name=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Azure Machine Learning Workspace
 
@@ -105,20 +104,14 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] container_registry_id: The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description of this Machine Learning Workspace.
         :param pulumi.Input[str] friendly_name: Friendly name for this Machine Learning Workspace.
-        :param pulumi.Input[dict] identity: An `identity` block defined below.
+        :param pulumi.Input['WorkspaceIdentityArgs'] identity: An `identity` block defined below.
         :param pulumi.Input[str] key_vault_id: The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: SKU/edition of the Machine Learning Workspace, possible values are `Basic` for a basic workspace or `Enterprise` for a feature rich workspace. Defaults to `Basic`.
         :param pulumi.Input[str] storage_account_id: The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The (Client) ID of the Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,7 +124,7 @@ class Workspace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -178,20 +171,14 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] container_registry_id: The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description of this Machine Learning Workspace.
         :param pulumi.Input[str] friendly_name: Friendly name for this Machine Learning Workspace.
-        :param pulumi.Input[dict] identity: An `identity` block defined below.
+        :param pulumi.Input['WorkspaceIdentityArgs'] identity: An `identity` block defined below.
         :param pulumi.Input[str] key_vault_id: The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: SKU/edition of the Machine Learning Workspace, possible values are `Basic` for a basic workspace or `Enterprise` for a feature rich workspace. Defaults to `Basic`.
         :param pulumi.Input[str] storage_account_id: The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The (Client) ID of the Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The Type of Identity which should be used for this Disk Encryption Set. At this time the only possible value is `SystemAssigned`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,7 +199,8 @@ class Workspace(pulumi.CustomResource):
         return Workspace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetInsightsResult:
     """
     A collection of values returned by getInsights.
     """
-    def __init__(__self__, app_id=None, application_type=None, id=None, instrumentation_key=None, location=None, name=None, resource_group_name=None, retention_in_days=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, app_id=None, application_type=None, id=None, instrumentation_key=None, location=None, name=None, resource_group_name=None, retention_in_days=None, tags=None) -> None:
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         __self__.app_id = app_id
@@ -61,6 +63,8 @@ class GetInsightsResult:
         """
         Tags applied to the component.
         """
+
+
 class AwaitableGetInsightsResult(GetInsightsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +81,8 @@ class AwaitableGetInsightsResult(GetInsightsResult):
             retention_in_days=self.retention_in_days,
             tags=self.tags)
 
-def get_insights(name=None,resource_group_name=None,opts=None):
+
+def get_insights(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Application Insights component.
 
@@ -97,14 +102,12 @@ def get_insights(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Application Insights component is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appinsights/getInsights:getInsights', __args__, opts=opts).value
 
     return AwaitableGetInsightsResult(

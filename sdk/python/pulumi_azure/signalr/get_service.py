@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, hostname=None, id=None, ip_address=None, location=None, name=None, primary_access_key=None, primary_connection_string=None, public_port=None, resource_group_name=None, secondary_access_key=None, secondary_connection_string=None, server_port=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, hostname=None, id=None, ip_address=None, location=None, name=None, primary_access_key=None, primary_connection_string=None, public_port=None, resource_group_name=None, secondary_access_key=None, secondary_connection_string=None, server_port=None, tags=None) -> None:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         __self__.hostname = hostname
@@ -82,6 +84,8 @@ class GetServiceResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -102,7 +106,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             server_port=self.server_port,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Azure SignalR service.
 
@@ -121,14 +126,12 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the SignalR service is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:signalr/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

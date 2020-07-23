@@ -5,188 +5,155 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class LinuxVirtualMachine(pulumi.CustomResource):
-    additional_capabilities: pulumi.Output[dict]
+    additional_capabilities: pulumi.Output[Optional['outputs.LinuxVirtualMachineAdditionalCapabilities']] = pulumi.output_property("additionalCapabilities")
     """
     A `additional_capabilities` block as defined below.
-
-      * `ultraSsdEnabled` (`bool`) - Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`. Changing this forces a new resource to be created.
     """
-    admin_password: pulumi.Output[str]
+    admin_password: pulumi.Output[Optional[str]] = pulumi.output_property("adminPassword")
     """
     The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
     """
-    admin_ssh_keys: pulumi.Output[list]
+    admin_ssh_keys: pulumi.Output[Optional[List['outputs.LinuxVirtualMachineAdminSshKey']]] = pulumi.output_property("adminSshKeys")
     """
     One or more `admin_ssh_key` blocks as defined below.
-
-      * `publicKey` (`str`) - The Public Key which should be used for authentication, which needs to be at least 2048-bit and in `ssh-rsa` format. Changing this forces a new resource to be created.
-      * `username` (`str`) - The Username for which this Public SSH Key should be configured. Changing this forces a new resource to be created.
     """
-    admin_username: pulumi.Output[str]
+    admin_username: pulumi.Output[str] = pulumi.output_property("adminUsername")
     """
     The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
     """
-    allow_extension_operations: pulumi.Output[bool]
+    allow_extension_operations: pulumi.Output[Optional[bool]] = pulumi.output_property("allowExtensionOperations")
     """
     Should Extension Operations be allowed on this Virtual Machine? Changing this forces a new resource to be created.
     """
-    availability_set_id: pulumi.Output[str]
+    availability_set_id: pulumi.Output[Optional[str]] = pulumi.output_property("availabilitySetId")
     """
     Specifies the ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
     """
-    boot_diagnostics: pulumi.Output[dict]
+    boot_diagnostics: pulumi.Output[Optional['outputs.LinuxVirtualMachineBootDiagnostics']] = pulumi.output_property("bootDiagnostics")
     """
     A `boot_diagnostics` block as defined below.
-
-      * `storageAccountUri` (`str`) - The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
     """
-    computer_name: pulumi.Output[str]
+    computer_name: pulumi.Output[str] = pulumi.output_property("computerName")
     """
     Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name`, then you must specify `computer_name`. Changing this forces a new resource to be created.
     """
-    custom_data: pulumi.Output[str]
+    custom_data: pulumi.Output[Optional[str]] = pulumi.output_property("customData")
     """
     The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
     """
-    dedicated_host_id: pulumi.Output[str]
+    dedicated_host_id: pulumi.Output[Optional[str]] = pulumi.output_property("dedicatedHostId")
     """
     The ID of a Dedicated Host where this machine should be run on. Changing this forces a new resource to be created.
     """
-    disable_password_authentication: pulumi.Output[bool]
+    disable_password_authentication: pulumi.Output[Optional[bool]] = pulumi.output_property("disablePasswordAuthentication")
     """
     Should Password Authentication be disabled on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
     """
-    eviction_policy: pulumi.Output[str]
+    eviction_policy: pulumi.Output[Optional[str]] = pulumi.output_property("evictionPolicy")
     """
     Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. At this time the only supported value is `Deallocate`. Changing this forces a new resource to be created.
     """
-    identity: pulumi.Output[dict]
+    identity: pulumi.Output[Optional['outputs.LinuxVirtualMachineIdentity']] = pulumi.output_property("identity")
     """
     An `identity` block as defined below.
-
-      * `identityIds` (`list`) - A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
-      * `principal_id` (`str`) - The ID of the System Managed Service Principal.
-      * `tenant_id` (`str`) - The ID of the Tenant the System Managed Service Principal is assigned in.
-      * `type` (`str`) - The type of Managed Identity which should be assigned to the Linux Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
     """
-    max_bid_price: pulumi.Output[float]
+    max_bid_price: pulumi.Output[Optional[float]] = pulumi.output_property("maxBidPrice")
     """
     The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the `eviction_policy`. Defaults to `-1`, which means that the Virtual Machine should not be evicted for price reasons.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
     """
-    network_interface_ids: pulumi.Output[list]
+    network_interface_ids: pulumi.Output[List[str]] = pulumi.output_property("networkInterfaceIds")
     """
     . A list of Network Interface ID's which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
     """
-    os_disk: pulumi.Output[dict]
+    os_disk: pulumi.Output['outputs.LinuxVirtualMachineOsDisk'] = pulumi.output_property("osDisk")
     """
     A `os_disk` block as defined below.
-
-      * `caching` (`str`) - The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-      * `diffDiskSettings` (`dict`) - A `diff_disk_settings` block as defined above.
-        * `option` (`str`) - Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
-
-      * `disk_encryption_set_id` (`str`) - The ID of the Disk Encryption Set which should be used to Encrypt this OS Disk.
-      * `disk_size_gb` (`float`) - The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
-      * `name` (`str`) - The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
-      * `storage_account_type` (`str`) - The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`. Changing this forces a new resource to be created.
-      * `write_accelerator_enabled` (`bool`) - Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
     """
-    plan: pulumi.Output[dict]
+    plan: pulumi.Output[Optional['outputs.LinuxVirtualMachinePlan']] = pulumi.output_property("plan")
     """
     A `plan` block as defined below. Changing this forces a new resource to be created.
-
-      * `name` (`str`) - Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      * `product` (`str`) - Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-      * `publisher` (`str`) - Specifies the Publisher of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
     """
-    priority: pulumi.Output[str]
+    priority: pulumi.Output[Optional[str]] = pulumi.output_property("priority")
     """
     Specifies the priority of this Virtual Machine. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
     """
-    private_ip_address: pulumi.Output[str]
+    private_ip_address: pulumi.Output[str] = pulumi.output_property("privateIpAddress")
     """
     The Primary Private IP Address assigned to this Virtual Machine.
     """
-    private_ip_addresses: pulumi.Output[list]
+    private_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("privateIpAddresses")
     """
     A list of Private IP Addresses assigned to this Virtual Machine.
     """
-    provision_vm_agent: pulumi.Output[bool]
+    provision_vm_agent: pulumi.Output[Optional[bool]] = pulumi.output_property("provisionVmAgent")
     """
     Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
     """
-    proximity_placement_group_id: pulumi.Output[str]
+    proximity_placement_group_id: pulumi.Output[Optional[str]] = pulumi.output_property("proximityPlacementGroupId")
     """
     The ID of the Proximity Placement Group which the Virtual Machine should be assigned to. Changing this forces a new resource to be created.
     """
-    public_ip_address: pulumi.Output[str]
+    public_ip_address: pulumi.Output[str] = pulumi.output_property("publicIpAddress")
     """
     The Primary Public IP Address assigned to this Virtual Machine.
     """
-    public_ip_addresses: pulumi.Output[list]
+    public_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("publicIpAddresses")
     """
     A list of the Public IP Addresses assigned to this Virtual Machine.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
     """
-    secrets: pulumi.Output[list]
+    secrets: pulumi.Output[Optional[List['outputs.LinuxVirtualMachineSecret']]] = pulumi.output_property("secrets")
     """
     One or more `secret` blocks as defined below.
-
-      * `certificates` (`list`) - One or more `certificate` blocks as defined above.
-        * `url` (`str`) - The Secret URL of a Key Vault Certificate.
-
-      * `key_vault_id` (`str`) - The ID of the Key Vault from which all Secrets should be sourced.
     """
-    size: pulumi.Output[str]
+    size: pulumi.Output[str] = pulumi.output_property("size")
     """
     The SKU which should be used for this Virtual Machine, such as `Standard_F2`.
     """
-    source_image_id: pulumi.Output[str]
+    source_image_id: pulumi.Output[Optional[str]] = pulumi.output_property("sourceImageId")
     """
     The ID of the Image which this Virtual Machine should be created from. Changing this forces a new resource to be created.
     """
-    source_image_reference: pulumi.Output[dict]
+    source_image_reference: pulumi.Output[Optional['outputs.LinuxVirtualMachineSourceImageReference']] = pulumi.output_property("sourceImageReference")
     """
     A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
-
-      * `offer` (`str`) - Specifies the offer of the image used to create the virtual machines.
-      * `publisher` (`str`) - Specifies the publisher of the image used to create the virtual machines.
-      * `sku` (`str`) - Specifies the SKU of the image used to create the virtual machines.
-      * `version` (`str`) - Specifies the version of the image used to create the virtual machines.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags which should be assigned to this Virtual Machine.
     """
-    virtual_machine_id: pulumi.Output[str]
+    virtual_machine_id: pulumi.Output[str] = pulumi.output_property("virtualMachineId")
     """
     A 128-bit identifier which uniquely identifies this Virtual Machine.
     """
-    virtual_machine_scale_set_id: pulumi.Output[str]
+    virtual_machine_scale_set_id: pulumi.Output[Optional[str]] = pulumi.output_property("virtualMachineScaleSetId")
     """
     Specifies the Orchestrated Virtual Machine Scale Set that this Virtual Machine should be created within. Changing this forces a new resource to be created.
     """
-    zone: pulumi.Output[str]
+    zone: pulumi.Output[str] = pulumi.output_property("zone")
     """
     The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, additional_capabilities=None, admin_password=None, admin_ssh_keys=None, admin_username=None, allow_extension_operations=None, availability_set_id=None, boot_diagnostics=None, computer_name=None, custom_data=None, dedicated_host_id=None, disable_password_authentication=None, eviction_policy=None, identity=None, location=None, max_bid_price=None, name=None, network_interface_ids=None, os_disk=None, plan=None, priority=None, provision_vm_agent=None, proximity_placement_group_id=None, resource_group_name=None, secrets=None, size=None, source_image_id=None, source_image_reference=None, tags=None, virtual_machine_scale_set_id=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, additional_capabilities=None, admin_password=None, admin_ssh_keys=None, admin_username=None, allow_extension_operations=None, availability_set_id=None, boot_diagnostics=None, computer_name=None, custom_data=None, dedicated_host_id=None, disable_password_authentication=None, eviction_policy=None, identity=None, location=None, max_bid_price=None, name=None, network_interface_ids=None, os_disk=None, plan=None, priority=None, provision_vm_agent=None, proximity_placement_group_id=None, resource_group_name=None, secrets=None, size=None, source_image_id=None, source_image_reference=None, tags=None, virtual_machine_scale_set_id=None, zone=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Linux Virtual Machine.
 
@@ -249,88 +216,36 @@ class LinuxVirtualMachine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_capabilities: A `additional_capabilities` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineAdditionalCapabilitiesArgs'] additional_capabilities: A `additional_capabilities` block as defined below.
         :param pulumi.Input[str] admin_password: The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] admin_ssh_keys: One or more `admin_ssh_key` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineAdminSshKeyArgs']]] admin_ssh_keys: One or more `admin_ssh_key` blocks as defined below.
         :param pulumi.Input[str] admin_username: The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] allow_extension_operations: Should Extension Operations be allowed on this Virtual Machine? Changing this forces a new resource to be created.
         :param pulumi.Input[str] availability_set_id: Specifies the ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] boot_diagnostics: A `boot_diagnostics` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineBootDiagnosticsArgs'] boot_diagnostics: A `boot_diagnostics` block as defined below.
         :param pulumi.Input[str] computer_name: Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name`, then you must specify `computer_name`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] custom_data: The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
         :param pulumi.Input[str] dedicated_host_id: The ID of a Dedicated Host where this machine should be run on. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] disable_password_authentication: Should Password Authentication be disabled on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] eviction_policy: Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. At this time the only supported value is `Deallocate`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] identity: An `identity` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineIdentityArgs'] identity: An `identity` block as defined below.
         :param pulumi.Input[str] location: The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[float] max_bid_price: The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the `eviction_policy`. Defaults to `-1`, which means that the Virtual Machine should not be evicted for price reasons.
         :param pulumi.Input[str] name: The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_interface_ids: . A list of Network Interface ID's which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
-        :param pulumi.Input[dict] os_disk: A `os_disk` block as defined below.
-        :param pulumi.Input[dict] plan: A `plan` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] network_interface_ids: . A list of Network Interface ID's which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
+        :param pulumi.Input['LinuxVirtualMachineOsDiskArgs'] os_disk: A `os_disk` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachinePlanArgs'] plan: A `plan` block as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[str] priority: Specifies the priority of this Virtual Machine. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] provision_vm_agent: Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] proximity_placement_group_id: The ID of the Proximity Placement Group which the Virtual Machine should be assigned to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] secrets: One or more `secret` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretArgs']]] secrets: One or more `secret` blocks as defined below.
         :param pulumi.Input[str] size: The SKU which should be used for this Virtual Machine, such as `Standard_F2`.
         :param pulumi.Input[str] source_image_id: The ID of the Image which this Virtual Machine should be created from. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] source_image_reference: A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to this Virtual Machine.
+        :param pulumi.Input['LinuxVirtualMachineSourceImageReferenceArgs'] source_image_reference: A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to this Virtual Machine.
         :param pulumi.Input[str] virtual_machine_scale_set_id: Specifies the Orchestrated Virtual Machine Scale Set that this Virtual Machine should be created within. Changing this forces a new resource to be created.
         :param pulumi.Input[str] zone: The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created.
-
-        The **additional_capabilities** object supports the following:
-
-          * `ultraSsdEnabled` (`pulumi.Input[bool]`) - Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`. Changing this forces a new resource to be created.
-
-        The **admin_ssh_keys** object supports the following:
-
-          * `publicKey` (`pulumi.Input[str]`) - The Public Key which should be used for authentication, which needs to be at least 2048-bit and in `ssh-rsa` format. Changing this forces a new resource to be created.
-          * `username` (`pulumi.Input[str]`) - The Username for which this Public SSH Key should be configured. Changing this forces a new resource to be created.
-
-        The **boot_diagnostics** object supports the following:
-
-          * `storageAccountUri` (`pulumi.Input[str]`) - The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
-
-        The **identity** object supports the following:
-
-          * `identityIds` (`pulumi.Input[list]`) - A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
-          * `principal_id` (`pulumi.Input[str]`) - The ID of the System Managed Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the System Managed Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The type of Managed Identity which should be assigned to the Linux Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-
-        The **os_disk** object supports the following:
-
-          * `caching` (`pulumi.Input[str]`) - The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-          * `diffDiskSettings` (`pulumi.Input[dict]`) - A `diff_disk_settings` block as defined above.
-            * `option` (`pulumi.Input[str]`) - Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
-
-          * `disk_encryption_set_id` (`pulumi.Input[str]`) - The ID of the Disk Encryption Set which should be used to Encrypt this OS Disk.
-          * `disk_size_gb` (`pulumi.Input[float]`) - The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
-          * `name` (`pulumi.Input[str]`) - The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
-          * `storage_account_type` (`pulumi.Input[str]`) - The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`. Changing this forces a new resource to be created.
-          * `write_accelerator_enabled` (`pulumi.Input[bool]`) - Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
-
-        The **plan** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-          * `product` (`pulumi.Input[str]`) - Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the Publisher of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-
-        The **secrets** object supports the following:
-
-          * `certificates` (`pulumi.Input[list]`) - One or more `certificate` blocks as defined above.
-            * `url` (`pulumi.Input[str]`) - The Secret URL of a Key Vault Certificate.
-
-          * `key_vault_id` (`pulumi.Input[str]`) - The ID of the Key Vault from which all Secrets should be sourced.
-
-        The **source_image_reference** object supports the following:
-
-          * `offer` (`pulumi.Input[str]`) - Specifies the offer of the image used to create the virtual machines.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the publisher of the image used to create the virtual machines.
-          * `sku` (`pulumi.Input[str]`) - Specifies the SKU of the image used to create the virtual machines.
-          * `version` (`pulumi.Input[str]`) - Specifies the version of the image used to create the virtual machines.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -343,7 +258,7 @@ class LinuxVirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -409,93 +324,41 @@ class LinuxVirtualMachine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_capabilities: A `additional_capabilities` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineAdditionalCapabilitiesArgs'] additional_capabilities: A `additional_capabilities` block as defined below.
         :param pulumi.Input[str] admin_password: The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] admin_ssh_keys: One or more `admin_ssh_key` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineAdminSshKeyArgs']]] admin_ssh_keys: One or more `admin_ssh_key` blocks as defined below.
         :param pulumi.Input[str] admin_username: The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] allow_extension_operations: Should Extension Operations be allowed on this Virtual Machine? Changing this forces a new resource to be created.
         :param pulumi.Input[str] availability_set_id: Specifies the ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] boot_diagnostics: A `boot_diagnostics` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineBootDiagnosticsArgs'] boot_diagnostics: A `boot_diagnostics` block as defined below.
         :param pulumi.Input[str] computer_name: Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name`, then you must specify `computer_name`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] custom_data: The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
         :param pulumi.Input[str] dedicated_host_id: The ID of a Dedicated Host where this machine should be run on. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] disable_password_authentication: Should Password Authentication be disabled on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] eviction_policy: Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. At this time the only supported value is `Deallocate`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] identity: An `identity` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachineIdentityArgs'] identity: An `identity` block as defined below.
         :param pulumi.Input[str] location: The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[float] max_bid_price: The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the `eviction_policy`. Defaults to `-1`, which means that the Virtual Machine should not be evicted for price reasons.
         :param pulumi.Input[str] name: The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_interface_ids: . A list of Network Interface ID's which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
-        :param pulumi.Input[dict] os_disk: A `os_disk` block as defined below.
-        :param pulumi.Input[dict] plan: A `plan` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[List[pulumi.Input[str]]] network_interface_ids: . A list of Network Interface ID's which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
+        :param pulumi.Input['LinuxVirtualMachineOsDiskArgs'] os_disk: A `os_disk` block as defined below.
+        :param pulumi.Input['LinuxVirtualMachinePlanArgs'] plan: A `plan` block as defined below. Changing this forces a new resource to be created.
         :param pulumi.Input[str] priority: Specifies the priority of this Virtual Machine. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] private_ip_address: The Primary Private IP Address assigned to this Virtual Machine.
-        :param pulumi.Input[list] private_ip_addresses: A list of Private IP Addresses assigned to this Virtual Machine.
+        :param pulumi.Input[List[pulumi.Input[str]]] private_ip_addresses: A list of Private IP Addresses assigned to this Virtual Machine.
         :param pulumi.Input[bool] provision_vm_agent: Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] proximity_placement_group_id: The ID of the Proximity Placement Group which the Virtual Machine should be assigned to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] public_ip_address: The Primary Public IP Address assigned to this Virtual Machine.
-        :param pulumi.Input[list] public_ip_addresses: A list of the Public IP Addresses assigned to this Virtual Machine.
+        :param pulumi.Input[List[pulumi.Input[str]]] public_ip_addresses: A list of the Public IP Addresses assigned to this Virtual Machine.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] secrets: One or more `secret` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretArgs']]] secrets: One or more `secret` blocks as defined below.
         :param pulumi.Input[str] size: The SKU which should be used for this Virtual Machine, such as `Standard_F2`.
         :param pulumi.Input[str] source_image_id: The ID of the Image which this Virtual Machine should be created from. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] source_image_reference: A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to this Virtual Machine.
+        :param pulumi.Input['LinuxVirtualMachineSourceImageReferenceArgs'] source_image_reference: A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to this Virtual Machine.
         :param pulumi.Input[str] virtual_machine_id: A 128-bit identifier which uniquely identifies this Virtual Machine.
         :param pulumi.Input[str] virtual_machine_scale_set_id: Specifies the Orchestrated Virtual Machine Scale Set that this Virtual Machine should be created within. Changing this forces a new resource to be created.
         :param pulumi.Input[str] zone: The Zone in which this Virtual Machine should be created. Changing this forces a new resource to be created.
-
-        The **additional_capabilities** object supports the following:
-
-          * `ultraSsdEnabled` (`pulumi.Input[bool]`) - Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`. Changing this forces a new resource to be created.
-
-        The **admin_ssh_keys** object supports the following:
-
-          * `publicKey` (`pulumi.Input[str]`) - The Public Key which should be used for authentication, which needs to be at least 2048-bit and in `ssh-rsa` format. Changing this forces a new resource to be created.
-          * `username` (`pulumi.Input[str]`) - The Username for which this Public SSH Key should be configured. Changing this forces a new resource to be created.
-
-        The **boot_diagnostics** object supports the following:
-
-          * `storageAccountUri` (`pulumi.Input[str]`) - The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
-
-        The **identity** object supports the following:
-
-          * `identityIds` (`pulumi.Input[list]`) - A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
-          * `principal_id` (`pulumi.Input[str]`) - The ID of the System Managed Service Principal.
-          * `tenant_id` (`pulumi.Input[str]`) - The ID of the Tenant the System Managed Service Principal is assigned in.
-          * `type` (`pulumi.Input[str]`) - The type of Managed Identity which should be assigned to the Linux Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-
-        The **os_disk** object supports the following:
-
-          * `caching` (`pulumi.Input[str]`) - The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-          * `diffDiskSettings` (`pulumi.Input[dict]`) - A `diff_disk_settings` block as defined above.
-            * `option` (`pulumi.Input[str]`) - Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
-
-          * `disk_encryption_set_id` (`pulumi.Input[str]`) - The ID of the Disk Encryption Set which should be used to Encrypt this OS Disk.
-          * `disk_size_gb` (`pulumi.Input[float]`) - The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
-          * `name` (`pulumi.Input[str]`) - The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
-          * `storage_account_type` (`pulumi.Input[str]`) - The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`. Changing this forces a new resource to be created.
-          * `write_accelerator_enabled` (`pulumi.Input[bool]`) - Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
-
-        The **plan** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the Name of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-          * `product` (`pulumi.Input[str]`) - Specifies the Product of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the Publisher of the Marketplace Image this Virtual Machine should be created from. Changing this forces a new resource to be created.
-
-        The **secrets** object supports the following:
-
-          * `certificates` (`pulumi.Input[list]`) - One or more `certificate` blocks as defined above.
-            * `url` (`pulumi.Input[str]`) - The Secret URL of a Key Vault Certificate.
-
-          * `key_vault_id` (`pulumi.Input[str]`) - The ID of the Key Vault from which all Secrets should be sourced.
-
-        The **source_image_reference** object supports the following:
-
-          * `offer` (`pulumi.Input[str]`) - Specifies the offer of the image used to create the virtual machines.
-          * `publisher` (`pulumi.Input[str]`) - Specifies the publisher of the image used to create the virtual machines.
-          * `sku` (`pulumi.Input[str]`) - Specifies the SKU of the image used to create the virtual machines.
-          * `version` (`pulumi.Input[str]`) - Specifies the version of the image used to create the virtual machines.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,7 +402,8 @@ class LinuxVirtualMachine(pulumi.CustomResource):
         return LinuxVirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

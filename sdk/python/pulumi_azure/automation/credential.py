@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Credential(pulumi.CustomResource):
-    automation_account_name: pulumi.Output[str]
+    automation_account_name: pulumi.Output[str] = pulumi.output_property("automationAccountName")
     """
     The name of the automation account in which the Credential is created. Changing this forces a new resource to be created.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description associated with this Automation Credential.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Credential. Changing this forces a new resource to be created.
     """
-    password: pulumi.Output[str]
+    password: pulumi.Output[str] = pulumi.output_property("password")
     """
     The password associated with this Automation Credential.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
     """
-    username: pulumi.Output[str]
+    username: pulumi.Output[str] = pulumi.output_property("username")
     """
     The username associated with this Automation Credential.
     """
-    def __init__(__self__, resource_name, opts=None, automation_account_name=None, description=None, name=None, password=None, resource_group_name=None, username=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, automation_account_name=None, description=None, name=None, password=None, resource_group_name=None, username=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Automation Credential.
 
@@ -77,7 +78,7 @@ class Credential(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,7 +133,8 @@ class Credential(pulumi.CustomResource):
         return Credential(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

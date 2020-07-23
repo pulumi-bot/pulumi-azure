@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Assignment(pulumi.CustomResource):
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     A unique UUID/GUID for this Role Assignment - one will be generated if not specified. Changing this forces a new resource to be created.
     """
-    principal_id: pulumi.Output[str]
+    principal_id: pulumi.Output[str] = pulumi.output_property("principalId")
     """
     The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created.
     """
-    principal_type: pulumi.Output[str]
+    principal_type: pulumi.Output[str] = pulumi.output_property("principalType")
     """
     The type of the `principal_id`, e.g. User, Group, Service Principal, Application, etc.
     """
-    role_definition_id: pulumi.Output[str]
+    role_definition_id: pulumi.Output[str] = pulumi.output_property("roleDefinitionId")
     """
     The Scoped-ID of the Role Definition. Changing this forces a new resource to be created. Conflicts with `role_definition_name`.
     """
-    role_definition_name: pulumi.Output[str]
+    role_definition_name: pulumi.Output[str] = pulumi.output_property("roleDefinitionName")
     """
     The name of a built-in Role. Changing this forces a new resource to be created. Conflicts with `role_definition_id`.
     """
-    scope: pulumi.Output[str]
+    scope: pulumi.Output[str] = pulumi.output_property("scope")
     """
     The scope at which the Role Assignment applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`, or `/providers/Microsoft.Management/managementGroups/myMG`. Changing this forces a new resource to be created.
     """
-    skip_service_principal_aad_check: pulumi.Output[bool]
+    skip_service_principal_aad_check: pulumi.Output[bool] = pulumi.output_property("skipServicePrincipalAadCheck")
     """
     If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. If it is not a `Service Principal` identity it will cause the role assignment to fail. Defaults to `false`.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, principal_id=None, role_definition_id=None, role_definition_name=None, scope=None, skip_service_principal_aad_check=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name=None, principal_id=None, role_definition_id=None, role_definition_name=None, scope=None, skip_service_principal_aad_check=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Assigns a given Principal (User or Group) to a given Role.
 
@@ -144,7 +145,7 @@ class Assignment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -200,7 +201,8 @@ class Assignment(pulumi.CustomResource):
         return Assignment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

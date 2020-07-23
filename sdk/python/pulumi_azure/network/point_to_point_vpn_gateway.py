@@ -5,48 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class PointToPointVpnGateway(pulumi.CustomResource):
-    connection_configuration: pulumi.Output[dict]
+    connection_configuration: pulumi.Output['outputs.PointToPointVpnGatewayConnectionConfiguration'] = pulumi.output_property("connectionConfiguration")
     """
     A `connection_configuration` block as defined below.
-
-      * `name` (`str`) - The Name which should be used for this Connection Configuration.
-      * `vpnClientAddressPool` (`dict`) - A `vpn_client_address_pool` block as defined below.
-        * `address_prefixes` (`list`) - A list of CIDR Ranges which should be used as Address Prefixes.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
     """
-    scale_unit: pulumi.Output[float]
+    scale_unit: pulumi.Output[float] = pulumi.output_property("scaleUnit")
     """
     The Scale Unit for this Point-to-Site VPN Gateway.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the Point-to-Site VPN Gateway.
     """
-    virtual_hub_id: pulumi.Output[str]
+    virtual_hub_id: pulumi.Output[str] = pulumi.output_property("virtualHubId")
     """
     The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
     """
-    vpn_server_configuration_id: pulumi.Output[str]
+    vpn_server_configuration_id: pulumi.Output[str] = pulumi.output_property("vpnServerConfigurationId")
     """
     The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, connection_configuration=None, location=None, name=None, resource_group_name=None, scale_unit=None, tags=None, virtual_hub_id=None, vpn_server_configuration_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, connection_configuration=None, location=None, name=None, resource_group_name=None, scale_unit=None, tags=None, virtual_hub_id=None, vpn_server_configuration_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Point-to-Site VPN Gateway.
 
@@ -66,20 +65,14 @@ class PointToPointVpnGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] connection_configuration: A `connection_configuration` block as defined below.
+        :param pulumi.Input['PointToPointVpnGatewayConnectionConfigurationArgs'] connection_configuration: A `connection_configuration` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[float] scale_unit: The Scale Unit for this Point-to-Site VPN Gateway.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Point-to-Site VPN Gateway.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Point-to-Site VPN Gateway.
         :param pulumi.Input[str] virtual_hub_id: The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] vpn_server_configuration_id: The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
-
-        The **connection_configuration** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Name which should be used for this Connection Configuration.
-          * `vpnClientAddressPool` (`pulumi.Input[dict]`) - A `vpn_client_address_pool` block as defined below.
-            * `address_prefixes` (`pulumi.Input[list]`) - A list of CIDR Ranges which should be used as Address Prefixes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +85,7 @@ class PointToPointVpnGateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -131,20 +124,14 @@ class PointToPointVpnGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] connection_configuration: A `connection_configuration` block as defined below.
+        :param pulumi.Input['PointToPointVpnGatewayConnectionConfigurationArgs'] connection_configuration: A `connection_configuration` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[float] scale_unit: The Scale Unit for this Point-to-Site VPN Gateway.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Point-to-Site VPN Gateway.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Point-to-Site VPN Gateway.
         :param pulumi.Input[str] virtual_hub_id: The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] vpn_server_configuration_id: The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
-
-        The **connection_configuration** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Name which should be used for this Connection Configuration.
-          * `vpnClientAddressPool` (`pulumi.Input[dict]`) - A `vpn_client_address_pool` block as defined below.
-            * `address_prefixes` (`pulumi.Input[list]`) - A list of CIDR Ranges which should be used as Address Prefixes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -161,7 +148,8 @@ class PointToPointVpnGateway(pulumi.CustomResource):
         return PointToPointVpnGateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

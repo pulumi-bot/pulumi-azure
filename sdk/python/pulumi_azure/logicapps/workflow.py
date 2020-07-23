@@ -5,64 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Workflow(pulumi.CustomResource):
-    access_endpoint: pulumi.Output[str]
+    access_endpoint: pulumi.Output[str] = pulumi.output_property("accessEndpoint")
     """
     The Access Endpoint for the Logic App Workflow.
     """
-    connector_endpoint_ip_addresses: pulumi.Output[list]
+    connector_endpoint_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("connectorEndpointIpAddresses")
     """
     The list of access endpoint ip addresses of connector.
     """
-    connector_outbound_ip_addresses: pulumi.Output[list]
+    connector_outbound_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("connectorOutboundIpAddresses")
     """
     The list of outgoing ip addresses of connector.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the Logic App Workflow exists. Changing this forces a new resource to be created.
     """
-    logic_app_integration_account_id: pulumi.Output[str]
+    logic_app_integration_account_id: pulumi.Output[Optional[str]] = pulumi.output_property("logicAppIntegrationAccountId")
     """
     The ID of the integration account linked by this Logic App Workflow.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Logic App Workflow. Changing this forces a new resource to be created.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     A map of Key-Value pairs.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    workflow_endpoint_ip_addresses: pulumi.Output[list]
+    workflow_endpoint_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("workflowEndpointIpAddresses")
     """
     The list of access endpoint ip addresses of workflow.
     """
-    workflow_outbound_ip_addresses: pulumi.Output[list]
+    workflow_outbound_ip_addresses: pulumi.Output[List[str]] = pulumi.output_property("workflowOutboundIpAddresses")
     """
     The list of outgoing ip addresses of workflow.
     """
-    workflow_schema: pulumi.Output[str]
+    workflow_schema: pulumi.Output[Optional[str]] = pulumi.output_property("workflowSchema")
     """
     Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
     """
-    workflow_version: pulumi.Output[str]
+    workflow_version: pulumi.Output[Optional[str]] = pulumi.output_property("workflowVersion")
     """
     Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, logic_app_integration_account_id=None, name=None, parameters=None, resource_group_name=None, tags=None, workflow_schema=None, workflow_version=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location=None, logic_app_integration_account_id=None, name=None, parameters=None, resource_group_name=None, tags=None, workflow_schema=None, workflow_version=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Logic App Workflow.
 
@@ -83,9 +84,9 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Logic App Workflow exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] logic_app_integration_account_id: The ID of the integration account linked by this Logic App Workflow.
         :param pulumi.Input[str] name: Specifies the name of the Logic App Workflow. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] parameters: A map of Key-Value pairs.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of Key-Value pairs.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] workflow_schema: Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] workflow_version: Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
         """
@@ -100,7 +101,7 @@ class Workflow(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -137,16 +138,16 @@ class Workflow(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_endpoint: The Access Endpoint for the Logic App Workflow.
-        :param pulumi.Input[list] connector_endpoint_ip_addresses: The list of access endpoint ip addresses of connector.
-        :param pulumi.Input[list] connector_outbound_ip_addresses: The list of outgoing ip addresses of connector.
+        :param pulumi.Input[List[pulumi.Input[str]]] connector_endpoint_ip_addresses: The list of access endpoint ip addresses of connector.
+        :param pulumi.Input[List[pulumi.Input[str]]] connector_outbound_ip_addresses: The list of outgoing ip addresses of connector.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the Logic App Workflow exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] logic_app_integration_account_id: The ID of the integration account linked by this Logic App Workflow.
         :param pulumi.Input[str] name: Specifies the name of the Logic App Workflow. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] parameters: A map of Key-Value pairs.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of Key-Value pairs.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[list] workflow_endpoint_ip_addresses: The list of access endpoint ip addresses of workflow.
-        :param pulumi.Input[list] workflow_outbound_ip_addresses: The list of outgoing ip addresses of workflow.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] workflow_endpoint_ip_addresses: The list of access endpoint ip addresses of workflow.
+        :param pulumi.Input[List[pulumi.Input[str]]] workflow_outbound_ip_addresses: The list of outgoing ip addresses of workflow.
         :param pulumi.Input[str] workflow_schema: Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] workflow_version: Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
         """
@@ -170,7 +171,8 @@ class Workflow(pulumi.CustomResource):
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

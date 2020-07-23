@@ -6,3 +6,5 @@
 from .cache import *
 from .firewall_rule import *
 from .get_cache import *
+from ._inputs import *
+from . import outputs

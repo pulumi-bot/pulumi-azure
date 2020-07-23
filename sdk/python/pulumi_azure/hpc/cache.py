@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Cache(pulumi.CustomResource):
-    cache_size_in_gb: pulumi.Output[float]
+    cache_size_in_gb: pulumi.Output[float] = pulumi.output_property("cacheSizeInGb")
     """
     The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `24576`, and `49152`. Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure Region where the HPC Cache should be created. Changing this forces a new resource to be created.
     """
-    mount_addresses: pulumi.Output[list]
+    mount_addresses: pulumi.Output[List[str]] = pulumi.output_property("mountAddresses")
     """
     A list of IP Addresses where the HPC Cache can be mounted.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the HPC Cache. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which to create the HPC Cache. Changing this forces a new resource to be created.
     """
-    sku_name: pulumi.Output[str]
+    sku_name: pulumi.Output[str] = pulumi.output_property("skuName")
     """
     The SKU of HPC Cache to use. Possible values are `Standard_2G`, `Standard_4G` and `Standard_8G`. Changing this forces a new resource to be created.
     """
-    subnet_id: pulumi.Output[str]
+    subnet_id: pulumi.Output[str] = pulumi.output_property("subnetId")
     """
     The ID of the Subnet for the HPC Cache. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, cache_size_in_gb=None, location=None, name=None, resource_group_name=None, sku_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, cache_size_in_gb=None, location=None, name=None, resource_group_name=None, sku_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a HPC Cache.
 
@@ -87,7 +88,7 @@ class Cache(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,7 +126,7 @@ class Cache(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] cache_size_in_gb: The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `24576`, and `49152`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure Region where the HPC Cache should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] mount_addresses: A list of IP Addresses where the HPC Cache can be mounted.
+        :param pulumi.Input[List[pulumi.Input[str]]] mount_addresses: A list of IP Addresses where the HPC Cache can be mounted.
         :param pulumi.Input[str] name: The name of the HPC Cache. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which to create the HPC Cache. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: The SKU of HPC Cache to use. Possible values are `Standard_2G`, `Standard_4G` and `Standard_8G`. Changing this forces a new resource to be created.
@@ -145,7 +146,8 @@ class Cache(pulumi.CustomResource):
         return Cache(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

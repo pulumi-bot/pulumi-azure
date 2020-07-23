@@ -5,64 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Image(pulumi.CustomResource):
-    data_disks: pulumi.Output[list]
+    data_disks: pulumi.Output[Optional[List['outputs.ImageDataDisk']]] = pulumi.output_property("dataDisks")
     """
     One or more `data_disk` elements as defined below.
-
-      * `blobUri` (`str`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-      * `caching` (`str`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-      * `lun` (`float`) - Specifies the logical unit number of the data disk.
-      * `managed_disk_id` (`str`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-      * `sizeGb` (`float`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
     """
-    hyper_v_generation: pulumi.Output[str]
+    hyper_v_generation: pulumi.Output[Optional[str]] = pulumi.output_property("hyperVGeneration")
     """
     The HyperVGenerationType of the VirtualMachine created from the image as `V1`, `V2`. The default is `V1`.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specified the supported Azure location where the resource exists.
     Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the image. Changing this forces a
     new resource to be created.
     """
-    os_disk: pulumi.Output[dict]
+    os_disk: pulumi.Output[Optional['outputs.ImageOsDisk']] = pulumi.output_property("osDisk")
     """
     One or more `os_disk` elements as defined below.
-
-      * `blobUri` (`str`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-      * `caching` (`str`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-      * `managed_disk_id` (`str`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-      * `osState` (`str`) - Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized.
-      * `os_type` (`str`) - Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
-      * `sizeGb` (`float`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create
     the image. Changing this forces a new resource to be created.
     """
-    source_virtual_machine_id: pulumi.Output[str]
+    source_virtual_machine_id: pulumi.Output[Optional[str]] = pulumi.output_property("sourceVirtualMachineId")
     """
     The Virtual Machine ID from which to create the image.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    zone_resilient: pulumi.Output[bool]
+    zone_resilient: pulumi.Output[Optional[bool]] = pulumi.output_property("zoneResilient")
     """
     Is zone resiliency enabled?  Defaults to `false`.  Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, data_disks=None, hyper_v_generation=None, location=None, name=None, os_disk=None, resource_group_name=None, source_virtual_machine_id=None, tags=None, zone_resilient=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, data_disks=None, hyper_v_generation=None, location=None, name=None, os_disk=None, resource_group_name=None, source_virtual_machine_id=None, tags=None, zone_resilient=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a custom virtual machine image that can be used to create virtual machines.
 
@@ -99,35 +89,18 @@ class Image(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] data_disks: One or more `data_disk` elements as defined below.
+        :param pulumi.Input[List[pulumi.Input['ImageDataDiskArgs']]] data_disks: One or more `data_disk` elements as defined below.
         :param pulumi.Input[str] hyper_v_generation: The HyperVGenerationType of the VirtualMachine created from the image as `V1`, `V2`. The default is `V1`.
         :param pulumi.Input[str] location: Specified the supported Azure location where the resource exists.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the image. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] os_disk: One or more `os_disk` elements as defined below.
+        :param pulumi.Input['ImageOsDiskArgs'] os_disk: One or more `os_disk` elements as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create
                the image. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_virtual_machine_id: The Virtual Machine ID from which to create the image.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] zone_resilient: Is zone resiliency enabled?  Defaults to `false`.  Changing this forces a new resource to be created.
-
-        The **data_disks** object supports the following:
-
-          * `blobUri` (`pulumi.Input[str]`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-          * `caching` (`pulumi.Input[str]`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-          * `lun` (`pulumi.Input[float]`) - Specifies the logical unit number of the data disk.
-          * `managed_disk_id` (`pulumi.Input[str]`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-          * `sizeGb` (`pulumi.Input[float]`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
-
-        The **os_disk** object supports the following:
-
-          * `blobUri` (`pulumi.Input[str]`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-          * `caching` (`pulumi.Input[str]`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-          * `managed_disk_id` (`pulumi.Input[str]`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-          * `osState` (`pulumi.Input[str]`) - Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized.
-          * `os_type` (`pulumi.Input[str]`) - Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
-          * `sizeGb` (`pulumi.Input[float]`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,7 +113,7 @@ class Image(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -172,35 +145,18 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] data_disks: One or more `data_disk` elements as defined below.
+        :param pulumi.Input[List[pulumi.Input['ImageDataDiskArgs']]] data_disks: One or more `data_disk` elements as defined below.
         :param pulumi.Input[str] hyper_v_generation: The HyperVGenerationType of the VirtualMachine created from the image as `V1`, `V2`. The default is `V1`.
         :param pulumi.Input[str] location: Specified the supported Azure location where the resource exists.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the image. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] os_disk: One or more `os_disk` elements as defined below.
+        :param pulumi.Input['ImageOsDiskArgs'] os_disk: One or more `os_disk` elements as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create
                the image. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_virtual_machine_id: The Virtual Machine ID from which to create the image.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] zone_resilient: Is zone resiliency enabled?  Defaults to `false`.  Changing this forces a new resource to be created.
-
-        The **data_disks** object supports the following:
-
-          * `blobUri` (`pulumi.Input[str]`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-          * `caching` (`pulumi.Input[str]`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-          * `lun` (`pulumi.Input[float]`) - Specifies the logical unit number of the data disk.
-          * `managed_disk_id` (`pulumi.Input[str]`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-          * `sizeGb` (`pulumi.Input[float]`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
-
-        The **os_disk** object supports the following:
-
-          * `blobUri` (`pulumi.Input[str]`) - Specifies the URI in Azure storage of the blob that you want to use to create the image.
-          * `caching` (`pulumi.Input[str]`) - Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-          * `managed_disk_id` (`pulumi.Input[str]`) - Specifies the ID of the managed disk resource that you want to use to create the image.
-          * `osState` (`pulumi.Input[str]`) - Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized.
-          * `os_type` (`pulumi.Input[str]`) - Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
-          * `sizeGb` (`pulumi.Input[float]`) - Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -218,7 +174,8 @@ class Image(pulumi.CustomResource):
         return Image(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

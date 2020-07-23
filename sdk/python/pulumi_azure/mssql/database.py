@@ -5,102 +5,91 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Database(pulumi.CustomResource):
-    auto_pause_delay_in_minutes: pulumi.Output[float]
+    auto_pause_delay_in_minutes: pulumi.Output[float] = pulumi.output_property("autoPauseDelayInMinutes")
     """
     Time in minutes after which database is automatically paused. A value of `-1` means that automatic pause is disabled. This property is only settable for General Purpose Serverless databases.
     """
-    collation: pulumi.Output[str]
+    collation: pulumi.Output[str] = pulumi.output_property("collation")
     """
     Specifies the collation of the database. Changing this forces a new resource to be created.
     """
-    create_mode: pulumi.Output[str]
+    create_mode: pulumi.Output[str] = pulumi.output_property("createMode")
     """
     The create mode of the database. Possible values are `Copy`, `Default`, `OnlineSecondary`, `PointInTimeRestore`, `Restore`, `RestoreExternalBackup`, `RestoreExternalBackupSecondary`, `RestoreLongTermRetentionBackup` and `Secondary`.
     """
-    creation_source_database_id: pulumi.Output[str]
+    creation_source_database_id: pulumi.Output[str] = pulumi.output_property("creationSourceDatabaseId")
     """
     The id of the source database to be referred to create the new database. This should only be used for databases with `create_mode` values that use another database as reference. Changing this forces a new resource to be created.
     """
-    elastic_pool_id: pulumi.Output[str]
+    elastic_pool_id: pulumi.Output[Optional[str]] = pulumi.output_property("elasticPoolId")
     """
     Specifies the ID of the elastic pool containing this database. Changing this forces a new resource to be created.
     """
-    extended_auditing_policy: pulumi.Output[dict]
+    extended_auditing_policy: pulumi.Output[Optional['outputs.DatabaseExtendedAuditingPolicy']] = pulumi.output_property("extendedAuditingPolicy")
     """
     A `extended_auditing_policy` block as defined below.
-
-      * `retention_in_days` (`float`) - Specifies the number of days to retain logs for in the storage account.
-      * `storage_account_access_key` (`str`) - Specifies the access key to use for the auditing storage account.
-      * `storageAccountAccessKeyIsSecondary` (`bool`) - Specifies whether `storage_account_access_key` value is the storage's secondary key.
-      * `storage_endpoint` (`str`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net).
     """
-    license_type: pulumi.Output[str]
+    license_type: pulumi.Output[str] = pulumi.output_property("licenseType")
     """
     Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
     """
-    max_size_gb: pulumi.Output[float]
+    max_size_gb: pulumi.Output[float] = pulumi.output_property("maxSizeGb")
     """
     The max size of the database in gigabytes.
     """
-    min_capacity: pulumi.Output[float]
+    min_capacity: pulumi.Output[float] = pulumi.output_property("minCapacity")
     """
     Minimal capacity that database will always have allocated, if not paused. This property is only settable for General Purpose Serverless databases.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Ms SQL Database. Changing this forces a new resource to be created.
     """
-    read_replica_count: pulumi.Output[float]
+    read_replica_count: pulumi.Output[float] = pulumi.output_property("readReplicaCount")
     """
     The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.
     """
-    read_scale: pulumi.Output[bool]
+    read_scale: pulumi.Output[bool] = pulumi.output_property("readScale")
     """
     If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
     """
-    restore_point_in_time: pulumi.Output[str]
+    restore_point_in_time: pulumi.Output[str] = pulumi.output_property("restorePointInTime")
     """
     Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database. This property is only settable for `create_mode`= `PointInTimeRestore`  databases.
     """
-    sample_name: pulumi.Output[str]
+    sample_name: pulumi.Output[str] = pulumi.output_property("sampleName")
     """
     Specifies the name of the sample schema to apply when creating this database. Possible value is `AdventureWorksLT`.
     """
-    server_id: pulumi.Output[str]
+    server_id: pulumi.Output[str] = pulumi.output_property("serverId")
     """
     The id of the Ms SQL Server on which to create the database. Changing this forces a new resource to be created.
     """
-    sku_name: pulumi.Output[str]
+    sku_name: pulumi.Output[str] = pulumi.output_property("skuName")
     """
     Specifies the name of the sku used by the database. Only changing this from tier `Hyperscale` to another tier will force a new resource to be created. For example, `GP_S_Gen5_2`,`HS_Gen4_1`,`BC_Gen5_2`, `ElasticPool`, `Basic`,`S0`, `P2` ,`DW100c`, `DS100`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    threat_detection_policy: pulumi.Output[dict]
+    threat_detection_policy: pulumi.Output['outputs.DatabaseThreatDetectionPolicy'] = pulumi.output_property("threatDetectionPolicy")
     """
     Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
-
-      * `disabled_alerts` (`list`) - Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
-      * `email_account_admins` (`str`) - Should the account administrators be emailed when this alert is triggered?
-      * `email_addresses` (`list`) - A list of email addresses which alerts should be sent to.
-      * `retention_days` (`float`) - Specifies the number of days to keep in the Threat Detection audit logs.
-      * `state` (`str`) - The State of the Policy. Possible values are `Enabled`, `Disabled` or `New`.
-      * `storage_account_access_key` (`str`) - Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
-      * `storage_endpoint` (`str`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
-      * `useServerDefault` (`str`) - Should the default server policy be used? Defaults to `Disabled`.
     """
-    zone_redundant: pulumi.Output[bool]
+    zone_redundant: pulumi.Output[bool] = pulumi.output_property("zoneRedundant")
     """
     Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. This property is only settable for Premium and Business Critical databases.
     """
-    def __init__(__self__, resource_name, opts=None, auto_pause_delay_in_minutes=None, collation=None, create_mode=None, creation_source_database_id=None, elastic_pool_id=None, extended_auditing_policy=None, license_type=None, max_size_gb=None, min_capacity=None, name=None, read_replica_count=None, read_scale=None, restore_point_in_time=None, sample_name=None, server_id=None, sku_name=None, tags=None, threat_detection_policy=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, auto_pause_delay_in_minutes=None, collation=None, create_mode=None, creation_source_database_id=None, elastic_pool_id=None, extended_auditing_policy=None, license_type=None, max_size_gb=None, min_capacity=None, name=None, read_replica_count=None, read_scale=None, restore_point_in_time=None, sample_name=None, server_id=None, sku_name=None, tags=None, threat_detection_policy=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a MS SQL Database.
 
@@ -148,7 +137,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] create_mode: The create mode of the database. Possible values are `Copy`, `Default`, `OnlineSecondary`, `PointInTimeRestore`, `Restore`, `RestoreExternalBackup`, `RestoreExternalBackupSecondary`, `RestoreLongTermRetentionBackup` and `Secondary`.
         :param pulumi.Input[str] creation_source_database_id: The id of the source database to be referred to create the new database. This should only be used for databases with `create_mode` values that use another database as reference. Changing this forces a new resource to be created.
         :param pulumi.Input[str] elastic_pool_id: Specifies the ID of the elastic pool containing this database. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] extended_auditing_policy: A `extended_auditing_policy` block as defined below.
+        :param pulumi.Input['DatabaseExtendedAuditingPolicyArgs'] extended_auditing_policy: A `extended_auditing_policy` block as defined below.
         :param pulumi.Input[str] license_type: Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
         :param pulumi.Input[float] max_size_gb: The max size of the database in gigabytes.
         :param pulumi.Input[float] min_capacity: Minimal capacity that database will always have allocated, if not paused. This property is only settable for General Purpose Serverless databases.
@@ -159,27 +148,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] sample_name: Specifies the name of the sample schema to apply when creating this database. Possible value is `AdventureWorksLT`.
         :param pulumi.Input[str] server_id: The id of the Ms SQL Server on which to create the database. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: Specifies the name of the sku used by the database. Only changing this from tier `Hyperscale` to another tier will force a new resource to be created. For example, `GP_S_Gen5_2`,`HS_Gen4_1`,`BC_Gen5_2`, `ElasticPool`, `Basic`,`S0`, `P2` ,`DW100c`, `DS100`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[dict] threat_detection_policy: Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input['DatabaseThreatDetectionPolicyArgs'] threat_detection_policy: Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
         :param pulumi.Input[bool] zone_redundant: Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. This property is only settable for Premium and Business Critical databases.
-
-        The **extended_auditing_policy** object supports the following:
-
-          * `retention_in_days` (`pulumi.Input[float]`) - Specifies the number of days to retain logs for in the storage account.
-          * `storage_account_access_key` (`pulumi.Input[str]`) - Specifies the access key to use for the auditing storage account.
-          * `storageAccountAccessKeyIsSecondary` (`pulumi.Input[bool]`) - Specifies whether `storage_account_access_key` value is the storage's secondary key.
-          * `storage_endpoint` (`pulumi.Input[str]`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net).
-
-        The **threat_detection_policy** object supports the following:
-
-          * `disabled_alerts` (`pulumi.Input[list]`) - Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
-          * `email_account_admins` (`pulumi.Input[str]`) - Should the account administrators be emailed when this alert is triggered?
-          * `email_addresses` (`pulumi.Input[list]`) - A list of email addresses which alerts should be sent to.
-          * `retention_days` (`pulumi.Input[float]`) - Specifies the number of days to keep in the Threat Detection audit logs.
-          * `state` (`pulumi.Input[str]`) - The State of the Policy. Possible values are `Enabled`, `Disabled` or `New`.
-          * `storage_account_access_key` (`pulumi.Input[str]`) - Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
-          * `storage_endpoint` (`pulumi.Input[str]`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
-          * `useServerDefault` (`pulumi.Input[str]`) - Should the default server policy be used? Defaults to `Disabled`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -192,7 +163,7 @@ class Database(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -239,7 +210,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] create_mode: The create mode of the database. Possible values are `Copy`, `Default`, `OnlineSecondary`, `PointInTimeRestore`, `Restore`, `RestoreExternalBackup`, `RestoreExternalBackupSecondary`, `RestoreLongTermRetentionBackup` and `Secondary`.
         :param pulumi.Input[str] creation_source_database_id: The id of the source database to be referred to create the new database. This should only be used for databases with `create_mode` values that use another database as reference. Changing this forces a new resource to be created.
         :param pulumi.Input[str] elastic_pool_id: Specifies the ID of the elastic pool containing this database. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] extended_auditing_policy: A `extended_auditing_policy` block as defined below.
+        :param pulumi.Input['DatabaseExtendedAuditingPolicyArgs'] extended_auditing_policy: A `extended_auditing_policy` block as defined below.
         :param pulumi.Input[str] license_type: Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
         :param pulumi.Input[float] max_size_gb: The max size of the database in gigabytes.
         :param pulumi.Input[float] min_capacity: Minimal capacity that database will always have allocated, if not paused. This property is only settable for General Purpose Serverless databases.
@@ -250,27 +221,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] sample_name: Specifies the name of the sample schema to apply when creating this database. Possible value is `AdventureWorksLT`.
         :param pulumi.Input[str] server_id: The id of the Ms SQL Server on which to create the database. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: Specifies the name of the sku used by the database. Only changing this from tier `Hyperscale` to another tier will force a new resource to be created. For example, `GP_S_Gen5_2`,`HS_Gen4_1`,`BC_Gen5_2`, `ElasticPool`, `Basic`,`S0`, `P2` ,`DW100c`, `DS100`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[dict] threat_detection_policy: Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input['DatabaseThreatDetectionPolicyArgs'] threat_detection_policy: Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
         :param pulumi.Input[bool] zone_redundant: Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. This property is only settable for Premium and Business Critical databases.
-
-        The **extended_auditing_policy** object supports the following:
-
-          * `retention_in_days` (`pulumi.Input[float]`) - Specifies the number of days to retain logs for in the storage account.
-          * `storage_account_access_key` (`pulumi.Input[str]`) - Specifies the access key to use for the auditing storage account.
-          * `storageAccountAccessKeyIsSecondary` (`pulumi.Input[bool]`) - Specifies whether `storage_account_access_key` value is the storage's secondary key.
-          * `storage_endpoint` (`pulumi.Input[str]`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net).
-
-        The **threat_detection_policy** object supports the following:
-
-          * `disabled_alerts` (`pulumi.Input[list]`) - Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
-          * `email_account_admins` (`pulumi.Input[str]`) - Should the account administrators be emailed when this alert is triggered?
-          * `email_addresses` (`pulumi.Input[list]`) - A list of email addresses which alerts should be sent to.
-          * `retention_days` (`pulumi.Input[float]`) - Specifies the number of days to keep in the Threat Detection audit logs.
-          * `state` (`pulumi.Input[str]`) - The State of the Policy. Possible values are `Enabled`, `Disabled` or `New`.
-          * `storage_account_access_key` (`pulumi.Input[str]`) - Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
-          * `storage_endpoint` (`pulumi.Input[str]`) - Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
-          * `useServerDefault` (`pulumi.Input[str]`) - Should the default server policy be used? Defaults to `Disabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -298,7 +251,8 @@ class Database(pulumi.CustomResource):
         return Database(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

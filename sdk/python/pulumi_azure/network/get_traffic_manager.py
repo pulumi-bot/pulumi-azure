@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetTrafficManagerResult:
     """
     A collection of values returned by getTrafficManager.
     """
-    def __init__(__self__, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, name=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -22,6 +24,8 @@ class GetTrafficManagerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetTrafficManagerResult(GetTrafficManagerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +35,8 @@ class AwaitableGetTrafficManagerResult(GetTrafficManagerResult):
             id=self.id,
             name=self.name)
 
-def get_traffic_manager(name=None,opts=None):
+
+def get_traffic_manager(name=None, opts=None):
     """
     Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
 
@@ -50,13 +55,11 @@ def get_traffic_manager(name=None,opts=None):
     :param str name: Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getTrafficManager:getTrafficManager', __args__, opts=opts).value
 
     return AwaitableGetTrafficManagerResult(

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetScheduledQueryRulesAlertResult:
     """
     A collection of values returned by getScheduledQueryRulesAlert.
     """
-    def __init__(__self__, actions=None, authorized_resource_ids=None, data_source_id=None, description=None, enabled=None, frequency=None, id=None, location=None, name=None, query=None, query_type=None, resource_group_name=None, severity=None, tags=None, throttling=None, time_window=None, triggers=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, actions=None, authorized_resource_ids=None, data_source_id=None, description=None, enabled=None, frequency=None, id=None, location=None, name=None, query=None, query_type=None, resource_group_name=None, severity=None, tags=None, throttling=None, time_window=None, triggers=None) -> None:
         if actions and not isinstance(actions, list):
             raise TypeError("Expected argument 'actions' to be a list")
         __self__.actions = actions
@@ -100,6 +103,8 @@ class GetScheduledQueryRulesAlertResult:
         """
         A `trigger` block as defined below.
         """
+
+
 class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -124,7 +129,8 @@ class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResu
             time_window=self.time_window,
             triggers=self.triggers)
 
-def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None):
+
+def get_scheduled_query_rules_alert(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access the properties of an AlertingAction scheduled query rule.
 
@@ -144,14 +150,12 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert', __args__, opts=opts).value
 
     return AwaitableGetScheduledQueryRulesAlertResult(

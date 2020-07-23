@@ -5,45 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class CertificateIssuer(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[Optional[str]] = pulumi.output_property("accountId")
     """
     The account number with the third-party Certificate Issuer.
     """
-    admins: pulumi.Output[list]
+    admins: pulumi.Output[Optional[List['outputs.CertificateIssuerAdmin']]] = pulumi.output_property("admins")
     """
     One or more `admin` blocks as defined below.
-
-      * `email_address` (`str`) - E-mail address of the admin.
-      * `first_name` (`str`) - First name of the admin.
-      * `last_name` (`str`) - Last name of the admin.
-      * `phone` (`str`) - Phone number of the admin.
     """
-    key_vault_id: pulumi.Output[str]
+    key_vault_id: pulumi.Output[str] = pulumi.output_property("keyVaultId")
     """
     The ID of the Key Vault in which to create the Certificate Issuer.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
     """
-    org_id: pulumi.Output[str]
+    org_id: pulumi.Output[str] = pulumi.output_property("orgId")
     """
     The ID of the organization as provided to the issuer.
     """
-    password: pulumi.Output[str]
+    password: pulumi.Output[Optional[str]] = pulumi.output_property("password")
     """
     The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
     """
-    provider_name: pulumi.Output[str]
+    provider_name: pulumi.Output[str] = pulumi.output_property("providerName")
     """
     The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, admins=None, key_vault_id=None, name=None, org_id=None, password=None, provider_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, admins=None, key_vault_id=None, name=None, org_id=None, password=None, provider_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Key Vault Certificate Issuer.
 
@@ -71,19 +69,12 @@ class CertificateIssuer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account number with the third-party Certificate Issuer.
-        :param pulumi.Input[list] admins: One or more `admin` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['CertificateIssuerAdminArgs']]] admins: One or more `admin` blocks as defined below.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault in which to create the Certificate Issuer.
         :param pulumi.Input[str] name: The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
         :param pulumi.Input[str] org_id: The ID of the organization as provided to the issuer.
         :param pulumi.Input[str] password: The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
         :param pulumi.Input[str] provider_name: The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`.
-
-        The **admins** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - E-mail address of the admin.
-          * `first_name` (`pulumi.Input[str]`) - First name of the admin.
-          * `last_name` (`pulumi.Input[str]`) - Last name of the admin.
-          * `phone` (`pulumi.Input[str]`) - Phone number of the admin.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,7 +87,7 @@ class CertificateIssuer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -131,19 +122,12 @@ class CertificateIssuer(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account number with the third-party Certificate Issuer.
-        :param pulumi.Input[list] admins: One or more `admin` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['CertificateIssuerAdminArgs']]] admins: One or more `admin` blocks as defined below.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault in which to create the Certificate Issuer.
         :param pulumi.Input[str] name: The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
         :param pulumi.Input[str] org_id: The ID of the organization as provided to the issuer.
         :param pulumi.Input[str] password: The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
         :param pulumi.Input[str] provider_name: The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`.
-
-        The **admins** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - E-mail address of the admin.
-          * `first_name` (`pulumi.Input[str]`) - First name of the admin.
-          * `last_name` (`pulumi.Input[str]`) - Last name of the admin.
-          * `phone` (`pulumi.Input[str]`) - Phone number of the admin.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,7 +143,8 @@ class CertificateIssuer(pulumi.CustomResource):
         return CertificateIssuer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

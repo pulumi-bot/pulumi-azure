@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetPoolResult:
     """
     A collection of values returned by getPool.
     """
-    def __init__(__self__, account_name=None, auto_scales=None, certificates=None, container_configurations=None, display_name=None, fixed_scales=None, id=None, max_tasks_per_node=None, metadata=None, name=None, network_configuration=None, node_agent_sku_id=None, resource_group_name=None, start_task=None, storage_image_references=None, vm_size=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, account_name=None, auto_scales=None, certificates=None, container_configurations=None, display_name=None, fixed_scales=None, id=None, max_tasks_per_node=None, metadata=None, name=None, network_configuration=None, node_agent_sku_id=None, resource_group_name=None, start_task=None, storage_image_references=None, vm_size=None) -> None:
         if account_name and not isinstance(account_name, str):
             raise TypeError("Expected argument 'account_name' to be a str")
         __self__.account_name = account_name
@@ -97,6 +101,8 @@ class GetPoolResult:
         """
         The size of the VM created in the Batch pool.
         """
+
+
 class AwaitableGetPoolResult(GetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -120,7 +126,8 @@ class AwaitableGetPoolResult(GetPoolResult):
             storage_image_references=self.storage_image_references,
             vm_size=self.vm_size)
 
-def get_pool(account_name=None,certificates=None,name=None,network_configuration=None,resource_group_name=None,start_task=None,opts=None):
+
+def get_pool(account_name=None, certificates=None, name=None, network_configuration=None, resource_group_name=None, start_task=None, opts=None):
     """
     Use this data source to access information about an existing Batch pool
 
@@ -137,57 +144,11 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
 
 
     :param str account_name: The name of the Batch account.
-    :param list certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
+    :param List['GetPoolCertificateArgs'] certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
     :param str name: The name of the endpoint.
-    :param dict start_task: A `start_task` block that describes the start task settings for the Batch pool.
-
-    The **certificates** object supports the following:
-
-      * `id` (`str`) - The fully qualified ID of the certificate installed on the pool.
-      * `storeLocation` (`str`) - The location of the certificate store on the compute node into which the certificate is installed, either `CurrentUser` or `LocalMachine`.
-      * `storeName` (`str`) - The name of the certificate store on the compute node into which the certificate is installed.
-      * `visibilities` (`list`) - Which user accounts on the compute node have access to the private data of the certificate.
-
-    The **network_configuration** object supports the following:
-
-      * `endpointConfiguration` (`dict`) - The inbound NAT pools that are used to address specific ports on the individual compute node externally.
-        * `backend_port` (`float`) - The port number on the compute node.
-        * `frontendPortRange` (`str`) - The range of external ports that are used to provide inbound access to the backendPort on the individual compute nodes in the format of `1000-1100`.
-        * `name` (`str`) - The name of the endpoint.
-        * `networkSecurityGroupRules` (`list`) - The list of network security group rules that are applied to the endpoint.
-          * `access` (`str`) - The action that should be taken for a specified IP address, subnet range or tag.
-          * `priority` (`float`) - The priority for this rule.
-          * `source_address_prefix` (`str`) - The source address prefix or tag to match for the rule.
-
-        * `protocol` (`str`) - The protocol of the endpoint.
-
-      * `subnet_id` (`str`) - The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
-
-    The **start_task** object supports the following:
-
-      * `commandLine` (`str`) - The command line executed by the start task.
-      * `environment` (`dict`) - A map of strings (key,value) that represents the environment variables to set in the start task.
-      * `maxTaskRetryCount` (`float`) - The number of retry count.
-      * `resourceFiles` (`list`) - One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
-        * `autoStorageContainerName` (`str`) - The storage container name in the auto storage account.
-        * `blobPrefix` (`str`) - The blob prefix used when downloading blobs from an Azure Storage container.
-        * `fileMode` (`str`) - The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
-        * `file_path` (`str`) - The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
-        * `httpUrl` (`str`) - The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
-        * `storageContainerUrl` (`str`) - The URL of the blob container within Azure Blob Storage.
-
-      * `userIdentities` (`list`) - A `user_identity` block that describes the user identity under which the start task runs.
-        * `autoUsers` (`list`) - A `auto_user` block that describes the user identity under which the start task runs.
-          * `elevationLevel` (`str`) - The elevation level of the user identity under which the start task runs.
-          * `scope` (`str`) - The scope of the user identity under which the start task runs.
-
-        * `userName` (`str`) - The user name to log into the registry server.
-
-      * `waitForSuccess` (`bool`) - A flag that indicates if the Batch pool should wait for the start task to be completed.
+    :param 'GetPoolStartTaskArgs' start_task: A `start_task` block that describes the start task settings for the Batch pool.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['certificates'] = certificates
     __args__['name'] = name
@@ -197,7 +158,7 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:batch/getPool:getPool', __args__, opts=opts).value
 
     return AwaitableGetPoolResult(

@@ -5,45 +5,46 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class NatPool(pulumi.CustomResource):
-    backend_port: pulumi.Output[float]
+    backend_port: pulumi.Output[float] = pulumi.output_property("backendPort")
     """
     The port used for the internal endpoint. Possible values range between 1 and 65535, inclusive.
     """
-    frontend_ip_configuration_id: pulumi.Output[str]
-    frontend_ip_configuration_name: pulumi.Output[str]
+    frontend_ip_configuration_id: pulumi.Output[str] = pulumi.output_property("frontendIpConfigurationId")
+    frontend_ip_configuration_name: pulumi.Output[str] = pulumi.output_property("frontendIpConfigurationName")
     """
     The name of the frontend IP configuration exposing this rule.
     """
-    frontend_port_end: pulumi.Output[float]
+    frontend_port_end: pulumi.Output[float] = pulumi.output_property("frontendPortEnd")
     """
     The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with this Load Balancer. Possible values range between 1 and 65534, inclusive.
     """
-    frontend_port_start: pulumi.Output[float]
+    frontend_port_start: pulumi.Output[float] = pulumi.output_property("frontendPortStart")
     """
     The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with this Load Balancer. Possible values range between 1 and 65534, inclusive.
     """
-    loadbalancer_id: pulumi.Output[str]
+    loadbalancer_id: pulumi.Output[str] = pulumi.output_property("loadbalancerId")
     """
     The ID of the Load Balancer in which to create the NAT pool.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the NAT pool.
     """
-    protocol: pulumi.Output[str]
+    protocol: pulumi.Output[str] = pulumi.output_property("protocol")
     """
     The transport protocol for the external endpoint. Possible values are `Udp` or `Tcp`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the resource.
     """
-    def __init__(__self__, resource_name, opts=None, backend_port=None, frontend_ip_configuration_name=None, frontend_port_end=None, frontend_port_start=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, backend_port=None, frontend_ip_configuration_name=None, frontend_port_end=None, frontend_port_start=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Load Balancer NAT pool.
 
@@ -101,7 +102,7 @@ class NatPool(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -170,7 +171,8 @@ class NatPool(pulumi.CustomResource):
         return NatPool(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class TemplateDeployment(pulumi.CustomResource):
-    deployment_mode: pulumi.Output[str]
+    deployment_mode: pulumi.Output[str] = pulumi.output_property("deploymentMode")
     """
     Specifies the mode that is used to deploy resources. This value could be either `Incremental` or `Complete`.
     Note that you will almost *always* want this to be set to `Incremental` otherwise the deployment will destroy all infrastructure not
     specified within the template, and this provider will not be aware of this.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the template deployment. Changing this forces a
     new resource to be created.
     """
-    outputs: pulumi.Output[dict]
+    outputs: pulumi.Output[Dict[str, str]] = pulumi.output_property("outputs")
     """
     A map of supported scalar output types returned from the deployment (currently, Azure Template Deployment outputs of type String, Int and Bool are supported, and are converted to strings - others will be ignored) and can be accessed using `.outputs["name"]`.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     Specifies the name and value pairs that define the deployment parameters for the template.
     """
-    parameters_body: pulumi.Output[str]
+    parameters_body: pulumi.Output[Optional[str]] = pulumi.output_property("parametersBody")
     """
     Specifies a valid Azure JSON parameters file that define the deployment parameters. It can contain KeyVault references
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the template deployment.
     """
-    template_body: pulumi.Output[str]
+    template_body: pulumi.Output[str] = pulumi.output_property("templateBody")
     """
     Specifies the JSON definition for the template.
     """
-    def __init__(__self__, resource_name, opts=None, deployment_mode=None, name=None, parameters=None, parameters_body=None, resource_group_name=None, template_body=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, deployment_mode=None, name=None, parameters=None, parameters_body=None, resource_group_name=None, template_body=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a template deployment of resources
 
@@ -134,7 +135,7 @@ class TemplateDeployment(pulumi.CustomResource):
                specified within the template, and this provider will not be aware of this.
         :param pulumi.Input[str] name: Specifies the name of the template deployment. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] parameters: Specifies the name and value pairs that define the deployment parameters for the template.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: Specifies the name and value pairs that define the deployment parameters for the template.
         :param pulumi.Input[str] parameters_body: Specifies a valid Azure JSON parameters file that define the deployment parameters. It can contain KeyVault references
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the template deployment.
@@ -151,7 +152,7 @@ class TemplateDeployment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -188,8 +189,8 @@ class TemplateDeployment(pulumi.CustomResource):
                specified within the template, and this provider will not be aware of this.
         :param pulumi.Input[str] name: Specifies the name of the template deployment. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] outputs: A map of supported scalar output types returned from the deployment (currently, Azure Template Deployment outputs of type String, Int and Bool are supported, and are converted to strings - others will be ignored) and can be accessed using `.outputs["name"]`.
-        :param pulumi.Input[dict] parameters: Specifies the name and value pairs that define the deployment parameters for the template.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] outputs: A map of supported scalar output types returned from the deployment (currently, Azure Template Deployment outputs of type String, Int and Bool are supported, and are converted to strings - others will be ignored) and can be accessed using `.outputs["name"]`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: Specifies the name and value pairs that define the deployment parameters for the template.
         :param pulumi.Input[str] parameters_body: Specifies a valid Azure JSON parameters file that define the deployment parameters. It can contain KeyVault references
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the template deployment.
@@ -209,7 +210,8 @@ class TemplateDeployment(pulumi.CustomResource):
         return TemplateDeployment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

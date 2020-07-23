@@ -5,60 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule", DeprecationWarning)
 
 
 class QueueAuthorizationRule(pulumi.CustomResource):
-    listen: pulumi.Output[bool]
+    listen: pulumi.Output[Optional[bool]] = pulumi.output_property("listen")
     """
     Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.
     """
-    manage: pulumi.Output[bool]
+    manage: pulumi.Output[Optional[bool]] = pulumi.output_property("manage")
     """
     Does this Authorization Rule have Manage permissions to the ServiceBus Queue? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
     """
-    namespace_name: pulumi.Output[str]
+    namespace_name: pulumi.Output[str] = pulumi.output_property("namespaceName")
     """
     Specifies the name of the ServiceBus Namespace in which the Queue exists. Changing this forces a new resource to be created.
     """
-    primary_connection_string: pulumi.Output[str]
+    primary_connection_string: pulumi.Output[str] = pulumi.output_property("primaryConnectionString")
     """
     The Primary Connection String for the Authorization Rule.
     """
-    primary_key: pulumi.Output[str]
+    primary_key: pulumi.Output[str] = pulumi.output_property("primaryKey")
     """
     The Primary Key for the Authorization Rule.
     """
-    queue_name: pulumi.Output[str]
+    queue_name: pulumi.Output[str] = pulumi.output_property("queueName")
     """
     Specifies the name of the ServiceBus Queue. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the ServiceBus Namespace exists. Changing this forces a new resource to be created.
     """
-    secondary_connection_string: pulumi.Output[str]
+    secondary_connection_string: pulumi.Output[str] = pulumi.output_property("secondaryConnectionString")
     """
     The Secondary Connection String for the Authorization Rule.
     """
-    secondary_key: pulumi.Output[str]
+    secondary_key: pulumi.Output[str] = pulumi.output_property("secondaryKey")
     """
     The Secondary Key for the Authorization Rule.
     """
-    send: pulumi.Output[bool]
+    send: pulumi.Output[Optional[bool]] = pulumi.output_property("send")
     """
     Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
     """
     warnings.warn("azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, listen=None, manage=None, name=None, namespace_name=None, queue_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, listen=None, manage=None, name=None, namespace_name=None, queue_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Authorization Rule for a ServiceBus Queue.
 
@@ -111,7 +112,7 @@ class QueueAuthorizationRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -179,7 +180,8 @@ class QueueAuthorizationRule(pulumi.CustomResource):
         return QueueAuthorizationRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

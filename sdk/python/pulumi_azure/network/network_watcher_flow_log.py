@@ -5,53 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class NetworkWatcherFlowLog(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[bool] = pulumi.output_property("enabled")
     """
     Boolean flag to enable/disable traffic analytics.
     """
-    network_security_group_id: pulumi.Output[str]
+    network_security_group_id: pulumi.Output[str] = pulumi.output_property("networkSecurityGroupId")
     """
     The ID of the Network Security Group for which to enable flow logs for. Changing this forces a new resource to be created.
     """
-    network_watcher_name: pulumi.Output[str]
+    network_watcher_name: pulumi.Output[str] = pulumi.output_property("networkWatcherName")
     """
     The name of the Network Watcher. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
     """
-    retention_policy: pulumi.Output[dict]
+    retention_policy: pulumi.Output['outputs.NetworkWatcherFlowLogRetentionPolicy'] = pulumi.output_property("retentionPolicy")
     """
     A `retention_policy` block as documented below.
-
-      * `days` (`float`) - The number of days to retain flow log records.
-      * `enabled` (`bool`) - Boolean flag to enable/disable traffic analytics.
     """
-    storage_account_id: pulumi.Output[str]
+    storage_account_id: pulumi.Output[str] = pulumi.output_property("storageAccountId")
     """
     The ID of the Storage Account where flow logs are stored.
     """
-    traffic_analytics: pulumi.Output[dict]
+    traffic_analytics: pulumi.Output[Optional['outputs.NetworkWatcherFlowLogTrafficAnalytics']] = pulumi.output_property("trafficAnalytics")
     """
     A `traffic_analytics` block as documented below.
-
-      * `enabled` (`bool`) - Boolean flag to enable/disable traffic analytics.
-      * `intervalInMinutes` (`float`) - How frequently service should do flow analytics in minutes.
-      * `workspace_id` (`str`) - The resource guid of the attached workspace.
-      * `workspaceRegion` (`str`) - The location of the attached workspace.
-      * `workspace_resource_id` (`str`) - The resource ID of the attached workspace.
     """
-    version: pulumi.Output[float]
+    version: pulumi.Output[float] = pulumi.output_property("version")
     """
     The version (revision) of the flow log. Possible values are `1` and `2`.
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, network_security_group_id=None, network_watcher_name=None, resource_group_name=None, retention_policy=None, storage_account_id=None, traffic_analytics=None, version=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, enabled=None, network_security_group_id=None, network_watcher_name=None, resource_group_name=None, retention_policy=None, storage_account_id=None, traffic_analytics=None, version=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Network Watcher Flow Log.
 
@@ -104,23 +98,10 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] network_security_group_id: The ID of the Network Security Group for which to enable flow logs for. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] retention_policy: A `retention_policy` block as documented below.
+        :param pulumi.Input['NetworkWatcherFlowLogRetentionPolicyArgs'] retention_policy: A `retention_policy` block as documented below.
         :param pulumi.Input[str] storage_account_id: The ID of the Storage Account where flow logs are stored.
-        :param pulumi.Input[dict] traffic_analytics: A `traffic_analytics` block as documented below.
+        :param pulumi.Input['NetworkWatcherFlowLogTrafficAnalyticsArgs'] traffic_analytics: A `traffic_analytics` block as documented below.
         :param pulumi.Input[float] version: The version (revision) of the flow log. Possible values are `1` and `2`.
-
-        The **retention_policy** object supports the following:
-
-          * `days` (`pulumi.Input[float]`) - The number of days to retain flow log records.
-          * `enabled` (`pulumi.Input[bool]`) - Boolean flag to enable/disable traffic analytics.
-
-        The **traffic_analytics** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Boolean flag to enable/disable traffic analytics.
-          * `intervalInMinutes` (`pulumi.Input[float]`) - How frequently service should do flow analytics in minutes.
-          * `workspace_id` (`pulumi.Input[str]`) - The resource guid of the attached workspace.
-          * `workspaceRegion` (`pulumi.Input[str]`) - The location of the attached workspace.
-          * `workspace_resource_id` (`pulumi.Input[str]`) - The resource ID of the attached workspace.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +114,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -178,23 +159,10 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] network_security_group_id: The ID of the Network Security Group for which to enable flow logs for. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] retention_policy: A `retention_policy` block as documented below.
+        :param pulumi.Input['NetworkWatcherFlowLogRetentionPolicyArgs'] retention_policy: A `retention_policy` block as documented below.
         :param pulumi.Input[str] storage_account_id: The ID of the Storage Account where flow logs are stored.
-        :param pulumi.Input[dict] traffic_analytics: A `traffic_analytics` block as documented below.
+        :param pulumi.Input['NetworkWatcherFlowLogTrafficAnalyticsArgs'] traffic_analytics: A `traffic_analytics` block as documented below.
         :param pulumi.Input[float] version: The version (revision) of the flow log. Possible values are `1` and `2`.
-
-        The **retention_policy** object supports the following:
-
-          * `days` (`pulumi.Input[float]`) - The number of days to retain flow log records.
-          * `enabled` (`pulumi.Input[bool]`) - Boolean flag to enable/disable traffic analytics.
-
-        The **traffic_analytics** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Boolean flag to enable/disable traffic analytics.
-          * `intervalInMinutes` (`pulumi.Input[float]`) - How frequently service should do flow analytics in minutes.
-          * `workspace_id` (`pulumi.Input[str]`) - The resource guid of the attached workspace.
-          * `workspaceRegion` (`pulumi.Input[str]`) - The location of the attached workspace.
-          * `workspace_resource_id` (`pulumi.Input[str]`) - The resource ID of the attached workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -211,7 +179,8 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         return NetworkWatcherFlowLog(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

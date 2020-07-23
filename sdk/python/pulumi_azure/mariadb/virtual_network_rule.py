@@ -5,28 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class VirtualNetworkRule(pulumi.CustomResource):
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the MariaDB Virtual Network Rule. Cannot be empty and must only contain alphanumeric characters and hyphens. Cannot start with a number, and cannot start or end with a hyphen. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group where the MariaDB server resides. Changing this forces a new resource to be created.
     """
-    server_name: pulumi.Output[str]
+    server_name: pulumi.Output[str] = pulumi.output_property("serverName")
     """
     The name of the SQL Server to which this MariaDB virtual network rule will be applied to. Changing this forces a new resource to be created.
     """
-    subnet_id: pulumi.Output[str]
+    subnet_id: pulumi.Output[str] = pulumi.output_property("subnetId")
     """
     The ID of the subnet that the MariaDB server will be connected to.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, resource_group_name=None, server_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name=None, resource_group_name=None, server_name=None, subnet_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a MariaDB Virtual Network Rule.
 
@@ -85,7 +86,7 @@ class VirtualNetworkRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,7 +133,8 @@ class VirtualNetworkRule(pulumi.CustomResource):
         return VirtualNetworkRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

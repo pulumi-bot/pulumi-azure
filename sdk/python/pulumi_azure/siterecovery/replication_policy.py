@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ReplicationPolicy(pulumi.CustomResource):
-    application_consistent_snapshot_frequency_in_minutes: pulumi.Output[float]
+    application_consistent_snapshot_frequency_in_minutes: pulumi.Output[float] = pulumi.output_property("applicationConsistentSnapshotFrequencyInMinutes")
     """
     Specifies the frequency(in minutes) at which to create application consistent recovery points.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the network mapping.
     """
-    recovery_point_retention_in_minutes: pulumi.Output[float]
+    recovery_point_retention_in_minutes: pulumi.Output[float] = pulumi.output_property("recoveryPointRetentionInMinutes")
     """
     The duration in minutes for which the recovery points need to be stored.
     """
-    recovery_vault_name: pulumi.Output[str]
+    recovery_vault_name: pulumi.Output[str] = pulumi.output_property("recoveryVaultName")
     """
     The name of the vault that should be updated.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Name of the resource group where the vault that should be updated is located.
     """
-    def __init__(__self__, resource_name, opts=None, application_consistent_snapshot_frequency_in_minutes=None, name=None, recovery_point_retention_in_minutes=None, recovery_vault_name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_consistent_snapshot_frequency_in_minutes=None, name=None, recovery_point_retention_in_minutes=None, recovery_vault_name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Azure Site Recovery replication policy within a recovery vault. Replication policies define the frequency at which recovery points are created and how long they are stored.
 
@@ -71,7 +72,7 @@ class ReplicationPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -123,7 +124,8 @@ class ReplicationPolicy(pulumi.CustomResource):
         return ReplicationPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Route(pulumi.CustomResource):
-    condition: pulumi.Output[str]
+    condition: pulumi.Output[Optional[str]] = pulumi.output_property("condition")
     """
     The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to `true` by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language.
     """
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[bool] = pulumi.output_property("enabled")
     """
     Specifies whether a route is enabled.
     """
-    endpoint_names: pulumi.Output[str]
+    endpoint_names: pulumi.Output[str] = pulumi.output_property("endpointNames")
     """
     The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed.
     """
-    iothub_name: pulumi.Output[str]
+    iothub_name: pulumi.Output[str] = pulumi.output_property("iothubName")
     """
     The name of the IoTHub to which this Route belongs. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the route.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group under which the IotHub Route resource has to be created. Changing this forces a new resource to be created.
     """
-    source: pulumi.Output[str]
+    source: pulumi.Output[str] = pulumi.output_property("source")
     """
     The source that the routing rule is to be applied to. Possible values include: `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `Invalid`, `TwinChangeEvents`.
     """
-    def __init__(__self__, resource_name, opts=None, condition=None, enabled=None, endpoint_names=None, iothub_name=None, name=None, resource_group_name=None, source=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, condition=None, enabled=None, endpoint_names=None, iothub_name=None, name=None, resource_group_name=None, source=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an IotHub Route
 
@@ -108,7 +109,7 @@ class Route(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -168,7 +169,8 @@ class Route(pulumi.CustomResource):
         return Route(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

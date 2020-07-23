@@ -5,15 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 warnings.warn("azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace", DeprecationWarning)
+
 class GetEventhubNamespaceResult:
     """
     A collection of values returned by getEventhubNamespace.
     """
-    def __init__(__self__, auto_inflate_enabled=None, capacity=None, dedicated_cluster_id=None, default_primary_connection_string=None, default_primary_connection_string_alias=None, default_primary_key=None, default_secondary_connection_string=None, default_secondary_connection_string_alias=None, default_secondary_key=None, id=None, kafka_enabled=None, location=None, maximum_throughput_units=None, name=None, resource_group_name=None, sku=None, tags=None, zone_redundant=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, auto_inflate_enabled=None, capacity=None, dedicated_cluster_id=None, default_primary_connection_string=None, default_primary_connection_string_alias=None, default_primary_key=None, default_secondary_connection_string=None, default_secondary_connection_string_alias=None, default_secondary_key=None, id=None, kafka_enabled=None, location=None, maximum_throughput_units=None, name=None, resource_group_name=None, sku=None, tags=None, zone_redundant=None) -> None:
         if auto_inflate_enabled and not isinstance(auto_inflate_enabled, bool):
             raise TypeError("Expected argument 'auto_inflate_enabled' to be a bool")
         __self__.auto_inflate_enabled = auto_inflate_enabled
@@ -117,6 +119,8 @@ class GetEventhubNamespaceResult:
         """
         Is this EventHub Namespace deployed across Availability Zones?
         """
+
+
 class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -142,7 +146,8 @@ class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_eventhub_namespace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing EventHub Namespace.
 
@@ -163,14 +168,12 @@ def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_eventhub_namespace is deprecated: azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventhubNamespace:getEventhubNamespace', __args__, opts=opts).value
 
     return AwaitableGetEventhubNamespaceResult(

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetAppServiceResult:
     """
     A collection of values returned by getAppService.
     """
-    def __init__(__self__, app_service_plan_id=None, app_settings=None, client_affinity_enabled=None, client_cert_enabled=None, connection_strings=None, default_site_hostname=None, enabled=None, https_only=None, id=None, location=None, name=None, outbound_ip_addresses=None, possible_outbound_ip_addresses=None, resource_group_name=None, site_configs=None, site_credentials=None, source_controls=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, app_service_plan_id=None, app_settings=None, client_affinity_enabled=None, client_cert_enabled=None, connection_strings=None, default_site_hostname=None, enabled=None, https_only=None, id=None, location=None, name=None, outbound_ip_addresses=None, possible_outbound_ip_addresses=None, resource_group_name=None, site_configs=None, site_credentials=None, source_controls=None, tags=None) -> None:
         if app_service_plan_id and not isinstance(app_service_plan_id, str):
             raise TypeError("Expected argument 'app_service_plan_id' to be a str")
         __self__.app_service_plan_id = app_service_plan_id
@@ -112,6 +115,8 @@ class GetAppServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetAppServiceResult(GetAppServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -137,7 +142,8 @@ class AwaitableGetAppServiceResult(GetAppServiceResult):
             source_controls=self.source_controls,
             tags=self.tags)
 
-def get_app_service(name=None,resource_group_name=None,opts=None):
+
+def get_app_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service.
 
@@ -157,14 +163,12 @@ def get_app_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getAppService:getAppService', __args__, opts=opts).value
 
     return AwaitableGetAppServiceResult(

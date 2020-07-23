@@ -5,44 +5,44 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class VirtualNetworkPeering(pulumi.CustomResource):
-    allow_forwarded_traffic: pulumi.Output[bool]
+    allow_forwarded_traffic: pulumi.Output[bool] = pulumi.output_property("allowForwardedTraffic")
     """
     Controls if forwarded traffic from  VMs
     in the remote virtual network is allowed. Defaults to false.
     """
-    allow_gateway_transit: pulumi.Output[bool]
+    allow_gateway_transit: pulumi.Output[bool] = pulumi.output_property("allowGatewayTransit")
     """
     Controls gatewayLinks can be used in the
     remote virtual network’s link to the local virtual network.
     """
-    allow_virtual_network_access: pulumi.Output[bool]
+    allow_virtual_network_access: pulumi.Output[Optional[bool]] = pulumi.output_property("allowVirtualNetworkAccess")
     """
     Controls if the VMs in the remote
     virtual network can access VMs in the local virtual network. Defaults to
     true.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the virtual network peering. Changing this
     forces a new resource to be created.
     """
-    remote_virtual_network_id: pulumi.Output[str]
+    remote_virtual_network_id: pulumi.Output[str] = pulumi.output_property("remoteVirtualNetworkId")
     """
     The full Azure resource ID of the
     remote virtual network.  Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the virtual network peering. Changing this forces a new resource to be
     created.
     """
-    use_remote_gateways: pulumi.Output[bool]
+    use_remote_gateways: pulumi.Output[bool] = pulumi.output_property("useRemoteGateways")
     """
     Controls if remote gateways can be used on
     the local virtual network. If the flag is set to `true`, and
@@ -51,12 +51,13 @@ class VirtualNetworkPeering(pulumi.CustomResource):
     have this flag set to `true`. This flag cannot be set if virtual network
     already has a gateway. Defaults to `false`.
     """
-    virtual_network_name: pulumi.Output[str]
+    virtual_network_name: pulumi.Output[str] = pulumi.output_property("virtualNetworkName")
     """
     The name of the virtual network. Changing
     this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, allow_forwarded_traffic=None, allow_gateway_transit=None, allow_virtual_network_access=None, name=None, remote_virtual_network_id=None, resource_group_name=None, use_remote_gateways=None, virtual_network_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, allow_forwarded_traffic=None, allow_gateway_transit=None, allow_virtual_network_access=None, name=None, remote_virtual_network_id=None, resource_group_name=None, use_remote_gateways=None, virtual_network_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a virtual network peering which allows resources to access other
         resources in the linked virtual network.
@@ -125,7 +126,7 @@ class VirtualNetworkPeering(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -198,7 +199,8 @@ class VirtualNetworkPeering(pulumi.CustomResource):
         return VirtualNetworkPeering(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

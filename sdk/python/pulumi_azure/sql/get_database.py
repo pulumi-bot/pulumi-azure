@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, collation=None, default_secondary_location=None, edition=None, elastic_pool_name=None, failover_group_id=None, id=None, location=None, name=None, read_scale=None, resource_group_name=None, server_name=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, collation=None, default_secondary_location=None, edition=None, elastic_pool_name=None, failover_group_id=None, id=None, location=None, name=None, read_scale=None, resource_group_name=None, server_name=None, tags=None) -> None:
         if collation and not isinstance(collation, str):
             raise TypeError("Expected argument 'collation' to be a str")
         __self__.collation = collation
@@ -85,6 +87,8 @@ class GetDatabaseResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,7 +108,8 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             server_name=self.server_name,
             tags=self.tags)
 
-def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
+
+def get_database(name=None, resource_group_name=None, server_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an existing SQL Azure Database.
 
@@ -124,11 +129,9 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     :param str name: The name of the SQL Database.
     :param str resource_group_name: Specifies the name of the Resource Group where the Azure SQL Database exists.
     :param str server_name: The name of the SQL Server.
-    :param dict tags: A mapping of tags assigned to the resource.
+    :param Dict[str, str] tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
@@ -136,7 +139,7 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:sql/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

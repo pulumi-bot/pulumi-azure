@@ -5,120 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class ActionGroup(pulumi.CustomResource):
-    arm_role_receivers: pulumi.Output[list]
+    arm_role_receivers: pulumi.Output[Optional[List['outputs.ActionGroupArmRoleReceiver']]] = pulumi.output_property("armRoleReceivers")
     """
     One or more `arm_role_receiver` blocks as defined below.
-
-      * `name` (`str`) - The name of the ARM role receiver.
-      * `roleId` (`str`) - The arm role id.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
     """
-    automation_runbook_receivers: pulumi.Output[list]
+    automation_runbook_receivers: pulumi.Output[Optional[List['outputs.ActionGroupAutomationRunbookReceiver']]] = pulumi.output_property("automationRunbookReceivers")
     """
     One or more `automation_runbook_receiver` blocks as defined below.
-
-      * `automationAccountId` (`str`) - The automation account ID which holds this runbook and authenticates to Azure resources.
-      * `isGlobalRunbook` (`bool`) - Indicates whether this instance is global runbook.
-      * `name` (`str`) - The name of the automation runbook receiver.
-      * `runbook_name` (`str`) - The name for this runbook.
-      * `service_uri` (`str`) - The URI where webhooks should be sent.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
-      * `webhookResourceId` (`str`) - The resource id for webhook linked to this runbook.
     """
-    azure_app_push_receivers: pulumi.Output[list]
+    azure_app_push_receivers: pulumi.Output[Optional[List['outputs.ActionGroupAzureAppPushReceiver']]] = pulumi.output_property("azureAppPushReceivers")
     """
     One or more `azure_app_push_receiver` blocks as defined below.
-
-      * `email_address` (`str`) - The email address of the user signed into the mobile app who will receive push notifications from this receiver.
-      * `name` (`str`) - The name of the Azure app push receiver.
     """
-    azure_function_receivers: pulumi.Output[list]
+    azure_function_receivers: pulumi.Output[Optional[List['outputs.ActionGroupAzureFunctionReceiver']]] = pulumi.output_property("azureFunctionReceivers")
     """
     One or more `azure_function_receiver` blocks as defined below.
-
-      * `functionAppResourceId` (`str`) - The Azure resource ID of the function app.
-      * `functionName` (`str`) - The function name in the function app.
-      * `httpTriggerUrl` (`str`) - The http trigger url where http request sent to.
-      * `name` (`str`) - The name of the Azure Function receiver.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
     """
-    email_receivers: pulumi.Output[list]
+    email_receivers: pulumi.Output[Optional[List['outputs.ActionGroupEmailReceiver']]] = pulumi.output_property("emailReceivers")
     """
     One or more `email_receiver` blocks as defined below.
-
-      * `email_address` (`str`) - The email address of this receiver.
-      * `name` (`str`) - The name of the email receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
     """
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("enabled")
     """
     Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
     """
-    itsm_receivers: pulumi.Output[list]
+    itsm_receivers: pulumi.Output[Optional[List['outputs.ActionGroupItsmReceiver']]] = pulumi.output_property("itsmReceivers")
     """
     One or more `itsm_receiver` blocks as defined below.
-
-      * `connectionId` (`str`) - The unique connection identifier of the ITSM connection.
-      * `name` (`str`) - The name of the ITSM receiver.
-      * `region` (`str`) - The region of the workspace.
-      * `ticketConfiguration` (`str`) - A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
-      * `workspace_id` (`str`) - The Azure Log Analytics workspace ID where this connection is defined.
     """
-    logic_app_receivers: pulumi.Output[list]
+    logic_app_receivers: pulumi.Output[Optional[List['outputs.ActionGroupLogicAppReceiver']]] = pulumi.output_property("logicAppReceivers")
     """
     One or more `logic_app_receiver` blocks as defined below.
-
-      * `callbackUrl` (`str`) - The callback url where http request sent to.
-      * `name` (`str`) - The name of the logic app receiver.
-      * `resource_id` (`str`) - The Azure resource ID of the logic app.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Action Group. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Action Group instance.
     """
-    short_name: pulumi.Output[str]
+    short_name: pulumi.Output[str] = pulumi.output_property("shortName")
     """
     The short name of the action group. This will be used in SMS messages.
     """
-    sms_receivers: pulumi.Output[list]
+    sms_receivers: pulumi.Output[Optional[List['outputs.ActionGroupSmsReceiver']]] = pulumi.output_property("smsReceivers")
     """
     One or more `sms_receiver` blocks as defined below.
-
-      * `countryCode` (`str`) - The country code of the SMS receiver.
-      * `name` (`str`) - The name of the SMS receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-      * `phoneNumber` (`str`) - The phone number of the SMS receiver.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    voice_receivers: pulumi.Output[list]
+    voice_receivers: pulumi.Output[Optional[List['outputs.ActionGroupVoiceReceiver']]] = pulumi.output_property("voiceReceivers")
     """
     One or more `voice_receiver` blocks as defined below.
-
-      * `countryCode` (`str`) - The country code of the voice receiver.
-      * `name` (`str`) - The name of the voice receiver.
-      * `phoneNumber` (`str`) - The phone number of the voice receiver.
     """
-    webhook_receivers: pulumi.Output[list]
+    webhook_receivers: pulumi.Output[Optional[List['outputs.ActionGroupWebhookReceiver']]] = pulumi.output_property("webhookReceivers")
     """
     One or more `webhook_receiver` blocks as defined below.
-
-      * `name` (`str`) - The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-      * `service_uri` (`str`) - The URI where webhooks should be sent.
-      * `useCommonAlertSchema` (`bool`) - Enables or disables the common alert schema.
     """
-    def __init__(__self__, resource_name, opts=None, arm_role_receivers=None, automation_runbook_receivers=None, azure_app_push_receivers=None, azure_function_receivers=None, email_receivers=None, enabled=None, itsm_receivers=None, logic_app_receivers=None, name=None, resource_group_name=None, short_name=None, sms_receivers=None, tags=None, voice_receivers=None, webhook_receivers=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, arm_role_receivers=None, automation_runbook_receivers=None, azure_app_push_receivers=None, azure_function_receivers=None, email_receivers=None, enabled=None, itsm_receivers=None, logic_app_receivers=None, name=None, resource_group_name=None, short_name=None, sms_receivers=None, tags=None, voice_receivers=None, webhook_receivers=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Action Group within Azure Monitor.
 
@@ -200,89 +155,21 @@ class ActionGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] arm_role_receivers: One or more `arm_role_receiver` blocks as defined below.
-        :param pulumi.Input[list] automation_runbook_receivers: One or more `automation_runbook_receiver` blocks as defined below.
-        :param pulumi.Input[list] azure_app_push_receivers: One or more `azure_app_push_receiver` blocks as defined below.
-        :param pulumi.Input[list] azure_function_receivers: One or more `azure_function_receiver` blocks as defined below.
-        :param pulumi.Input[list] email_receivers: One or more `email_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupArmRoleReceiverArgs']]] arm_role_receivers: One or more `arm_role_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAutomationRunbookReceiverArgs']]] automation_runbook_receivers: One or more `automation_runbook_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAzureAppPushReceiverArgs']]] azure_app_push_receivers: One or more `azure_app_push_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAzureFunctionReceiverArgs']]] azure_function_receivers: One or more `azure_function_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupEmailReceiverArgs']]] email_receivers: One or more `email_receiver` blocks as defined below.
         :param pulumi.Input[bool] enabled: Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
-        :param pulumi.Input[list] itsm_receivers: One or more `itsm_receiver` blocks as defined below.
-        :param pulumi.Input[list] logic_app_receivers: One or more `logic_app_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupItsmReceiverArgs']]] itsm_receivers: One or more `itsm_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupLogicAppReceiverArgs']]] logic_app_receivers: One or more `logic_app_receiver` blocks as defined below.
         :param pulumi.Input[str] name: The name of the Action Group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Action Group instance.
         :param pulumi.Input[str] short_name: The short name of the action group. This will be used in SMS messages.
-        :param pulumi.Input[list] sms_receivers: One or more `sms_receiver` blocks as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[list] voice_receivers: One or more `voice_receiver` blocks as defined below.
-        :param pulumi.Input[list] webhook_receivers: One or more `webhook_receiver` blocks as defined below.
-
-        The **arm_role_receivers** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the ARM role receiver.
-          * `roleId` (`pulumi.Input[str]`) - The arm role id.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **automation_runbook_receivers** object supports the following:
-
-          * `automationAccountId` (`pulumi.Input[str]`) - The automation account ID which holds this runbook and authenticates to Azure resources.
-          * `isGlobalRunbook` (`pulumi.Input[bool]`) - Indicates whether this instance is global runbook.
-          * `name` (`pulumi.Input[str]`) - The name of the automation runbook receiver.
-          * `runbook_name` (`pulumi.Input[str]`) - The name for this runbook.
-          * `service_uri` (`pulumi.Input[str]`) - The URI where webhooks should be sent.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-          * `webhookResourceId` (`pulumi.Input[str]`) - The resource id for webhook linked to this runbook.
-
-        The **azure_app_push_receivers** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - The email address of the user signed into the mobile app who will receive push notifications from this receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the Azure app push receiver.
-
-        The **azure_function_receivers** object supports the following:
-
-          * `functionAppResourceId` (`pulumi.Input[str]`) - The Azure resource ID of the function app.
-          * `functionName` (`pulumi.Input[str]`) - The function name in the function app.
-          * `httpTriggerUrl` (`pulumi.Input[str]`) - The http trigger url where http request sent to.
-          * `name` (`pulumi.Input[str]`) - The name of the Azure Function receiver.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **email_receivers** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - The email address of this receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the email receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **itsm_receivers** object supports the following:
-
-          * `connectionId` (`pulumi.Input[str]`) - The unique connection identifier of the ITSM connection.
-          * `name` (`pulumi.Input[str]`) - The name of the ITSM receiver.
-          * `region` (`pulumi.Input[str]`) - The region of the workspace.
-          * `ticketConfiguration` (`pulumi.Input[str]`) - A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
-          * `workspace_id` (`pulumi.Input[str]`) - The Azure Log Analytics workspace ID where this connection is defined.
-
-        The **logic_app_receivers** object supports the following:
-
-          * `callbackUrl` (`pulumi.Input[str]`) - The callback url where http request sent to.
-          * `name` (`pulumi.Input[str]`) - The name of the logic app receiver.
-          * `resource_id` (`pulumi.Input[str]`) - The Azure resource ID of the logic app.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **sms_receivers** object supports the following:
-
-          * `countryCode` (`pulumi.Input[str]`) - The country code of the SMS receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the SMS receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `phoneNumber` (`pulumi.Input[str]`) - The phone number of the SMS receiver.
-
-        The **voice_receivers** object supports the following:
-
-          * `countryCode` (`pulumi.Input[str]`) - The country code of the voice receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the voice receiver.
-          * `phoneNumber` (`pulumi.Input[str]`) - The phone number of the voice receiver.
-
-        The **webhook_receivers** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `service_uri` (`pulumi.Input[str]`) - The URI where webhooks should be sent.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupSmsReceiverArgs']]] sms_receivers: One or more `sms_receiver` blocks as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupVoiceReceiverArgs']]] voice_receivers: One or more `voice_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupWebhookReceiverArgs']]] webhook_receivers: One or more `webhook_receiver` blocks as defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -295,7 +182,7 @@ class ActionGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -335,89 +222,21 @@ class ActionGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] arm_role_receivers: One or more `arm_role_receiver` blocks as defined below.
-        :param pulumi.Input[list] automation_runbook_receivers: One or more `automation_runbook_receiver` blocks as defined below.
-        :param pulumi.Input[list] azure_app_push_receivers: One or more `azure_app_push_receiver` blocks as defined below.
-        :param pulumi.Input[list] azure_function_receivers: One or more `azure_function_receiver` blocks as defined below.
-        :param pulumi.Input[list] email_receivers: One or more `email_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupArmRoleReceiverArgs']]] arm_role_receivers: One or more `arm_role_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAutomationRunbookReceiverArgs']]] automation_runbook_receivers: One or more `automation_runbook_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAzureAppPushReceiverArgs']]] azure_app_push_receivers: One or more `azure_app_push_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupAzureFunctionReceiverArgs']]] azure_function_receivers: One or more `azure_function_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupEmailReceiverArgs']]] email_receivers: One or more `email_receiver` blocks as defined below.
         :param pulumi.Input[bool] enabled: Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
-        :param pulumi.Input[list] itsm_receivers: One or more `itsm_receiver` blocks as defined below.
-        :param pulumi.Input[list] logic_app_receivers: One or more `logic_app_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupItsmReceiverArgs']]] itsm_receivers: One or more `itsm_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupLogicAppReceiverArgs']]] logic_app_receivers: One or more `logic_app_receiver` blocks as defined below.
         :param pulumi.Input[str] name: The name of the Action Group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Action Group instance.
         :param pulumi.Input[str] short_name: The short name of the action group. This will be used in SMS messages.
-        :param pulumi.Input[list] sms_receivers: One or more `sms_receiver` blocks as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[list] voice_receivers: One or more `voice_receiver` blocks as defined below.
-        :param pulumi.Input[list] webhook_receivers: One or more `webhook_receiver` blocks as defined below.
-
-        The **arm_role_receivers** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the ARM role receiver.
-          * `roleId` (`pulumi.Input[str]`) - The arm role id.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **automation_runbook_receivers** object supports the following:
-
-          * `automationAccountId` (`pulumi.Input[str]`) - The automation account ID which holds this runbook and authenticates to Azure resources.
-          * `isGlobalRunbook` (`pulumi.Input[bool]`) - Indicates whether this instance is global runbook.
-          * `name` (`pulumi.Input[str]`) - The name of the automation runbook receiver.
-          * `runbook_name` (`pulumi.Input[str]`) - The name for this runbook.
-          * `service_uri` (`pulumi.Input[str]`) - The URI where webhooks should be sent.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-          * `webhookResourceId` (`pulumi.Input[str]`) - The resource id for webhook linked to this runbook.
-
-        The **azure_app_push_receivers** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - The email address of the user signed into the mobile app who will receive push notifications from this receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the Azure app push receiver.
-
-        The **azure_function_receivers** object supports the following:
-
-          * `functionAppResourceId` (`pulumi.Input[str]`) - The Azure resource ID of the function app.
-          * `functionName` (`pulumi.Input[str]`) - The function name in the function app.
-          * `httpTriggerUrl` (`pulumi.Input[str]`) - The http trigger url where http request sent to.
-          * `name` (`pulumi.Input[str]`) - The name of the Azure Function receiver.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **email_receivers** object supports the following:
-
-          * `email_address` (`pulumi.Input[str]`) - The email address of this receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the email receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **itsm_receivers** object supports the following:
-
-          * `connectionId` (`pulumi.Input[str]`) - The unique connection identifier of the ITSM connection.
-          * `name` (`pulumi.Input[str]`) - The name of the ITSM receiver.
-          * `region` (`pulumi.Input[str]`) - The region of the workspace.
-          * `ticketConfiguration` (`pulumi.Input[str]`) - A JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
-          * `workspace_id` (`pulumi.Input[str]`) - The Azure Log Analytics workspace ID where this connection is defined.
-
-        The **logic_app_receivers** object supports the following:
-
-          * `callbackUrl` (`pulumi.Input[str]`) - The callback url where http request sent to.
-          * `name` (`pulumi.Input[str]`) - The name of the logic app receiver.
-          * `resource_id` (`pulumi.Input[str]`) - The Azure resource ID of the logic app.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
-
-        The **sms_receivers** object supports the following:
-
-          * `countryCode` (`pulumi.Input[str]`) - The country code of the SMS receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the SMS receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `phoneNumber` (`pulumi.Input[str]`) - The phone number of the SMS receiver.
-
-        The **voice_receivers** object supports the following:
-
-          * `countryCode` (`pulumi.Input[str]`) - The country code of the voice receiver.
-          * `name` (`pulumi.Input[str]`) - The name of the voice receiver.
-          * `phoneNumber` (`pulumi.Input[str]`) - The phone number of the voice receiver.
-
-        The **webhook_receivers** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
-          * `service_uri` (`pulumi.Input[str]`) - The URI where webhooks should be sent.
-          * `useCommonAlertSchema` (`pulumi.Input[bool]`) - Enables or disables the common alert schema.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupSmsReceiverArgs']]] sms_receivers: One or more `sms_receiver` blocks as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupVoiceReceiverArgs']]] voice_receivers: One or more `voice_receiver` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input['ActionGroupWebhookReceiverArgs']]] webhook_receivers: One or more `webhook_receiver` blocks as defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -441,7 +260,8 @@ class ActionGroup(pulumi.CustomResource):
         return ActionGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

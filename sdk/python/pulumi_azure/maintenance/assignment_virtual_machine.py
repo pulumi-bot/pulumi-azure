@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class AssignmentVirtualMachine(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    maintenance_configuration_id: pulumi.Output[str]
+    maintenance_configuration_id: pulumi.Output[str] = pulumi.output_property("maintenanceConfigurationId")
     """
     Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
     """
-    virtual_machine_id: pulumi.Output[str]
+    virtual_machine_id: pulumi.Output[str] = pulumi.output_property("virtualMachineId")
     """
     Specifies the Virtual Machine ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, maintenance_configuration_id=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location=None, maintenance_configuration_id=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a maintenance assignment to virtual machine.
 
@@ -96,7 +97,7 @@ class AssignmentVirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -138,7 +139,8 @@ class AssignmentVirtualMachine(pulumi.CustomResource):
         return AssignmentVirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

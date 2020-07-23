@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Group(pulumi.CustomResource):
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The name of the API Management Service in which the API Management Group should exist. Changing this forces a new resource to be created.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of this API Management Group.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The display name of this API Management Group.
     """
-    external_id: pulumi.Output[str]
+    external_id: pulumi.Output[Optional[str]] = pulumi.output_property("externalId")
     """
     The identifier of the external Group. For example, an Azure Active Directory group `aad://<tenant>.onmicrosoft.com/groups/<group object id>`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the API Management Group. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the API Management Group should exist. Changing this forces a new resource to be created.
     """
-    type: pulumi.Output[str]
+    type: pulumi.Output[Optional[str]] = pulumi.output_property("type")
     """
     The type of this API Management Group. Possible values are `custom` and `external`. Default is `custom`.
     """
-    def __init__(__self__, resource_name, opts=None, api_management_name=None, description=None, display_name=None, external_id=None, name=None, resource_group_name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_management_name=None, description=None, display_name=None, external_id=None, name=None, resource_group_name=None, type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an API Management Group.
 
@@ -83,7 +84,7 @@ class Group(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -139,7 +140,8 @@ class Group(pulumi.CustomResource):
         return Group(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

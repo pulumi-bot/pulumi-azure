@@ -5,49 +5,50 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class RegistryWebhook(pulumi.CustomResource):
-    actions: pulumi.Output[list]
+    actions: pulumi.Output[List[str]] = pulumi.output_property("actions")
     """
     A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
     """
-    custom_headers: pulumi.Output[dict]
+    custom_headers: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("customHeaders")
     """
     Custom headers that will be added to the webhook notifications request.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Container Registry Webhook. Changing this forces a new resource to be created.
     """
-    registry_name: pulumi.Output[str]
+    registry_name: pulumi.Output[str] = pulumi.output_property("registryName")
     """
     The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Container Registry Webhook. Changing this forces a new resource to be created.
     """
-    scope: pulumi.Output[str]
+    scope: pulumi.Output[Optional[str]] = pulumi.output_property("scope")
     """
     Specifies the scope of repositories that can trigger an event. For example, `foo:*` means events for all tags under repository `foo`. `foo:bar` means events for 'foo:bar' only. `foo` is equivalent to `foo:latest`. Empty means all events.
     """
-    service_uri: pulumi.Output[str]
+    service_uri: pulumi.Output[str] = pulumi.output_property("serviceUri")
     """
     Specifies the service URI for the Webhook to post notifications.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[Optional[str]] = pulumi.output_property("status")
     """
     Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
     """
-    tags: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, actions=None, custom_headers=None, location=None, name=None, registry_name=None, resource_group_name=None, scope=None, service_uri=None, status=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, actions=None, custom_headers=None, location=None, name=None, registry_name=None, resource_group_name=None, scope=None, service_uri=None, status=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure Container Registry Webhook.
 
@@ -78,8 +79,8 @@ class RegistryWebhook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
-        :param pulumi.Input[dict] custom_headers: Custom headers that will be added to the webhook notifications request.
+        :param pulumi.Input[List[pulumi.Input[str]]] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] custom_headers: Custom headers that will be added to the webhook notifications request.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Container Registry Webhook. Changing this forces a new resource to be created.
         :param pulumi.Input[str] registry_name: The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
@@ -99,7 +100,7 @@ class RegistryWebhook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -140,8 +141,8 @@ class RegistryWebhook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
-        :param pulumi.Input[dict] custom_headers: Custom headers that will be added to the webhook notifications request.
+        :param pulumi.Input[List[pulumi.Input[str]]] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] custom_headers: Custom headers that will be added to the webhook notifications request.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Container Registry Webhook. Changing this forces a new resource to be created.
         :param pulumi.Input[str] registry_name: The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
@@ -167,7 +168,8 @@ class RegistryWebhook(pulumi.CustomResource):
         return RegistryWebhook(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

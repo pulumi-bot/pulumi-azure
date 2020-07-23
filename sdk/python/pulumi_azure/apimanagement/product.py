@@ -5,52 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Product(pulumi.CustomResource):
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The name of the API Management Service. Changing this forces a new resource to be created.
     """
-    approval_required: pulumi.Output[bool]
+    approval_required: pulumi.Output[Optional[bool]] = pulumi.output_property("approvalRequired")
     """
     Do subscribers need to be approved prior to being able to use the Product?
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description of this Product, which may include HTML formatting tags.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The Display Name for this API Management Product.
     """
-    product_id: pulumi.Output[str]
+    product_id: pulumi.Output[str] = pulumi.output_property("productId")
     """
     The Identifier for this Product, which must be unique within the API Management Service. Changing this forces a new resource to be created.
     """
-    published: pulumi.Output[bool]
+    published: pulumi.Output[bool] = pulumi.output_property("published")
     """
     Is this Product Published?
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
     """
-    subscription_required: pulumi.Output[bool]
+    subscription_required: pulumi.Output[bool] = pulumi.output_property("subscriptionRequired")
     """
     Is a Subscription required to access API's included in this Product?
     """
-    subscriptions_limit: pulumi.Output[float]
+    subscriptions_limit: pulumi.Output[Optional[float]] = pulumi.output_property("subscriptionsLimit")
     """
     The number of subscriptions a user can have to this Product at the same time.
     """
-    terms: pulumi.Output[str]
+    terms: pulumi.Output[Optional[str]] = pulumi.output_property("terms")
     """
     The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
     """
-    def __init__(__self__, resource_name, opts=None, api_management_name=None, approval_required=None, description=None, display_name=None, product_id=None, published=None, resource_group_name=None, subscription_required=None, subscriptions_limit=None, terms=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_management_name=None, approval_required=None, description=None, display_name=None, product_id=None, published=None, resource_group_name=None, subscription_required=None, subscriptions_limit=None, terms=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an API Management Product.
 
@@ -101,7 +102,7 @@ class Product(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -172,7 +173,8 @@ class Product(pulumi.CustomResource):
         return Product(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

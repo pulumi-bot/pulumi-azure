@@ -5,39 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Account(pulumi.CustomResource):
-    active_directory: pulumi.Output[dict]
+    active_directory: pulumi.Output[Optional['outputs.AccountActiveDirectory']] = pulumi.output_property("activeDirectory")
     """
     A `active_directory` block as defined below.
-
-      * `dns_servers` (`list`) - A list of DNS server IP addresses for the Active Directory domain. Only allows `IPv4` address.
-      * `domain` (`str`) - The name of the Active Directory domain.
-      * `organizationalUnit` (`str`) - The Organizational Unit (OU) within the Active Directory Domain.
-      * `password` (`str`) - The password associated with the `username`.
-      * `smbServerName` (`str`) - The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
-      * `username` (`str`) - The Username of Active Directory Domain Administrator.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the NetApp Account. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, active_directory=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, active_directory=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a NetApp Account.
 
@@ -65,20 +61,11 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] active_directory: A `active_directory` block as defined below.
+        :param pulumi.Input['AccountActiveDirectoryArgs'] active_directory: A `active_directory` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the NetApp Account. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **active_directory** object supports the following:
-
-          * `dns_servers` (`pulumi.Input[list]`) - A list of DNS server IP addresses for the Active Directory domain. Only allows `IPv4` address.
-          * `domain` (`pulumi.Input[str]`) - The name of the Active Directory domain.
-          * `organizationalUnit` (`pulumi.Input[str]`) - The Organizational Unit (OU) within the Active Directory Domain.
-          * `password` (`pulumi.Input[str]`) - The password associated with the `username`.
-          * `smbServerName` (`pulumi.Input[str]`) - The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
-          * `username` (`pulumi.Input[str]`) - The Username of Active Directory Domain Administrator.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,7 +78,7 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -119,20 +106,11 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] active_directory: A `active_directory` block as defined below.
+        :param pulumi.Input['AccountActiveDirectoryArgs'] active_directory: A `active_directory` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the NetApp Account. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **active_directory** object supports the following:
-
-          * `dns_servers` (`pulumi.Input[list]`) - A list of DNS server IP addresses for the Active Directory domain. Only allows `IPv4` address.
-          * `domain` (`pulumi.Input[str]`) - The name of the Active Directory domain.
-          * `organizationalUnit` (`pulumi.Input[str]`) - The Organizational Unit (OU) within the Active Directory Domain.
-          * `password` (`pulumi.Input[str]`) - The password associated with the `username`.
-          * `smbServerName` (`pulumi.Input[str]`) - The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
-          * `username` (`pulumi.Input[str]`) - The Username of Active Directory Domain Administrator.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -146,7 +124,8 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,56 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class DatabasePrincipal(pulumi.CustomResource):
-    app_id: pulumi.Output[str]
+    app_id: pulumi.Output[str] = pulumi.output_property("appId")
     """
     The app id, if not empty, of the principal.
     """
-    client_id: pulumi.Output[str]
+    client_id: pulumi.Output[str] = pulumi.output_property("clientId")
     """
     The Client ID that owns the specified `object_id`. Changing this forces a new resource to be created.
     """
-    cluster_name: pulumi.Output[str]
+    cluster_name: pulumi.Output[str] = pulumi.output_property("clusterName")
     """
     Specifies the name of the Kusto Cluster this database principal will be added to. Changing this forces a new resource to be created.
     """
-    database_name: pulumi.Output[str]
+    database_name: pulumi.Output[str] = pulumi.output_property("databaseName")
     """
     Specified the name of the Kusto Database this principal will be added to. Changing this forces a new resource to be created.
     """
-    email: pulumi.Output[str]
+    email: pulumi.Output[str] = pulumi.output_property("email")
     """
     The email, if not empty, of the principal.
     """
-    fully_qualified_name: pulumi.Output[str]
+    fully_qualified_name: pulumi.Output[str] = pulumi.output_property("fullyQualifiedName")
     """
     The fully qualified name of the principal.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Kusto Database Principal.
     """
-    object_id: pulumi.Output[str]
+    object_id: pulumi.Output[str] = pulumi.output_property("objectId")
     """
     An Object ID of a User, Group, or App. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the Resource Group where the Kusto Database Principal should exist. Changing this forces a new resource to be created.
     """
-    role: pulumi.Output[str]
+    role: pulumi.Output[str] = pulumi.output_property("role")
     """
     Specifies the permissions the Principal will have. Valid values include `Admin`, `Ingestor`, `Monitor`, `UnrestrictedViewers`, `User`, `Viewer`. Changing this forces a new resource to be created.
     """
-    type: pulumi.Output[str]
+    type: pulumi.Output[str] = pulumi.output_property("type")
     """
     Specifies the type of object the principal is. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, client_id=None, cluster_name=None, database_name=None, object_id=None, resource_group_name=None, role=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, client_id=None, cluster_name=None, database_name=None, object_id=None, resource_group_name=None, role=None, type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Kusto (also known as Azure Data Explorer) Database Principal
 
@@ -112,7 +113,7 @@ class DatabasePrincipal(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -188,7 +189,8 @@ class DatabasePrincipal(pulumi.CustomResource):
         return DatabasePrincipal(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetKeyResult:
     """
     A collection of values returned by getKey.
     """
-    def __init__(__self__, e=None, id=None, key_opts=None, key_size=None, key_type=None, key_vault_id=None, n=None, name=None, tags=None, version=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, e=None, id=None, key_opts=None, key_size=None, key_type=None, key_vault_id=None, n=None, name=None, tags=None, version=None) -> None:
         if e and not isinstance(e, str):
             raise TypeError("Expected argument 'e' to be a str")
         __self__.e = e
@@ -67,6 +69,8 @@ class GetKeyResult:
         """
         The current version of the Key Vault Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -84,7 +88,8 @@ class AwaitableGetKeyResult(GetKeyResult):
             tags=self.tags,
             version=self.version)
 
-def get_key(key_vault_id=None,name=None,opts=None):
+
+def get_key(key_vault_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Key.
 
@@ -104,14 +109,12 @@ def get_key(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Key.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:keyvault/getKey:getKey', __args__, opts=opts).value
 
     return AwaitableGetKeyResult(

@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetRegistryResult:
     """
     A collection of values returned by getRegistry.
     """
-    def __init__(__self__, admin_enabled=None, admin_password=None, admin_username=None, id=None, location=None, login_server=None, name=None, resource_group_name=None, sku=None, storage_account_id=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, admin_enabled=None, admin_password=None, admin_username=None, id=None, location=None, login_server=None, name=None, resource_group_name=None, sku=None, storage_account_id=None, tags=None) -> None:
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         __self__.admin_enabled = admin_enabled
@@ -73,6 +75,8 @@ class GetRegistryResult:
         """
         A map of tags assigned to the Container Registry.
         """
+
+
 class AwaitableGetRegistryResult(GetRegistryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +95,8 @@ class AwaitableGetRegistryResult(GetRegistryResult):
             storage_account_id=self.storage_account_id,
             tags=self.tags)
 
-def get_registry(name=None,resource_group_name=None,opts=None):
+
+def get_registry(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Container Registry.
 
@@ -111,14 +116,12 @@ def get_registry(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where this Container Registry exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:containerservice/getRegistry:getRegistry', __args__, opts=opts).value
 
     return AwaitableGetRegistryResult(

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, access_policy_object_ids=None, authentication_configurations=None, cors_configurations=None, cosmosdb_throughput=None, id=None, kind=None, location=None, name=None, resource_group_name=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_policy_object_ids=None, authentication_configurations=None, cors_configurations=None, cosmosdb_throughput=None, id=None, kind=None, location=None, name=None, resource_group_name=None, tags=None) -> None:
         if access_policy_object_ids and not isinstance(access_policy_object_ids, list):
             raise TypeError("Expected argument 'access_policy_object_ids' to be a list")
         __self__.access_policy_object_ids = access_policy_object_ids
@@ -61,6 +64,8 @@ class GetServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +83,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_service(location=None,name=None,resource_group_name=None,opts=None):
+
+def get_service(location=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Healthcare Service
 
@@ -100,15 +106,13 @@ def get_service(location=None,name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Healthcare Service exists.
     """
     __args__ = dict()
-
-
     __args__['location'] = location
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:healthcare/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

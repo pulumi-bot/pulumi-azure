@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetKeyVaultResult:
     """
     A collection of values returned by getKeyVault.
     """
-    def __init__(__self__, access_policies=None, enabled_for_deployment=None, enabled_for_disk_encryption=None, enabled_for_template_deployment=None, id=None, location=None, name=None, network_acls=None, purge_protection_enabled=None, resource_group_name=None, sku_name=None, soft_delete_enabled=None, tags=None, tenant_id=None, vault_uri=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_policies=None, enabled_for_deployment=None, enabled_for_disk_encryption=None, enabled_for_template_deployment=None, id=None, location=None, name=None, network_acls=None, purge_protection_enabled=None, resource_group_name=None, sku_name=None, soft_delete_enabled=None, tags=None, tenant_id=None, vault_uri=None) -> None:
         if access_policies and not isinstance(access_policies, list):
             raise TypeError("Expected argument 'access_policies' to be a list")
         __self__.access_policies = access_policies
@@ -94,6 +97,8 @@ class GetKeyVaultResult:
         """
         The URI of the vault for performing operations on keys and secrets.
         """
+
+
 class AwaitableGetKeyVaultResult(GetKeyVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,7 +121,8 @@ class AwaitableGetKeyVaultResult(GetKeyVaultResult):
             tenant_id=self.tenant_id,
             vault_uri=self.vault_uri)
 
-def get_key_vault(name=None,resource_group_name=None,opts=None):
+
+def get_key_vault(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault.
 
@@ -136,14 +142,12 @@ def get_key_vault(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Key Vault exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:keyvault/getKeyVault:getKeyVault', __args__, opts=opts).value
 
     return AwaitableGetKeyVaultResult(

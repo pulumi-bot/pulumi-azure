@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, endpoint=None, id=None, name=None, primary_key=None, resource_group_name=None, secondary_key=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, endpoint=None, id=None, name=None, primary_key=None, resource_group_name=None, secondary_key=None) -> None:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         __self__.endpoint = endpoint
@@ -43,6 +45,8 @@ class GetAccountResult:
         """
         The Secondary Access Key for the Automation Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +60,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             resource_group_name=self.resource_group_name,
             secondary_key=self.secondary_key)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Automation Account.
 
@@ -76,14 +81,12 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the Automation Account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:automation/getAccount:getAccount', __args__, opts=opts).value
 
     return AwaitableGetAccountResult(

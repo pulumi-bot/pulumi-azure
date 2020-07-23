@@ -5,55 +5,56 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class AccessPolicy(pulumi.CustomResource):
-    application_id: pulumi.Output[str]
+    application_id: pulumi.Output[Optional[str]] = pulumi.output_property("applicationId")
     """
     The object ID of an Application in Azure Active Directory.
     """
-    certificate_permissions: pulumi.Output[list]
+    certificate_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("certificatePermissions")
     """
     List of certificate permissions, must be one or more from
     the following: `backup`, `create`, `delete`, `deleteissuers`, `get`, `getissuers`, `import`, `list`, `listissuers`,
     `managecontacts`, `manageissuers`, `purge`, `recover`, `restore`, `setissuers` and `update`.
     """
-    key_permissions: pulumi.Output[list]
+    key_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("keyPermissions")
     """
     List of key permissions, must be one or more from
     the following: `backup`, `create`, `decrypt`, `delete`, `encrypt`, `get`, `import`, `list`, `purge`,
     `recover`, `restore`, `sign`, `unwrapKey`, `update`, `verify` and `wrapKey`.
     """
-    key_vault_id: pulumi.Output[str]
+    key_vault_id: pulumi.Output[str] = pulumi.output_property("keyVaultId")
     """
     Specifies the id of the Key Vault resource. Changing this
     forces a new resource to be created.
     """
-    object_id: pulumi.Output[str]
+    object_id: pulumi.Output[str] = pulumi.output_property("objectId")
     """
     The object ID of a user, service principal or security
     group in the Azure Active Directory tenant for the vault. The object ID must
     be unique for the list of access policies. Changing this forces a new resource
     to be created.
     """
-    secret_permissions: pulumi.Output[list]
+    secret_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("secretPermissions")
     """
     List of secret permissions, must be one or more
     from the following: `backup`, `delete`, `get`, `list`, `purge`, `recover`, `restore` and `set`.
     """
-    storage_permissions: pulumi.Output[list]
+    storage_permissions: pulumi.Output[Optional[List[str]]] = pulumi.output_property("storagePermissions")
     """
     List of storage permissions, must be one or more from the following: `backup`, `delete`, `deletesas`, `get`, `getsas`, `list`, `listsas`, `purge`, `recover`, `regeneratekey`, `restore`, `set`, `setsas` and `update`.
     """
-    tenant_id: pulumi.Output[str]
+    tenant_id: pulumi.Output[str] = pulumi.output_property("tenantId")
     """
     The Azure Active Directory tenant ID that should be used
     for authenticating requests to the key vault. Changing this forces a new resource
     to be created.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, certificate_permissions=None, key_permissions=None, key_vault_id=None, object_id=None, secret_permissions=None, storage_permissions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_id=None, certificate_permissions=None, key_permissions=None, key_vault_id=None, object_id=None, secret_permissions=None, storage_permissions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Key Vault Access Policy.
 
@@ -64,10 +65,10 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The object ID of an Application in Azure Active Directory.
-        :param pulumi.Input[list] certificate_permissions: List of certificate permissions, must be one or more from
+        :param pulumi.Input[List[pulumi.Input[str]]] certificate_permissions: List of certificate permissions, must be one or more from
                the following: `backup`, `create`, `delete`, `deleteissuers`, `get`, `getissuers`, `import`, `list`, `listissuers`,
                `managecontacts`, `manageissuers`, `purge`, `recover`, `restore`, `setissuers` and `update`.
-        :param pulumi.Input[list] key_permissions: List of key permissions, must be one or more from
+        :param pulumi.Input[List[pulumi.Input[str]]] key_permissions: List of key permissions, must be one or more from
                the following: `backup`, `create`, `decrypt`, `delete`, `encrypt`, `get`, `import`, `list`, `purge`,
                `recover`, `restore`, `sign`, `unwrapKey`, `update`, `verify` and `wrapKey`.
         :param pulumi.Input[str] key_vault_id: Specifies the id of the Key Vault resource. Changing this
@@ -76,9 +77,9 @@ class AccessPolicy(pulumi.CustomResource):
                group in the Azure Active Directory tenant for the vault. The object ID must
                be unique for the list of access policies. Changing this forces a new resource
                to be created.
-        :param pulumi.Input[list] secret_permissions: List of secret permissions, must be one or more
+        :param pulumi.Input[List[pulumi.Input[str]]] secret_permissions: List of secret permissions, must be one or more
                from the following: `backup`, `delete`, `get`, `list`, `purge`, `recover`, `restore` and `set`.
-        :param pulumi.Input[list] storage_permissions: List of storage permissions, must be one or more from the following: `backup`, `delete`, `deletesas`, `get`, `getsas`, `list`, `listsas`, `purge`, `recover`, `regeneratekey`, `restore`, `set`, `setsas` and `update`.
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_permissions: List of storage permissions, must be one or more from the following: `backup`, `delete`, `deletesas`, `get`, `getsas`, `list`, `listsas`, `purge`, `recover`, `regeneratekey`, `restore`, `set`, `setsas` and `update`.
         :param pulumi.Input[str] tenant_id: The Azure Active Directory tenant ID that should be used
                for authenticating requests to the key vault. Changing this forces a new resource
                to be created.
@@ -94,7 +95,7 @@ class AccessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -130,10 +131,10 @@ class AccessPolicy(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The object ID of an Application in Azure Active Directory.
-        :param pulumi.Input[list] certificate_permissions: List of certificate permissions, must be one or more from
+        :param pulumi.Input[List[pulumi.Input[str]]] certificate_permissions: List of certificate permissions, must be one or more from
                the following: `backup`, `create`, `delete`, `deleteissuers`, `get`, `getissuers`, `import`, `list`, `listissuers`,
                `managecontacts`, `manageissuers`, `purge`, `recover`, `restore`, `setissuers` and `update`.
-        :param pulumi.Input[list] key_permissions: List of key permissions, must be one or more from
+        :param pulumi.Input[List[pulumi.Input[str]]] key_permissions: List of key permissions, must be one or more from
                the following: `backup`, `create`, `decrypt`, `delete`, `encrypt`, `get`, `import`, `list`, `purge`,
                `recover`, `restore`, `sign`, `unwrapKey`, `update`, `verify` and `wrapKey`.
         :param pulumi.Input[str] key_vault_id: Specifies the id of the Key Vault resource. Changing this
@@ -142,9 +143,9 @@ class AccessPolicy(pulumi.CustomResource):
                group in the Azure Active Directory tenant for the vault. The object ID must
                be unique for the list of access policies. Changing this forces a new resource
                to be created.
-        :param pulumi.Input[list] secret_permissions: List of secret permissions, must be one or more
+        :param pulumi.Input[List[pulumi.Input[str]]] secret_permissions: List of secret permissions, must be one or more
                from the following: `backup`, `delete`, `get`, `list`, `purge`, `recover`, `restore` and `set`.
-        :param pulumi.Input[list] storage_permissions: List of storage permissions, must be one or more from the following: `backup`, `delete`, `deletesas`, `get`, `getsas`, `list`, `listsas`, `purge`, `recover`, `regeneratekey`, `restore`, `set`, `setsas` and `update`.
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_permissions: List of storage permissions, must be one or more from the following: `backup`, `delete`, `deletesas`, `get`, `getsas`, `list`, `listsas`, `purge`, `recover`, `regeneratekey`, `restore`, `set`, `setsas` and `update`.
         :param pulumi.Input[str] tenant_id: The Azure Active Directory tenant ID that should be used
                for authenticating requests to the key vault. Changing this forces a new resource
                to be created.
@@ -164,7 +165,8 @@ class AccessPolicy(pulumi.CustomResource):
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

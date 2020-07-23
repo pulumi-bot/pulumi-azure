@@ -5,60 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Namespace(pulumi.CustomResource):
-    capacity: pulumi.Output[float]
+    capacity: pulumi.Output[Optional[float]] = pulumi.output_property("capacity")
     """
     Specifies the capacity. When `sku` is `Premium`, capacity can be `1`, `2`, `4` or `8`. When `sku` is `Basic` or `Standard`, capacity can be `0` only.
     """
-    default_primary_connection_string: pulumi.Output[str]
+    default_primary_connection_string: pulumi.Output[str] = pulumi.output_property("defaultPrimaryConnectionString")
     """
     The primary connection string for the authorization
     rule `RootManageSharedAccessKey`.
     """
-    default_primary_key: pulumi.Output[str]
+    default_primary_key: pulumi.Output[str] = pulumi.output_property("defaultPrimaryKey")
     """
     The primary access key for the authorization rule `RootManageSharedAccessKey`.
     """
-    default_secondary_connection_string: pulumi.Output[str]
+    default_secondary_connection_string: pulumi.Output[str] = pulumi.output_property("defaultSecondaryConnectionString")
     """
     The secondary connection string for the
     authorization rule `RootManageSharedAccessKey`.
     """
-    default_secondary_key: pulumi.Output[str]
+    default_secondary_key: pulumi.Output[str] = pulumi.output_property("defaultSecondaryKey")
     """
     The secondary access key for the authorization rule `RootManageSharedAccessKey`.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the ServiceBus Namespace resource . Changing this forces a
     new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the namespace.
     """
-    sku: pulumi.Output[str]
+    sku: pulumi.Output[str] = pulumi.output_property("sku")
     """
     Defines which tier to use. Options are basic, standard or premium. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    zone_redundant: pulumi.Output[bool]
+    zone_redundant: pulumi.Output[Optional[bool]] = pulumi.output_property("zoneRedundant")
     """
     Whether or not this resource is zone redundant. `sku` needs to be `Premium`. Defaults to `false`.
     """
-    def __init__(__self__, resource_name, opts=None, capacity=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, capacity=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, zone_redundant=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a ServiceBus Namespace.
 
@@ -87,7 +88,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the namespace.
         :param pulumi.Input[str] sku: Defines which tier to use. Options are basic, standard or premium. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] zone_redundant: Whether or not this resource is zone redundant. `sku` needs to be `Premium`. Defaults to `false`.
         """
         if __name__ is not None:
@@ -101,7 +102,7 @@ class Namespace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -152,7 +153,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the namespace.
         :param pulumi.Input[str] sku: Defines which tier to use. Options are basic, standard or premium. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] zone_redundant: Whether or not this resource is zone redundant. `sku` needs to be `Premium`. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -173,7 +174,8 @@ class Namespace(pulumi.CustomResource):
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

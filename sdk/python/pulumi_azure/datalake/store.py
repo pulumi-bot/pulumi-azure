@@ -5,52 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Store(pulumi.CustomResource):
-    encryption_state: pulumi.Output[str]
+    encryption_state: pulumi.Output[Optional[str]] = pulumi.output_property("encryptionState")
     """
     Is Encryption enabled on this Data Lake Store Account? Possible values are `Enabled` or `Disabled`. Defaults to `Enabled`.
     """
-    encryption_type: pulumi.Output[str]
+    encryption_type: pulumi.Output[str] = pulumi.output_property("encryptionType")
     """
     The Encryption Type used for this Data Lake Store Account. Currently can be set to `ServiceManaged` when `encryption_state` is `Enabled` - and must be a blank string when it's Disabled.
     """
-    endpoint: pulumi.Output[str]
+    endpoint: pulumi.Output[str] = pulumi.output_property("endpoint")
     """
     The Endpoint for the Data Lake Store.
     """
-    firewall_allow_azure_ips: pulumi.Output[str]
+    firewall_allow_azure_ips: pulumi.Output[Optional[str]] = pulumi.output_property("firewallAllowAzureIps")
     """
     are Azure Service IP's allowed through the firewall? Possible values are `Enabled` and `Disabled`. Defaults to `Enabled.`
     """
-    firewall_state: pulumi.Output[str]
+    firewall_state: pulumi.Output[Optional[str]] = pulumi.output_property("firewallState")
     """
     the state of the Firewall. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled.`
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Data Lake Store. Changing this forces a new resource to be created. Has to be between 3 to 24 characters.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Data Lake Store.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    tier: pulumi.Output[str]
+    tier: pulumi.Output[Optional[str]] = pulumi.output_property("tier")
     """
     The monthly commitment tier for Data Lake Store. Accepted values are `Consumption`, `Commitment_1TB`, `Commitment_10TB`, `Commitment_100TB`, `Commitment_500TB`, `Commitment_1PB` or `Commitment_5PB`.
     """
-    def __init__(__self__, resource_name, opts=None, encryption_state=None, encryption_type=None, firewall_allow_azure_ips=None, firewall_state=None, location=None, name=None, resource_group_name=None, tags=None, tier=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, encryption_state=None, encryption_type=None, firewall_allow_azure_ips=None, firewall_state=None, location=None, name=None, resource_group_name=None, tags=None, tier=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure Data Lake Store.
 
@@ -77,7 +78,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Data Lake Store. Changing this forces a new resource to be created. Has to be between 3 to 24 characters.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Lake Store.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tier: The monthly commitment tier for Data Lake Store. Accepted values are `Consumption`, `Commitment_1TB`, `Commitment_10TB`, `Commitment_100TB`, `Commitment_500TB`, `Commitment_1PB` or `Commitment_5PB`.
         """
         if __name__ is not None:
@@ -91,7 +92,7 @@ class Store(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,7 +133,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Data Lake Store. Changing this forces a new resource to be created. Has to be between 3 to 24 characters.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Lake Store.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tier: The monthly commitment tier for Data Lake Store. Accepted values are `Consumption`, `Commitment_1TB`, `Commitment_10TB`, `Commitment_100TB`, `Commitment_500TB`, `Commitment_1PB` or `Commitment_5PB`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -152,7 +153,8 @@ class Store(pulumi.CustomResource):
         return Store(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

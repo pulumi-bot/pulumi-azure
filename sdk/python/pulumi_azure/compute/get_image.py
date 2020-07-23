@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, data_disks=None, id=None, location=None, name=None, name_regex=None, os_disks=None, resource_group_name=None, sort_descending=None, tags=None, zone_resilient=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, data_disks=None, id=None, location=None, name=None, name_regex=None, os_disks=None, resource_group_name=None, sort_descending=None, tags=None, zone_resilient=None) -> None:
         if data_disks and not isinstance(data_disks, list):
             raise TypeError("Expected argument 'data_disks' to be a list")
         __self__.data_disks = data_disks
@@ -64,6 +67,8 @@ class GetImageResult:
         """
         is zone resiliency enabled?
         """
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +86,8 @@ class AwaitableGetImageResult(GetImageResult):
             tags=self.tags,
             zone_resilient=self.zone_resilient)
 
-def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending=None,opts=None):
+
+def get_image(name=None, name_regex=None, resource_group_name=None, sort_descending=None, opts=None):
     """
     Use this data source to access information about an existing Image.
 
@@ -103,8 +109,6 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     :param bool sort_descending: By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['resourceGroupName'] = resource_group_name
@@ -112,7 +116,7 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(

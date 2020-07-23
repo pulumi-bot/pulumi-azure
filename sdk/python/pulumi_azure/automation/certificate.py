@@ -5,37 +5,38 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Certificate(pulumi.CustomResource):
-    automation_account_name: pulumi.Output[str]
+    automation_account_name: pulumi.Output[str] = pulumi.output_property("automationAccountName")
     """
     The name of the automation account in which the Certificate is created. Changing this forces a new resource to be created.
     """
-    base64: pulumi.Output[str]
+    base64: pulumi.Output[str] = pulumi.output_property("base64")
     """
     Base64 encoded value of the certificate.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of this Automation Certificate.
     """
-    exportable: pulumi.Output[bool]
-    name: pulumi.Output[str]
+    exportable: pulumi.Output[bool] = pulumi.output_property("exportable")
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Certificate. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
     """
-    thumbprint: pulumi.Output[str]
+    thumbprint: pulumi.Output[str] = pulumi.output_property("thumbprint")
     """
     The thumbprint for the certificate.
     """
-    def __init__(__self__, resource_name, opts=None, automation_account_name=None, base64=None, description=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, automation_account_name=None, base64=None, description=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Automation Certificate.
 
@@ -58,7 +59,7 @@ class Certificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,7 +114,8 @@ class Certificate(pulumi.CustomResource):
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

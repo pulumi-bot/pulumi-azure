@@ -5,44 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class DatasetBlobStorage(pulumi.CustomResource):
-    container_name: pulumi.Output[str]
+    container_name: pulumi.Output[str] = pulumi.output_property("containerName")
     """
     The name of the storage account container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    data_share_id: pulumi.Output[str]
+    data_share_id: pulumi.Output[str] = pulumi.output_property("dataShareId")
     """
     The ID of the Data Share in which this Data Share Blob Storage Dataset should be created. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The name of the Data Share Dataset.
     """
-    file_path: pulumi.Output[str]
+    file_path: pulumi.Output[Optional[str]] = pulumi.output_property("filePath")
     """
     The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    folder_path: pulumi.Output[str]
+    folder_path: pulumi.Output[Optional[str]] = pulumi.output_property("folderPath")
     """
     The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    storage_account: pulumi.Output[dict]
+    storage_account: pulumi.Output['outputs.DatasetBlobStorageStorageAccount'] = pulumi.output_property("storageAccount")
     """
     A `storage_account` block as defined below.
-
-      * `name` (`str`) - The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-      * `resource_group_name` (`str`) - The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-      * `subscription_id` (`str`) - The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
     """
-    def __init__(__self__, resource_name, opts=None, container_name=None, data_share_id=None, file_path=None, folder_path=None, name=None, storage_account=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, container_name=None, data_share_id=None, file_path=None, folder_path=None, name=None, storage_account=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Data Share Blob Storage Dataset.
 
@@ -95,13 +94,7 @@ class DatasetBlobStorage(pulumi.CustomResource):
         :param pulumi.Input[str] file_path: The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
         :param pulumi.Input[str] folder_path: The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
-        :param pulumi.Input[dict] storage_account: A `storage_account` block as defined below.
-
-        The **storage_account** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-          * `resource_group_name` (`pulumi.Input[str]`) - The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-          * `subscription_id` (`pulumi.Input[str]`) - The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
+        :param pulumi.Input['DatasetBlobStorageStorageAccountArgs'] storage_account: A `storage_account` block as defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,7 +107,7 @@ class DatasetBlobStorage(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -154,13 +147,7 @@ class DatasetBlobStorage(pulumi.CustomResource):
         :param pulumi.Input[str] file_path: The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
         :param pulumi.Input[str] folder_path: The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
-        :param pulumi.Input[dict] storage_account: A `storage_account` block as defined below.
-
-        The **storage_account** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-          * `resource_group_name` (`pulumi.Input[str]`) - The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-          * `subscription_id` (`pulumi.Input[str]`) - The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
+        :param pulumi.Input['DatasetBlobStorageStorageAccountArgs'] storage_account: A `storage_account` block as defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -176,7 +163,8 @@ class DatasetBlobStorage(pulumi.CustomResource):
         return DatasetBlobStorage(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
