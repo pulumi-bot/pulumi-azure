@@ -5,40 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['LogProfile']
 
 
 class LogProfile(pulumi.CustomResource):
-    categories: pulumi.Output[list]
+    categories: pulumi.Output[List[str]] = pulumi.output_property("categories")
     """
     List of categories of the logs.
     """
-    locations: pulumi.Output[list]
+    locations: pulumi.Output[List[str]] = pulumi.output_property("locations")
     """
     List of regions for which Activity Log events are stored or streamed.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Log Profile. Changing this forces a
     new resource to be created.
     """
-    retention_policy: pulumi.Output[dict]
+    retention_policy: pulumi.Output['outputs.LogProfileRetentionPolicy'] = pulumi.output_property("retentionPolicy")
     """
     A `retention_policy` block as documented below. A retention policy for how long Activity Logs are retained in the storage account.
-
-      * `days` (`float`) - The number of days for the retention policy. Defaults to 0.
-      * `enabled` (`bool`) - A boolean value to indicate whether the retention policy is enabled.
     """
-    servicebus_rule_id: pulumi.Output[str]
+    servicebus_rule_id: pulumi.Output[Optional[str]] = pulumi.output_property("servicebusRuleId")
     """
     The service bus (or event hub) rule ID of the service bus (or event hub) namespace in which the Activity Log is streamed to. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
     """
-    storage_account_id: pulumi.Output[str]
+    storage_account_id: pulumi.Output[Optional[str]] = pulumi.output_property("storageAccountId")
     """
     The resource ID of the storage account in which the Activity Log is stored. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
     """
-    def __init__(__self__, resource_name, opts=None, categories=None, locations=None, name=None, retention_policy=None, servicebus_rule_id=None, storage_account_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, categories: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, name: Optional[pulumi.Input[str]] = None, retention_policy: Optional[pulumi.Input[pulumi.InputType['LogProfileRetentionPolicyArgs']]] = None, servicebus_rule_id: Optional[pulumi.Input[str]] = None, storage_account_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a [Log Profile](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs#export-the-activity-log-with-a-log-profile). A Log Profile configures how Activity Logs are exported.
 
@@ -81,18 +83,13 @@ class LogProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] categories: List of categories of the logs.
-        :param pulumi.Input[list] locations: List of regions for which Activity Log events are stored or streamed.
+        :param pulumi.Input[List[pulumi.Input[str]]] categories: List of categories of the logs.
+        :param pulumi.Input[List[pulumi.Input[str]]] locations: List of regions for which Activity Log events are stored or streamed.
         :param pulumi.Input[str] name: The name of the Log Profile. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] retention_policy: A `retention_policy` block as documented below. A retention policy for how long Activity Logs are retained in the storage account.
+        :param pulumi.Input[pulumi.InputType['LogProfileRetentionPolicyArgs']] retention_policy: A `retention_policy` block as documented below. A retention policy for how long Activity Logs are retained in the storage account.
         :param pulumi.Input[str] servicebus_rule_id: The service bus (or event hub) rule ID of the service bus (or event hub) namespace in which the Activity Log is streamed to. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
         :param pulumi.Input[str] storage_account_id: The resource ID of the storage account in which the Activity Log is stored. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
-
-        The **retention_policy** object supports the following:
-
-          * `days` (`pulumi.Input[float]`) - The number of days for the retention policy. Defaults to 0.
-          * `enabled` (`pulumi.Input[bool]`) - A boolean value to indicate whether the retention policy is enabled.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +102,7 @@ class LogProfile(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -130,7 +127,7 @@ class LogProfile(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, categories=None, locations=None, name=None, retention_policy=None, servicebus_rule_id=None, storage_account_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, categories: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, name: Optional[pulumi.Input[str]] = None, retention_policy: Optional[pulumi.Input[pulumi.InputType['LogProfileRetentionPolicyArgs']]] = None, servicebus_rule_id: Optional[pulumi.Input[str]] = None, storage_account_id: Optional[pulumi.Input[str]] = None) -> 'LogProfile':
         """
         Get an existing LogProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -138,18 +135,13 @@ class LogProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] categories: List of categories of the logs.
-        :param pulumi.Input[list] locations: List of regions for which Activity Log events are stored or streamed.
+        :param pulumi.Input[List[pulumi.Input[str]]] categories: List of categories of the logs.
+        :param pulumi.Input[List[pulumi.Input[str]]] locations: List of regions for which Activity Log events are stored or streamed.
         :param pulumi.Input[str] name: The name of the Log Profile. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[dict] retention_policy: A `retention_policy` block as documented below. A retention policy for how long Activity Logs are retained in the storage account.
+        :param pulumi.Input[pulumi.InputType['LogProfileRetentionPolicyArgs']] retention_policy: A `retention_policy` block as documented below. A retention policy for how long Activity Logs are retained in the storage account.
         :param pulumi.Input[str] servicebus_rule_id: The service bus (or event hub) rule ID of the service bus (or event hub) namespace in which the Activity Log is streamed to. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
         :param pulumi.Input[str] storage_account_id: The resource ID of the storage account in which the Activity Log is stored. At least one of `storage_account_id` or `servicebus_rule_id` must be set.
-
-        The **retention_policy** object supports the following:
-
-          * `days` (`pulumi.Input[float]`) - The number of days for the retention policy. Defaults to 0.
-          * `enabled` (`pulumi.Input[bool]`) - A boolean value to indicate whether the retention policy is enabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -164,7 +156,8 @@ class LogProfile(pulumi.CustomResource):
         return LogProfile(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

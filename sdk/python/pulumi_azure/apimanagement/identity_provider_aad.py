@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['IdentityProviderAad']
 
 
 class IdentityProviderAad(pulumi.CustomResource):
-    allowed_tenants: pulumi.Output[list]
+    allowed_tenants: pulumi.Output[List[str]] = pulumi.output_property("allowedTenants")
     """
     List of allowed AAD Tenants.
     """
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
     """
-    client_id: pulumi.Output[str]
+    client_id: pulumi.Output[str] = pulumi.output_property("clientId")
     """
     Client Id of the Application in the AAD Identity Provider.
     """
-    client_secret: pulumi.Output[str]
+    client_secret: pulumi.Output[str] = pulumi.output_property("clientSecret")
     """
     Client secret of the Application in the AAD Identity Provider.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, allowed_tenants=None, api_management_name=None, client_id=None, client_secret=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, allowed_tenants: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, api_management_name: Optional[pulumi.Input[str]] = None, client_id: Optional[pulumi.Input[str]] = None, client_secret: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an API Management AAD Identity Provider.
 
@@ -57,7 +60,7 @@ class IdentityProviderAad(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allowed_tenants: List of allowed AAD Tenants.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_tenants: List of allowed AAD Tenants.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] client_id: Client Id of the Application in the AAD Identity Provider.
         :param pulumi.Input[str] client_secret: Client secret of the Application in the AAD Identity Provider.
@@ -74,7 +77,7 @@ class IdentityProviderAad(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,7 +105,7 @@ class IdentityProviderAad(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allowed_tenants=None, api_management_name=None, client_id=None, client_secret=None, resource_group_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, allowed_tenants: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, api_management_name: Optional[pulumi.Input[str]] = None, client_id: Optional[pulumi.Input[str]] = None, client_secret: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None) -> 'IdentityProviderAad':
         """
         Get an existing IdentityProviderAad resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -110,7 +113,7 @@ class IdentityProviderAad(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] allowed_tenants: List of allowed AAD Tenants.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_tenants: List of allowed AAD Tenants.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] client_id: Client Id of the Application in the AAD Identity Provider.
         :param pulumi.Input[str] client_secret: Client secret of the Application in the AAD Identity Provider.
@@ -128,7 +131,8 @@ class IdentityProviderAad(pulumi.CustomResource):
         return IdentityProviderAad(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

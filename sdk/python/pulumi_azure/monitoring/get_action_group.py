@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetActionGroupResult',
+    'AwaitableGetActionGroupResult',
+    'get_action_group',
+]
+
 
 class GetActionGroupResult:
     """
     A collection of values returned by getActionGroup.
     """
-    def __init__(__self__, arm_role_receivers=None, automation_runbook_receivers=None, azure_app_push_receivers=None, azure_function_receivers=None, email_receivers=None, enabled=None, id=None, itsm_receivers=None, logic_app_receivers=None, name=None, resource_group_name=None, short_name=None, sms_receivers=None, voice_receivers=None, webhook_receivers=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arm_role_receivers=None, automation_runbook_receivers=None, azure_app_push_receivers=None, azure_function_receivers=None, email_receivers=None, enabled=None, id=None, itsm_receivers=None, logic_app_receivers=None, name=None, resource_group_name=None, short_name=None, sms_receivers=None, voice_receivers=None, webhook_receivers=None) -> None:
         if arm_role_receivers and not isinstance(arm_role_receivers, list):
             raise TypeError("Expected argument 'arm_role_receivers' to be a list")
         __self__.arm_role_receivers = arm_role_receivers
@@ -100,6 +109,8 @@ class GetActionGroupResult:
         """
         One or more `webhook_receiver` blocks as defined below.
         """
+
+
 class AwaitableGetActionGroupResult(GetActionGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +133,8 @@ class AwaitableGetActionGroupResult(GetActionGroupResult):
             voice_receivers=self.voice_receivers,
             webhook_receivers=self.webhook_receivers)
 
-def get_action_group(name=None,resource_group_name=None,opts=None):
+
+def get_action_group(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActionGroupResult:
     """
     Use this data source to access the properties of an Action Group.
 
@@ -142,14 +154,12 @@ def get_action_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Action Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getActionGroup:getActionGroup', __args__, opts=opts).value
 
     return AwaitableGetActionGroupResult(

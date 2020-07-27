@@ -5,43 +5,46 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['UserAssignedIdentity']
 
 warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
 
 
 class UserAssignedIdentity(pulumi.CustomResource):
-    client_id: pulumi.Output[str]
+    client_id: pulumi.Output[str] = pulumi.output_property("clientId")
     """
     Client ID associated with the user assigned identity.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The location/region where the user assigned identity is
     created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the user assigned identity. Changing this forces a
     new identity to be created.
     """
-    principal_id: pulumi.Output[str]
+    principal_id: pulumi.Output[str] = pulumi.output_property("principalId")
     """
     Service Principal ID associated with the user assigned identity.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the user assigned identity.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
     warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a user assigned identity.
 
@@ -65,7 +68,7 @@ class UserAssignedIdentity(pulumi.CustomResource):
                new identity to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the user assigned identity.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.log.warn("UserAssignedIdentity is deprecated: azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity")
         if __name__ is not None:
@@ -79,7 +82,7 @@ class UserAssignedIdentity(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -100,7 +103,7 @@ class UserAssignedIdentity(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_id=None, location=None, name=None, principal_id=None, resource_group_name=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, client_id: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, principal_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'UserAssignedIdentity':
         """
         Get an existing UserAssignedIdentity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,7 +119,7 @@ class UserAssignedIdentity(pulumi.CustomResource):
         :param pulumi.Input[str] principal_id: Service Principal ID associated with the user assigned identity.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
                create the user assigned identity.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -131,7 +134,8 @@ class UserAssignedIdentity(pulumi.CustomResource):
         return UserAssignedIdentity(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

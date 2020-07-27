@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['TriggerRecurrence']
 
 
 class TriggerRecurrence(pulumi.CustomResource):
-    frequency: pulumi.Output[str]
+    frequency: pulumi.Output[str] = pulumi.output_property("frequency")
     """
     Specifies the Frequency at which this Trigger should be run. Possible values include `Month`, `Week`, `Day`, `Hour`, `Minute` and `Second`.
     """
-    interval: pulumi.Output[float]
+    interval: pulumi.Output[float] = pulumi.output_property("interval")
     """
     Specifies interval used for the Frequency, for example a value of `4` for `interval` and `hour` for `frequency` would run the Trigger every 4 hours.
     """
-    logic_app_id: pulumi.Output[str]
+    logic_app_id: pulumi.Output[str] = pulumi.output_property("logicAppId")
     """
     Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Recurrence Triggers to be created within the Logic App Workflow. Changing this forces a new resource to be created.
     """
-    start_time: pulumi.Output[str]
+    start_time: pulumi.Output[Optional[str]] = pulumi.output_property("startTime")
     """
     Specifies the start date and time for this trigger in RFC3339 format: `2000-01-02T03:04:05Z`.
     """
-    def __init__(__self__, resource_name, opts=None, frequency=None, interval=None, logic_app_id=None, name=None, start_time=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, frequency: Optional[pulumi.Input[str]] = None, interval: Optional[pulumi.Input[float]] = None, logic_app_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, start_time: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Recurrence Trigger within a Logic App Workflow
 
@@ -69,7 +72,7 @@ class TriggerRecurrence(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -93,7 +96,7 @@ class TriggerRecurrence(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, frequency=None, interval=None, logic_app_id=None, name=None, start_time=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, frequency: Optional[pulumi.Input[str]] = None, interval: Optional[pulumi.Input[float]] = None, logic_app_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, start_time: Optional[pulumi.Input[str]] = None) -> 'TriggerRecurrence':
         """
         Get an existing TriggerRecurrence resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,7 +122,8 @@ class TriggerRecurrence(pulumi.CustomResource):
         return TriggerRecurrence(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

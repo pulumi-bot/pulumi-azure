@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSubscriptionResult',
+    'AwaitableGetSubscriptionResult',
+    'get_subscription',
+]
+
 
 class GetSubscriptionResult:
     """
     A collection of values returned by getSubscription.
     """
-    def __init__(__self__, display_name=None, id=None, location_placement_id=None, quota_id=None, spending_limit=None, state=None, subscription_id=None, tenant_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, display_name=None, id=None, location_placement_id=None, quota_id=None, spending_limit=None, state=None, subscription_id=None, tenant_id=None) -> None:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
@@ -61,6 +69,8 @@ class GetSubscriptionResult:
         """
         The subscription tenant ID.
         """
+
+
 class AwaitableGetSubscriptionResult(GetSubscriptionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +86,8 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             subscription_id=self.subscription_id,
             tenant_id=self.tenant_id)
 
-def get_subscription(subscription_id=None,opts=None):
+
+def get_subscription(subscription_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubscriptionResult:
     """
     Use this data source to access information about an existing Subscription.
 
@@ -94,13 +105,11 @@ def get_subscription(subscription_id=None,opts=None):
     :param str subscription_id: Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
     """
     __args__ = dict()
-
-
     __args__['subscriptionId'] = subscription_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:core/getSubscription:getSubscription', __args__, opts=opts).value
 
     return AwaitableGetSubscriptionResult(

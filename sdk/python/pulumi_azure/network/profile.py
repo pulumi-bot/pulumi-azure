@@ -5,42 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Profile']
 
 
 class Profile(pulumi.CustomResource):
-    container_network_interface: pulumi.Output[dict]
+    container_network_interface: pulumi.Output['outputs.ProfileContainerNetworkInterface'] = pulumi.output_property("containerNetworkInterface")
     """
     A `container_network_interface` block as documented below.
-
-      * `ip_configurations` (`list`) - One or more `ip_configuration` blocks as documented below.
-        * `name` (`str`) - Specifies the name of the IP Configuration.
-        * `subnet_id` (`str`) - Reference to the subnet associated with the IP Configuration.
-
-      * `name` (`str`) - Specifies the name of the IP Configuration.
     """
-    container_network_interface_ids: pulumi.Output[list]
+    container_network_interface_ids: pulumi.Output[List[str]] = pulumi.output_property("containerNetworkInterfaceIds")
     """
     A list of Container Network Interface ID's.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Network Profile. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, container_network_interface=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, container_network_interface: Optional[pulumi.Input[pulumi.InputType['ProfileContainerNetworkInterfaceArgs']]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Network Profile.
 
@@ -80,19 +79,11 @@ class Profile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] container_network_interface: A `container_network_interface` block as documented below.
+        :param pulumi.Input[pulumi.InputType['ProfileContainerNetworkInterfaceArgs']] container_network_interface: A `container_network_interface` block as documented below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Network Profile. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **container_network_interface** object supports the following:
-
-          * `ip_configurations` (`pulumi.Input[list]`) - One or more `ip_configuration` blocks as documented below.
-            * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
-            * `subnet_id` (`pulumi.Input[str]`) - Reference to the subnet associated with the IP Configuration.
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +96,7 @@ class Profile(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,7 +119,7 @@ class Profile(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, container_network_interface=None, container_network_interface_ids=None, location=None, name=None, resource_group_name=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, container_network_interface: Optional[pulumi.Input[pulumi.InputType['ProfileContainerNetworkInterfaceArgs']]] = None, container_network_interface_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'Profile':
         """
         Get an existing Profile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -136,20 +127,12 @@ class Profile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] container_network_interface: A `container_network_interface` block as documented below.
-        :param pulumi.Input[list] container_network_interface_ids: A list of Container Network Interface ID's.
+        :param pulumi.Input[pulumi.InputType['ProfileContainerNetworkInterfaceArgs']] container_network_interface: A `container_network_interface` block as documented below.
+        :param pulumi.Input[List[pulumi.Input[str]]] container_network_interface_ids: A list of Container Network Interface ID's.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Network Profile. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **container_network_interface** object supports the following:
-
-          * `ip_configurations` (`pulumi.Input[list]`) - One or more `ip_configuration` blocks as documented below.
-            * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
-            * `subnet_id` (`pulumi.Input[str]`) - Reference to the subnet associated with the IP Configuration.
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -164,7 +147,8 @@ class Profile(pulumi.CustomResource):
         return Profile(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

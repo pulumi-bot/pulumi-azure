@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetMariaDbServerResult',
+    'AwaitableGetMariaDbServerResult',
+    'get_maria_db_server',
+]
+
 
 class GetMariaDbServerResult:
     """
     A collection of values returned by getMariaDbServer.
     """
-    def __init__(__self__, administrator_login=None, fqdn=None, id=None, location=None, name=None, resource_group_name=None, sku_name=None, ssl_enforcement=None, storage_profiles=None, tags=None, version=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, administrator_login=None, fqdn=None, id=None, location=None, name=None, resource_group_name=None, sku_name=None, ssl_enforcement=None, storage_profiles=None, tags=None, version=None) -> None:
         if administrator_login and not isinstance(administrator_login, str):
             raise TypeError("Expected argument 'administrator_login' to be a str")
         __self__.administrator_login = administrator_login
@@ -74,6 +83,8 @@ class GetMariaDbServerResult:
         """
         The version of MariaDB being used.
         """
+
+
 class AwaitableGetMariaDbServerResult(GetMariaDbServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -92,7 +103,8 @@ class AwaitableGetMariaDbServerResult(GetMariaDbServerResult):
             tags=self.tags,
             version=self.version)
 
-def get_maria_db_server(name=None,resource_group_name=None,opts=None):
+
+def get_maria_db_server(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMariaDbServerResult:
     """
     Use this data source to access information about an existing MariaDB Server.
 
@@ -112,14 +124,12 @@ def get_maria_db_server(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the MariaDB Server exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:mariadb/getMariaDbServer:getMariaDbServer', __args__, opts=opts).value
 
     return AwaitableGetMariaDbServerResult(

@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetVirtualNetworkGatewayResult',
+    'AwaitableGetVirtualNetworkGatewayResult',
+    'get_virtual_network_gateway',
+]
+
 
 class GetVirtualNetworkGatewayResult:
     """
     A collection of values returned by getVirtualNetworkGateway.
     """
-    def __init__(__self__, active_active=None, bgp_settings=None, default_local_network_gateway_id=None, enable_bgp=None, generation=None, id=None, ip_configurations=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, type=None, vpn_client_configurations=None, vpn_type=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, active_active=None, bgp_settings=None, default_local_network_gateway_id=None, enable_bgp=None, generation=None, id=None, ip_configurations=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, type=None, vpn_client_configurations=None, vpn_type=None) -> None:
         if active_active and not isinstance(active_active, bool):
             raise TypeError("Expected argument 'active_active' to be a bool")
         __self__.active_active = active_active
@@ -101,6 +110,8 @@ class GetVirtualNetworkGatewayResult:
         """
         The routing type of the Virtual Network Gateway.
         """
+
+
 class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +134,8 @@ class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
             vpn_client_configurations=self.vpn_client_configurations,
             vpn_type=self.vpn_type)
 
-def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network_gateway(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualNetworkGatewayResult:
     """
     Use this data source to access information about an existing Virtual Network Gateway.
 
@@ -143,14 +155,12 @@ def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway', __args__, opts=opts).value
 
     return AwaitableGetVirtualNetworkGatewayResult(

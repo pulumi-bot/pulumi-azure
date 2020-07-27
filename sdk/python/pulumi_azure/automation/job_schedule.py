@@ -5,37 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['JobSchedule']
 
 
 class JobSchedule(pulumi.CustomResource):
-    automation_account_name: pulumi.Output[str]
+    automation_account_name: pulumi.Output[str] = pulumi.output_property("automationAccountName")
     """
     The name of the Automation Account in which the Job Schedule is created. Changing this forces a new resource to be created.
     """
-    job_schedule_id: pulumi.Output[str]
+    job_schedule_id: pulumi.Output[str] = pulumi.output_property("jobScheduleId")
     """
     The UUID identifying the Automation Job Schedule.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Job Schedule is created. Changing this forces a new resource to be created.
     """
-    run_on: pulumi.Output[str]
+    run_on: pulumi.Output[Optional[str]] = pulumi.output_property("runOn")
     """
     Name of a Hybrid Worker Group the Runbook will be executed on. Changing this forces a new resource to be created.
     """
-    runbook_name: pulumi.Output[str]
+    runbook_name: pulumi.Output[str] = pulumi.output_property("runbookName")
     """
     The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
     """
-    schedule_name: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, automation_account_name=None, job_schedule_id=None, parameters=None, resource_group_name=None, run_on=None, runbook_name=None, schedule_name=None, __props__=None, __name__=None, __opts__=None):
+    schedule_name: pulumi.Output[str] = pulumi.output_property("scheduleName")
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, automation_account_name: Optional[pulumi.Input[str]] = None, job_schedule_id: Optional[pulumi.Input[str]] = None, parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, run_on: Optional[pulumi.Input[str]] = None, runbook_name: Optional[pulumi.Input[str]] = None, schedule_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Links an Automation Runbook and Schedule.
 
@@ -62,7 +65,7 @@ class JobSchedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the Automation Account in which the Job Schedule is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] job_schedule_id: The UUID identifying the Automation Job Schedule.
-        :param pulumi.Input[dict] parameters: A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Job Schedule is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] run_on: Name of a Hybrid Worker Group the Runbook will be executed on. Changing this forces a new resource to be created.
         :param pulumi.Input[str] runbook_name: The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
@@ -78,7 +81,7 @@ class JobSchedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -106,7 +109,7 @@ class JobSchedule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, automation_account_name=None, job_schedule_id=None, parameters=None, resource_group_name=None, run_on=None, runbook_name=None, schedule_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, automation_account_name: Optional[pulumi.Input[str]] = None, job_schedule_id: Optional[pulumi.Input[str]] = None, parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, run_on: Optional[pulumi.Input[str]] = None, runbook_name: Optional[pulumi.Input[str]] = None, schedule_name: Optional[pulumi.Input[str]] = None) -> 'JobSchedule':
         """
         Get an existing JobSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,7 +119,7 @@ class JobSchedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the Automation Account in which the Job Schedule is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] job_schedule_id: The UUID identifying the Automation Job Schedule.
-        :param pulumi.Input[dict] parameters: A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Job Schedule is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] run_on: Name of a Hybrid Worker Group the Runbook will be executed on. Changing this forces a new resource to be created.
         :param pulumi.Input[str] runbook_name: The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
@@ -135,7 +138,8 @@ class JobSchedule(pulumi.CustomResource):
         return JobSchedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

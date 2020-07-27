@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPublishedVersionResult',
+    'AwaitableGetPublishedVersionResult',
+    'get_published_version',
+]
+
 
 class GetPublishedVersionResult:
     """
     A collection of values returned by getPublishedVersion.
     """
-    def __init__(__self__, blueprint_name=None, description=None, display_name=None, id=None, last_modified=None, scope_id=None, target_scope=None, time_created=None, type=None, version=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, blueprint_name=None, description=None, display_name=None, id=None, last_modified=None, scope_id=None, target_scope=None, time_created=None, type=None, version=None) -> None:
         if blueprint_name and not isinstance(blueprint_name, str):
             raise TypeError("Expected argument 'blueprint_name' to be a str")
         __self__.blueprint_name = blueprint_name
@@ -58,6 +66,8 @@ class GetPublishedVersionResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPublishedVersionResult(GetPublishedVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,7 +85,8 @@ class AwaitableGetPublishedVersionResult(GetPublishedVersionResult):
             type=self.type,
             version=self.version)
 
-def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=None):
+
+def get_published_version(blueprint_name: Optional[str] = None, scope_id: Optional[str] = None, version: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublishedVersionResult:
     """
     Use this data source to access information about an existing Azure Blueprint Published Version
 
@@ -99,15 +110,13 @@ def get_published_version(blueprint_name=None,scope_id=None,version=None,opts=No
     :param str version: The Version name of the Published Version of the Blueprint Definition
     """
     __args__ = dict()
-
-
     __args__['blueprintName'] = blueprint_name
     __args__['scopeId'] = scope_id
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:blueprint/getPublishedVersion:getPublishedVersion', __args__, opts=opts).value
 
     return AwaitableGetPublishedVersionResult(

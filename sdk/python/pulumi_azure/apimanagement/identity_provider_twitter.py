@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['IdentityProviderTwitter']
 
 
 class IdentityProviderTwitter(pulumi.CustomResource):
-    api_key: pulumi.Output[str]
+    api_key: pulumi.Output[str] = pulumi.output_property("apiKey")
     """
     App Consumer API key for Twitter.
     """
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The Name of the API Management Service where this Twitter Identity Provider should be created. Changing this forces a new resource to be created.
     """
-    api_secret_key: pulumi.Output[str]
+    api_secret_key: pulumi.Output[str] = pulumi.output_property("apiSecretKey")
     """
     App Consumer API secret key for Twitter.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, api_key=None, api_management_name=None, api_secret_key=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_key: Optional[pulumi.Input[str]] = None, api_management_name: Optional[pulumi.Input[str]] = None, api_secret_key: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an API Management Twitter Identity Provider.
 
@@ -68,7 +71,7 @@ class IdentityProviderTwitter(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -93,7 +96,7 @@ class IdentityProviderTwitter(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_key=None, api_management_name=None, api_secret_key=None, resource_group_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, api_key: Optional[pulumi.Input[str]] = None, api_management_name: Optional[pulumi.Input[str]] = None, api_secret_key: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None) -> 'IdentityProviderTwitter':
         """
         Get an existing IdentityProviderTwitter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -117,7 +120,8 @@ class IdentityProviderTwitter(pulumi.CustomResource):
         return IdentityProviderTwitter(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

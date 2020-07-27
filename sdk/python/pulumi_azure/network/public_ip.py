@@ -5,70 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['PublicIp']
 
 
 class PublicIp(pulumi.CustomResource):
-    allocation_method: pulumi.Output[str]
+    allocation_method: pulumi.Output[str] = pulumi.output_property("allocationMethod")
     """
     Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`.
     """
-    domain_name_label: pulumi.Output[str]
+    domain_name_label: pulumi.Output[Optional[str]] = pulumi.output_property("domainNameLabel")
     """
     Label for the Domain Name. Will be used to make up the FQDN.  If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
     """
-    fqdn: pulumi.Output[str]
+    fqdn: pulumi.Output[str] = pulumi.output_property("fqdn")
     """
     Fully qualified domain name of the A DNS record associated with the public IP. `domain_name_label` must be specified to get the `fqdn`. This is the concatenation of the `domain_name_label` and the regionalized DNS zone
     """
-    idle_timeout_in_minutes: pulumi.Output[float]
+    idle_timeout_in_minutes: pulumi.Output[Optional[float]] = pulumi.output_property("idleTimeoutInMinutes")
     """
     Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes.
     """
-    ip_address: pulumi.Output[str]
+    ip_address: pulumi.Output[str] = pulumi.output_property("ipAddress")
     """
     The IP address value that was allocated.
     """
-    ip_version: pulumi.Output[str]
+    ip_version: pulumi.Output[Optional[str]] = pulumi.output_property("ipVersion")
     """
     The IP Version to use, IPv6 or IPv4.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Public IP resource . Changing this forces a
     new resource to be created.
     """
-    public_ip_prefix_id: pulumi.Output[str]
+    public_ip_prefix_id: pulumi.Output[Optional[str]] = pulumi.output_property("publicIpPrefixId")
     """
     If specified then public IP address allocated will be provided from the public IP prefix resource.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the public ip.
     """
-    reverse_fqdn: pulumi.Output[str]
+    reverse_fqdn: pulumi.Output[Optional[str]] = pulumi.output_property("reverseFqdn")
     """
     A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
     """
-    sku: pulumi.Output[str]
+    sku: pulumi.Output[Optional[str]] = pulumi.output_property("sku")
     """
     The SKU of the Public IP. Accepted values are `Basic` and `Standard`. Defaults to `Basic`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    zones: pulumi.Output[str]
+    zones: pulumi.Output[Optional[str]] = pulumi.output_property("zones")
     """
     A collection containing the availability zone to allocate the Public IP in.
     """
-    def __init__(__self__, resource_name, opts=None, allocation_method=None, domain_name_label=None, idle_timeout_in_minutes=None, ip_version=None, location=None, name=None, public_ip_prefix_id=None, resource_group_name=None, reverse_fqdn=None, sku=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, allocation_method: Optional[pulumi.Input[str]] = None, domain_name_label: Optional[pulumi.Input[str]] = None, idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None, ip_version: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, public_ip_prefix_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, reverse_fqdn: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, zones: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Public IP Address.
 
@@ -102,7 +105,7 @@ class PublicIp(pulumi.CustomResource):
                create the public ip.
         :param pulumi.Input[str] reverse_fqdn: A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
         :param pulumi.Input[str] sku: The SKU of the Public IP. Accepted values are `Basic` and `Standard`. Defaults to `Basic`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zones: A collection containing the availability zone to allocate the Public IP in.
         """
         if __name__ is not None:
@@ -116,7 +119,7 @@ class PublicIp(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -147,7 +150,7 @@ class PublicIp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocation_method=None, domain_name_label=None, fqdn=None, idle_timeout_in_minutes=None, ip_address=None, ip_version=None, location=None, name=None, public_ip_prefix_id=None, resource_group_name=None, reverse_fqdn=None, sku=None, tags=None, zones=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, allocation_method: Optional[pulumi.Input[str]] = None, domain_name_label: Optional[pulumi.Input[str]] = None, fqdn: Optional[pulumi.Input[str]] = None, idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None, ip_address: Optional[pulumi.Input[str]] = None, ip_version: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, public_ip_prefix_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, reverse_fqdn: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, zones: Optional[pulumi.Input[str]] = None) -> 'PublicIp':
         """
         Get an existing PublicIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -169,7 +172,7 @@ class PublicIp(pulumi.CustomResource):
                create the public ip.
         :param pulumi.Input[str] reverse_fqdn: A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
         :param pulumi.Input[str] sku: The SKU of the Public IP. Accepted values are `Basic` and `Standard`. Defaults to `Basic`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zones: A collection containing the availability zone to allocate the Public IP in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -193,7 +196,8 @@ class PublicIp(pulumi.CustomResource):
         return PublicIp(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

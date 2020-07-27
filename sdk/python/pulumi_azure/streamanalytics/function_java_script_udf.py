@@ -5,40 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['FunctionJavaScriptUDF']
 
 
 class FunctionJavaScriptUDF(pulumi.CustomResource):
-    inputs: pulumi.Output[list]
+    inputs: pulumi.Output[List['outputs.FunctionJavaScriptUDFInput']] = pulumi.output_property("inputs")
     """
     One or more `input` blocks as defined below.
-
-      * `type` (`str`) - The Data Type for the Input Argument of this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
     """
-    output: pulumi.Output[dict]
+    output: pulumi.Output['outputs.FunctionJavaScriptUDFOutput'] = pulumi.output_property("output")
     """
     An `output` blocks as defined below.
-
-      * `type` (`str`) - The Data Type output from this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
     """
-    script: pulumi.Output[str]
+    script: pulumi.Output[str] = pulumi.output_property("script")
     """
     The JavaScript of this UDF Function.
     """
-    stream_analytics_job_name: pulumi.Output[str]
+    stream_analytics_job_name: pulumi.Output[str] = pulumi.output_property("streamAnalyticsJobName")
     """
     The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, inputs=None, name=None, output=None, resource_group_name=None, script=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, inputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None, output: Optional[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFOutputArgs']]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, script: Optional[pulumi.Input[str]] = None, stream_analytics_job_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
 
@@ -68,20 +69,12 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] inputs: One or more `input` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]] inputs: One or more `input` blocks as defined below.
         :param pulumi.Input[str] name: The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] output: An `output` blocks as defined below.
+        :param pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFOutputArgs']] output: An `output` blocks as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] script: The JavaScript of this UDF Function.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-
-        The **inputs** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The Data Type for the Input Argument of this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-
-        The **output** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The Data Type output from this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,7 +87,7 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -123,7 +116,7 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, inputs=None, name=None, output=None, resource_group_name=None, script=None, stream_analytics_job_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, inputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]]] = None, name: Optional[pulumi.Input[str]] = None, output: Optional[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFOutputArgs']]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, script: Optional[pulumi.Input[str]] = None, stream_analytics_job_name: Optional[pulumi.Input[str]] = None) -> 'FunctionJavaScriptUDF':
         """
         Get an existing FunctionJavaScriptUDF resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,20 +124,12 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] inputs: One or more `input` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]] inputs: One or more `input` blocks as defined below.
         :param pulumi.Input[str] name: The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] output: An `output` blocks as defined below.
+        :param pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFOutputArgs']] output: An `output` blocks as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] script: The JavaScript of this UDF Function.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-
-        The **inputs** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The Data Type for the Input Argument of this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-
-        The **output** object supports the following:
-
-          * `type` (`pulumi.Input[str]`) - The Data Type output from this JavaScript Function. Possible values include `array`, `any`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,7 +144,8 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
         return FunctionJavaScriptUDF(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

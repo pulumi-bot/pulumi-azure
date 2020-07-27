@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['StoreFile']
 
 
 class StoreFile(pulumi.CustomResource):
-    account_name: pulumi.Output[str]
+    account_name: pulumi.Output[str] = pulumi.output_property("accountName")
     """
     Specifies the name of the Data Lake Store for which the File should created.
     """
-    local_file_path: pulumi.Output[str]
+    local_file_path: pulumi.Output[str] = pulumi.output_property("localFilePath")
     """
     The path to the local file to be added to the Data Lake Store.
     """
-    remote_file_path: pulumi.Output[str]
+    remote_file_path: pulumi.Output[str] = pulumi.output_property("remoteFilePath")
     """
     The path created for the file on the Data Lake Store.
     """
-    def __init__(__self__, resource_name, opts=None, account_name=None, local_file_path=None, remote_file_path=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_name: Optional[pulumi.Input[str]] = None, local_file_path: Optional[pulumi.Input[str]] = None, remote_file_path: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Azure Data Lake Store File.
 
@@ -62,7 +65,7 @@ class StoreFile(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -84,7 +87,7 @@ class StoreFile(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_name=None, local_file_path=None, remote_file_path=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, account_name: Optional[pulumi.Input[str]] = None, local_file_path: Optional[pulumi.Input[str]] = None, remote_file_path: Optional[pulumi.Input[str]] = None) -> 'StoreFile':
         """
         Get an existing StoreFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,7 +109,8 @@ class StoreFile(pulumi.CustomResource):
         return StoreFile(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

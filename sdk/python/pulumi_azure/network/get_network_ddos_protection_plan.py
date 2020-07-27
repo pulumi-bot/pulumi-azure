@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetNetworkDdosProtectionPlanResult',
+    'AwaitableGetNetworkDdosProtectionPlanResult',
+    'get_network_ddos_protection_plan',
+]
+
 
 class GetNetworkDdosProtectionPlanResult:
     """
     A collection of values returned by getNetworkDdosProtectionPlan.
     """
-    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, tags=None, virtual_network_ids=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, tags=None, virtual_network_ids=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -43,6 +51,8 @@ class GetNetworkDdosProtectionPlanResult:
         """
         The Resource ID list of the Virtual Networks associated with DDoS Protection Plan.
         """
+
+
 class AwaitableGetNetworkDdosProtectionPlanResult(GetNetworkDdosProtectionPlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +66,8 @@ class AwaitableGetNetworkDdosProtectionPlanResult(GetNetworkDdosProtectionPlanRe
             tags=self.tags,
             virtual_network_ids=self.virtual_network_ids)
 
-def get_network_ddos_protection_plan(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_network_ddos_protection_plan(name: Optional[str] = None, resource_group_name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkDdosProtectionPlanResult:
     """
     Use this data source to access information about an existing Azure Network DDoS Protection Plan.
 
@@ -74,18 +85,16 @@ def get_network_ddos_protection_plan(name=None,resource_group_name=None,tags=Non
 
     :param str name: The name of the Network DDoS Protection Plan.
     :param str resource_group_name: The name of the resource group where the Network DDoS Protection Plan exists.
-    :param dict tags: A mapping of tags assigned to the resource.
+    :param Dict[str, str] tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getNetworkDdosProtectionPlan:getNetworkDdosProtectionPlan', __args__, opts=opts).value
 
     return AwaitableGetNetworkDdosProtectionPlanResult(

@@ -5,34 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['TableEntity']
 
 
 class TableEntity(pulumi.CustomResource):
-    entity: pulumi.Output[dict]
+    entity: pulumi.Output[Dict[str, str]] = pulumi.output_property("entity")
     """
     A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
     """
-    partition_key: pulumi.Output[str]
+    partition_key: pulumi.Output[str] = pulumi.output_property("partitionKey")
     """
     The key for the partition where the entity will be inserted/merged. Changing this forces a new resource.
     """
-    row_key: pulumi.Output[str]
+    row_key: pulumi.Output[str] = pulumi.output_property("rowKey")
     """
     The key for the row where the entity will be inserted/merged. Changing this forces a new resource.
     """
-    storage_account_name: pulumi.Output[str]
+    storage_account_name: pulumi.Output[str] = pulumi.output_property("storageAccountName")
     """
     Specifies the storage account in which to create the storage table entity.
     Changing this forces a new resource to be created.
     """
-    table_name: pulumi.Output[str]
+    table_name: pulumi.Output[str] = pulumi.output_property("tableName")
     """
     The name of the storage table in which to create the storage table entity.
     Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, entity=None, partition_key=None, row_key=None, storage_account_name=None, table_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, entity: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, partition_key: Optional[pulumi.Input[str]] = None, row_key: Optional[pulumi.Input[str]] = None, storage_account_name: Optional[pulumi.Input[str]] = None, table_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Entity within a Table in an Azure Storage Account.
 
@@ -63,7 +66,7 @@ class TableEntity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
         :param pulumi.Input[str] partition_key: The key for the partition where the entity will be inserted/merged. Changing this forces a new resource.
         :param pulumi.Input[str] row_key: The key for the row where the entity will be inserted/merged. Changing this forces a new resource.
         :param pulumi.Input[str] storage_account_name: Specifies the storage account in which to create the storage table entity.
@@ -82,7 +85,7 @@ class TableEntity(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -110,7 +113,7 @@ class TableEntity(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, entity=None, partition_key=None, row_key=None, storage_account_name=None, table_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, entity: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, partition_key: Optional[pulumi.Input[str]] = None, row_key: Optional[pulumi.Input[str]] = None, storage_account_name: Optional[pulumi.Input[str]] = None, table_name: Optional[pulumi.Input[str]] = None) -> 'TableEntity':
         """
         Get an existing TableEntity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -118,7 +121,7 @@ class TableEntity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
         :param pulumi.Input[str] partition_key: The key for the partition where the entity will be inserted/merged. Changing this forces a new resource.
         :param pulumi.Input[str] row_key: The key for the row where the entity will be inserted/merged. Changing this forces a new resource.
         :param pulumi.Input[str] storage_account_name: Specifies the storage account in which to create the storage table entity.
@@ -138,7 +141,8 @@ class TableEntity(pulumi.CustomResource):
         return TableEntity(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

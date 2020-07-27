@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DedicatedHostGroup']
 
 
 class DedicatedHostGroup(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The Azure location where the Dedicated Host Group exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Dedicated Host Group. Changing this forces a new resource to be created.
     """
-    platform_fault_domain_count: pulumi.Output[float]
+    platform_fault_domain_count: pulumi.Output[float] = pulumi.output_property("platformFaultDomainCount")
     """
     The number of fault domains that the Dedicated Host Group spans. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the resource group the Dedicated Host Group is located in. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    zones: pulumi.Output[str]
+    zones: pulumi.Output[Optional[str]] = pulumi.output_property("zones")
     """
     A list of Availability Zones in which the Dedicated Host Group should be located. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, platform_fault_domain_count=None, resource_group_name=None, tags=None, zones=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, platform_fault_domain_count: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, zones: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manage a Dedicated Host Group.
 
@@ -57,7 +60,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Dedicated Host Group. Changing this forces a new resource to be created.
         :param pulumi.Input[float] platform_fault_domain_count: The number of fault domains that the Dedicated Host Group spans. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zones: A list of Availability Zones in which the Dedicated Host Group should be located. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
@@ -71,7 +74,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,7 +97,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, location=None, name=None, platform_fault_domain_count=None, resource_group_name=None, tags=None, zones=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, platform_fault_domain_count: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, zones: Optional[pulumi.Input[str]] = None) -> 'DedicatedHostGroup':
         """
         Get an existing DedicatedHostGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,7 +109,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Dedicated Host Group. Changing this forces a new resource to be created.
         :param pulumi.Input[float] platform_fault_domain_count: The number of fault domains that the Dedicated Host Group spans. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zones: A list of Availability Zones in which the Dedicated Host Group should be located. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -122,7 +125,8 @@ class DedicatedHostGroup(pulumi.CustomResource):
         return DedicatedHostGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

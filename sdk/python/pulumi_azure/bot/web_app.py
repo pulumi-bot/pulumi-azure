@@ -5,64 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['WebApp']
 
 
 class WebApp(pulumi.CustomResource):
-    developer_app_insights_api_key: pulumi.Output[str]
+    developer_app_insights_api_key: pulumi.Output[str] = pulumi.output_property("developerAppInsightsApiKey")
     """
     The Application Insights API Key to associate with the Web App Bot.
     """
-    developer_app_insights_application_id: pulumi.Output[str]
+    developer_app_insights_application_id: pulumi.Output[str] = pulumi.output_property("developerAppInsightsApplicationId")
     """
     The Application Insights Application ID to associate with the Web App Bot.
     """
-    developer_app_insights_key: pulumi.Output[str]
+    developer_app_insights_key: pulumi.Output[str] = pulumi.output_property("developerAppInsightsKey")
     """
     The Application Insights Key to associate with the Web App Bot.
     """
-    display_name: pulumi.Output[str]
+    display_name: pulumi.Output[str] = pulumi.output_property("displayName")
     """
     The name of the Web App Bot will be displayed as. This defaults to `name` if not specified.
     """
-    endpoint: pulumi.Output[str]
+    endpoint: pulumi.Output[Optional[str]] = pulumi.output_property("endpoint")
     """
     The Web App Bot endpoint.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    luis_app_ids: pulumi.Output[list]
+    luis_app_ids: pulumi.Output[Optional[List[str]]] = pulumi.output_property("luisAppIds")
     """
     A list of LUIS App IDs to associate with the Web App Bot.
     """
-    luis_key: pulumi.Output[str]
+    luis_key: pulumi.Output[Optional[str]] = pulumi.output_property("luisKey")
     """
     The LUIS key to associate with the Web App Bot.
     """
-    microsoft_app_id: pulumi.Output[str]
+    microsoft_app_id: pulumi.Output[str] = pulumi.output_property("microsoftAppId")
     """
     The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
     """
-    sku: pulumi.Output[str]
+    sku: pulumi.Output[str] = pulumi.output_property("sku")
     """
     The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, developer_app_insights_api_key=None, developer_app_insights_application_id=None, developer_app_insights_key=None, display_name=None, endpoint=None, location=None, luis_app_ids=None, luis_key=None, microsoft_app_id=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, developer_app_insights_api_key: Optional[pulumi.Input[str]] = None, developer_app_insights_application_id: Optional[pulumi.Input[str]] = None, developer_app_insights_key: Optional[pulumi.Input[str]] = None, display_name: Optional[pulumi.Input[str]] = None, endpoint: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, luis_app_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, luis_key: Optional[pulumi.Input[str]] = None, microsoft_app_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Bot Web App.
 
@@ -89,13 +92,13 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name of the Web App Bot will be displayed as. This defaults to `name` if not specified.
         :param pulumi.Input[str] endpoint: The Web App Bot endpoint.
         :param pulumi.Input[str] location: The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] luis_app_ids: A list of LUIS App IDs to associate with the Web App Bot.
+        :param pulumi.Input[List[pulumi.Input[str]]] luis_app_ids: A list of LUIS App IDs to associate with the Web App Bot.
         :param pulumi.Input[str] luis_key: The LUIS key to associate with the Web App Bot.
         :param pulumi.Input[str] microsoft_app_id: The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku: The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,7 +111,7 @@ class WebApp(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -140,7 +143,7 @@ class WebApp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, developer_app_insights_api_key=None, developer_app_insights_application_id=None, developer_app_insights_key=None, display_name=None, endpoint=None, location=None, luis_app_ids=None, luis_key=None, microsoft_app_id=None, name=None, resource_group_name=None, sku=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, developer_app_insights_api_key: Optional[pulumi.Input[str]] = None, developer_app_insights_application_id: Optional[pulumi.Input[str]] = None, developer_app_insights_key: Optional[pulumi.Input[str]] = None, display_name: Optional[pulumi.Input[str]] = None, endpoint: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, luis_app_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, luis_key: Optional[pulumi.Input[str]] = None, microsoft_app_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'WebApp':
         """
         Get an existing WebApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -154,13 +157,13 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name of the Web App Bot will be displayed as. This defaults to `name` if not specified.
         :param pulumi.Input[str] endpoint: The Web App Bot endpoint.
         :param pulumi.Input[str] location: The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] luis_app_ids: A list of LUIS App IDs to associate with the Web App Bot.
+        :param pulumi.Input[List[pulumi.Input[str]]] luis_app_ids: A list of LUIS App IDs to associate with the Web App Bot.
         :param pulumi.Input[str] luis_key: The LUIS key to associate with the Web App Bot.
         :param pulumi.Input[str] microsoft_app_id: The Microsoft Application ID for the Web App Bot. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Web App Bot. Changing this forces a new resource to be created. Must be globally unique.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku: The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -182,7 +185,8 @@ class WebApp(pulumi.CustomResource):
         return WebApp(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

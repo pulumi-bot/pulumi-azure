@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetLogProfileResult',
+    'AwaitableGetLogProfileResult',
+    'get_log_profile',
+]
+
 
 class GetLogProfileResult:
     """
     A collection of values returned by getLogProfile.
     """
-    def __init__(__self__, categories=None, id=None, locations=None, name=None, retention_policies=None, servicebus_rule_id=None, storage_account_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, categories=None, id=None, locations=None, name=None, retention_policies=None, servicebus_rule_id=None, storage_account_id=None) -> None:
         if categories and not isinstance(categories, list):
             raise TypeError("Expected argument 'categories' to be a list")
         __self__.categories = categories
@@ -49,6 +58,8 @@ class GetLogProfileResult:
         """
         The resource id of the storage account in which the Activity Log is stored.
         """
+
+
 class AwaitableGetLogProfileResult(GetLogProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +74,8 @@ class AwaitableGetLogProfileResult(GetLogProfileResult):
             servicebus_rule_id=self.servicebus_rule_id,
             storage_account_id=self.storage_account_id)
 
-def get_log_profile(name=None,opts=None):
+
+def get_log_profile(name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogProfileResult:
     """
     Use this data source to access the properties of a Log Profile.
 
@@ -81,13 +93,11 @@ def get_log_profile(name=None,opts=None):
     :param str name: Specifies the Name of the Log Profile.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getLogProfile:getLogProfile', __args__, opts=opts).value
 
     return AwaitableGetLogProfileResult(

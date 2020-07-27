@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ProtectedFileShare']
 
 
 class ProtectedFileShare(pulumi.CustomResource):
-    backup_policy_id: pulumi.Output[str]
+    backup_policy_id: pulumi.Output[str] = pulumi.output_property("backupPolicyId")
     """
     Specifies the ID of the backup policy to use. The policy must be an Azure File Share backup policy. Other types are not supported.
     """
-    recovery_vault_name: pulumi.Output[str]
+    recovery_vault_name: pulumi.Output[str] = pulumi.output_property("recoveryVaultName")
     """
     Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Azure Backup Protected File Share. Changing this forces a new resource to be created.
     """
-    source_file_share_name: pulumi.Output[str]
+    source_file_share_name: pulumi.Output[str] = pulumi.output_property("sourceFileShareName")
     """
     Specifies the name of the file share to backup. Changing this forces a new resource to be created.
     """
-    source_storage_account_id: pulumi.Output[str]
+    source_storage_account_id: pulumi.Output[str] = pulumi.output_property("sourceStorageAccountId")
     """
     Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, backup_policy_id=None, recovery_vault_name=None, resource_group_name=None, source_file_share_name=None, source_storage_account_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, backup_policy_id: Optional[pulumi.Input[str]] = None, recovery_vault_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, source_file_share_name: Optional[pulumi.Input[str]] = None, source_storage_account_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure Backup Protected File Share to enable backups for file shares within an Azure Storage Account
 
@@ -96,7 +99,7 @@ class ProtectedFileShare(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -124,7 +127,7 @@ class ProtectedFileShare(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backup_policy_id=None, recovery_vault_name=None, resource_group_name=None, source_file_share_name=None, source_storage_account_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, backup_policy_id: Optional[pulumi.Input[str]] = None, recovery_vault_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, source_file_share_name: Optional[pulumi.Input[str]] = None, source_storage_account_id: Optional[pulumi.Input[str]] = None) -> 'ProtectedFileShare':
         """
         Get an existing ProtectedFileShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -150,7 +153,8 @@ class ProtectedFileShare(pulumi.CustomResource):
         return ProtectedFileShare(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

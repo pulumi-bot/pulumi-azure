@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetStoreResult',
+    'AwaitableGetStoreResult',
+    'get_store',
+]
+
 
 class GetStoreResult:
     """
     A collection of values returned by getStore.
     """
-    def __init__(__self__, encryption_state=None, encryption_type=None, firewall_allow_azure_ips=None, firewall_state=None, id=None, location=None, name=None, resource_group_name=None, tags=None, tier=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, encryption_state=None, encryption_type=None, firewall_allow_azure_ips=None, firewall_state=None, id=None, location=None, name=None, resource_group_name=None, tags=None, tier=None) -> None:
         if encryption_state and not isinstance(encryption_state, str):
             raise TypeError("Expected argument 'encryption_state' to be a str")
         __self__.encryption_state = encryption_state
@@ -64,6 +72,8 @@ class GetStoreResult:
         """
         Current monthly commitment tier for the account.
         """
+
+
 class AwaitableGetStoreResult(GetStoreResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +91,8 @@ class AwaitableGetStoreResult(GetStoreResult):
             tags=self.tags,
             tier=self.tier)
 
-def get_store(name=None,resource_group_name=None,opts=None):
+
+def get_store(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStoreResult:
     """
     Use this data source to access information about an existing Data Lake Store.
 
@@ -101,14 +112,12 @@ def get_store(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Data Lake Store exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datalake/getStore:getStore', __args__, opts=opts).value
 
     return AwaitableGetStoreResult(

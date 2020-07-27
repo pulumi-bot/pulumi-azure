@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCertificateOrderResult',
+    'AwaitableGetCertificateOrderResult',
+    'get_certificate_order',
+]
+
 
 class GetCertificateOrderResult:
     """
     A collection of values returned by getCertificateOrder.
     """
-    def __init__(__self__, app_service_certificate_not_renewable_reasons=None, auto_renew=None, certificates=None, csr=None, distinguished_name=None, domain_verification_token=None, expiration_time=None, id=None, intermediate_thumbprint=None, is_private_key_external=None, key_size=None, location=None, name=None, product_type=None, resource_group_name=None, root_thumbprint=None, signed_certificate_thumbprint=None, status=None, tags=None, validity_in_years=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, app_service_certificate_not_renewable_reasons=None, auto_renew=None, certificates=None, csr=None, distinguished_name=None, domain_verification_token=None, expiration_time=None, id=None, intermediate_thumbprint=None, is_private_key_external=None, key_size=None, location=None, name=None, product_type=None, resource_group_name=None, root_thumbprint=None, signed_certificate_thumbprint=None, status=None, tags=None, validity_in_years=None) -> None:
         if app_service_certificate_not_renewable_reasons and not isinstance(app_service_certificate_not_renewable_reasons, list):
             raise TypeError("Expected argument 'app_service_certificate_not_renewable_reasons' to be a list")
         __self__.app_service_certificate_not_renewable_reasons = app_service_certificate_not_renewable_reasons
@@ -127,6 +136,8 @@ class GetCertificateOrderResult:
         """
         Duration in years (must be between 1 and 3).
         """
+
+
 class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -154,7 +165,8 @@ class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
             tags=self.tags,
             validity_in_years=self.validity_in_years)
 
-def get_certificate_order(name=None,resource_group_name=None,opts=None):
+
+def get_certificate_order(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateOrderResult:
     """
     Use this data source to access information about an existing App Service Certificate Order.
 
@@ -174,14 +186,12 @@ def get_certificate_order(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificateOrder:getCertificateOrder', __args__, opts=opts).value
 
     return AwaitableGetCertificateOrderResult(

@@ -5,52 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Namespace']
 
 
 class Namespace(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the Azure Relay Namespace exists. Changing this forces a new resource to be created.
     """
-    metric_id: pulumi.Output[str]
+    metric_id: pulumi.Output[str] = pulumi.output_property("metricId")
     """
     The Identifier for Azure Insights metrics.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Azure Relay Namespace. Changing this forces a new resource to be created.
     """
-    primary_connection_string: pulumi.Output[str]
+    primary_connection_string: pulumi.Output[str] = pulumi.output_property("primaryConnectionString")
     """
     The primary connection string for the authorization rule `RootManageSharedAccessKey`.
     """
-    primary_key: pulumi.Output[str]
+    primary_key: pulumi.Output[str] = pulumi.output_property("primaryKey")
     """
     The primary access key for the authorization rule `RootManageSharedAccessKey`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Azure Relay Namespace.
     """
-    secondary_connection_string: pulumi.Output[str]
+    secondary_connection_string: pulumi.Output[str] = pulumi.output_property("secondaryConnectionString")
     """
     The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
     """
-    secondary_key: pulumi.Output[str]
+    secondary_key: pulumi.Output[str] = pulumi.output_property("secondaryKey")
     """
     The secondary access key for the authorization rule `RootManageSharedAccessKey`.
     """
-    sku_name: pulumi.Output[str]
+    sku_name: pulumi.Output[str] = pulumi.output_property("skuName")
     """
     The name of the SKU to use. At this time the only supported value is `Standard`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, sku_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, sku_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure Relay Namespace.
 
@@ -76,7 +79,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Azure Relay Namespace. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Azure Relay Namespace.
         :param pulumi.Input[str] sku_name: The name of the SKU to use. At this time the only supported value is `Standard`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +92,7 @@ class Namespace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -116,7 +119,7 @@ class Namespace(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, location=None, metric_id=None, name=None, primary_connection_string=None, primary_key=None, resource_group_name=None, secondary_connection_string=None, secondary_key=None, sku_name=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, location: Optional[pulumi.Input[str]] = None, metric_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, primary_connection_string: Optional[pulumi.Input[str]] = None, primary_key: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, secondary_connection_string: Optional[pulumi.Input[str]] = None, secondary_key: Optional[pulumi.Input[str]] = None, sku_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,7 +136,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_connection_string: The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
         :param pulumi.Input[str] secondary_key: The secondary access key for the authorization rule `RootManageSharedAccessKey`.
         :param pulumi.Input[str] sku_name: The name of the SKU to use. At this time the only supported value is `Standard`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,7 +155,8 @@ class Namespace(pulumi.CustomResource):
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

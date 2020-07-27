@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['GroupUser']
 
 
 class GroupUser(pulumi.CustomResource):
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.output_property("apiManagementName")
     """
     The name of the API Management Service. Changing this forces a new resource to be created.
     """
-    group_name: pulumi.Output[str]
+    group_name: pulumi.Output[str] = pulumi.output_property("groupName")
     """
     The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
     """
-    user_id: pulumi.Output[str]
+    user_id: pulumi.Output[str] = pulumi.output_property("userId")
     """
     The ID of the API Management User which should be assigned to this API Management Group. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, api_management_name=None, group_name=None, resource_group_name=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, api_management_name: Optional[pulumi.Input[str]] = None, group_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, user_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an API Management User Assignment to a Group.
 
@@ -64,7 +67,7 @@ class GroupUser(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -89,7 +92,7 @@ class GroupUser(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_management_name=None, group_name=None, resource_group_name=None, user_id=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, api_management_name: Optional[pulumi.Input[str]] = None, group_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, user_id: Optional[pulumi.Input[str]] = None) -> 'GroupUser':
         """
         Get an existing GroupUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,7 +116,8 @@ class GroupUser(pulumi.CustomResource):
         return GroupUser(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

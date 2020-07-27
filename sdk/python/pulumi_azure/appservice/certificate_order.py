@@ -5,93 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CertificateOrder']
 
 
 class CertificateOrder(pulumi.CustomResource):
-    app_service_certificate_not_renewable_reasons: pulumi.Output[list]
+    app_service_certificate_not_renewable_reasons: pulumi.Output[List[str]] = pulumi.output_property("appServiceCertificateNotRenewableReasons")
     """
     Reasons why App Service Certificate is not renewable at the current moment.
     """
-    auto_renew: pulumi.Output[bool]
+    auto_renew: pulumi.Output[Optional[bool]] = pulumi.output_property("autoRenew")
     """
     true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to true.
     """
-    certificates: pulumi.Output[list]
+    certificates: pulumi.Output[List['outputs.CertificateOrderCertificate']] = pulumi.output_property("certificates")
     """
     State of the Key Vault secret. A `certificates` block as defined below.
-
-      * `certificateName` (`str`) - The name of the App Service Certificate.
-      * `key_vault_id` (`str`) - Key Vault resource Id.
-      * `keyVaultSecretName` (`str`) - Key Vault secret name.
-      * `provisioningState` (`str`) - Status of the Key Vault secret.
     """
-    csr: pulumi.Output[str]
+    csr: pulumi.Output[str] = pulumi.output_property("csr")
     """
     Last CSR that was created for this order.
     """
-    distinguished_name: pulumi.Output[str]
+    distinguished_name: pulumi.Output[str] = pulumi.output_property("distinguishedName")
     """
     The Distinguished Name for the App Service Certificate Order.
     """
-    domain_verification_token: pulumi.Output[str]
+    domain_verification_token: pulumi.Output[str] = pulumi.output_property("domainVerificationToken")
     """
     Domain verification token.
     """
-    expiration_time: pulumi.Output[str]
+    expiration_time: pulumi.Output[str] = pulumi.output_property("expirationTime")
     """
     Certificate expiration time.
     """
-    intermediate_thumbprint: pulumi.Output[str]
+    intermediate_thumbprint: pulumi.Output[str] = pulumi.output_property("intermediateThumbprint")
     """
     Certificate thumbprint intermediate certificate.
     """
-    is_private_key_external: pulumi.Output[bool]
+    is_private_key_external: pulumi.Output[bool] = pulumi.output_property("isPrivateKeyExternal")
     """
     Whether the private key is external or not.
     """
-    key_size: pulumi.Output[float]
+    key_size: pulumi.Output[Optional[float]] = pulumi.output_property("keySize")
     """
     Certificate key size.  Defaults to 2048.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Currently the only valid value is `global`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the certificate. Changing this forces a new resource to be created.
     """
-    product_type: pulumi.Output[str]
+    product_type: pulumi.Output[Optional[str]] = pulumi.output_property("productType")
     """
     Certificate product type, such as `Standard` or `WildCard`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
     """
-    root_thumbprint: pulumi.Output[str]
+    root_thumbprint: pulumi.Output[str] = pulumi.output_property("rootThumbprint")
     """
     Certificate thumbprint for root certificate.
     """
-    signed_certificate_thumbprint: pulumi.Output[str]
+    signed_certificate_thumbprint: pulumi.Output[str] = pulumi.output_property("signedCertificateThumbprint")
     """
     Certificate thumbprint for signed certificate.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[str] = pulumi.output_property("status")
     """
     Current order status.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    validity_in_years: pulumi.Output[float]
+    validity_in_years: pulumi.Output[Optional[float]] = pulumi.output_property("validityInYears")
     """
     Duration in years (must be between `1` and `3`).  Defaults to `1`.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, csr=None, distinguished_name=None, key_size=None, location=None, name=None, product_type=None, resource_group_name=None, tags=None, validity_in_years=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, auto_renew: Optional[pulumi.Input[bool]] = None, csr: Optional[pulumi.Input[str]] = None, distinguished_name: Optional[pulumi.Input[str]] = None, key_size: Optional[pulumi.Input[float]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, product_type: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, validity_in_years: Optional[pulumi.Input[float]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an App Service Certificate Order.
 
@@ -119,7 +119,7 @@ class CertificateOrder(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the certificate. Changing this forces a new resource to be created.
         :param pulumi.Input[str] product_type: Certificate product type, such as `Standard` or `WildCard`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] validity_in_years: Duration in years (must be between `1` and `3`).  Defaults to `1`.
         """
         if __name__ is not None:
@@ -133,7 +133,7 @@ class CertificateOrder(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -167,7 +167,7 @@ class CertificateOrder(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_service_certificate_not_renewable_reasons=None, auto_renew=None, certificates=None, csr=None, distinguished_name=None, domain_verification_token=None, expiration_time=None, intermediate_thumbprint=None, is_private_key_external=None, key_size=None, location=None, name=None, product_type=None, resource_group_name=None, root_thumbprint=None, signed_certificate_thumbprint=None, status=None, tags=None, validity_in_years=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, app_service_certificate_not_renewable_reasons: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, auto_renew: Optional[pulumi.Input[bool]] = None, certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CertificateOrderCertificateArgs']]]]] = None, csr: Optional[pulumi.Input[str]] = None, distinguished_name: Optional[pulumi.Input[str]] = None, domain_verification_token: Optional[pulumi.Input[str]] = None, expiration_time: Optional[pulumi.Input[str]] = None, intermediate_thumbprint: Optional[pulumi.Input[str]] = None, is_private_key_external: Optional[pulumi.Input[bool]] = None, key_size: Optional[pulumi.Input[float]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, product_type: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, root_thumbprint: Optional[pulumi.Input[str]] = None, signed_certificate_thumbprint: Optional[pulumi.Input[str]] = None, status: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, validity_in_years: Optional[pulumi.Input[float]] = None) -> 'CertificateOrder':
         """
         Get an existing CertificateOrder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -175,9 +175,9 @@ class CertificateOrder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] app_service_certificate_not_renewable_reasons: Reasons why App Service Certificate is not renewable at the current moment.
+        :param pulumi.Input[List[pulumi.Input[str]]] app_service_certificate_not_renewable_reasons: Reasons why App Service Certificate is not renewable at the current moment.
         :param pulumi.Input[bool] auto_renew: true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to true.
-        :param pulumi.Input[list] certificates: State of the Key Vault secret. A `certificates` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CertificateOrderCertificateArgs']]]] certificates: State of the Key Vault secret. A `certificates` block as defined below.
         :param pulumi.Input[str] csr: Last CSR that was created for this order.
         :param pulumi.Input[str] distinguished_name: The Distinguished Name for the App Service Certificate Order.
         :param pulumi.Input[str] domain_verification_token: Domain verification token.
@@ -192,15 +192,8 @@ class CertificateOrder(pulumi.CustomResource):
         :param pulumi.Input[str] root_thumbprint: Certificate thumbprint for root certificate.
         :param pulumi.Input[str] signed_certificate_thumbprint: Certificate thumbprint for signed certificate.
         :param pulumi.Input[str] status: Current order status.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] validity_in_years: Duration in years (must be between `1` and `3`).  Defaults to `1`.
-
-        The **certificates** object supports the following:
-
-          * `certificateName` (`pulumi.Input[str]`) - The name of the App Service Certificate.
-          * `key_vault_id` (`pulumi.Input[str]`) - Key Vault resource Id.
-          * `keyVaultSecretName` (`pulumi.Input[str]`) - Key Vault secret name.
-          * `provisioningState` (`pulumi.Input[str]`) - Status of the Key Vault secret.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -228,7 +221,8 @@ class CertificateOrder(pulumi.CustomResource):
         return CertificateOrder(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

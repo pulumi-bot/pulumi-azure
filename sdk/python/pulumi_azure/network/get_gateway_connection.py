@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetGatewayConnectionResult',
+    'AwaitableGetGatewayConnectionResult',
+    'get_gateway_connection',
+]
+
 
 class GetGatewayConnectionResult:
     """
     A collection of values returned by getGatewayConnection.
     """
-    def __init__(__self__, authorization_key=None, connection_protocol=None, egress_bytes_transferred=None, enable_bgp=None, express_route_circuit_id=None, express_route_gateway_bypass=None, id=None, ingress_bytes_transferred=None, ipsec_policies=None, local_network_gateway_id=None, location=None, name=None, peer_virtual_network_gateway_id=None, resource_group_name=None, resource_guid=None, routing_weight=None, shared_key=None, tags=None, traffic_selector_policy=None, type=None, use_policy_based_traffic_selectors=None, virtual_network_gateway_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, authorization_key=None, connection_protocol=None, egress_bytes_transferred=None, enable_bgp=None, express_route_circuit_id=None, express_route_gateway_bypass=None, id=None, ingress_bytes_transferred=None, ipsec_policies=None, local_network_gateway_id=None, location=None, name=None, peer_virtual_network_gateway_id=None, resource_group_name=None, resource_guid=None, routing_weight=None, shared_key=None, tags=None, traffic_selector_policy=None, type=None, use_policy_based_traffic_selectors=None, virtual_network_gateway_id=None) -> None:
         if authorization_key and not isinstance(authorization_key, str):
             raise TypeError("Expected argument 'authorization_key' to be a str")
         __self__.authorization_key = authorization_key
@@ -133,6 +142,8 @@ class GetGatewayConnectionResult:
         The ID of the Virtual Network Gateway
         in which the connection is created.
         """
+
+
 class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -162,7 +173,8 @@ class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
             use_policy_based_traffic_selectors=self.use_policy_based_traffic_selectors,
             virtual_network_gateway_id=self.virtual_network_gateway_id)
 
-def get_gateway_connection(name=None,resource_group_name=None,opts=None):
+
+def get_gateway_connection(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayConnectionResult:
     """
     Use this data source to access information about an existing Virtual Network Gateway Connection.
 
@@ -182,14 +194,12 @@ def get_gateway_connection(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway Connection is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getGatewayConnection:getGatewayConnection', __args__, opts=opts).value
 
     return AwaitableGetGatewayConnectionResult(

@@ -5,52 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['TriggerSchedule']
 
 
 class TriggerSchedule(pulumi.CustomResource):
-    annotations: pulumi.Output[list]
+    annotations: pulumi.Output[Optional[List[str]]] = pulumi.output_property("annotations")
     """
     List of tags that can be used for describing the Data Factory Schedule Trigger.
     """
-    data_factory_name: pulumi.Output[str]
+    data_factory_name: pulumi.Output[str] = pulumi.output_property("dataFactoryName")
     """
     The Data Factory name in which to associate the Schedule Trigger with. Changing this forces a new resource.
     """
-    end_time: pulumi.Output[str]
+    end_time: pulumi.Output[Optional[str]] = pulumi.output_property("endTime")
     """
     The time the Schedule Trigger should end. The time will be represented in UTC.
     """
-    frequency: pulumi.Output[str]
+    frequency: pulumi.Output[Optional[str]] = pulumi.output_property("frequency")
     """
     The trigger freqency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
     """
-    interval: pulumi.Output[float]
+    interval: pulumi.Output[Optional[float]] = pulumi.output_property("interval")
     """
     The interval for how often the trigger occurs. This defaults to 1.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
     """
-    pipeline_name: pulumi.Output[str]
+    pipeline_name: pulumi.Output[str] = pulumi.output_property("pipelineName")
     """
     The Data Factory Pipeline name that the trigger will act on.
     """
-    pipeline_parameters: pulumi.Output[dict]
+    pipeline_parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("pipelineParameters")
     """
     The pipeline parameters that the trigger will act upon.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Data Factory Schedule Trigger. Changing this forces a new resource
     """
-    start_time: pulumi.Output[str]
+    start_time: pulumi.Output[str] = pulumi.output_property("startTime")
     """
     The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
     """
-    def __init__(__self__, resource_name, opts=None, annotations=None, data_factory_name=None, end_time=None, frequency=None, interval=None, name=None, pipeline_name=None, pipeline_parameters=None, resource_group_name=None, start_time=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, data_factory_name: Optional[pulumi.Input[str]] = None, end_time: Optional[pulumi.Input[str]] = None, frequency: Optional[pulumi.Input[str]] = None, interval: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, pipeline_name: Optional[pulumi.Input[str]] = None, pipeline_parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, start_time: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Trigger Schedule inside a Azure Data Factory.
 
@@ -77,14 +80,14 @@ class TriggerSchedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Schedule Trigger with. Changing this forces a new resource.
         :param pulumi.Input[str] end_time: The time the Schedule Trigger should end. The time will be represented in UTC.
         :param pulumi.Input[str] frequency: The trigger freqency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
         :param pulumi.Input[float] interval: The interval for how often the trigger occurs. This defaults to 1.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[str] pipeline_name: The Data Factory Pipeline name that the trigger will act on.
-        :param pulumi.Input[dict] pipeline_parameters: The pipeline parameters that the trigger will act upon.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] pipeline_parameters: The pipeline parameters that the trigger will act upon.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Schedule Trigger. Changing this forces a new resource
         :param pulumi.Input[str] start_time: The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
         """
@@ -99,7 +102,7 @@ class TriggerSchedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,7 +131,7 @@ class TriggerSchedule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, annotations=None, data_factory_name=None, end_time=None, frequency=None, interval=None, name=None, pipeline_name=None, pipeline_parameters=None, resource_group_name=None, start_time=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, data_factory_name: Optional[pulumi.Input[str]] = None, end_time: Optional[pulumi.Input[str]] = None, frequency: Optional[pulumi.Input[str]] = None, interval: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, pipeline_name: Optional[pulumi.Input[str]] = None, pipeline_parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, start_time: Optional[pulumi.Input[str]] = None) -> 'TriggerSchedule':
         """
         Get an existing TriggerSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -136,14 +139,14 @@ class TriggerSchedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Schedule Trigger with. Changing this forces a new resource.
         :param pulumi.Input[str] end_time: The time the Schedule Trigger should end. The time will be represented in UTC.
         :param pulumi.Input[str] frequency: The trigger freqency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
         :param pulumi.Input[float] interval: The interval for how often the trigger occurs. This defaults to 1.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[str] pipeline_name: The Data Factory Pipeline name that the trigger will act on.
-        :param pulumi.Input[dict] pipeline_parameters: The pipeline parameters that the trigger will act upon.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] pipeline_parameters: The pipeline parameters that the trigger will act upon.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Schedule Trigger. Changing this forces a new resource
         :param pulumi.Input[str] start_time: The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
         """
@@ -164,7 +167,8 @@ class TriggerSchedule(pulumi.CustomResource):
         return TriggerSchedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

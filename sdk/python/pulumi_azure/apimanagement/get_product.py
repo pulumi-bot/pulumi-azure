@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetProductResult',
+    'AwaitableGetProductResult',
+    'get_product',
+]
+
 
 class GetProductResult:
     """
     A collection of values returned by getProduct.
     """
-    def __init__(__self__, api_management_name=None, approval_required=None, description=None, display_name=None, id=None, product_id=None, published=None, resource_group_name=None, subscription_required=None, subscriptions_limit=None, terms=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, api_management_name=None, approval_required=None, description=None, display_name=None, id=None, product_id=None, published=None, resource_group_name=None, subscription_required=None, subscriptions_limit=None, terms=None) -> None:
         if api_management_name and not isinstance(api_management_name, str):
             raise TypeError("Expected argument 'api_management_name' to be a str")
         __self__.api_management_name = api_management_name
@@ -70,6 +78,8 @@ class GetProductResult:
         """
         Any Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
         """
+
+
 class AwaitableGetProductResult(GetProductResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +98,8 @@ class AwaitableGetProductResult(GetProductResult):
             subscriptions_limit=self.subscriptions_limit,
             terms=self.terms)
 
-def get_product(api_management_name=None,product_id=None,resource_group_name=None,opts=None):
+
+def get_product(api_management_name: Optional[str] = None, product_id: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductResult:
     """
     Use this data source to access information about an existing API Management Product.
 
@@ -110,15 +121,13 @@ def get_product(api_management_name=None,product_id=None,resource_group_name=Non
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['productId'] = product_id
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:apimanagement/getProduct:getProduct', __args__, opts=opts).value
 
     return AwaitableGetProductResult(

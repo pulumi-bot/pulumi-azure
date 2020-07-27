@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
 
 class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, capabilities=None, consistency_policies=None, enable_automatic_failover=None, enable_free_tier=None, enable_multiple_write_locations=None, endpoint=None, geo_locations=None, id=None, ip_range_filter=None, is_virtual_network_filter_enabled=None, kind=None, location=None, name=None, offer_type=None, primary_master_key=None, primary_readonly_master_key=None, read_endpoints=None, resource_group_name=None, secondary_master_key=None, secondary_readonly_master_key=None, tags=None, virtual_network_rules=None, write_endpoints=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, capabilities=None, consistency_policies=None, enable_automatic_failover=None, enable_free_tier=None, enable_multiple_write_locations=None, endpoint=None, geo_locations=None, id=None, ip_range_filter=None, is_virtual_network_filter_enabled=None, kind=None, location=None, name=None, offer_type=None, primary_master_key=None, primary_readonly_master_key=None, read_endpoints=None, resource_group_name=None, secondary_master_key=None, secondary_readonly_master_key=None, tags=None, virtual_network_rules=None, write_endpoints=None) -> None:
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         __self__.capabilities = capabilities
@@ -139,6 +148,8 @@ class GetAccountResult:
         """
         A list of write endpoints available for this CosmosDB account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -169,7 +180,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             virtual_network_rules=self.virtual_network_rules,
             write_endpoints=self.write_endpoints)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
 
@@ -189,14 +201,12 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group in which the CosmosDB Account resides.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:cosmosdb/getAccount:getAccount', __args__, opts=opts).value
 
     return AwaitableGetAccountResult(

@@ -5,84 +5,87 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Topic']
 
 warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
 
 
 class Topic(pulumi.CustomResource):
-    auto_delete_on_idle: pulumi.Output[str]
+    auto_delete_on_idle: pulumi.Output[str] = pulumi.output_property("autoDeleteOnIdle")
     """
     The ISO 8601 timespan duration of the idle interval after which the
     Topic is automatically deleted, minimum of 5 minutes.
     """
-    default_message_ttl: pulumi.Output[str]
+    default_message_ttl: pulumi.Output[str] = pulumi.output_property("defaultMessageTtl")
     """
     The ISO 8601 timespan duration of TTL of messages sent to this topic if no
     TTL value is set on the message itself.
     """
-    duplicate_detection_history_time_window: pulumi.Output[str]
+    duplicate_detection_history_time_window: pulumi.Output[str] = pulumi.output_property("duplicateDetectionHistoryTimeWindow")
     """
     The ISO 8601 timespan duration during which
     duplicates can be detected. Defaults to 10 minutes. (`PT10M`)
     """
-    enable_batched_operations: pulumi.Output[bool]
+    enable_batched_operations: pulumi.Output[Optional[bool]] = pulumi.output_property("enableBatchedOperations")
     """
     Boolean flag which controls if server-side
     batched operations are enabled. Defaults to false.
     """
-    enable_express: pulumi.Output[bool]
+    enable_express: pulumi.Output[Optional[bool]] = pulumi.output_property("enableExpress")
     """
     Boolean flag which controls whether Express Entities
     are enabled. An express topic holds a message in memory temporarily before writing
     it to persistent storage. Defaults to false.
     """
-    enable_partitioning: pulumi.Output[bool]
+    enable_partitioning: pulumi.Output[Optional[bool]] = pulumi.output_property("enablePartitioning")
     """
     Boolean flag which controls whether to enable
     the topic to be partitioned across multiple message brokers. Defaults to false.
     Changing this forces a new resource to be created.
     """
-    max_size_in_megabytes: pulumi.Output[float]
+    max_size_in_megabytes: pulumi.Output[float] = pulumi.output_property("maxSizeInMegabytes")
     """
     Integer value which controls the size of
     memory allocated for the topic. For supported values see the "Queue/topic size"
     section of [this document](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quotas).
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the ServiceBus Topic resource. Changing this forces a
     new resource to be created.
     """
-    namespace_name: pulumi.Output[str]
+    namespace_name: pulumi.Output[str] = pulumi.output_property("namespaceName")
     """
     The name of the ServiceBus Namespace to create
     this topic in. Changing this forces a new resource to be created.
     """
-    requires_duplicate_detection: pulumi.Output[bool]
+    requires_duplicate_detection: pulumi.Output[Optional[bool]] = pulumi.output_property("requiresDuplicateDetection")
     """
     Boolean flag which controls whether
     the Topic requires duplicate detection. Defaults to false. Changing this forces
     a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to
     create the namespace. Changing this forces a new resource to be created.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[Optional[str]] = pulumi.output_property("status")
     """
     The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
     """
-    support_ordering: pulumi.Output[bool]
+    support_ordering: pulumi.Output[Optional[bool]] = pulumi.output_property("supportOrdering")
     """
     Boolean flag which controls whether the Topic
     supports ordering. Defaults to false.
     """
     warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, auto_delete_on_idle=None, default_message_ttl=None, duplicate_detection_history_time_window=None, enable_batched_operations=None, enable_express=None, enable_partitioning=None, max_size_in_megabytes=None, name=None, namespace_name=None, requires_duplicate_detection=None, resource_group_name=None, status=None, support_ordering=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, auto_delete_on_idle: Optional[pulumi.Input[str]] = None, default_message_ttl: Optional[pulumi.Input[str]] = None, duplicate_detection_history_time_window: Optional[pulumi.Input[str]] = None, enable_batched_operations: Optional[pulumi.Input[bool]] = None, enable_express: Optional[pulumi.Input[bool]] = None, enable_partitioning: Optional[pulumi.Input[bool]] = None, max_size_in_megabytes: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, namespace_name: Optional[pulumi.Input[str]] = None, requires_duplicate_detection: Optional[pulumi.Input[bool]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, status: Optional[pulumi.Input[str]] = None, support_ordering: Optional[pulumi.Input[bool]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a ServiceBus Topic.
 
@@ -152,7 +155,7 @@ class Topic(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -182,7 +185,7 @@ class Topic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_delete_on_idle=None, default_message_ttl=None, duplicate_detection_history_time_window=None, enable_batched_operations=None, enable_express=None, enable_partitioning=None, max_size_in_megabytes=None, name=None, namespace_name=None, requires_duplicate_detection=None, resource_group_name=None, status=None, support_ordering=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, auto_delete_on_idle: Optional[pulumi.Input[str]] = None, default_message_ttl: Optional[pulumi.Input[str]] = None, duplicate_detection_history_time_window: Optional[pulumi.Input[str]] = None, enable_batched_operations: Optional[pulumi.Input[bool]] = None, enable_express: Optional[pulumi.Input[bool]] = None, enable_partitioning: Optional[pulumi.Input[bool]] = None, max_size_in_megabytes: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, namespace_name: Optional[pulumi.Input[str]] = None, requires_duplicate_detection: Optional[pulumi.Input[bool]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, status: Optional[pulumi.Input[str]] = None, support_ordering: Optional[pulumi.Input[bool]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -240,7 +243,8 @@ class Topic(pulumi.CustomResource):
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

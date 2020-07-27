@@ -5,75 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ActionRuleActionGroup']
 
 
 class ActionRuleActionGroup(pulumi.CustomResource):
-    action_group_id: pulumi.Output[str]
+    action_group_id: pulumi.Output[str] = pulumi.output_property("actionGroupId")
     """
     Specifies the resource id of monitor action group.
     """
-    condition: pulumi.Output[dict]
+    condition: pulumi.Output[Optional['outputs.ActionRuleActionGroupCondition']] = pulumi.output_property("condition")
     """
     A `condition` block as defined below.
-
-      * `alertContext` (`dict`) - A `alert_context` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        * `values` (`list`) - A list of values to match for a given condition.
-
-      * `alertRuleId` (`dict`) - A `alert_rule_id` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        * `values` (`list`) - A list of values to match for a given condition.
-
-      * `description` (`dict`) - A `description` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        * `values` (`list`) - A list of values to match for a given condition.
-
-      * `monitor` (`dict`) - A `monitor` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        * `values` (`list`) - A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-
-      * `monitorService` (`dict`) - A `monitor_service` as block defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        * `values` (`list`) - A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
-
-      * `severity` (`dict`) - A `severity` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals`and `NotEquals`.
-        * `values` (`list`) - A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
-
-      * `target_resource_type` (`dict`) - A `target_resource_type` block as defined below.
-        * `operator` (`str`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        * `values` (`list`) - A list of values to match for a given condition. The values should be valid resource types.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     Specifies a description for the Action Rule.
     """
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("enabled")
     """
     Is the Action Rule enabled? Defaults to `true`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Monitor Action Rule. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the resource group in which the Monitor Action Rule should exist. Changing this forces a new resource to be created.
     """
-    scope: pulumi.Output[dict]
+    scope: pulumi.Output[Optional['outputs.ActionRuleActionGroupScope']] = pulumi.output_property("scope")
     """
     A `scope` block as defined below.
-
-      * `resourceIds` (`list`) - A list of resource IDs of the given scope type which will be the target of action rule.
-      * `type` (`str`) - Specifies the type of target scope. Possible values are `ResourceGroup` and `Resource`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, action_group_id=None, condition=None, description=None, enabled=None, name=None, resource_group_name=None, scope=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, action_group_id: Optional[pulumi.Input[str]] = None, condition: Optional[pulumi.Input[pulumi.InputType['ActionRuleActionGroupConditionArgs']]] = None, description: Optional[pulumi.Input[str]] = None, enabled: Optional[pulumi.Input[bool]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, scope: Optional[pulumi.Input[pulumi.InputType['ActionRuleActionGroupScopeArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Monitor Action Rule which type is action group.
 
@@ -102,48 +76,13 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_group_id: Specifies the resource id of monitor action group.
-        :param pulumi.Input[dict] condition: A `condition` block as defined below.
+        :param pulumi.Input[pulumi.InputType['ActionRuleActionGroupConditionArgs']] condition: A `condition` block as defined below.
         :param pulumi.Input[str] description: Specifies a description for the Action Rule.
         :param pulumi.Input[bool] enabled: Is the Action Rule enabled? Defaults to `true`.
         :param pulumi.Input[str] name: Specifies the name of the Monitor Action Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the resource group in which the Monitor Action Rule should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] scope: A `scope` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **condition** object supports the following:
-
-          * `alertContext` (`pulumi.Input[dict]`) - A `alert_context` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `alertRuleId` (`pulumi.Input[dict]`) - A `alert_rule_id` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `description` (`pulumi.Input[dict]`) - A `description` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `monitor` (`pulumi.Input[dict]`) - A `monitor` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-
-          * `monitorService` (`pulumi.Input[dict]`) - A `monitor_service` as block defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
-
-          * `severity` (`pulumi.Input[dict]`) - A `severity` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
-
-          * `target_resource_type` (`pulumi.Input[dict]`) - A `target_resource_type` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. The values should be valid resource types.
-
-        The **scope** object supports the following:
-
-          * `resourceIds` (`pulumi.Input[list]`) - A list of resource IDs of the given scope type which will be the target of action rule.
-          * `type` (`pulumi.Input[str]`) - Specifies the type of target scope. Possible values are `ResourceGroup` and `Resource`.
+        :param pulumi.Input[pulumi.InputType['ActionRuleActionGroupScopeArgs']] scope: A `scope` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -156,7 +95,7 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -181,7 +120,7 @@ class ActionRuleActionGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action_group_id=None, condition=None, description=None, enabled=None, name=None, resource_group_name=None, scope=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, action_group_id: Optional[pulumi.Input[str]] = None, condition: Optional[pulumi.Input[pulumi.InputType['ActionRuleActionGroupConditionArgs']]] = None, description: Optional[pulumi.Input[str]] = None, enabled: Optional[pulumi.Input[bool]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, scope: Optional[pulumi.Input[pulumi.InputType['ActionRuleActionGroupScopeArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'ActionRuleActionGroup':
         """
         Get an existing ActionRuleActionGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -190,48 +129,13 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_group_id: Specifies the resource id of monitor action group.
-        :param pulumi.Input[dict] condition: A `condition` block as defined below.
+        :param pulumi.Input[pulumi.InputType['ActionRuleActionGroupConditionArgs']] condition: A `condition` block as defined below.
         :param pulumi.Input[str] description: Specifies a description for the Action Rule.
         :param pulumi.Input[bool] enabled: Is the Action Rule enabled? Defaults to `true`.
         :param pulumi.Input[str] name: Specifies the name of the Monitor Action Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the resource group in which the Monitor Action Rule should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] scope: A `scope` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **condition** object supports the following:
-
-          * `alertContext` (`pulumi.Input[dict]`) - A `alert_context` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `alertRuleId` (`pulumi.Input[dict]`) - A `alert_rule_id` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `description` (`pulumi.Input[dict]`) - A `description` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition.
-
-          * `monitor` (`pulumi.Input[dict]`) - A `monitor` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-
-          * `monitorService` (`pulumi.Input[dict]`) - A `monitor_service` as block defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
-
-          * `severity` (`pulumi.Input[dict]`) - A `severity` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals`and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
-
-          * `target_resource_type` (`pulumi.Input[dict]`) - A `target_resource_type` block as defined below.
-            * `operator` (`pulumi.Input[str]`) - The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-            * `values` (`pulumi.Input[list]`) - A list of values to match for a given condition. The values should be valid resource types.
-
-        The **scope** object supports the following:
-
-          * `resourceIds` (`pulumi.Input[list]`) - A list of resource IDs of the given scope type which will be the target of action rule.
-          * `type` (`pulumi.Input[str]`) - Specifies the type of target scope. Possible values are `ResourceGroup` and `Resource`.
+        :param pulumi.Input[pulumi.InputType['ActionRuleActionGroupScopeArgs']] scope: A `scope` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -248,7 +152,8 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         return ActionRuleActionGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

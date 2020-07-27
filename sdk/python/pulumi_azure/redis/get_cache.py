@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCacheResult',
+    'AwaitableGetCacheResult',
+    'get_cache',
+]
+
 
 class GetCacheResult:
     """
     A collection of values returned by getCache.
     """
-    def __init__(__self__, capacity=None, enable_non_ssl_port=None, family=None, hostname=None, id=None, location=None, minimum_tls_version=None, name=None, patch_schedules=None, port=None, primary_access_key=None, primary_connection_string=None, private_static_ip_address=None, redis_configurations=None, resource_group_name=None, secondary_access_key=None, secondary_connection_string=None, shard_count=None, sku_name=None, ssl_port=None, subnet_id=None, tags=None, zones=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, capacity=None, enable_non_ssl_port=None, family=None, hostname=None, id=None, location=None, minimum_tls_version=None, name=None, patch_schedules=None, port=None, primary_access_key=None, primary_connection_string=None, private_static_ip_address=None, redis_configurations=None, resource_group_name=None, secondary_access_key=None, secondary_connection_string=None, shard_count=None, sku_name=None, ssl_port=None, subnet_id=None, tags=None, zones=None) -> None:
         if capacity and not isinstance(capacity, float):
             raise TypeError("Expected argument 'capacity' to be a float")
         __self__.capacity = capacity
@@ -130,6 +139,8 @@ class GetCacheResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetCacheResult(GetCacheResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -160,7 +171,8 @@ class AwaitableGetCacheResult(GetCacheResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
+
+def get_cache(name: Optional[str] = None, resource_group_name: Optional[str] = None, zones: Optional[List[str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCacheResult:
     """
     Use this data source to access information about an existing Redis Cache
 
@@ -179,15 +191,13 @@ def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
     :param str resource_group_name: The name of the resource group the Redis cache instance is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['zones'] = zones
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:redis/getCache:getCache', __args__, opts=opts).value
 
     return AwaitableGetCacheResult(

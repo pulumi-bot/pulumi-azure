@@ -5,53 +5,56 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['HybridConnection']
 
 
 class HybridConnection(pulumi.CustomResource):
-    app_service_name: pulumi.Output[str]
+    app_service_name: pulumi.Output[str] = pulumi.output_property("appServiceName")
     """
     Specifies the name of the App Service. Changing this forces a new resource to be created.
     """
-    hostname: pulumi.Output[str]
+    hostname: pulumi.Output[str] = pulumi.output_property("hostname")
     """
     The hostname of the endpoint.
     """
-    namespace_name: pulumi.Output[str]
+    namespace_name: pulumi.Output[str] = pulumi.output_property("namespaceName")
     """
     The name of the Relay Namespace.
     """
-    port: pulumi.Output[float]
+    port: pulumi.Output[float] = pulumi.output_property("port")
     """
     The port of the endpoint.
     """
-    relay_id: pulumi.Output[str]
+    relay_id: pulumi.Output[str] = pulumi.output_property("relayId")
     """
     The Resource ID of Service Bus relay.  Changing this forces a new resource to be created.
     """
-    relay_name: pulumi.Output[str]
-    resource_group_name: pulumi.Output[str]
+    relay_name: pulumi.Output[str] = pulumi.output_property("relayName")
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the App Service.  Changing this forces a new resource to be created.
     """
-    send_key_name: pulumi.Output[str]
+    send_key_name: pulumi.Output[Optional[str]] = pulumi.output_property("sendKeyName")
     """
     The name of the Service Bus key.
     """
-    send_key_value: pulumi.Output[str]
+    send_key_value: pulumi.Output[str] = pulumi.output_property("sendKeyValue")
     """
     The value of the Service Bus Primary Access key.
     """
-    service_bus_namespace: pulumi.Output[str]
+    service_bus_namespace: pulumi.Output[str] = pulumi.output_property("serviceBusNamespace")
     """
     The name of the Service Bus namespace.
     """
-    service_bus_suffix: pulumi.Output[str]
+    service_bus_suffix: pulumi.Output[str] = pulumi.output_property("serviceBusSuffix")
     """
     The suffix for the service bus endpoint.
     """
-    def __init__(__self__, resource_name, opts=None, app_service_name=None, hostname=None, port=None, relay_id=None, resource_group_name=None, send_key_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, app_service_name: Optional[pulumi.Input[str]] = None, hostname: Optional[pulumi.Input[str]] = None, port: Optional[pulumi.Input[float]] = None, relay_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, send_key_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
 
@@ -112,7 +115,7 @@ class HybridConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -146,7 +149,7 @@ class HybridConnection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_service_name=None, hostname=None, namespace_name=None, port=None, relay_id=None, relay_name=None, resource_group_name=None, send_key_name=None, send_key_value=None, service_bus_namespace=None, service_bus_suffix=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, app_service_name: Optional[pulumi.Input[str]] = None, hostname: Optional[pulumi.Input[str]] = None, namespace_name: Optional[pulumi.Input[str]] = None, port: Optional[pulumi.Input[float]] = None, relay_id: Optional[pulumi.Input[str]] = None, relay_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, send_key_name: Optional[pulumi.Input[str]] = None, send_key_value: Optional[pulumi.Input[str]] = None, service_bus_namespace: Optional[pulumi.Input[str]] = None, service_bus_suffix: Optional[pulumi.Input[str]] = None) -> 'HybridConnection':
         """
         Get an existing HybridConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -183,7 +186,8 @@ class HybridConnection(pulumi.CustomResource):
         return HybridConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

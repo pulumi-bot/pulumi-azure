@@ -5,45 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Definition']
 
 warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
 
 
 class Definition(pulumi.CustomResource):
-    assignable_scopes: pulumi.Output[list]
+    assignable_scopes: pulumi.Output[List[str]] = pulumi.output_property("assignableScopes")
     """
     One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description of the Role Definition.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Role Definition. Changing this forces a new resource to be created.
     """
-    permissions: pulumi.Output[list]
+    permissions: pulumi.Output[List['outputs.DefinitionPermission']] = pulumi.output_property("permissions")
     """
     A `permissions` block as defined below.
-
-      * `actions` (`list`) - One or more Allowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-      * `dataActions` (`list`) - One or more Allowed Data Actions, such as `*`, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-      * `notActions` (`list`) - One or more Disallowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-      * `notDataActions` (`list`) - One or more Disallowed Data Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
     """
-    role_definition_id: pulumi.Output[str]
+    role_definition_id: pulumi.Output[str] = pulumi.output_property("roleDefinitionId")
     """
     A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
     """
-    scope: pulumi.Output[str]
+    scope: pulumi.Output[str] = pulumi.output_property("scope")
     """
     The scope at which the Role Definition applies too, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
     """
     warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, assignable_scopes=None, description=None, name=None, permissions=None, role_definition_id=None, scope=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, assignable_scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, description: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefinitionPermissionArgs']]]]] = None, role_definition_id: Optional[pulumi.Input[str]] = None, scope: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
 
@@ -66,19 +66,12 @@ class Definition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] assignable_scopes: One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
+        :param pulumi.Input[List[pulumi.Input[str]]] assignable_scopes: One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
         :param pulumi.Input[str] description: A description of the Role Definition.
         :param pulumi.Input[str] name: The name of the Role Definition. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] permissions: A `permissions` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DefinitionPermissionArgs']]]] permissions: A `permissions` block as defined below.
         :param pulumi.Input[str] role_definition_id: A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
         :param pulumi.Input[str] scope: The scope at which the Role Definition applies too, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
-
-        The **permissions** object supports the following:
-
-          * `actions` (`pulumi.Input[list]`) - One or more Allowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `dataActions` (`pulumi.Input[list]`) - One or more Allowed Data Actions, such as `*`, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `notActions` (`pulumi.Input[list]`) - One or more Disallowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `notDataActions` (`pulumi.Input[list]`) - One or more Disallowed Data Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
         """
         pulumi.log.warn("Definition is deprecated: azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition")
         if __name__ is not None:
@@ -92,7 +85,7 @@ class Definition(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -117,7 +110,7 @@ class Definition(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, assignable_scopes=None, description=None, name=None, permissions=None, role_definition_id=None, scope=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, assignable_scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, description: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefinitionPermissionArgs']]]]] = None, role_definition_id: Optional[pulumi.Input[str]] = None, scope: Optional[pulumi.Input[str]] = None) -> 'Definition':
         """
         Get an existing Definition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -125,19 +118,12 @@ class Definition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] assignable_scopes: One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
+        :param pulumi.Input[List[pulumi.Input[str]]] assignable_scopes: One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
         :param pulumi.Input[str] description: A description of the Role Definition.
         :param pulumi.Input[str] name: The name of the Role Definition. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] permissions: A `permissions` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DefinitionPermissionArgs']]]] permissions: A `permissions` block as defined below.
         :param pulumi.Input[str] role_definition_id: A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
         :param pulumi.Input[str] scope: The scope at which the Role Definition applies too, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
-
-        The **permissions** object supports the following:
-
-          * `actions` (`pulumi.Input[list]`) - One or more Allowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `dataActions` (`pulumi.Input[list]`) - One or more Allowed Data Actions, such as `*`, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `notActions` (`pulumi.Input[list]`) - One or more Disallowed Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
-          * `notDataActions` (`pulumi.Input[list]`) - One or more Disallowed Data Actions, such as `*`, `Microsoft.Resources/subscriptions/resourceGroups/read`. See ['Azure Resource Manager resource provider operations'](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations) for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,7 +138,8 @@ class Definition(pulumi.CustomResource):
         return Definition(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

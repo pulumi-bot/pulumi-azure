@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetManagedDiskResult',
+    'AwaitableGetManagedDiskResult',
+    'get_managed_disk',
+]
+
 
 class GetManagedDiskResult:
     """
     A collection of values returned by getManagedDisk.
     """
-    def __init__(__self__, create_option=None, disk_encryption_set_id=None, disk_iops_read_write=None, disk_mbps_read_write=None, disk_size_gb=None, id=None, image_reference_id=None, name=None, os_type=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, storage_account_type=None, tags=None, zones=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, create_option=None, disk_encryption_set_id=None, disk_iops_read_write=None, disk_mbps_read_write=None, disk_size_gb=None, id=None, image_reference_id=None, name=None, os_type=None, resource_group_name=None, source_resource_id=None, source_uri=None, storage_account_id=None, storage_account_type=None, tags=None, zones=None) -> None:
         if create_option and not isinstance(create_option, str):
             raise TypeError("Expected argument 'create_option' to be a str")
         __self__.create_option = create_option
@@ -100,6 +108,8 @@ class GetManagedDiskResult:
         """
         A list of Availability Zones where the Managed Disk exists.
         """
+
+
 class AwaitableGetManagedDiskResult(GetManagedDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +133,8 @@ class AwaitableGetManagedDiskResult(GetManagedDiskResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
+
+def get_managed_disk(name: Optional[str] = None, resource_group_name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, zones: Optional[List[str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagedDiskResult:
     """
     Use this data source to access information about an existing Managed Disk.
 
@@ -141,12 +152,10 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
 
     :param str name: Specifies the name of the Managed Disk.
     :param str resource_group_name: Specifies the name of the Resource Group where this Managed Disk exists.
-    :param dict tags: A mapping of tags assigned to the resource.
-    :param list zones: A list of Availability Zones where the Managed Disk exists.
+    :param Dict[str, str] tags: A mapping of tags assigned to the resource.
+    :param List[str] zones: A list of Availability Zones where the Managed Disk exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
@@ -154,7 +163,7 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getManagedDisk:getManagedDisk', __args__, opts=opts).value
 
     return AwaitableGetManagedDiskResult(

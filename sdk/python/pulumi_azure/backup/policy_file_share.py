@@ -5,41 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['PolicyFileShare']
 
 
 class PolicyFileShare(pulumi.CustomResource):
-    backup: pulumi.Output[dict]
+    backup: pulumi.Output['outputs.PolicyFileShareBackup'] = pulumi.output_property("backup")
     """
     Configures the Policy backup frequency and times as documented in the `backup` block below.
-
-      * `frequency` (`str`) - Sets the backup frequency. Currently, only `Daily` is supported
-      * `time` (`str`)
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the policy. Changing this forces a new resource to be created.
     """
-    recovery_vault_name: pulumi.Output[str]
+    recovery_vault_name: pulumi.Output[str] = pulumi.output_property("recoveryVaultName")
     """
     Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
     """
-    retention_daily: pulumi.Output[dict]
+    retention_daily: pulumi.Output['outputs.PolicyFileShareRetentionDaily'] = pulumi.output_property("retentionDaily")
     """
     Configures the policy daily retention as documented in the `retention_daily` block below.
-
-      * `count` (`float`) - The number of daily backups to keep. Must be between `1` and `180` (inclusive)
     """
-    timezone: pulumi.Output[str]
+    timezone: pulumi.Output[Optional[str]] = pulumi.output_property("timezone")
     """
     Specifies the timezone. Defaults to `UTC`
     """
-    def __init__(__self__, resource_name, opts=None, backup=None, name=None, recovery_vault_name=None, resource_group_name=None, retention_daily=None, timezone=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, backup: Optional[pulumi.Input[pulumi.InputType['PolicyFileShareBackupArgs']]] = None, name: Optional[pulumi.Input[str]] = None, recovery_vault_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, retention_daily: Optional[pulumi.Input[pulumi.InputType['PolicyFileShareRetentionDailyArgs']]] = None, timezone: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure File Share Backup Policy within a Recovery Services vault.
 
@@ -71,21 +71,12 @@ class PolicyFileShare(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] backup: Configures the Policy backup frequency and times as documented in the `backup` block below.
+        :param pulumi.Input[pulumi.InputType['PolicyFileShareBackupArgs']] backup: Configures the Policy backup frequency and times as documented in the `backup` block below.
         :param pulumi.Input[str] name: Specifies the name of the policy. Changing this forces a new resource to be created.
         :param pulumi.Input[str] recovery_vault_name: Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] retention_daily: Configures the policy daily retention as documented in the `retention_daily` block below.
+        :param pulumi.Input[pulumi.InputType['PolicyFileShareRetentionDailyArgs']] retention_daily: Configures the policy daily retention as documented in the `retention_daily` block below.
         :param pulumi.Input[str] timezone: Specifies the timezone. Defaults to `UTC`
-
-        The **backup** object supports the following:
-
-          * `frequency` (`pulumi.Input[str]`) - Sets the backup frequency. Currently, only `Daily` is supported
-          * `time` (`pulumi.Input[str]`)
-
-        The **retention_daily** object supports the following:
-
-          * `count` (`pulumi.Input[float]`) - The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,7 +89,7 @@ class PolicyFileShare(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,7 +116,7 @@ class PolicyFileShare(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backup=None, name=None, recovery_vault_name=None, resource_group_name=None, retention_daily=None, timezone=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, backup: Optional[pulumi.Input[pulumi.InputType['PolicyFileShareBackupArgs']]] = None, name: Optional[pulumi.Input[str]] = None, recovery_vault_name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, retention_daily: Optional[pulumi.Input[pulumi.InputType['PolicyFileShareRetentionDailyArgs']]] = None, timezone: Optional[pulumi.Input[str]] = None) -> 'PolicyFileShare':
         """
         Get an existing PolicyFileShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,21 +124,12 @@ class PolicyFileShare(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] backup: Configures the Policy backup frequency and times as documented in the `backup` block below.
+        :param pulumi.Input[pulumi.InputType['PolicyFileShareBackupArgs']] backup: Configures the Policy backup frequency and times as documented in the `backup` block below.
         :param pulumi.Input[str] name: Specifies the name of the policy. Changing this forces a new resource to be created.
         :param pulumi.Input[str] recovery_vault_name: Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] retention_daily: Configures the policy daily retention as documented in the `retention_daily` block below.
+        :param pulumi.Input[pulumi.InputType['PolicyFileShareRetentionDailyArgs']] retention_daily: Configures the policy daily retention as documented in the `retention_daily` block below.
         :param pulumi.Input[str] timezone: Specifies the timezone. Defaults to `UTC`
-
-        The **backup** object supports the following:
-
-          * `frequency` (`pulumi.Input[str]`) - Sets the backup frequency. Currently, only `Daily` is supported
-          * `time` (`pulumi.Input[str]`)
-
-        The **retention_daily** object supports the following:
-
-          * `count` (`pulumi.Input[float]`) - The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,7 +144,8 @@ class PolicyFileShare(pulumi.CustomResource):
         return PolicyFileShare(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

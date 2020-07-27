@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
+
 
 class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, sku_name=None, subnet_id=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, location=None, name=None, resource_group_name=None, sku_name=None, subnet_id=None, tags=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -49,6 +57,8 @@ class GetServiceResult:
         """
         A mapping of tags to assigned to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +73,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             subnet_id=self.subnet_id,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name: Optional[str] = None, resource_group_name: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Use this data source to access information about an existing Database Migration Service.
 
@@ -83,14 +94,12 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the database migration service exists
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:databasemigration/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

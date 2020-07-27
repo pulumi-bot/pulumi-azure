@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['VirtualNetwork']
 
 
 class VirtualNetwork(pulumi.CustomResource):
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description for the Virtual Network.
     """
-    lab_name: pulumi.Output[str]
+    lab_name: pulumi.Output[str] = pulumi.output_property("labName")
     """
     Specifies the name of the Dev Test Lab in which the Virtual Network should be created. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
     """
-    subnet: pulumi.Output[dict]
+    subnet: pulumi.Output['outputs.VirtualNetworkSubnet'] = pulumi.output_property("subnet")
     """
     A `subnet` block as defined below.
-
-      * `name` (`str`) - Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
-      * `useInVirtualMachineCreation` (`str`) - Can this subnet be used for creating Virtual Machines? Possible values are `Allow`, `Default` and `Deny`.
-      * `usePublicIpAddress` (`str`) - Can Virtual Machines in this Subnet use Public IP Addresses? Possible values are `Allow`, `Default` and `Deny`.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    unique_identifier: pulumi.Output[str]
+    unique_identifier: pulumi.Output[str] = pulumi.output_property("uniqueIdentifier")
     """
     The unique immutable identifier of the Dev Test Virtual Network.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, lab_name=None, name=None, resource_group_name=None, subnet=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description: Optional[pulumi.Input[str]] = None, lab_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, subnet: Optional[pulumi.Input[pulumi.InputType['VirtualNetworkSubnetArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Virtual Network within a DevTest Lab.
 
@@ -74,14 +75,8 @@ class VirtualNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] lab_name: Specifies the name of the Dev Test Lab in which the Virtual Network should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] subnet: A `subnet` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **subnet** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
-          * `useInVirtualMachineCreation` (`pulumi.Input[str]`) - Can this subnet be used for creating Virtual Machines? Possible values are `Allow`, `Default` and `Deny`.
-          * `usePublicIpAddress` (`pulumi.Input[str]`) - Can Virtual Machines in this Subnet use Public IP Addresses? Possible values are `Allow`, `Default` and `Deny`.
+        :param pulumi.Input[pulumi.InputType['VirtualNetworkSubnetArgs']] subnet: A `subnet` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,7 +89,7 @@ class VirtualNetwork(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,7 +113,7 @@ class VirtualNetwork(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, lab_name=None, name=None, resource_group_name=None, subnet=None, tags=None, unique_identifier=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, description: Optional[pulumi.Input[str]] = None, lab_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, subnet: Optional[pulumi.Input[pulumi.InputType['VirtualNetworkSubnetArgs']]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, unique_identifier: Optional[pulumi.Input[str]] = None) -> 'VirtualNetwork':
         """
         Get an existing VirtualNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -130,15 +125,9 @@ class VirtualNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] lab_name: Specifies the name of the Dev Test Lab in which the Virtual Network should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] subnet: A `subnet` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[pulumi.InputType['VirtualNetworkSubnetArgs']] subnet: A `subnet` block as defined below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] unique_identifier: The unique immutable identifier of the Dev Test Virtual Network.
-
-        The **subnet** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
-          * `useInVirtualMachineCreation` (`pulumi.Input[str]`) - Can this subnet be used for creating Virtual Machines? Possible values are `Allow`, `Default` and `Deny`.
-          * `usePublicIpAddress` (`pulumi.Input[str]`) - Can Virtual Machines in this Subnet use Public IP Addresses? Possible values are `Allow`, `Default` and `Deny`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -154,7 +143,8 @@ class VirtualNetwork(pulumi.CustomResource):
         return VirtualNetwork(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

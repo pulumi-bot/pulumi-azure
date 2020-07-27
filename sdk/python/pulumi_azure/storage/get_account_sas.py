@@ -5,14 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetAccountSASResult',
+    'AwaitableGetAccountSASResult',
+    'get_account_sas',
+]
+
 
 class GetAccountSASResult:
     """
     A collection of values returned by getAccountSAS.
     """
-    def __init__(__self__, connection_string=None, expiry=None, https_only=None, id=None, permissions=None, resource_types=None, sas=None, services=None, start=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, connection_string=None, expiry=None, https_only=None, id=None, permissions=None, resource_types=None, sas=None, services=None, start=None) -> None:
         if connection_string and not isinstance(connection_string, str):
             raise TypeError("Expected argument 'connection_string' to be a str")
         __self__.connection_string = connection_string
@@ -46,6 +56,8 @@ class GetAccountSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountSASResult(GetAccountSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,7 +74,8 @@ class AwaitableGetAccountSASResult(GetAccountSASResult):
             services=self.services,
             start=self.start)
 
-def get_account_sas(connection_string=None,expiry=None,https_only=None,permissions=None,resource_types=None,services=None,start=None,opts=None):
+
+def get_account_sas(connection_string: Optional[str] = None, expiry: Optional[str] = None, https_only: Optional[bool] = None, permissions: Optional[pulumi.InputType['GetAccountSASPermissionsArgs']] = None, resource_types: Optional[pulumi.InputType['GetAccountSASResourceTypesArgs']] = None, services: Optional[pulumi.InputType['GetAccountSASServicesArgs']] = None, start: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSASResult:
     """
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account.
 
@@ -118,38 +131,12 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
     :param str connection_string: The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of a `storage.Account` resource.
     :param str expiry: The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
     :param bool https_only: Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
-    :param dict permissions: A `permissions` block as defined below.
-    :param dict resource_types: A `resource_types` block as defined below.
-    :param dict services: A `services` block as defined below.
+    :param pulumi.InputType['GetAccountSASPermissionsArgs'] permissions: A `permissions` block as defined below.
+    :param pulumi.InputType['GetAccountSASResourceTypesArgs'] resource_types: A `resource_types` block as defined below.
+    :param pulumi.InputType['GetAccountSASServicesArgs'] services: A `services` block as defined below.
     :param str start: The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
-
-    The **permissions** object supports the following:
-
-      * `add` (`bool`) - Should Add permissions be enabled for this SAS?
-      * `create` (`bool`) - Should Create permissions be enabled for this SAS?
-      * `delete` (`bool`) - Should Delete permissions be enabled for this SAS?
-      * `list` (`bool`) - Should List permissions be enabled for this SAS?
-      * `process` (`bool`) - Should Process permissions be enabled for this SAS?
-      * `read` (`bool`) - Should Read permissions be enabled for this SAS?
-      * `update` (`bool`) - Should Update permissions be enabled for this SAS?
-      * `write` (`bool`) - Should Write permissions be enabled for this SAS?
-
-    The **resource_types** object supports the following:
-
-      * `container` (`bool`) - Should permission be granted to the container?
-      * `object` (`bool`) - Should permission be granted only to a specific object?
-      * `service` (`bool`) - Should permission be granted to the entire service?
-
-    The **services** object supports the following:
-
-      * `blob` (`bool`) - Should permission be granted to `blob` services within this storage account?
-      * `file` (`bool`) - Should permission be granted to `file` services within this storage account?
-      * `queue` (`bool`) - Should permission be granted to `queue` services within this storage account?
-      * `table` (`bool`) - Should permission be granted to `table` services within this storage account?
     """
     __args__ = dict()
-
-
     __args__['connectionString'] = connection_string
     __args__['expiry'] = expiry
     __args__['httpsOnly'] = https_only
@@ -160,7 +147,7 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccountSAS:getAccountSAS', __args__, opts=opts).value
 
     return AwaitableGetAccountSASResult(

@@ -5,14 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDatabaseResult',
+    'AwaitableGetDatabaseResult',
+    'get_database',
+]
+
 
 class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, collation=None, elastic_pool_id=None, id=None, license_type=None, max_size_gb=None, name=None, read_replica_count=None, read_scale=None, server_id=None, sku_name=None, tags=None, zone_redundant=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, collation=None, elastic_pool_id=None, id=None, license_type=None, max_size_gb=None, name=None, read_replica_count=None, read_scale=None, server_id=None, sku_name=None, tags=None, zone_redundant=None) -> None:
         if collation and not isinstance(collation, str):
             raise TypeError("Expected argument 'collation' to be a str")
         __self__.collation = collation
@@ -79,6 +87,8 @@ class GetDatabaseResult:
         """
         Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +108,8 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_database(name=None,server_id=None,opts=None):
+
+def get_database(name: Optional[str] = None, server_id: Optional[str] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
     Use this data source to access information about an existing SQL database.
 
@@ -118,14 +129,12 @@ def get_database(name=None,server_id=None,opts=None):
     :param str server_id: The id of the Ms SQL Server on which to create the database.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['serverId'] = server_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:mssql/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

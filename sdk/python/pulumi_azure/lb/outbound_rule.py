@@ -5,51 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OutboundRule']
 
 
 class OutboundRule(pulumi.CustomResource):
-    allocated_outbound_ports: pulumi.Output[float]
+    allocated_outbound_ports: pulumi.Output[Optional[float]] = pulumi.output_property("allocatedOutboundPorts")
     """
     The number of outbound ports to be used for NAT.
     """
-    backend_address_pool_id: pulumi.Output[str]
+    backend_address_pool_id: pulumi.Output[str] = pulumi.output_property("backendAddressPoolId")
     """
     The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
     """
-    enable_tcp_reset: pulumi.Output[bool]
+    enable_tcp_reset: pulumi.Output[Optional[bool]] = pulumi.output_property("enableTcpReset")
     """
     Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
     """
-    frontend_ip_configurations: pulumi.Output[list]
+    frontend_ip_configurations: pulumi.Output[Optional[List['outputs.OutboundRuleFrontendIpConfiguration']]] = pulumi.output_property("frontendIpConfigurations")
     """
     One or more `frontend_ip_configuration` blocks as defined below.
-
-      * `id` (`str`) - The ID of the Load Balancer Outbound Rule.
-      * `name` (`str`) - The name of the Frontend IP Configuration.
     """
-    idle_timeout_in_minutes: pulumi.Output[float]
+    idle_timeout_in_minutes: pulumi.Output[Optional[float]] = pulumi.output_property("idleTimeoutInMinutes")
     """
     The timeout for the TCP idle connection
     """
-    loadbalancer_id: pulumi.Output[str]
+    loadbalancer_id: pulumi.Output[str] = pulumi.output_property("loadbalancerId")
     """
     The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
     """
-    protocol: pulumi.Output[str]
+    protocol: pulumi.Output[str] = pulumi.output_property("protocol")
     """
     The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, allocated_outbound_ports=None, backend_address_pool_id=None, enable_tcp_reset=None, frontend_ip_configurations=None, idle_timeout_in_minutes=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, allocated_outbound_ports: Optional[pulumi.Input[float]] = None, backend_address_pool_id: Optional[pulumi.Input[str]] = None, enable_tcp_reset: Optional[pulumi.Input[bool]] = None, frontend_ip_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OutboundRuleFrontendIpConfigurationArgs']]]]] = None, idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None, loadbalancer_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, protocol: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Load Balancer Outbound Rule.
 
@@ -91,17 +93,12 @@ class OutboundRule(pulumi.CustomResource):
         :param pulumi.Input[float] allocated_outbound_ports: The number of outbound ports to be used for NAT.
         :param pulumi.Input[str] backend_address_pool_id: The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
         :param pulumi.Input[bool] enable_tcp_reset: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-        :param pulumi.Input[list] frontend_ip_configurations: One or more `frontend_ip_configuration` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OutboundRuleFrontendIpConfigurationArgs']]]] frontend_ip_configurations: One or more `frontend_ip_configuration` blocks as defined below.
         :param pulumi.Input[float] idle_timeout_in_minutes: The timeout for the TCP idle connection
         :param pulumi.Input[str] loadbalancer_id: The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] protocol: The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-
-        The **frontend_ip_configurations** object supports the following:
-
-          * `id` (`pulumi.Input[str]`) - The ID of the Load Balancer Outbound Rule.
-          * `name` (`pulumi.Input[str]`) - The name of the Frontend IP Configuration.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,7 +111,7 @@ class OutboundRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -144,7 +141,7 @@ class OutboundRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocated_outbound_ports=None, backend_address_pool_id=None, enable_tcp_reset=None, frontend_ip_configurations=None, idle_timeout_in_minutes=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, allocated_outbound_ports: Optional[pulumi.Input[float]] = None, backend_address_pool_id: Optional[pulumi.Input[str]] = None, enable_tcp_reset: Optional[pulumi.Input[bool]] = None, frontend_ip_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OutboundRuleFrontendIpConfigurationArgs']]]]] = None, idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None, loadbalancer_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, protocol: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None) -> 'OutboundRule':
         """
         Get an existing OutboundRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,17 +152,12 @@ class OutboundRule(pulumi.CustomResource):
         :param pulumi.Input[float] allocated_outbound_ports: The number of outbound ports to be used for NAT.
         :param pulumi.Input[str] backend_address_pool_id: The ID of the Backend Address Pool. Outbound traffic is randomly load balanced across IPs in the backend IPs.
         :param pulumi.Input[bool] enable_tcp_reset: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-        :param pulumi.Input[list] frontend_ip_configurations: One or more `frontend_ip_configuration` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OutboundRuleFrontendIpConfigurationArgs']]]] frontend_ip_configurations: One or more `frontend_ip_configuration` blocks as defined below.
         :param pulumi.Input[float] idle_timeout_in_minutes: The timeout for the TCP idle connection
         :param pulumi.Input[str] loadbalancer_id: The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] protocol: The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-
-        The **frontend_ip_configurations** object supports the following:
-
-          * `id` (`pulumi.Input[str]`) - The ID of the Load Balancer Outbound Rule.
-          * `name` (`pulumi.Input[str]`) - The name of the Frontend IP Configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -183,7 +175,8 @@ class OutboundRule(pulumi.CustomResource):
         return OutboundRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

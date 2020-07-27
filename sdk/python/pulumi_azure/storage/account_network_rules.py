@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['AccountNetworkRules']
 
 
 class AccountNetworkRules(pulumi.CustomResource):
-    bypasses: pulumi.Output[list]
+    bypasses: pulumi.Output[List[str]] = pulumi.output_property("bypasses")
     """
     Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
     """
-    default_action: pulumi.Output[str]
+    default_action: pulumi.Output[str] = pulumi.output_property("defaultAction")
     """
     Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
     """
-    ip_rules: pulumi.Output[list]
+    ip_rules: pulumi.Output[List[str]] = pulumi.output_property("ipRules")
     """
     List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
     """
-    storage_account_name: pulumi.Output[str]
+    storage_account_name: pulumi.Output[str] = pulumi.output_property("storageAccountName")
     """
     Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
     """
-    virtual_network_subnet_ids: pulumi.Output[list]
+    virtual_network_subnet_ids: pulumi.Output[List[str]] = pulumi.output_property("virtualNetworkSubnetIds")
     """
     A list of virtual network subnet ids to to secure the storage account.
     """
-    def __init__(__self__, resource_name, opts=None, bypasses=None, default_action=None, ip_rules=None, resource_group_name=None, storage_account_name=None, virtual_network_subnet_ids=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, bypasses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, default_action: Optional[pulumi.Input[str]] = None, ip_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, storage_account_name: Optional[pulumi.Input[str]] = None, virtual_network_subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages network rules inside of a Azure Storage Account.
 
@@ -79,12 +82,12 @@ class AccountNetworkRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] bypasses: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
+        :param pulumi.Input[List[pulumi.Input[str]]] bypasses: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
         :param pulumi.Input[str] default_action: Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
-        :param pulumi.Input[list] ip_rules: List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
+        :param pulumi.Input[List[pulumi.Input[str]]] ip_rules: List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
-        :param pulumi.Input[list] virtual_network_subnet_ids: A list of virtual network subnet ids to to secure the storage account.
+        :param pulumi.Input[List[pulumi.Input[str]]] virtual_network_subnet_ids: A list of virtual network subnet ids to to secure the storage account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +100,7 @@ class AccountNetworkRules(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -122,7 +125,7 @@ class AccountNetworkRules(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bypasses=None, default_action=None, ip_rules=None, resource_group_name=None, storage_account_name=None, virtual_network_subnet_ids=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, bypasses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, default_action: Optional[pulumi.Input[str]] = None, ip_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, storage_account_name: Optional[pulumi.Input[str]] = None, virtual_network_subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'AccountNetworkRules':
         """
         Get an existing AccountNetworkRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -130,12 +133,12 @@ class AccountNetworkRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] bypasses: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
+        :param pulumi.Input[List[pulumi.Input[str]]] bypasses: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
         :param pulumi.Input[str] default_action: Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
-        :param pulumi.Input[list] ip_rules: List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
+        :param pulumi.Input[List[pulumi.Input[str]]] ip_rules: List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
-        :param pulumi.Input[list] virtual_network_subnet_ids: A list of virtual network subnet ids to to secure the storage account.
+        :param pulumi.Input[List[pulumi.Input[str]]] virtual_network_subnet_ids: A list of virtual network subnet ids to to secure the storage account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,7 +153,8 @@ class AccountNetworkRules(pulumi.CustomResource):
         return AccountNetworkRules(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

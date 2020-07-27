@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['SourceCodeToken']
 
 
 class SourceCodeToken(pulumi.CustomResource):
-    token: pulumi.Output[str]
+    token: pulumi.Output[str] = pulumi.output_property("token")
     """
     The OAuth access token.
     """
-    token_secret: pulumi.Output[str]
+    token_secret: pulumi.Output[Optional[str]] = pulumi.output_property("tokenSecret")
     """
     The OAuth access token secret.
     """
-    type: pulumi.Output[str]
+    type: pulumi.Output[str] = pulumi.output_property("type")
     """
     The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
     """
-    def __init__(__self__, resource_name, opts=None, token=None, token_secret=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, token: Optional[pulumi.Input[str]] = None, token_secret: Optional[pulumi.Input[str]] = None, type: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an App Service source control token.
 
@@ -56,7 +59,7 @@ class SourceCodeToken(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -76,7 +79,7 @@ class SourceCodeToken(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, token=None, token_secret=None, type=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, token: Optional[pulumi.Input[str]] = None, token_secret: Optional[pulumi.Input[str]] = None, type: Optional[pulumi.Input[str]] = None) -> 'SourceCodeToken':
         """
         Get an existing SourceCodeToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -98,7 +101,8 @@ class SourceCodeToken(pulumi.CustomResource):
         return SourceCodeToken(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

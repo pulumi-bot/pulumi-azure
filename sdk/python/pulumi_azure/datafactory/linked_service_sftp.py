@@ -5,64 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LinkedServiceSftp']
 
 
 class LinkedServiceSftp(pulumi.CustomResource):
-    additional_properties: pulumi.Output[dict]
+    additional_properties: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("additionalProperties")
     """
     A map of additional properties to associate with the Data Factory Linked Service.
     """
-    annotations: pulumi.Output[list]
+    annotations: pulumi.Output[Optional[List[str]]] = pulumi.output_property("annotations")
     """
     List of tags that can be used for describing the Data Factory Linked Service.
     """
-    authentication_type: pulumi.Output[str]
+    authentication_type: pulumi.Output[str] = pulumi.output_property("authenticationType")
     """
     The type of authentication used to connect to the web table source. Valid options are `Anonymous`, `Basic` and `ClientCertificate`.
     """
-    data_factory_name: pulumi.Output[str]
+    data_factory_name: pulumi.Output[str] = pulumi.output_property("dataFactoryName")
     """
     The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description for the Data Factory Linked Service.
     """
-    host: pulumi.Output[str]
+    host: pulumi.Output[str] = pulumi.output_property("host")
     """
     The SFTP server hostname.
     """
-    integration_runtime_name: pulumi.Output[str]
+    integration_runtime_name: pulumi.Output[Optional[str]] = pulumi.output_property("integrationRuntimeName")
     """
     The integration runtime reference to associate with the Data Factory Linked Service.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
     """
-    parameters: pulumi.Output[dict]
+    parameters: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameters")
     """
     A map of parameters to associate with the Data Factory Linfked Service.
     """
-    password: pulumi.Output[str]
+    password: pulumi.Output[str] = pulumi.output_property("password")
     """
     Password to logon to the SFTP Server for Basic Authentication.
     """
-    port: pulumi.Output[float]
+    port: pulumi.Output[float] = pulumi.output_property("port")
     """
     The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Data Factory Linked Service. Changing this forces a new resource
     """
-    username: pulumi.Output[str]
+    username: pulumi.Output[str] = pulumi.output_property("username")
     """
     The username used to log on to the SFTP server.
     """
-    def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, authentication_type=None, data_factory_name=None, description=None, host=None, integration_runtime_name=None, name=None, parameters=None, password=None, port=None, resource_group_name=None, username=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, additional_properties: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, authentication_type: Optional[pulumi.Input[str]] = None, data_factory_name: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, host: Optional[pulumi.Input[str]] = None, integration_runtime_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, password: Optional[pulumi.Input[str]] = None, port: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, username: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
 
@@ -90,15 +93,15 @@ class LinkedServiceSftp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service.
         :param pulumi.Input[str] authentication_type: The type of authentication used to connect to the web table source. Valid options are `Anonymous`, `Basic` and `ClientCertificate`.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service.
         :param pulumi.Input[str] host: The SFTP server hostname.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linfked Service.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linfked Service.
         :param pulumi.Input[str] password: Password to logon to the SFTP Server for Basic Authentication.
         :param pulumi.Input[float] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service. Changing this forces a new resource
@@ -115,7 +118,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -155,7 +158,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_properties=None, annotations=None, authentication_type=None, data_factory_name=None, description=None, host=None, integration_runtime_name=None, name=None, parameters=None, password=None, port=None, resource_group_name=None, username=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, additional_properties: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, authentication_type: Optional[pulumi.Input[str]] = None, data_factory_name: Optional[pulumi.Input[str]] = None, description: Optional[pulumi.Input[str]] = None, host: Optional[pulumi.Input[str]] = None, integration_runtime_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, parameters: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, password: Optional[pulumi.Input[str]] = None, port: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, username: Optional[pulumi.Input[str]] = None) -> 'LinkedServiceSftp':
         """
         Get an existing LinkedServiceSftp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,15 +166,15 @@ class LinkedServiceSftp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service.
         :param pulumi.Input[str] authentication_type: The type of authentication used to connect to the web table source. Valid options are `Anonymous`, `Basic` and `ClientCertificate`.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service.
         :param pulumi.Input[str] host: The SFTP server hostname.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linfked Service.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linfked Service.
         :param pulumi.Input[str] password: Password to logon to the SFTP Server for Basic Authentication.
         :param pulumi.Input[float] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service. Changing this forces a new resource
@@ -197,7 +200,8 @@ class LinkedServiceSftp(pulumi.CustomResource):
         return LinkedServiceSftp(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

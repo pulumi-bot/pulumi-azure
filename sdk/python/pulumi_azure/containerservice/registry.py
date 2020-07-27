@@ -5,69 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Registry']
 
 
 class Registry(pulumi.CustomResource):
-    admin_enabled: pulumi.Output[bool]
+    admin_enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("adminEnabled")
     """
     Specifies whether the admin user is enabled. Defaults to `false`.
     """
-    admin_password: pulumi.Output[str]
+    admin_password: pulumi.Output[str] = pulumi.output_property("adminPassword")
     """
     The Password associated with the Container Registry Admin account - if the admin account is enabled.
     """
-    admin_username: pulumi.Output[str]
+    admin_username: pulumi.Output[str] = pulumi.output_property("adminUsername")
     """
     The Username associated with the Container Registry Admin account - if the admin account is enabled.
     """
-    georeplication_locations: pulumi.Output[list]
+    georeplication_locations: pulumi.Output[Optional[List[str]]] = pulumi.output_property("georeplicationLocations")
     """
     A list of Azure locations where the container registry should be geo-replicated.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    login_server: pulumi.Output[str]
+    login_server: pulumi.Output[str] = pulumi.output_property("loginServer")
     """
     The URL that can be used to log into the container registry.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Container Registry. Changing this forces a new resource to be created.
     """
-    network_rule_set: pulumi.Output[dict]
+    network_rule_set: pulumi.Output['outputs.RegistryNetworkRuleSet'] = pulumi.output_property("networkRuleSet")
     """
     A `network_rule_set` block as documented below.
-
-      * `default_action` (`str`) - The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
-      * `ip_rules` (`list`) - One or more `ip_rule` blocks as defined below.
-        * `action` (`str`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-        * `ipRange` (`str`) - The CIDR block from which requests will match the rule.
-
-      * `virtualNetworks` (`list`) - One or more `virtual_network` blocks as defined below.
-        * `action` (`str`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-        * `subnet_id` (`str`) - The subnet id from which requests will match the rule.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
     """
-    sku: pulumi.Output[str]
+    sku: pulumi.Output[Optional[str]] = pulumi.output_property("sku")
     """
     The SKU name of the container registry. Possible values are  `Basic`, `Standard` and `Premium`. `Classic` (which was previously `Basic`) is supported only for existing resources.
     """
-    storage_account_id: pulumi.Output[str]
+    storage_account_id: pulumi.Output[Optional[str]] = pulumi.output_property("storageAccountId")
     """
     The ID of a Storage Account which must be located in the same Azure Region as the Container Registry.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, admin_enabled=None, georeplication_locations=None, location=None, name=None, network_rule_set=None, resource_group_name=None, sku=None, storage_account_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, admin_enabled: Optional[pulumi.Input[bool]] = None, georeplication_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, location: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, network_rule_set: Optional[pulumi.Input[pulumi.InputType['RegistryNetworkRuleSetArgs']]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, storage_account_id: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Azure Container Registry.
 
@@ -92,25 +88,14 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Specifies whether the admin user is enabled. Defaults to `false`.
-        :param pulumi.Input[list] georeplication_locations: A list of Azure locations where the container registry should be geo-replicated.
+        :param pulumi.Input[List[pulumi.Input[str]]] georeplication_locations: A list of Azure locations where the container registry should be geo-replicated.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Container Registry. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] network_rule_set: A `network_rule_set` block as documented below.
+        :param pulumi.Input[pulumi.InputType['RegistryNetworkRuleSetArgs']] network_rule_set: A `network_rule_set` block as documented below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku: The SKU name of the container registry. Possible values are  `Basic`, `Standard` and `Premium`. `Classic` (which was previously `Basic`) is supported only for existing resources.
         :param pulumi.Input[str] storage_account_id: The ID of a Storage Account which must be located in the same Azure Region as the Container Registry.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **network_rule_set** object supports the following:
-
-          * `default_action` (`pulumi.Input[str]`) - The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
-          * `ip_rules` (`pulumi.Input[list]`) - One or more `ip_rule` blocks as defined below.
-            * `action` (`pulumi.Input[str]`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-            * `ipRange` (`pulumi.Input[str]`) - The CIDR block from which requests will match the rule.
-
-          * `virtualNetworks` (`pulumi.Input[list]`) - One or more `virtual_network` blocks as defined below.
-            * `action` (`pulumi.Input[str]`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-            * `subnet_id` (`pulumi.Input[str]`) - The subnet id from which requests will match the rule.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,7 +108,7 @@ class Registry(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -150,7 +135,7 @@ class Registry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, admin_enabled=None, admin_password=None, admin_username=None, georeplication_locations=None, location=None, login_server=None, name=None, network_rule_set=None, resource_group_name=None, sku=None, storage_account_id=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, admin_enabled: Optional[pulumi.Input[bool]] = None, admin_password: Optional[pulumi.Input[str]] = None, admin_username: Optional[pulumi.Input[str]] = None, georeplication_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, location: Optional[pulumi.Input[str]] = None, login_server: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, network_rule_set: Optional[pulumi.Input[pulumi.InputType['RegistryNetworkRuleSetArgs']]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, sku: Optional[pulumi.Input[str]] = None, storage_account_id: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'Registry':
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -161,26 +146,15 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_enabled: Specifies whether the admin user is enabled. Defaults to `false`.
         :param pulumi.Input[str] admin_password: The Password associated with the Container Registry Admin account - if the admin account is enabled.
         :param pulumi.Input[str] admin_username: The Username associated with the Container Registry Admin account - if the admin account is enabled.
-        :param pulumi.Input[list] georeplication_locations: A list of Azure locations where the container registry should be geo-replicated.
+        :param pulumi.Input[List[pulumi.Input[str]]] georeplication_locations: A list of Azure locations where the container registry should be geo-replicated.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] login_server: The URL that can be used to log into the container registry.
         :param pulumi.Input[str] name: Specifies the name of the Container Registry. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] network_rule_set: A `network_rule_set` block as documented below.
+        :param pulumi.Input[pulumi.InputType['RegistryNetworkRuleSetArgs']] network_rule_set: A `network_rule_set` block as documented below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku: The SKU name of the container registry. Possible values are  `Basic`, `Standard` and `Premium`. `Classic` (which was previously `Basic`) is supported only for existing resources.
         :param pulumi.Input[str] storage_account_id: The ID of a Storage Account which must be located in the same Azure Region as the Container Registry.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **network_rule_set** object supports the following:
-
-          * `default_action` (`pulumi.Input[str]`) - The behaviour for requests matching no rules. Either `Allow` or `Deny`. Defaults to `Allow`
-          * `ip_rules` (`pulumi.Input[list]`) - One or more `ip_rule` blocks as defined below.
-            * `action` (`pulumi.Input[str]`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-            * `ipRange` (`pulumi.Input[str]`) - The CIDR block from which requests will match the rule.
-
-          * `virtualNetworks` (`pulumi.Input[list]`) - One or more `virtual_network` blocks as defined below.
-            * `action` (`pulumi.Input[str]`) - The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-            * `subnet_id` (`pulumi.Input[str]`) - The subnet id from which requests will match the rule.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -201,7 +175,8 @@ class Registry(pulumi.CustomResource):
         return Registry(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

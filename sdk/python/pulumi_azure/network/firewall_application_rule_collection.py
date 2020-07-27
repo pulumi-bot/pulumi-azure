@@ -5,46 +5,41 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['FirewallApplicationRuleCollection']
 
 
 class FirewallApplicationRuleCollection(pulumi.CustomResource):
-    action: pulumi.Output[str]
+    action: pulumi.Output[str] = pulumi.output_property("action")
     """
     Specifies the action the rule will apply to matching traffic. Possible values are `Allow` and `Deny`.
     """
-    azure_firewall_name: pulumi.Output[str]
+    azure_firewall_name: pulumi.Output[str] = pulumi.output_property("azureFirewallName")
     """
     Specifies the name of the Firewall in which the Application Rule Collection should be created. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Application Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
     """
-    priority: pulumi.Output[float]
+    priority: pulumi.Output[float] = pulumi.output_property("priority")
     """
     Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
     """
-    rules: pulumi.Output[list]
+    rules: pulumi.Output[List['outputs.FirewallApplicationRuleCollectionRule']] = pulumi.output_property("rules")
     """
     One or more `rule` blocks as defined below.
-
-      * `description` (`str`) - Specifies a description for the rule.
-      * `fqdnTags` (`list`) - A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics` and `WindowsUpdate`
-      * `name` (`str`) - Specifies the name of the rule.
-      * `protocols` (`list`) - One or more `protocol` blocks as defined below.
-        * `port` (`float`) - Specify a port for the connection.
-        * `type` (`str`) - Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
-
-      * `sourceAddresses` (`list`) - A list of source IP addresses and/or IP ranges.
-      * `targetFqdns` (`list`) - A list of FQDNs.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, azure_firewall_name=None, name=None, priority=None, resource_group_name=None, rules=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, action: Optional[pulumi.Input[str]] = None, azure_firewall_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, priority: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallApplicationRuleCollectionRuleArgs']]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an Application Rule Collection within an Azure Firewall.
 
@@ -99,19 +94,7 @@ class FirewallApplicationRuleCollection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Application Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[float] priority: Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] rules: One or more `rule` blocks as defined below.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Specifies a description for the rule.
-          * `fqdnTags` (`pulumi.Input[list]`) - A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics` and `WindowsUpdate`
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the rule.
-          * `protocols` (`pulumi.Input[list]`) - One or more `protocol` blocks as defined below.
-            * `port` (`pulumi.Input[float]`) - Specify a port for the connection.
-            * `type` (`pulumi.Input[str]`) - Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
-
-          * `sourceAddresses` (`pulumi.Input[list]`) - A list of source IP addresses and/or IP ranges.
-          * `targetFqdns` (`pulumi.Input[list]`) - A list of FQDNs.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallApplicationRuleCollectionRuleArgs']]]] rules: One or more `rule` blocks as defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,7 +107,7 @@ class FirewallApplicationRuleCollection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -153,7 +136,7 @@ class FirewallApplicationRuleCollection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, azure_firewall_name=None, name=None, priority=None, resource_group_name=None, rules=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, action: Optional[pulumi.Input[str]] = None, azure_firewall_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, priority: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallApplicationRuleCollectionRuleArgs']]]]] = None) -> 'FirewallApplicationRuleCollection':
         """
         Get an existing FirewallApplicationRuleCollection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -166,19 +149,7 @@ class FirewallApplicationRuleCollection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Application Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[float] priority: Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] rules: One or more `rule` blocks as defined below.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Specifies a description for the rule.
-          * `fqdnTags` (`pulumi.Input[list]`) - A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics` and `WindowsUpdate`
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the rule.
-          * `protocols` (`pulumi.Input[list]`) - One or more `protocol` blocks as defined below.
-            * `port` (`pulumi.Input[float]`) - Specify a port for the connection.
-            * `type` (`pulumi.Input[str]`) - Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
-
-          * `sourceAddresses` (`pulumi.Input[list]`) - A list of source IP addresses and/or IP ranges.
-          * `targetFqdns` (`pulumi.Input[list]`) - A list of FQDNs.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallApplicationRuleCollectionRuleArgs']]]] rules: One or more `rule` blocks as defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -193,7 +164,8 @@ class FirewallApplicationRuleCollection(pulumi.CustomResource):
         return FirewallApplicationRuleCollection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

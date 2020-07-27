@@ -5,35 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['NamespaceNetworkRuleSet']
 
 
 class NamespaceNetworkRuleSet(pulumi.CustomResource):
-    default_action: pulumi.Output[str]
+    default_action: pulumi.Output[Optional[str]] = pulumi.output_property("defaultAction")
     """
     Specifies the default action for the ServiceBus Namespace Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
     """
-    ip_rules: pulumi.Output[list]
+    ip_rules: pulumi.Output[Optional[List[str]]] = pulumi.output_property("ipRules")
     """
     One or more IP Addresses, or CIDR Blocks which should be able to access the ServiceBus Namespace.
     """
-    namespace_name: pulumi.Output[str]
+    namespace_name: pulumi.Output[str] = pulumi.output_property("namespaceName")
     """
     Specifies the ServiceBus Namespace name to which to attach the ServiceBus Namespace Network Rule Set. Changing this forces a new resource to be created.
     """
-    network_rules: pulumi.Output[list]
+    network_rules: pulumi.Output[Optional[List['outputs.NamespaceNetworkRuleSetNetworkRule']]] = pulumi.output_property("networkRules")
     """
     One or more `network_rules` blocks as defined below.
-
-      * `ignore_missing_vnet_service_endpoint` (`bool`) - Should the ServiceBus Namespace Network Rule Set ignore missing Virtual Network Service Endpoint option in the Subnet? Defaults to `false`.
-      * `subnet_id` (`str`) - The Subnet ID which should be able to access this ServiceBus Namespace.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the Resource Group where the ServiceBus Namespace Network Rule Set should exist. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, default_action=None, ip_rules=None, namespace_name=None, network_rules=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, default_action: Optional[pulumi.Input[str]] = None, ip_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, namespace_name: Optional[pulumi.Input[str]] = None, network_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NamespaceNetworkRuleSetNetworkRuleArgs']]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a ServiceBus Namespace Network Rule Set Set.
 
@@ -76,15 +78,10 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_action: Specifies the default action for the ServiceBus Namespace Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-        :param pulumi.Input[list] ip_rules: One or more IP Addresses, or CIDR Blocks which should be able to access the ServiceBus Namespace.
+        :param pulumi.Input[List[pulumi.Input[str]]] ip_rules: One or more IP Addresses, or CIDR Blocks which should be able to access the ServiceBus Namespace.
         :param pulumi.Input[str] namespace_name: Specifies the ServiceBus Namespace name to which to attach the ServiceBus Namespace Network Rule Set. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_rules: One or more `network_rules` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NamespaceNetworkRuleSetNetworkRuleArgs']]]] network_rules: One or more `network_rules` blocks as defined below.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group where the ServiceBus Namespace Network Rule Set should exist. Changing this forces a new resource to be created.
-
-        The **network_rules** object supports the following:
-
-          * `ignore_missing_vnet_service_endpoint` (`pulumi.Input[bool]`) - Should the ServiceBus Namespace Network Rule Set ignore missing Virtual Network Service Endpoint option in the Subnet? Defaults to `false`.
-          * `subnet_id` (`pulumi.Input[str]`) - The Subnet ID which should be able to access this ServiceBus Namespace.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +94,7 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -119,7 +116,7 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, default_action=None, ip_rules=None, namespace_name=None, network_rules=None, resource_group_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, default_action: Optional[pulumi.Input[str]] = None, ip_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None, namespace_name: Optional[pulumi.Input[str]] = None, network_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NamespaceNetworkRuleSetNetworkRuleArgs']]]]] = None, resource_group_name: Optional[pulumi.Input[str]] = None) -> 'NamespaceNetworkRuleSet':
         """
         Get an existing NamespaceNetworkRuleSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -128,15 +125,10 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_action: Specifies the default action for the ServiceBus Namespace Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-        :param pulumi.Input[list] ip_rules: One or more IP Addresses, or CIDR Blocks which should be able to access the ServiceBus Namespace.
+        :param pulumi.Input[List[pulumi.Input[str]]] ip_rules: One or more IP Addresses, or CIDR Blocks which should be able to access the ServiceBus Namespace.
         :param pulumi.Input[str] namespace_name: Specifies the ServiceBus Namespace name to which to attach the ServiceBus Namespace Network Rule Set. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] network_rules: One or more `network_rules` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NamespaceNetworkRuleSetNetworkRuleArgs']]]] network_rules: One or more `network_rules` blocks as defined below.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group where the ServiceBus Namespace Network Rule Set should exist. Changing this forces a new resource to be created.
-
-        The **network_rules** object supports the following:
-
-          * `ignore_missing_vnet_service_endpoint` (`pulumi.Input[bool]`) - Should the ServiceBus Namespace Network Rule Set ignore missing Virtual Network Service Endpoint option in the Subnet? Defaults to `false`.
-          * `subnet_id` (`pulumi.Input[str]`) - The Subnet ID which should be able to access this ServiceBus Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,7 +142,8 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         return NamespaceNetworkRuleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

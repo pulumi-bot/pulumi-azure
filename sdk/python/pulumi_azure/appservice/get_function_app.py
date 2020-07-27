@@ -5,14 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetFunctionAppResult',
+    'AwaitableGetFunctionAppResult',
+    'get_function_app',
+]
+
 
 class GetFunctionAppResult:
     """
     A collection of values returned by getFunctionApp.
     """
-    def __init__(__self__, app_service_plan_id=None, app_settings=None, connection_strings=None, default_hostname=None, enabled=None, id=None, location=None, name=None, os_type=None, outbound_ip_addresses=None, possible_outbound_ip_addresses=None, resource_group_name=None, site_credentials=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, app_service_plan_id=None, app_settings=None, connection_strings=None, default_hostname=None, enabled=None, id=None, location=None, name=None, os_type=None, outbound_ip_addresses=None, possible_outbound_ip_addresses=None, resource_group_name=None, site_credentials=None, tags=None) -> None:
         if app_service_plan_id and not isinstance(app_service_plan_id, str):
             raise TypeError("Expected argument 'app_service_plan_id' to be a str")
         __self__.app_service_plan_id = app_service_plan_id
@@ -88,6 +97,8 @@ class GetFunctionAppResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetFunctionAppResult(GetFunctionAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +120,8 @@ class AwaitableGetFunctionAppResult(GetFunctionAppResult):
             site_credentials=self.site_credentials,
             tags=self.tags)
 
-def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_function_app(name: Optional[str] = None, resource_group_name: Optional[str] = None, tags: Optional[Dict[str, str]] = None, opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionAppResult:
     """
     Use this data source to access information about a Function App.
 
@@ -128,15 +140,13 @@ def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Function App exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getFunctionApp:getFunctionApp', __args__, opts=opts).value
 
     return AwaitableGetFunctionAppResult(

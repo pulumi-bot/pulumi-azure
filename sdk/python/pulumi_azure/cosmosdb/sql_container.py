@@ -5,46 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SqlContainer']
 
 
 class SqlContainer(pulumi.CustomResource):
-    account_name: pulumi.Output[str]
+    account_name: pulumi.Output[str] = pulumi.output_property("accountName")
     """
     The name of the Cosmos DB Account to create the container within. Changing this forces a new resource to be created.
     """
-    database_name: pulumi.Output[str]
+    database_name: pulumi.Output[str] = pulumi.output_property("databaseName")
     """
     The name of the Cosmos DB SQL Database to create the container within. Changing this forces a new resource to be created.
     """
-    default_ttl: pulumi.Output[float]
+    default_ttl: pulumi.Output[float] = pulumi.output_property("defaultTtl")
     """
     The default time to live of SQL container. If missing, items are not expired automatically. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     Specifies the name of the Cosmos DB SQL Database. Changing this forces a new resource to be created.
     """
-    partition_key_path: pulumi.Output[str]
+    partition_key_path: pulumi.Output[Optional[str]] = pulumi.output_property("partitionKeyPath")
     """
     Define a partition key. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
     """
-    throughput: pulumi.Output[float]
+    throughput: pulumi.Output[float] = pulumi.output_property("throughput")
     """
     The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
     """
-    unique_keys: pulumi.Output[list]
+    unique_keys: pulumi.Output[Optional[List['outputs.SqlContainerUniqueKey']]] = pulumi.output_property("uniqueKeys")
     """
     One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-
-      * `paths` (`list`) - A list of paths to use for this unique key.
     """
-    def __init__(__self__, resource_name, opts=None, account_name=None, database_name=None, default_ttl=None, name=None, partition_key_path=None, resource_group_name=None, throughput=None, unique_keys=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_name: Optional[pulumi.Input[str]] = None, database_name: Optional[pulumi.Input[str]] = None, default_ttl: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, partition_key_path: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, throughput: Optional[pulumi.Input[float]] = None, unique_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a SQL Container within a Cosmos DB Account.
 
@@ -77,11 +80,7 @@ class SqlContainer(pulumi.CustomResource):
         :param pulumi.Input[str] partition_key_path: Define a partition key. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] throughput: The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
-        :param pulumi.Input[list] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-
-        The **unique_keys** object supports the following:
-
-          * `paths` (`pulumi.Input[list]`) - A list of paths to use for this unique key.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,7 +93,7 @@ class SqlContainer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -121,7 +120,7 @@ class SqlContainer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_name=None, database_name=None, default_ttl=None, name=None, partition_key_path=None, resource_group_name=None, throughput=None, unique_keys=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, account_name: Optional[pulumi.Input[str]] = None, database_name: Optional[pulumi.Input[str]] = None, default_ttl: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, partition_key_path: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, throughput: Optional[pulumi.Input[float]] = None, unique_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None) -> 'SqlContainer':
         """
         Get an existing SqlContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -136,11 +135,7 @@ class SqlContainer(pulumi.CustomResource):
         :param pulumi.Input[str] partition_key_path: Define a partition key. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] throughput: The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
-        :param pulumi.Input[list] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-
-        The **unique_keys** object supports the following:
-
-          * `paths` (`pulumi.Input[list]`) - A list of paths to use for this unique key.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -157,7 +152,8 @@ class SqlContainer(pulumi.CustomResource):
         return SqlContainer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

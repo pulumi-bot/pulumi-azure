@@ -5,45 +5,48 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ClusterPrincipalAssignment']
 
 
 class ClusterPrincipalAssignment(pulumi.CustomResource):
-    cluster_name: pulumi.Output[str]
+    cluster_name: pulumi.Output[str] = pulumi.output_property("clusterName")
     """
     The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
-    principal_id: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
+    principal_id: pulumi.Output[str] = pulumi.output_property("principalId")
     """
     The object id of the principal. Changing this forces a new resource to be created.
     """
-    principal_name: pulumi.Output[str]
+    principal_name: pulumi.Output[str] = pulumi.output_property("principalName")
     """
     The name of the principal.
     """
-    principal_type: pulumi.Output[str]
+    principal_type: pulumi.Output[str] = pulumi.output_property("principalType")
     """
     The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
     """
-    role: pulumi.Output[str]
+    role: pulumi.Output[str] = pulumi.output_property("role")
     """
     The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin` and `AllDatabasesViewer`. Changing this forces a new resource to be created.
     """
-    tenant_id: pulumi.Output[str]
+    tenant_id: pulumi.Output[str] = pulumi.output_property("tenantId")
     """
     The tenant id in which the principal resides. Changing this forces a new resource to be created.
     """
-    tenant_name: pulumi.Output[str]
+    tenant_name: pulumi.Output[str] = pulumi.output_property("tenantName")
     """
     The name of the tenant.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_name=None, name=None, principal_id=None, principal_type=None, resource_group_name=None, role=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, cluster_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, principal_id: Optional[pulumi.Input[str]] = None, principal_type: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, role: Optional[pulumi.Input[str]] = None, tenant_id: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Kusto Cluster Principal Assignment.
 
@@ -91,7 +94,7 @@ class ClusterPrincipalAssignment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,7 +128,7 @@ class ClusterPrincipalAssignment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_name=None, name=None, principal_id=None, principal_name=None, principal_type=None, resource_group_name=None, role=None, tenant_id=None, tenant_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, cluster_name: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, principal_id: Optional[pulumi.Input[str]] = None, principal_name: Optional[pulumi.Input[str]] = None, principal_type: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, role: Optional[pulumi.Input[str]] = None, tenant_id: Optional[pulumi.Input[str]] = None, tenant_name: Optional[pulumi.Input[str]] = None) -> 'ClusterPrincipalAssignment':
         """
         Get an existing ClusterPrincipalAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -158,7 +161,8 @@ class ClusterPrincipalAssignment(pulumi.CustomResource):
         return ClusterPrincipalAssignment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

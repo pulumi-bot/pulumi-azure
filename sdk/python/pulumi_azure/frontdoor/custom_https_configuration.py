@@ -5,25 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CustomHttpsConfiguration']
 
 
 class CustomHttpsConfiguration(pulumi.CustomResource):
-    custom_https_configuration: pulumi.Output[dict]
-    custom_https_provisioning_enabled: pulumi.Output[bool]
+    custom_https_configuration: pulumi.Output[Optional['outputs.CustomHttpsConfigurationCustomHttpsConfiguration']] = pulumi.output_property("customHttpsConfiguration")
+    custom_https_provisioning_enabled: pulumi.Output[bool] = pulumi.output_property("customHttpsProvisioningEnabled")
     """
     Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
     """
-    frontend_endpoint_id: pulumi.Output[str]
+    frontend_endpoint_id: pulumi.Output[str] = pulumi.output_property("frontendEndpointId")
     """
     Id of the Front Door Frontend endpoint this configuration refers to.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the name of the Resource Group in which the Front Door exists
     """
-    def __init__(__self__, resource_name, opts=None, custom_https_configuration=None, custom_https_provisioning_enabled=None, frontend_endpoint_id=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, custom_https_configuration: Optional[pulumi.Input[pulumi.InputType['CustomHttpsConfigurationCustomHttpsConfigurationArgs']]] = None, custom_https_provisioning_enabled: Optional[pulumi.Input[bool]] = None, frontend_endpoint_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages the Custom Https Configuration for an Azure Front Door Frontend Endpoint..
 
@@ -102,16 +107,6 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] custom_https_provisioning_enabled: Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
         :param pulumi.Input[str] frontend_endpoint_id: Id of the Front Door Frontend endpoint this configuration refers to.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Front Door exists
-
-        The **custom_https_configuration** object supports the following:
-
-          * `azureKeyVaultCertificateSecretName` (`pulumi.Input[str]`) - The name of the Key Vault secret representing the full certificate PFX.
-          * `azureKeyVaultCertificateSecretVersion` (`pulumi.Input[str]`) - The version of the Key Vault secret representing the full certificate PFX.
-          * `azureKeyVaultCertificateVaultId` (`pulumi.Input[str]`) - The ID of the Key Vault containing the SSL certificate.
-          * `certificateSource` (`pulumi.Input[str]`) - Certificate source to encrypted `HTTPS` traffic with. Allowed values are `FrontDoor` or `AzureKeyVault`. Defaults to `FrontDoor`.
-          * `minimum_tls_version` (`pulumi.Input[str]`) - Minimum client TLS version supported.
-          * `provisioningState` (`pulumi.Input[str]`)
-          * `provisioningSubstate` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,7 +119,7 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -147,7 +142,7 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_https_configuration=None, custom_https_provisioning_enabled=None, frontend_endpoint_id=None, resource_group_name=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, custom_https_configuration: Optional[pulumi.Input[pulumi.InputType['CustomHttpsConfigurationCustomHttpsConfigurationArgs']]] = None, custom_https_provisioning_enabled: Optional[pulumi.Input[bool]] = None, frontend_endpoint_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None) -> 'CustomHttpsConfiguration':
         """
         Get an existing CustomHttpsConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -158,16 +153,6 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] custom_https_provisioning_enabled: Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
         :param pulumi.Input[str] frontend_endpoint_id: Id of the Front Door Frontend endpoint this configuration refers to.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Front Door exists
-
-        The **custom_https_configuration** object supports the following:
-
-          * `azureKeyVaultCertificateSecretName` (`pulumi.Input[str]`) - The name of the Key Vault secret representing the full certificate PFX.
-          * `azureKeyVaultCertificateSecretVersion` (`pulumi.Input[str]`) - The version of the Key Vault secret representing the full certificate PFX.
-          * `azureKeyVaultCertificateVaultId` (`pulumi.Input[str]`) - The ID of the Key Vault containing the SSL certificate.
-          * `certificateSource` (`pulumi.Input[str]`) - Certificate source to encrypted `HTTPS` traffic with. Allowed values are `FrontDoor` or `AzureKeyVault`. Defaults to `FrontDoor`.
-          * `minimum_tls_version` (`pulumi.Input[str]`) - Minimum client TLS version supported.
-          * `provisioningState` (`pulumi.Input[str]`)
-          * `provisioningSubstate` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -180,7 +165,8 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
         return CustomHttpsConfiguration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

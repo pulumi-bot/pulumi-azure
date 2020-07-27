@@ -5,40 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Zone']
 
 
 class Zone(pulumi.CustomResource):
-    max_number_of_record_sets: pulumi.Output[float]
+    max_number_of_record_sets: pulumi.Output[float] = pulumi.output_property("maxNumberOfRecordSets")
     """
     The maximum number of record sets that can be created in this Private DNS zone.
     """
-    max_number_of_virtual_network_links: pulumi.Output[float]
+    max_number_of_virtual_network_links: pulumi.Output[float] = pulumi.output_property("maxNumberOfVirtualNetworkLinks")
     """
     The maximum number of virtual networks that can be linked to this Private DNS zone.
     """
-    max_number_of_virtual_network_links_with_registration: pulumi.Output[float]
+    max_number_of_virtual_network_links_with_registration: pulumi.Output[float] = pulumi.output_property("maxNumberOfVirtualNetworkLinksWithRegistration")
     """
     The maximum number of virtual networks that can be linked to this Private DNS zone with registration enabled.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Private DNS Zone. Must be a valid domain name.
     """
-    number_of_record_sets: pulumi.Output[float]
+    number_of_record_sets: pulumi.Output[float] = pulumi.output_property("numberOfRecordSets")
     """
     The current number of record sets in this Private DNS zone.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Enables you to manage Private DNS zones within Azure DNS. These zones are hosted on Azure's name servers.
 
@@ -56,7 +59,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Private DNS Zone. Must be a valid domain name.
         :param pulumi.Input[str] resource_group_name: Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,7 +72,7 @@ class Zone(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -91,7 +94,7 @@ class Zone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, max_number_of_record_sets=None, max_number_of_virtual_network_links=None, max_number_of_virtual_network_links_with_registration=None, name=None, number_of_record_sets=None, resource_group_name=None, tags=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, max_number_of_record_sets: Optional[pulumi.Input[float]] = None, max_number_of_virtual_network_links: Optional[pulumi.Input[float]] = None, max_number_of_virtual_network_links_with_registration: Optional[pulumi.Input[float]] = None, name: Optional[pulumi.Input[str]] = None, number_of_record_sets: Optional[pulumi.Input[float]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,7 +108,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Private DNS Zone. Must be a valid domain name.
         :param pulumi.Input[float] number_of_record_sets: The current number of record sets in this Private DNS zone.
         :param pulumi.Input[str] resource_group_name: Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -121,7 +124,8 @@ class Zone(pulumi.CustomResource):
         return Zone(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

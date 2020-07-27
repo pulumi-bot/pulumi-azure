@@ -5,56 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SharedImageVersion']
 
 
 class SharedImageVersion(pulumi.CustomResource):
-    exclude_from_latest: pulumi.Output[bool]
+    exclude_from_latest: pulumi.Output[Optional[bool]] = pulumi.output_property("excludeFromLatest")
     """
     Should this Image Version be excluded from the `latest` filter? If set to `true` this Image Version won't be returned for the `latest` version. Defaults to `false`.
     """
-    gallery_name: pulumi.Output[str]
+    gallery_name: pulumi.Output[str] = pulumi.output_property("galleryName")
     """
     The name of the Shared Image Gallery in which the Shared Image exists. Changing this forces a new resource to be created.
     """
-    image_name: pulumi.Output[str]
+    image_name: pulumi.Output[str] = pulumi.output_property("imageName")
     """
     The name of the Shared Image within the Shared Image Gallery in which this Version should be created. Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The Azure Region in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
     """
-    managed_image_id: pulumi.Output[str]
+    managed_image_id: pulumi.Output[Optional[str]] = pulumi.output_property("managedImageId")
     """
     The ID of the Managed Image or Virtual Machine ID which should be used for this Shared Image Version. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
     """
-    os_disk_snapshot_id: pulumi.Output[str]
+    os_disk_snapshot_id: pulumi.Output[Optional[str]] = pulumi.output_property("osDiskSnapshotId")
     """
     The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+    resource_group_name: pulumi.Output[str] = pulumi.output_property("resourceGroupName")
     """
     The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A collection of tags which should be applied to this resource.
     """
-    target_regions: pulumi.Output[list]
+    target_regions: pulumi.Output[List['outputs.SharedImageVersionTargetRegion']] = pulumi.output_property("targetRegions")
     """
     One or more `target_region` blocks as documented below.
-
-      * `name` (`str`) - The Azure Region in which this Image Version should exist.
-      * `regionalReplicaCount` (`float`) - The number of replicas of the Image Version to be created per region.
-      * `storage_account_type` (`str`) - The storage account type for the image version. Possible values are `Standard_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`. You can store all of your image version replicas in Zone Redundant Storage by specifying `Standard_ZRS`.
     """
-    def __init__(__self__, resource_name, opts=None, exclude_from_latest=None, gallery_name=None, image_name=None, location=None, managed_image_id=None, name=None, os_disk_snapshot_id=None, resource_group_name=None, tags=None, target_regions=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, exclude_from_latest: Optional[pulumi.Input[bool]] = None, gallery_name: Optional[pulumi.Input[str]] = None, image_name: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, managed_image_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, os_disk_snapshot_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, target_regions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SharedImageVersionTargetRegionArgs']]]]] = None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Version of a Shared Image within a Shared Image Gallery.
 
@@ -92,14 +93,8 @@ class SharedImageVersion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] os_disk_snapshot_id: The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A collection of tags which should be applied to this resource.
-        :param pulumi.Input[list] target_regions: One or more `target_region` blocks as documented below.
-
-        The **target_regions** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Azure Region in which this Image Version should exist.
-          * `regionalReplicaCount` (`pulumi.Input[float]`) - The number of replicas of the Image Version to be created per region.
-          * `storage_account_type` (`pulumi.Input[str]`) - The storage account type for the image version. Possible values are `Standard_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`. You can store all of your image version replicas in Zone Redundant Storage by specifying `Standard_ZRS`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A collection of tags which should be applied to this resource.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SharedImageVersionTargetRegionArgs']]]] target_regions: One or more `target_region` blocks as documented below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,7 +107,7 @@ class SharedImageVersion(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -143,7 +138,7 @@ class SharedImageVersion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, exclude_from_latest=None, gallery_name=None, image_name=None, location=None, managed_image_id=None, name=None, os_disk_snapshot_id=None, resource_group_name=None, tags=None, target_regions=None):
+    def get(resource_name: str, id: str, opts: Optional[pulumi.ResourceOptions] = None, exclude_from_latest: Optional[pulumi.Input[bool]] = None, gallery_name: Optional[pulumi.Input[str]] = None, image_name: Optional[pulumi.Input[str]] = None, location: Optional[pulumi.Input[str]] = None, managed_image_id: Optional[pulumi.Input[str]] = None, name: Optional[pulumi.Input[str]] = None, os_disk_snapshot_id: Optional[pulumi.Input[str]] = None, resource_group_name: Optional[pulumi.Input[str]] = None, tags: Optional[pulumi.Input[Dict[str, pulumi.Input[str]]]] = None, target_regions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SharedImageVersionTargetRegionArgs']]]]] = None) -> 'SharedImageVersion':
         """
         Get an existing SharedImageVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -159,14 +154,8 @@ class SharedImageVersion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The version number for this Image Version, such as `1.0.0`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] os_disk_snapshot_id: The ID of the OS disk snapshot which should be used for this Shared Image Version. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A collection of tags which should be applied to this resource.
-        :param pulumi.Input[list] target_regions: One or more `target_region` blocks as documented below.
-
-        The **target_regions** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Azure Region in which this Image Version should exist.
-          * `regionalReplicaCount` (`pulumi.Input[float]`) - The number of replicas of the Image Version to be created per region.
-          * `storage_account_type` (`pulumi.Input[str]`) - The storage account type for the image version. Possible values are `Standard_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`. You can store all of your image version replicas in Zone Redundant Storage by specifying `Standard_ZRS`.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A collection of tags which should be applied to this resource.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SharedImageVersionTargetRegionArgs']]]] target_regions: One or more `target_region` blocks as documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -185,7 +174,8 @@ class SharedImageVersion(pulumi.CustomResource):
         return SharedImageVersion(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
