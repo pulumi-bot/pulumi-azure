@@ -6,32 +6,58 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ChannelDirectLine(pulumi.CustomResource):
     bot_name: pulumi.Output[str]
+    """
+    The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
+    """
     location: pulumi.Output[str]
+    """
+    The supported Azure location where the resource exists. Changing this forces a new resource to be created.
+    """
     resource_group_name: pulumi.Output[str]
+    """
+    The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
+    """
     sites: pulumi.Output[list]
+    """
+    A site represents a client application that you want to connect to your bot. Multiple `site` blocks may be defined as below
+
+      * `enabled` (`bool`) - Enables/Disables this site. Enabled by default
+      * `enhancedAuthenticationEnabled` (`bool`) - Enables additional security measures for this site, see [Enhanced Directline Authentication Features](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features). Disabled by default.
+      * `id` (`str`) - Id for the site
+      * `key` (`str`) - Primary key for accessing this site
+      * `key2` (`str`) - Secondary key for accessing this site
+      * `name` (`str`) - The name of the site
+      * `trustedOrigins` (`list`) - This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
+      * `v1Allowed` (`bool`) - Enables v1 of the Directline protocol for this site. Enabled by default
+      * `v3Allowed` (`bool`) - Enables v3 of the Directline protocol for this site. Enabled by default
+    """
     def __init__(__self__, resource_name, opts=None, bot_name=None, location=None, resource_group_name=None, sites=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Directline integration for a Bot Channel
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bot_name: The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] location: The supported Azure location where the resource exists. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
+        :param pulumi.Input[list] sites: A site represents a client application that you want to connect to your bot. Multiple `site` blocks may be defined as below
 
         The **sites** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
-          * `enhancedAuthenticationEnabled` (`pulumi.Input[bool]`)
-          * `id` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `key2` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `trustedOrigins` (`pulumi.Input[list]`)
-          * `v1Allowed` (`pulumi.Input[bool]`)
-          * `v3Allowed` (`pulumi.Input[bool]`)
+          * `enabled` (`pulumi.Input[bool]`) - Enables/Disables this site. Enabled by default
+          * `enhancedAuthenticationEnabled` (`pulumi.Input[bool]`) - Enables additional security measures for this site, see [Enhanced Directline Authentication Features](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features). Disabled by default.
+          * `id` (`pulumi.Input[str]`) - Id for the site
+          * `key` (`pulumi.Input[str]`) - Primary key for accessing this site
+          * `key2` (`pulumi.Input[str]`) - Secondary key for accessing this site
+          * `name` (`pulumi.Input[str]`) - The name of the site
+          * `trustedOrigins` (`pulumi.Input[list]`) - This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
+          * `v1Allowed` (`pulumi.Input[bool]`) - Enables v1 of the Directline protocol for this site. Enabled by default
+          * `v3Allowed` (`pulumi.Input[bool]`) - Enables v3 of the Directline protocol for this site. Enabled by default
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -44,7 +70,7 @@ class ChannelDirectLine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -75,18 +101,22 @@ class ChannelDirectLine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bot_name: The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] location: The supported Azure location where the resource exists. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
+        :param pulumi.Input[list] sites: A site represents a client application that you want to connect to your bot. Multiple `site` blocks may be defined as below
 
         The **sites** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
-          * `enhancedAuthenticationEnabled` (`pulumi.Input[bool]`)
-          * `id` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `key2` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `trustedOrigins` (`pulumi.Input[list]`)
-          * `v1Allowed` (`pulumi.Input[bool]`)
-          * `v3Allowed` (`pulumi.Input[bool]`)
+          * `enabled` (`pulumi.Input[bool]`) - Enables/Disables this site. Enabled by default
+          * `enhancedAuthenticationEnabled` (`pulumi.Input[bool]`) - Enables additional security measures for this site, see [Enhanced Directline Authentication Features](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features). Disabled by default.
+          * `id` (`pulumi.Input[str]`) - Id for the site
+          * `key` (`pulumi.Input[str]`) - Primary key for accessing this site
+          * `key2` (`pulumi.Input[str]`) - Secondary key for accessing this site
+          * `name` (`pulumi.Input[str]`) - The name of the site
+          * `trustedOrigins` (`pulumi.Input[list]`) - This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
+          * `v1Allowed` (`pulumi.Input[bool]`) - Enables v1 of the Directline protocol for this site. Enabled by default
+          * `v3Allowed` (`pulumi.Input[bool]`) - Enables v3 of the Directline protocol for this site. Enabled by default
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -99,7 +129,7 @@ class ChannelDirectLine(pulumi.CustomResource):
         return ChannelDirectLine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
