@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAnalyticsWorkspaceResult:
     """
@@ -70,6 +71,8 @@ class GetAnalyticsWorkspaceResult:
         """
         The Workspace (or Customer) ID for the Log Analytics Workspace.
         """
+
+
 class AwaitableGetAnalyticsWorkspaceResult(GetAnalyticsWorkspaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +91,8 @@ class AwaitableGetAnalyticsWorkspaceResult(GetAnalyticsWorkspaceResult):
             tags=self.tags,
             workspace_id=self.workspace_id)
 
-def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
+
+def get_analytics_workspace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
 
@@ -98,8 +102,10 @@ def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.operationalinsights.get_analytics_workspace(name="acctest-01",
-        resource_group_name="acctest")
+    example = azure.operationalinsights.get_analytics_workspace(azure.operationalinsights.GetAnalyticsWorkspaceArgsArgs(
+        name="acctest-01",
+        resource_group_name="acctest",
+    ))
     pulumi.export("logAnalyticsWorkspaceId", example.workspace_id)
     ```
 
@@ -108,14 +114,12 @@ def get_analytics_workspace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Log Analytics workspace is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:operationalinsights/getAnalyticsWorkspace:getAnalyticsWorkspace', __args__, opts=opts).value
 
     return AwaitableGetAnalyticsWorkspaceResult(

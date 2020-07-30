@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVirtualNetworkGatewayResult:
     """
@@ -101,6 +102,8 @@ class GetVirtualNetworkGatewayResult:
         """
         The routing type of the Virtual Network Gateway.
         """
+
+
 class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +126,8 @@ class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
             vpn_client_configurations=self.vpn_client_configurations,
             vpn_type=self.vpn_type)
 
-def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network_gateway(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Virtual Network Gateway.
 
@@ -133,8 +137,10 @@ def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.network.get_virtual_network_gateway(name="production",
-        resource_group_name="networking")
+    example = azure.network.get_virtual_network_gateway(azure.network.GetVirtualNetworkGatewayArgsArgs(
+        name="production",
+        resource_group_name="networking",
+    ))
     pulumi.export("virtualNetworkGatewayId", example.id)
     ```
 
@@ -143,14 +149,12 @@ def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway', __args__, opts=opts).value
 
     return AwaitableGetVirtualNetworkGatewayResult(

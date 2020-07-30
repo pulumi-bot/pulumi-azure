@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetServerResult:
     """
@@ -61,6 +62,8 @@ class GetServerResult:
         """
         The version of the SQL Server.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +80,8 @@ class AwaitableGetServerResult(GetServerResult):
             tags=self.tags,
             version=self.version)
 
-def get_server(name=None,resource_group_name=None,opts=None):
+
+def get_server(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing SQL Azure Database Server.
 
@@ -87,8 +91,10 @@ def get_server(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.sql.get_server(name="examplesqlservername",
-        resource_group_name="example-resources")
+    example = azure.sql.get_server(azure.sql.GetServerArgsArgs(
+        name="examplesqlservername",
+        resource_group_name="example-resources",
+    ))
     pulumi.export("sqlServerId", example.id)
     ```
 
@@ -97,14 +103,12 @@ def get_server(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the SQL Server exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:sql/getServer:getServer', __args__, opts=opts).value
 
     return AwaitableGetServerResult(

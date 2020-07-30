@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetApiVersionSetResult:
     """
@@ -55,6 +56,8 @@ class GetApiVersionSetResult:
         if versioning_scheme and not isinstance(versioning_scheme, str):
             raise TypeError("Expected argument 'versioning_scheme' to be a str")
         __self__.versioning_scheme = versioning_scheme
+
+
 class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +74,8 @@ class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
             version_query_name=self.version_query_name,
             versioning_scheme=self.versioning_scheme)
 
-def get_api_version_set(api_management_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_api_version_set(api_management_name=None, name=None, resource_group_name=None, opts=None):
     """
     Uses this data source to access information about an API Version Set within an API Management Service.
 
@@ -81,9 +85,11 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.apimanagement.get_api_version_set(resource_group_name="example-resources",
+    example = azure.apimanagement.get_api_version_set(azure.apimanagement.GetApiVersionSetArgsArgs(
+        resource_group_name="example-resources",
         api_management_name="example-api",
-        name="example-api-version-set")
+        name="example-api-version-set",
+    ))
     pulumi.export("apiManagementApiVersionSetId", example.id)
     ```
 
@@ -93,15 +99,13 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
     :param str resource_group_name: The name of the Resource Group in which the parent API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApiVersionSet:getApiVersionSet', __args__, opts=opts).value
 
     return AwaitableGetApiVersionSetResult(

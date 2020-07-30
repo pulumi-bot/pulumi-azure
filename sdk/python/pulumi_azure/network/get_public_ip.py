@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPublicIPResult:
     """
@@ -76,6 +77,8 @@ class GetPublicIPResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetPublicIPResult(GetPublicIPResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,7 +100,8 @@ class AwaitableGetPublicIPResult(GetPublicIPResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
+
+def get_public_ip(name=None, resource_group_name=None, tags=None, zones=None, opts=None):
     """
     Use this data source to access information about an existing Public IP Address.
 
@@ -108,8 +112,10 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.network.get_public_ip(name="name_of_public_ip",
-        resource_group_name="name_of_resource_group")
+    example = azure.network.get_public_ip(azure.network.GetPublicIPArgsArgs(
+        name="name_of_public_ip",
+        resource_group_name="name_of_resource_group",
+    ))
     pulumi.export("domainNameLabel", example.domain_name_label)
     pulumi.export("publicIpAddress", example.ip_address)
     ```
@@ -139,20 +145,22 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
         location=example_resource_group.location,
         resource_group_name=example_resource_group.name,
-        ip_configurations=[{
-            "name": "testconfiguration1",
-            "subnet_id": example_subnet.id,
-            "privateIpAddressAllocation": "Static",
-            "private_ip_address": "10.0.2.5",
-            "public_ip_address_id": example_public_ip.id,
-        }])
+        ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
+            name="testconfiguration1",
+            subnet_id=example_subnet.id,
+            private_ip_address_allocation="Static",
+            private_ip_address="10.0.2.5",
+            public_ip_address_id=example_public_ip.id,
+        )])
     example_virtual_machine = azure.compute.VirtualMachine("exampleVirtualMachine",
         location=example_resource_group.location,
         resource_group_name=example_resource_group.name,
         network_interface_ids=[example_network_interface.id])
     # ...
-    example_public_ip = pulumi.Output.all(example_public_ip.name, example_virtual_machine.resource_group_name).apply(lambda name, resource_group_name: azure.network.get_public_ip(name=name,
-        resource_group_name=resource_group_name))
+    example_public_ip = pulumi.Output.all(example_public_ip.name, example_virtual_machine.resource_group_name).apply(lambda name, resource_group_name: azure.network.get_public_ip(azure.network.GetPublicIPArgsArgs(
+        name=name,
+        resource_group_name=resource_group_name,
+    )))
     pulumi.export("publicIpAddress", example_public_ip.ip_address)
     ```
 
@@ -162,8 +170,6 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     :param dict tags: A mapping of tags to assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
@@ -171,7 +177,7 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getPublicIP:getPublicIP', __args__, opts=opts).value
 
     return AwaitableGetPublicIPResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Table(pulumi.CustomResource):
@@ -36,8 +36,10 @@ class Table(pulumi.CustomResource):
         import pulumi
         import pulumi_azure as azure
 
-        example_account = azure.cosmosdb.get_account(name="tfex-cosmosdb-account",
-            resource_group_name="tfex-cosmosdb-account-rg")
+        example_account = azure.cosmosdb.get_account(azure.cosmosdb.GetAccountArgsArgs(
+            name="tfex-cosmosdb-account",
+            resource_group_name="tfex-cosmosdb-account-rg",
+        ))
         example_table = azure.cosmosdb.Table("exampleTable",
             resource_group_name=example_account.resource_group_name,
             account_name=example_account.name,
@@ -62,7 +64,7 @@ class Table(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -107,7 +109,7 @@ class Table(pulumi.CustomResource):
         return Table(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

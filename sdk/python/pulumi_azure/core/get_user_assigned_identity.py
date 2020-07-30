@@ -6,9 +6,10 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("azure.core.getUserAssignedIdentity has been deprecated in favor of azure.authorization.getUserAssignedIdentity", DeprecationWarning)
+
 class GetUserAssignedIdentityResult:
     """
     A collection of values returned by getUserAssignedIdentity.
@@ -50,6 +51,8 @@ class GetUserAssignedIdentityResult:
         """
         A mapping of tags assigned to the User Assigned Identity.
         """
+
+
 class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,7 +67,8 @@ class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
+
+def get_user_assigned_identity(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing User Assigned Identity.
 
@@ -75,8 +79,10 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.authorization.get_user_assigned_identity(name="name_of_user_assigned_identity",
-        resource_group_name="name_of_resource_group")
+    example = azure.authorization.get_user_assigned_identity(azure.authorization.GetUserAssignedIdentityArgsArgs(
+        name="name_of_user_assigned_identity",
+        resource_group_name="name_of_resource_group",
+    ))
     pulumi.export("uaiClientId", example.client_id)
     pulumi.export("uaiPrincipalId", example.principal_id)
     ```
@@ -87,14 +93,12 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_user_assigned_identity is deprecated: azure.core.getUserAssignedIdentity has been deprecated in favor of azure.authorization.getUserAssignedIdentity")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:core/getUserAssignedIdentity:getUserAssignedIdentity', __args__, opts=opts).value
 
     return AwaitableGetUserAssignedIdentityResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSharedImageVersionsResult:
     """
@@ -37,6 +38,8 @@ class GetSharedImageVersionsResult:
         if tags_filter and not isinstance(tags_filter, dict):
             raise TypeError("Expected argument 'tags_filter' to be a dict")
         __self__.tags_filter = tags_filter
+
+
 class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +53,8 @@ class AwaitableGetSharedImageVersionsResult(GetSharedImageVersionsResult):
             resource_group_name=self.resource_group_name,
             tags_filter=self.tags_filter)
 
-def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_name=None,tags_filter=None,opts=None):
+
+def get_shared_image_versions(gallery_name=None, image_name=None, resource_group_name=None, tags_filter=None, opts=None):
     """
     Use this data source to access information about existing Versions of a Shared Image within a Shared Image Gallery.
 
@@ -60,9 +64,11 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.compute.get_shared_image_versions(gallery_name="my-image-gallery",
+    example = azure.compute.get_shared_image_versions(azure.compute.GetSharedImageVersionsArgsArgs(
+        gallery_name="my-image-gallery",
         image_name="my-image",
-        resource_group_name="example-resources")
+        resource_group_name="example-resources",
+    ))
     ```
 
 
@@ -72,8 +78,6 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     :param dict tags_filter: A mapping of tags to filter the list of images against.
     """
     __args__ = dict()
-
-
     __args__['galleryName'] = gallery_name
     __args__['imageName'] = image_name
     __args__['resourceGroupName'] = resource_group_name
@@ -81,7 +85,7 @@ def get_shared_image_versions(gallery_name=None,image_name=None,resource_group_n
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImageVersions:getSharedImageVersions', __args__, opts=opts).value
 
     return AwaitableGetSharedImageVersionsResult(

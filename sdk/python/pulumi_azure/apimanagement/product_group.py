@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ProductGroup(pulumi.CustomResource):
@@ -36,14 +36,20 @@ class ProductGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_azure as azure
 
-        example_service = azure.apimanagement.get_service(name="example-api",
-            resource_group_name="example-resources")
-        example_product = azure.apimanagement.get_product(product_id="my-product",
+        example_service = azure.apimanagement.get_service(azure.apimanagement.GetServiceArgsArgs(
+            name="example-api",
+            resource_group_name="example-resources",
+        ))
+        example_product = azure.apimanagement.get_product(azure.apimanagement.GetProductArgsArgs(
+            product_id="my-product",
             api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
-        example_group = azure.apimanagement.get_group(name="my-group",
+            resource_group_name=example_service.resource_group_name,
+        ))
+        example_group = azure.apimanagement.get_group(azure.apimanagement.GetGroupArgsArgs(
+            name="my-group",
             api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
+            resource_group_name=example_service.resource_group_name,
+        ))
         example_product_group = azure.apimanagement.ProductGroup("exampleProductGroup",
             product_id=example_product.product_id,
             group_name=example_group.name,
@@ -69,7 +75,7 @@ class ProductGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,7 +124,7 @@ class ProductGroup(pulumi.CustomResource):
         return ProductGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

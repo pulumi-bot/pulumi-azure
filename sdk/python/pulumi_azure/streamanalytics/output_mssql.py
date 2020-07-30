@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class OutputMssql(pulumi.CustomResource):
@@ -49,9 +49,13 @@ class OutputMssql(pulumi.CustomResource):
         import pulumi
         import pulumi_azure as azure
 
-        example_resource_group = azure.core.get_resource_group(name="example-resources")
-        example_job = azure.streamanalytics.get_job(name="example-job",
-            resource_group_name=azurerm_resource_group["example"]["name"])
+        example_resource_group = azure.core.get_resource_group(azure.core.GetResourceGroupArgsArgs(
+            name="example-resources",
+        ))
+        example_job = azure.streamanalytics.get_job(azure.streamanalytics.GetJobArgsArgs(
+            name="example-job",
+            resource_group_name=azurerm_resource_group["example"]["name"],
+        ))
         example_sql_server = azure.sql.SqlServer("exampleSqlServer",
             resource_group_name=azurerm_resource_group["example"]["name"],
             location=azurerm_resource_group["example"]["location"],
@@ -97,7 +101,7 @@ class OutputMssql(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -163,7 +167,7 @@ class OutputMssql(pulumi.CustomResource):
         return OutputMssql(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

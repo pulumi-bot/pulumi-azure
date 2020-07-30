@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetKubernetesServiceVersionsResult:
     """
@@ -40,6 +41,8 @@ class GetKubernetesServiceVersionsResult:
         """
         The list of all supported versions.
         """
+
+
 class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +56,8 @@ class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsRe
             version_prefix=self.version_prefix,
             versions=self.versions)
 
-def get_kubernetes_service_versions(include_preview=None,location=None,version_prefix=None,opts=None):
+
+def get_kubernetes_service_versions(include_preview=None, location=None, version_prefix=None, opts=None):
     """
     Use this data source to retrieve the version of Kubernetes supported by Azure Kubernetes Service.
 
@@ -63,7 +67,9 @@ def get_kubernetes_service_versions(include_preview=None,location=None,version_p
     import pulumi
     import pulumi_azure as azure
 
-    current = azure.containerservice.get_kubernetes_service_versions(location="West Europe")
+    current = azure.containerservice.get_kubernetes_service_versions(azure.containerservice.GetKubernetesServiceVersionsArgsArgs(
+        location="West Europe",
+    ))
     pulumi.export("versions", current.versions)
     pulumi.export("latestVersion", current.latest_version)
     ```
@@ -74,15 +80,13 @@ def get_kubernetes_service_versions(include_preview=None,location=None,version_p
     :param str version_prefix: A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
     """
     __args__ = dict()
-
-
     __args__['includePreview'] = include_preview
     __args__['location'] = location
     __args__['versionPrefix'] = version_prefix
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesServiceVersions:getKubernetesServiceVersions', __args__, opts=opts).value
 
     return AwaitableGetKubernetesServiceVersionsResult(

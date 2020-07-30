@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DatasetDataLakeGen1(pulumi.CustomResource):
@@ -49,9 +49,9 @@ class DatasetDataLakeGen1(pulumi.CustomResource):
         example_account = azure.datashare.Account("exampleAccount",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            identity={
-                "type": "SystemAssigned",
-            })
+            identity=azure.datashare.AccountIdentityArgs(
+                type="SystemAssigned",
+            ))
         example_share = azure.datashare.Share("exampleShare",
             account_id=example_account.id,
             kind="CopyBased")
@@ -63,7 +63,9 @@ class DatasetDataLakeGen1(pulumi.CustomResource):
             account_name=example_store.name,
             local_file_path="./example/myfile.txt",
             remote_file_path="/example/myfile.txt")
-        example_service_principal = example_account.name.apply(lambda name: azuread.get_service_principal(display_name=name))
+        example_service_principal = example_account.name.apply(lambda name: azuread.get_service_principal(azuread.GetServicePrincipalArgsArgs(
+            display_name=name,
+        )))
         example_assignment = azure.authorization.Assignment("exampleAssignment",
             scope=example_store.id,
             role_definition_name="Owner",
@@ -95,7 +97,7 @@ class DatasetDataLakeGen1(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,7 +150,7 @@ class DatasetDataLakeGen1(pulumi.CustomResource):
         return DatasetDataLakeGen1(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

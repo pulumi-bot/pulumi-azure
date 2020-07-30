@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Extension(pulumi.CustomResource):
@@ -80,11 +80,11 @@ class Extension(pulumi.CustomResource):
         example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configurations=[{
-                "name": "testconfiguration1",
-                "subnet_id": example_subnet.id,
-                "privateIpAddressAllocation": "Dynamic",
-            }])
+            ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
+                name="testconfiguration1",
+                subnet_id=example_subnet.id,
+                private_ip_address_allocation="Dynamic",
+            )])
         example_account = azure.storage.Account("exampleAccount",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
@@ -101,26 +101,26 @@ class Extension(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             network_interface_ids=[example_network_interface.id],
             vm_size="Standard_F2",
-            storage_image_reference={
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "16.04-LTS",
-                "version": "latest",
-            },
-            storage_os_disk={
-                "name": "myosdisk1",
-                "vhdUri": pulumi.Output.all(example_account.primary_blob_endpoint, example_container.name).apply(lambda primary_blob_endpoint, name: f"{primary_blob_endpoint}{name}/myosdisk1.vhd"),
-                "caching": "ReadWrite",
-                "create_option": "FromImage",
-            },
-            os_profile={
-                "computer_name": "hostname",
-                "admin_username": "testadmin",
-                "admin_password": "Password1234!",
-            },
-            os_profile_linux_config={
-                "disable_password_authentication": False,
-            },
+            storage_image_reference=azure.compute.VirtualMachineStorageImageReferenceArgs(
+                publisher="Canonical",
+                offer="UbuntuServer",
+                sku="16.04-LTS",
+                version="latest",
+            ),
+            storage_os_disk=azure.compute.VirtualMachineStorageOsDiskArgs(
+                name="myosdisk1",
+                vhd_uri=pulumi.Output.all(example_account.primary_blob_endpoint, example_container.name).apply(lambda primary_blob_endpoint, name: f"{primary_blob_endpoint}{name}/myosdisk1.vhd"),
+                caching="ReadWrite",
+                create_option="FromImage",
+            ),
+            os_profile=azure.compute.VirtualMachineOsProfileArgs(
+                computer_name="hostname",
+                admin_username="testadmin",
+                admin_password="Password1234!",
+            ),
+            os_profile_linux_config=azure.compute.VirtualMachineOsProfileLinuxConfigArgs(
+                disable_password_authentication=False,
+            ),
             tags={
                 "environment": "staging",
             })
@@ -168,7 +168,7 @@ class Extension(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -239,7 +239,7 @@ class Extension(pulumi.CustomResource):
         return Extension(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

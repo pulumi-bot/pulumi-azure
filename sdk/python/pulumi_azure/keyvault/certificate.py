@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Certificate(pulumi.CustomResource):
@@ -109,10 +109,10 @@ class Certificate(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             tenant_id=current.tenant_id,
             sku_name="standard",
-            access_policies=[{
-                "tenant_id": current.tenant_id,
-                "object_id": current.object_id,
-                "certificate_permissions": [
+            access_policies=[azure.keyvault.KeyVaultAccessPolicyArgs(
+                tenant_id=current.tenant_id,
+                object_id=current.object_id,
+                certificate_permissions=[
                     "create",
                     "delete",
                     "deleteissuers",
@@ -126,7 +126,7 @@ class Certificate(pulumi.CustomResource):
                     "setissuers",
                     "update",
                 ],
-                "key_permissions": [
+                key_permissions=[
                     "backup",
                     "create",
                     "decrypt",
@@ -144,7 +144,7 @@ class Certificate(pulumi.CustomResource):
                     "verify",
                     "wrapKey",
                 ],
-                "secret_permissions": [
+                secret_permissions=[
                     "backup",
                     "delete",
                     "get",
@@ -154,36 +154,36 @@ class Certificate(pulumi.CustomResource):
                     "restore",
                     "set",
                 ],
-            }],
+            )],
             tags={
                 "environment": "Production",
             })
         example_certificate = azure.keyvault.Certificate("exampleCertificate",
             key_vault_id=example_key_vault.id,
-            certificate_policy={
-                "issuerParameters": {
-                    "name": "Self",
-                },
-                "key_properties": {
+            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
+                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
+                    name="Self",
+                ),
+                key_properties={
                     "exportable": True,
                     "key_size": 2048,
                     "key_type": "RSA",
                     "reuseKey": True,
                 },
-                "lifetimeActions": [{
-                    "action": {
-                        "actionType": "AutoRenew",
-                    },
-                    "trigger": {
-                        "daysBeforeExpiry": 30,
-                    },
-                }],
-                "secretProperties": {
-                    "content_type": "application/x-pkcs12",
-                },
-                "x509CertificateProperties": {
-                    "extendedKeyUsages": ["1.3.6.1.5.5.7.3.1"],
-                    "keyUsages": [
+                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
+                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
+                        action_type="AutoRenew",
+                    ),
+                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
+                        days_before_expiry=30,
+                    ),
+                )],
+                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
+                    content_type="application/x-pkcs12",
+                ),
+                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
+                    extended_key_usages=["1.3.6.1.5.5.7.3.1"],
+                    key_usages=[
                         "cRLSign",
                         "dataEncipherment",
                         "digitalSignature",
@@ -191,16 +191,16 @@ class Certificate(pulumi.CustomResource):
                         "keyCertSign",
                         "keyEncipherment",
                     ],
-                    "subjectAlternativeNames": {
-                        "dnsNames": [
+                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
+                        dns_names=[
                             "internal.contoso.com",
                             "domain.hello.world",
                         ],
-                    },
-                    "subject": "CN=hello-world",
-                    "validityInMonths": 12,
-                },
-            })
+                    ),
+                    subject="CN=hello-world",
+                    validity_in_months=12,
+                ),
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,7 +260,7 @@ class Certificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -372,7 +372,7 @@ class Certificate(pulumi.CustomResource):
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

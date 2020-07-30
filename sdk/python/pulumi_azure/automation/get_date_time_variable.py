@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDateTimeVariableResult:
     """
@@ -46,6 +47,8 @@ class GetDateTimeVariableResult:
         """
         The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
         """
+
+
 class AwaitableGetDateTimeVariableResult(GetDateTimeVariableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetDateTimeVariableResult(GetDateTimeVariableResult):
             resource_group_name=self.resource_group_name,
             value=self.value)
 
-def get_date_time_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_date_time_variable(automation_account_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Automation Datetime Variable.
 
@@ -70,9 +74,11 @@ def get_date_time_variable(automation_account_name=None,name=None,resource_group
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.automation.get_date_time_variable(name="tfex-example-var",
+    example = azure.automation.get_date_time_variable(azure.automation.GetDateTimeVariableArgsArgs(
+        name="tfex-example-var",
         resource_group_name="tfex-example-rg",
-        automation_account_name="tfex-example-account")
+        automation_account_name="tfex-example-account",
+    ))
     pulumi.export("variableId", example.id)
     ```
 
@@ -82,15 +88,13 @@ def get_date_time_variable(automation_account_name=None,name=None,resource_group
     :param str resource_group_name: The Name of the Resource Group where the automation account exists.
     """
     __args__ = dict()
-
-
     __args__['automationAccountName'] = automation_account_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:automation/getDateTimeVariable:getDateTimeVariable', __args__, opts=opts).value
 
     return AwaitableGetDateTimeVariableResult(

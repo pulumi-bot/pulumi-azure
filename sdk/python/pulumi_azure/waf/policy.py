@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Policy(pulumi.CustomResource):
@@ -87,81 +87,81 @@ class Policy(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             custom_rules=[
-                {
-                    "name": "Rule1",
-                    "priority": 1,
-                    "ruleType": "MatchRule",
-                    "matchConditions": [{
-                        "matchVariables": [{
-                            "variableName": "RemoteAddr",
-                        }],
-                        "operator": "IPMatch",
-                        "negationCondition": False,
-                        "matchValues": [
+                azure.waf.PolicyCustomRuleArgs(
+                    name="Rule1",
+                    priority=1,
+                    rule_type="MatchRule",
+                    match_conditions=[azure.waf.PolicyCustomRuleMatchConditionArgs(
+                        match_variables=[azure.waf.PolicyCustomRuleMatchConditionMatchVariableArgs(
+                            variable_name="RemoteAddr",
+                        )],
+                        operator="IPMatch",
+                        negation_condition=False,
+                        match_values=[
                             "192.168.1.0/24",
                             "10.0.0.0/24",
                         ],
-                    }],
-                    "action": "Block",
-                },
-                {
-                    "name": "Rule2",
-                    "priority": 2,
-                    "ruleType": "MatchRule",
-                    "matchConditions": [
-                        {
-                            "matchVariables": [{
-                                "variableName": "RemoteAddr",
-                            }],
-                            "operator": "IPMatch",
-                            "negationCondition": False,
-                            "matchValues": ["192.168.1.0/24"],
-                        },
-                        {
-                            "matchVariables": [{
-                                "variableName": "RequestHeaders",
-                                "selector": "UserAgent",
-                            }],
-                            "operator": "Contains",
-                            "negationCondition": False,
-                            "matchValues": ["Windows"],
-                        },
+                    )],
+                    action="Block",
+                ),
+                azure.waf.PolicyCustomRuleArgs(
+                    name="Rule2",
+                    priority=2,
+                    rule_type="MatchRule",
+                    match_conditions=[
+                        azure.waf.PolicyCustomRuleMatchConditionArgs(
+                            match_variables=[azure.waf.PolicyCustomRuleMatchConditionMatchVariableArgs(
+                                variable_name="RemoteAddr",
+                            )],
+                            operator="IPMatch",
+                            negation_condition=False,
+                            match_values=["192.168.1.0/24"],
+                        ),
+                        azure.waf.PolicyCustomRuleMatchConditionArgs(
+                            match_variables=[azure.waf.PolicyCustomRuleMatchConditionMatchVariableArgs(
+                                variable_name="RequestHeaders",
+                                selector="UserAgent",
+                            )],
+                            operator="Contains",
+                            negation_condition=False,
+                            match_values=["Windows"],
+                        ),
                     ],
-                    "action": "Block",
-                },
+                    action="Block",
+                ),
             ],
-            policy_settings={
-                "enabled": True,
-                "mode": "Prevention",
-                "requestBodyCheck": True,
-                "fileUploadLimitInMb": 100,
-                "maxRequestBodySizeInKb": 128,
-            },
-            managed_rules={
-                "exclusions": [
-                    {
-                        "matchVariable": "RequestHeaderNames",
-                        "selector": "x-company-secret-header",
-                        "selectorMatchOperator": "Equals",
-                    },
-                    {
-                        "matchVariable": "RequestCookieNames",
-                        "selector": "too-tasty",
-                        "selectorMatchOperator": "EndsWith",
-                    },
+            policy_settings=azure.waf.PolicyPolicySettingsArgs(
+                enabled=True,
+                mode="Prevention",
+                request_body_check=True,
+                file_upload_limit_in_mb=100,
+                max_request_body_size_in_kb=128,
+            ),
+            managed_rules=azure.waf.PolicyManagedRulesArgs(
+                exclusions=[
+                    azure.waf.PolicyManagedRulesExclusionArgs(
+                        match_variable="RequestHeaderNames",
+                        selector="x-company-secret-header",
+                        selector_match_operator="Equals",
+                    ),
+                    azure.waf.PolicyManagedRulesExclusionArgs(
+                        match_variable="RequestCookieNames",
+                        selector="too-tasty",
+                        selector_match_operator="EndsWith",
+                    ),
                 ],
-                "managedRuleSets": [{
-                    "type": "OWASP",
-                    "version": "3.1",
-                    "ruleGroupOverrides": [{
-                        "ruleGroupName": "REQUEST-920-PROTOCOL-ENFORCEMENT",
-                        "disabledRules": [
+                managed_rule_sets=[azure.waf.PolicyManagedRulesManagedRuleSetArgs(
+                    type="OWASP",
+                    version="3.1",
+                    rule_group_overrides=[azure.waf.PolicyManagedRulesManagedRuleSetRuleGroupOverrideArgs(
+                        rule_group_name="REQUEST-920-PROTOCOL-ENFORCEMENT",
+                        disabled_rules=[
                             "920300",
                             "920440",
                         ],
-                    }],
-                }],
-            })
+                    )],
+                )],
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -225,7 +225,7 @@ class Policy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -319,7 +319,7 @@ class Policy(pulumi.CustomResource):
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

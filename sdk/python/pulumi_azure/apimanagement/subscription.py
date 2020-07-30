@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Subscription(pulumi.CustomResource):
@@ -50,14 +50,20 @@ class Subscription(pulumi.CustomResource):
         import pulumi
         import pulumi_azure as azure
 
-        example_service = azure.apimanagement.get_service(name="example-apim",
-            resource_group_name="example-resources")
-        example_product = azure.apimanagement.get_product(product_id="00000000-0000-0000-0000-000000000000",
+        example_service = azure.apimanagement.get_service(azure.apimanagement.GetServiceArgsArgs(
+            name="example-apim",
+            resource_group_name="example-resources",
+        ))
+        example_product = azure.apimanagement.get_product(azure.apimanagement.GetProductArgsArgs(
+            product_id="00000000-0000-0000-0000-000000000000",
             api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
-        example_user = azure.apimanagement.get_user(user_id="11111111-1111-1111-1111-111111111111",
+            resource_group_name=example_service.resource_group_name,
+        ))
+        example_user = azure.apimanagement.get_user(azure.apimanagement.GetUserArgsArgs(
+            user_id="11111111-1111-1111-1111-111111111111",
             api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
+            resource_group_name=example_service.resource_group_name,
+        ))
         example_subscription = azure.apimanagement.Subscription("exampleSubscription",
             api_management_name=example_service.name,
             resource_group_name=example_service.resource_group_name,
@@ -87,7 +93,7 @@ class Subscription(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -149,7 +155,7 @@ class Subscription(pulumi.CustomResource):
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

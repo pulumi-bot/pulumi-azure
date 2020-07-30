@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Frontdoor(pulumi.CustomResource):
@@ -155,41 +155,41 @@ class Frontdoor(pulumi.CustomResource):
         example_frontdoor = azure.frontdoor.Frontdoor("exampleFrontdoor",
             resource_group_name=example_resource_group.name,
             enforce_backend_pools_certificate_name_check=False,
-            routing_rules=[{
-                "name": "exampleRoutingRule1",
-                "acceptedProtocols": [
+            routing_rules=[azure.frontdoor.FrontdoorRoutingRuleArgs(
+                name="exampleRoutingRule1",
+                accepted_protocols=[
                     "Http",
                     "Https",
                 ],
-                "patternsToMatches": ["/*"],
-                "frontend_endpoints": ["exampleFrontendEndpoint1"],
-                "forwardingConfiguration": {
-                    "forwardingProtocol": "MatchRequest",
-                    "backendPoolName": "exampleBackendBing",
-                },
-            }],
-            backend_pool_load_balancings=[{
-                "name": "exampleLoadBalancingSettings1",
-            }],
-            backend_pool_health_probes=[{
-                "name": "exampleHealthProbeSetting1",
-            }],
-            backend_pools=[{
-                "name": "exampleBackendBing",
-                "backends": [{
-                    "hostHeader": "www.bing.com",
-                    "address": "www.bing.com",
-                    "httpPort": 80,
-                    "httpsPort": 443,
-                }],
-                "loadBalancingName": "exampleLoadBalancingSettings1",
-                "healthProbeName": "exampleHealthProbeSetting1",
-            }],
-            frontend_endpoints=[{
-                "name": "exampleFrontendEndpoint1",
-                "host_name": "example-FrontDoor.azurefd.net",
-                "custom_https_provisioning_enabled": False,
-            }])
+                patterns_to_matches=["/*"],
+                frontend_endpoints=["exampleFrontendEndpoint1"],
+                forwarding_configuration=azure.frontdoor.FrontdoorRoutingRuleForwardingConfigurationArgs(
+                    forwarding_protocol="MatchRequest",
+                    backend_pool_name="exampleBackendBing",
+                ),
+            )],
+            backend_pool_load_balancings=[azure.frontdoor.FrontdoorBackendPoolLoadBalancingArgs(
+                name="exampleLoadBalancingSettings1",
+            )],
+            backend_pool_health_probes=[azure.frontdoor.FrontdoorBackendPoolHealthProbeArgs(
+                name="exampleHealthProbeSetting1",
+            )],
+            backend_pools=[azure.frontdoor.FrontdoorBackendPoolArgs(
+                name="exampleBackendBing",
+                backends=[azure.frontdoor.FrontdoorBackendPoolBackendArgs(
+                    host_header="www.bing.com",
+                    address="www.bing.com",
+                    http_port=80,
+                    https_port=443,
+                )],
+                load_balancing_name="exampleLoadBalancingSettings1",
+                health_probe_name="exampleHealthProbeSetting1",
+            )],
+            frontend_endpoints=[azure.frontdoor.FrontdoorFrontendEndpointArgs(
+                name="exampleFrontendEndpoint1",
+                host_name="example-FrontDoor.azurefd.net",
+                custom_https_provisioning_enabled=False,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,7 +295,7 @@ class Frontdoor(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -462,7 +462,7 @@ class Frontdoor(pulumi.CustomResource):
         return Frontdoor(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

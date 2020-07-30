@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetServiceResult:
     """
@@ -49,6 +50,8 @@ class GetServiceResult:
         """
         A mapping of tags to assigned to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             subnet_id=self.subnet_id,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Database Migration Service.
 
@@ -73,8 +77,10 @@ def get_service(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.databasemigration.get_service(name="example-dms",
-        resource_group_name="example-rg")
+    example = azure.databasemigration.get_service(azure.databasemigration.GetServiceArgsArgs(
+        name="example-dms",
+        resource_group_name="example-rg",
+    ))
     pulumi.export("azurermDmsId", example.id)
     ```
 
@@ -83,14 +89,12 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the database migration service exists
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:databasemigration/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(

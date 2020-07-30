@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SparkCluster(pulumi.CustomResource):
@@ -157,37 +157,37 @@ class SparkCluster(pulumi.CustomResource):
             location=example_resource_group.location,
             cluster_version="3.6",
             tier="Standard",
-            component_version={
-                "spark": "2.3",
-            },
-            gateway={
-                "enabled": True,
-                "username": "acctestusrgw",
-                "password": "Password123!",
-            },
-            storage_accounts=[{
-                "storage_container_id": example_container.id,
-                "storage_account_key": example_account.primary_access_key,
-                "isDefault": True,
-            }],
-            roles={
-                "headNode": {
-                    "vm_size": "Standard_A3",
-                    "username": "acctestusrvm",
-                    "password": "AccTestvdSC4daf986!",
-                },
-                "workerNode": {
-                    "vm_size": "Standard_A3",
-                    "username": "acctestusrvm",
-                    "password": "AccTestvdSC4daf986!",
-                    "targetInstanceCount": 3,
-                },
-                "zookeeperNode": {
-                    "vm_size": "Medium",
-                    "username": "acctestusrvm",
-                    "password": "AccTestvdSC4daf986!",
-                },
-            })
+            component_version=azure.hdinsight.SparkClusterComponentVersionArgs(
+                spark="2.3",
+            ),
+            gateway=azure.hdinsight.SparkClusterGatewayArgs(
+                enabled=True,
+                username="acctestusrgw",
+                password="Password123!",
+            ),
+            storage_accounts=[azure.hdinsight.SparkClusterStorageAccountArgs(
+                storage_container_id=example_container.id,
+                storage_account_key=example_account.primary_access_key,
+                is_default=True,
+            )],
+            roles=azure.hdinsight.SparkClusterRolesArgs(
+                head_node=azure.hdinsight.SparkClusterRolesHeadNodeArgs(
+                    vm_size="Standard_A3",
+                    username="acctestusrvm",
+                    password="AccTestvdSC4daf986!",
+                ),
+                worker_node=azure.hdinsight.SparkClusterRolesWorkerNodeArgs(
+                    vm_size="Standard_A3",
+                    username="acctestusrvm",
+                    password="AccTestvdSC4daf986!",
+                    target_instance_count=3,
+                ),
+                zookeeper_node=azure.hdinsight.SparkClusterRolesZookeeperNodeArgs(
+                    vm_size="Medium",
+                    username="acctestusrvm",
+                    password="AccTestvdSC4daf986!",
+                ),
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class SparkCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -457,7 +457,7 @@ class SparkCluster(pulumi.CustomResource):
         return SparkCluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

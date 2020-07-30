@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetGroupResult:
     """
@@ -52,6 +53,8 @@ class GetGroupResult:
         """
         The type of this API Management Group, such as `custom` or `external`.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             resource_group_name=self.resource_group_name,
             type=self.type)
 
-def get_group(api_management_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_group(api_management_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing API Management Group.
 
@@ -77,9 +81,11 @@ def get_group(api_management_name=None,name=None,resource_group_name=None,opts=N
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.apimanagement.get_group(name="my-group",
+    example = azure.apimanagement.get_group(azure.apimanagement.GetGroupArgsArgs(
+        name="my-group",
         api_management_name="example-apim",
-        resource_group_name="search-service")
+        resource_group_name="search-service",
+    ))
     pulumi.export("groupType", example.type)
     ```
 
@@ -89,15 +95,13 @@ def get_group(api_management_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:apimanagement/getGroup:getGroup', __args__, opts=opts).value
 
     return AwaitableGetGroupResult(

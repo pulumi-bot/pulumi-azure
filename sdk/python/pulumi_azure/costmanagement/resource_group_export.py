@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ResourceGroupExport(pulumi.CustomResource):
@@ -70,15 +70,15 @@ class ResourceGroupExport(pulumi.CustomResource):
             recurrence_type="Monthly",
             recurrence_period_start="2020-08-18T00:00:00Z",
             recurrence_period_end="2020-09-18T00:00:00Z",
-            delivery_info={
-                "storage_account_id": example_account.id,
-                "container_name": "examplecontainer",
-                "rootFolderPath": "/root/updated",
-            },
-            query={
-                "type": "Usage",
-                "timeFrame": "WeekToDate",
-            })
+            delivery_info=azure.costmanagement.ResourceGroupExportDeliveryInfoArgs(
+                storage_account_id=example_account.id,
+                container_name="examplecontainer",
+                root_folder_path="/root/updated",
+            ),
+            query=azure.costmanagement.ResourceGroupExportQueryArgs(
+                type="Usage",
+                time_frame="WeekToDate",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -114,7 +114,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -190,7 +190,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         return ResourceGroupExport(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

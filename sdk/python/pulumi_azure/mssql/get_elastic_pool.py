@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetElasticPoolResult:
     """
@@ -76,6 +77,8 @@ class GetElasticPoolResult:
         """
         Whether or not this elastic pool is zone redundant.
         """
+
+
 class AwaitableGetElasticPoolResult(GetElasticPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -95,7 +98,8 @@ class AwaitableGetElasticPoolResult(GetElasticPoolResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=None):
+
+def get_elastic_pool(name=None, resource_group_name=None, server_name=None, opts=None):
     """
     Use this data source to access information about an existing SQL elastic pool.
 
@@ -105,9 +109,11 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.mssql.get_elastic_pool(name="mssqlelasticpoolname",
+    example = azure.mssql.get_elastic_pool(azure.mssql.GetElasticPoolArgsArgs(
+        name="mssqlelasticpoolname",
         resource_group_name="example-resources",
-        server_name="example-sql-server")
+        server_name="example-sql-server",
+    ))
     pulumi.export("elasticpoolId", example.id)
     ```
 
@@ -117,15 +123,13 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     :param str server_name: The name of the SQL Server which contains the elastic pool.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:mssql/getElasticPool:getElasticPool', __args__, opts=opts).value
 
     return AwaitableGetElasticPoolResult(

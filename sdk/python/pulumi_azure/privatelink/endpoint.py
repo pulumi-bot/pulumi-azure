@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Endpoint(pulumi.CustomResource):
@@ -89,28 +89,28 @@ class Endpoint(pulumi.CustomResource):
             sku="Standard",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            frontend_ip_configurations=[{
-                "name": example_public_ip.name,
-                "public_ip_address_id": example_public_ip.id,
-            }])
+            frontend_ip_configurations=[azure.lb.LoadBalancerFrontendIpConfigurationArgs(
+                name=example_public_ip.name,
+                public_ip_address_id=example_public_ip.id,
+            )])
         example_link_service = azure.privatedns.LinkService("exampleLinkService",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            nat_ip_configurations=[{
-                "name": example_public_ip.name,
-                "primary": True,
-                "subnet_id": service.id,
-            }],
-            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0]["id"]])
+            nat_ip_configurations=[azure.privatedns.LinkServiceNatIpConfigurationArgs(
+                name=example_public_ip.name,
+                primary=True,
+                subnet_id=service.id,
+            )],
+            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0].id])
         example_endpoint = azure.privatelink.Endpoint("exampleEndpoint",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             subnet_id=endpoint.id,
-            private_service_connection={
-                "name": "example-privateserviceconnection",
-                "privateConnectionResourceId": example_link_service.id,
-                "isManualConnection": False,
-            })
+            private_service_connection=azure.privatelink.EndpointPrivateServiceConnectionArgs(
+                name="example-privateserviceconnection",
+                private_connection_resource_id=example_link_service.id,
+                is_manual_connection=False,
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -149,7 +149,7 @@ class Endpoint(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -241,7 +241,7 @@ class Endpoint(pulumi.CustomResource):
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

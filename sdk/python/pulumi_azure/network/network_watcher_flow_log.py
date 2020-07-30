@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkWatcherFlowLog(pulumi.CustomResource):
@@ -85,17 +85,17 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
             network_security_group_id=test_network_security_group.id,
             storage_account_id=test_account.id,
             enabled=True,
-            retention_policy={
-                "enabled": True,
-                "days": 7,
-            },
-            traffic_analytics={
-                "enabled": True,
-                "workspace_id": test_analytics_workspace.workspace_id,
-                "workspaceRegion": test_analytics_workspace.location,
-                "workspace_resource_id": test_analytics_workspace.id,
-                "intervalInMinutes": 10,
-            })
+            retention_policy=azure.network.NetworkWatcherFlowLogRetentionPolicyArgs(
+                enabled=True,
+                days=7,
+            ),
+            traffic_analytics=azure.network.NetworkWatcherFlowLogTrafficAnalyticsArgs(
+                enabled=True,
+                workspace_id=test_analytics_workspace.workspace_id,
+                workspace_region=test_analytics_workspace.location,
+                workspace_resource_id=test_analytics_workspace.id,
+                interval_in_minutes=10,
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -133,7 +133,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -211,7 +211,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         return NetworkWatcherFlowLog(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

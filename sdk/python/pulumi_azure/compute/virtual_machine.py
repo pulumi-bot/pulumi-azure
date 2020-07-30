@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualMachine(pulumi.CustomResource):
@@ -209,36 +209,36 @@ class VirtualMachine(pulumi.CustomResource):
         main_network_interface = azure.network.NetworkInterface("mainNetworkInterface",
             location=main_resource_group.location,
             resource_group_name=main_resource_group.name,
-            ip_configurations=[{
-                "name": "testconfiguration1",
-                "subnet_id": internal.id,
-                "privateIpAddressAllocation": "Dynamic",
-            }])
+            ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
+                name="testconfiguration1",
+                subnet_id=internal.id,
+                private_ip_address_allocation="Dynamic",
+            )])
         main_virtual_machine = azure.compute.VirtualMachine("mainVirtualMachine",
             location=main_resource_group.location,
             resource_group_name=main_resource_group.name,
             network_interface_ids=[main_network_interface.id],
             vm_size="Standard_DS1_v2",
-            storage_image_reference={
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "16.04-LTS",
-                "version": "latest",
-            },
-            storage_os_disk={
-                "name": "myosdisk1",
-                "caching": "ReadWrite",
-                "create_option": "FromImage",
-                "managedDiskType": "Standard_LRS",
-            },
-            os_profile={
-                "computer_name": "hostname",
-                "admin_username": "testadmin",
-                "admin_password": "Password1234!",
-            },
-            os_profile_linux_config={
-                "disable_password_authentication": False,
-            },
+            storage_image_reference=azure.compute.VirtualMachineStorageImageReferenceArgs(
+                publisher="Canonical",
+                offer="UbuntuServer",
+                sku="16.04-LTS",
+                version="latest",
+            ),
+            storage_os_disk=azure.compute.VirtualMachineStorageOsDiskArgs(
+                name="myosdisk1",
+                caching="ReadWrite",
+                create_option="FromImage",
+                managed_disk_type="Standard_LRS",
+            ),
+            os_profile=azure.compute.VirtualMachineOsProfileArgs(
+                computer_name="hostname",
+                admin_username="testadmin",
+                admin_password="Password1234!",
+            ),
+            os_profile_linux_config=azure.compute.VirtualMachineOsProfileLinuxConfigArgs(
+                disable_password_authentication=False,
+            ),
             tags={
                 "environment": "staging",
             })
@@ -372,7 +372,7 @@ class VirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -571,7 +571,7 @@ class VirtualMachine(pulumi.CustomResource):
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

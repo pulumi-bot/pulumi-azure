@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class LinkService(pulumi.CustomResource):
@@ -87,31 +87,31 @@ class LinkService(pulumi.CustomResource):
             sku="Standard",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            frontend_ip_configurations=[{
-                "name": example_public_ip.name,
-                "public_ip_address_id": example_public_ip.id,
-            }])
+            frontend_ip_configurations=[azure.lb.LoadBalancerFrontendIpConfigurationArgs(
+                name=example_public_ip.name,
+                public_ip_address_id=example_public_ip.id,
+            )])
         example_link_service = azure.privatedns.LinkService("exampleLinkService",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             auto_approval_subscription_ids=["00000000-0000-0000-0000-000000000000"],
             visibility_subscription_ids=["00000000-0000-0000-0000-000000000000"],
-            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0]["id"]],
+            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0].id],
             nat_ip_configurations=[
-                {
-                    "name": "primary",
-                    "private_ip_address": "10.5.1.17",
-                    "privateIpAddressVersion": "IPv4",
-                    "subnet_id": example_subnet.id,
-                    "primary": True,
-                },
-                {
-                    "name": "secondary",
-                    "private_ip_address": "10.5.1.18",
-                    "privateIpAddressVersion": "IPv4",
-                    "subnet_id": example_subnet.id,
-                    "primary": False,
-                },
+                azure.privatedns.LinkServiceNatIpConfigurationArgs(
+                    name="primary",
+                    private_ip_address="10.5.1.17",
+                    private_ip_address_version="IPv4",
+                    subnet_id=example_subnet.id,
+                    primary=True,
+                ),
+                azure.privatedns.LinkServiceNatIpConfigurationArgs(
+                    name="secondary",
+                    private_ip_address="10.5.1.18",
+                    private_ip_address_version="IPv4",
+                    subnet_id=example_subnet.id,
+                    primary=False,
+                ),
             ])
         ```
 
@@ -146,7 +146,7 @@ class LinkService(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -219,7 +219,7 @@ class LinkService(pulumi.CustomResource):
         return LinkService(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

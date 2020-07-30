@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetScheduledQueryRulesAlertResult:
     """
@@ -100,6 +101,8 @@ class GetScheduledQueryRulesAlertResult:
         """
         A `trigger` block as defined below.
         """
+
+
 class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -124,7 +127,8 @@ class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResu
             time_window=self.time_window,
             triggers=self.triggers)
 
-def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None):
+
+def get_scheduled_query_rules_alert(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access the properties of an AlertingAction scheduled query rule.
 
@@ -134,8 +138,10 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.monitoring.get_scheduled_query_rules_alert(name="tfex-queryrule",
-        resource_group_name="example-rg")
+    example = azure.monitoring.get_scheduled_query_rules_alert(azure.monitoring.GetScheduledQueryRulesAlertArgsArgs(
+        name="tfex-queryrule",
+        resource_group_name="example-rg",
+    ))
     pulumi.export("queryRuleId", example.id)
     ```
 
@@ -144,14 +150,12 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert', __args__, opts=opts).value
 
     return AwaitableGetScheduledQueryRulesAlertResult(

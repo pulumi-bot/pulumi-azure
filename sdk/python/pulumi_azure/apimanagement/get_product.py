@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProductResult:
     """
@@ -70,6 +71,8 @@ class GetProductResult:
         """
         Any Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
         """
+
+
 class AwaitableGetProductResult(GetProductResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +91,8 @@ class AwaitableGetProductResult(GetProductResult):
             subscriptions_limit=self.subscriptions_limit,
             terms=self.terms)
 
-def get_product(api_management_name=None,product_id=None,resource_group_name=None,opts=None):
+
+def get_product(api_management_name=None, product_id=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing API Management Product.
 
@@ -98,9 +102,11 @@ def get_product(api_management_name=None,product_id=None,resource_group_name=Non
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.apimanagement.get_product(product_id="my-product",
+    example = azure.apimanagement.get_product(azure.apimanagement.GetProductArgsArgs(
+        product_id="my-product",
         api_management_name="example-apim",
-        resource_group_name="search-service")
+        resource_group_name="search-service",
+    ))
     pulumi.export("productTerms", example.terms)
     ```
 
@@ -110,15 +116,13 @@ def get_product(api_management_name=None,product_id=None,resource_group_name=Non
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['productId'] = product_id
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:apimanagement/getProduct:getProduct', __args__, opts=opts).value
 
     return AwaitableGetProductResult(

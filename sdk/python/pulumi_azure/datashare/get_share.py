@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetShareResult:
     """
@@ -52,6 +53,8 @@ class GetShareResult:
         """
         The terms of the Data Share.
         """
+
+
 class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +69,8 @@ class AwaitableGetShareResult(GetShareResult):
             snapshot_schedules=self.snapshot_schedules,
             terms=self.terms)
 
-def get_share(account_id=None,name=None,opts=None):
+
+def get_share(account_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Data Share.
 
@@ -76,10 +80,14 @@ def get_share(account_id=None,name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example_account = azure.datashare.get_account(name="example-account",
-        resource_group_name="example-resource-group")
-    example_share = azure.datashare.get_share(name="existing",
-        account_id=data["azurerm_data_share_account"]["exmaple"]["id"])
+    example_account = azure.datashare.get_account(azure.datashare.GetAccountArgsArgs(
+        name="example-account",
+        resource_group_name="example-resource-group",
+    ))
+    example_share = azure.datashare.get_share(azure.datashare.GetShareArgsArgs(
+        name="existing",
+        account_id=data["azurerm_data_share_account"]["exmaple"]["id"],
+    ))
     pulumi.export("id", example_share.id)
     ```
 
@@ -88,14 +96,12 @@ def get_share(account_id=None,name=None,opts=None):
     :param str name: The name of this Data Share.
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datashare/getShare:getShare', __args__, opts=opts).value
 
     return AwaitableGetShareResult(

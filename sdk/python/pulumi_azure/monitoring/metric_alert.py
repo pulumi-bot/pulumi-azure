@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MetricAlert(pulumi.CustomResource):
@@ -125,29 +125,29 @@ class MetricAlert(pulumi.CustomResource):
         main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
             resource_group_name=main_resource_group.name,
             short_name="exampleact",
-            webhook_receivers=[{
-                "name": "callmyapi",
-                "service_uri": "http://example.com/alert",
-            }])
+            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
+                name="callmyapi",
+                service_uri="http://example.com/alert",
+            )])
         example = azure.monitoring.MetricAlert("example",
             resource_group_name=main_resource_group.name,
             scopes=[to_monitor.id],
             description="Action will be triggered when Transactions count is greater than 50.",
-            criterias=[{
-                "metricNamespace": "Microsoft.Storage/storageAccounts",
-                "metricName": "Transactions",
-                "aggregation": "Total",
-                "operator": "GreaterThan",
-                "threshold": 50,
-                "dimensions": [{
-                    "name": "ApiName",
-                    "operator": "Include",
-                    "values": ["*"],
-                }],
-            }],
-            actions=[{
-                "action_group_id": main_action_group.id,
-            }])
+            criterias=[azure.monitoring.MetricAlertCriteriaArgs(
+                metric_namespace="Microsoft.Storage/storageAccounts",
+                metric_name="Transactions",
+                aggregation="Total",
+                operator="GreaterThan",
+                threshold=50,
+                dimensions=[azure.monitoring.MetricAlertCriteriaDimensionArgs(
+                    name="ApiName",
+                    operator="Include",
+                    values=["*"],
+                )],
+            )],
+            actions=[azure.monitoring.MetricAlertActionArgs(
+                action_group_id=main_action_group.id,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,7 +220,7 @@ class MetricAlert(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -341,7 +341,7 @@ class MetricAlert(pulumi.CustomResource):
         return MetricAlert(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

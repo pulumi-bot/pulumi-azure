@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Application(pulumi.CustomResource):
@@ -67,7 +67,9 @@ class Application(pulumi.CustomResource):
         import pulumi_azure as azure
 
         current = azure.core.get_client_config()
-        builtin = azure.authorization.get_role_definition(name="Contributor")
+        builtin = azure.authorization.get_role_definition(azure.authorization.GetRoleDefinitionArgsArgs(
+            name="Contributor",
+        ))
         example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
         example_definition = azure.managedapplication.Definition("exampleDefinition",
             location=example_resource_group.location,
@@ -76,10 +78,10 @@ class Application(pulumi.CustomResource):
             package_file_uri="https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip",
             display_name="TestManagedAppDefinition",
             description="Test Managed App Definition",
-            authorizations=[{
-                "service_principal_id": current.object_id,
-                "role_definition_id": builtin.id.split("/")[len(builtin.id.split("/")) - 1],
-            }])
+            authorizations=[azure.managedapplication.DefinitionAuthorizationArgs(
+                service_principal_id=current.object_id,
+                role_definition_id=builtin.id.split("/")[len(builtin.id.split("/")) - 1],
+            )])
         example_application = azure.managedapplication.Application("exampleApplication",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
@@ -124,7 +126,7 @@ class Application(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -197,7 +199,7 @@ class Application(pulumi.CustomResource):
         return Application(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

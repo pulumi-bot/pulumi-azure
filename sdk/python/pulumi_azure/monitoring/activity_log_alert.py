@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ActivityLogAlert(pulumi.CustomResource):
@@ -73,10 +73,10 @@ class ActivityLogAlert(pulumi.CustomResource):
         main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
             resource_group_name=main_resource_group.name,
             short_name="p0action",
-            webhook_receivers=[{
-                "name": "callmyapi",
-                "service_uri": "http://example.com/alert",
-            }])
+            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
+                name="callmyapi",
+                service_uri="http://example.com/alert",
+            )])
         to_monitor = azure.storage.Account("toMonitor",
             resource_group_name=main_resource_group.name,
             location=main_resource_group.location,
@@ -86,17 +86,17 @@ class ActivityLogAlert(pulumi.CustomResource):
             resource_group_name=main_resource_group.name,
             scopes=[main_resource_group.id],
             description="This alert will monitor a specific storage account updates.",
-            criteria={
-                "resource_id": to_monitor.id,
-                "operationName": "Microsoft.Storage/storageAccounts/write",
-                "category": "Recommendation",
-            },
-            actions=[{
-                "action_group_id": main_action_group.id,
-                "webhookProperties": {
+            criteria=azure.monitoring.ActivityLogAlertCriteriaArgs(
+                resource_id=to_monitor.id,
+                operation_name="Microsoft.Storage/storageAccounts/write",
+                category="Recommendation",
+            ),
+            actions=[azure.monitoring.ActivityLogAlertActionArgs(
+                action_group_id=main_action_group.id,
+                webhook_properties={
                     "from": "source",
                 },
-            }])
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -142,7 +142,7 @@ class ActivityLogAlert(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -222,7 +222,7 @@ class ActivityLogAlert(pulumi.CustomResource):
         return ActivityLogAlert(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

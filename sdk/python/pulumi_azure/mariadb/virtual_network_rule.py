@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualNetworkRule(pulumi.CustomResource):
@@ -56,11 +56,11 @@ class VirtualNetworkRule(pulumi.CustomResource):
             version="5.7",
             ssl_enforcement="Enabled",
             sku_name="GP_Gen5_2",
-            storage_profile={
-                "storage_mb": 5120,
-                "backup_retention_days": 7,
-                "geoRedundantBackup": "Disabled",
-            })
+            storage_profile=azure.mariadb.ServerStorageProfileArgs(
+                storage_mb=5120,
+                backup_retention_days=7,
+                geo_redundant_backup="Disabled",
+            ))
         example_virtual_network_rule = azure.mariadb.VirtualNetworkRule("exampleVirtualNetworkRule",
             resource_group_name=example_resource_group.name,
             server_name=example_server.name,
@@ -85,7 +85,7 @@ class VirtualNetworkRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,7 +132,7 @@ class VirtualNetworkRule(pulumi.CustomResource):
         return VirtualNetworkRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDatabaseResult:
     """
@@ -85,6 +86,8 @@ class GetDatabaseResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,7 +107,8 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             server_name=self.server_name,
             tags=self.tags)
 
-def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
+
+def get_database(name=None, resource_group_name=None, server_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an existing SQL Azure Database.
 
@@ -114,9 +118,11 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.sql.get_database(name="example_db",
+    example = azure.sql.get_database(azure.sql.GetDatabaseArgsArgs(
+        name="example_db",
         server_name="example_db_server",
-        resource_group_name="example-resources")
+        resource_group_name="example-resources",
+    ))
     pulumi.export("sqlDatabaseId", example.id)
     ```
 
@@ -127,8 +133,6 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     :param dict tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
@@ -136,7 +140,7 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:sql/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DiagnosticSetting(pulumi.CustomResource):
@@ -69,26 +69,30 @@ class DiagnosticSetting(pulumi.CustomResource):
         import pulumi_azure as azure
 
         example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = example_resource_group.name.apply(lambda name: azure.storage.get_account(name="examplestoracc",
-            resource_group_name=name))
-        example_key_vault = example_resource_group.name.apply(lambda name: azure.keyvault.get_key_vault(name="example-vault",
-            resource_group_name=name))
+        example_account = example_resource_group.name.apply(lambda name: azure.storage.get_account(azure.storage.GetAccountArgsArgs(
+            name="examplestoracc",
+            resource_group_name=name,
+        )))
+        example_key_vault = example_resource_group.name.apply(lambda name: azure.keyvault.get_key_vault(azure.keyvault.GetKeyVaultArgsArgs(
+            name="example-vault",
+            resource_group_name=name,
+        )))
         example_diagnostic_setting = azure.monitoring.DiagnosticSetting("exampleDiagnosticSetting",
             target_resource_id=example_key_vault.id,
             storage_account_id=example_account.id,
-            logs=[{
-                "category": "AuditEvent",
-                "enabled": False,
-                "retention_policy": {
+            logs=[azure.monitoring.DiagnosticSettingLogArgs(
+                category="AuditEvent",
+                enabled=False,
+                retention_policy={
                     "enabled": False,
                 },
-            }],
-            metrics=[{
-                "category": "AllMetrics",
-                "retention_policy": {
+            )],
+            metrics=[azure.monitoring.DiagnosticSettingMetricArgs(
+                category="AllMetrics",
+                retention_policy={
                     "enabled": False,
                 },
-            }])
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -130,7 +134,7 @@ class DiagnosticSetting(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -204,7 +208,7 @@ class DiagnosticSetting(pulumi.CustomResource):
         return DiagnosticSetting(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

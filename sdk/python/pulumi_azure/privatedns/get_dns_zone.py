@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDnsZoneResult:
     """
@@ -55,6 +56,8 @@ class GetDnsZoneResult:
         """
         A mapping of tags for the zone.
         """
+
+
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +73,8 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_dns_zone(name=None,resource_group_name=None,opts=None):
+
+def get_dns_zone(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Private DNS Zone.
 
@@ -80,8 +84,10 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.privatedns.get_dns_zone(name="contoso.internal",
-        resource_group_name="contoso-dns")
+    example = azure.privatedns.get_dns_zone(azure.privatedns.GetDnsZoneArgsArgs(
+        name="contoso.internal",
+        resource_group_name="contoso-dns",
+    ))
     pulumi.export("privateDnsZoneId", example.id)
     ```
 
@@ -92,14 +98,12 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
            DNS Zones in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:privatedns/getDnsZone:getDnsZone', __args__, opts=opts).value
 
     return AwaitableGetDnsZoneResult(

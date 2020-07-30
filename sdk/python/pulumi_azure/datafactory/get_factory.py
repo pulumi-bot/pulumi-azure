@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetFactoryResult:
     """
@@ -56,6 +57,8 @@ class GetFactoryResult:
         """
         A `vsts_configuration` block as defined below.
         """
+
+
 class AwaitableGetFactoryResult(GetFactoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +74,8 @@ class AwaitableGetFactoryResult(GetFactoryResult):
             tags=self.tags,
             vsts_configurations=self.vsts_configurations)
 
-def get_factory(name=None,resource_group_name=None,opts=None):
+
+def get_factory(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Azure Data Factory (Version 2).
 
@@ -81,8 +85,10 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.datafactory.get_factory(name=azurerm_data_factory["example"]["name"],
-        resource_group_name=azurerm_data_factory["example"]["resource_group_name"])
+    example = azure.datafactory.get_factory(azure.datafactory.GetFactoryArgsArgs(
+        name=azurerm_data_factory["example"]["name"],
+        resource_group_name=azurerm_data_factory["example"]["resource_group_name"],
+    ))
     pulumi.export("dataFactoryId", azurerm_data_factory["example"]["id"])
     ```
 
@@ -91,14 +97,12 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the Data Factory exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datafactory/getFactory:getFactory', __args__, opts=opts).value
 
     return AwaitableGetFactoryResult(

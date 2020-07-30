@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVirtualNetworkResult:
     """
@@ -46,6 +47,8 @@ class GetVirtualNetworkResult:
         """
         The unique immutable identifier of the virtual network.
         """
+
+
 class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
             subnet_overrides=self.subnet_overrides,
             unique_identifier=self.unique_identifier)
 
-def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network(lab_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Dev Test Lab Virtual Network.
 
@@ -70,10 +74,12 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.devtest.get_virtual_network(name="example-network",
+    example = azure.devtest.get_virtual_network(azure.devtest.GetVirtualNetworkArgsArgs(
+        name="example-network",
         lab_name="examplelab",
-        resource_group_name="example-resource")
-    pulumi.export("labSubnetName", example.allowed_subnets[0]["lab_subnet_name"])
+        resource_group_name="example-resource",
+    ))
+    pulumi.export("labSubnetName", example.allowed_subnets[0].lab_subnet_name)
     ```
 
 
@@ -82,15 +88,13 @@ def get_virtual_network(lab_name=None,name=None,resource_group_name=None,opts=No
     :param str resource_group_name: Specifies the name of the resource group that contains the Virtual Network.
     """
     __args__ = dict()
-
-
     __args__['labName'] = lab_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:devtest/getVirtualNetwork:getVirtualNetwork', __args__, opts=opts).value
 
     return AwaitableGetVirtualNetworkResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubnetResult:
     """
@@ -70,6 +71,8 @@ class GetSubnetResult:
         if virtual_network_name and not isinstance(virtual_network_name, str):
             raise TypeError("Expected argument 'virtual_network_name' to be a str")
         __self__.virtual_network_name = virtual_network_name
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +91,8 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             service_endpoints=self.service_endpoints,
             virtual_network_name=self.virtual_network_name)
 
-def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts=None):
+
+def get_subnet(name=None, resource_group_name=None, virtual_network_name=None, opts=None):
     """
     Use this data source to access information about an existing Subnet within a Virtual Network.
 
@@ -98,9 +102,11 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.network.get_subnet(name="backend",
+    example = azure.network.get_subnet(azure.network.GetSubnetArgsArgs(
+        name="backend",
         virtual_network_name="production",
-        resource_group_name="networking")
+        resource_group_name="networking",
+    ))
     pulumi.export("subnetId", example.id)
     ```
 
@@ -110,15 +116,13 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     :param str virtual_network_name: Specifies the name of the Virtual Network this Subnet is located within.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['virtualNetworkName'] = virtual_network_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getSubnet:getSubnet', __args__, opts=opts).value
 
     return AwaitableGetSubnetResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetTopicAuthorizationRuleResult:
     """
@@ -64,6 +65,8 @@ class GetTopicAuthorizationRuleResult:
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         __self__.topic_name = topic_name
+
+
 class AwaitableGetTopicAuthorizationRuleResult(GetTopicAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,7 +86,8 @@ class AwaitableGetTopicAuthorizationRuleResult(GetTopicAuthorizationRuleResult):
             send=self.send,
             topic_name=self.topic_name)
 
-def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_name=None,topic_name=None,opts=None):
+
+def get_topic_authorization_rule(name=None, namespace_name=None, resource_group_name=None, topic_name=None, opts=None):
     """
     Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
 
@@ -93,10 +97,12 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.servicebus.get_topic_authorization_rule(name="example-tfex_name",
+    example = azure.servicebus.get_topic_authorization_rule(azure.servicebus.GetTopicAuthorizationRuleArgsArgs(
+        name="example-tfex_name",
         namespace_name="example-namespace",
         resource_group_name="example-resources",
-        topic_name="example-servicebus_topic")
+        topic_name="example-servicebus_topic",
+    ))
     pulumi.export("servicebusAuthorizationRuleId", data["azurem_servicebus_topic_authorization_rule"]["example"]["id"])
     ```
 
@@ -107,8 +113,6 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
     :param str topic_name: The name of the ServiceBus Topic.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name
@@ -116,7 +120,7 @@ def get_topic_authorization_rule(name=None,namespace_name=None,resource_group_na
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:servicebus/getTopicAuthorizationRule:getTopicAuthorizationRule', __args__, opts=opts).value
 
     return AwaitableGetTopicAuthorizationRuleResult(

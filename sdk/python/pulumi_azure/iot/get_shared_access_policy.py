@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSharedAccessPolicyResult:
     """
@@ -52,6 +53,8 @@ class GetSharedAccessPolicyResult:
         """
         The secondary key used to create the authentication token.
         """
+
+
 class AwaitableGetSharedAccessPolicyResult(GetSharedAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetSharedAccessPolicyResult(GetSharedAccessPolicyResult):
             secondary_connection_string=self.secondary_connection_string,
             secondary_key=self.secondary_key)
 
-def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_shared_access_policy(iothub_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing IotHub Shared Access Policy
 
@@ -77,9 +81,11 @@ def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.iot.get_shared_access_policy(name="example",
+    example = azure.iot.get_shared_access_policy(azure.iot.GetSharedAccessPolicyArgsArgs(
+        name="example",
         resource_group_name=azurerm_resource_group["example"]["name"],
-        iothub_name=azurerm_iothub["example"]["name"])
+        iothub_name=azurerm_iothub["example"]["name"],
+    ))
     ```
 
 
@@ -88,15 +94,13 @@ def get_shared_access_policy(iothub_name=None,name=None,resource_group_name=None
     :param str resource_group_name: The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
     """
     __args__ = dict()
-
-
     __args__['iothubName'] = iothub_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:iot/getSharedAccessPolicy:getSharedAccessPolicy', __args__, opts=opts).value
 
     return AwaitableGetSharedAccessPolicyResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVirtualMachineResult:
     """
@@ -34,6 +35,8 @@ class GetVirtualMachineResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             name=self.name,
             resource_group_name=self.resource_group_name)
 
-def get_virtual_machine(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_machine(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Virtual Machine.
 
@@ -56,8 +60,10 @@ def get_virtual_machine(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.compute.get_virtual_machine(name="production",
-        resource_group_name="networking")
+    example = azure.compute.get_virtual_machine(azure.compute.GetVirtualMachineArgsArgs(
+        name="production",
+        resource_group_name="networking",
+    ))
     pulumi.export("virtualMachineId", example.id)
     ```
 
@@ -66,14 +72,12 @@ def get_virtual_machine(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Machine is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getVirtualMachine:getVirtualMachine', __args__, opts=opts).value
 
     return AwaitableGetVirtualMachineResult(

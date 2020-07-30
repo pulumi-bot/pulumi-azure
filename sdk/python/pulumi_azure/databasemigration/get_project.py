@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetProjectResult:
     """
@@ -52,6 +53,8 @@ class GetProjectResult:
         """
         The platform type of the migration target.
         """
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             tags=self.tags,
             target_platform=self.target_platform)
 
-def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
+
+def get_project(name=None, resource_group_name=None, service_name=None, opts=None):
     """
     Use this data source to access information about an existing Database Migration Project.
 
@@ -77,9 +81,11 @@ def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.databasemigration.get_project(name="example-dbms-project",
+    example = azure.databasemigration.get_project(azure.databasemigration.GetProjectArgsArgs(
+        name="example-dbms-project",
         resource_group_name="example-rg",
-        service_name="example-dbms")
+        service_name="example-dbms",
+    ))
     pulumi.export("name", example.name)
     ```
 
@@ -89,15 +95,13 @@ def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     :param str service_name: Name of the database migration service where resource belongs to.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serviceName'] = service_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:databasemigration/getProject:getProject', __args__, opts=opts).value
 
     return AwaitableGetProjectResult(

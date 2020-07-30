@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ScaleSet(pulumi.CustomResource):
@@ -252,10 +252,10 @@ class ScaleSet(pulumi.CustomResource):
         example_load_balancer = azure.lb.LoadBalancer("exampleLoadBalancer",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            frontend_ip_configurations=[{
-                "name": "PublicIPAddress",
-                "public_ip_address_id": example_public_ip.id,
-            }])
+            frontend_ip_configurations=[azure.lb.LoadBalancerFrontendIpConfigurationArgs(
+                name="PublicIPAddress",
+                public_ip_address_id=example_public_ip.id,
+            )])
         bpepool = azure.lb.BackendAddressPool("bpepool",
             resource_group_name=example_resource_group.name,
             loadbalancer_id=example_load_balancer.id)
@@ -278,58 +278,58 @@ class ScaleSet(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             automatic_os_upgrade=True,
             upgrade_policy_mode="Rolling",
-            rolling_upgrade_policy={
-                "maxBatchInstancePercent": 20,
-                "maxUnhealthyInstancePercent": 20,
-                "maxUnhealthyUpgradedInstancePercent": 5,
-                "pauseTimeBetweenBatches": "PT0S",
-            },
+            rolling_upgrade_policy=azure.compute.ScaleSetRollingUpgradePolicyArgs(
+                max_batch_instance_percent=20,
+                max_unhealthy_instance_percent=20,
+                max_unhealthy_upgraded_instance_percent=5,
+                pause_time_between_batches="PT0S",
+            ),
             health_probe_id=example_probe.id,
-            sku={
-                "name": "Standard_F2",
-                "tier": "Standard",
-                "capacity": 2,
-            },
-            storage_profile_image_reference={
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "16.04-LTS",
-                "version": "latest",
-            },
-            storage_profile_os_disk={
-                "name": "",
-                "caching": "ReadWrite",
-                "create_option": "FromImage",
-                "managedDiskType": "Standard_LRS",
-            },
-            storage_profile_data_disks=[{
-                "lun": 0,
-                "caching": "ReadWrite",
-                "create_option": "Empty",
-                "disk_size_gb": 10,
-            }],
-            os_profile={
-                "computer_name_prefix": "testvm",
-                "admin_username": "myadmin",
-            },
-            os_profile_linux_config={
-                "disable_password_authentication": True,
-                "sshKeys": [{
-                    "path": "/home/myadmin/.ssh/authorized_keys",
-                    "keyData": (lambda path: open(path).read())("~/.ssh/demo_key.pub"),
-                }],
-            },
-            network_profiles=[{
-                "name": "mynetworkprofile",
-                "primary": True,
-                "ip_configurations": [{
+            sku=azure.compute.ScaleSetSkuArgs(
+                name="Standard_F2",
+                tier="Standard",
+                capacity=2,
+            ),
+            storage_profile_image_reference=azure.compute.ScaleSetStorageProfileImageReferenceArgs(
+                publisher="Canonical",
+                offer="UbuntuServer",
+                sku="16.04-LTS",
+                version="latest",
+            ),
+            storage_profile_os_disk=azure.compute.ScaleSetStorageProfileOsDiskArgs(
+                name="",
+                caching="ReadWrite",
+                create_option="FromImage",
+                managed_disk_type="Standard_LRS",
+            ),
+            storage_profile_data_disks=[azure.compute.ScaleSetStorageProfileDataDiskArgs(
+                lun=0,
+                caching="ReadWrite",
+                create_option="Empty",
+                disk_size_gb=10,
+            )],
+            os_profile=azure.compute.ScaleSetOsProfileArgs(
+                computer_name_prefix="testvm",
+                admin_username="myadmin",
+            ),
+            os_profile_linux_config=azure.compute.ScaleSetOsProfileLinuxConfigArgs(
+                disable_password_authentication=True,
+                ssh_keys=[azure.compute.ScaleSetOsProfileLinuxConfigSshKeyArgs(
+                    path="/home/myadmin/.ssh/authorized_keys",
+                    key_data=(lambda path: open(path).read())("~/.ssh/demo_key.pub"),
+                )],
+            ),
+            network_profiles=[azure.compute.ScaleSetNetworkProfileArgs(
+                name="mynetworkprofile",
+                primary=True,
+                ip_configurations=[{
                     "name": "TestIPConfiguration",
                     "primary": True,
                     "subnet_id": example_subnet.id,
                     "loadBalancerBackendAddressPoolIds": [bpepool.id],
                     "loadBalancerInboundNatRulesIds": [lbnatpool.id],
                 }],
-            }],
+            )],
             tags={
                 "environment": "staging",
             })
@@ -364,43 +364,43 @@ class ScaleSet(pulumi.CustomResource):
             location="West US",
             resource_group_name=example_resource_group.name,
             upgrade_policy_mode="Manual",
-            sku={
-                "name": "Standard_F2",
-                "tier": "Standard",
-                "capacity": 2,
-            },
-            os_profile={
-                "computer_name_prefix": "testvm",
-                "admin_username": "myadmin",
-            },
-            os_profile_linux_config={
-                "disable_password_authentication": True,
-                "sshKeys": [{
-                    "path": "/home/myadmin/.ssh/authorized_keys",
-                    "keyData": (lambda path: open(path).read())("~/.ssh/demo_key.pub"),
-                }],
-            },
-            network_profiles=[{
-                "name": "TestNetworkProfile",
-                "primary": True,
-                "ip_configurations": [{
+            sku=azure.compute.ScaleSetSkuArgs(
+                name="Standard_F2",
+                tier="Standard",
+                capacity=2,
+            ),
+            os_profile=azure.compute.ScaleSetOsProfileArgs(
+                computer_name_prefix="testvm",
+                admin_username="myadmin",
+            ),
+            os_profile_linux_config=azure.compute.ScaleSetOsProfileLinuxConfigArgs(
+                disable_password_authentication=True,
+                ssh_keys=[azure.compute.ScaleSetOsProfileLinuxConfigSshKeyArgs(
+                    path="/home/myadmin/.ssh/authorized_keys",
+                    key_data=(lambda path: open(path).read())("~/.ssh/demo_key.pub"),
+                )],
+            ),
+            network_profiles=[azure.compute.ScaleSetNetworkProfileArgs(
+                name="TestNetworkProfile",
+                primary=True,
+                ip_configurations=[{
                     "name": "TestIPConfiguration",
                     "primary": True,
                     "subnet_id": example_subnet.id,
                 }],
-            }],
-            storage_profile_os_disk={
-                "name": "osDiskProfile",
-                "caching": "ReadWrite",
-                "create_option": "FromImage",
-                "vhdContainers": [pulumi.Output.all(example_account.primary_blob_endpoint, example_container.name).apply(lambda primary_blob_endpoint, name: f"{primary_blob_endpoint}{name}")],
-            },
-            storage_profile_image_reference={
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "16.04-LTS",
-                "version": "latest",
-            })
+            )],
+            storage_profile_os_disk=azure.compute.ScaleSetStorageProfileOsDiskArgs(
+                name="osDiskProfile",
+                caching="ReadWrite",
+                create_option="FromImage",
+                vhd_containers=[pulumi.Output.all(example_account.primary_blob_endpoint, example_container.name).apply(lambda primary_blob_endpoint, name: f"{primary_blob_endpoint}{name}")],
+            ),
+            storage_profile_image_reference=azure.compute.ScaleSetStorageProfileImageReferenceArgs(
+                publisher="Canonical",
+                offer="UbuntuServer",
+                sku="16.04-LTS",
+                version="latest",
+            ))
         ```
         ## Example of storage_profile_image_reference with id
 
@@ -410,9 +410,9 @@ class ScaleSet(pulumi.CustomResource):
 
         example_image = azure.compute.Image("exampleImage")
         # ...
-        example_scale_set = azure.compute.ScaleSet("exampleScaleSet", storage_profile_image_reference={
-            "id": example_image.id,
-        })
+        example_scale_set = azure.compute.ScaleSet("exampleScaleSet", storage_profile_image_reference=azure.compute.ScaleSetStorageProfileImageReferenceArgs(
+            id=example_image.id,
+        ))
         # ...
         ```
 
@@ -587,7 +587,7 @@ class ScaleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -841,7 +841,7 @@ class ScaleSet(pulumi.CustomResource):
         return ScaleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

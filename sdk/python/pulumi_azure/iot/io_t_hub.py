@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IoTHub(pulumi.CustomResource):
@@ -168,42 +168,42 @@ class IoTHub(pulumi.CustomResource):
         example_io_t_hub = azure.iot.IoTHub("exampleIoTHub",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
-            sku={
-                "name": "S1",
-                "capacity": "1",
-            },
+            sku=azure.iot.IoTHubSkuArgs(
+                name="S1",
+                capacity=1,
+            ),
             endpoints=[
-                {
-                    "type": "AzureIotHub.StorageContainer",
-                    "connection_string": example_account.primary_blob_connection_string,
-                    "name": "export",
-                    "batch_frequency_in_seconds": 60,
-                    "max_chunk_size_in_bytes": 10485760,
-                    "container_name": example_container.name,
-                    "encoding": "Avro",
-                    "file_name_format": "{iothub}/{partition}_{YYYY}_{MM}_{DD}_{HH}_{mm}",
-                },
-                {
-                    "type": "AzureIotHub.EventHub",
-                    "connection_string": example_authorization_rule.primary_connection_string,
-                    "name": "export2",
-                },
+                azure.iot.IoTHubEndpointArgs(
+                    type="AzureIotHub.StorageContainer",
+                    connection_string=example_account.primary_blob_connection_string,
+                    name="export",
+                    batch_frequency_in_seconds=60,
+                    max_chunk_size_in_bytes=10485760,
+                    container_name=example_container.name,
+                    encoding="Avro",
+                    file_name_format="{iothub}/{partition}_{YYYY}_{MM}_{DD}_{HH}_{mm}",
+                ),
+                azure.iot.IoTHubEndpointArgs(
+                    type="AzureIotHub.EventHub",
+                    connection_string=example_authorization_rule.primary_connection_string,
+                    name="export2",
+                ),
             ],
             routes=[
-                {
-                    "name": "export",
-                    "source": "DeviceMessages",
-                    "condition": "true",
-                    "endpoint_names": ["export"],
-                    "enabled": True,
-                },
-                {
-                    "name": "export2",
-                    "source": "DeviceMessages",
-                    "condition": "true",
-                    "endpoint_names": ["export2"],
-                    "enabled": True,
-                },
+                azure.iot.IoTHubRouteArgs(
+                    name="export",
+                    source="DeviceMessages",
+                    condition="true",
+                    endpoint_names=["export"],
+                    enabled=True,
+                ),
+                azure.iot.IoTHubRouteArgs(
+                    name="export2",
+                    source="DeviceMessages",
+                    condition="true",
+                    endpoint_names=["export2"],
+                    enabled=True,
+                ),
             ],
             tags={
                 "purpose": "testing",
@@ -283,7 +283,7 @@ class IoTHub(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -427,7 +427,7 @@ class IoTHub(pulumi.CustomResource):
         return IoTHub(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNamespaceResult:
     """
@@ -61,6 +62,8 @@ class GetNamespaceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +80,8 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_namespace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Notification Hub Namespace.
 
@@ -87,8 +91,10 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.notificationhub.get_namespace(name="my-namespace",
-        resource_group_name="my-resource-group")
+    example = azure.notificationhub.get_namespace(azure.notificationhub.GetNamespaceArgsArgs(
+        name="my-namespace",
+        resource_group_name="my-resource-group",
+    ))
     pulumi.export("servicebusEndpoint", example.servicebus_endpoint)
     ```
 
@@ -97,14 +103,12 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:notificationhub/getNamespace:getNamespace', __args__, opts=opts).value
 
     return AwaitableGetNamespaceResult(

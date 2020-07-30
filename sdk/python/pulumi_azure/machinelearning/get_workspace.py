@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetWorkspaceResult:
     """
@@ -37,6 +38,8 @@ class GetWorkspaceResult:
         """
         A mapping of tags assigned to the Machine Learning Workspace.
         """
+
+
 class AwaitableGetWorkspaceResult(GetWorkspaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_workspace(name=None,resource_group_name=None,opts=None):
+
+def get_workspace(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Machine Learning Workspace.
 
@@ -57,8 +61,10 @@ def get_workspace(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    existing = azure.machinelearning.get_workspace(name="example-workspace",
-        resource_group_name="example-resources")
+    existing = azure.machinelearning.get_workspace(azure.machinelearning.GetWorkspaceArgsArgs(
+        name="example-workspace",
+        resource_group_name="example-resources",
+    ))
     pulumi.export("id", azurerm_machine_learning_workspace["existing"]["id"])
     ```
 
@@ -67,14 +73,12 @@ def get_workspace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Machine Learning Workspace exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:machinelearning/getWorkspace:getWorkspace', __args__, opts=opts).value
 
     return AwaitableGetWorkspaceResult(

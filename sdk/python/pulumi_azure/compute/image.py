@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Image(pulumi.CustomResource):
@@ -77,12 +77,12 @@ class Image(pulumi.CustomResource):
         example_image = azure.compute.Image("exampleImage",
             location="West US",
             resource_group_name=example_resource_group.name,
-            os_disk={
-                "os_type": "Linux",
-                "osState": "Generalized",
-                "blobUri": "{blob_uri}",
-                "sizeGb": 30,
-            })
+            os_disk=azure.compute.ImageOsDiskArgs(
+                os_type="Linux",
+                os_state="Generalized",
+                blob_uri="{blob_uri}",
+                size_gb=30,
+            ))
         ```
         ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 
@@ -140,7 +140,7 @@ class Image(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -218,7 +218,7 @@ class Image(pulumi.CustomResource):
         return Image(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

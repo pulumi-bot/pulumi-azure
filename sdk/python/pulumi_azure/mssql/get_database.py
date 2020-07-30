@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDatabaseResult:
     """
@@ -79,6 +80,8 @@ class GetDatabaseResult:
         """
         Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +101,8 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_database(name=None,server_id=None,opts=None):
+
+def get_database(name=None, server_id=None, opts=None):
     """
     Use this data source to access information about an existing SQL database.
 
@@ -108,8 +112,10 @@ def get_database(name=None,server_id=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.mssql.get_database(name="example-mssql-db",
-        server_id="example-mssql-server-id")
+    example = azure.mssql.get_database(azure.mssql.GetDatabaseArgsArgs(
+        name="example-mssql-db",
+        server_id="example-mssql-server-id",
+    ))
     pulumi.export("databaseId", example.id)
     ```
 
@@ -118,14 +124,12 @@ def get_database(name=None,server_id=None,opts=None):
     :param str server_id: The id of the Ms SQL Server on which to create the database.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['serverId'] = server_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:mssql/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

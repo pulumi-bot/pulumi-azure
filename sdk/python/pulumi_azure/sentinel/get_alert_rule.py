@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAlertRuleResult:
     """
@@ -25,6 +26,8 @@ class GetAlertRuleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetAlertRuleResult(GetAlertRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,7 +38,8 @@ class AwaitableGetAlertRuleResult(GetAlertRuleResult):
             log_analytics_workspace_id=self.log_analytics_workspace_id,
             name=self.name)
 
-def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
+
+def get_alert_rule(log_analytics_workspace_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Sentinel Alert Rule.
 
@@ -45,10 +49,14 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example_analytics_workspace = azure.operationalinsights.get_analytics_workspace(name="example",
-        resource_group_name="example-resources")
-    example_alert_rule = azure.sentinel.get_alert_rule(name="existing",
-        log_analytics_workspace_id=example_analytics_workspace.id)
+    example_analytics_workspace = azure.operationalinsights.get_analytics_workspace(azure.operationalinsights.GetAnalyticsWorkspaceArgsArgs(
+        name="example",
+        resource_group_name="example-resources",
+    ))
+    example_alert_rule = azure.sentinel.get_alert_rule(azure.sentinel.GetAlertRuleArgsArgs(
+        name="existing",
+        log_analytics_workspace_id=example_analytics_workspace.id,
+    ))
     pulumi.export("id", example_alert_rule.id)
     ```
 
@@ -57,14 +65,12 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     :param str name: The name which should be used for this Sentinel Alert Rule.
     """
     __args__ = dict()
-
-
     __args__['logAnalyticsWorkspaceId'] = log_analytics_workspace_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:sentinel/getAlertRule:getAlertRule', __args__, opts=opts).value
 
     return AwaitableGetAlertRuleResult(

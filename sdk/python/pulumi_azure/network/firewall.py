@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Firewall(pulumi.CustomResource):
@@ -70,11 +70,11 @@ class Firewall(pulumi.CustomResource):
         example_firewall = azure.network.Firewall("exampleFirewall",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configurations=[{
-                "name": "configuration",
-                "subnet_id": example_subnet.id,
-                "public_ip_address_id": example_public_ip.id,
-            }])
+            ip_configurations=[azure.network.FirewallIpConfigurationArgs(
+                name="configuration",
+                subnet_id=example_subnet.id,
+                public_ip_address_id=example_public_ip.id,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -105,7 +105,7 @@ class Firewall(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -166,7 +166,7 @@ class Firewall(pulumi.CustomResource):
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

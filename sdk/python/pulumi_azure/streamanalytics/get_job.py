@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetJobResult:
     """
@@ -85,6 +86,8 @@ class GetJobResult:
         """
         The query that will be run in the streaming job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
         """
+
+
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +108,8 @@ class AwaitableGetJobResult(GetJobResult):
             streaming_units=self.streaming_units,
             transformation_query=self.transformation_query)
 
-def get_job(name=None,resource_group_name=None,opts=None):
+
+def get_job(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Stream Analytics Job.
 
@@ -115,8 +119,10 @@ def get_job(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.streamanalytics.get_job(name="example-job",
-        resource_group_name="example-resources")
+    example = azure.streamanalytics.get_job(azure.streamanalytics.GetJobArgsArgs(
+        name="example-job",
+        resource_group_name="example-resources",
+    ))
     pulumi.export("jobId", example.job_id)
     ```
 
@@ -125,14 +131,12 @@ def get_job(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Stream Analytics Job is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:streamanalytics/getJob:getJob', __args__, opts=opts).value
 
     return AwaitableGetJobResult(

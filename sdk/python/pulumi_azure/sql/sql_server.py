@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SqlServer(pulumi.CustomResource):
@@ -85,12 +85,12 @@ class SqlServer(pulumi.CustomResource):
             version="12.0",
             administrator_login="mradministrator",
             administrator_login_password="thisIsDog11",
-            extended_auditing_policy={
-                "storage_endpoint": example_account.primary_blob_endpoint,
-                "storage_account_access_key": example_account.primary_access_key,
-                "storageAccountAccessKeyIsSecondary": True,
-                "retention_in_days": 6,
-            },
+            extended_auditing_policy=azure.sql.SqlServerExtendedAuditingPolicyArgs(
+                storage_endpoint=example_account.primary_blob_endpoint,
+                storage_account_access_key=example_account.primary_access_key,
+                storage_account_access_key_is_secondary=True,
+                retention_in_days=6,
+            ),
             tags={
                 "environment": "production",
             })
@@ -133,7 +133,7 @@ class SqlServer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -216,7 +216,7 @@ class SqlServer(pulumi.CustomResource):
         return SqlServer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

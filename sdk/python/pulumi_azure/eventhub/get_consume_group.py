@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetConsumeGroupResult:
     """
@@ -40,6 +41,8 @@ class GetConsumeGroupResult:
         """
         Specifies the user metadata.
         """
+
+
 class AwaitableGetConsumeGroupResult(GetConsumeGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,7 +57,8 @@ class AwaitableGetConsumeGroupResult(GetConsumeGroupResult):
             resource_group_name=self.resource_group_name,
             user_metadata=self.user_metadata)
 
-def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_consume_group(eventhub_name=None, name=None, namespace_name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Event Hubs Consumer Group within an Event Hub.
 
@@ -64,10 +68,12 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
     import pulumi
     import pulumi_azure as azure
 
-    test = azure.eventhub.get_consume_group(eventhub_name=azurerm_eventhub["test"]["name"],
+    test = azure.eventhub.get_consume_group(azure.eventhub.GetConsumeGroupArgsArgs(
+        eventhub_name=azurerm_eventhub["test"]["name"],
         name=azurerm_eventhub_consumer_group["test"]["name"],
         namespace_name=azurerm_eventhub_namespace["test"]["name"],
-        resource_group_name=azurerm_resource_group["test"]["name"])
+        resource_group_name=azurerm_resource_group["test"]["name"],
+    ))
     ```
 
 
@@ -77,8 +83,6 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
     :param str resource_group_name: The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
     """
     __args__ = dict()
-
-
     __args__['eventhubName'] = eventhub_name
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
@@ -86,7 +90,7 @@ def get_consume_group(eventhub_name=None,name=None,namespace_name=None,resource_
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getConsumeGroup:getConsumeGroup', __args__, opts=opts).value
 
     return AwaitableGetConsumeGroupResult(

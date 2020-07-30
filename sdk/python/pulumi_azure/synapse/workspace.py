@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Workspace(pulumi.CustomResource):
@@ -83,7 +83,7 @@ class Workspace(pulumi.CustomResource):
             account_tier="Standard",
             account_replication_type="LRS",
             account_kind="StorageV2",
-            is_hns_enabled="true")
+            is_hns_enabled=True)
         example_data_lake_gen2_filesystem = azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", storage_account_id=example_account.id)
         example_workspace = azure.synapse.Workspace("exampleWorkspace",
             resource_group_name=example_resource_group.name,
@@ -91,11 +91,11 @@ class Workspace(pulumi.CustomResource):
             storage_data_lake_gen2_filesystem_id=example_data_lake_gen2_filesystem.id,
             sql_administrator_login="sqladminuser",
             sql_administrator_login_password="H@Sh1CoR3!",
-            aad_admin={
-                "login": "AzureAD Admin",
-                "object_id": "00000000-0000-0000-0000-000000000000",
-                "tenant_id": "00000000-0000-0000-0000-000000000000",
-            },
+            aad_admin=azure.synapse.WorkspaceAadAdminArgs(
+                login="AzureAD Admin",
+                object_id="00000000-0000-0000-0000-000000000000",
+                tenant_id="00000000-0000-0000-0000-000000000000",
+            ),
             tags={
                 "Env": "production",
             })
@@ -130,7 +130,7 @@ class Workspace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -215,7 +215,7 @@ class Workspace(pulumi.CustomResource):
         return Workspace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

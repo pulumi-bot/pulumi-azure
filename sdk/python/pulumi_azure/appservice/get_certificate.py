@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetCertificateResult:
     """
@@ -73,6 +74,8 @@ class GetCertificateResult:
         """
         The thumbprint for the certificate.
         """
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -92,7 +95,8 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             tags=self.tags,
             thumbprint=self.thumbprint)
 
-def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_certificate(name=None, resource_group_name=None, tags=None, opts=None):
     """
     Use this data source to access information about an App Service Certificate.
 
@@ -102,8 +106,10 @@ def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.appservice.get_certificate(name="example-app-service-certificate",
-        resource_group_name="example-rg")
+    example = azure.appservice.get_certificate(azure.appservice.GetCertificateArgsArgs(
+        name="example-app-service-certificate",
+        resource_group_name="example-rg",
+    ))
     pulumi.export("appServiceCertificateId", example.id)
     ```
 
@@ -112,15 +118,13 @@ def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group in which to create the certificate.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificate:getCertificate', __args__, opts=opts).value
 
     return AwaitableGetCertificateResult(

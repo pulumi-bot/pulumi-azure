@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ManagementPolicy(pulumi.CustomResource):
@@ -54,45 +54,45 @@ class ManagementPolicy(pulumi.CustomResource):
         example_management_policy = azure.storage.ManagementPolicy("exampleManagementPolicy",
             storage_account_id=example_account.id,
             rules=[
-                {
-                    "name": "rule1",
-                    "enabled": True,
-                    "filters": {
-                        "prefixMatches": ["container1/prefix1"],
-                        "blobTypes": ["blockBlob"],
-                    },
-                    "actions": {
-                        "baseBlob": {
-                            "tierToCoolAfterDaysSinceModificationGreaterThan": 10,
-                            "tierToArchiveAfterDaysSinceModificationGreaterThan": 50,
-                            "deleteAfterDaysSinceModificationGreaterThan": 100,
-                        },
-                        "snapshot": {
-                            "deleteAfterDaysSinceCreationGreaterThan": 30,
-                        },
-                    },
-                },
-                {
-                    "name": "rule2",
-                    "enabled": False,
-                    "filters": {
-                        "prefixMatches": [
+                azure.storage.ManagementPolicyRuleArgs(
+                    name="rule1",
+                    enabled=True,
+                    filters=azure.storage.ManagementPolicyRuleFiltersArgs(
+                        prefix_matches=["container1/prefix1"],
+                        blob_types=["blockBlob"],
+                    ),
+                    actions=azure.storage.ManagementPolicyRuleActionsArgs(
+                        base_blob=azure.storage.ManagementPolicyRuleActionsBaseBlobArgs(
+                            tier_to_cool_after_days_since_modification_greater_than=10,
+                            tier_to_archive_after_days_since_modification_greater_than=50,
+                            delete_after_days_since_modification_greater_than=100,
+                        ),
+                        snapshot=azure.storage.ManagementPolicyRuleActionsSnapshotArgs(
+                            delete_after_days_since_creation_greater_than=30,
+                        ),
+                    ),
+                ),
+                azure.storage.ManagementPolicyRuleArgs(
+                    name="rule2",
+                    enabled=False,
+                    filters=azure.storage.ManagementPolicyRuleFiltersArgs(
+                        prefix_matches=[
                             "container2/prefix1",
                             "container2/prefix2",
                         ],
-                        "blobTypes": ["blockBlob"],
-                    },
-                    "actions": {
-                        "baseBlob": {
-                            "tierToCoolAfterDaysSinceModificationGreaterThan": 11,
-                            "tierToArchiveAfterDaysSinceModificationGreaterThan": 51,
-                            "deleteAfterDaysSinceModificationGreaterThan": 101,
-                        },
-                        "snapshot": {
-                            "deleteAfterDaysSinceCreationGreaterThan": 31,
-                        },
-                    },
-                },
+                        blob_types=["blockBlob"],
+                    ),
+                    actions=azure.storage.ManagementPolicyRuleActionsArgs(
+                        base_blob=azure.storage.ManagementPolicyRuleActionsBaseBlobArgs(
+                            tier_to_cool_after_days_since_modification_greater_than=11,
+                            tier_to_archive_after_days_since_modification_greater_than=51,
+                            delete_after_days_since_modification_greater_than=101,
+                        ),
+                        snapshot=azure.storage.ManagementPolicyRuleActionsSnapshotArgs(
+                            delete_after_days_since_creation_greater_than=31,
+                        ),
+                    ),
+                ),
             ])
         ```
 
@@ -130,7 +130,7 @@ class ManagementPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -185,7 +185,7 @@ class ManagementPolicy(pulumi.CustomResource):
         return ManagementPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

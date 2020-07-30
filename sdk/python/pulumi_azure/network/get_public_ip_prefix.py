@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPublicIpPrefixResult:
     """
@@ -61,6 +62,8 @@ class GetPublicIpPrefixResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetPublicIpPrefixResult(GetPublicIpPrefixResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +80,8 @@ class AwaitableGetPublicIpPrefixResult(GetPublicIpPrefixResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None):
+
+def get_public_ip_prefix(name=None, resource_group_name=None, zones=None, opts=None):
     """
     Use this data source to access information about an existing Public IP Prefix.
 
@@ -88,8 +92,10 @@ def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.network.get_public_ip_prefix(name="name_of_public_ip",
-        resource_group_name="name_of_resource_group")
+    example = azure.network.get_public_ip_prefix(azure.network.GetPublicIpPrefixArgsArgs(
+        name="name_of_public_ip",
+        resource_group_name="name_of_resource_group",
+    ))
     pulumi.export("publicIpPrefix", example.ip_prefix)
     ```
 
@@ -98,15 +104,13 @@ def get_public_ip_prefix(name=None,resource_group_name=None,zones=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['zones'] = zones
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getPublicIpPrefix:getPublicIpPrefix', __args__, opts=opts).value
 
     return AwaitableGetPublicIpPrefixResult(

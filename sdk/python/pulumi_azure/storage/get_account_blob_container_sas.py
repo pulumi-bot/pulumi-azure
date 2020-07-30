@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAccountBlobContainerSASResult:
     """
@@ -61,6 +62,8 @@ class GetAccountBlobContainerSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -82,7 +85,8 @@ class AwaitableGetAccountBlobContainerSASResult(GetAccountBlobContainerSASResult
             sas=self.sas,
             start=self.start)
 
-def get_account_blob_container_sas(cache_control=None,connection_string=None,container_name=None,content_disposition=None,content_encoding=None,content_language=None,content_type=None,expiry=None,https_only=None,ip_address=None,permissions=None,start=None,opts=None):
+
+def get_account_blob_container_sas(cache_control=None, connection_string=None, container_name=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, expiry=None, https_only=None, ip_address=None, permissions=None, start=None, opts=None):
     """
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account Blob Container.
 
@@ -103,25 +107,27 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     container = azure.storage.Container("container",
         storage_account_name=storage.name,
         container_access_type="private")
-    example = pulumi.Output.all(storage.primary_connection_string, container.name).apply(lambda primary_connection_string, name: azure.storage.get_account_blob_container_sas(connection_string=primary_connection_string,
+    example = pulumi.Output.all(storage.primary_connection_string, container.name).apply(lambda primary_connection_string, name: azure.storage.get_account_blob_container_sas(azure.storage.GetAccountBlobContainerSASArgsArgs(
+        connection_string=primary_connection_string,
         container_name=name,
         https_only=True,
         ip_address="168.1.5.65",
         start="2018-03-21",
         expiry="2018-03-21",
-        permissions={
-            "read": True,
-            "add": True,
-            "create": False,
-            "write": False,
-            "delete": True,
-            "list": True,
-        },
+        permissions=azure.storage.GetAccountBlobContainerSASPermissionsArgs(
+            read=True,
+            add=True,
+            create=False,
+            write=False,
+            delete=True,
+            list=True,
+        ),
         cache_control="max-age=5",
         content_disposition="inline",
         content_encoding="deflate",
         content_language="en-US",
-        content_type="application/json"))
+        content_type="application/json",
+    )))
     pulumi.export("sasUrlQueryString", example.sas)
     ```
 
@@ -149,8 +155,6 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
       * `write` (`bool`) - Should Write permissions be enabled for this SAS?
     """
     __args__ = dict()
-
-
     __args__['cacheControl'] = cache_control
     __args__['connectionString'] = connection_string
     __args__['containerName'] = container_name
@@ -166,7 +170,7 @@ def get_account_blob_container_sas(cache_control=None,connection_string=None,con
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccountBlobContainerSAS:getAccountBlobContainerSAS', __args__, opts=opts).value
 
     return AwaitableGetAccountBlobContainerSASResult(

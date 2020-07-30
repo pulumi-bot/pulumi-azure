@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ProductPolicy(pulumi.CustomResource):
@@ -40,9 +40,11 @@ class ProductPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azure as azure
 
-        example_product = azure.apimanagement.get_product(product_id="my-product",
+        example_product = azure.apimanagement.get_product(azure.apimanagement.GetProductArgsArgs(
+            product_id="my-product",
             api_management_name="example-apim",
-            resource_group_name="search-service")
+            resource_group_name="search-service",
+        ))
         example_product_policy = azure.apimanagement.ProductPolicy("exampleProductPolicy",
             product_id=example_product.product_id,
             api_management_name=example_product.api_management_name,
@@ -74,7 +76,7 @@ class ProductPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -124,7 +126,7 @@ class ProductPolicy(pulumi.CustomResource):
         return ProductPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

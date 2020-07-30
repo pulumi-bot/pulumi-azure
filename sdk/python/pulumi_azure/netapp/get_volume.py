@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetVolumeResult:
     """
@@ -70,6 +71,8 @@ class GetVolumeResult:
         """
         The unique file path of the volume.
         """
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +92,8 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             subnet_id=self.subnet_id,
             volume_path=self.volume_path)
 
-def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=None,opts=None):
+
+def get_volume(account_name=None, name=None, pool_name=None, resource_group_name=None, opts=None):
     """
     Uses this data source to access information about an existing NetApp Volume.
 
@@ -99,10 +103,12 @@ def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=No
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.netapp.get_volume(resource_group_name="acctestRG",
+    example = azure.netapp.get_volume(azure.netapp.GetVolumeArgsArgs(
+        resource_group_name="acctestRG",
         account_name="acctestnetappaccount",
         pool_name="acctestnetapppool",
-        name="example-volume")
+        name="example-volume",
+    ))
     pulumi.export("netappVolumeId", example.id)
     ```
 
@@ -113,8 +119,6 @@ def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=No
     :param str resource_group_name: The Name of the Resource Group where the NetApp Volume exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['poolName'] = pool_name
@@ -122,7 +126,7 @@ def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:netapp/getVolume:getVolume', __args__, opts=opts).value
 
     return AwaitableGetVolumeResult(

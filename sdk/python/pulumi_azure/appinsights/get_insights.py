@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetInsightsResult:
     """
@@ -61,6 +62,8 @@ class GetInsightsResult:
         """
         Tags applied to the component.
         """
+
+
 class AwaitableGetInsightsResult(GetInsightsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +80,8 @@ class AwaitableGetInsightsResult(GetInsightsResult):
             retention_in_days=self.retention_in_days,
             tags=self.tags)
 
-def get_insights(name=None,resource_group_name=None,opts=None):
+
+def get_insights(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Application Insights component.
 
@@ -87,8 +91,10 @@ def get_insights(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.appinsights.get_insights(name="production",
-        resource_group_name="networking")
+    example = azure.appinsights.get_insights(azure.appinsights.GetInsightsArgsArgs(
+        name="production",
+        resource_group_name="networking",
+    ))
     pulumi.export("applicationInsightsInstrumentationKey", example.instrumentation_key)
     ```
 
@@ -97,14 +103,12 @@ def get_insights(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Application Insights component is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appinsights/getInsights:getInsights', __args__, opts=opts).value
 
     return AwaitableGetInsightsResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetScheduledQueryRulesLogResult:
     """
@@ -61,6 +62,8 @@ class GetScheduledQueryRulesLogResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +81,8 @@ class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
+
+def get_scheduled_query_rules_log(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access the properties of a LogToMetricAction scheduled query rule.
 
@@ -88,8 +92,10 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.monitoring.get_scheduled_query_rules_log(name="tfex-queryrule",
-        resource_group_name="example-rg")
+    example = azure.monitoring.get_scheduled_query_rules_log(azure.monitoring.GetScheduledQueryRulesLogArgsArgs(
+        name="tfex-queryrule",
+        resource_group_name="example-rg",
+    ))
     pulumi.export("queryRuleId", example.id)
     ```
 
@@ -98,14 +104,12 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesLog:getScheduledQueryRulesLog', __args__, opts=opts).value
 
     return AwaitableGetScheduledQueryRulesLogResult(

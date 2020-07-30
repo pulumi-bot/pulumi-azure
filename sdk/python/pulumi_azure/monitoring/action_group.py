@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ActionGroup(pulumi.CustomResource):
@@ -132,70 +132,70 @@ class ActionGroup(pulumi.CustomResource):
         example_action_group = azure.monitoring.ActionGroup("exampleActionGroup",
             resource_group_name=example_resource_group.name,
             short_name="p0action",
-            arm_role_receivers=[{
-                "name": "armroleaction",
-                "roleId": "de139f84-1756-47ae-9be6-808fbbe84772",
-                "useCommonAlertSchema": True,
-            }],
-            automation_runbook_receivers=[{
-                "name": "action_name_1",
-                "automationAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-runbooks/providers/microsoft.automation/automationaccounts/aaa001",
-                "runbook_name": "my runbook",
-                "webhookResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-runbooks/providers/microsoft.automation/automationaccounts/aaa001/webhooks/webhook_alert",
-                "isGlobalRunbook": True,
-                "service_uri": "https://s13events.azure-automation.net/webhooks?token=randomtoken",
-                "useCommonAlertSchema": True,
-            }],
-            azure_app_push_receivers=[{
-                "name": "pushtoadmin",
-                "email_address": "admin@contoso.com",
-            }],
-            azure_function_receivers=[{
-                "name": "funcaction",
-                "functionAppResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-funcapp/providers/Microsoft.Web/sites/funcapp",
-                "functionName": "myfunc",
-                "httpTriggerUrl": "https://example.com/trigger",
-                "useCommonAlertSchema": True,
-            }],
+            arm_role_receivers=[azure.monitoring.ActionGroupArmRoleReceiverArgs(
+                name="armroleaction",
+                role_id="de139f84-1756-47ae-9be6-808fbbe84772",
+                use_common_alert_schema=True,
+            )],
+            automation_runbook_receivers=[azure.monitoring.ActionGroupAutomationRunbookReceiverArgs(
+                name="action_name_1",
+                automation_account_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-runbooks/providers/microsoft.automation/automationaccounts/aaa001",
+                runbook_name="my runbook",
+                webhook_resource_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-runbooks/providers/microsoft.automation/automationaccounts/aaa001/webhooks/webhook_alert",
+                is_global_runbook=True,
+                service_uri="https://s13events.azure-automation.net/webhooks?token=randomtoken",
+                use_common_alert_schema=True,
+            )],
+            azure_app_push_receivers=[azure.monitoring.ActionGroupAzureAppPushReceiverArgs(
+                name="pushtoadmin",
+                email_address="admin@contoso.com",
+            )],
+            azure_function_receivers=[azure.monitoring.ActionGroupAzureFunctionReceiverArgs(
+                name="funcaction",
+                function_app_resource_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-funcapp/providers/Microsoft.Web/sites/funcapp",
+                function_name="myfunc",
+                http_trigger_url="https://example.com/trigger",
+                use_common_alert_schema=True,
+            )],
             email_receivers=[
-                {
-                    "name": "sendtoadmin",
-                    "email_address": "admin@contoso.com",
-                },
-                {
-                    "name": "sendtodevops",
-                    "email_address": "devops@contoso.com",
-                    "useCommonAlertSchema": True,
-                },
+                azure.monitoring.ActionGroupEmailReceiverArgs(
+                    name="sendtoadmin",
+                    email_address="admin@contoso.com",
+                ),
+                azure.monitoring.ActionGroupEmailReceiverArgs(
+                    name="sendtodevops",
+                    email_address="devops@contoso.com",
+                    use_common_alert_schema=True,
+                ),
             ],
-            itsm_receivers=[{
-                "name": "createorupdateticket",
-                "workspace_id": "6eee3a18-aac3-40e4-b98e-1f309f329816",
-                "connectionId": "53de6956-42b4-41ba-be3c-b154cdf17b13",
-                "ticketConfiguration": "{}",
-                "region": "southcentralus",
-            }],
-            logic_app_receivers=[{
-                "name": "logicappaction",
-                "resource_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-logicapp/providers/Microsoft.Logic/workflows/logicapp",
-                "callbackUrl": "https://logicapptriggerurl/...",
-                "useCommonAlertSchema": True,
-            }],
-            sms_receivers=[{
-                "name": "oncallmsg",
-                "countryCode": "1",
-                "phoneNumber": "1231231234",
-            }],
-            voice_receivers=[{
-                "name": "remotesupport",
-                "countryCode": "86",
-                "phoneNumber": "13888888888",
-            }],
-            webhook_receivers=[{
-                "name": "callmyapiaswell",
-                "service_uri": "http://example.com/alert",
-                "useCommonAlertSchema": True,
-            }])
+            itsm_receivers=[azure.monitoring.ActionGroupItsmReceiverArgs(
+                name="createorupdateticket",
+                workspace_id="6eee3a18-aac3-40e4-b98e-1f309f329816",
+                connection_id="53de6956-42b4-41ba-be3c-b154cdf17b13",
+                ticket_configuration="{}",
+                region="southcentralus",
+            )],
+            logic_app_receivers=[azure.monitoring.ActionGroupLogicAppReceiverArgs(
+                name="logicappaction",
+                resource_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-logicapp/providers/Microsoft.Logic/workflows/logicapp",
+                callback_url="https://logicapptriggerurl/...",
+                use_common_alert_schema=True,
+            )],
+            sms_receivers=[azure.monitoring.ActionGroupSmsReceiverArgs(
+                name="oncallmsg",
+                country_code="1",
+                phone_number="1231231234",
+            )],
+            voice_receivers=[azure.monitoring.ActionGroupVoiceReceiverArgs(
+                name="remotesupport",
+                country_code="86",
+                phone_number="13888888888",
+            )],
+            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
+                name="callmyapiaswell",
+                service_uri="http://example.com/alert",
+                use_common_alert_schema=True,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,7 +295,7 @@ class ActionGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -441,7 +441,7 @@ class ActionGroup(pulumi.CustomResource):
         return ActionGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

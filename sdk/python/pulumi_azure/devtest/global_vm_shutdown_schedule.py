@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class GlobalVMShutdownSchedule(pulumi.CustomResource):
@@ -59,27 +59,27 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configurations=[{
-                "name": "testconfiguration1",
-                "subnet_id": example_subnet.id,
-                "privateIpAddressAllocation": "Dynamic",
-            }])
+            ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
+                name="testconfiguration1",
+                subnet_id=example_subnet.id,
+                private_ip_address_allocation="Dynamic",
+            )])
         example_linux_virtual_machine = azure.compute.LinuxVirtualMachine("exampleLinuxVirtualMachine",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             network_interface_ids=[example_network_interface.id],
             size="Standard_B2s",
-            source_image_reference={
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "16.04-LTS",
-                "version": "latest",
-            },
-            os_disk={
-                "name": "myosdisk-%d",
-                "caching": "ReadWrite",
-                "managedDiskType": "Standard_LRS",
-            },
+            source_image_reference=azure.compute.LinuxVirtualMachineSourceImageReferenceArgs(
+                publisher="Canonical",
+                offer="UbuntuServer",
+                sku="16.04-LTS",
+                version="latest",
+            ),
+            os_disk=azure.compute.LinuxVirtualMachineOsDiskArgs(
+                name="myosdisk-%d",
+                caching="ReadWrite",
+                managed_disk_type="Standard_LRS",
+            ),
             admin_username="testadmin",
             admin_password="Password1234!",
             disable_password_authentication=False)
@@ -89,11 +89,11 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
             enabled=True,
             daily_recurrence_time="1100",
             timezone="Pacific Standard Time",
-            notification_settings={
-                "enabled": True,
-                "timeInMinutes": "60",
-                "webhookUrl": "https://sample-webhook-url.example.com",
-            })
+            notification_settings=azure.devtest.GlobalVMShutdownScheduleNotificationSettingsArgs(
+                enabled=True,
+                time_in_minutes=60,
+                webhook_url="https://sample-webhook-url.example.com",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -122,7 +122,7 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -185,7 +185,7 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         return GlobalVMShutdownSchedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

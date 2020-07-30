@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDpsSharedAccessPolicyResult:
     """
@@ -52,6 +53,8 @@ class GetDpsSharedAccessPolicyResult:
         """
         The secondary key used to create the authentication token.
         """
+
+
 class AwaitableGetDpsSharedAccessPolicyResult(GetDpsSharedAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetDpsSharedAccessPolicyResult(GetDpsSharedAccessPolicyResult):
             secondary_connection_string=self.secondary_connection_string,
             secondary_key=self.secondary_key)
 
-def get_dps_shared_access_policy(iothub_dps_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_dps_shared_access_policy(iothub_dps_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing IotHub Device Provisioning Service Shared Access Policy
 
@@ -77,9 +81,11 @@ def get_dps_shared_access_policy(iothub_dps_name=None,name=None,resource_group_n
     import pulumi
     import pulumi_azure as azure
 
-    example = azure.iot.get_dps_shared_access_policy(name="example",
+    example = azure.iot.get_dps_shared_access_policy(azure.iot.GetDpsSharedAccessPolicyArgsArgs(
+        name="example",
         resource_group_name=azurerm_resource_group["example"]["name"],
-        iothub_dps_name=azurerm_iothub_dps["example"]["name"])
+        iothub_dps_name=azurerm_iothub_dps["example"]["name"],
+    ))
     ```
 
 
@@ -88,15 +94,13 @@ def get_dps_shared_access_policy(iothub_dps_name=None,name=None,resource_group_n
     :param str resource_group_name: Specifies the name of the resource group under which the IotHub Shared Access Policy resource exists.
     """
     __args__ = dict()
-
-
     __args__['iothubDpsName'] = iothub_dps_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:iot/getDpsSharedAccessPolicy:getDpsSharedAccessPolicy', __args__, opts=opts).value
 
     return AwaitableGetDpsSharedAccessPolicyResult(
