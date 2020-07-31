@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPlatformImageResult:
     """
@@ -34,6 +35,8 @@ class GetPlatformImageResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPlatformImageResult(GetPlatformImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +50,8 @@ class AwaitableGetPlatformImageResult(GetPlatformImageResult):
             sku=self.sku,
             version=self.version)
 
-def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=None,opts=None):
+
+def get_platform_image(location=None, offer=None, publisher=None, sku=None, version=None, opts=None):
     """
     Use this data source to access information about a Platform Image.
 
@@ -72,8 +76,6 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
     :param str version: The version of the Platform Image.
     """
     __args__ = dict()
-
-
     __args__['location'] = location
     __args__['offer'] = offer
     __args__['publisher'] = publisher
@@ -82,7 +84,7 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getPlatformImage:getPlatformImage', __args__, opts=opts).value
 
     return AwaitableGetPlatformImageResult(
