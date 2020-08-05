@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetServiceResult:
     """
@@ -76,6 +77,8 @@ class GetServiceResult:
         """
         The list of subscription(s) globally unique identifiers(GUID) that will be able to see the private link service.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,7 +97,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             tags=self.tags,
             visibility_subscription_ids=self.visibility_subscription_ids)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Private Link Service.
 
@@ -116,14 +120,12 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the private link service resides.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:privatelink/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(
