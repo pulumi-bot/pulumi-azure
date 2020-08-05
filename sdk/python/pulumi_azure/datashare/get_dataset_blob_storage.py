@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDatasetBlobStorageResult:
     """
@@ -58,6 +59,8 @@ class GetDatasetBlobStorageResult:
         """
         A `storage_account` block as defined below.
         """
+
+
 class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +76,8 @@ class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
             name=self.name,
             storage_accounts=self.storage_accounts)
 
-def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
+
+def get_dataset_blob_storage(data_share_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing Data Share Blob Storage Dataset.
 
@@ -93,14 +97,12 @@ def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
     :param str name: The name of this Data Share Blob Storage Dataset.
     """
     __args__ = dict()
-
-
     __args__['dataShareId'] = data_share_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage', __args__, opts=opts).value
 
     return AwaitableGetDatasetBlobStorageResult(

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSubscriptionResult:
     """
@@ -61,6 +62,8 @@ class GetSubscriptionResult:
         """
         The subscription tenant ID.
         """
+
+
 class AwaitableGetSubscriptionResult(GetSubscriptionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +79,8 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             subscription_id=self.subscription_id,
             tenant_id=self.tenant_id)
 
-def get_subscription(subscription_id=None,opts=None):
+
+def get_subscription(subscription_id=None, opts=None):
     """
     Use this data source to access information about an existing Subscription.
 
@@ -94,13 +98,11 @@ def get_subscription(subscription_id=None,opts=None):
     :param str subscription_id: Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
     """
     __args__ = dict()
-
-
     __args__['subscriptionId'] = subscription_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:core/getSubscription:getSubscription', __args__, opts=opts).value
 
     return AwaitableGetSubscriptionResult(
