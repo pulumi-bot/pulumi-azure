@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetServiceResult:
     """
@@ -82,6 +83,8 @@ class GetServiceResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -102,7 +105,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             server_port=self.server_port,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Azure SignalR service.
 
@@ -121,14 +125,12 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the SignalR service is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:signalr/getService:getService', __args__, opts=opts).value
 
     return AwaitableGetServiceResult(
