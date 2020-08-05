@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetEventHubResult:
     """
@@ -40,6 +41,8 @@ class GetEventHubResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetEventHubResult(GetEventHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +56,8 @@ class AwaitableGetEventHubResult(GetEventHubResult):
             partition_ids=self.partition_ids,
             resource_group_name=self.resource_group_name)
 
-def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_event_hub(name=None, namespace_name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing EventHub.
 
@@ -75,15 +79,13 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
     :param str resource_group_name: The name of the Resource Group where the EventHub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventHub:getEventHub', __args__, opts=opts).value
 
     return AwaitableGetEventHubResult(

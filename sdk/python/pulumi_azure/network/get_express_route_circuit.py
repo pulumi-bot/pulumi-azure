@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetExpressRouteCircuitResult:
     """
@@ -61,6 +62,8 @@ class GetExpressRouteCircuitResult:
         """
         A `sku` block for the ExpressRoute circuit as documented below.
         """
+
+
 class AwaitableGetExpressRouteCircuitResult(GetExpressRouteCircuitResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +80,8 @@ class AwaitableGetExpressRouteCircuitResult(GetExpressRouteCircuitResult):
             service_provider_provisioning_state=self.service_provider_provisioning_state,
             sku=self.sku)
 
-def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
+
+def get_express_route_circuit(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing ExpressRoute circuit.
 
@@ -98,14 +102,12 @@ def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the ExpressRoute circuit exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getExpressRouteCircuit:getExpressRouteCircuit', __args__, opts=opts).value
 
     return AwaitableGetExpressRouteCircuitResult(

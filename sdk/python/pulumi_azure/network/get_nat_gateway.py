@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNatGatewayResult:
     """
@@ -73,6 +74,8 @@ class GetNatGatewayResult:
         """
         A list of Availability Zones which the NAT Gateway exists in.
         """
+
+
 class AwaitableGetNatGatewayResult(GetNatGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +94,8 @@ class AwaitableGetNatGatewayResult(GetNatGatewayResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_nat_gateway(name=None,public_ip_address_ids=None,public_ip_prefix_ids=None,resource_group_name=None,opts=None):
+
+def get_nat_gateway(name=None, public_ip_address_ids=None, public_ip_prefix_ids=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing NAT Gateway.
 
@@ -102,8 +106,6 @@ def get_nat_gateway(name=None,public_ip_address_ids=None,public_ip_prefix_ids=No
     :param str resource_group_name: Specifies the name of the Resource Group where the NAT Gateway exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['publicIpAddressIds'] = public_ip_address_ids
     __args__['publicIpPrefixIds'] = public_ip_prefix_ids
@@ -111,7 +113,7 @@ def get_nat_gateway(name=None,public_ip_address_ids=None,public_ip_prefix_ids=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getNatGateway:getNatGateway', __args__, opts=opts).value
 
     return AwaitableGetNatGatewayResult(
