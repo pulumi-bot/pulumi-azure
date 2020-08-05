@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetCacheResult:
     """
@@ -130,6 +131,8 @@ class GetCacheResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetCacheResult(GetCacheResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -160,7 +163,8 @@ class AwaitableGetCacheResult(GetCacheResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
+
+def get_cache(name=None, resource_group_name=None, zones=None, opts=None):
     """
     Use this data source to access information about an existing Redis Cache
 
@@ -179,15 +183,13 @@ def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
     :param str resource_group_name: The name of the resource group the Redis cache instance is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['zones'] = zones
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:redis/getCache:getCache', __args__, opts=opts).value
 
     return AwaitableGetCacheResult(
