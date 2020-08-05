@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetGatewayConnectionResult:
     """
@@ -133,6 +134,8 @@ class GetGatewayConnectionResult:
         The ID of the Virtual Network Gateway
         in which the connection is created.
         """
+
+
 class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -162,7 +165,8 @@ class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
             use_policy_based_traffic_selectors=self.use_policy_based_traffic_selectors,
             virtual_network_gateway_id=self.virtual_network_gateway_id)
 
-def get_gateway_connection(name=None,resource_group_name=None,opts=None):
+
+def get_gateway_connection(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Virtual Network Gateway Connection.
 
@@ -182,14 +186,12 @@ def get_gateway_connection(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway Connection is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getGatewayConnection:getGatewayConnection', __args__, opts=opts).value
 
     return AwaitableGetGatewayConnectionResult(

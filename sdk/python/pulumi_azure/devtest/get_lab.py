@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetLabResult:
     """
@@ -79,6 +80,8 @@ class GetLabResult:
         """
         The unique immutable identifier of the Dev Test Lab.
         """
+
+
 class AwaitableGetLabResult(GetLabResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +101,8 @@ class AwaitableGetLabResult(GetLabResult):
             tags=self.tags,
             unique_identifier=self.unique_identifier)
 
-def get_lab(name=None,resource_group_name=None,opts=None):
+
+def get_lab(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Dev Test Lab.
 
@@ -118,14 +122,12 @@ def get_lab(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Dev Test Lab exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:devtest/getLab:getLab', __args__, opts=opts).value
 
     return AwaitableGetLabResult(
