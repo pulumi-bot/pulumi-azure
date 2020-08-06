@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetSnapshotResult:
     """
@@ -40,6 +41,8 @@ class GetSnapshotResult:
         if volume_name and not isinstance(volume_name, str):
             raise TypeError("Expected argument 'volume_name' to be a str")
         __self__.volume_name = volume_name
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,7 +57,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             resource_group_name=self.resource_group_name,
             volume_name=self.volume_name)
 
-def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=None,volume_name=None,opts=None):
+
+def get_snapshot(account_name=None, name=None, pool_name=None, resource_group_name=None, volume_name=None, opts=None):
     """
     Uses this data source to access information about an existing NetApp Snapshot.
 
@@ -80,8 +84,6 @@ def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=
     :param str volume_name: The name of the NetApp Volume where the NetApp Snapshot exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['poolName'] = pool_name
@@ -90,7 +92,7 @@ def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:netapp/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(
