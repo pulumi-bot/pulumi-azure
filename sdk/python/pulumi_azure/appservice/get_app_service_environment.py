@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAppServiceEnvironmentResult:
     """
@@ -49,6 +50,8 @@ class GetAppServiceEnvironmentResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAppServiceEnvironmentResult(GetAppServiceEnvironmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetAppServiceEnvironmentResult(GetAppServiceEnvironmentResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_app_service_environment(name=None,resource_group_name=None,opts=None):
+
+def get_app_service_environment(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing App Service Environment
 
@@ -83,14 +87,12 @@ def get_app_service_environment(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service Environment exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getAppServiceEnvironment:getAppServiceEnvironment', __args__, opts=opts).value
 
     return AwaitableGetAppServiceEnvironmentResult(

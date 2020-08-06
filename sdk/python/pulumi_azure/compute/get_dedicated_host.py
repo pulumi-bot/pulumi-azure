@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDedicatedHostResult:
     """
@@ -40,6 +41,8 @@ class GetDedicatedHostResult:
         """
         A mapping of tags assigned to the Dedicated Host.
         """
+
+
 class AwaitableGetDedicatedHostResult(GetDedicatedHostResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +56,8 @@ class AwaitableGetDedicatedHostResult(GetDedicatedHostResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_dedicated_host(dedicated_host_group_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_dedicated_host(dedicated_host_group_name=None, name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Dedicated Host.
 
@@ -75,15 +79,13 @@ def get_dedicated_host(dedicated_host_group_name=None,name=None,resource_group_n
     :param str resource_group_name: Specifies the name of the resource group the Dedicated Host is located in.
     """
     __args__ = dict()
-
-
     __args__['dedicatedHostGroupName'] = dedicated_host_group_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getDedicatedHost:getDedicatedHost', __args__, opts=opts).value
 
     return AwaitableGetDedicatedHostResult(
