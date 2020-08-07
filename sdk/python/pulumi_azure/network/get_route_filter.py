@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetRouteFilterResult:
     """
@@ -46,6 +47,8 @@ class GetRouteFilterResult:
         """
         A mapping of tags assigned to the Route Filter.
         """
+
+
 class AwaitableGetRouteFilterResult(GetRouteFilterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetRouteFilterResult(GetRouteFilterResult):
             rules=self.rules,
             tags=self.tags)
 
-def get_route_filter(name=None,resource_group_name=None,opts=None):
+
+def get_route_filter(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Route Filter.
 
@@ -79,14 +83,12 @@ def get_route_filter(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Route Filter exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getRouteFilter:getRouteFilter', __args__, opts=opts).value
 
     return AwaitableGetRouteFilterResult(

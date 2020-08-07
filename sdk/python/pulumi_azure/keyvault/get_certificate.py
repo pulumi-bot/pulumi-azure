@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetCertificateResult:
     """
@@ -52,6 +53,8 @@ class GetCertificateResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +71,8 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             thumbprint=self.thumbprint,
             version=self.version)
 
-def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
+
+def get_certificate(key_vault_id=None, name=None, version=None, opts=None):
     """
     Use this data source to access information about an existing Key Vault Certificate.
 
@@ -94,15 +98,13 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
     :param str version: Specifies the version of the certificate to look up.  (Defaults to latest)
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:keyvault/getCertificate:getCertificate', __args__, opts=opts).value
 
     return AwaitableGetCertificateResult(
