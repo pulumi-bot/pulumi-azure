@@ -12,3 +12,5 @@ from .trigger_custom import *
 from .trigger_http_request import *
 from .trigger_recurrence import *
 from .workflow import *
+from ._inputs import *
+from . import outputs

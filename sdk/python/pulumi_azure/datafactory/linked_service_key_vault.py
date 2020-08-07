@@ -5,48 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LinkedServiceKeyVault']
 
 
 class LinkedServiceKeyVault(pulumi.CustomResource):
-    additional_properties: pulumi.Output[dict]
+    additional_properties: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("additionalProperties")
     """
     A map of additional properties to associate with the Data Factory Linked Service Key Vault.
     """
-    annotations: pulumi.Output[list]
+
+    annotations: pulumi.Output[Optional[List[str]]] = pulumi.property("annotations")
     """
     List of tags that can be used for describing the Data Factory Linked Service Key Vault.
     """
-    data_factory_name: pulumi.Output[str]
+
+    data_factory_name: pulumi.Output[str] = pulumi.property("dataFactoryName")
     """
     The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
     """
-    description: pulumi.Output[str]
+
+    description: pulumi.Output[Optional[str]] = pulumi.property("description")
     """
     The description for the Data Factory Linked Service Key Vault.
     """
-    integration_runtime_name: pulumi.Output[str]
+
+    integration_runtime_name: pulumi.Output[Optional[str]] = pulumi.property("integrationRuntimeName")
     """
     The integration runtime reference to associate with the Data Factory Linked Service Key Vault.
     """
-    key_vault_id: pulumi.Output[str]
+
+    key_vault_id: pulumi.Output[str] = pulumi.property("keyVaultId")
     """
     The ID the Azure Key Vault resource.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
     """
-    parameters: pulumi.Output[dict]
+
+    parameters: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("parameters")
     """
     A map of parameters to associate with the Data Factory Linked Service Key Vault.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in which to create the Data Factory Linked Service Key Vault. Changing this forces a new resource
     """
-    def __init__(__self__, resource_name, opts=None, additional_properties=None, annotations=None, data_factory_name=None, description=None, integration_runtime_name=None, key_vault_id=None, name=None, parameters=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 data_factory_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 integration_runtime_name: Optional[pulumi.Input[str]] = None,
+                 key_vault_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Linked Service (connection) between Key Vault and Azure Data Factory.
 
@@ -74,14 +99,14 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service Key Vault.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] key_vault_id: The ID the Azure Key Vault resource.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service Key Vault. Changing this forces a new resource
         """
         if __name__ is not None:
@@ -95,7 +120,7 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -123,7 +148,18 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_properties=None, annotations=None, data_factory_name=None, description=None, integration_runtime_name=None, key_vault_id=None, name=None, parameters=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            data_factory_name: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            integration_runtime_name: Optional[pulumi.Input[str]] = None,
+            key_vault_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'LinkedServiceKeyVault':
         """
         Get an existing LinkedServiceKeyVault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,14 +167,14 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] additional_properties: A map of additional properties to associate with the Data Factory Linked Service Key Vault.
-        :param pulumi.Input[list] annotations: List of tags that can be used for describing the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[List[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Linked Service with. Changing this forces a new resource.
         :param pulumi.Input[str] description: The description for the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] integration_runtime_name: The integration runtime reference to associate with the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] key_vault_id: The ID the Azure Key Vault resource.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
-        :param pulumi.Input[dict] parameters: A map of parameters to associate with the Data Factory Linked Service Key Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linked Service Key Vault.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service Key Vault. Changing this forces a new resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -157,7 +193,8 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         return LinkedServiceKeyVault(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
