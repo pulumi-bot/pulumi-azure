@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetPolicyVMResult:
     """
@@ -34,6 +35,8 @@ class GetPolicyVMResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetPolicyVMResult(GetPolicyVMResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetPolicyVMResult(GetPolicyVMResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,opts=None):
+
+def get_policy_vm(name=None, recovery_vault_name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing VM Backup Policy.
 
@@ -67,15 +71,13 @@ def get_policy_vm(name=None,recovery_vault_name=None,resource_group_name=None,op
     :param str resource_group_name: The name of the resource group in which the VM Backup Policy resides.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['recoveryVaultName'] = recovery_vault_name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:backup/getPolicyVM:getPolicyVM', __args__, opts=opts).value
 
     return AwaitableGetPolicyVMResult(

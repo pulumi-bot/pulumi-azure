@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetAccountSASResult:
     """
@@ -46,6 +47,8 @@ class GetAccountSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountSASResult(GetAccountSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,7 +65,8 @@ class AwaitableGetAccountSASResult(GetAccountSASResult):
             services=self.services,
             start=self.start)
 
-def get_account_sas(connection_string=None,expiry=None,https_only=None,permissions=None,resource_types=None,services=None,start=None,opts=None):
+
+def get_account_sas(connection_string=None, expiry=None, https_only=None, permissions=None, resource_types=None, services=None, start=None, opts=None):
     """
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account.
 
@@ -148,8 +152,6 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
       * `table` (`bool`) - Should permission be granted to `table` services within this storage account?
     """
     __args__ = dict()
-
-
     __args__['connectionString'] = connection_string
     __args__['expiry'] = expiry
     __args__['httpsOnly'] = https_only
@@ -160,7 +162,7 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccountSAS:getAccountSAS', __args__, opts=opts).value
 
     return AwaitableGetAccountSASResult(
