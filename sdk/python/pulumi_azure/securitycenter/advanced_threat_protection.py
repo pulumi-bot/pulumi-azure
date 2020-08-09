@@ -5,20 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['AdvancedThreatProtection']
 
 
 class AdvancedThreatProtection(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[bool] = pulumi.property("enabled")
     """
     Should Advanced Threat Protection be enabled on this resource?
     """
-    target_resource_id: pulumi.Output[str]
+
+    target_resource_id: pulumi.Output[str] = pulumi.property("targetResourceId")
     """
     The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 target_resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a resources Advanced Threat Protection setting.
 
@@ -58,7 +69,7 @@ class AdvancedThreatProtection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,7 +88,11 @@ class AdvancedThreatProtection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, target_resource_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            target_resource_id: Optional[pulumi.Input[str]] = None) -> 'AdvancedThreatProtection':
         """
         Get an existing AdvancedThreatProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,7 +112,8 @@ class AdvancedThreatProtection(pulumi.CustomResource):
         return AdvancedThreatProtection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

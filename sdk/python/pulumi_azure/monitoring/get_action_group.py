@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetActionGroupResult',
+    'AwaitableGetActionGroupResult',
+    'get_action_group',
+]
+
 
 class GetActionGroupResult:
     """
@@ -100,6 +108,8 @@ class GetActionGroupResult:
         """
         One or more `webhook_receiver` blocks as defined below.
         """
+
+
 class AwaitableGetActionGroupResult(GetActionGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +132,10 @@ class AwaitableGetActionGroupResult(GetActionGroupResult):
             voice_receivers=self.voice_receivers,
             webhook_receivers=self.webhook_receivers)
 
-def get_action_group(name=None,resource_group_name=None,opts=None):
+
+def get_action_group(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActionGroupResult:
     """
     Use this data source to access the properties of an Action Group.
 
@@ -142,14 +155,12 @@ def get_action_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Action Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:monitoring/getActionGroup:getActionGroup', __args__, opts=opts).value
 
     return AwaitableGetActionGroupResult(

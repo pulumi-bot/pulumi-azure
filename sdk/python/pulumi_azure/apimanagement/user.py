@@ -5,52 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['User']
 
 
 class User(pulumi.CustomResource):
-    api_management_name: pulumi.Output[str]
+    api_management_name: pulumi.Output[str] = pulumi.property("apiManagementName")
     """
     The name of the API Management Service in which the User should be created. Changing this forces a new resource to be created.
     """
-    confirmation: pulumi.Output[str]
+
+    confirmation: pulumi.Output[Optional[str]] = pulumi.property("confirmation")
     """
     The kind of confirmation email which will be sent to this user. Possible values are `invite` and `signup`. Changing this forces a new resource to be created.
     """
-    email: pulumi.Output[str]
+
+    email: pulumi.Output[str] = pulumi.property("email")
     """
     The email address associated with this user.
     """
-    first_name: pulumi.Output[str]
+
+    first_name: pulumi.Output[str] = pulumi.property("firstName")
     """
     The first name for this user.
     """
-    last_name: pulumi.Output[str]
+
+    last_name: pulumi.Output[str] = pulumi.property("lastName")
     """
     The last name for this user.
     """
-    note: pulumi.Output[str]
+
+    note: pulumi.Output[Optional[str]] = pulumi.property("note")
     """
     A note about this user.
     """
-    password: pulumi.Output[str]
+
+    password: pulumi.Output[Optional[str]] = pulumi.property("password")
     """
     The password associated with this user.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
     """
-    state: pulumi.Output[str]
+
+    state: pulumi.Output[str] = pulumi.property("state")
     """
     The state of this user. Possible values are `active`, `blocked` and `pending`.
     """
-    user_id: pulumi.Output[str]
+
+    user_id: pulumi.Output[str] = pulumi.property("userId")
     """
     The Identifier for this User, which must be unique within the API Management Service. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, api_management_name=None, confirmation=None, email=None, first_name=None, last_name=None, note=None, password=None, resource_group_name=None, state=None, user_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_management_name: Optional[pulumi.Input[str]] = None,
+                 confirmation: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 first_name: Optional[pulumi.Input[str]] = None,
+                 last_name: Optional[pulumi.Input[str]] = None,
+                 note: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an API Management User.
 
@@ -101,7 +128,7 @@ class User(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -136,7 +163,19 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_management_name=None, confirmation=None, email=None, first_name=None, last_name=None, note=None, password=None, resource_group_name=None, state=None, user_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_management_name: Optional[pulumi.Input[str]] = None,
+            confirmation: Optional[pulumi.Input[str]] = None,
+            email: Optional[pulumi.Input[str]] = None,
+            first_name: Optional[pulumi.Input[str]] = None,
+            last_name: Optional[pulumi.Input[str]] = None,
+            note: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -172,7 +211,8 @@ class User(pulumi.CustomResource):
         return User(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

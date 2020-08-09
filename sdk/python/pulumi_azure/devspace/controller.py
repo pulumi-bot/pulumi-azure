@@ -5,48 +5,71 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Controller']
 
 
 class Controller(pulumi.CustomResource):
-    data_plane_fqdn: pulumi.Output[str]
+    data_plane_fqdn: pulumi.Output[str] = pulumi.property("dataPlaneFqdn")
     """
     DNS name for accessing DataPlane services.
     """
-    host_suffix: pulumi.Output[str]
+
+    host_suffix: pulumi.Output[str] = pulumi.property("hostSuffix")
     """
     The host suffix for the DevSpace Controller.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported location where the DevSpace Controller should exist. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the DevSpace Controller. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group under which the DevSpace Controller resource has to be created. Changing this forces a new resource to be created.
     """
-    sku_name: pulumi.Output[str]
+
+    sku_name: pulumi.Output[str] = pulumi.property("skuName")
     """
     Specifies the SKU Name for this DevSpace Controller. Possible values are `S1`.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    target_container_host_credentials_base64: pulumi.Output[str]
+
+    target_container_host_credentials_base64: pulumi.Output[str] = pulumi.property("targetContainerHostCredentialsBase64")
     """
     Base64 encoding of `kube_config_raw` of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
     """
-    target_container_host_resource_id: pulumi.Output[str]
+
+    target_container_host_resource_id: pulumi.Output[str] = pulumi.property("targetContainerHostResourceId")
     """
     The resource id of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, sku_name=None, tags=None, target_container_host_credentials_base64=None, target_container_host_resource_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_container_host_credentials_base64: Optional[pulumi.Input[str]] = None,
+                 target_container_host_resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a DevSpace Controller.
 
@@ -56,7 +79,7 @@ class Controller(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the DevSpace Controller. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the DevSpace Controller resource has to be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: Specifies the SKU Name for this DevSpace Controller. Possible values are `S1`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_container_host_credentials_base64: Base64 encoding of `kube_config_raw` of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_container_host_resource_id: The resource id of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
         """
@@ -71,7 +94,7 @@ class Controller(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -101,7 +124,18 @@ class Controller(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, data_plane_fqdn=None, host_suffix=None, location=None, name=None, resource_group_name=None, sku_name=None, tags=None, target_container_host_credentials_base64=None, target_container_host_resource_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_plane_fqdn: Optional[pulumi.Input[str]] = None,
+            host_suffix: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            sku_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            target_container_host_credentials_base64: Optional[pulumi.Input[str]] = None,
+            target_container_host_resource_id: Optional[pulumi.Input[str]] = None) -> 'Controller':
         """
         Get an existing Controller resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,7 +149,7 @@ class Controller(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the DevSpace Controller. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the DevSpace Controller resource has to be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: Specifies the SKU Name for this DevSpace Controller. Possible values are `S1`.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_container_host_credentials_base64: Base64 encoding of `kube_config_raw` of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_container_host_resource_id: The resource id of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
         """
@@ -135,7 +169,8 @@ class Controller(pulumi.CustomResource):
         return Controller(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

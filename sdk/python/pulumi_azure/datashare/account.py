@@ -5,36 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Account']
 
 
 class Account(pulumi.CustomResource):
-    identity: pulumi.Output[dict]
+    identity: pulumi.Output['outputs.AccountIdentity'] = pulumi.property("identity")
     """
     An `identity` block as defined below.
-
-      * `principal_id` (`str`) - The Principal ID for the Service Principal associated with the Identity of this Data Share Account.
-      * `tenant_id` (`str`) - The Tenant ID for the Service Principal associated with the Identity of this Data Share Account.
-      * `type` (`str`) - Specifies the identity type of the Data Share Account. At this time the only allowed value is `SystemAssigned`.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags which should be assigned to the Data Share Account.
     """
-    def __init__(__self__, resource_name, opts=None, identity=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['AccountIdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Data Share Account.
 
@@ -58,17 +73,11 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] identity: An `identity` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountIdentityArgs']] identity: An `identity` block as defined below.
         :param pulumi.Input[str] location: The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to the Data Share Account.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The Principal ID for the Service Principal associated with the Identity of this Data Share Account.
-          * `tenant_id` (`pulumi.Input[str]`) - The Tenant ID for the Service Principal associated with the Identity of this Data Share Account.
-          * `type` (`pulumi.Input[str]`) - Specifies the identity type of the Data Share Account. At this time the only allowed value is `SystemAssigned`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to the Data Share Account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +90,7 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -103,7 +112,14 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, identity=None, location=None, name=None, resource_group_name=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            identity: Optional[pulumi.Input[pulumi.InputType['AccountIdentityArgs']]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -111,17 +127,11 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] identity: An `identity` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountIdentityArgs']] identity: An `identity` block as defined below.
         :param pulumi.Input[str] location: The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
         :param pulumi.Input[str] name: The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags which should be assigned to the Data Share Account.
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The Principal ID for the Service Principal associated with the Identity of this Data Share Account.
-          * `tenant_id` (`pulumi.Input[str]`) - The Tenant ID for the Service Principal associated with the Identity of this Data Share Account.
-          * `type` (`pulumi.Input[str]`) - Specifies the identity type of the Data Share Account. At this time the only allowed value is `SystemAssigned`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to the Data Share Account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -135,7 +145,8 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

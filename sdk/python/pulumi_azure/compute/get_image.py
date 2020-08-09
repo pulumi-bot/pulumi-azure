@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetImageResult',
+    'AwaitableGetImageResult',
+    'get_image',
+]
+
 
 class GetImageResult:
     """
@@ -64,6 +72,8 @@ class GetImageResult:
         """
         is zone resiliency enabled?
         """
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +91,12 @@ class AwaitableGetImageResult(GetImageResult):
             tags=self.tags,
             zone_resilient=self.zone_resilient)
 
-def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending=None,opts=None):
+
+def get_image(name: Optional[str] = None,
+              name_regex: Optional[str] = None,
+              resource_group_name: Optional[str] = None,
+              sort_descending: Optional[bool] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Use this data source to access information about an existing Image.
 
@@ -103,8 +118,6 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     :param bool sort_descending: By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['resourceGroupName'] = resource_group_name
@@ -112,7 +125,7 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(

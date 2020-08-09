@@ -5,263 +5,284 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Account']
 
 
 class Account(pulumi.CustomResource):
-    access_tier: pulumi.Output[str]
+    access_tier: pulumi.Output[str] = pulumi.property("accessTier")
     """
     Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`.
     """
-    account_kind: pulumi.Output[str]
+
+    account_kind: pulumi.Output[Optional[str]] = pulumi.property("accountKind")
     """
     Defines the Kind of account. Valid options are `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage` and `StorageV2`. Changing this forces a new resource to be created. Defaults to `StorageV2`.
     """
-    account_replication_type: pulumi.Output[str]
+
+    account_replication_type: pulumi.Output[str] = pulumi.property("accountReplicationType")
     """
     Defines the type of replication to use for this storage account. Valid options are `LRS`, `GRS`, `RAGRS`, `ZRS`, `GZRS` and `RAGZRS`.
     """
-    account_tier: pulumi.Output[str]
+
+    account_tier: pulumi.Output[str] = pulumi.property("accountTier")
     """
     Defines the Tier to use for this storage account. Valid options are `Standard` and `Premium`. For `BlockBlobStorage` and `FileStorage` accounts only `Premium` is valid. Changing this forces a new resource to be created.
     """
-    allow_blob_public_access: pulumi.Output[bool]
+
+    allow_blob_public_access: pulumi.Output[Optional[bool]] = pulumi.property("allowBlobPublicAccess")
     """
     Allow or disallow public access to all blobs or containers in the storage account. Defaults to `false`.
     """
-    blob_properties: pulumi.Output[dict]
+
+    blob_properties: pulumi.Output['outputs.AccountBlobProperties'] = pulumi.property("blobProperties")
     """
     A `blob_properties` block as defined below.
-
-      * `corsRules` (`list`) - A `cors_rule` block as defined below.
-        * `allowedHeaders` (`list`) - A list of headers that are allowed to be a part of the cross-origin request.
-        * `allowedMethods` (`list`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-          `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-        * `allowedOrigins` (`list`) - A list of origin domains that will be allowed by CORS.
-        * `exposedHeaders` (`list`) - A list of response headers that are exposed to CORS clients.
-        * `maxAgeInSeconds` (`float`) - The number of seconds the client should cache a preflight response.
-
-      * `deleteRetentionPolicy` (`dict`) - A `delete_retention_policy` block as defined below.
-        * `days` (`float`) - Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
     """
-    custom_domain: pulumi.Output[dict]
+
+    custom_domain: pulumi.Output[Optional['outputs.AccountCustomDomain']] = pulumi.property("customDomain")
     """
     A `custom_domain` block as documented below.
-
-      * `name` (`str`) - The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
-      * `useSubdomain` (`bool`) - Should the Custom Domain Name be validated by using indirect CNAME validation?
     """
-    enable_https_traffic_only: pulumi.Output[bool]
+
+    enable_https_traffic_only: pulumi.Output[Optional[bool]] = pulumi.property("enableHttpsTrafficOnly")
     """
     Boolean flag which forces HTTPS if enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/storage-require-secure-transfer/)
     for more information. Defaults to `true`.
     """
-    identity: pulumi.Output[dict]
+
+    identity: pulumi.Output['outputs.AccountIdentity'] = pulumi.property("identity")
     """
     A `identity` block as defined below.
-
-      * `principal_id` (`str`) - The Principal ID for the Service Principal associated with the Identity of this Storage Account.
-      * `tenant_id` (`str`) - The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
-      * `type` (`str`) - Specifies the identity type of the Storage Account. At this time the only allowed value is `SystemAssigned`.
     """
-    is_hns_enabled: pulumi.Output[bool]
+
+    is_hns_enabled: pulumi.Output[Optional[bool]] = pulumi.property("isHnsEnabled")
     """
     Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2 ([see here for more information](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-account/)). Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
     """
-    network_rules: pulumi.Output[dict]
+
+    network_rules: pulumi.Output['outputs.AccountNetworkRules'] = pulumi.property("networkRules")
     """
     A `network_rules` block as documented below.
-
-      * `bypasses` (`list`) - Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are
-        any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
-      * `default_action` (`str`) - Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
-      * `ip_rules` (`list`) - List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
-      * `virtual_network_subnet_ids` (`list`) - A list of resource ids for subnets.
     """
-    primary_access_key: pulumi.Output[str]
+
+    primary_access_key: pulumi.Output[str] = pulumi.property("primaryAccessKey")
     """
     The primary access key for the storage account.
     """
-    primary_blob_connection_string: pulumi.Output[str]
+
+    primary_blob_connection_string: pulumi.Output[str] = pulumi.property("primaryBlobConnectionString")
     """
     The connection string associated with the primary blob location.
     """
-    primary_blob_endpoint: pulumi.Output[str]
+
+    primary_blob_endpoint: pulumi.Output[str] = pulumi.property("primaryBlobEndpoint")
     """
     The endpoint URL for blob storage in the primary location.
     """
-    primary_blob_host: pulumi.Output[str]
+
+    primary_blob_host: pulumi.Output[str] = pulumi.property("primaryBlobHost")
     """
     The hostname with port if applicable for blob storage in the primary location.
     """
-    primary_connection_string: pulumi.Output[str]
+
+    primary_connection_string: pulumi.Output[str] = pulumi.property("primaryConnectionString")
     """
     The connection string associated with the primary location.
     """
-    primary_dfs_endpoint: pulumi.Output[str]
+
+    primary_dfs_endpoint: pulumi.Output[str] = pulumi.property("primaryDfsEndpoint")
     """
     The endpoint URL for DFS storage in the primary location.
     """
-    primary_dfs_host: pulumi.Output[str]
+
+    primary_dfs_host: pulumi.Output[str] = pulumi.property("primaryDfsHost")
     """
     The hostname with port if applicable for DFS storage in the primary location.
     """
-    primary_file_endpoint: pulumi.Output[str]
+
+    primary_file_endpoint: pulumi.Output[str] = pulumi.property("primaryFileEndpoint")
     """
     The endpoint URL for file storage in the primary location.
     """
-    primary_file_host: pulumi.Output[str]
+
+    primary_file_host: pulumi.Output[str] = pulumi.property("primaryFileHost")
     """
     The hostname with port if applicable for file storage in the primary location.
     """
-    primary_location: pulumi.Output[str]
+
+    primary_location: pulumi.Output[str] = pulumi.property("primaryLocation")
     """
     The primary location of the storage account.
     """
-    primary_queue_endpoint: pulumi.Output[str]
+
+    primary_queue_endpoint: pulumi.Output[str] = pulumi.property("primaryQueueEndpoint")
     """
     The endpoint URL for queue storage in the primary location.
     """
-    primary_queue_host: pulumi.Output[str]
+
+    primary_queue_host: pulumi.Output[str] = pulumi.property("primaryQueueHost")
     """
     The hostname with port if applicable for queue storage in the primary location.
     """
-    primary_table_endpoint: pulumi.Output[str]
+
+    primary_table_endpoint: pulumi.Output[str] = pulumi.property("primaryTableEndpoint")
     """
     The endpoint URL for table storage in the primary location.
     """
-    primary_table_host: pulumi.Output[str]
+
+    primary_table_host: pulumi.Output[str] = pulumi.property("primaryTableHost")
     """
     The hostname with port if applicable for table storage in the primary location.
     """
-    primary_web_endpoint: pulumi.Output[str]
+
+    primary_web_endpoint: pulumi.Output[str] = pulumi.property("primaryWebEndpoint")
     """
     The endpoint URL for web storage in the primary location.
     """
-    primary_web_host: pulumi.Output[str]
+
+    primary_web_host: pulumi.Output[str] = pulumi.property("primaryWebHost")
     """
     The hostname with port if applicable for web storage in the primary location.
     """
-    queue_properties: pulumi.Output[dict]
+
+    queue_properties: pulumi.Output['outputs.AccountQueueProperties'] = pulumi.property("queueProperties")
     """
     A `queue_properties` block as defined below.
-
-      * `corsRules` (`list`) - A `cors_rule` block as defined above.
-        * `allowedHeaders` (`list`) - A list of headers that are allowed to be a part of the cross-origin request.
-        * `allowedMethods` (`list`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-          `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-        * `allowedOrigins` (`list`) - A list of origin domains that will be allowed by CORS.
-        * `exposedHeaders` (`list`) - A list of response headers that are exposed to CORS clients.
-        * `maxAgeInSeconds` (`float`) - The number of seconds the client should cache a preflight response.
-
-      * `hourMetrics` (`dict`) - A `hour_metrics` block as defined below.
-        * `enabled` (`bool`) - Indicates whether hour metrics are enabled for the Queue service. Changing this forces a new resource.
-        * `includeApis` (`bool`) - Indicates whether metrics should generate summary statistics for called API operations.
-        * `retentionPolicyDays` (`float`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-        * `version` (`str`) - The version of storage analytics to configure. Changing this forces a new resource.
-
-      * `logging` (`dict`) - A `logging` block as defined below.
-        * `delete` (`bool`) - Indicates whether all delete requests should be logged. Changing this forces a new resource.
-        * `read` (`bool`) - Indicates whether all read requests should be logged. Changing this forces a new resource.
-        * `retentionPolicyDays` (`float`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-        * `version` (`str`) - The version of storage analytics to configure. Changing this forces a new resource.
-        * `write` (`bool`) - Indicates whether all write requests should be logged. Changing this forces a new resource.
-
-      * `minuteMetrics` (`dict`) - A `minute_metrics` block as defined below.
-        * `enabled` (`bool`) - Indicates whether minute metrics are enabled for the Queue service. Changing this forces a new resource.
-        * `includeApis` (`bool`) - Indicates whether metrics should generate summary statistics for called API operations.
-        * `retentionPolicyDays` (`float`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-        * `version` (`str`) - The version of storage analytics to configure. Changing this forces a new resource.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
     """
-    secondary_access_key: pulumi.Output[str]
+
+    secondary_access_key: pulumi.Output[str] = pulumi.property("secondaryAccessKey")
     """
     The secondary access key for the storage account.
     """
-    secondary_blob_connection_string: pulumi.Output[str]
+
+    secondary_blob_connection_string: pulumi.Output[str] = pulumi.property("secondaryBlobConnectionString")
     """
     The connection string associated with the secondary blob location.
     """
-    secondary_blob_endpoint: pulumi.Output[str]
+
+    secondary_blob_endpoint: pulumi.Output[str] = pulumi.property("secondaryBlobEndpoint")
     """
     The endpoint URL for blob storage in the secondary location.
     """
-    secondary_blob_host: pulumi.Output[str]
+
+    secondary_blob_host: pulumi.Output[str] = pulumi.property("secondaryBlobHost")
     """
     The hostname with port if applicable for blob storage in the secondary location.
     """
-    secondary_connection_string: pulumi.Output[str]
+
+    secondary_connection_string: pulumi.Output[str] = pulumi.property("secondaryConnectionString")
     """
     The connection string associated with the secondary location.
     """
-    secondary_dfs_endpoint: pulumi.Output[str]
+
+    secondary_dfs_endpoint: pulumi.Output[str] = pulumi.property("secondaryDfsEndpoint")
     """
     The endpoint URL for DFS storage in the secondary location.
     """
-    secondary_dfs_host: pulumi.Output[str]
+
+    secondary_dfs_host: pulumi.Output[str] = pulumi.property("secondaryDfsHost")
     """
     The hostname with port if applicable for DFS storage in the secondary location.
     """
-    secondary_file_endpoint: pulumi.Output[str]
+
+    secondary_file_endpoint: pulumi.Output[str] = pulumi.property("secondaryFileEndpoint")
     """
     The endpoint URL for file storage in the secondary location.
     """
-    secondary_file_host: pulumi.Output[str]
+
+    secondary_file_host: pulumi.Output[str] = pulumi.property("secondaryFileHost")
     """
     The hostname with port if applicable for file storage in the secondary location.
     """
-    secondary_location: pulumi.Output[str]
+
+    secondary_location: pulumi.Output[str] = pulumi.property("secondaryLocation")
     """
     The secondary location of the storage account.
     """
-    secondary_queue_endpoint: pulumi.Output[str]
+
+    secondary_queue_endpoint: pulumi.Output[str] = pulumi.property("secondaryQueueEndpoint")
     """
     The endpoint URL for queue storage in the secondary location.
     """
-    secondary_queue_host: pulumi.Output[str]
+
+    secondary_queue_host: pulumi.Output[str] = pulumi.property("secondaryQueueHost")
     """
     The hostname with port if applicable for queue storage in the secondary location.
     """
-    secondary_table_endpoint: pulumi.Output[str]
+
+    secondary_table_endpoint: pulumi.Output[str] = pulumi.property("secondaryTableEndpoint")
     """
     The endpoint URL for table storage in the secondary location.
     """
-    secondary_table_host: pulumi.Output[str]
+
+    secondary_table_host: pulumi.Output[str] = pulumi.property("secondaryTableHost")
     """
     The hostname with port if applicable for table storage in the secondary location.
     """
-    secondary_web_endpoint: pulumi.Output[str]
+
+    secondary_web_endpoint: pulumi.Output[str] = pulumi.property("secondaryWebEndpoint")
     """
     The endpoint URL for web storage in the secondary location.
     """
-    secondary_web_host: pulumi.Output[str]
+
+    secondary_web_host: pulumi.Output[str] = pulumi.property("secondaryWebHost")
     """
     The hostname with port if applicable for web storage in the secondary location.
     """
-    static_website: pulumi.Output[dict]
+
+    static_website: pulumi.Output[Optional['outputs.AccountStaticWebsite']] = pulumi.property("staticWebsite")
     """
     A `static_website` block as defined below.
-
-      * `error404Document` (`str`) - The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-      * `indexDocument` (`str`) - The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, access_tier=None, account_kind=None, account_replication_type=None, account_tier=None, allow_blob_public_access=None, blob_properties=None, custom_domain=None, enable_https_traffic_only=None, identity=None, is_hns_enabled=None, location=None, name=None, network_rules=None, queue_properties=None, resource_group_name=None, static_website=None, tags=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_tier: Optional[pulumi.Input[str]] = None,
+                 account_kind: Optional[pulumi.Input[str]] = None,
+                 account_replication_type: Optional[pulumi.Input[str]] = None,
+                 account_tier: Optional[pulumi.Input[str]] = None,
+                 allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
+                 blob_properties: Optional[pulumi.Input[pulumi.InputType['AccountBlobPropertiesArgs']]] = None,
+                 custom_domain: Optional[pulumi.Input[pulumi.InputType['AccountCustomDomainArgs']]] = None,
+                 enable_https_traffic_only: Optional[pulumi.Input[bool]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['AccountIdentityArgs']]] = None,
+                 is_hns_enabled: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_rules: Optional[pulumi.Input[pulumi.InputType['AccountNetworkRulesArgs']]] = None,
+                 queue_properties: Optional[pulumi.Input[pulumi.InputType['AccountQueuePropertiesArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 static_website: Optional[pulumi.Input[pulumi.InputType['AccountStaticWebsiteArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Azure Storage Account.
 
@@ -322,85 +343,19 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_replication_type: Defines the type of replication to use for this storage account. Valid options are `LRS`, `GRS`, `RAGRS`, `ZRS`, `GZRS` and `RAGZRS`.
         :param pulumi.Input[str] account_tier: Defines the Tier to use for this storage account. Valid options are `Standard` and `Premium`. For `BlockBlobStorage` and `FileStorage` accounts only `Premium` is valid. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] allow_blob_public_access: Allow or disallow public access to all blobs or containers in the storage account. Defaults to `false`.
-        :param pulumi.Input[dict] blob_properties: A `blob_properties` block as defined below.
-        :param pulumi.Input[dict] custom_domain: A `custom_domain` block as documented below.
+        :param pulumi.Input[pulumi.InputType['AccountBlobPropertiesArgs']] blob_properties: A `blob_properties` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountCustomDomainArgs']] custom_domain: A `custom_domain` block as documented below.
         :param pulumi.Input[bool] enable_https_traffic_only: Boolean flag which forces HTTPS if enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/storage-require-secure-transfer/)
                for more information. Defaults to `true`.
-        :param pulumi.Input[dict] identity: A `identity` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountIdentityArgs']] identity: A `identity` block as defined below.
         :param pulumi.Input[bool] is_hns_enabled: Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2 ([see here for more information](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-account/)). Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
-        :param pulumi.Input[dict] network_rules: A `network_rules` block as documented below.
-        :param pulumi.Input[dict] queue_properties: A `queue_properties` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountNetworkRulesArgs']] network_rules: A `network_rules` block as documented below.
+        :param pulumi.Input[pulumi.InputType['AccountQueuePropertiesArgs']] queue_properties: A `queue_properties` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] static_website: A `static_website` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **blob_properties** object supports the following:
-
-          * `corsRules` (`pulumi.Input[list]`) - A `cors_rule` block as defined below.
-            * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that are allowed to be a part of the cross-origin request.
-            * `allowedMethods` (`pulumi.Input[list]`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-              `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-            * `allowedOrigins` (`pulumi.Input[list]`) - A list of origin domains that will be allowed by CORS.
-            * `exposedHeaders` (`pulumi.Input[list]`) - A list of response headers that are exposed to CORS clients.
-            * `maxAgeInSeconds` (`pulumi.Input[float]`) - The number of seconds the client should cache a preflight response.
-
-          * `deleteRetentionPolicy` (`pulumi.Input[dict]`) - A `delete_retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
-
-        The **custom_domain** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
-          * `useSubdomain` (`pulumi.Input[bool]`) - Should the Custom Domain Name be validated by using indirect CNAME validation?
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The Principal ID for the Service Principal associated with the Identity of this Storage Account.
-          * `tenant_id` (`pulumi.Input[str]`) - The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
-          * `type` (`pulumi.Input[str]`) - Specifies the identity type of the Storage Account. At this time the only allowed value is `SystemAssigned`.
-
-        The **network_rules** object supports the following:
-
-          * `bypasses` (`pulumi.Input[list]`) - Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are
-            any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
-          * `default_action` (`pulumi.Input[str]`) - Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
-          * `ip_rules` (`pulumi.Input[list]`) - List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
-          * `virtual_network_subnet_ids` (`pulumi.Input[list]`) - A list of resource ids for subnets.
-
-        The **queue_properties** object supports the following:
-
-          * `corsRules` (`pulumi.Input[list]`) - A `cors_rule` block as defined above.
-            * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that are allowed to be a part of the cross-origin request.
-            * `allowedMethods` (`pulumi.Input[list]`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-              `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-            * `allowedOrigins` (`pulumi.Input[list]`) - A list of origin domains that will be allowed by CORS.
-            * `exposedHeaders` (`pulumi.Input[list]`) - A list of response headers that are exposed to CORS clients.
-            * `maxAgeInSeconds` (`pulumi.Input[float]`) - The number of seconds the client should cache a preflight response.
-
-          * `hourMetrics` (`pulumi.Input[dict]`) - A `hour_metrics` block as defined below.
-            * `enabled` (`pulumi.Input[bool]`) - Indicates whether hour metrics are enabled for the Queue service. Changing this forces a new resource.
-            * `includeApis` (`pulumi.Input[bool]`) - Indicates whether metrics should generate summary statistics for called API operations.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-
-          * `logging` (`pulumi.Input[dict]`) - A `logging` block as defined below.
-            * `delete` (`pulumi.Input[bool]`) - Indicates whether all delete requests should be logged. Changing this forces a new resource.
-            * `read` (`pulumi.Input[bool]`) - Indicates whether all read requests should be logged. Changing this forces a new resource.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-            * `write` (`pulumi.Input[bool]`) - Indicates whether all write requests should be logged. Changing this forces a new resource.
-
-          * `minuteMetrics` (`pulumi.Input[dict]`) - A `minute_metrics` block as defined below.
-            * `enabled` (`pulumi.Input[bool]`) - Indicates whether minute metrics are enabled for the Queue service. Changing this forces a new resource.
-            * `includeApis` (`pulumi.Input[bool]`) - Indicates whether metrics should generate summary statistics for called API operations.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-
-        The **static_website** object supports the following:
-
-          * `error404Document` (`pulumi.Input[str]`) - The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-          * `indexDocument` (`pulumi.Input[str]`) - The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
+        :param pulumi.Input[pulumi.InputType['AccountStaticWebsiteArgs']] static_website: A `static_website` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -413,7 +368,7 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -481,7 +436,58 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_tier=None, account_kind=None, account_replication_type=None, account_tier=None, allow_blob_public_access=None, blob_properties=None, custom_domain=None, enable_https_traffic_only=None, identity=None, is_hns_enabled=None, location=None, name=None, network_rules=None, primary_access_key=None, primary_blob_connection_string=None, primary_blob_endpoint=None, primary_blob_host=None, primary_connection_string=None, primary_dfs_endpoint=None, primary_dfs_host=None, primary_file_endpoint=None, primary_file_host=None, primary_location=None, primary_queue_endpoint=None, primary_queue_host=None, primary_table_endpoint=None, primary_table_host=None, primary_web_endpoint=None, primary_web_host=None, queue_properties=None, resource_group_name=None, secondary_access_key=None, secondary_blob_connection_string=None, secondary_blob_endpoint=None, secondary_blob_host=None, secondary_connection_string=None, secondary_dfs_endpoint=None, secondary_dfs_host=None, secondary_file_endpoint=None, secondary_file_host=None, secondary_location=None, secondary_queue_endpoint=None, secondary_queue_host=None, secondary_table_endpoint=None, secondary_table_host=None, secondary_web_endpoint=None, secondary_web_host=None, static_website=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_tier: Optional[pulumi.Input[str]] = None,
+            account_kind: Optional[pulumi.Input[str]] = None,
+            account_replication_type: Optional[pulumi.Input[str]] = None,
+            account_tier: Optional[pulumi.Input[str]] = None,
+            allow_blob_public_access: Optional[pulumi.Input[bool]] = None,
+            blob_properties: Optional[pulumi.Input[pulumi.InputType['AccountBlobPropertiesArgs']]] = None,
+            custom_domain: Optional[pulumi.Input[pulumi.InputType['AccountCustomDomainArgs']]] = None,
+            enable_https_traffic_only: Optional[pulumi.Input[bool]] = None,
+            identity: Optional[pulumi.Input[pulumi.InputType['AccountIdentityArgs']]] = None,
+            is_hns_enabled: Optional[pulumi.Input[bool]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_rules: Optional[pulumi.Input[pulumi.InputType['AccountNetworkRulesArgs']]] = None,
+            primary_access_key: Optional[pulumi.Input[str]] = None,
+            primary_blob_connection_string: Optional[pulumi.Input[str]] = None,
+            primary_blob_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_blob_host: Optional[pulumi.Input[str]] = None,
+            primary_connection_string: Optional[pulumi.Input[str]] = None,
+            primary_dfs_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_dfs_host: Optional[pulumi.Input[str]] = None,
+            primary_file_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_file_host: Optional[pulumi.Input[str]] = None,
+            primary_location: Optional[pulumi.Input[str]] = None,
+            primary_queue_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_queue_host: Optional[pulumi.Input[str]] = None,
+            primary_table_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_table_host: Optional[pulumi.Input[str]] = None,
+            primary_web_endpoint: Optional[pulumi.Input[str]] = None,
+            primary_web_host: Optional[pulumi.Input[str]] = None,
+            queue_properties: Optional[pulumi.Input[pulumi.InputType['AccountQueuePropertiesArgs']]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            secondary_access_key: Optional[pulumi.Input[str]] = None,
+            secondary_blob_connection_string: Optional[pulumi.Input[str]] = None,
+            secondary_blob_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_blob_host: Optional[pulumi.Input[str]] = None,
+            secondary_connection_string: Optional[pulumi.Input[str]] = None,
+            secondary_dfs_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_dfs_host: Optional[pulumi.Input[str]] = None,
+            secondary_file_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_file_host: Optional[pulumi.Input[str]] = None,
+            secondary_location: Optional[pulumi.Input[str]] = None,
+            secondary_queue_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_queue_host: Optional[pulumi.Input[str]] = None,
+            secondary_table_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_table_host: Optional[pulumi.Input[str]] = None,
+            secondary_web_endpoint: Optional[pulumi.Input[str]] = None,
+            secondary_web_host: Optional[pulumi.Input[str]] = None,
+            static_website: Optional[pulumi.Input[pulumi.InputType['AccountStaticWebsiteArgs']]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -494,15 +500,15 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_replication_type: Defines the type of replication to use for this storage account. Valid options are `LRS`, `GRS`, `RAGRS`, `ZRS`, `GZRS` and `RAGZRS`.
         :param pulumi.Input[str] account_tier: Defines the Tier to use for this storage account. Valid options are `Standard` and `Premium`. For `BlockBlobStorage` and `FileStorage` accounts only `Premium` is valid. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] allow_blob_public_access: Allow or disallow public access to all blobs or containers in the storage account. Defaults to `false`.
-        :param pulumi.Input[dict] blob_properties: A `blob_properties` block as defined below.
-        :param pulumi.Input[dict] custom_domain: A `custom_domain` block as documented below.
+        :param pulumi.Input[pulumi.InputType['AccountBlobPropertiesArgs']] blob_properties: A `blob_properties` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountCustomDomainArgs']] custom_domain: A `custom_domain` block as documented below.
         :param pulumi.Input[bool] enable_https_traffic_only: Boolean flag which forces HTTPS if enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/storage-require-secure-transfer/)
                for more information. Defaults to `true`.
-        :param pulumi.Input[dict] identity: A `identity` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountIdentityArgs']] identity: A `identity` block as defined below.
         :param pulumi.Input[bool] is_hns_enabled: Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2 ([see here for more information](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-account/)). Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.
-        :param pulumi.Input[dict] network_rules: A `network_rules` block as documented below.
+        :param pulumi.Input[pulumi.InputType['AccountNetworkRulesArgs']] network_rules: A `network_rules` block as documented below.
         :param pulumi.Input[str] primary_access_key: The primary access key for the storage account.
         :param pulumi.Input[str] primary_blob_connection_string: The connection string associated with the primary blob location.
         :param pulumi.Input[str] primary_blob_endpoint: The endpoint URL for blob storage in the primary location.
@@ -519,7 +525,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] primary_table_host: The hostname with port if applicable for table storage in the primary location.
         :param pulumi.Input[str] primary_web_endpoint: The endpoint URL for web storage in the primary location.
         :param pulumi.Input[str] primary_web_host: The hostname with port if applicable for web storage in the primary location.
-        :param pulumi.Input[dict] queue_properties: A `queue_properties` block as defined below.
+        :param pulumi.Input[pulumi.InputType['AccountQueuePropertiesArgs']] queue_properties: A `queue_properties` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the storage account. Changing this forces a new resource to be created.
         :param pulumi.Input[str] secondary_access_key: The secondary access key for the storage account.
         :param pulumi.Input[str] secondary_blob_connection_string: The connection string associated with the secondary blob location.
@@ -537,74 +543,8 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_table_host: The hostname with port if applicable for table storage in the secondary location.
         :param pulumi.Input[str] secondary_web_endpoint: The endpoint URL for web storage in the secondary location.
         :param pulumi.Input[str] secondary_web_host: The hostname with port if applicable for web storage in the secondary location.
-        :param pulumi.Input[dict] static_website: A `static_website` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **blob_properties** object supports the following:
-
-          * `corsRules` (`pulumi.Input[list]`) - A `cors_rule` block as defined below.
-            * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that are allowed to be a part of the cross-origin request.
-            * `allowedMethods` (`pulumi.Input[list]`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-              `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-            * `allowedOrigins` (`pulumi.Input[list]`) - A list of origin domains that will be allowed by CORS.
-            * `exposedHeaders` (`pulumi.Input[list]`) - A list of response headers that are exposed to CORS clients.
-            * `maxAgeInSeconds` (`pulumi.Input[float]`) - The number of seconds the client should cache a preflight response.
-
-          * `deleteRetentionPolicy` (`pulumi.Input[dict]`) - A `delete_retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
-
-        The **custom_domain** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The Custom Domain Name to use for the Storage Account, which will be validated by Azure.
-          * `useSubdomain` (`pulumi.Input[bool]`) - Should the Custom Domain Name be validated by using indirect CNAME validation?
-
-        The **identity** object supports the following:
-
-          * `principal_id` (`pulumi.Input[str]`) - The Principal ID for the Service Principal associated with the Identity of this Storage Account.
-          * `tenant_id` (`pulumi.Input[str]`) - The Tenant ID for the Service Principal associated with the Identity of this Storage Account.
-          * `type` (`pulumi.Input[str]`) - Specifies the identity type of the Storage Account. At this time the only allowed value is `SystemAssigned`.
-
-        The **network_rules** object supports the following:
-
-          * `bypasses` (`pulumi.Input[list]`) - Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are
-            any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.
-          * `default_action` (`pulumi.Input[str]`) - Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
-          * `ip_rules` (`pulumi.Input[list]`) - List of public IP or IP ranges in CIDR Format. Only IPV4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
-          * `virtual_network_subnet_ids` (`pulumi.Input[list]`) - A list of resource ids for subnets.
-
-        The **queue_properties** object supports the following:
-
-          * `corsRules` (`pulumi.Input[list]`) - A `cors_rule` block as defined above.
-            * `allowedHeaders` (`pulumi.Input[list]`) - A list of headers that are allowed to be a part of the cross-origin request.
-            * `allowedMethods` (`pulumi.Input[list]`) - A list of http headers that are allowed to be executed by the origin. Valid options are
-              `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
-            * `allowedOrigins` (`pulumi.Input[list]`) - A list of origin domains that will be allowed by CORS.
-            * `exposedHeaders` (`pulumi.Input[list]`) - A list of response headers that are exposed to CORS clients.
-            * `maxAgeInSeconds` (`pulumi.Input[float]`) - The number of seconds the client should cache a preflight response.
-
-          * `hourMetrics` (`pulumi.Input[dict]`) - A `hour_metrics` block as defined below.
-            * `enabled` (`pulumi.Input[bool]`) - Indicates whether hour metrics are enabled for the Queue service. Changing this forces a new resource.
-            * `includeApis` (`pulumi.Input[bool]`) - Indicates whether metrics should generate summary statistics for called API operations.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-
-          * `logging` (`pulumi.Input[dict]`) - A `logging` block as defined below.
-            * `delete` (`pulumi.Input[bool]`) - Indicates whether all delete requests should be logged. Changing this forces a new resource.
-            * `read` (`pulumi.Input[bool]`) - Indicates whether all read requests should be logged. Changing this forces a new resource.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-            * `write` (`pulumi.Input[bool]`) - Indicates whether all write requests should be logged. Changing this forces a new resource.
-
-          * `minuteMetrics` (`pulumi.Input[dict]`) - A `minute_metrics` block as defined below.
-            * `enabled` (`pulumi.Input[bool]`) - Indicates whether minute metrics are enabled for the Queue service. Changing this forces a new resource.
-            * `includeApis` (`pulumi.Input[bool]`) - Indicates whether metrics should generate summary statistics for called API operations.
-            * `retentionPolicyDays` (`pulumi.Input[float]`) - Specifies the number of days that logs will be retained. Changing this forces a new resource.
-            * `version` (`pulumi.Input[str]`) - The version of storage analytics to configure. Changing this forces a new resource.
-
-        The **static_website** object supports the following:
-
-          * `error404Document` (`pulumi.Input[str]`) - The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-          * `indexDocument` (`pulumi.Input[str]`) - The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
+        :param pulumi.Input[pulumi.InputType['AccountStaticWebsiteArgs']] static_website: A `static_website` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -662,7 +602,8 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

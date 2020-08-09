@@ -5,36 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DataDiskAttachment']
 
 
 class DataDiskAttachment(pulumi.CustomResource):
-    caching: pulumi.Output[str]
+    caching: pulumi.Output[str] = pulumi.property("caching")
     """
     Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
     """
-    create_option: pulumi.Output[str]
+
+    create_option: pulumi.Output[Optional[str]] = pulumi.property("createOption")
     """
     The Create Option of the Data Disk, such as `Empty` or `Attach`. Defaults to `Attach`. Changing this forces a new resource to be created.
     """
-    lun: pulumi.Output[float]
+
+    lun: pulumi.Output[float] = pulumi.property("lun")
     """
     The Logical Unit Number of the Data Disk, which needs to be unique within the Virtual Machine. Changing this forces a new resource to be created.
     """
-    managed_disk_id: pulumi.Output[str]
+
+    managed_disk_id: pulumi.Output[str] = pulumi.property("managedDiskId")
     """
     The ID of an existing Managed Disk which should be attached. Changing this forces a new resource to be created.
     """
-    virtual_machine_id: pulumi.Output[str]
+
+    virtual_machine_id: pulumi.Output[str] = pulumi.property("virtualMachineId")
     """
     The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
     """
-    write_accelerator_enabled: pulumi.Output[bool]
+
+    write_accelerator_enabled: pulumi.Output[Optional[bool]] = pulumi.property("writeAcceleratorEnabled")
     """
     Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
     """
-    def __init__(__self__, resource_name, opts=None, caching=None, create_option=None, lun=None, managed_disk_id=None, virtual_machine_id=None, write_accelerator_enabled=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 caching: Optional[pulumi.Input[str]] = None,
+                 create_option: Optional[pulumi.Input[str]] = None,
+                 lun: Optional[pulumi.Input[float]] = None,
+                 managed_disk_id: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_id: Optional[pulumi.Input[str]] = None,
+                 write_accelerator_enabled: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages attaching a Disk to a Virtual Machine.
 
@@ -104,7 +123,7 @@ class DataDiskAttachment(pulumi.CustomResource):
         example_data_disk_attachment = azure.compute.DataDiskAttachment("exampleDataDiskAttachment",
             managed_disk_id=example_managed_disk.id,
             virtual_machine_id=example_virtual_machine.id,
-            lun="10",
+            lun=10,
             caching="ReadWrite")
         ```
 
@@ -128,7 +147,7 @@ class DataDiskAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -155,7 +174,15 @@ class DataDiskAttachment(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, caching=None, create_option=None, lun=None, managed_disk_id=None, virtual_machine_id=None, write_accelerator_enabled=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            caching: Optional[pulumi.Input[str]] = None,
+            create_option: Optional[pulumi.Input[str]] = None,
+            lun: Optional[pulumi.Input[float]] = None,
+            managed_disk_id: Optional[pulumi.Input[str]] = None,
+            virtual_machine_id: Optional[pulumi.Input[str]] = None,
+            write_accelerator_enabled: Optional[pulumi.Input[bool]] = None) -> 'DataDiskAttachment':
         """
         Get an existing DataDiskAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -183,7 +210,8 @@ class DataDiskAttachment(pulumi.CustomResource):
         return DataDiskAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,72 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Project']
 
 
 class Project(pulumi.CustomResource):
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specify the name of the database migration project. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     Name of the resource group in which to create the database migration project. Changing this forces a new resource to be created.
     """
-    service_name: pulumi.Output[str]
+
+    service_name: pulumi.Output[str] = pulumi.property("serviceName")
     """
     Name of the database migration service where resource belongs to. Changing this forces a new resource to be created.
     """
-    source_platform: pulumi.Output[str]
+
+    source_platform: pulumi.Output[str] = pulumi.property("sourcePlatform")
     """
     The platform type of the migration source. Currently only support: `SQL`(on-premises SQL Server). Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assigned to the resource.
     """
-    target_platform: pulumi.Output[str]
+
+    target_platform: pulumi.Output[str] = pulumi.property("targetPlatform")
     """
     The platform type of the migration target. Currently only support: `SQLDB`(Azure SQL Database). Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, service_name=None, source_platform=None, tags=None, target_platform=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 source_platform: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_platform: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manage a Azure Database Migration Project.
 
         > **NOTE:** Destroying a Database Migration Project will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provider.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_virtual_network = azure.network.VirtualNetwork("exampleVirtualNetwork",
-            address_spaces=["10.0.0.0/16"],
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_subnet = azure.network.Subnet("exampleSubnet",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefix="10.0.1.0/24")
-        example_service = azure.databasemigration.Service("exampleService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            virtual_subnet_id=example_subnet.id,
-            sku_name="Standard_1vCores")
-        example_project = azure.databasemigration.Project("exampleProject",
-            service_name=example_service.name,
-            resource_group_name=example_resource_group.name,
-            location=zurerm_resource_group["example"]["location"],
-            source_platform="SQL",
-            target_platform="SQLDB")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -79,7 +72,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the resource group in which to create the database migration project. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_name: Name of the database migration service where resource belongs to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_platform: The platform type of the migration source. Currently only support: `SQL`(on-premises SQL Server). Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assigned to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assigned to the resource.
         :param pulumi.Input[str] target_platform: The platform type of the migration target. Currently only support: `SQLDB`(Azure SQL Database). Changing this forces a new resource to be created.
         """
         if __name__ is not None:
@@ -93,7 +86,7 @@ class Project(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -121,7 +114,16 @@ class Project(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, location=None, name=None, resource_group_name=None, service_name=None, source_platform=None, tags=None, target_platform=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            service_name: Optional[pulumi.Input[str]] = None,
+            source_platform: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            target_platform: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,7 +136,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the resource group in which to create the database migration project. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_name: Name of the database migration service where resource belongs to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] source_platform: The platform type of the migration source. Currently only support: `SQL`(on-premises SQL Server). Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assigned to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assigned to the resource.
         :param pulumi.Input[str] target_platform: The platform type of the migration target. Currently only support: `SQLDB`(Azure SQL Database). Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -151,7 +153,8 @@ class Project(pulumi.CustomResource):
         return Project(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

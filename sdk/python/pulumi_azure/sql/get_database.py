@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDatabaseResult',
+    'AwaitableGetDatabaseResult',
+    'get_database',
+]
+
 
 class GetDatabaseResult:
     """
@@ -85,6 +92,8 @@ class GetDatabaseResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,7 +113,12 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             server_name=self.server_name,
             tags=self.tags)
 
-def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
+
+def get_database(name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 server_name: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
     Use this data source to access information about an existing SQL Azure Database.
 
@@ -124,11 +138,9 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     :param str name: The name of the SQL Database.
     :param str resource_group_name: Specifies the name of the Resource Group where the Azure SQL Database exists.
     :param str server_name: The name of the SQL Server.
-    :param dict tags: A mapping of tags assigned to the resource.
+    :param Mapping[str, str] tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
@@ -136,7 +148,7 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:sql/getDatabase:getDatabase', __args__, opts=opts).value
 
     return AwaitableGetDatabaseResult(

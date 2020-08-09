@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
 
 class GetClusterResult:
     """
@@ -43,6 +50,8 @@ class GetClusterResult:
         """
         The FQDN of the Azure Kusto Cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +66,10 @@ class AwaitableGetClusterResult(GetClusterResult):
             tags=self.tags,
             uri=self.uri)
 
-def get_cluster(name=None,resource_group_name=None,opts=None):
+
+def get_cluster(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to access information about an existing Kusto (also known as Azure Data Explorer) Cluster
 
@@ -76,14 +88,12 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Kusto Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:kusto/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

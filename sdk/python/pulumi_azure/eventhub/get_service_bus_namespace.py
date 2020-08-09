@@ -5,10 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceBusNamespaceResult',
+    'AwaitableGetServiceBusNamespaceResult',
+    'get_service_bus_namespace',
+]
 
 warnings.warn("azure.eventhub.getServiceBusNamespace has been deprecated in favor of azure.servicebus.getNamespace", DeprecationWarning)
+
 class GetServiceBusNamespaceResult:
     """
     A collection of values returned by getServiceBusNamespace.
@@ -82,6 +89,8 @@ class GetServiceBusNamespaceResult:
         """
         Whether or not this ServiceBus Namespace is zone redundant.
         """
+
+
 class AwaitableGetServiceBusNamespaceResult(GetServiceBusNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +110,10 @@ class AwaitableGetServiceBusNamespaceResult(GetServiceBusNamespaceResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_service_bus_namespace(name: Optional[str] = None,
+                              resource_group_name: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceBusNamespaceResult:
     """
     Use this data source to access information about an existing ServiceBus Namespace.
 
@@ -122,14 +134,12 @@ def get_service_bus_namespace(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_service_bus_namespace is deprecated: azure.eventhub.getServiceBusNamespace has been deprecated in favor of azure.servicebus.getNamespace")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getServiceBusNamespace:getServiceBusNamespace', __args__, opts=opts).value
 
     return AwaitableGetServiceBusNamespaceResult(
