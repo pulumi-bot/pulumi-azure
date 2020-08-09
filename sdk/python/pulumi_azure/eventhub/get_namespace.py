@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetNamespaceResult',
+    'AwaitableGetNamespaceResult',
+    'get_namespace',
+]
+
 
 class GetNamespaceResult:
     """
@@ -116,6 +123,8 @@ class GetNamespaceResult:
         """
         Is this EventHub Namespace deployed across Availability Zones?
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -141,7 +150,10 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_namespace(name: Optional[str] = None,
+                  resource_group_name: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceResult:
     """
     Use this data source to access information about an existing EventHub Namespace.
 
@@ -161,14 +173,12 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the EventHub Namespace exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:eventhub/getNamespace:getNamespace', __args__, opts=opts).value
 
     return AwaitableGetNamespaceResult(

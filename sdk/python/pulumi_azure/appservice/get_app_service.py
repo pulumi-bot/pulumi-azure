@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAppServiceResult',
+    'AwaitableGetAppServiceResult',
+    'get_app_service',
+]
+
 
 class GetAppServiceResult:
     """
@@ -112,6 +120,8 @@ class GetAppServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetAppServiceResult(GetAppServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -137,7 +147,10 @@ class AwaitableGetAppServiceResult(GetAppServiceResult):
             source_controls=self.source_controls,
             tags=self.tags)
 
-def get_app_service(name=None,resource_group_name=None,opts=None):
+
+def get_app_service(name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppServiceResult:
     """
     Use this data source to access information about an existing App Service.
 
@@ -157,14 +170,12 @@ def get_app_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:appservice/getAppService:getAppService', __args__, opts=opts).value
 
     return AwaitableGetAppServiceResult(

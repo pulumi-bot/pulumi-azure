@@ -5,40 +5,56 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['BastionHost']
 
 
 class BastionHost(pulumi.CustomResource):
-    dns_name: pulumi.Output[str]
+    dns_name: pulumi.Output[str] = pulumi.property("dnsName")
     """
     The FQDN for the Bastion Host.
     """
-    ip_configuration: pulumi.Output[dict]
+
+    ip_configuration: pulumi.Output[Optional['outputs.BastionHostIpConfiguration']] = pulumi.property("ipConfiguration")
     """
     A `ip_configuration` block as defined below.
-
-      * `name` (`str`) - The name of the IP configuration.
-      * `public_ip_address_id` (`str`) - Reference to a Public IP Address to associate with this Bastion Host.
-      * `subnet_id` (`str`) - Reference to a subnet in which this Bastion Host has been created.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in which to create the Bastion Host.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, ip_configuration=None, location=None, name=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ip_configuration: Optional[pulumi.Input[pulumi.InputType['BastionHostIpConfigurationArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Bastion Host.
 
@@ -78,17 +94,11 @@ class BastionHost(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] ip_configuration: A `ip_configuration` block as defined below.
+        :param pulumi.Input[pulumi.InputType['BastionHostIpConfigurationArgs']] ip_configuration: A `ip_configuration` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Bastion Host.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **ip_configuration** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the IP configuration.
-          * `public_ip_address_id` (`pulumi.Input[str]`) - Reference to a Public IP Address to associate with this Bastion Host.
-          * `subnet_id` (`pulumi.Input[str]`) - Reference to a subnet in which this Bastion Host has been created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +111,7 @@ class BastionHost(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -122,7 +132,15 @@ class BastionHost(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dns_name=None, ip_configuration=None, location=None, name=None, resource_group_name=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dns_name: Optional[pulumi.Input[str]] = None,
+            ip_configuration: Optional[pulumi.Input[pulumi.InputType['BastionHostIpConfigurationArgs']]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'BastionHost':
         """
         Get an existing BastionHost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,17 +149,11 @@ class BastionHost(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dns_name: The FQDN for the Bastion Host.
-        :param pulumi.Input[dict] ip_configuration: A `ip_configuration` block as defined below.
+        :param pulumi.Input[pulumi.InputType['BastionHostIpConfigurationArgs']] ip_configuration: A `ip_configuration` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Bastion Host.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **ip_configuration** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - The name of the IP configuration.
-          * `public_ip_address_id` (`pulumi.Input[str]`) - Reference to a Public IP Address to associate with this Bastion Host.
-          * `subnet_id` (`pulumi.Input[str]`) - Reference to a subnet in which this Bastion Host has been created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -156,7 +168,8 @@ class BastionHost(pulumi.CustomResource):
         return BastionHost(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

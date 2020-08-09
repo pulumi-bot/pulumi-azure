@@ -5,45 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['StoreFile']
 
 
 class StoreFile(pulumi.CustomResource):
-    account_name: pulumi.Output[str]
+    account_name: pulumi.Output[str] = pulumi.property("accountName")
     """
     Specifies the name of the Data Lake Store for which the File should created.
     """
-    local_file_path: pulumi.Output[str]
+
+    local_file_path: pulumi.Output[str] = pulumi.property("localFilePath")
     """
     The path to the local file to be added to the Data Lake Store.
     """
-    remote_file_path: pulumi.Output[str]
+
+    remote_file_path: pulumi.Output[str] = pulumi.property("remoteFilePath")
     """
     The path created for the file on the Data Lake Store.
     """
-    def __init__(__self__, resource_name, opts=None, account_name=None, local_file_path=None, remote_file_path=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 local_file_path: Optional[pulumi.Input[str]] = None,
+                 remote_file_path: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Azure Data Lake Store File.
 
         > **Note:** If you want to change the data in the remote file without changing the `local_file_path`, then
         taint the resource so the `datalake.StoreFile` gets recreated with the new data.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_store = azure.datalake.Store("exampleStore",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location)
-        example_store_file = azure.datalake.StoreFile("exampleStoreFile",
-            resource_group_name=example_resource_group.name,
-            local_file_path="/path/to/local/file",
-            remote_file_path="/path/created/for/remote/file")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -62,7 +59,7 @@ class StoreFile(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -84,7 +81,12 @@ class StoreFile(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_name=None, local_file_path=None, remote_file_path=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: Optional[pulumi.Input[str]] = None,
+            local_file_path: Optional[pulumi.Input[str]] = None,
+            remote_file_path: Optional[pulumi.Input[str]] = None) -> 'StoreFile':
         """
         Get an existing StoreFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,7 +108,8 @@ class StoreFile(pulumi.CustomResource):
         return StoreFile(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

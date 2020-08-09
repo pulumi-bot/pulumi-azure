@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetApiResult',
+    'AwaitableGetApiResult',
+    'get_api',
+]
+
 
 class GetApiResult:
     """
@@ -103,6 +111,8 @@ class GetApiResult:
         """
         The ID of the Version Set which this API is associated with.
         """
+
+
 class AwaitableGetApiResult(GetApiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -127,7 +137,12 @@ class AwaitableGetApiResult(GetApiResult):
             version=self.version,
             version_set_id=self.version_set_id)
 
-def get_api(api_management_name=None,name=None,resource_group_name=None,revision=None,opts=None):
+
+def get_api(api_management_name: Optional[str] = None,
+            name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            revision: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiResult:
     """
     Use this data source to access information about an existing API Management API.
 
@@ -151,8 +166,6 @@ def get_api(api_management_name=None,name=None,resource_group_name=None,revision
     :param str revision: The Revision of the API Management API.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
@@ -160,7 +173,7 @@ def get_api(api_management_name=None,name=None,resource_group_name=None,revision
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApi:getApi', __args__, opts=opts).value
 
     return AwaitableGetApiResult(

@@ -5,28 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ClusterCustomerManagedKey']
 
 
 class ClusterCustomerManagedKey(pulumi.CustomResource):
-    cluster_id: pulumi.Output[str]
+    cluster_id: pulumi.Output[str] = pulumi.property("clusterId")
     """
     The ID of the Kusto Cluster. Changing this forces a new resource to be created.
     """
-    key_name: pulumi.Output[str]
+
+    key_name: pulumi.Output[str] = pulumi.property("keyName")
     """
     The name of Key Vault Key.
     """
-    key_vault_id: pulumi.Output[str]
+
+    key_vault_id: pulumi.Output[str] = pulumi.property("keyVaultId")
     """
     The ID of the Key Vault. Changing this forces a new resource to be created.
     """
-    key_version: pulumi.Output[str]
+
+    key_version: pulumi.Output[str] = pulumi.property("keyVersion")
     """
     The version of Key Vault Key.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, key_name=None, key_vault_id=None, key_version=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 key_vault_id: Optional[pulumi.Input[str]] = None,
+                 key_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Customer Managed Key for a Kusto Cluster.
 
@@ -48,7 +63,7 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -73,7 +88,13 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, key_name=None, key_vault_id=None, key_version=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            key_name: Optional[pulumi.Input[str]] = None,
+            key_vault_id: Optional[pulumi.Input[str]] = None,
+            key_version: Optional[pulumi.Input[str]] = None) -> 'ClusterCustomerManagedKey':
         """
         Get an existing ClusterCustomerManagedKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,7 +118,8 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
         return ClusterCustomerManagedKey(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
