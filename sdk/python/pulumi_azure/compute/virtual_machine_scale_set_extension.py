@@ -5,52 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['VirtualMachineScaleSetExtension']
 
 
 class VirtualMachineScaleSetExtension(pulumi.CustomResource):
-    auto_upgrade_minor_version: pulumi.Output[bool]
+    auto_upgrade_minor_version: pulumi.Output[Optional[bool]] = pulumi.property("autoUpgradeMinorVersion")
     """
     Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.
     """
-    force_update_tag: pulumi.Output[str]
+
+    force_update_tag: pulumi.Output[Optional[str]] = pulumi.property("forceUpdateTag")
     """
     A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name for the Virtual Machine Scale Set Extension. Changing this forces a new resource to be created.
     """
-    protected_settings: pulumi.Output[str]
+
+    protected_settings: pulumi.Output[Optional[str]] = pulumi.property("protectedSettings")
     """
     A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
     """
-    provision_after_extensions: pulumi.Output[list]
+
+    provision_after_extensions: pulumi.Output[Optional[List[str]]] = pulumi.property("provisionAfterExtensions")
     """
     An ordered list of Extension names which this should be provisioned after.
     """
-    publisher: pulumi.Output[str]
+
+    publisher: pulumi.Output[str] = pulumi.property("publisher")
     """
     Specifies the Publisher of the Extension. Changing this forces a new resource to be created.
     """
-    settings: pulumi.Output[str]
+
+    settings: pulumi.Output[Optional[str]] = pulumi.property("settings")
     """
     A JSON String which specifies Settings for the Extension.
     """
-    type: pulumi.Output[str]
+
+    type: pulumi.Output[str] = pulumi.property("type")
     """
     Specifies the Type of the Extension. Changing this forces a new resource to be created.
     """
-    type_handler_version: pulumi.Output[str]
+
+    type_handler_version: pulumi.Output[str] = pulumi.property("typeHandlerVersion")
     """
     Specifies the version of the extension to use, available versions can be found using the Azure CLI.
     """
-    virtual_machine_scale_set_id: pulumi.Output[str]
+
+    virtual_machine_scale_set_id: pulumi.Output[str] = pulumi.property("virtualMachineScaleSetId")
     """
     The ID of the Virtual Machine Scale Set. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, auto_upgrade_minor_version=None, force_update_tag=None, name=None, protected_settings=None, provision_after_extensions=None, publisher=None, settings=None, type=None, type_handler_version=None, virtual_machine_scale_set_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
+                 force_update_tag: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protected_settings: Optional[pulumi.Input[str]] = None,
+                 provision_after_extensions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 publisher: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 type_handler_version: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_scale_set_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Extension for a Virtual Machine Scale Set.
 
@@ -81,7 +108,7 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         :param pulumi.Input[str] force_update_tag: A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
         :param pulumi.Input[str] name: The name for the Virtual Machine Scale Set Extension. Changing this forces a new resource to be created.
         :param pulumi.Input[str] protected_settings: A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
-        :param pulumi.Input[list] provision_after_extensions: An ordered list of Extension names which this should be provisioned after.
+        :param pulumi.Input[List[pulumi.Input[str]]] provision_after_extensions: An ordered list of Extension names which this should be provisioned after.
         :param pulumi.Input[str] publisher: Specifies the Publisher of the Extension. Changing this forces a new resource to be created.
         :param pulumi.Input[str] settings: A JSON String which specifies Settings for the Extension.
         :param pulumi.Input[str] type: Specifies the Type of the Extension. Changing this forces a new resource to be created.
@@ -99,7 +126,7 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -130,7 +157,19 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_upgrade_minor_version=None, force_update_tag=None, name=None, protected_settings=None, provision_after_extensions=None, publisher=None, settings=None, type=None, type_handler_version=None, virtual_machine_scale_set_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
+            force_update_tag: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            protected_settings: Optional[pulumi.Input[str]] = None,
+            provision_after_extensions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            publisher: Optional[pulumi.Input[str]] = None,
+            settings: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            type_handler_version: Optional[pulumi.Input[str]] = None,
+            virtual_machine_scale_set_id: Optional[pulumi.Input[str]] = None) -> 'VirtualMachineScaleSetExtension':
         """
         Get an existing VirtualMachineScaleSetExtension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -142,7 +181,7 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         :param pulumi.Input[str] force_update_tag: A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
         :param pulumi.Input[str] name: The name for the Virtual Machine Scale Set Extension. Changing this forces a new resource to be created.
         :param pulumi.Input[str] protected_settings: A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
-        :param pulumi.Input[list] provision_after_extensions: An ordered list of Extension names which this should be provisioned after.
+        :param pulumi.Input[List[pulumi.Input[str]]] provision_after_extensions: An ordered list of Extension names which this should be provisioned after.
         :param pulumi.Input[str] publisher: Specifies the Publisher of the Extension. Changing this forces a new resource to be created.
         :param pulumi.Input[str] settings: A JSON String which specifies Settings for the Extension.
         :param pulumi.Input[str] type: Specifies the Type of the Extension. Changing this forces a new resource to be created.
@@ -166,7 +205,8 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         return VirtualMachineScaleSetExtension(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

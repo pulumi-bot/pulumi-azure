@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetElasticPoolResult',
+    'AwaitableGetElasticPoolResult',
+    'get_elastic_pool',
+]
+
 
 class GetElasticPoolResult:
     """
@@ -76,6 +83,8 @@ class GetElasticPoolResult:
         """
         Whether or not this elastic pool is zone redundant.
         """
+
+
 class AwaitableGetElasticPoolResult(GetElasticPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -95,7 +104,11 @@ class AwaitableGetElasticPoolResult(GetElasticPoolResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=None):
+
+def get_elastic_pool(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     server_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticPoolResult:
     """
     Use this data source to access information about an existing SQL elastic pool.
 
@@ -117,15 +130,13 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     :param str server_name: The name of the SQL Server which contains the elastic pool.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:mssql/getElasticPool:getElasticPool', __args__, opts=opts).value
 
     return AwaitableGetElasticPoolResult(

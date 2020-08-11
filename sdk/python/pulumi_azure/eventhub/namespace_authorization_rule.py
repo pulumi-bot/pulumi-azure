@@ -5,56 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['NamespaceAuthorizationRule']
 
 warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
 
 
 class NamespaceAuthorizationRule(pulumi.CustomResource):
-    listen: pulumi.Output[bool]
+    listen: pulumi.Output[Optional[bool]] = pulumi.property("listen")
     """
     Grants listen access to this this Authorization Rule. Defaults to `false`.
     """
-    manage: pulumi.Output[bool]
+
+    manage: pulumi.Output[Optional[bool]] = pulumi.property("manage")
     """
     Grants manage access to this this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the ServiceBus Namespace Authorization Rule resource. Changing this forces a new resource to be created.
     """
-    namespace_name: pulumi.Output[str]
+
+    namespace_name: pulumi.Output[str] = pulumi.property("namespaceName")
     """
     Specifies the name of the ServiceBus Namespace. Changing this forces a new resource to be created.
     """
-    primary_connection_string: pulumi.Output[str]
+
+    primary_connection_string: pulumi.Output[str] = pulumi.property("primaryConnectionString")
     """
     The Primary Connection String for the ServiceBus Namespace authorization Rule.
     """
-    primary_key: pulumi.Output[str]
+
+    primary_key: pulumi.Output[str] = pulumi.property("primaryKey")
     """
     The Primary Key for the ServiceBus Namespace authorization Rule.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in which the ServiceBus Namespace exists. Changing this forces a new resource to be created.
     """
-    secondary_connection_string: pulumi.Output[str]
+
+    secondary_connection_string: pulumi.Output[str] = pulumi.property("secondaryConnectionString")
     """
     The Secondary Connection String for the ServiceBus Namespace authorization Rule.
     """
-    secondary_key: pulumi.Output[str]
+
+    secondary_key: pulumi.Output[str] = pulumi.property("secondaryKey")
     """
     The Secondary Key for the ServiceBus Namespace authorization Rule.
     """
-    send: pulumi.Output[bool]
+
+    send: pulumi.Output[Optional[bool]] = pulumi.property("send")
     """
     Grants send access to this this Authorization Rule. Defaults to `false`.
     """
+
     warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, listen=None, manage=None, name=None, namespace_name=None, resource_group_name=None, send=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 listen: Optional[pulumi.Input[bool]] = None,
+                 manage: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 send: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a ServiceBus Namespace authorization Rule within a ServiceBus.
 
@@ -101,7 +124,7 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,7 +151,19 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, listen=None, manage=None, name=None, namespace_name=None, primary_connection_string=None, primary_key=None, resource_group_name=None, secondary_connection_string=None, secondary_key=None, send=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            listen: Optional[pulumi.Input[bool]] = None,
+            manage: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace_name: Optional[pulumi.Input[str]] = None,
+            primary_connection_string: Optional[pulumi.Input[str]] = None,
+            primary_key: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            secondary_connection_string: Optional[pulumi.Input[str]] = None,
+            secondary_key: Optional[pulumi.Input[str]] = None,
+            send: Optional[pulumi.Input[bool]] = None) -> 'NamespaceAuthorizationRule':
         """
         Get an existing NamespaceAuthorizationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -164,7 +199,8 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
         return NamespaceAuthorizationRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

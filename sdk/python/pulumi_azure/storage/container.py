@@ -5,40 +5,58 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Container']
 
 
 class Container(pulumi.CustomResource):
-    container_access_type: pulumi.Output[str]
+    container_access_type: pulumi.Output[Optional[str]] = pulumi.property("containerAccessType")
     """
     The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
     """
-    has_immutability_policy: pulumi.Output[bool]
+
+    has_immutability_policy: pulumi.Output[bool] = pulumi.property("hasImmutabilityPolicy")
     """
     Is there an Immutability Policy configured on this Storage Container?
     """
-    has_legal_hold: pulumi.Output[bool]
+
+    has_legal_hold: pulumi.Output[bool] = pulumi.property("hasLegalHold")
     """
     Is there a Legal Hold configured on this Storage Container?
     """
-    metadata: pulumi.Output[dict]
+
+    metadata: pulumi.Output[Mapping[str, str]] = pulumi.property("metadata")
     """
     A mapping of MetaData for this Container.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the Container which should be created within the Storage Account.
     """
-    resource_manager_id: pulumi.Output[str]
+
+    resource_manager_id: pulumi.Output[str] = pulumi.property("resourceManagerId")
     """
     The Resource Manager ID of this Storage Container.
     """
-    storage_account_name: pulumi.Output[str]
+
+    storage_account_name: pulumi.Output[str] = pulumi.property("storageAccountName")
     """
     The name of the Storage Account where the Container should be created.
     """
-    def __init__(__self__, resource_name, opts=None, container_access_type=None, metadata=None, name=None, storage_account_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_access_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 storage_account_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Container within an Azure Storage Account.
 
@@ -65,7 +83,7 @@ class Container(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_access_type: The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
-        :param pulumi.Input[dict] metadata: A mapping of MetaData for this Container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of MetaData for this Container.
         :param pulumi.Input[str] name: The name of the Container which should be created within the Storage Account.
         :param pulumi.Input[str] storage_account_name: The name of the Storage Account where the Container should be created.
         """
@@ -80,7 +98,7 @@ class Container(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,7 +120,16 @@ class Container(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, container_access_type=None, has_immutability_policy=None, has_legal_hold=None, metadata=None, name=None, resource_manager_id=None, storage_account_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_access_type: Optional[pulumi.Input[str]] = None,
+            has_immutability_policy: Optional[pulumi.Input[bool]] = None,
+            has_legal_hold: Optional[pulumi.Input[bool]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_manager_id: Optional[pulumi.Input[str]] = None,
+            storage_account_name: Optional[pulumi.Input[str]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,7 +140,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] container_access_type: The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
         :param pulumi.Input[bool] has_immutability_policy: Is there an Immutability Policy configured on this Storage Container?
         :param pulumi.Input[bool] has_legal_hold: Is there a Legal Hold configured on this Storage Container?
-        :param pulumi.Input[dict] metadata: A mapping of MetaData for this Container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of MetaData for this Container.
         :param pulumi.Input[str] name: The name of the Container which should be created within the Storage Account.
         :param pulumi.Input[str] resource_manager_id: The Resource Manager ID of this Storage Container.
         :param pulumi.Input[str] storage_account_name: The name of the Storage Account where the Container should be created.
@@ -132,7 +159,8 @@ class Container(pulumi.CustomResource):
         return Container(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

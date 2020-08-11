@@ -5,8 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
 
 class GetAccountResult:
     """
@@ -287,6 +295,8 @@ class GetAccountResult:
         """
         A mapping of tags to assigned to the resource.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -340,7 +350,11 @@ class AwaitableGetAccountResult(GetAccountResult):
             secondary_web_host=self.secondary_web_host,
             tags=self.tags)
 
-def get_account(min_tls_version=None,name=None,resource_group_name=None,opts=None):
+
+def get_account(min_tls_version: Optional[str] = None,
+                name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing Storage Account.
 
@@ -361,15 +375,13 @@ def get_account(min_tls_version=None,name=None,resource_group_name=None,opts=Non
     :param str resource_group_name: Specifies the name of the resource group the Storage Account is located in.
     """
     __args__ = dict()
-
-
     __args__['minTlsVersion'] = min_tls_version
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:storage/getAccount:getAccount', __args__, opts=opts).value
 
     return AwaitableGetAccountResult(
