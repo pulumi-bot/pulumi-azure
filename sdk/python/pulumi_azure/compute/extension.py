@@ -5,55 +5,80 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Extension']
 
 
 class Extension(pulumi.CustomResource):
-    auto_upgrade_minor_version: pulumi.Output[bool]
+    auto_upgrade_minor_version: pulumi.Output[Optional[bool]] = pulumi.property("autoUpgradeMinorVersion")
     """
     Specifies if the platform deploys
     the latest minor version update to the `type_handler_version` specified.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the virtual machine extension peering. Changing
     this forces a new resource to be created.
     """
-    protected_settings: pulumi.Output[str]
+
+    protected_settings: pulumi.Output[Optional[str]] = pulumi.property("protectedSettings")
     """
     The protected_settings passed to the
     extension, like settings, these are specified as a JSON object in a string.
     """
-    publisher: pulumi.Output[str]
+
+    publisher: pulumi.Output[str] = pulumi.property("publisher")
     """
     The publisher of the extension, available publishers
     can be found by using the Azure CLI.
     """
-    settings: pulumi.Output[str]
+
+    settings: pulumi.Output[Optional[str]] = pulumi.property("settings")
     """
     The settings passed to the extension, these are
     specified as a JSON object in a string.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    type: pulumi.Output[str]
+
+    type: pulumi.Output[str] = pulumi.property("type")
     """
     The type of extension, available types for a publisher can
     be found using the Azure CLI.
     """
-    type_handler_version: pulumi.Output[str]
+
+    type_handler_version: pulumi.Output[str] = pulumi.property("typeHandlerVersion")
     """
     Specifies the version of the extension to
     use, available versions can be found using the Azure CLI.
     """
-    virtual_machine_id: pulumi.Output[str]
+
+    virtual_machine_id: pulumi.Output[str] = pulumi.property("virtualMachineId")
     """
     The ID of the Virtual Machine. Changing this forces a new resource to be created
     """
-    def __init__(__self__, resource_name, opts=None, auto_upgrade_minor_version=None, name=None, protected_settings=None, publisher=None, settings=None, tags=None, type=None, type_handler_version=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protected_settings: Optional[pulumi.Input[str]] = None,
+                 publisher: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 type_handler_version: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Virtual Machine Extension to provide post deployment configuration
         and run automated tasks.
@@ -150,7 +175,7 @@ class Extension(pulumi.CustomResource):
                can be found by using the Azure CLI.
         :param pulumi.Input[str] settings: The settings passed to the extension, these are
                specified as a JSON object in a string.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of extension, available types for a publisher can
                be found using the Azure CLI.
         :param pulumi.Input[str] type_handler_version: Specifies the version of the extension to
@@ -168,7 +193,7 @@ class Extension(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -198,7 +223,18 @@ class Extension(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_upgrade_minor_version=None, name=None, protected_settings=None, publisher=None, settings=None, tags=None, type=None, type_handler_version=None, virtual_machine_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            protected_settings: Optional[pulumi.Input[str]] = None,
+            publisher: Optional[pulumi.Input[str]] = None,
+            settings: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            type_handler_version: Optional[pulumi.Input[str]] = None,
+            virtual_machine_id: Optional[pulumi.Input[str]] = None) -> 'Extension':
         """
         Get an existing Extension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -216,7 +252,7 @@ class Extension(pulumi.CustomResource):
                can be found by using the Azure CLI.
         :param pulumi.Input[str] settings: The settings passed to the extension, these are
                specified as a JSON object in a string.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of extension, available types for a publisher can
                be found using the Azure CLI.
         :param pulumi.Input[str] type_handler_version: Specifies the version of the extension to
@@ -239,7 +275,8 @@ class Extension(pulumi.CustomResource):
         return Extension(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPolicyDefintionResult',
+    'AwaitableGetPolicyDefintionResult',
+    'get_policy_defintion',
+]
+
 
 class GetPolicyDefintionResult:
     """
@@ -71,6 +78,8 @@ class GetPolicyDefintionResult:
         """
         The Type of Policy.
         """
+
+
 class AwaitableGetPolicyDefintionResult(GetPolicyDefintionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +98,12 @@ class AwaitableGetPolicyDefintionResult(GetPolicyDefintionResult):
             policy_type=self.policy_type,
             type=self.type)
 
-def get_policy_defintion(display_name=None,management_group_id=None,management_group_name=None,name=None,opts=None):
+
+def get_policy_defintion(display_name: Optional[str] = None,
+                         management_group_id: Optional[str] = None,
+                         management_group_name: Optional[str] = None,
+                         name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyDefintionResult:
     """
     Use this data source to access information about a Policy Definition, both custom and built in. Retrieves Policy Definitions from your current subscription by default.
 
@@ -109,8 +123,6 @@ def get_policy_defintion(display_name=None,management_group_id=None,management_g
     :param str name: Specifies the name of the Policy Definition. Conflicts with `display_name`.
     """
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['managementGroupId'] = management_group_id
     __args__['managementGroupName'] = management_group_name
@@ -118,7 +130,7 @@ def get_policy_defintion(display_name=None,management_group_id=None,management_g
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:policy/getPolicyDefintion:getPolicyDefintion', __args__, opts=opts).value
 
     return AwaitableGetPolicyDefintionResult(

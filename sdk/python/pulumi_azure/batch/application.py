@@ -5,36 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Application']
 
 
 class Application(pulumi.CustomResource):
-    account_name: pulumi.Output[str]
+    account_name: pulumi.Output[str] = pulumi.property("accountName")
     """
     The name of the Batch account. Changing this forces a new resource to be created.
     """
-    allow_updates: pulumi.Output[bool]
+
+    allow_updates: pulumi.Output[Optional[bool]] = pulumi.property("allowUpdates")
     """
     A value indicating whether packages within the application may be overwritten using the same version string. Defaults to `true`.
     """
-    default_version: pulumi.Output[str]
+
+    default_version: pulumi.Output[Optional[str]] = pulumi.property("defaultVersion")
     """
     The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
     """
-    display_name: pulumi.Output[str]
+
+    display_name: pulumi.Output[Optional[str]] = pulumi.property("displayName")
     """
     The display name for the application.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the application. This must be unique within the account. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group that contains the Batch account. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, account_name=None, allow_updates=None, default_version=None, display_name=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 allow_updates: Optional[pulumi.Input[bool]] = None,
+                 default_version: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages Azure Batch Application instance.
 
@@ -80,7 +99,7 @@ class Application(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -103,7 +122,15 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_name=None, allow_updates=None, default_version=None, display_name=None, name=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: Optional[pulumi.Input[str]] = None,
+            allow_updates: Optional[pulumi.Input[bool]] = None,
+            default_version: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,7 +158,8 @@ class Application(pulumi.CustomResource):
         return Application(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

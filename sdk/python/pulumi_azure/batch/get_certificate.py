@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetCertificateResult',
+    'AwaitableGetCertificateResult',
+    'get_certificate',
+]
+
 
 class GetCertificateResult:
     """
@@ -52,6 +59,8 @@ class GetCertificateResult:
         """
         The algorithm of the certificate thumbprint.
         """
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +76,11 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             thumbprint=self.thumbprint,
             thumbprint_algorithm=self.thumbprint_algorithm)
 
-def get_certificate(account_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_certificate(account_name: Optional[str] = None,
+                    name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Use this data source to access information about an existing certificate in a Batch Account.
 
@@ -89,15 +102,13 @@ def get_certificate(account_name=None,name=None,resource_group_name=None,opts=No
     :param str resource_group_name: The Name of the Resource Group where this Batch account exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:batch/getCertificate:getCertificate', __args__, opts=opts).value
 
     return AwaitableGetCertificateResult(

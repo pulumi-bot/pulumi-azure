@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
 
 class GetAccountResult:
     """
@@ -52,6 +59,8 @@ class GetAccountResult:
         """
         A unique identifier for the Maps Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +76,11 @@ class AwaitableGetAccountResult(GetAccountResult):
             tags=self.tags,
             x_ms_client_id=self.x_ms_client_id)
 
-def get_account(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_account(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                tags: Optional[Mapping[str, str]] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing Azure Maps Account.
 
@@ -87,15 +100,13 @@ def get_account(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group in which the Maps Account is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:maps/getAccount:getAccount', __args__, opts=opts).value
 
     return AwaitableGetAccountResult(

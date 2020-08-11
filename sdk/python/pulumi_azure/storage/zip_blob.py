@@ -5,29 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ZipBlob']
 
 warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
 
 
 class ZipBlob(pulumi.CustomResource):
-    access_tier: pulumi.Output[str]
-    content: pulumi.Output[pulumi.Archive]
-    content_type: pulumi.Output[str]
-    metadata: pulumi.Output[dict]
-    name: pulumi.Output[str]
-    parallelism: pulumi.Output[float]
-    size: pulumi.Output[float]
-    source_content: pulumi.Output[str]
-    source_uri: pulumi.Output[str]
-    storage_account_name: pulumi.Output[str]
-    storage_container_name: pulumi.Output[str]
-    type: pulumi.Output[str]
-    url: pulumi.Output[str]
+    access_tier: pulumi.Output[str] = pulumi.property("accessTier")
+
+    content: pulumi.Output[Optional[pulumi.Archive]] = pulumi.property("content")
+
+    content_type: pulumi.Output[Optional[str]] = pulumi.property("contentType")
+
+    metadata: pulumi.Output[Mapping[str, str]] = pulumi.property("metadata")
+
+    name: pulumi.Output[str] = pulumi.property("name")
+
+    parallelism: pulumi.Output[Optional[float]] = pulumi.property("parallelism")
+
+    size: pulumi.Output[Optional[float]] = pulumi.property("size")
+
+    source_content: pulumi.Output[Optional[str]] = pulumi.property("sourceContent")
+
+    source_uri: pulumi.Output[Optional[str]] = pulumi.property("sourceUri")
+
+    storage_account_name: pulumi.Output[str] = pulumi.property("storageAccountName")
+
+    storage_container_name: pulumi.Output[str] = pulumi.property("storageContainerName")
+
+    type: pulumi.Output[str] = pulumi.property("type")
+
+    url: pulumi.Output[str] = pulumi.property("url")
+
     warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, access_tier=None, content=None, content_type=None, metadata=None, name=None, parallelism=None, size=None, source_content=None, source_uri=None, storage_account_name=None, storage_container_name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_tier: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[pulumi.Archive]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parallelism: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 source_content: Optional[pulumi.Input[str]] = None,
+                 source_uri: Optional[pulumi.Input[str]] = None,
+                 storage_account_name: Optional[pulumi.Input[str]] = None,
+                 storage_container_name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ZipBlob resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -45,7 +77,7 @@ class ZipBlob(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,7 +109,22 @@ class ZipBlob(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, access_tier=None, content=None, content_type=None, metadata=None, name=None, parallelism=None, size=None, source_content=None, source_uri=None, storage_account_name=None, storage_container_name=None, type=None, url=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_tier: Optional[pulumi.Input[str]] = None,
+            content: Optional[pulumi.Input[pulumi.Archive]] = None,
+            content_type: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parallelism: Optional[pulumi.Input[float]] = None,
+            size: Optional[pulumi.Input[float]] = None,
+            source_content: Optional[pulumi.Input[str]] = None,
+            source_uri: Optional[pulumi.Input[str]] = None,
+            storage_account_name: Optional[pulumi.Input[str]] = None,
+            storage_container_name: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'ZipBlob':
         """
         Get an existing ZipBlob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,7 +153,8 @@ class ZipBlob(pulumi.CustomResource):
         return ZipBlob(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

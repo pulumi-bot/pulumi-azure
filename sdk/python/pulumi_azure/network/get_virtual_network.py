@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetVirtualNetworkResult',
+    'AwaitableGetVirtualNetworkResult',
+    'get_virtual_network',
+]
+
 
 class GetVirtualNetworkResult:
     """
@@ -61,6 +68,8 @@ class GetVirtualNetworkResult:
         """
         A mapping of name - virtual network id of the virtual network peerings.
         """
+
+
 class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +86,10 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
             subnets=self.subnets,
             vnet_peerings=self.vnet_peerings)
 
-def get_virtual_network(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network(name: Optional[str] = None,
+                        resource_group_name: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualNetworkResult:
     """
     Use this data source to access information about an existing Virtual Network.
 
@@ -97,14 +109,12 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetwork:getVirtualNetwork', __args__, opts=opts).value
 
     return AwaitableGetVirtualNetworkResult(

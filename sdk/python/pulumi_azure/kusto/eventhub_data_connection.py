@@ -5,52 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['EventhubDataConnection']
 
 
 class EventhubDataConnection(pulumi.CustomResource):
-    cluster_name: pulumi.Output[str]
+    cluster_name: pulumi.Output[str] = pulumi.property("clusterName")
     """
     Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
     """
-    consumer_group: pulumi.Output[str]
+
+    consumer_group: pulumi.Output[str] = pulumi.property("consumerGroup")
     """
     Specifies the EventHub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
     """
-    data_format: pulumi.Output[str]
+
+    data_format: pulumi.Output[Optional[str]] = pulumi.property("dataFormat")
     """
     Specifies the data format of the EventHub messages. Allowed values: `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSV` and `TXT`
     """
-    database_name: pulumi.Output[str]
+
+    database_name: pulumi.Output[str] = pulumi.property("databaseName")
     """
     Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
     """
-    eventhub_id: pulumi.Output[str]
+
+    eventhub_id: pulumi.Output[str] = pulumi.property("eventhubId")
     """
     Specifies the resource id of the EventHub this data connection will use for ingestion. Changing this forces a new resource to be created.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     The location where the Kusto Database should be created. Changing this forces a new resource to be created.
     """
-    mapping_rule_name: pulumi.Output[str]
+
+    mapping_rule_name: pulumi.Output[Optional[str]] = pulumi.property("mappingRuleName")
     """
     Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the Kusto EventHub Data Connection to create. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
     """
-    table_name: pulumi.Output[str]
+
+    table_name: pulumi.Output[Optional[str]] = pulumi.property("tableName")
     """
     Specifies the target table name used for the message ingestion. Table must exist before resource is created.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_name=None, consumer_group=None, data_format=None, database_name=None, eventhub_id=None, location=None, mapping_rule_name=None, name=None, resource_group_name=None, table_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
+                 data_format: Optional[pulumi.Input[str]] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
+                 eventhub_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 mapping_rule_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 table_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Kusto (also known as Azure Data Explorer) EventHub Data Connection
 
@@ -124,7 +151,7 @@ class EventhubDataConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -157,7 +184,19 @@ class EventhubDataConnection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_name=None, consumer_group=None, data_format=None, database_name=None, eventhub_id=None, location=None, mapping_rule_name=None, name=None, resource_group_name=None, table_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_name: Optional[pulumi.Input[str]] = None,
+            consumer_group: Optional[pulumi.Input[str]] = None,
+            data_format: Optional[pulumi.Input[str]] = None,
+            database_name: Optional[pulumi.Input[str]] = None,
+            eventhub_id: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            mapping_rule_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            table_name: Optional[pulumi.Input[str]] = None) -> 'EventhubDataConnection':
         """
         Get an existing EventhubDataConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,7 +232,8 @@ class EventhubDataConnection(pulumi.CustomResource):
         return EventhubDataConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

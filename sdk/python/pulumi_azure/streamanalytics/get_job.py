@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetJobResult',
+    'AwaitableGetJobResult',
+    'get_job',
+]
+
 
 class GetJobResult:
     """
@@ -85,6 +92,8 @@ class GetJobResult:
         """
         The query that will be run in the streaming job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
         """
+
+
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +114,10 @@ class AwaitableGetJobResult(GetJobResult):
             streaming_units=self.streaming_units,
             transformation_query=self.transformation_query)
 
-def get_job(name=None,resource_group_name=None,opts=None):
+
+def get_job(name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Use this data source to access information about an existing Stream Analytics Job.
 
@@ -125,14 +137,12 @@ def get_job(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Stream Analytics Job is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:streamanalytics/getJob:getJob', __args__, opts=opts).value
 
     return AwaitableGetJobResult(

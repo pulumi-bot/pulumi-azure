@@ -5,169 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['RServerCluster']
 
 
 class RServerCluster(pulumi.CustomResource):
-    cluster_version: pulumi.Output[str]
+    cluster_version: pulumi.Output[str] = pulumi.property("clusterVersion")
     """
     Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
     """
-    edge_ssh_endpoint: pulumi.Output[str]
+
+    edge_ssh_endpoint: pulumi.Output[str] = pulumi.property("edgeSshEndpoint")
     """
     The SSH Connectivity Endpoint for the Edge Node of the HDInsight RServer Cluster.
     """
-    gateway: pulumi.Output[dict]
+
+    gateway: pulumi.Output['outputs.RServerClusterGateway'] = pulumi.property("gateway")
     """
     A `gateway` block as defined below.
-
-      * `enabled` (`bool`) - Is the Ambari portal enabled? The HDInsight API doesn't support disabling gateway anymore.
-      * `password` (`str`) - The password used for the Ambari Portal.
-      * `username` (`str`) - The username used for the Ambari Portal. Changing this forces a new resource to be created.
     """
-    https_endpoint: pulumi.Output[str]
+
+    https_endpoint: pulumi.Output[str] = pulumi.property("httpsEndpoint")
     """
     The HTTPS Connectivity Endpoint for this HDInsight RServer Cluster.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the Azure Region which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name for this HDInsight RServer Cluster. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     Specifies the name of the Resource Group in which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
     """
-    roles: pulumi.Output[dict]
+
+    roles: pulumi.Output['outputs.RServerClusterRoles'] = pulumi.property("roles")
     """
     A `roles` block as defined below.
-
-      * `edgeNode` (`dict`) - A `edge_node` block as defined above.
-        * `password` (`str`) - The Password associated with the local administrator for the Edge Node. Changing this forces a new resource to be created.
-        * `sshKeys` (`list`) - A list of SSH Keys which should be used for the local administrator on the Edge Node. Changing this forces a new resource to be created.
-        * `subnet_id` (`str`) - The ID of the Subnet within the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-        * `username` (`str`) - The Username of the local administrator for the Edge Node. Changing this forces a new resource to be created.
-        * `virtual_network_id` (`str`) - The ID of the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-        * `vm_size` (`str`) - The Size of the Virtual Machine which should be used as the Edge Node. Changing this forces a new resource to be created.
-
-      * `headNode` (`dict`) - A `head_node` block as defined above.
-        * `password` (`str`) - The Password associated with the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-        * `sshKeys` (`list`) - A list of SSH Keys which should be used for the local administrator on the Head Nodes. Changing this forces a new resource to be created.
-        * `subnet_id` (`str`) - The ID of the Subnet within the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `username` (`str`) - The Username of the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-        * `virtual_network_id` (`str`) - The ID of the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `vm_size` (`str`) - The Size of the Virtual Machine which should be used as the Head Nodes. Changing this forces a new resource to be created.
-
-      * `workerNode` (`dict`) - A `worker_node` block as defined below.
-        * `minInstanceCount` (`float`) - The minimum number of instances which should be run for the Worker Nodes. Changing this forces a new resource to be created.
-        * `password` (`str`) - The Password associated with the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-        * `sshKeys` (`list`) - A list of SSH Keys which should be used for the local administrator on the Worker Nodes. Changing this forces a new resource to be created.
-        * `subnet_id` (`str`) - The ID of the Subnet within the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `targetInstanceCount` (`float`) - The number of instances which should be run for the Worker Nodes.
-        * `username` (`str`) - The Username of the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-        * `virtual_network_id` (`str`) - The ID of the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `vm_size` (`str`) - The Size of the Virtual Machine which should be used as the Worker Nodes. Changing this forces a new resource to be created.
-
-      * `zookeeperNode` (`dict`) - A `zookeeper_node` block as defined below.
-        * `password` (`str`) - The Password associated with the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-        * `sshKeys` (`list`) - A list of SSH Keys which should be used for the local administrator on the Zookeeper Nodes. Changing this forces a new resource to be created.
-        * `subnet_id` (`str`) - The ID of the Subnet within the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `username` (`str`) - The Username of the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-        * `virtual_network_id` (`str`) - The ID of the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-        * `vm_size` (`str`) - The Size of the Virtual Machine which should be used as the Zookeeper Nodes. Changing this forces a new resource to be created.
     """
-    rstudio: pulumi.Output[bool]
+
+    rstudio: pulumi.Output[bool] = pulumi.property("rstudio")
     """
     Should R Studio community edition for RServer be installed? Changing this forces a new resource to be created.
     """
-    ssh_endpoint: pulumi.Output[str]
+
+    ssh_endpoint: pulumi.Output[str] = pulumi.property("sshEndpoint")
     """
     The SSH Connectivity Endpoint for this HDInsight RServer Cluster.
     """
-    storage_accounts: pulumi.Output[list]
+
+    storage_accounts: pulumi.Output[Optional[List['outputs.RServerClusterStorageAccount']]] = pulumi.property("storageAccounts")
     """
     One or more `storage_account` block as defined below.
-
-      * `isDefault` (`bool`) - Is this the Default Storage Account for the HDInsight RServer Cluster? Changing this forces a new resource to be created.
-      * `storage_account_key` (`str`) - The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
-      * `storage_container_id` (`str`) - The ID of the Storage Container. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A map of Tags which should be assigned to this HDInsight RServer Cluster.
     """
-    tier: pulumi.Output[str]
+
+    tier: pulumi.Output[str] = pulumi.property("tier")
     """
     Specifies the Tier which should be used for this HDInsight RServer Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
     """
-    tls_min_version: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, cluster_version=None, gateway=None, location=None, name=None, resource_group_name=None, roles=None, rstudio=None, storage_accounts=None, tags=None, tier=None, tls_min_version=None, __props__=None, __name__=None, __opts__=None):
+
+    tls_min_version: pulumi.Output[Optional[str]] = pulumi.property("tlsMinVersion")
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_version: Optional[pulumi.Input[str]] = None,
+                 gateway: Optional[pulumi.Input[pulumi.InputType['RServerClusterGatewayArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[pulumi.InputType['RServerClusterRolesArgs']]] = None,
+                 rstudio: Optional[pulumi.Input[bool]] = None,
+                 storage_accounts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RServerClusterStorageAccountArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 tls_min_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a RServerCluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_version: Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] gateway: A `gateway` block as defined below.
+        :param pulumi.Input[pulumi.InputType['RServerClusterGatewayArgs']] gateway: A `gateway` block as defined below.
         :param pulumi.Input[str] location: Specifies the Azure Region which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name for this HDInsight RServer Cluster. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] roles: A `roles` block as defined below.
+        :param pulumi.Input[pulumi.InputType['RServerClusterRolesArgs']] roles: A `roles` block as defined below.
         :param pulumi.Input[bool] rstudio: Should R Studio community edition for RServer be installed? Changing this forces a new resource to be created.
-        :param pulumi.Input[list] storage_accounts: One or more `storage_account` block as defined below.
-        :param pulumi.Input[dict] tags: A map of Tags which should be assigned to this HDInsight RServer Cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RServerClusterStorageAccountArgs']]]] storage_accounts: One or more `storage_account` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of Tags which should be assigned to this HDInsight RServer Cluster.
         :param pulumi.Input[str] tier: Specifies the Tier which should be used for this HDInsight RServer Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
-
-        The **gateway** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Is the Ambari portal enabled? The HDInsight API doesn't support disabling gateway anymore.
-          * `password` (`pulumi.Input[str]`) - The password used for the Ambari Portal.
-          * `username` (`pulumi.Input[str]`) - The username used for the Ambari Portal. Changing this forces a new resource to be created.
-
-        The **roles** object supports the following:
-
-          * `edgeNode` (`pulumi.Input[dict]`) - A `edge_node` block as defined above.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Edge Node. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Edge Node. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Edge Node. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Edge Node. Changing this forces a new resource to be created.
-
-          * `headNode` (`pulumi.Input[dict]`) - A `head_node` block as defined above.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Head Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Head Nodes. Changing this forces a new resource to be created.
-
-          * `workerNode` (`pulumi.Input[dict]`) - A `worker_node` block as defined below.
-            * `minInstanceCount` (`pulumi.Input[float]`) - The minimum number of instances which should be run for the Worker Nodes. Changing this forces a new resource to be created.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Worker Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `targetInstanceCount` (`pulumi.Input[float]`) - The number of instances which should be run for the Worker Nodes.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Worker Nodes. Changing this forces a new resource to be created.
-
-          * `zookeeperNode` (`pulumi.Input[dict]`) - A `zookeeper_node` block as defined below.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Zookeeper Nodes. Changing this forces a new resource to be created.
-
-        The **storage_accounts** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Is this the Default Storage Account for the HDInsight RServer Cluster? Changing this forces a new resource to be created.
-          * `storage_account_key` (`pulumi.Input[str]`) - The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
-          * `storage_container_id` (`pulumi.Input[str]`) - The ID of the Storage Container. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -180,7 +124,7 @@ class RServerCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -219,7 +163,23 @@ class RServerCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_version=None, edge_ssh_endpoint=None, gateway=None, https_endpoint=None, location=None, name=None, resource_group_name=None, roles=None, rstudio=None, ssh_endpoint=None, storage_accounts=None, tags=None, tier=None, tls_min_version=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_version: Optional[pulumi.Input[str]] = None,
+            edge_ssh_endpoint: Optional[pulumi.Input[str]] = None,
+            gateway: Optional[pulumi.Input[pulumi.InputType['RServerClusterGatewayArgs']]] = None,
+            https_endpoint: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            roles: Optional[pulumi.Input[pulumi.InputType['RServerClusterRolesArgs']]] = None,
+            rstudio: Optional[pulumi.Input[bool]] = None,
+            ssh_endpoint: Optional[pulumi.Input[str]] = None,
+            storage_accounts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RServerClusterStorageAccountArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            tier: Optional[pulumi.Input[str]] = None,
+            tls_min_version: Optional[pulumi.Input[str]] = None) -> 'RServerCluster':
         """
         Get an existing RServerCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -229,65 +189,17 @@ class RServerCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_version: Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
         :param pulumi.Input[str] edge_ssh_endpoint: The SSH Connectivity Endpoint for the Edge Node of the HDInsight RServer Cluster.
-        :param pulumi.Input[dict] gateway: A `gateway` block as defined below.
+        :param pulumi.Input[pulumi.InputType['RServerClusterGatewayArgs']] gateway: A `gateway` block as defined below.
         :param pulumi.Input[str] https_endpoint: The HTTPS Connectivity Endpoint for this HDInsight RServer Cluster.
         :param pulumi.Input[str] location: Specifies the Azure Region which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name for this HDInsight RServer Cluster. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which this HDInsight RServer Cluster should exist. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] roles: A `roles` block as defined below.
+        :param pulumi.Input[pulumi.InputType['RServerClusterRolesArgs']] roles: A `roles` block as defined below.
         :param pulumi.Input[bool] rstudio: Should R Studio community edition for RServer be installed? Changing this forces a new resource to be created.
         :param pulumi.Input[str] ssh_endpoint: The SSH Connectivity Endpoint for this HDInsight RServer Cluster.
-        :param pulumi.Input[list] storage_accounts: One or more `storage_account` block as defined below.
-        :param pulumi.Input[dict] tags: A map of Tags which should be assigned to this HDInsight RServer Cluster.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['RServerClusterStorageAccountArgs']]]] storage_accounts: One or more `storage_account` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of Tags which should be assigned to this HDInsight RServer Cluster.
         :param pulumi.Input[str] tier: Specifies the Tier which should be used for this HDInsight RServer Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
-
-        The **gateway** object supports the following:
-
-          * `enabled` (`pulumi.Input[bool]`) - Is the Ambari portal enabled? The HDInsight API doesn't support disabling gateway anymore.
-          * `password` (`pulumi.Input[str]`) - The password used for the Ambari Portal.
-          * `username` (`pulumi.Input[str]`) - The username used for the Ambari Portal. Changing this forces a new resource to be created.
-
-        The **roles** object supports the following:
-
-          * `edgeNode` (`pulumi.Input[dict]`) - A `edge_node` block as defined above.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Edge Node. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Edge Node. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Edge Node. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Edge Node should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Edge Node. Changing this forces a new resource to be created.
-
-          * `headNode` (`pulumi.Input[dict]`) - A `head_node` block as defined above.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Head Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Head Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Head Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Head Nodes. Changing this forces a new resource to be created.
-
-          * `workerNode` (`pulumi.Input[dict]`) - A `worker_node` block as defined below.
-            * `minInstanceCount` (`pulumi.Input[float]`) - The minimum number of instances which should be run for the Worker Nodes. Changing this forces a new resource to be created.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Worker Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `targetInstanceCount` (`pulumi.Input[float]`) - The number of instances which should be run for the Worker Nodes.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Worker Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Worker Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Worker Nodes. Changing this forces a new resource to be created.
-
-          * `zookeeperNode` (`pulumi.Input[dict]`) - A `zookeeper_node` block as defined below.
-            * `password` (`pulumi.Input[str]`) - The Password associated with the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `sshKeys` (`pulumi.Input[list]`) - A list of SSH Keys which should be used for the local administrator on the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `subnet_id` (`pulumi.Input[str]`) - The ID of the Subnet within the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `username` (`pulumi.Input[str]`) - The Username of the local administrator for the Zookeeper Nodes. Changing this forces a new resource to be created.
-            * `virtual_network_id` (`pulumi.Input[str]`) - The ID of the Virtual Network where the Zookeeper Nodes should be provisioned within. Changing this forces a new resource to be created.
-            * `vm_size` (`pulumi.Input[str]`) - The Size of the Virtual Machine which should be used as the Zookeeper Nodes. Changing this forces a new resource to be created.
-
-        The **storage_accounts** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Is this the Default Storage Account for the HDInsight RServer Cluster? Changing this forces a new resource to be created.
-          * `storage_account_key` (`pulumi.Input[str]`) - The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
-          * `storage_container_id` (`pulumi.Input[str]`) - The ID of the Storage Container. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -310,7 +222,8 @@ class RServerCluster(pulumi.CustomResource):
         return RServerCluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
