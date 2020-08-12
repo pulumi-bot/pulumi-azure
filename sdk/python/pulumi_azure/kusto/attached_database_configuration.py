@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AttachedDatabaseConfiguration(pulumi.CustomResource):
@@ -46,40 +46,6 @@ class AttachedDatabaseConfiguration(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Attached Database Configuration
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        rg = azure.core.ResourceGroup("rg", location="East US")
-        follower_cluster = azure.kusto.Cluster("followerCluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku={
-                "name": "Dev(No SLA)_Standard_D11_v2",
-                "capacity": 1,
-            })
-        followed_cluster = azure.kusto.Cluster("followedCluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku={
-                "name": "Dev(No SLA)_Standard_D11_v2",
-                "capacity": 1,
-            })
-        followed_database = azure.kusto.Database("followedDatabase",
-            resource_group_name=rg.name,
-            location=rg.location,
-            cluster_name=azurerm_kusto_cluster["cluster2"]["name"])
-        example = azure.kusto.AttachedDatabaseConfiguration("example",
-            resource_group_name=rg.name,
-            location=rg.location,
-            cluster_name=follower_cluster.name,
-            cluster_resource_id=followed_cluster.id,
-            database_name="*",
-            default_principal_modifications_kind="None")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
@@ -101,7 +67,7 @@ class AttachedDatabaseConfiguration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -162,7 +128,7 @@ class AttachedDatabaseConfiguration(pulumi.CustomResource):
         return AttachedDatabaseConfiguration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
