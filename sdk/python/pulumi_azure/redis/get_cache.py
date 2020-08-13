@@ -5,8 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCacheResult',
+    'AwaitableGetCacheResult',
+    'get_cache',
+]
+
+
+@pulumi.output_type
+class _GetCacheResult(dict):
+    capacity: float = pulumi.property("capacity")
+    enable_non_ssl_port: bool = pulumi.property("enableNonSslPort")
+    family: str = pulumi.property("family")
+    hostname: str = pulumi.property("hostname")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    minimum_tls_version: str = pulumi.property("minimumTlsVersion")
+    name: str = pulumi.property("name")
+    patch_schedules: List['outputs.GetCachePatchScheduleResult'] = pulumi.property("patchSchedules")
+    port: float = pulumi.property("port")
+    primary_access_key: str = pulumi.property("primaryAccessKey")
+    primary_connection_string: str = pulumi.property("primaryConnectionString")
+    private_static_ip_address: str = pulumi.property("privateStaticIpAddress")
+    redis_configurations: List['outputs.GetCacheRedisConfigurationResult'] = pulumi.property("redisConfigurations")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_access_key: str = pulumi.property("secondaryAccessKey")
+    secondary_connection_string: str = pulumi.property("secondaryConnectionString")
+    shard_count: float = pulumi.property("shardCount")
+    sku_name: str = pulumi.property("skuName")
+    ssl_port: float = pulumi.property("sslPort")
+    subnet_id: str = pulumi.property("subnetId")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    zones: List[str] = pulumi.property("zones")
+
 
 class GetCacheResult:
     """
@@ -130,6 +165,8 @@ class GetCacheResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetCacheResult(GetCacheResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -160,7 +197,11 @@ class AwaitableGetCacheResult(GetCacheResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
+
+def get_cache(name: Optional[str] = None,
+              resource_group_name: Optional[str] = None,
+              zones: Optional[List[str]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCacheResult:
     """
     Use this data source to access information about an existing Redis Cache
 
@@ -179,38 +220,36 @@ def get_cache(name=None,resource_group_name=None,zones=None,opts=None):
     :param str resource_group_name: The name of the resource group the Redis cache instance is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['zones'] = zones
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:redis/getCache:getCache', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:redis/getCache:getCache', __args__, opts=opts, typ=_GetCacheResult).value
 
     return AwaitableGetCacheResult(
-        capacity=__ret__.get('capacity'),
-        enable_non_ssl_port=__ret__.get('enableNonSslPort'),
-        family=__ret__.get('family'),
-        hostname=__ret__.get('hostname'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        minimum_tls_version=__ret__.get('minimumTlsVersion'),
-        name=__ret__.get('name'),
-        patch_schedules=__ret__.get('patchSchedules'),
-        port=__ret__.get('port'),
-        primary_access_key=__ret__.get('primaryAccessKey'),
-        primary_connection_string=__ret__.get('primaryConnectionString'),
-        private_static_ip_address=__ret__.get('privateStaticIpAddress'),
-        redis_configurations=__ret__.get('redisConfigurations'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_access_key=__ret__.get('secondaryAccessKey'),
-        secondary_connection_string=__ret__.get('secondaryConnectionString'),
-        shard_count=__ret__.get('shardCount'),
-        sku_name=__ret__.get('skuName'),
-        ssl_port=__ret__.get('sslPort'),
-        subnet_id=__ret__.get('subnetId'),
-        tags=__ret__.get('tags'),
-        zones=__ret__.get('zones'))
+        capacity=_utilities.get_dict_value(__ret__, 'capacity'),
+        enable_non_ssl_port=_utilities.get_dict_value(__ret__, 'enableNonSslPort'),
+        family=_utilities.get_dict_value(__ret__, 'family'),
+        hostname=_utilities.get_dict_value(__ret__, 'hostname'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        minimum_tls_version=_utilities.get_dict_value(__ret__, 'minimumTlsVersion'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        patch_schedules=_utilities.get_dict_value(__ret__, 'patchSchedules'),
+        port=_utilities.get_dict_value(__ret__, 'port'),
+        primary_access_key=_utilities.get_dict_value(__ret__, 'primaryAccessKey'),
+        primary_connection_string=_utilities.get_dict_value(__ret__, 'primaryConnectionString'),
+        private_static_ip_address=_utilities.get_dict_value(__ret__, 'privateStaticIpAddress'),
+        redis_configurations=_utilities.get_dict_value(__ret__, 'redisConfigurations'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        secondary_access_key=_utilities.get_dict_value(__ret__, 'secondaryAccessKey'),
+        secondary_connection_string=_utilities.get_dict_value(__ret__, 'secondaryConnectionString'),
+        shard_count=_utilities.get_dict_value(__ret__, 'shardCount'),
+        sku_name=_utilities.get_dict_value(__ret__, 'skuName'),
+        ssl_port=_utilities.get_dict_value(__ret__, 'sslPort'),
+        subnet_id=_utilities.get_dict_value(__ret__, 'subnetId'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        zones=_utilities.get_dict_value(__ret__, 'zones'))

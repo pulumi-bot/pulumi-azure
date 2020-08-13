@@ -5,8 +5,38 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAppServiceResult',
+    'AwaitableGetAppServiceResult',
+    'get_app_service',
+]
+
+
+@pulumi.output_type
+class _GetAppServiceResult(dict):
+    app_service_plan_id: str = pulumi.property("appServicePlanId")
+    app_settings: Mapping[str, str] = pulumi.property("appSettings")
+    client_affinity_enabled: bool = pulumi.property("clientAffinityEnabled")
+    client_cert_enabled: bool = pulumi.property("clientCertEnabled")
+    connection_strings: List['outputs.GetAppServiceConnectionStringResult'] = pulumi.property("connectionStrings")
+    default_site_hostname: str = pulumi.property("defaultSiteHostname")
+    enabled: bool = pulumi.property("enabled")
+    https_only: bool = pulumi.property("httpsOnly")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    outbound_ip_addresses: str = pulumi.property("outboundIpAddresses")
+    possible_outbound_ip_addresses: str = pulumi.property("possibleOutboundIpAddresses")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    site_configs: List['outputs.GetAppServiceSiteConfigResult'] = pulumi.property("siteConfigs")
+    site_credentials: List['outputs.GetAppServiceSiteCredentialResult'] = pulumi.property("siteCredentials")
+    source_controls: List['outputs.GetAppServiceSourceControlResult'] = pulumi.property("sourceControls")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetAppServiceResult:
     """
@@ -112,6 +142,8 @@ class GetAppServiceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetAppServiceResult(GetAppServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -137,7 +169,10 @@ class AwaitableGetAppServiceResult(GetAppServiceResult):
             source_controls=self.source_controls,
             tags=self.tags)
 
-def get_app_service(name=None,resource_group_name=None,opts=None):
+
+def get_app_service(name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppServiceResult:
     """
     Use this data source to access information about an existing App Service.
 
@@ -157,32 +192,30 @@ def get_app_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appservice/getAppService:getAppService', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appservice/getAppService:getAppService', __args__, opts=opts, typ=_GetAppServiceResult).value
 
     return AwaitableGetAppServiceResult(
-        app_service_plan_id=__ret__.get('appServicePlanId'),
-        app_settings=__ret__.get('appSettings'),
-        client_affinity_enabled=__ret__.get('clientAffinityEnabled'),
-        client_cert_enabled=__ret__.get('clientCertEnabled'),
-        connection_strings=__ret__.get('connectionStrings'),
-        default_site_hostname=__ret__.get('defaultSiteHostname'),
-        enabled=__ret__.get('enabled'),
-        https_only=__ret__.get('httpsOnly'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        outbound_ip_addresses=__ret__.get('outboundIpAddresses'),
-        possible_outbound_ip_addresses=__ret__.get('possibleOutboundIpAddresses'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        site_configs=__ret__.get('siteConfigs'),
-        site_credentials=__ret__.get('siteCredentials'),
-        source_controls=__ret__.get('sourceControls'),
-        tags=__ret__.get('tags'))
+        app_service_plan_id=_utilities.get_dict_value(__ret__, 'appServicePlanId'),
+        app_settings=_utilities.get_dict_value(__ret__, 'appSettings'),
+        client_affinity_enabled=_utilities.get_dict_value(__ret__, 'clientAffinityEnabled'),
+        client_cert_enabled=_utilities.get_dict_value(__ret__, 'clientCertEnabled'),
+        connection_strings=_utilities.get_dict_value(__ret__, 'connectionStrings'),
+        default_site_hostname=_utilities.get_dict_value(__ret__, 'defaultSiteHostname'),
+        enabled=_utilities.get_dict_value(__ret__, 'enabled'),
+        https_only=_utilities.get_dict_value(__ret__, 'httpsOnly'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        outbound_ip_addresses=_utilities.get_dict_value(__ret__, 'outboundIpAddresses'),
+        possible_outbound_ip_addresses=_utilities.get_dict_value(__ret__, 'possibleOutboundIpAddresses'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        site_configs=_utilities.get_dict_value(__ret__, 'siteConfigs'),
+        site_credentials=_utilities.get_dict_value(__ret__, 'siteCredentials'),
+        source_controls=_utilities.get_dict_value(__ret__, 'sourceControls'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

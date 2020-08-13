@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetUserAssignedIdentityResult',
+    'AwaitableGetUserAssignedIdentityResult',
+    'get_user_assigned_identity',
+]
+
+
+@pulumi.output_type
+class _GetUserAssignedIdentityResult(dict):
+    client_id: str = pulumi.property("clientId")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    principal_id: str = pulumi.property("principalId")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetUserAssignedIdentityResult:
     """
@@ -49,6 +67,8 @@ class GetUserAssignedIdentityResult:
         """
         A mapping of tags assigned to the User Assigned Identity.
         """
+
+
 class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +83,10 @@ class AwaitableGetUserAssignedIdentityResult(GetUserAssignedIdentityResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
+
+def get_user_assigned_identity(name: Optional[str] = None,
+                               resource_group_name: Optional[str] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserAssignedIdentityResult:
     """
     Use this data source to access information about an existing User Assigned Identity.
 
@@ -85,21 +108,19 @@ def get_user_assigned_identity(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the User Assigned Identity exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:authorization/getUserAssignedIdentity:getUserAssignedIdentity', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:authorization/getUserAssignedIdentity:getUserAssignedIdentity', __args__, opts=opts, typ=_GetUserAssignedIdentityResult).value
 
     return AwaitableGetUserAssignedIdentityResult(
-        client_id=__ret__.get('clientId'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        principal_id=__ret__.get('principalId'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        client_id=_utilities.get_dict_value(__ret__, 'clientId'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        principal_id=_utilities.get_dict_value(__ret__, 'principalId'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetEventHubResult',
+    'AwaitableGetEventHubResult',
+    'get_event_hub',
+]
+
+
+@pulumi.output_type
+class _GetEventHubResult(dict):
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    namespace_name: str = pulumi.property("namespaceName")
+    partition_count: float = pulumi.property("partitionCount")
+    partition_ids: List[str] = pulumi.property("partitionIds")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+
 
 class GetEventHubResult:
     """
@@ -40,6 +57,8 @@ class GetEventHubResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         __self__.resource_group_name = resource_group_name
+
+
 class AwaitableGetEventHubResult(GetEventHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +72,11 @@ class AwaitableGetEventHubResult(GetEventHubResult):
             partition_ids=self.partition_ids,
             resource_group_name=self.resource_group_name)
 
-def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_event_hub(name: Optional[str] = None,
+                  namespace_name: Optional[str] = None,
+                  resource_group_name: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEventHubResult:
     """
     Use this data source to access information about an existing EventHub.
 
@@ -75,21 +98,19 @@ def get_event_hub(name=None,namespace_name=None,resource_group_name=None,opts=No
     :param str resource_group_name: The name of the Resource Group where the EventHub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventHub:getEventHub', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventHub:getEventHub', __args__, opts=opts, typ=_GetEventHubResult).value
 
     return AwaitableGetEventHubResult(
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        namespace_name=__ret__.get('namespaceName'),
-        partition_count=__ret__.get('partitionCount'),
-        partition_ids=__ret__.get('partitionIds'),
-        resource_group_name=__ret__.get('resourceGroupName'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        namespace_name=_utilities.get_dict_value(__ret__, 'namespaceName'),
+        partition_count=_utilities.get_dict_value(__ret__, 'partitionCount'),
+        partition_ids=_utilities.get_dict_value(__ret__, 'partitionIds'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'))

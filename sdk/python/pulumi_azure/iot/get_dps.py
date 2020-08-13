@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDpsResult',
+    'AwaitableGetDpsResult',
+    'get_dps',
+]
+
+
+@pulumi.output_type
+class _GetDpsResult(dict):
+    allocation_policy: str = pulumi.property("allocationPolicy")
+    device_provisioning_host_name: str = pulumi.property("deviceProvisioningHostName")
+    id: str = pulumi.property("id")
+    id_scope: str = pulumi.property("idScope")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    service_operations_host_name: str = pulumi.property("serviceOperationsHostName")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+
 
 class GetDpsResult:
     """
@@ -58,6 +78,8 @@ class GetDpsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDpsResult(GetDpsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,7 +96,11 @@ class AwaitableGetDpsResult(GetDpsResult):
             service_operations_host_name=self.service_operations_host_name,
             tags=self.tags)
 
-def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_dps(name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            tags: Optional[Mapping[str, str]] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDpsResult:
     """
     Use this data source to access information about an existing IotHub Device Provisioning Service.
 
@@ -93,24 +119,22 @@ def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group under which the Iot Device Provisioning Service is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:iot/getDps:getDps', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:iot/getDps:getDps', __args__, opts=opts, typ=_GetDpsResult).value
 
     return AwaitableGetDpsResult(
-        allocation_policy=__ret__.get('allocationPolicy'),
-        device_provisioning_host_name=__ret__.get('deviceProvisioningHostName'),
-        id=__ret__.get('id'),
-        id_scope=__ret__.get('idScope'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        service_operations_host_name=__ret__.get('serviceOperationsHostName'),
-        tags=__ret__.get('tags'))
+        allocation_policy=_utilities.get_dict_value(__ret__, 'allocationPolicy'),
+        device_provisioning_host_name=_utilities.get_dict_value(__ret__, 'deviceProvisioningHostName'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        id_scope=_utilities.get_dict_value(__ret__, 'idScope'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        service_operations_host_name=_utilities.get_dict_value(__ret__, 'serviceOperationsHostName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

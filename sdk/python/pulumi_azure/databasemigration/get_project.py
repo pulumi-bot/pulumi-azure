@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetProjectResult',
+    'AwaitableGetProjectResult',
+    'get_project',
+]
+
+
+@pulumi.output_type
+class _GetProjectResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    service_name: str = pulumi.property("serviceName")
+    source_platform: str = pulumi.property("sourcePlatform")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    target_platform: str = pulumi.property("targetPlatform")
+
 
 class GetProjectResult:
     """
@@ -52,6 +71,8 @@ class GetProjectResult:
         """
         The platform type of the migration target.
         """
+
+
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +88,11 @@ class AwaitableGetProjectResult(GetProjectResult):
             tags=self.tags,
             target_platform=self.target_platform)
 
-def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
+
+def get_project(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                service_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     Use this data source to access information about an existing Database Migration Project.
 
@@ -89,23 +114,21 @@ def get_project(name=None,resource_group_name=None,service_name=None,opts=None):
     :param str service_name: Name of the database migration service where resource belongs to.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serviceName'] = service_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:databasemigration/getProject:getProject', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:databasemigration/getProject:getProject', __args__, opts=opts, typ=_GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        service_name=__ret__.get('serviceName'),
-        source_platform=__ret__.get('sourcePlatform'),
-        tags=__ret__.get('tags'),
-        target_platform=__ret__.get('targetPlatform'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        service_name=_utilities.get_dict_value(__ret__, 'serviceName'),
+        source_platform=_utilities.get_dict_value(__ret__, 'sourcePlatform'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        target_platform=_utilities.get_dict_value(__ret__, 'targetPlatform'))

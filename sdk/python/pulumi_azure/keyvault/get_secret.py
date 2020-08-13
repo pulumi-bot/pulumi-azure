@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSecretResult',
+    'AwaitableGetSecretResult',
+    'get_secret',
+]
+
+
+@pulumi.output_type
+class _GetSecretResult(dict):
+    content_type: str = pulumi.property("contentType")
+    id: str = pulumi.property("id")
+    key_vault_id: str = pulumi.property("keyVaultId")
+    name: str = pulumi.property("name")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    value: str = pulumi.property("value")
+    version: str = pulumi.property("version")
+
 
 class GetSecretResult:
     """
@@ -49,6 +67,8 @@ class GetSecretResult:
         """
         The current version of the Key Vault Secret.
         """
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +83,10 @@ class AwaitableGetSecretResult(GetSecretResult):
             value=self.value,
             version=self.version)
 
-def get_secret(key_vault_id=None,name=None,opts=None):
+
+def get_secret(key_vault_id: Optional[str] = None,
+               name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
     Use this data source to access information about an existing Key Vault Secret.
 
@@ -83,21 +106,19 @@ def get_secret(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Secret.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getSecret:getSecret', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getSecret:getSecret', __args__, opts=opts, typ=_GetSecretResult).value
 
     return AwaitableGetSecretResult(
-        content_type=__ret__.get('contentType'),
-        id=__ret__.get('id'),
-        key_vault_id=__ret__.get('keyVaultId'),
-        name=__ret__.get('name'),
-        tags=__ret__.get('tags'),
-        value=__ret__.get('value'),
-        version=__ret__.get('version'))
+        content_type=_utilities.get_dict_value(__ret__, 'contentType'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        key_vault_id=_utilities.get_dict_value(__ret__, 'keyVaultId'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        value=_utilities.get_dict_value(__ret__, 'value'),
+        version=_utilities.get_dict_value(__ret__, 'version'))

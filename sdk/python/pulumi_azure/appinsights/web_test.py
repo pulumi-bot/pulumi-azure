@@ -5,63 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['WebTest']
 
 
 class WebTest(pulumi.CustomResource):
-    application_insights_id: pulumi.Output[str]
+    application_insights_id: pulumi.Output[str] = pulumi.property("applicationInsightsId")
     """
     The ID of the Application Insights component on which the WebTest operates. Changing this forces a new resource to be created.
     """
-    configuration: pulumi.Output[str]
+
+    configuration: pulumi.Output[str] = pulumi.property("configuration")
     """
     An XML configuration specification for a WebTest.
     """
-    description: pulumi.Output[str]
+
+    description: pulumi.Output[Optional[str]] = pulumi.property("description")
     """
     Purpose/user defined descriptive test for this WebTest.
     """
-    enabled: pulumi.Output[bool]
+
+    enabled: pulumi.Output[Optional[bool]] = pulumi.property("enabled")
     """
     Is the test actively being monitored.
     """
-    frequency: pulumi.Output[float]
+
+    frequency: pulumi.Output[Optional[float]] = pulumi.property("frequency")
     """
     Interval in seconds between test runs for this WebTest. Default is `300`.
     """
-    geo_locations: pulumi.Output[list]
+
+    geo_locations: pulumi.Output[List[str]] = pulumi.property("geoLocations")
     """
     A list of where to physically run the tests from to give global coverage for accessibility of your application.
     """
-    kind: pulumi.Output[str]
+
+    kind: pulumi.Output[str] = pulumi.property("kind")
     """
     = (Required) The kind of web test that this web test watches. Choices are `ping` and `multistep`.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     The location of the resource group.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the Application Insights WebTest. Changing this forces a
     new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
-    retry_enabled: pulumi.Output[bool]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
+
+    retry_enabled: pulumi.Output[Optional[bool]] = pulumi.property("retryEnabled")
     """
     Allow for retries should this WebTest fail.
     """
-    synthetic_monitor_id: pulumi.Output[str]
-    tags: pulumi.Output[dict]
+
+    synthetic_monitor_id: pulumi.Output[str] = pulumi.property("syntheticMonitorId")
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     Resource tags.
     """
-    timeout: pulumi.Output[float]
+
+    timeout: pulumi.Output[Optional[float]] = pulumi.property("timeout")
     """
     Seconds until this WebTest will timeout and fail. Default is `30`.
     """
-    def __init__(__self__, resource_name, opts=None, application_insights_id=None, configuration=None, description=None, enabled=None, frequency=None, geo_locations=None, kind=None, location=None, name=None, resource_group_name=None, retry_enabled=None, tags=None, timeout=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 application_insights_id: Optional[pulumi.Input[str]] = None,
+                 configuration: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 frequency: Optional[pulumi.Input[float]] = None,
+                 geo_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 retry_enabled: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 timeout: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Application Insights WebTest.
 
@@ -72,13 +106,13 @@ class WebTest(pulumi.CustomResource):
         :param pulumi.Input[str] description: Purpose/user defined descriptive test for this WebTest.
         :param pulumi.Input[bool] enabled: Is the test actively being monitored.
         :param pulumi.Input[float] frequency: Interval in seconds between test runs for this WebTest. Default is `300`.
-        :param pulumi.Input[list] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
+        :param pulumi.Input[List[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
         :param pulumi.Input[str] kind: = (Required) The kind of web test that this web test watches. Choices are `ping` and `multistep`.
         :param pulumi.Input[str] location: The location of the resource group.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights WebTest. Changing this forces a
                new resource to be created.
         :param pulumi.Input[bool] retry_enabled: Allow for retries should this WebTest fail.
-        :param pulumi.Input[dict] tags: Resource tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         :param pulumi.Input[float] timeout: Seconds until this WebTest will timeout and fail. Default is `30`.
         """
         if __name__ is not None:
@@ -92,7 +126,7 @@ class WebTest(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,7 +163,23 @@ class WebTest(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, application_insights_id=None, configuration=None, description=None, enabled=None, frequency=None, geo_locations=None, kind=None, location=None, name=None, resource_group_name=None, retry_enabled=None, synthetic_monitor_id=None, tags=None, timeout=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_insights_id: Optional[pulumi.Input[str]] = None,
+            configuration: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            frequency: Optional[pulumi.Input[float]] = None,
+            geo_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            kind: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            retry_enabled: Optional[pulumi.Input[bool]] = None,
+            synthetic_monitor_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            timeout: Optional[pulumi.Input[float]] = None) -> 'WebTest':
         """
         Get an existing WebTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -142,13 +192,13 @@ class WebTest(pulumi.CustomResource):
         :param pulumi.Input[str] description: Purpose/user defined descriptive test for this WebTest.
         :param pulumi.Input[bool] enabled: Is the test actively being monitored.
         :param pulumi.Input[float] frequency: Interval in seconds between test runs for this WebTest. Default is `300`.
-        :param pulumi.Input[list] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
+        :param pulumi.Input[List[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
         :param pulumi.Input[str] kind: = (Required) The kind of web test that this web test watches. Choices are `ping` and `multistep`.
         :param pulumi.Input[str] location: The location of the resource group.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights WebTest. Changing this forces a
                new resource to be created.
         :param pulumi.Input[bool] retry_enabled: Allow for retries should this WebTest fail.
-        :param pulumi.Input[dict] tags: Resource tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         :param pulumi.Input[float] timeout: Seconds until this WebTest will timeout and fail. Default is `30`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -172,7 +222,8 @@ class WebTest(pulumi.CustomResource):
         return WebTest(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

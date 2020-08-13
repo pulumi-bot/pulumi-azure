@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDedicatedHostGroupResult',
+    'AwaitableGetDedicatedHostGroupResult',
+    'get_dedicated_host_group',
+]
+
+
+@pulumi.output_type
+class _GetDedicatedHostGroupResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    platform_fault_domain_count: float = pulumi.property("platformFaultDomainCount")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    zones: List[str] = pulumi.property("zones")
+
 
 class GetDedicatedHostGroupResult:
     """
@@ -49,6 +67,8 @@ class GetDedicatedHostGroupResult:
         """
         The Availability Zones in which this Dedicated Host Group is located.
         """
+
+
 class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +83,10 @@ class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
+
+def get_dedicated_host_group(name: Optional[str] = None,
+                             resource_group_name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedHostGroupResult:
     """
     Use this data source to access information about an existing Dedicated Host Group.
 
@@ -83,21 +106,19 @@ def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getDedicatedHostGroup:getDedicatedHostGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getDedicatedHostGroup:getDedicatedHostGroup', __args__, opts=opts, typ=_GetDedicatedHostGroupResult).value
 
     return AwaitableGetDedicatedHostGroupResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        platform_fault_domain_count=__ret__.get('platformFaultDomainCount'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        zones=__ret__.get('zones'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        platform_fault_domain_count=_utilities.get_dict_value(__ret__, 'platformFaultDomainCount'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        zones=_utilities.get_dict_value(__ret__, 'zones'))

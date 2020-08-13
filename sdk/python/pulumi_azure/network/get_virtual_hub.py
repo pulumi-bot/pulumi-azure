@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetVirtualHubResult',
+    'AwaitableGetVirtualHubResult',
+    'get_virtual_hub',
+]
+
+
+@pulumi.output_type
+class _GetVirtualHubResult(dict):
+    address_prefix: str = pulumi.property("addressPrefix")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    virtual_wan_id: str = pulumi.property("virtualWanId")
+
 
 class GetVirtualHubResult:
     """
@@ -49,6 +67,8 @@ class GetVirtualHubResult:
         """
         The ID of the Virtual WAN within which the Virtual Hub exists.
         """
+
+
 class AwaitableGetVirtualHubResult(GetVirtualHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +83,10 @@ class AwaitableGetVirtualHubResult(GetVirtualHubResult):
             tags=self.tags,
             virtual_wan_id=self.virtual_wan_id)
 
-def get_virtual_hub(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_hub(name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualHubResult:
     """
     Uses this data source to access information about an existing Virtual Hub.
 
@@ -83,21 +106,19 @@ def get_virtual_hub(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Virtual Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualHub:getVirtualHub', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualHub:getVirtualHub', __args__, opts=opts, typ=_GetVirtualHubResult).value
 
     return AwaitableGetVirtualHubResult(
-        address_prefix=__ret__.get('addressPrefix'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        virtual_wan_id=__ret__.get('virtualWanId'))
+        address_prefix=_utilities.get_dict_value(__ret__, 'addressPrefix'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        virtual_wan_id=_utilities.get_dict_value(__ret__, 'virtualWanId'))

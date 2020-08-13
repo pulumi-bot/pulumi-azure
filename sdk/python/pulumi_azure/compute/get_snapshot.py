@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetSnapshotResult',
+    'AwaitableGetSnapshotResult',
+    'get_snapshot',
+]
+
+
+@pulumi.output_type
+class _GetSnapshotResult(dict):
+    creation_option: str = pulumi.property("creationOption")
+    disk_size_gb: float = pulumi.property("diskSizeGb")
+    encryption_settings: List['outputs.GetSnapshotEncryptionSettingResult'] = pulumi.property("encryptionSettings")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    os_type: str = pulumi.property("osType")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    source_resource_id: str = pulumi.property("sourceResourceId")
+    source_uri: str = pulumi.property("sourceUri")
+    storage_account_id: str = pulumi.property("storageAccountId")
+    time_created: str = pulumi.property("timeCreated")
+
 
 class GetSnapshotResult:
     """
@@ -61,6 +84,8 @@ class GetSnapshotResult:
         if time_created and not isinstance(time_created, str):
             raise TypeError("Expected argument 'time_created' to be a str")
         __self__.time_created = time_created
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,7 +104,10 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             storage_account_id=self.storage_account_id,
             time_created=self.time_created)
 
-def get_snapshot(name=None,resource_group_name=None,opts=None):
+
+def get_snapshot(name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
     Use this data source to access information about an existing Snapshot.
 
@@ -98,25 +126,23 @@ def get_snapshot(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Snapshot is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getSnapshot:getSnapshot', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getSnapshot:getSnapshot', __args__, opts=opts, typ=_GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        creation_option=__ret__.get('creationOption'),
-        disk_size_gb=__ret__.get('diskSizeGb'),
-        encryption_settings=__ret__.get('encryptionSettings'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        os_type=__ret__.get('osType'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        source_resource_id=__ret__.get('sourceResourceId'),
-        source_uri=__ret__.get('sourceUri'),
-        storage_account_id=__ret__.get('storageAccountId'),
-        time_created=__ret__.get('timeCreated'))
+        creation_option=_utilities.get_dict_value(__ret__, 'creationOption'),
+        disk_size_gb=_utilities.get_dict_value(__ret__, 'diskSizeGb'),
+        encryption_settings=_utilities.get_dict_value(__ret__, 'encryptionSettings'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        os_type=_utilities.get_dict_value(__ret__, 'osType'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        source_resource_id=_utilities.get_dict_value(__ret__, 'sourceResourceId'),
+        source_uri=_utilities.get_dict_value(__ret__, 'sourceUri'),
+        storage_account_id=_utilities.get_dict_value(__ret__, 'storageAccountId'),
+        time_created=_utilities.get_dict_value(__ret__, 'timeCreated'))

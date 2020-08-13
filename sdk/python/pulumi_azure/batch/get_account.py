@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
+
+@pulumi.output_type
+class _GetAccountResult(dict):
+    account_endpoint: str = pulumi.property("accountEndpoint")
+    id: str = pulumi.property("id")
+    key_vault_references: List['outputs.GetAccountKeyVaultReferenceResult'] = pulumi.property("keyVaultReferences")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    pool_allocation_mode: str = pulumi.property("poolAllocationMode")
+    primary_access_key: str = pulumi.property("primaryAccessKey")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_access_key: str = pulumi.property("secondaryAccessKey")
+    storage_account_id: str = pulumi.property("storageAccountId")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetAccountResult:
     """
@@ -76,6 +99,8 @@ class GetAccountResult:
         """
         A map of tags assigned to the Batch account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,7 +119,10 @@ class AwaitableGetAccountResult(GetAccountResult):
             storage_account_id=self.storage_account_id,
             tags=self.tags)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing Batch Account.
 
@@ -114,25 +142,23 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where this Batch account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:batch/getAccount:getAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:batch/getAccount:getAccount', __args__, opts=opts, typ=_GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        account_endpoint=__ret__.get('accountEndpoint'),
-        id=__ret__.get('id'),
-        key_vault_references=__ret__.get('keyVaultReferences'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        pool_allocation_mode=__ret__.get('poolAllocationMode'),
-        primary_access_key=__ret__.get('primaryAccessKey'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_access_key=__ret__.get('secondaryAccessKey'),
-        storage_account_id=__ret__.get('storageAccountId'),
-        tags=__ret__.get('tags'))
+        account_endpoint=_utilities.get_dict_value(__ret__, 'accountEndpoint'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        key_vault_references=_utilities.get_dict_value(__ret__, 'keyVaultReferences'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        pool_allocation_mode=_utilities.get_dict_value(__ret__, 'poolAllocationMode'),
+        primary_access_key=_utilities.get_dict_value(__ret__, 'primaryAccessKey'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        secondary_access_key=_utilities.get_dict_value(__ret__, 'secondaryAccessKey'),
+        storage_account_id=_utilities.get_dict_value(__ret__, 'storageAccountId'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

@@ -5,8 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetApiResult',
+    'AwaitableGetApiResult',
+    'get_api',
+]
+
+
+@pulumi.output_type
+class _GetApiResult(dict):
+    api_management_name: str = pulumi.property("apiManagementName")
+    description: str = pulumi.property("description")
+    display_name: str = pulumi.property("displayName")
+    id: str = pulumi.property("id")
+    is_current: bool = pulumi.property("isCurrent")
+    is_online: bool = pulumi.property("isOnline")
+    name: str = pulumi.property("name")
+    path: str = pulumi.property("path")
+    protocols: List[str] = pulumi.property("protocols")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    revision: str = pulumi.property("revision")
+    service_url: str = pulumi.property("serviceUrl")
+    soap_pass_through: bool = pulumi.property("soapPassThrough")
+    subscription_key_parameter_names: List['outputs.GetApiSubscriptionKeyParameterNameResult'] = pulumi.property("subscriptionKeyParameterNames")
+    subscription_required: bool = pulumi.property("subscriptionRequired")
+    version: str = pulumi.property("version")
+    version_set_id: str = pulumi.property("versionSetId")
+
 
 class GetApiResult:
     """
@@ -103,6 +132,8 @@ class GetApiResult:
         """
         The ID of the Version Set which this API is associated with.
         """
+
+
 class AwaitableGetApiResult(GetApiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -127,7 +158,12 @@ class AwaitableGetApiResult(GetApiResult):
             version=self.version,
             version_set_id=self.version_set_id)
 
-def get_api(api_management_name=None,name=None,resource_group_name=None,revision=None,opts=None):
+
+def get_api(api_management_name: Optional[str] = None,
+            name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            revision: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiResult:
     """
     Use this data source to access information about an existing API Management API.
 
@@ -151,8 +187,6 @@ def get_api(api_management_name=None,name=None,resource_group_name=None,revision
     :param str revision: The Revision of the API Management API.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
@@ -160,24 +194,24 @@ def get_api(api_management_name=None,name=None,resource_group_name=None,revision
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApi:getApi', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApi:getApi', __args__, opts=opts, typ=_GetApiResult).value
 
     return AwaitableGetApiResult(
-        api_management_name=__ret__.get('apiManagementName'),
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        is_current=__ret__.get('isCurrent'),
-        is_online=__ret__.get('isOnline'),
-        name=__ret__.get('name'),
-        path=__ret__.get('path'),
-        protocols=__ret__.get('protocols'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        revision=__ret__.get('revision'),
-        service_url=__ret__.get('serviceUrl'),
-        soap_pass_through=__ret__.get('soapPassThrough'),
-        subscription_key_parameter_names=__ret__.get('subscriptionKeyParameterNames'),
-        subscription_required=__ret__.get('subscriptionRequired'),
-        version=__ret__.get('version'),
-        version_set_id=__ret__.get('versionSetId'))
+        api_management_name=_utilities.get_dict_value(__ret__, 'apiManagementName'),
+        description=_utilities.get_dict_value(__ret__, 'description'),
+        display_name=_utilities.get_dict_value(__ret__, 'displayName'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        is_current=_utilities.get_dict_value(__ret__, 'isCurrent'),
+        is_online=_utilities.get_dict_value(__ret__, 'isOnline'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        path=_utilities.get_dict_value(__ret__, 'path'),
+        protocols=_utilities.get_dict_value(__ret__, 'protocols'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        revision=_utilities.get_dict_value(__ret__, 'revision'),
+        service_url=_utilities.get_dict_value(__ret__, 'serviceUrl'),
+        soap_pass_through=_utilities.get_dict_value(__ret__, 'soapPassThrough'),
+        subscription_key_parameter_names=_utilities.get_dict_value(__ret__, 'subscriptionKeyParameterNames'),
+        subscription_required=_utilities.get_dict_value(__ret__, 'subscriptionRequired'),
+        version=_utilities.get_dict_value(__ret__, 'version'),
+        version_set_id=_utilities.get_dict_value(__ret__, 'versionSetId'))

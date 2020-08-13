@@ -5,8 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetGatewayConnectionResult',
+    'AwaitableGetGatewayConnectionResult',
+    'get_gateway_connection',
+]
+
+
+@pulumi.output_type
+class _GetGatewayConnectionResult(dict):
+    authorization_key: str = pulumi.property("authorizationKey")
+    connection_protocol: str = pulumi.property("connectionProtocol")
+    egress_bytes_transferred: float = pulumi.property("egressBytesTransferred")
+    enable_bgp: bool = pulumi.property("enableBgp")
+    express_route_circuit_id: str = pulumi.property("expressRouteCircuitId")
+    express_route_gateway_bypass: bool = pulumi.property("expressRouteGatewayBypass")
+    id: str = pulumi.property("id")
+    ingress_bytes_transferred: float = pulumi.property("ingressBytesTransferred")
+    ipsec_policies: List['outputs.GetGatewayConnectionIpsecPolicyResult'] = pulumi.property("ipsecPolicies")
+    local_network_gateway_id: str = pulumi.property("localNetworkGatewayId")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    peer_virtual_network_gateway_id: str = pulumi.property("peerVirtualNetworkGatewayId")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    resource_guid: str = pulumi.property("resourceGuid")
+    routing_weight: float = pulumi.property("routingWeight")
+    shared_key: str = pulumi.property("sharedKey")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    traffic_selector_policy: 'outputs.GetGatewayConnectionTrafficSelectorPolicyResult' = pulumi.property("trafficSelectorPolicy")
+    type: str = pulumi.property("type")
+    use_policy_based_traffic_selectors: bool = pulumi.property("usePolicyBasedTrafficSelectors")
+    virtual_network_gateway_id: str = pulumi.property("virtualNetworkGatewayId")
+
 
 class GetGatewayConnectionResult:
     """
@@ -133,6 +167,8 @@ class GetGatewayConnectionResult:
         The ID of the Virtual Network Gateway
         in which the connection is created.
         """
+
+
 class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -162,7 +198,10 @@ class AwaitableGetGatewayConnectionResult(GetGatewayConnectionResult):
             use_policy_based_traffic_selectors=self.use_policy_based_traffic_selectors,
             virtual_network_gateway_id=self.virtual_network_gateway_id)
 
-def get_gateway_connection(name=None,resource_group_name=None,opts=None):
+
+def get_gateway_connection(name: Optional[str] = None,
+                           resource_group_name: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayConnectionResult:
     """
     Use this data source to access information about an existing Virtual Network Gateway Connection.
 
@@ -182,36 +221,34 @@ def get_gateway_connection(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway Connection is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getGatewayConnection:getGatewayConnection', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getGatewayConnection:getGatewayConnection', __args__, opts=opts, typ=_GetGatewayConnectionResult).value
 
     return AwaitableGetGatewayConnectionResult(
-        authorization_key=__ret__.get('authorizationKey'),
-        connection_protocol=__ret__.get('connectionProtocol'),
-        egress_bytes_transferred=__ret__.get('egressBytesTransferred'),
-        enable_bgp=__ret__.get('enableBgp'),
-        express_route_circuit_id=__ret__.get('expressRouteCircuitId'),
-        express_route_gateway_bypass=__ret__.get('expressRouteGatewayBypass'),
-        id=__ret__.get('id'),
-        ingress_bytes_transferred=__ret__.get('ingressBytesTransferred'),
-        ipsec_policies=__ret__.get('ipsecPolicies'),
-        local_network_gateway_id=__ret__.get('localNetworkGatewayId'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        peer_virtual_network_gateway_id=__ret__.get('peerVirtualNetworkGatewayId'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        resource_guid=__ret__.get('resourceGuid'),
-        routing_weight=__ret__.get('routingWeight'),
-        shared_key=__ret__.get('sharedKey'),
-        tags=__ret__.get('tags'),
-        traffic_selector_policy=__ret__.get('trafficSelectorPolicy'),
-        type=__ret__.get('type'),
-        use_policy_based_traffic_selectors=__ret__.get('usePolicyBasedTrafficSelectors'),
-        virtual_network_gateway_id=__ret__.get('virtualNetworkGatewayId'))
+        authorization_key=_utilities.get_dict_value(__ret__, 'authorizationKey'),
+        connection_protocol=_utilities.get_dict_value(__ret__, 'connectionProtocol'),
+        egress_bytes_transferred=_utilities.get_dict_value(__ret__, 'egressBytesTransferred'),
+        enable_bgp=_utilities.get_dict_value(__ret__, 'enableBgp'),
+        express_route_circuit_id=_utilities.get_dict_value(__ret__, 'expressRouteCircuitId'),
+        express_route_gateway_bypass=_utilities.get_dict_value(__ret__, 'expressRouteGatewayBypass'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        ingress_bytes_transferred=_utilities.get_dict_value(__ret__, 'ingressBytesTransferred'),
+        ipsec_policies=_utilities.get_dict_value(__ret__, 'ipsecPolicies'),
+        local_network_gateway_id=_utilities.get_dict_value(__ret__, 'localNetworkGatewayId'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        peer_virtual_network_gateway_id=_utilities.get_dict_value(__ret__, 'peerVirtualNetworkGatewayId'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        resource_guid=_utilities.get_dict_value(__ret__, 'resourceGuid'),
+        routing_weight=_utilities.get_dict_value(__ret__, 'routingWeight'),
+        shared_key=_utilities.get_dict_value(__ret__, 'sharedKey'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        traffic_selector_policy=_utilities.get_dict_value(__ret__, 'trafficSelectorPolicy'),
+        type=_utilities.get_dict_value(__ret__, 'type'),
+        use_policy_based_traffic_selectors=_utilities.get_dict_value(__ret__, 'usePolicyBasedTrafficSelectors'),
+        virtual_network_gateway_id=_utilities.get_dict_value(__ret__, 'virtualNetworkGatewayId'))

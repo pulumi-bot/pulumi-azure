@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetZoneResult',
+    'AwaitableGetZoneResult',
+    'get_zone',
+]
+
+
+@pulumi.output_type
+class _GetZoneResult(dict):
+    id: str = pulumi.property("id")
+    max_number_of_record_sets: float = pulumi.property("maxNumberOfRecordSets")
+    name: str = pulumi.property("name")
+    name_servers: List[str] = pulumi.property("nameServers")
+    number_of_record_sets: float = pulumi.property("numberOfRecordSets")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetZoneResult:
     """
@@ -49,6 +67,8 @@ class GetZoneResult:
         """
         A mapping of tags to assign to the EventHub Namespace.
         """
+
+
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +83,10 @@ class AwaitableGetZoneResult(GetZoneResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_zone(name=None,resource_group_name=None,opts=None):
+
+def get_zone(name: Optional[str] = None,
+             resource_group_name: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
     Use this data source to access information about an existing DNS Zone.
 
@@ -85,21 +108,19 @@ def get_zone(name=None,resource_group_name=None,opts=None):
            in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:dns/getZone:getZone', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:dns/getZone:getZone', __args__, opts=opts, typ=_GetZoneResult).value
 
     return AwaitableGetZoneResult(
-        id=__ret__.get('id'),
-        max_number_of_record_sets=__ret__.get('maxNumberOfRecordSets'),
-        name=__ret__.get('name'),
-        name_servers=__ret__.get('nameServers'),
-        number_of_record_sets=__ret__.get('numberOfRecordSets'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        max_number_of_record_sets=_utilities.get_dict_value(__ret__, 'maxNumberOfRecordSets'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        name_servers=_utilities.get_dict_value(__ret__, 'nameServers'),
+        number_of_record_sets=_utilities.get_dict_value(__ret__, 'numberOfRecordSets'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

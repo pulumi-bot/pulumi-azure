@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetKubernetesServiceVersionsResult',
+    'AwaitableGetKubernetesServiceVersionsResult',
+    'get_kubernetes_service_versions',
+]
+
+
+@pulumi.output_type
+class _GetKubernetesServiceVersionsResult(dict):
+    id: str = pulumi.property("id")
+    include_preview: Optional[bool] = pulumi.property("includePreview")
+    latest_version: str = pulumi.property("latestVersion")
+    location: str = pulumi.property("location")
+    version_prefix: Optional[str] = pulumi.property("versionPrefix")
+    versions: List[str] = pulumi.property("versions")
+
 
 class GetKubernetesServiceVersionsResult:
     """
@@ -40,6 +57,8 @@ class GetKubernetesServiceVersionsResult:
         """
         The list of all supported versions.
         """
+
+
 class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +72,11 @@ class AwaitableGetKubernetesServiceVersionsResult(GetKubernetesServiceVersionsRe
             version_prefix=self.version_prefix,
             versions=self.versions)
 
-def get_kubernetes_service_versions(include_preview=None,location=None,version_prefix=None,opts=None):
+
+def get_kubernetes_service_versions(include_preview: Optional[bool] = None,
+                                    location: Optional[str] = None,
+                                    version_prefix: Optional[str] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesServiceVersionsResult:
     """
     Use this data source to retrieve the version of Kubernetes supported by Azure Kubernetes Service.
 
@@ -74,21 +97,19 @@ def get_kubernetes_service_versions(include_preview=None,location=None,version_p
     :param str version_prefix: A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
     """
     __args__ = dict()
-
-
     __args__['includePreview'] = include_preview
     __args__['location'] = location
     __args__['versionPrefix'] = version_prefix
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesServiceVersions:getKubernetesServiceVersions', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesServiceVersions:getKubernetesServiceVersions', __args__, opts=opts, typ=_GetKubernetesServiceVersionsResult).value
 
     return AwaitableGetKubernetesServiceVersionsResult(
-        id=__ret__.get('id'),
-        include_preview=__ret__.get('includePreview'),
-        latest_version=__ret__.get('latestVersion'),
-        location=__ret__.get('location'),
-        version_prefix=__ret__.get('versionPrefix'),
-        versions=__ret__.get('versions'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        include_preview=_utilities.get_dict_value(__ret__, 'includePreview'),
+        latest_version=_utilities.get_dict_value(__ret__, 'latestVersion'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        version_prefix=_utilities.get_dict_value(__ret__, 'versionPrefix'),
+        versions=_utilities.get_dict_value(__ret__, 'versions'))

@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetCertificateResult',
+    'AwaitableGetCertificateResult',
+    'get_certificate',
+]
+
+
+@pulumi.output_type
+class _GetCertificateResult(dict):
+    expiration_date: str = pulumi.property("expirationDate")
+    friendly_name: str = pulumi.property("friendlyName")
+    host_names: List[str] = pulumi.property("hostNames")
+    id: str = pulumi.property("id")
+    issue_date: str = pulumi.property("issueDate")
+    issuer: str = pulumi.property("issuer")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    subject_name: str = pulumi.property("subjectName")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    thumbprint: str = pulumi.property("thumbprint")
+
 
 class GetCertificateResult:
     """
@@ -73,6 +96,8 @@ class GetCertificateResult:
         """
         The thumbprint for the certificate.
         """
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -92,7 +117,11 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             tags=self.tags,
             thumbprint=self.thumbprint)
 
-def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_certificate(name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    tags: Optional[Mapping[str, str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Use this data source to access information about an App Service Certificate.
 
@@ -112,27 +141,25 @@ def get_certificate(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group in which to create the certificate.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificate:getCertificate', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificate:getCertificate', __args__, opts=opts, typ=_GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        expiration_date=__ret__.get('expirationDate'),
-        friendly_name=__ret__.get('friendlyName'),
-        host_names=__ret__.get('hostNames'),
-        id=__ret__.get('id'),
-        issue_date=__ret__.get('issueDate'),
-        issuer=__ret__.get('issuer'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        subject_name=__ret__.get('subjectName'),
-        tags=__ret__.get('tags'),
-        thumbprint=__ret__.get('thumbprint'))
+        expiration_date=_utilities.get_dict_value(__ret__, 'expirationDate'),
+        friendly_name=_utilities.get_dict_value(__ret__, 'friendlyName'),
+        host_names=_utilities.get_dict_value(__ret__, 'hostNames'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        issue_date=_utilities.get_dict_value(__ret__, 'issueDate'),
+        issuer=_utilities.get_dict_value(__ret__, 'issuer'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        subject_name=_utilities.get_dict_value(__ret__, 'subjectName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        thumbprint=_utilities.get_dict_value(__ret__, 'thumbprint'))

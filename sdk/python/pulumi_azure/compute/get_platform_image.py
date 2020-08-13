@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPlatformImageResult',
+    'AwaitableGetPlatformImageResult',
+    'get_platform_image',
+]
+
+
+@pulumi.output_type
+class _GetPlatformImageResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    offer: str = pulumi.property("offer")
+    publisher: str = pulumi.property("publisher")
+    sku: str = pulumi.property("sku")
+    version: str = pulumi.property("version")
+
 
 class GetPlatformImageResult:
     """
@@ -34,6 +51,8 @@ class GetPlatformImageResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPlatformImageResult(GetPlatformImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +66,13 @@ class AwaitableGetPlatformImageResult(GetPlatformImageResult):
             sku=self.sku,
             version=self.version)
 
-def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=None,opts=None):
+
+def get_platform_image(location: Optional[str] = None,
+                       offer: Optional[str] = None,
+                       publisher: Optional[str] = None,
+                       sku: Optional[str] = None,
+                       version: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlatformImageResult:
     """
     Use this data source to access information about a Platform Image.
 
@@ -72,8 +97,6 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
     :param str version: The version of the Platform Image.
     """
     __args__ = dict()
-
-
     __args__['location'] = location
     __args__['offer'] = offer
     __args__['publisher'] = publisher
@@ -82,13 +105,13 @@ def get_platform_image(location=None,offer=None,publisher=None,sku=None,version=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getPlatformImage:getPlatformImage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getPlatformImage:getPlatformImage', __args__, opts=opts, typ=_GetPlatformImageResult).value
 
     return AwaitableGetPlatformImageResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        offer=__ret__.get('offer'),
-        publisher=__ret__.get('publisher'),
-        sku=__ret__.get('sku'),
-        version=__ret__.get('version'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        offer=_utilities.get_dict_value(__ret__, 'offer'),
+        publisher=_utilities.get_dict_value(__ret__, 'publisher'),
+        sku=_utilities.get_dict_value(__ret__, 'sku'),
+        version=_utilities.get_dict_value(__ret__, 'version'))

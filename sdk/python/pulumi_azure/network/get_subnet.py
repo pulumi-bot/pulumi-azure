@@ -5,8 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSubnetResult',
+    'AwaitableGetSubnetResult',
+    'get_subnet',
+]
+
+
+@pulumi.output_type
+class _GetSubnetResult(dict):
+    address_prefix: str = pulumi.property("addressPrefix")
+    address_prefixes: List[str] = pulumi.property("addressPrefixes")
+    enforce_private_link_endpoint_network_policies: bool = pulumi.property("enforcePrivateLinkEndpointNetworkPolicies")
+    enforce_private_link_service_network_policies: bool = pulumi.property("enforcePrivateLinkServiceNetworkPolicies")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    network_security_group_id: str = pulumi.property("networkSecurityGroupId")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    route_table_id: str = pulumi.property("routeTableId")
+    service_endpoints: List[str] = pulumi.property("serviceEndpoints")
+    virtual_network_name: str = pulumi.property("virtualNetworkName")
+
 
 class GetSubnetResult:
     """
@@ -70,6 +92,8 @@ class GetSubnetResult:
         if virtual_network_name and not isinstance(virtual_network_name, str):
             raise TypeError("Expected argument 'virtual_network_name' to be a str")
         __self__.virtual_network_name = virtual_network_name
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -88,7 +112,11 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             service_endpoints=self.service_endpoints,
             virtual_network_name=self.virtual_network_name)
 
-def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts=None):
+
+def get_subnet(name: Optional[str] = None,
+               resource_group_name: Optional[str] = None,
+               virtual_network_name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
     Use this data source to access information about an existing Subnet within a Virtual Network.
 
@@ -110,26 +138,24 @@ def get_subnet(name=None,resource_group_name=None,virtual_network_name=None,opts
     :param str virtual_network_name: Specifies the name of the Virtual Network this Subnet is located within.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['virtualNetworkName'] = virtual_network_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getSubnet:getSubnet', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getSubnet:getSubnet', __args__, opts=opts, typ=_GetSubnetResult).value
 
     return AwaitableGetSubnetResult(
-        address_prefix=__ret__.get('addressPrefix'),
-        address_prefixes=__ret__.get('addressPrefixes'),
-        enforce_private_link_endpoint_network_policies=__ret__.get('enforcePrivateLinkEndpointNetworkPolicies'),
-        enforce_private_link_service_network_policies=__ret__.get('enforcePrivateLinkServiceNetworkPolicies'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        network_security_group_id=__ret__.get('networkSecurityGroupId'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        route_table_id=__ret__.get('routeTableId'),
-        service_endpoints=__ret__.get('serviceEndpoints'),
-        virtual_network_name=__ret__.get('virtualNetworkName'))
+        address_prefix=_utilities.get_dict_value(__ret__, 'addressPrefix'),
+        address_prefixes=_utilities.get_dict_value(__ret__, 'addressPrefixes'),
+        enforce_private_link_endpoint_network_policies=_utilities.get_dict_value(__ret__, 'enforcePrivateLinkEndpointNetworkPolicies'),
+        enforce_private_link_service_network_policies=_utilities.get_dict_value(__ret__, 'enforcePrivateLinkServiceNetworkPolicies'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        network_security_group_id=_utilities.get_dict_value(__ret__, 'networkSecurityGroupId'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        route_table_id=_utilities.get_dict_value(__ret__, 'routeTableId'),
+        service_endpoints=_utilities.get_dict_value(__ret__, 'serviceEndpoints'),
+        virtual_network_name=_utilities.get_dict_value(__ret__, 'virtualNetworkName'))

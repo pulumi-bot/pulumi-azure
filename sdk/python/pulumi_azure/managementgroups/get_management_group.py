@@ -5,10 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetManagementGroupResult',
+    'AwaitableGetManagementGroupResult',
+    'get_management_group',
+]
 
 warnings.warn("azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup", DeprecationWarning)
+
+@pulumi.output_type
+class _GetManagementGroupResult(dict):
+    display_name: str = pulumi.property("displayName")
+    group_id: str = pulumi.property("groupId")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    parent_management_group_id: str = pulumi.property("parentManagementGroupId")
+    subscription_ids: List[str] = pulumi.property("subscriptionIds")
+
+
 class GetManagementGroupResult:
     """
     A collection of values returned by getManagementGroup.
@@ -45,6 +62,8 @@ class GetManagementGroupResult:
         """
         A list of Subscription IDs which are assigned to the Management Group.
         """
+
+
 class AwaitableGetManagementGroupResult(GetManagementGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,7 +77,11 @@ class AwaitableGetManagementGroupResult(GetManagementGroupResult):
             parent_management_group_id=self.parent_management_group_id,
             subscription_ids=self.subscription_ids)
 
-def get_management_group(display_name=None,group_id=None,name=None,opts=None):
+
+def get_management_group(display_name: Optional[str] = None,
+                         group_id: Optional[str] = None,
+                         name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagementGroupResult:
     """
     Use this data source to access information about an existing Management Group.
 
@@ -79,21 +102,19 @@ def get_management_group(display_name=None,group_id=None,name=None,opts=None):
     """
     pulumi.log.warn("get_management_group is deprecated: azure.managementgroups.getManagementGroup has been deprecated in favor of azure.management.getGroup")
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['groupId'] = group_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:managementgroups/getManagementGroup:getManagementGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:managementgroups/getManagementGroup:getManagementGroup', __args__, opts=opts, typ=_GetManagementGroupResult).value
 
     return AwaitableGetManagementGroupResult(
-        display_name=__ret__.get('displayName'),
-        group_id=__ret__.get('groupId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        parent_management_group_id=__ret__.get('parentManagementGroupId'),
-        subscription_ids=__ret__.get('subscriptionIds'))
+        display_name=_utilities.get_dict_value(__ret__, 'displayName'),
+        group_id=_utilities.get_dict_value(__ret__, 'groupId'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        parent_management_group_id=_utilities.get_dict_value(__ret__, 'parentManagementGroupId'),
+        subscription_ids=_utilities.get_dict_value(__ret__, 'subscriptionIds'))

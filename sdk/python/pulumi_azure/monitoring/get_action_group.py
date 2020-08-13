@@ -5,8 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetActionGroupResult',
+    'AwaitableGetActionGroupResult',
+    'get_action_group',
+]
+
+
+@pulumi.output_type
+class _GetActionGroupResult(dict):
+    arm_role_receivers: List['outputs.GetActionGroupArmRoleReceiverResult'] = pulumi.property("armRoleReceivers")
+    automation_runbook_receivers: List['outputs.GetActionGroupAutomationRunbookReceiverResult'] = pulumi.property("automationRunbookReceivers")
+    azure_app_push_receivers: List['outputs.GetActionGroupAzureAppPushReceiverResult'] = pulumi.property("azureAppPushReceivers")
+    azure_function_receivers: List['outputs.GetActionGroupAzureFunctionReceiverResult'] = pulumi.property("azureFunctionReceivers")
+    email_receivers: List['outputs.GetActionGroupEmailReceiverResult'] = pulumi.property("emailReceivers")
+    enabled: bool = pulumi.property("enabled")
+    id: str = pulumi.property("id")
+    itsm_receivers: List['outputs.GetActionGroupItsmReceiverResult'] = pulumi.property("itsmReceivers")
+    logic_app_receivers: List['outputs.GetActionGroupLogicAppReceiverResult'] = pulumi.property("logicAppReceivers")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    short_name: str = pulumi.property("shortName")
+    sms_receivers: List['outputs.GetActionGroupSmsReceiverResult'] = pulumi.property("smsReceivers")
+    voice_receivers: List['outputs.GetActionGroupVoiceReceiverResult'] = pulumi.property("voiceReceivers")
+    webhook_receivers: List['outputs.GetActionGroupWebhookReceiverResult'] = pulumi.property("webhookReceivers")
+
 
 class GetActionGroupResult:
     """
@@ -100,6 +127,8 @@ class GetActionGroupResult:
         """
         One or more `webhook_receiver` blocks as defined below.
         """
+
+
 class AwaitableGetActionGroupResult(GetActionGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +151,10 @@ class AwaitableGetActionGroupResult(GetActionGroupResult):
             voice_receivers=self.voice_receivers,
             webhook_receivers=self.webhook_receivers)
 
-def get_action_group(name=None,resource_group_name=None,opts=None):
+
+def get_action_group(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActionGroupResult:
     """
     Use this data source to access the properties of an Action Group.
 
@@ -142,29 +174,27 @@ def get_action_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Action Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:monitoring/getActionGroup:getActionGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:monitoring/getActionGroup:getActionGroup', __args__, opts=opts, typ=_GetActionGroupResult).value
 
     return AwaitableGetActionGroupResult(
-        arm_role_receivers=__ret__.get('armRoleReceivers'),
-        automation_runbook_receivers=__ret__.get('automationRunbookReceivers'),
-        azure_app_push_receivers=__ret__.get('azureAppPushReceivers'),
-        azure_function_receivers=__ret__.get('azureFunctionReceivers'),
-        email_receivers=__ret__.get('emailReceivers'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        itsm_receivers=__ret__.get('itsmReceivers'),
-        logic_app_receivers=__ret__.get('logicAppReceivers'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        short_name=__ret__.get('shortName'),
-        sms_receivers=__ret__.get('smsReceivers'),
-        voice_receivers=__ret__.get('voiceReceivers'),
-        webhook_receivers=__ret__.get('webhookReceivers'))
+        arm_role_receivers=_utilities.get_dict_value(__ret__, 'armRoleReceivers'),
+        automation_runbook_receivers=_utilities.get_dict_value(__ret__, 'automationRunbookReceivers'),
+        azure_app_push_receivers=_utilities.get_dict_value(__ret__, 'azureAppPushReceivers'),
+        azure_function_receivers=_utilities.get_dict_value(__ret__, 'azureFunctionReceivers'),
+        email_receivers=_utilities.get_dict_value(__ret__, 'emailReceivers'),
+        enabled=_utilities.get_dict_value(__ret__, 'enabled'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        itsm_receivers=_utilities.get_dict_value(__ret__, 'itsmReceivers'),
+        logic_app_receivers=_utilities.get_dict_value(__ret__, 'logicAppReceivers'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        short_name=_utilities.get_dict_value(__ret__, 'shortName'),
+        sms_receivers=_utilities.get_dict_value(__ret__, 'smsReceivers'),
+        voice_receivers=_utilities.get_dict_value(__ret__, 'voiceReceivers'),
+        webhook_receivers=_utilities.get_dict_value(__ret__, 'webhookReceivers'))

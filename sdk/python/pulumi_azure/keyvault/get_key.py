@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetKeyResult',
+    'AwaitableGetKeyResult',
+    'get_key',
+]
+
+
+@pulumi.output_type
+class _GetKeyResult(dict):
+    e: str = pulumi.property("e")
+    id: str = pulumi.property("id")
+    key_opts: List[str] = pulumi.property("keyOpts")
+    key_size: float = pulumi.property("keySize")
+    key_type: str = pulumi.property("keyType")
+    key_vault_id: str = pulumi.property("keyVaultId")
+    n: str = pulumi.property("n")
+    name: str = pulumi.property("name")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    version: str = pulumi.property("version")
+
 
 class GetKeyResult:
     """
@@ -67,6 +88,8 @@ class GetKeyResult:
         """
         The current version of the Key Vault Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -84,7 +107,10 @@ class AwaitableGetKeyResult(GetKeyResult):
             tags=self.tags,
             version=self.version)
 
-def get_key(key_vault_id=None,name=None,opts=None):
+
+def get_key(key_vault_id: Optional[str] = None,
+            name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyResult:
     """
     Use this data source to access information about an existing Key Vault Key.
 
@@ -104,24 +130,22 @@ def get_key(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Key.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getKey:getKey', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getKey:getKey', __args__, opts=opts, typ=_GetKeyResult).value
 
     return AwaitableGetKeyResult(
-        e=__ret__.get('e'),
-        id=__ret__.get('id'),
-        key_opts=__ret__.get('keyOpts'),
-        key_size=__ret__.get('keySize'),
-        key_type=__ret__.get('keyType'),
-        key_vault_id=__ret__.get('keyVaultId'),
-        n=__ret__.get('n'),
-        name=__ret__.get('name'),
-        tags=__ret__.get('tags'),
-        version=__ret__.get('version'))
+        e=_utilities.get_dict_value(__ret__, 'e'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        key_opts=_utilities.get_dict_value(__ret__, 'keyOpts'),
+        key_size=_utilities.get_dict_value(__ret__, 'keySize'),
+        key_type=_utilities.get_dict_value(__ret__, 'keyType'),
+        key_vault_id=_utilities.get_dict_value(__ret__, 'keyVaultId'),
+        n=_utilities.get_dict_value(__ret__, 'n'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        version=_utilities.get_dict_value(__ret__, 'version'))

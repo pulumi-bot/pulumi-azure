@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetConfigurationResult',
+    'AwaitableGetConfigurationResult',
+    'get_configuration',
+]
+
+
+@pulumi.output_type
+class _GetConfigurationResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    scope: str = pulumi.property("scope")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetConfigurationResult:
     """
@@ -43,6 +60,8 @@ class GetConfigurationResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetConfigurationResult(GetConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +75,10 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
             scope=self.scope,
             tags=self.tags)
 
-def get_configuration(name=None,resource_group_name=None,opts=None):
+
+def get_configuration(name: Optional[str] = None,
+                      resource_group_name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConfigurationResult:
     """
     Use this data source to access information about an existing Maintenance Configuration.
 
@@ -76,20 +98,18 @@ def get_configuration(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where this Maintenance Configuration exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:maintenance/getConfiguration:getConfiguration', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:maintenance/getConfiguration:getConfiguration', __args__, opts=opts, typ=_GetConfigurationResult).value
 
     return AwaitableGetConfigurationResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        scope=__ret__.get('scope'),
-        tags=__ret__.get('tags'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        scope=_utilities.get_dict_value(__ret__, 'scope'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

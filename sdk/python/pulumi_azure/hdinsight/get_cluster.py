@@ -5,8 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetClusterResult',
+    'AwaitableGetClusterResult',
+    'get_cluster',
+]
+
+
+@pulumi.output_type
+class _GetClusterResult(dict):
+    cluster_version: str = pulumi.property("clusterVersion")
+    component_versions: Mapping[str, str] = pulumi.property("componentVersions")
+    edge_ssh_endpoint: str = pulumi.property("edgeSshEndpoint")
+    gateways: List['outputs.GetClusterGatewayResult'] = pulumi.property("gateways")
+    https_endpoint: str = pulumi.property("httpsEndpoint")
+    id: str = pulumi.property("id")
+    kind: str = pulumi.property("kind")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    ssh_endpoint: str = pulumi.property("sshEndpoint")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    tier: str = pulumi.property("tier")
+    tls_min_version: str = pulumi.property("tlsMinVersion")
+
 
 class GetClusterResult:
     """
@@ -88,6 +114,8 @@ class GetClusterResult:
         if tls_min_version and not isinstance(tls_min_version, str):
             raise TypeError("Expected argument 'tls_min_version' to be a str")
         __self__.tls_min_version = tls_min_version
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +137,10 @@ class AwaitableGetClusterResult(GetClusterResult):
             tier=self.tier,
             tls_min_version=self.tls_min_version)
 
-def get_cluster(name=None,resource_group_name=None,opts=None):
+
+def get_cluster(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Use this data source to access information about an existing HDInsight Cluster.
 
@@ -129,28 +160,26 @@ def get_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group in which this HDInsight Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:hdinsight/getCluster:getCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:hdinsight/getCluster:getCluster', __args__, opts=opts, typ=_GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        cluster_version=__ret__.get('clusterVersion'),
-        component_versions=__ret__.get('componentVersions'),
-        edge_ssh_endpoint=__ret__.get('edgeSshEndpoint'),
-        gateways=__ret__.get('gateways'),
-        https_endpoint=__ret__.get('httpsEndpoint'),
-        id=__ret__.get('id'),
-        kind=__ret__.get('kind'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        ssh_endpoint=__ret__.get('sshEndpoint'),
-        tags=__ret__.get('tags'),
-        tier=__ret__.get('tier'),
-        tls_min_version=__ret__.get('tlsMinVersion'))
+        cluster_version=_utilities.get_dict_value(__ret__, 'clusterVersion'),
+        component_versions=_utilities.get_dict_value(__ret__, 'componentVersions'),
+        edge_ssh_endpoint=_utilities.get_dict_value(__ret__, 'edgeSshEndpoint'),
+        gateways=_utilities.get_dict_value(__ret__, 'gateways'),
+        https_endpoint=_utilities.get_dict_value(__ret__, 'httpsEndpoint'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        kind=_utilities.get_dict_value(__ret__, 'kind'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        ssh_endpoint=_utilities.get_dict_value(__ret__, 'sshEndpoint'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        tier=_utilities.get_dict_value(__ret__, 'tier'),
+        tls_min_version=_utilities.get_dict_value(__ret__, 'tlsMinVersion'))

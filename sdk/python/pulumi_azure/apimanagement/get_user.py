@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetUserResult',
+    'AwaitableGetUserResult',
+    'get_user',
+]
+
+
+@pulumi.output_type
+class _GetUserResult(dict):
+    api_management_name: str = pulumi.property("apiManagementName")
+    email: str = pulumi.property("email")
+    first_name: str = pulumi.property("firstName")
+    id: str = pulumi.property("id")
+    last_name: str = pulumi.property("lastName")
+    note: str = pulumi.property("note")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    state: str = pulumi.property("state")
+    user_id: str = pulumi.property("userId")
+
 
 class GetUserResult:
     """
@@ -58,6 +78,8 @@ class GetUserResult:
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         __self__.user_id = user_id
+
+
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,7 +96,11 @@ class AwaitableGetUserResult(GetUserResult):
             state=self.state,
             user_id=self.user_id)
 
-def get_user(api_management_name=None,resource_group_name=None,user_id=None,opts=None):
+
+def get_user(api_management_name: Optional[str] = None,
+             resource_group_name: Optional[str] = None,
+             user_id: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Use this data source to access information about an existing API Management User.
 
@@ -84,24 +110,22 @@ def get_user(api_management_name=None,resource_group_name=None,user_id=None,opts
     :param str user_id: The Identifier for the User.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['resourceGroupName'] = resource_group_name
     __args__['userId'] = user_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getUser:getUser', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getUser:getUser', __args__, opts=opts, typ=_GetUserResult).value
 
     return AwaitableGetUserResult(
-        api_management_name=__ret__.get('apiManagementName'),
-        email=__ret__.get('email'),
-        first_name=__ret__.get('firstName'),
-        id=__ret__.get('id'),
-        last_name=__ret__.get('lastName'),
-        note=__ret__.get('note'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        state=__ret__.get('state'),
-        user_id=__ret__.get('userId'))
+        api_management_name=_utilities.get_dict_value(__ret__, 'apiManagementName'),
+        email=_utilities.get_dict_value(__ret__, 'email'),
+        first_name=_utilities.get_dict_value(__ret__, 'firstName'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        last_name=_utilities.get_dict_value(__ret__, 'lastName'),
+        note=_utilities.get_dict_value(__ret__, 'note'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        state=_utilities.get_dict_value(__ret__, 'state'),
+        user_id=_utilities.get_dict_value(__ret__, 'userId'))

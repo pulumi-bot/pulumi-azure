@@ -5,8 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
+
+
+@pulumi.output_type
+class _GetServiceResult(dict):
+    additional_locations: List['outputs.GetServiceAdditionalLocationResult'] = pulumi.property("additionalLocations")
+    developer_portal_url: str = pulumi.property("developerPortalUrl")
+    gateway_regional_url: str = pulumi.property("gatewayRegionalUrl")
+    gateway_url: str = pulumi.property("gatewayUrl")
+    hostname_configurations: List['outputs.GetServiceHostnameConfigurationResult'] = pulumi.property("hostnameConfigurations")
+    id: str = pulumi.property("id")
+    identities: List['outputs.GetServiceIdentityResult'] = pulumi.property("identities")
+    location: str = pulumi.property("location")
+    management_api_url: str = pulumi.property("managementApiUrl")
+    name: str = pulumi.property("name")
+    notification_sender_email: str = pulumi.property("notificationSenderEmail")
+    portal_url: str = pulumi.property("portalUrl")
+    public_ip_addresses: List[str] = pulumi.property("publicIpAddresses")
+    publisher_email: str = pulumi.property("publisherEmail")
+    publisher_name: str = pulumi.property("publisherName")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    scm_url: str = pulumi.property("scmUrl")
+    sku_name: str = pulumi.property("skuName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetServiceResult:
     """
@@ -121,6 +152,8 @@ class GetServiceResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -147,7 +180,10 @@ class AwaitableGetServiceResult(GetServiceResult):
             sku_name=self.sku_name,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Use this data source to access information about an existing API Management Service.
 
@@ -167,33 +203,31 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getService:getService', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getService:getService', __args__, opts=opts, typ=_GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        additional_locations=__ret__.get('additionalLocations'),
-        developer_portal_url=__ret__.get('developerPortalUrl'),
-        gateway_regional_url=__ret__.get('gatewayRegionalUrl'),
-        gateway_url=__ret__.get('gatewayUrl'),
-        hostname_configurations=__ret__.get('hostnameConfigurations'),
-        id=__ret__.get('id'),
-        identities=__ret__.get('identities'),
-        location=__ret__.get('location'),
-        management_api_url=__ret__.get('managementApiUrl'),
-        name=__ret__.get('name'),
-        notification_sender_email=__ret__.get('notificationSenderEmail'),
-        portal_url=__ret__.get('portalUrl'),
-        public_ip_addresses=__ret__.get('publicIpAddresses'),
-        publisher_email=__ret__.get('publisherEmail'),
-        publisher_name=__ret__.get('publisherName'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        scm_url=__ret__.get('scmUrl'),
-        sku_name=__ret__.get('skuName'),
-        tags=__ret__.get('tags'))
+        additional_locations=_utilities.get_dict_value(__ret__, 'additionalLocations'),
+        developer_portal_url=_utilities.get_dict_value(__ret__, 'developerPortalUrl'),
+        gateway_regional_url=_utilities.get_dict_value(__ret__, 'gatewayRegionalUrl'),
+        gateway_url=_utilities.get_dict_value(__ret__, 'gatewayUrl'),
+        hostname_configurations=_utilities.get_dict_value(__ret__, 'hostnameConfigurations'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        identities=_utilities.get_dict_value(__ret__, 'identities'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        management_api_url=_utilities.get_dict_value(__ret__, 'managementApiUrl'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        notification_sender_email=_utilities.get_dict_value(__ret__, 'notificationSenderEmail'),
+        portal_url=_utilities.get_dict_value(__ret__, 'portalUrl'),
+        public_ip_addresses=_utilities.get_dict_value(__ret__, 'publicIpAddresses'),
+        publisher_email=_utilities.get_dict_value(__ret__, 'publisherEmail'),
+        publisher_name=_utilities.get_dict_value(__ret__, 'publisherName'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        scm_url=_utilities.get_dict_value(__ret__, 'scmUrl'),
+        sku_name=_utilities.get_dict_value(__ret__, 'skuName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

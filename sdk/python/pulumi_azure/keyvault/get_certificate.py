@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCertificateResult',
+    'AwaitableGetCertificateResult',
+    'get_certificate',
+]
+
+
+@pulumi.output_type
+class _GetCertificateResult(dict):
+    certificate_data: str = pulumi.property("certificateData")
+    certificate_policies: List['outputs.GetCertificateCertificatePolicyResult'] = pulumi.property("certificatePolicies")
+    id: str = pulumi.property("id")
+    key_vault_id: str = pulumi.property("keyVaultId")
+    name: str = pulumi.property("name")
+    secret_id: str = pulumi.property("secretId")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    thumbprint: str = pulumi.property("thumbprint")
+    version: str = pulumi.property("version")
+
 
 class GetCertificateResult:
     """
@@ -52,6 +73,8 @@ class GetCertificateResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,7 +91,11 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             thumbprint=self.thumbprint,
             version=self.version)
 
-def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
+
+def get_certificate(key_vault_id: Optional[str] = None,
+                    name: Optional[str] = None,
+                    version: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Use this data source to access information about an existing Key Vault Certificate.
 
@@ -94,24 +121,22 @@ def get_certificate(key_vault_id=None,name=None,version=None,opts=None):
     :param str version: Specifies the version of the certificate to look up.  (Defaults to latest)
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getCertificate:getCertificate', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getCertificate:getCertificate', __args__, opts=opts, typ=_GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        certificate_data=__ret__.get('certificateData'),
-        certificate_policies=__ret__.get('certificatePolicies'),
-        id=__ret__.get('id'),
-        key_vault_id=__ret__.get('keyVaultId'),
-        name=__ret__.get('name'),
-        secret_id=__ret__.get('secretId'),
-        tags=__ret__.get('tags'),
-        thumbprint=__ret__.get('thumbprint'),
-        version=__ret__.get('version'))
+        certificate_data=_utilities.get_dict_value(__ret__, 'certificateData'),
+        certificate_policies=_utilities.get_dict_value(__ret__, 'certificatePolicies'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        key_vault_id=_utilities.get_dict_value(__ret__, 'keyVaultId'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        secret_id=_utilities.get_dict_value(__ret__, 'secretId'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        thumbprint=_utilities.get_dict_value(__ret__, 'thumbprint'),
+        version=_utilities.get_dict_value(__ret__, 'version'))

@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetDatasetBlobStorageResult',
+    'AwaitableGetDatasetBlobStorageResult',
+    'get_dataset_blob_storage',
+]
+
+
+@pulumi.output_type
+class _GetDatasetBlobStorageResult(dict):
+    container_name: str = pulumi.property("containerName")
+    data_share_id: str = pulumi.property("dataShareId")
+    display_name: str = pulumi.property("displayName")
+    file_path: str = pulumi.property("filePath")
+    folder_path: str = pulumi.property("folderPath")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    storage_accounts: List['outputs.GetDatasetBlobStorageStorageAccountResult'] = pulumi.property("storageAccounts")
+
 
 class GetDatasetBlobStorageResult:
     """
@@ -58,6 +78,8 @@ class GetDatasetBlobStorageResult:
         """
         A `storage_account` block as defined below.
         """
+
+
 class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +95,10 @@ class AwaitableGetDatasetBlobStorageResult(GetDatasetBlobStorageResult):
             name=self.name,
             storage_accounts=self.storage_accounts)
 
-def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
+
+def get_dataset_blob_storage(data_share_id: Optional[str] = None,
+                             name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatasetBlobStorageResult:
     """
     Use this data source to access information about an existing Data Share Blob Storage Dataset.
 
@@ -93,22 +118,20 @@ def get_dataset_blob_storage(data_share_id=None,name=None,opts=None):
     :param str name: The name of this Data Share Blob Storage Dataset.
     """
     __args__ = dict()
-
-
     __args__['dataShareId'] = data_share_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage', __args__, opts=opts, typ=_GetDatasetBlobStorageResult).value
 
     return AwaitableGetDatasetBlobStorageResult(
-        container_name=__ret__.get('containerName'),
-        data_share_id=__ret__.get('dataShareId'),
-        display_name=__ret__.get('displayName'),
-        file_path=__ret__.get('filePath'),
-        folder_path=__ret__.get('folderPath'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        storage_accounts=__ret__.get('storageAccounts'))
+        container_name=_utilities.get_dict_value(__ret__, 'containerName'),
+        data_share_id=_utilities.get_dict_value(__ret__, 'dataShareId'),
+        display_name=_utilities.get_dict_value(__ret__, 'displayName'),
+        file_path=_utilities.get_dict_value(__ret__, 'filePath'),
+        folder_path=_utilities.get_dict_value(__ret__, 'folderPath'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        storage_accounts=_utilities.get_dict_value(__ret__, 'storageAccounts'))

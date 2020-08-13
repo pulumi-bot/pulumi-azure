@@ -5,10 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetEventhubNamespaceResult',
+    'AwaitableGetEventhubNamespaceResult',
+    'get_eventhub_namespace',
+]
 
 warnings.warn("azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace", DeprecationWarning)
+
+@pulumi.output_type
+class _GetEventhubNamespaceResult(dict):
+    auto_inflate_enabled: bool = pulumi.property("autoInflateEnabled")
+    capacity: float = pulumi.property("capacity")
+    dedicated_cluster_id: str = pulumi.property("dedicatedClusterId")
+    default_primary_connection_string: str = pulumi.property("defaultPrimaryConnectionString")
+    default_primary_connection_string_alias: str = pulumi.property("defaultPrimaryConnectionStringAlias")
+    default_primary_key: str = pulumi.property("defaultPrimaryKey")
+    default_secondary_connection_string: str = pulumi.property("defaultSecondaryConnectionString")
+    default_secondary_connection_string_alias: str = pulumi.property("defaultSecondaryConnectionStringAlias")
+    default_secondary_key: str = pulumi.property("defaultSecondaryKey")
+    id: str = pulumi.property("id")
+    kafka_enabled: bool = pulumi.property("kafkaEnabled")
+    location: str = pulumi.property("location")
+    maximum_throughput_units: float = pulumi.property("maximumThroughputUnits")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku: str = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    zone_redundant: bool = pulumi.property("zoneRedundant")
+
+
 class GetEventhubNamespaceResult:
     """
     A collection of values returned by getEventhubNamespace.
@@ -117,6 +146,8 @@ class GetEventhubNamespaceResult:
         """
         Is this EventHub Namespace deployed across Availability Zones?
         """
+
+
 class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -142,7 +173,10 @@ class AwaitableGetEventhubNamespaceResult(GetEventhubNamespaceResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_eventhub_namespace(name: Optional[str] = None,
+                           resource_group_name: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEventhubNamespaceResult:
     """
     Use this data source to access information about an existing EventHub Namespace.
 
@@ -163,32 +197,30 @@ def get_eventhub_namespace(name=None,resource_group_name=None,opts=None):
     """
     pulumi.log.warn("get_eventhub_namespace is deprecated: azure.eventhub.getEventhubNamespace has been deprecated in favor of azure.eventhub.getNamespace")
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventhubNamespace:getEventhubNamespace', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:eventhub/getEventhubNamespace:getEventhubNamespace', __args__, opts=opts, typ=_GetEventhubNamespaceResult).value
 
     return AwaitableGetEventhubNamespaceResult(
-        auto_inflate_enabled=__ret__.get('autoInflateEnabled'),
-        capacity=__ret__.get('capacity'),
-        dedicated_cluster_id=__ret__.get('dedicatedClusterId'),
-        default_primary_connection_string=__ret__.get('defaultPrimaryConnectionString'),
-        default_primary_connection_string_alias=__ret__.get('defaultPrimaryConnectionStringAlias'),
-        default_primary_key=__ret__.get('defaultPrimaryKey'),
-        default_secondary_connection_string=__ret__.get('defaultSecondaryConnectionString'),
-        default_secondary_connection_string_alias=__ret__.get('defaultSecondaryConnectionStringAlias'),
-        default_secondary_key=__ret__.get('defaultSecondaryKey'),
-        id=__ret__.get('id'),
-        kafka_enabled=__ret__.get('kafkaEnabled'),
-        location=__ret__.get('location'),
-        maximum_throughput_units=__ret__.get('maximumThroughputUnits'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'),
-        zone_redundant=__ret__.get('zoneRedundant'))
+        auto_inflate_enabled=_utilities.get_dict_value(__ret__, 'autoInflateEnabled'),
+        capacity=_utilities.get_dict_value(__ret__, 'capacity'),
+        dedicated_cluster_id=_utilities.get_dict_value(__ret__, 'dedicatedClusterId'),
+        default_primary_connection_string=_utilities.get_dict_value(__ret__, 'defaultPrimaryConnectionString'),
+        default_primary_connection_string_alias=_utilities.get_dict_value(__ret__, 'defaultPrimaryConnectionStringAlias'),
+        default_primary_key=_utilities.get_dict_value(__ret__, 'defaultPrimaryKey'),
+        default_secondary_connection_string=_utilities.get_dict_value(__ret__, 'defaultSecondaryConnectionString'),
+        default_secondary_connection_string_alias=_utilities.get_dict_value(__ret__, 'defaultSecondaryConnectionStringAlias'),
+        default_secondary_key=_utilities.get_dict_value(__ret__, 'defaultSecondaryKey'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        kafka_enabled=_utilities.get_dict_value(__ret__, 'kafkaEnabled'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        maximum_throughput_units=_utilities.get_dict_value(__ret__, 'maximumThroughputUnits'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        sku=_utilities.get_dict_value(__ret__, 'sku'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        zone_redundant=_utilities.get_dict_value(__ret__, 'zoneRedundant'))

@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetInsightsResult',
+    'AwaitableGetInsightsResult',
+    'get_insights',
+]
+
+
+@pulumi.output_type
+class _GetInsightsResult(dict):
+    app_id: str = pulumi.property("appId")
+    application_type: str = pulumi.property("applicationType")
+    id: str = pulumi.property("id")
+    instrumentation_key: str = pulumi.property("instrumentationKey")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    retention_in_days: float = pulumi.property("retentionInDays")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetInsightsResult:
     """
@@ -61,6 +81,8 @@ class GetInsightsResult:
         """
         Tags applied to the component.
         """
+
+
 class AwaitableGetInsightsResult(GetInsightsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +99,10 @@ class AwaitableGetInsightsResult(GetInsightsResult):
             retention_in_days=self.retention_in_days,
             tags=self.tags)
 
-def get_insights(name=None,resource_group_name=None,opts=None):
+
+def get_insights(name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInsightsResult:
     """
     Use this data source to access information about an existing Application Insights component.
 
@@ -97,23 +122,21 @@ def get_insights(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Application Insights component is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appinsights/getInsights:getInsights', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appinsights/getInsights:getInsights', __args__, opts=opts, typ=_GetInsightsResult).value
 
     return AwaitableGetInsightsResult(
-        app_id=__ret__.get('appId'),
-        application_type=__ret__.get('applicationType'),
-        id=__ret__.get('id'),
-        instrumentation_key=__ret__.get('instrumentationKey'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        retention_in_days=__ret__.get('retentionInDays'),
-        tags=__ret__.get('tags'))
+        app_id=_utilities.get_dict_value(__ret__, 'appId'),
+        application_type=_utilities.get_dict_value(__ret__, 'applicationType'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        instrumentation_key=_utilities.get_dict_value(__ret__, 'instrumentationKey'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        retention_in_days=_utilities.get_dict_value(__ret__, 'retentionInDays'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

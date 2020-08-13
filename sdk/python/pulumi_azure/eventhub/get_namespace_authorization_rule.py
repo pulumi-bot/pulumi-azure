@@ -5,8 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetNamespaceAuthorizationRuleResult',
+    'AwaitableGetNamespaceAuthorizationRuleResult',
+    'get_namespace_authorization_rule',
+]
+
+
+@pulumi.output_type
+class _GetNamespaceAuthorizationRuleResult(dict):
+    id: str = pulumi.property("id")
+    listen: bool = pulumi.property("listen")
+    manage: bool = pulumi.property("manage")
+    name: str = pulumi.property("name")
+    namespace_name: str = pulumi.property("namespaceName")
+    primary_connection_string: str = pulumi.property("primaryConnectionString")
+    primary_connection_string_alias: str = pulumi.property("primaryConnectionStringAlias")
+    primary_key: str = pulumi.property("primaryKey")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_connection_string: str = pulumi.property("secondaryConnectionString")
+    secondary_connection_string_alias: str = pulumi.property("secondaryConnectionStringAlias")
+    secondary_key: str = pulumi.property("secondaryKey")
+    send: bool = pulumi.property("send")
+
 
 class GetNamespaceAuthorizationRuleResult:
     """
@@ -82,6 +106,8 @@ class GetNamespaceAuthorizationRuleResult:
         """
         Does this Authorization Rule have permissions to Send to the Event Hub?
         """
+
+
 class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -102,7 +128,11 @@ class AwaitableGetNamespaceAuthorizationRuleResult(GetNamespaceAuthorizationRule
             secondary_key=self.secondary_key,
             send=self.send)
 
-def get_namespace_authorization_rule(name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_namespace_authorization_rule(name: Optional[str] = None,
+                                     namespace_name: Optional[str] = None,
+                                     resource_group_name: Optional[str] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceAuthorizationRuleResult:
     """
     Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
 
@@ -124,28 +154,26 @@ def get_namespace_authorization_rule(name=None,namespace_name=None,resource_grou
     :param str resource_group_name: The name of the resource group in which the EventHub Namespace exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:eventhub/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:eventhub/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule', __args__, opts=opts, typ=_GetNamespaceAuthorizationRuleResult).value
 
     return AwaitableGetNamespaceAuthorizationRuleResult(
-        id=__ret__.get('id'),
-        listen=__ret__.get('listen'),
-        manage=__ret__.get('manage'),
-        name=__ret__.get('name'),
-        namespace_name=__ret__.get('namespaceName'),
-        primary_connection_string=__ret__.get('primaryConnectionString'),
-        primary_connection_string_alias=__ret__.get('primaryConnectionStringAlias'),
-        primary_key=__ret__.get('primaryKey'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_connection_string=__ret__.get('secondaryConnectionString'),
-        secondary_connection_string_alias=__ret__.get('secondaryConnectionStringAlias'),
-        secondary_key=__ret__.get('secondaryKey'),
-        send=__ret__.get('send'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        listen=_utilities.get_dict_value(__ret__, 'listen'),
+        manage=_utilities.get_dict_value(__ret__, 'manage'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        namespace_name=_utilities.get_dict_value(__ret__, 'namespaceName'),
+        primary_connection_string=_utilities.get_dict_value(__ret__, 'primaryConnectionString'),
+        primary_connection_string_alias=_utilities.get_dict_value(__ret__, 'primaryConnectionStringAlias'),
+        primary_key=_utilities.get_dict_value(__ret__, 'primaryKey'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        secondary_connection_string=_utilities.get_dict_value(__ret__, 'secondaryConnectionString'),
+        secondary_connection_string_alias=_utilities.get_dict_value(__ret__, 'secondaryConnectionStringAlias'),
+        secondary_key=_utilities.get_dict_value(__ret__, 'secondaryKey'),
+        send=_utilities.get_dict_value(__ret__, 'send'))

@@ -5,8 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetImageResult',
+    'AwaitableGetImageResult',
+    'get_image',
+]
+
+
+@pulumi.output_type
+class _GetImageResult(dict):
+    data_disks: List['outputs.GetImageDataDiskResult'] = pulumi.property("dataDisks")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: Optional[str] = pulumi.property("name")
+    name_regex: Optional[str] = pulumi.property("nameRegex")
+    os_disks: List['outputs.GetImageOsDiskResult'] = pulumi.property("osDisks")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sort_descending: Optional[bool] = pulumi.property("sortDescending")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    zone_resilient: bool = pulumi.property("zoneResilient")
+
 
 class GetImageResult:
     """
@@ -64,6 +86,8 @@ class GetImageResult:
         """
         is zone resiliency enabled?
         """
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +105,12 @@ class AwaitableGetImageResult(GetImageResult):
             tags=self.tags,
             zone_resilient=self.zone_resilient)
 
-def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending=None,opts=None):
+
+def get_image(name: Optional[str] = None,
+              name_regex: Optional[str] = None,
+              resource_group_name: Optional[str] = None,
+              sort_descending: Optional[bool] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Use this data source to access information about an existing Image.
 
@@ -103,8 +132,6 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     :param bool sort_descending: By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['resourceGroupName'] = resource_group_name
@@ -112,17 +139,17 @@ def get_image(name=None,name_regex=None,resource_group_name=None,sort_descending
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getImage:getImage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getImage:getImage', __args__, opts=opts, typ=_GetImageResult).value
 
     return AwaitableGetImageResult(
-        data_disks=__ret__.get('dataDisks'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        name_regex=__ret__.get('nameRegex'),
-        os_disks=__ret__.get('osDisks'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sort_descending=__ret__.get('sortDescending'),
-        tags=__ret__.get('tags'),
-        zone_resilient=__ret__.get('zoneResilient'))
+        data_disks=_utilities.get_dict_value(__ret__, 'dataDisks'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        name_regex=_utilities.get_dict_value(__ret__, 'nameRegex'),
+        os_disks=_utilities.get_dict_value(__ret__, 'osDisks'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        sort_descending=_utilities.get_dict_value(__ret__, 'sortDescending'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        zone_resilient=_utilities.get_dict_value(__ret__, 'zoneResilient'))

@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSnapshotResult',
+    'AwaitableGetSnapshotResult',
+    'get_snapshot',
+]
+
+
+@pulumi.output_type
+class _GetSnapshotResult(dict):
+    account_name: str = pulumi.property("accountName")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    pool_name: str = pulumi.property("poolName")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    volume_name: str = pulumi.property("volumeName")
+
 
 class GetSnapshotResult:
     """
@@ -40,6 +58,8 @@ class GetSnapshotResult:
         if volume_name and not isinstance(volume_name, str):
             raise TypeError("Expected argument 'volume_name' to be a str")
         __self__.volume_name = volume_name
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,7 +74,13 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             resource_group_name=self.resource_group_name,
             volume_name=self.volume_name)
 
-def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=None,volume_name=None,opts=None):
+
+def get_snapshot(account_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 pool_name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 volume_name: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
     Uses this data source to access information about an existing NetApp Snapshot.
 
@@ -80,8 +106,6 @@ def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=
     :param str volume_name: The name of the NetApp Volume where the NetApp Snapshot exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['poolName'] = pool_name
@@ -90,14 +114,14 @@ def get_snapshot(account_name=None,name=None,pool_name=None,resource_group_name=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:netapp/getSnapshot:getSnapshot', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:netapp/getSnapshot:getSnapshot', __args__, opts=opts, typ=_GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        account_name=__ret__.get('accountName'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        pool_name=__ret__.get('poolName'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        volume_name=__ret__.get('volumeName'))
+        account_name=_utilities.get_dict_value(__ret__, 'accountName'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        pool_name=_utilities.get_dict_value(__ret__, 'poolName'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        volume_name=_utilities.get_dict_value(__ret__, 'volumeName'))

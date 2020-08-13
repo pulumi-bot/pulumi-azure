@@ -5,8 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetKubernetesClusterResult',
+    'AwaitableGetKubernetesClusterResult',
+    'get_kubernetes_cluster',
+]
+
+
+@pulumi.output_type
+class _GetKubernetesClusterResult(dict):
+    addon_profiles: List['outputs.GetKubernetesClusterAddonProfileResult'] = pulumi.property("addonProfiles")
+    agent_pool_profiles: List['outputs.GetKubernetesClusterAgentPoolProfileResult'] = pulumi.property("agentPoolProfiles")
+    api_server_authorized_ip_ranges: List[str] = pulumi.property("apiServerAuthorizedIpRanges")
+    disk_encryption_set_id: str = pulumi.property("diskEncryptionSetId")
+    dns_prefix: str = pulumi.property("dnsPrefix")
+    fqdn: str = pulumi.property("fqdn")
+    id: str = pulumi.property("id")
+    identities: List['outputs.GetKubernetesClusterIdentityResult'] = pulumi.property("identities")
+    kube_admin_config_raw: str = pulumi.property("kubeAdminConfigRaw")
+    kube_admin_configs: List['outputs.GetKubernetesClusterKubeAdminConfigResult'] = pulumi.property("kubeAdminConfigs")
+    kube_config_raw: str = pulumi.property("kubeConfigRaw")
+    kube_configs: List['outputs.GetKubernetesClusterKubeConfigResult'] = pulumi.property("kubeConfigs")
+    kubelet_identities: List['outputs.GetKubernetesClusterKubeletIdentityResult'] = pulumi.property("kubeletIdentities")
+    kubernetes_version: str = pulumi.property("kubernetesVersion")
+    linux_profiles: List['outputs.GetKubernetesClusterLinuxProfileResult'] = pulumi.property("linuxProfiles")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    network_profiles: List['outputs.GetKubernetesClusterNetworkProfileResult'] = pulumi.property("networkProfiles")
+    node_resource_group: str = pulumi.property("nodeResourceGroup")
+    private_cluster_enabled: bool = pulumi.property("privateClusterEnabled")
+    private_fqdn: str = pulumi.property("privateFqdn")
+    private_link_enabled: bool = pulumi.property("privateLinkEnabled")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    role_based_access_controls: List['outputs.GetKubernetesClusterRoleBasedAccessControlResult'] = pulumi.property("roleBasedAccessControls")
+    service_principals: List['outputs.GetKubernetesClusterServicePrincipalResult'] = pulumi.property("servicePrincipals")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    windows_profiles: List['outputs.GetKubernetesClusterWindowsProfileResult'] = pulumi.property("windowsProfiles")
+
 
 class GetKubernetesClusterResult:
     """
@@ -173,6 +212,8 @@ class GetKubernetesClusterResult:
         """
         A `windows_profile` block as documented below.
         """
+
+
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -207,7 +248,10 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             tags=self.tags,
             windows_profiles=self.windows_profiles)
 
-def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
+
+def get_kubernetes_cluster(name: Optional[str] = None,
+                           resource_group_name: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
     Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
 
@@ -226,41 +270,39 @@ def get_kubernetes_cluster(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the managed Kubernetes Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:containerservice/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=_GetKubernetesClusterResult).value
 
     return AwaitableGetKubernetesClusterResult(
-        addon_profiles=__ret__.get('addonProfiles'),
-        agent_pool_profiles=__ret__.get('agentPoolProfiles'),
-        api_server_authorized_ip_ranges=__ret__.get('apiServerAuthorizedIpRanges'),
-        disk_encryption_set_id=__ret__.get('diskEncryptionSetId'),
-        dns_prefix=__ret__.get('dnsPrefix'),
-        fqdn=__ret__.get('fqdn'),
-        id=__ret__.get('id'),
-        identities=__ret__.get('identities'),
-        kube_admin_config_raw=__ret__.get('kubeAdminConfigRaw'),
-        kube_admin_configs=__ret__.get('kubeAdminConfigs'),
-        kube_config_raw=__ret__.get('kubeConfigRaw'),
-        kube_configs=__ret__.get('kubeConfigs'),
-        kubelet_identities=__ret__.get('kubeletIdentities'),
-        kubernetes_version=__ret__.get('kubernetesVersion'),
-        linux_profiles=__ret__.get('linuxProfiles'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        network_profiles=__ret__.get('networkProfiles'),
-        node_resource_group=__ret__.get('nodeResourceGroup'),
-        private_cluster_enabled=__ret__.get('privateClusterEnabled'),
-        private_fqdn=__ret__.get('privateFqdn'),
-        private_link_enabled=__ret__.get('privateLinkEnabled'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        role_based_access_controls=__ret__.get('roleBasedAccessControls'),
-        service_principals=__ret__.get('servicePrincipals'),
-        tags=__ret__.get('tags'),
-        windows_profiles=__ret__.get('windowsProfiles'))
+        addon_profiles=_utilities.get_dict_value(__ret__, 'addonProfiles'),
+        agent_pool_profiles=_utilities.get_dict_value(__ret__, 'agentPoolProfiles'),
+        api_server_authorized_ip_ranges=_utilities.get_dict_value(__ret__, 'apiServerAuthorizedIpRanges'),
+        disk_encryption_set_id=_utilities.get_dict_value(__ret__, 'diskEncryptionSetId'),
+        dns_prefix=_utilities.get_dict_value(__ret__, 'dnsPrefix'),
+        fqdn=_utilities.get_dict_value(__ret__, 'fqdn'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        identities=_utilities.get_dict_value(__ret__, 'identities'),
+        kube_admin_config_raw=_utilities.get_dict_value(__ret__, 'kubeAdminConfigRaw'),
+        kube_admin_configs=_utilities.get_dict_value(__ret__, 'kubeAdminConfigs'),
+        kube_config_raw=_utilities.get_dict_value(__ret__, 'kubeConfigRaw'),
+        kube_configs=_utilities.get_dict_value(__ret__, 'kubeConfigs'),
+        kubelet_identities=_utilities.get_dict_value(__ret__, 'kubeletIdentities'),
+        kubernetes_version=_utilities.get_dict_value(__ret__, 'kubernetesVersion'),
+        linux_profiles=_utilities.get_dict_value(__ret__, 'linuxProfiles'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        network_profiles=_utilities.get_dict_value(__ret__, 'networkProfiles'),
+        node_resource_group=_utilities.get_dict_value(__ret__, 'nodeResourceGroup'),
+        private_cluster_enabled=_utilities.get_dict_value(__ret__, 'privateClusterEnabled'),
+        private_fqdn=_utilities.get_dict_value(__ret__, 'privateFqdn'),
+        private_link_enabled=_utilities.get_dict_value(__ret__, 'privateLinkEnabled'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        role_based_access_controls=_utilities.get_dict_value(__ret__, 'roleBasedAccessControls'),
+        service_principals=_utilities.get_dict_value(__ret__, 'servicePrincipals'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'),
+        windows_profiles=_utilities.get_dict_value(__ret__, 'windowsProfiles'))

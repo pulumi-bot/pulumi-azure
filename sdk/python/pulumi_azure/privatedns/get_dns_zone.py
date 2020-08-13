@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDnsZoneResult',
+    'AwaitableGetDnsZoneResult',
+    'get_dns_zone',
+]
+
+
+@pulumi.output_type
+class _GetDnsZoneResult(dict):
+    id: str = pulumi.property("id")
+    max_number_of_record_sets: float = pulumi.property("maxNumberOfRecordSets")
+    max_number_of_virtual_network_links: float = pulumi.property("maxNumberOfVirtualNetworkLinks")
+    max_number_of_virtual_network_links_with_registration: float = pulumi.property("maxNumberOfVirtualNetworkLinksWithRegistration")
+    name: str = pulumi.property("name")
+    number_of_record_sets: float = pulumi.property("numberOfRecordSets")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetDnsZoneResult:
     """
@@ -55,6 +74,8 @@ class GetDnsZoneResult:
         """
         A mapping of tags for the zone.
         """
+
+
 class AwaitableGetDnsZoneResult(GetDnsZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +91,10 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_dns_zone(name=None,resource_group_name=None,opts=None):
+
+def get_dns_zone(name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneResult:
     """
     Use this data source to access information about an existing Private DNS Zone.
 
@@ -92,22 +116,20 @@ def get_dns_zone(name=None,resource_group_name=None,opts=None):
            DNS Zones in your subscription that matches `name` will be returned.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:privatedns/getDnsZone:getDnsZone', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:privatedns/getDnsZone:getDnsZone', __args__, opts=opts, typ=_GetDnsZoneResult).value
 
     return AwaitableGetDnsZoneResult(
-        id=__ret__.get('id'),
-        max_number_of_record_sets=__ret__.get('maxNumberOfRecordSets'),
-        max_number_of_virtual_network_links=__ret__.get('maxNumberOfVirtualNetworkLinks'),
-        max_number_of_virtual_network_links_with_registration=__ret__.get('maxNumberOfVirtualNetworkLinksWithRegistration'),
-        name=__ret__.get('name'),
-        number_of_record_sets=__ret__.get('numberOfRecordSets'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        max_number_of_record_sets=_utilities.get_dict_value(__ret__, 'maxNumberOfRecordSets'),
+        max_number_of_virtual_network_links=_utilities.get_dict_value(__ret__, 'maxNumberOfVirtualNetworkLinks'),
+        max_number_of_virtual_network_links_with_registration=_utilities.get_dict_value(__ret__, 'maxNumberOfVirtualNetworkLinksWithRegistration'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        number_of_record_sets=_utilities.get_dict_value(__ret__, 'numberOfRecordSets'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

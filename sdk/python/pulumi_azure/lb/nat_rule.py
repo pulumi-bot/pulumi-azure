@@ -5,54 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['NatRule']
 
 
 class NatRule(pulumi.CustomResource):
-    backend_ip_configuration_id: pulumi.Output[str]
-    backend_port: pulumi.Output[float]
+    backend_ip_configuration_id: pulumi.Output[str] = pulumi.property("backendIpConfigurationId")
+
+    backend_port: pulumi.Output[float] = pulumi.property("backendPort")
     """
     The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.
     """
-    enable_floating_ip: pulumi.Output[bool]
+
+    enable_floating_ip: pulumi.Output[bool] = pulumi.property("enableFloatingIp")
     """
     Are the Floating IPs enabled for this Load Balncer Rule? A "floating” IP is reassigned to a secondary server in case the primary server fails. Required to configure a SQL AlwaysOn Availability Group. Defaults to `false`.
     """
-    enable_tcp_reset: pulumi.Output[bool]
+
+    enable_tcp_reset: pulumi.Output[Optional[bool]] = pulumi.property("enableTcpReset")
     """
     Is TCP Reset enabled for this Load Balancer Rule? Defaults to `false`.
     """
-    frontend_ip_configuration_id: pulumi.Output[str]
-    frontend_ip_configuration_name: pulumi.Output[str]
+
+    frontend_ip_configuration_id: pulumi.Output[str] = pulumi.property("frontendIpConfigurationId")
+
+    frontend_ip_configuration_name: pulumi.Output[str] = pulumi.property("frontendIpConfigurationName")
     """
     The name of the frontend IP configuration exposing this rule.
     """
-    frontend_port: pulumi.Output[float]
+
+    frontend_port: pulumi.Output[float] = pulumi.property("frontendPort")
     """
     The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.
     """
-    idle_timeout_in_minutes: pulumi.Output[float]
+
+    idle_timeout_in_minutes: pulumi.Output[float] = pulumi.property("idleTimeoutInMinutes")
     """
     Specifies the idle timeout in minutes for TCP connections. Valid values are between `4` and `30` minutes. Defaults to `4` minutes.
     """
-    loadbalancer_id: pulumi.Output[str]
+
+    loadbalancer_id: pulumi.Output[str] = pulumi.property("loadbalancerId")
     """
     The ID of the Load Balancer in which to create the NAT Rule.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the NAT Rule.
     """
-    protocol: pulumi.Output[str]
+
+    protocol: pulumi.Output[str] = pulumi.property("protocol")
     """
     The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in which to create the resource.
     """
-    def __init__(__self__, resource_name, opts=None, backend_port=None, enable_floating_ip=None, enable_tcp_reset=None, frontend_ip_configuration_name=None, frontend_port=None, idle_timeout_in_minutes=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_port: Optional[pulumi.Input[float]] = None,
+                 enable_floating_ip: Optional[pulumi.Input[bool]] = None,
+                 enable_tcp_reset: Optional[pulumi.Input[bool]] = None,
+                 frontend_ip_configuration_name: Optional[pulumi.Input[str]] = None,
+                 frontend_port: Optional[pulumi.Input[float]] = None,
+                 idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+                 loadbalancer_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Load Balancer NAT Rule.
 
@@ -111,7 +140,7 @@ class NatRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,7 +177,21 @@ class NatRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backend_ip_configuration_id=None, backend_port=None, enable_floating_ip=None, enable_tcp_reset=None, frontend_ip_configuration_id=None, frontend_ip_configuration_name=None, frontend_port=None, idle_timeout_in_minutes=None, loadbalancer_id=None, name=None, protocol=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_ip_configuration_id: Optional[pulumi.Input[str]] = None,
+            backend_port: Optional[pulumi.Input[float]] = None,
+            enable_floating_ip: Optional[pulumi.Input[bool]] = None,
+            enable_tcp_reset: Optional[pulumi.Input[bool]] = None,
+            frontend_ip_configuration_id: Optional[pulumi.Input[str]] = None,
+            frontend_ip_configuration_name: Optional[pulumi.Input[str]] = None,
+            frontend_port: Optional[pulumi.Input[float]] = None,
+            idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+            loadbalancer_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'NatRule':
         """
         Get an existing NatRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -186,7 +229,8 @@ class NatRule(pulumi.CustomResource):
         return NatRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

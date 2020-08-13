@@ -5,8 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetFunctionAppResult',
+    'AwaitableGetFunctionAppResult',
+    'get_function_app',
+]
+
+
+@pulumi.output_type
+class _GetFunctionAppResult(dict):
+    app_service_plan_id: str = pulumi.property("appServicePlanId")
+    app_settings: Mapping[str, str] = pulumi.property("appSettings")
+    connection_strings: List['outputs.GetFunctionAppConnectionStringResult'] = pulumi.property("connectionStrings")
+    default_hostname: str = pulumi.property("defaultHostname")
+    enabled: bool = pulumi.property("enabled")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    os_type: str = pulumi.property("osType")
+    outbound_ip_addresses: str = pulumi.property("outboundIpAddresses")
+    possible_outbound_ip_addresses: str = pulumi.property("possibleOutboundIpAddresses")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    site_credentials: List['outputs.GetFunctionAppSiteCredentialResult'] = pulumi.property("siteCredentials")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+
 
 class GetFunctionAppResult:
     """
@@ -88,6 +114,8 @@ class GetFunctionAppResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetFunctionAppResult(GetFunctionAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +137,11 @@ class AwaitableGetFunctionAppResult(GetFunctionAppResult):
             site_credentials=self.site_credentials,
             tags=self.tags)
 
-def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_function_app(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     tags: Optional[Mapping[str, str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionAppResult:
     """
     Use this data source to access information about a Function App.
 
@@ -128,29 +160,27 @@ def get_function_app(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Function App exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appservice/getFunctionApp:getFunctionApp', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appservice/getFunctionApp:getFunctionApp', __args__, opts=opts, typ=_GetFunctionAppResult).value
 
     return AwaitableGetFunctionAppResult(
-        app_service_plan_id=__ret__.get('appServicePlanId'),
-        app_settings=__ret__.get('appSettings'),
-        connection_strings=__ret__.get('connectionStrings'),
-        default_hostname=__ret__.get('defaultHostname'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        os_type=__ret__.get('osType'),
-        outbound_ip_addresses=__ret__.get('outboundIpAddresses'),
-        possible_outbound_ip_addresses=__ret__.get('possibleOutboundIpAddresses'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        site_credentials=__ret__.get('siteCredentials'),
-        tags=__ret__.get('tags'))
+        app_service_plan_id=_utilities.get_dict_value(__ret__, 'appServicePlanId'),
+        app_settings=_utilities.get_dict_value(__ret__, 'appSettings'),
+        connection_strings=_utilities.get_dict_value(__ret__, 'connectionStrings'),
+        default_hostname=_utilities.get_dict_value(__ret__, 'defaultHostname'),
+        enabled=_utilities.get_dict_value(__ret__, 'enabled'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        os_type=_utilities.get_dict_value(__ret__, 'osType'),
+        outbound_ip_addresses=_utilities.get_dict_value(__ret__, 'outboundIpAddresses'),
+        possible_outbound_ip_addresses=_utilities.get_dict_value(__ret__, 'possibleOutboundIpAddresses'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        site_credentials=_utilities.get_dict_value(__ret__, 'siteCredentials'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

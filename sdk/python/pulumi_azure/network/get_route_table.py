@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetRouteTableResult',
+    'AwaitableGetRouteTableResult',
+    'get_route_table',
+]
+
+
+@pulumi.output_type
+class _GetRouteTableResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    routes: List['outputs.GetRouteTableRouteResult'] = pulumi.property("routes")
+    subnets: List[str] = pulumi.property("subnets")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetRouteTableResult:
     """
@@ -52,6 +71,8 @@ class GetRouteTableResult:
         """
         A mapping of tags assigned to the Route Table.
         """
+
+
 class AwaitableGetRouteTableResult(GetRouteTableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +87,10 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
             subnets=self.subnets,
             tags=self.tags)
 
-def get_route_table(name=None,resource_group_name=None,opts=None):
+
+def get_route_table(name: Optional[str] = None,
+                    resource_group_name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTableResult:
     """
     Use this data source to access information about an existing Route Table.
 
@@ -85,21 +109,19 @@ def get_route_table(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Route Table exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getRouteTable:getRouteTable', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getRouteTable:getRouteTable', __args__, opts=opts, typ=_GetRouteTableResult).value
 
     return AwaitableGetRouteTableResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        routes=__ret__.get('routes'),
-        subnets=__ret__.get('subnets'),
-        tags=__ret__.get('tags'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        routes=_utilities.get_dict_value(__ret__, 'routes'),
+        subnets=_utilities.get_dict_value(__ret__, 'subnets'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetVolumeResult',
+    'AwaitableGetVolumeResult',
+    'get_volume',
+]
+
+
+@pulumi.output_type
+class _GetVolumeResult(dict):
+    account_name: str = pulumi.property("accountName")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    mount_ip_addresses: List[str] = pulumi.property("mountIpAddresses")
+    name: str = pulumi.property("name")
+    pool_name: str = pulumi.property("poolName")
+    protocols: List[str] = pulumi.property("protocols")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    service_level: str = pulumi.property("serviceLevel")
+    storage_quota_in_gb: float = pulumi.property("storageQuotaInGb")
+    subnet_id: str = pulumi.property("subnetId")
+    volume_path: str = pulumi.property("volumePath")
+
 
 class GetVolumeResult:
     """
@@ -70,6 +93,8 @@ class GetVolumeResult:
         """
         The unique file path of the volume.
         """
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +114,12 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             subnet_id=self.subnet_id,
             volume_path=self.volume_path)
 
-def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=None,opts=None):
+
+def get_volume(account_name: Optional[str] = None,
+               name: Optional[str] = None,
+               pool_name: Optional[str] = None,
+               resource_group_name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
     Uses this data source to access information about an existing NetApp Volume.
 
@@ -113,8 +143,6 @@ def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=No
     :param str resource_group_name: The Name of the Resource Group where the NetApp Volume exists.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['name'] = name
     __args__['poolName'] = pool_name
@@ -122,19 +150,19 @@ def get_volume(account_name=None,name=None,pool_name=None,resource_group_name=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:netapp/getVolume:getVolume', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:netapp/getVolume:getVolume', __args__, opts=opts, typ=_GetVolumeResult).value
 
     return AwaitableGetVolumeResult(
-        account_name=__ret__.get('accountName'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        mount_ip_addresses=__ret__.get('mountIpAddresses'),
-        name=__ret__.get('name'),
-        pool_name=__ret__.get('poolName'),
-        protocols=__ret__.get('protocols'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        service_level=__ret__.get('serviceLevel'),
-        storage_quota_in_gb=__ret__.get('storageQuotaInGb'),
-        subnet_id=__ret__.get('subnetId'),
-        volume_path=__ret__.get('volumePath'))
+        account_name=_utilities.get_dict_value(__ret__, 'accountName'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        mount_ip_addresses=_utilities.get_dict_value(__ret__, 'mountIpAddresses'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        pool_name=_utilities.get_dict_value(__ret__, 'poolName'),
+        protocols=_utilities.get_dict_value(__ret__, 'protocols'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        service_level=_utilities.get_dict_value(__ret__, 'serviceLevel'),
+        storage_quota_in_gb=_utilities.get_dict_value(__ret__, 'storageQuotaInGb'),
+        subnet_id=_utilities.get_dict_value(__ret__, 'subnetId'),
+        volume_path=_utilities.get_dict_value(__ret__, 'volumePath'))

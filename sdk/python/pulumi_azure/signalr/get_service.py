@@ -5,8 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceResult',
+    'AwaitableGetServiceResult',
+    'get_service',
+]
+
+
+@pulumi.output_type
+class _GetServiceResult(dict):
+    hostname: str = pulumi.property("hostname")
+    id: str = pulumi.property("id")
+    ip_address: str = pulumi.property("ipAddress")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    primary_access_key: str = pulumi.property("primaryAccessKey")
+    primary_connection_string: str = pulumi.property("primaryConnectionString")
+    public_port: float = pulumi.property("publicPort")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_access_key: str = pulumi.property("secondaryAccessKey")
+    secondary_connection_string: str = pulumi.property("secondaryConnectionString")
+    server_port: float = pulumi.property("serverPort")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetServiceResult:
     """
@@ -82,6 +106,8 @@ class GetServiceResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -102,7 +128,10 @@ class AwaitableGetServiceResult(GetServiceResult):
             server_port=self.server_port,
             tags=self.tags)
 
-def get_service(name=None,resource_group_name=None,opts=None):
+
+def get_service(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Use this data source to access information about an existing Azure SignalR service.
 
@@ -121,27 +150,25 @@ def get_service(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the SignalR service is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:signalr/getService:getService', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:signalr/getService:getService', __args__, opts=opts, typ=_GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        hostname=__ret__.get('hostname'),
-        id=__ret__.get('id'),
-        ip_address=__ret__.get('ipAddress'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        primary_access_key=__ret__.get('primaryAccessKey'),
-        primary_connection_string=__ret__.get('primaryConnectionString'),
-        public_port=__ret__.get('publicPort'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_access_key=__ret__.get('secondaryAccessKey'),
-        secondary_connection_string=__ret__.get('secondaryConnectionString'),
-        server_port=__ret__.get('serverPort'),
-        tags=__ret__.get('tags'))
+        hostname=_utilities.get_dict_value(__ret__, 'hostname'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        ip_address=_utilities.get_dict_value(__ret__, 'ipAddress'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        primary_access_key=_utilities.get_dict_value(__ret__, 'primaryAccessKey'),
+        primary_connection_string=_utilities.get_dict_value(__ret__, 'primaryConnectionString'),
+        public_port=_utilities.get_dict_value(__ret__, 'publicPort'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        secondary_access_key=_utilities.get_dict_value(__ret__, 'secondaryAccessKey'),
+        secondary_connection_string=_utilities.get_dict_value(__ret__, 'secondaryConnectionString'),
+        server_port=_utilities.get_dict_value(__ret__, 'serverPort'),
+        tags=_utilities.get_dict_value(__ret__, 'tags'))

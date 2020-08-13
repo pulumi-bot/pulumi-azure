@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetServiceEndpointConnectionsResult',
+    'AwaitableGetServiceEndpointConnectionsResult',
+    'get_service_endpoint_connections',
+]
+
+
+@pulumi.output_type
+class _GetServiceEndpointConnectionsResult(dict):
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    private_endpoint_connections: List['outputs.GetServiceEndpointConnectionsPrivateEndpointConnectionResult'] = pulumi.property("privateEndpointConnections")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    service_id: str = pulumi.property("serviceId")
+    service_name: str = pulumi.property("serviceName")
+
 
 class GetServiceEndpointConnectionsResult:
     """
@@ -37,6 +55,8 @@ class GetServiceEndpointConnectionsResult:
         """
         The name of the private link service.
         """
+
+
 class AwaitableGetServiceEndpointConnectionsResult(GetServiceEndpointConnectionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +70,10 @@ class AwaitableGetServiceEndpointConnectionsResult(GetServiceEndpointConnections
             service_id=self.service_id,
             service_name=self.service_name)
 
-def get_service_endpoint_connections(resource_group_name=None,service_id=None,opts=None):
+
+def get_service_endpoint_connections(resource_group_name: Optional[str] = None,
+                                     service_id: Optional[str] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceEndpointConnectionsResult:
     """
     Use this data source to access endpoint connection information about an existing Private Link Service.
 
@@ -72,20 +95,18 @@ def get_service_endpoint_connections(resource_group_name=None,service_id=None,op
     :param str service_id: The resource ID of the private link service.
     """
     __args__ = dict()
-
-
     __args__['resourceGroupName'] = resource_group_name
     __args__['serviceId'] = service_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:privatelink/getServiceEndpointConnections:getServiceEndpointConnections', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:privatelink/getServiceEndpointConnections:getServiceEndpointConnections', __args__, opts=opts, typ=_GetServiceEndpointConnectionsResult).value
 
     return AwaitableGetServiceEndpointConnectionsResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        private_endpoint_connections=__ret__.get('privateEndpointConnections'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        service_id=__ret__.get('serviceId'),
-        service_name=__ret__.get('serviceName'))
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        location=_utilities.get_dict_value(__ret__, 'location'),
+        private_endpoint_connections=_utilities.get_dict_value(__ret__, 'privateEndpointConnections'),
+        resource_group_name=_utilities.get_dict_value(__ret__, 'resourceGroupName'),
+        service_id=_utilities.get_dict_value(__ret__, 'serviceId'),
+        service_name=_utilities.get_dict_value(__ret__, 'serviceName'))

@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetLogProfileResult',
+    'AwaitableGetLogProfileResult',
+    'get_log_profile',
+]
+
+
+@pulumi.output_type
+class _GetLogProfileResult(dict):
+    categories: List[str] = pulumi.property("categories")
+    id: str = pulumi.property("id")
+    locations: List[str] = pulumi.property("locations")
+    name: str = pulumi.property("name")
+    retention_policies: List['outputs.GetLogProfileRetentionPolicyResult'] = pulumi.property("retentionPolicies")
+    servicebus_rule_id: str = pulumi.property("servicebusRuleId")
+    storage_account_id: str = pulumi.property("storageAccountId")
+
 
 class GetLogProfileResult:
     """
@@ -49,6 +68,8 @@ class GetLogProfileResult:
         """
         The resource id of the storage account in which the Activity Log is stored.
         """
+
+
 class AwaitableGetLogProfileResult(GetLogProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +84,9 @@ class AwaitableGetLogProfileResult(GetLogProfileResult):
             servicebus_rule_id=self.servicebus_rule_id,
             storage_account_id=self.storage_account_id)
 
-def get_log_profile(name=None,opts=None):
+
+def get_log_profile(name: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogProfileResult:
     """
     Use this data source to access the properties of a Log Profile.
 
@@ -81,20 +104,18 @@ def get_log_profile(name=None,opts=None):
     :param str name: Specifies the Name of the Log Profile.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:monitoring/getLogProfile:getLogProfile', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:monitoring/getLogProfile:getLogProfile', __args__, opts=opts, typ=_GetLogProfileResult).value
 
     return AwaitableGetLogProfileResult(
-        categories=__ret__.get('categories'),
-        id=__ret__.get('id'),
-        locations=__ret__.get('locations'),
-        name=__ret__.get('name'),
-        retention_policies=__ret__.get('retentionPolicies'),
-        servicebus_rule_id=__ret__.get('servicebusRuleId'),
-        storage_account_id=__ret__.get('storageAccountId'))
+        categories=_utilities.get_dict_value(__ret__, 'categories'),
+        id=_utilities.get_dict_value(__ret__, 'id'),
+        locations=_utilities.get_dict_value(__ret__, 'locations'),
+        name=_utilities.get_dict_value(__ret__, 'name'),
+        retention_policies=_utilities.get_dict_value(__ret__, 'retentionPolicies'),
+        servicebus_rule_id=_utilities.get_dict_value(__ret__, 'servicebusRuleId'),
+        storage_account_id=_utilities.get_dict_value(__ret__, 'storageAccountId'))

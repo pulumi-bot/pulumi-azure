@@ -5,37 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['AAAARecord']
 
 
 class AAAARecord(pulumi.CustomResource):
-    fqdn: pulumi.Output[str]
+    fqdn: pulumi.Output[str] = pulumi.property("fqdn")
     """
     The FQDN of the DNS AAAA Record.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the DNS A Record.
     """
-    records: pulumi.Output[list]
+
+    records: pulumi.Output[List[str]] = pulumi.property("records")
     """
     A list of IPv6 Addresses.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    ttl: pulumi.Output[float]
-    zone_name: pulumi.Output[str]
+
+    ttl: pulumi.Output[float] = pulumi.property("ttl")
+
+    zone_name: pulumi.Output[str] = pulumi.property("zoneName")
     """
     Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, records=None, resource_group_name=None, tags=None, ttl=None, zone_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Enables you to manage DNS AAAA Records within Azure Private DNS.
 
@@ -60,9 +80,9 @@ class AAAARecord(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS A Record.
-        :param pulumi.Input[list] records: A list of IPv6 Addresses.
+        :param pulumi.Input[List[pulumi.Input[str]]] records: A list of IPv6 Addresses.
         :param pulumi.Input[str] resource_group_name: Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_name: Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
@@ -76,7 +96,7 @@ class AAAARecord(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +124,16 @@ class AAAARecord(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, fqdn=None, name=None, records=None, resource_group_name=None, tags=None, ttl=None, zone_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fqdn: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            records: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            zone_name: Optional[pulumi.Input[str]] = None) -> 'AAAARecord':
         """
         Get an existing AAAARecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -114,9 +143,9 @@ class AAAARecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fqdn: The FQDN of the DNS AAAA Record.
         :param pulumi.Input[str] name: The name of the DNS A Record.
-        :param pulumi.Input[list] records: A list of IPv6 Addresses.
+        :param pulumi.Input[List[pulumi.Input[str]]] records: A list of IPv6 Addresses.
         :param pulumi.Input[str] resource_group_name: Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_name: Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -133,7 +162,8 @@ class AAAARecord(pulumi.CustomResource):
         return AAAARecord(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
