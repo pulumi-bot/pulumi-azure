@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetStorageContainerResult',
+    'AwaitableGetStorageContainerResult',
+    'get_storage_container',
+]
+
+
+@pulumi.output_type
+class _GetStorageContainerResult:
+    container_access_type: str = pulumi.property("containerAccessType")
+    has_immutability_policy: bool = pulumi.property("hasImmutabilityPolicy")
+    has_legal_hold: bool = pulumi.property("hasLegalHold")
+    id: str = pulumi.property("id")
+    metadata: Mapping[str, str] = pulumi.property("metadata")
+    name: str = pulumi.property("name")
+    resource_manager_id: str = pulumi.property("resourceManagerId")
+    storage_account_name: str = pulumi.property("storageAccountName")
+
 
 class GetStorageContainerResult:
     """
@@ -55,6 +74,8 @@ class GetStorageContainerResult:
         if storage_account_name and not isinstance(storage_account_name, str):
             raise TypeError("Expected argument 'storage_account_name' to be a str")
         __self__.storage_account_name = storage_account_name
+
+
 class AwaitableGetStorageContainerResult(GetStorageContainerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +91,11 @@ class AwaitableGetStorageContainerResult(GetStorageContainerResult):
             resource_manager_id=self.resource_manager_id,
             storage_account_name=self.storage_account_name)
 
-def get_storage_container(metadata=None,name=None,storage_account_name=None,opts=None):
+
+def get_storage_container(metadata: Optional[Mapping[str, str]] = None,
+                          name: Optional[str] = None,
+                          storage_account_name: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageContainerResult:
     """
     Use this data source to access information about an existing Storage Container.
 
@@ -85,28 +110,26 @@ def get_storage_container(metadata=None,name=None,storage_account_name=None,opts
     ```
 
 
-    :param dict metadata: A mapping of MetaData for this Container.
+    :param Mapping[str, str] metadata: A mapping of MetaData for this Container.
     :param str name: The name of the Container.
     :param str storage_account_name: The name of the Storage Account where the Container exists.
     """
     __args__ = dict()
-
-
     __args__['metadata'] = metadata
     __args__['name'] = name
     __args__['storageAccountName'] = storage_account_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:storage/getStorageContainer:getStorageContainer', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:storage/getStorageContainer:getStorageContainer', __args__, opts=opts, typ=_GetStorageContainerResult).value
 
     return AwaitableGetStorageContainerResult(
-        container_access_type=__ret__.get('containerAccessType'),
-        has_immutability_policy=__ret__.get('hasImmutabilityPolicy'),
-        has_legal_hold=__ret__.get('hasLegalHold'),
-        id=__ret__.get('id'),
-        metadata=__ret__.get('metadata'),
-        name=__ret__.get('name'),
-        resource_manager_id=__ret__.get('resourceManagerId'),
-        storage_account_name=__ret__.get('storageAccountName'))
+        container_access_type=__ret__.container_access_type,
+        has_immutability_policy=__ret__.has_immutability_policy,
+        has_legal_hold=__ret__.has_legal_hold,
+        id=__ret__.id,
+        metadata=__ret__.metadata,
+        name=__ret__.name,
+        resource_manager_id=__ret__.resource_manager_id,
+        storage_account_name=__ret__.storage_account_name)

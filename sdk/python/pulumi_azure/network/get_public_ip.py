@@ -5,8 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetPublicIPResult',
+    'AwaitableGetPublicIPResult',
+    'get_public_ip',
+]
+
+
+@pulumi.output_type
+class _GetPublicIPResult:
+    allocation_method: str = pulumi.property("allocationMethod")
+    domain_name_label: str = pulumi.property("domainNameLabel")
+    fqdn: str = pulumi.property("fqdn")
+    id: str = pulumi.property("id")
+    idle_timeout_in_minutes: float = pulumi.property("idleTimeoutInMinutes")
+    ip_address: str = pulumi.property("ipAddress")
+    ip_version: str = pulumi.property("ipVersion")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    reverse_fqdn: str = pulumi.property("reverseFqdn")
+    sku: str = pulumi.property("sku")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    zones: List[str] = pulumi.property("zones")
+
 
 class GetPublicIPResult:
     """
@@ -76,6 +101,8 @@ class GetPublicIPResult:
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
+
+
 class AwaitableGetPublicIPResult(GetPublicIPResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,7 +124,12 @@ class AwaitableGetPublicIPResult(GetPublicIPResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
+
+def get_public_ip(name: Optional[str] = None,
+                  resource_group_name: Optional[str] = None,
+                  tags: Optional[Mapping[str, str]] = None,
+                  zones: Optional[List[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIPResult:
     """
     Use this data source to access information about an existing Public IP Address.
 
@@ -159,11 +191,9 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
 
     :param str name: Specifies the name of the public IP address.
     :param str resource_group_name: Specifies the name of the resource group.
-    :param dict tags: A mapping of tags to assigned to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
@@ -171,21 +201,21 @@ def get_public_ip(name=None,resource_group_name=None,tags=None,zones=None,opts=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getPublicIP:getPublicIP', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getPublicIP:getPublicIP', __args__, opts=opts, typ=_GetPublicIPResult).value
 
     return AwaitableGetPublicIPResult(
-        allocation_method=__ret__.get('allocationMethod'),
-        domain_name_label=__ret__.get('domainNameLabel'),
-        fqdn=__ret__.get('fqdn'),
-        id=__ret__.get('id'),
-        idle_timeout_in_minutes=__ret__.get('idleTimeoutInMinutes'),
-        ip_address=__ret__.get('ipAddress'),
-        ip_version=__ret__.get('ipVersion'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        reverse_fqdn=__ret__.get('reverseFqdn'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'),
-        zones=__ret__.get('zones'))
+        allocation_method=__ret__.allocation_method,
+        domain_name_label=__ret__.domain_name_label,
+        fqdn=__ret__.fqdn,
+        id=__ret__.id,
+        idle_timeout_in_minutes=__ret__.idle_timeout_in_minutes,
+        ip_address=__ret__.ip_address,
+        ip_version=__ret__.ip_version,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        reverse_fqdn=__ret__.reverse_fqdn,
+        sku=__ret__.sku,
+        tags=__ret__.tags,
+        zones=__ret__.zones)

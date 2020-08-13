@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetFactoryResult',
+    'AwaitableGetFactoryResult',
+    'get_factory',
+]
+
+
+@pulumi.output_type
+class _GetFactoryResult:
+    github_configurations: List['outputs.GetFactoryGithubConfigurationResult'] = pulumi.property("githubConfigurations")
+    id: str = pulumi.property("id")
+    identities: List['outputs.GetFactoryIdentityResult'] = pulumi.property("identities")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    vsts_configurations: List['outputs.GetFactoryVstsConfigurationResult'] = pulumi.property("vstsConfigurations")
+
 
 class GetFactoryResult:
     """
@@ -56,6 +76,8 @@ class GetFactoryResult:
         """
         A `vsts_configuration` block as defined below.
         """
+
+
 class AwaitableGetFactoryResult(GetFactoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +93,10 @@ class AwaitableGetFactoryResult(GetFactoryResult):
             tags=self.tags,
             vsts_configurations=self.vsts_configurations)
 
-def get_factory(name=None,resource_group_name=None,opts=None):
+
+def get_factory(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFactoryResult:
     """
     Use this data source to access information about an existing Azure Data Factory (Version 2).
 
@@ -91,22 +116,20 @@ def get_factory(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group where the Data Factory exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:datafactory/getFactory:getFactory', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:datafactory/getFactory:getFactory', __args__, opts=opts, typ=_GetFactoryResult).value
 
     return AwaitableGetFactoryResult(
-        github_configurations=__ret__.get('githubConfigurations'),
-        id=__ret__.get('id'),
-        identities=__ret__.get('identities'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        vsts_configurations=__ret__.get('vstsConfigurations'))
+        github_configurations=__ret__.github_configurations,
+        id=__ret__.id,
+        identities=__ret__.identities,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags,
+        vsts_configurations=__ret__.vsts_configurations)

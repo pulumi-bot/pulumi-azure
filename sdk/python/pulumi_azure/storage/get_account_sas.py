@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetAccountSASResult',
+    'AwaitableGetAccountSASResult',
+    'get_account_sas',
+]
+
+
+@pulumi.output_type
+class _GetAccountSASResult:
+    connection_string: str = pulumi.property("connectionString")
+    expiry: str = pulumi.property("expiry")
+    https_only: Optional[bool] = pulumi.property("httpsOnly")
+    id: str = pulumi.property("id")
+    permissions: 'outputs.GetAccountSASPermissionsResult' = pulumi.property("permissions")
+    resource_types: 'outputs.GetAccountSASResourceTypesResult' = pulumi.property("resourceTypes")
+    sas: str = pulumi.property("sas")
+    services: 'outputs.GetAccountSASServicesResult' = pulumi.property("services")
+    signed_version: Optional[str] = pulumi.property("signedVersion")
+    start: str = pulumi.property("start")
+
 
 class GetAccountSASResult:
     """
@@ -49,6 +72,8 @@ class GetAccountSASResult:
         if start and not isinstance(start, str):
             raise TypeError("Expected argument 'start' to be a str")
         __self__.start = start
+
+
 class AwaitableGetAccountSASResult(GetAccountSASResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +91,16 @@ class AwaitableGetAccountSASResult(GetAccountSASResult):
             signed_version=self.signed_version,
             start=self.start)
 
-def get_account_sas(connection_string=None,expiry=None,https_only=None,permissions=None,resource_types=None,services=None,signed_version=None,start=None,opts=None):
+
+def get_account_sas(connection_string: Optional[str] = None,
+                    expiry: Optional[str] = None,
+                    https_only: Optional[bool] = None,
+                    permissions: Optional[pulumi.InputType['GetAccountSASPermissionsArgs']] = None,
+                    resource_types: Optional[pulumi.InputType['GetAccountSASResourceTypesArgs']] = None,
+                    services: Optional[pulumi.InputType['GetAccountSASServicesArgs']] = None,
+                    signed_version: Optional[str] = None,
+                    start: Optional[str] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSASResult:
     """
     Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account.
 
@@ -123,39 +157,13 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
     :param str connection_string: The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of a `storage.Account` resource.
     :param str expiry: The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
     :param bool https_only: Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
-    :param dict permissions: A `permissions` block as defined below.
-    :param dict resource_types: A `resource_types` block as defined below.
-    :param dict services: A `services` block as defined below.
+    :param pulumi.InputType['GetAccountSASPermissionsArgs'] permissions: A `permissions` block as defined below.
+    :param pulumi.InputType['GetAccountSASResourceTypesArgs'] resource_types: A `resource_types` block as defined below.
+    :param pulumi.InputType['GetAccountSASServicesArgs'] services: A `services` block as defined below.
     :param str signed_version: Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
     :param str start: The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
-
-    The **permissions** object supports the following:
-
-      * `add` (`bool`) - Should Add permissions be enabled for this SAS?
-      * `create` (`bool`) - Should Create permissions be enabled for this SAS?
-      * `delete` (`bool`) - Should Delete permissions be enabled for this SAS?
-      * `list` (`bool`) - Should List permissions be enabled for this SAS?
-      * `process` (`bool`) - Should Process permissions be enabled for this SAS?
-      * `read` (`bool`) - Should Read permissions be enabled for this SAS?
-      * `update` (`bool`) - Should Update permissions be enabled for this SAS?
-      * `write` (`bool`) - Should Write permissions be enabled for this SAS?
-
-    The **resource_types** object supports the following:
-
-      * `container` (`bool`) - Should permission be granted to the container?
-      * `object` (`bool`) - Should permission be granted only to a specific object?
-      * `service` (`bool`) - Should permission be granted to the entire service?
-
-    The **services** object supports the following:
-
-      * `blob` (`bool`) - Should permission be granted to `blob` services within this storage account?
-      * `file` (`bool`) - Should permission be granted to `file` services within this storage account?
-      * `queue` (`bool`) - Should permission be granted to `queue` services within this storage account?
-      * `table` (`bool`) - Should permission be granted to `table` services within this storage account?
     """
     __args__ = dict()
-
-
     __args__['connectionString'] = connection_string
     __args__['expiry'] = expiry
     __args__['httpsOnly'] = https_only
@@ -167,17 +175,17 @@ def get_account_sas(connection_string=None,expiry=None,https_only=None,permissio
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:storage/getAccountSAS:getAccountSAS', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:storage/getAccountSAS:getAccountSAS', __args__, opts=opts, typ=_GetAccountSASResult).value
 
     return AwaitableGetAccountSASResult(
-        connection_string=__ret__.get('connectionString'),
-        expiry=__ret__.get('expiry'),
-        https_only=__ret__.get('httpsOnly'),
-        id=__ret__.get('id'),
-        permissions=__ret__.get('permissions'),
-        resource_types=__ret__.get('resourceTypes'),
-        sas=__ret__.get('sas'),
-        services=__ret__.get('services'),
-        signed_version=__ret__.get('signedVersion'),
-        start=__ret__.get('start'))
+        connection_string=__ret__.connection_string,
+        expiry=__ret__.expiry,
+        https_only=__ret__.https_only,
+        id=__ret__.id,
+        permissions=__ret__.permissions,
+        resource_types=__ret__.resource_types,
+        sas=__ret__.sas,
+        services=__ret__.services,
+        signed_version=__ret__.signed_version,
+        start=__ret__.start)

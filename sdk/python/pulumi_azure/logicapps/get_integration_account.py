@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetIntegrationAccountResult',
+    'AwaitableGetIntegrationAccountResult',
+    'get_integration_account',
+]
+
+
+@pulumi.output_type
+class _GetIntegrationAccountResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku_name: str = pulumi.property("skuName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetIntegrationAccountResult:
     """
@@ -43,6 +60,8 @@ class GetIntegrationAccountResult:
         """
         A mapping of tags assigned to the Logic App Integration Account.
         """
+
+
 class AwaitableGetIntegrationAccountResult(GetIntegrationAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +75,10 @@ class AwaitableGetIntegrationAccountResult(GetIntegrationAccountResult):
             sku_name=self.sku_name,
             tags=self.tags)
 
-def get_integration_account(name=None,resource_group_name=None,opts=None):
+
+def get_integration_account(name: Optional[str] = None,
+                            resource_group_name: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntegrationAccountResult:
     """
     Use this data source to access information about an existing Logic App Integration Account.
 
@@ -76,20 +98,18 @@ def get_integration_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Logic App Integration Account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:logicapps/getIntegrationAccount:getIntegrationAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:logicapps/getIntegrationAccount:getIntegrationAccount', __args__, opts=opts, typ=_GetIntegrationAccountResult).value
 
     return AwaitableGetIntegrationAccountResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku_name=__ret__.get('skuName'),
-        tags=__ret__.get('tags'))
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        sku_name=__ret__.sku_name,
+        tags=__ret__.tags)

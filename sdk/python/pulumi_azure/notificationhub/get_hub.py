@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetHubResult',
+    'AwaitableGetHubResult',
+    'get_hub',
+]
+
+
+@pulumi.output_type
+class _GetHubResult:
+    apns_credentials: List['outputs.GetHubApnsCredentialResult'] = pulumi.property("apnsCredentials")
+    gcm_credentials: List['outputs.GetHubGcmCredentialResult'] = pulumi.property("gcmCredentials")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    namespace_name: str = pulumi.property("namespaceName")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetHubResult:
     """
@@ -52,6 +72,8 @@ class GetHubResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetHubResult(GetHubResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +89,11 @@ class AwaitableGetHubResult(GetHubResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
+
+def get_hub(name: Optional[str] = None,
+            namespace_name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHubResult:
     """
     Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
 
@@ -89,23 +115,21 @@ def get_hub(name=None,namespace_name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespaceName'] = namespace_name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:notificationhub/getHub:getHub', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:notificationhub/getHub:getHub', __args__, opts=opts, typ=_GetHubResult).value
 
     return AwaitableGetHubResult(
-        apns_credentials=__ret__.get('apnsCredentials'),
-        gcm_credentials=__ret__.get('gcmCredentials'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        namespace_name=__ret__.get('namespaceName'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        apns_credentials=__ret__.apns_credentials,
+        gcm_credentials=__ret__.gcm_credentials,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        namespace_name=__ret__.namespace_name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags)

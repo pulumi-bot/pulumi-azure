@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCertificateIssuerResult',
+    'AwaitableGetCertificateIssuerResult',
+    'get_certificate_issuer',
+]
+
+
+@pulumi.output_type
+class _GetCertificateIssuerResult:
+    account_id: str = pulumi.property("accountId")
+    admins: List['outputs.GetCertificateIssuerAdminResult'] = pulumi.property("admins")
+    id: str = pulumi.property("id")
+    key_vault_id: str = pulumi.property("keyVaultId")
+    name: str = pulumi.property("name")
+    org_id: str = pulumi.property("orgId")
+    provider_name: str = pulumi.property("providerName")
+
 
 class GetCertificateIssuerResult:
     """
@@ -49,6 +68,8 @@ class GetCertificateIssuerResult:
         """
         The name of the third-party Certificate Issuer.
         """
+
+
 class AwaitableGetCertificateIssuerResult(GetCertificateIssuerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +84,10 @@ class AwaitableGetCertificateIssuerResult(GetCertificateIssuerResult):
             org_id=self.org_id,
             provider_name=self.provider_name)
 
-def get_certificate_issuer(key_vault_id=None,name=None,opts=None):
+
+def get_certificate_issuer(key_vault_id: Optional[str] = None,
+                           name: Optional[str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateIssuerResult:
     """
     Use this data source to access information about an existing Key Vault Certificate Issuer.
 
@@ -85,21 +109,19 @@ def get_certificate_issuer(key_vault_id=None,name=None,opts=None):
     :param str name: The name of the Key Vault Certificate Issuer.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getCertificateIssuer:getCertificateIssuer', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getCertificateIssuer:getCertificateIssuer', __args__, opts=opts, typ=_GetCertificateIssuerResult).value
 
     return AwaitableGetCertificateIssuerResult(
-        account_id=__ret__.get('accountId'),
-        admins=__ret__.get('admins'),
-        id=__ret__.get('id'),
-        key_vault_id=__ret__.get('keyVaultId'),
-        name=__ret__.get('name'),
-        org_id=__ret__.get('orgId'),
-        provider_name=__ret__.get('providerName'))
+        account_id=__ret__.account_id,
+        admins=__ret__.admins,
+        id=__ret__.id,
+        key_vault_id=__ret__.key_vault_id,
+        name=__ret__.name,
+        org_id=__ret__.org_id,
+        provider_name=__ret__.provider_name)

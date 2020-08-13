@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetServerResult',
+    'AwaitableGetServerResult',
+    'get_server',
+]
+
+
+@pulumi.output_type
+class _GetServerResult:
+    administrator_login: str = pulumi.property("administratorLogin")
+    fqdn: str = pulumi.property("fqdn")
+    id: str = pulumi.property("id")
+    identities: List['outputs.GetServerIdentityResult'] = pulumi.property("identities")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    version: str = pulumi.property("version")
+
 
 class GetServerResult:
     """
@@ -61,6 +82,8 @@ class GetServerResult:
         """
         The version of the SQL Server.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +100,10 @@ class AwaitableGetServerResult(GetServerResult):
             tags=self.tags,
             version=self.version)
 
-def get_server(name=None,resource_group_name=None,opts=None):
+
+def get_server(name: Optional[str] = None,
+               resource_group_name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerResult:
     """
     Use this data source to access information about an existing SQL Azure Database Server.
 
@@ -97,23 +123,21 @@ def get_server(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the SQL Server exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:sql/getServer:getServer', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:sql/getServer:getServer', __args__, opts=opts, typ=_GetServerResult).value
 
     return AwaitableGetServerResult(
-        administrator_login=__ret__.get('administratorLogin'),
-        fqdn=__ret__.get('fqdn'),
-        id=__ret__.get('id'),
-        identities=__ret__.get('identities'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        version=__ret__.get('version'))
+        administrator_login=__ret__.administrator_login,
+        fqdn=__ret__.fqdn,
+        id=__ret__.id,
+        identities=__ret__.identities,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags,
+        version=__ret__.version)

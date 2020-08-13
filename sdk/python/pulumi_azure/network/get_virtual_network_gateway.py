@@ -5,8 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetVirtualNetworkGatewayResult',
+    'AwaitableGetVirtualNetworkGatewayResult',
+    'get_virtual_network_gateway',
+]
+
+
+@pulumi.output_type
+class _GetVirtualNetworkGatewayResult:
+    active_active: bool = pulumi.property("activeActive")
+    bgp_settings: List['outputs.GetVirtualNetworkGatewayBgpSettingResult'] = pulumi.property("bgpSettings")
+    default_local_network_gateway_id: str = pulumi.property("defaultLocalNetworkGatewayId")
+    enable_bgp: bool = pulumi.property("enableBgp")
+    generation: str = pulumi.property("generation")
+    id: str = pulumi.property("id")
+    ip_configurations: List['outputs.GetVirtualNetworkGatewayIpConfigurationResult'] = pulumi.property("ipConfigurations")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku: str = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    type: str = pulumi.property("type")
+    vpn_client_configurations: List['outputs.GetVirtualNetworkGatewayVpnClientConfigurationResult'] = pulumi.property("vpnClientConfigurations")
+    vpn_type: str = pulumi.property("vpnType")
+
 
 class GetVirtualNetworkGatewayResult:
     """
@@ -101,6 +128,8 @@ class GetVirtualNetworkGatewayResult:
         """
         The routing type of the Virtual Network Gateway.
         """
+
+
 class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +152,10 @@ class AwaitableGetVirtualNetworkGatewayResult(GetVirtualNetworkGatewayResult):
             vpn_client_configurations=self.vpn_client_configurations,
             vpn_type=self.vpn_type)
 
-def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network_gateway(name: Optional[str] = None,
+                                resource_group_name: Optional[str] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualNetworkGatewayResult:
     """
     Use this data source to access information about an existing Virtual Network Gateway.
 
@@ -143,29 +175,27 @@ def get_virtual_network_gateway(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network Gateway is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway', __args__, opts=opts, typ=_GetVirtualNetworkGatewayResult).value
 
     return AwaitableGetVirtualNetworkGatewayResult(
-        active_active=__ret__.get('activeActive'),
-        bgp_settings=__ret__.get('bgpSettings'),
-        default_local_network_gateway_id=__ret__.get('defaultLocalNetworkGatewayId'),
-        enable_bgp=__ret__.get('enableBgp'),
-        generation=__ret__.get('generation'),
-        id=__ret__.get('id'),
-        ip_configurations=__ret__.get('ipConfigurations'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'),
-        type=__ret__.get('type'),
-        vpn_client_configurations=__ret__.get('vpnClientConfigurations'),
-        vpn_type=__ret__.get('vpnType'))
+        active_active=__ret__.active_active,
+        bgp_settings=__ret__.bgp_settings,
+        default_local_network_gateway_id=__ret__.default_local_network_gateway_id,
+        enable_bgp=__ret__.enable_bgp,
+        generation=__ret__.generation,
+        id=__ret__.id,
+        ip_configurations=__ret__.ip_configurations,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        sku=__ret__.sku,
+        tags=__ret__.tags,
+        type=__ret__.type,
+        vpn_client_configurations=__ret__.vpn_client_configurations,
+        vpn_type=__ret__.vpn_type)

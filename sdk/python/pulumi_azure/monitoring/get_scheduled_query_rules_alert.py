@@ -5,8 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetScheduledQueryRulesAlertResult',
+    'AwaitableGetScheduledQueryRulesAlertResult',
+    'get_scheduled_query_rules_alert',
+]
+
+
+@pulumi.output_type
+class _GetScheduledQueryRulesAlertResult:
+    actions: List['outputs.GetScheduledQueryRulesAlertActionResult'] = pulumi.property("actions")
+    authorized_resource_ids: List[str] = pulumi.property("authorizedResourceIds")
+    data_source_id: str = pulumi.property("dataSourceId")
+    description: str = pulumi.property("description")
+    enabled: bool = pulumi.property("enabled")
+    frequency: float = pulumi.property("frequency")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    query: str = pulumi.property("query")
+    query_type: str = pulumi.property("queryType")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    severity: float = pulumi.property("severity")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    throttling: float = pulumi.property("throttling")
+    time_window: float = pulumi.property("timeWindow")
+    triggers: List['outputs.GetScheduledQueryRulesAlertTriggerResult'] = pulumi.property("triggers")
+
 
 class GetScheduledQueryRulesAlertResult:
     """
@@ -100,6 +129,8 @@ class GetScheduledQueryRulesAlertResult:
         """
         A `trigger` block as defined below.
         """
+
+
 class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -124,7 +155,10 @@ class AwaitableGetScheduledQueryRulesAlertResult(GetScheduledQueryRulesAlertResu
             time_window=self.time_window,
             triggers=self.triggers)
 
-def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None):
+
+def get_scheduled_query_rules_alert(name: Optional[str] = None,
+                                    resource_group_name: Optional[str] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetScheduledQueryRulesAlertResult:
     """
     Use this data source to access the properties of an AlertingAction scheduled query rule.
 
@@ -144,31 +178,29 @@ def get_scheduled_query_rules_alert(name=None,resource_group_name=None,opts=None
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert', __args__, opts=opts, typ=_GetScheduledQueryRulesAlertResult).value
 
     return AwaitableGetScheduledQueryRulesAlertResult(
-        actions=__ret__.get('actions'),
-        authorized_resource_ids=__ret__.get('authorizedResourceIds'),
-        data_source_id=__ret__.get('dataSourceId'),
-        description=__ret__.get('description'),
-        enabled=__ret__.get('enabled'),
-        frequency=__ret__.get('frequency'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        query=__ret__.get('query'),
-        query_type=__ret__.get('queryType'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        severity=__ret__.get('severity'),
-        tags=__ret__.get('tags'),
-        throttling=__ret__.get('throttling'),
-        time_window=__ret__.get('timeWindow'),
-        triggers=__ret__.get('triggers'))
+        actions=__ret__.actions,
+        authorized_resource_ids=__ret__.authorized_resource_ids,
+        data_source_id=__ret__.data_source_id,
+        description=__ret__.description,
+        enabled=__ret__.enabled,
+        frequency=__ret__.frequency,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        query=__ret__.query,
+        query_type=__ret__.query_type,
+        resource_group_name=__ret__.resource_group_name,
+        severity=__ret__.severity,
+        tags=__ret__.tags,
+        throttling=__ret__.throttling,
+        time_window=__ret__.time_window,
+        triggers=__ret__.triggers)

@@ -5,8 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetSubscriptionsResult',
+    'AwaitableGetSubscriptionsResult',
+    'get_subscriptions',
+]
+
+
+@pulumi.output_type
+class _GetSubscriptionsResult:
+    display_name_contains: Optional[str] = pulumi.property("displayNameContains")
+    display_name_prefix: Optional[str] = pulumi.property("displayNamePrefix")
+    id: str = pulumi.property("id")
+    subscriptions: List['outputs.GetSubscriptionsSubscriptionResult'] = pulumi.property("subscriptions")
+
 
 class GetSubscriptionsResult:
     """
@@ -31,6 +47,8 @@ class GetSubscriptionsResult:
         """
         One or more `subscription` blocks as defined below.
         """
+
+
 class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +60,10 @@ class AwaitableGetSubscriptionsResult(GetSubscriptionsResult):
             id=self.id,
             subscriptions=self.subscriptions)
 
-def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=None):
+
+def get_subscriptions(display_name_contains: Optional[str] = None,
+                      display_name_prefix: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubscriptionsResult:
     """
     Use this data source to access information about all the Subscriptions currently available.
 
@@ -62,18 +83,16 @@ def get_subscriptions(display_name_contains=None,display_name_prefix=None,opts=N
     :param str display_name_prefix: A case-insensitive prefix which can be used to filter on the `display_name` field
     """
     __args__ = dict()
-
-
     __args__['displayNameContains'] = display_name_contains
     __args__['displayNamePrefix'] = display_name_prefix
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:core/getSubscriptions:getSubscriptions', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:core/getSubscriptions:getSubscriptions', __args__, opts=opts, typ=_GetSubscriptionsResult).value
 
     return AwaitableGetSubscriptionsResult(
-        display_name_contains=__ret__.get('displayNameContains'),
-        display_name_prefix=__ret__.get('displayNamePrefix'),
-        id=__ret__.get('id'),
-        subscriptions=__ret__.get('subscriptions'))
+        display_name_contains=__ret__.display_name_contains,
+        display_name_prefix=__ret__.display_name_prefix,
+        id=__ret__.id,
+        subscriptions=__ret__.subscriptions)

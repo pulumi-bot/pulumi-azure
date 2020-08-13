@@ -5,8 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetJobResult',
+    'AwaitableGetJobResult',
+    'get_job',
+]
+
+
+@pulumi.output_type
+class _GetJobResult:
+    compatibility_level: str = pulumi.property("compatibilityLevel")
+    data_locale: str = pulumi.property("dataLocale")
+    events_late_arrival_max_delay_in_seconds: float = pulumi.property("eventsLateArrivalMaxDelayInSeconds")
+    events_out_of_order_max_delay_in_seconds: float = pulumi.property("eventsOutOfOrderMaxDelayInSeconds")
+    events_out_of_order_policy: str = pulumi.property("eventsOutOfOrderPolicy")
+    id: str = pulumi.property("id")
+    job_id: str = pulumi.property("jobId")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    output_error_policy: str = pulumi.property("outputErrorPolicy")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    streaming_units: float = pulumi.property("streamingUnits")
+    transformation_query: str = pulumi.property("transformationQuery")
+
 
 class GetJobResult:
     """
@@ -85,6 +109,8 @@ class GetJobResult:
         """
         The query that will be run in the streaming job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
         """
+
+
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +131,10 @@ class AwaitableGetJobResult(GetJobResult):
             streaming_units=self.streaming_units,
             transformation_query=self.transformation_query)
 
-def get_job(name=None,resource_group_name=None,opts=None):
+
+def get_job(name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Use this data source to access information about an existing Stream Analytics Job.
 
@@ -125,27 +154,25 @@ def get_job(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Stream Analytics Job is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:streamanalytics/getJob:getJob', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:streamanalytics/getJob:getJob', __args__, opts=opts, typ=_GetJobResult).value
 
     return AwaitableGetJobResult(
-        compatibility_level=__ret__.get('compatibilityLevel'),
-        data_locale=__ret__.get('dataLocale'),
-        events_late_arrival_max_delay_in_seconds=__ret__.get('eventsLateArrivalMaxDelayInSeconds'),
-        events_out_of_order_max_delay_in_seconds=__ret__.get('eventsOutOfOrderMaxDelayInSeconds'),
-        events_out_of_order_policy=__ret__.get('eventsOutOfOrderPolicy'),
-        id=__ret__.get('id'),
-        job_id=__ret__.get('jobId'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        output_error_policy=__ret__.get('outputErrorPolicy'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        streaming_units=__ret__.get('streamingUnits'),
-        transformation_query=__ret__.get('transformationQuery'))
+        compatibility_level=__ret__.compatibility_level,
+        data_locale=__ret__.data_locale,
+        events_late_arrival_max_delay_in_seconds=__ret__.events_late_arrival_max_delay_in_seconds,
+        events_out_of_order_max_delay_in_seconds=__ret__.events_out_of_order_max_delay_in_seconds,
+        events_out_of_order_policy=__ret__.events_out_of_order_policy,
+        id=__ret__.id,
+        job_id=__ret__.job_id,
+        location=__ret__.location,
+        name=__ret__.name,
+        output_error_policy=__ret__.output_error_policy,
+        resource_group_name=__ret__.resource_group_name,
+        streaming_units=__ret__.streaming_units,
+        transformation_query=__ret__.transformation_query)

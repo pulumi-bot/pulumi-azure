@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetShareResult',
+    'AwaitableGetShareResult',
+    'get_share',
+]
+
+
+@pulumi.output_type
+class _GetShareResult:
+    account_id: str = pulumi.property("accountId")
+    description: str = pulumi.property("description")
+    id: str = pulumi.property("id")
+    kind: str = pulumi.property("kind")
+    name: str = pulumi.property("name")
+    snapshot_schedules: List['outputs.GetShareSnapshotScheduleResult'] = pulumi.property("snapshotSchedules")
+    terms: str = pulumi.property("terms")
+
 
 class GetShareResult:
     """
@@ -52,6 +71,8 @@ class GetShareResult:
         """
         The terms of the Data Share.
         """
+
+
 class AwaitableGetShareResult(GetShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +87,10 @@ class AwaitableGetShareResult(GetShareResult):
             snapshot_schedules=self.snapshot_schedules,
             terms=self.terms)
 
-def get_share(account_id=None,name=None,opts=None):
+
+def get_share(account_id: Optional[str] = None,
+              name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
     Use this data source to access information about an existing Data Share.
 
@@ -88,21 +112,19 @@ def get_share(account_id=None,name=None,opts=None):
     :param str name: The name of this Data Share.
     """
     __args__ = dict()
-
-
     __args__['accountId'] = account_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:datashare/getShare:getShare', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:datashare/getShare:getShare', __args__, opts=opts, typ=_GetShareResult).value
 
     return AwaitableGetShareResult(
-        account_id=__ret__.get('accountId'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        kind=__ret__.get('kind'),
-        name=__ret__.get('name'),
-        snapshot_schedules=__ret__.get('snapshotSchedules'),
-        terms=__ret__.get('terms'))
+        account_id=__ret__.account_id,
+        description=__ret__.description,
+        id=__ret__.id,
+        kind=__ret__.kind,
+        name=__ret__.name,
+        snapshot_schedules=__ret__.snapshot_schedules,
+        terms=__ret__.terms)

@@ -5,8 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAuthorizationRuleResult',
+    'AwaitableGetAuthorizationRuleResult',
+    'get_authorization_rule',
+]
+
+
+@pulumi.output_type
+class _GetAuthorizationRuleResult:
+    eventhub_name: str = pulumi.property("eventhubName")
+    id: str = pulumi.property("id")
+    listen: Optional[bool] = pulumi.property("listen")
+    location: str = pulumi.property("location")
+    manage: Optional[bool] = pulumi.property("manage")
+    name: str = pulumi.property("name")
+    namespace_name: str = pulumi.property("namespaceName")
+    primary_connection_string: str = pulumi.property("primaryConnectionString")
+    primary_connection_string_alias: str = pulumi.property("primaryConnectionStringAlias")
+    primary_key: str = pulumi.property("primaryKey")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_connection_string: str = pulumi.property("secondaryConnectionString")
+    secondary_connection_string_alias: str = pulumi.property("secondaryConnectionStringAlias")
+    secondary_key: str = pulumi.property("secondaryKey")
+    send: Optional[bool] = pulumi.property("send")
+
 
 class GetAuthorizationRuleResult:
     """
@@ -79,6 +105,8 @@ class GetAuthorizationRuleResult:
         if send and not isinstance(send, bool):
             raise TypeError("Expected argument 'send' to be a bool")
         __self__.send = send
+
+
 class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +129,15 @@ class AwaitableGetAuthorizationRuleResult(GetAuthorizationRuleResult):
             secondary_key=self.secondary_key,
             send=self.send)
 
-def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,namespace_name=None,resource_group_name=None,send=None,opts=None):
+
+def get_authorization_rule(eventhub_name: Optional[str] = None,
+                           listen: Optional[bool] = None,
+                           manage: Optional[bool] = None,
+                           name: Optional[str] = None,
+                           namespace_name: Optional[str] = None,
+                           resource_group_name: Optional[str] = None,
+                           send: Optional[bool] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthorizationRuleResult:
     """
     Use this data source to access information about an existing Event Hubs Authorization Rule within an Event Hub.
 
@@ -124,8 +160,6 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     :param str resource_group_name: The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
     """
     __args__ = dict()
-
-
     __args__['eventhubName'] = eventhub_name
     __args__['listen'] = listen
     __args__['manage'] = manage
@@ -136,22 +170,22 @@ def get_authorization_rule(eventhub_name=None,listen=None,manage=None,name=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:eventhub/getAuthorizationRule:getAuthorizationRule', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:eventhub/getAuthorizationRule:getAuthorizationRule', __args__, opts=opts, typ=_GetAuthorizationRuleResult).value
 
     return AwaitableGetAuthorizationRuleResult(
-        eventhub_name=__ret__.get('eventhubName'),
-        id=__ret__.get('id'),
-        listen=__ret__.get('listen'),
-        location=__ret__.get('location'),
-        manage=__ret__.get('manage'),
-        name=__ret__.get('name'),
-        namespace_name=__ret__.get('namespaceName'),
-        primary_connection_string=__ret__.get('primaryConnectionString'),
-        primary_connection_string_alias=__ret__.get('primaryConnectionStringAlias'),
-        primary_key=__ret__.get('primaryKey'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_connection_string=__ret__.get('secondaryConnectionString'),
-        secondary_connection_string_alias=__ret__.get('secondaryConnectionStringAlias'),
-        secondary_key=__ret__.get('secondaryKey'),
-        send=__ret__.get('send'))
+        eventhub_name=__ret__.eventhub_name,
+        id=__ret__.id,
+        listen=__ret__.listen,
+        location=__ret__.location,
+        manage=__ret__.manage,
+        name=__ret__.name,
+        namespace_name=__ret__.namespace_name,
+        primary_connection_string=__ret__.primary_connection_string,
+        primary_connection_string_alias=__ret__.primary_connection_string_alias,
+        primary_key=__ret__.primary_key,
+        resource_group_name=__ret__.resource_group_name,
+        secondary_connection_string=__ret__.secondary_connection_string,
+        secondary_connection_string_alias=__ret__.secondary_connection_string_alias,
+        secondary_key=__ret__.secondary_key,
+        send=__ret__.send)

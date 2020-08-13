@@ -5,8 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetCertificateOrderResult',
+    'AwaitableGetCertificateOrderResult',
+    'get_certificate_order',
+]
+
+
+@pulumi.output_type
+class _GetCertificateOrderResult:
+    app_service_certificate_not_renewable_reasons: List[str] = pulumi.property("appServiceCertificateNotRenewableReasons")
+    auto_renew: bool = pulumi.property("autoRenew")
+    certificates: List['outputs.GetCertificateOrderCertificateResult'] = pulumi.property("certificates")
+    csr: str = pulumi.property("csr")
+    distinguished_name: str = pulumi.property("distinguishedName")
+    domain_verification_token: str = pulumi.property("domainVerificationToken")
+    expiration_time: str = pulumi.property("expirationTime")
+    id: str = pulumi.property("id")
+    intermediate_thumbprint: str = pulumi.property("intermediateThumbprint")
+    is_private_key_external: bool = pulumi.property("isPrivateKeyExternal")
+    key_size: float = pulumi.property("keySize")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    product_type: str = pulumi.property("productType")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    root_thumbprint: str = pulumi.property("rootThumbprint")
+    signed_certificate_thumbprint: str = pulumi.property("signedCertificateThumbprint")
+    status: str = pulumi.property("status")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    validity_in_years: float = pulumi.property("validityInYears")
+
 
 class GetCertificateOrderResult:
     """
@@ -127,6 +159,8 @@ class GetCertificateOrderResult:
         """
         Duration in years (must be between 1 and 3).
         """
+
+
 class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -154,7 +188,10 @@ class AwaitableGetCertificateOrderResult(GetCertificateOrderResult):
             tags=self.tags,
             validity_in_years=self.validity_in_years)
 
-def get_certificate_order(name=None,resource_group_name=None,opts=None):
+
+def get_certificate_order(name: Optional[str] = None,
+                          resource_group_name: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateOrderResult:
     """
     Use this data source to access information about an existing App Service Certificate Order.
 
@@ -174,34 +211,32 @@ def get_certificate_order(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificateOrder:getCertificateOrder', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appservice/getCertificateOrder:getCertificateOrder', __args__, opts=opts, typ=_GetCertificateOrderResult).value
 
     return AwaitableGetCertificateOrderResult(
-        app_service_certificate_not_renewable_reasons=__ret__.get('appServiceCertificateNotRenewableReasons'),
-        auto_renew=__ret__.get('autoRenew'),
-        certificates=__ret__.get('certificates'),
-        csr=__ret__.get('csr'),
-        distinguished_name=__ret__.get('distinguishedName'),
-        domain_verification_token=__ret__.get('domainVerificationToken'),
-        expiration_time=__ret__.get('expirationTime'),
-        id=__ret__.get('id'),
-        intermediate_thumbprint=__ret__.get('intermediateThumbprint'),
-        is_private_key_external=__ret__.get('isPrivateKeyExternal'),
-        key_size=__ret__.get('keySize'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        product_type=__ret__.get('productType'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        root_thumbprint=__ret__.get('rootThumbprint'),
-        signed_certificate_thumbprint=__ret__.get('signedCertificateThumbprint'),
-        status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        validity_in_years=__ret__.get('validityInYears'))
+        app_service_certificate_not_renewable_reasons=__ret__.app_service_certificate_not_renewable_reasons,
+        auto_renew=__ret__.auto_renew,
+        certificates=__ret__.certificates,
+        csr=__ret__.csr,
+        distinguished_name=__ret__.distinguished_name,
+        domain_verification_token=__ret__.domain_verification_token,
+        expiration_time=__ret__.expiration_time,
+        id=__ret__.id,
+        intermediate_thumbprint=__ret__.intermediate_thumbprint,
+        is_private_key_external=__ret__.is_private_key_external,
+        key_size=__ret__.key_size,
+        location=__ret__.location,
+        name=__ret__.name,
+        product_type=__ret__.product_type,
+        resource_group_name=__ret__.resource_group_name,
+        root_thumbprint=__ret__.root_thumbprint,
+        signed_certificate_thumbprint=__ret__.signed_certificate_thumbprint,
+        status=__ret__.status,
+        tags=__ret__.tags,
+        validity_in_years=__ret__.validity_in_years)

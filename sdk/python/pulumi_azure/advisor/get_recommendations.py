@@ -5,8 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetRecommendationsResult',
+    'AwaitableGetRecommendationsResult',
+    'get_recommendations',
+]
+
+
+@pulumi.output_type
+class _GetRecommendationsResult:
+    filter_by_categories: Optional[List[str]] = pulumi.property("filterByCategories")
+    filter_by_resource_groups: Optional[List[str]] = pulumi.property("filterByResourceGroups")
+    id: str = pulumi.property("id")
+    recommendations: List['outputs.GetRecommendationsRecommendationResult'] = pulumi.property("recommendations")
+
 
 class GetRecommendationsResult:
     """
@@ -31,6 +47,8 @@ class GetRecommendationsResult:
         """
         One or more `recommendations` blocks as defined below.
         """
+
+
 class AwaitableGetRecommendationsResult(GetRecommendationsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +60,10 @@ class AwaitableGetRecommendationsResult(GetRecommendationsResult):
             id=self.id,
             recommendations=self.recommendations)
 
-def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None,opts=None):
+
+def get_recommendations(filter_by_categories: Optional[List[str]] = None,
+                        filter_by_resource_groups: Optional[List[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecommendationsResult:
     """
     Use this data source to access information about an existing Advisor Recommendations.
 
@@ -61,22 +82,20 @@ def get_recommendations(filter_by_categories=None,filter_by_resource_groups=None
     ```
 
 
-    :param list filter_by_categories: Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
-    :param list filter_by_resource_groups: Specifies a list of resource groups about which the Advisor Recommendations will be listed.
+    :param List[str] filter_by_categories: Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
+    :param List[str] filter_by_resource_groups: Specifies a list of resource groups about which the Advisor Recommendations will be listed.
     """
     __args__ = dict()
-
-
     __args__['filterByCategories'] = filter_by_categories
     __args__['filterByResourceGroups'] = filter_by_resource_groups
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:advisor/getRecommendations:getRecommendations', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:advisor/getRecommendations:getRecommendations', __args__, opts=opts, typ=_GetRecommendationsResult).value
 
     return AwaitableGetRecommendationsResult(
-        filter_by_categories=__ret__.get('filterByCategories'),
-        filter_by_resource_groups=__ret__.get('filterByResourceGroups'),
-        id=__ret__.get('id'),
-        recommendations=__ret__.get('recommendations'))
+        filter_by_categories=__ret__.filter_by_categories,
+        filter_by_resource_groups=__ret__.filter_by_resource_groups,
+        id=__ret__.id,
+        recommendations=__ret__.recommendations)

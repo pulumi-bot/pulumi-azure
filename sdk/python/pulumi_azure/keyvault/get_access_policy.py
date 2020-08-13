@@ -5,8 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAccessPolicyResult',
+    'AwaitableGetAccessPolicyResult',
+    'get_access_policy',
+]
+
+
+@pulumi.output_type
+class _GetAccessPolicyResult:
+    certificate_permissions: List[str] = pulumi.property("certificatePermissions")
+    id: str = pulumi.property("id")
+    key_permissions: List[str] = pulumi.property("keyPermissions")
+    name: str = pulumi.property("name")
+    secret_permissions: List[str] = pulumi.property("secretPermissions")
+
 
 class GetAccessPolicyResult:
     """
@@ -40,6 +56,8 @@ class GetAccessPolicyResult:
         """
         the secret permissions for the access policy
         """
+
+
 class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +70,9 @@ class AwaitableGetAccessPolicyResult(GetAccessPolicyResult):
             name=self.name,
             secret_permissions=self.secret_permissions)
 
-def get_access_policy(name=None,opts=None):
+
+def get_access_policy(name: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessPolicyResult:
     """
     Use this data source to access information about the permissions from the Management Key Vault Templates.
 
@@ -72,18 +92,16 @@ def get_access_policy(name=None,opts=None):
            `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getAccessPolicy:getAccessPolicy', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getAccessPolicy:getAccessPolicy', __args__, opts=opts, typ=_GetAccessPolicyResult).value
 
     return AwaitableGetAccessPolicyResult(
-        certificate_permissions=__ret__.get('certificatePermissions'),
-        id=__ret__.get('id'),
-        key_permissions=__ret__.get('keyPermissions'),
-        name=__ret__.get('name'),
-        secret_permissions=__ret__.get('secretPermissions'))
+        certificate_permissions=__ret__.certificate_permissions,
+        id=__ret__.id,
+        key_permissions=__ret__.key_permissions,
+        name=__ret__.name,
+        secret_permissions=__ret__.secret_permissions)

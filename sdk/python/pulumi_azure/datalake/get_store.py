@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetStoreResult',
+    'AwaitableGetStoreResult',
+    'get_store',
+]
+
+
+@pulumi.output_type
+class _GetStoreResult:
+    encryption_state: str = pulumi.property("encryptionState")
+    encryption_type: str = pulumi.property("encryptionType")
+    firewall_allow_azure_ips: str = pulumi.property("firewallAllowAzureIps")
+    firewall_state: str = pulumi.property("firewallState")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    tier: str = pulumi.property("tier")
+
 
 class GetStoreResult:
     """
@@ -64,6 +85,8 @@ class GetStoreResult:
         """
         Current monthly commitment tier for the account.
         """
+
+
 class AwaitableGetStoreResult(GetStoreResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +104,10 @@ class AwaitableGetStoreResult(GetStoreResult):
             tags=self.tags,
             tier=self.tier)
 
-def get_store(name=None,resource_group_name=None,opts=None):
+
+def get_store(name: Optional[str] = None,
+              resource_group_name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStoreResult:
     """
     Use this data source to access information about an existing Data Lake Store.
 
@@ -101,24 +127,22 @@ def get_store(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Data Lake Store exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:datalake/getStore:getStore', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:datalake/getStore:getStore', __args__, opts=opts, typ=_GetStoreResult).value
 
     return AwaitableGetStoreResult(
-        encryption_state=__ret__.get('encryptionState'),
-        encryption_type=__ret__.get('encryptionType'),
-        firewall_allow_azure_ips=__ret__.get('firewallAllowAzureIps'),
-        firewall_state=__ret__.get('firewallState'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        tier=__ret__.get('tier'))
+        encryption_state=__ret__.encryption_state,
+        encryption_type=__ret__.encryption_type,
+        firewall_allow_azure_ips=__ret__.firewall_allow_azure_ips,
+        firewall_state=__ret__.firewall_state,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags,
+        tier=__ret__.tier)

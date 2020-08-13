@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetResourcesResult',
+    'AwaitableGetResourcesResult',
+    'get_resources',
+]
+
+
+@pulumi.output_type
+class _GetResourcesResult:
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    required_tags: Optional[Mapping[str, str]] = pulumi.property("requiredTags")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    resources: List['outputs.GetResourcesResourceResult'] = pulumi.property("resources")
+    type: str = pulumi.property("type")
+
 
 class GetResourcesResult:
     """
@@ -43,6 +61,8 @@ class GetResourcesResult:
         """
         The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
         """
+
+
 class AwaitableGetResourcesResult(GetResourcesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,19 +76,22 @@ class AwaitableGetResourcesResult(GetResourcesResult):
             resources=self.resources,
             type=self.type)
 
-def get_resources(name=None,required_tags=None,resource_group_name=None,type=None,opts=None):
+
+def get_resources(name: Optional[str] = None,
+                  required_tags: Optional[Mapping[str, str]] = None,
+                  resource_group_name: Optional[str] = None,
+                  type: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcesResult:
     """
     Use this data source to access information about existing resources.
 
 
     :param str name: The name of the Resource.
-    :param dict required_tags: A mapping of tags which the resource has to have in order to be included in the result.
+    :param Mapping[str, str] required_tags: A mapping of tags which the resource has to have in order to be included in the result.
     :param str resource_group_name: The name of the Resource group where the Resources are located.
     :param str type: The Resource Type of the Resources you want to list (e.g. `Microsoft.Network/virtualNetworks`). A full list of available Resource Types can be found [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/azure-services-resource-providers).
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['requiredTags'] = required_tags
     __args__['resourceGroupName'] = resource_group_name
@@ -76,13 +99,13 @@ def get_resources(name=None,required_tags=None,resource_group_name=None,type=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:core/getResources:getResources', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:core/getResources:getResources', __args__, opts=opts, typ=_GetResourcesResult).value
 
     return AwaitableGetResourcesResult(
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        required_tags=__ret__.get('requiredTags'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        resources=__ret__.get('resources'),
-        type=__ret__.get('type'))
+        id=__ret__.id,
+        name=__ret__.name,
+        required_tags=__ret__.required_tags,
+        resource_group_name=__ret__.resource_group_name,
+        resources=__ret__.resources,
+        type=__ret__.type)

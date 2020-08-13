@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSharedImageGalleryResult',
+    'AwaitableGetSharedImageGalleryResult',
+    'get_shared_image_gallery',
+]
+
+
+@pulumi.output_type
+class _GetSharedImageGalleryResult:
+    description: str = pulumi.property("description")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    unique_name: str = pulumi.property("uniqueName")
+
 
 class GetSharedImageGalleryResult:
     """
@@ -46,6 +64,8 @@ class GetSharedImageGalleryResult:
         """
         The unique name assigned to the Shared Image Gallery.
         """
+
+
 class AwaitableGetSharedImageGalleryResult(GetSharedImageGalleryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +80,10 @@ class AwaitableGetSharedImageGalleryResult(GetSharedImageGalleryResult):
             tags=self.tags,
             unique_name=self.unique_name)
 
-def get_shared_image_gallery(name=None,resource_group_name=None,opts=None):
+
+def get_shared_image_gallery(name: Optional[str] = None,
+                             resource_group_name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharedImageGalleryResult:
     """
     Use this data source to access information about an existing Shared Image Gallery.
 
@@ -79,21 +102,19 @@ def get_shared_image_gallery(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImageGallery:getSharedImageGallery', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImageGallery:getSharedImageGallery', __args__, opts=opts, typ=_GetSharedImageGalleryResult).value
 
     return AwaitableGetSharedImageGalleryResult(
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        unique_name=__ret__.get('uniqueName'))
+        description=__ret__.description,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags,
+        unique_name=__ret__.unique_name)

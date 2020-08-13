@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAvailabilitySetResult',
+    'AwaitableGetAvailabilitySetResult',
+    'get_availability_set',
+]
+
+
+@pulumi.output_type
+class _GetAvailabilitySetResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    managed: bool = pulumi.property("managed")
+    name: str = pulumi.property("name")
+    platform_fault_domain_count: str = pulumi.property("platformFaultDomainCount")
+    platform_update_domain_count: str = pulumi.property("platformUpdateDomainCount")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetAvailabilitySetResult:
     """
@@ -55,6 +74,8 @@ class GetAvailabilitySetResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAvailabilitySetResult(GetAvailabilitySetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +91,10 @@ class AwaitableGetAvailabilitySetResult(GetAvailabilitySetResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_availability_set(name=None,resource_group_name=None,opts=None):
+
+def get_availability_set(name: Optional[str] = None,
+                         resource_group_name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilitySetResult:
     """
     Use this data source to access information about an existing Availability Set.
 
@@ -90,22 +114,20 @@ def get_availability_set(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the resource group in which the Availability Set exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getAvailabilitySet:getAvailabilitySet', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getAvailabilitySet:getAvailabilitySet', __args__, opts=opts, typ=_GetAvailabilitySetResult).value
 
     return AwaitableGetAvailabilitySetResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        managed=__ret__.get('managed'),
-        name=__ret__.get('name'),
-        platform_fault_domain_count=__ret__.get('platformFaultDomainCount'),
-        platform_update_domain_count=__ret__.get('platformUpdateDomainCount'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        id=__ret__.id,
+        location=__ret__.location,
+        managed=__ret__.managed,
+        name=__ret__.name,
+        platform_fault_domain_count=__ret__.platform_fault_domain_count,
+        platform_update_domain_count=__ret__.platform_update_domain_count,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags)

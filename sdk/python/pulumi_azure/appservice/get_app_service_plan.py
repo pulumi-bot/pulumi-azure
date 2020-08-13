@@ -5,8 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAppServicePlanResult',
+    'AwaitableGetAppServicePlanResult',
+    'get_app_service_plan',
+]
+
+
+@pulumi.output_type
+class _GetAppServicePlanResult:
+    app_service_environment_id: str = pulumi.property("appServiceEnvironmentId")
+    id: str = pulumi.property("id")
+    is_xenon: bool = pulumi.property("isXenon")
+    kind: str = pulumi.property("kind")
+    location: str = pulumi.property("location")
+    maximum_elastic_worker_count: float = pulumi.property("maximumElasticWorkerCount")
+    maximum_number_of_workers: float = pulumi.property("maximumNumberOfWorkers")
+    name: str = pulumi.property("name")
+    per_site_scaling: bool = pulumi.property("perSiteScaling")
+    reserved: bool = pulumi.property("reserved")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku: 'outputs.GetAppServicePlanSkuResult' = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetAppServicePlanResult:
     """
@@ -85,6 +110,8 @@ class GetAppServicePlanResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,7 +132,10 @@ class AwaitableGetAppServicePlanResult(GetAppServicePlanResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_app_service_plan(name=None,resource_group_name=None,opts=None):
+
+def get_app_service_plan(name: Optional[str] = None,
+                         resource_group_name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppServicePlanResult:
     """
     Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 
@@ -125,27 +155,25 @@ def get_app_service_plan(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the App Service Plan exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appservice/getAppServicePlan:getAppServicePlan', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appservice/getAppServicePlan:getAppServicePlan', __args__, opts=opts, typ=_GetAppServicePlanResult).value
 
     return AwaitableGetAppServicePlanResult(
-        app_service_environment_id=__ret__.get('appServiceEnvironmentId'),
-        id=__ret__.get('id'),
-        is_xenon=__ret__.get('isXenon'),
-        kind=__ret__.get('kind'),
-        location=__ret__.get('location'),
-        maximum_elastic_worker_count=__ret__.get('maximumElasticWorkerCount'),
-        maximum_number_of_workers=__ret__.get('maximumNumberOfWorkers'),
-        name=__ret__.get('name'),
-        per_site_scaling=__ret__.get('perSiteScaling'),
-        reserved=__ret__.get('reserved'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'))
+        app_service_environment_id=__ret__.app_service_environment_id,
+        id=__ret__.id,
+        is_xenon=__ret__.is_xenon,
+        kind=__ret__.kind,
+        location=__ret__.location,
+        maximum_elastic_worker_count=__ret__.maximum_elastic_worker_count,
+        maximum_number_of_workers=__ret__.maximum_number_of_workers,
+        name=__ret__.name,
+        per_site_scaling=__ret__.per_site_scaling,
+        reserved=__ret__.reserved,
+        resource_group_name=__ret__.resource_group_name,
+        sku=__ret__.sku,
+        tags=__ret__.tags)

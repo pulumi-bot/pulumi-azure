@@ -5,8 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetResourceGroupResult',
+    'AwaitableGetResourceGroupResult',
+    'get_resource_group',
+]
+
+
+@pulumi.output_type
+class _GetResourceGroupResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetResourceGroupResult:
     """
@@ -34,6 +49,8 @@ class GetResourceGroupResult:
         """
         A mapping of tags assigned to the Resource Group.
         """
+
+
 class AwaitableGetResourceGroupResult(GetResourceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +62,9 @@ class AwaitableGetResourceGroupResult(GetResourceGroupResult):
             name=self.name,
             tags=self.tags)
 
-def get_resource_group(name=None,opts=None):
+
+def get_resource_group(name: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceGroupResult:
     """
     Use this data source to access information about an existing Resource Group.
 
@@ -63,17 +82,15 @@ def get_resource_group(name=None,opts=None):
     :param str name: The Name of this Resource Group.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:core/getResourceGroup:getResourceGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:core/getResourceGroup:getResourceGroup', __args__, opts=opts, typ=_GetResourceGroupResult).value
 
     return AwaitableGetResourceGroupResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        tags=__ret__.get('tags'))
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        tags=__ret__.tags)

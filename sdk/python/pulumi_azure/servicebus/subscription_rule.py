@@ -5,57 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SubscriptionRule']
 
 
 class SubscriptionRule(pulumi.CustomResource):
-    action: pulumi.Output[str]
+    action: pulumi.Output[Optional[str]] = pulumi.property("action")
     """
     Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
     """
-    correlation_filter: pulumi.Output[dict]
+
+    correlation_filter: pulumi.Output[Optional['outputs.SubscriptionRuleCorrelationFilter']] = pulumi.property("correlationFilter")
     """
     A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
-
-      * `content_type` (`str`) - Content type of the message.
-      * `correlationId` (`str`) - Identifier of the correlation.
-      * `label` (`str`) - Application specific label.
-      * `messageId` (`str`) - Identifier of the message.
-      * `replyTo` (`str`) - Address of the queue to reply to.
-      * `replyToSessionId` (`str`) - Session identifier to reply to.
-      * `sessionId` (`str`) - Session identifier.
-      * `to` (`str`) - Address to send to.
     """
-    filter_type: pulumi.Output[str]
+
+    filter_type: pulumi.Output[str] = pulumi.property("filterType")
     """
     Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
     """
-    namespace_name: pulumi.Output[str]
+
+    namespace_name: pulumi.Output[str] = pulumi.property("namespaceName")
     """
     The name of the ServiceBus Namespace in which the ServiceBus Topic exists. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group in the ServiceBus Namespace exists. Changing this forces a new resource to be created.
     """
-    sql_filter: pulumi.Output[str]
+
+    sql_filter: pulumi.Output[Optional[str]] = pulumi.property("sqlFilter")
     """
     Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
     """
-    subscription_name: pulumi.Output[str]
+
+    subscription_name: pulumi.Output[str] = pulumi.property("subscriptionName")
     """
     The name of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
     """
-    topic_name: pulumi.Output[str]
+
+    topic_name: pulumi.Output[str] = pulumi.property("topicName")
     """
     The name of the ServiceBus Topic in which the ServiceBus Subscription exists. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, correlation_filter=None, filter_type=None, name=None, namespace_name=None, resource_group_name=None, sql_filter=None, subscription_name=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 correlation_filter: Optional[pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']]] = None,
+                 filter_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sql_filter: Optional[pulumi.Input[str]] = None,
+                 subscription_name: Optional[pulumi.Input[str]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a ServiceBus Subscription Rule.
 
@@ -129,7 +147,7 @@ class SubscriptionRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
-        :param pulumi.Input[dict] correlation_filter: A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']] correlation_filter: A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
         :param pulumi.Input[str] filter_type: Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
         :param pulumi.Input[str] name: Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] namespace_name: The name of the ServiceBus Namespace in which the ServiceBus Topic exists. Changing this forces a new resource to be created.
@@ -137,17 +155,6 @@ class SubscriptionRule(pulumi.CustomResource):
         :param pulumi.Input[str] sql_filter: Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
         :param pulumi.Input[str] subscription_name: The name of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] topic_name: The name of the ServiceBus Topic in which the ServiceBus Subscription exists. Changing this forces a new resource to be created.
-
-        The **correlation_filter** object supports the following:
-
-          * `content_type` (`pulumi.Input[str]`) - Content type of the message.
-          * `correlationId` (`pulumi.Input[str]`) - Identifier of the correlation.
-          * `label` (`pulumi.Input[str]`) - Application specific label.
-          * `messageId` (`pulumi.Input[str]`) - Identifier of the message.
-          * `replyTo` (`pulumi.Input[str]`) - Address of the queue to reply to.
-          * `replyToSessionId` (`pulumi.Input[str]`) - Session identifier to reply to.
-          * `sessionId` (`pulumi.Input[str]`) - Session identifier.
-          * `to` (`pulumi.Input[str]`) - Address to send to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -160,7 +167,7 @@ class SubscriptionRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -194,7 +201,18 @@ class SubscriptionRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, correlation_filter=None, filter_type=None, name=None, namespace_name=None, resource_group_name=None, sql_filter=None, subscription_name=None, topic_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: Optional[pulumi.Input[str]] = None,
+            correlation_filter: Optional[pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']]] = None,
+            filter_type: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace_name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            sql_filter: Optional[pulumi.Input[str]] = None,
+            subscription_name: Optional[pulumi.Input[str]] = None,
+            topic_name: Optional[pulumi.Input[str]] = None) -> 'SubscriptionRule':
         """
         Get an existing SubscriptionRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -203,7 +221,7 @@ class SubscriptionRule(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
-        :param pulumi.Input[dict] correlation_filter: A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']] correlation_filter: A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
         :param pulumi.Input[str] filter_type: Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
         :param pulumi.Input[str] name: Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] namespace_name: The name of the ServiceBus Namespace in which the ServiceBus Topic exists. Changing this forces a new resource to be created.
@@ -211,17 +229,6 @@ class SubscriptionRule(pulumi.CustomResource):
         :param pulumi.Input[str] sql_filter: Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
         :param pulumi.Input[str] subscription_name: The name of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] topic_name: The name of the ServiceBus Topic in which the ServiceBus Subscription exists. Changing this forces a new resource to be created.
-
-        The **correlation_filter** object supports the following:
-
-          * `content_type` (`pulumi.Input[str]`) - Content type of the message.
-          * `correlationId` (`pulumi.Input[str]`) - Identifier of the correlation.
-          * `label` (`pulumi.Input[str]`) - Application specific label.
-          * `messageId` (`pulumi.Input[str]`) - Identifier of the message.
-          * `replyTo` (`pulumi.Input[str]`) - Address of the queue to reply to.
-          * `replyToSessionId` (`pulumi.Input[str]`) - Session identifier to reply to.
-          * `sessionId` (`pulumi.Input[str]`) - Session identifier.
-          * `to` (`pulumi.Input[str]`) - Address to send to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -239,7 +246,8 @@ class SubscriptionRule(pulumi.CustomResource):
         return SubscriptionRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,22 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['EndpointServicebusQueue']
 
 
 class EndpointServicebusQueue(pulumi.CustomResource):
-    connection_string: pulumi.Output[str]
+    connection_string: pulumi.Output[str] = pulumi.property("connectionString")
     """
     The connection string for the endpoint.
     """
-    iothub_name: pulumi.Output[str]
-    name: pulumi.Output[str]
+
+    iothub_name: pulumi.Output[str] = pulumi.property("iothubName")
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the endpoint. The name must be unique across endpoint types. The following names are reserved:  `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`.
     """
-    resource_group_name: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, connection_string=None, iothub_name=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 iothub_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an IotHub ServiceBus Queue Endpoint
 
@@ -54,7 +69,7 @@ class EndpointServicebusQueue(pulumi.CustomResource):
             sku={
                 "name": "B1",
                 "tier": "Basic",
-                "capacity": "1",
+                "capacity": 1,
             },
             tags={
                 "purpose": "example",
@@ -81,7 +96,7 @@ class EndpointServicebusQueue(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +119,13 @@ class EndpointServicebusQueue(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connection_string=None, iothub_name=None, name=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
+            iothub_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'EndpointServicebusQueue':
         """
         Get an existing EndpointServicebusQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -126,7 +147,8 @@ class EndpointServicebusQueue(pulumi.CustomResource):
         return EndpointServicebusQueue(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

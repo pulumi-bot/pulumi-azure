@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetConfigurationStoreResult',
+    'AwaitableGetConfigurationStoreResult',
+    'get_configuration_store',
+]
+
+
+@pulumi.output_type
+class _GetConfigurationStoreResult:
+    endpoint: str = pulumi.property("endpoint")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    primary_read_keys: List['outputs.GetConfigurationStorePrimaryReadKeyResult'] = pulumi.property("primaryReadKeys")
+    primary_write_keys: List['outputs.GetConfigurationStorePrimaryWriteKeyResult'] = pulumi.property("primaryWriteKeys")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_read_keys: List['outputs.GetConfigurationStoreSecondaryReadKeyResult'] = pulumi.property("secondaryReadKeys")
+    secondary_write_keys: List['outputs.GetConfigurationStoreSecondaryWriteKeyResult'] = pulumi.property("secondaryWriteKeys")
+    sku: str = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetConfigurationStoreResult:
     """
@@ -73,6 +96,8 @@ class GetConfigurationStoreResult:
         """
         A mapping of tags assigned to the App Configuration.
         """
+
+
 class AwaitableGetConfigurationStoreResult(GetConfigurationStoreResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +116,10 @@ class AwaitableGetConfigurationStoreResult(GetConfigurationStoreResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_configuration_store(name=None,resource_group_name=None,opts=None):
+
+def get_configuration_store(name: Optional[str] = None,
+                            resource_group_name: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConfigurationStoreResult:
     """
     Use this data source to access information about an existing App Configuration.
 
@@ -111,25 +139,23 @@ def get_configuration_store(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the App Configuration exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:appconfiguration/getConfigurationStore:getConfigurationStore', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:appconfiguration/getConfigurationStore:getConfigurationStore', __args__, opts=opts, typ=_GetConfigurationStoreResult).value
 
     return AwaitableGetConfigurationStoreResult(
-        endpoint=__ret__.get('endpoint'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        primary_read_keys=__ret__.get('primaryReadKeys'),
-        primary_write_keys=__ret__.get('primaryWriteKeys'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_read_keys=__ret__.get('secondaryReadKeys'),
-        secondary_write_keys=__ret__.get('secondaryWriteKeys'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'))
+        endpoint=__ret__.endpoint,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        primary_read_keys=__ret__.primary_read_keys,
+        primary_write_keys=__ret__.primary_write_keys,
+        resource_group_name=__ret__.resource_group_name,
+        secondary_read_keys=__ret__.secondary_read_keys,
+        secondary_write_keys=__ret__.secondary_write_keys,
+        sku=__ret__.sku,
+        tags=__ret__.tags)

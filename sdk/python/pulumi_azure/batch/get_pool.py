@@ -5,8 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = [
+    'GetPoolResult',
+    'AwaitableGetPoolResult',
+    'get_pool',
+]
+
+
+@pulumi.output_type
+class _GetPoolResult:
+    account_name: str = pulumi.property("accountName")
+    auto_scales: List['outputs.GetPoolAutoScaleResult'] = pulumi.property("autoScales")
+    certificates: Optional[List['outputs.GetPoolCertificateResult']] = pulumi.property("certificates")
+    container_configurations: List['outputs.GetPoolContainerConfigurationResult'] = pulumi.property("containerConfigurations")
+    display_name: str = pulumi.property("displayName")
+    fixed_scales: List['outputs.GetPoolFixedScaleResult'] = pulumi.property("fixedScales")
+    id: str = pulumi.property("id")
+    max_tasks_per_node: float = pulumi.property("maxTasksPerNode")
+    metadata: Mapping[str, str] = pulumi.property("metadata")
+    name: str = pulumi.property("name")
+    network_configuration: 'outputs.GetPoolNetworkConfigurationResult' = pulumi.property("networkConfiguration")
+    node_agent_sku_id: str = pulumi.property("nodeAgentSkuId")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    start_task: Optional['outputs.GetPoolStartTaskResult'] = pulumi.property("startTask")
+    storage_image_references: List['outputs.GetPoolStorageImageReferenceResult'] = pulumi.property("storageImageReferences")
+    vm_size: str = pulumi.property("vmSize")
+
 
 class GetPoolResult:
     """
@@ -97,6 +126,8 @@ class GetPoolResult:
         """
         The size of the VM created in the Batch pool.
         """
+
+
 class AwaitableGetPoolResult(GetPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -120,7 +151,14 @@ class AwaitableGetPoolResult(GetPoolResult):
             storage_image_references=self.storage_image_references,
             vm_size=self.vm_size)
 
-def get_pool(account_name=None,certificates=None,name=None,network_configuration=None,resource_group_name=None,start_task=None,opts=None):
+
+def get_pool(account_name: Optional[str] = None,
+             certificates: Optional[List[pulumi.InputType['GetPoolCertificateArgs']]] = None,
+             name: Optional[str] = None,
+             network_configuration: Optional[pulumi.InputType['GetPoolNetworkConfigurationArgs']] = None,
+             resource_group_name: Optional[str] = None,
+             start_task: Optional[pulumi.InputType['GetPoolStartTaskArgs']] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoolResult:
     """
     Use this data source to access information about an existing Batch pool
 
@@ -137,57 +175,11 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
 
 
     :param str account_name: The name of the Batch account.
-    :param list certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
+    :param List[pulumi.InputType['GetPoolCertificateArgs']] certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
     :param str name: The name of the endpoint.
-    :param dict start_task: A `start_task` block that describes the start task settings for the Batch pool.
-
-    The **certificates** object supports the following:
-
-      * `id` (`str`) - The fully qualified ID of the certificate installed on the pool.
-      * `storeLocation` (`str`) - The location of the certificate store on the compute node into which the certificate is installed, either `CurrentUser` or `LocalMachine`.
-      * `storeName` (`str`) - The name of the certificate store on the compute node into which the certificate is installed.
-      * `visibilities` (`list`) - Which user accounts on the compute node have access to the private data of the certificate.
-
-    The **network_configuration** object supports the following:
-
-      * `endpointConfiguration` (`dict`) - The inbound NAT pools that are used to address specific ports on the individual compute node externally.
-        * `backend_port` (`float`) - The port number on the compute node.
-        * `frontendPortRange` (`str`) - The range of external ports that are used to provide inbound access to the backendPort on the individual compute nodes in the format of `1000-1100`.
-        * `name` (`str`) - The name of the endpoint.
-        * `networkSecurityGroupRules` (`list`) - The list of network security group rules that are applied to the endpoint.
-          * `access` (`str`) - The action that should be taken for a specified IP address, subnet range or tag.
-          * `priority` (`float`) - The priority for this rule.
-          * `source_address_prefix` (`str`) - The source address prefix or tag to match for the rule.
-
-        * `protocol` (`str`) - The protocol of the endpoint.
-
-      * `subnet_id` (`str`) - The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
-
-    The **start_task** object supports the following:
-
-      * `commandLine` (`str`) - The command line executed by the start task.
-      * `environment` (`dict`) - A map of strings (key,value) that represents the environment variables to set in the start task.
-      * `maxTaskRetryCount` (`float`) - The number of retry count.
-      * `resourceFiles` (`list`) - One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
-        * `autoStorageContainerName` (`str`) - The storage container name in the auto storage account.
-        * `blobPrefix` (`str`) - The blob prefix used when downloading blobs from an Azure Storage container.
-        * `fileMode` (`str`) - The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
-        * `file_path` (`str`) - The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
-        * `httpUrl` (`str`) - The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
-        * `storageContainerUrl` (`str`) - The URL of the blob container within Azure Blob Storage.
-
-      * `userIdentities` (`list`) - A `user_identity` block that describes the user identity under which the start task runs.
-        * `autoUsers` (`list`) - A `auto_user` block that describes the user identity under which the start task runs.
-          * `elevationLevel` (`str`) - The elevation level of the user identity under which the start task runs.
-          * `scope` (`str`) - The scope of the user identity under which the start task runs.
-
-        * `userName` (`str`) - The user name to log into the registry server.
-
-      * `waitForSuccess` (`bool`) - A flag that indicates if the Batch pool should wait for the start task to be completed.
+    :param pulumi.InputType['GetPoolStartTaskArgs'] start_task: A `start_task` block that describes the start task settings for the Batch pool.
     """
     __args__ = dict()
-
-
     __args__['accountName'] = account_name
     __args__['certificates'] = certificates
     __args__['name'] = name
@@ -197,23 +189,23 @@ def get_pool(account_name=None,certificates=None,name=None,network_configuration
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:batch/getPool:getPool', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:batch/getPool:getPool', __args__, opts=opts, typ=_GetPoolResult).value
 
     return AwaitableGetPoolResult(
-        account_name=__ret__.get('accountName'),
-        auto_scales=__ret__.get('autoScales'),
-        certificates=__ret__.get('certificates'),
-        container_configurations=__ret__.get('containerConfigurations'),
-        display_name=__ret__.get('displayName'),
-        fixed_scales=__ret__.get('fixedScales'),
-        id=__ret__.get('id'),
-        max_tasks_per_node=__ret__.get('maxTasksPerNode'),
-        metadata=__ret__.get('metadata'),
-        name=__ret__.get('name'),
-        network_configuration=__ret__.get('networkConfiguration'),
-        node_agent_sku_id=__ret__.get('nodeAgentSkuId'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        start_task=__ret__.get('startTask'),
-        storage_image_references=__ret__.get('storageImageReferences'),
-        vm_size=__ret__.get('vmSize'))
+        account_name=__ret__.account_name,
+        auto_scales=__ret__.auto_scales,
+        certificates=__ret__.certificates,
+        container_configurations=__ret__.container_configurations,
+        display_name=__ret__.display_name,
+        fixed_scales=__ret__.fixed_scales,
+        id=__ret__.id,
+        max_tasks_per_node=__ret__.max_tasks_per_node,
+        metadata=__ret__.metadata,
+        name=__ret__.name,
+        network_configuration=__ret__.network_configuration,
+        node_agent_sku_id=__ret__.node_agent_sku_id,
+        resource_group_name=__ret__.resource_group_name,
+        start_task=__ret__.start_task,
+        storage_image_references=__ret__.storage_image_references,
+        vm_size=__ret__.vm_size)

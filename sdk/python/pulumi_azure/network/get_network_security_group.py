@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetNetworkSecurityGroupResult',
+    'AwaitableGetNetworkSecurityGroupResult',
+    'get_network_security_group',
+]
+
+
+@pulumi.output_type
+class _GetNetworkSecurityGroupResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    security_rules: List['outputs.GetNetworkSecurityGroupSecurityRuleResult'] = pulumi.property("securityRules")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetNetworkSecurityGroupResult:
     """
@@ -46,6 +64,8 @@ class GetNetworkSecurityGroupResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetNetworkSecurityGroupResult(GetNetworkSecurityGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +79,10 @@ class AwaitableGetNetworkSecurityGroupResult(GetNetworkSecurityGroupResult):
             security_rules=self.security_rules,
             tags=self.tags)
 
-def get_network_security_group(name=None,resource_group_name=None,opts=None):
+
+def get_network_security_group(name: Optional[str] = None,
+                               resource_group_name: Optional[str] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkSecurityGroupResult:
     """
     Use this data source to access information about an existing Network Security Group.
 
@@ -79,20 +102,18 @@ def get_network_security_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Network Security Group exists
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getNetworkSecurityGroup:getNetworkSecurityGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getNetworkSecurityGroup:getNetworkSecurityGroup', __args__, opts=opts, typ=_GetNetworkSecurityGroupResult).value
 
     return AwaitableGetNetworkSecurityGroupResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        security_rules=__ret__.get('securityRules'),
-        tags=__ret__.get('tags'))
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        security_rules=__ret__.security_rules,
+        tags=__ret__.tags)

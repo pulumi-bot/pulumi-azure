@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetLabResult',
+    'AwaitableGetLabResult',
+    'get_lab',
+]
+
+
+@pulumi.output_type
+class _GetLabResult:
+    artifacts_storage_account_id: str = pulumi.property("artifactsStorageAccountId")
+    default_premium_storage_account_id: str = pulumi.property("defaultPremiumStorageAccountId")
+    default_storage_account_id: str = pulumi.property("defaultStorageAccountId")
+    id: str = pulumi.property("id")
+    key_vault_id: str = pulumi.property("keyVaultId")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    premium_data_disk_storage_account_id: str = pulumi.property("premiumDataDiskStorageAccountId")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    storage_type: str = pulumi.property("storageType")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    unique_identifier: str = pulumi.property("uniqueIdentifier")
+
 
 class GetLabResult:
     """
@@ -79,6 +102,8 @@ class GetLabResult:
         """
         The unique immutable identifier of the Dev Test Lab.
         """
+
+
 class AwaitableGetLabResult(GetLabResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +123,10 @@ class AwaitableGetLabResult(GetLabResult):
             tags=self.tags,
             unique_identifier=self.unique_identifier)
 
-def get_lab(name=None,resource_group_name=None,opts=None):
+
+def get_lab(name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLabResult:
     """
     Use this data source to access information about an existing Dev Test Lab.
 
@@ -118,26 +146,24 @@ def get_lab(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the Dev Test Lab exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:devtest/getLab:getLab', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:devtest/getLab:getLab', __args__, opts=opts, typ=_GetLabResult).value
 
     return AwaitableGetLabResult(
-        artifacts_storage_account_id=__ret__.get('artifactsStorageAccountId'),
-        default_premium_storage_account_id=__ret__.get('defaultPremiumStorageAccountId'),
-        default_storage_account_id=__ret__.get('defaultStorageAccountId'),
-        id=__ret__.get('id'),
-        key_vault_id=__ret__.get('keyVaultId'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        premium_data_disk_storage_account_id=__ret__.get('premiumDataDiskStorageAccountId'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        storage_type=__ret__.get('storageType'),
-        tags=__ret__.get('tags'),
-        unique_identifier=__ret__.get('uniqueIdentifier'))
+        artifacts_storage_account_id=__ret__.artifacts_storage_account_id,
+        default_premium_storage_account_id=__ret__.default_premium_storage_account_id,
+        default_storage_account_id=__ret__.default_storage_account_id,
+        id=__ret__.id,
+        key_vault_id=__ret__.key_vault_id,
+        location=__ret__.location,
+        name=__ret__.name,
+        premium_data_disk_storage_account_id=__ret__.premium_data_disk_storage_account_id,
+        resource_group_name=__ret__.resource_group_name,
+        storage_type=__ret__.storage_type,
+        tags=__ret__.tags,
+        unique_identifier=__ret__.unique_identifier)

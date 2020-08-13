@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetApiVersionSetResult',
+    'AwaitableGetApiVersionSetResult',
+    'get_api_version_set',
+]
+
+
+@pulumi.output_type
+class _GetApiVersionSetResult:
+    api_management_name: str = pulumi.property("apiManagementName")
+    description: str = pulumi.property("description")
+    display_name: str = pulumi.property("displayName")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    version_header_name: str = pulumi.property("versionHeaderName")
+    version_query_name: str = pulumi.property("versionQueryName")
+    versioning_scheme: str = pulumi.property("versioningScheme")
+
 
 class GetApiVersionSetResult:
     """
@@ -55,6 +75,8 @@ class GetApiVersionSetResult:
         if versioning_scheme and not isinstance(versioning_scheme, str):
             raise TypeError("Expected argument 'versioning_scheme' to be a str")
         __self__.versioning_scheme = versioning_scheme
+
+
 class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,7 +93,11 @@ class AwaitableGetApiVersionSetResult(GetApiVersionSetResult):
             version_query_name=self.version_query_name,
             versioning_scheme=self.versioning_scheme)
 
-def get_api_version_set(api_management_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_api_version_set(api_management_name: Optional[str] = None,
+                        name: Optional[str] = None,
+                        resource_group_name: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiVersionSetResult:
     """
     Uses this data source to access information about an API Version Set within an API Management Service.
 
@@ -93,24 +119,22 @@ def get_api_version_set(api_management_name=None,name=None,resource_group_name=N
     :param str resource_group_name: The name of the Resource Group in which the parent API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApiVersionSet:getApiVersionSet', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getApiVersionSet:getApiVersionSet', __args__, opts=opts, typ=_GetApiVersionSetResult).value
 
     return AwaitableGetApiVersionSetResult(
-        api_management_name=__ret__.get('apiManagementName'),
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        version_header_name=__ret__.get('versionHeaderName'),
-        version_query_name=__ret__.get('versionQueryName'),
-        versioning_scheme=__ret__.get('versioningScheme'))
+        api_management_name=__ret__.api_management_name,
+        description=__ret__.description,
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        version_header_name=__ret__.version_header_name,
+        version_query_name=__ret__.version_query_name,
+        versioning_scheme=__ret__.versioning_scheme)

@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDatabaseResult',
+    'AwaitableGetDatabaseResult',
+    'get_database',
+]
+
+
+@pulumi.output_type
+class _GetDatabaseResult:
+    collation: str = pulumi.property("collation")
+    default_secondary_location: str = pulumi.property("defaultSecondaryLocation")
+    edition: str = pulumi.property("edition")
+    elastic_pool_name: str = pulumi.property("elasticPoolName")
+    failover_group_id: str = pulumi.property("failoverGroupId")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    read_scale: bool = pulumi.property("readScale")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    server_name: str = pulumi.property("serverName")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+
 
 class GetDatabaseResult:
     """
@@ -85,6 +108,8 @@ class GetDatabaseResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -104,7 +129,12 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             server_name=self.server_name,
             tags=self.tags)
 
-def get_database(name=None,resource_group_name=None,server_name=None,tags=None,opts=None):
+
+def get_database(name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 server_name: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
     Use this data source to access information about an existing SQL Azure Database.
 
@@ -124,11 +154,9 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     :param str name: The name of the SQL Database.
     :param str resource_group_name: Specifies the name of the Resource Group where the Azure SQL Database exists.
     :param str server_name: The name of the SQL Server.
-    :param dict tags: A mapping of tags assigned to the resource.
+    :param Mapping[str, str] tags: A mapping of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
@@ -136,19 +164,19 @@ def get_database(name=None,resource_group_name=None,server_name=None,tags=None,o
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:sql/getDatabase:getDatabase', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:sql/getDatabase:getDatabase', __args__, opts=opts, typ=_GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        collation=__ret__.get('collation'),
-        default_secondary_location=__ret__.get('defaultSecondaryLocation'),
-        edition=__ret__.get('edition'),
-        elastic_pool_name=__ret__.get('elasticPoolName'),
-        failover_group_id=__ret__.get('failoverGroupId'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        read_scale=__ret__.get('readScale'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        server_name=__ret__.get('serverName'),
-        tags=__ret__.get('tags'))
+        collation=__ret__.collation,
+        default_secondary_location=__ret__.default_secondary_location,
+        edition=__ret__.edition,
+        elastic_pool_name=__ret__.elastic_pool_name,
+        failover_group_id=__ret__.failover_group_id,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        read_scale=__ret__.read_scale,
+        resource_group_name=__ret__.resource_group_name,
+        server_name=__ret__.server_name,
+        tags=__ret__.tags)

@@ -5,8 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetScheduledQueryRulesLogResult',
+    'AwaitableGetScheduledQueryRulesLogResult',
+    'get_scheduled_query_rules_log',
+]
+
+
+@pulumi.output_type
+class _GetScheduledQueryRulesLogResult:
+    authorized_resource_ids: List[str] = pulumi.property("authorizedResourceIds")
+    criterias: List['outputs.GetScheduledQueryRulesLogCriteriaResult'] = pulumi.property("criterias")
+    data_source_id: str = pulumi.property("dataSourceId")
+    description: str = pulumi.property("description")
+    enabled: bool = pulumi.property("enabled")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetScheduledQueryRulesLogResult:
     """
@@ -61,6 +83,8 @@ class GetScheduledQueryRulesLogResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +102,10 @@ class AwaitableGetScheduledQueryRulesLogResult(GetScheduledQueryRulesLogResult):
             resource_group_name=self.resource_group_name,
             tags=self.tags)
 
-def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
+
+def get_scheduled_query_rules_log(name: Optional[str] = None,
+                                  resource_group_name: Optional[str] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetScheduledQueryRulesLogResult:
     """
     Use this data source to access the properties of a LogToMetricAction scheduled query rule.
 
@@ -98,24 +125,22 @@ def get_scheduled_query_rules_log(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group where the scheduled query rule is located.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesLog:getScheduledQueryRulesLog', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:monitoring/getScheduledQueryRulesLog:getScheduledQueryRulesLog', __args__, opts=opts, typ=_GetScheduledQueryRulesLogResult).value
 
     return AwaitableGetScheduledQueryRulesLogResult(
-        authorized_resource_ids=__ret__.get('authorizedResourceIds'),
-        criterias=__ret__.get('criterias'),
-        data_source_id=__ret__.get('dataSourceId'),
-        description=__ret__.get('description'),
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'))
+        authorized_resource_ids=__ret__.authorized_resource_ids,
+        criterias=__ret__.criterias,
+        data_source_id=__ret__.data_source_id,
+        description=__ret__.description,
+        enabled=__ret__.enabled,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags)

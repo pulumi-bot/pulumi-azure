@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetLBResult',
+    'AwaitableGetLBResult',
+    'get_lb',
+]
+
+
+@pulumi.output_type
+class _GetLBResult:
+    frontend_ip_configurations: List['outputs.GetLBFrontendIpConfigurationResult'] = pulumi.property("frontendIpConfigurations")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    private_ip_address: str = pulumi.property("privateIpAddress")
+    private_ip_addresses: List[str] = pulumi.property("privateIpAddresses")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku: str = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetLBResult:
     """
@@ -64,6 +85,8 @@ class GetLBResult:
         """
         A mapping of tags assigned to the resource.
         """
+
+
 class AwaitableGetLBResult(GetLBResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,7 +103,10 @@ class AwaitableGetLBResult(GetLBResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_lb(name=None,resource_group_name=None,opts=None):
+
+def get_lb(name: Optional[str] = None,
+           resource_group_name: Optional[str] = None,
+           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLBResult:
     """
     Use this data source to access information about an existing Load Balancer
 
@@ -100,23 +126,21 @@ def get_lb(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Load Balancer exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:lb/getLB:getLB', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:lb/getLB:getLB', __args__, opts=opts, typ=_GetLBResult).value
 
     return AwaitableGetLBResult(
-        frontend_ip_configurations=__ret__.get('frontendIpConfigurations'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        private_ip_address=__ret__.get('privateIpAddress'),
-        private_ip_addresses=__ret__.get('privateIpAddresses'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'))
+        frontend_ip_configurations=__ret__.frontend_ip_configurations,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        private_ip_address=__ret__.private_ip_address,
+        private_ip_addresses=__ret__.private_ip_addresses,
+        resource_group_name=__ret__.resource_group_name,
+        sku=__ret__.sku,
+        tags=__ret__.tags)

@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetRouteFilterResult',
+    'AwaitableGetRouteFilterResult',
+    'get_route_filter',
+]
+
+
+@pulumi.output_type
+class _GetRouteFilterResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    rules: List['outputs.GetRouteFilterRuleResult'] = pulumi.property("rules")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetRouteFilterResult:
     """
@@ -46,6 +64,8 @@ class GetRouteFilterResult:
         """
         A mapping of tags assigned to the Route Filter.
         """
+
+
 class AwaitableGetRouteFilterResult(GetRouteFilterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +79,10 @@ class AwaitableGetRouteFilterResult(GetRouteFilterResult):
             rules=self.rules,
             tags=self.tags)
 
-def get_route_filter(name=None,resource_group_name=None,opts=None):
+
+def get_route_filter(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteFilterResult:
     """
     Use this data source to access information about an existing Route Filter.
 
@@ -79,20 +102,18 @@ def get_route_filter(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group where the Route Filter exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getRouteFilter:getRouteFilter', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getRouteFilter:getRouteFilter', __args__, opts=opts, typ=_GetRouteFilterResult).value
 
     return AwaitableGetRouteFilterResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        rules=__ret__.get('rules'),
-        tags=__ret__.get('tags'))
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        rules=__ret__.rules,
+        tags=__ret__.tags)

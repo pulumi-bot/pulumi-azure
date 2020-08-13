@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetExpressRouteCircuitResult',
+    'AwaitableGetExpressRouteCircuitResult',
+    'get_express_route_circuit',
+]
+
+
+@pulumi.output_type
+class _GetExpressRouteCircuitResult:
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    peerings: List['outputs.GetExpressRouteCircuitPeeringResult'] = pulumi.property("peerings")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    service_key: str = pulumi.property("serviceKey")
+    service_provider_properties: List['outputs.GetExpressRouteCircuitServiceProviderPropertyResult'] = pulumi.property("serviceProviderProperties")
+    service_provider_provisioning_state: str = pulumi.property("serviceProviderProvisioningState")
+    sku: 'outputs.GetExpressRouteCircuitSkuResult' = pulumi.property("sku")
+
 
 class GetExpressRouteCircuitResult:
     """
@@ -61,6 +82,8 @@ class GetExpressRouteCircuitResult:
         """
         A `sku` block for the ExpressRoute circuit as documented below.
         """
+
+
 class AwaitableGetExpressRouteCircuitResult(GetExpressRouteCircuitResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +100,10 @@ class AwaitableGetExpressRouteCircuitResult(GetExpressRouteCircuitResult):
             service_provider_provisioning_state=self.service_provider_provisioning_state,
             sku=self.sku)
 
-def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
+
+def get_express_route_circuit(name: Optional[str] = None,
+                              resource_group_name: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExpressRouteCircuitResult:
     """
     Use this data source to access information about an existing ExpressRoute circuit.
 
@@ -98,23 +124,21 @@ def get_express_route_circuit(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The Name of the Resource Group where the ExpressRoute circuit exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getExpressRouteCircuit:getExpressRouteCircuit', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getExpressRouteCircuit:getExpressRouteCircuit', __args__, opts=opts, typ=_GetExpressRouteCircuitResult).value
 
     return AwaitableGetExpressRouteCircuitResult(
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        peerings=__ret__.get('peerings'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        service_key=__ret__.get('serviceKey'),
-        service_provider_properties=__ret__.get('serviceProviderProperties'),
-        service_provider_provisioning_state=__ret__.get('serviceProviderProvisioningState'),
-        sku=__ret__.get('sku'))
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        peerings=__ret__.peerings,
+        resource_group_name=__ret__.resource_group_name,
+        service_key=__ret__.service_key,
+        service_provider_properties=__ret__.service_provider_properties,
+        service_provider_provisioning_state=__ret__.service_provider_provisioning_state,
+        sku=__ret__.sku)

@@ -5,56 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['Lab']
 
 
 class Lab(pulumi.CustomResource):
-    artifacts_storage_account_id: pulumi.Output[str]
+    artifacts_storage_account_id: pulumi.Output[str] = pulumi.property("artifactsStorageAccountId")
     """
     The ID of the Storage Account used for Artifact Storage.
     """
-    default_premium_storage_account_id: pulumi.Output[str]
+
+    default_premium_storage_account_id: pulumi.Output[str] = pulumi.property("defaultPremiumStorageAccountId")
     """
     The ID of the Default Premium Storage Account for this Dev Test Lab.
     """
-    default_storage_account_id: pulumi.Output[str]
+
+    default_storage_account_id: pulumi.Output[str] = pulumi.property("defaultStorageAccountId")
     """
     The ID of the Default Storage Account for this Dev Test Lab.
     """
-    key_vault_id: pulumi.Output[str]
+
+    key_vault_id: pulumi.Output[str] = pulumi.property("keyVaultId")
     """
     The ID of the Key used for this Dev Test Lab.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported Azure location where the Dev Test Lab should exist. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the Dev Test Lab. Changing this forces a new resource to be created.
     """
-    premium_data_disk_storage_account_id: pulumi.Output[str]
+
+    premium_data_disk_storage_account_id: pulumi.Output[str] = pulumi.property("premiumDataDiskStorageAccountId")
     """
     The ID of the Storage Account used for Storage of Premium Data Disk.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
     """
-    storage_type: pulumi.Output[str]
+
+    storage_type: pulumi.Output[Optional[str]] = pulumi.property("storageType")
     """
     The type of storage used by the Dev Test Lab. Possible values are `Standard` and `Premium`. Defaults to `Premium`. Changing this forces a new resource to be created.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    unique_identifier: pulumi.Output[str]
+
+    unique_identifier: pulumi.Output[str] = pulumi.property("uniqueIdentifier")
     """
     The unique immutable identifier of the Dev Test Lab.
     """
-    def __init__(__self__, resource_name, opts=None, location=None, name=None, resource_group_name=None, storage_type=None, tags=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Dev Test Lab.
 
@@ -79,7 +102,7 @@ class Lab(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Dev Test Lab. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_type: The type of storage used by the Dev Test Lab. Possible values are `Standard` and `Premium`. Defaults to `Premium`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +115,7 @@ class Lab(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,7 +141,20 @@ class Lab(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, artifacts_storage_account_id=None, default_premium_storage_account_id=None, default_storage_account_id=None, key_vault_id=None, location=None, name=None, premium_data_disk_storage_account_id=None, resource_group_name=None, storage_type=None, tags=None, unique_identifier=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            artifacts_storage_account_id: Optional[pulumi.Input[str]] = None,
+            default_premium_storage_account_id: Optional[pulumi.Input[str]] = None,
+            default_storage_account_id: Optional[pulumi.Input[str]] = None,
+            key_vault_id: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            premium_data_disk_storage_account_id: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            storage_type: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            unique_identifier: Optional[pulumi.Input[str]] = None) -> 'Lab':
         """
         Get an existing Lab resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,7 +171,7 @@ class Lab(pulumi.CustomResource):
         :param pulumi.Input[str] premium_data_disk_storage_account_id: The ID of the Storage Account used for Storage of Premium Data Disk.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_type: The type of storage used by the Dev Test Lab. Possible values are `Standard` and `Premium`. Defaults to `Premium`. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] unique_identifier: The unique immutable identifier of the Dev Test Lab.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -156,7 +192,8 @@ class Lab(pulumi.CustomResource):
         return Lab(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

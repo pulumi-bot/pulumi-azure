@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
+
+
+@pulumi.output_type
+class _GetGroupResult:
+    api_management_name: str = pulumi.property("apiManagementName")
+    description: str = pulumi.property("description")
+    display_name: str = pulumi.property("displayName")
+    external_id: str = pulumi.property("externalId")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    type: str = pulumi.property("type")
+
 
 class GetGroupResult:
     """
@@ -52,6 +71,8 @@ class GetGroupResult:
         """
         The type of this API Management Group, such as `custom` or `external`.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +88,11 @@ class AwaitableGetGroupResult(GetGroupResult):
             resource_group_name=self.resource_group_name,
             type=self.type)
 
-def get_group(api_management_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_group(api_management_name: Optional[str] = None,
+              name: Optional[str] = None,
+              resource_group_name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Use this data source to access information about an existing API Management Group.
 
@@ -89,23 +114,21 @@ def get_group(api_management_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The Name of the Resource Group in which the API Management Service exists.
     """
     __args__ = dict()
-
-
     __args__['apiManagementName'] = api_management_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getGroup:getGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:apimanagement/getGroup:getGroup', __args__, opts=opts, typ=_GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        api_management_name=__ret__.get('apiManagementName'),
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        external_id=__ret__.get('externalId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        type=__ret__.get('type'))
+        api_management_name=__ret__.api_management_name,
+        description=__ret__.description,
+        display_name=__ret__.display_name,
+        external_id=__ret__.external_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        type=__ret__.type)

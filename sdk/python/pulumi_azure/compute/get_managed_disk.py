@@ -5,8 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetManagedDiskResult',
+    'AwaitableGetManagedDiskResult',
+    'get_managed_disk',
+]
+
+
+@pulumi.output_type
+class _GetManagedDiskResult:
+    create_option: str = pulumi.property("createOption")
+    disk_encryption_set_id: str = pulumi.property("diskEncryptionSetId")
+    disk_iops_read_write: float = pulumi.property("diskIopsReadWrite")
+    disk_mbps_read_write: float = pulumi.property("diskMbpsReadWrite")
+    disk_size_gb: float = pulumi.property("diskSizeGb")
+    id: str = pulumi.property("id")
+    image_reference_id: str = pulumi.property("imageReferenceId")
+    name: str = pulumi.property("name")
+    os_type: str = pulumi.property("osType")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    source_resource_id: str = pulumi.property("sourceResourceId")
+    source_uri: str = pulumi.property("sourceUri")
+    storage_account_id: str = pulumi.property("storageAccountId")
+    storage_account_type: str = pulumi.property("storageAccountType")
+    tags: Optional[Mapping[str, str]] = pulumi.property("tags")
+    zones: List[str] = pulumi.property("zones")
+
 
 class GetManagedDiskResult:
     """
@@ -100,6 +127,8 @@ class GetManagedDiskResult:
         """
         A list of Availability Zones where the Managed Disk exists.
         """
+
+
 class AwaitableGetManagedDiskResult(GetManagedDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,7 +152,12 @@ class AwaitableGetManagedDiskResult(GetManagedDiskResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opts=None):
+
+def get_managed_disk(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     tags: Optional[Mapping[str, str]] = None,
+                     zones: Optional[List[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagedDiskResult:
     """
     Use this data source to access information about an existing Managed Disk.
 
@@ -141,12 +175,10 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
 
     :param str name: Specifies the name of the Managed Disk.
     :param str resource_group_name: Specifies the name of the Resource Group where this Managed Disk exists.
-    :param dict tags: A mapping of tags assigned to the resource.
-    :param list zones: A list of Availability Zones where the Managed Disk exists.
+    :param Mapping[str, str] tags: A mapping of tags assigned to the resource.
+    :param List[str] zones: A list of Availability Zones where the Managed Disk exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
@@ -154,23 +186,23 @@ def get_managed_disk(name=None,resource_group_name=None,tags=None,zones=None,opt
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getManagedDisk:getManagedDisk', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getManagedDisk:getManagedDisk', __args__, opts=opts, typ=_GetManagedDiskResult).value
 
     return AwaitableGetManagedDiskResult(
-        create_option=__ret__.get('createOption'),
-        disk_encryption_set_id=__ret__.get('diskEncryptionSetId'),
-        disk_iops_read_write=__ret__.get('diskIopsReadWrite'),
-        disk_mbps_read_write=__ret__.get('diskMbpsReadWrite'),
-        disk_size_gb=__ret__.get('diskSizeGb'),
-        id=__ret__.get('id'),
-        image_reference_id=__ret__.get('imageReferenceId'),
-        name=__ret__.get('name'),
-        os_type=__ret__.get('osType'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        source_resource_id=__ret__.get('sourceResourceId'),
-        source_uri=__ret__.get('sourceUri'),
-        storage_account_id=__ret__.get('storageAccountId'),
-        storage_account_type=__ret__.get('storageAccountType'),
-        tags=__ret__.get('tags'),
-        zones=__ret__.get('zones'))
+        create_option=__ret__.create_option,
+        disk_encryption_set_id=__ret__.disk_encryption_set_id,
+        disk_iops_read_write=__ret__.disk_iops_read_write,
+        disk_mbps_read_write=__ret__.disk_mbps_read_write,
+        disk_size_gb=__ret__.disk_size_gb,
+        id=__ret__.id,
+        image_reference_id=__ret__.image_reference_id,
+        name=__ret__.name,
+        os_type=__ret__.os_type,
+        resource_group_name=__ret__.resource_group_name,
+        source_resource_id=__ret__.source_resource_id,
+        source_uri=__ret__.source_uri,
+        storage_account_id=__ret__.storage_account_id,
+        storage_account_type=__ret__.storage_account_type,
+        tags=__ret__.tags,
+        zones=__ret__.zones)

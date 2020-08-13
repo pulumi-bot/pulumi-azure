@@ -5,8 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDiagnosticCategoriesResult',
+    'AwaitableGetDiagnosticCategoriesResult',
+    'get_diagnostic_categories',
+]
+
+
+@pulumi.output_type
+class _GetDiagnosticCategoriesResult:
+    id: str = pulumi.property("id")
+    logs: List[str] = pulumi.property("logs")
+    metrics: List[str] = pulumi.property("metrics")
+    resource_id: str = pulumi.property("resourceId")
+
 
 class GetDiagnosticCategoriesResult:
     """
@@ -34,6 +49,8 @@ class GetDiagnosticCategoriesResult:
         if resource_id and not isinstance(resource_id, str):
             raise TypeError("Expected argument 'resource_id' to be a str")
         __self__.resource_id = resource_id
+
+
 class AwaitableGetDiagnosticCategoriesResult(GetDiagnosticCategoriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +62,9 @@ class AwaitableGetDiagnosticCategoriesResult(GetDiagnosticCategoriesResult):
             metrics=self.metrics,
             resource_id=self.resource_id)
 
-def get_diagnostic_categories(resource_id=None,opts=None):
+
+def get_diagnostic_categories(resource_id: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDiagnosticCategoriesResult:
     """
     Use this data source to access information about the Monitor Diagnostics Categories supported by an existing Resource.
 
@@ -64,17 +83,15 @@ def get_diagnostic_categories(resource_id=None,opts=None):
     :param str resource_id: The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
     """
     __args__ = dict()
-
-
     __args__['resourceId'] = resource_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:monitoring/getDiagnosticCategories:getDiagnosticCategories', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:monitoring/getDiagnosticCategories:getDiagnosticCategories', __args__, opts=opts, typ=_GetDiagnosticCategoriesResult).value
 
     return AwaitableGetDiagnosticCategoriesResult(
-        id=__ret__.get('id'),
-        logs=__ret__.get('logs'),
-        metrics=__ret__.get('metrics'),
-        resource_id=__ret__.get('resourceId'))
+        id=__ret__.id,
+        logs=__ret__.logs,
+        metrics=__ret__.metrics,
+        resource_id=__ret__.resource_id)

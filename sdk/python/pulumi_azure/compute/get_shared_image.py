@@ -5,8 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetSharedImageResult',
+    'AwaitableGetSharedImageResult',
+    'get_shared_image',
+]
+
+
+@pulumi.output_type
+class _GetSharedImageResult:
+    description: str = pulumi.property("description")
+    eula: str = pulumi.property("eula")
+    gallery_name: str = pulumi.property("galleryName")
+    hyper_v_generation: str = pulumi.property("hyperVGeneration")
+    id: str = pulumi.property("id")
+    identifiers: List['outputs.GetSharedImageIdentifierResult'] = pulumi.property("identifiers")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    os_type: str = pulumi.property("osType")
+    privacy_statement_uri: str = pulumi.property("privacyStatementUri")
+    release_note_uri: str = pulumi.property("releaseNoteUri")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    specialized: bool = pulumi.property("specialized")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetSharedImageResult:
     """
@@ -88,6 +114,8 @@ class GetSharedImageResult:
         """
         A mapping of tags assigned to the Shared Image.
         """
+
+
 class AwaitableGetSharedImageResult(GetSharedImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -109,7 +137,11 @@ class AwaitableGetSharedImageResult(GetSharedImageResult):
             specialized=self.specialized,
             tags=self.tags)
 
-def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_shared_image(gallery_name: Optional[str] = None,
+                     name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharedImageResult:
     """
     Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
 
@@ -130,29 +162,27 @@ def get_shared_image(gallery_name=None,name=None,resource_group_name=None,opts=N
     :param str resource_group_name: The name of the Resource Group in which the Shared Image Gallery exists.
     """
     __args__ = dict()
-
-
     __args__['galleryName'] = gallery_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImage:getSharedImage', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:compute/getSharedImage:getSharedImage', __args__, opts=opts, typ=_GetSharedImageResult).value
 
     return AwaitableGetSharedImageResult(
-        description=__ret__.get('description'),
-        eula=__ret__.get('eula'),
-        gallery_name=__ret__.get('galleryName'),
-        hyper_v_generation=__ret__.get('hyperVGeneration'),
-        id=__ret__.get('id'),
-        identifiers=__ret__.get('identifiers'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        os_type=__ret__.get('osType'),
-        privacy_statement_uri=__ret__.get('privacyStatementUri'),
-        release_note_uri=__ret__.get('releaseNoteUri'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        specialized=__ret__.get('specialized'),
-        tags=__ret__.get('tags'))
+        description=__ret__.description,
+        eula=__ret__.eula,
+        gallery_name=__ret__.gallery_name,
+        hyper_v_generation=__ret__.hyper_v_generation,
+        id=__ret__.id,
+        identifiers=__ret__.identifiers,
+        location=__ret__.location,
+        name=__ret__.name,
+        os_type=__ret__.os_type,
+        privacy_statement_uri=__ret__.privacy_statement_uri,
+        release_note_uri=__ret__.release_note_uri,
+        resource_group_name=__ret__.resource_group_name,
+        specialized=__ret__.specialized,
+        tags=__ret__.tags)

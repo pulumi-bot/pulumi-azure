@@ -5,45 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['FirewallNatRuleCollection']
 
 
 class FirewallNatRuleCollection(pulumi.CustomResource):
-    action: pulumi.Output[str]
+    action: pulumi.Output[str] = pulumi.property("action")
     """
     Specifies the action the rule will apply to matching traffic. Possible values are `Dnat` and `Snat`.
     """
-    azure_firewall_name: pulumi.Output[str]
+
+    azure_firewall_name: pulumi.Output[str] = pulumi.property("azureFirewallName")
     """
     Specifies the name of the Firewall in which the NAT Rule Collection should be created. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the NAT Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
     """
-    priority: pulumi.Output[float]
+
+    priority: pulumi.Output[float] = pulumi.property("priority")
     """
     Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
     """
-    rules: pulumi.Output[list]
+
+    rules: pulumi.Output[List['outputs.FirewallNatRuleCollectionRule']] = pulumi.property("rules")
     """
     One or more `rule` blocks as defined below.
-
-      * `description` (`str`) - Specifies a description for the rule.
-      * `destinationAddresses` (`list`) - A list of destination IP addresses and/or IP ranges.
-      * `destinationPorts` (`list`) - A list of destination ports.
-      * `name` (`str`) - Specifies the name of the rule.
-      * `protocols` (`list`) - A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`.  If `action` is `Dnat`, protocols can only be `TCP` and `UDP`.
-      * `sourceAddresses` (`list`) - A list of source IP addresses and/or IP ranges.
-      * `translatedAddress` (`str`) - The address of the service behind the Firewall.
-      * `translatedPort` (`str`) - The port of the service behind the Firewall.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, azure_firewall_name=None, name=None, priority=None, resource_group_name=None, rules=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 azure_firewall_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallNatRuleCollectionRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a NAT Rule Collection within an Azure Firewall.
 
@@ -85,7 +97,7 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
                 "sourceAddresses": ["10.0.0.0/16"],
                 "destinationPorts": ["53"],
                 "destinationAddresses": [example_public_ip.ip_address],
-                "translatedPort": 53,
+                "translatedPort": "53",
                 "translatedAddress": "8.8.8.8",
                 "protocols": [
                     "TCP",
@@ -101,18 +113,7 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the NAT Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[float] priority: Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] rules: One or more `rule` blocks as defined below.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Specifies a description for the rule.
-          * `destinationAddresses` (`pulumi.Input[list]`) - A list of destination IP addresses and/or IP ranges.
-          * `destinationPorts` (`pulumi.Input[list]`) - A list of destination ports.
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the rule.
-          * `protocols` (`pulumi.Input[list]`) - A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`.  If `action` is `Dnat`, protocols can only be `TCP` and `UDP`.
-          * `sourceAddresses` (`pulumi.Input[list]`) - A list of source IP addresses and/or IP ranges.
-          * `translatedAddress` (`pulumi.Input[str]`) - The address of the service behind the Firewall.
-          * `translatedPort` (`pulumi.Input[str]`) - The port of the service behind the Firewall.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallNatRuleCollectionRuleArgs']]]] rules: One or more `rule` blocks as defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,7 +126,7 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -154,7 +155,15 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, azure_firewall_name=None, name=None, priority=None, resource_group_name=None, rules=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: Optional[pulumi.Input[str]] = None,
+            azure_firewall_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallNatRuleCollectionRuleArgs']]]]] = None) -> 'FirewallNatRuleCollection':
         """
         Get an existing FirewallNatRuleCollection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -167,18 +176,7 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the NAT Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[float] priority: Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
         :param pulumi.Input[str] resource_group_name: Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] rules: One or more `rule` blocks as defined below.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Specifies a description for the rule.
-          * `destinationAddresses` (`pulumi.Input[list]`) - A list of destination IP addresses and/or IP ranges.
-          * `destinationPorts` (`pulumi.Input[list]`) - A list of destination ports.
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the rule.
-          * `protocols` (`pulumi.Input[list]`) - A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`.  If `action` is `Dnat`, protocols can only be `TCP` and `UDP`.
-          * `sourceAddresses` (`pulumi.Input[list]`) - A list of source IP addresses and/or IP ranges.
-          * `translatedAddress` (`pulumi.Input[str]`) - The address of the service behind the Firewall.
-          * `translatedPort` (`pulumi.Input[str]`) - The port of the service behind the Firewall.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallNatRuleCollectionRuleArgs']]]] rules: One or more `rule` blocks as defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -193,7 +191,8 @@ class FirewallNatRuleCollection(pulumi.CustomResource):
         return FirewallNatRuleCollection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

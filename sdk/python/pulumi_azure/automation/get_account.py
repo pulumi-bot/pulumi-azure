@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
+
+@pulumi.output_type
+class _GetAccountResult:
+    endpoint: str = pulumi.property("endpoint")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    primary_key: str = pulumi.property("primaryKey")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_key: str = pulumi.property("secondaryKey")
+
 
 class GetAccountResult:
     """
@@ -43,6 +60,8 @@ class GetAccountResult:
         """
         The Secondary Access Key for the Automation Account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +75,10 @@ class AwaitableGetAccountResult(GetAccountResult):
             resource_group_name=self.resource_group_name,
             secondary_key=self.secondary_key)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing Automation Account.
 
@@ -76,20 +98,18 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the Resource Group where the Automation Account exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:automation/getAccount:getAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:automation/getAccount:getAccount', __args__, opts=opts, typ=_GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        endpoint=__ret__.get('endpoint'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        primary_key=__ret__.get('primaryKey'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_key=__ret__.get('secondaryKey'))
+        endpoint=__ret__.endpoint,
+        id=__ret__.id,
+        name=__ret__.name,
+        primary_key=__ret__.primary_key,
+        resource_group_name=__ret__.resource_group_name,
+        secondary_key=__ret__.secondary_key)

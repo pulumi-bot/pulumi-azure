@@ -5,8 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetIntVariableResult',
+    'AwaitableGetIntVariableResult',
+    'get_int_variable',
+]
+
+
+@pulumi.output_type
+class _GetIntVariableResult:
+    automation_account_name: str = pulumi.property("automationAccountName")
+    description: str = pulumi.property("description")
+    encrypted: bool = pulumi.property("encrypted")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    value: float = pulumi.property("value")
+
 
 class GetIntVariableResult:
     """
@@ -46,6 +64,8 @@ class GetIntVariableResult:
         """
         The value of the Automation Variable as a `integer`.
         """
+
+
 class AwaitableGetIntVariableResult(GetIntVariableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +80,11 @@ class AwaitableGetIntVariableResult(GetIntVariableResult):
             resource_group_name=self.resource_group_name,
             value=self.value)
 
-def get_int_variable(automation_account_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_int_variable(automation_account_name: Optional[str] = None,
+                     name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntVariableResult:
     """
     Use this data source to access information about an existing Automation Int Variable.
 
@@ -82,22 +106,20 @@ def get_int_variable(automation_account_name=None,name=None,resource_group_name=
     :param str resource_group_name: The Name of the Resource Group where the automation account exists.
     """
     __args__ = dict()
-
-
     __args__['automationAccountName'] = automation_account_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:automation/getIntVariable:getIntVariable', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:automation/getIntVariable:getIntVariable', __args__, opts=opts, typ=_GetIntVariableResult).value
 
     return AwaitableGetIntVariableResult(
-        automation_account_name=__ret__.get('automationAccountName'),
-        description=__ret__.get('description'),
-        encrypted=__ret__.get('encrypted'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        value=__ret__.get('value'))
+        automation_account_name=__ret__.automation_account_name,
+        description=__ret__.description,
+        encrypted=__ret__.encrypted,
+        id=__ret__.id,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        value=__ret__.value)

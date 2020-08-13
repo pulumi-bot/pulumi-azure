@@ -5,8 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetNetworkInterfaceResult',
+    'AwaitableGetNetworkInterfaceResult',
+    'get_network_interface',
+]
+
+
+@pulumi.output_type
+class _GetNetworkInterfaceResult:
+    applied_dns_servers: List[str] = pulumi.property("appliedDnsServers")
+    dns_servers: List[str] = pulumi.property("dnsServers")
+    enable_accelerated_networking: bool = pulumi.property("enableAcceleratedNetworking")
+    enable_ip_forwarding: bool = pulumi.property("enableIpForwarding")
+    id: str = pulumi.property("id")
+    internal_dns_name_label: str = pulumi.property("internalDnsNameLabel")
+    ip_configurations: List['outputs.GetNetworkInterfaceIpConfigurationResult'] = pulumi.property("ipConfigurations")
+    location: str = pulumi.property("location")
+    mac_address: str = pulumi.property("macAddress")
+    name: str = pulumi.property("name")
+    network_security_group_id: str = pulumi.property("networkSecurityGroupId")
+    private_ip_address: str = pulumi.property("privateIpAddress")
+    private_ip_addresses: List[str] = pulumi.property("privateIpAddresses")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    virtual_machine_id: str = pulumi.property("virtualMachineId")
+
 
 class GetNetworkInterfaceResult:
     """
@@ -106,6 +134,8 @@ class GetNetworkInterfaceResult:
         """
         The ID of the virtual machine that the specified Network Interface is attached to.
         """
+
+
 class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -129,7 +159,10 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
             tags=self.tags,
             virtual_machine_id=self.virtual_machine_id)
 
-def get_network_interface(name=None,resource_group_name=None,opts=None):
+
+def get_network_interface(name: Optional[str] = None,
+                          resource_group_name: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkInterfaceResult:
     """
     Use this data source to access information about an existing Network Interface.
 
@@ -149,30 +182,28 @@ def get_network_interface(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Network Interface is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getNetworkInterface:getNetworkInterface', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getNetworkInterface:getNetworkInterface', __args__, opts=opts, typ=_GetNetworkInterfaceResult).value
 
     return AwaitableGetNetworkInterfaceResult(
-        applied_dns_servers=__ret__.get('appliedDnsServers'),
-        dns_servers=__ret__.get('dnsServers'),
-        enable_accelerated_networking=__ret__.get('enableAcceleratedNetworking'),
-        enable_ip_forwarding=__ret__.get('enableIpForwarding'),
-        id=__ret__.get('id'),
-        internal_dns_name_label=__ret__.get('internalDnsNameLabel'),
-        ip_configurations=__ret__.get('ipConfigurations'),
-        location=__ret__.get('location'),
-        mac_address=__ret__.get('macAddress'),
-        name=__ret__.get('name'),
-        network_security_group_id=__ret__.get('networkSecurityGroupId'),
-        private_ip_address=__ret__.get('privateIpAddress'),
-        private_ip_addresses=__ret__.get('privateIpAddresses'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        tags=__ret__.get('tags'),
-        virtual_machine_id=__ret__.get('virtualMachineId'))
+        applied_dns_servers=__ret__.applied_dns_servers,
+        dns_servers=__ret__.dns_servers,
+        enable_accelerated_networking=__ret__.enable_accelerated_networking,
+        enable_ip_forwarding=__ret__.enable_ip_forwarding,
+        id=__ret__.id,
+        internal_dns_name_label=__ret__.internal_dns_name_label,
+        ip_configurations=__ret__.ip_configurations,
+        location=__ret__.location,
+        mac_address=__ret__.mac_address,
+        name=__ret__.name,
+        network_security_group_id=__ret__.network_security_group_id,
+        private_ip_address=__ret__.private_ip_address,
+        private_ip_addresses=__ret__.private_ip_addresses,
+        resource_group_name=__ret__.resource_group_name,
+        tags=__ret__.tags,
+        virtual_machine_id=__ret__.virtual_machine_id)

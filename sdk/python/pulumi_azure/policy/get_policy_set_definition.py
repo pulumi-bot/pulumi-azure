@@ -5,8 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetPolicySetDefinitionResult',
+    'AwaitableGetPolicySetDefinitionResult',
+    'get_policy_set_definition',
+]
+
+
+@pulumi.output_type
+class _GetPolicySetDefinitionResult:
+    description: str = pulumi.property("description")
+    display_name: str = pulumi.property("displayName")
+    id: str = pulumi.property("id")
+    management_group_name: Optional[str] = pulumi.property("managementGroupName")
+    metadata: str = pulumi.property("metadata")
+    name: str = pulumi.property("name")
+    parameters: str = pulumi.property("parameters")
+    policy_definition_references: List['outputs.GetPolicySetDefinitionPolicyDefinitionReferenceResult'] = pulumi.property("policyDefinitionReferences")
+    policy_definitions: str = pulumi.property("policyDefinitions")
+    policy_type: str = pulumi.property("policyType")
+
 
 class GetPolicySetDefinitionResult:
     """
@@ -61,6 +83,8 @@ class GetPolicySetDefinitionResult:
         """
         The Type of the Policy Set Definition.
         """
+
+
 class AwaitableGetPolicySetDefinitionResult(GetPolicySetDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,7 +102,11 @@ class AwaitableGetPolicySetDefinitionResult(GetPolicySetDefinitionResult):
             policy_definitions=self.policy_definitions,
             policy_type=self.policy_type)
 
-def get_policy_set_definition(display_name=None,management_group_name=None,name=None,opts=None):
+
+def get_policy_set_definition(display_name: Optional[str] = None,
+                              management_group_name: Optional[str] = None,
+                              name: Optional[str] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicySetDefinitionResult:
     """
     Use this data source to access information about an existing Policy Set Definition.
 
@@ -98,25 +126,23 @@ def get_policy_set_definition(display_name=None,management_group_name=None,name=
     :param str name: Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
     """
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['managementGroupName'] = management_group_name
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:policy/getPolicySetDefinition:getPolicySetDefinition', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:policy/getPolicySetDefinition:getPolicySetDefinition', __args__, opts=opts, typ=_GetPolicySetDefinitionResult).value
 
     return AwaitableGetPolicySetDefinitionResult(
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        management_group_name=__ret__.get('managementGroupName'),
-        metadata=__ret__.get('metadata'),
-        name=__ret__.get('name'),
-        parameters=__ret__.get('parameters'),
-        policy_definition_references=__ret__.get('policyDefinitionReferences'),
-        policy_definitions=__ret__.get('policyDefinitions'),
-        policy_type=__ret__.get('policyType'))
+        description=__ret__.description,
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        management_group_name=__ret__.management_group_name,
+        metadata=__ret__.metadata,
+        name=__ret__.name,
+        parameters=__ret__.parameters,
+        policy_definition_references=__ret__.policy_definition_references,
+        policy_definitions=__ret__.policy_definitions,
+        policy_type=__ret__.policy_type)

@@ -5,8 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetGroupResult',
+    'AwaitableGetGroupResult',
+    'get_group',
+]
+
+
+@pulumi.output_type
+class _GetGroupResult:
+    display_name: str = pulumi.property("displayName")
+    group_id: str = pulumi.property("groupId")
+    id: str = pulumi.property("id")
+    name: str = pulumi.property("name")
+    parent_management_group_id: str = pulumi.property("parentManagementGroupId")
+    subscription_ids: List[str] = pulumi.property("subscriptionIds")
+
 
 class GetGroupResult:
     """
@@ -44,6 +61,8 @@ class GetGroupResult:
         """
         A list of Subscription IDs which are assigned to the Management Group.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +76,11 @@ class AwaitableGetGroupResult(GetGroupResult):
             parent_management_group_id=self.parent_management_group_id,
             subscription_ids=self.subscription_ids)
 
-def get_group(display_name=None,group_id=None,name=None,opts=None):
+
+def get_group(display_name: Optional[str] = None,
+              group_id: Optional[str] = None,
+              name: Optional[str] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Use this data source to access information about an existing Management Group.
 
@@ -77,21 +100,19 @@ def get_group(display_name=None,group_id=None,name=None,opts=None):
     :param str name: Specifies the name or UUID of this Management Group.
     """
     __args__ = dict()
-
-
     __args__['displayName'] = display_name
     __args__['groupId'] = group_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:management/getGroup:getGroup', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:management/getGroup:getGroup', __args__, opts=opts, typ=_GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        display_name=__ret__.get('displayName'),
-        group_id=__ret__.get('groupId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        parent_management_group_id=__ret__.get('parentManagementGroupId'),
-        subscription_ids=__ret__.get('subscriptionIds'))
+        display_name=__ret__.display_name,
+        group_id=__ret__.group_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        parent_management_group_id=__ret__.parent_management_group_id,
+        subscription_ids=__ret__.subscription_ids)

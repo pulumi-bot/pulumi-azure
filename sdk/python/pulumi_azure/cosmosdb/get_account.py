@@ -5,8 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
+
+@pulumi.output_type
+class _GetAccountResult:
+    capabilities: List['outputs.GetAccountCapabilityResult'] = pulumi.property("capabilities")
+    consistency_policies: List['outputs.GetAccountConsistencyPolicyResult'] = pulumi.property("consistencyPolicies")
+    enable_automatic_failover: bool = pulumi.property("enableAutomaticFailover")
+    enable_free_tier: bool = pulumi.property("enableFreeTier")
+    enable_multiple_write_locations: bool = pulumi.property("enableMultipleWriteLocations")
+    endpoint: str = pulumi.property("endpoint")
+    geo_locations: List['outputs.GetAccountGeoLocationResult'] = pulumi.property("geoLocations")
+    id: str = pulumi.property("id")
+    ip_range_filter: str = pulumi.property("ipRangeFilter")
+    is_virtual_network_filter_enabled: bool = pulumi.property("isVirtualNetworkFilterEnabled")
+    kind: str = pulumi.property("kind")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    offer_type: str = pulumi.property("offerType")
+    primary_master_key: str = pulumi.property("primaryMasterKey")
+    primary_readonly_master_key: str = pulumi.property("primaryReadonlyMasterKey")
+    read_endpoints: List[str] = pulumi.property("readEndpoints")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_master_key: str = pulumi.property("secondaryMasterKey")
+    secondary_readonly_master_key: str = pulumi.property("secondaryReadonlyMasterKey")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    virtual_network_rules: List['outputs.GetAccountVirtualNetworkRuleResult'] = pulumi.property("virtualNetworkRules")
+    write_endpoints: List[str] = pulumi.property("writeEndpoints")
+
 
 class GetAccountResult:
     """
@@ -139,6 +174,8 @@ class GetAccountResult:
         """
         A list of write endpoints available for this CosmosDB account.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -169,7 +206,10 @@ class AwaitableGetAccountResult(GetAccountResult):
             virtual_network_rules=self.virtual_network_rules,
             write_endpoints=self.write_endpoints)
 
-def get_account(name=None,resource_group_name=None,opts=None):
+
+def get_account(name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
 
@@ -189,37 +229,35 @@ def get_account(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group in which the CosmosDB Account resides.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:cosmosdb/getAccount:getAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:cosmosdb/getAccount:getAccount', __args__, opts=opts, typ=_GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        capabilities=__ret__.get('capabilities'),
-        consistency_policies=__ret__.get('consistencyPolicies'),
-        enable_automatic_failover=__ret__.get('enableAutomaticFailover'),
-        enable_free_tier=__ret__.get('enableFreeTier'),
-        enable_multiple_write_locations=__ret__.get('enableMultipleWriteLocations'),
-        endpoint=__ret__.get('endpoint'),
-        geo_locations=__ret__.get('geoLocations'),
-        id=__ret__.get('id'),
-        ip_range_filter=__ret__.get('ipRangeFilter'),
-        is_virtual_network_filter_enabled=__ret__.get('isVirtualNetworkFilterEnabled'),
-        kind=__ret__.get('kind'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        offer_type=__ret__.get('offerType'),
-        primary_master_key=__ret__.get('primaryMasterKey'),
-        primary_readonly_master_key=__ret__.get('primaryReadonlyMasterKey'),
-        read_endpoints=__ret__.get('readEndpoints'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_master_key=__ret__.get('secondaryMasterKey'),
-        secondary_readonly_master_key=__ret__.get('secondaryReadonlyMasterKey'),
-        tags=__ret__.get('tags'),
-        virtual_network_rules=__ret__.get('virtualNetworkRules'),
-        write_endpoints=__ret__.get('writeEndpoints'))
+        capabilities=__ret__.capabilities,
+        consistency_policies=__ret__.consistency_policies,
+        enable_automatic_failover=__ret__.enable_automatic_failover,
+        enable_free_tier=__ret__.enable_free_tier,
+        enable_multiple_write_locations=__ret__.enable_multiple_write_locations,
+        endpoint=__ret__.endpoint,
+        geo_locations=__ret__.geo_locations,
+        id=__ret__.id,
+        ip_range_filter=__ret__.ip_range_filter,
+        is_virtual_network_filter_enabled=__ret__.is_virtual_network_filter_enabled,
+        kind=__ret__.kind,
+        location=__ret__.location,
+        name=__ret__.name,
+        offer_type=__ret__.offer_type,
+        primary_master_key=__ret__.primary_master_key,
+        primary_readonly_master_key=__ret__.primary_readonly_master_key,
+        read_endpoints=__ret__.read_endpoints,
+        resource_group_name=__ret__.resource_group_name,
+        secondary_master_key=__ret__.secondary_master_key,
+        secondary_readonly_master_key=__ret__.secondary_readonly_master_key,
+        tags=__ret__.tags,
+        virtual_network_rules=__ret__.virtual_network_rules,
+        write_endpoints=__ret__.write_endpoints)

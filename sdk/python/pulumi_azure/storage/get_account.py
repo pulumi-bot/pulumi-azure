@@ -5,8 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetAccountResult',
+    'AwaitableGetAccountResult',
+    'get_account',
+]
+
+
+@pulumi.output_type
+class _GetAccountResult:
+    access_tier: str = pulumi.property("accessTier")
+    account_kind: str = pulumi.property("accountKind")
+    account_replication_type: str = pulumi.property("accountReplicationType")
+    account_tier: str = pulumi.property("accountTier")
+    allow_blob_public_access: bool = pulumi.property("allowBlobPublicAccess")
+    custom_domains: List['outputs.GetAccountCustomDomainResult'] = pulumi.property("customDomains")
+    enable_https_traffic_only: bool = pulumi.property("enableHttpsTrafficOnly")
+    id: str = pulumi.property("id")
+    is_hns_enabled: bool = pulumi.property("isHnsEnabled")
+    location: str = pulumi.property("location")
+    min_tls_version: Optional[str] = pulumi.property("minTlsVersion")
+    name: str = pulumi.property("name")
+    primary_access_key: str = pulumi.property("primaryAccessKey")
+    primary_blob_connection_string: str = pulumi.property("primaryBlobConnectionString")
+    primary_blob_endpoint: str = pulumi.property("primaryBlobEndpoint")
+    primary_blob_host: str = pulumi.property("primaryBlobHost")
+    primary_connection_string: str = pulumi.property("primaryConnectionString")
+    primary_dfs_endpoint: str = pulumi.property("primaryDfsEndpoint")
+    primary_dfs_host: str = pulumi.property("primaryDfsHost")
+    primary_file_endpoint: str = pulumi.property("primaryFileEndpoint")
+    primary_file_host: str = pulumi.property("primaryFileHost")
+    primary_location: str = pulumi.property("primaryLocation")
+    primary_queue_endpoint: str = pulumi.property("primaryQueueEndpoint")
+    primary_queue_host: str = pulumi.property("primaryQueueHost")
+    primary_table_endpoint: str = pulumi.property("primaryTableEndpoint")
+    primary_table_host: str = pulumi.property("primaryTableHost")
+    primary_web_endpoint: str = pulumi.property("primaryWebEndpoint")
+    primary_web_host: str = pulumi.property("primaryWebHost")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    secondary_access_key: str = pulumi.property("secondaryAccessKey")
+    secondary_blob_connection_string: str = pulumi.property("secondaryBlobConnectionString")
+    secondary_blob_endpoint: str = pulumi.property("secondaryBlobEndpoint")
+    secondary_blob_host: str = pulumi.property("secondaryBlobHost")
+    secondary_connection_string: str = pulumi.property("secondaryConnectionString")
+    secondary_dfs_endpoint: str = pulumi.property("secondaryDfsEndpoint")
+    secondary_dfs_host: str = pulumi.property("secondaryDfsHost")
+    secondary_file_endpoint: str = pulumi.property("secondaryFileEndpoint")
+    secondary_file_host: str = pulumi.property("secondaryFileHost")
+    secondary_location: str = pulumi.property("secondaryLocation")
+    secondary_queue_endpoint: str = pulumi.property("secondaryQueueEndpoint")
+    secondary_queue_host: str = pulumi.property("secondaryQueueHost")
+    secondary_table_endpoint: str = pulumi.property("secondaryTableEndpoint")
+    secondary_table_host: str = pulumi.property("secondaryTableHost")
+    secondary_web_endpoint: str = pulumi.property("secondaryWebEndpoint")
+    secondary_web_host: str = pulumi.property("secondaryWebHost")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetAccountResult:
     """
@@ -287,6 +345,8 @@ class GetAccountResult:
         """
         A mapping of tags to assigned to the resource.
         """
+
+
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -340,7 +400,11 @@ class AwaitableGetAccountResult(GetAccountResult):
             secondary_web_host=self.secondary_web_host,
             tags=self.tags)
 
-def get_account(min_tls_version=None,name=None,resource_group_name=None,opts=None):
+
+def get_account(min_tls_version: Optional[str] = None,
+                name: Optional[str] = None,
+                resource_group_name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Use this data source to access information about an existing Storage Account.
 
@@ -361,61 +425,59 @@ def get_account(min_tls_version=None,name=None,resource_group_name=None,opts=Non
     :param str resource_group_name: Specifies the name of the resource group the Storage Account is located in.
     """
     __args__ = dict()
-
-
     __args__['minTlsVersion'] = min_tls_version
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:storage/getAccount:getAccount', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:storage/getAccount:getAccount', __args__, opts=opts, typ=_GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        access_tier=__ret__.get('accessTier'),
-        account_kind=__ret__.get('accountKind'),
-        account_replication_type=__ret__.get('accountReplicationType'),
-        account_tier=__ret__.get('accountTier'),
-        allow_blob_public_access=__ret__.get('allowBlobPublicAccess'),
-        custom_domains=__ret__.get('customDomains'),
-        enable_https_traffic_only=__ret__.get('enableHttpsTrafficOnly'),
-        id=__ret__.get('id'),
-        is_hns_enabled=__ret__.get('isHnsEnabled'),
-        location=__ret__.get('location'),
-        min_tls_version=__ret__.get('minTlsVersion'),
-        name=__ret__.get('name'),
-        primary_access_key=__ret__.get('primaryAccessKey'),
-        primary_blob_connection_string=__ret__.get('primaryBlobConnectionString'),
-        primary_blob_endpoint=__ret__.get('primaryBlobEndpoint'),
-        primary_blob_host=__ret__.get('primaryBlobHost'),
-        primary_connection_string=__ret__.get('primaryConnectionString'),
-        primary_dfs_endpoint=__ret__.get('primaryDfsEndpoint'),
-        primary_dfs_host=__ret__.get('primaryDfsHost'),
-        primary_file_endpoint=__ret__.get('primaryFileEndpoint'),
-        primary_file_host=__ret__.get('primaryFileHost'),
-        primary_location=__ret__.get('primaryLocation'),
-        primary_queue_endpoint=__ret__.get('primaryQueueEndpoint'),
-        primary_queue_host=__ret__.get('primaryQueueHost'),
-        primary_table_endpoint=__ret__.get('primaryTableEndpoint'),
-        primary_table_host=__ret__.get('primaryTableHost'),
-        primary_web_endpoint=__ret__.get('primaryWebEndpoint'),
-        primary_web_host=__ret__.get('primaryWebHost'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        secondary_access_key=__ret__.get('secondaryAccessKey'),
-        secondary_blob_connection_string=__ret__.get('secondaryBlobConnectionString'),
-        secondary_blob_endpoint=__ret__.get('secondaryBlobEndpoint'),
-        secondary_blob_host=__ret__.get('secondaryBlobHost'),
-        secondary_connection_string=__ret__.get('secondaryConnectionString'),
-        secondary_dfs_endpoint=__ret__.get('secondaryDfsEndpoint'),
-        secondary_dfs_host=__ret__.get('secondaryDfsHost'),
-        secondary_file_endpoint=__ret__.get('secondaryFileEndpoint'),
-        secondary_file_host=__ret__.get('secondaryFileHost'),
-        secondary_location=__ret__.get('secondaryLocation'),
-        secondary_queue_endpoint=__ret__.get('secondaryQueueEndpoint'),
-        secondary_queue_host=__ret__.get('secondaryQueueHost'),
-        secondary_table_endpoint=__ret__.get('secondaryTableEndpoint'),
-        secondary_table_host=__ret__.get('secondaryTableHost'),
-        secondary_web_endpoint=__ret__.get('secondaryWebEndpoint'),
-        secondary_web_host=__ret__.get('secondaryWebHost'),
-        tags=__ret__.get('tags'))
+        access_tier=__ret__.access_tier,
+        account_kind=__ret__.account_kind,
+        account_replication_type=__ret__.account_replication_type,
+        account_tier=__ret__.account_tier,
+        allow_blob_public_access=__ret__.allow_blob_public_access,
+        custom_domains=__ret__.custom_domains,
+        enable_https_traffic_only=__ret__.enable_https_traffic_only,
+        id=__ret__.id,
+        is_hns_enabled=__ret__.is_hns_enabled,
+        location=__ret__.location,
+        min_tls_version=__ret__.min_tls_version,
+        name=__ret__.name,
+        primary_access_key=__ret__.primary_access_key,
+        primary_blob_connection_string=__ret__.primary_blob_connection_string,
+        primary_blob_endpoint=__ret__.primary_blob_endpoint,
+        primary_blob_host=__ret__.primary_blob_host,
+        primary_connection_string=__ret__.primary_connection_string,
+        primary_dfs_endpoint=__ret__.primary_dfs_endpoint,
+        primary_dfs_host=__ret__.primary_dfs_host,
+        primary_file_endpoint=__ret__.primary_file_endpoint,
+        primary_file_host=__ret__.primary_file_host,
+        primary_location=__ret__.primary_location,
+        primary_queue_endpoint=__ret__.primary_queue_endpoint,
+        primary_queue_host=__ret__.primary_queue_host,
+        primary_table_endpoint=__ret__.primary_table_endpoint,
+        primary_table_host=__ret__.primary_table_host,
+        primary_web_endpoint=__ret__.primary_web_endpoint,
+        primary_web_host=__ret__.primary_web_host,
+        resource_group_name=__ret__.resource_group_name,
+        secondary_access_key=__ret__.secondary_access_key,
+        secondary_blob_connection_string=__ret__.secondary_blob_connection_string,
+        secondary_blob_endpoint=__ret__.secondary_blob_endpoint,
+        secondary_blob_host=__ret__.secondary_blob_host,
+        secondary_connection_string=__ret__.secondary_connection_string,
+        secondary_dfs_endpoint=__ret__.secondary_dfs_endpoint,
+        secondary_dfs_host=__ret__.secondary_dfs_host,
+        secondary_file_endpoint=__ret__.secondary_file_endpoint,
+        secondary_file_host=__ret__.secondary_file_host,
+        secondary_location=__ret__.secondary_location,
+        secondary_queue_endpoint=__ret__.secondary_queue_endpoint,
+        secondary_queue_host=__ret__.secondary_queue_host,
+        secondary_table_endpoint=__ret__.secondary_table_endpoint,
+        secondary_table_host=__ret__.secondary_table_host,
+        secondary_web_endpoint=__ret__.secondary_web_endpoint,
+        secondary_web_host=__ret__.secondary_web_host,
+        tags=__ret__.tags)

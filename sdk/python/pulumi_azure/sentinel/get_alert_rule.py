@@ -5,8 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetAlertRuleResult',
+    'AwaitableGetAlertRuleResult',
+    'get_alert_rule',
+]
+
+
+@pulumi.output_type
+class _GetAlertRuleResult:
+    id: str = pulumi.property("id")
+    log_analytics_workspace_id: str = pulumi.property("logAnalyticsWorkspaceId")
+    name: str = pulumi.property("name")
+
 
 class GetAlertRuleResult:
     """
@@ -25,6 +39,8 @@ class GetAlertRuleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetAlertRuleResult(GetAlertRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,7 +51,10 @@ class AwaitableGetAlertRuleResult(GetAlertRuleResult):
             log_analytics_workspace_id=self.log_analytics_workspace_id,
             name=self.name)
 
-def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
+
+def get_alert_rule(log_analytics_workspace_id: Optional[str] = None,
+                   name: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertRuleResult:
     """
     Use this data source to access information about an existing Sentinel Alert Rule.
 
@@ -57,17 +76,15 @@ def get_alert_rule(log_analytics_workspace_id=None,name=None,opts=None):
     :param str name: The name which should be used for this Sentinel Alert Rule.
     """
     __args__ = dict()
-
-
     __args__['logAnalyticsWorkspaceId'] = log_analytics_workspace_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:sentinel/getAlertRule:getAlertRule', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:sentinel/getAlertRule:getAlertRule', __args__, opts=opts, typ=_GetAlertRuleResult).value
 
     return AwaitableGetAlertRuleResult(
-        id=__ret__.get('id'),
-        log_analytics_workspace_id=__ret__.get('logAnalyticsWorkspaceId'),
-        name=__ret__.get('name'))
+        id=__ret__.id,
+        log_analytics_workspace_id=__ret__.log_analytics_workspace_id,
+        name=__ret__.name)

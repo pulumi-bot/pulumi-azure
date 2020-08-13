@@ -5,8 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetElasticPoolResult',
+    'AwaitableGetElasticPoolResult',
+    'get_elastic_pool',
+]
+
+
+@pulumi.output_type
+class _GetElasticPoolResult:
+    id: str = pulumi.property("id")
+    license_type: str = pulumi.property("licenseType")
+    location: str = pulumi.property("location")
+    max_size_bytes: float = pulumi.property("maxSizeBytes")
+    max_size_gb: float = pulumi.property("maxSizeGb")
+    name: str = pulumi.property("name")
+    per_db_max_capacity: float = pulumi.property("perDbMaxCapacity")
+    per_db_min_capacity: float = pulumi.property("perDbMinCapacity")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    server_name: str = pulumi.property("serverName")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    zone_redundant: bool = pulumi.property("zoneRedundant")
+
 
 class GetElasticPoolResult:
     """
@@ -76,6 +99,8 @@ class GetElasticPoolResult:
         """
         Whether or not this elastic pool is zone redundant.
         """
+
+
 class AwaitableGetElasticPoolResult(GetElasticPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -95,7 +120,11 @@ class AwaitableGetElasticPoolResult(GetElasticPoolResult):
             tags=self.tags,
             zone_redundant=self.zone_redundant)
 
-def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=None):
+
+def get_elastic_pool(name: Optional[str] = None,
+                     resource_group_name: Optional[str] = None,
+                     server_name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticPoolResult:
     """
     Use this data source to access information about an existing SQL elastic pool.
 
@@ -117,27 +146,25 @@ def get_elastic_pool(name=None,resource_group_name=None,server_name=None,opts=No
     :param str server_name: The name of the SQL Server which contains the elastic pool.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['serverName'] = server_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:mssql/getElasticPool:getElasticPool', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:mssql/getElasticPool:getElasticPool', __args__, opts=opts, typ=_GetElasticPoolResult).value
 
     return AwaitableGetElasticPoolResult(
-        id=__ret__.get('id'),
-        license_type=__ret__.get('licenseType'),
-        location=__ret__.get('location'),
-        max_size_bytes=__ret__.get('maxSizeBytes'),
-        max_size_gb=__ret__.get('maxSizeGb'),
-        name=__ret__.get('name'),
-        per_db_max_capacity=__ret__.get('perDbMaxCapacity'),
-        per_db_min_capacity=__ret__.get('perDbMinCapacity'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        server_name=__ret__.get('serverName'),
-        tags=__ret__.get('tags'),
-        zone_redundant=__ret__.get('zoneRedundant'))
+        id=__ret__.id,
+        license_type=__ret__.license_type,
+        location=__ret__.location,
+        max_size_bytes=__ret__.max_size_bytes,
+        max_size_gb=__ret__.max_size_gb,
+        name=__ret__.name,
+        per_db_max_capacity=__ret__.per_db_max_capacity,
+        per_db_min_capacity=__ret__.per_db_min_capacity,
+        resource_group_name=__ret__.resource_group_name,
+        server_name=__ret__.server_name,
+        tags=__ret__.tags,
+        zone_redundant=__ret__.zone_redundant)

@@ -5,49 +5,69 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OutputServiceBusQueue']
 
 
 class OutputServiceBusQueue(pulumi.CustomResource):
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the Stream Output. Changing this forces a new resource to be created.
     """
-    queue_name: pulumi.Output[str]
+
+    queue_name: pulumi.Output[str] = pulumi.property("queueName")
     """
     The name of the Service Bus Queue.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
     """
-    serialization: pulumi.Output[dict]
+
+    serialization: pulumi.Output['outputs.OutputServiceBusQueueSerialization'] = pulumi.property("serialization")
     """
     A `serialization` block as defined below.
-
-      * `encoding` (`str`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-      * `fieldDelimiter` (`str`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-      * `format` (`str`) - Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
-      * `type` (`str`) - The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv` and `Json`.
     """
-    servicebus_namespace: pulumi.Output[str]
+
+    servicebus_namespace: pulumi.Output[str] = pulumi.property("servicebusNamespace")
     """
     The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
     """
-    shared_access_policy_key: pulumi.Output[str]
+
+    shared_access_policy_key: pulumi.Output[str] = pulumi.property("sharedAccessPolicyKey")
     """
     The shared access policy key for the specified shared access policy.
     """
-    shared_access_policy_name: pulumi.Output[str]
+
+    shared_access_policy_name: pulumi.Output[str] = pulumi.property("sharedAccessPolicyName")
     """
     The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
     """
-    stream_analytics_job_name: pulumi.Output[str]
+
+    stream_analytics_job_name: pulumi.Output[str] = pulumi.property("streamAnalyticsJobName")
     """
     The name of the Stream Analytics Job. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, queue_name=None, resource_group_name=None, serialization=None, servicebus_namespace=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 queue_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 serialization: Optional[pulumi.Input[pulumi.InputType['OutputServiceBusQueueSerializationArgs']]] = None,
+                 servicebus_namespace: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 stream_analytics_job_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Stream Analytics Output to a ServiceBus Queue.
 
@@ -85,18 +105,11 @@ class OutputServiceBusQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Stream Output. Changing this forces a new resource to be created.
         :param pulumi.Input[str] queue_name: The name of the Service Bus Queue.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input[pulumi.InputType['OutputServiceBusQueueSerializationArgs']] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] servicebus_namespace: The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] shared_access_policy_key: The shared access policy key for the specified shared access policy.
         :param pulumi.Input[str] shared_access_policy_name: The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-          * `format` (`pulumi.Input[str]`) - Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv` and `Json`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,7 +122,7 @@ class OutputServiceBusQueue(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -144,7 +157,17 @@ class OutputServiceBusQueue(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, queue_name=None, resource_group_name=None, serialization=None, servicebus_namespace=None, shared_access_policy_key=None, shared_access_policy_name=None, stream_analytics_job_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            queue_name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            serialization: Optional[pulumi.Input[pulumi.InputType['OutputServiceBusQueueSerializationArgs']]] = None,
+            servicebus_namespace: Optional[pulumi.Input[str]] = None,
+            shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+            shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+            stream_analytics_job_name: Optional[pulumi.Input[str]] = None) -> 'OutputServiceBusQueue':
         """
         Get an existing OutputServiceBusQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,18 +178,11 @@ class OutputServiceBusQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Stream Output. Changing this forces a new resource to be created.
         :param pulumi.Input[str] queue_name: The name of the Service Bus Queue.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input[pulumi.InputType['OutputServiceBusQueueSerializationArgs']] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] servicebus_namespace: The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] shared_access_policy_key: The shared access policy key for the specified shared access policy.
         :param pulumi.Input[str] shared_access_policy_name: The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `   ` (tab), `|` (pipe) and `;`.
-          * `format` (`pulumi.Input[str]`) - Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv` and `Json`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -183,7 +199,8 @@ class OutputServiceBusQueue(pulumi.CustomResource):
         return OutputServiceBusQueue(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

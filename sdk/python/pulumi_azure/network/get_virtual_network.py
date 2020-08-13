@@ -5,8 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetVirtualNetworkResult',
+    'AwaitableGetVirtualNetworkResult',
+    'get_virtual_network',
+]
+
+
+@pulumi.output_type
+class _GetVirtualNetworkResult:
+    address_spaces: List[str] = pulumi.property("addressSpaces")
+    dns_servers: List[str] = pulumi.property("dnsServers")
+    guid: str = pulumi.property("guid")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    subnets: List[str] = pulumi.property("subnets")
+    vnet_peerings: Mapping[str, str] = pulumi.property("vnetPeerings")
+
 
 class GetVirtualNetworkResult:
     """
@@ -61,6 +81,8 @@ class GetVirtualNetworkResult:
         """
         A mapping of name - virtual network id of the virtual network peerings.
         """
+
+
 class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +99,10 @@ class AwaitableGetVirtualNetworkResult(GetVirtualNetworkResult):
             subnets=self.subnets,
             vnet_peerings=self.vnet_peerings)
 
-def get_virtual_network(name=None,resource_group_name=None,opts=None):
+
+def get_virtual_network(name: Optional[str] = None,
+                        resource_group_name: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualNetworkResult:
     """
     Use this data source to access information about an existing Virtual Network.
 
@@ -97,23 +122,21 @@ def get_virtual_network(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Virtual Network is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetwork:getVirtualNetwork', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getVirtualNetwork:getVirtualNetwork', __args__, opts=opts, typ=_GetVirtualNetworkResult).value
 
     return AwaitableGetVirtualNetworkResult(
-        address_spaces=__ret__.get('addressSpaces'),
-        dns_servers=__ret__.get('dnsServers'),
-        guid=__ret__.get('guid'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        subnets=__ret__.get('subnets'),
-        vnet_peerings=__ret__.get('vnetPeerings'))
+        address_spaces=__ret__.address_spaces,
+        dns_servers=__ret__.dns_servers,
+        guid=__ret__.guid,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        resource_group_name=__ret__.resource_group_name,
+        subnets=__ret__.subnets,
+        vnet_peerings=__ret__.vnet_peerings)

@@ -5,8 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetNamespaceResult',
+    'AwaitableGetNamespaceResult',
+    'get_namespace',
+]
+
+
+@pulumi.output_type
+class _GetNamespaceResult:
+    enabled: bool = pulumi.property("enabled")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    namespace_type: str = pulumi.property("namespaceType")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    servicebus_endpoint: str = pulumi.property("servicebusEndpoint")
+    sku: 'outputs.GetNamespaceSkuResult' = pulumi.property("sku")
+    tags: Mapping[str, str] = pulumi.property("tags")
+
 
 class GetNamespaceResult:
     """
@@ -61,6 +82,8 @@ class GetNamespaceResult:
         """
         A mapping of tags to assign to the resource.
         """
+
+
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +100,10 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             sku=self.sku,
             tags=self.tags)
 
-def get_namespace(name=None,resource_group_name=None,opts=None):
+
+def get_namespace(name: Optional[str] = None,
+                  resource_group_name: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceResult:
     """
     Use this data source to access information about an existing Notification Hub Namespace.
 
@@ -97,23 +123,21 @@ def get_namespace(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the Name of the Resource Group within which the Notification Hub exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:notificationhub/getNamespace:getNamespace', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:notificationhub/getNamespace:getNamespace', __args__, opts=opts, typ=_GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
-        enabled=__ret__.get('enabled'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        namespace_type=__ret__.get('namespaceType'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        servicebus_endpoint=__ret__.get('servicebusEndpoint'),
-        sku=__ret__.get('sku'),
-        tags=__ret__.get('tags'))
+        enabled=__ret__.enabled,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        namespace_type=__ret__.namespace_type,
+        resource_group_name=__ret__.resource_group_name,
+        servicebus_endpoint=__ret__.servicebus_endpoint,
+        sku=__ret__.sku,
+        tags=__ret__.tags)

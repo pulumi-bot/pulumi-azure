@@ -5,8 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSubscriptionResult',
+    'AwaitableGetSubscriptionResult',
+    'get_subscription',
+]
+
+
+@pulumi.output_type
+class _GetSubscriptionResult:
+    display_name: str = pulumi.property("displayName")
+    id: str = pulumi.property("id")
+    location_placement_id: str = pulumi.property("locationPlacementId")
+    quota_id: str = pulumi.property("quotaId")
+    spending_limit: str = pulumi.property("spendingLimit")
+    state: str = pulumi.property("state")
+    subscription_id: str = pulumi.property("subscriptionId")
+    tenant_id: str = pulumi.property("tenantId")
+
 
 class GetSubscriptionResult:
     """
@@ -61,6 +80,8 @@ class GetSubscriptionResult:
         """
         The subscription tenant ID.
         """
+
+
 class AwaitableGetSubscriptionResult(GetSubscriptionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +97,9 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             subscription_id=self.subscription_id,
             tenant_id=self.tenant_id)
 
-def get_subscription(subscription_id=None,opts=None):
+
+def get_subscription(subscription_id: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubscriptionResult:
     """
     Use this data source to access information about an existing Subscription.
 
@@ -94,21 +117,19 @@ def get_subscription(subscription_id=None,opts=None):
     :param str subscription_id: Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
     """
     __args__ = dict()
-
-
     __args__['subscriptionId'] = subscription_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:core/getSubscription:getSubscription', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:core/getSubscription:getSubscription', __args__, opts=opts, typ=_GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        location_placement_id=__ret__.get('locationPlacementId'),
-        quota_id=__ret__.get('quotaId'),
-        spending_limit=__ret__.get('spendingLimit'),
-        state=__ret__.get('state'),
-        subscription_id=__ret__.get('subscriptionId'),
-        tenant_id=__ret__.get('tenantId'))
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        location_placement_id=__ret__.location_placement_id,
+        quota_id=__ret__.quota_id,
+        spending_limit=__ret__.spending_limit,
+        state=__ret__.state,
+        subscription_id=__ret__.subscription_id,
+        tenant_id=__ret__.tenant_id)

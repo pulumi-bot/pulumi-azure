@@ -5,8 +5,42 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetClusterNodePoolResult',
+    'AwaitableGetClusterNodePoolResult',
+    'get_cluster_node_pool',
+]
+
+
+@pulumi.output_type
+class _GetClusterNodePoolResult:
+    availability_zones: List[str] = pulumi.property("availabilityZones")
+    enable_auto_scaling: bool = pulumi.property("enableAutoScaling")
+    enable_node_public_ip: bool = pulumi.property("enableNodePublicIp")
+    eviction_policy: str = pulumi.property("evictionPolicy")
+    id: str = pulumi.property("id")
+    kubernetes_cluster_name: str = pulumi.property("kubernetesClusterName")
+    max_count: float = pulumi.property("maxCount")
+    max_pods: float = pulumi.property("maxPods")
+    min_count: float = pulumi.property("minCount")
+    mode: str = pulumi.property("mode")
+    name: str = pulumi.property("name")
+    node_count: float = pulumi.property("nodeCount")
+    node_labels: Mapping[str, str] = pulumi.property("nodeLabels")
+    node_taints: List[str] = pulumi.property("nodeTaints")
+    orchestrator_version: str = pulumi.property("orchestratorVersion")
+    os_disk_size_gb: float = pulumi.property("osDiskSizeGb")
+    os_type: str = pulumi.property("osType")
+    priority: str = pulumi.property("priority")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    spot_max_price: float = pulumi.property("spotMaxPrice")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    vm_size: str = pulumi.property("vmSize")
+    vnet_subnet_id: str = pulumi.property("vnetSubnetId")
+
 
 class GetClusterNodePoolResult:
     """
@@ -142,6 +176,8 @@ class GetClusterNodePoolResult:
         """
         The ID of the Subnet in which this Node Pool exists.
         """
+
+
 class AwaitableGetClusterNodePoolResult(GetClusterNodePoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -172,7 +208,11 @@ class AwaitableGetClusterNodePoolResult(GetClusterNodePoolResult):
             vm_size=self.vm_size,
             vnet_subnet_id=self.vnet_subnet_id)
 
-def get_cluster_node_pool(kubernetes_cluster_name=None,name=None,resource_group_name=None,opts=None):
+
+def get_cluster_node_pool(kubernetes_cluster_name: Optional[str] = None,
+                          name: Optional[str] = None,
+                          resource_group_name: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterNodePoolResult:
     """
     Use this data source to access information about an existing Kubernetes Cluster Node Pool.
 
@@ -194,38 +234,36 @@ def get_cluster_node_pool(kubernetes_cluster_name=None,name=None,resource_group_
     :param str resource_group_name: The name of the Resource Group where the Kubernetes Cluster exists.
     """
     __args__ = dict()
-
-
     __args__['kubernetesClusterName'] = kubernetes_cluster_name
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:containerservice/getClusterNodePool:getClusterNodePool', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:containerservice/getClusterNodePool:getClusterNodePool', __args__, opts=opts, typ=_GetClusterNodePoolResult).value
 
     return AwaitableGetClusterNodePoolResult(
-        availability_zones=__ret__.get('availabilityZones'),
-        enable_auto_scaling=__ret__.get('enableAutoScaling'),
-        enable_node_public_ip=__ret__.get('enableNodePublicIp'),
-        eviction_policy=__ret__.get('evictionPolicy'),
-        id=__ret__.get('id'),
-        kubernetes_cluster_name=__ret__.get('kubernetesClusterName'),
-        max_count=__ret__.get('maxCount'),
-        max_pods=__ret__.get('maxPods'),
-        min_count=__ret__.get('minCount'),
-        mode=__ret__.get('mode'),
-        name=__ret__.get('name'),
-        node_count=__ret__.get('nodeCount'),
-        node_labels=__ret__.get('nodeLabels'),
-        node_taints=__ret__.get('nodeTaints'),
-        orchestrator_version=__ret__.get('orchestratorVersion'),
-        os_disk_size_gb=__ret__.get('osDiskSizeGb'),
-        os_type=__ret__.get('osType'),
-        priority=__ret__.get('priority'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        spot_max_price=__ret__.get('spotMaxPrice'),
-        tags=__ret__.get('tags'),
-        vm_size=__ret__.get('vmSize'),
-        vnet_subnet_id=__ret__.get('vnetSubnetId'))
+        availability_zones=__ret__.availability_zones,
+        enable_auto_scaling=__ret__.enable_auto_scaling,
+        enable_node_public_ip=__ret__.enable_node_public_ip,
+        eviction_policy=__ret__.eviction_policy,
+        id=__ret__.id,
+        kubernetes_cluster_name=__ret__.kubernetes_cluster_name,
+        max_count=__ret__.max_count,
+        max_pods=__ret__.max_pods,
+        min_count=__ret__.min_count,
+        mode=__ret__.mode,
+        name=__ret__.name,
+        node_count=__ret__.node_count,
+        node_labels=__ret__.node_labels,
+        node_taints=__ret__.node_taints,
+        orchestrator_version=__ret__.orchestrator_version,
+        os_disk_size_gb=__ret__.os_disk_size_gb,
+        os_type=__ret__.os_type,
+        priority=__ret__.priority,
+        resource_group_name=__ret__.resource_group_name,
+        spot_max_price=__ret__.spot_max_price,
+        tags=__ret__.tags,
+        vm_size=__ret__.vm_size,
+        vnet_subnet_id=__ret__.vnet_subnet_id)

@@ -5,24 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['DataLakeGen2Filesystem']
 
 
 class DataLakeGen2Filesystem(pulumi.CustomResource):
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
     """
-    properties: pulumi.Output[dict]
+
+    properties: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("properties")
     """
     A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
     """
-    storage_account_id: pulumi.Output[str]
+
+    storage_account_id: pulumi.Output[str] = pulumi.property("storageAccountId")
     """
     Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, properties=None, storage_account_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 storage_account_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Data Lake Gen2 File System within an Azure Storage Account.
 
@@ -41,7 +54,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
             account_tier="Standard",
             account_replication_type="LRS",
             account_kind="StorageV2",
-            is_hns_enabled="true")
+            is_hns_enabled=True)
         example_data_lake_gen2_filesystem = azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem",
             storage_account_id=example_account.id,
             properties={
@@ -52,7 +65,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] properties: A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
         :param pulumi.Input[str] storage_account_id: Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
@@ -66,7 +79,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -84,7 +97,12 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, properties=None, storage_account_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            storage_account_id: Optional[pulumi.Input[str]] = None) -> 'DataLakeGen2Filesystem':
         """
         Get an existing DataLakeGen2Filesystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -93,7 +111,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] properties: A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
         :param pulumi.Input[str] storage_account_id: Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -106,7 +124,8 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         return DataLakeGen2Filesystem(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

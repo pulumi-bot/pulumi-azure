@@ -5,8 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetKeyVaultResult',
+    'AwaitableGetKeyVaultResult',
+    'get_key_vault',
+]
+
+
+@pulumi.output_type
+class _GetKeyVaultResult:
+    access_policies: List['outputs.GetKeyVaultAccessPolicyResult'] = pulumi.property("accessPolicies")
+    enabled_for_deployment: bool = pulumi.property("enabledForDeployment")
+    enabled_for_disk_encryption: bool = pulumi.property("enabledForDiskEncryption")
+    enabled_for_template_deployment: bool = pulumi.property("enabledForTemplateDeployment")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    name: str = pulumi.property("name")
+    network_acls: List['outputs.GetKeyVaultNetworkAclResult'] = pulumi.property("networkAcls")
+    purge_protection_enabled: bool = pulumi.property("purgeProtectionEnabled")
+    resource_group_name: str = pulumi.property("resourceGroupName")
+    sku_name: str = pulumi.property("skuName")
+    soft_delete_enabled: bool = pulumi.property("softDeleteEnabled")
+    tags: Mapping[str, str] = pulumi.property("tags")
+    tenant_id: str = pulumi.property("tenantId")
+    vault_uri: str = pulumi.property("vaultUri")
+
 
 class GetKeyVaultResult:
     """
@@ -94,6 +121,8 @@ class GetKeyVaultResult:
         """
         The URI of the vault for performing operations on keys and secrets.
         """
+
+
 class AwaitableGetKeyVaultResult(GetKeyVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -116,7 +145,10 @@ class AwaitableGetKeyVaultResult(GetKeyVaultResult):
             tenant_id=self.tenant_id,
             vault_uri=self.vault_uri)
 
-def get_key_vault(name=None,resource_group_name=None,opts=None):
+
+def get_key_vault(name: Optional[str] = None,
+                  resource_group_name: Optional[str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyVaultResult:
     """
     Use this data source to access information about an existing Key Vault.
 
@@ -136,29 +168,27 @@ def get_key_vault(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: The name of the Resource Group in which the Key Vault exists.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:keyvault/getKeyVault:getKeyVault', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:keyvault/getKeyVault:getKeyVault', __args__, opts=opts, typ=_GetKeyVaultResult).value
 
     return AwaitableGetKeyVaultResult(
-        access_policies=__ret__.get('accessPolicies'),
-        enabled_for_deployment=__ret__.get('enabledForDeployment'),
-        enabled_for_disk_encryption=__ret__.get('enabledForDiskEncryption'),
-        enabled_for_template_deployment=__ret__.get('enabledForTemplateDeployment'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        name=__ret__.get('name'),
-        network_acls=__ret__.get('networkAcls'),
-        purge_protection_enabled=__ret__.get('purgeProtectionEnabled'),
-        resource_group_name=__ret__.get('resourceGroupName'),
-        sku_name=__ret__.get('skuName'),
-        soft_delete_enabled=__ret__.get('softDeleteEnabled'),
-        tags=__ret__.get('tags'),
-        tenant_id=__ret__.get('tenantId'),
-        vault_uri=__ret__.get('vaultUri'))
+        access_policies=__ret__.access_policies,
+        enabled_for_deployment=__ret__.enabled_for_deployment,
+        enabled_for_disk_encryption=__ret__.enabled_for_disk_encryption,
+        enabled_for_template_deployment=__ret__.enabled_for_template_deployment,
+        id=__ret__.id,
+        location=__ret__.location,
+        name=__ret__.name,
+        network_acls=__ret__.network_acls,
+        purge_protection_enabled=__ret__.purge_protection_enabled,
+        resource_group_name=__ret__.resource_group_name,
+        sku_name=__ret__.sku_name,
+        soft_delete_enabled=__ret__.soft_delete_enabled,
+        tags=__ret__.tags,
+        tenant_id=__ret__.tenant_id,
+        vault_uri=__ret__.vault_uri)

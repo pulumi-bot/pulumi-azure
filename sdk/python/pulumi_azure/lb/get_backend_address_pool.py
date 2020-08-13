@@ -5,8 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
+__all__ = [
+    'GetBackendAddressPoolResult',
+    'AwaitableGetBackendAddressPoolResult',
+    'get_backend_address_pool',
+]
+
+
+@pulumi.output_type
+class _GetBackendAddressPoolResult:
+    backend_ip_configurations: List['outputs.GetBackendAddressPoolBackendIpConfigurationResult'] = pulumi.property("backendIpConfigurations")
+    id: str = pulumi.property("id")
+    loadbalancer_id: str = pulumi.property("loadbalancerId")
+    name: str = pulumi.property("name")
+
 
 class GetBackendAddressPoolResult:
     """
@@ -34,6 +50,8 @@ class GetBackendAddressPoolResult:
         """
         The name of the Backend Address Pool.
         """
+
+
 class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +63,10 @@ class AwaitableGetBackendAddressPoolResult(GetBackendAddressPoolResult):
             loadbalancer_id=self.loadbalancer_id,
             name=self.name)
 
-def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
+
+def get_backend_address_pool(loadbalancer_id: Optional[str] = None,
+                             name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendAddressPoolResult:
     """
     Use this data source to access information about an existing Load Balancer's Backend Address Pool.
 
@@ -68,18 +89,16 @@ def get_backend_address_pool(loadbalancer_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Backend Address Pool.
     """
     __args__ = dict()
-
-
     __args__['loadbalancerId'] = loadbalancer_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:lb/getBackendAddressPool:getBackendAddressPool', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:lb/getBackendAddressPool:getBackendAddressPool', __args__, opts=opts, typ=_GetBackendAddressPoolResult).value
 
     return AwaitableGetBackendAddressPoolResult(
-        backend_ip_configurations=__ret__.get('backendIpConfigurations'),
-        id=__ret__.get('id'),
-        loadbalancer_id=__ret__.get('loadbalancerId'),
-        name=__ret__.get('name'))
+        backend_ip_configurations=__ret__.backend_ip_configurations,
+        id=__ret__.id,
+        loadbalancer_id=__ret__.loadbalancer_id,
+        name=__ret__.name)

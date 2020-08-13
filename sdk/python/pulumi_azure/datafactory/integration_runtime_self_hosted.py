@@ -5,42 +5,61 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['IntegrationRuntimeSelfHosted']
 
 
 class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
-    auth_key1: pulumi.Output[str]
+    auth_key1: pulumi.Output[str] = pulumi.property("authKey1")
     """
     The primary integration runtime authentication key.
     """
-    auth_key2: pulumi.Output[str]
+
+    auth_key2: pulumi.Output[str] = pulumi.property("authKey2")
     """
     The secondary integration runtime authentication key.
     """
-    data_factory_name: pulumi.Output[str]
+
+    data_factory_name: pulumi.Output[str] = pulumi.property("dataFactoryName")
     """
     Changing this forces a new Data Factory to be created.
     """
-    description: pulumi.Output[str]
+
+    description: pulumi.Output[Optional[str]] = pulumi.property("description")
     """
     Integration runtime description.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name which should be used for this Data Factory. Changing this forces a new Data Factory to be created.
     """
-    rbac_authorizations: pulumi.Output[list]
+
+    rbac_authorizations: pulumi.Output[Optional[List['outputs.IntegrationRuntimeSelfHostedRbacAuthorization']]] = pulumi.property("rbacAuthorizations")
     """
     A `rbac_authorization` block as defined below.
-
-      * `resource_id` (`str`) - The resource identifier of the integration runtime to be shared. Changing this forces a new Data Factory to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the Resource Group where the Data Factory should exist. Changing this forces a new Data Factory to be created.
     """
-    def __init__(__self__, resource_name, opts=None, data_factory_name=None, description=None, name=None, rbac_authorizations=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 data_factory_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 rbac_authorizations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationRuntimeSelfHostedRbacAuthorizationArgs']]]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Data Factory Self-host Integration Runtime.
 
@@ -64,12 +83,8 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
         :param pulumi.Input[str] data_factory_name: Changing this forces a new Data Factory to be created.
         :param pulumi.Input[str] description: Integration runtime description.
         :param pulumi.Input[str] name: The name which should be used for this Data Factory. Changing this forces a new Data Factory to be created.
-        :param pulumi.Input[list] rbac_authorizations: A `rbac_authorization` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationRuntimeSelfHostedRbacAuthorizationArgs']]]] rbac_authorizations: A `rbac_authorization` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Data Factory should exist. Changing this forces a new Data Factory to be created.
-
-        The **rbac_authorizations** object supports the following:
-
-          * `resource_id` (`pulumi.Input[str]`) - The resource identifier of the integration runtime to be shared. Changing this forces a new Data Factory to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +97,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -106,7 +121,16 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auth_key1=None, auth_key2=None, data_factory_name=None, description=None, name=None, rbac_authorizations=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_key1: Optional[pulumi.Input[str]] = None,
+            auth_key2: Optional[pulumi.Input[str]] = None,
+            data_factory_name: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            rbac_authorizations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationRuntimeSelfHostedRbacAuthorizationArgs']]]]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'IntegrationRuntimeSelfHosted':
         """
         Get an existing IntegrationRuntimeSelfHosted resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,12 +143,8 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
         :param pulumi.Input[str] data_factory_name: Changing this forces a new Data Factory to be created.
         :param pulumi.Input[str] description: Integration runtime description.
         :param pulumi.Input[str] name: The name which should be used for this Data Factory. Changing this forces a new Data Factory to be created.
-        :param pulumi.Input[list] rbac_authorizations: A `rbac_authorization` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationRuntimeSelfHostedRbacAuthorizationArgs']]]] rbac_authorizations: A `rbac_authorization` block as defined below.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Data Factory should exist. Changing this forces a new Data Factory to be created.
-
-        The **rbac_authorizations** object supports the following:
-
-          * `resource_id` (`pulumi.Input[str]`) - The resource identifier of the integration runtime to be shared. Changing this forces a new Data Factory to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,7 +160,8 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
         return IntegrationRuntimeSelfHosted(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

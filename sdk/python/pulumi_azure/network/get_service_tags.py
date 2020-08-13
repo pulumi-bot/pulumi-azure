@@ -5,8 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetServiceTagsResult',
+    'AwaitableGetServiceTagsResult',
+    'get_service_tags',
+]
+
+
+@pulumi.output_type
+class _GetServiceTagsResult:
+    address_prefixes: List[str] = pulumi.property("addressPrefixes")
+    id: str = pulumi.property("id")
+    location: str = pulumi.property("location")
+    location_filter: Optional[str] = pulumi.property("locationFilter")
+    service: str = pulumi.property("service")
+
 
 class GetServiceTagsResult:
     """
@@ -34,6 +50,8 @@ class GetServiceTagsResult:
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         __self__.service = service
+
+
 class AwaitableGetServiceTagsResult(GetServiceTagsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +64,11 @@ class AwaitableGetServiceTagsResult(GetServiceTagsResult):
             location_filter=self.location_filter,
             service=self.service)
 
-def get_service_tags(location=None,location_filter=None,service=None,opts=None):
+
+def get_service_tags(location: Optional[str] = None,
+                     location_filter: Optional[str] = None,
+                     service: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceTagsResult:
     """
     Use this data source to access information about Service Tags.
 
@@ -68,20 +90,18 @@ def get_service_tags(location=None,location_filter=None,service=None,opts=None):
     :param str service: The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview#available-service-tags).
     """
     __args__ = dict()
-
-
     __args__['location'] = location
     __args__['locationFilter'] = location_filter
     __args__['service'] = service
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azure:network/getServiceTags:getServiceTags', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azure:network/getServiceTags:getServiceTags', __args__, opts=opts, typ=_GetServiceTagsResult).value
 
     return AwaitableGetServiceTagsResult(
-        address_prefixes=__ret__.get('addressPrefixes'),
-        id=__ret__.get('id'),
-        location=__ret__.get('location'),
-        location_filter=__ret__.get('locationFilter'),
-        service=__ret__.get('service'))
+        address_prefixes=__ret__.address_prefixes,
+        id=__ret__.id,
+        location=__ret__.location,
+        location_filter=__ret__.location_filter,
+        service=__ret__.service)
