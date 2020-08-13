@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Schedule(pulumi.CustomResource):
@@ -120,34 +120,34 @@ class Schedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['daily_recurrence'] = daily_recurrence
-            __props__['hourly_recurrence'] = hourly_recurrence
+            __props__['dailyRecurrence'] = daily_recurrence
+            __props__['hourlyRecurrence'] = hourly_recurrence
             if lab_name is None:
                 raise TypeError("Missing required property 'lab_name'")
-            __props__['lab_name'] = lab_name
+            __props__['labName'] = lab_name
             __props__['location'] = location
             __props__['name'] = name
             if notification_settings is None:
                 raise TypeError("Missing required property 'notification_settings'")
-            __props__['notification_settings'] = notification_settings
+            __props__['notificationSettings'] = notification_settings
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['status'] = status
             __props__['tags'] = tags
             if task_type is None:
                 raise TypeError("Missing required property 'task_type'")
-            __props__['task_type'] = task_type
+            __props__['taskType'] = task_type
             if time_zone_id is None:
                 raise TypeError("Missing required property 'time_zone_id'")
-            __props__['time_zone_id'] = time_zone_id
-            __props__['weekly_recurrence'] = weekly_recurrence
+            __props__['timeZoneId'] = time_zone_id
+            __props__['weeklyRecurrence'] = weekly_recurrence
         super(Schedule, __self__).__init__(
             'azure:devtest/schedule:Schedule',
             resource_name,
@@ -210,7 +210,7 @@ class Schedule(pulumi.CustomResource):
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

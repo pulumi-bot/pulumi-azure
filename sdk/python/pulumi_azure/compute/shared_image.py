@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SharedImage(pulumi.CustomResource):
@@ -130,7 +130,7 @@ class SharedImage(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -140,8 +140,8 @@ class SharedImage(pulumi.CustomResource):
             __props__['eula'] = eula
             if gallery_name is None:
                 raise TypeError("Missing required property 'gallery_name'")
-            __props__['gallery_name'] = gallery_name
-            __props__['hyper_v_generation'] = hyper_v_generation
+            __props__['galleryName'] = gallery_name
+            __props__['hyperVGeneration'] = hyper_v_generation
             if identifier is None:
                 raise TypeError("Missing required property 'identifier'")
             __props__['identifier'] = identifier
@@ -149,12 +149,12 @@ class SharedImage(pulumi.CustomResource):
             __props__['name'] = name
             if os_type is None:
                 raise TypeError("Missing required property 'os_type'")
-            __props__['os_type'] = os_type
-            __props__['privacy_statement_uri'] = privacy_statement_uri
-            __props__['release_note_uri'] = release_note_uri
+            __props__['osType'] = os_type
+            __props__['privacyStatementUri'] = privacy_statement_uri
+            __props__['releaseNoteUri'] = release_note_uri
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['specialized'] = specialized
             __props__['tags'] = tags
         super(SharedImage, __self__).__init__(
@@ -212,7 +212,7 @@ class SharedImage(pulumi.CustomResource):
         return SharedImage(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

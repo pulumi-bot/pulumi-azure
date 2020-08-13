@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class CertificateIssuer(pulumi.CustomResource):
@@ -96,25 +96,25 @@ class CertificateIssuer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['account_id'] = account_id
+            __props__['accountId'] = account_id
             __props__['admins'] = admins
             if key_vault_id is None:
                 raise TypeError("Missing required property 'key_vault_id'")
-            __props__['key_vault_id'] = key_vault_id
+            __props__['keyVaultId'] = key_vault_id
             __props__['name'] = name
             if org_id is None:
                 raise TypeError("Missing required property 'org_id'")
-            __props__['org_id'] = org_id
+            __props__['orgId'] = org_id
             __props__['password'] = password
             if provider_name is None:
                 raise TypeError("Missing required property 'provider_name'")
-            __props__['provider_name'] = provider_name
+            __props__['providerName'] = provider_name
         super(CertificateIssuer, __self__).__init__(
             'azure:keyvault/certificateIssuer:CertificateIssuer',
             resource_name,
@@ -159,7 +159,7 @@ class CertificateIssuer(pulumi.CustomResource):
         return CertificateIssuer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

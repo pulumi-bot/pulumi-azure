@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Pool(pulumi.CustomResource):
@@ -240,7 +240,7 @@ class Pool(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -248,30 +248,30 @@ class Pool(pulumi.CustomResource):
 
             if account_name is None:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['auto_scale'] = auto_scale
+            __props__['accountName'] = account_name
+            __props__['autoScale'] = auto_scale
             __props__['certificates'] = certificates
-            __props__['container_configuration'] = container_configuration
-            __props__['display_name'] = display_name
-            __props__['fixed_scale'] = fixed_scale
-            __props__['max_tasks_per_node'] = max_tasks_per_node
+            __props__['containerConfiguration'] = container_configuration
+            __props__['displayName'] = display_name
+            __props__['fixedScale'] = fixed_scale
+            __props__['maxTasksPerNode'] = max_tasks_per_node
             __props__['metadata'] = metadata
             __props__['name'] = name
-            __props__['network_configuration'] = network_configuration
+            __props__['networkConfiguration'] = network_configuration
             if node_agent_sku_id is None:
                 raise TypeError("Missing required property 'node_agent_sku_id'")
-            __props__['node_agent_sku_id'] = node_agent_sku_id
+            __props__['nodeAgentSkuId'] = node_agent_sku_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['start_task'] = start_task
-            __props__['stop_pending_resize_operation'] = stop_pending_resize_operation
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['startTask'] = start_task
+            __props__['stopPendingResizeOperation'] = stop_pending_resize_operation
             if storage_image_reference is None:
                 raise TypeError("Missing required property 'storage_image_reference'")
-            __props__['storage_image_reference'] = storage_image_reference
+            __props__['storageImageReference'] = storage_image_reference
             if vm_size is None:
                 raise TypeError("Missing required property 'vm_size'")
-            __props__['vm_size'] = vm_size
+            __props__['vmSize'] = vm_size
         super(Pool, __self__).__init__(
             'azure:batch/pool:Pool',
             resource_name,
@@ -401,7 +401,7 @@ class Pool(pulumi.CustomResource):
         return Pool(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

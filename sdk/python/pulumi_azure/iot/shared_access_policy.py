@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SharedAccessPolicy(pulumi.CustomResource):
@@ -70,7 +70,7 @@ class SharedAccessPolicy(pulumi.CustomResource):
             location=example_resource_group.location,
             sku={
                 "name": "S1",
-                "capacity": "1",
+                "capacity": 1,
             })
         example_shared_access_policy = azure.iot.SharedAccessPolicy("exampleSharedAccessPolicy",
             resource_group_name=example_resource_group.name,
@@ -100,23 +100,23 @@ class SharedAccessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['device_connect'] = device_connect
+            __props__['deviceConnect'] = device_connect
             if iothub_name is None:
                 raise TypeError("Missing required property 'iothub_name'")
-            __props__['iothub_name'] = iothub_name
+            __props__['iothubName'] = iothub_name
             __props__['name'] = name
-            __props__['registry_read'] = registry_read
-            __props__['registry_write'] = registry_write
+            __props__['registryRead'] = registry_read
+            __props__['registryWrite'] = registry_write
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['service_connect'] = service_connect
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['serviceConnect'] = service_connect
             __props__['primary_connection_string'] = None
             __props__['primary_key'] = None
             __props__['secondary_connection_string'] = None
@@ -166,7 +166,7 @@ class SharedAccessPolicy(pulumi.CustomResource):
         return SharedAccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

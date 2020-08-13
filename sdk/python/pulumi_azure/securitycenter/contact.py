@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Contact(pulumi.CustomResource):
@@ -63,7 +63,7 @@ class Contact(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -71,10 +71,10 @@ class Contact(pulumi.CustomResource):
 
             if alert_notifications is None:
                 raise TypeError("Missing required property 'alert_notifications'")
-            __props__['alert_notifications'] = alert_notifications
+            __props__['alertNotifications'] = alert_notifications
             if alerts_to_admins is None:
                 raise TypeError("Missing required property 'alerts_to_admins'")
-            __props__['alerts_to_admins'] = alerts_to_admins
+            __props__['alertsToAdmins'] = alerts_to_admins
             if email is None:
                 raise TypeError("Missing required property 'email'")
             __props__['email'] = email
@@ -110,7 +110,7 @@ class Contact(pulumi.CustomResource):
         return Contact(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

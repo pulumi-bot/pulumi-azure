@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Policy(pulumi.CustomResource):
@@ -98,7 +98,7 @@ class Policy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -107,18 +107,18 @@ class Policy(pulumi.CustomResource):
             __props__['description'] = description
             if evaluator_type is None:
                 raise TypeError("Missing required property 'evaluator_type'")
-            __props__['evaluator_type'] = evaluator_type
-            __props__['fact_data'] = fact_data
+            __props__['evaluatorType'] = evaluator_type
+            __props__['factData'] = fact_data
             if lab_name is None:
                 raise TypeError("Missing required property 'lab_name'")
-            __props__['lab_name'] = lab_name
+            __props__['labName'] = lab_name
             __props__['name'] = name
             if policy_set_name is None:
                 raise TypeError("Missing required property 'policy_set_name'")
-            __props__['policy_set_name'] = policy_set_name
+            __props__['policySetName'] = policy_set_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
             if threshold is None:
                 raise TypeError("Missing required property 'threshold'")
@@ -164,7 +164,7 @@ class Policy(pulumi.CustomResource):
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

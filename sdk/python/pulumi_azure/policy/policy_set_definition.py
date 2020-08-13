@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class PolicySetDefinition(pulumi.CustomResource):
@@ -119,7 +119,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,23 +128,23 @@ class PolicySetDefinition(pulumi.CustomResource):
             __props__['description'] = description
             if display_name is None:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
+            __props__['displayName'] = display_name
             if management_group_id is not None:
                 warnings.warn("Deprecated in favour of `management_group_name`", DeprecationWarning)
                 pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `management_group_name`")
-            __props__['management_group_id'] = management_group_id
-            __props__['management_group_name'] = management_group_name
+            __props__['managementGroupId'] = management_group_id
+            __props__['managementGroupName'] = management_group_name
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['parameters'] = parameters
-            __props__['policy_definition_references'] = policy_definition_references
+            __props__['policyDefinitionReferences'] = policy_definition_references
             if policy_definitions is not None:
                 warnings.warn("Deprecated in favor of `policy_definition_reference`", DeprecationWarning)
                 pulumi.log.warn("policy_definitions is deprecated: Deprecated in favor of `policy_definition_reference`")
-            __props__['policy_definitions'] = policy_definitions
+            __props__['policyDefinitions'] = policy_definitions
             if policy_type is None:
                 raise TypeError("Missing required property 'policy_type'")
-            __props__['policy_type'] = policy_type
+            __props__['policyType'] = policy_type
         super(PolicySetDefinition, __self__).__init__(
             'azure:policy/policySetDefinition:PolicySetDefinition',
             resource_name,
@@ -194,7 +194,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         return PolicySetDefinition(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

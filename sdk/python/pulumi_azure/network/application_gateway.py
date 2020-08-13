@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ApplicationGateway(pulumi.CustomResource):
@@ -673,56 +673,56 @@ class ApplicationGateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['authentication_certificates'] = authentication_certificates
-            __props__['autoscale_configuration'] = autoscale_configuration
+            __props__['authenticationCertificates'] = authentication_certificates
+            __props__['autoscaleConfiguration'] = autoscale_configuration
             if backend_address_pools is None:
                 raise TypeError("Missing required property 'backend_address_pools'")
-            __props__['backend_address_pools'] = backend_address_pools
+            __props__['backendAddressPools'] = backend_address_pools
             if backend_http_settings is None:
                 raise TypeError("Missing required property 'backend_http_settings'")
-            __props__['backend_http_settings'] = backend_http_settings
-            __props__['custom_error_configurations'] = custom_error_configurations
-            __props__['enable_http2'] = enable_http2
-            __props__['firewall_policy_id'] = firewall_policy_id
+            __props__['backendHttpSettings'] = backend_http_settings
+            __props__['customErrorConfigurations'] = custom_error_configurations
+            __props__['enableHttp2'] = enable_http2
+            __props__['firewallPolicyId'] = firewall_policy_id
             if frontend_ip_configurations is None:
                 raise TypeError("Missing required property 'frontend_ip_configurations'")
-            __props__['frontend_ip_configurations'] = frontend_ip_configurations
+            __props__['frontendIpConfigurations'] = frontend_ip_configurations
             if frontend_ports is None:
                 raise TypeError("Missing required property 'frontend_ports'")
-            __props__['frontend_ports'] = frontend_ports
+            __props__['frontendPorts'] = frontend_ports
             if gateway_ip_configurations is None:
                 raise TypeError("Missing required property 'gateway_ip_configurations'")
-            __props__['gateway_ip_configurations'] = gateway_ip_configurations
+            __props__['gatewayIpConfigurations'] = gateway_ip_configurations
             if http_listeners is None:
                 raise TypeError("Missing required property 'http_listeners'")
-            __props__['http_listeners'] = http_listeners
+            __props__['httpListeners'] = http_listeners
             __props__['identity'] = identity
             __props__['location'] = location
             __props__['name'] = name
             __props__['probes'] = probes
-            __props__['redirect_configurations'] = redirect_configurations
+            __props__['redirectConfigurations'] = redirect_configurations
             if request_routing_rules is None:
                 raise TypeError("Missing required property 'request_routing_rules'")
-            __props__['request_routing_rules'] = request_routing_rules
+            __props__['requestRoutingRules'] = request_routing_rules
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['rewrite_rule_sets'] = rewrite_rule_sets
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['rewriteRuleSets'] = rewrite_rule_sets
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
-            __props__['ssl_certificates'] = ssl_certificates
-            __props__['ssl_policies'] = ssl_policies
+            __props__['sslCertificates'] = ssl_certificates
+            __props__['sslPolicies'] = ssl_policies
             __props__['tags'] = tags
-            __props__['trusted_root_certificates'] = trusted_root_certificates
-            __props__['url_path_maps'] = url_path_maps
-            __props__['waf_configuration'] = waf_configuration
+            __props__['trustedRootCertificates'] = trusted_root_certificates
+            __props__['urlPathMaps'] = url_path_maps
+            __props__['wafConfiguration'] = waf_configuration
             __props__['zones'] = zones
         super(ApplicationGateway, __self__).__init__(
             'azure:network/applicationGateway:ApplicationGateway',
@@ -1038,7 +1038,7 @@ class ApplicationGateway(pulumi.CustomResource):
         return ApplicationGateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class PolicyVM(pulumi.CustomResource):
@@ -174,7 +174,7 @@ class PolicyVM(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -186,14 +186,14 @@ class PolicyVM(pulumi.CustomResource):
             __props__['name'] = name
             if recovery_vault_name is None:
                 raise TypeError("Missing required property 'recovery_vault_name'")
-            __props__['recovery_vault_name'] = recovery_vault_name
+            __props__['recoveryVaultName'] = recovery_vault_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['retention_daily'] = retention_daily
-            __props__['retention_monthly'] = retention_monthly
-            __props__['retention_weekly'] = retention_weekly
-            __props__['retention_yearly'] = retention_yearly
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['retentionDaily'] = retention_daily
+            __props__['retentionMonthly'] = retention_monthly
+            __props__['retentionWeekly'] = retention_weekly
+            __props__['retentionYearly'] = retention_yearly
             __props__['tags'] = tags
             __props__['timezone'] = timezone
         super(PolicyVM, __self__).__init__(
@@ -267,7 +267,7 @@ class PolicyVM(pulumi.CustomResource):
         return PolicyVM(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

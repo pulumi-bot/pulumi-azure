@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class GlobalVMShutdownSchedule(pulumi.CustomResource):
@@ -91,7 +91,7 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
             timezone="Pacific Standard Time",
             notification_settings={
                 "enabled": True,
-                "timeInMinutes": "60",
+                "timeInMinutes": 60,
                 "webhookUrl": "https://sample-webhook-url.example.com",
             })
         ```
@@ -122,7 +122,7 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -130,19 +130,19 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
 
             if daily_recurrence_time is None:
                 raise TypeError("Missing required property 'daily_recurrence_time'")
-            __props__['daily_recurrence_time'] = daily_recurrence_time
+            __props__['dailyRecurrenceTime'] = daily_recurrence_time
             __props__['enabled'] = enabled
             __props__['location'] = location
             if notification_settings is None:
                 raise TypeError("Missing required property 'notification_settings'")
-            __props__['notification_settings'] = notification_settings
+            __props__['notificationSettings'] = notification_settings
             __props__['tags'] = tags
             if timezone is None:
                 raise TypeError("Missing required property 'timezone'")
             __props__['timezone'] = timezone
             if virtual_machine_id is None:
                 raise TypeError("Missing required property 'virtual_machine_id'")
-            __props__['virtual_machine_id'] = virtual_machine_id
+            __props__['virtualMachineId'] = virtual_machine_id
         super(GlobalVMShutdownSchedule, __self__).__init__(
             'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
             resource_name,
@@ -185,7 +185,7 @@ class GlobalVMShutdownSchedule(pulumi.CustomResource):
         return GlobalVMShutdownSchedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

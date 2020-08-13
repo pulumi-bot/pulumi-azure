@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AuthorizationRule(pulumi.CustomResource):
@@ -116,7 +116,7 @@ class AuthorizationRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -124,16 +124,16 @@ class AuthorizationRule(pulumi.CustomResource):
 
             if eventhub_name is None:
                 raise TypeError("Missing required property 'eventhub_name'")
-            __props__['eventhub_name'] = eventhub_name
+            __props__['eventhubName'] = eventhub_name
             __props__['listen'] = listen
             __props__['manage'] = manage
             __props__['name'] = name
             if namespace_name is None:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
+            __props__['namespaceName'] = namespace_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['send'] = send
             __props__['primary_connection_string'] = None
             __props__['primary_connection_string_alias'] = None
@@ -192,7 +192,7 @@ class AuthorizationRule(pulumi.CustomResource):
         return AuthorizationRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

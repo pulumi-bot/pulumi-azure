@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Slot(pulumi.CustomResource):
@@ -405,7 +405,7 @@ class Slot(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -413,24 +413,24 @@ class Slot(pulumi.CustomResource):
 
             if app_service_name is None:
                 raise TypeError("Missing required property 'app_service_name'")
-            __props__['app_service_name'] = app_service_name
+            __props__['appServiceName'] = app_service_name
             if app_service_plan_id is None:
                 raise TypeError("Missing required property 'app_service_plan_id'")
-            __props__['app_service_plan_id'] = app_service_plan_id
-            __props__['app_settings'] = app_settings
-            __props__['auth_settings'] = auth_settings
-            __props__['client_affinity_enabled'] = client_affinity_enabled
-            __props__['connection_strings'] = connection_strings
+            __props__['appServicePlanId'] = app_service_plan_id
+            __props__['appSettings'] = app_settings
+            __props__['authSettings'] = auth_settings
+            __props__['clientAffinityEnabled'] = client_affinity_enabled
+            __props__['connectionStrings'] = connection_strings
             __props__['enabled'] = enabled
-            __props__['https_only'] = https_only
+            __props__['httpsOnly'] = https_only
             __props__['identity'] = identity
             __props__['location'] = location
             __props__['logs'] = logs
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['site_config'] = site_config
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['siteConfig'] = site_config
             __props__['tags'] = tags
             __props__['default_site_hostname'] = None
             __props__['site_credentials'] = None
@@ -608,7 +608,7 @@ class Slot(pulumi.CustomResource):
         return Slot(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

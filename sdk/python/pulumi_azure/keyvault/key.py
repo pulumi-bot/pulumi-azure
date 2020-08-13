@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Key(pulumi.CustomResource):
@@ -138,26 +138,26 @@ class Key(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             __props__['curve'] = curve
-            __props__['expiration_date'] = expiration_date
+            __props__['expirationDate'] = expiration_date
             if key_opts is None:
                 raise TypeError("Missing required property 'key_opts'")
-            __props__['key_opts'] = key_opts
-            __props__['key_size'] = key_size
+            __props__['keyOpts'] = key_opts
+            __props__['keySize'] = key_size
             if key_type is None:
                 raise TypeError("Missing required property 'key_type'")
-            __props__['key_type'] = key_type
+            __props__['keyType'] = key_type
             if key_vault_id is None:
                 raise TypeError("Missing required property 'key_vault_id'")
-            __props__['key_vault_id'] = key_vault_id
+            __props__['keyVaultId'] = key_vault_id
             __props__['name'] = name
-            __props__['not_before_date'] = not_before_date
+            __props__['notBeforeDate'] = not_before_date
             __props__['tags'] = tags
             __props__['e'] = None
             __props__['n'] = None
@@ -215,7 +215,7 @@ class Key(pulumi.CustomResource):
         return Key(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

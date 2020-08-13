@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Frontdoor(pulumi.CustomResource):
@@ -295,7 +295,7 @@ class Frontdoor(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -303,22 +303,22 @@ class Frontdoor(pulumi.CustomResource):
 
             if backend_pool_health_probes is None:
                 raise TypeError("Missing required property 'backend_pool_health_probes'")
-            __props__['backend_pool_health_probes'] = backend_pool_health_probes
+            __props__['backendPoolHealthProbes'] = backend_pool_health_probes
             if backend_pool_load_balancings is None:
                 raise TypeError("Missing required property 'backend_pool_load_balancings'")
-            __props__['backend_pool_load_balancings'] = backend_pool_load_balancings
+            __props__['backendPoolLoadBalancings'] = backend_pool_load_balancings
             if backend_pools is None:
                 raise TypeError("Missing required property 'backend_pools'")
-            __props__['backend_pools'] = backend_pools
-            __props__['backend_pools_send_receive_timeout_seconds'] = backend_pools_send_receive_timeout_seconds
+            __props__['backendPools'] = backend_pools
+            __props__['backendPoolsSendReceiveTimeoutSeconds'] = backend_pools_send_receive_timeout_seconds
             if enforce_backend_pools_certificate_name_check is None:
                 raise TypeError("Missing required property 'enforce_backend_pools_certificate_name_check'")
-            __props__['enforce_backend_pools_certificate_name_check'] = enforce_backend_pools_certificate_name_check
-            __props__['friendly_name'] = friendly_name
+            __props__['enforceBackendPoolsCertificateNameCheck'] = enforce_backend_pools_certificate_name_check
+            __props__['friendlyName'] = friendly_name
             if frontend_endpoints is None:
                 raise TypeError("Missing required property 'frontend_endpoints'")
-            __props__['frontend_endpoints'] = frontend_endpoints
-            __props__['load_balancer_enabled'] = load_balancer_enabled
+            __props__['frontendEndpoints'] = frontend_endpoints
+            __props__['loadBalancerEnabled'] = load_balancer_enabled
             if location is not None:
                 warnings.warn("Due to the service's API changing 'location' must now always be set to 'Global' for new resources, however if the Front Door service was created prior 2020/03/10 it may continue to exist in a specific current location", DeprecationWarning)
                 pulumi.log.warn("location is deprecated: Due to the service's API changing 'location' must now always be set to 'Global' for new resources, however if the Front Door service was created prior 2020/03/10 it may continue to exist in a specific current location")
@@ -326,10 +326,10 @@ class Frontdoor(pulumi.CustomResource):
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if routing_rules is None:
                 raise TypeError("Missing required property 'routing_rules'")
-            __props__['routing_rules'] = routing_rules
+            __props__['routingRules'] = routing_rules
             __props__['tags'] = tags
             __props__['cname'] = None
             __props__['header_frontdoor_id'] = None
@@ -462,7 +462,7 @@ class Frontdoor(pulumi.CustomResource):
         return Frontdoor(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ManagedDisk(pulumi.CustomResource):
@@ -104,7 +104,7 @@ class ManagedDisk(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             storage_account_type="Standard_LRS",
             create_option="Empty",
-            disk_size_gb="1",
+            disk_size_gb=1,
             tags={
                 "environment": "staging",
             })
@@ -121,7 +121,7 @@ class ManagedDisk(pulumi.CustomResource):
             resource_group_name=example.name,
             storage_account_type="Standard_LRS",
             create_option="Empty",
-            disk_size_gb="1",
+            disk_size_gb=1,
             tags={
                 "environment": "staging",
             })
@@ -131,7 +131,7 @@ class ManagedDisk(pulumi.CustomResource):
             storage_account_type="Standard_LRS",
             create_option="Copy",
             source_resource_id=source.id,
-            disk_size_gb="1",
+            disk_size_gb=1,
             tags={
                 "environment": "staging",
             })
@@ -179,7 +179,7 @@ class ManagedDisk(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -187,25 +187,25 @@ class ManagedDisk(pulumi.CustomResource):
 
             if create_option is None:
                 raise TypeError("Missing required property 'create_option'")
-            __props__['create_option'] = create_option
-            __props__['disk_encryption_set_id'] = disk_encryption_set_id
-            __props__['disk_iops_read_write'] = disk_iops_read_write
-            __props__['disk_mbps_read_write'] = disk_mbps_read_write
-            __props__['disk_size_gb'] = disk_size_gb
-            __props__['encryption_settings'] = encryption_settings
-            __props__['image_reference_id'] = image_reference_id
+            __props__['createOption'] = create_option
+            __props__['diskEncryptionSetId'] = disk_encryption_set_id
+            __props__['diskIopsReadWrite'] = disk_iops_read_write
+            __props__['diskMbpsReadWrite'] = disk_mbps_read_write
+            __props__['diskSizeGb'] = disk_size_gb
+            __props__['encryptionSettings'] = encryption_settings
+            __props__['imageReferenceId'] = image_reference_id
             __props__['location'] = location
             __props__['name'] = name
-            __props__['os_type'] = os_type
+            __props__['osType'] = os_type
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['source_resource_id'] = source_resource_id
-            __props__['source_uri'] = source_uri
-            __props__['storage_account_id'] = storage_account_id
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['sourceResourceId'] = source_resource_id
+            __props__['sourceUri'] = source_uri
+            __props__['storageAccountId'] = storage_account_id
             if storage_account_type is None:
                 raise TypeError("Missing required property 'storage_account_type'")
-            __props__['storage_account_type'] = storage_account_type
+            __props__['storageAccountType'] = storage_account_type
             __props__['tags'] = tags
             __props__['zones'] = zones
         super(ManagedDisk, __self__).__init__(
@@ -276,7 +276,7 @@ class ManagedDisk(pulumi.CustomResource):
         return ManagedDisk(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

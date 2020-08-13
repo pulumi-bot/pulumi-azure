@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualMachine(pulumi.CustomResource):
@@ -125,26 +125,26 @@ class VirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_patching'] = auto_patching
-            __props__['key_vault_credential'] = key_vault_credential
-            __props__['r_services_enabled'] = r_services_enabled
-            __props__['sql_connectivity_port'] = sql_connectivity_port
-            __props__['sql_connectivity_type'] = sql_connectivity_type
-            __props__['sql_connectivity_update_password'] = sql_connectivity_update_password
-            __props__['sql_connectivity_update_username'] = sql_connectivity_update_username
+            __props__['autoPatching'] = auto_patching
+            __props__['keyVaultCredential'] = key_vault_credential
+            __props__['rServicesEnabled'] = r_services_enabled
+            __props__['sqlConnectivityPort'] = sql_connectivity_port
+            __props__['sqlConnectivityType'] = sql_connectivity_type
+            __props__['sqlConnectivityUpdatePassword'] = sql_connectivity_update_password
+            __props__['sqlConnectivityUpdateUsername'] = sql_connectivity_update_username
             if sql_license_type is None:
                 raise TypeError("Missing required property 'sql_license_type'")
-            __props__['sql_license_type'] = sql_license_type
+            __props__['sqlLicenseType'] = sql_license_type
             __props__['tags'] = tags
             if virtual_machine_id is None:
                 raise TypeError("Missing required property 'virtual_machine_id'")
-            __props__['virtual_machine_id'] = virtual_machine_id
+            __props__['virtualMachineId'] = virtual_machine_id
         super(VirtualMachine, __self__).__init__(
             'azure:mssql/virtualMachine:VirtualMachine',
             resource_name,
@@ -201,7 +201,7 @@ class VirtualMachine(pulumi.CustomResource):
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class RunBook(pulumi.CustomResource):
@@ -81,8 +81,8 @@ class RunBook(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             automation_account_name=example_account.name,
-            log_verbose="true",
-            log_progress="true",
+            log_verbose=True,
+            log_progress=True,
             description="This is an example runbook",
             runbook_type="PowerShellWorkflow",
             publish_content_link={
@@ -131,7 +131,7 @@ class RunBook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -139,25 +139,25 @@ class RunBook(pulumi.CustomResource):
 
             if automation_account_name is None:
                 raise TypeError("Missing required property 'automation_account_name'")
-            __props__['automation_account_name'] = automation_account_name
+            __props__['automationAccountName'] = automation_account_name
             __props__['content'] = content
             __props__['description'] = description
-            __props__['job_schedules'] = job_schedules
+            __props__['jobSchedules'] = job_schedules
             __props__['location'] = location
             if log_progress is None:
                 raise TypeError("Missing required property 'log_progress'")
-            __props__['log_progress'] = log_progress
+            __props__['logProgress'] = log_progress
             if log_verbose is None:
                 raise TypeError("Missing required property 'log_verbose'")
-            __props__['log_verbose'] = log_verbose
+            __props__['logVerbose'] = log_verbose
             __props__['name'] = name
-            __props__['publish_content_link'] = publish_content_link
+            __props__['publishContentLink'] = publish_content_link
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if runbook_type is None:
                 raise TypeError("Missing required property 'runbook_type'")
-            __props__['runbook_type'] = runbook_type
+            __props__['runbookType'] = runbook_type
             __props__['tags'] = tags
         super(RunBook, __self__).__init__(
             'azure:automation/runBook:RunBook',
@@ -221,7 +221,7 @@ class RunBook(pulumi.CustomResource):
         return RunBook(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

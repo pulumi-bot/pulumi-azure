@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DatabasePrincipal(pulumi.CustomResource):
@@ -112,7 +112,7 @@ class DatabasePrincipal(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -120,19 +120,19 @@ class DatabasePrincipal(pulumi.CustomResource):
 
             if client_id is None:
                 raise TypeError("Missing required property 'client_id'")
-            __props__['client_id'] = client_id
+            __props__['clientId'] = client_id
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
+            __props__['clusterName'] = cluster_name
             if database_name is None:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
+            __props__['databaseName'] = database_name
             if object_id is None:
                 raise TypeError("Missing required property 'object_id'")
-            __props__['object_id'] = object_id
+            __props__['objectId'] = object_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
@@ -188,7 +188,7 @@ class DatabasePrincipal(pulumi.CustomResource):
         return DatabasePrincipal(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

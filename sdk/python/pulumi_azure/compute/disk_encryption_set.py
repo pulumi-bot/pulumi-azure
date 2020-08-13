@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DiskEncryptionSet(pulumi.CustomResource):
@@ -70,7 +70,7 @@ class DiskEncryptionSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -81,12 +81,12 @@ class DiskEncryptionSet(pulumi.CustomResource):
             __props__['identity'] = identity
             if key_vault_key_id is None:
                 raise TypeError("Missing required property 'key_vault_key_id'")
-            __props__['key_vault_key_id'] = key_vault_key_id
+            __props__['keyVaultKeyId'] = key_vault_key_id
             __props__['location'] = location
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
         super(DiskEncryptionSet, __self__).__init__(
             'azure:compute/diskEncryptionSet:DiskEncryptionSet',
@@ -129,7 +129,7 @@ class DiskEncryptionSet(pulumi.CustomResource):
         return DiskEncryptionSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

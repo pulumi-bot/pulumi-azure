@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Schedule(pulumi.CustomResource):
@@ -65,30 +65,6 @@ class Schedule(pulumi.CustomResource):
         """
         Manages a Automation Schedule.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = azure.automation.Account("exampleAccount",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku=[{
-                "name": "Basic",
-            }])
-        example_schedule = azure.automation.Schedule("exampleSchedule",
-            resource_group_name=example_resource_group.name,
-            automation_account_name=example_account.name,
-            frequency="Week",
-            interval=1,
-            timezone="Australia/Perth",
-            start_time="2014-04-15T18:00:15+02:00",
-            description="This is an example schedule",
-            week_days=["Friday"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Schedule is created. Changing this forces a new resource to be created.
@@ -120,7 +96,7 @@ class Schedule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,22 +104,22 @@ class Schedule(pulumi.CustomResource):
 
             if automation_account_name is None:
                 raise TypeError("Missing required property 'automation_account_name'")
-            __props__['automation_account_name'] = automation_account_name
+            __props__['automationAccountName'] = automation_account_name
             __props__['description'] = description
-            __props__['expiry_time'] = expiry_time
+            __props__['expiryTime'] = expiry_time
             if frequency is None:
                 raise TypeError("Missing required property 'frequency'")
             __props__['frequency'] = frequency
             __props__['interval'] = interval
-            __props__['month_days'] = month_days
-            __props__['monthly_occurrences'] = monthly_occurrences
+            __props__['monthDays'] = month_days
+            __props__['monthlyOccurrences'] = monthly_occurrences
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['start_time'] = start_time
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['startTime'] = start_time
             __props__['timezone'] = timezone
-            __props__['week_days'] = week_days
+            __props__['weekDays'] = week_days
         super(Schedule, __self__).__init__(
             'azure:automation/schedule:Schedule',
             resource_name,
@@ -196,7 +172,7 @@ class Schedule(pulumi.CustomResource):
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
@@ -71,7 +71,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -81,15 +81,15 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
             __props__['name'] = name
             if platform_fault_domain_count is None:
                 raise TypeError("Missing required property 'platform_fault_domain_count'")
-            __props__['platform_fault_domain_count'] = platform_fault_domain_count
-            __props__['proximity_placement_group_id'] = proximity_placement_group_id
+            __props__['platformFaultDomainCount'] = platform_fault_domain_count
+            __props__['proximityPlacementGroupId'] = proximity_placement_group_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if single_placement_group is not None:
                 warnings.warn("Due to an upgrade of the compute API this preview property has now been deprecated and required to be false in the 2019-12-01 api versions for orchestrated VMSS - as it will always be false for the current and future API versions this property now defaults to false and will removed in version 3.0 of the provider.", DeprecationWarning)
                 pulumi.log.warn("single_placement_group is deprecated: Due to an upgrade of the compute API this preview property has now been deprecated and required to be false in the 2019-12-01 api versions for orchestrated VMSS - as it will always be false for the current and future API versions this property now defaults to false and will removed in version 3.0 of the provider.")
-            __props__['single_placement_group'] = single_placement_group
+            __props__['singlePlacementGroup'] = single_placement_group
             __props__['tags'] = tags
             __props__['zones'] = zones
             __props__['unique_id'] = None
@@ -134,7 +134,7 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         return OrchestratedVirtualMachineScaleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Snapshot(pulumi.CustomResource):
@@ -75,7 +75,7 @@ class Snapshot(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             service_level="Premium",
-            size_in_tb="4")
+            size_in_tb=4)
         example_volume = azure.netapp.Volume("exampleVolume",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
@@ -84,7 +84,7 @@ class Snapshot(pulumi.CustomResource):
             volume_path="my-unique-file-path",
             service_level="Premium",
             subnet_id=azurerm_subnet["test"]["id"],
-            storage_quota_in_gb="100")
+            storage_quota_in_gb=100)
         example_snapshot = azure.netapp.Snapshot("exampleSnapshot",
             account_name=example_account.name,
             pool_name=example_pool.name,
@@ -114,7 +114,7 @@ class Snapshot(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -122,19 +122,19 @@ class Snapshot(pulumi.CustomResource):
 
             if account_name is None:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
+            __props__['accountName'] = account_name
             __props__['location'] = location
             __props__['name'] = name
             if pool_name is None:
                 raise TypeError("Missing required property 'pool_name'")
-            __props__['pool_name'] = pool_name
+            __props__['poolName'] = pool_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
             if volume_name is None:
                 raise TypeError("Missing required property 'volume_name'")
-            __props__['volume_name'] = volume_name
+            __props__['volumeName'] = volume_name
         super(Snapshot, __self__).__init__(
             'azure:netapp/snapshot:Snapshot',
             resource_name,
@@ -172,7 +172,7 @@ class Snapshot(pulumi.CustomResource):
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("ZipBlob resource is deprecated in the 2.0 version of the provider. Use Blob resource instead.", DeprecationWarning)
 
@@ -45,27 +45,27 @@ class ZipBlob(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_tier'] = access_tier
+            __props__['accessTier'] = access_tier
             __props__['content'] = content
-            __props__['content_type'] = content_type
+            __props__['contentType'] = content_type
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['parallelism'] = parallelism
             __props__['size'] = size
-            __props__['source_content'] = source_content
-            __props__['source_uri'] = source_uri
+            __props__['sourceContent'] = source_content
+            __props__['sourceUri'] = source_uri
             if storage_account_name is None:
                 raise TypeError("Missing required property 'storage_account_name'")
-            __props__['storage_account_name'] = storage_account_name
+            __props__['storageAccountName'] = storage_account_name
             if storage_container_name is None:
                 raise TypeError("Missing required property 'storage_container_name'")
-            __props__['storage_container_name'] = storage_container_name
+            __props__['storageContainerName'] = storage_container_name
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
@@ -106,7 +106,7 @@ class ZipBlob(pulumi.CustomResource):
         return ZipBlob(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

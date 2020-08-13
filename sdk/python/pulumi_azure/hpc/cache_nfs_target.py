@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class CacheNfsTarget(pulumi.CustomResource):
@@ -70,7 +70,7 @@ class CacheNfsTarget(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -78,20 +78,20 @@ class CacheNfsTarget(pulumi.CustomResource):
 
             if cache_name is None:
                 raise TypeError("Missing required property 'cache_name'")
-            __props__['cache_name'] = cache_name
+            __props__['cacheName'] = cache_name
             __props__['name'] = name
             if namespace_junctions is None:
                 raise TypeError("Missing required property 'namespace_junctions'")
-            __props__['namespace_junctions'] = namespace_junctions
+            __props__['namespaceJunctions'] = namespace_junctions
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if target_host_name is None:
                 raise TypeError("Missing required property 'target_host_name'")
-            __props__['target_host_name'] = target_host_name
+            __props__['targetHostName'] = target_host_name
             if usage_model is None:
                 raise TypeError("Missing required property 'usage_model'")
-            __props__['usage_model'] = usage_model
+            __props__['usageModel'] = usage_model
         super(CacheNfsTarget, __self__).__init__(
             'azure:hpc/cacheNfsTarget:CacheNfsTarget',
             resource_name,
@@ -133,7 +133,7 @@ class CacheNfsTarget(pulumi.CustomResource):
         return CacheNfsTarget(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

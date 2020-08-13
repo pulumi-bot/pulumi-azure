@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualMachine(pulumi.CustomResource):
@@ -372,43 +372,43 @@ class VirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_capabilities'] = additional_capabilities
-            __props__['availability_set_id'] = availability_set_id
-            __props__['boot_diagnostics'] = boot_diagnostics
-            __props__['delete_data_disks_on_termination'] = delete_data_disks_on_termination
-            __props__['delete_os_disk_on_termination'] = delete_os_disk_on_termination
+            __props__['additionalCapabilities'] = additional_capabilities
+            __props__['availabilitySetId'] = availability_set_id
+            __props__['bootDiagnostics'] = boot_diagnostics
+            __props__['deleteDataDisksOnTermination'] = delete_data_disks_on_termination
+            __props__['deleteOsDiskOnTermination'] = delete_os_disk_on_termination
             __props__['identity'] = identity
-            __props__['license_type'] = license_type
+            __props__['licenseType'] = license_type
             __props__['location'] = location
             __props__['name'] = name
             if network_interface_ids is None:
                 raise TypeError("Missing required property 'network_interface_ids'")
-            __props__['network_interface_ids'] = network_interface_ids
-            __props__['os_profile'] = os_profile
-            __props__['os_profile_linux_config'] = os_profile_linux_config
-            __props__['os_profile_secrets'] = os_profile_secrets
-            __props__['os_profile_windows_config'] = os_profile_windows_config
+            __props__['networkInterfaceIds'] = network_interface_ids
+            __props__['osProfile'] = os_profile
+            __props__['osProfileLinuxConfig'] = os_profile_linux_config
+            __props__['osProfileSecrets'] = os_profile_secrets
+            __props__['osProfileWindowsConfig'] = os_profile_windows_config
             __props__['plan'] = plan
-            __props__['primary_network_interface_id'] = primary_network_interface_id
-            __props__['proximity_placement_group_id'] = proximity_placement_group_id
+            __props__['primaryNetworkInterfaceId'] = primary_network_interface_id
+            __props__['proximityPlacementGroupId'] = proximity_placement_group_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['storage_data_disks'] = storage_data_disks
-            __props__['storage_image_reference'] = storage_image_reference
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['storageDataDisks'] = storage_data_disks
+            __props__['storageImageReference'] = storage_image_reference
             if storage_os_disk is None:
                 raise TypeError("Missing required property 'storage_os_disk'")
-            __props__['storage_os_disk'] = storage_os_disk
+            __props__['storageOsDisk'] = storage_os_disk
             __props__['tags'] = tags
             if vm_size is None:
                 raise TypeError("Missing required property 'vm_size'")
-            __props__['vm_size'] = vm_size
+            __props__['vmSize'] = vm_size
             __props__['zones'] = zones
         super(VirtualMachine, __self__).__init__(
             'azure:compute/virtualMachine:VirtualMachine',
@@ -571,7 +571,7 @@ class VirtualMachine(pulumi.CustomResource):
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

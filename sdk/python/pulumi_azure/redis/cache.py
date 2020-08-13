@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cache(pulumi.CustomResource):
@@ -222,7 +222,7 @@ class Cache(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -231,24 +231,24 @@ class Cache(pulumi.CustomResource):
             if capacity is None:
                 raise TypeError("Missing required property 'capacity'")
             __props__['capacity'] = capacity
-            __props__['enable_non_ssl_port'] = enable_non_ssl_port
+            __props__['enableNonSslPort'] = enable_non_ssl_port
             if family is None:
                 raise TypeError("Missing required property 'family'")
             __props__['family'] = family
             __props__['location'] = location
-            __props__['minimum_tls_version'] = minimum_tls_version
+            __props__['minimumTlsVersion'] = minimum_tls_version
             __props__['name'] = name
-            __props__['patch_schedules'] = patch_schedules
-            __props__['private_static_ip_address'] = private_static_ip_address
-            __props__['redis_configuration'] = redis_configuration
+            __props__['patchSchedules'] = patch_schedules
+            __props__['privateStaticIpAddress'] = private_static_ip_address
+            __props__['redisConfiguration'] = redis_configuration
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['shard_count'] = shard_count
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['shardCount'] = shard_count
             if sku_name is None:
                 raise TypeError("Missing required property 'sku_name'")
-            __props__['sku_name'] = sku_name
-            __props__['subnet_id'] = subnet_id
+            __props__['skuName'] = sku_name
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             __props__['zones'] = zones
             __props__['hostname'] = None
@@ -349,7 +349,7 @@ class Cache(pulumi.CustomResource):
         return Cache(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

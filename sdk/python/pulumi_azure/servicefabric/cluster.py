@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -273,43 +273,43 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['add_on_features'] = add_on_features
-            __props__['azure_active_directory'] = azure_active_directory
+            __props__['addOnFeatures'] = add_on_features
+            __props__['azureActiveDirectory'] = azure_active_directory
             __props__['certificate'] = certificate
-            __props__['certificate_common_names'] = certificate_common_names
-            __props__['client_certificate_common_names'] = client_certificate_common_names
-            __props__['client_certificate_thumbprints'] = client_certificate_thumbprints
-            __props__['cluster_code_version'] = cluster_code_version
-            __props__['diagnostics_config'] = diagnostics_config
-            __props__['fabric_settings'] = fabric_settings
+            __props__['certificateCommonNames'] = certificate_common_names
+            __props__['clientCertificateCommonNames'] = client_certificate_common_names
+            __props__['clientCertificateThumbprints'] = client_certificate_thumbprints
+            __props__['clusterCodeVersion'] = cluster_code_version
+            __props__['diagnosticsConfig'] = diagnostics_config
+            __props__['fabricSettings'] = fabric_settings
             __props__['location'] = location
             if management_endpoint is None:
                 raise TypeError("Missing required property 'management_endpoint'")
-            __props__['management_endpoint'] = management_endpoint
+            __props__['managementEndpoint'] = management_endpoint
             __props__['name'] = name
             if node_types is None:
                 raise TypeError("Missing required property 'node_types'")
-            __props__['node_types'] = node_types
+            __props__['nodeTypes'] = node_types
             if reliability_level is None:
                 raise TypeError("Missing required property 'reliability_level'")
-            __props__['reliability_level'] = reliability_level
+            __props__['reliabilityLevel'] = reliability_level
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['reverse_proxy_certificate'] = reverse_proxy_certificate
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['reverseProxyCertificate'] = reverse_proxy_certificate
             __props__['tags'] = tags
             if upgrade_mode is None:
                 raise TypeError("Missing required property 'upgrade_mode'")
-            __props__['upgrade_mode'] = upgrade_mode
+            __props__['upgradeMode'] = upgrade_mode
             if vm_image is None:
                 raise TypeError("Missing required property 'vm_image'")
-            __props__['vm_image'] = vm_image
+            __props__['vmImage'] = vm_image
             __props__['cluster_endpoint'] = None
         super(Cluster, __self__).__init__(
             'azure:servicefabric/cluster:Cluster',
@@ -444,7 +444,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

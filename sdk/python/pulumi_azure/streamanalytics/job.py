@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Job(pulumi.CustomResource):
@@ -118,30 +118,30 @@ class Job(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['compatibility_level'] = compatibility_level
-            __props__['data_locale'] = data_locale
-            __props__['events_late_arrival_max_delay_in_seconds'] = events_late_arrival_max_delay_in_seconds
-            __props__['events_out_of_order_max_delay_in_seconds'] = events_out_of_order_max_delay_in_seconds
-            __props__['events_out_of_order_policy'] = events_out_of_order_policy
+            __props__['compatibilityLevel'] = compatibility_level
+            __props__['dataLocale'] = data_locale
+            __props__['eventsLateArrivalMaxDelayInSeconds'] = events_late_arrival_max_delay_in_seconds
+            __props__['eventsOutOfOrderMaxDelayInSeconds'] = events_out_of_order_max_delay_in_seconds
+            __props__['eventsOutOfOrderPolicy'] = events_out_of_order_policy
             __props__['location'] = location
             __props__['name'] = name
-            __props__['output_error_policy'] = output_error_policy
+            __props__['outputErrorPolicy'] = output_error_policy
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if streaming_units is None:
                 raise TypeError("Missing required property 'streaming_units'")
-            __props__['streaming_units'] = streaming_units
+            __props__['streamingUnits'] = streaming_units
             __props__['tags'] = tags
             if transformation_query is None:
                 raise TypeError("Missing required property 'transformation_query'")
-            __props__['transformation_query'] = transformation_query
+            __props__['transformationQuery'] = transformation_query
             __props__['job_id'] = None
         super(Job, __self__).__init__(
             'azure:streamanalytics/job:Job',
@@ -192,7 +192,7 @@ class Job(pulumi.CustomResource):
         return Job(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

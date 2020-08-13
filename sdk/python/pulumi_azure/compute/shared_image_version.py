@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SharedImageVersion(pulumi.CustomResource):
@@ -112,30 +112,30 @@ class SharedImageVersion(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['exclude_from_latest'] = exclude_from_latest
+            __props__['excludeFromLatest'] = exclude_from_latest
             if gallery_name is None:
                 raise TypeError("Missing required property 'gallery_name'")
-            __props__['gallery_name'] = gallery_name
+            __props__['galleryName'] = gallery_name
             if image_name is None:
                 raise TypeError("Missing required property 'image_name'")
-            __props__['image_name'] = image_name
+            __props__['imageName'] = image_name
             __props__['location'] = location
-            __props__['managed_image_id'] = managed_image_id
+            __props__['managedImageId'] = managed_image_id
             __props__['name'] = name
-            __props__['os_disk_snapshot_id'] = os_disk_snapshot_id
+            __props__['osDiskSnapshotId'] = os_disk_snapshot_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
             if target_regions is None:
                 raise TypeError("Missing required property 'target_regions'")
-            __props__['target_regions'] = target_regions
+            __props__['targetRegions'] = target_regions
         super(SharedImageVersion, __self__).__init__(
             'azure:compute/sharedImageVersion:SharedImageVersion',
             resource_name,
@@ -185,7 +185,7 @@ class SharedImageVersion(pulumi.CustomResource):
         return SharedImageVersion(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule", DeprecationWarning)
 
@@ -165,31 +165,31 @@ class SubscriptionRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             __props__['action'] = action
-            __props__['correlation_filter'] = correlation_filter
+            __props__['correlationFilter'] = correlation_filter
             if filter_type is None:
                 raise TypeError("Missing required property 'filter_type'")
-            __props__['filter_type'] = filter_type
+            __props__['filterType'] = filter_type
             __props__['name'] = name
             if namespace_name is None:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
+            __props__['namespaceName'] = namespace_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sql_filter'] = sql_filter
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['sqlFilter'] = sql_filter
             if subscription_name is None:
                 raise TypeError("Missing required property 'subscription_name'")
-            __props__['subscription_name'] = subscription_name
+            __props__['subscriptionName'] = subscription_name
             if topic_name is None:
                 raise TypeError("Missing required property 'topic_name'")
-            __props__['topic_name'] = topic_name
+            __props__['topicName'] = topic_name
         super(SubscriptionRule, __self__).__init__(
             'azure:eventhub/subscriptionRule:SubscriptionRule',
             resource_name,
@@ -242,7 +242,7 @@ class SubscriptionRule(pulumi.CustomResource):
         return SubscriptionRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

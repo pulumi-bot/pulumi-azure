@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ChannelsRegistration(pulumi.CustomResource):
@@ -98,25 +98,25 @@ class ChannelsRegistration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['developer_app_insights_api_key'] = developer_app_insights_api_key
-            __props__['developer_app_insights_application_id'] = developer_app_insights_application_id
-            __props__['developer_app_insights_key'] = developer_app_insights_key
-            __props__['display_name'] = display_name
+            __props__['developerAppInsightsApiKey'] = developer_app_insights_api_key
+            __props__['developerAppInsightsApplicationId'] = developer_app_insights_application_id
+            __props__['developerAppInsightsKey'] = developer_app_insights_key
+            __props__['displayName'] = display_name
             __props__['endpoint'] = endpoint
             __props__['location'] = location
             if microsoft_app_id is None:
                 raise TypeError("Missing required property 'microsoft_app_id'")
-            __props__['microsoft_app_id'] = microsoft_app_id
+            __props__['microsoftAppId'] = microsoft_app_id
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
@@ -166,7 +166,7 @@ class ChannelsRegistration(pulumi.CustomResource):
         return ChannelsRegistration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

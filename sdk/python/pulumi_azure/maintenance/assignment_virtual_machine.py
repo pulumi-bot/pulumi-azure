@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AssignmentVirtualMachine(pulumi.CustomResource):
@@ -96,7 +96,7 @@ class AssignmentVirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -105,10 +105,10 @@ class AssignmentVirtualMachine(pulumi.CustomResource):
             __props__['location'] = location
             if maintenance_configuration_id is None:
                 raise TypeError("Missing required property 'maintenance_configuration_id'")
-            __props__['maintenance_configuration_id'] = maintenance_configuration_id
+            __props__['maintenanceConfigurationId'] = maintenance_configuration_id
             if virtual_machine_id is None:
                 raise TypeError("Missing required property 'virtual_machine_id'")
-            __props__['virtual_machine_id'] = virtual_machine_id
+            __props__['virtualMachineId'] = virtual_machine_id
         super(AssignmentVirtualMachine, __self__).__init__(
             'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
             resource_name,
@@ -138,7 +138,7 @@ class AssignmentVirtualMachine(pulumi.CustomResource):
         return AssignmentVirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

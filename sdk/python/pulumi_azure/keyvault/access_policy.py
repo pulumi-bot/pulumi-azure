@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AccessPolicy(pulumi.CustomResource):
@@ -94,26 +94,26 @@ class AccessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['application_id'] = application_id
-            __props__['certificate_permissions'] = certificate_permissions
-            __props__['key_permissions'] = key_permissions
+            __props__['applicationId'] = application_id
+            __props__['certificatePermissions'] = certificate_permissions
+            __props__['keyPermissions'] = key_permissions
             if key_vault_id is None:
                 raise TypeError("Missing required property 'key_vault_id'")
-            __props__['key_vault_id'] = key_vault_id
+            __props__['keyVaultId'] = key_vault_id
             if object_id is None:
                 raise TypeError("Missing required property 'object_id'")
-            __props__['object_id'] = object_id
-            __props__['secret_permissions'] = secret_permissions
-            __props__['storage_permissions'] = storage_permissions
+            __props__['objectId'] = object_id
+            __props__['secretPermissions'] = secret_permissions
+            __props__['storagePermissions'] = storage_permissions
             if tenant_id is None:
                 raise TypeError("Missing required property 'tenant_id'")
-            __props__['tenant_id'] = tenant_id
+            __props__['tenantId'] = tenant_id
         super(AccessPolicy, __self__).__init__(
             'azure:keyvault/accessPolicy:AccessPolicy',
             resource_name,
@@ -164,7 +164,7 @@ class AccessPolicy(pulumi.CustomResource):
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

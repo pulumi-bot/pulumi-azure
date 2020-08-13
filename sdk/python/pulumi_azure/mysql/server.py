@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Server(pulumi.CustomResource):
@@ -183,43 +183,43 @@ class Server(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['administrator_login'] = administrator_login
-            __props__['administrator_login_password'] = administrator_login_password
-            __props__['auto_grow_enabled'] = auto_grow_enabled
-            __props__['backup_retention_days'] = backup_retention_days
-            __props__['create_mode'] = create_mode
-            __props__['creation_source_server_id'] = creation_source_server_id
-            __props__['geo_redundant_backup_enabled'] = geo_redundant_backup_enabled
-            __props__['infrastructure_encryption_enabled'] = infrastructure_encryption_enabled
+            __props__['administratorLogin'] = administrator_login
+            __props__['administratorLoginPassword'] = administrator_login_password
+            __props__['autoGrowEnabled'] = auto_grow_enabled
+            __props__['backupRetentionDays'] = backup_retention_days
+            __props__['createMode'] = create_mode
+            __props__['creationSourceServerId'] = creation_source_server_id
+            __props__['geoRedundantBackupEnabled'] = geo_redundant_backup_enabled
+            __props__['infrastructureEncryptionEnabled'] = infrastructure_encryption_enabled
             __props__['location'] = location
             __props__['name'] = name
-            __props__['public_network_access_enabled'] = public_network_access_enabled
+            __props__['publicNetworkAccessEnabled'] = public_network_access_enabled
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['restore_point_in_time'] = restore_point_in_time
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['restorePointInTime'] = restore_point_in_time
             if sku_name is None:
                 raise TypeError("Missing required property 'sku_name'")
-            __props__['sku_name'] = sku_name
+            __props__['skuName'] = sku_name
             if ssl_enforcement is not None:
                 warnings.warn("this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.", DeprecationWarning)
                 pulumi.log.warn("ssl_enforcement is deprecated: this has been moved to the boolean attribute `ssl_enforcement_enabled` and will be removed in version 3.0 of the provider.")
-            __props__['ssl_enforcement'] = ssl_enforcement
-            __props__['ssl_enforcement_enabled'] = ssl_enforcement_enabled
-            __props__['ssl_minimal_tls_version_enforced'] = ssl_minimal_tls_version_enforced
-            __props__['storage_mb'] = storage_mb
+            __props__['sslEnforcement'] = ssl_enforcement
+            __props__['sslEnforcementEnabled'] = ssl_enforcement_enabled
+            __props__['sslMinimalTlsVersionEnforced'] = ssl_minimal_tls_version_enforced
+            __props__['storageMb'] = storage_mb
             if storage_profile is not None:
                 warnings.warn("all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.", DeprecationWarning)
                 pulumi.log.warn("storage_profile is deprecated: all storage_profile properties have been moved to the top level. This block will be removed in version 3.0 of the provider.")
-            __props__['storage_profile'] = storage_profile
+            __props__['storageProfile'] = storage_profile
             __props__['tags'] = tags
-            __props__['threat_detection_policy'] = threat_detection_policy
+            __props__['threatDetectionPolicy'] = threat_detection_policy
             if version is None:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version
@@ -308,7 +308,7 @@ class Server(pulumi.CustomResource):
         return Server(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

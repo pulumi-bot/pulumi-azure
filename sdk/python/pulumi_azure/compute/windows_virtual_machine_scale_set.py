@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class WindowsVirtualMachineScaleSet(pulumi.CustomResource):
@@ -489,67 +489,67 @@ class WindowsVirtualMachineScaleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_capabilities'] = additional_capabilities
-            __props__['additional_unattend_contents'] = additional_unattend_contents
+            __props__['additionalCapabilities'] = additional_capabilities
+            __props__['additionalUnattendContents'] = additional_unattend_contents
             if admin_password is None:
                 raise TypeError("Missing required property 'admin_password'")
-            __props__['admin_password'] = admin_password
+            __props__['adminPassword'] = admin_password
             if admin_username is None:
                 raise TypeError("Missing required property 'admin_username'")
-            __props__['admin_username'] = admin_username
-            __props__['automatic_instance_repair'] = automatic_instance_repair
-            __props__['automatic_os_upgrade_policy'] = automatic_os_upgrade_policy
-            __props__['boot_diagnostics'] = boot_diagnostics
-            __props__['computer_name_prefix'] = computer_name_prefix
-            __props__['custom_data'] = custom_data
-            __props__['data_disks'] = data_disks
-            __props__['do_not_run_extensions_on_overprovisioned_machines'] = do_not_run_extensions_on_overprovisioned_machines
-            __props__['enable_automatic_updates'] = enable_automatic_updates
-            __props__['eviction_policy'] = eviction_policy
-            __props__['health_probe_id'] = health_probe_id
+            __props__['adminUsername'] = admin_username
+            __props__['automaticInstanceRepair'] = automatic_instance_repair
+            __props__['automaticOsUpgradePolicy'] = automatic_os_upgrade_policy
+            __props__['bootDiagnostics'] = boot_diagnostics
+            __props__['computerNamePrefix'] = computer_name_prefix
+            __props__['customData'] = custom_data
+            __props__['dataDisks'] = data_disks
+            __props__['doNotRunExtensionsOnOverprovisionedMachines'] = do_not_run_extensions_on_overprovisioned_machines
+            __props__['enableAutomaticUpdates'] = enable_automatic_updates
+            __props__['evictionPolicy'] = eviction_policy
+            __props__['healthProbeId'] = health_probe_id
             __props__['identity'] = identity
             if instances is None:
                 raise TypeError("Missing required property 'instances'")
             __props__['instances'] = instances
-            __props__['license_type'] = license_type
+            __props__['licenseType'] = license_type
             __props__['location'] = location
-            __props__['max_bid_price'] = max_bid_price
+            __props__['maxBidPrice'] = max_bid_price
             __props__['name'] = name
             if network_interfaces is None:
                 raise TypeError("Missing required property 'network_interfaces'")
-            __props__['network_interfaces'] = network_interfaces
+            __props__['networkInterfaces'] = network_interfaces
             if os_disk is None:
                 raise TypeError("Missing required property 'os_disk'")
-            __props__['os_disk'] = os_disk
+            __props__['osDisk'] = os_disk
             __props__['overprovision'] = overprovision
             __props__['plan'] = plan
             __props__['priority'] = priority
-            __props__['provision_vm_agent'] = provision_vm_agent
-            __props__['proximity_placement_group_id'] = proximity_placement_group_id
+            __props__['provisionVmAgent'] = provision_vm_agent
+            __props__['proximityPlacementGroupId'] = proximity_placement_group_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['rolling_upgrade_policy'] = rolling_upgrade_policy
-            __props__['scale_in_policy'] = scale_in_policy
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['rollingUpgradePolicy'] = rolling_upgrade_policy
+            __props__['scaleInPolicy'] = scale_in_policy
             __props__['secrets'] = secrets
-            __props__['single_placement_group'] = single_placement_group
+            __props__['singlePlacementGroup'] = single_placement_group
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
-            __props__['source_image_id'] = source_image_id
-            __props__['source_image_reference'] = source_image_reference
+            __props__['sourceImageId'] = source_image_id
+            __props__['sourceImageReference'] = source_image_reference
             __props__['tags'] = tags
-            __props__['terminate_notification'] = terminate_notification
+            __props__['terminateNotification'] = terminate_notification
             __props__['timezone'] = timezone
-            __props__['upgrade_mode'] = upgrade_mode
-            __props__['winrm_listeners'] = winrm_listeners
-            __props__['zone_balance'] = zone_balance
+            __props__['upgradeMode'] = upgrade_mode
+            __props__['winrmListeners'] = winrm_listeners
+            __props__['zoneBalance'] = zone_balance
             __props__['zones'] = zones
             __props__['unique_id'] = None
         super(WindowsVirtualMachineScaleSet, __self__).__init__(
@@ -777,7 +777,7 @@ class WindowsVirtualMachineScaleSet(pulumi.CustomResource):
         return WindowsVirtualMachineScaleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

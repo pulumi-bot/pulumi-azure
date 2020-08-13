@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DatasetDelimitedText(pulumi.CustomResource):
@@ -186,37 +186,37 @@ class DatasetDelimitedText(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_properties'] = additional_properties
+            __props__['additionalProperties'] = additional_properties
             __props__['annotations'] = annotations
-            __props__['azure_blob_storage_location'] = azure_blob_storage_location
-            __props__['column_delimiter'] = column_delimiter
+            __props__['azureBlobStorageLocation'] = azure_blob_storage_location
+            __props__['columnDelimiter'] = column_delimiter
             if data_factory_name is None:
                 raise TypeError("Missing required property 'data_factory_name'")
-            __props__['data_factory_name'] = data_factory_name
+            __props__['dataFactoryName'] = data_factory_name
             __props__['description'] = description
             __props__['encoding'] = encoding
-            __props__['escape_character'] = escape_character
-            __props__['first_row_as_header'] = first_row_as_header
+            __props__['escapeCharacter'] = escape_character
+            __props__['firstRowAsHeader'] = first_row_as_header
             __props__['folder'] = folder
-            __props__['http_server_location'] = http_server_location
+            __props__['httpServerLocation'] = http_server_location
             if linked_service_name is None:
                 raise TypeError("Missing required property 'linked_service_name'")
-            __props__['linked_service_name'] = linked_service_name
+            __props__['linkedServiceName'] = linked_service_name
             __props__['name'] = name
-            __props__['null_value'] = null_value
+            __props__['nullValue'] = null_value
             __props__['parameters'] = parameters
-            __props__['quote_character'] = quote_character
+            __props__['quoteCharacter'] = quote_character
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['row_delimiter'] = row_delimiter
-            __props__['schema_columns'] = schema_columns
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['rowDelimiter'] = row_delimiter
+            __props__['schemaColumns'] = schema_columns
         super(DatasetDelimitedText, __self__).__init__(
             'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
             resource_name,
@@ -296,7 +296,7 @@ class DatasetDelimitedText(pulumi.CustomResource):
         return DatasetDelimitedText(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Assignment(pulumi.CustomResource):
@@ -146,24 +146,24 @@ class Assignment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['enforcement_mode'] = enforcement_mode
+            __props__['displayName'] = display_name
+            __props__['enforcementMode'] = enforcement_mode
             __props__['identity'] = identity
             __props__['location'] = location
             __props__['metadata'] = metadata
             __props__['name'] = name
-            __props__['not_scopes'] = not_scopes
+            __props__['notScopes'] = not_scopes
             __props__['parameters'] = parameters
             if policy_definition_id is None:
                 raise TypeError("Missing required property 'policy_definition_id'")
-            __props__['policy_definition_id'] = policy_definition_id
+            __props__['policyDefinitionId'] = policy_definition_id
             if scope is None:
                 raise TypeError("Missing required property 'scope'")
             __props__['scope'] = scope
@@ -219,7 +219,7 @@ class Assignment(pulumi.CustomResource):
         return Assignment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

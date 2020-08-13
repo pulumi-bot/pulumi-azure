@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ExpressRouteCircuitPeering(pulumi.CustomResource):
@@ -137,7 +137,7 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -145,26 +145,26 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
 
             if express_route_circuit_name is None:
                 raise TypeError("Missing required property 'express_route_circuit_name'")
-            __props__['express_route_circuit_name'] = express_route_circuit_name
-            __props__['microsoft_peering_config'] = microsoft_peering_config
-            __props__['peer_asn'] = peer_asn
+            __props__['expressRouteCircuitName'] = express_route_circuit_name
+            __props__['microsoftPeeringConfig'] = microsoft_peering_config
+            __props__['peerAsn'] = peer_asn
             if peering_type is None:
                 raise TypeError("Missing required property 'peering_type'")
-            __props__['peering_type'] = peering_type
+            __props__['peeringType'] = peering_type
             if primary_peer_address_prefix is None:
                 raise TypeError("Missing required property 'primary_peer_address_prefix'")
-            __props__['primary_peer_address_prefix'] = primary_peer_address_prefix
+            __props__['primaryPeerAddressPrefix'] = primary_peer_address_prefix
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['route_filter_id'] = route_filter_id
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['routeFilterId'] = route_filter_id
             if secondary_peer_address_prefix is None:
                 raise TypeError("Missing required property 'secondary_peer_address_prefix'")
-            __props__['secondary_peer_address_prefix'] = secondary_peer_address_prefix
-            __props__['shared_key'] = shared_key
+            __props__['secondaryPeerAddressPrefix'] = secondary_peer_address_prefix
+            __props__['sharedKey'] = shared_key
             if vlan_id is None:
                 raise TypeError("Missing required property 'vlan_id'")
-            __props__['vlan_id'] = vlan_id
+            __props__['vlanId'] = vlan_id
             __props__['azure_asn'] = None
             __props__['primary_azure_port'] = None
             __props__['secondary_azure_port'] = None
@@ -224,7 +224,7 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
         return ExpressRouteCircuitPeering(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

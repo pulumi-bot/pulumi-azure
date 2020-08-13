@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class MetricAlert(pulumi.CustomResource):
@@ -220,32 +220,32 @@ class MetricAlert(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             __props__['actions'] = actions
-            __props__['application_insights_web_test_location_availability_criteria'] = application_insights_web_test_location_availability_criteria
-            __props__['auto_mitigate'] = auto_mitigate
+            __props__['applicationInsightsWebTestLocationAvailabilityCriteria'] = application_insights_web_test_location_availability_criteria
+            __props__['autoMitigate'] = auto_mitigate
             __props__['criterias'] = criterias
             __props__['description'] = description
-            __props__['dynamic_criteria'] = dynamic_criteria
+            __props__['dynamicCriteria'] = dynamic_criteria
             __props__['enabled'] = enabled
             __props__['frequency'] = frequency
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if scopes is None:
                 raise TypeError("Missing required property 'scopes'")
             __props__['scopes'] = scopes
             __props__['severity'] = severity
             __props__['tags'] = tags
-            __props__['target_resource_location'] = target_resource_location
-            __props__['target_resource_type'] = target_resource_type
-            __props__['window_size'] = window_size
+            __props__['targetResourceLocation'] = target_resource_location
+            __props__['targetResourceType'] = target_resource_type
+            __props__['windowSize'] = window_size
         super(MetricAlert, __self__).__init__(
             'azure:monitoring/metricAlert:MetricAlert',
             resource_name,
@@ -341,7 +341,7 @@ class MetricAlert(pulumi.CustomResource):
         return MetricAlert(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

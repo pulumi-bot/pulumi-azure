@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Environment(pulumi.CustomResource):
@@ -103,26 +103,26 @@ class Environment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allowed_user_ip_cidrs'] = allowed_user_ip_cidrs
-            __props__['front_end_scale_factor'] = front_end_scale_factor
-            __props__['internal_load_balancing_mode'] = internal_load_balancing_mode
+            __props__['allowedUserIpCidrs'] = allowed_user_ip_cidrs
+            __props__['frontEndScaleFactor'] = front_end_scale_factor
+            __props__['internalLoadBalancingMode'] = internal_load_balancing_mode
             __props__['name'] = name
-            __props__['pricing_tier'] = pricing_tier
-            __props__['resource_group_name'] = resource_group_name
+            __props__['pricingTier'] = pricing_tier
+            __props__['resourceGroupName'] = resource_group_name
             if subnet_id is None:
                 raise TypeError("Missing required property 'subnet_id'")
-            __props__['subnet_id'] = subnet_id
+            __props__['subnetId'] = subnet_id
             __props__['tags'] = tags
             if user_whitelisted_ip_ranges is not None:
                 warnings.warn("this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format", DeprecationWarning)
                 pulumi.log.warn("user_whitelisted_ip_ranges is deprecated: this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format")
-            __props__['user_whitelisted_ip_ranges'] = user_whitelisted_ip_ranges
+            __props__['userWhitelistedIpRanges'] = user_whitelisted_ip_ranges
             __props__['location'] = None
         super(Environment, __self__).__init__(
             'azure:appservice/environment:Environment',
@@ -166,7 +166,7 @@ class Environment(pulumi.CustomResource):
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

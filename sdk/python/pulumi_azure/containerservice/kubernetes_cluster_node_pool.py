@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class KubernetesClusterNodePool(pulumi.CustomResource):
@@ -132,37 +132,37 @@ class KubernetesClusterNodePool(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['availability_zones'] = availability_zones
-            __props__['enable_auto_scaling'] = enable_auto_scaling
-            __props__['enable_node_public_ip'] = enable_node_public_ip
-            __props__['eviction_policy'] = eviction_policy
+            __props__['availabilityZones'] = availability_zones
+            __props__['enableAutoScaling'] = enable_auto_scaling
+            __props__['enableNodePublicIp'] = enable_node_public_ip
+            __props__['evictionPolicy'] = eviction_policy
             if kubernetes_cluster_id is None:
                 raise TypeError("Missing required property 'kubernetes_cluster_id'")
-            __props__['kubernetes_cluster_id'] = kubernetes_cluster_id
-            __props__['max_count'] = max_count
-            __props__['max_pods'] = max_pods
-            __props__['min_count'] = min_count
+            __props__['kubernetesClusterId'] = kubernetes_cluster_id
+            __props__['maxCount'] = max_count
+            __props__['maxPods'] = max_pods
+            __props__['minCount'] = min_count
             __props__['mode'] = mode
             __props__['name'] = name
-            __props__['node_count'] = node_count
-            __props__['node_labels'] = node_labels
-            __props__['node_taints'] = node_taints
-            __props__['orchestrator_version'] = orchestrator_version
-            __props__['os_disk_size_gb'] = os_disk_size_gb
-            __props__['os_type'] = os_type
+            __props__['nodeCount'] = node_count
+            __props__['nodeLabels'] = node_labels
+            __props__['nodeTaints'] = node_taints
+            __props__['orchestratorVersion'] = orchestrator_version
+            __props__['osDiskSizeGb'] = os_disk_size_gb
+            __props__['osType'] = os_type
             __props__['priority'] = priority
-            __props__['spot_max_price'] = spot_max_price
+            __props__['spotMaxPrice'] = spot_max_price
             __props__['tags'] = tags
             if vm_size is None:
                 raise TypeError("Missing required property 'vm_size'")
-            __props__['vm_size'] = vm_size
-            __props__['vnet_subnet_id'] = vnet_subnet_id
+            __props__['vmSize'] = vm_size
+            __props__['vnetSubnetId'] = vnet_subnet_id
         super(KubernetesClusterNodePool, __self__).__init__(
             'azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool',
             resource_name,
@@ -228,7 +228,7 @@ class KubernetesClusterNodePool(pulumi.CustomResource):
         return KubernetesClusterNodePool(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

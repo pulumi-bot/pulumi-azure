@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Cluster(pulumi.CustomResource):
@@ -163,29 +163,29 @@ class Cluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['enable_disk_encryption'] = enable_disk_encryption
-            __props__['enable_purge'] = enable_purge
-            __props__['enable_streaming_ingest'] = enable_streaming_ingest
+            __props__['enableDiskEncryption'] = enable_disk_encryption
+            __props__['enablePurge'] = enable_purge
+            __props__['enableStreamingIngest'] = enable_streaming_ingest
             __props__['identity'] = identity
-            __props__['language_extensions'] = language_extensions
+            __props__['languageExtensions'] = language_extensions
             __props__['location'] = location
             __props__['name'] = name
-            __props__['optimized_auto_scale'] = optimized_auto_scale
+            __props__['optimizedAutoScale'] = optimized_auto_scale
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
             __props__['tags'] = tags
-            __props__['trusted_external_tenants'] = trusted_external_tenants
-            __props__['virtual_network_configuration'] = virtual_network_configuration
+            __props__['trustedExternalTenants'] = trusted_external_tenants
+            __props__['virtualNetworkConfiguration'] = virtual_network_configuration
             __props__['zones'] = zones
             __props__['data_ingestion_uri'] = None
             __props__['uri'] = None
@@ -267,7 +267,7 @@ class Cluster(pulumi.CustomResource):
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

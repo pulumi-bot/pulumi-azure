@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AccountNetworkRules(pulumi.CustomResource):
@@ -97,7 +97,7 @@ class AccountNetworkRules(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -106,15 +106,15 @@ class AccountNetworkRules(pulumi.CustomResource):
             __props__['bypasses'] = bypasses
             if default_action is None:
                 raise TypeError("Missing required property 'default_action'")
-            __props__['default_action'] = default_action
-            __props__['ip_rules'] = ip_rules
+            __props__['defaultAction'] = default_action
+            __props__['ipRules'] = ip_rules
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if storage_account_name is None:
                 raise TypeError("Missing required property 'storage_account_name'")
-            __props__['storage_account_name'] = storage_account_name
-            __props__['virtual_network_subnet_ids'] = virtual_network_subnet_ids
+            __props__['storageAccountName'] = storage_account_name
+            __props__['virtualNetworkSubnetIds'] = virtual_network_subnet_ids
         super(AccountNetworkRules, __self__).__init__(
             'azure:storage/accountNetworkRules:AccountNetworkRules',
             resource_name,
@@ -150,7 +150,7 @@ class AccountNetworkRules(pulumi.CustomResource):
         return AccountNetworkRules(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

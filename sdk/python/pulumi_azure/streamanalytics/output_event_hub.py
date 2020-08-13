@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class OutputEventHub(pulumi.CustomResource):
@@ -111,7 +111,7 @@ class OutputEventHub(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -119,26 +119,26 @@ class OutputEventHub(pulumi.CustomResource):
 
             if eventhub_name is None:
                 raise TypeError("Missing required property 'eventhub_name'")
-            __props__['eventhub_name'] = eventhub_name
+            __props__['eventhubName'] = eventhub_name
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if serialization is None:
                 raise TypeError("Missing required property 'serialization'")
             __props__['serialization'] = serialization
             if servicebus_namespace is None:
                 raise TypeError("Missing required property 'servicebus_namespace'")
-            __props__['servicebus_namespace'] = servicebus_namespace
+            __props__['servicebusNamespace'] = servicebus_namespace
             if shared_access_policy_key is None:
                 raise TypeError("Missing required property 'shared_access_policy_key'")
-            __props__['shared_access_policy_key'] = shared_access_policy_key
+            __props__['sharedAccessPolicyKey'] = shared_access_policy_key
             if shared_access_policy_name is None:
                 raise TypeError("Missing required property 'shared_access_policy_name'")
-            __props__['shared_access_policy_name'] = shared_access_policy_name
+            __props__['sharedAccessPolicyName'] = shared_access_policy_name
             if stream_analytics_job_name is None:
                 raise TypeError("Missing required property 'stream_analytics_job_name'")
-            __props__['stream_analytics_job_name'] = stream_analytics_job_name
+            __props__['streamAnalyticsJobName'] = stream_analytics_job_name
         super(OutputEventHub, __self__).__init__(
             'azure:streamanalytics/outputEventHub:OutputEventHub',
             resource_name,
@@ -185,7 +185,7 @@ class OutputEventHub(pulumi.CustomResource):
         return OutputEventHub(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

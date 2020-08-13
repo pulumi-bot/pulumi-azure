@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Service(pulumi.CustomResource):
@@ -340,39 +340,39 @@ class Service(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_locations'] = additional_locations
+            __props__['additionalLocations'] = additional_locations
             __props__['certificates'] = certificates
-            __props__['hostname_configuration'] = hostname_configuration
+            __props__['hostnameConfiguration'] = hostname_configuration
             __props__['identity'] = identity
             __props__['location'] = location
             __props__['name'] = name
-            __props__['notification_sender_email'] = notification_sender_email
+            __props__['notificationSenderEmail'] = notification_sender_email
             __props__['policy'] = policy
             __props__['protocols'] = protocols
             if publisher_email is None:
                 raise TypeError("Missing required property 'publisher_email'")
-            __props__['publisher_email'] = publisher_email
+            __props__['publisherEmail'] = publisher_email
             if publisher_name is None:
                 raise TypeError("Missing required property 'publisher_name'")
-            __props__['publisher_name'] = publisher_name
+            __props__['publisherName'] = publisher_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['security'] = security
-            __props__['sign_in'] = sign_in
-            __props__['sign_up'] = sign_up
+            __props__['signIn'] = sign_in
+            __props__['signUp'] = sign_up
             if sku_name is None:
                 raise TypeError("Missing required property 'sku_name'")
-            __props__['sku_name'] = sku_name
+            __props__['skuName'] = sku_name
             __props__['tags'] = tags
-            __props__['virtual_network_configuration'] = virtual_network_configuration
-            __props__['virtual_network_type'] = virtual_network_type
+            __props__['virtualNetworkConfiguration'] = virtual_network_configuration
+            __props__['virtualNetworkType'] = virtual_network_type
             __props__['developer_portal_url'] = None
             __props__['gateway_regional_url'] = None
             __props__['gateway_url'] = None
@@ -549,7 +549,7 @@ class Service(pulumi.CustomResource):
         return Service(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

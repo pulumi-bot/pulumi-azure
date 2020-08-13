@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
 
 
 class Provider(pulumi.ProviderResource):
@@ -69,46 +69,46 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auxiliary_tenant_ids'] = pulumi.Output.from_input(auxiliary_tenant_ids).apply(json.dumps) if auxiliary_tenant_ids is not None else None
-            __props__['client_certificate_password'] = client_certificate_password
-            __props__['client_certificate_path'] = client_certificate_path
-            __props__['client_id'] = client_id
-            __props__['client_secret'] = client_secret
-            __props__['disable_correlation_request_id'] = pulumi.Output.from_input(disable_correlation_request_id).apply(json.dumps) if disable_correlation_request_id is not None else None
-            __props__['disable_terraform_partner_id'] = pulumi.Output.from_input(disable_terraform_partner_id).apply(json.dumps) if disable_terraform_partner_id is not None else None
+            __props__['auxiliaryTenantIds'] = pulumi.Output.from_input(auxiliary_tenant_ids).apply(json.dumps) if auxiliary_tenant_ids is not None else None
+            __props__['clientCertificatePassword'] = client_certificate_password
+            __props__['clientCertificatePath'] = client_certificate_path
+            __props__['clientId'] = client_id
+            __props__['clientSecret'] = client_secret
+            __props__['disableCorrelationRequestId'] = pulumi.Output.from_input(disable_correlation_request_id).apply(json.dumps) if disable_correlation_request_id is not None else None
+            __props__['disableTerraformPartnerId'] = pulumi.Output.from_input(disable_terraform_partner_id).apply(json.dumps) if disable_terraform_partner_id is not None else None
             if environment is None:
-                environment = (utilities.get_env('AZURE_ENVIRONMENT', 'ARM_ENVIRONMENT') or 'public')
+                environment = (_utilities.get_env('AZURE_ENVIRONMENT', 'ARM_ENVIRONMENT') or 'public')
             __props__['environment'] = environment
             __props__['features'] = pulumi.Output.from_input(features).apply(json.dumps) if features is not None else None
             if metadata_host is None:
-                metadata_host = (utilities.get_env('ARM_METADATA_HOSTNAME') or '')
-            __props__['metadata_host'] = metadata_host
+                metadata_host = (_utilities.get_env('ARM_METADATA_HOSTNAME') or '')
+            __props__['metadataHost'] = metadata_host
             if metadata_url is None:
-                metadata_url = (utilities.get_env('ARM_METADATA_URL') or '')
+                metadata_url = (_utilities.get_env('ARM_METADATA_URL') or '')
             if metadata_url is not None:
                 warnings.warn("use `metadata_host` instead", DeprecationWarning)
                 pulumi.log.warn("metadata_url is deprecated: use `metadata_host` instead")
-            __props__['metadata_url'] = metadata_url
-            __props__['msi_endpoint'] = msi_endpoint
-            __props__['partner_id'] = partner_id
-            __props__['skip_credentials_validation'] = pulumi.Output.from_input(skip_credentials_validation).apply(json.dumps) if skip_credentials_validation is not None else None
+            __props__['metadataUrl'] = metadata_url
+            __props__['msiEndpoint'] = msi_endpoint
+            __props__['partnerId'] = partner_id
+            __props__['skipCredentialsValidation'] = pulumi.Output.from_input(skip_credentials_validation).apply(json.dumps) if skip_credentials_validation is not None else None
             if skip_provider_registration is None:
-                skip_provider_registration = (utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
-            __props__['skip_provider_registration'] = pulumi.Output.from_input(skip_provider_registration).apply(json.dumps) if skip_provider_registration is not None else None
+                skip_provider_registration = (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+            __props__['skipProviderRegistration'] = pulumi.Output.from_input(skip_provider_registration).apply(json.dumps) if skip_provider_registration is not None else None
             if storage_use_azuread is None:
-                storage_use_azuread = (utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
-            __props__['storage_use_azuread'] = pulumi.Output.from_input(storage_use_azuread).apply(json.dumps) if storage_use_azuread is not None else None
+                storage_use_azuread = (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+            __props__['storageUseAzuread'] = pulumi.Output.from_input(storage_use_azuread).apply(json.dumps) if storage_use_azuread is not None else None
             if subscription_id is None:
-                subscription_id = (utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
-            __props__['subscription_id'] = subscription_id
-            __props__['tenant_id'] = tenant_id
-            __props__['use_msi'] = pulumi.Output.from_input(use_msi).apply(json.dumps) if use_msi is not None else None
+                subscription_id = (_utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
+            __props__['subscriptionId'] = subscription_id
+            __props__['tenantId'] = tenant_id
+            __props__['useMsi'] = pulumi.Output.from_input(use_msi).apply(json.dumps) if use_msi is not None else None
         super(Provider, __self__).__init__(
             'azure',
             resource_name,
@@ -116,7 +116,7 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

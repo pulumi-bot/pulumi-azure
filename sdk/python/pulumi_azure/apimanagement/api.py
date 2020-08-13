@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Api(pulumi.CustomResource):
@@ -159,7 +159,7 @@ class Api(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -167,12 +167,12 @@ class Api(pulumi.CustomResource):
 
             if api_management_name is None:
                 raise TypeError("Missing required property 'api_management_name'")
-            __props__['api_management_name'] = api_management_name
+            __props__['apiManagementName'] = api_management_name
             __props__['description'] = description
             if display_name is None:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['import_'] = import_
+            __props__['displayName'] = display_name
+            __props__['import'] = import_
             __props__['name'] = name
             if path is None:
                 raise TypeError("Missing required property 'path'")
@@ -182,16 +182,16 @@ class Api(pulumi.CustomResource):
             __props__['protocols'] = protocols
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if revision is None:
                 raise TypeError("Missing required property 'revision'")
             __props__['revision'] = revision
-            __props__['service_url'] = service_url
-            __props__['soap_pass_through'] = soap_pass_through
-            __props__['subscription_key_parameter_names'] = subscription_key_parameter_names
-            __props__['subscription_required'] = subscription_required
+            __props__['serviceUrl'] = service_url
+            __props__['soapPassThrough'] = soap_pass_through
+            __props__['subscriptionKeyParameterNames'] = subscription_key_parameter_names
+            __props__['subscriptionRequired'] = subscription_required
             __props__['version'] = version
-            __props__['version_set_id'] = version_set_id
+            __props__['versionSetId'] = version_set_id
             __props__['is_current'] = None
             __props__['is_online'] = None
         super(Api, __self__).__init__(
@@ -264,7 +264,7 @@ class Api(pulumi.CustomResource):
         return Api(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

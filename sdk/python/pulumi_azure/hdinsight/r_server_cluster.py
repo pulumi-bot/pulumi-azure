@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class RServerCluster(pulumi.CustomResource):
@@ -180,7 +180,7 @@ class RServerCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -188,7 +188,7 @@ class RServerCluster(pulumi.CustomResource):
 
             if cluster_version is None:
                 raise TypeError("Missing required property 'cluster_version'")
-            __props__['cluster_version'] = cluster_version
+            __props__['clusterVersion'] = cluster_version
             if gateway is None:
                 raise TypeError("Missing required property 'gateway'")
             __props__['gateway'] = gateway
@@ -196,19 +196,19 @@ class RServerCluster(pulumi.CustomResource):
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if roles is None:
                 raise TypeError("Missing required property 'roles'")
             __props__['roles'] = roles
             if rstudio is None:
                 raise TypeError("Missing required property 'rstudio'")
             __props__['rstudio'] = rstudio
-            __props__['storage_accounts'] = storage_accounts
+            __props__['storageAccounts'] = storage_accounts
             __props__['tags'] = tags
             if tier is None:
                 raise TypeError("Missing required property 'tier'")
             __props__['tier'] = tier
-            __props__['tls_min_version'] = tls_min_version
+            __props__['tlsMinVersion'] = tls_min_version
             __props__['edge_ssh_endpoint'] = None
             __props__['https_endpoint'] = None
             __props__['ssh_endpoint'] = None
@@ -310,7 +310,7 @@ class RServerCluster(pulumi.CustomResource):
         return RServerCluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

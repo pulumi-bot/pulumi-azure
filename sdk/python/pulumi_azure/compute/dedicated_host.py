@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DedicatedHost(pulumi.CustomResource):
@@ -86,25 +86,25 @@ class DedicatedHost(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_replace_on_failure'] = auto_replace_on_failure
+            __props__['autoReplaceOnFailure'] = auto_replace_on_failure
             if dedicated_host_group_id is None:
                 raise TypeError("Missing required property 'dedicated_host_group_id'")
-            __props__['dedicated_host_group_id'] = dedicated_host_group_id
-            __props__['license_type'] = license_type
+            __props__['dedicatedHostGroupId'] = dedicated_host_group_id
+            __props__['licenseType'] = license_type
             __props__['location'] = location
             __props__['name'] = name
             if platform_fault_domain is None:
                 raise TypeError("Missing required property 'platform_fault_domain'")
-            __props__['platform_fault_domain'] = platform_fault_domain
+            __props__['platformFaultDomain'] = platform_fault_domain
             if sku_name is None:
                 raise TypeError("Missing required property 'sku_name'")
-            __props__['sku_name'] = sku_name
+            __props__['skuName'] = sku_name
             __props__['tags'] = tags
         super(DedicatedHost, __self__).__init__(
             'azure:compute/dedicatedHost:DedicatedHost',
@@ -145,7 +145,7 @@ class DedicatedHost(pulumi.CustomResource):
         return DedicatedHost(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class KeyVault(pulumi.CustomResource):
@@ -165,31 +165,31 @@ class KeyVault(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_policies'] = access_policies
-            __props__['enabled_for_deployment'] = enabled_for_deployment
-            __props__['enabled_for_disk_encryption'] = enabled_for_disk_encryption
-            __props__['enabled_for_template_deployment'] = enabled_for_template_deployment
+            __props__['accessPolicies'] = access_policies
+            __props__['enabledForDeployment'] = enabled_for_deployment
+            __props__['enabledForDiskEncryption'] = enabled_for_disk_encryption
+            __props__['enabledForTemplateDeployment'] = enabled_for_template_deployment
             __props__['location'] = location
             __props__['name'] = name
-            __props__['network_acls'] = network_acls
-            __props__['purge_protection_enabled'] = purge_protection_enabled
+            __props__['networkAcls'] = network_acls
+            __props__['purgeProtectionEnabled'] = purge_protection_enabled
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if sku_name is None:
                 raise TypeError("Missing required property 'sku_name'")
-            __props__['sku_name'] = sku_name
-            __props__['soft_delete_enabled'] = soft_delete_enabled
+            __props__['skuName'] = sku_name
+            __props__['softDeleteEnabled'] = soft_delete_enabled
             __props__['tags'] = tags
             if tenant_id is None:
                 raise TypeError("Missing required property 'tenant_id'")
-            __props__['tenant_id'] = tenant_id
+            __props__['tenantId'] = tenant_id
             __props__['vault_uri'] = None
         super(KeyVault, __self__).__init__(
             'azure:keyvault/keyVault:KeyVault',
@@ -259,7 +259,7 @@ class KeyVault(pulumi.CustomResource):
         return KeyVault(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

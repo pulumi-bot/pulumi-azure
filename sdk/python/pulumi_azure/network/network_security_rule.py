@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkSecurityRule(pulumi.CustomResource):
@@ -145,7 +145,7 @@ class NetworkSecurityRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -155,18 +155,18 @@ class NetworkSecurityRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'access'")
             __props__['access'] = access
             __props__['description'] = description
-            __props__['destination_address_prefix'] = destination_address_prefix
-            __props__['destination_address_prefixes'] = destination_address_prefixes
-            __props__['destination_application_security_group_ids'] = destination_application_security_group_ids
-            __props__['destination_port_range'] = destination_port_range
-            __props__['destination_port_ranges'] = destination_port_ranges
+            __props__['destinationAddressPrefix'] = destination_address_prefix
+            __props__['destinationAddressPrefixes'] = destination_address_prefixes
+            __props__['destinationApplicationSecurityGroupIds'] = destination_application_security_group_ids
+            __props__['destinationPortRange'] = destination_port_range
+            __props__['destinationPortRanges'] = destination_port_ranges
             if direction is None:
                 raise TypeError("Missing required property 'direction'")
             __props__['direction'] = direction
             __props__['name'] = name
             if network_security_group_name is None:
                 raise TypeError("Missing required property 'network_security_group_name'")
-            __props__['network_security_group_name'] = network_security_group_name
+            __props__['networkSecurityGroupName'] = network_security_group_name
             if priority is None:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
@@ -175,12 +175,12 @@ class NetworkSecurityRule(pulumi.CustomResource):
             __props__['protocol'] = protocol
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['source_address_prefix'] = source_address_prefix
-            __props__['source_address_prefixes'] = source_address_prefixes
-            __props__['source_application_security_group_ids'] = source_application_security_group_ids
-            __props__['source_port_range'] = source_port_range
-            __props__['source_port_ranges'] = source_port_ranges
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['sourceAddressPrefix'] = source_address_prefix
+            __props__['sourceAddressPrefixes'] = source_address_prefixes
+            __props__['sourceApplicationSecurityGroupIds'] = source_application_security_group_ids
+            __props__['sourcePortRange'] = source_port_range
+            __props__['sourcePortRanges'] = source_port_ranges
         super(NetworkSecurityRule, __self__).__init__(
             'azure:network/networkSecurityRule:NetworkSecurityRule',
             resource_name,
@@ -240,7 +240,7 @@ class NetworkSecurityRule(pulumi.CustomResource):
         return NetworkSecurityRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

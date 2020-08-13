@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Account(pulumi.CustomResource):
@@ -418,35 +418,35 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['access_tier'] = access_tier
-            __props__['account_kind'] = account_kind
+            __props__['accessTier'] = access_tier
+            __props__['accountKind'] = account_kind
             if account_replication_type is None:
                 raise TypeError("Missing required property 'account_replication_type'")
-            __props__['account_replication_type'] = account_replication_type
+            __props__['accountReplicationType'] = account_replication_type
             if account_tier is None:
                 raise TypeError("Missing required property 'account_tier'")
-            __props__['account_tier'] = account_tier
-            __props__['allow_blob_public_access'] = allow_blob_public_access
-            __props__['blob_properties'] = blob_properties
-            __props__['custom_domain'] = custom_domain
-            __props__['enable_https_traffic_only'] = enable_https_traffic_only
+            __props__['accountTier'] = account_tier
+            __props__['allowBlobPublicAccess'] = allow_blob_public_access
+            __props__['blobProperties'] = blob_properties
+            __props__['customDomain'] = custom_domain
+            __props__['enableHttpsTrafficOnly'] = enable_https_traffic_only
             __props__['identity'] = identity
-            __props__['is_hns_enabled'] = is_hns_enabled
+            __props__['isHnsEnabled'] = is_hns_enabled
             __props__['location'] = location
-            __props__['min_tls_version'] = min_tls_version
+            __props__['minTlsVersion'] = min_tls_version
             __props__['name'] = name
-            __props__['network_rules'] = network_rules
-            __props__['queue_properties'] = queue_properties
+            __props__['networkRules'] = network_rules
+            __props__['queueProperties'] = queue_properties
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['static_website'] = static_website
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['staticWebsite'] = static_website
             __props__['tags'] = tags
             __props__['primary_access_key'] = None
             __props__['primary_blob_connection_string'] = None
@@ -670,7 +670,7 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EventHubNamespace(pulumi.CustomResource):
@@ -148,27 +148,27 @@ class EventHubNamespace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_inflate_enabled'] = auto_inflate_enabled
+            __props__['autoInflateEnabled'] = auto_inflate_enabled
             __props__['capacity'] = capacity
-            __props__['dedicated_cluster_id'] = dedicated_cluster_id
+            __props__['dedicatedClusterId'] = dedicated_cluster_id
             __props__['location'] = location
-            __props__['maximum_throughput_units'] = maximum_throughput_units
+            __props__['maximumThroughputUnits'] = maximum_throughput_units
             __props__['name'] = name
-            __props__['network_rulesets'] = network_rulesets
+            __props__['networkRulesets'] = network_rulesets
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
             __props__['tags'] = tags
-            __props__['zone_redundant'] = zone_redundant
+            __props__['zoneRedundant'] = zone_redundant
             __props__['default_primary_connection_string'] = None
             __props__['default_primary_connection_string_alias'] = None
             __props__['default_primary_key'] = None
@@ -247,7 +247,7 @@ class EventHubNamespace(pulumi.CustomResource):
         return EventHubNamespace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

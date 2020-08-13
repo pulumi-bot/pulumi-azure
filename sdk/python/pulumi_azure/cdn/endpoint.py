@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Endpoint(pulumi.CustomResource):
@@ -461,35 +461,35 @@ class Endpoint(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['content_types_to_compresses'] = content_types_to_compresses
-            __props__['delivery_rules'] = delivery_rules
-            __props__['geo_filters'] = geo_filters
-            __props__['global_delivery_rule'] = global_delivery_rule
-            __props__['is_compression_enabled'] = is_compression_enabled
-            __props__['is_http_allowed'] = is_http_allowed
-            __props__['is_https_allowed'] = is_https_allowed
+            __props__['contentTypesToCompresses'] = content_types_to_compresses
+            __props__['deliveryRules'] = delivery_rules
+            __props__['geoFilters'] = geo_filters
+            __props__['globalDeliveryRule'] = global_delivery_rule
+            __props__['isCompressionEnabled'] = is_compression_enabled
+            __props__['isHttpAllowed'] = is_http_allowed
+            __props__['isHttpsAllowed'] = is_https_allowed
             __props__['location'] = location
             __props__['name'] = name
-            __props__['optimization_type'] = optimization_type
-            __props__['origin_host_header'] = origin_host_header
-            __props__['origin_path'] = origin_path
+            __props__['optimizationType'] = optimization_type
+            __props__['originHostHeader'] = origin_host_header
+            __props__['originPath'] = origin_path
             if origins is None:
                 raise TypeError("Missing required property 'origins'")
             __props__['origins'] = origins
-            __props__['probe_path'] = probe_path
+            __props__['probePath'] = probe_path
             if profile_name is None:
                 raise TypeError("Missing required property 'profile_name'")
-            __props__['profile_name'] = profile_name
-            __props__['querystring_caching_behaviour'] = querystring_caching_behaviour
+            __props__['profileName'] = profile_name
+            __props__['querystringCachingBehaviour'] = querystring_caching_behaviour
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
             __props__['host_name'] = None
         super(Endpoint, __self__).__init__(
@@ -716,7 +716,7 @@ class Endpoint(pulumi.CustomResource):
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

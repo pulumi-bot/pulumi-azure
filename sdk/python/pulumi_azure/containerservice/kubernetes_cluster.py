@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class KubernetesCluster(pulumi.CustomResource):
@@ -406,43 +406,43 @@ class KubernetesCluster(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['addon_profile'] = addon_profile
-            __props__['api_server_authorized_ip_ranges'] = api_server_authorized_ip_ranges
-            __props__['auto_scaler_profile'] = auto_scaler_profile
+            __props__['addonProfile'] = addon_profile
+            __props__['apiServerAuthorizedIpRanges'] = api_server_authorized_ip_ranges
+            __props__['autoScalerProfile'] = auto_scaler_profile
             if default_node_pool is None:
                 raise TypeError("Missing required property 'default_node_pool'")
-            __props__['default_node_pool'] = default_node_pool
-            __props__['disk_encryption_set_id'] = disk_encryption_set_id
+            __props__['defaultNodePool'] = default_node_pool
+            __props__['diskEncryptionSetId'] = disk_encryption_set_id
             if dns_prefix is None:
                 raise TypeError("Missing required property 'dns_prefix'")
-            __props__['dns_prefix'] = dns_prefix
-            __props__['enable_pod_security_policy'] = enable_pod_security_policy
+            __props__['dnsPrefix'] = dns_prefix
+            __props__['enablePodSecurityPolicy'] = enable_pod_security_policy
             __props__['identity'] = identity
-            __props__['kubernetes_version'] = kubernetes_version
-            __props__['linux_profile'] = linux_profile
+            __props__['kubernetesVersion'] = kubernetes_version
+            __props__['linuxProfile'] = linux_profile
             __props__['location'] = location
             __props__['name'] = name
-            __props__['network_profile'] = network_profile
-            __props__['node_resource_group'] = node_resource_group
-            __props__['private_cluster_enabled'] = private_cluster_enabled
+            __props__['networkProfile'] = network_profile
+            __props__['nodeResourceGroup'] = node_resource_group
+            __props__['privateClusterEnabled'] = private_cluster_enabled
             if private_link_enabled is not None:
                 warnings.warn("Deprecated in favor of `private_cluster_enabled`", DeprecationWarning)
                 pulumi.log.warn("private_link_enabled is deprecated: Deprecated in favor of `private_cluster_enabled`")
-            __props__['private_link_enabled'] = private_link_enabled
+            __props__['privateLinkEnabled'] = private_link_enabled
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['role_based_access_control'] = role_based_access_control
-            __props__['service_principal'] = service_principal
-            __props__['sku_tier'] = sku_tier
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['roleBasedAccessControl'] = role_based_access_control
+            __props__['servicePrincipal'] = service_principal
+            __props__['skuTier'] = sku_tier
             __props__['tags'] = tags
-            __props__['windows_profile'] = windows_profile
+            __props__['windowsProfile'] = windows_profile
             __props__['fqdn'] = None
             __props__['kube_admin_config_raw'] = None
             __props__['kube_admin_configs'] = None
@@ -662,7 +662,7 @@ class KubernetesCluster(pulumi.CustomResource):
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

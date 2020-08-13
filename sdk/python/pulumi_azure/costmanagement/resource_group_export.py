@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ResourceGroupExport(pulumi.CustomResource):
@@ -114,7 +114,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -123,23 +123,23 @@ class ResourceGroupExport(pulumi.CustomResource):
             __props__['active'] = active
             if delivery_info is None:
                 raise TypeError("Missing required property 'delivery_info'")
-            __props__['delivery_info'] = delivery_info
+            __props__['deliveryInfo'] = delivery_info
             __props__['name'] = name
             if query is None:
                 raise TypeError("Missing required property 'query'")
             __props__['query'] = query
             if recurrence_period_end is None:
                 raise TypeError("Missing required property 'recurrence_period_end'")
-            __props__['recurrence_period_end'] = recurrence_period_end
+            __props__['recurrencePeriodEnd'] = recurrence_period_end
             if recurrence_period_start is None:
                 raise TypeError("Missing required property 'recurrence_period_start'")
-            __props__['recurrence_period_start'] = recurrence_period_start
+            __props__['recurrencePeriodStart'] = recurrence_period_start
             if recurrence_type is None:
                 raise TypeError("Missing required property 'recurrence_type'")
-            __props__['recurrence_type'] = recurrence_type
+            __props__['recurrenceType'] = recurrence_type
             if resource_group_id is None:
                 raise TypeError("Missing required property 'resource_group_id'")
-            __props__['resource_group_id'] = resource_group_id
+            __props__['resourceGroupId'] = resource_group_id
         super(ResourceGroupExport, __self__).__init__(
             'azure:costmanagement/resourceGroupExport:ResourceGroupExport',
             resource_name,
@@ -190,7 +190,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         return ResourceGroupExport(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

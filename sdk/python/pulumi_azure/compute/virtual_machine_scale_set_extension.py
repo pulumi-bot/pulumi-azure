@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualMachineScaleSetExtension(pulumi.CustomResource):
@@ -99,17 +99,17 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_upgrade_minor_version'] = auto_upgrade_minor_version
-            __props__['force_update_tag'] = force_update_tag
+            __props__['autoUpgradeMinorVersion'] = auto_upgrade_minor_version
+            __props__['forceUpdateTag'] = force_update_tag
             __props__['name'] = name
-            __props__['protected_settings'] = protected_settings
-            __props__['provision_after_extensions'] = provision_after_extensions
+            __props__['protectedSettings'] = protected_settings
+            __props__['provisionAfterExtensions'] = provision_after_extensions
             if publisher is None:
                 raise TypeError("Missing required property 'publisher'")
             __props__['publisher'] = publisher
@@ -119,10 +119,10 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
             __props__['type'] = type
             if type_handler_version is None:
                 raise TypeError("Missing required property 'type_handler_version'")
-            __props__['type_handler_version'] = type_handler_version
+            __props__['typeHandlerVersion'] = type_handler_version
             if virtual_machine_scale_set_id is None:
                 raise TypeError("Missing required property 'virtual_machine_scale_set_id'")
-            __props__['virtual_machine_scale_set_id'] = virtual_machine_scale_set_id
+            __props__['virtualMachineScaleSetId'] = virtual_machine_scale_set_id
         super(VirtualMachineScaleSetExtension, __self__).__init__(
             'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
             resource_name,
@@ -166,7 +166,7 @@ class VirtualMachineScaleSetExtension(pulumi.CustomResource):
         return VirtualMachineScaleSetExtension(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

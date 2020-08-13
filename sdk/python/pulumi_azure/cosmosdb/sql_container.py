@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class SqlContainer(pulumi.CustomResource):
@@ -94,7 +94,7 @@ class SqlContainer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -102,18 +102,18 @@ class SqlContainer(pulumi.CustomResource):
 
             if account_name is None:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
+            __props__['accountName'] = account_name
             if database_name is None:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
-            __props__['default_ttl'] = default_ttl
+            __props__['databaseName'] = database_name
+            __props__['defaultTtl'] = default_ttl
             __props__['name'] = name
-            __props__['partition_key_path'] = partition_key_path
+            __props__['partitionKeyPath'] = partition_key_path
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['throughput'] = throughput
-            __props__['unique_keys'] = unique_keys
+            __props__['uniqueKeys'] = unique_keys
         super(SqlContainer, __self__).__init__(
             'azure:cosmosdb/sqlContainer:SqlContainer',
             resource_name,
@@ -157,7 +157,7 @@ class SqlContainer(pulumi.CustomResource):
         return SqlContainer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

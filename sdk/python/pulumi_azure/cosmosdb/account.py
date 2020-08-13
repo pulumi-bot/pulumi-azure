@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Account(pulumi.CustomResource):
@@ -206,7 +206,7 @@ class Account(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -215,26 +215,26 @@ class Account(pulumi.CustomResource):
             __props__['capabilities'] = capabilities
             if consistency_policy is None:
                 raise TypeError("Missing required property 'consistency_policy'")
-            __props__['consistency_policy'] = consistency_policy
-            __props__['enable_automatic_failover'] = enable_automatic_failover
-            __props__['enable_free_tier'] = enable_free_tier
-            __props__['enable_multiple_write_locations'] = enable_multiple_write_locations
+            __props__['consistencyPolicy'] = consistency_policy
+            __props__['enableAutomaticFailover'] = enable_automatic_failover
+            __props__['enableFreeTier'] = enable_free_tier
+            __props__['enableMultipleWriteLocations'] = enable_multiple_write_locations
             if geo_locations is None:
                 raise TypeError("Missing required property 'geo_locations'")
-            __props__['geo_locations'] = geo_locations
-            __props__['ip_range_filter'] = ip_range_filter
-            __props__['is_virtual_network_filter_enabled'] = is_virtual_network_filter_enabled
+            __props__['geoLocations'] = geo_locations
+            __props__['ipRangeFilter'] = ip_range_filter
+            __props__['isVirtualNetworkFilterEnabled'] = is_virtual_network_filter_enabled
             __props__['kind'] = kind
             __props__['location'] = location
             __props__['name'] = name
             if offer_type is None:
                 raise TypeError("Missing required property 'offer_type'")
-            __props__['offer_type'] = offer_type
+            __props__['offerType'] = offer_type
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['tags'] = tags
-            __props__['virtual_network_rules'] = virtual_network_rules
+            __props__['virtualNetworkRules'] = virtual_network_rules
             __props__['connection_strings'] = None
             __props__['endpoint'] = None
             __props__['primary_master_key'] = None
@@ -334,7 +334,7 @@ class Account(pulumi.CustomResource):
         return Account(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

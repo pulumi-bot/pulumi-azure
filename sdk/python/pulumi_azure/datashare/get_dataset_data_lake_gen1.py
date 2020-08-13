@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetDatasetDataLakeGen1Result:
     """
@@ -49,6 +50,8 @@ class GetDatasetDataLakeGen1Result:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetDatasetDataLakeGen1Result(GetDatasetDataLakeGen1Result):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetDatasetDataLakeGen1Result(GetDatasetDataLakeGen1Result):
             id=self.id,
             name=self.name)
 
-def get_dataset_data_lake_gen1(data_share_id=None,name=None,opts=None):
+
+def get_dataset_data_lake_gen1(data_share_id=None, name=None, opts=None):
     """
     Use this data source to access information about an existing DataShareDataLakeGen1Dataset.
 
@@ -83,14 +87,12 @@ def get_dataset_data_lake_gen1(data_share_id=None,name=None,opts=None):
     :param str name: The name of the Data Share Data Lake Gen1 Dataset.
     """
     __args__ = dict()
-
-
     __args__['dataShareId'] = data_share_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:datashare/getDatasetDataLakeGen1:getDatasetDataLakeGen1', __args__, opts=opts).value
 
     return AwaitableGetDatasetDataLakeGen1Result(

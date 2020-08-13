@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ScheduledQueryRulesAlert(pulumi.CustomResource):
@@ -126,7 +126,7 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -135,10 +135,10 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
             if action is None:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
-            __props__['authorized_resource_ids'] = authorized_resource_ids
+            __props__['authorizedResourceIds'] = authorized_resource_ids
             if data_source_id is None:
                 raise TypeError("Missing required property 'data_source_id'")
-            __props__['data_source_id'] = data_source_id
+            __props__['dataSourceId'] = data_source_id
             __props__['description'] = description
             __props__['enabled'] = enabled
             if frequency is None:
@@ -149,16 +149,16 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
             if query is None:
                 raise TypeError("Missing required property 'query'")
             __props__['query'] = query
-            __props__['query_type'] = query_type
+            __props__['queryType'] = query_type
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['severity'] = severity
             __props__['tags'] = tags
             __props__['throttling'] = throttling
             if time_window is None:
                 raise TypeError("Missing required property 'time_window'")
-            __props__['time_window'] = time_window
+            __props__['timeWindow'] = time_window
             if trigger is None:
                 raise TypeError("Missing required property 'trigger'")
             __props__['trigger'] = trigger
@@ -231,7 +231,7 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
         return ScheduledQueryRulesAlert(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

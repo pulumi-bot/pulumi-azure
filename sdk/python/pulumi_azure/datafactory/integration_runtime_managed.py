@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class IntegrationRuntimeManaged(pulumi.CustomResource):
@@ -134,31 +134,31 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['catalog_info'] = catalog_info
-            __props__['custom_setup_script'] = custom_setup_script
+            __props__['catalogInfo'] = catalog_info
+            __props__['customSetupScript'] = custom_setup_script
             if data_factory_name is None:
                 raise TypeError("Missing required property 'data_factory_name'")
-            __props__['data_factory_name'] = data_factory_name
+            __props__['dataFactoryName'] = data_factory_name
             __props__['description'] = description
             __props__['edition'] = edition
-            __props__['license_type'] = license_type
+            __props__['licenseType'] = license_type
             __props__['location'] = location
-            __props__['max_parallel_executions_per_node'] = max_parallel_executions_per_node
+            __props__['maxParallelExecutionsPerNode'] = max_parallel_executions_per_node
             __props__['name'] = name
             if node_size is None:
                 raise TypeError("Missing required property 'node_size'")
-            __props__['node_size'] = node_size
-            __props__['number_of_nodes'] = number_of_nodes
+            __props__['nodeSize'] = node_size
+            __props__['numberOfNodes'] = number_of_nodes
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['vnet_integration'] = vnet_integration
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['vnetIntegration'] = vnet_integration
         super(IntegrationRuntimeManaged, __self__).__init__(
             'azure:datafactory/integrationRuntimeManaged:IntegrationRuntimeManaged',
             resource_name,
@@ -224,7 +224,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         return IntegrationRuntimeManaged(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class AlertRuleMsSecurityIncident(pulumi.CustomResource):
@@ -87,7 +87,7 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -96,23 +96,23 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
             __props__['description'] = description
             if display_name is None:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['display_name_filters'] = display_name_filters
+            __props__['displayName'] = display_name
+            __props__['displayNameFilters'] = display_name_filters
             __props__['enabled'] = enabled
             if log_analytics_workspace_id is None:
                 raise TypeError("Missing required property 'log_analytics_workspace_id'")
-            __props__['log_analytics_workspace_id'] = log_analytics_workspace_id
+            __props__['logAnalyticsWorkspaceId'] = log_analytics_workspace_id
             __props__['name'] = name
             if product_filter is None:
                 raise TypeError("Missing required property 'product_filter'")
-            __props__['product_filter'] = product_filter
+            __props__['productFilter'] = product_filter
             if severity_filters is None:
                 raise TypeError("Missing required property 'severity_filters'")
-            __props__['severity_filters'] = severity_filters
+            __props__['severityFilters'] = severity_filters
             if text_whitelists is not None:
                 warnings.warn("this property has been renamed to display_name_filter to better match the SDK & API", DeprecationWarning)
                 pulumi.log.warn("text_whitelists is deprecated: this property has been renamed to display_name_filter to better match the SDK & API")
-            __props__['text_whitelists'] = text_whitelists
+            __props__['textWhitelists'] = text_whitelists
         super(AlertRuleMsSecurityIncident, __self__).__init__(
             'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
             resource_name,
@@ -153,7 +153,7 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
         return AlertRuleMsSecurityIncident(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

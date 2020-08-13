@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class TableEntity(pulumi.CustomResource):
@@ -36,31 +36,6 @@ class TableEntity(pulumi.CustomResource):
         """
         Manages an Entity within a Table in an Azure Storage Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="westus")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS")
-        example_table = azure.storage.Table("exampleTable",
-            resource_group_name=example_resource_group.name,
-            storage_account_name=example_account.name)
-        example_table_entity = azure.storage.TableEntity("exampleTableEntity",
-            storage_account_name=example_account.name,
-            table_name=example_table.name,
-            partition_key="examplepartition",
-            row_key="exmamplerow",
-            entity={
-                "example": "example",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] entity: A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
@@ -82,7 +57,7 @@ class TableEntity(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -93,16 +68,16 @@ class TableEntity(pulumi.CustomResource):
             __props__['entity'] = entity
             if partition_key is None:
                 raise TypeError("Missing required property 'partition_key'")
-            __props__['partition_key'] = partition_key
+            __props__['partitionKey'] = partition_key
             if row_key is None:
                 raise TypeError("Missing required property 'row_key'")
-            __props__['row_key'] = row_key
+            __props__['rowKey'] = row_key
             if storage_account_name is None:
                 raise TypeError("Missing required property 'storage_account_name'")
-            __props__['storage_account_name'] = storage_account_name
+            __props__['storageAccountName'] = storage_account_name
             if table_name is None:
                 raise TypeError("Missing required property 'table_name'")
-            __props__['table_name'] = table_name
+            __props__['tableName'] = table_name
         super(TableEntity, __self__).__init__(
             'azure:storage/tableEntity:TableEntity',
             resource_name,
@@ -138,7 +113,7 @@ class TableEntity(pulumi.CustomResource):
         return TableEntity(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

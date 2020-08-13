@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ReferenceInputBlob(pulumi.CustomResource):
@@ -120,7 +120,7 @@ class ReferenceInputBlob(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -128,32 +128,32 @@ class ReferenceInputBlob(pulumi.CustomResource):
 
             if date_format is None:
                 raise TypeError("Missing required property 'date_format'")
-            __props__['date_format'] = date_format
+            __props__['dateFormat'] = date_format
             __props__['name'] = name
             if path_pattern is None:
                 raise TypeError("Missing required property 'path_pattern'")
-            __props__['path_pattern'] = path_pattern
+            __props__['pathPattern'] = path_pattern
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if serialization is None:
                 raise TypeError("Missing required property 'serialization'")
             __props__['serialization'] = serialization
             if storage_account_key is None:
                 raise TypeError("Missing required property 'storage_account_key'")
-            __props__['storage_account_key'] = storage_account_key
+            __props__['storageAccountKey'] = storage_account_key
             if storage_account_name is None:
                 raise TypeError("Missing required property 'storage_account_name'")
-            __props__['storage_account_name'] = storage_account_name
+            __props__['storageAccountName'] = storage_account_name
             if storage_container_name is None:
                 raise TypeError("Missing required property 'storage_container_name'")
-            __props__['storage_container_name'] = storage_container_name
+            __props__['storageContainerName'] = storage_container_name
             if stream_analytics_job_name is None:
                 raise TypeError("Missing required property 'stream_analytics_job_name'")
-            __props__['stream_analytics_job_name'] = stream_analytics_job_name
+            __props__['streamAnalyticsJobName'] = stream_analytics_job_name
             if time_format is None:
                 raise TypeError("Missing required property 'time_format'")
-            __props__['time_format'] = time_format
+            __props__['timeFormat'] = time_format
         super(ReferenceInputBlob, __self__).__init__(
             'azure:streamanalytics/referenceInputBlob:ReferenceInputBlob',
             resource_name,
@@ -203,7 +203,7 @@ class ReferenceInputBlob(pulumi.CustomResource):
         return ReferenceInputBlob(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

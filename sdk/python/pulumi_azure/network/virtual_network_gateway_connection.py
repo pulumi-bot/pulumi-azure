@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualNetworkGatewayConnection(pulumi.CustomResource):
@@ -344,36 +344,36 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['authorization_key'] = authorization_key
-            __props__['connection_protocol'] = connection_protocol
-            __props__['enable_bgp'] = enable_bgp
-            __props__['express_route_circuit_id'] = express_route_circuit_id
-            __props__['express_route_gateway_bypass'] = express_route_gateway_bypass
-            __props__['ipsec_policy'] = ipsec_policy
-            __props__['local_network_gateway_id'] = local_network_gateway_id
+            __props__['authorizationKey'] = authorization_key
+            __props__['connectionProtocol'] = connection_protocol
+            __props__['enableBgp'] = enable_bgp
+            __props__['expressRouteCircuitId'] = express_route_circuit_id
+            __props__['expressRouteGatewayBypass'] = express_route_gateway_bypass
+            __props__['ipsecPolicy'] = ipsec_policy
+            __props__['localNetworkGatewayId'] = local_network_gateway_id
             __props__['location'] = location
             __props__['name'] = name
-            __props__['peer_virtual_network_gateway_id'] = peer_virtual_network_gateway_id
+            __props__['peerVirtualNetworkGatewayId'] = peer_virtual_network_gateway_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['routing_weight'] = routing_weight
-            __props__['shared_key'] = shared_key
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['routingWeight'] = routing_weight
+            __props__['sharedKey'] = shared_key
             __props__['tags'] = tags
-            __props__['traffic_selector_policy'] = traffic_selector_policy
+            __props__['trafficSelectorPolicy'] = traffic_selector_policy
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            __props__['use_policy_based_traffic_selectors'] = use_policy_based_traffic_selectors
+            __props__['usePolicyBasedTrafficSelectors'] = use_policy_based_traffic_selectors
             if virtual_network_gateway_id is None:
                 raise TypeError("Missing required property 'virtual_network_gateway_id'")
-            __props__['virtual_network_gateway_id'] = virtual_network_gateway_id
+            __props__['virtualNetworkGatewayId'] = virtual_network_gateway_id
         super(VirtualNetworkGatewayConnection, __self__).__init__(
             'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
             resource_name,
@@ -487,7 +487,7 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
         return VirtualNetworkGatewayConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

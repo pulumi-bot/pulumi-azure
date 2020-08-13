@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class WindowsVirtualMachine(pulumi.CustomResource):
@@ -138,27 +138,27 @@ class WindowsVirtualMachine(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_claim'] = allow_claim
-            __props__['disallow_public_ip_address'] = disallow_public_ip_address
+            __props__['allowClaim'] = allow_claim
+            __props__['disallowPublicIpAddress'] = disallow_public_ip_address
             if gallery_image_reference is None:
                 raise TypeError("Missing required property 'gallery_image_reference'")
-            __props__['gallery_image_reference'] = gallery_image_reference
-            __props__['inbound_nat_rules'] = inbound_nat_rules
+            __props__['galleryImageReference'] = gallery_image_reference
+            __props__['inboundNatRules'] = inbound_nat_rules
             if lab_name is None:
                 raise TypeError("Missing required property 'lab_name'")
-            __props__['lab_name'] = lab_name
+            __props__['labName'] = lab_name
             if lab_subnet_name is None:
                 raise TypeError("Missing required property 'lab_subnet_name'")
-            __props__['lab_subnet_name'] = lab_subnet_name
+            __props__['labSubnetName'] = lab_subnet_name
             if lab_virtual_network_id is None:
                 raise TypeError("Missing required property 'lab_virtual_network_id'")
-            __props__['lab_virtual_network_id'] = lab_virtual_network_id
+            __props__['labVirtualNetworkId'] = lab_virtual_network_id
             __props__['location'] = location
             __props__['name'] = name
             __props__['notes'] = notes
@@ -167,13 +167,13 @@ class WindowsVirtualMachine(pulumi.CustomResource):
             __props__['password'] = password
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if size is None:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             if storage_type is None:
                 raise TypeError("Missing required property 'storage_type'")
-            __props__['storage_type'] = storage_type
+            __props__['storageType'] = storage_type
             __props__['tags'] = tags
             if username is None:
                 raise TypeError("Missing required property 'username'")
@@ -252,7 +252,7 @@ class WindowsVirtualMachine(pulumi.CustomResource):
         return WindowsVirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

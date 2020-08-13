@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkMapping(pulumi.CustomResource):
@@ -102,7 +102,7 @@ class NetworkMapping(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -111,22 +111,22 @@ class NetworkMapping(pulumi.CustomResource):
             __props__['name'] = name
             if recovery_vault_name is None:
                 raise TypeError("Missing required property 'recovery_vault_name'")
-            __props__['recovery_vault_name'] = recovery_vault_name
+            __props__['recoveryVaultName'] = recovery_vault_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if source_network_id is None:
                 raise TypeError("Missing required property 'source_network_id'")
-            __props__['source_network_id'] = source_network_id
+            __props__['sourceNetworkId'] = source_network_id
             if source_recovery_fabric_name is None:
                 raise TypeError("Missing required property 'source_recovery_fabric_name'")
-            __props__['source_recovery_fabric_name'] = source_recovery_fabric_name
+            __props__['sourceRecoveryFabricName'] = source_recovery_fabric_name
             if target_network_id is None:
                 raise TypeError("Missing required property 'target_network_id'")
-            __props__['target_network_id'] = target_network_id
+            __props__['targetNetworkId'] = target_network_id
             if target_recovery_fabric_name is None:
                 raise TypeError("Missing required property 'target_recovery_fabric_name'")
-            __props__['target_recovery_fabric_name'] = target_recovery_fabric_name
+            __props__['targetRecoveryFabricName'] = target_recovery_fabric_name
         super(NetworkMapping, __self__).__init__(
             'azure:siterecovery/networkMapping:NetworkMapping',
             resource_name,
@@ -164,7 +164,7 @@ class NetworkMapping(pulumi.CustomResource):
         return NetworkMapping(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

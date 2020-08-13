@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EventhubDataConnection(pulumi.CustomResource):
@@ -124,7 +124,7 @@ class EventhubDataConnection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -132,24 +132,24 @@ class EventhubDataConnection(pulumi.CustomResource):
 
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
+            __props__['clusterName'] = cluster_name
             if consumer_group is None:
                 raise TypeError("Missing required property 'consumer_group'")
-            __props__['consumer_group'] = consumer_group
-            __props__['data_format'] = data_format
+            __props__['consumerGroup'] = consumer_group
+            __props__['dataFormat'] = data_format
             if database_name is None:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
+            __props__['databaseName'] = database_name
             if eventhub_id is None:
                 raise TypeError("Missing required property 'eventhub_id'")
-            __props__['eventhub_id'] = eventhub_id
+            __props__['eventhubId'] = eventhub_id
             __props__['location'] = location
-            __props__['mapping_rule_name'] = mapping_rule_name
+            __props__['mappingRuleName'] = mapping_rule_name
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['table_name'] = table_name
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['tableName'] = table_name
         super(EventhubDataConnection, __self__).__init__(
             'azure:kusto/eventhubDataConnection:EventhubDataConnection',
             resource_name,
@@ -193,7 +193,7 @@ class EventhubDataConnection(pulumi.CustomResource):
         return EventhubDataConnection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

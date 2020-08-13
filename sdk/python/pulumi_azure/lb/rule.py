@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Rule(pulumi.CustomResource):
@@ -128,38 +128,38 @@ class Rule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['backend_address_pool_id'] = backend_address_pool_id
+            __props__['backendAddressPoolId'] = backend_address_pool_id
             if backend_port is None:
                 raise TypeError("Missing required property 'backend_port'")
-            __props__['backend_port'] = backend_port
-            __props__['disable_outbound_snat'] = disable_outbound_snat
-            __props__['enable_floating_ip'] = enable_floating_ip
-            __props__['enable_tcp_reset'] = enable_tcp_reset
+            __props__['backendPort'] = backend_port
+            __props__['disableOutboundSnat'] = disable_outbound_snat
+            __props__['enableFloatingIp'] = enable_floating_ip
+            __props__['enableTcpReset'] = enable_tcp_reset
             if frontend_ip_configuration_name is None:
                 raise TypeError("Missing required property 'frontend_ip_configuration_name'")
-            __props__['frontend_ip_configuration_name'] = frontend_ip_configuration_name
+            __props__['frontendIpConfigurationName'] = frontend_ip_configuration_name
             if frontend_port is None:
                 raise TypeError("Missing required property 'frontend_port'")
-            __props__['frontend_port'] = frontend_port
-            __props__['idle_timeout_in_minutes'] = idle_timeout_in_minutes
-            __props__['load_distribution'] = load_distribution
+            __props__['frontendPort'] = frontend_port
+            __props__['idleTimeoutInMinutes'] = idle_timeout_in_minutes
+            __props__['loadDistribution'] = load_distribution
             if loadbalancer_id is None:
                 raise TypeError("Missing required property 'loadbalancer_id'")
-            __props__['loadbalancer_id'] = loadbalancer_id
+            __props__['loadbalancerId'] = loadbalancer_id
             __props__['name'] = name
-            __props__['probe_id'] = probe_id
+            __props__['probeId'] = probe_id
             if protocol is None:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['frontend_ip_configuration_id'] = None
         super(Rule, __self__).__init__(
             'azure:lb/rule:Rule',
@@ -213,7 +213,7 @@ class Rule(pulumi.CustomResource):
         return Rule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

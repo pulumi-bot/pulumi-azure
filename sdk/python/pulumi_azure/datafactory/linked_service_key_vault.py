@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class LinkedServiceKeyVault(pulumi.CustomResource):
@@ -95,27 +95,27 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_properties'] = additional_properties
+            __props__['additionalProperties'] = additional_properties
             __props__['annotations'] = annotations
             if data_factory_name is None:
                 raise TypeError("Missing required property 'data_factory_name'")
-            __props__['data_factory_name'] = data_factory_name
+            __props__['dataFactoryName'] = data_factory_name
             __props__['description'] = description
-            __props__['integration_runtime_name'] = integration_runtime_name
+            __props__['integrationRuntimeName'] = integration_runtime_name
             if key_vault_id is None:
                 raise TypeError("Missing required property 'key_vault_id'")
-            __props__['key_vault_id'] = key_vault_id
+            __props__['keyVaultId'] = key_vault_id
             __props__['name'] = name
             __props__['parameters'] = parameters
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
         super(LinkedServiceKeyVault, __self__).__init__(
             'azure:datafactory/linkedServiceKeyVault:LinkedServiceKeyVault',
             resource_name,
@@ -157,7 +157,7 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         return LinkedServiceKeyVault(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

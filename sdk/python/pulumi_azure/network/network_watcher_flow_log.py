@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkWatcherFlowLog(pulumi.CustomResource):
@@ -133,7 +133,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -144,20 +144,20 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
             __props__['enabled'] = enabled
             if network_security_group_id is None:
                 raise TypeError("Missing required property 'network_security_group_id'")
-            __props__['network_security_group_id'] = network_security_group_id
+            __props__['networkSecurityGroupId'] = network_security_group_id
             if network_watcher_name is None:
                 raise TypeError("Missing required property 'network_watcher_name'")
-            __props__['network_watcher_name'] = network_watcher_name
+            __props__['networkWatcherName'] = network_watcher_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if retention_policy is None:
                 raise TypeError("Missing required property 'retention_policy'")
-            __props__['retention_policy'] = retention_policy
+            __props__['retentionPolicy'] = retention_policy
             if storage_account_id is None:
                 raise TypeError("Missing required property 'storage_account_id'")
-            __props__['storage_account_id'] = storage_account_id
-            __props__['traffic_analytics'] = traffic_analytics
+            __props__['storageAccountId'] = storage_account_id
+            __props__['trafficAnalytics'] = traffic_analytics
             __props__['version'] = version
         super(NetworkWatcherFlowLog, __self__).__init__(
             'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
@@ -211,7 +211,7 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         return NetworkWatcherFlowLog(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

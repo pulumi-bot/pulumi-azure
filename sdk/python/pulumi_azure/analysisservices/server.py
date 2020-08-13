@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Server(pulumi.CustomResource):
@@ -78,7 +78,7 @@ class Server(pulumi.CustomResource):
                 "rangeEnd": "210.117.252.255",
             }],
             tags={
-                "abc": 123,
+                "abc": "123",
             })
         ```
 
@@ -113,22 +113,22 @@ class Server(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['admin_users'] = admin_users
-            __props__['backup_blob_container_uri'] = backup_blob_container_uri
-            __props__['enable_power_bi_service'] = enable_power_bi_service
-            __props__['ipv4_firewall_rules'] = ipv4_firewall_rules
+            __props__['adminUsers'] = admin_users
+            __props__['backupBlobContainerUri'] = backup_blob_container_uri
+            __props__['enablePowerBiService'] = enable_power_bi_service
+            __props__['ipv4FirewallRules'] = ipv4_firewall_rules
             __props__['location'] = location
             __props__['name'] = name
-            __props__['querypool_connection_mode'] = querypool_connection_mode
+            __props__['querypoolConnectionMode'] = querypool_connection_mode
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
@@ -184,7 +184,7 @@ class Server(pulumi.CustomResource):
         return Server(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

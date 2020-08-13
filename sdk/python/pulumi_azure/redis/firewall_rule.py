@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class FirewallRule(pulumi.CustomResource):
@@ -86,7 +86,7 @@ class FirewallRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,17 +94,17 @@ class FirewallRule(pulumi.CustomResource):
 
             if end_ip is None:
                 raise TypeError("Missing required property 'end_ip'")
-            __props__['end_ip'] = end_ip
+            __props__['endIp'] = end_ip
             __props__['name'] = name
             if redis_cache_name is None:
                 raise TypeError("Missing required property 'redis_cache_name'")
-            __props__['redis_cache_name'] = redis_cache_name
+            __props__['redisCacheName'] = redis_cache_name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if start_ip is None:
                 raise TypeError("Missing required property 'start_ip'")
-            __props__['start_ip'] = start_ip
+            __props__['startIp'] = start_ip
         super(FirewallRule, __self__).__init__(
             'azure:redis/firewallRule:FirewallRule',
             resource_name,
@@ -138,7 +138,7 @@ class FirewallRule(pulumi.CustomResource):
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

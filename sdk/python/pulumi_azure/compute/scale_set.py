@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ScaleSet(pulumi.CustomResource):
@@ -587,51 +587,51 @@ class ScaleSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['automatic_os_upgrade'] = automatic_os_upgrade
-            __props__['boot_diagnostics'] = boot_diagnostics
-            __props__['eviction_policy'] = eviction_policy
+            __props__['automaticOsUpgrade'] = automatic_os_upgrade
+            __props__['bootDiagnostics'] = boot_diagnostics
+            __props__['evictionPolicy'] = eviction_policy
             __props__['extensions'] = extensions
-            __props__['health_probe_id'] = health_probe_id
+            __props__['healthProbeId'] = health_probe_id
             __props__['identity'] = identity
-            __props__['license_type'] = license_type
+            __props__['licenseType'] = license_type
             __props__['location'] = location
             __props__['name'] = name
             if network_profiles is None:
                 raise TypeError("Missing required property 'network_profiles'")
-            __props__['network_profiles'] = network_profiles
+            __props__['networkProfiles'] = network_profiles
             if os_profile is None:
                 raise TypeError("Missing required property 'os_profile'")
-            __props__['os_profile'] = os_profile
-            __props__['os_profile_linux_config'] = os_profile_linux_config
-            __props__['os_profile_secrets'] = os_profile_secrets
-            __props__['os_profile_windows_config'] = os_profile_windows_config
+            __props__['osProfile'] = os_profile
+            __props__['osProfileLinuxConfig'] = os_profile_linux_config
+            __props__['osProfileSecrets'] = os_profile_secrets
+            __props__['osProfileWindowsConfig'] = os_profile_windows_config
             __props__['overprovision'] = overprovision
             __props__['plan'] = plan
             __props__['priority'] = priority
-            __props__['proximity_placement_group_id'] = proximity_placement_group_id
+            __props__['proximityPlacementGroupId'] = proximity_placement_group_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['rolling_upgrade_policy'] = rolling_upgrade_policy
-            __props__['single_placement_group'] = single_placement_group
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['rollingUpgradePolicy'] = rolling_upgrade_policy
+            __props__['singlePlacementGroup'] = single_placement_group
             if sku is None:
                 raise TypeError("Missing required property 'sku'")
             __props__['sku'] = sku
-            __props__['storage_profile_data_disks'] = storage_profile_data_disks
-            __props__['storage_profile_image_reference'] = storage_profile_image_reference
+            __props__['storageProfileDataDisks'] = storage_profile_data_disks
+            __props__['storageProfileImageReference'] = storage_profile_image_reference
             if storage_profile_os_disk is None:
                 raise TypeError("Missing required property 'storage_profile_os_disk'")
-            __props__['storage_profile_os_disk'] = storage_profile_os_disk
+            __props__['storageProfileOsDisk'] = storage_profile_os_disk
             __props__['tags'] = tags
             if upgrade_policy_mode is None:
                 raise TypeError("Missing required property 'upgrade_policy_mode'")
-            __props__['upgrade_policy_mode'] = upgrade_policy_mode
+            __props__['upgradePolicyMode'] = upgrade_policy_mode
             __props__['zones'] = zones
         super(ScaleSet, __self__).__init__(
             'azure:compute/scaleSet:ScaleSet',
@@ -841,7 +841,7 @@ class ScaleSet(pulumi.CustomResource):
         return ScaleSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

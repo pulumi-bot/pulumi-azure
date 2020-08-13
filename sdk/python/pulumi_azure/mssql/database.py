@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Database(pulumi.CustomResource):
@@ -192,33 +192,33 @@ class Database(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_pause_delay_in_minutes'] = auto_pause_delay_in_minutes
+            __props__['autoPauseDelayInMinutes'] = auto_pause_delay_in_minutes
             __props__['collation'] = collation
-            __props__['create_mode'] = create_mode
-            __props__['creation_source_database_id'] = creation_source_database_id
-            __props__['elastic_pool_id'] = elastic_pool_id
-            __props__['extended_auditing_policy'] = extended_auditing_policy
-            __props__['license_type'] = license_type
-            __props__['max_size_gb'] = max_size_gb
-            __props__['min_capacity'] = min_capacity
+            __props__['createMode'] = create_mode
+            __props__['creationSourceDatabaseId'] = creation_source_database_id
+            __props__['elasticPoolId'] = elastic_pool_id
+            __props__['extendedAuditingPolicy'] = extended_auditing_policy
+            __props__['licenseType'] = license_type
+            __props__['maxSizeGb'] = max_size_gb
+            __props__['minCapacity'] = min_capacity
             __props__['name'] = name
-            __props__['read_replica_count'] = read_replica_count
-            __props__['read_scale'] = read_scale
-            __props__['restore_point_in_time'] = restore_point_in_time
-            __props__['sample_name'] = sample_name
+            __props__['readReplicaCount'] = read_replica_count
+            __props__['readScale'] = read_scale
+            __props__['restorePointInTime'] = restore_point_in_time
+            __props__['sampleName'] = sample_name
             if server_id is None:
                 raise TypeError("Missing required property 'server_id'")
-            __props__['server_id'] = server_id
-            __props__['sku_name'] = sku_name
+            __props__['serverId'] = server_id
+            __props__['skuName'] = sku_name
             __props__['tags'] = tags
-            __props__['threat_detection_policy'] = threat_detection_policy
-            __props__['zone_redundant'] = zone_redundant
+            __props__['threatDetectionPolicy'] = threat_detection_policy
+            __props__['zoneRedundant'] = zone_redundant
         super(Database, __self__).__init__(
             'azure:mssql/database:Database',
             resource_name,
@@ -298,7 +298,7 @@ class Database(pulumi.CustomResource):
         return Database(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

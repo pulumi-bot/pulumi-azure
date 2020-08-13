@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class EventSubscription(pulumi.CustomResource):
@@ -322,43 +322,43 @@ class EventSubscription(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['advanced_filter'] = advanced_filter
-            __props__['azure_function_endpoint'] = azure_function_endpoint
-            __props__['event_delivery_schema'] = event_delivery_schema
+            __props__['advancedFilter'] = advanced_filter
+            __props__['azureFunctionEndpoint'] = azure_function_endpoint
+            __props__['eventDeliverySchema'] = event_delivery_schema
             if eventhub_endpoint is not None:
                 warnings.warn("Deprecated in favour of `eventhub_endpoint_id`", DeprecationWarning)
                 pulumi.log.warn("eventhub_endpoint is deprecated: Deprecated in favour of `eventhub_endpoint_id`")
-            __props__['eventhub_endpoint'] = eventhub_endpoint
-            __props__['eventhub_endpoint_id'] = eventhub_endpoint_id
-            __props__['expiration_time_utc'] = expiration_time_utc
+            __props__['eventhubEndpoint'] = eventhub_endpoint
+            __props__['eventhubEndpointId'] = eventhub_endpoint_id
+            __props__['expirationTimeUtc'] = expiration_time_utc
             if hybrid_connection_endpoint is not None:
                 warnings.warn("Deprecated in favour of `hybrid_connection_endpoint_id`", DeprecationWarning)
                 pulumi.log.warn("hybrid_connection_endpoint is deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`")
-            __props__['hybrid_connection_endpoint'] = hybrid_connection_endpoint
-            __props__['hybrid_connection_endpoint_id'] = hybrid_connection_endpoint_id
-            __props__['included_event_types'] = included_event_types
+            __props__['hybridConnectionEndpoint'] = hybrid_connection_endpoint
+            __props__['hybridConnectionEndpointId'] = hybrid_connection_endpoint_id
+            __props__['includedEventTypes'] = included_event_types
             __props__['labels'] = labels
             __props__['name'] = name
-            __props__['retry_policy'] = retry_policy
+            __props__['retryPolicy'] = retry_policy
             if scope is None:
                 raise TypeError("Missing required property 'scope'")
             __props__['scope'] = scope
-            __props__['service_bus_queue_endpoint_id'] = service_bus_queue_endpoint_id
-            __props__['service_bus_topic_endpoint_id'] = service_bus_topic_endpoint_id
-            __props__['storage_blob_dead_letter_destination'] = storage_blob_dead_letter_destination
-            __props__['storage_queue_endpoint'] = storage_queue_endpoint
-            __props__['subject_filter'] = subject_filter
+            __props__['serviceBusQueueEndpointId'] = service_bus_queue_endpoint_id
+            __props__['serviceBusTopicEndpointId'] = service_bus_topic_endpoint_id
+            __props__['storageBlobDeadLetterDestination'] = storage_blob_dead_letter_destination
+            __props__['storageQueueEndpoint'] = storage_queue_endpoint
+            __props__['subjectFilter'] = subject_filter
             if topic_name is not None:
                 warnings.warn("This field has been updated to readonly field since Apr 25, 2019 so no longer has any affect and will be removed in version 3.0 of the provider.", DeprecationWarning)
                 pulumi.log.warn("topic_name is deprecated: This field has been updated to readonly field since Apr 25, 2019 so no longer has any affect and will be removed in version 3.0 of the provider.")
-            __props__['topic_name'] = topic_name
-            __props__['webhook_endpoint'] = webhook_endpoint
+            __props__['topicName'] = topic_name
+            __props__['webhookEndpoint'] = webhook_endpoint
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure:eventhub/eventSubscription:EventSubscription")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(EventSubscription, __self__).__init__(
@@ -518,7 +518,7 @@ class EventSubscription(pulumi.CustomResource):
         return EventSubscription(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

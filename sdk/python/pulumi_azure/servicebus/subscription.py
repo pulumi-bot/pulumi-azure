@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Subscription(pulumi.CustomResource):
@@ -123,34 +123,34 @@ class Subscription(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_delete_on_idle'] = auto_delete_on_idle
-            __props__['dead_lettering_on_message_expiration'] = dead_lettering_on_message_expiration
-            __props__['default_message_ttl'] = default_message_ttl
-            __props__['enable_batched_operations'] = enable_batched_operations
-            __props__['forward_dead_lettered_messages_to'] = forward_dead_lettered_messages_to
-            __props__['forward_to'] = forward_to
-            __props__['lock_duration'] = lock_duration
+            __props__['autoDeleteOnIdle'] = auto_delete_on_idle
+            __props__['deadLetteringOnMessageExpiration'] = dead_lettering_on_message_expiration
+            __props__['defaultMessageTtl'] = default_message_ttl
+            __props__['enableBatchedOperations'] = enable_batched_operations
+            __props__['forwardDeadLetteredMessagesTo'] = forward_dead_lettered_messages_to
+            __props__['forwardTo'] = forward_to
+            __props__['lockDuration'] = lock_duration
             if max_delivery_count is None:
                 raise TypeError("Missing required property 'max_delivery_count'")
-            __props__['max_delivery_count'] = max_delivery_count
+            __props__['maxDeliveryCount'] = max_delivery_count
             __props__['name'] = name
             if namespace_name is None:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
-            __props__['requires_session'] = requires_session
+            __props__['namespaceName'] = namespace_name
+            __props__['requiresSession'] = requires_session
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             __props__['status'] = status
             if topic_name is None:
                 raise TypeError("Missing required property 'topic_name'")
-            __props__['topic_name'] = topic_name
+            __props__['topicName'] = topic_name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure:eventhub/subscription:Subscription")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Subscription, __self__).__init__(
@@ -204,7 +204,7 @@ class Subscription(pulumi.CustomResource):
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

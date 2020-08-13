@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource):
@@ -69,7 +69,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -77,10 +77,10 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
 
             if application_security_group_id is None:
                 raise TypeError("Missing required property 'application_security_group_id'")
-            __props__['application_security_group_id'] = application_security_group_id
+            __props__['applicationSecurityGroupId'] = application_security_group_id
             if network_interface_id is None:
                 raise TypeError("Missing required property 'network_interface_id'")
-            __props__['network_interface_id'] = network_interface_id
+            __props__['networkInterfaceId'] = network_interface_id
         super(NetworkInterfaceApplicationSecurityGroupAssociation, __self__).__init__(
             'azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation',
             resource_name,
@@ -108,7 +108,7 @@ class NetworkInterfaceApplicationSecurityGroupAssociation(pulumi.CustomResource)
         return NetworkInterfaceApplicationSecurityGroupAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

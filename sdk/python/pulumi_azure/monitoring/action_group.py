@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class ActionGroup(pulumi.CustomResource):
@@ -295,31 +295,31 @@ class ActionGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['arm_role_receivers'] = arm_role_receivers
-            __props__['automation_runbook_receivers'] = automation_runbook_receivers
-            __props__['azure_app_push_receivers'] = azure_app_push_receivers
-            __props__['azure_function_receivers'] = azure_function_receivers
-            __props__['email_receivers'] = email_receivers
+            __props__['armRoleReceivers'] = arm_role_receivers
+            __props__['automationRunbookReceivers'] = automation_runbook_receivers
+            __props__['azureAppPushReceivers'] = azure_app_push_receivers
+            __props__['azureFunctionReceivers'] = azure_function_receivers
+            __props__['emailReceivers'] = email_receivers
             __props__['enabled'] = enabled
-            __props__['itsm_receivers'] = itsm_receivers
-            __props__['logic_app_receivers'] = logic_app_receivers
+            __props__['itsmReceivers'] = itsm_receivers
+            __props__['logicAppReceivers'] = logic_app_receivers
             __props__['name'] = name
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__['resourceGroupName'] = resource_group_name
             if short_name is None:
                 raise TypeError("Missing required property 'short_name'")
-            __props__['short_name'] = short_name
-            __props__['sms_receivers'] = sms_receivers
+            __props__['shortName'] = short_name
+            __props__['smsReceivers'] = sms_receivers
             __props__['tags'] = tags
-            __props__['voice_receivers'] = voice_receivers
-            __props__['webhook_receivers'] = webhook_receivers
+            __props__['voiceReceivers'] = voice_receivers
+            __props__['webhookReceivers'] = webhook_receivers
         super(ActionGroup, __self__).__init__(
             'azure:monitoring/actionGroup:ActionGroup',
             resource_name,
@@ -441,7 +441,7 @@ class ActionGroup(pulumi.CustomResource):
         return ActionGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

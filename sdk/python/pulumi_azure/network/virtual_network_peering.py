@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class VirtualNetworkPeering(pulumi.CustomResource):
@@ -125,26 +125,26 @@ class VirtualNetworkPeering(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['allow_forwarded_traffic'] = allow_forwarded_traffic
-            __props__['allow_gateway_transit'] = allow_gateway_transit
-            __props__['allow_virtual_network_access'] = allow_virtual_network_access
+            __props__['allowForwardedTraffic'] = allow_forwarded_traffic
+            __props__['allowGatewayTransit'] = allow_gateway_transit
+            __props__['allowVirtualNetworkAccess'] = allow_virtual_network_access
             __props__['name'] = name
             if remote_virtual_network_id is None:
                 raise TypeError("Missing required property 'remote_virtual_network_id'")
-            __props__['remote_virtual_network_id'] = remote_virtual_network_id
+            __props__['remoteVirtualNetworkId'] = remote_virtual_network_id
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['use_remote_gateways'] = use_remote_gateways
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['useRemoteGateways'] = use_remote_gateways
             if virtual_network_name is None:
                 raise TypeError("Missing required property 'virtual_network_name'")
-            __props__['virtual_network_name'] = virtual_network_name
+            __props__['virtualNetworkName'] = virtual_network_name
         super(VirtualNetworkPeering, __self__).__init__(
             'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
             resource_name,
@@ -198,7 +198,7 @@ class VirtualNetworkPeering(pulumi.CustomResource):
         return VirtualNetworkPeering(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

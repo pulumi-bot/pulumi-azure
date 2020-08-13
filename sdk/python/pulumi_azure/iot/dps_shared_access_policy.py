@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class DpsSharedAccessPolicy(pulumi.CustomResource):
@@ -74,7 +74,7 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
             location=example_resource_group.location,
             sku={
                 "name": "S1",
-                "capacity": "1",
+                "capacity": 1,
             })
         example_dps_shared_access_policy = azure.iot.DpsSharedAccessPolicy("exampleDpsSharedAccessPolicy",
             resource_group_name=example_resource_group.name,
@@ -105,24 +105,24 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['enrollment_read'] = enrollment_read
-            __props__['enrollment_write'] = enrollment_write
+            __props__['enrollmentRead'] = enrollment_read
+            __props__['enrollmentWrite'] = enrollment_write
             if iothub_dps_name is None:
                 raise TypeError("Missing required property 'iothub_dps_name'")
-            __props__['iothub_dps_name'] = iothub_dps_name
+            __props__['iothubDpsName'] = iothub_dps_name
             __props__['name'] = name
-            __props__['registration_read'] = registration_read
-            __props__['registration_write'] = registration_write
+            __props__['registrationRead'] = registration_read
+            __props__['registrationWrite'] = registration_write
             if resource_group_name is None:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['service_config'] = service_config
+            __props__['resourceGroupName'] = resource_group_name
+            __props__['serviceConfig'] = service_config
             __props__['primary_connection_string'] = None
             __props__['primary_key'] = None
             __props__['secondary_connection_string'] = None
@@ -174,7 +174,7 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
         return DpsSharedAccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
