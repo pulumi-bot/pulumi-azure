@@ -5,45 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Firewall']
 
 
 class Firewall(pulumi.CustomResource):
-    ip_configurations: pulumi.Output[list]
-    """
-    A `ip_configuration` block as documented below.
-
-      * `name` (`str`) - Specifies the name of the IP Configuration.
-      * `private_ip_address` (`str`) - The private IP address of the Azure Firewall.
-      * `public_ip_address_id` (`str`) - The Resource ID of the Public IP Address associated with the firewall.
-      * `subnet_id` (`str`) - Reference to the subnet associated with the IP Configuration.
-    """
-    location: pulumi.Output[str]
-    """
-    Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-    """
-    name: pulumi.Output[str]
-    """
-    Specifies the name of the Firewall. Changing this forces a new resource to be created.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-    """
-    tags: pulumi.Output[dict]
-    """
-    A mapping of tags to assign to the resource.
-    """
-    threat_intel_mode: pulumi.Output[str]
-    """
-    The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`
-    """
-    zones: pulumi.Output[list]
-    """
-    Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, ip_configurations=None, location=None, name=None, resource_group_name=None, tags=None, threat_intel_mode=None, zones=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ip_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallIpConfigurationArgs']]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 threat_intel_mode: Optional[pulumi.Input[str]] = None,
+                 zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Azure Firewall.
 
@@ -79,20 +62,13 @@ class Firewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] ip_configurations: A `ip_configuration` block as documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallIpConfigurationArgs']]]] ip_configurations: A `ip_configuration` block as documented below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threat_intel_mode: The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`
-        :param pulumi.Input[list] zones: Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
-
-        The **ip_configurations** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
-          * `private_ip_address` (`pulumi.Input[str]`) - The private IP address of the Azure Firewall.
-          * `public_ip_address_id` (`pulumi.Input[str]`) - The Resource ID of the Public IP Address associated with the firewall.
-          * `subnet_id` (`pulumi.Input[str]`) - Reference to the subnet associated with the IP Configuration.
+        :param pulumi.Input[List[pulumi.Input[str]]] zones: Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +81,7 @@ class Firewall(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,7 +105,16 @@ class Firewall(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ip_configurations=None, location=None, name=None, resource_group_name=None, tags=None, threat_intel_mode=None, zones=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ip_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallIpConfigurationArgs']]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            threat_intel_mode: Optional[pulumi.Input[str]] = None,
+            zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -137,20 +122,13 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] ip_configurations: A `ip_configuration` block as documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallIpConfigurationArgs']]]] ip_configurations: A `ip_configuration` block as documented below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Firewall. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threat_intel_mode: The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`
-        :param pulumi.Input[list] zones: Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
-
-        The **ip_configurations** object supports the following:
-
-          * `name` (`pulumi.Input[str]`) - Specifies the name of the IP Configuration.
-          * `private_ip_address` (`pulumi.Input[str]`) - The private IP address of the Azure Firewall.
-          * `public_ip_address_id` (`pulumi.Input[str]`) - The Resource ID of the Public IP Address associated with the firewall.
-          * `subnet_id` (`pulumi.Input[str]`) - Reference to the subnet associated with the IP Configuration.
+        :param pulumi.Input[List[pulumi.Input[str]]] zones: Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -165,8 +143,65 @@ class Firewall(pulumi.CustomResource):
         __props__["zones"] = zones
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="ipConfigurations")
+    def ip_configurations(self) -> List['outputs.FirewallIpConfiguration']:
+        """
+        A `ip_configuration` block as documented below.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies the name of the Firewall. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="threatIntelMode")
+    def threat_intel_mode(self) -> Optional[str]:
+        """
+        The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[List[str]]:
+        """
+        Specifies the availability zones in which the Azure Firewall should be created. Changing this forces a new resource to be created.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

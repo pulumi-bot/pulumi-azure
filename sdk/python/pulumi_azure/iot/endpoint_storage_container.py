@@ -5,49 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['EndpointStorageContainer']
 
 
 class EndpointStorageContainer(pulumi.CustomResource):
-    batch_frequency_in_seconds: pulumi.Output[float]
-    """
-    Time interval at which blobs are written to storage. Value should be between 60 and 720 seconds. Default value is 300 seconds.
-    """
-    connection_string: pulumi.Output[str]
-    """
-    The connection string for the endpoint.
-    """
-    container_name: pulumi.Output[str]
-    """
-    The name of storage container in the storage account.
-    *
-    """
-    encoding: pulumi.Output[str]
-    """
-    Encoding that is used to serialize messages to blobs. Supported values are 'avro' and 'avrodeflate'. Default value is 'avro'.
-    """
-    file_name_format: pulumi.Output[str]
-    """
-    File name format for the blob. Default format is ``{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}``. All parameters are mandatory but can be reordered.
-    """
-    iothub_name: pulumi.Output[str]
-    """
-    The name of the IoTHub to which this Storage Container Endpoint belongs. Changing this forces a new resource to be created.
-    """
-    max_chunk_size_in_bytes: pulumi.Output[float]
-    """
-    Maximum number of bytes for each blob written to storage. Value should be between 10485760(10MB) and 524288000(500MB). Default value is 314572800(300MB).
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the endpoint. The name must be unique across endpoint types. The following names are reserved:  `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group under which the IotHub Storage Container Endpoint resource has to be created. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, batch_frequency_in_seconds=None, connection_string=None, container_name=None, encoding=None, file_name_format=None, iothub_name=None, max_chunk_size_in_bytes=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 batch_frequency_in_seconds: Optional[pulumi.Input[float]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 container_name: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 file_name_format: Optional[pulumi.Input[str]] = None,
+                 iothub_name: Optional[pulumi.Input[str]] = None,
+                 max_chunk_size_in_bytes: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an IotHub Storage Container Endpoint
 
@@ -73,7 +52,7 @@ class EndpointStorageContainer(pulumi.CustomResource):
             location=example_resource_group.location,
             sku={
                 "name": "S1",
-                "capacity": "1",
+                "capacity": 1,
             })
         example_endpoint_storage_container = azure.iot.EndpointStorageContainer("exampleEndpointStorageContainer",
             resource_group_name=example_resource_group.name,
@@ -110,7 +89,7 @@ class EndpointStorageContainer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -140,7 +119,18 @@ class EndpointStorageContainer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, batch_frequency_in_seconds=None, connection_string=None, container_name=None, encoding=None, file_name_format=None, iothub_name=None, max_chunk_size_in_bytes=None, name=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            batch_frequency_in_seconds: Optional[pulumi.Input[float]] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
+            container_name: Optional[pulumi.Input[str]] = None,
+            encoding: Optional[pulumi.Input[str]] = None,
+            file_name_format: Optional[pulumi.Input[str]] = None,
+            iothub_name: Optional[pulumi.Input[str]] = None,
+            max_chunk_size_in_bytes: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'EndpointStorageContainer':
         """
         Get an existing EndpointStorageContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -174,8 +164,82 @@ class EndpointStorageContainer(pulumi.CustomResource):
         __props__["resource_group_name"] = resource_group_name
         return EndpointStorageContainer(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="batchFrequencyInSeconds")
+    def batch_frequency_in_seconds(self) -> Optional[float]:
+        """
+        Time interval at which blobs are written to storage. Value should be between 60 and 720 seconds. Default value is 300 seconds.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        """
+        The connection string for the endpoint.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> str:
+        """
+        The name of storage container in the storage account.
+        *
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Encoding that is used to serialize messages to blobs. Supported values are 'avro' and 'avrodeflate'. Default value is 'avro'.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="fileNameFormat")
+    def file_name_format(self) -> Optional[str]:
+        """
+        File name format for the blob. Default format is ``{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}``. All parameters are mandatory but can be reordered.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="iothubName")
+    def iothub_name(self) -> str:
+        """
+        The name of the IoTHub to which this Storage Container Endpoint belongs. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="maxChunkSizeInBytes")
+    def max_chunk_size_in_bytes(self) -> Optional[float]:
+        """
+        Maximum number of bytes for each blob written to storage. Value should be between 10485760(10MB) and 524288000(500MB). Default value is 314572800(300MB).
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the endpoint. The name must be unique across endpoint types. The following names are reserved:  `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group under which the IotHub Storage Container Endpoint resource has to be created. Changing this forces a new resource to be created.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

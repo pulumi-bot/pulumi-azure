@@ -5,48 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['AnalyticsItem']
 
 
 class AnalyticsItem(pulumi.CustomResource):
-    application_insights_id: pulumi.Output[str]
-    """
-    The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
-    """
-    content: pulumi.Output[str]
-    """
-    The content for the Analytics Item, for example the query text if `type` is `query`.
-    """
-    function_alias: pulumi.Output[str]
-    """
-    The alias to use for the function. Required when `type` is `function`.
-    """
-    name: pulumi.Output[str]
-    """
-    Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
-    """
-    scope: pulumi.Output[str]
-    """
-    The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
-    """
-    time_created: pulumi.Output[str]
-    """
-    A string containing the time the Analytics Item was created.
-    """
-    time_modified: pulumi.Output[str]
-    """
-    A string containing the time the Analytics Item was last modified.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
-    """
-    version: pulumi.Output[str]
-    """
-    A string indicating the version of the query format
-    """
-    def __init__(__self__, resource_name, opts=None, application_insights_id=None, content=None, function_alias=None, name=None, scope=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 application_insights_id: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 function_alias: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Application Insights Analytics Item component.
 
@@ -88,7 +65,7 @@ class AnalyticsItem(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,7 +95,18 @@ class AnalyticsItem(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, application_insights_id=None, content=None, function_alias=None, name=None, scope=None, time_created=None, time_modified=None, type=None, version=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_insights_id: Optional[pulumi.Input[str]] = None,
+            content: Optional[pulumi.Input[str]] = None,
+            function_alias: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            scope: Optional[pulumi.Input[str]] = None,
+            time_created: Optional[pulumi.Input[str]] = None,
+            time_modified: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None) -> 'AnalyticsItem':
         """
         Get an existing AnalyticsItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -151,8 +139,81 @@ class AnalyticsItem(pulumi.CustomResource):
         __props__["version"] = version
         return AnalyticsItem(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="applicationInsightsId")
+    def application_insights_id(self) -> str:
+        """
+        The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The content for the Analytics Item, for example the query text if `type` is `query`.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="functionAlias")
+    def function_alias(self) -> Optional[str]:
+        """
+        The alias to use for the function. Required when `type` is `function`.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> str:
+        """
+        A string containing the time the Analytics Item was created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="timeModified")
+    def time_modified(self) -> str:
+        """
+        A string containing the time the Analytics Item was last modified.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        A string indicating the version of the query format
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

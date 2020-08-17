@@ -5,64 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ConnectionClassicCertificate']
 
 
 class ConnectionClassicCertificate(pulumi.CustomResource):
-    automation_account_name: pulumi.Output[str]
-    """
-    The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
-    """
-    certificate_asset_name: pulumi.Output[str]
-    """
-    The name of the certificate asset.
-    """
-    description: pulumi.Output[str]
-    """
-    A description for this Connection.
-    """
-    name: pulumi.Output[str]
-    """
-    Specifies the name of the Connection. Changing this forces a new resource to be created.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
-    """
-    subscription_id: pulumi.Output[str]
-    """
-    The id of subscription.
-    """
-    subscription_name: pulumi.Output[str]
-    """
-    The name of subscription.
-    """
-    def __init__(__self__, resource_name, opts=None, automation_account_name=None, certificate_asset_name=None, description=None, name=None, resource_group_name=None, subscription_id=None, subscription_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 automation_account_name: Optional[pulumi.Input[str]] = None,
+                 certificate_asset_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
+                 subscription_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Automation Connection with type `AzureClassicCertificate`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_client_config = azure.core.get_client_config()
-        example_account = azure.automation.Account("exampleAccount",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku=[{
-                "name": "Basic",
-            }])
-        example_connection_classic_certificate = azure.automation.ConnectionClassicCertificate("exampleConnectionClassicCertificate",
-            resource_group_name=example_resource_group.name,
-            automation_account_name=example_account.name,
-            certificate_asset_name="cert1",
-            subscription_name="subs1",
-            subscription_id=example_client_config.subscription_id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,7 +49,7 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -115,7 +79,16 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, automation_account_name=None, certificate_asset_name=None, description=None, name=None, resource_group_name=None, subscription_id=None, subscription_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            automation_account_name: Optional[pulumi.Input[str]] = None,
+            certificate_asset_name: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            subscription_id: Optional[pulumi.Input[str]] = None,
+            subscription_name: Optional[pulumi.Input[str]] = None) -> 'ConnectionClassicCertificate':
         """
         Get an existing ConnectionClassicCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -144,8 +117,65 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
         __props__["subscription_name"] = subscription_name
         return ConnectionClassicCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="automationAccountName")
+    def automation_account_name(self) -> str:
+        """
+        The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="certificateAssetName")
+    def certificate_asset_name(self) -> str:
+        """
+        The name of the certificate asset.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for this Connection.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies the name of the Connection. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> str:
+        """
+        The id of subscription.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="subscriptionName")
+    def subscription_name(self) -> str:
+        """
+        The name of subscription.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

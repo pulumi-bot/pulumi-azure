@@ -5,36 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ManagementPolicy']
 
 
 class ManagementPolicy(pulumi.CustomResource):
-    rules: pulumi.Output[list]
-    """
-    A `rule` block as documented below.
-
-      * `actions` (`dict`) - An `actions` block as documented below.
-        * `baseBlob` (`dict`) - A `base_blob` block as documented below.
-          * `deleteAfterDaysSinceModificationGreaterThan` (`float`) - The age in days after last modification to delete the blob. Must be at least 0.
-          * `tierToArchiveAfterDaysSinceModificationGreaterThan` (`float`) - The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
-          * `tierToCoolAfterDaysSinceModificationGreaterThan` (`float`) - The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
-
-        * `snapshot` (`dict`) - A `snapshot` block as documented below.
-          * `deleteAfterDaysSinceCreationGreaterThan` (`float`) - The age in days after create to delete the snaphot. Must be at least 0.
-
-      * `enabled` (`bool`) - Boolean to specify whether the rule is enabled.
-      * `filters` (`dict`) - A `filter` block as documented below.
-        * `blobTypes` (`list`) - An array of predefined values. Only `blockBlob` is supported.
-        * `prefixMatches` (`list`) - An array of strings for prefixes to be matched.
-
-      * `name` (`str`) - A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-    """
-    storage_account_id: pulumi.Output[str]
-    """
-    Specifies the id of the storage account to apply the management policy to.
-    """
-    def __init__(__self__, resource_name, opts=None, rules=None, storage_account_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]]] = None,
+                 storage_account_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Azure Storage Account Management Policy.
 
@@ -98,26 +85,8 @@ class ManagementPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] rules: A `rule` block as documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]] rules: A `rule` block as documented below.
         :param pulumi.Input[str] storage_account_id: Specifies the id of the storage account to apply the management policy to.
-
-        The **rules** object supports the following:
-
-          * `actions` (`pulumi.Input[dict]`) - An `actions` block as documented below.
-            * `baseBlob` (`pulumi.Input[dict]`) - A `base_blob` block as documented below.
-              * `deleteAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to delete the blob. Must be at least 0.
-              * `tierToArchiveAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
-              * `tierToCoolAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
-
-            * `snapshot` (`pulumi.Input[dict]`) - A `snapshot` block as documented below.
-              * `deleteAfterDaysSinceCreationGreaterThan` (`pulumi.Input[float]`) - The age in days after create to delete the snaphot. Must be at least 0.
-
-          * `enabled` (`pulumi.Input[bool]`) - Boolean to specify whether the rule is enabled.
-          * `filters` (`pulumi.Input[dict]`) - A `filter` block as documented below.
-            * `blobTypes` (`pulumi.Input[list]`) - An array of predefined values. Only `blockBlob` is supported.
-            * `prefixMatches` (`pulumi.Input[list]`) - An array of strings for prefixes to be matched.
-
-          * `name` (`pulumi.Input[str]`) - A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,7 +99,7 @@ class ManagementPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -147,7 +116,11 @@ class ManagementPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, rules=None, storage_account_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]]] = None,
+            storage_account_id: Optional[pulumi.Input[str]] = None) -> 'ManagementPolicy':
         """
         Get an existing ManagementPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -155,26 +128,8 @@ class ManagementPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] rules: A `rule` block as documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]] rules: A `rule` block as documented below.
         :param pulumi.Input[str] storage_account_id: Specifies the id of the storage account to apply the management policy to.
-
-        The **rules** object supports the following:
-
-          * `actions` (`pulumi.Input[dict]`) - An `actions` block as documented below.
-            * `baseBlob` (`pulumi.Input[dict]`) - A `base_blob` block as documented below.
-              * `deleteAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to delete the blob. Must be at least 0.
-              * `tierToArchiveAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
-              * `tierToCoolAfterDaysSinceModificationGreaterThan` (`pulumi.Input[float]`) - The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
-
-            * `snapshot` (`pulumi.Input[dict]`) - A `snapshot` block as documented below.
-              * `deleteAfterDaysSinceCreationGreaterThan` (`pulumi.Input[float]`) - The age in days after create to delete the snaphot. Must be at least 0.
-
-          * `enabled` (`pulumi.Input[bool]`) - Boolean to specify whether the rule is enabled.
-          * `filters` (`pulumi.Input[dict]`) - A `filter` block as documented below.
-            * `blobTypes` (`pulumi.Input[list]`) - An array of predefined values. Only `blockBlob` is supported.
-            * `prefixMatches` (`pulumi.Input[list]`) - An array of strings for prefixes to be matched.
-
-          * `name` (`pulumi.Input[str]`) - A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -184,8 +139,25 @@ class ManagementPolicy(pulumi.CustomResource):
         __props__["storage_account_id"] = storage_account_id
         return ManagementPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[List['outputs.ManagementPolicyRule']]:
+        """
+        A `rule` block as documented below.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="storageAccountId")
+    def storage_account_id(self) -> str:
+        """
+        Specifies the id of the storage account to apply the management policy to.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

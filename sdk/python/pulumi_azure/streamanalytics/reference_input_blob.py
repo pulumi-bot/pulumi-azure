@@ -5,56 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ReferenceInputBlob']
 
 
 class ReferenceInputBlob(pulumi.CustomResource):
-    date_format: pulumi.Output[str]
-    """
-    The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the Reference Input Blob. Changing this forces a new resource to be created.
-    """
-    path_pattern: pulumi.Output[str]
-    """
-    The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-    """
-    serialization: pulumi.Output[dict]
-    """
-    A `serialization` block as defined below.
-
-      * `encoding` (`str`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-      * `fieldDelimiter` (`str`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
-      * `type` (`str`) - The serialization format used for the reference data. Possible values are `Avro`, `Csv` and `Json`.
-    """
-    storage_account_key: pulumi.Output[str]
-    """
-    The Access Key which should be used to connect to this Storage Account.
-    """
-    storage_account_name: pulumi.Output[str]
-    """
-    The name of the Storage Account that has the blob container with reference data.
-    """
-    storage_container_name: pulumi.Output[str]
-    """
-    The name of the Container within the Storage Account.
-    """
-    stream_analytics_job_name: pulumi.Output[str]
-    """
-    The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-    """
-    time_format: pulumi.Output[str]
-    """
-    The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
-    """
-    def __init__(__self__, resource_name, opts=None, date_format=None, name=None, path_pattern=None, resource_group_name=None, serialization=None, storage_account_key=None, storage_account_name=None, storage_container_name=None, stream_analytics_job_name=None, time_format=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 date_format: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_pattern: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 serialization: Optional[pulumi.Input[pulumi.InputType['ReferenceInputBlobSerializationArgs']]] = None,
+                 storage_account_key: Optional[pulumi.Input[str]] = None,
+                 storage_account_name: Optional[pulumi.Input[str]] = None,
+                 storage_container_name: Optional[pulumi.Input[str]] = None,
+                 stream_analytics_job_name: Optional[pulumi.Input[str]] = None,
+                 time_format: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Stream Analytics Reference Input Blob. Reference data (also known as a lookup table) is a finite data set that is static or slowly changing in nature, used to perform a lookup or to correlate with your data stream. Learn more [here](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-use-reference-data#azure-blob-storage).
 
@@ -96,18 +71,12 @@ class ReferenceInputBlob(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Reference Input Blob. Changing this forces a new resource to be created.
         :param pulumi.Input[str] path_pattern: The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input[pulumi.InputType['ReferenceInputBlobSerializationArgs']] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] storage_account_key: The Access Key which should be used to connect to this Storage Account.
         :param pulumi.Input[str] storage_account_name: The name of the Storage Account that has the blob container with reference data.
         :param pulumi.Input[str] storage_container_name: The name of the Container within the Storage Account.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
         :param pulumi.Input[str] time_format: The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for the reference data. Possible values are `Avro`, `Csv` and `Json`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -120,7 +89,7 @@ class ReferenceInputBlob(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -161,7 +130,19 @@ class ReferenceInputBlob(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, date_format=None, name=None, path_pattern=None, resource_group_name=None, serialization=None, storage_account_key=None, storage_account_name=None, storage_container_name=None, stream_analytics_job_name=None, time_format=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            date_format: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            path_pattern: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            serialization: Optional[pulumi.Input[pulumi.InputType['ReferenceInputBlobSerializationArgs']]] = None,
+            storage_account_key: Optional[pulumi.Input[str]] = None,
+            storage_account_name: Optional[pulumi.Input[str]] = None,
+            storage_container_name: Optional[pulumi.Input[str]] = None,
+            stream_analytics_job_name: Optional[pulumi.Input[str]] = None,
+            time_format: Optional[pulumi.Input[str]] = None) -> 'ReferenceInputBlob':
         """
         Get an existing ReferenceInputBlob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -173,18 +154,12 @@ class ReferenceInputBlob(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Reference Input Blob. Changing this forces a new resource to be created.
         :param pulumi.Input[str] path_pattern: The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] serialization: A `serialization` block as defined below.
+        :param pulumi.Input[pulumi.InputType['ReferenceInputBlobSerializationArgs']] serialization: A `serialization` block as defined below.
         :param pulumi.Input[str] storage_account_key: The Access Key which should be used to connect to this Storage Account.
         :param pulumi.Input[str] storage_account_name: The name of the Storage Account that has the blob container with reference data.
         :param pulumi.Input[str] storage_container_name: The name of the Container within the Storage Account.
         :param pulumi.Input[str] stream_analytics_job_name: The name of the Stream Analytics Job. Changing this forces a new resource to be created.
         :param pulumi.Input[str] time_format: The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
-
-        The **serialization** object supports the following:
-
-          * `encoding` (`pulumi.Input[str]`) - The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
-          * `fieldDelimiter` (`pulumi.Input[str]`) - The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
-          * `type` (`pulumi.Input[str]`) - The serialization format used for the reference data. Possible values are `Avro`, `Csv` and `Json`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,8 +177,89 @@ class ReferenceInputBlob(pulumi.CustomResource):
         __props__["time_format"] = time_format
         return ReferenceInputBlob(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="dateFormat")
+    def date_format(self) -> str:
+        """
+        The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Reference Input Blob. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="pathPattern")
+    def path_pattern(self) -> str:
+        """
+        The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def serialization(self) -> 'outputs.ReferenceInputBlobSerialization':
+        """
+        A `serialization` block as defined below.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="storageAccountKey")
+    def storage_account_key(self) -> str:
+        """
+        The Access Key which should be used to connect to this Storage Account.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> str:
+        """
+        The name of the Storage Account that has the blob container with reference data.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="storageContainerName")
+    def storage_container_name(self) -> str:
+        """
+        The name of the Container within the Storage Account.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="streamAnalyticsJobName")
+    def stream_analytics_job_name(self) -> str:
+        """
+        The name of the Stream Analytics Job. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="timeFormat")
+    def time_format(self) -> str:
+        """
+        The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

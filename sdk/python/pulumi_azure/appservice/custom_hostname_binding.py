@@ -5,36 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['CustomHostnameBinding']
 
 
 class CustomHostnameBinding(pulumi.CustomResource):
-    app_service_name: pulumi.Output[str]
-    """
-    The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.
-    """
-    hostname: pulumi.Output[str]
-    """
-    Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
-    """
-    ssl_state: pulumi.Output[str]
-    """
-    The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
-    """
-    thumbprint: pulumi.Output[str]
-    """
-    The SSL certificate thumbprint. Changing this forces a new resource to be created.
-    """
-    virtual_ip: pulumi.Output[str]
-    """
-    The virtual IP address assigned to the hostname if IP based SSL is enabled.
-    """
-    def __init__(__self__, resource_name, opts=None, app_service_name=None, hostname=None, resource_group_name=None, ssl_state=None, thumbprint=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_service_name: Optional[pulumi.Input[str]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 ssl_state: Optional[pulumi.Input[str]] = None,
+                 thumbprint: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Hostname Binding within an App Service.
 
@@ -87,7 +75,7 @@ class CustomHostnameBinding(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -112,7 +100,15 @@ class CustomHostnameBinding(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_service_name=None, hostname=None, resource_group_name=None, ssl_state=None, thumbprint=None, virtual_ip=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_service_name: Optional[pulumi.Input[str]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            ssl_state: Optional[pulumi.Input[str]] = None,
+            thumbprint: Optional[pulumi.Input[str]] = None,
+            virtual_ip: Optional[pulumi.Input[str]] = None) -> 'CustomHostnameBinding':
         """
         Get an existing CustomHostnameBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -139,8 +135,57 @@ class CustomHostnameBinding(pulumi.CustomResource):
         __props__["virtual_ip"] = virtual_ip
         return CustomHostnameBinding(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="appServiceName")
+    def app_service_name(self) -> str:
+        """
+        The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="sslState")
+    def ssl_state(self) -> Optional[str]:
+        """
+        The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        The SSL certificate thumbprint. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="virtualIp")
+    def virtual_ip(self) -> str:
+        """
+        The virtual IP address assigned to the hostname if IP based SSL is enabled.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

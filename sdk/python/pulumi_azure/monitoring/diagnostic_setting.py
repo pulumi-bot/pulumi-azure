@@ -5,60 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DiagnosticSetting']
 
 
 class DiagnosticSetting(pulumi.CustomResource):
-    eventhub_authorization_rule_id: pulumi.Output[str]
-    """
-    Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
-    """
-    eventhub_name: pulumi.Output[str]
-    """
-    Specifies the name of the Event Hub where Diagnostics Data should be sent. Changing this forces a new resource to be created.
-    """
-    log_analytics_destination_type: pulumi.Output[str]
-    """
-    When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table.
-    """
-    log_analytics_workspace_id: pulumi.Output[str]
-    """
-    Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent. Changing this forces a new resource to be created.
-    """
-    logs: pulumi.Output[list]
-    """
-    One or more `log` blocks as defined below.
-
-      * `category` (`str`) - The name of a Diagnostic Log Category for this Resource.
-      * `enabled` (`bool`) - Is this Diagnostic Log enabled? Defaults to `true`.
-      * `retention_policy` (`dict`) - A `retention_policy` block as defined below.
-        * `days` (`float`) - The number of days for which this Retention Policy should apply.
-        * `enabled` (`bool`) - Is this Retention Policy enabled?
-    """
-    metrics: pulumi.Output[list]
-    """
-    One or more `metric` blocks as defined below.
-
-      * `category` (`str`) - The name of a Diagnostic Metric Category for this Resource.
-      * `enabled` (`bool`) - Is this Diagnostic Metric enabled? Defaults to `true`.
-      * `retention_policy` (`dict`) - A `retention_policy` block as defined below.
-        * `days` (`float`) - The number of days for which this Retention Policy should apply.
-        * `enabled` (`bool`) - Is this Retention Policy enabled?
-    """
-    name: pulumi.Output[str]
-    """
-    Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
-    """
-    storage_account_id: pulumi.Output[str]
-    """
-    With this parameter you can specify a storage account which should be used to send the logs to. Parameter must be a valid Azure Resource ID. Changing this forces a new resource to be created.
-    """
-    target_resource_id: pulumi.Output[str]
-    """
-    The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, eventhub_authorization_rule_id=None, eventhub_name=None, log_analytics_destination_type=None, log_analytics_workspace_id=None, logs=None, metrics=None, name=None, storage_account_id=None, target_resource_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 eventhub_authorization_rule_id: Optional[pulumi.Input[str]] = None,
+                 eventhub_name: Optional[pulumi.Input[str]] = None,
+                 log_analytics_destination_type: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None,
+                 logs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingLogArgs']]]]] = None,
+                 metrics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingMetricArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 storage_account_id: Optional[pulumi.Input[str]] = None,
+                 target_resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Diagnostic Setting for an existing Resource.
 
@@ -97,27 +67,11 @@ class DiagnosticSetting(pulumi.CustomResource):
         :param pulumi.Input[str] eventhub_name: Specifies the name of the Event Hub where Diagnostics Data should be sent. Changing this forces a new resource to be created.
         :param pulumi.Input[str] log_analytics_destination_type: When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table.
         :param pulumi.Input[str] log_analytics_workspace_id: Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] logs: One or more `log` blocks as defined below.
-        :param pulumi.Input[list] metrics: One or more `metric` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingLogArgs']]]] logs: One or more `log` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingMetricArgs']]]] metrics: One or more `metric` blocks as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_id: With this parameter you can specify a storage account which should be used to send the logs to. Parameter must be a valid Azure Resource ID. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_resource_id: The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
-
-        The **logs** object supports the following:
-
-          * `category` (`pulumi.Input[str]`) - The name of a Diagnostic Log Category for this Resource.
-          * `enabled` (`pulumi.Input[bool]`) - Is this Diagnostic Log enabled? Defaults to `true`.
-          * `retention_policy` (`pulumi.Input[dict]`) - A `retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - The number of days for which this Retention Policy should apply.
-            * `enabled` (`pulumi.Input[bool]`) - Is this Retention Policy enabled?
-
-        The **metrics** object supports the following:
-
-          * `category` (`pulumi.Input[str]`) - The name of a Diagnostic Metric Category for this Resource.
-          * `enabled` (`pulumi.Input[bool]`) - Is this Diagnostic Metric enabled? Defaults to `true`.
-          * `retention_policy` (`pulumi.Input[dict]`) - A `retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - The number of days for which this Retention Policy should apply.
-            * `enabled` (`pulumi.Input[bool]`) - Is this Retention Policy enabled?
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -130,7 +84,7 @@ class DiagnosticSetting(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -154,7 +108,18 @@ class DiagnosticSetting(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, eventhub_authorization_rule_id=None, eventhub_name=None, log_analytics_destination_type=None, log_analytics_workspace_id=None, logs=None, metrics=None, name=None, storage_account_id=None, target_resource_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            eventhub_authorization_rule_id: Optional[pulumi.Input[str]] = None,
+            eventhub_name: Optional[pulumi.Input[str]] = None,
+            log_analytics_destination_type: Optional[pulumi.Input[str]] = None,
+            log_analytics_workspace_id: Optional[pulumi.Input[str]] = None,
+            logs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingLogArgs']]]]] = None,
+            metrics: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingMetricArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            storage_account_id: Optional[pulumi.Input[str]] = None,
+            target_resource_id: Optional[pulumi.Input[str]] = None) -> 'DiagnosticSetting':
         """
         Get an existing DiagnosticSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -166,27 +131,11 @@ class DiagnosticSetting(pulumi.CustomResource):
         :param pulumi.Input[str] eventhub_name: Specifies the name of the Event Hub where Diagnostics Data should be sent. Changing this forces a new resource to be created.
         :param pulumi.Input[str] log_analytics_destination_type: When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table.
         :param pulumi.Input[str] log_analytics_workspace_id: Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] logs: One or more `log` blocks as defined below.
-        :param pulumi.Input[list] metrics: One or more `metric` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingLogArgs']]]] logs: One or more `log` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DiagnosticSettingMetricArgs']]]] metrics: One or more `metric` blocks as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
         :param pulumi.Input[str] storage_account_id: With this parameter you can specify a storage account which should be used to send the logs to. Parameter must be a valid Azure Resource ID. Changing this forces a new resource to be created.
         :param pulumi.Input[str] target_resource_id: The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
-
-        The **logs** object supports the following:
-
-          * `category` (`pulumi.Input[str]`) - The name of a Diagnostic Log Category for this Resource.
-          * `enabled` (`pulumi.Input[bool]`) - Is this Diagnostic Log enabled? Defaults to `true`.
-          * `retention_policy` (`pulumi.Input[dict]`) - A `retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - The number of days for which this Retention Policy should apply.
-            * `enabled` (`pulumi.Input[bool]`) - Is this Retention Policy enabled?
-
-        The **metrics** object supports the following:
-
-          * `category` (`pulumi.Input[str]`) - The name of a Diagnostic Metric Category for this Resource.
-          * `enabled` (`pulumi.Input[bool]`) - Is this Diagnostic Metric enabled? Defaults to `true`.
-          * `retention_policy` (`pulumi.Input[dict]`) - A `retention_policy` block as defined below.
-            * `days` (`pulumi.Input[float]`) - The number of days for which this Retention Policy should apply.
-            * `enabled` (`pulumi.Input[bool]`) - Is this Retention Policy enabled?
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -203,8 +152,81 @@ class DiagnosticSetting(pulumi.CustomResource):
         __props__["target_resource_id"] = target_resource_id
         return DiagnosticSetting(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="eventhubAuthorizationRuleId")
+    def eventhub_authorization_rule_id(self) -> Optional[str]:
+        """
+        Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="eventhubName")
+    def eventhub_name(self) -> Optional[str]:
+        """
+        Specifies the name of the Event Hub where Diagnostics Data should be sent. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="logAnalyticsDestinationType")
+    def log_analytics_destination_type(self) -> Optional[str]:
+        """
+        When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        """
+        Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[List['outputs.DiagnosticSettingLog']]:
+        """
+        One or more `log` blocks as defined below.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[List['outputs.DiagnosticSettingMetric']]:
+        """
+        One or more `metric` blocks as defined below.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="storageAccountId")
+    def storage_account_id(self) -> Optional[str]:
+        """
+        With this parameter you can specify a storage account which should be used to send the logs to. Parameter must be a valid Azure Resource ID. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="targetResourceId")
+    def target_resource_id(self) -> str:
+        """
+        The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

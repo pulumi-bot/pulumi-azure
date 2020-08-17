@@ -5,101 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['FirewallPolicy']
 
 
 class FirewallPolicy(pulumi.CustomResource):
-    custom_block_response_body: pulumi.Output[str]
-    """
-    If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-    """
-    custom_block_response_status_code: pulumi.Output[float]
-    """
-    If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-    """
-    custom_rules: pulumi.Output[list]
-    """
-    One or more `custom_rule` blocks as defined below.
-
-      * `action` (`str`) - The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-      * `enabled` (`bool`) - Is the rule is enabled or disabled? Defaults to `true`.
-      * `matchConditions` (`list`) - One or more `match_condition` block defined below.
-        * `matchValues` (`list`) - Up to `100` possible values to match.
-        * `matchVariable` (`str`) - The request variable to compare with. Possible values are `Cookies`, `PostArgs`, `QueryString`, `RemoteAddr`, `RequestBody`, `RequestHeader`, `RequestMethod`, or `RequestUri`.
-        * `negationCondition` (`bool`) - Should the result of the condition be negated.
-        * `operator` (`str`) - Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
-        * `selector` (`str`) - Match against a specific key if the `match_variable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
-        * `transforms` (`list`) - Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
-
-      * `name` (`str`) - Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-      * `priority` (`float`) - The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
-      * `rateLimitDurationInMinutes` (`float`) - The rate limit duration in minutes. Defaults to `1`.
-      * `rateLimitThreshold` (`float`) - The rate limit threshold. Defaults to `10`.
-      * `type` (`str`) - The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Is the policy a enabled state or disabled state. Defaults to `true`.
-    """
-    frontend_endpoint_ids: pulumi.Output[list]
-    """
-    the Frontend Endpoints associated with this Front Door Web Application Firewall policy.
-    """
-    location: pulumi.Output[str]
-    """
-    Resource location.
-    """
-    managed_rules: pulumi.Output[list]
-    """
-    One or more `managed_rule` blocks as defined below.
-
-      * `exclusions` (`list`) - One or more `exclusion` blocks as defined below.
-        * `matchVariable` (`str`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-        * `operator` (`str`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-        * `selector` (`str`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-      * `overrides` (`list`) - One or more `override` blocks as defined below.
-        * `exclusions` (`list`) - One or more `exclusion` blocks as defined below.
-          * `matchVariable` (`str`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-          * `operator` (`str`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-          * `selector` (`str`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-        * `ruleGroupName` (`str`) - The managed rule group to override.
-        * `rules` (`list`) - One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-          * `action` (`str`) - The action to be applied when the rule matches. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-          * `enabled` (`bool`) - Is the managed rule override enabled or disabled. Defaults to `false`
-          * `exclusions` (`list`) - One or more `exclusion` blocks as defined below.
-            * `matchVariable` (`str`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-            * `operator` (`str`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-            * `selector` (`str`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-          * `rule_id` (`str`) - Identifier for the managed rule.
-
-      * `type` (`str`) - The name of the managed rule to use with this resource.
-      * `version` (`str`) - The version on the managed rule to use with this resource.
-    """
-    mode: pulumi.Output[str]
-    """
-    The firewall policy mode. Possible values are `Detection`, `Prevention` and defaults to `Prevention`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the policy. Changing this forces a new resource to be created.
-    """
-    redirect_url: pulumi.Output[str]
-    """
-    If action type is redirect, this field represents redirect URL for the client.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group. Changing this forces a new resource to be created.
-    """
-    tags: pulumi.Output[dict]
-    """
-    A mapping of tags to assign to the Web Application Firewall Policy.
-    """
-    def __init__(__self__, resource_name, opts=None, custom_block_response_body=None, custom_block_response_status_code=None, custom_rules=None, enabled=None, managed_rules=None, mode=None, name=None, redirect_url=None, resource_group_name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_block_response_body: Optional[pulumi.Input[str]] = None,
+                 custom_block_response_status_code: Optional[pulumi.Input[float]] = None,
+                 custom_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 managed_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an Azure Front Door Web Application Firewall Policy instance.
 
@@ -213,59 +143,14 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
         :param pulumi.Input[float] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-        :param pulumi.Input[list] custom_rules: One or more `custom_rule` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]] custom_rules: One or more `custom_rule` blocks as defined below.
         :param pulumi.Input[bool] enabled: Is the policy a enabled state or disabled state. Defaults to `true`.
-        :param pulumi.Input[list] managed_rules: One or more `managed_rule` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]] managed_rules: One or more `managed_rule` blocks as defined below.
         :param pulumi.Input[str] mode: The firewall policy mode. Possible values are `Detection`, `Prevention` and defaults to `Prevention`.
         :param pulumi.Input[str] name: The name of the policy. Changing this forces a new resource to be created.
         :param pulumi.Input[str] redirect_url: If action type is redirect, this field represents redirect URL for the client.
         :param pulumi.Input[str] resource_group_name: The name of the resource group. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Web Application Firewall Policy.
-
-        The **custom_rules** object supports the following:
-
-          * `action` (`pulumi.Input[str]`) - The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-          * `enabled` (`pulumi.Input[bool]`) - Is the rule is enabled or disabled? Defaults to `true`.
-          * `matchConditions` (`pulumi.Input[list]`) - One or more `match_condition` block defined below.
-            * `matchValues` (`pulumi.Input[list]`) - Up to `100` possible values to match.
-            * `matchVariable` (`pulumi.Input[str]`) - The request variable to compare with. Possible values are `Cookies`, `PostArgs`, `QueryString`, `RemoteAddr`, `RequestBody`, `RequestHeader`, `RequestMethod`, or `RequestUri`.
-            * `negationCondition` (`pulumi.Input[bool]`) - Should the result of the condition be negated.
-            * `operator` (`pulumi.Input[str]`) - Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
-            * `selector` (`pulumi.Input[str]`) - Match against a specific key if the `match_variable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
-            * `transforms` (`pulumi.Input[list]`) - Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
-
-          * `name` (`pulumi.Input[str]`) - Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-          * `priority` (`pulumi.Input[float]`) - The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
-          * `rateLimitDurationInMinutes` (`pulumi.Input[float]`) - The rate limit duration in minutes. Defaults to `1`.
-          * `rateLimitThreshold` (`pulumi.Input[float]`) - The rate limit threshold. Defaults to `10`.
-          * `type` (`pulumi.Input[str]`) - The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
-
-        The **managed_rules** object supports the following:
-
-          * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-            * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-            * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-            * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-          * `overrides` (`pulumi.Input[list]`) - One or more `override` blocks as defined below.
-            * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-              * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-              * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-              * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-            * `ruleGroupName` (`pulumi.Input[str]`) - The managed rule group to override.
-            * `rules` (`pulumi.Input[list]`) - One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-              * `action` (`pulumi.Input[str]`) - The action to be applied when the rule matches. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-              * `enabled` (`pulumi.Input[bool]`) - Is the managed rule override enabled or disabled. Defaults to `false`
-              * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-                * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-                * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-                * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-              * `rule_id` (`pulumi.Input[str]`) - Identifier for the managed rule.
-
-          * `type` (`pulumi.Input[str]`) - The name of the managed rule to use with this resource.
-          * `version` (`pulumi.Input[str]`) - The version on the managed rule to use with this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Web Application Firewall Policy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -278,7 +163,7 @@ class FirewallPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -305,7 +190,21 @@ class FirewallPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_block_response_body=None, custom_block_response_status_code=None, custom_rules=None, enabled=None, frontend_endpoint_ids=None, location=None, managed_rules=None, mode=None, name=None, redirect_url=None, resource_group_name=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_block_response_body: Optional[pulumi.Input[str]] = None,
+            custom_block_response_status_code: Optional[pulumi.Input[float]] = None,
+            custom_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            frontend_endpoint_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            managed_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            redirect_url: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'FirewallPolicy':
         """
         Get an existing FirewallPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -315,61 +214,16 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
         :param pulumi.Input[float] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-        :param pulumi.Input[list] custom_rules: One or more `custom_rule` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]] custom_rules: One or more `custom_rule` blocks as defined below.
         :param pulumi.Input[bool] enabled: Is the policy a enabled state or disabled state. Defaults to `true`.
-        :param pulumi.Input[list] frontend_endpoint_ids: the Frontend Endpoints associated with this Front Door Web Application Firewall policy.
+        :param pulumi.Input[List[pulumi.Input[str]]] frontend_endpoint_ids: the Frontend Endpoints associated with this Front Door Web Application Firewall policy.
         :param pulumi.Input[str] location: Resource location.
-        :param pulumi.Input[list] managed_rules: One or more `managed_rule` blocks as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]] managed_rules: One or more `managed_rule` blocks as defined below.
         :param pulumi.Input[str] mode: The firewall policy mode. Possible values are `Detection`, `Prevention` and defaults to `Prevention`.
         :param pulumi.Input[str] name: The name of the policy. Changing this forces a new resource to be created.
         :param pulumi.Input[str] redirect_url: If action type is redirect, this field represents redirect URL for the client.
         :param pulumi.Input[str] resource_group_name: The name of the resource group. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the Web Application Firewall Policy.
-
-        The **custom_rules** object supports the following:
-
-          * `action` (`pulumi.Input[str]`) - The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-          * `enabled` (`pulumi.Input[bool]`) - Is the rule is enabled or disabled? Defaults to `true`.
-          * `matchConditions` (`pulumi.Input[list]`) - One or more `match_condition` block defined below.
-            * `matchValues` (`pulumi.Input[list]`) - Up to `100` possible values to match.
-            * `matchVariable` (`pulumi.Input[str]`) - The request variable to compare with. Possible values are `Cookies`, `PostArgs`, `QueryString`, `RemoteAddr`, `RequestBody`, `RequestHeader`, `RequestMethod`, or `RequestUri`.
-            * `negationCondition` (`pulumi.Input[bool]`) - Should the result of the condition be negated.
-            * `operator` (`pulumi.Input[str]`) - Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
-            * `selector` (`pulumi.Input[str]`) - Match against a specific key if the `match_variable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
-            * `transforms` (`pulumi.Input[list]`) - Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
-
-          * `name` (`pulumi.Input[str]`) - Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-          * `priority` (`pulumi.Input[float]`) - The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
-          * `rateLimitDurationInMinutes` (`pulumi.Input[float]`) - The rate limit duration in minutes. Defaults to `1`.
-          * `rateLimitThreshold` (`pulumi.Input[float]`) - The rate limit threshold. Defaults to `10`.
-          * `type` (`pulumi.Input[str]`) - The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
-
-        The **managed_rules** object supports the following:
-
-          * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-            * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-            * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-            * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-          * `overrides` (`pulumi.Input[list]`) - One or more `override` blocks as defined below.
-            * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-              * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-              * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-              * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-            * `ruleGroupName` (`pulumi.Input[str]`) - The managed rule group to override.
-            * `rules` (`pulumi.Input[list]`) - One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-              * `action` (`pulumi.Input[str]`) - The action to be applied when the rule matches. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
-              * `enabled` (`pulumi.Input[bool]`) - Is the managed rule override enabled or disabled. Defaults to `false`
-              * `exclusions` (`pulumi.Input[list]`) - One or more `exclusion` blocks as defined below.
-                * `matchVariable` (`pulumi.Input[str]`) - The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-                * `operator` (`pulumi.Input[str]`) - Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-                * `selector` (`pulumi.Input[str]`) - Selector for the value in the `match_variable` attribute this exclusion applies to.
-
-              * `rule_id` (`pulumi.Input[str]`) - Identifier for the managed rule.
-
-          * `type` (`pulumi.Input[str]`) - The name of the managed rule to use with this resource.
-          * `version` (`pulumi.Input[str]`) - The version on the managed rule to use with this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the Web Application Firewall Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -389,8 +243,105 @@ class FirewallPolicy(pulumi.CustomResource):
         __props__["tags"] = tags
         return FirewallPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="customBlockResponseBody")
+    def custom_block_response_body(self) -> Optional[str]:
+        """
+        If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="customBlockResponseStatusCode")
+    def custom_block_response_status_code(self) -> Optional[float]:
+        """
+        If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="customRules")
+    def custom_rules(self) -> Optional[List['outputs.FirewallPolicyCustomRule']]:
+        """
+        One or more `custom_rule` blocks as defined below.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Is the policy a enabled state or disabled state. Defaults to `true`.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="frontendEndpointIds")
+    def frontend_endpoint_ids(self) -> List[str]:
+        """
+        the Frontend Endpoints associated with this Front Door Web Application Firewall policy.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Resource location.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="managedRules")
+    def managed_rules(self) -> Optional[List['outputs.FirewallPolicyManagedRule']]:
+        """
+        One or more `managed_rule` blocks as defined below.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        The firewall policy mode. Possible values are `Detection`, `Prevention` and defaults to `Prevention`.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the policy. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[str]:
+        """
+        If action type is redirect, this field represents redirect URL for the client.
+        """
+        ...
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group. Changing this forces a new resource to be created.
+        """
+        ...
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of tags to assign to the Web Application Firewall Policy.
+        """
+        ...
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
