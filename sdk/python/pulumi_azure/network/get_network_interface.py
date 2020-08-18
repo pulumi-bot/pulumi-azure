@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
+
 
 class GetNetworkInterfaceResult:
     """
@@ -106,6 +107,8 @@ class GetNetworkInterfaceResult:
         """
         The ID of the virtual machine that the specified Network Interface is attached to.
         """
+
+
 class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -129,7 +132,8 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
             tags=self.tags,
             virtual_machine_id=self.virtual_machine_id)
 
-def get_network_interface(name=None,resource_group_name=None,opts=None):
+
+def get_network_interface(name=None, resource_group_name=None, opts=None):
     """
     Use this data source to access information about an existing Network Interface.
 
@@ -149,14 +153,12 @@ def get_network_interface(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Network Interface is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:network/getNetworkInterface:getNetworkInterface', __args__, opts=opts).value
 
     return AwaitableGetNetworkInterfaceResult(
