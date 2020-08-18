@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['ConsumerGroup']
 
 
 class ConsumerGroup(pulumi.CustomResource):
-    eventhub_endpoint_name: pulumi.Output[str]
-    """
-    The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.
-    """
-    iothub_name: pulumi.Output[str]
-    """
-    The name of the IoT Hub. Changing this forces a new resource to be created.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of this Consumer Group. Changing this forces a new resource to be created.
-    """
-    resource_group_name: pulumi.Output[str]
-    """
-    The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, eventhub_endpoint_name=None, iothub_name=None, name=None, resource_group_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 eventhub_endpoint_name: Optional[pulumi.Input[str]] = None,
+                 iothub_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Consumer Group within an IotHub
 
@@ -42,7 +37,7 @@ class ConsumerGroup(pulumi.CustomResource):
             location=example_resource_group.location,
             sku={
                 "name": "S1",
-                "capacity": "1",
+                "capacity": 1,
             },
             tags={
                 "purpose": "testing",
@@ -71,7 +66,7 @@ class ConsumerGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,7 +89,13 @@ class ConsumerGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, eventhub_endpoint_name=None, iothub_name=None, name=None, resource_group_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            eventhub_endpoint_name: Optional[pulumi.Input[str]] = None,
+            iothub_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'ConsumerGroup':
         """
         Get an existing ConsumerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -117,8 +118,41 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__["resource_group_name"] = resource_group_name
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="eventhubEndpointName")
+    def eventhub_endpoint_name(self) -> str:
+        """
+        The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "eventhub_endpoint_name")
+
+    @property
+    @pulumi.getter(name="iothubName")
+    def iothub_name(self) -> str:
+        """
+        The name of the IoT Hub. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "iothub_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this Consumer Group. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "resource_group_name")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
