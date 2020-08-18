@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['NatGatewayPublicIpAssociation']
 
 
 class NatGatewayPublicIpAssociation(pulumi.CustomResource):
-    nat_gateway_id: pulumi.Output[str]
-    """
-    The ID of the Nat Gateway. Changing this forces a new resource to be created.
-    """
-    public_ip_address_id: pulumi.Output[str]
-    """
-    The ID of the Public IP which this Nat Gateway which should be connected to. Changing this forces a new resource to be created.
-    """
-    def __init__(__self__, resource_name, opts=None, nat_gateway_id=None, public_ip_address_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 nat_gateway_id: Optional[pulumi.Input[str]] = None,
+                 public_ip_address_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages the association between a Nat Gateway and a Public IP.
 
@@ -59,7 +60,7 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -78,7 +79,11 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, nat_gateway_id=None, public_ip_address_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            nat_gateway_id: Optional[pulumi.Input[str]] = None,
+            public_ip_address_id: Optional[pulumi.Input[str]] = None) -> 'NatGatewayPublicIpAssociation':
         """
         Get an existing NatGatewayPublicIpAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,8 +102,25 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
         __props__["public_ip_address_id"] = public_ip_address_id
         return NatGatewayPublicIpAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
+        """
+        The ID of the Nat Gateway. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="publicIpAddressId")
+    def public_ip_address_id(self) -> str:
+        """
+        The ID of the Public IP which this Nat Gateway which should be connected to. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "public_ip_address_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
