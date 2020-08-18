@@ -5,61 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['IotHubDps']
 
 
 class IotHubDps(pulumi.CustomResource):
-    allocation_policy: pulumi.Output[str]
+    allocation_policy: pulumi.Output[str] = pulumi.property("allocationPolicy")
     """
     The allocation policy of the IoT Device Provisioning Service.
     """
-    device_provisioning_host_name: pulumi.Output[str]
+
+    device_provisioning_host_name: pulumi.Output[str] = pulumi.property("deviceProvisioningHostName")
     """
     The device endpoint of the IoT Device Provisioning Service.
     """
-    id_scope: pulumi.Output[str]
+
+    id_scope: pulumi.Output[str] = pulumi.property("idScope")
     """
     The unique identifier of the IoT Device Provisioning Service.
     """
-    linked_hubs: pulumi.Output[list]
+
+    linked_hubs: pulumi.Output[Optional[List['outputs.IotHubDpsLinkedHub']]] = pulumi.property("linkedHubs")
     """
     A `linked_hub` block as defined below.
-
-      * `allocationWeight` (`float`) - The weight applied to the IoT Hub. Defaults to 0.
-      * `applyAllocationPolicy` (`bool`) - Determines whether to apply allocation policies to the IoT Hub. Defaults to false.
-      * `connection_string` (`str`) - The connection string to connect to the IoT Hub. Changing this forces a new resource.
-      * `hostname` (`str`) - The IoT Hub hostname.
-      * `location` (`str`) - The location of the IoT hub. Changing this forces a new resource.
     """
-    location: pulumi.Output[str]
+
+    location: pulumi.Output[str] = pulumi.property("location")
     """
     Specifies the supported Azure location where the resource has to be createc. Changing this forces a new resource to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
     """
-    service_operations_host_name: pulumi.Output[str]
+
+    service_operations_host_name: pulumi.Output[str] = pulumi.property("serviceOperationsHostName")
     """
     The service endpoint of the IoT Device Provisioning Service.
     """
-    sku: pulumi.Output[dict]
+
+    sku: pulumi.Output['outputs.IotHubDpsSku'] = pulumi.property("sku")
     """
     A `sku` block as defined below.
-
-      * `capacity` (`float`) - The number of provisioned IoT Device Provisioning Service units.
-      * `name` (`str`) - The name of the sku. Currently can only be set to `S1`.
     """
-    tags: pulumi.Output[dict]
+
+    tags: pulumi.Output[Optional[Mapping[str, str]]] = pulumi.property("tags")
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, linked_hubs=None, location=None, name=None, resource_group_name=None, sku=None, tags=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 linked_hubs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['IotHubDpsSkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages an IotHub Device Provisioning Service.
 
@@ -75,31 +91,18 @@ class IotHubDps(pulumi.CustomResource):
             location=example_resource_group.location,
             sku={
                 "name": "S1",
-                "capacity": "1",
+                "capacity": 1,
             })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] linked_hubs: A `linked_hub` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]] linked_hubs: A `linked_hub` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource has to be createc. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[dict] sku: A `sku` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **linked_hubs** object supports the following:
-
-          * `allocationWeight` (`pulumi.Input[float]`) - The weight applied to the IoT Hub. Defaults to 0.
-          * `applyAllocationPolicy` (`pulumi.Input[bool]`) - Determines whether to apply allocation policies to the IoT Hub. Defaults to false.
-          * `connection_string` (`pulumi.Input[str]`) - The connection string to connect to the IoT Hub. Changing this forces a new resource.
-          * `hostname` (`pulumi.Input[str]`) - The IoT Hub hostname.
-          * `location` (`pulumi.Input[str]`) - The location of the IoT hub. Changing this forces a new resource.
-
-        The **sku** object supports the following:
-
-          * `capacity` (`pulumi.Input[float]`) - The number of provisioned IoT Device Provisioning Service units.
-          * `name` (`pulumi.Input[str]`) - The name of the sku. Currently can only be set to `S1`.
+        :param pulumi.Input[pulumi.InputType['IotHubDpsSkuArgs']] sku: A `sku` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -112,7 +115,7 @@ class IotHubDps(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -139,7 +142,19 @@ class IotHubDps(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocation_policy=None, device_provisioning_host_name=None, id_scope=None, linked_hubs=None, location=None, name=None, resource_group_name=None, service_operations_host_name=None, sku=None, tags=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_policy: Optional[pulumi.Input[str]] = None,
+            device_provisioning_host_name: Optional[pulumi.Input[str]] = None,
+            id_scope: Optional[pulumi.Input[str]] = None,
+            linked_hubs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            service_operations_host_name: Optional[pulumi.Input[str]] = None,
+            sku: Optional[pulumi.Input[pulumi.InputType['IotHubDpsSkuArgs']]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'IotHubDps':
         """
         Get an existing IotHubDps resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -150,26 +165,13 @@ class IotHubDps(pulumi.CustomResource):
         :param pulumi.Input[str] allocation_policy: The allocation policy of the IoT Device Provisioning Service.
         :param pulumi.Input[str] device_provisioning_host_name: The device endpoint of the IoT Device Provisioning Service.
         :param pulumi.Input[str] id_scope: The unique identifier of the IoT Device Provisioning Service.
-        :param pulumi.Input[list] linked_hubs: A `linked_hub` block as defined below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]] linked_hubs: A `linked_hub` block as defined below.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource has to be createc. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_operations_host_name: The service endpoint of the IoT Device Provisioning Service.
-        :param pulumi.Input[dict] sku: A `sku` block as defined below.
-        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        The **linked_hubs** object supports the following:
-
-          * `allocationWeight` (`pulumi.Input[float]`) - The weight applied to the IoT Hub. Defaults to 0.
-          * `applyAllocationPolicy` (`pulumi.Input[bool]`) - Determines whether to apply allocation policies to the IoT Hub. Defaults to false.
-          * `connection_string` (`pulumi.Input[str]`) - The connection string to connect to the IoT Hub. Changing this forces a new resource.
-          * `hostname` (`pulumi.Input[str]`) - The IoT Hub hostname.
-          * `location` (`pulumi.Input[str]`) - The location of the IoT hub. Changing this forces a new resource.
-
-        The **sku** object supports the following:
-
-          * `capacity` (`pulumi.Input[float]`) - The number of provisioned IoT Device Provisioning Service units.
-          * `name` (`pulumi.Input[str]`) - The name of the sku. Currently can only be set to `S1`.
+        :param pulumi.Input[pulumi.InputType['IotHubDpsSkuArgs']] sku: A `sku` block as defined below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -188,7 +190,8 @@ class IotHubDps(pulumi.CustomResource):
         return IotHubDps(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

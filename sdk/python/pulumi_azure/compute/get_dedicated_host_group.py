@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDedicatedHostGroupResult',
+    'AwaitableGetDedicatedHostGroupResult',
+    'get_dedicated_host_group',
+]
+
 
 class GetDedicatedHostGroupResult:
     """
@@ -49,6 +56,8 @@ class GetDedicatedHostGroupResult:
         """
         The Availability Zones in which this Dedicated Host Group is located.
         """
+
+
 class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +72,10 @@ class AwaitableGetDedicatedHostGroupResult(GetDedicatedHostGroupResult):
             tags=self.tags,
             zones=self.zones)
 
-def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
+
+def get_dedicated_host_group(name: Optional[str] = None,
+                             resource_group_name: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedHostGroupResult:
     """
     Use this data source to access information about an existing Dedicated Host Group.
 
@@ -83,14 +95,12 @@ def get_dedicated_host_group(name=None,resource_group_name=None,opts=None):
     :param str resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:compute/getDedicatedHostGroup:getDedicatedHostGroup', __args__, opts=opts).value
 
     return AwaitableGetDedicatedHostGroupResult(

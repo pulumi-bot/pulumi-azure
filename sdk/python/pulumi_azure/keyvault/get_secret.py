@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetSecretResult',
+    'AwaitableGetSecretResult',
+    'get_secret',
+]
+
 
 class GetSecretResult:
     """
@@ -49,6 +56,8 @@ class GetSecretResult:
         """
         The current version of the Key Vault Secret.
         """
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +72,10 @@ class AwaitableGetSecretResult(GetSecretResult):
             value=self.value,
             version=self.version)
 
-def get_secret(key_vault_id=None,name=None,opts=None):
+
+def get_secret(key_vault_id: Optional[str] = None,
+               name: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
     Use this data source to access information about an existing Key Vault Secret.
 
@@ -83,14 +95,12 @@ def get_secret(key_vault_id=None,name=None,opts=None):
     :param str name: Specifies the name of the Key Vault Secret.
     """
     __args__ = dict()
-
-
     __args__['keyVaultId'] = key_vault_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:keyvault/getSecret:getSecret', __args__, opts=opts).value
 
     return AwaitableGetSecretResult(

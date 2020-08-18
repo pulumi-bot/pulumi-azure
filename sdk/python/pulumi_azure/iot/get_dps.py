@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDpsResult',
+    'AwaitableGetDpsResult',
+    'get_dps',
+]
+
 
 class GetDpsResult:
     """
@@ -58,6 +65,8 @@ class GetDpsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDpsResult(GetDpsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,7 +83,11 @@ class AwaitableGetDpsResult(GetDpsResult):
             service_operations_host_name=self.service_operations_host_name,
             tags=self.tags)
 
-def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
+
+def get_dps(name: Optional[str] = None,
+            resource_group_name: Optional[str] = None,
+            tags: Optional[Mapping[str, str]] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDpsResult:
     """
     Use this data source to access information about an existing IotHub Device Provisioning Service.
 
@@ -93,15 +106,13 @@ def get_dps(name=None,resource_group_name=None,tags=None,opts=None):
     :param str resource_group_name: The name of the resource group under which the Iot Device Provisioning Service is located in.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['resourceGroupName'] = resource_group_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:iot/getDps:getDps', __args__, opts=opts).value
 
     return AwaitableGetDpsResult(

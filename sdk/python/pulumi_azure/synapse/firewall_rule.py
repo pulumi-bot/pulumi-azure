@@ -5,28 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['FirewallRule']
 
 
 class FirewallRule(pulumi.CustomResource):
-    end_ip_address: pulumi.Output[str]
+    end_ip_address: pulumi.Output[str] = pulumi.property("endIpAddress")
     """
     The ending IP address to allow through the firewall for this rule.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The Name of the firewall rule. Changing this forces a new resource to be created.
     """
-    start_ip_address: pulumi.Output[str]
+
+    start_ip_address: pulumi.Output[str] = pulumi.property("startIpAddress")
     """
     The starting IP address to allow through the firewall for this rule.
     """
-    synapse_workspace_id: pulumi.Output[str]
+
+    synapse_workspace_id: pulumi.Output[str] = pulumi.property("synapseWorkspaceId")
     """
     The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
     """
-    def __init__(__self__, resource_name, opts=None, end_ip_address=None, name=None, start_ip_address=None, synapse_workspace_id=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 end_ip_address: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 start_ip_address: Optional[pulumi.Input[str]] = None,
+                 synapse_workspace_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows you to Manages a Synapse Firewall Rule.
 
@@ -43,7 +58,7 @@ class FirewallRule(pulumi.CustomResource):
             account_tier="Standard",
             account_replication_type="LRS",
             account_kind="StorageV2",
-            is_hns_enabled="true")
+            is_hns_enabled=True)
         example_data_lake_gen2_filesystem = azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", storage_account_id=example_account.id)
         example_workspace = azure.synapse.Workspace("exampleWorkspace",
             resource_group_name=example_resource_group.name,
@@ -75,7 +90,7 @@ class FirewallRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -98,7 +113,13 @@ class FirewallRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, end_ip_address=None, name=None, start_ip_address=None, synapse_workspace_id=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            end_ip_address: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            start_ip_address: Optional[pulumi.Input[str]] = None,
+            synapse_workspace_id: Optional[pulumi.Input[str]] = None) -> 'FirewallRule':
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -122,7 +143,8 @@ class FirewallRule(pulumi.CustomResource):
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

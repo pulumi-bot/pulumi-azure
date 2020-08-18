@@ -5,36 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['LinkedServer']
 
 
 class LinkedServer(pulumi.CustomResource):
-    linked_redis_cache_id: pulumi.Output[str]
+    linked_redis_cache_id: pulumi.Output[str] = pulumi.property("linkedRedisCacheId")
     """
     The ID of the linked Redis cache. Changing this forces a new Redis to be created.
     """
-    linked_redis_cache_location: pulumi.Output[str]
+
+    linked_redis_cache_location: pulumi.Output[str] = pulumi.property("linkedRedisCacheLocation")
     """
     The location of the linked Redis cache. Changing this forces a new Redis to be created.
     """
-    name: pulumi.Output[str]
+
+    name: pulumi.Output[str] = pulumi.property("name")
     """
     The name of the linked server.
     """
-    resource_group_name: pulumi.Output[str]
+
+    resource_group_name: pulumi.Output[str] = pulumi.property("resourceGroupName")
     """
     The name of the Resource Group where the Redis caches exists. Changing this forces a new Redis to be created.
     """
-    server_role: pulumi.Output[str]
+
+    server_role: pulumi.Output[str] = pulumi.property("serverRole")
     """
     The role of the linked Redis cache (eg "Secondary"). Changing this forces a new Redis to be created.
     """
-    target_redis_cache_name: pulumi.Output[str]
+
+    target_redis_cache_name: pulumi.Output[str] = pulumi.property("targetRedisCacheName")
     """
     The name of Redis cache to link with. Changing this forces a new Redis to be created. (eg The primary role)
     """
-    def __init__(__self__, resource_name, opts=None, linked_redis_cache_id=None, linked_redis_cache_location=None, resource_group_name=None, server_role=None, target_redis_cache_name=None, __props__=None, __name__=None, __opts__=None):
+
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 linked_redis_cache_id: Optional[pulumi.Input[str]] = None,
+                 linked_redis_cache_location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_role: Optional[pulumi.Input[str]] = None,
+                 target_redis_cache_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Redis Linked Server (ie Geo Location)
 
@@ -97,7 +115,7 @@ class LinkedServer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -126,7 +144,15 @@ class LinkedServer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, linked_redis_cache_id=None, linked_redis_cache_location=None, name=None, resource_group_name=None, server_role=None, target_redis_cache_name=None):
+    def get(resource_name: str,
+            id: str,
+            opts: Optional[pulumi.ResourceOptions] = None,
+            linked_redis_cache_id: Optional[pulumi.Input[str]] = None,
+            linked_redis_cache_location: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            server_role: Optional[pulumi.Input[str]] = None,
+            target_redis_cache_name: Optional[pulumi.Input[str]] = None) -> 'LinkedServer':
         """
         Get an existing LinkedServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -154,7 +180,8 @@ class LinkedServer(pulumi.CustomResource):
         return LinkedServer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

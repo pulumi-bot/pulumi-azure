@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'GetDefinitionResult',
+    'AwaitableGetDefinitionResult',
+    'get_definition',
+]
+
 
 class GetDefinitionResult:
     """
@@ -61,6 +68,8 @@ class GetDefinitionResult:
         """
         A list of versions published for this Blueprint Definition.
         """
+
+
 class AwaitableGetDefinitionResult(GetDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,7 +86,10 @@ class AwaitableGetDefinitionResult(GetDefinitionResult):
             time_created=self.time_created,
             versions=self.versions)
 
-def get_definition(name=None,scope_id=None,opts=None):
+
+def get_definition(name: Optional[str] = None,
+                   scope_id: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDefinitionResult:
     """
     Use this data source to access information about an existing Azure Blueprint Definition
 
@@ -100,14 +112,12 @@ def get_definition(name=None,scope_id=None,opts=None):
     :param str scope_id: The Resource ID of the scope at which the blueprint definition is stored. This will be with either a Subscription ID or Management Group ID.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['scopeId'] = scope_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azure:blueprint/getDefinition:getDefinition', __args__, opts=opts).value
 
     return AwaitableGetDefinitionResult(
