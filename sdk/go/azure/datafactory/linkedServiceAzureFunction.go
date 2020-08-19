@@ -13,49 +13,6 @@ import (
 // Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
 //
 // > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("northeurope"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleFactory, err := datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datafactory.NewLinkedServiceAzureFunction(ctx, "exampleLinkedServiceAzureFunction", &datafactory.LinkedServiceAzureFunctionArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			DataFactoryName:   exampleFactory.Name,
-// 			Url: exampleFunctionApp.ApplyT(func(exampleFunctionApp appservice.LookupFunctionAppResult) (string, error) {
-// 				return exampleFunctionApp.DefaultHostname, nil
-// 			}).(pulumi.StringOutput),
-// 			Key: pulumi.String("foo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LinkedServiceAzureFunction struct {
 	pulumi.CustomResourceState
 

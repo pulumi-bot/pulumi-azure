@@ -8,31 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/operationalinsights"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := operationalinsights.LookupAnalyticsWorkspace(ctx, &operationalinsights.LookupAnalyticsWorkspaceArgs{
-// 			Name:              "acctest-01",
-// 			ResourceGroupName: "acctest",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("logAnalyticsWorkspaceId", example.WorkspaceId)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupAnalyticsWorkspace(ctx *pulumi.Context, args *LookupAnalyticsWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAnalyticsWorkspaceResult, error) {
 	var rv LookupAnalyticsWorkspaceResult
 	err := ctx.Invoke("azure:operationalinsights/getAnalyticsWorkspace:getAnalyticsWorkspace", args, &rv, opts...)

@@ -10,31 +10,6 @@ import (
 // Use this data source to access the connection status information about an existing Private Endpoint Connection.
 //
 // > **NOTE** Private Endpoint is currently in Public Preview.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetEndpointConnection(ctx, &privatelink.GetEndpointConnectionArgs{
-// 			Name:              "example-private-endpoint",
-// 			ResourceGroupName: "example-rg",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("privateEndpointStatus", example.PrivateServiceConnections[0].Status)
-// 		return nil
-// 	})
-// }
-// ```
 func GetEndpointConnection(ctx *pulumi.Context, args *GetEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*GetEndpointConnectionResult, error) {
 	var rv GetEndpointConnectionResult
 	err := ctx.Invoke("azure:privatelink/getEndpointConnection:getEndpointConnection", args, &rv, opts...)

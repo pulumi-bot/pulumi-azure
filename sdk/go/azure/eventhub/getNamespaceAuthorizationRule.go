@@ -8,32 +8,6 @@ import (
 )
 
 // Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/eventhub"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eventhub.LookupNamespaceAuthorizationRule(ctx, &eventhub.LookupNamespaceAuthorizationRuleArgs{
-// 			Name:              "navi",
-// 			ResourceGroupName: "example-resources",
-// 			NamespaceName:     "example-ns",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("eventhubAuthorizationRuleId", data.Azurem_eventhub_namespace_authorization_rule.Example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	var rv LookupNamespaceAuthorizationRuleResult
 	err := ctx.Invoke("azure:eventhub/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule", args, &rv, opts...)

@@ -13,67 +13,6 @@ import (
 // Manages a Management Lock which is scoped to a Subscription, Resource Group or Resource.
 //
 // ## Example Usage
-// ### Subscription Level Lock)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/management"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetSubscription(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = management.NewLock(ctx, "subscription_level", &management.LockArgs{
-// 			Scope:     pulumi.String(current.Id),
-// 			LockLevel: pulumi.String("CanNotDelete"),
-// 			Notes:     pulumi.String("Items can't be deleted in this subscription!"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Example Usage (Resource Group Level Lock)
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/management"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West Europe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = management.NewLock(ctx, "resource_group_level", &management.LockArgs{
-// 			Scope:     example.ID(),
-// 			LockLevel: pulumi.String("ReadOnly"),
-// 			Notes:     pulumi.String("This Resource Group is Read-Only"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Resource Level Lock)
 //
 // ```go

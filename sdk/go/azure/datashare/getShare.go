@@ -8,38 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Data Share.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datashare"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datashare.LookupAccount(ctx, &datashare.LookupAccountArgs{
-// 			Name:              "example-account",
-// 			ResourceGroupName: "example-resource-group",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleShare, err := datashare.LookupShare(ctx, &datashare.LookupShareArgs{
-// 			Name:      "existing",
-// 			AccountId: data.Azurerm_data_share_account.Exmaple.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("id", exampleShare.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
 	var rv LookupShareResult
 	err := ctx.Invoke("azure:datashare/getShare:getShare", args, &rv, opts...)
