@@ -135,7 +135,7 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appServiceId")
-    def app_service_id(self) -> str:
+    def app_service_id(self) -> pulumi.Output[str]:
         """
         The ID of the App Service to associate to the VNet. Changing this forces a new resource to be created.
         """
@@ -143,7 +143,7 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slotName")
-    def slot_name(self) -> str:
+    def slot_name(self) -> pulumi.Output[str]:
         """
         The name of the App Service Slot. Changing this forces a new resource to be created.
         """
@@ -151,7 +151,7 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
         """

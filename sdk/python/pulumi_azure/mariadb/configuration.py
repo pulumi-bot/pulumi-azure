@@ -123,7 +123,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the MariaDB Configuration, which needs [to be a valid MariaDB configuration name](https://mariadb.com/kb/en/library/server-system-variables/). Changing this forces a new resource to be created.
         """
@@ -131,7 +131,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The name of the resource group in which the MariaDB Server exists. Changing this forces a new resource to be created.
         """
@@ -139,7 +139,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverName")
-    def server_name(self) -> str:
+    def server_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the MariaDB Server. Changing this forces a new resource to be created.
         """
@@ -147,7 +147,7 @@ class Configuration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         Specifies the value of the MariaDB Configuration. See the MariaDB documentation for valid values.
         """

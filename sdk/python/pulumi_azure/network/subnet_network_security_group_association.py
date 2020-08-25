@@ -117,7 +117,7 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkSecurityGroupId")
-    def network_security_group_id(self) -> str:
+    def network_security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
         """
@@ -125,7 +125,7 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The ID of the Subnet. Changing this forces a new resource to be created.
         """

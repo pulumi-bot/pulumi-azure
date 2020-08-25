@@ -104,7 +104,7 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> str:
+    def nat_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the Nat Gateway. Changing this forces a new resource to be created.
         """
@@ -112,7 +112,7 @@ class NatGatewayPublicIpAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicIpAddressId")
-    def public_ip_address_id(self) -> str:
+    def public_ip_address_id(self) -> pulumi.Output[str]:
         """
         The ID of the Public IP which this Nat Gateway which should be connected to. Changing this forces a new resource to be created.
         """

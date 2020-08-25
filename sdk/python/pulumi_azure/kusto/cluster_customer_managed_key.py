@@ -99,7 +99,7 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> pulumi.Output[str]:
         """
         The ID of the Kusto Cluster. Changing this forces a new resource to be created.
         """
@@ -107,7 +107,7 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> str:
+    def key_name(self) -> pulumi.Output[str]:
         """
         The name of Key Vault Key.
         """
@@ -115,7 +115,7 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyVaultId")
-    def key_vault_id(self) -> str:
+    def key_vault_id(self) -> pulumi.Output[str]:
         """
         The ID of the Key Vault. Changing this forces a new resource to be created.
         """
@@ -123,7 +123,7 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyVersion")
-    def key_version(self) -> str:
+    def key_version(self) -> pulumi.Output[str]:
         """
         The version of Key Vault Key.
         """

@@ -88,7 +88,7 @@ class SubscriptionPricing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tier(self) -> str:
+    def tier(self) -> pulumi.Output[str]:
         """
         The pricing tier to use. Possible values are `Free` and `Standard`.
         """

@@ -138,7 +138,7 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipConfigurationName")
-    def ip_configuration_name(self) -> str:
+    def ip_configuration_name(self) -> pulumi.Output[str]:
         """
         The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
         """
@@ -146,7 +146,7 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natRuleId")
-    def nat_rule_id(self) -> str:
+    def nat_rule_id(self) -> pulumi.Output[str]:
         """
         The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
         """
@@ -154,7 +154,7 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> str:
+    def network_interface_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network Interface. Changing this forces a new resource to be created.
         """

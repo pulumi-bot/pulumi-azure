@@ -112,7 +112,7 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> str:
+    def route_table_id(self) -> pulumi.Output[str]:
         """
         The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
         """
@@ -120,7 +120,7 @@ class SubnetRouteTableAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The ID of the Subnet. Changing this forces a new resource to be created.
         """

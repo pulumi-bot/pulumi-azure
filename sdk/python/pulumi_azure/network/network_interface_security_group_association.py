@@ -114,7 +114,7 @@ class NetworkInterfaceSecurityGroupAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> str:
+    def network_interface_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network Interface. Changing this forces a new resource to be created.
         """
@@ -122,7 +122,7 @@ class NetworkInterfaceSecurityGroupAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkSecurityGroupId")
-    def network_security_group_id(self) -> str:
+    def network_security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
         """

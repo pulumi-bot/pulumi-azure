@@ -104,7 +104,7 @@ class SpringCloudApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
         """
@@ -112,7 +112,7 @@ class SpringCloudApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
         """
@@ -120,7 +120,7 @@ class SpringCloudApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
+    def service_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
         """

@@ -134,7 +134,7 @@ class NetworkInterfaceBackendAddressPoolAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendAddressPoolId")
-    def backend_address_pool_id(self) -> str:
+    def backend_address_pool_id(self) -> pulumi.Output[str]:
         """
         The ID of the Load Balancer Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.
         """
@@ -142,7 +142,7 @@ class NetworkInterfaceBackendAddressPoolAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipConfigurationName")
-    def ip_configuration_name(self) -> str:
+    def ip_configuration_name(self) -> pulumi.Output[str]:
         """
         The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
         """
@@ -150,7 +150,7 @@ class NetworkInterfaceBackendAddressPoolAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> str:
+    def network_interface_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network Interface. Changing this forces a new resource to be created.
         """

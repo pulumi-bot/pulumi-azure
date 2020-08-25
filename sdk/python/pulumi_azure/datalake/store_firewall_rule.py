@@ -122,7 +122,7 @@ class StoreFirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> str:
+    def account_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the Data Lake Store for which the Firewall Rule should take effect.
         """
@@ -130,7 +130,7 @@ class StoreFirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endIpAddress")
-    def end_ip_address(self) -> str:
+    def end_ip_address(self) -> pulumi.Output[str]:
         """
         The End IP Address for the firewall rule.
         """
@@ -138,7 +138,7 @@ class StoreFirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the Data Lake Store. Changing this forces a new resource to be created. Has to be between 3 to 24 characters.
         """
@@ -146,7 +146,7 @@ class StoreFirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The name of the resource group in which to create the Data Lake Store.
         """
@@ -154,7 +154,7 @@ class StoreFirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startIpAddress")
-    def start_ip_address(self) -> str:
+    def start_ip_address(self) -> pulumi.Output[str]:
         """
         The Start IP address for the firewall rule.
         """

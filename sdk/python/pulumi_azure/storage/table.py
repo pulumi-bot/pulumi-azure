@@ -106,7 +106,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acls(self) -> Optional[List['outputs.TableAcl']]:
+    def acls(self) -> pulumi.Output[Optional[List['outputs.TableAcl']]]:
         """
         One or more `acl` blocks as defined below.
         """
@@ -114,7 +114,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the storage table. Must be unique within the storage account the table is located.
         """
@@ -122,7 +122,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageAccountName")
-    def storage_account_name(self) -> str:
+    def storage_account_name(self) -> pulumi.Output[str]:
         """
         Specifies the storage account in which to create the storage table.
         Changing this forces a new resource to be created.

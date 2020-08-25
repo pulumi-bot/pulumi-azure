@@ -103,7 +103,7 @@ class AdvancedThreatProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Should Advanced Threat Protection be enabled on this resource?
         """
@@ -111,7 +111,7 @@ class AdvancedThreatProtection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetResourceId")
-    def target_resource_id(self) -> str:
+    def target_resource_id(self) -> pulumi.Output[str]:
         """
         The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
         """

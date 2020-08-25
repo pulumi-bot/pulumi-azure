@@ -118,7 +118,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
         """
@@ -126,7 +126,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the Media Services Account. Changing this forces a new resource to be created.
         """
@@ -134,7 +134,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The name of the resource group in which to create the Media Services Account. Changing this forces a new resource to be created.
         """
@@ -142,7 +142,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageAccounts")
-    def storage_accounts(self) -> List['outputs.AccountStorageAccount']:
+    def storage_accounts(self) -> pulumi.Output[List['outputs.AccountStorageAccount']]:
         """
         One or more `storage_account` blocks as defined below.
         """

@@ -160,7 +160,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the network mapping.
         """
@@ -168,7 +168,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recoveryVaultName")
-    def recovery_vault_name(self) -> str:
+    def recovery_vault_name(self) -> pulumi.Output[str]:
         """
         The name of the vault that should be updated.
         """
@@ -176,7 +176,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         Name of the resource group where the vault that should be updated is located.
         """
@@ -184,7 +184,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceNetworkId")
-    def source_network_id(self) -> str:
+    def source_network_id(self) -> pulumi.Output[str]:
         """
         The id of the primary network.
         """
@@ -192,7 +192,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceRecoveryFabricName")
-    def source_recovery_fabric_name(self) -> str:
+    def source_recovery_fabric_name(self) -> pulumi.Output[str]:
         """
         Specifies the ASR fabric where mapping should be created.
         """
@@ -200,7 +200,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetNetworkId")
-    def target_network_id(self) -> str:
+    def target_network_id(self) -> pulumi.Output[str]:
         """
         The id of the recovery network.
         """
@@ -208,7 +208,7 @@ class NetworkMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetRecoveryFabricName")
-    def target_recovery_fabric_name(self) -> str:
+    def target_recovery_fabric_name(self) -> pulumi.Output[str]:
         """
         The Azure Site Recovery fabric object corresponding to the recovery Azure region.
         """

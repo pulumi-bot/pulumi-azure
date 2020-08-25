@@ -106,7 +106,7 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> str:
+    def nat_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
         """
@@ -114,7 +114,7 @@ class SubnetNatGatewayAssociation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Output[str]:
         """
         The ID of the Subnet. Changing this forces a new resource to be created.
         """

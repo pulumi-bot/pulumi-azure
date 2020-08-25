@@ -103,7 +103,7 @@ class Workspace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> str:
+    def scope(self) -> pulumi.Output[str]:
         """
         The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.
         """
@@ -111,7 +111,7 @@ class Workspace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> str:
+    def workspace_id(self) -> pulumi.Output[str]:
         """
         The ID of the Log Analytics Workspace to save the data in.
         """

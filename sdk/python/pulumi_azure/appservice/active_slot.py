@@ -116,7 +116,7 @@ class ActiveSlot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appServiceName")
-    def app_service_name(self) -> str:
+    def app_service_name(self) -> pulumi.Output[str]:
         """
         The name of the App Service within which the Slot exists.  Changing this forces a new resource to be created.
         """
@@ -124,7 +124,7 @@ class ActiveSlot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appServiceSlotName")
-    def app_service_slot_name(self) -> str:
+    def app_service_slot_name(self) -> pulumi.Output[str]:
         """
         The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
         """
@@ -132,7 +132,7 @@ class ActiveSlot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
         """

@@ -130,7 +130,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fqdn(self) -> str:
+    def fqdn(self) -> pulumi.Output[str]:
         """
         The FQDN of the DNS PTR Record.
         """
@@ -138,7 +138,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the DNS PTR Record.
         """
@@ -146,7 +146,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def records(self) -> List[str]:
+    def records(self) -> pulumi.Output[List[str]]:
         """
         List of Fully Qualified Domain Names.
         """
@@ -154,7 +154,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
         """
@@ -162,7 +162,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -170,7 +170,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The Time To Live (TTL) of the DNS record in seconds.
         """
@@ -178,7 +178,7 @@ class PtrRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneName")
-    def zone_name(self) -> str:
+    def zone_name(self) -> pulumi.Output[str]:
         """
         Specifies the DNS Zone where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
         """

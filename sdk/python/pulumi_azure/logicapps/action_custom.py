@@ -118,7 +118,7 @@ class ActionCustom(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def body(self) -> str:
+    def body(self) -> pulumi.Output[str]:
         """
         Specifies the JSON Blob defining the Body of this Custom Action.
         """
@@ -126,7 +126,7 @@ class ActionCustom(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logicAppId")
-    def logic_app_id(self) -> str:
+    def logic_app_id(self) -> pulumi.Output[str]:
         """
         Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
         """
@@ -134,7 +134,7 @@ class ActionCustom(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
         """

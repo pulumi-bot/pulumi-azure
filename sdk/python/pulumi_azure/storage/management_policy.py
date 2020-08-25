@@ -141,7 +141,7 @@ class ManagementPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[List['outputs.ManagementPolicyRule']]:
+    def rules(self) -> pulumi.Output[Optional[List['outputs.ManagementPolicyRule']]]:
         """
         A `rule` block as documented below.
         """
@@ -149,7 +149,7 @@ class ManagementPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageAccountId")
-    def storage_account_id(self) -> str:
+    def storage_account_id(self) -> pulumi.Output[str]:
         """
         Specifies the id of the storage account to apply the management policy to.
         """

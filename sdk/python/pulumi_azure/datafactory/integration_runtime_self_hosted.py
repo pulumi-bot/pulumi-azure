@@ -126,7 +126,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authKey1")
-    def auth_key1(self) -> str:
+    def auth_key1(self) -> pulumi.Output[str]:
         """
         The primary integration runtime authentication key.
         """
@@ -134,7 +134,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authKey2")
-    def auth_key2(self) -> str:
+    def auth_key2(self) -> pulumi.Output[str]:
         """
         The secondary integration runtime authentication key.
         """
@@ -142,7 +142,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataFactoryName")
-    def data_factory_name(self) -> str:
+    def data_factory_name(self) -> pulumi.Output[str]:
         """
         Changing this forces a new Data Factory to be created.
         """
@@ -150,7 +150,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Integration runtime description.
         """
@@ -158,7 +158,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name which should be used for this Data Factory. Changing this forces a new Data Factory to be created.
         """
@@ -166,7 +166,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rbacAuthorizations")
-    def rbac_authorizations(self) -> Optional[List['outputs.IntegrationRuntimeSelfHostedRbacAuthorization']]:
+    def rbac_authorizations(self) -> pulumi.Output[Optional[List['outputs.IntegrationRuntimeSelfHostedRbacAuthorization']]]:
         """
         A `rbac_authorization` block as defined below.
         """
@@ -174,7 +174,7 @@ class IntegrationRuntimeSelfHosted(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The name of the Resource Group where the Data Factory should exist. Changing this forces a new Data Factory to be created.
         """
