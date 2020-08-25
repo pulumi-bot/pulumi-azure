@@ -15,7 +15,7 @@ __all__ = ['NetworkInterface']
 
 class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enable_accelerated_networking: Optional[pulumi.Input[bool]] = None,

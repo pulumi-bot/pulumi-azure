@@ -15,7 +15,7 @@ __all__ = ['SparkPool']
 
 class SparkPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pause: Optional[pulumi.Input[pulumi.InputType['SparkPoolAutoPauseArgs']]] = None,
                  auto_scale: Optional[pulumi.Input[pulumi.InputType['SparkPoolAutoScaleArgs']]] = None,

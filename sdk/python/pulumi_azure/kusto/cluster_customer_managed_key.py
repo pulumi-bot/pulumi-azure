@@ -13,7 +13,7 @@ __all__ = ['ClusterCustomerManagedKey']
 
 class ClusterCustomerManagedKey(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,

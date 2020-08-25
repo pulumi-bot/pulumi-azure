@@ -13,7 +13,7 @@ __all__ = ['ProtectionContainer']
 
 class ProtectionContainer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  recovery_fabric_name: Optional[pulumi.Input[str]] = None,

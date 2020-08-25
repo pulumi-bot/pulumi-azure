@@ -15,7 +15,7 @@ __all__ = ['WindowsVirtualMachine']
 
 class WindowsVirtualMachine(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_capabilities: Optional[pulumi.Input[pulumi.InputType['WindowsVirtualMachineAdditionalCapabilitiesArgs']]] = None,
                  additional_unattend_contents: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WindowsVirtualMachineAdditionalUnattendContentArgs']]]]] = None,

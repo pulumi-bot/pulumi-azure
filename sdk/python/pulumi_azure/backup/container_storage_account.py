@@ -13,7 +13,7 @@ __all__ = ['ContainerStorageAccount']
 
 class ContainerStorageAccount(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  recovery_vault_name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,

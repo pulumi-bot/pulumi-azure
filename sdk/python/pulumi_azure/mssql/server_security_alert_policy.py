@@ -13,7 +13,7 @@ __all__ = ['ServerSecurityAlertPolicy']
 
 class ServerSecurityAlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled_alerts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  email_account_admins: Optional[pulumi.Input[bool]] = None,

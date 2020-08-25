@@ -13,7 +13,7 @@ __all__ = ['Insights']
 
 class Insights(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_type: Optional[pulumi.Input[str]] = None,
                  daily_data_cap_in_gb: Optional[pulumi.Input[float]] = None,

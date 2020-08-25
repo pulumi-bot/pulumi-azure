@@ -13,7 +13,7 @@ __all__ = ['SubscriptionPricing']
 
 class SubscriptionPricing(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None,

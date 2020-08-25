@@ -19,7 +19,7 @@ class Endpoint(pulumi.CustomResource):
     warnings.warn("azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointCustomHeaderArgs']]]]] = None,
                  endpoint_location: Optional[pulumi.Input[str]] = None,

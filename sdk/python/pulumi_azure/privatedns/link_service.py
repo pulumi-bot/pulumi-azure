@@ -15,7 +15,7 @@ __all__ = ['LinkService']
 
 class LinkService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_approval_subscription_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,

@@ -13,7 +13,7 @@ __all__ = ['DataLakeGen2Filesystem']
 
 class DataLakeGen2Filesystem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

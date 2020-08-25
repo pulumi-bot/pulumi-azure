@@ -15,7 +15,7 @@ __all__ = ['IntegrationRuntimeManaged']
 
 class IntegrationRuntimeManaged(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_info: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']]] = None,
                  custom_setup_script: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCustomSetupScriptArgs']]] = None,

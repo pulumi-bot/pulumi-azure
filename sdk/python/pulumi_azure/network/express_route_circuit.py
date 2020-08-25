@@ -15,7 +15,7 @@ __all__ = ['ExpressRouteCircuit']
 
 class ExpressRouteCircuit(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_classic_operations: Optional[pulumi.Input[bool]] = None,
                  bandwidth_in_mbps: Optional[pulumi.Input[float]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Image']
 
 class Image(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ImageDataDiskArgs']]]]] = None,
                  hyper_v_generation: Optional[pulumi.Input[str]] = None,

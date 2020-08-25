@@ -13,7 +13,7 @@ __all__ = ['NetworkInterfaceNatRuleAssociation']
 
 class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ip_configuration_name: Optional[pulumi.Input[str]] = None,
                  nat_rule_id: Optional[pulumi.Input[str]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Account']
 
 class Account(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capabilities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccountCapabilityArgs']]]]] = None,
                  consistency_policy: Optional[pulumi.Input[pulumi.InputType['AccountConsistencyPolicyArgs']]] = None,

@@ -15,7 +15,7 @@ __all__ = ['NamespaceNetworkRuleSet']
 
 class NamespaceNetworkRuleSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_action: Optional[pulumi.Input[str]] = None,
                  ip_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

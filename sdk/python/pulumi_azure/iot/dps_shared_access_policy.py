@@ -13,7 +13,7 @@ __all__ = ['DpsSharedAccessPolicy']
 
 class DpsSharedAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enrollment_read: Optional[pulumi.Input[bool]] = None,
                  enrollment_write: Optional[pulumi.Input[bool]] = None,

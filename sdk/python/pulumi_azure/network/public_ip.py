@@ -13,7 +13,7 @@ __all__ = ['PublicIp']
 
 class PublicIp(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_method: Optional[pulumi.Input[str]] = None,
                  domain_name_label: Optional[pulumi.Input[str]] = None,

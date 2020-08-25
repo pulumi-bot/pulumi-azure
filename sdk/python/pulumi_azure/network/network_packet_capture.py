@@ -15,7 +15,7 @@ __all__ = ['NetworkPacketCapture']
 
 class NetworkPacketCapture(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkPacketCaptureFilterArgs']]]]] = None,
                  maximum_bytes_per_packet: Optional[pulumi.Input[float]] = None,

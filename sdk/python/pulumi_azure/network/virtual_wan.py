@@ -13,7 +13,7 @@ __all__ = ['VirtualWan']
 
 class VirtualWan(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_branch_to_branch_traffic: Optional[pulumi.Input[bool]] = None,
                  allow_vnet_to_vnet_traffic: Optional[pulumi.Input[bool]] = None,

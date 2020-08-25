@@ -15,7 +15,7 @@ __all__ = ['Api']
 
 class Api(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_management_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,

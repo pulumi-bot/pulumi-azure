@@ -13,7 +13,7 @@ __all__ = ['Agreement']
 
 class Agreement(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,

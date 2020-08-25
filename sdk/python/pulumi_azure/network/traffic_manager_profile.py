@@ -15,7 +15,7 @@ __all__ = ['TrafficManagerProfile']
 
 class TrafficManagerProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['TrafficManagerProfileDnsConfigArgs']]] = None,
                  monitor_config: Optional[pulumi.Input[pulumi.InputType['TrafficManagerProfileMonitorConfigArgs']]] = None,

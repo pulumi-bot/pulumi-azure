@@ -15,7 +15,7 @@ __all__ = ['ApplicationGateway']
 
 class ApplicationGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication_certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationGatewayAuthenticationCertificateArgs']]]]] = None,
                  autoscale_configuration: Optional[pulumi.Input[pulumi.InputType['ApplicationGatewayAutoscaleConfigurationArgs']]] = None,

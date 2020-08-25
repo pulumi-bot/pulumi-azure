@@ -15,7 +15,7 @@ __all__ = ['LocalNetworkGateway']
 
 class LocalNetworkGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_spaces: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  bgp_settings: Optional[pulumi.Input[pulumi.InputType['LocalNetworkGatewayBgpSettingsArgs']]] = None,

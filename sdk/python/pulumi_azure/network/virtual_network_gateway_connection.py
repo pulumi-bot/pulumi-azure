@@ -15,7 +15,7 @@ __all__ = ['VirtualNetworkGatewayConnection']
 
 class VirtualNetworkGatewayConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_key: Optional[pulumi.Input[str]] = None,
                  connection_protocol: Optional[pulumi.Input[str]] = None,

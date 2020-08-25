@@ -13,7 +13,7 @@ __all__ = ['NamespaceAuthorizationRule']
 
 class NamespaceAuthorizationRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  listen: Optional[pulumi.Input[bool]] = None,
                  manage: Optional[pulumi.Input[bool]] = None,

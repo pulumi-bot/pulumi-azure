@@ -13,7 +13,7 @@ __all__ = ['Probe']
 
 class Probe(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  interval_in_seconds: Optional[pulumi.Input[float]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,

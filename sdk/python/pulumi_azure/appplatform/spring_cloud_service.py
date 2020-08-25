@@ -15,7 +15,7 @@ __all__ = ['SpringCloudService']
 
 class SpringCloudService(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_server_git_setting: Optional[pulumi.Input[pulumi.InputType['SpringCloudServiceConfigServerGitSettingArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,

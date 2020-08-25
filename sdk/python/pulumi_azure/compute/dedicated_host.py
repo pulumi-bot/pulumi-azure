@@ -13,7 +13,7 @@ __all__ = ['DedicatedHost']
 
 class DedicatedHost(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_replace_on_failure: Optional[pulumi.Input[bool]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,

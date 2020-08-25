@@ -13,7 +13,7 @@ __all__ = ['AssignmentDedicatedHost']
 
 class AssignmentDedicatedHost(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

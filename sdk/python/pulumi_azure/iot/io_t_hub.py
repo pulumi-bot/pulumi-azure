@@ -15,7 +15,7 @@ __all__ = ['IoTHub']
 
 class IoTHub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IoTHubEndpointArgs']]]]] = None,
                  event_hub_partition_count: Optional[pulumi.Input[float]] = None,

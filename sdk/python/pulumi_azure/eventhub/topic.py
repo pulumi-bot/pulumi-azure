@@ -17,7 +17,7 @@ class Topic(pulumi.CustomResource):
     warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_on_idle: Optional[pulumi.Input[str]] = None,
                  default_message_ttl: Optional[pulumi.Input[str]] = None,

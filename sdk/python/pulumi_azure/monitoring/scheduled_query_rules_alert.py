@@ -15,7 +15,7 @@ __all__ = ['ScheduledQueryRulesAlert']
 
 class ScheduledQueryRulesAlert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[pulumi.InputType['ScheduledQueryRulesAlertActionArgs']]] = None,
                  authorized_resource_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

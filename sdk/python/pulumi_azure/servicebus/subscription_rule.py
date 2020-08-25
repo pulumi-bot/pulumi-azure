@@ -15,7 +15,7 @@ __all__ = ['SubscriptionRule']
 
 class SubscriptionRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  correlation_filter: Optional[pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']]] = None,

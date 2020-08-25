@@ -15,7 +15,7 @@ __all__ = ['Hub']
 
 class Hub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apns_credential: Optional[pulumi.Input[pulumi.InputType['HubApnsCredentialArgs']]] = None,
                  gcm_credential: Optional[pulumi.Input[pulumi.InputType['HubGcmCredentialArgs']]] = None,

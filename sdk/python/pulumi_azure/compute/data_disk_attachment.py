@@ -13,7 +13,7 @@ __all__ = ['DataDiskAttachment']
 
 class DataDiskAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  caching: Optional[pulumi.Input[str]] = None,
                  create_option: Optional[pulumi.Input[str]] = None,

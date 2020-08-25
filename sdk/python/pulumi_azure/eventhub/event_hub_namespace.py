@@ -15,7 +15,7 @@ __all__ = ['EventHubNamespace']
 
 class EventHubNamespace(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_inflate_enabled: Optional[pulumi.Input[bool]] = None,
                  capacity: Optional[pulumi.Input[float]] = None,

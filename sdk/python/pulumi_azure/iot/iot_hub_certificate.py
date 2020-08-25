@@ -13,7 +13,7 @@ __all__ = ['IotHubCertificate']
 
 class IotHubCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_content: Optional[pulumi.Input[str]] = None,
                  iot_dps_name: Optional[pulumi.Input[str]] = None,

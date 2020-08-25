@@ -13,7 +13,7 @@ __all__ = ['KubernetesClusterNodePool']
 
 class KubernetesClusterNodePool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enable_auto_scaling: Optional[pulumi.Input[bool]] = None,

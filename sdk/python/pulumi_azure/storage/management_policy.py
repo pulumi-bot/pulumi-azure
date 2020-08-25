@@ -15,7 +15,7 @@ __all__ = ['ManagementPolicy']
 
 class ManagementPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]]] = None,
                  storage_account_id: Optional[pulumi.Input[str]] = None,

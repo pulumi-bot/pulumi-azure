@@ -13,7 +13,7 @@ __all__ = ['SourceCodeToken']
 
 class SourceCodeToken(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  token_secret: Optional[pulumi.Input[str]] = None,

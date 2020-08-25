@@ -13,7 +13,7 @@ __all__ = ['DatasetDataLakeGen1']
 
 class DatasetDataLakeGen1(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_lake_store_id: Optional[pulumi.Input[str]] = None,
                  data_share_id: Optional[pulumi.Input[str]] = None,

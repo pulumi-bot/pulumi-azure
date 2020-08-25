@@ -15,7 +15,7 @@ __all__ = ['ExpressRouteCircuitPeering']
 
 class ExpressRouteCircuitPeering(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  express_route_circuit_name: Optional[pulumi.Input[str]] = None,
                  microsoft_peering_config: Optional[pulumi.Input[pulumi.InputType['ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs']]] = None,

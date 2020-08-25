@@ -17,7 +17,7 @@ class Queue(pulumi.CustomResource):
     warnings.warn("azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_on_idle: Optional[pulumi.Input[str]] = None,
                  dead_lettering_on_message_expiration: Optional[pulumi.Input[bool]] = None,

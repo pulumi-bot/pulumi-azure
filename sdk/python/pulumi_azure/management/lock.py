@@ -13,7 +13,7 @@ __all__ = ['Lock']
 
 class Lock(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lock_level: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

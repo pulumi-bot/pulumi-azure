@@ -13,7 +13,7 @@ __all__ = ['WebApp']
 
 class WebApp(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  developer_app_insights_api_key: Optional[pulumi.Input[str]] = None,
                  developer_app_insights_application_id: Optional[pulumi.Input[str]] = None,

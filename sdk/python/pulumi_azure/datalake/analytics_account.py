@@ -13,7 +13,7 @@ __all__ = ['AnalyticsAccount']
 
 class AnalyticsAccount(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_store_account_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

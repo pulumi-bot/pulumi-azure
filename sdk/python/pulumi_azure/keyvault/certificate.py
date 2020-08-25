@@ -15,7 +15,7 @@ __all__ = ['Certificate']
 
 class Certificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[pulumi.InputType['CertificateCertificateArgs']]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateCertificatePolicyArgs']]] = None,

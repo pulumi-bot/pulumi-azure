@@ -15,7 +15,7 @@ __all__ = ['VirtualNetwork']
 
 class VirtualNetwork(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_spaces: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  ddos_protection_plan: Optional[pulumi.Input[pulumi.InputType['VirtualNetworkDdosProtectionPlanArgs']]] = None,

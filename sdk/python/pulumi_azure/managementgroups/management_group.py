@@ -17,7 +17,7 @@ class ManagementGroup(pulumi.CustomResource):
     warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,

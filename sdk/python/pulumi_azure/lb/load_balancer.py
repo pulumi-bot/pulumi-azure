@@ -15,7 +15,7 @@ __all__ = ['LoadBalancer']
 
 class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  frontend_ip_configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerFrontendIpConfigurationArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

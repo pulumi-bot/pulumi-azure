@@ -13,7 +13,7 @@ __all__ = ['ZoneVirtualNetworkLink']
 
 class ZoneVirtualNetworkLink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_dns_zone_name: Optional[pulumi.Input[str]] = None,

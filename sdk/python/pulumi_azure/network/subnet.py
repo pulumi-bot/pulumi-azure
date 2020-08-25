@@ -15,7 +15,7 @@ __all__ = ['Subnet']
 
 class Subnet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_prefix: Optional[pulumi.Input[str]] = None,
                  address_prefixes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

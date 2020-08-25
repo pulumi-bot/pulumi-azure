@@ -17,7 +17,7 @@ class EventHubAuthorizationRule(pulumi.CustomResource):
     warnings.warn("azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  eventhub_name: Optional[pulumi.Input[str]] = None,
                  listen: Optional[pulumi.Input[bool]] = None,

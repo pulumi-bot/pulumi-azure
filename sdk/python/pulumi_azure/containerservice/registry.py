@@ -15,7 +15,7 @@ __all__ = ['Registry']
 
 class Registry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  georeplication_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

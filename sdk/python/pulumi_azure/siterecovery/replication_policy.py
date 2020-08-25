@@ -13,7 +13,7 @@ __all__ = ['ReplicationPolicy']
 
 class ReplicationPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_consistent_snapshot_frequency_in_minutes: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,

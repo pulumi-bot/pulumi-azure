@@ -15,7 +15,7 @@ __all__ = ['TrafficManagerEndpoint']
 
 class TrafficManagerEndpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TrafficManagerEndpointCustomHeaderArgs']]]]] = None,
                  endpoint_location: Optional[pulumi.Input[str]] = None,

@@ -15,7 +15,7 @@ __all__ = ['LogProfile']
 
 class LogProfile(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  categories: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

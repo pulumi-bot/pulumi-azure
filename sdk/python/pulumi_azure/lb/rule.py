@@ -13,7 +13,7 @@ __all__ = ['Rule']
 
 class Rule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_address_pool_id: Optional[pulumi.Input[str]] = None,
                  backend_port: Optional[pulumi.Input[float]] = None,

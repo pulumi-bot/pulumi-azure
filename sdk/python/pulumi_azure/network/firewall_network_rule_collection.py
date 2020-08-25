@@ -15,7 +15,7 @@ __all__ = ['FirewallNetworkRuleCollection']
 
 class FirewallNetworkRuleCollection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  azure_firewall_name: Optional[pulumi.Input[str]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Cache']
 
 class Cache(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[float]] = None,
                  enable_non_ssl_port: Optional[pulumi.Input[bool]] = None,

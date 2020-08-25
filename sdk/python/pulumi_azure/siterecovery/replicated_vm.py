@@ -15,7 +15,7 @@ __all__ = ['ReplicatedVM']
 
 class ReplicatedVM(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  managed_disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ReplicatedVMManagedDiskArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

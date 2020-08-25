@@ -15,7 +15,7 @@ __all__ = ['TimeSeriesInsightsReferenceDataSet']
 
 class TimeSeriesInsightsReferenceDataSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_string_comparison_behavior: Optional[pulumi.Input[str]] = None,
                  key_properties: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TimeSeriesInsightsReferenceDataSetKeyPropertyArgs']]]]] = None,

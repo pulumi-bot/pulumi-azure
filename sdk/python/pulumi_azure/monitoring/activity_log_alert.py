@@ -15,7 +15,7 @@ __all__ = ['ActivityLogAlert']
 
 class ActivityLogAlert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ActivityLogAlertActionArgs']]]]] = None,
                  criteria: Optional[pulumi.Input[pulumi.InputType['ActivityLogAlertCriteriaArgs']]] = None,

@@ -15,7 +15,7 @@ __all__ = ['FirewallPolicy']
 
 class FirewallPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_block_response_body: Optional[pulumi.Input[str]] = None,
                  custom_block_response_status_code: Optional[pulumi.Input[float]] = None,

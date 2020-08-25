@@ -13,7 +13,7 @@ __all__ = ['Workspace']
 
 class Workspace(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,

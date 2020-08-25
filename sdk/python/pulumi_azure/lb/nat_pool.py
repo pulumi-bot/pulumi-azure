@@ -13,7 +13,7 @@ __all__ = ['NatPool']
 
 class NatPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: Optional[pulumi.Input[float]] = None,
                  frontend_ip_configuration_name: Optional[pulumi.Input[str]] = None,

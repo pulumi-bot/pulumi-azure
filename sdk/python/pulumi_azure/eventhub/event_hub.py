@@ -15,7 +15,7 @@ __all__ = ['EventHub']
 
 class EventHub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capture_description: Optional[pulumi.Input[pulumi.InputType['EventHubCaptureDescriptionArgs']]] = None,
                  message_retention: Optional[pulumi.Input[float]] = None,

@@ -15,7 +15,7 @@ __all__ = ['Server']
 
 class Server(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  backup_blob_container_uri: Optional[pulumi.Input[str]] = None,

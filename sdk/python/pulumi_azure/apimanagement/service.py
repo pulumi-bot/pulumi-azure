@@ -15,7 +15,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_locations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceAdditionalLocationArgs']]]]] = None,
                  certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCertificateArgs']]]]] = None,

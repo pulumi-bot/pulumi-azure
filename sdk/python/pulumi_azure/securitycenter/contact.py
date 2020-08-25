@@ -13,7 +13,7 @@ __all__ = ['Contact']
 
 class Contact(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_notifications: Optional[pulumi.Input[bool]] = None,
                  alerts_to_admins: Optional[pulumi.Input[bool]] = None,

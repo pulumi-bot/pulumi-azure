@@ -15,7 +15,7 @@ __all__ = ['OutboundRule']
 
 class OutboundRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocated_outbound_ports: Optional[pulumi.Input[float]] = None,
                  backend_address_pool_id: Optional[pulumi.Input[str]] = None,

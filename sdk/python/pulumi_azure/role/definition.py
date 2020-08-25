@@ -19,7 +19,7 @@ class Definition(pulumi.CustomResource):
     warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignable_scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,

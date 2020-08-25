@@ -13,7 +13,7 @@ __all__ = ['Pipeline']
 
 class Pipeline(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activities_json: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

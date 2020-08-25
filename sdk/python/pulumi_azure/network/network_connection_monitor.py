@@ -15,7 +15,7 @@ __all__ = ['NetworkConnectionMonitor']
 
 class NetworkConnectionMonitor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_start: Optional[pulumi.Input[bool]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['NetworkConnectionMonitorDestinationArgs']]] = None,

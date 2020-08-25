@@ -15,7 +15,7 @@ __all__ = ['ResourceGroupExport']
 
 class ResourceGroupExport(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  delivery_info: Optional[pulumi.Input[pulumi.InputType['ResourceGroupExportDeliveryInfoArgs']]] = None,

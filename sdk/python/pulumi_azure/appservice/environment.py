@@ -13,7 +13,7 @@ __all__ = ['Environment']
 
 class Environment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_user_ip_cidrs: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  front_end_scale_factor: Optional[pulumi.Input[float]] = None,

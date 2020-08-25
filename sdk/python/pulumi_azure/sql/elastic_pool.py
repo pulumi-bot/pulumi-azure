@@ -13,7 +13,7 @@ __all__ = ['ElasticPool']
 
 class ElasticPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_dtu_max: Optional[pulumi.Input[float]] = None,
                  db_dtu_min: Optional[pulumi.Input[float]] = None,

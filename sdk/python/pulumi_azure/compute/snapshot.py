@@ -15,7 +15,7 @@ __all__ = ['Snapshot']
 
 class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_option: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[float]] = None,

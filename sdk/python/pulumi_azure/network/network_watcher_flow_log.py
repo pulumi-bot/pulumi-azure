@@ -15,7 +15,7 @@ __all__ = ['NetworkWatcherFlowLog']
 
 class NetworkWatcherFlowLog(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  network_security_group_id: Optional[pulumi.Input[str]] = None,

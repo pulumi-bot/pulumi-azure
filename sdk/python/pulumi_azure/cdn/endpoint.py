@@ -15,7 +15,7 @@ __all__ = ['Endpoint']
 
 class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_types_to_compresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  delivery_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EndpointDeliveryRuleArgs']]]]] = None,

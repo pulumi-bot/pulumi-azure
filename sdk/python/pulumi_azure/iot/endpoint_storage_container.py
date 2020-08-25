@@ -13,7 +13,7 @@ __all__ = ['EndpointStorageContainer']
 
 class EndpointStorageContainer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_frequency_in_seconds: Optional[pulumi.Input[float]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,

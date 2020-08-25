@@ -13,7 +13,7 @@ __all__ = ['AnalyticsFirewallRule']
 
 class AnalyticsFirewallRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  end_ip_address: Optional[pulumi.Input[str]] = None,

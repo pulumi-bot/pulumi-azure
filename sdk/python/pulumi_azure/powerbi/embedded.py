@@ -13,7 +13,7 @@ __all__ = ['Embedded']
 
 class Embedded(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administrators: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

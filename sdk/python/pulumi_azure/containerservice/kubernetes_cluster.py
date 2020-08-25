@@ -15,7 +15,7 @@ __all__ = ['KubernetesCluster']
 
 class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addon_profile: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterAddonProfileArgs']]] = None,
                  api_server_authorized_ip_ranges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

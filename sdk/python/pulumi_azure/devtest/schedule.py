@@ -15,7 +15,7 @@ __all__ = ['Schedule']
 
 class Schedule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  daily_recurrence: Optional[pulumi.Input[pulumi.InputType['ScheduleDailyRecurrenceArgs']]] = None,
                  hourly_recurrence: Optional[pulumi.Input[pulumi.InputType['ScheduleHourlyRecurrenceArgs']]] = None,

@@ -13,7 +13,7 @@ __all__ = ['AttachedDatabaseConfiguration']
 
 class AttachedDatabaseConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_resource_id: Optional[pulumi.Input[str]] = None,

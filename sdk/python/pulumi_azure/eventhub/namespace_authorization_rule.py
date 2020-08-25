@@ -17,7 +17,7 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
     warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  listen: Optional[pulumi.Input[bool]] = None,
                  manage: Optional[pulumi.Input[bool]] = None,

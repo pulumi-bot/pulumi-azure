@@ -15,7 +15,7 @@ __all__ = ['Cluster']
 
 class Cluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  add_on_features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  azure_active_directory: Optional[pulumi.Input[pulumi.InputType['ClusterAzureActiveDirectoryArgs']]] = None,

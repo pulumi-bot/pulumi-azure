@@ -15,7 +15,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  input_mapping_default_values: Optional[pulumi.Input[pulumi.InputType['DomainInputMappingDefaultValuesArgs']]] = None,
                  input_mapping_fields: Optional[pulumi.Input[pulumi.InputType['DomainInputMappingFieldsArgs']]] = None,

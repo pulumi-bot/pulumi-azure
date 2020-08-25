@@ -15,7 +15,7 @@ __all__ = ['CustomHttpsConfiguration']
 
 class CustomHttpsConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_https_configuration: Optional[pulumi.Input[pulumi.InputType['CustomHttpsConfigurationCustomHttpsConfigurationArgs']]] = None,
                  custom_https_provisioning_enabled: Optional[pulumi.Input[bool]] = None,

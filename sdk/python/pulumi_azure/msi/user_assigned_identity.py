@@ -17,7 +17,7 @@ class UserAssignedIdentity(pulumi.CustomResource):
     warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

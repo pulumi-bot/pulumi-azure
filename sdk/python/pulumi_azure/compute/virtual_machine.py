@@ -15,7 +15,7 @@ __all__ = ['VirtualMachine']
 
 class VirtualMachine(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_capabilities: Optional[pulumi.Input[pulumi.InputType['VirtualMachineAdditionalCapabilitiesArgs']]] = None,
                  availability_set_id: Optional[pulumi.Input[str]] = None,

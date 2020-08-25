@@ -13,7 +13,7 @@ __all__ = ['Cache']
 
 class Cache(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cache_size_in_gb: Optional[pulumi.Input[float]] = None,
                  location: Optional[pulumi.Input[str]] = None,

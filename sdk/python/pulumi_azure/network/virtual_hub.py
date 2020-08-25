@@ -15,7 +15,7 @@ __all__ = ['VirtualHub']
 
 class VirtualHub(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_prefix: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

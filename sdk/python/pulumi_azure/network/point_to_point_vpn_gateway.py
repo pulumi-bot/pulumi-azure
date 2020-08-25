@@ -15,7 +15,7 @@ __all__ = ['PointToPointVpnGateway']
 
 class PointToPointVpnGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_configuration: Optional[pulumi.Input[pulumi.InputType['PointToPointVpnGatewayConnectionConfigurationArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,

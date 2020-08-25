@@ -15,7 +15,7 @@ __all__ = ['Account']
 
 class Account(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[pulumi.InputType['AccountActiveDirectoryArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,

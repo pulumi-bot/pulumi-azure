@@ -19,7 +19,7 @@ class Certifiate(pulumi.CustomResource):
     warnings.warn("azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[pulumi.InputType['CertifiateCertificateArgs']]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertifiateCertificatePolicyArgs']]] = None,

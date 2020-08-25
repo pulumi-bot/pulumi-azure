@@ -13,7 +13,7 @@ __all__ = ['ProtectedFileShare']
 
 class ProtectedFileShare(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_policy_id: Optional[pulumi.Input[str]] = None,
                  recovery_vault_name: Optional[pulumi.Input[str]] = None,

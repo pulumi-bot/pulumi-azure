@@ -15,7 +15,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_policy_object_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  authentication_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceAuthenticationConfigurationArgs']]] = None,

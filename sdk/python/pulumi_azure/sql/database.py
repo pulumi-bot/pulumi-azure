@@ -15,7 +15,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  create_mode: Optional[pulumi.Input[str]] = None,

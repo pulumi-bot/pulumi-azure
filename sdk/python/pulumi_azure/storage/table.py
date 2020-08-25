@@ -15,7 +15,7 @@ __all__ = ['Table']
 
 class Table(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TableAclArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

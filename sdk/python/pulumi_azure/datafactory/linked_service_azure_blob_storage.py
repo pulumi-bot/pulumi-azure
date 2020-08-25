@@ -13,7 +13,7 @@ __all__ = ['LinkedServiceAzureBlobStorage']
 
 class LinkedServiceAzureBlobStorage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  annotations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

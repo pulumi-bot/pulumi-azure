@@ -17,7 +17,7 @@ class RegistryWebook(pulumi.CustomResource):
     warnings.warn("azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

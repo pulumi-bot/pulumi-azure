@@ -19,7 +19,7 @@ class Domain(pulumi.CustomResource):
     warnings.warn("azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  input_mapping_default_values: Optional[pulumi.Input[pulumi.InputType['DomainInputMappingDefaultValuesArgs']]] = None,
                  input_mapping_fields: Optional[pulumi.Input[pulumi.InputType['DomainInputMappingFieldsArgs']]] = None,

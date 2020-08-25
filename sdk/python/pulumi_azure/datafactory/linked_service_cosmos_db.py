@@ -13,7 +13,7 @@ __all__ = ['LinkedServiceCosmosDb']
 
 class LinkedServiceCosmosDb(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_endpoint: Optional[pulumi.Input[str]] = None,
                  account_key: Optional[pulumi.Input[str]] = None,

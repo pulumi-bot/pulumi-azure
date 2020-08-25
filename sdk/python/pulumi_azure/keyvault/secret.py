@@ -13,7 +13,7 @@ __all__ = ['Secret']
 
 class Secret(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  expiration_date: Optional[pulumi.Input[str]] = None,

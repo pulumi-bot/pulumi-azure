@@ -13,7 +13,7 @@ __all__ = ['TriggerHttpRequest']
 
 class TriggerHttpRequest(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  logic_app_id: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,

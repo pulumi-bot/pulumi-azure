@@ -15,7 +15,7 @@ __all__ = ['Factory']
 
 class Factory(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  github_configuration: Optional[pulumi.Input[pulumi.InputType['FactoryGithubConfigurationArgs']]] = None,
                  identity: Optional[pulumi.Input[pulumi.InputType['FactoryIdentityArgs']]] = None,

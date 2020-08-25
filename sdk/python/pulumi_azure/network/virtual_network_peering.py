@@ -13,7 +13,7 @@ __all__ = ['VirtualNetworkPeering']
 
 class VirtualNetworkPeering(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_forwarded_traffic: Optional[pulumi.Input[bool]] = None,
                  allow_gateway_transit: Optional[pulumi.Input[bool]] = None,

@@ -15,7 +15,7 @@ __all__ = ['PolicyVM']
 
 class PolicyVM(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup: Optional[pulumi.Input[pulumi.InputType['PolicyVMBackupArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,

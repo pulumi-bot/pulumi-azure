@@ -15,7 +15,7 @@ __all__ = ['SqlServer']
 
 class SqlServer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administrator_login: Optional[pulumi.Input[str]] = None,
                  administrator_login_password: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['VirtualHubConnection']
 
 class VirtualHubConnection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hub_to_vitual_network_traffic_allowed: Optional[pulumi.Input[bool]] = None,
                  internet_security_enabled: Optional[pulumi.Input[bool]] = None,

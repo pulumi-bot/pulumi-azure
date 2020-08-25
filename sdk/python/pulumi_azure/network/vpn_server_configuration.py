@@ -15,7 +15,7 @@ __all__ = ['VpnServerConfiguration']
 
 class VpnServerConfiguration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  azure_active_directory_authentications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VpnServerConfigurationAzureActiveDirectoryAuthenticationArgs']]]]] = None,
                  client_revoked_certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VpnServerConfigurationClientRevokedCertificateArgs']]]]] = None,

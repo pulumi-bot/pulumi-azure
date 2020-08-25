@@ -13,7 +13,7 @@ __all__ = ['NatGateway']
 
 class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
                  location: Optional[pulumi.Input[str]] = None,

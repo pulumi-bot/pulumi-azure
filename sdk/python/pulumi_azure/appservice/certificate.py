@@ -13,7 +13,7 @@ __all__ = ['Certificate']
 
 class Certificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hosting_environment_profile_id: Optional[pulumi.Input[str]] = None,
                  key_vault_secret_id: Optional[pulumi.Input[str]] = None,

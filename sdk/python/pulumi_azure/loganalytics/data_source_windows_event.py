@@ -13,7 +13,7 @@ __all__ = ['DataSourceWindowsEvent']
 
 class DataSourceWindowsEvent(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_log_name: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,

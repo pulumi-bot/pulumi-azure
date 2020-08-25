@@ -15,7 +15,7 @@ __all__ = ['FunctionJavaScriptUDF']
 
 class FunctionJavaScriptUDF(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  inputs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

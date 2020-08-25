@@ -15,7 +15,7 @@ __all__ = ['Definition']
 
 class Definition(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorizations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DefinitionAuthorizationArgs']]]]] = None,
                  create_ui_definition: Optional[pulumi.Input[str]] = None,

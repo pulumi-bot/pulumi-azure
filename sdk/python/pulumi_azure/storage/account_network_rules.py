@@ -13,7 +13,7 @@ __all__ = ['AccountNetworkRules']
 
 class AccountNetworkRules(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bypasses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  default_action: Optional[pulumi.Input[str]] = None,

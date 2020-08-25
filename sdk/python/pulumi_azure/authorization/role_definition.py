@@ -15,7 +15,7 @@ __all__ = ['RoleDefinition']
 
 class RoleDefinition(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignable_scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,

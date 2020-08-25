@@ -19,7 +19,7 @@ class Profile(pulumi.CustomResource):
     warnings.warn("azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ProfileDnsConfigArgs']]] = None,
                  monitor_config: Optional[pulumi.Input[pulumi.InputType['ProfileMonitorConfigArgs']]] = None,

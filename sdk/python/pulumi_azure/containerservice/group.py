@@ -15,7 +15,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  containers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['GroupContainerArgs']]]]] = None,
                  diagnostics: Optional[pulumi.Input[pulumi.InputType['GroupDiagnosticsArgs']]] = None,

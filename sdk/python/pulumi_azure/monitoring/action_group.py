@@ -15,7 +15,7 @@ __all__ = ['ActionGroup']
 
 class ActionGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arm_role_receivers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ActionGroupArmRoleReceiverArgs']]]]] = None,
                  automation_runbook_receivers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ActionGroupAutomationRunbookReceiverArgs']]]]] = None,

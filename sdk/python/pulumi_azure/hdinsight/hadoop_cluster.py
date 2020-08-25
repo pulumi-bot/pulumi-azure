@@ -15,7 +15,7 @@ __all__ = ['HadoopCluster']
 
 class HadoopCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
                  component_version: Optional[pulumi.Input[pulumi.InputType['HadoopClusterComponentVersionArgs']]] = None,

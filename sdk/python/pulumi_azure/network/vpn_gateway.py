@@ -15,7 +15,7 @@ __all__ = ['VpnGateway']
 
 class VpnGateway(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bgp_settings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VpnGatewayBgpSettingArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

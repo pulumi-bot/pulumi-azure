@@ -13,7 +13,7 @@ __all__ = ['LinkedServer']
 
 class LinkedServer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  linked_redis_cache_id: Optional[pulumi.Input[str]] = None,
                  linked_redis_cache_location: Optional[pulumi.Input[str]] = None,

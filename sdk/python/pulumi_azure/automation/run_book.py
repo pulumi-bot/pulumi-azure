@@ -15,7 +15,7 @@ __all__ = ['RunBook']
 
 class RunBook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,

@@ -13,7 +13,7 @@ __all__ = ['Job']
 
 class Job(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compatibility_level: Optional[pulumi.Input[str]] = None,
                  data_locale: Optional[pulumi.Input[str]] = None,

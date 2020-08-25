@@ -15,7 +15,7 @@ __all__ = ['Module']
 
 class Module(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  module_link: Optional[pulumi.Input[pulumi.InputType['ModuleModuleLinkArgs']]] = None,

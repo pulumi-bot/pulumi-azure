@@ -15,7 +15,7 @@ __all__ = ['WindowsVirtualMachine']
 
 class WindowsVirtualMachine(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_claim: Optional[pulumi.Input[bool]] = None,
                  disallow_public_ip_address: Optional[pulumi.Input[bool]] = None,

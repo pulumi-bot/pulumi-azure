@@ -15,7 +15,7 @@ __all__ = ['ScaleSet']
 
 class ScaleSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_os_upgrade: Optional[pulumi.Input[bool]] = None,
                  boot_diagnostics: Optional[pulumi.Input[pulumi.InputType['ScaleSetBootDiagnosticsArgs']]] = None,

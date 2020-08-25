@@ -15,7 +15,7 @@ __all__ = ['Frontdoor']
 
 class Frontdoor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_pool_health_probes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]]] = None,
                  backend_pool_load_balancings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolLoadBalancingArgs']]]]] = None,

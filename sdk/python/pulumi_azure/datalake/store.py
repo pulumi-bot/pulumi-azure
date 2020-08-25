@@ -13,7 +13,7 @@ __all__ = ['Store']
 
 class Store(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption_state: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,

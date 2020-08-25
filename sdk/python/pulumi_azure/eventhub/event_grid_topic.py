@@ -19,7 +19,7 @@ class EventGridTopic(pulumi.CustomResource):
     warnings.warn("azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  input_mapping_default_values: Optional[pulumi.Input[pulumi.InputType['EventGridTopicInputMappingDefaultValuesArgs']]] = None,
                  input_mapping_fields: Optional[pulumi.Input[pulumi.InputType['EventGridTopicInputMappingFieldsArgs']]] = None,

@@ -13,7 +13,7 @@ __all__ = ['DataSourceWindowsPerformanceCounter']
 
 class DataSourceWindowsPerformanceCounter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  counter_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,

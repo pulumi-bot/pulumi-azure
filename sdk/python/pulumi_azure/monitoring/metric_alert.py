@@ -15,7 +15,7 @@ __all__ = ['MetricAlert']
 
 class MetricAlert(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MetricAlertActionArgs']]]]] = None,
                  application_insights_web_test_location_availability_criteria: Optional[pulumi.Input[pulumi.InputType['MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs']]] = None,

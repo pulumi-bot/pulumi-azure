@@ -13,7 +13,7 @@ __all__ = ['RegistryWebhook']
 
 class RegistryWebhook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
