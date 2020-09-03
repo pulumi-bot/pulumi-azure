@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -74,15 +74,15 @@ class ServiceAuthenticationConfigurationArgs:
 class ServiceCorsConfigurationArgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
-                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age_in_seconds: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] allow_credentials: If credentials are allowed via CORS.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: A set of headers to be allowed via CORS.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: The methods to be allowed via CORS.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: A set of origins to be allowed via CORS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: A set of headers to be allowed via CORS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: The methods to be allowed via CORS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: A set of origins to be allowed via CORS.
         :param pulumi.Input[float] max_age_in_seconds: The max age to be allowed via CORS.
         """
         if allow_credentials is not None:
@@ -110,38 +110,38 @@ class ServiceCorsConfigurationArgs:
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of headers to be allowed via CORS.
         """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
-    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_headers", value)
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The methods to be allowed via CORS.
         """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
-    def allowed_methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_methods", value)
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of origins to be allowed via CORS.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @property

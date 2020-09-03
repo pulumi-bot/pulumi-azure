@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -170,9 +170,9 @@ class ApiOauth2Authorization(dict):
 class ApiOpenidAuthentication(dict):
     def __init__(__self__, *,
                  openid_provider_name: str,
-                 bearer_token_sending_methods: Optional[List[str]] = None):
+                 bearer_token_sending_methods: Optional[Sequence[str]] = None):
         """
-        :param List[str] bearer_token_sending_methods: How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
+        :param Sequence[str] bearer_token_sending_methods: How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
         """
         pulumi.set(__self__, "openid_provider_name", openid_provider_name)
         if bearer_token_sending_methods is not None:
@@ -185,7 +185,7 @@ class ApiOpenidAuthentication(dict):
 
     @property
     @pulumi.getter(name="bearerTokenSendingMethods")
-    def bearer_token_sending_methods(self) -> Optional[List[str]]:
+    def bearer_token_sending_methods(self) -> Optional[Sequence[str]]:
         """
         How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
         """
@@ -199,14 +199,14 @@ class ApiOpenidAuthentication(dict):
 class ApiOperationRequest(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
-                 headers: Optional[List['outputs.ApiOperationRequestHeader']] = None,
-                 query_parameters: Optional[List['outputs.ApiOperationRequestQueryParameter']] = None,
-                 representations: Optional[List['outputs.ApiOperationRequestRepresentation']] = None):
+                 headers: Optional[Sequence['outputs.ApiOperationRequestHeader']] = None,
+                 query_parameters: Optional[Sequence['outputs.ApiOperationRequestQueryParameter']] = None,
+                 representations: Optional[Sequence['outputs.ApiOperationRequestRepresentation']] = None):
         """
         :param str description: A description of the HTTP Request, which may include HTML tags.
-        :param List['ApiOperationRequestHeaderArgs'] headers: One or more `header` blocks as defined above.
-        :param List['ApiOperationRequestQueryParameterArgs'] query_parameters: One or more `query_parameter` blocks as defined above.
-        :param List['ApiOperationRequestRepresentationArgs'] representations: One or more `representation` blocks as defined below.
+        :param Sequence['ApiOperationRequestHeaderArgs'] headers: One or more `header` blocks as defined above.
+        :param Sequence['ApiOperationRequestQueryParameterArgs'] query_parameters: One or more `query_parameter` blocks as defined above.
+        :param Sequence['ApiOperationRequestRepresentationArgs'] representations: One or more `representation` blocks as defined below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -227,7 +227,7 @@ class ApiOperationRequest(dict):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.ApiOperationRequestHeader']]:
+    def headers(self) -> Optional[Sequence['outputs.ApiOperationRequestHeader']]:
         """
         One or more `header` blocks as defined above.
         """
@@ -235,7 +235,7 @@ class ApiOperationRequest(dict):
 
     @property
     @pulumi.getter(name="queryParameters")
-    def query_parameters(self) -> Optional[List['outputs.ApiOperationRequestQueryParameter']]:
+    def query_parameters(self) -> Optional[Sequence['outputs.ApiOperationRequestQueryParameter']]:
         """
         One or more `query_parameter` blocks as defined above.
         """
@@ -243,7 +243,7 @@ class ApiOperationRequest(dict):
 
     @property
     @pulumi.getter
-    def representations(self) -> Optional[List['outputs.ApiOperationRequestRepresentation']]:
+    def representations(self) -> Optional[Sequence['outputs.ApiOperationRequestRepresentation']]:
         """
         One or more `representation` blocks as defined below.
         """
@@ -261,14 +261,14 @@ class ApiOperationRequestHeader(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Header.
         :param bool required: Is this Header Required?
         :param str type: The Type of this Header, such as a `string`.
         :param str default_value: The default value for this Header.
         :param str description: A description of this Header.
-        :param List[str] values: One or more acceptable values for this Header.
+        :param Sequence[str] values: One or more acceptable values for this Header.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -322,7 +322,7 @@ class ApiOperationRequestHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Header.
         """
@@ -340,14 +340,14 @@ class ApiOperationRequestQueryParameter(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Query Parameter.
         :param bool required: Is this Query Parameter Required?
         :param str type: The Type of this Query Parameter, such as a `string`.
         :param str default_value: The default value for this Query Parameter.
         :param str description: A description of this Query Parameter.
-        :param List[str] values: One or more acceptable values for this Query Parameter.
+        :param Sequence[str] values: One or more acceptable values for this Query Parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -401,7 +401,7 @@ class ApiOperationRequestQueryParameter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Query Parameter.
         """
@@ -415,13 +415,13 @@ class ApiOperationRequestQueryParameter(dict):
 class ApiOperationRequestRepresentation(dict):
     def __init__(__self__, *,
                  content_type: str,
-                 form_parameters: Optional[List['outputs.ApiOperationRequestRepresentationFormParameter']] = None,
+                 form_parameters: Optional[Sequence['outputs.ApiOperationRequestRepresentationFormParameter']] = None,
                  sample: Optional[str] = None,
                  schema_id: Optional[str] = None,
                  type_name: Optional[str] = None):
         """
         :param str content_type: The Content Type of this representation, such as `application/json`.
-        :param List['ApiOperationRequestRepresentationFormParameterArgs'] form_parameters: One or more `form_parameter` block as defined above.
+        :param Sequence['ApiOperationRequestRepresentationFormParameterArgs'] form_parameters: One or more `form_parameter` block as defined above.
         :param str sample: An example of this representation.
         :param str schema_id: The ID of an API Management Schema which represents this Response.
         :param str type_name: The Type Name defined by the Schema.
@@ -446,7 +446,7 @@ class ApiOperationRequestRepresentation(dict):
 
     @property
     @pulumi.getter(name="formParameters")
-    def form_parameters(self) -> Optional[List['outputs.ApiOperationRequestRepresentationFormParameter']]:
+    def form_parameters(self) -> Optional[Sequence['outputs.ApiOperationRequestRepresentationFormParameter']]:
         """
         One or more `form_parameter` block as defined above.
         """
@@ -488,14 +488,14 @@ class ApiOperationRequestRepresentationFormParameter(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Form Parameter.
         :param bool required: Is this Form Parameter Required?
         :param str type: The Type of this Form Parameter, such as a `string`.
         :param str default_value: The default value for this Form Parameter.
         :param str description: A description of this Form Parameter.
-        :param List[str] values: One or more acceptable values for this Form Parameter.
+        :param Sequence[str] values: One or more acceptable values for this Form Parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -549,7 +549,7 @@ class ApiOperationRequestRepresentationFormParameter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Form Parameter.
         """
@@ -564,13 +564,13 @@ class ApiOperationResponse(dict):
     def __init__(__self__, *,
                  status_code: float,
                  description: Optional[str] = None,
-                 headers: Optional[List['outputs.ApiOperationResponseHeader']] = None,
-                 representations: Optional[List['outputs.ApiOperationResponseRepresentation']] = None):
+                 headers: Optional[Sequence['outputs.ApiOperationResponseHeader']] = None,
+                 representations: Optional[Sequence['outputs.ApiOperationResponseRepresentation']] = None):
         """
         :param float status_code: The HTTP Status Code.
         :param str description: A description of the HTTP Response, which may include HTML tags.
-        :param List['ApiOperationResponseHeaderArgs'] headers: One or more `header` blocks as defined above.
-        :param List['ApiOperationResponseRepresentationArgs'] representations: One or more `representation` blocks as defined below.
+        :param Sequence['ApiOperationResponseHeaderArgs'] headers: One or more `header` blocks as defined above.
+        :param Sequence['ApiOperationResponseRepresentationArgs'] representations: One or more `representation` blocks as defined below.
         """
         pulumi.set(__self__, "status_code", status_code)
         if description is not None:
@@ -598,7 +598,7 @@ class ApiOperationResponse(dict):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.ApiOperationResponseHeader']]:
+    def headers(self) -> Optional[Sequence['outputs.ApiOperationResponseHeader']]:
         """
         One or more `header` blocks as defined above.
         """
@@ -606,7 +606,7 @@ class ApiOperationResponse(dict):
 
     @property
     @pulumi.getter
-    def representations(self) -> Optional[List['outputs.ApiOperationResponseRepresentation']]:
+    def representations(self) -> Optional[Sequence['outputs.ApiOperationResponseRepresentation']]:
         """
         One or more `representation` blocks as defined below.
         """
@@ -624,14 +624,14 @@ class ApiOperationResponseHeader(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Header.
         :param bool required: Is this Header Required?
         :param str type: The Type of this Header, such as a `string`.
         :param str default_value: The default value for this Header.
         :param str description: A description of this Header.
-        :param List[str] values: One or more acceptable values for this Header.
+        :param Sequence[str] values: One or more acceptable values for this Header.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -685,7 +685,7 @@ class ApiOperationResponseHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Header.
         """
@@ -699,13 +699,13 @@ class ApiOperationResponseHeader(dict):
 class ApiOperationResponseRepresentation(dict):
     def __init__(__self__, *,
                  content_type: str,
-                 form_parameters: Optional[List['outputs.ApiOperationResponseRepresentationFormParameter']] = None,
+                 form_parameters: Optional[Sequence['outputs.ApiOperationResponseRepresentationFormParameter']] = None,
                  sample: Optional[str] = None,
                  schema_id: Optional[str] = None,
                  type_name: Optional[str] = None):
         """
         :param str content_type: The Content Type of this representation, such as `application/json`.
-        :param List['ApiOperationResponseRepresentationFormParameterArgs'] form_parameters: One or more `form_parameter` block as defined above.
+        :param Sequence['ApiOperationResponseRepresentationFormParameterArgs'] form_parameters: One or more `form_parameter` block as defined above.
         :param str sample: An example of this representation.
         :param str schema_id: The ID of an API Management Schema which represents this Response.
         :param str type_name: The Type Name defined by the Schema.
@@ -730,7 +730,7 @@ class ApiOperationResponseRepresentation(dict):
 
     @property
     @pulumi.getter(name="formParameters")
-    def form_parameters(self) -> Optional[List['outputs.ApiOperationResponseRepresentationFormParameter']]:
+    def form_parameters(self) -> Optional[Sequence['outputs.ApiOperationResponseRepresentationFormParameter']]:
         """
         One or more `form_parameter` block as defined above.
         """
@@ -772,14 +772,14 @@ class ApiOperationResponseRepresentationFormParameter(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Form Parameter.
         :param bool required: Is this Form Parameter Required?
         :param str type: The Type of this Form Parameter, such as a `string`.
         :param str default_value: The default value for this Form Parameter.
         :param str description: A description of this Form Parameter.
-        :param List[str] values: One or more acceptable values for this Form Parameter.
+        :param Sequence[str] values: One or more acceptable values for this Form Parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -833,7 +833,7 @@ class ApiOperationResponseRepresentationFormParameter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Form Parameter.
         """
@@ -851,14 +851,14 @@ class ApiOperationTemplateParameter(dict):
                  type: str,
                  default_value: Optional[str] = None,
                  description: Optional[str] = None,
-                 values: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None):
         """
         :param str name: The Name of this Template Parameter.
         :param bool required: Is this Template Parameter Required?
         :param str type: The Type of this Template Parameter, such as a `string`.
         :param str default_value: The default value for this Template Parameter.
         :param str description: A description of this Template Parameter.
-        :param List[str] values: One or more acceptable values for this Template Parameter.
+        :param Sequence[str] values: One or more acceptable values for this Template Parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "required", required)
@@ -912,7 +912,7 @@ class ApiOperationTemplateParameter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         One or more acceptable values for this Template Parameter.
         """
@@ -990,12 +990,12 @@ class AuthorizationServerTokenBodyParameter(dict):
 class BackendCredentials(dict):
     def __init__(__self__, *,
                  authorization: Optional['outputs.BackendCredentialsAuthorization'] = None,
-                 certificates: Optional[List[str]] = None,
+                 certificates: Optional[Sequence[str]] = None,
                  header: Optional[Mapping[str, str]] = None,
                  query: Optional[Mapping[str, str]] = None):
         """
         :param 'BackendCredentialsAuthorizationArgs' authorization: An `authorization` block as defined below.
-        :param List[str] certificates: A list of client certificate thumbprints to present to the backend host. The certificates must exist within the API Management Service.
+        :param Sequence[str] certificates: A list of client certificate thumbprints to present to the backend host. The certificates must exist within the API Management Service.
         :param Mapping[str, str] header: A mapping of header parameters to pass to the backend host. The keys are the header names and the values are a comma separated string of header values. This is converted to a list before being passed to the API.
         :param Mapping[str, str] query: A mapping of query parameters to pass to the backend host. The keys are the query names and the values are a comma separated string of query values. This is converted to a list before being passed to the API.
         """
@@ -1018,7 +1018,7 @@ class BackendCredentials(dict):
 
     @property
     @pulumi.getter
-    def certificates(self) -> Optional[List[str]]:
+    def certificates(self) -> Optional[Sequence[str]]:
         """
         A list of client certificate thumbprints to present to the backend host. The certificates must exist within the API Management Service.
         """
@@ -1126,16 +1126,16 @@ class BackendProxy(dict):
 class BackendServiceFabricCluster(dict):
     def __init__(__self__, *,
                  client_certificate_thumbprint: str,
-                 management_endpoints: List[str],
+                 management_endpoints: Sequence[str],
                  max_partition_resolution_retries: float,
-                 server_certificate_thumbprints: Optional[List[str]] = None,
-                 server_x509_names: Optional[List['outputs.BackendServiceFabricClusterServerX509Name']] = None):
+                 server_certificate_thumbprints: Optional[Sequence[str]] = None,
+                 server_x509_names: Optional[Sequence['outputs.BackendServiceFabricClusterServerX509Name']] = None):
         """
         :param str client_certificate_thumbprint: The client certificate thumbprint for the management endpoint.
-        :param List[str] management_endpoints: A list of cluster management endpoints.
+        :param Sequence[str] management_endpoints: A list of cluster management endpoints.
         :param float max_partition_resolution_retries: The maximum number of retries when attempting resolve the partition.
-        :param List[str] server_certificate_thumbprints: A list of thumbprints of the server certificates of the Service Fabric cluster.
-        :param List['BackendServiceFabricClusterServerX509NameArgs'] server_x509_names: One or more `server_x509_name` blocks as documented below.
+        :param Sequence[str] server_certificate_thumbprints: A list of thumbprints of the server certificates of the Service Fabric cluster.
+        :param Sequence['BackendServiceFabricClusterServerX509NameArgs'] server_x509_names: One or more `server_x509_name` blocks as documented below.
         """
         pulumi.set(__self__, "client_certificate_thumbprint", client_certificate_thumbprint)
         pulumi.set(__self__, "management_endpoints", management_endpoints)
@@ -1155,7 +1155,7 @@ class BackendServiceFabricCluster(dict):
 
     @property
     @pulumi.getter(name="managementEndpoints")
-    def management_endpoints(self) -> List[str]:
+    def management_endpoints(self) -> Sequence[str]:
         """
         A list of cluster management endpoints.
         """
@@ -1171,7 +1171,7 @@ class BackendServiceFabricCluster(dict):
 
     @property
     @pulumi.getter(name="serverCertificateThumbprints")
-    def server_certificate_thumbprints(self) -> Optional[List[str]]:
+    def server_certificate_thumbprints(self) -> Optional[Sequence[str]]:
         """
         A list of thumbprints of the server certificates of the Service Fabric cluster.
         """
@@ -1179,7 +1179,7 @@ class BackendServiceFabricCluster(dict):
 
     @property
     @pulumi.getter(name="serverX509Names")
-    def server_x509_names(self) -> Optional[List['outputs.BackendServiceFabricClusterServerX509Name']]:
+    def server_x509_names(self) -> Optional[Sequence['outputs.BackendServiceFabricClusterServerX509Name']]:
         """
         One or more `server_x509_name` blocks as documented below.
         """
@@ -1313,11 +1313,11 @@ class ServiceAdditionalLocation(dict):
     def __init__(__self__, *,
                  location: str,
                  gateway_regional_url: Optional[str] = None,
-                 public_ip_addresses: Optional[List[str]] = None):
+                 public_ip_addresses: Optional[Sequence[str]] = None):
         """
         :param str location: The name of the Azure Region in which the API Management Service should be expanded to.
         :param str gateway_regional_url: The URL of the Regional Gateway for the API Management Service in the specified region.
-        :param List[str] public_ip_addresses: Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
+        :param Sequence[str] public_ip_addresses: Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
         """
         pulumi.set(__self__, "location", location)
         if gateway_regional_url is not None:
@@ -1343,7 +1343,7 @@ class ServiceAdditionalLocation(dict):
 
     @property
     @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> Optional[List[str]]:
+    def public_ip_addresses(self) -> Optional[Sequence[str]]:
         """
         Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
         """
@@ -1399,17 +1399,17 @@ class ServiceCertificate(dict):
 @pulumi.output_type
 class ServiceHostnameConfiguration(dict):
     def __init__(__self__, *,
-                 developer_portals: Optional[List['outputs.ServiceHostnameConfigurationDeveloperPortal']] = None,
-                 managements: Optional[List['outputs.ServiceHostnameConfigurationManagement']] = None,
-                 portals: Optional[List['outputs.ServiceHostnameConfigurationPortal']] = None,
-                 proxies: Optional[List['outputs.ServiceHostnameConfigurationProxy']] = None,
-                 scms: Optional[List['outputs.ServiceHostnameConfigurationScm']] = None):
+                 developer_portals: Optional[Sequence['outputs.ServiceHostnameConfigurationDeveloperPortal']] = None,
+                 managements: Optional[Sequence['outputs.ServiceHostnameConfigurationManagement']] = None,
+                 portals: Optional[Sequence['outputs.ServiceHostnameConfigurationPortal']] = None,
+                 proxies: Optional[Sequence['outputs.ServiceHostnameConfigurationProxy']] = None,
+                 scms: Optional[Sequence['outputs.ServiceHostnameConfigurationScm']] = None):
         """
-        :param List['ServiceHostnameConfigurationDeveloperPortalArgs'] developer_portals: One or more `developer_portal` blocks as documented below.
-        :param List['ServiceHostnameConfigurationManagementArgs'] managements: One or more `management` blocks as documented below.
-        :param List['ServiceHostnameConfigurationPortalArgs'] portals: One or more `portal` blocks as documented below.
-        :param List['ServiceHostnameConfigurationProxyArgs'] proxies: One or more `proxy` blocks as documented below.
-        :param List['ServiceHostnameConfigurationScmArgs'] scms: One or more `scm` blocks as documented below.
+        :param Sequence['ServiceHostnameConfigurationDeveloperPortalArgs'] developer_portals: One or more `developer_portal` blocks as documented below.
+        :param Sequence['ServiceHostnameConfigurationManagementArgs'] managements: One or more `management` blocks as documented below.
+        :param Sequence['ServiceHostnameConfigurationPortalArgs'] portals: One or more `portal` blocks as documented below.
+        :param Sequence['ServiceHostnameConfigurationProxyArgs'] proxies: One or more `proxy` blocks as documented below.
+        :param Sequence['ServiceHostnameConfigurationScmArgs'] scms: One or more `scm` blocks as documented below.
         """
         if developer_portals is not None:
             pulumi.set(__self__, "developer_portals", developer_portals)
@@ -1424,7 +1424,7 @@ class ServiceHostnameConfiguration(dict):
 
     @property
     @pulumi.getter(name="developerPortals")
-    def developer_portals(self) -> Optional[List['outputs.ServiceHostnameConfigurationDeveloperPortal']]:
+    def developer_portals(self) -> Optional[Sequence['outputs.ServiceHostnameConfigurationDeveloperPortal']]:
         """
         One or more `developer_portal` blocks as documented below.
         """
@@ -1432,7 +1432,7 @@ class ServiceHostnameConfiguration(dict):
 
     @property
     @pulumi.getter
-    def managements(self) -> Optional[List['outputs.ServiceHostnameConfigurationManagement']]:
+    def managements(self) -> Optional[Sequence['outputs.ServiceHostnameConfigurationManagement']]:
         """
         One or more `management` blocks as documented below.
         """
@@ -1440,7 +1440,7 @@ class ServiceHostnameConfiguration(dict):
 
     @property
     @pulumi.getter
-    def portals(self) -> Optional[List['outputs.ServiceHostnameConfigurationPortal']]:
+    def portals(self) -> Optional[Sequence['outputs.ServiceHostnameConfigurationPortal']]:
         """
         One or more `portal` blocks as documented below.
         """
@@ -1448,7 +1448,7 @@ class ServiceHostnameConfiguration(dict):
 
     @property
     @pulumi.getter
-    def proxies(self) -> Optional[List['outputs.ServiceHostnameConfigurationProxy']]:
+    def proxies(self) -> Optional[Sequence['outputs.ServiceHostnameConfigurationProxy']]:
         """
         One or more `proxy` blocks as documented below.
         """
@@ -1456,7 +1456,7 @@ class ServiceHostnameConfiguration(dict):
 
     @property
     @pulumi.getter
-    def scms(self) -> Optional[List['outputs.ServiceHostnameConfigurationScm']]:
+    def scms(self) -> Optional[Sequence['outputs.ServiceHostnameConfigurationScm']]:
         """
         One or more `scm` blocks as documented below.
         """
@@ -1826,12 +1826,12 @@ class ServiceHostnameConfigurationScm(dict):
 @pulumi.output_type
 class ServiceIdentity(dict):
     def __init__(__self__, *,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param List[str] identity_ids: A list of IDs for User Assigned Managed Identity resources to be assigned.
+        :param Sequence[str] identity_ids: A list of IDs for User Assigned Managed Identity resources to be assigned.
         :param str principal_id: The Principal ID associated with this Managed Service Identity.
         :param str tenant_id: The Tenant ID associated with this Managed Service Identity.
         :param str type: Specifies the type of Managed Service Identity that should be configured on this API Management Service. Possible values are `SystemAssigned`, `UserAssigned` or `SystemAssigned, UserAssigned` (to enable both).
@@ -1847,7 +1847,7 @@ class ServiceIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         A list of IDs for User Assigned Managed Identity resources to be assigned.
         """
@@ -2183,11 +2183,11 @@ class GetServiceAdditionalLocationResult(dict):
     def __init__(__self__, *,
                  gateway_regional_url: str,
                  location: str,
-                 public_ip_addresses: List[str]):
+                 public_ip_addresses: Sequence[str]):
         """
         :param str gateway_regional_url: Gateway URL of the API Management service in the Region.
         :param str location: The location name of the additional region among Azure Data center regions.
-        :param List[str] public_ip_addresses: Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
+        :param Sequence[str] public_ip_addresses: Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
         """
         pulumi.set(__self__, "gateway_regional_url", gateway_regional_url)
         pulumi.set(__self__, "location", location)
@@ -2211,7 +2211,7 @@ class GetServiceAdditionalLocationResult(dict):
 
     @property
     @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> List[str]:
+    def public_ip_addresses(self) -> Sequence[str]:
         """
         Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
         """
@@ -2221,17 +2221,17 @@ class GetServiceAdditionalLocationResult(dict):
 @pulumi.output_type
 class GetServiceHostnameConfigurationResult(dict):
     def __init__(__self__, *,
-                 developer_portals: List['outputs.GetServiceHostnameConfigurationDeveloperPortalResult'],
-                 managements: List['outputs.GetServiceHostnameConfigurationManagementResult'],
-                 portals: List['outputs.GetServiceHostnameConfigurationPortalResult'],
-                 proxies: List['outputs.GetServiceHostnameConfigurationProxyResult'],
-                 scms: List['outputs.GetServiceHostnameConfigurationScmResult']):
+                 developer_portals: Sequence['outputs.GetServiceHostnameConfigurationDeveloperPortalResult'],
+                 managements: Sequence['outputs.GetServiceHostnameConfigurationManagementResult'],
+                 portals: Sequence['outputs.GetServiceHostnameConfigurationPortalResult'],
+                 proxies: Sequence['outputs.GetServiceHostnameConfigurationProxyResult'],
+                 scms: Sequence['outputs.GetServiceHostnameConfigurationScmResult']):
         """
-        :param List['GetServiceHostnameConfigurationDeveloperPortalArgs'] developer_portals: One or more `developer_portal` blocks as documented below.
-        :param List['GetServiceHostnameConfigurationManagementArgs'] managements: One or more `management` blocks as documented below.
-        :param List['GetServiceHostnameConfigurationPortalArgs'] portals: One or more `portal` blocks as documented below.
-        :param List['GetServiceHostnameConfigurationProxyArgs'] proxies: One or more `proxy` blocks as documented below.
-        :param List['GetServiceHostnameConfigurationScmArgs'] scms: One or more `scm` blocks as documented below.
+        :param Sequence['GetServiceHostnameConfigurationDeveloperPortalArgs'] developer_portals: One or more `developer_portal` blocks as documented below.
+        :param Sequence['GetServiceHostnameConfigurationManagementArgs'] managements: One or more `management` blocks as documented below.
+        :param Sequence['GetServiceHostnameConfigurationPortalArgs'] portals: One or more `portal` blocks as documented below.
+        :param Sequence['GetServiceHostnameConfigurationProxyArgs'] proxies: One or more `proxy` blocks as documented below.
+        :param Sequence['GetServiceHostnameConfigurationScmArgs'] scms: One or more `scm` blocks as documented below.
         """
         pulumi.set(__self__, "developer_portals", developer_portals)
         pulumi.set(__self__, "managements", managements)
@@ -2241,7 +2241,7 @@ class GetServiceHostnameConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="developerPortals")
-    def developer_portals(self) -> List['outputs.GetServiceHostnameConfigurationDeveloperPortalResult']:
+    def developer_portals(self) -> Sequence['outputs.GetServiceHostnameConfigurationDeveloperPortalResult']:
         """
         One or more `developer_portal` blocks as documented below.
         """
@@ -2249,7 +2249,7 @@ class GetServiceHostnameConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def managements(self) -> List['outputs.GetServiceHostnameConfigurationManagementResult']:
+    def managements(self) -> Sequence['outputs.GetServiceHostnameConfigurationManagementResult']:
         """
         One or more `management` blocks as documented below.
         """
@@ -2257,7 +2257,7 @@ class GetServiceHostnameConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def portals(self) -> List['outputs.GetServiceHostnameConfigurationPortalResult']:
+    def portals(self) -> Sequence['outputs.GetServiceHostnameConfigurationPortalResult']:
         """
         One or more `portal` blocks as documented below.
         """
@@ -2265,7 +2265,7 @@ class GetServiceHostnameConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def proxies(self) -> List['outputs.GetServiceHostnameConfigurationProxyResult']:
+    def proxies(self) -> Sequence['outputs.GetServiceHostnameConfigurationProxyResult']:
         """
         One or more `proxy` blocks as documented below.
         """
@@ -2273,7 +2273,7 @@ class GetServiceHostnameConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def scms(self) -> List['outputs.GetServiceHostnameConfigurationScmResult']:
+    def scms(self) -> Sequence['outputs.GetServiceHostnameConfigurationScmResult']:
         """
         One or more `scm` blocks as documented below.
         """
@@ -2494,12 +2494,12 @@ class GetServiceHostnameConfigurationScmResult(dict):
 @pulumi.output_type
 class GetServiceIdentityResult(dict):
     def __init__(__self__, *,
-                 identity_ids: List[str],
+                 identity_ids: Sequence[str],
                  principal_id: str,
                  tenant_id: str,
                  type: str):
         """
-        :param List[str] identity_ids: A list of IDs for User Assigned Managed Identity resources to be assigned.
+        :param Sequence[str] identity_ids: A list of IDs for User Assigned Managed Identity resources to be assigned.
         :param str principal_id: Specifies the Principal ID of the System Assigned Managed Service Identity that is configured on this API Management Service.
         :param str tenant_id: Specifies the Tenant ID of the System Assigned Managed Service Identity that is configured on this API Management Service.
         :param str type: Specifies the type of Managed Service Identity that is configured on this API Management Service.
@@ -2511,7 +2511,7 @@ class GetServiceIdentityResult(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> List[str]:
+    def identity_ids(self) -> Sequence[str]:
         """
         A list of IDs for User Assigned Managed Identity resources to be assigned.
         """

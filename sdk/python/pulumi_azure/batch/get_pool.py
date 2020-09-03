@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -81,7 +81,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter(name="autoScales")
-    def auto_scales(self) -> List['outputs.GetPoolAutoScaleResult']:
+    def auto_scales(self) -> Sequence['outputs.GetPoolAutoScaleResult']:
         """
         A `auto_scale` block that describes the scale settings when using auto scale.
         """
@@ -89,7 +89,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter
-    def certificates(self) -> Optional[List['outputs.GetPoolCertificateResult']]:
+    def certificates(self) -> Optional[Sequence['outputs.GetPoolCertificateResult']]:
         """
         One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
         """
@@ -97,7 +97,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter(name="containerConfigurations")
-    def container_configurations(self) -> List['outputs.GetPoolContainerConfigurationResult']:
+    def container_configurations(self) -> Sequence['outputs.GetPoolContainerConfigurationResult']:
         """
         The container configuration used in the pool's VMs.
         """
@@ -110,7 +110,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter(name="fixedScales")
-    def fixed_scales(self) -> List['outputs.GetPoolFixedScaleResult']:
+    def fixed_scales(self) -> Sequence['outputs.GetPoolFixedScaleResult']:
         """
         A `fixed_scale` block that describes the scale settings when using fixed scale.
         """
@@ -173,7 +173,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter(name="storageImageReferences")
-    def storage_image_references(self) -> List['outputs.GetPoolStorageImageReferenceResult']:
+    def storage_image_references(self) -> Sequence['outputs.GetPoolStorageImageReferenceResult']:
         """
         The reference of the storage image used by the nodes in the Batch pool.
         """
@@ -213,7 +213,7 @@ class AwaitableGetPoolResult(GetPoolResult):
 
 
 def get_pool(account_name: Optional[str] = None,
-             certificates: Optional[List[pulumi.InputType['GetPoolCertificateArgs']]] = None,
+             certificates: Optional[Sequence[pulumi.InputType['GetPoolCertificateArgs']]] = None,
              name: Optional[str] = None,
              network_configuration: Optional[pulumi.InputType['GetPoolNetworkConfigurationArgs']] = None,
              resource_group_name: Optional[str] = None,
@@ -235,7 +235,7 @@ def get_pool(account_name: Optional[str] = None,
 
 
     :param str account_name: The name of the Batch account.
-    :param List[pulumi.InputType['GetPoolCertificateArgs']] certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
+    :param Sequence[pulumi.InputType['GetPoolCertificateArgs']] certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.
     :param str name: The name of the endpoint.
     :param pulumi.InputType['GetPoolStartTaskArgs'] start_task: A `start_task` block that describes the start task settings for the Batch pool.
     """

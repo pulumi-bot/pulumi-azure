@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,12 +19,12 @@ __all__ = [
 class ClusterIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Specifies the type of Managed Service Identity that is configured on this Kusto Cluster. Possible values are: `SystemAssigned` (where Azure will generate a Service Principal for you).
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: The list of user identities associated with the Kusto cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: The list of user identities associated with the Kusto cluster.
         :param pulumi.Input[str] principal_id: Specifies the Principal ID of the System Assigned Managed Service Identity that is configured on this Kusto Cluster.
         :param pulumi.Input[str] tenant_id: Specifies the Tenant ID of the System Assigned Managed Service Identity that is configured on this Kusto Cluster.
         """
@@ -50,14 +50,14 @@ class ClusterIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of user identities associated with the Kusto cluster.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property

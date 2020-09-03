@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -19,12 +19,12 @@ __all__ = [
 class ClusterIdentity(dict):
     def __init__(__self__, *,
                  type: str,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
         """
         :param str type: Specifies the type of Managed Service Identity that is configured on this Kusto Cluster. Possible values are: `SystemAssigned` (where Azure will generate a Service Principal for you).
-        :param List[str] identity_ids: The list of user identities associated with the Kusto cluster.
+        :param Sequence[str] identity_ids: The list of user identities associated with the Kusto cluster.
         :param str principal_id: Specifies the Principal ID of the System Assigned Managed Service Identity that is configured on this Kusto Cluster.
         :param str tenant_id: Specifies the Tenant ID of the System Assigned Managed Service Identity that is configured on this Kusto Cluster.
         """
@@ -46,7 +46,7 @@ class ClusterIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         The list of user identities associated with the Kusto cluster.
         """

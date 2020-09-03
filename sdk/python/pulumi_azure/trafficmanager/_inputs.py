@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -149,8 +149,8 @@ class ProfileMonitorConfigArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[float],
                  protocol: pulumi.Input[str],
-                 custom_headers: Optional[pulumi.Input[List[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]] = None,
-                 expected_status_code_ranges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]] = None,
+                 expected_status_code_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interval_in_seconds: Optional[pulumi.Input[float]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  timeout_in_seconds: Optional[pulumi.Input[float]] = None,
@@ -158,8 +158,8 @@ class ProfileMonitorConfigArgs:
         """
         :param pulumi.Input[float] port: The port number used by the monitoring checks.
         :param pulumi.Input[str] protocol: The protocol used by the monitoring checks, supported values are `HTTP`, `HTTPS` and `TCP`.
-        :param pulumi.Input[List[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]] custom_headers: One or more `custom_header` blocks as defined below.
-        :param pulumi.Input[List[pulumi.Input[str]]] expected_status_code_ranges: A list of status code ranges in the format of `100-101`.
+        :param pulumi.Input[Sequence[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]] custom_headers: One or more `custom_header` blocks as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expected_status_code_ranges: A list of status code ranges in the format of `100-101`.
         :param pulumi.Input[float] interval_in_seconds: The interval used to check the endpoint health from a Traffic Manager probing agent. You can specify two values here: `30` (normal probing) and `10` (fast probing). The default value is `30`.
         :param pulumi.Input[str] path: The path used by the monitoring checks. Required when `protocol` is set to `HTTP` or `HTTPS` - cannot be set when `protocol` is set to `TCP`.
         :param pulumi.Input[float] timeout_in_seconds: The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
@@ -206,26 +206,26 @@ class ProfileMonitorConfigArgs:
 
     @property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[List[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]]:
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]]:
         """
         One or more `custom_header` blocks as defined below.
         """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[List[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]]):
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProfileMonitorConfigCustomHeaderArgs']]]]):
         pulumi.set(self, "custom_headers", value)
 
     @property
     @pulumi.getter(name="expectedStatusCodeRanges")
-    def expected_status_code_ranges(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def expected_status_code_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of status code ranges in the format of `100-101`.
         """
         return pulumi.get(self, "expected_status_code_ranges")
 
     @expected_status_code_ranges.setter
-    def expected_status_code_ranges(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def expected_status_code_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "expected_status_code_ranges", value)
 
     @property

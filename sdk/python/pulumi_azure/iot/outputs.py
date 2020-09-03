@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -129,12 +129,12 @@ class IoTHubFallbackRoute(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None,
                  enabled: Optional[bool] = None,
-                 endpoint_names: Optional[List[str]] = None,
+                 endpoint_names: Optional[Sequence[str]] = None,
                  source: Optional[str] = None):
         """
         :param str condition: The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language.
         :param bool enabled: Used to specify whether the fallback route is enabled.
-        :param List[str] endpoint_names: The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
+        :param Sequence[str] endpoint_names: The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
         :param str source: The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `RoutingSourceInvalid`, `RoutingSourceDeviceMessages`, `RoutingSourceTwinChangeEvents`, `RoutingSourceDeviceLifecycleEvents`, `RoutingSourceDeviceJobLifecycleEvents`.
         """
         if condition is not None:
@@ -164,7 +164,7 @@ class IoTHubFallbackRoute(dict):
 
     @property
     @pulumi.getter(name="endpointNames")
-    def endpoint_names(self) -> Optional[List[str]]:
+    def endpoint_names(self) -> Optional[Sequence[str]]:
         """
         The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
         """
@@ -321,13 +321,13 @@ class IoTHubIpFilterRule(dict):
 class IoTHubRoute(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 endpoint_names: List[str],
+                 endpoint_names: Sequence[str],
                  name: str,
                  source: str,
                  condition: Optional[str] = None):
         """
         :param bool enabled: Used to specify whether a route is enabled.
-        :param List[str] endpoint_names: The list of endpoints to which messages that satisfy the condition are routed.
+        :param Sequence[str] endpoint_names: The list of endpoints to which messages that satisfy the condition are routed.
         :param str name: The name of the route.
         :param str source: The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `RoutingSourceInvalid`, `RoutingSourceDeviceMessages`, `RoutingSourceTwinChangeEvents`, `RoutingSourceDeviceLifecycleEvents`, `RoutingSourceDeviceJobLifecycleEvents`.
         :param str condition: The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language.
@@ -349,7 +349,7 @@ class IoTHubRoute(dict):
 
     @property
     @pulumi.getter(name="endpointNames")
-    def endpoint_names(self) -> List[str]:
+    def endpoint_names(self) -> Sequence[str]:
         """
         The list of endpoints to which messages that satisfy the condition are routed.
         """

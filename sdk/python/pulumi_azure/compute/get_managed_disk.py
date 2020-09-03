@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -182,7 +182,7 @@ class GetManagedDiskResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List[str]:
+    def zones(self) -> Sequence[str]:
         """
         A list of Availability Zones where the Managed Disk exists.
         """
@@ -216,7 +216,7 @@ class AwaitableGetManagedDiskResult(GetManagedDiskResult):
 def get_managed_disk(name: Optional[str] = None,
                      resource_group_name: Optional[str] = None,
                      tags: Optional[Mapping[str, str]] = None,
-                     zones: Optional[List[str]] = None,
+                     zones: Optional[Sequence[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagedDiskResult:
     """
     Use this data source to access information about an existing Managed Disk.
@@ -236,7 +236,7 @@ def get_managed_disk(name: Optional[str] = None,
     :param str name: Specifies the name of the Managed Disk.
     :param str resource_group_name: Specifies the name of the Resource Group where this Managed Disk exists.
     :param Mapping[str, str] tags: A mapping of tags assigned to the resource.
-    :param List[str] zones: A list of Availability Zones where the Managed Disk exists.
+    :param Sequence[str] zones: A list of Availability Zones where the Managed Disk exists.
     """
     __args__ = dict()
     __args__['name'] = name

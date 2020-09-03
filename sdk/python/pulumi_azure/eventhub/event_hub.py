@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -107,7 +107,7 @@ class EventHub(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace_name: Optional[pulumi.Input[str]] = None,
             partition_count: Optional[pulumi.Input[float]] = None,
-            partition_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            partition_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None) -> 'EventHub':
         """
         Get an existing EventHub resource's state with the given name, id, and optional extra
@@ -121,7 +121,7 @@ class EventHub(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the EventHub Namespace resource. Changing this forces a new resource to be created.
         :param pulumi.Input[str] namespace_name: Specifies the name of the EventHub Namespace. Changing this forces a new resource to be created.
         :param pulumi.Input[float] partition_count: Specifies the current number of shards on the Event Hub. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] partition_ids: The identifiers for partitions created for Event Hubs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partition_ids: The identifiers for partitions created for Event Hubs.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the EventHub's parent Namespace exists. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -179,7 +179,7 @@ class EventHub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partitionIds")
-    def partition_ids(self) -> pulumi.Output[List[str]]:
+    def partition_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The identifiers for partitions created for Event Hubs.
         """

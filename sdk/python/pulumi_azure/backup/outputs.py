@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -72,11 +72,11 @@ class PolicyVMBackup(dict):
     def __init__(__self__, *,
                  frequency: str,
                  time: str,
-                 weekdays: Optional[List[str]] = None):
+                 weekdays: Optional[Sequence[str]] = None):
         """
         :param str frequency: Sets the backup frequency. Must be either `Daily` or`Weekly`.
         :param str time: The time of day to perform the backup in 24hour format.
-        :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+        :param Sequence[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
         pulumi.set(__self__, "frequency", frequency)
         pulumi.set(__self__, "time", time)
@@ -101,7 +101,7 @@ class PolicyVMBackup(dict):
 
     @property
     @pulumi.getter
-    def weekdays(self) -> Optional[List[str]]:
+    def weekdays(self) -> Optional[Sequence[str]]:
         """
         The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
@@ -136,12 +136,12 @@ class PolicyVMRetentionDaily(dict):
 class PolicyVMRetentionMonthly(dict):
     def __init__(__self__, *,
                  count: float,
-                 weekdays: List[str],
-                 weeks: List[str]):
+                 weekdays: Sequence[str],
+                 weeks: Sequence[str]):
         """
         :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
-        :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-        :param List[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
+        :param Sequence[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+        :param Sequence[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "weekdays", weekdays)
@@ -157,7 +157,7 @@ class PolicyVMRetentionMonthly(dict):
 
     @property
     @pulumi.getter
-    def weekdays(self) -> List[str]:
+    def weekdays(self) -> Sequence[str]:
         """
         The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
@@ -165,7 +165,7 @@ class PolicyVMRetentionMonthly(dict):
 
     @property
     @pulumi.getter
-    def weeks(self) -> List[str]:
+    def weeks(self) -> Sequence[str]:
         """
         The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """
@@ -179,10 +179,10 @@ class PolicyVMRetentionMonthly(dict):
 class PolicyVMRetentionWeekly(dict):
     def __init__(__self__, *,
                  count: float,
-                 weekdays: List[str]):
+                 weekdays: Sequence[str]):
         """
         :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
-        :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+        :param Sequence[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "weekdays", weekdays)
@@ -197,7 +197,7 @@ class PolicyVMRetentionWeekly(dict):
 
     @property
     @pulumi.getter
-    def weekdays(self) -> List[str]:
+    def weekdays(self) -> Sequence[str]:
         """
         The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
@@ -211,14 +211,14 @@ class PolicyVMRetentionWeekly(dict):
 class PolicyVMRetentionYearly(dict):
     def __init__(__self__, *,
                  count: float,
-                 months: List[str],
-                 weekdays: List[str],
-                 weeks: List[str]):
+                 months: Sequence[str],
+                 weekdays: Sequence[str],
+                 weeks: Sequence[str]):
         """
         :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
-        :param List[str] months: The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
-        :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-        :param List[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
+        :param Sequence[str] months: The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
+        :param Sequence[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
+        :param Sequence[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "months", months)
@@ -235,7 +235,7 @@ class PolicyVMRetentionYearly(dict):
 
     @property
     @pulumi.getter
-    def months(self) -> List[str]:
+    def months(self) -> Sequence[str]:
         """
         The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
         """
@@ -243,7 +243,7 @@ class PolicyVMRetentionYearly(dict):
 
     @property
     @pulumi.getter
-    def weekdays(self) -> List[str]:
+    def weekdays(self) -> Sequence[str]:
         """
         The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
@@ -251,7 +251,7 @@ class PolicyVMRetentionYearly(dict):
 
     @property
     @pulumi.getter
-    def weeks(self) -> List[str]:
+    def weeks(self) -> Sequence[str]:
         """
         The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """

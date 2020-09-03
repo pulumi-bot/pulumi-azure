@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Probe']
@@ -109,7 +109,7 @@ class Probe(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             interval_in_seconds: Optional[pulumi.Input[float]] = None,
-            load_balancer_rules: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            load_balancer_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             loadbalancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             number_of_probes: Optional[pulumi.Input[float]] = None,
@@ -158,7 +158,7 @@ class Probe(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerRules")
-    def load_balancer_rules(self) -> pulumi.Output[List[str]]:
+    def load_balancer_rules(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "load_balancer_rules")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -69,7 +69,7 @@ class GetKeyResult:
 
     @property
     @pulumi.getter(name="keyOpts")
-    def key_opts(self) -> List[str]:
+    def key_opts(self) -> Sequence[str]:
         """
         A list of JSON web key operations assigned to this Key Vault Key
         """

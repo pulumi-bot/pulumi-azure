@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['WebTest']
@@ -20,7 +20,7 @@ class WebTest(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  frequency: Optional[pulumi.Input[float]] = None,
-                 geo_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 geo_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,7 +41,7 @@ class WebTest(pulumi.CustomResource):
         :param pulumi.Input[str] description: Purpose/user defined descriptive test for this WebTest.
         :param pulumi.Input[bool] enabled: Is the test actively being monitored.
         :param pulumi.Input[float] frequency: Interval in seconds between test runs for this WebTest. Default is `300`.
-        :param pulumi.Input[List[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
         :param pulumi.Input[str] kind: = (Required) The kind of web test that this web test watches. Choices are `ping` and `multistep`.
         :param pulumi.Input[str] location: The location of the resource group.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights WebTest. Changing this forces a
@@ -106,7 +106,7 @@ class WebTest(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             frequency: Optional[pulumi.Input[float]] = None,
-            geo_locations: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            geo_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class WebTest(pulumi.CustomResource):
         :param pulumi.Input[str] description: Purpose/user defined descriptive test for this WebTest.
         :param pulumi.Input[bool] enabled: Is the test actively being monitored.
         :param pulumi.Input[float] frequency: Interval in seconds between test runs for this WebTest. Default is `300`.
-        :param pulumi.Input[List[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geo_locations: A list of where to physically run the tests from to give global coverage for accessibility of your application.
         :param pulumi.Input[str] kind: = (Required) The kind of web test that this web test watches. Choices are `ping` and `multistep`.
         :param pulumi.Input[str] location: The location of the resource group.
         :param pulumi.Input[str] name: Specifies the name of the Application Insights WebTest. Changing this forces a
@@ -198,7 +198,7 @@ class WebTest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="geoLocations")
-    def geo_locations(self) -> pulumi.Output[List[str]]:
+    def geo_locations(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of where to physically run the tests from to give global coverage for accessibility of your application.
         """

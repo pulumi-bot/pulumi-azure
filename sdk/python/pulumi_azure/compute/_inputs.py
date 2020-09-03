@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -502,12 +502,12 @@ class LinuxVirtualMachineBootDiagnosticsArgs:
 class LinuxVirtualMachineIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The type of Managed Identity which should be assigned to the Linux Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
         :param pulumi.Input[str] principal_id: The ID of the System Managed Service Principal.
         :param pulumi.Input[str] tenant_id: The ID of the Tenant the System Managed Service Principal is assigned in.
         """
@@ -533,14 +533,14 @@ class LinuxVirtualMachineIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -1035,11 +1035,11 @@ class LinuxVirtualMachineScaleSetDataDiskArgs:
 class LinuxVirtualMachineScaleSetIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The type of Managed Identity which should be assigned to the Linux Virtual Machine Scale Set. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine Scale Set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine Scale Set.
         :param pulumi.Input[str] principal_id: The ID of the System Managed Service Principal.
         """
         pulumi.set(__self__, "type", type)
@@ -1062,14 +1062,14 @@ class LinuxVirtualMachineScaleSetIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine Scale Set.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -1088,17 +1088,17 @@ class LinuxVirtualMachineScaleSetIdentityArgs:
 @pulumi.input_type
 class LinuxVirtualMachineScaleSetNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 ip_configurations: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]],
+                 ip_configurations: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]],
                  name: pulumi.Input[str],
-                 dns_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_accelerated_networking: Optional[pulumi.Input[bool]] = None,
                  enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
                  network_security_group_id: Optional[pulumi.Input[str]] = None,
                  primary: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]] ip_configurations: One or more `ip_configuration` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]] ip_configurations: One or more `ip_configuration` blocks as defined above.
         :param pulumi.Input[str] name: The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_servers: A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
         :param pulumi.Input[bool] enable_accelerated_networking: Does this Network Interface support Accelerated Networking? Defaults to `false`.
         :param pulumi.Input[bool] enable_ip_forwarding: Does this Network Interface support IP Forwarding? Defaults to `false`.
         :param pulumi.Input[str] network_security_group_id: The ID of a Network Security Group which should be assigned to this Network Interface.
@@ -1119,14 +1119,14 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipConfigurations")
-    def ip_configurations(self) -> pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]:
+    def ip_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]:
         """
         One or more `ip_configuration` blocks as defined above.
         """
         return pulumi.get(self, "ip_configurations")
 
     @ip_configurations.setter
-    def ip_configurations(self, value: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]):
+    def ip_configurations(self, value: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]):
         pulumi.set(self, "ip_configurations", value)
 
     @property
@@ -1143,14 +1143,14 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @property
@@ -1206,22 +1206,22 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceArgs:
 class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 application_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 application_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  primary: Optional[pulumi.Input[bool]] = None,
-                 public_ip_addresses: Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]] = None,
+                 public_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name which should be used for this IP Configuration.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_security_group_ids: A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_security_group_ids: A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         :param pulumi.Input[bool] primary: Is this the Primary IP Configuration for this Network Interface? Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]] public_ip_addresses: A `public_ip_address` block as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]] public_ip_addresses: A `public_ip_address` block as defined below.
         :param pulumi.Input[str] subnet_id: The ID of the Subnet which this IP Configuration should be connected to.
         :param pulumi.Input[str] version: The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
         """
@@ -1257,50 +1257,50 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="applicationGatewayBackendAddressPoolIds")
-    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "application_gateway_backend_address_pool_ids")
 
     @application_gateway_backend_address_pool_ids.setter
-    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_gateway_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="applicationSecurityGroupIds")
-    def application_security_group_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "application_security_group_ids")
 
     @application_security_group_ids.setter
-    def application_security_group_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_security_group_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerBackendAddressPoolIds")
-    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "load_balancer_backend_address_pool_ids")
 
     @load_balancer_backend_address_pool_ids.setter
-    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerInboundNatRulesIds")
-    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "load_balancer_inbound_nat_rules_ids")
 
     @load_balancer_inbound_nat_rules_ids.setter
-    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_inbound_nat_rules_ids", value)
 
     @property
@@ -1317,14 +1317,14 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]:
+    def public_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]:
         """
         A `public_ip_address` block as defined below.
         """
         return pulumi.get(self, "public_ip_addresses")
 
     @public_ip_addresses.setter
-    def public_ip_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]):
+    def public_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]):
         pulumi.set(self, "public_ip_addresses", value)
 
     @property
@@ -1358,13 +1358,13 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressA
                  name: pulumi.Input[str],
                  domain_name_label: Optional[pulumi.Input[str]] = None,
                  idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
-                 ip_tags: Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
+                 ip_tags: Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
                  public_ip_prefix_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name of the Public IP Address Configuration.
         :param pulumi.Input[str] domain_name_label: The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
         :param pulumi.Input[float] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
         :param pulumi.Input[str] public_ip_prefix_id: The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "name", name)
@@ -1415,14 +1415,14 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressA
 
     @property
     @pulumi.getter(name="ipTags")
-    def ip_tags(self) -> Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]:
+    def ip_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]:
         """
         One or more `ip_tag` blocks as defined above.
         """
         return pulumi.get(self, "ip_tags")
 
     @ip_tags.setter
-    def ip_tags(self, value: Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]):
+    def ip_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]):
         pulumi.set(self, "ip_tags", value)
 
     @property
@@ -1710,10 +1710,10 @@ class LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs:
 @pulumi.input_type
 class LinuxVirtualMachineScaleSetSecretArgs:
     def __init__(__self__, *,
-                 certificates: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]],
+                 certificates: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]],
                  key_vault_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault from which all Secrets should be sourced.
         """
         pulumi.set(__self__, "certificates", certificates)
@@ -1721,14 +1721,14 @@ class LinuxVirtualMachineScaleSetSecretArgs:
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]]:
+    def certificates(self) -> pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]]:
         """
         One or more `certificate` blocks as defined above.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]]):
+    def certificates(self, value: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineScaleSetSecretCertificateArgs']]]):
         pulumi.set(self, "certificates", value)
 
     @property
@@ -1874,10 +1874,10 @@ class LinuxVirtualMachineScaleSetTerminateNotificationArgs:
 @pulumi.input_type
 class LinuxVirtualMachineSecretArgs:
     def __init__(__self__, *,
-                 certificates: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]],
+                 certificates: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]],
                  key_vault_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault from which all Secrets should be sourced.
         """
         pulumi.set(__self__, "certificates", certificates)
@@ -1885,14 +1885,14 @@ class LinuxVirtualMachineSecretArgs:
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]]:
+    def certificates(self) -> pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]]:
         """
         One or more `certificate` blocks as defined above.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: pulumi.Input[List[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]]):
+    def certificates(self, value: pulumi.Input[Sequence[pulumi.Input['LinuxVirtualMachineSecretCertificateArgs']]]):
         pulumi.set(self, "certificates", value)
 
     @property
@@ -2162,7 +2162,7 @@ class ScaleSetExtensionArgs:
                  type_handler_version: pulumi.Input[str],
                  auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
                  protected_settings: Optional[pulumi.Input[str]] = None,
-                 provision_after_extensions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 provision_after_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  settings: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Specifies the name of the extension.
@@ -2171,7 +2171,7 @@ class ScaleSetExtensionArgs:
         :param pulumi.Input[str] type_handler_version: Specifies the version of the extension to use, available versions can be found using the Azure CLI.
         :param pulumi.Input[bool] auto_upgrade_minor_version: Specifies whether or not to use the latest minor version available.
         :param pulumi.Input[str] protected_settings: The protected_settings passed to the extension, like settings, these are specified as a JSON object in a string.
-        :param pulumi.Input[List[pulumi.Input[str]]] provision_after_extensions: Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provision_after_extensions: Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
         :param pulumi.Input[str] settings: The settings passed to the extension, these are specified as a JSON object in a string.
         """
         pulumi.set(__self__, "name", name)
@@ -2261,14 +2261,14 @@ class ScaleSetExtensionArgs:
 
     @property
     @pulumi.getter(name="provisionAfterExtensions")
-    def provision_after_extensions(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def provision_after_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
         """
         return pulumi.get(self, "provision_after_extensions")
 
     @provision_after_extensions.setter
-    def provision_after_extensions(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def provision_after_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "provision_after_extensions", value)
 
     @property
@@ -2288,11 +2288,11 @@ class ScaleSetExtensionArgs:
 class ScaleSetIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Specifies the identity type to be assigned to the scale set. Allowable values are `SystemAssigned` and `UserAssigned`. For the `SystemAssigned` identity the scale set's Service Principal ID (SPN) can be retrieved after the scale set has been created. See [documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) for more information.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: Specifies a list of user managed identity ids to be assigned to the VMSS. Required if `type` is `UserAssigned`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: Specifies a list of user managed identity ids to be assigned to the VMSS. Required if `type` is `UserAssigned`.
         """
         pulumi.set(__self__, "type", type)
         if identity_ids is not None:
@@ -2314,14 +2314,14 @@ class ScaleSetIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies a list of user managed identity ids to be assigned to the VMSS. Required if `type` is `UserAssigned`.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -2337,7 +2337,7 @@ class ScaleSetIdentityArgs:
 @pulumi.input_type
 class ScaleSetNetworkProfileArgs:
     def __init__(__self__, *,
-                 ip_configurations: pulumi.Input[List[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]],
+                 ip_configurations: pulumi.Input[Sequence[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]],
                  name: pulumi.Input[str],
                  primary: pulumi.Input[bool],
                  accelerated_networking: Optional[pulumi.Input[bool]] = None,
@@ -2345,7 +2345,7 @@ class ScaleSetNetworkProfileArgs:
                  ip_forwarding: Optional[pulumi.Input[bool]] = None,
                  network_security_group_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]] ip_configurations: An ip_configuration block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]] ip_configurations: An ip_configuration block as documented below.
         :param pulumi.Input[str] name: Specifies the name of the network interface configuration.
         :param pulumi.Input[bool] primary: Indicates whether network interfaces created from the network interface configuration will be the primary NIC of the VM.
         :param pulumi.Input[bool] accelerated_networking: Specifies whether to enable accelerated networking or not. Defaults to `false`.
@@ -2367,14 +2367,14 @@ class ScaleSetNetworkProfileArgs:
 
     @property
     @pulumi.getter(name="ipConfigurations")
-    def ip_configurations(self) -> pulumi.Input[List[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]]:
+    def ip_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]]:
         """
         An ip_configuration block as documented below.
         """
         return pulumi.get(self, "ip_configurations")
 
     @ip_configurations.setter
-    def ip_configurations(self, value: pulumi.Input[List[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]]):
+    def ip_configurations(self, value: pulumi.Input[Sequence[pulumi.Input['ScaleSetNetworkProfileIpConfigurationArgs']]]):
         pulumi.set(self, "ip_configurations", value)
 
     @property
@@ -2453,22 +2453,22 @@ class ScaleSetNetworkProfileArgs:
 @pulumi.input_type
 class ScaleSetNetworkProfileDnsSettingsArgs:
     def __init__(__self__, *,
-                 dns_servers: pulumi.Input[List[pulumi.Input[str]]]):
+                 dns_servers: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_servers: Specifies an array of dns servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Specifies an array of dns servers.
         """
         pulumi.set(__self__, "dns_servers", dns_servers)
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def dns_servers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies an array of dns servers.
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def dns_servers(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "dns_servers", value)
 
 
@@ -2478,19 +2478,19 @@ class ScaleSetNetworkProfileIpConfigurationArgs:
                  name: pulumi.Input[str],
                  primary: pulumi.Input[bool],
                  subnet_id: pulumi.Input[str],
-                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 application_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 application_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  public_ip_address_configuration: Optional[pulumi.Input['ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs']] = None):
         """
         :param pulumi.Input[str] name: Specifies name of the IP configuration.
         :param pulumi.Input[bool] primary: Specifies if this ip_configuration is the primary one.
         :param pulumi.Input[str] subnet_id: Specifies the identifier of the subnet.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets can use the same application gateway.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_security_group_ids: Specifies up to `20` application security group IDs.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: Specifies an array of references to inbound NAT pools for load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets can use the same application gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_security_group_ids: Specifies up to `20` application security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: Specifies an array of references to inbound NAT pools for load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
         :param pulumi.Input['ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs'] public_ip_address_configuration: Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The public_ip_address_configuration is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -2545,50 +2545,50 @@ class ScaleSetNetworkProfileIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="applicationGatewayBackendAddressPoolIds")
-    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets can use the same application gateway.
         """
         return pulumi.get(self, "application_gateway_backend_address_pool_ids")
 
     @application_gateway_backend_address_pool_ids.setter
-    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_gateway_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="applicationSecurityGroupIds")
-    def application_security_group_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies up to `20` application security group IDs.
         """
         return pulumi.get(self, "application_security_group_ids")
 
     @application_security_group_ids.setter
-    def application_security_group_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_security_group_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerBackendAddressPoolIds")
-    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
         """
         return pulumi.get(self, "load_balancer_backend_address_pool_ids")
 
     @load_balancer_backend_address_pool_ids.setter
-    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerInboundNatRulesIds")
-    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies an array of references to inbound NAT pools for load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same load balancer.
         """
         return pulumi.get(self, "load_balancer_inbound_nat_rules_ids")
 
     @load_balancer_inbound_nat_rules_ids.setter
-    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_inbound_nat_rules_ids", value)
 
     @property
@@ -2729,10 +2729,10 @@ class ScaleSetOsProfileArgs:
 class ScaleSetOsProfileLinuxConfigArgs:
     def __init__(__self__, *,
                  disable_password_authentication: Optional[pulumi.Input[bool]] = None,
-                 ssh_keys: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]] = None):
+                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]] = None):
         """
         :param pulumi.Input[bool] disable_password_authentication: Specifies whether password authentication should be disabled. Defaults to `false`. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]] ssh_keys: Specifies a collection of `path` and `key_data` to be placed on the virtual machine.
+        :param pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]] ssh_keys: Specifies a collection of `path` and `key_data` to be placed on the virtual machine.
         """
         if disable_password_authentication is not None:
             pulumi.set(__self__, "disable_password_authentication", disable_password_authentication)
@@ -2753,14 +2753,14 @@ class ScaleSetOsProfileLinuxConfigArgs:
 
     @property
     @pulumi.getter(name="sshKeys")
-    def ssh_keys(self) -> Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]]:
+    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]]:
         """
         Specifies a collection of `path` and `key_data` to be placed on the virtual machine.
         """
         return pulumi.get(self, "ssh_keys")
 
     @ssh_keys.setter
-    def ssh_keys(self, value: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]]):
+    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileLinuxConfigSshKeyArgs']]]]):
         pulumi.set(self, "ssh_keys", value)
 
 
@@ -2796,10 +2796,10 @@ class ScaleSetOsProfileLinuxConfigSshKeyArgs:
 class ScaleSetOsProfileSecretArgs:
     def __init__(__self__, *,
                  source_vault_id: pulumi.Input[str],
-                 vault_certificates: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]] = None):
+                 vault_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]] = None):
         """
         :param pulumi.Input[str] source_vault_id: Specifies the key vault to use.
-        :param pulumi.Input[List[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]] vault_certificates: A collection of Vault Certificates as documented below
+        :param pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]] vault_certificates: A collection of Vault Certificates as documented below
         """
         pulumi.set(__self__, "source_vault_id", source_vault_id)
         if vault_certificates is not None:
@@ -2819,14 +2819,14 @@ class ScaleSetOsProfileSecretArgs:
 
     @property
     @pulumi.getter(name="vaultCertificates")
-    def vault_certificates(self) -> Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]]:
+    def vault_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]]:
         """
         A collection of Vault Certificates as documented below
         """
         return pulumi.get(self, "vault_certificates")
 
     @vault_certificates.setter
-    def vault_certificates(self, value: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]]):
+    def vault_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileSecretVaultCertificateArgs']]]]):
         pulumi.set(self, "vault_certificates", value)
 
 
@@ -2871,15 +2871,15 @@ class ScaleSetOsProfileSecretVaultCertificateArgs:
 @pulumi.input_type
 class ScaleSetOsProfileWindowsConfigArgs:
     def __init__(__self__, *,
-                 additional_unattend_configs: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]] = None,
+                 additional_unattend_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]] = None,
                  enable_automatic_upgrades: Optional[pulumi.Input[bool]] = None,
                  provision_vm_agent: Optional[pulumi.Input[bool]] = None,
-                 winrms: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]] = None):
+                 winrms: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]] additional_unattend_configs: An Additional Unattended Config block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]] additional_unattend_configs: An Additional Unattended Config block as documented below.
         :param pulumi.Input[bool] enable_automatic_upgrades: Indicates whether virtual machines in the scale set are enabled for automatic updates.
         :param pulumi.Input[bool] provision_vm_agent: Indicates whether virtual machine agent should be provisioned on the virtual machines in the scale set.
-        :param pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]] winrms: A collection of WinRM configuration blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]] winrms: A collection of WinRM configuration blocks as documented below.
         """
         if additional_unattend_configs is not None:
             pulumi.set(__self__, "additional_unattend_configs", additional_unattend_configs)
@@ -2892,14 +2892,14 @@ class ScaleSetOsProfileWindowsConfigArgs:
 
     @property
     @pulumi.getter(name="additionalUnattendConfigs")
-    def additional_unattend_configs(self) -> Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]:
+    def additional_unattend_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]:
         """
         An Additional Unattended Config block as documented below.
         """
         return pulumi.get(self, "additional_unattend_configs")
 
     @additional_unattend_configs.setter
-    def additional_unattend_configs(self, value: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]):
+    def additional_unattend_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]):
         pulumi.set(self, "additional_unattend_configs", value)
 
     @property
@@ -2928,14 +2928,14 @@ class ScaleSetOsProfileWindowsConfigArgs:
 
     @property
     @pulumi.getter
-    def winrms(self) -> Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]]:
+    def winrms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]]:
         """
         A collection of WinRM configuration blocks as documented below.
         """
         return pulumi.get(self, "winrms")
 
     @winrms.setter
-    def winrms(self, value: Optional[pulumi.Input[List[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]]):
+    def winrms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScaleSetOsProfileWindowsConfigWinrmArgs']]]]):
         pulumi.set(self, "winrms", value)
 
 
@@ -3403,7 +3403,7 @@ class ScaleSetStorageProfileOsDiskArgs:
                  managed_disk_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
-                 vhd_containers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 vhd_containers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] create_option: Specifies how the virtual machine should be created. The only possible option is `FromImage`.
         :param pulumi.Input[str] caching: Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
@@ -3413,7 +3413,7 @@ class ScaleSetStorageProfileOsDiskArgs:
         :param pulumi.Input[str] managed_disk_type: Specifies the type of managed disk to create. Value you must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`. Cannot be used when `vhd_containers` or `image` is specified.
         :param pulumi.Input[str] name: Specifies the disk name. Must be specified when using unmanaged disk ('managed_disk_type' property not set).
         :param pulumi.Input[str] os_type: Specifies the operating system Type, valid values are windows, linux.
-        :param pulumi.Input[List[pulumi.Input[str]]] vhd_containers: Specifies the vhd uri. Cannot be used when `image` or `managed_disk_type` is specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vhd_containers: Specifies the vhd uri. Cannot be used when `image` or `managed_disk_type` is specified.
         """
         pulumi.set(__self__, "create_option", create_option)
         if caching is not None:
@@ -3505,14 +3505,14 @@ class ScaleSetStorageProfileOsDiskArgs:
 
     @property
     @pulumi.getter(name="vhdContainers")
-    def vhd_containers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def vhd_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies the vhd uri. Cannot be used when `image` or `managed_disk_type` is specified.
         """
         return pulumi.get(self, "vhd_containers")
 
     @vhd_containers.setter
-    def vhd_containers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def vhd_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vhd_containers", value)
 
 
@@ -3832,11 +3832,11 @@ class VirtualMachineBootDiagnosticsArgs:
 class VirtualMachineIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The Managed Service Identity Type of this Virtual Machine. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` (where you can specify the Service Principal ID's) to be used by this Virtual Machine using the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: Specifies a list of user managed identity ids to be assigned to the VM. Required if `type` is `UserAssigned`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: Specifies a list of user managed identity ids to be assigned to the VM. Required if `type` is `UserAssigned`.
         :param pulumi.Input[str] principal_id: The Principal ID for the Service Principal associated with the Managed Service Identity of this Virtual Machine.
         """
         pulumi.set(__self__, "type", type)
@@ -3859,14 +3859,14 @@ class VirtualMachineIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies a list of user managed identity ids to be assigned to the VM. Required if `type` is `UserAssigned`.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -3955,10 +3955,10 @@ class VirtualMachineOsProfileArgs:
 class VirtualMachineOsProfileLinuxConfigArgs:
     def __init__(__self__, *,
                  disable_password_authentication: pulumi.Input[bool],
-                 ssh_keys: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]] = None):
+                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]] = None):
         """
         :param pulumi.Input[bool] disable_password_authentication: Specifies whether password authentication should be disabled. If set to `false`, an `admin_password` must be specified.
-        :param pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]] ssh_keys: One or more `ssh_keys` blocks. This field is required if `disable_password_authentication` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]] ssh_keys: One or more `ssh_keys` blocks. This field is required if `disable_password_authentication` is set to `true`.
         """
         pulumi.set(__self__, "disable_password_authentication", disable_password_authentication)
         if ssh_keys is not None:
@@ -3978,14 +3978,14 @@ class VirtualMachineOsProfileLinuxConfigArgs:
 
     @property
     @pulumi.getter(name="sshKeys")
-    def ssh_keys(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]]:
+    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]]:
         """
         One or more `ssh_keys` blocks. This field is required if `disable_password_authentication` is set to `true`.
         """
         return pulumi.get(self, "ssh_keys")
 
     @ssh_keys.setter
-    def ssh_keys(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]]):
+    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileLinuxConfigSshKeyArgs']]]]):
         pulumi.set(self, "ssh_keys", value)
 
 
@@ -4030,10 +4030,10 @@ class VirtualMachineOsProfileLinuxConfigSshKeyArgs:
 class VirtualMachineOsProfileSecretArgs:
     def __init__(__self__, *,
                  source_vault_id: pulumi.Input[str],
-                 vault_certificates: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]] = None):
+                 vault_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]] = None):
         """
         :param pulumi.Input[str] source_vault_id: Specifies the ID of the Key Vault to use.
-        :param pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]] vault_certificates: One or more `vault_certificates` blocks.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]] vault_certificates: One or more `vault_certificates` blocks.
         """
         pulumi.set(__self__, "source_vault_id", source_vault_id)
         if vault_certificates is not None:
@@ -4053,14 +4053,14 @@ class VirtualMachineOsProfileSecretArgs:
 
     @property
     @pulumi.getter(name="vaultCertificates")
-    def vault_certificates(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]]:
+    def vault_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]]:
         """
         One or more `vault_certificates` blocks.
         """
         return pulumi.get(self, "vault_certificates")
 
     @vault_certificates.setter
-    def vault_certificates(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]]):
+    def vault_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileSecretVaultCertificateArgs']]]]):
         pulumi.set(self, "vault_certificates", value)
 
 
@@ -4105,17 +4105,17 @@ class VirtualMachineOsProfileSecretVaultCertificateArgs:
 @pulumi.input_type
 class VirtualMachineOsProfileWindowsConfigArgs:
     def __init__(__self__, *,
-                 additional_unattend_configs: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]] = None,
+                 additional_unattend_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]] = None,
                  enable_automatic_upgrades: Optional[pulumi.Input[bool]] = None,
                  provision_vm_agent: Optional[pulumi.Input[bool]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 winrms: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]] = None):
+                 winrms: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]] additional_unattend_configs: A `additional_unattend_config` block.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]] additional_unattend_configs: A `additional_unattend_config` block.
         :param pulumi.Input[bool] enable_automatic_upgrades: Are automatic updates enabled on this Virtual Machine? Defaults to `false.`
         :param pulumi.Input[bool] provision_vm_agent: Should the Azure Virtual Machine Guest Agent be installed on this Virtual Machine? Defaults to `false`.
         :param pulumi.Input[str] timezone: Specifies the time zone of the virtual machine, [the possible values are defined here](http://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
-        :param pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]] winrms: One or more `winrm` block.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]] winrms: One or more `winrm` block.
         """
         if additional_unattend_configs is not None:
             pulumi.set(__self__, "additional_unattend_configs", additional_unattend_configs)
@@ -4130,14 +4130,14 @@ class VirtualMachineOsProfileWindowsConfigArgs:
 
     @property
     @pulumi.getter(name="additionalUnattendConfigs")
-    def additional_unattend_configs(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]:
+    def additional_unattend_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]:
         """
         A `additional_unattend_config` block.
         """
         return pulumi.get(self, "additional_unattend_configs")
 
     @additional_unattend_configs.setter
-    def additional_unattend_configs(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]):
+    def additional_unattend_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfigArgs']]]]):
         pulumi.set(self, "additional_unattend_configs", value)
 
     @property
@@ -4178,14 +4178,14 @@ class VirtualMachineOsProfileWindowsConfigArgs:
 
     @property
     @pulumi.getter
-    def winrms(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]]:
+    def winrms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]]:
         """
         One or more `winrm` block.
         """
         return pulumi.get(self, "winrms")
 
     @winrms.setter
-    def winrms(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]]):
+    def winrms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineOsProfileWindowsConfigWinrmArgs']]]]):
         pulumi.set(self, "winrms", value)
 
 
@@ -4832,12 +4832,12 @@ class WindowsVirtualMachineBootDiagnosticsArgs:
 class WindowsVirtualMachineIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The type of Managed Identity which should be assigned to the Windows Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine.
         :param pulumi.Input[str] principal_id: The ID of the System Managed Service Principal.
         :param pulumi.Input[str] tenant_id: The ID of the Tenant the System Managed Service Principal is assigned in.
         """
@@ -4863,14 +4863,14 @@ class WindowsVirtualMachineIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -5365,11 +5365,11 @@ class WindowsVirtualMachineScaleSetDataDiskArgs:
 class WindowsVirtualMachineScaleSetIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 identity_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 identity_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  principal_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The type of Managed Identity which should be assigned to the Windows Virtual Machine Scale Set. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-        :param pulumi.Input[List[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine Scale Set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_ids: A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine Scale Set.
         :param pulumi.Input[str] principal_id: The ID of the System Managed Service Principal.
         """
         pulumi.set(__self__, "type", type)
@@ -5392,14 +5392,14 @@ class WindowsVirtualMachineScaleSetIdentityArgs:
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def identity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of User Managed Identity ID's which should be assigned to the Windows Virtual Machine Scale Set.
         """
         return pulumi.get(self, "identity_ids")
 
     @identity_ids.setter
-    def identity_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def identity_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identity_ids", value)
 
     @property
@@ -5418,17 +5418,17 @@ class WindowsVirtualMachineScaleSetIdentityArgs:
 @pulumi.input_type
 class WindowsVirtualMachineScaleSetNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 ip_configurations: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]],
+                 ip_configurations: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]],
                  name: pulumi.Input[str],
-                 dns_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_accelerated_networking: Optional[pulumi.Input[bool]] = None,
                  enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
                  network_security_group_id: Optional[pulumi.Input[str]] = None,
                  primary: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]] ip_configurations: One or more `ip_configuration` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]] ip_configurations: One or more `ip_configuration` blocks as defined above.
         :param pulumi.Input[str] name: The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] dns_servers: A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
         :param pulumi.Input[bool] enable_accelerated_networking: Does this Network Interface support Accelerated Networking? Defaults to `false`.
         :param pulumi.Input[bool] enable_ip_forwarding: Does this Network Interface support IP Forwarding? Defaults to `false`.
         :param pulumi.Input[str] network_security_group_id: The ID of a Network Security Group which should be assigned to this Network Interface.
@@ -5449,14 +5449,14 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipConfigurations")
-    def ip_configurations(self) -> pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]:
+    def ip_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]:
         """
         One or more `ip_configuration` blocks as defined above.
         """
         return pulumi.get(self, "ip_configurations")
 
     @ip_configurations.setter
-    def ip_configurations(self, value: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]):
+    def ip_configurations(self, value: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs']]]):
         pulumi.set(self, "ip_configurations", value)
 
     @property
@@ -5473,14 +5473,14 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @property
@@ -5536,22 +5536,22 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceArgs:
 class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 application_security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 application_gateway_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 application_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_backend_address_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 load_balancer_inbound_nat_rules_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  primary: Optional[pulumi.Input[bool]] = None,
-                 public_ip_addresses: Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]] = None,
+                 public_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name which should be used for this IP Configuration.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] application_security_group_ids: A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
-        :param pulumi.Input[List[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_gateway_backend_address_pool_ids: A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_security_group_ids: A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_backend_address_pool_ids: A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] load_balancer_inbound_nat_rules_ids: A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         :param pulumi.Input[bool] primary: Is this the Primary IP Configuration for this Network Interface? Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]] public_ip_addresses: A `public_ip_address` block as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]] public_ip_addresses: A `public_ip_address` block as defined below.
         :param pulumi.Input[str] subnet_id: The ID of the Subnet which this IP Configuration should be connected to.
         :param pulumi.Input[str] version: The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
         """
@@ -5587,50 +5587,50 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="applicationGatewayBackendAddressPoolIds")
-    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_gateway_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Backend Address Pools ID's from a Application Gateway which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "application_gateway_backend_address_pool_ids")
 
     @application_gateway_backend_address_pool_ids.setter
-    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_gateway_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_gateway_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="applicationSecurityGroupIds")
-    def application_security_group_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def application_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Application Security Group ID's which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "application_security_group_ids")
 
     @application_security_group_ids.setter
-    def application_security_group_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def application_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_security_group_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerBackendAddressPoolIds")
-    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_backend_address_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of Backend Address Pools ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "load_balancer_backend_address_pool_ids")
 
     @load_balancer_backend_address_pool_ids.setter
-    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_backend_address_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_backend_address_pool_ids", value)
 
     @property
     @pulumi.getter(name="loadBalancerInboundNatRulesIds")
-    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def load_balancer_inbound_nat_rules_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of NAT Rule ID's from a Load Balancer which this Virtual Machine Scale Set should be connected to.
         """
         return pulumi.get(self, "load_balancer_inbound_nat_rules_ids")
 
     @load_balancer_inbound_nat_rules_ids.setter
-    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def load_balancer_inbound_nat_rules_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "load_balancer_inbound_nat_rules_ids", value)
 
     @property
@@ -5647,14 +5647,14 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]:
+    def public_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]:
         """
         A `public_ip_address` block as defined below.
         """
         return pulumi.get(self, "public_ip_addresses")
 
     @public_ip_addresses.setter
-    def public_ip_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]):
+    def public_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressArgs']]]]):
         pulumi.set(self, "public_ip_addresses", value)
 
     @property
@@ -5688,13 +5688,13 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
                  name: pulumi.Input[str],
                  domain_name_label: Optional[pulumi.Input[str]] = None,
                  idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
-                 ip_tags: Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
+                 ip_tags: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
                  public_ip_prefix_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name of the Public IP Address Configuration.
         :param pulumi.Input[str] domain_name_label: The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
         :param pulumi.Input[float] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-        :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
         :param pulumi.Input[str] public_ip_prefix_id: The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "name", name)
@@ -5745,14 +5745,14 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
 
     @property
     @pulumi.getter(name="ipTags")
-    def ip_tags(self) -> Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]:
+    def ip_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]:
         """
         One or more `ip_tag` blocks as defined above.
         """
         return pulumi.get(self, "ip_tags")
 
     @ip_tags.setter
-    def ip_tags(self, value: Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]):
+    def ip_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]]):
         pulumi.set(self, "ip_tags", value)
 
     @property
@@ -6040,10 +6040,10 @@ class WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs:
 @pulumi.input_type
 class WindowsVirtualMachineScaleSetSecretArgs:
     def __init__(__self__, *,
-                 certificates: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]],
+                 certificates: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]],
                  key_vault_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault from which all Secrets should be sourced.
         """
         pulumi.set(__self__, "certificates", certificates)
@@ -6051,14 +6051,14 @@ class WindowsVirtualMachineScaleSetSecretArgs:
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]]:
+    def certificates(self) -> pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]]:
         """
         One or more `certificate` blocks as defined above.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]]):
+    def certificates(self, value: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineScaleSetSecretCertificateArgs']]]):
         pulumi.set(self, "certificates", value)
 
     @property
@@ -6257,10 +6257,10 @@ class WindowsVirtualMachineScaleSetWinrmListenerArgs:
 @pulumi.input_type
 class WindowsVirtualMachineSecretArgs:
     def __init__(__self__, *,
-                 certificates: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]],
+                 certificates: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]],
                  key_vault_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]] certificates: One or more `certificate` blocks as defined above.
         :param pulumi.Input[str] key_vault_id: The ID of the Key Vault from which all Secrets should be sourced.
         """
         pulumi.set(__self__, "certificates", certificates)
@@ -6268,14 +6268,14 @@ class WindowsVirtualMachineSecretArgs:
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Input[List[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]]:
+    def certificates(self) -> pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]]:
         """
         One or more `certificate` blocks as defined above.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: pulumi.Input[List[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]]):
+    def certificates(self, value: pulumi.Input[Sequence[pulumi.Input['WindowsVirtualMachineSecretCertificateArgs']]]):
         pulumi.set(self, "certificates", value)
 
     @property

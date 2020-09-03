@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -708,10 +708,10 @@ class ActionRuleActionGroupCondition(dict):
 class ActionRuleActionGroupConditionAlertContext(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -726,7 +726,7 @@ class ActionRuleActionGroupConditionAlertContext(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -740,10 +740,10 @@ class ActionRuleActionGroupConditionAlertContext(dict):
 class ActionRuleActionGroupConditionAlertRuleId(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -758,7 +758,7 @@ class ActionRuleActionGroupConditionAlertRuleId(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -772,10 +772,10 @@ class ActionRuleActionGroupConditionAlertRuleId(dict):
 class ActionRuleActionGroupConditionDescription(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -790,7 +790,7 @@ class ActionRuleActionGroupConditionDescription(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -804,10 +804,10 @@ class ActionRuleActionGroupConditionDescription(dict):
 class ActionRuleActionGroupConditionMonitor(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -822,7 +822,7 @@ class ActionRuleActionGroupConditionMonitor(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
         """
@@ -836,10 +836,10 @@ class ActionRuleActionGroupConditionMonitor(dict):
 class ActionRuleActionGroupConditionMonitorService(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -854,7 +854,7 @@ class ActionRuleActionGroupConditionMonitorService(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
         """
@@ -868,10 +868,10 @@ class ActionRuleActionGroupConditionMonitorService(dict):
 class ActionRuleActionGroupConditionSeverity(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -886,7 +886,7 @@ class ActionRuleActionGroupConditionSeverity(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
         """
@@ -900,10 +900,10 @@ class ActionRuleActionGroupConditionSeverity(dict):
 class ActionRuleActionGroupConditionTargetResourceType(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. The values should be valid resource types.
+        :param Sequence[str] values: A list of values to match for a given condition. The values should be valid resource types.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -918,7 +918,7 @@ class ActionRuleActionGroupConditionTargetResourceType(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. The values should be valid resource types.
         """
@@ -931,10 +931,10 @@ class ActionRuleActionGroupConditionTargetResourceType(dict):
 @pulumi.output_type
 class ActionRuleActionGroupScope(dict):
     def __init__(__self__, *,
-                 resource_ids: List[str],
+                 resource_ids: Sequence[str],
                  type: str):
         """
-        :param List[str] resource_ids: A list of resource IDs of the given scope type which will be the target of action rule.
+        :param Sequence[str] resource_ids: A list of resource IDs of the given scope type which will be the target of action rule.
         :param str type: Specifies the type of target scope. Possible values are `ResourceGroup` and `Resource`.
         """
         pulumi.set(__self__, "resource_ids", resource_ids)
@@ -942,7 +942,7 @@ class ActionRuleActionGroupScope(dict):
 
     @property
     @pulumi.getter(name="resourceIds")
-    def resource_ids(self) -> List[str]:
+    def resource_ids(self) -> Sequence[str]:
         """
         A list of resource IDs of the given scope type which will be the target of action rule.
         """
@@ -1058,10 +1058,10 @@ class ActionRuleSuppressionCondition(dict):
 class ActionRuleSuppressionConditionAlertContext(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1076,7 +1076,7 @@ class ActionRuleSuppressionConditionAlertContext(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -1090,10 +1090,10 @@ class ActionRuleSuppressionConditionAlertContext(dict):
 class ActionRuleSuppressionConditionAlertRuleId(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1108,7 +1108,7 @@ class ActionRuleSuppressionConditionAlertRuleId(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -1122,10 +1122,10 @@ class ActionRuleSuppressionConditionAlertRuleId(dict):
 class ActionRuleSuppressionConditionDescription(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-        :param List[str] values: A list of values to match for a given condition.
+        :param Sequence[str] values: A list of values to match for a given condition.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1140,7 +1140,7 @@ class ActionRuleSuppressionConditionDescription(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition.
         """
@@ -1154,10 +1154,10 @@ class ActionRuleSuppressionConditionDescription(dict):
 class ActionRuleSuppressionConditionMonitor(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1172,7 +1172,7 @@ class ActionRuleSuppressionConditionMonitor(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
         """
@@ -1186,10 +1186,10 @@ class ActionRuleSuppressionConditionMonitor(dict):
 class ActionRuleSuppressionConditionMonitorService(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1204,7 +1204,7 @@ class ActionRuleSuppressionConditionMonitorService(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `ActivityLog Administrative`, `ActivityLog Autoscale`, `ActivityLog Policy`, `ActivityLog Recommendation`, `ActivityLog Security`, `Application Insights`, `Azure Backup`, `Data Box Edge`, `Data Box Gateway`, `Health Platform`, `Log Analytics`, `Platform`, and `Resource Health`.
         """
@@ -1218,10 +1218,10 @@ class ActionRuleSuppressionConditionMonitorService(dict):
 class ActionRuleSuppressionConditionSeverity(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals`and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
+        :param Sequence[str] values: A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1236,7 +1236,7 @@ class ActionRuleSuppressionConditionSeverity(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
         """
@@ -1250,10 +1250,10 @@ class ActionRuleSuppressionConditionSeverity(dict):
 class ActionRuleSuppressionConditionTargetResourceType(dict):
     def __init__(__self__, *,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str operator: The operator for a given condition. Possible values are `Equals` and `NotEquals`.
-        :param List[str] values: A list of values to match for a given condition. The values should be valid resource types.
+        :param Sequence[str] values: A list of values to match for a given condition. The values should be valid resource types.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
@@ -1268,7 +1268,7 @@ class ActionRuleSuppressionConditionTargetResourceType(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to match for a given condition. The values should be valid resource types.
         """
@@ -1281,10 +1281,10 @@ class ActionRuleSuppressionConditionTargetResourceType(dict):
 @pulumi.output_type
 class ActionRuleSuppressionScope(dict):
     def __init__(__self__, *,
-                 resource_ids: List[str],
+                 resource_ids: Sequence[str],
                  type: str):
         """
-        :param List[str] resource_ids: A list of resource IDs of the given scope type which will be the target of action rule.
+        :param Sequence[str] resource_ids: A list of resource IDs of the given scope type which will be the target of action rule.
         :param str type: Specifies the type of target scope. Possible values are `ResourceGroup` and `Resource`.
         """
         pulumi.set(__self__, "resource_ids", resource_ids)
@@ -1292,7 +1292,7 @@ class ActionRuleSuppressionScope(dict):
 
     @property
     @pulumi.getter(name="resourceIds")
-    def resource_ids(self) -> List[str]:
+    def resource_ids(self) -> Sequence[str]:
         """
         A list of resource IDs of the given scope type which will be the target of action rule.
         """
@@ -1348,13 +1348,13 @@ class ActionRuleSuppressionSuppressionSchedule(dict):
     def __init__(__self__, *,
                  end_date_utc: str,
                  start_date_utc: str,
-                 recurrence_monthlies: Optional[List[float]] = None,
-                 recurrence_weeklies: Optional[List[str]] = None):
+                 recurrence_monthlies: Optional[Sequence[float]] = None,
+                 recurrence_weeklies: Optional[Sequence[str]] = None):
         """
         :param str end_date_utc: specifies the recurrence UTC end datetime (Y-m-d'T'H:M:S'Z').
         :param str start_date_utc: specifies the recurrence UTC start datetime (Y-m-d'T'H:M:S'Z').
-        :param List[float] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
-        :param List[str] recurrence_weeklies: specifies the list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and  `Saturday`.
+        :param Sequence[float] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
+        :param Sequence[str] recurrence_weeklies: specifies the list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and  `Saturday`.
         """
         pulumi.set(__self__, "end_date_utc", end_date_utc)
         pulumi.set(__self__, "start_date_utc", start_date_utc)
@@ -1381,7 +1381,7 @@ class ActionRuleSuppressionSuppressionSchedule(dict):
 
     @property
     @pulumi.getter(name="recurrenceMonthlies")
-    def recurrence_monthlies(self) -> Optional[List[float]]:
+    def recurrence_monthlies(self) -> Optional[Sequence[float]]:
         """
         specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
         """
@@ -1389,7 +1389,7 @@ class ActionRuleSuppressionSuppressionSchedule(dict):
 
     @property
     @pulumi.getter(name="recurrenceWeeklies")
-    def recurrence_weeklies(self) -> Optional[List[str]]:
+    def recurrence_weeklies(self) -> Optional[Sequence[str]]:
         """
         specifies the list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and  `Saturday`.
         """
@@ -1601,10 +1601,10 @@ class ActivityLogAlertCriteria(dict):
 class AutoscaleSettingNotification(dict):
     def __init__(__self__, *,
                  email: Optional['outputs.AutoscaleSettingNotificationEmail'] = None,
-                 webhooks: Optional[List['outputs.AutoscaleSettingNotificationWebhook']] = None):
+                 webhooks: Optional[Sequence['outputs.AutoscaleSettingNotificationWebhook']] = None):
         """
         :param 'AutoscaleSettingNotificationEmailArgs' email: A `email` block as defined below.
-        :param List['AutoscaleSettingNotificationWebhookArgs'] webhooks: One or more `webhook` blocks as defined below.
+        :param Sequence['AutoscaleSettingNotificationWebhookArgs'] webhooks: One or more `webhook` blocks as defined below.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -1621,7 +1621,7 @@ class AutoscaleSettingNotification(dict):
 
     @property
     @pulumi.getter
-    def webhooks(self) -> Optional[List['outputs.AutoscaleSettingNotificationWebhook']]:
+    def webhooks(self) -> Optional[Sequence['outputs.AutoscaleSettingNotificationWebhook']]:
         """
         One or more `webhook` blocks as defined below.
         """
@@ -1634,11 +1634,11 @@ class AutoscaleSettingNotification(dict):
 @pulumi.output_type
 class AutoscaleSettingNotificationEmail(dict):
     def __init__(__self__, *,
-                 custom_emails: Optional[List[str]] = None,
+                 custom_emails: Optional[Sequence[str]] = None,
                  send_to_subscription_administrator: Optional[bool] = None,
                  send_to_subscription_co_administrator: Optional[bool] = None):
         """
-        :param List[str] custom_emails: Specifies a list of custom email addresses to which the email notifications will be sent.
+        :param Sequence[str] custom_emails: Specifies a list of custom email addresses to which the email notifications will be sent.
         :param bool send_to_subscription_administrator: Should email notifications be sent to the subscription administrator? Defaults to `false`.
         :param bool send_to_subscription_co_administrator: Should email notifications be sent to the subscription co-administrator? Defaults to `false`.
         """
@@ -1651,7 +1651,7 @@ class AutoscaleSettingNotificationEmail(dict):
 
     @property
     @pulumi.getter(name="customEmails")
-    def custom_emails(self) -> Optional[List[str]]:
+    def custom_emails(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of custom email addresses to which the email notifications will be sent.
         """
@@ -1717,13 +1717,13 @@ class AutoscaleSettingProfile(dict):
                  name: str,
                  fixed_date: Optional['outputs.AutoscaleSettingProfileFixedDate'] = None,
                  recurrence: Optional['outputs.AutoscaleSettingProfileRecurrence'] = None,
-                 rules: Optional[List['outputs.AutoscaleSettingProfileRule']] = None):
+                 rules: Optional[Sequence['outputs.AutoscaleSettingProfileRule']] = None):
         """
         :param 'AutoscaleSettingProfileCapacityArgs' capacity: A `capacity` block as defined below.
         :param str name: Specifies the name of the profile.
         :param 'AutoscaleSettingProfileFixedDateArgs' fixed_date: A `fixed_date` block as defined below. This cannot be specified if a `recurrence` block is specified.
         :param 'AutoscaleSettingProfileRecurrenceArgs' recurrence: A `recurrence` block as defined below. This cannot be specified if a `fixed_date` block is specified.
-        :param List['AutoscaleSettingProfileRuleArgs'] rules: One or more (up to 10) `rule` blocks as defined below.
+        :param Sequence['AutoscaleSettingProfileRuleArgs'] rules: One or more (up to 10) `rule` blocks as defined below.
         """
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "name", name)
@@ -1768,7 +1768,7 @@ class AutoscaleSettingProfile(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[List['outputs.AutoscaleSettingProfileRule']]:
+    def rules(self) -> Optional[Sequence['outputs.AutoscaleSettingProfileRule']]:
         """
         One or more (up to 10) `rule` blocks as defined below.
         """
@@ -1868,12 +1868,12 @@ class AutoscaleSettingProfileFixedDate(dict):
 @pulumi.output_type
 class AutoscaleSettingProfileRecurrence(dict):
     def __init__(__self__, *,
-                 days: List[str],
+                 days: Sequence[str],
                  hours: float,
                  minutes: float,
                  timezone: Optional[str] = None):
         """
-        :param List[str] days: A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
+        :param Sequence[str] days: A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
         :param float hours: A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
         :param float minutes: A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
         :param str timezone: The Time Zone used for the `hours` field. A list of [possible values can be found here](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx). Defaults to `UTC`.
@@ -1886,7 +1886,7 @@ class AutoscaleSettingProfileRecurrence(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> List[str]:
+    def days(self) -> Sequence[str]:
         """
         A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
         """
@@ -2377,14 +2377,14 @@ class MetricAlertCriteria(dict):
                  metric_namespace: str,
                  operator: str,
                  threshold: float,
-                 dimensions: Optional[List['outputs.MetricAlertCriteriaDimension']] = None):
+                 dimensions: Optional[Sequence['outputs.MetricAlertCriteriaDimension']] = None):
         """
         :param str aggregation: The statistic that runs over the metric values. Possible values are `Average`, `Count`, `Minimum`, `Maximum` and `Total`.
         :param str metric_name: One of the metric names to be monitored.
         :param str metric_namespace: One of the metric namespaces to be monitored.
         :param str operator: The criteria operator. Possible values are `Equals`, `NotEquals`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
         :param float threshold: The criteria threshold value that activates the alert.
-        :param List['MetricAlertCriteriaDimensionArgs'] dimensions: One or more `dimension` blocks as defined below.
+        :param Sequence['MetricAlertCriteriaDimensionArgs'] dimensions: One or more `dimension` blocks as defined below.
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "metric_name", metric_name)
@@ -2436,7 +2436,7 @@ class MetricAlertCriteria(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.MetricAlertCriteriaDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.MetricAlertCriteriaDimension']]:
         """
         One or more `dimension` blocks as defined below.
         """
@@ -2451,11 +2451,11 @@ class MetricAlertCriteriaDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: One of the dimension names.
         :param str operator: The dimension operator. Possible values are `Include` and `Exclude`.
-        :param List[str] values: The list of dimension values.
+        :param Sequence[str] values: The list of dimension values.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operator", operator)
@@ -2479,7 +2479,7 @@ class MetricAlertCriteriaDimension(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         The list of dimension values.
         """
@@ -2497,7 +2497,7 @@ class MetricAlertDynamicCriteria(dict):
                  metric_name: str,
                  metric_namespace: str,
                  operator: str,
-                 dimensions: Optional[List['outputs.MetricAlertDynamicCriteriaDimension']] = None,
+                 dimensions: Optional[Sequence['outputs.MetricAlertDynamicCriteriaDimension']] = None,
                  evaluation_failure_count: Optional[float] = None,
                  evaluation_total_count: Optional[float] = None,
                  ignore_data_before: Optional[str] = None):
@@ -2507,7 +2507,7 @@ class MetricAlertDynamicCriteria(dict):
         :param str metric_name: One of the metric names to be monitored.
         :param str metric_namespace: One of the metric namespaces to be monitored.
         :param str operator: The criteria operator. Possible values are `LessThan`, `GreaterThan` and `GreaterOrLessThan`.
-        :param List['MetricAlertDynamicCriteriaDimensionArgs'] dimensions: One or more `dimension` blocks as defined below.
+        :param Sequence['MetricAlertDynamicCriteriaDimensionArgs'] dimensions: One or more `dimension` blocks as defined below.
         :param float evaluation_failure_count: The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
         :param float evaluation_total_count: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
         :param str ignore_data_before: The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
@@ -2568,7 +2568,7 @@ class MetricAlertDynamicCriteria(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.MetricAlertDynamicCriteriaDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.MetricAlertDynamicCriteriaDimension']]:
         """
         One or more `dimension` blocks as defined below.
         """
@@ -2607,11 +2607,11 @@ class MetricAlertDynamicCriteriaDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: One of the dimension names.
         :param str operator: The dimension operator. Possible values are `Include` and `Exclude`.
-        :param List[str] values: The list of dimension values.
+        :param Sequence[str] values: The list of dimension values.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operator", operator)
@@ -2635,7 +2635,7 @@ class MetricAlertDynamicCriteriaDimension(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         The list of dimension values.
         """
@@ -2648,11 +2648,11 @@ class MetricAlertDynamicCriteriaDimension(dict):
 @pulumi.output_type
 class ScheduledQueryRulesAlertAction(dict):
     def __init__(__self__, *,
-                 action_groups: List[str],
+                 action_groups: Sequence[str],
                  custom_webhook_payload: Optional[str] = None,
                  email_subject: Optional[str] = None):
         """
-        :param List[str] action_groups: List of action group reference resource IDs.
+        :param Sequence[str] action_groups: List of action group reference resource IDs.
         :param str custom_webhook_payload: Custom payload to be sent for all webhook payloads in alerting action.
         :param str email_subject: Custom subject override for all email ids in Azure action group.
         """
@@ -2664,7 +2664,7 @@ class ScheduledQueryRulesAlertAction(dict):
 
     @property
     @pulumi.getter(name="actionGroups")
-    def action_groups(self) -> List[str]:
+    def action_groups(self) -> Sequence[str]:
         """
         List of action group reference resource IDs.
         """
@@ -2779,10 +2779,10 @@ class ScheduledQueryRulesAlertTriggerMetricTrigger(dict):
 @pulumi.output_type
 class ScheduledQueryRulesLogCriteria(dict):
     def __init__(__self__, *,
-                 dimensions: List['outputs.ScheduledQueryRulesLogCriteriaDimension'],
+                 dimensions: Sequence['outputs.ScheduledQueryRulesLogCriteriaDimension'],
                  metric_name: str):
         """
-        :param List['ScheduledQueryRulesLogCriteriaDimensionArgs'] dimensions: A `dimension` block as defined below.
+        :param Sequence['ScheduledQueryRulesLogCriteriaDimensionArgs'] dimensions: A `dimension` block as defined below.
         :param str metric_name: Name of the metric.  Supported metrics are listed in the Azure Monitor [Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported#microsoftoperationalinsightsworkspaces) metrics namespace.
         """
         pulumi.set(__self__, "dimensions", dimensions)
@@ -2790,7 +2790,7 @@ class ScheduledQueryRulesLogCriteria(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> List['outputs.ScheduledQueryRulesLogCriteriaDimension']:
+    def dimensions(self) -> Sequence['outputs.ScheduledQueryRulesLogCriteriaDimension']:
         """
         A `dimension` block as defined below.
         """
@@ -2812,11 +2812,11 @@ class ScheduledQueryRulesLogCriteria(dict):
 class ScheduledQueryRulesLogCriteriaDimension(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str],
+                 values: Sequence[str],
                  operator: Optional[str] = None):
         """
         :param str name: Name of the dimension.
-        :param List[str] values: List of dimension values.
+        :param Sequence[str] values: List of dimension values.
         :param str operator: Operator for dimension values, - 'Include'.
         """
         pulumi.set(__self__, "name", name)
@@ -2834,7 +2834,7 @@ class ScheduledQueryRulesLogCriteriaDimension(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of dimension values.
         """
@@ -3369,11 +3369,11 @@ class GetLogProfileRetentionPolicyResult(dict):
 @pulumi.output_type
 class GetScheduledQueryRulesAlertActionResult(dict):
     def __init__(__self__, *,
-                 action_groups: List[str],
+                 action_groups: Sequence[str],
                  custom_webhook_payload: str,
                  email_subject: str):
         """
-        :param List[str] action_groups: List of action group reference resource IDs.
+        :param Sequence[str] action_groups: List of action group reference resource IDs.
         :param str custom_webhook_payload: Custom payload to be sent for all webhook URI in Azure action group.
         :param str email_subject: Custom subject override for all email IDs in Azure action group.
         """
@@ -3383,7 +3383,7 @@ class GetScheduledQueryRulesAlertActionResult(dict):
 
     @property
     @pulumi.getter(name="actionGroups")
-    def action_groups(self) -> List[str]:
+    def action_groups(self) -> Sequence[str]:
         """
         List of action group reference resource IDs.
         """
@@ -3409,7 +3409,7 @@ class GetScheduledQueryRulesAlertActionResult(dict):
 @pulumi.output_type
 class GetScheduledQueryRulesAlertTriggerResult(dict):
     def __init__(__self__, *,
-                 metric_triggers: List['outputs.GetScheduledQueryRulesAlertTriggerMetricTriggerResult'],
+                 metric_triggers: Sequence['outputs.GetScheduledQueryRulesAlertTriggerMetricTriggerResult'],
                  operator: str,
                  threshold: float):
         """
@@ -3422,7 +3422,7 @@ class GetScheduledQueryRulesAlertTriggerResult(dict):
 
     @property
     @pulumi.getter(name="metricTriggers")
-    def metric_triggers(self) -> List['outputs.GetScheduledQueryRulesAlertTriggerMetricTriggerResult']:
+    def metric_triggers(self) -> Sequence['outputs.GetScheduledQueryRulesAlertTriggerMetricTriggerResult']:
         return pulumi.get(self, "metric_triggers")
 
     @property
@@ -3488,10 +3488,10 @@ class GetScheduledQueryRulesAlertTriggerMetricTriggerResult(dict):
 @pulumi.output_type
 class GetScheduledQueryRulesLogCriteriaResult(dict):
     def __init__(__self__, *,
-                 dimensions: List['outputs.GetScheduledQueryRulesLogCriteriaDimensionResult'],
+                 dimensions: Sequence['outputs.GetScheduledQueryRulesLogCriteriaDimensionResult'],
                  metric_name: str):
         """
-        :param List['GetScheduledQueryRulesLogCriteriaDimensionArgs'] dimensions: A `dimension` block as defined below.
+        :param Sequence['GetScheduledQueryRulesLogCriteriaDimensionArgs'] dimensions: A `dimension` block as defined below.
         :param str metric_name: Name of the metric.
         """
         pulumi.set(__self__, "dimensions", dimensions)
@@ -3499,7 +3499,7 @@ class GetScheduledQueryRulesLogCriteriaResult(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> List['outputs.GetScheduledQueryRulesLogCriteriaDimensionResult']:
+    def dimensions(self) -> Sequence['outputs.GetScheduledQueryRulesLogCriteriaDimensionResult']:
         """
         A `dimension` block as defined below.
         """
@@ -3519,11 +3519,11 @@ class GetScheduledQueryRulesLogCriteriaDimensionResult(dict):
     def __init__(__self__, *,
                  name: str,
                  operator: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: Specifies the name of the scheduled query rule.
         :param str operator: Operator for dimension values.
-        :param List[str] values: List of dimension values.
+        :param Sequence[str] values: List of dimension values.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operator", operator)
@@ -3547,7 +3547,7 @@ class GetScheduledQueryRulesLogCriteriaDimensionResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         List of dimension values.
         """

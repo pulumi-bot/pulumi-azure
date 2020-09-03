@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -24,7 +24,7 @@ class SqlContainer(pulumi.CustomResource):
                  partition_key_path: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  throughput: Optional[pulumi.Input[float]] = None,
-                 unique_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None,
+                 unique_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -60,7 +60,7 @@ class SqlContainer(pulumi.CustomResource):
         :param pulumi.Input[str] partition_key_path: Define a partition key. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] throughput: The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,7 +110,7 @@ class SqlContainer(pulumi.CustomResource):
             partition_key_path: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             throughput: Optional[pulumi.Input[float]] = None,
-            unique_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None) -> 'SqlContainer':
+            unique_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]]] = None) -> 'SqlContainer':
         """
         Get an existing SqlContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -125,7 +125,7 @@ class SqlContainer(pulumi.CustomResource):
         :param pulumi.Input[str] partition_key_path: Define a partition key. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] throughput: The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlContainerUniqueKeyArgs']]]] unique_keys: One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -199,7 +199,7 @@ class SqlContainer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uniqueKeys")
-    def unique_keys(self) -> pulumi.Output[Optional[List['outputs.SqlContainerUniqueKey']]]:
+    def unique_keys(self) -> pulumi.Output[Optional[Sequence['outputs.SqlContainerUniqueKey']]]:
         """
         One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -131,10 +131,10 @@ class ClusterCertificateArgs:
 @pulumi.input_type
 class ClusterCertificateCommonNamesArgs:
     def __init__(__self__, *,
-                 common_names: pulumi.Input[List[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]],
+                 common_names: pulumi.Input[Sequence[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]],
                  x509_store_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]] common_names: A `common_names` block as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]] common_names: A `common_names` block as defined below.
         :param pulumi.Input[str] x509_store_name: The X509 Store where the Certificate Exists, such as `My`.
         """
         pulumi.set(__self__, "common_names", common_names)
@@ -142,14 +142,14 @@ class ClusterCertificateCommonNamesArgs:
 
     @property
     @pulumi.getter(name="commonNames")
-    def common_names(self) -> pulumi.Input[List[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]]:
+    def common_names(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]]:
         """
         A `common_names` block as defined below.
         """
         return pulumi.get(self, "common_names")
 
     @common_names.setter
-    def common_names(self, value: pulumi.Input[List[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]]):
+    def common_names(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterCertificateCommonNamesCommonNameArgs']]]):
         pulumi.set(self, "common_names", value)
 
     @property

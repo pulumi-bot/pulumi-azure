@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policy_object_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 access_policy_object_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authentication_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceAuthenticationConfigurationArgs']]] = None,
                  cors_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceCorsConfigurationArgs']]] = None,
                  cosmosdb_throughput: Optional[pulumi.Input[float]] = None,
@@ -120,7 +120,7 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_policy_object_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            access_policy_object_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             authentication_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceAuthenticationConfigurationArgs']]] = None,
             cors_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceCorsConfigurationArgs']]] = None,
             cosmosdb_throughput: Optional[pulumi.Input[float]] = None,
@@ -162,7 +162,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessPolicyObjectIds")
-    def access_policy_object_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def access_policy_object_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "access_policy_object_ids")
 
     @property

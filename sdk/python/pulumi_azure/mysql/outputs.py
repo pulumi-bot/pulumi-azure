@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -112,17 +112,17 @@ class ServerStorageProfile(dict):
 @pulumi.output_type
 class ServerThreatDetectionPolicy(dict):
     def __init__(__self__, *,
-                 disabled_alerts: Optional[List[str]] = None,
+                 disabled_alerts: Optional[Sequence[str]] = None,
                  email_account_admins: Optional[bool] = None,
-                 email_addresses: Optional[List[str]] = None,
+                 email_addresses: Optional[Sequence[str]] = None,
                  enabled: Optional[bool] = None,
                  retention_days: Optional[float] = None,
                  storage_account_access_key: Optional[str] = None,
                  storage_endpoint: Optional[str] = None):
         """
-        :param List[str] disabled_alerts: Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
+        :param Sequence[str] disabled_alerts: Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
         :param bool email_account_admins: Should the account administrators be emailed when this alert is triggered?
-        :param List[str] email_addresses: A list of email addresses which alerts should be sent to.
+        :param Sequence[str] email_addresses: A list of email addresses which alerts should be sent to.
         :param bool enabled: Is the policy enabled?
         :param float retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
         :param str storage_account_access_key: Specifies the identifier key of the Threat Detection audit storage account.
@@ -145,7 +145,7 @@ class ServerThreatDetectionPolicy(dict):
 
     @property
     @pulumi.getter(name="disabledAlerts")
-    def disabled_alerts(self) -> Optional[List[str]]:
+    def disabled_alerts(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
         """
@@ -161,7 +161,7 @@ class ServerThreatDetectionPolicy(dict):
 
     @property
     @pulumi.getter(name="emailAddresses")
-    def email_addresses(self) -> Optional[List[str]]:
+    def email_addresses(self) -> Optional[Sequence[str]]:
         """
         A list of email addresses which alerts should be sent to.
         """

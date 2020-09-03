@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Cache']
@@ -107,7 +107,7 @@ class Cache(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cache_size_in_gb: Optional[pulumi.Input[float]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            mount_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            mount_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             sku_name: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Cache(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] cache_size_in_gb: The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `24576`, and `49152`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] location: Specifies the supported Azure Region where the HPC Cache should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] mount_addresses: A list of IP Addresses where the HPC Cache can be mounted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_addresses: A list of IP Addresses where the HPC Cache can be mounted.
         :param pulumi.Input[str] name: The name of the HPC Cache. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group in which to create the HPC Cache. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: The SKU of HPC Cache to use. Possible values are `Standard_2G`, `Standard_4G` and `Standard_8G`. Changing this forces a new resource to be created.
@@ -158,7 +158,7 @@ class Cache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mountAddresses")
-    def mount_addresses(self) -> pulumi.Output[List[str]]:
+    def mount_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of IP Addresses where the HPC Cache can be mounted.
         """

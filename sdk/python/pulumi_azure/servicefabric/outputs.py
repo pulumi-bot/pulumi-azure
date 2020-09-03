@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -114,10 +114,10 @@ class ClusterCertificate(dict):
 @pulumi.output_type
 class ClusterCertificateCommonNames(dict):
     def __init__(__self__, *,
-                 common_names: List['outputs.ClusterCertificateCommonNamesCommonName'],
+                 common_names: Sequence['outputs.ClusterCertificateCommonNamesCommonName'],
                  x509_store_name: str):
         """
-        :param List['ClusterCertificateCommonNamesCommonNameArgs'] common_names: A `common_names` block as defined below.
+        :param Sequence['ClusterCertificateCommonNamesCommonNameArgs'] common_names: A `common_names` block as defined below.
         :param str x509_store_name: The X509 Store where the Certificate Exists, such as `My`.
         """
         pulumi.set(__self__, "common_names", common_names)
@@ -125,7 +125,7 @@ class ClusterCertificateCommonNames(dict):
 
     @property
     @pulumi.getter(name="commonNames")
-    def common_names(self) -> List['outputs.ClusterCertificateCommonNamesCommonName']:
+    def common_names(self) -> Sequence['outputs.ClusterCertificateCommonNamesCommonName']:
         """
         A `common_names` block as defined below.
         """
