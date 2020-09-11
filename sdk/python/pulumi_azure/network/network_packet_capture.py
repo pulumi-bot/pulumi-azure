@@ -18,9 +18,9 @@ class NetworkPacketCapture(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkPacketCaptureFilterArgs']]]]] = None,
-                 maximum_bytes_per_packet: Optional[pulumi.Input[float]] = None,
-                 maximum_bytes_per_session: Optional[pulumi.Input[float]] = None,
-                 maximum_capture_duration: Optional[pulumi.Input[float]] = None,
+                 maximum_bytes_per_packet: Optional[pulumi.Input[int]] = None,
+                 maximum_bytes_per_session: Optional[pulumi.Input[int]] = None,
+                 maximum_capture_duration: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_watcher_name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -35,9 +35,9 @@ class NetworkPacketCapture(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkPacketCaptureFilterArgs']]]] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher exists. Changing this forces a new resource to be created.
@@ -89,9 +89,9 @@ class NetworkPacketCapture(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             filters: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkPacketCaptureFilterArgs']]]]] = None,
-            maximum_bytes_per_packet: Optional[pulumi.Input[float]] = None,
-            maximum_bytes_per_session: Optional[pulumi.Input[float]] = None,
-            maximum_capture_duration: Optional[pulumi.Input[float]] = None,
+            maximum_bytes_per_packet: Optional[pulumi.Input[int]] = None,
+            maximum_bytes_per_session: Optional[pulumi.Input[int]] = None,
+            maximum_capture_duration: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_watcher_name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -105,9 +105,9 @@ class NetworkPacketCapture(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['NetworkPacketCaptureFilterArgs']]]] filters: One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
-        :param pulumi.Input[float] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_bytes_per_packet: The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_bytes_per_session: Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
+        :param pulumi.Input[int] maximum_capture_duration: The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
         :param pulumi.Input[str] network_watcher_name: The name of the Network Watcher. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Network Watcher exists. Changing this forces a new resource to be created.
@@ -139,7 +139,7 @@ class NetworkPacketCapture(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumBytesPerPacket")
-    def maximum_bytes_per_packet(self) -> pulumi.Output[Optional[float]]:
+    def maximum_bytes_per_packet(self) -> pulumi.Output[Optional[int]]:
         """
         The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
         """
@@ -147,7 +147,7 @@ class NetworkPacketCapture(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumBytesPerSession")
-    def maximum_bytes_per_session(self) -> pulumi.Output[Optional[float]]:
+    def maximum_bytes_per_session(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
         """
@@ -155,7 +155,7 @@ class NetworkPacketCapture(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maximumCaptureDuration")
-    def maximum_capture_duration(self) -> pulumi.Output[Optional[float]]:
+    def maximum_capture_duration(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
         """

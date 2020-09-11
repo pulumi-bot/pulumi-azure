@@ -25,7 +25,7 @@ class Volume(pulumi.CustomResource):
                  protocols: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  service_level: Optional[pulumi.Input[str]] = None,
-                 storage_quota_in_gb: Optional[pulumi.Input[float]] = None,
+                 storage_quota_in_gb: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  volume_path: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[str]]] protocols: The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Changing this forces a new resource to be created and data will be lost.
         :param pulumi.Input[str] resource_group_name: The name of the resource group where the NetApp Volume should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_level: The target performance of the file system. Valid values include `Premium`, `Standard`, or `Ultra`.
-        :param pulumi.Input[float] storage_quota_in_gb: The maximum Storage Quota allowed for a file system in Gigabytes.
+        :param pulumi.Input[int] storage_quota_in_gb: The maximum Storage Quota allowed for a file system in Gigabytes.
         :param pulumi.Input[str] subnet_id: The ID of the Subnet the NetApp Volume resides in, which must have the `Microsoft.NetApp/volumes` delegation. Changing this forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] volume_path: A unique file path for the volume. Used when creating mount targets. Changing this forces a new resource to be created.
@@ -159,7 +159,7 @@ class Volume(pulumi.CustomResource):
             protocols: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             service_level: Optional[pulumi.Input[str]] = None,
-            storage_quota_in_gb: Optional[pulumi.Input[float]] = None,
+            storage_quota_in_gb: Optional[pulumi.Input[int]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             volume_path: Optional[pulumi.Input[str]] = None) -> 'Volume':
@@ -179,7 +179,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[str]]] protocols: The target volume protocol expressed as a list. Supported single value include `CIFS`, `NFSv3`, or `NFSv4.1`. If argument is not defined it will default to `NFSv3`. Changing this forces a new resource to be created and data will be lost.
         :param pulumi.Input[str] resource_group_name: The name of the resource group where the NetApp Volume should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_level: The target performance of the file system. Valid values include `Premium`, `Standard`, or `Ultra`.
-        :param pulumi.Input[float] storage_quota_in_gb: The maximum Storage Quota allowed for a file system in Gigabytes.
+        :param pulumi.Input[int] storage_quota_in_gb: The maximum Storage Quota allowed for a file system in Gigabytes.
         :param pulumi.Input[str] subnet_id: The ID of the Subnet the NetApp Volume resides in, which must have the `Microsoft.NetApp/volumes` delegation. Changing this forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] volume_path: A unique file path for the volume. Used when creating mount targets. Changing this forces a new resource to be created.
@@ -277,7 +277,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageQuotaInGb")
-    def storage_quota_in_gb(self) -> pulumi.Output[float]:
+    def storage_quota_in_gb(self) -> pulumi.Output[int]:
         """
         The maximum Storage Quota allowed for a file system in Gigabytes.
         """

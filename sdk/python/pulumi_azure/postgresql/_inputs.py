@@ -72,12 +72,12 @@ class ServerIdentityArgs:
 class ServerStorageProfileArgs:
     def __init__(__self__, *,
                  auto_grow: Optional[pulumi.Input[str]] = None,
-                 backup_retention_days: Optional[pulumi.Input[float]] = None,
+                 backup_retention_days: Optional[pulumi.Input[int]] = None,
                  geo_redundant_backup: Optional[pulumi.Input[str]] = None,
-                 storage_mb: Optional[pulumi.Input[float]] = None):
+                 storage_mb: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] backup_retention_days: Backup retention days for the server, supported values are between `7` and `35` days.
-        :param pulumi.Input[float] storage_mb: Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#StorageProfile).
+        :param pulumi.Input[int] backup_retention_days: Backup retention days for the server, supported values are between `7` and `35` days.
+        :param pulumi.Input[int] storage_mb: Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#StorageProfile).
         """
         if auto_grow is not None:
             warnings.warn("this has been moved to the top level and will be removed in version 3.0 of the provider.", DeprecationWarning)
@@ -111,14 +111,14 @@ class ServerStorageProfileArgs:
 
     @property
     @pulumi.getter(name="backupRetentionDays")
-    def backup_retention_days(self) -> Optional[pulumi.Input[float]]:
+    def backup_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         Backup retention days for the server, supported values are between `7` and `35` days.
         """
         return pulumi.get(self, "backup_retention_days")
 
     @backup_retention_days.setter
-    def backup_retention_days(self, value: Optional[pulumi.Input[float]]):
+    def backup_retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_retention_days", value)
 
     @property
@@ -132,14 +132,14 @@ class ServerStorageProfileArgs:
 
     @property
     @pulumi.getter(name="storageMb")
-    def storage_mb(self) -> Optional[pulumi.Input[float]]:
+    def storage_mb(self) -> Optional[pulumi.Input[int]]:
         """
         Max storage allowed for a server. Possible values are between `5120` MB(5GB) and `1048576` MB(1TB) for the Basic SKU and between `5120` MB(5GB) and `4194304` MB(4TB) for General Purpose/Memory Optimized SKUs. For more information see the [product documentation](https://docs.microsoft.com/en-us/rest/api/postgresql/servers/create#StorageProfile).
         """
         return pulumi.get(self, "storage_mb")
 
     @storage_mb.setter
-    def storage_mb(self, value: Optional[pulumi.Input[float]]):
+    def storage_mb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "storage_mb", value)
 
 
@@ -150,7 +150,7 @@ class ServerThreatDetectionPolicyArgs:
                  email_account_admins: Optional[pulumi.Input[bool]] = None,
                  email_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  storage_account_access_key: Optional[pulumi.Input[str]] = None,
                  storage_endpoint: Optional[pulumi.Input[str]] = None):
         """
@@ -158,7 +158,7 @@ class ServerThreatDetectionPolicyArgs:
         :param pulumi.Input[bool] email_account_admins: Should the account administrators be emailed when this alert is triggered?
         :param pulumi.Input[List[pulumi.Input[str]]] email_addresses: A list of email addresses which alerts should be sent to.
         :param pulumi.Input[bool] enabled: Is the policy enabled?
-        :param pulumi.Input[float] retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
+        :param pulumi.Input[int] retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
         :param pulumi.Input[str] storage_account_access_key: Specifies the identifier key of the Threat Detection audit storage account.
         :param pulumi.Input[str] storage_endpoint: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
         """
@@ -227,14 +227,14 @@ class ServerThreatDetectionPolicyArgs:
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days to keep in the Threat Detection audit logs.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_days", value)
 
     @property

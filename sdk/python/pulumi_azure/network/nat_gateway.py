@@ -15,7 +15,7 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+                 idle_timeout_in_minutes: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_ip_address_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -60,7 +60,7 @@ class NatGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.
+        :param pulumi.Input[int] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[List[pulumi.Input[str]]] public_ip_address_ids: A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
@@ -112,7 +112,7 @@ class NatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+            idle_timeout_in_minutes: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             public_ip_address_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -129,7 +129,7 @@ class NatGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.
+        :param pulumi.Input[int] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[List[pulumi.Input[str]]] public_ip_address_ids: A list of Public IP Address ID's which should be associated with the NAT Gateway resource.
@@ -158,7 +158,7 @@ class NatGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleTimeoutInMinutes")
-    def idle_timeout_in_minutes(self) -> pulumi.Output[Optional[float]]:
+    def idle_timeout_in_minutes(self) -> pulumi.Output[Optional[int]]:
         """
         The idle timeout which should be used in minutes. Defaults to `4`.
         """

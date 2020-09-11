@@ -30,8 +30,8 @@ class GetServiceResult:
         if cors_configurations and not isinstance(cors_configurations, list):
             raise TypeError("Expected argument 'cors_configurations' to be a list")
         pulumi.set(__self__, "cors_configurations", cors_configurations)
-        if cosmosdb_throughput and not isinstance(cosmosdb_throughput, float):
-            raise TypeError("Expected argument 'cosmosdb_throughput' to be a float")
+        if cosmosdb_throughput and not isinstance(cosmosdb_throughput, int):
+            raise TypeError("Expected argument 'cosmosdb_throughput' to be a int")
         pulumi.set(__self__, "cosmosdb_throughput", cosmosdb_throughput)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -75,7 +75,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="cosmosdbThroughput")
-    def cosmosdb_throughput(self) -> float:
+    def cosmosdb_throughput(self) -> int:
         return pulumi.get(self, "cosmosdb_throughput")
 
     @property

@@ -677,12 +677,12 @@ class ApiOperationRequestRepresentationFormParameterArgs:
 @pulumi.input_type
 class ApiOperationResponseArgs:
     def __init__(__self__, *,
-                 status_code: pulumi.Input[float],
+                 status_code: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[List[pulumi.Input['ApiOperationResponseHeaderArgs']]]] = None,
                  representations: Optional[pulumi.Input[List[pulumi.Input['ApiOperationResponseRepresentationArgs']]]] = None):
         """
-        :param pulumi.Input[float] status_code: The HTTP Status Code.
+        :param pulumi.Input[int] status_code: The HTTP Status Code.
         :param pulumi.Input[str] description: A description of the HTTP Response, which may include HTML tags.
         :param pulumi.Input[List[pulumi.Input['ApiOperationResponseHeaderArgs']]] headers: One or more `header` blocks as defined above.
         :param pulumi.Input[List[pulumi.Input['ApiOperationResponseRepresentationArgs']]] representations: One or more `representation` blocks as defined below.
@@ -697,14 +697,14 @@ class ApiOperationResponseArgs:
 
     @property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> pulumi.Input[float]:
+    def status_code(self) -> pulumi.Input[int]:
         """
         The HTTP Status Code.
         """
         return pulumi.get(self, "status_code")
 
     @status_code.setter
-    def status_code(self, value: pulumi.Input[float]):
+    def status_code(self, value: pulumi.Input[int]):
         pulumi.set(self, "status_code", value)
 
     @property
@@ -1372,13 +1372,13 @@ class BackendServiceFabricClusterArgs:
     def __init__(__self__, *,
                  client_certificate_thumbprint: pulumi.Input[str],
                  management_endpoints: pulumi.Input[List[pulumi.Input[str]]],
-                 max_partition_resolution_retries: pulumi.Input[float],
+                 max_partition_resolution_retries: pulumi.Input[int],
                  server_certificate_thumbprints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  server_x509_names: Optional[pulumi.Input[List[pulumi.Input['BackendServiceFabricClusterServerX509NameArgs']]]] = None):
         """
         :param pulumi.Input[str] client_certificate_thumbprint: The client certificate thumbprint for the management endpoint.
         :param pulumi.Input[List[pulumi.Input[str]]] management_endpoints: A list of cluster management endpoints.
-        :param pulumi.Input[float] max_partition_resolution_retries: The maximum number of retries when attempting resolve the partition.
+        :param pulumi.Input[int] max_partition_resolution_retries: The maximum number of retries when attempting resolve the partition.
         :param pulumi.Input[List[pulumi.Input[str]]] server_certificate_thumbprints: A list of thumbprints of the server certificates of the Service Fabric cluster.
         :param pulumi.Input[List[pulumi.Input['BackendServiceFabricClusterServerX509NameArgs']]] server_x509_names: One or more `server_x509_name` blocks as documented below.
         """
@@ -1416,14 +1416,14 @@ class BackendServiceFabricClusterArgs:
 
     @property
     @pulumi.getter(name="maxPartitionResolutionRetries")
-    def max_partition_resolution_retries(self) -> pulumi.Input[float]:
+    def max_partition_resolution_retries(self) -> pulumi.Input[int]:
         """
         The maximum number of retries when attempting resolve the partition.
         """
         return pulumi.get(self, "max_partition_resolution_retries")
 
     @max_partition_resolution_retries.setter
-    def max_partition_resolution_retries(self, value: pulumi.Input[float]):
+    def max_partition_resolution_retries(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_partition_resolution_retries", value)
 
     @property

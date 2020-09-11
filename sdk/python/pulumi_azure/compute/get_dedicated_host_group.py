@@ -29,8 +29,8 @@ class GetDedicatedHostGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if platform_fault_domain_count and not isinstance(platform_fault_domain_count, float):
-            raise TypeError("Expected argument 'platform_fault_domain_count' to be a float")
+        if platform_fault_domain_count and not isinstance(platform_fault_domain_count, int):
+            raise TypeError("Expected argument 'platform_fault_domain_count' to be a int")
         pulumi.set(__self__, "platform_fault_domain_count", platform_fault_domain_count)
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
@@ -65,7 +65,7 @@ class GetDedicatedHostGroupResult:
 
     @property
     @pulumi.getter(name="platformFaultDomainCount")
-    def platform_fault_domain_count(self) -> float:
+    def platform_fault_domain_count(self) -> int:
         """
         The number of fault domains that the Dedicated Host Group spans.
         """

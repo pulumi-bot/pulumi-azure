@@ -18,8 +18,8 @@ class IoTHub(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IoTHubEndpointArgs']]]]] = None,
-                 event_hub_partition_count: Optional[pulumi.Input[float]] = None,
-                 event_hub_retention_in_days: Optional[pulumi.Input[float]] = None,
+                 event_hub_partition_count: Optional[pulumi.Input[int]] = None,
+                 event_hub_retention_in_days: Optional[pulumi.Input[int]] = None,
                  fallback_route: Optional[pulumi.Input[pulumi.InputType['IoTHubFallbackRouteArgs']]] = None,
                  file_upload: Optional[pulumi.Input[pulumi.InputType['IoTHubFileUploadArgs']]] = None,
                  ip_filter_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IoTHubIpFilterRuleArgs']]]]] = None,
@@ -118,8 +118,8 @@ class IoTHub(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IoTHubEndpointArgs']]]] endpoints: An `endpoint` block as defined below.
-        :param pulumi.Input[float] event_hub_partition_count: The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`.
-        :param pulumi.Input[float] event_hub_retention_in_days: The event hub retention to use in days. Must be between `1` and `7`.
+        :param pulumi.Input[int] event_hub_partition_count: The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`.
+        :param pulumi.Input[int] event_hub_retention_in_days: The event hub retention to use in days. Must be between `1` and `7`.
         :param pulumi.Input[pulumi.InputType['IoTHubFallbackRouteArgs']] fallback_route: A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
         :param pulumi.Input[pulumi.InputType['IoTHubFileUploadArgs']] file_upload: A `file_upload` block as defined below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IoTHubIpFilterRuleArgs']]]] ip_filter_rules: One or more `ip_filter_rule` blocks as defined below.
@@ -185,8 +185,8 @@ class IoTHub(pulumi.CustomResource):
             event_hub_events_path: Optional[pulumi.Input[str]] = None,
             event_hub_operations_endpoint: Optional[pulumi.Input[str]] = None,
             event_hub_operations_path: Optional[pulumi.Input[str]] = None,
-            event_hub_partition_count: Optional[pulumi.Input[float]] = None,
-            event_hub_retention_in_days: Optional[pulumi.Input[float]] = None,
+            event_hub_partition_count: Optional[pulumi.Input[int]] = None,
+            event_hub_retention_in_days: Optional[pulumi.Input[int]] = None,
             fallback_route: Optional[pulumi.Input[pulumi.InputType['IoTHubFallbackRouteArgs']]] = None,
             file_upload: Optional[pulumi.Input[pulumi.InputType['IoTHubFileUploadArgs']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -211,8 +211,8 @@ class IoTHub(pulumi.CustomResource):
         :param pulumi.Input[str] event_hub_events_path: The EventHub compatible path for events data
         :param pulumi.Input[str] event_hub_operations_endpoint: The EventHub compatible endpoint for operational data
         :param pulumi.Input[str] event_hub_operations_path: The EventHub compatible path for operational data
-        :param pulumi.Input[float] event_hub_partition_count: The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`.
-        :param pulumi.Input[float] event_hub_retention_in_days: The event hub retention to use in days. Must be between `1` and `7`.
+        :param pulumi.Input[int] event_hub_partition_count: The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`.
+        :param pulumi.Input[int] event_hub_retention_in_days: The event hub retention to use in days. Must be between `1` and `7`.
         :param pulumi.Input[pulumi.InputType['IoTHubFallbackRouteArgs']] fallback_route: A `fallback_route` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
         :param pulumi.Input[pulumi.InputType['IoTHubFileUploadArgs']] file_upload: A `file_upload` block as defined below.
         :param pulumi.Input[str] hostname: The hostname of the IotHub Resource.
@@ -293,7 +293,7 @@ class IoTHub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventHubPartitionCount")
-    def event_hub_partition_count(self) -> pulumi.Output[float]:
+    def event_hub_partition_count(self) -> pulumi.Output[int]:
         """
         The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`.
         """
@@ -301,7 +301,7 @@ class IoTHub(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventHubRetentionInDays")
-    def event_hub_retention_in_days(self) -> pulumi.Output[float]:
+    def event_hub_retention_in_days(self) -> pulumi.Output[int]:
         """
         The event hub retention to use in days. Must be between `1` and `7`.
         """

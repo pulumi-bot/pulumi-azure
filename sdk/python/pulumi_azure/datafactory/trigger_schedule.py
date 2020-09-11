@@ -19,7 +19,7 @@ class TriggerSchedule(pulumi.CustomResource):
                  data_factory_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
-                 interval: Optional[pulumi.Input[float]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_name: Optional[pulumi.Input[str]] = None,
                  pipeline_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -58,7 +58,7 @@ class TriggerSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Schedule Trigger with. Changing this forces a new resource.
         :param pulumi.Input[str] end_time: The time the Schedule Trigger should end. The time will be represented in UTC.
         :param pulumi.Input[str] frequency: The trigger freqency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
-        :param pulumi.Input[float] interval: The interval for how often the trigger occurs. This defaults to 1.
+        :param pulumi.Input[int] interval: The interval for how often the trigger occurs. This defaults to 1.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[str] pipeline_name: The Data Factory Pipeline name that the trigger will act on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_parameters: The pipeline parameters that the trigger will act upon.
@@ -112,7 +112,7 @@ class TriggerSchedule(pulumi.CustomResource):
             data_factory_name: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
             frequency: Optional[pulumi.Input[str]] = None,
-            interval: Optional[pulumi.Input[float]] = None,
+            interval: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pipeline_name: Optional[pulumi.Input[str]] = None,
             pipeline_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -129,7 +129,7 @@ class TriggerSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] data_factory_name: The Data Factory name in which to associate the Schedule Trigger with. Changing this forces a new resource.
         :param pulumi.Input[str] end_time: The time the Schedule Trigger should end. The time will be represented in UTC.
         :param pulumi.Input[str] frequency: The trigger freqency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
-        :param pulumi.Input[float] interval: The interval for how often the trigger occurs. This defaults to 1.
+        :param pulumi.Input[int] interval: The interval for how often the trigger occurs. This defaults to 1.
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[str] pipeline_name: The Data Factory Pipeline name that the trigger will act on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_parameters: The pipeline parameters that the trigger will act upon.
@@ -186,7 +186,7 @@ class TriggerSchedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interval(self) -> pulumi.Output[Optional[float]]:
+    def interval(self) -> pulumi.Output[Optional[int]]:
         """
         The interval for how often the trigger occurs. This defaults to 1.
         """

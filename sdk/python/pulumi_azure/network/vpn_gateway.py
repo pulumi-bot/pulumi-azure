@@ -21,7 +21,7 @@ class VpnGateway(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 scale_unit: Optional[pulumi.Input[float]] = None,
+                 scale_unit: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  virtual_hub_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -61,7 +61,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] scale_unit: The Scale Unit for this VPN Gateway. Defaults to `1`.
+        :param pulumi.Input[int] scale_unit: The Scale Unit for this VPN Gateway. Defaults to `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the VPN Gateway.
         :param pulumi.Input[str] virtual_hub_id: The ID of the Virtual Hub within which this VPN Gateway should be created. Changing this forces a new resource to be created.
         """
@@ -107,7 +107,7 @@ class VpnGateway(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
-            scale_unit: Optional[pulumi.Input[float]] = None,
+            scale_unit: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             virtual_hub_id: Optional[pulumi.Input[str]] = None) -> 'VpnGateway':
         """
@@ -121,7 +121,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] scale_unit: The Scale Unit for this VPN Gateway. Defaults to `1`.
+        :param pulumi.Input[int] scale_unit: The Scale Unit for this VPN Gateway. Defaults to `1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the VPN Gateway.
         :param pulumi.Input[str] virtual_hub_id: The ID of the Virtual Hub within which this VPN Gateway should be created. Changing this forces a new resource to be created.
         """
@@ -172,7 +172,7 @@ class VpnGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scaleUnit")
-    def scale_unit(self) -> pulumi.Output[Optional[float]]:
+    def scale_unit(self) -> pulumi.Output[Optional[int]]:
         """
         The Scale Unit for this VPN Gateway. Defaults to `1`.
         """

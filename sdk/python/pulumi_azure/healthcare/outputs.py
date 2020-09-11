@@ -70,13 +70,13 @@ class ServiceCorsConfiguration(dict):
                  allowed_headers: Optional[List[str]] = None,
                  allowed_methods: Optional[List[str]] = None,
                  allowed_origins: Optional[List[str]] = None,
-                 max_age_in_seconds: Optional[float] = None):
+                 max_age_in_seconds: Optional[int] = None):
         """
         :param bool allow_credentials: If credentials are allowed via CORS.
         :param List[str] allowed_headers: A set of headers to be allowed via CORS.
         :param List[str] allowed_methods: The methods to be allowed via CORS.
         :param List[str] allowed_origins: A set of origins to be allowed via CORS.
-        :param float max_age_in_seconds: The max age to be allowed via CORS.
+        :param int max_age_in_seconds: The max age to be allowed via CORS.
         """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
@@ -123,7 +123,7 @@ class ServiceCorsConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxAgeInSeconds")
-    def max_age_in_seconds(self) -> Optional[float]:
+    def max_age_in_seconds(self) -> Optional[int]:
         """
         The max age to be allowed via CORS.
         """
@@ -180,13 +180,13 @@ class GetServiceCorsConfigurationResult(dict):
                  allowed_headers: List[str],
                  allowed_methods: List[str],
                  allowed_origins: List[str],
-                 max_age_in_seconds: float):
+                 max_age_in_seconds: int):
         """
         :param bool allow_credentials: Are credentials are allowed via CORS?
         :param List[str] allowed_headers: The set of headers to be allowed via CORS.
         :param List[str] allowed_methods: The methods to be allowed via CORS.
         :param List[str] allowed_origins: The set of origins to be allowed via CORS.
-        :param float max_age_in_seconds: The max age to be allowed via CORS.
+        :param int max_age_in_seconds: The max age to be allowed via CORS.
         """
         pulumi.set(__self__, "allow_credentials", allow_credentials)
         pulumi.set(__self__, "allowed_headers", allowed_headers)
@@ -228,7 +228,7 @@ class GetServiceCorsConfigurationResult(dict):
 
     @property
     @pulumi.getter(name="maxAgeInSeconds")
-    def max_age_in_seconds(self) -> float:
+    def max_age_in_seconds(self) -> int:
         """
         The max age to be allowed via CORS.
         """

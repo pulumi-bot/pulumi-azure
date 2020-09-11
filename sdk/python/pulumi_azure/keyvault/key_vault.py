@@ -28,7 +28,7 @@ class KeyVault(pulumi.CustomResource):
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  sku_name: Optional[pulumi.Input[str]] = None,
                  soft_delete_enabled: Optional[pulumi.Input[bool]] = None,
-                 soft_delete_retention_days: Optional[pulumi.Input[float]] = None,
+                 soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -89,7 +89,7 @@ class KeyVault(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Key Vault. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[bool] soft_delete_enabled: Should Soft Delete be enabled for this Key Vault? Defaults to `false`.
-        :param pulumi.Input[float] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted.
+        :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tenant_id: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
         """
@@ -152,7 +152,7 @@ class KeyVault(pulumi.CustomResource):
             resource_group_name: Optional[pulumi.Input[str]] = None,
             sku_name: Optional[pulumi.Input[str]] = None,
             soft_delete_enabled: Optional[pulumi.Input[bool]] = None,
-            soft_delete_retention_days: Optional[pulumi.Input[float]] = None,
+            soft_delete_retention_days: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             vault_uri: Optional[pulumi.Input[str]] = None) -> 'KeyVault':
@@ -174,7 +174,7 @@ class KeyVault(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Key Vault. Changing this forces a new resource to be created.
         :param pulumi.Input[str] sku_name: The Name of the SKU used for this Key Vault. Possible values are `standard` and `premium`.
         :param pulumi.Input[bool] soft_delete_enabled: Should Soft Delete be enabled for this Key Vault? Defaults to `false`.
-        :param pulumi.Input[float] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted.
+        :param pulumi.Input[int] soft_delete_retention_days: The number of days that items should be retained for once soft-deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tenant_id: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
         :param pulumi.Input[str] vault_uri: The URI of the Key Vault, used for performing operations on keys and secrets.
@@ -290,7 +290,7 @@ class KeyVault(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="softDeleteRetentionDays")
-    def soft_delete_retention_days(self) -> pulumi.Output[Optional[float]]:
+    def soft_delete_retention_days(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days that items should be retained for once soft-deleted.
         """

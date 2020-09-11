@@ -570,12 +570,12 @@ class ApiOperationRequestRepresentationFormParameter(dict):
 @pulumi.output_type
 class ApiOperationResponse(dict):
     def __init__(__self__, *,
-                 status_code: float,
+                 status_code: int,
                  description: Optional[str] = None,
                  headers: Optional[List['outputs.ApiOperationResponseHeader']] = None,
                  representations: Optional[List['outputs.ApiOperationResponseRepresentation']] = None):
         """
-        :param float status_code: The HTTP Status Code.
+        :param int status_code: The HTTP Status Code.
         :param str description: A description of the HTTP Response, which may include HTML tags.
         :param List['ApiOperationResponseHeaderArgs'] headers: One or more `header` blocks as defined above.
         :param List['ApiOperationResponseRepresentationArgs'] representations: One or more `representation` blocks as defined below.
@@ -590,7 +590,7 @@ class ApiOperationResponse(dict):
 
     @property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> float:
+    def status_code(self) -> int:
         """
         The HTTP Status Code.
         """
@@ -1135,13 +1135,13 @@ class BackendServiceFabricCluster(dict):
     def __init__(__self__, *,
                  client_certificate_thumbprint: str,
                  management_endpoints: List[str],
-                 max_partition_resolution_retries: float,
+                 max_partition_resolution_retries: int,
                  server_certificate_thumbprints: Optional[List[str]] = None,
                  server_x509_names: Optional[List['outputs.BackendServiceFabricClusterServerX509Name']] = None):
         """
         :param str client_certificate_thumbprint: The client certificate thumbprint for the management endpoint.
         :param List[str] management_endpoints: A list of cluster management endpoints.
-        :param float max_partition_resolution_retries: The maximum number of retries when attempting resolve the partition.
+        :param int max_partition_resolution_retries: The maximum number of retries when attempting resolve the partition.
         :param List[str] server_certificate_thumbprints: A list of thumbprints of the server certificates of the Service Fabric cluster.
         :param List['BackendServiceFabricClusterServerX509NameArgs'] server_x509_names: One or more `server_x509_name` blocks as documented below.
         """
@@ -1171,7 +1171,7 @@ class BackendServiceFabricCluster(dict):
 
     @property
     @pulumi.getter(name="maxPartitionResolutionRetries")
-    def max_partition_resolution_retries(self) -> float:
+    def max_partition_resolution_retries(self) -> int:
         """
         The maximum number of retries when attempting resolve the partition.
         """

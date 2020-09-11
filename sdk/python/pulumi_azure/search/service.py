@@ -19,9 +19,9 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_count: Optional[pulumi.Input[float]] = None,
+                 partition_count: Optional[pulumi.Input[int]] = None,
                  public_network_access_enabled: Optional[pulumi.Input[bool]] = None,
-                 replica_count: Optional[pulumi.Input[float]] = None,
+                 replica_count: Optional[pulumi.Input[int]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -48,9 +48,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure Region where the Search Service should exist. Changing this forces a new Search Service to be created.
         :param pulumi.Input[str] name: The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
-        :param pulumi.Input[float] partition_count: The number of partitions which should be created.
+        :param pulumi.Input[int] partition_count: The number of partitions which should be created.
         :param pulumi.Input[bool] public_network_access_enabled: Whether or not public network access is allowed for this resource. Defaults to `true`.
-        :param pulumi.Input[float] replica_count: The number of replica's which should be created.
+        :param pulumi.Input[int] replica_count: The number of replica's which should be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Search Service should exist. Changing this forces a new Search Service to be created.
         :param pulumi.Input[str] sku: The SKU which should be used for this Search Service. Possible values are `basic`, `free`, `standard`, `standard2` and `standard3` Changing this forces a new Search Service to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags which should be assigned to the Search Service.
@@ -99,11 +99,11 @@ class Service(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            partition_count: Optional[pulumi.Input[float]] = None,
+            partition_count: Optional[pulumi.Input[int]] = None,
             primary_key: Optional[pulumi.Input[str]] = None,
             public_network_access_enabled: Optional[pulumi.Input[bool]] = None,
             query_keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceQueryKeyArgs']]]]] = None,
-            replica_count: Optional[pulumi.Input[float]] = None,
+            replica_count: Optional[pulumi.Input[int]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             secondary_key: Optional[pulumi.Input[str]] = None,
             sku: Optional[pulumi.Input[str]] = None,
@@ -117,11 +117,11 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure Region where the Search Service should exist. Changing this forces a new Search Service to be created.
         :param pulumi.Input[str] name: The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
-        :param pulumi.Input[float] partition_count: The number of partitions which should be created.
+        :param pulumi.Input[int] partition_count: The number of partitions which should be created.
         :param pulumi.Input[str] primary_key: The Primary Key used for Search Service Administration.
         :param pulumi.Input[bool] public_network_access_enabled: Whether or not public network access is allowed for this resource. Defaults to `true`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceQueryKeyArgs']]]] query_keys: A `query_keys` block as defined below.
-        :param pulumi.Input[float] replica_count: The number of replica's which should be created.
+        :param pulumi.Input[int] replica_count: The number of replica's which should be created.
         :param pulumi.Input[str] resource_group_name: The name of the Resource Group where the Search Service should exist. Changing this forces a new Search Service to be created.
         :param pulumi.Input[str] secondary_key: The Secondary Key used for Search Service Administration.
         :param pulumi.Input[str] sku: The SKU which should be used for this Search Service. Possible values are `basic`, `free`, `standard`, `standard2` and `standard3` Changing this forces a new Search Service to be created.
@@ -162,7 +162,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partitionCount")
-    def partition_count(self) -> pulumi.Output[float]:
+    def partition_count(self) -> pulumi.Output[int]:
         """
         The number of partitions which should be created.
         """
@@ -194,7 +194,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> pulumi.Output[float]:
+    def replica_count(self) -> pulumi.Output[int]:
         """
         The number of replica's which should be created.
         """

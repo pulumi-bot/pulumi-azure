@@ -1348,12 +1348,12 @@ class ActionRuleSuppressionSuppressionSchedule(dict):
     def __init__(__self__, *,
                  end_date_utc: str,
                  start_date_utc: str,
-                 recurrence_monthlies: Optional[List[float]] = None,
+                 recurrence_monthlies: Optional[List[int]] = None,
                  recurrence_weeklies: Optional[List[str]] = None):
         """
         :param str end_date_utc: specifies the recurrence UTC end datetime (Y-m-d'T'H:M:S'Z').
         :param str start_date_utc: specifies the recurrence UTC start datetime (Y-m-d'T'H:M:S'Z').
-        :param List[float] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
+        :param List[int] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
         :param List[str] recurrence_weeklies: specifies the list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and  `Saturday`.
         """
         pulumi.set(__self__, "end_date_utc", end_date_utc)
@@ -1381,7 +1381,7 @@ class ActionRuleSuppressionSuppressionSchedule(dict):
 
     @property
     @pulumi.getter(name="recurrenceMonthlies")
-    def recurrence_monthlies(self) -> Optional[List[float]]:
+    def recurrence_monthlies(self) -> Optional[List[int]]:
         """
         specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
         """
@@ -1781,13 +1781,13 @@ class AutoscaleSettingProfile(dict):
 @pulumi.output_type
 class AutoscaleSettingProfileCapacity(dict):
     def __init__(__self__, *,
-                 default: float,
-                 maximum: float,
-                 minimum: float):
+                 default: int,
+                 maximum: int,
+                 minimum: int):
         """
-        :param float default: The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
-        :param float maximum: The maximum number of instances for this resource. Valid values are between `0` and `1000`.
-        :param float minimum: The minimum number of instances for this resource. Valid values are between `0` and `1000`.
+        :param int default: The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
+        :param int maximum: The maximum number of instances for this resource. Valid values are between `0` and `1000`.
+        :param int minimum: The minimum number of instances for this resource. Valid values are between `0` and `1000`.
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "maximum", maximum)
@@ -1795,7 +1795,7 @@ class AutoscaleSettingProfileCapacity(dict):
 
     @property
     @pulumi.getter
-    def default(self) -> float:
+    def default(self) -> int:
         """
         The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
         """
@@ -1803,7 +1803,7 @@ class AutoscaleSettingProfileCapacity(dict):
 
     @property
     @pulumi.getter
-    def maximum(self) -> float:
+    def maximum(self) -> int:
         """
         The maximum number of instances for this resource. Valid values are between `0` and `1000`.
         """
@@ -1811,7 +1811,7 @@ class AutoscaleSettingProfileCapacity(dict):
 
     @property
     @pulumi.getter
-    def minimum(self) -> float:
+    def minimum(self) -> int:
         """
         The minimum number of instances for this resource. Valid values are between `0` and `1000`.
         """
@@ -1869,13 +1869,13 @@ class AutoscaleSettingProfileFixedDate(dict):
 class AutoscaleSettingProfileRecurrence(dict):
     def __init__(__self__, *,
                  days: List[str],
-                 hours: float,
-                 minutes: float,
+                 hours: int,
+                 minutes: int,
                  timezone: Optional[str] = None):
         """
         :param List[str] days: A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-        :param float hours: A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
-        :param float minutes: A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
+        :param int hours: A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
+        :param int minutes: A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
         :param str timezone: The Time Zone used for the `hours` field. A list of [possible values can be found here](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx). Defaults to `UTC`.
         """
         pulumi.set(__self__, "days", days)
@@ -1894,7 +1894,7 @@ class AutoscaleSettingProfileRecurrence(dict):
 
     @property
     @pulumi.getter
-    def hours(self) -> float:
+    def hours(self) -> int:
         """
         A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
         """
@@ -1902,7 +1902,7 @@ class AutoscaleSettingProfileRecurrence(dict):
 
     @property
     @pulumi.getter
-    def minutes(self) -> float:
+    def minutes(self) -> int:
         """
         A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
         """
@@ -2056,12 +2056,12 @@ class AutoscaleSettingProfileRuleScaleAction(dict):
                  cooldown: str,
                  direction: str,
                  type: str,
-                 value: float):
+                 value: int):
         """
         :param str cooldown: The amount of time to wait since the last scaling action before this action occurs. Must be between 1 minute and 1 week and formatted as a ISO 8601 string.
         :param str direction: The scale direction. Possible values are `Increase` and `Decrease`.
         :param str type: The type of action that should occur. Possible values are `ChangeCount`, `ExactCount` and `PercentChangeCount`.
-        :param float value: The number of instances involved in the scaling action. Defaults to `1`.
+        :param int value: The number of instances involved in the scaling action. Defaults to `1`.
         """
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "direction", direction)
@@ -2094,7 +2094,7 @@ class AutoscaleSettingProfileRuleScaleAction(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> float:
+    def value(self) -> int:
         """
         The number of instances involved in the scaling action. Defaults to `1`.
         """
@@ -2153,10 +2153,10 @@ class DiagnosticSettingLog(dict):
 class DiagnosticSettingLogRetentionPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param bool enabled: Is this Retention Policy enabled?
-        :param float days: The number of days for which this Retention Policy should apply.
+        :param int days: The number of days for which this Retention Policy should apply.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2172,7 +2172,7 @@ class DiagnosticSettingLogRetentionPolicy(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         The number of days for which this Retention Policy should apply.
         """
@@ -2231,10 +2231,10 @@ class DiagnosticSettingMetric(dict):
 class DiagnosticSettingMetricRetentionPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param bool enabled: Is this Retention Policy enabled?
-        :param float days: The number of days for which this Retention Policy should apply.
+        :param int days: The number of days for which this Retention Policy should apply.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2250,7 +2250,7 @@ class DiagnosticSettingMetricRetentionPolicy(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         The number of days for which this Retention Policy should apply.
         """
@@ -2264,10 +2264,10 @@ class DiagnosticSettingMetricRetentionPolicy(dict):
 class LogProfileRetentionPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool,
-                 days: Optional[float] = None):
+                 days: Optional[int] = None):
         """
         :param bool enabled: A boolean value to indicate whether the retention policy is enabled.
-        :param float days: The number of days for the retention policy. Defaults to 0.
+        :param int days: The number of days for the retention policy. Defaults to 0.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2283,7 +2283,7 @@ class LogProfileRetentionPolicy(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[float]:
+    def days(self) -> Optional[int]:
         """
         The number of days for the retention policy. Defaults to 0.
         """
@@ -2330,11 +2330,11 @@ class MetricAlertAction(dict):
 class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(dict):
     def __init__(__self__, *,
                  component_id: str,
-                 failed_location_count: float,
+                 failed_location_count: int,
                  web_test_id: str):
         """
         :param str component_id: The ID of the Application Insights Resource.
-        :param float failed_location_count: The number of failed locations.
+        :param int failed_location_count: The number of failed locations.
         :param str web_test_id: The ID of the Application Insights Web Test.
         """
         pulumi.set(__self__, "component_id", component_id)
@@ -2351,7 +2351,7 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(dict):
 
     @property
     @pulumi.getter(name="failedLocationCount")
-    def failed_location_count(self) -> float:
+    def failed_location_count(self) -> int:
         """
         The number of failed locations.
         """
@@ -2498,8 +2498,8 @@ class MetricAlertDynamicCriteria(dict):
                  metric_namespace: str,
                  operator: str,
                  dimensions: Optional[List['outputs.MetricAlertDynamicCriteriaDimension']] = None,
-                 evaluation_failure_count: Optional[float] = None,
-                 evaluation_total_count: Optional[float] = None,
+                 evaluation_failure_count: Optional[int] = None,
+                 evaluation_total_count: Optional[int] = None,
                  ignore_data_before: Optional[str] = None):
         """
         :param str aggregation: The statistic that runs over the metric values. Possible values are `Average`, `Count`, `Minimum`, `Maximum` and `Total`.
@@ -2508,8 +2508,8 @@ class MetricAlertDynamicCriteria(dict):
         :param str metric_namespace: One of the metric namespaces to be monitored.
         :param str operator: The criteria operator. Possible values are `LessThan`, `GreaterThan` and `GreaterOrLessThan`.
         :param List['MetricAlertDynamicCriteriaDimensionArgs'] dimensions: One or more `dimension` blocks as defined below.
-        :param float evaluation_failure_count: The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
-        :param float evaluation_total_count: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
+        :param int evaluation_failure_count: The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
+        :param int evaluation_total_count: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
         :param str ignore_data_before: The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
         """
         pulumi.set(__self__, "aggregation", aggregation)
@@ -2576,7 +2576,7 @@ class MetricAlertDynamicCriteria(dict):
 
     @property
     @pulumi.getter(name="evaluationFailureCount")
-    def evaluation_failure_count(self) -> Optional[float]:
+    def evaluation_failure_count(self) -> Optional[int]:
         """
         The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
         """
@@ -2584,7 +2584,7 @@ class MetricAlertDynamicCriteria(dict):
 
     @property
     @pulumi.getter(name="evaluationTotalCount")
-    def evaluation_total_count(self) -> Optional[float]:
+    def evaluation_total_count(self) -> Optional[int]:
         """
         The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
         """
@@ -3340,10 +3340,10 @@ class GetActionGroupWebhookReceiverResult(dict):
 @pulumi.output_type
 class GetLogProfileRetentionPolicyResult(dict):
     def __init__(__self__, *,
-                 days: float,
+                 days: int,
                  enabled: bool):
         """
-        :param float days: The number of days for the retention policy.
+        :param int days: The number of days for the retention policy.
         :param bool enabled: A boolean value indicating whether the retention policy is enabled.
         """
         pulumi.set(__self__, "days", days)
@@ -3351,7 +3351,7 @@ class GetLogProfileRetentionPolicyResult(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> float:
+    def days(self) -> int:
         """
         The number of days for the retention policy.
         """

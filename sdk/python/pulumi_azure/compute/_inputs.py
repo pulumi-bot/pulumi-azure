@@ -233,15 +233,15 @@ class ImageDataDiskArgs:
     def __init__(__self__, *,
                  blob_uri: Optional[pulumi.Input[str]] = None,
                  caching: Optional[pulumi.Input[str]] = None,
-                 lun: Optional[pulumi.Input[float]] = None,
+                 lun: Optional[pulumi.Input[int]] = None,
                  managed_disk_id: Optional[pulumi.Input[str]] = None,
-                 size_gb: Optional[pulumi.Input[float]] = None):
+                 size_gb: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] blob_uri: Specifies the URI in Azure storage of the blob that you want to use to create the image.
         :param pulumi.Input[str] caching: Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-        :param pulumi.Input[float] lun: Specifies the logical unit number of the data disk.
+        :param pulumi.Input[int] lun: Specifies the logical unit number of the data disk.
         :param pulumi.Input[str] managed_disk_id: Specifies the ID of the managed disk resource that you want to use to create the image.
-        :param pulumi.Input[float] size_gb: Specifies the size of the image to be created. The target size can't be smaller than the source size.
+        :param pulumi.Input[int] size_gb: Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         if blob_uri is not None:
             pulumi.set(__self__, "blob_uri", blob_uri)
@@ -280,14 +280,14 @@ class ImageDataDiskArgs:
 
     @property
     @pulumi.getter
-    def lun(self) -> Optional[pulumi.Input[float]]:
+    def lun(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the logical unit number of the data disk.
         """
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: Optional[pulumi.Input[float]]):
+    def lun(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lun", value)
 
     @property
@@ -304,14 +304,14 @@ class ImageDataDiskArgs:
 
     @property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[float]]:
+    def size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[float]]):
+    def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
 
 
@@ -323,14 +323,14 @@ class ImageOsDiskArgs:
                  managed_disk_id: Optional[pulumi.Input[str]] = None,
                  os_state: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
-                 size_gb: Optional[pulumi.Input[float]] = None):
+                 size_gb: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] blob_uri: Specifies the URI in Azure storage of the blob that you want to use to create the image.
         :param pulumi.Input[str] caching: Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
         :param pulumi.Input[str] managed_disk_id: Specifies the ID of the managed disk resource that you want to use to create the image.
         :param pulumi.Input[str] os_state: Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized.
         :param pulumi.Input[str] os_type: Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
-        :param pulumi.Input[float] size_gb: Specifies the size of the image to be created. The target size can't be smaller than the source size.
+        :param pulumi.Input[int] size_gb: Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         if blob_uri is not None:
             pulumi.set(__self__, "blob_uri", blob_uri)
@@ -407,14 +407,14 @@ class ImageOsDiskArgs:
 
     @property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[float]]:
+    def size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of the image to be created. The target size can't be smaller than the source size.
         """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[float]]):
+    def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
 
 
@@ -577,7 +577,7 @@ class LinuxVirtualMachineOsDiskArgs:
                  storage_account_type: pulumi.Input[str],
                  diff_disk_settings: Optional[pulumi.Input['LinuxVirtualMachineOsDiskDiffDiskSettingsArgs']] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -585,7 +585,7 @@ class LinuxVirtualMachineOsDiskArgs:
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`. Changing this forces a new resource to be created.
         :param pulumi.Input['LinuxVirtualMachineOsDiskDiffDiskSettingsArgs'] diff_disk_settings: A `diff_disk_settings` block as defined above.
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to Encrypt this OS Disk.
-        :param pulumi.Input[float] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+        :param pulumi.Input[int] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
         :param pulumi.Input[str] name: The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] write_accelerator_enabled: Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
         """
@@ -652,14 +652,14 @@ class LinuxVirtualMachineOsDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -922,16 +922,16 @@ class LinuxVirtualMachineScaleSetBootDiagnosticsArgs:
 class LinuxVirtualMachineScaleSetDataDiskArgs:
     def __init__(__self__, *,
                  caching: pulumi.Input[str],
-                 disk_size_gb: pulumi.Input[float],
-                 lun: pulumi.Input[float],
+                 disk_size_gb: pulumi.Input[int],
+                 lun: pulumi.Input[int],
                  storage_account_type: pulumi.Input[str],
                  create_option: Optional[pulumi.Input[str]] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] caching: The type of Caching which should be used for this Data Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-        :param pulumi.Input[float] disk_size_gb: The size of the Data Disk which should be created.
-        :param pulumi.Input[float] lun: The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
+        :param pulumi.Input[int] disk_size_gb: The size of the Data Disk which should be created.
+        :param pulumi.Input[int] lun: The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this Data Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS` and `UltraSSD_LRS`.
         :param pulumi.Input[str] create_option: The create option which should be used for this Data Disk. Possible values are `Empty` and `FromImage`. Defaults to `Empty`. (`FromImage` should only be used if the source image includes data disks).
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to encrypt this Data Disk.
@@ -962,26 +962,26 @@ class LinuxVirtualMachineScaleSetDataDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> pulumi.Input[float]:
+    def disk_size_gb(self) -> pulumi.Input[int]:
         """
         The size of the Data Disk which should be created.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: pulumi.Input[float]):
+    def disk_size_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
     @pulumi.getter
-    def lun(self) -> pulumi.Input[float]:
+    def lun(self) -> pulumi.Input[int]:
         """
         The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
         """
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: pulumi.Input[float]):
+    def lun(self, value: pulumi.Input[int]):
         pulumi.set(self, "lun", value)
 
     @property
@@ -1506,13 +1506,13 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressA
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  domain_name_label: Optional[pulumi.Input[str]] = None,
-                 idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+                 idle_timeout_in_minutes: Optional[pulumi.Input[int]] = None,
                  ip_tags: Optional[pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
                  public_ip_prefix_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name of the Public IP Address Configuration.
         :param pulumi.Input[str] domain_name_label: The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
-        :param pulumi.Input[float] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
+        :param pulumi.Input[int] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
         :param pulumi.Input[List[pulumi.Input['LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
         :param pulumi.Input[str] public_ip_prefix_id: The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
         """
@@ -1552,14 +1552,14 @@ class LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressA
 
     @property
     @pulumi.getter(name="idleTimeoutInMinutes")
-    def idle_timeout_in_minutes(self) -> Optional[pulumi.Input[float]]:
+    def idle_timeout_in_minutes(self) -> Optional[pulumi.Input[int]]:
         """
         The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
         """
         return pulumi.get(self, "idle_timeout_in_minutes")
 
     @idle_timeout_in_minutes.setter
-    def idle_timeout_in_minutes(self, value: Optional[pulumi.Input[float]]):
+    def idle_timeout_in_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "idle_timeout_in_minutes", value)
 
     @property
@@ -1631,14 +1631,14 @@ class LinuxVirtualMachineScaleSetOsDiskArgs:
                  storage_account_type: pulumi.Input[str],
                  diff_disk_settings: Optional[pulumi.Input['LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs']] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] caching: The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this the Internal OS Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`.
         :param pulumi.Input['LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs'] diff_disk_settings: A `diff_disk_settings` block as defined above. Changing this forces a new resource to be created.
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to encrypt this OS Disk.
-        :param pulumi.Input[float] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
+        :param pulumi.Input[int] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
         :param pulumi.Input[bool] write_accelerator_enabled: Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
         """
         pulumi.set(__self__, "caching", caching)
@@ -1702,14 +1702,14 @@ class LinuxVirtualMachineScaleSetOsDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -1792,14 +1792,14 @@ class LinuxVirtualMachineScaleSetPlanArgs:
 @pulumi.input_type
 class LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs:
     def __init__(__self__, *,
-                 max_batch_instance_percent: pulumi.Input[float],
-                 max_unhealthy_instance_percent: pulumi.Input[float],
-                 max_unhealthy_upgraded_instance_percent: pulumi.Input[float],
+                 max_batch_instance_percent: pulumi.Input[int],
+                 max_unhealthy_instance_percent: pulumi.Input[int],
+                 max_unhealthy_upgraded_instance_percent: pulumi.Input[int],
                  pause_time_between_batches: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
         :param pulumi.Input[str] pause_time_between_batches: The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "max_batch_instance_percent", max_batch_instance_percent)
@@ -1809,38 +1809,38 @@ class LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs:
 
     @property
     @pulumi.getter(name="maxBatchInstancePercent")
-    def max_batch_instance_percent(self) -> pulumi.Input[float]:
+    def max_batch_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_batch_instance_percent")
 
     @max_batch_instance_percent.setter
-    def max_batch_instance_percent(self, value: pulumi.Input[float]):
+    def max_batch_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_batch_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyInstancePercent")
-    def max_unhealthy_instance_percent(self) -> pulumi.Input[float]:
+    def max_unhealthy_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_unhealthy_instance_percent")
 
     @max_unhealthy_instance_percent.setter
-    def max_unhealthy_instance_percent(self, value: pulumi.Input[float]):
+    def max_unhealthy_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_unhealthy_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyUpgradedInstancePercent")
-    def max_unhealthy_upgraded_instance_percent(self) -> pulumi.Input[float]:
+    def max_unhealthy_upgraded_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_unhealthy_upgraded_instance_percent")
 
     @max_unhealthy_upgraded_instance_percent.setter
-    def max_unhealthy_upgraded_instance_percent(self, value: pulumi.Input[float]):
+    def max_unhealthy_upgraded_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_unhealthy_upgraded_instance_percent", value)
 
     @property
@@ -2757,11 +2757,11 @@ class ScaleSetNetworkProfileIpConfigurationArgs:
 class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs:
     def __init__(__self__, *,
                  domain_name_label: pulumi.Input[str],
-                 idle_timeout: pulumi.Input[float],
+                 idle_timeout: pulumi.Input[int],
                  name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] domain_name_label: The domain name label for the dns settings.
-        :param pulumi.Input[float] idle_timeout: The idle timeout in minutes. This value must be between 4 and 30.
+        :param pulumi.Input[int] idle_timeout: The idle timeout in minutes. This value must be between 4 and 30.
         :param pulumi.Input[str] name: The name of the public ip address configuration
         """
         pulumi.set(__self__, "domain_name_label", domain_name_label)
@@ -2782,14 +2782,14 @@ class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs:
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> pulumi.Input[float]:
+    def idle_timeout(self) -> pulumi.Input[int]:
         """
         The idle timeout in minutes. This value must be between 4 and 30.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: pulumi.Input[float]):
+    def idle_timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "idle_timeout", value)
 
     @property
@@ -3248,14 +3248,14 @@ class ScaleSetPlanArgs:
 @pulumi.input_type
 class ScaleSetRollingUpgradePolicyArgs:
     def __init__(__self__, *,
-                 max_batch_instance_percent: Optional[pulumi.Input[float]] = None,
-                 max_unhealthy_instance_percent: Optional[pulumi.Input[float]] = None,
-                 max_unhealthy_upgraded_instance_percent: Optional[pulumi.Input[float]] = None,
+                 max_batch_instance_percent: Optional[pulumi.Input[int]] = None,
+                 max_unhealthy_instance_percent: Optional[pulumi.Input[int]] = None,
+                 max_unhealthy_upgraded_instance_percent: Optional[pulumi.Input[int]] = None,
                  pause_time_between_batches: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Defaults to `20`.
-        :param pulumi.Input[float] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Defaults to `20`.
-        :param pulumi.Input[float] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Defaults to `20`.
+        :param pulumi.Input[int] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Defaults to `20`.
+        :param pulumi.Input[int] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Defaults to `20`.
+        :param pulumi.Input[int] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Defaults to `20`.
         :param pulumi.Input[str] pause_time_between_batches: The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format for duration (https://en.wikipedia.org/wiki/ISO_8601#Durations). Defaults to `0` seconds represented as `PT0S`.
         """
         if max_batch_instance_percent is not None:
@@ -3269,38 +3269,38 @@ class ScaleSetRollingUpgradePolicyArgs:
 
     @property
     @pulumi.getter(name="maxBatchInstancePercent")
-    def max_batch_instance_percent(self) -> Optional[pulumi.Input[float]]:
+    def max_batch_instance_percent(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Defaults to `20`.
         """
         return pulumi.get(self, "max_batch_instance_percent")
 
     @max_batch_instance_percent.setter
-    def max_batch_instance_percent(self, value: Optional[pulumi.Input[float]]):
+    def max_batch_instance_percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_batch_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyInstancePercent")
-    def max_unhealthy_instance_percent(self) -> Optional[pulumi.Input[float]]:
+    def max_unhealthy_instance_percent(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Defaults to `20`.
         """
         return pulumi.get(self, "max_unhealthy_instance_percent")
 
     @max_unhealthy_instance_percent.setter
-    def max_unhealthy_instance_percent(self, value: Optional[pulumi.Input[float]]):
+    def max_unhealthy_instance_percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unhealthy_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyUpgradedInstancePercent")
-    def max_unhealthy_upgraded_instance_percent(self) -> Optional[pulumi.Input[float]]:
+    def max_unhealthy_upgraded_instance_percent(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Defaults to `20`.
         """
         return pulumi.get(self, "max_unhealthy_upgraded_instance_percent")
 
     @max_unhealthy_upgraded_instance_percent.setter
-    def max_unhealthy_upgraded_instance_percent(self, value: Optional[pulumi.Input[float]]):
+    def max_unhealthy_upgraded_instance_percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unhealthy_upgraded_instance_percent", value)
 
     @property
@@ -3319,11 +3319,11 @@ class ScaleSetRollingUpgradePolicyArgs:
 @pulumi.input_type
 class ScaleSetSkuArgs:
     def __init__(__self__, *,
-                 capacity: pulumi.Input[float],
+                 capacity: pulumi.Input[int],
                  name: pulumi.Input[str],
                  tier: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] capacity: Specifies the number of virtual machines in the scale set.
+        :param pulumi.Input[int] capacity: Specifies the number of virtual machines in the scale set.
         :param pulumi.Input[str] name: Specifies the size of virtual machines in a scale set.
         :param pulumi.Input[str] tier: Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
         """
@@ -3334,14 +3334,14 @@ class ScaleSetSkuArgs:
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Input[float]:
+    def capacity(self) -> pulumi.Input[int]:
         """
         Specifies the number of virtual machines in the scale set.
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: pulumi.Input[float]):
+    def capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "capacity", value)
 
     @property
@@ -3373,15 +3373,15 @@ class ScaleSetSkuArgs:
 class ScaleSetStorageProfileDataDiskArgs:
     def __init__(__self__, *,
                  create_option: pulumi.Input[str],
-                 lun: pulumi.Input[float],
+                 lun: pulumi.Input[int],
                  caching: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  managed_disk_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] create_option: Specifies how the data disk should be created. The only possible options are `FromImage` and `Empty`.
-        :param pulumi.Input[float] lun: Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
+        :param pulumi.Input[int] lun: Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
         :param pulumi.Input[str] caching: Specifies the caching requirements. Possible values include: `None` (default), `ReadOnly`, `ReadWrite`.
-        :param pulumi.Input[float] disk_size_gb: Specifies the size of the disk in GB. This element is required when creating an empty disk.
+        :param pulumi.Input[int] disk_size_gb: Specifies the size of the disk in GB. This element is required when creating an empty disk.
         :param pulumi.Input[str] managed_disk_type: Specifies the type of managed disk to create. Value must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
         """
         pulumi.set(__self__, "create_option", create_option)
@@ -3407,14 +3407,14 @@ class ScaleSetStorageProfileDataDiskArgs:
 
     @property
     @pulumi.getter
-    def lun(self) -> pulumi.Input[float]:
+    def lun(self) -> pulumi.Input[int]:
         """
         Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
         """
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: pulumi.Input[float]):
+    def lun(self, value: pulumi.Input[int]):
         pulumi.set(self, "lun", value)
 
     @property
@@ -3431,14 +3431,14 @@ class ScaleSetStorageProfileDataDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of the disk in GB. This element is required when creating an empty disk.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -3775,11 +3775,11 @@ class SharedImagePurchasePlanArgs:
 class SharedImageVersionTargetRegionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 regional_replica_count: pulumi.Input[float],
+                 regional_replica_count: pulumi.Input[int],
                  storage_account_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Azure Region in which this Image Version should exist.
-        :param pulumi.Input[float] regional_replica_count: The number of replicas of the Image Version to be created per region.
+        :param pulumi.Input[int] regional_replica_count: The number of replicas of the Image Version to be created per region.
         :param pulumi.Input[str] storage_account_type: The storage account type for the image version. Possible values are `Standard_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`. You can store all of your image version replicas in Zone Redundant Storage by specifying `Standard_ZRS`.
         """
         pulumi.set(__self__, "name", name)
@@ -3801,14 +3801,14 @@ class SharedImageVersionTargetRegionArgs:
 
     @property
     @pulumi.getter(name="regionalReplicaCount")
-    def regional_replica_count(self) -> pulumi.Input[float]:
+    def regional_replica_count(self) -> pulumi.Input[int]:
         """
         The number of replicas of the Image Version to be created per region.
         """
         return pulumi.get(self, "regional_replica_count")
 
     @regional_replica_count.setter
-    def regional_replica_count(self, value: pulumi.Input[float]):
+    def regional_replica_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "regional_replica_count", value)
 
     @property
@@ -4499,20 +4499,20 @@ class VirtualMachinePlanArgs:
 class VirtualMachineStorageDataDiskArgs:
     def __init__(__self__, *,
                  create_option: pulumi.Input[str],
-                 lun: pulumi.Input[float],
+                 lun: pulumi.Input[int],
                  name: pulumi.Input[str],
                  caching: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  managed_disk_id: Optional[pulumi.Input[str]] = None,
                  managed_disk_type: Optional[pulumi.Input[str]] = None,
                  vhd_uri: Optional[pulumi.Input[str]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] create_option: Specifies how the data disk should be created. Possible values are `Attach`, `FromImage` and `Empty`.
-        :param pulumi.Input[float] lun: Specifies the logical unit number of the data disk. This needs to be unique within all the Data Disks on the Virtual Machine.
+        :param pulumi.Input[int] lun: Specifies the logical unit number of the data disk. This needs to be unique within all the Data Disks on the Virtual Machine.
         :param pulumi.Input[str] name: The name of the Data Disk.
         :param pulumi.Input[str] caching: Specifies the caching requirements for the Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
-        :param pulumi.Input[float] disk_size_gb: Specifies the size of the data disk in gigabytes.
+        :param pulumi.Input[int] disk_size_gb: Specifies the size of the data disk in gigabytes.
         :param pulumi.Input[str] managed_disk_id: Specifies the ID of an Existing Managed Disk which should be attached to this Virtual Machine. When this field is set `create_option` must be set to `Attach`.
         :param pulumi.Input[str] managed_disk_type: Specifies the type of managed disk to create. Possible values are either `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS` or `UltraSSD_LRS`.
         :param pulumi.Input[str] vhd_uri: Specifies the URI of the VHD file backing this Unmanaged Data Disk. Changing this forces a new resource to be created.
@@ -4548,14 +4548,14 @@ class VirtualMachineStorageDataDiskArgs:
 
     @property
     @pulumi.getter
-    def lun(self) -> pulumi.Input[float]:
+    def lun(self) -> pulumi.Input[int]:
         """
         Specifies the logical unit number of the data disk. This needs to be unique within all the Data Disks on the Virtual Machine.
         """
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: pulumi.Input[float]):
+    def lun(self, value: pulumi.Input[int]):
         pulumi.set(self, "lun", value)
 
     @property
@@ -4584,14 +4584,14 @@ class VirtualMachineStorageDataDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of the data disk in gigabytes.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -4736,7 +4736,7 @@ class VirtualMachineStorageOsDiskArgs:
                  create_option: pulumi.Input[str],
                  name: pulumi.Input[str],
                  caching: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
                  managed_disk_id: Optional[pulumi.Input[str]] = None,
                  managed_disk_type: Optional[pulumi.Input[str]] = None,
@@ -4747,7 +4747,7 @@ class VirtualMachineStorageOsDiskArgs:
         :param pulumi.Input[str] create_option: Specifies how the OS Disk should be created. Possible values are `Attach` (managed disks only) and `FromImage`.
         :param pulumi.Input[str] name: Specifies the name of the OS Disk.
         :param pulumi.Input[str] caching: Specifies the caching requirements for the OS Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
-        :param pulumi.Input[float] disk_size_gb: Specifies the size of the OS Disk in gigabytes.
+        :param pulumi.Input[int] disk_size_gb: Specifies the size of the OS Disk in gigabytes.
         :param pulumi.Input[str] image_uri: Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD uri](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-cli-deploy-templates/#create-a-custom-vm-image) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `os_type` field must be set.
         :param pulumi.Input[str] managed_disk_id: Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `create_option` must be set to `Attach`.
         :param pulumi.Input[str] managed_disk_type: Specifies the type of Managed Disk which should be created. Possible values are `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
@@ -4812,14 +4812,14 @@ class VirtualMachineStorageOsDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the size of the OS Disk in gigabytes.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -5054,7 +5054,7 @@ class WindowsVirtualMachineOsDiskArgs:
                  storage_account_type: pulumi.Input[str],
                  diff_disk_settings: Optional[pulumi.Input['WindowsVirtualMachineOsDiskDiffDiskSettingsArgs']] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -5062,7 +5062,7 @@ class WindowsVirtualMachineOsDiskArgs:
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`. Changing this forces a new resource to be created.
         :param pulumi.Input['WindowsVirtualMachineOsDiskDiffDiskSettingsArgs'] diff_disk_settings: A `diff_disk_settings` block as defined above.
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to Encrypt this OS Disk.
-        :param pulumi.Input[float] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
+        :param pulumi.Input[int] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
         :param pulumi.Input[str] name: The name which should be used for the Internal OS Disk. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] write_accelerator_enabled: Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
         """
@@ -5129,14 +5129,14 @@ class WindowsVirtualMachineOsDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine is sourced from.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -5399,16 +5399,16 @@ class WindowsVirtualMachineScaleSetBootDiagnosticsArgs:
 class WindowsVirtualMachineScaleSetDataDiskArgs:
     def __init__(__self__, *,
                  caching: pulumi.Input[str],
-                 disk_size_gb: pulumi.Input[float],
-                 lun: pulumi.Input[float],
+                 disk_size_gb: pulumi.Input[int],
+                 lun: pulumi.Input[int],
                  storage_account_type: pulumi.Input[str],
                  create_option: Optional[pulumi.Input[str]] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] caching: The type of Caching which should be used for this Data Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
-        :param pulumi.Input[float] disk_size_gb: The size of the Data Disk which should be created.
-        :param pulumi.Input[float] lun: The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
+        :param pulumi.Input[int] disk_size_gb: The size of the Data Disk which should be created.
+        :param pulumi.Input[int] lun: The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this Data Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS` and `UltraSSD_LRS`.
         :param pulumi.Input[str] create_option: The create option which should be used for this Data Disk. Possible values are `Empty` and `FromImage`. Defaults to `Empty`. (`FromImage` should only be used if the source image includes data disks).
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to encrypt this Data Disk.
@@ -5439,26 +5439,26 @@ class WindowsVirtualMachineScaleSetDataDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> pulumi.Input[float]:
+    def disk_size_gb(self) -> pulumi.Input[int]:
         """
         The size of the Data Disk which should be created.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: pulumi.Input[float]):
+    def disk_size_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
     @pulumi.getter
-    def lun(self) -> pulumi.Input[float]:
+    def lun(self) -> pulumi.Input[int]:
         """
         The Logical Unit Number of the Data Disk, which must be unique within the Virtual Machine.
         """
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: pulumi.Input[float]):
+    def lun(self, value: pulumi.Input[int]):
         pulumi.set(self, "lun", value)
 
     @property
@@ -5983,13 +5983,13 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  domain_name_label: Optional[pulumi.Input[str]] = None,
-                 idle_timeout_in_minutes: Optional[pulumi.Input[float]] = None,
+                 idle_timeout_in_minutes: Optional[pulumi.Input[int]] = None,
                  ip_tags: Optional[pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]]] = None,
                  public_ip_prefix_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The Name of the Public IP Address Configuration.
         :param pulumi.Input[str] domain_name_label: The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine.
-        :param pulumi.Input[float] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
+        :param pulumi.Input[int] idle_timeout_in_minutes: The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
         :param pulumi.Input[List[pulumi.Input['WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTagArgs']]] ip_tags: One or more `ip_tag` blocks as defined above.
         :param pulumi.Input[str] public_ip_prefix_id: The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
         """
@@ -6029,14 +6029,14 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
 
     @property
     @pulumi.getter(name="idleTimeoutInMinutes")
-    def idle_timeout_in_minutes(self) -> Optional[pulumi.Input[float]]:
+    def idle_timeout_in_minutes(self) -> Optional[pulumi.Input[int]]:
         """
         The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
         """
         return pulumi.get(self, "idle_timeout_in_minutes")
 
     @idle_timeout_in_minutes.setter
-    def idle_timeout_in_minutes(self, value: Optional[pulumi.Input[float]]):
+    def idle_timeout_in_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "idle_timeout_in_minutes", value)
 
     @property
@@ -6108,14 +6108,14 @@ class WindowsVirtualMachineScaleSetOsDiskArgs:
                  storage_account_type: pulumi.Input[str],
                  diff_disk_settings: Optional[pulumi.Input['WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs']] = None,
                  disk_encryption_set_id: Optional[pulumi.Input[str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[float]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
                  write_accelerator_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] caching: The Type of Caching which should be used for the Internal OS Disk. Possible values are `None`, `ReadOnly` and `ReadWrite`.
         :param pulumi.Input[str] storage_account_type: The Type of Storage Account which should back this the Internal OS Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS` and `Premium_LRS`.
         :param pulumi.Input['WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs'] diff_disk_settings: A `diff_disk_settings` block as defined above. Changing this forces a new resource to be created.
         :param pulumi.Input[str] disk_encryption_set_id: The ID of the Disk Encryption Set which should be used to encrypt this OS Disk.
-        :param pulumi.Input[float] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
+        :param pulumi.Input[int] disk_size_gb: The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
         :param pulumi.Input[bool] write_accelerator_enabled: Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
         """
         pulumi.set(__self__, "caching", caching)
@@ -6179,14 +6179,14 @@ class WindowsVirtualMachineScaleSetOsDiskArgs:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[float]]:
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[float]]):
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @property
@@ -6269,14 +6269,14 @@ class WindowsVirtualMachineScaleSetPlanArgs:
 @pulumi.input_type
 class WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs:
     def __init__(__self__, *,
-                 max_batch_instance_percent: pulumi.Input[float],
-                 max_unhealthy_instance_percent: pulumi.Input[float],
-                 max_unhealthy_upgraded_instance_percent: pulumi.Input[float],
+                 max_batch_instance_percent: pulumi.Input[int],
+                 max_unhealthy_instance_percent: pulumi.Input[int],
+                 max_unhealthy_upgraded_instance_percent: pulumi.Input[int],
                  pause_time_between_batches: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_batch_instance_percent: The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_unhealthy_instance_percent: The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] max_unhealthy_upgraded_instance_percent: The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
         :param pulumi.Input[str] pause_time_between_batches: The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "max_batch_instance_percent", max_batch_instance_percent)
@@ -6286,38 +6286,38 @@ class WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs:
 
     @property
     @pulumi.getter(name="maxBatchInstancePercent")
-    def max_batch_instance_percent(self) -> pulumi.Input[float]:
+    def max_batch_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_batch_instance_percent")
 
     @max_batch_instance_percent.setter
-    def max_batch_instance_percent(self, value: pulumi.Input[float]):
+    def max_batch_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_batch_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyInstancePercent")
-    def max_unhealthy_instance_percent(self) -> pulumi.Input[float]:
+    def max_unhealthy_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_unhealthy_instance_percent")
 
     @max_unhealthy_instance_percent.setter
-    def max_unhealthy_instance_percent(self, value: pulumi.Input[float]):
+    def max_unhealthy_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_unhealthy_instance_percent", value)
 
     @property
     @pulumi.getter(name="maxUnhealthyUpgradedInstancePercent")
-    def max_unhealthy_upgraded_instance_percent(self) -> pulumi.Input[float]:
+    def max_unhealthy_upgraded_instance_percent(self) -> pulumi.Input[int]:
         """
         The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "max_unhealthy_upgraded_instance_percent")
 
     @max_unhealthy_upgraded_instance_percent.setter
-    def max_unhealthy_upgraded_instance_percent(self, value: pulumi.Input[float]):
+    def max_unhealthy_upgraded_instance_percent(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_unhealthy_upgraded_instance_percent", value)
 
     @property

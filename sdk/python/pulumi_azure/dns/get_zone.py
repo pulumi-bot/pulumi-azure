@@ -23,8 +23,8 @@ class GetZoneResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if max_number_of_record_sets and not isinstance(max_number_of_record_sets, float):
-            raise TypeError("Expected argument 'max_number_of_record_sets' to be a float")
+        if max_number_of_record_sets and not isinstance(max_number_of_record_sets, int):
+            raise TypeError("Expected argument 'max_number_of_record_sets' to be a int")
         pulumi.set(__self__, "max_number_of_record_sets", max_number_of_record_sets)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -32,8 +32,8 @@ class GetZoneResult:
         if name_servers and not isinstance(name_servers, list):
             raise TypeError("Expected argument 'name_servers' to be a list")
         pulumi.set(__self__, "name_servers", name_servers)
-        if number_of_record_sets and not isinstance(number_of_record_sets, float):
-            raise TypeError("Expected argument 'number_of_record_sets' to be a float")
+        if number_of_record_sets and not isinstance(number_of_record_sets, int):
+            raise TypeError("Expected argument 'number_of_record_sets' to be a int")
         pulumi.set(__self__, "number_of_record_sets", number_of_record_sets)
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
@@ -52,7 +52,7 @@ class GetZoneResult:
 
     @property
     @pulumi.getter(name="maxNumberOfRecordSets")
-    def max_number_of_record_sets(self) -> float:
+    def max_number_of_record_sets(self) -> int:
         """
         Maximum number of Records in the zone.
         """
@@ -73,7 +73,7 @@ class GetZoneResult:
 
     @property
     @pulumi.getter(name="numberOfRecordSets")
-    def number_of_record_sets(self) -> float:
+    def number_of_record_sets(self) -> int:
         """
         The number of records already in the zone.
         """

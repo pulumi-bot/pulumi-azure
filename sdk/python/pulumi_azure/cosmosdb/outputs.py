@@ -50,12 +50,12 @@ class AccountCapability(dict):
 class AccountConsistencyPolicy(dict):
     def __init__(__self__, *,
                  consistency_level: str,
-                 max_interval_in_seconds: Optional[float] = None,
-                 max_staleness_prefix: Optional[float] = None):
+                 max_interval_in_seconds: Optional[int] = None,
+                 max_staleness_prefix: Optional[int] = None):
         """
         :param str consistency_level: The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
-        :param float max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
-        :param float max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param int max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param int max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
         pulumi.set(__self__, "consistency_level", consistency_level)
         if max_interval_in_seconds is not None:
@@ -73,7 +73,7 @@ class AccountConsistencyPolicy(dict):
 
     @property
     @pulumi.getter(name="maxIntervalInSeconds")
-    def max_interval_in_seconds(self) -> Optional[float]:
+    def max_interval_in_seconds(self) -> Optional[int]:
         """
         When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
@@ -81,7 +81,7 @@ class AccountConsistencyPolicy(dict):
 
     @property
     @pulumi.getter(name="maxStalenessPrefix")
-    def max_staleness_prefix(self) -> Optional[float]:
+    def max_staleness_prefix(self) -> Optional[int]:
         """
         When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
@@ -94,12 +94,12 @@ class AccountConsistencyPolicy(dict):
 @pulumi.output_type
 class AccountGeoLocation(dict):
     def __init__(__self__, *,
-                 failover_priority: float,
+                 failover_priority: int,
                  location: str,
                  id: Optional[str] = None,
                  prefix: Optional[str] = None):
         """
-        :param float failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
+        :param int failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         :param str location: The name of the Azure region to host replicated data.
         :param str id: The ID of the virtual network subnet.
         :param str prefix: The string used to generate the document endpoints for this region. If not specified it defaults to `${cosmosdb_account.name}-${location}`. Changing this causes the location to be deleted and re-provisioned and cannot be changed for the location with failover priority `0`.
@@ -113,7 +113,7 @@ class AccountGeoLocation(dict):
 
     @property
     @pulumi.getter(name="failoverPriority")
-    def failover_priority(self) -> float:
+    def failover_priority(self) -> int:
         """
         The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         """
@@ -413,12 +413,12 @@ class GetAccountCapabilityResult(dict):
 class GetAccountConsistencyPolicyResult(dict):
     def __init__(__self__, *,
                  consistency_level: str,
-                 max_interval_in_seconds: float,
-                 max_staleness_prefix: float):
+                 max_interval_in_seconds: int,
+                 max_staleness_prefix: int):
         """
         :param str consistency_level: The Consistency Level used by this CosmosDB Account.
-        :param float max_interval_in_seconds: The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
-        :param float max_staleness_prefix: The number of stale requests tolerated when the consistency level is Bounded Staleness.
+        :param int max_interval_in_seconds: The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
+        :param int max_staleness_prefix: The number of stale requests tolerated when the consistency level is Bounded Staleness.
         """
         pulumi.set(__self__, "consistency_level", consistency_level)
         pulumi.set(__self__, "max_interval_in_seconds", max_interval_in_seconds)
@@ -434,7 +434,7 @@ class GetAccountConsistencyPolicyResult(dict):
 
     @property
     @pulumi.getter(name="maxIntervalInSeconds")
-    def max_interval_in_seconds(self) -> float:
+    def max_interval_in_seconds(self) -> int:
         """
         The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
         """
@@ -442,7 +442,7 @@ class GetAccountConsistencyPolicyResult(dict):
 
     @property
     @pulumi.getter(name="maxStalenessPrefix")
-    def max_staleness_prefix(self) -> float:
+    def max_staleness_prefix(self) -> int:
         """
         The number of stale requests tolerated when the consistency level is Bounded Staleness.
         """
@@ -452,7 +452,7 @@ class GetAccountConsistencyPolicyResult(dict):
 @pulumi.output_type
 class GetAccountGeoLocationResult(dict):
     def __init__(__self__, *,
-                 failover_priority: float,
+                 failover_priority: int,
                  id: str,
                  location: str):
         """
@@ -465,7 +465,7 @@ class GetAccountGeoLocationResult(dict):
 
     @property
     @pulumi.getter(name="failoverPriority")
-    def failover_priority(self) -> float:
+    def failover_priority(self) -> int:
         return pulumi.get(self, "failover_priority")
 
     @property

@@ -47,8 +47,8 @@ class GetVolumeResult:
         if service_level and not isinstance(service_level, str):
             raise TypeError("Expected argument 'service_level' to be a str")
         pulumi.set(__self__, "service_level", service_level)
-        if storage_quota_in_gb and not isinstance(storage_quota_in_gb, float):
-            raise TypeError("Expected argument 'storage_quota_in_gb' to be a float")
+        if storage_quota_in_gb and not isinstance(storage_quota_in_gb, int):
+            raise TypeError("Expected argument 'storage_quota_in_gb' to be a int")
         pulumi.set(__self__, "storage_quota_in_gb", storage_quota_in_gb)
         if subnet_id and not isinstance(subnet_id, str):
             raise TypeError("Expected argument 'subnet_id' to be a str")
@@ -116,7 +116,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter(name="storageQuotaInGb")
-    def storage_quota_in_gb(self) -> float:
+    def storage_quota_in_gb(self) -> int:
         """
         The maximum Storage Quota in Gigabytes allowed for a file system.
         """

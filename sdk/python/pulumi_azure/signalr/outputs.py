@@ -70,10 +70,10 @@ class ServiceFeature(dict):
 @pulumi.output_type
 class ServiceSku(dict):
     def __init__(__self__, *,
-                 capacity: float,
+                 capacity: int,
                  name: str):
         """
-        :param float capacity: Specifies the number of units associated with this SignalR service. Valid values are `1`, `2`, `5`, `10`, `20`, `50` and `100`.
+        :param int capacity: Specifies the number of units associated with this SignalR service. Valid values are `1`, `2`, `5`, `10`, `20`, `50` and `100`.
         :param str name: Specifies which tier to use. Valid values are `Free_F1` and `Standard_S1`.
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -81,7 +81,7 @@ class ServiceSku(dict):
 
     @property
     @pulumi.getter
-    def capacity(self) -> float:
+    def capacity(self) -> int:
         """
         Specifies the number of units associated with this SignalR service. Valid values are `1`, `2`, `5`, `10`, `20`, `50` and `100`.
         """

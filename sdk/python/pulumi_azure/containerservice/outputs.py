@@ -219,10 +219,10 @@ class GroupContainer(dict):
 @pulumi.output_type
 class GroupContainerGpu(dict):
     def __init__(__self__, *,
-                 count: Optional[float] = None,
+                 count: Optional[int] = None,
                  sku: Optional[str] = None):
         """
-        :param float count: The number of GPUs which should be assigned to this container. Allowed values are `1`, `2`, or `4`. Changing this forces a new resource to be created.
+        :param int count: The number of GPUs which should be assigned to this container. Allowed values are `1`, `2`, or `4`. Changing this forces a new resource to be created.
         :param str sku: The Sku which should be used for the GPU. Possible values are `K80`, `P100`, or `V100`. Changing this forces a new resource to be created.
         """
         if count is not None:
@@ -232,7 +232,7 @@ class GroupContainerGpu(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> Optional[float]:
+    def count(self) -> Optional[int]:
         """
         The number of GPUs which should be assigned to this container. Allowed values are `1`, `2`, or `4`. Changing this forces a new resource to be created.
         """
@@ -254,20 +254,20 @@ class GroupContainerGpu(dict):
 class GroupContainerLivenessProbe(dict):
     def __init__(__self__, *,
                  execs: Optional[List[str]] = None,
-                 failure_threshold: Optional[float] = None,
+                 failure_threshold: Optional[int] = None,
                  http_gets: Optional[List['outputs.GroupContainerLivenessProbeHttpGet']] = None,
-                 initial_delay_seconds: Optional[float] = None,
-                 period_seconds: Optional[float] = None,
-                 success_threshold: Optional[float] = None,
-                 timeout_seconds: Optional[float] = None):
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
         """
         :param List[str] execs: Commands to be run to validate container readiness. Changing this forces a new resource to be created.
-        :param float failure_threshold: How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int failure_threshold: How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
         :param List['GroupContainerLivenessProbeHttpGetArgs'] http_gets: The definition of the httpget for this container as documented in the `httpget` block below. Changing this forces a new resource to be created.
-        :param float initial_delay_seconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
-        :param float period_seconds: How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
-        :param float success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
-        :param float timeout_seconds: Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int initial_delay_seconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
+        :param int period_seconds: How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int timeout_seconds: Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
         if execs is not None:
             pulumi.set(__self__, "execs", execs)
@@ -294,7 +294,7 @@ class GroupContainerLivenessProbe(dict):
 
     @property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[float]:
+    def failure_threshold(self) -> Optional[int]:
         """
         How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -310,7 +310,7 @@ class GroupContainerLivenessProbe(dict):
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[float]:
+    def initial_delay_seconds(self) -> Optional[int]:
         """
         Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
         """
@@ -318,7 +318,7 @@ class GroupContainerLivenessProbe(dict):
 
     @property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[float]:
+    def period_seconds(self) -> Optional[int]:
         """
         How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -326,7 +326,7 @@ class GroupContainerLivenessProbe(dict):
 
     @property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[float]:
+    def success_threshold(self) -> Optional[int]:
         """
         Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -334,7 +334,7 @@ class GroupContainerLivenessProbe(dict):
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[float]:
+    def timeout_seconds(self) -> Optional[int]:
         """
         Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -348,11 +348,11 @@ class GroupContainerLivenessProbe(dict):
 class GroupContainerLivenessProbeHttpGet(dict):
     def __init__(__self__, *,
                  path: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  scheme: Optional[str] = None):
         """
         :param str path: Path to access on the HTTP server. Changing this forces a new resource to be created.
-        :param float port: The port number the container will expose. Changing this forces a new resource to be created.
+        :param int port: The port number the container will expose. Changing this forces a new resource to be created.
         :param str scheme: Scheme to use for connecting to the host. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
         """
         if path is not None:
@@ -372,7 +372,7 @@ class GroupContainerLivenessProbeHttpGet(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port number the container will expose. Changing this forces a new resource to be created.
         """
@@ -393,10 +393,10 @@ class GroupContainerLivenessProbeHttpGet(dict):
 @pulumi.output_type
 class GroupContainerPort(dict):
     def __init__(__self__, *,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  protocol: Optional[str] = None):
         """
-        :param float port: The port number the container will expose. Changing this forces a new resource to be created.
+        :param int port: The port number the container will expose. Changing this forces a new resource to be created.
         :param str protocol: The network protocol associated with port. Possible values are `TCP` & `UDP`. Changing this forces a new resource to be created.
         """
         if port is not None:
@@ -406,7 +406,7 @@ class GroupContainerPort(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port number the container will expose. Changing this forces a new resource to be created.
         """
@@ -428,20 +428,20 @@ class GroupContainerPort(dict):
 class GroupContainerReadinessProbe(dict):
     def __init__(__self__, *,
                  execs: Optional[List[str]] = None,
-                 failure_threshold: Optional[float] = None,
+                 failure_threshold: Optional[int] = None,
                  http_gets: Optional[List['outputs.GroupContainerReadinessProbeHttpGet']] = None,
-                 initial_delay_seconds: Optional[float] = None,
-                 period_seconds: Optional[float] = None,
-                 success_threshold: Optional[float] = None,
-                 timeout_seconds: Optional[float] = None):
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
         """
         :param List[str] execs: Commands to be run to validate container readiness. Changing this forces a new resource to be created.
-        :param float failure_threshold: How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int failure_threshold: How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
         :param List['GroupContainerReadinessProbeHttpGetArgs'] http_gets: The definition of the httpget for this container as documented in the `httpget` block below. Changing this forces a new resource to be created.
-        :param float initial_delay_seconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
-        :param float period_seconds: How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
-        :param float success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
-        :param float timeout_seconds: Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int initial_delay_seconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
+        :param int period_seconds: How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
+        :param int timeout_seconds: Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
         if execs is not None:
             pulumi.set(__self__, "execs", execs)
@@ -468,7 +468,7 @@ class GroupContainerReadinessProbe(dict):
 
     @property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[float]:
+    def failure_threshold(self) -> Optional[int]:
         """
         How many times to try the probe before restarting the container (liveness probe) or marking the container as unhealthy (readiness probe). The default value is `3` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -484,7 +484,7 @@ class GroupContainerReadinessProbe(dict):
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[float]:
+    def initial_delay_seconds(self) -> Optional[int]:
         """
         Number of seconds after the container has started before liveness or readiness probes are initiated. Changing this forces a new resource to be created.
         """
@@ -492,7 +492,7 @@ class GroupContainerReadinessProbe(dict):
 
     @property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[float]:
+    def period_seconds(self) -> Optional[int]:
         """
         How often (in seconds) to perform the probe. The default value is `10` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -500,7 +500,7 @@ class GroupContainerReadinessProbe(dict):
 
     @property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[float]:
+    def success_threshold(self) -> Optional[int]:
         """
         Minimum consecutive successes for the probe to be considered successful after having failed. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -508,7 +508,7 @@ class GroupContainerReadinessProbe(dict):
 
     @property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[float]:
+    def timeout_seconds(self) -> Optional[int]:
         """
         Number of seconds after which the probe times out. The default value is `1` and the minimum value is `1`. Changing this forces a new resource to be created.
         """
@@ -522,11 +522,11 @@ class GroupContainerReadinessProbe(dict):
 class GroupContainerReadinessProbeHttpGet(dict):
     def __init__(__self__, *,
                  path: Optional[str] = None,
-                 port: Optional[float] = None,
+                 port: Optional[int] = None,
                  scheme: Optional[str] = None):
         """
         :param str path: Path to access on the HTTP server. Changing this forces a new resource to be created.
-        :param float port: The port number the container will expose. Changing this forces a new resource to be created.
+        :param int port: The port number the container will expose. Changing this forces a new resource to be created.
         :param str scheme: Scheme to use for connecting to the host. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
         """
         if path is not None:
@@ -546,7 +546,7 @@ class GroupContainerReadinessProbeHttpGet(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port number the container will expose. Changing this forces a new resource to be created.
         """
@@ -1197,14 +1197,14 @@ class KubernetesClusterDefaultNodePool(dict):
                  availability_zones: Optional[List[str]] = None,
                  enable_auto_scaling: Optional[bool] = None,
                  enable_node_public_ip: Optional[bool] = None,
-                 max_count: Optional[float] = None,
-                 max_pods: Optional[float] = None,
-                 min_count: Optional[float] = None,
-                 node_count: Optional[float] = None,
+                 max_count: Optional[int] = None,
+                 max_pods: Optional[int] = None,
+                 min_count: Optional[int] = None,
+                 node_count: Optional[int] = None,
                  node_labels: Optional[Mapping[str, str]] = None,
                  node_taints: Optional[List[str]] = None,
                  orchestrator_version: Optional[str] = None,
-                 os_disk_size_gb: Optional[float] = None,
+                 os_disk_size_gb: Optional[int] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  type: Optional[str] = None,
                  vnet_subnet_id: Optional[str] = None):
@@ -1214,14 +1214,14 @@ class KubernetesClusterDefaultNodePool(dict):
         :param List[str] availability_zones: A list of Availability Zones across which the Node Pool should be spread.
         :param bool enable_auto_scaling: Should [the Kubernetes Auto Scaler](https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler) be enabled for this Node Pool? Defaults to `false`.
         :param bool enable_node_public_ip: Should nodes in this Node Pool have a Public IP Address? Defaults to `false`.
-        :param float max_count: The maximum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
-        :param float max_pods: The maximum number of pods that can run on each agent. Changing this forces a new resource to be created.
-        :param float min_count: The minimum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
-        :param float node_count: The initial number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100` and between `min_count` and `max_count`.
+        :param int max_count: The maximum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
+        :param int max_pods: The maximum number of pods that can run on each agent. Changing this forces a new resource to be created.
+        :param int min_count: The minimum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
+        :param int node_count: The initial number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100` and between `min_count` and `max_count`.
         :param Mapping[str, str] node_labels: A map of Kubernetes labels which should be applied to nodes in the Default Node Pool. Changing this forces a new resource to be created.
         :param List[str] node_taints: A list of Kubernetes taints which should be applied to nodes in the agent pool (e.g `key=value:NoSchedule`). Changing this forces a new resource to be created.
         :param str orchestrator_version: Version of Kubernetes used for the Agents. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade)
-        :param float os_disk_size_gb: The size of the OS Disk which should be used for each agent in the Node Pool. Changing this forces a new resource to be created.
+        :param int os_disk_size_gb: The size of the OS Disk which should be used for each agent in the Node Pool. Changing this forces a new resource to be created.
         :param Mapping[str, str] tags: A mapping of tags to assign to the Node Pool.
         :param str type: The type of Node Pool which should be created. Possible values are `AvailabilitySet` and `VirtualMachineScaleSets`. Defaults to `VirtualMachineScaleSets`.
         :param str vnet_subnet_id: The ID of a Subnet where the Kubernetes Node Pool should exist. Changing this forces a new resource to be created.
@@ -1299,7 +1299,7 @@ class KubernetesClusterDefaultNodePool(dict):
 
     @property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> Optional[float]:
+    def max_count(self) -> Optional[int]:
         """
         The maximum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
         """
@@ -1307,7 +1307,7 @@ class KubernetesClusterDefaultNodePool(dict):
 
     @property
     @pulumi.getter(name="maxPods")
-    def max_pods(self) -> Optional[float]:
+    def max_pods(self) -> Optional[int]:
         """
         The maximum number of pods that can run on each agent. Changing this forces a new resource to be created.
         """
@@ -1315,7 +1315,7 @@ class KubernetesClusterDefaultNodePool(dict):
 
     @property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> Optional[float]:
+    def min_count(self) -> Optional[int]:
         """
         The minimum number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100`.
         """
@@ -1323,7 +1323,7 @@ class KubernetesClusterDefaultNodePool(dict):
 
     @property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[float]:
+    def node_count(self) -> Optional[int]:
         """
         The initial number of nodes which should exist in this Node Pool. If specified this must be between `1` and `100` and between `min_count` and `max_count`.
         """
@@ -1355,7 +1355,7 @@ class KubernetesClusterDefaultNodePool(dict):
 
     @property
     @pulumi.getter(name="osDiskSizeGb")
-    def os_disk_size_gb(self) -> Optional[float]:
+    def os_disk_size_gb(self) -> Optional[int]:
         """
         The size of the OS Disk which should be used for each agent in the Node Pool. Changing this forces a new resource to be created.
         """
@@ -1818,18 +1818,18 @@ class KubernetesClusterNetworkProfile(dict):
 class KubernetesClusterNetworkProfileLoadBalancerProfile(dict):
     def __init__(__self__, *,
                  effective_outbound_ips: Optional[List[str]] = None,
-                 idle_timeout_in_minutes: Optional[float] = None,
-                 managed_outbound_ip_count: Optional[float] = None,
+                 idle_timeout_in_minutes: Optional[int] = None,
+                 managed_outbound_ip_count: Optional[int] = None,
                  outbound_ip_address_ids: Optional[List[str]] = None,
                  outbound_ip_prefix_ids: Optional[List[str]] = None,
-                 outbound_ports_allocated: Optional[float] = None):
+                 outbound_ports_allocated: Optional[int] = None):
         """
         :param List[str] effective_outbound_ips: The outcome (resource IDs) of the specified arguments.
-        :param float idle_timeout_in_minutes: Desired outbound flow idle timeout in minutes for the cluster load balancer. Must be between `4` and `120` inclusive. Defaults to `30`.
-        :param float managed_outbound_ip_count: Count of desired managed outbound IPs for the cluster load balancer. Must be between `1` and `100` inclusive.
+        :param int idle_timeout_in_minutes: Desired outbound flow idle timeout in minutes for the cluster load balancer. Must be between `4` and `120` inclusive. Defaults to `30`.
+        :param int managed_outbound_ip_count: Count of desired managed outbound IPs for the cluster load balancer. Must be between `1` and `100` inclusive.
         :param List[str] outbound_ip_address_ids: The ID of the Public IP Addresses which should be used for outbound communication for the cluster load balancer.
         :param List[str] outbound_ip_prefix_ids: The ID of the outbound Public IP Address Prefixes which should be used for the cluster load balancer.
-        :param float outbound_ports_allocated: Number of desired SNAT port for each VM in the clusters load balancer. Must be between `0` and `64000` inclusive. Defaults to `0`.
+        :param int outbound_ports_allocated: Number of desired SNAT port for each VM in the clusters load balancer. Must be between `0` and `64000` inclusive. Defaults to `0`.
         """
         if effective_outbound_ips is not None:
             pulumi.set(__self__, "effective_outbound_ips", effective_outbound_ips)
@@ -1854,7 +1854,7 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile(dict):
 
     @property
     @pulumi.getter(name="idleTimeoutInMinutes")
-    def idle_timeout_in_minutes(self) -> Optional[float]:
+    def idle_timeout_in_minutes(self) -> Optional[int]:
         """
         Desired outbound flow idle timeout in minutes for the cluster load balancer. Must be between `4` and `120` inclusive. Defaults to `30`.
         """
@@ -1862,7 +1862,7 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile(dict):
 
     @property
     @pulumi.getter(name="managedOutboundIpCount")
-    def managed_outbound_ip_count(self) -> Optional[float]:
+    def managed_outbound_ip_count(self) -> Optional[int]:
         """
         Count of desired managed outbound IPs for the cluster load balancer. Must be between `1` and `100` inclusive.
         """
@@ -1886,7 +1886,7 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile(dict):
 
     @property
     @pulumi.getter(name="outboundPortsAllocated")
-    def outbound_ports_allocated(self) -> Optional[float]:
+    def outbound_ports_allocated(self) -> Optional[int]:
         """
         Number of desired SNAT port for each VM in the clusters load balancer. Must be between `0` and `64000` inclusive. Defaults to `0`.
         """
@@ -2386,17 +2386,17 @@ class GetKubernetesClusterAddonProfileOmsAgentOmsAgentIdentityResult(dict):
 class GetKubernetesClusterAgentPoolProfileResult(dict):
     def __init__(__self__, *,
                  availability_zones: List[str],
-                 count: float,
+                 count: int,
                  enable_auto_scaling: bool,
                  enable_node_public_ip: bool,
-                 max_count: float,
-                 max_pods: float,
-                 min_count: float,
+                 max_count: int,
+                 max_pods: int,
+                 min_count: int,
                  name: str,
                  node_labels: Mapping[str, str],
                  node_taints: List[str],
                  orchestrator_version: str,
-                 os_disk_size_gb: float,
+                 os_disk_size_gb: int,
                  os_type: str,
                  tags: Mapping[str, str],
                  type: str,
@@ -2404,15 +2404,15 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
                  vnet_subnet_id: str):
         """
         :param List[str] availability_zones: The availability zones used for the nodes.
-        :param float count: The number of Agents (VM's) in the Pool.
+        :param int count: The number of Agents (VM's) in the Pool.
         :param bool enable_auto_scaling: If the auto-scaler is enabled.
-        :param float max_count: Maximum number of nodes for auto-scaling
-        :param float max_pods: The maximum number of pods that can run on each agent.
-        :param float min_count: Minimum number of nodes for auto-scaling
+        :param int max_count: Maximum number of nodes for auto-scaling
+        :param int max_pods: The maximum number of pods that can run on each agent.
+        :param int min_count: Minimum number of nodes for auto-scaling
         :param str name: The name of the managed Kubernetes Cluster.
         :param List[str] node_taints: The list of Kubernetes taints which are applied to nodes in the agent pool
         :param str orchestrator_version: Kubernetes version used for the Agents.
-        :param float os_disk_size_gb: The size of the Agent VM's Operating System Disk in GB.
+        :param int os_disk_size_gb: The size of the Agent VM's Operating System Disk in GB.
         :param str os_type: The Operating System used for the Agents.
         :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str type: The type of identity used for the managed cluster.
@@ -2447,7 +2447,7 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of Agents (VM's) in the Pool.
         """
@@ -2468,7 +2468,7 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
 
     @property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> float:
+    def max_count(self) -> int:
         """
         Maximum number of nodes for auto-scaling
         """
@@ -2476,7 +2476,7 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
 
     @property
     @pulumi.getter(name="maxPods")
-    def max_pods(self) -> float:
+    def max_pods(self) -> int:
         """
         The maximum number of pods that can run on each agent.
         """
@@ -2484,7 +2484,7 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
 
     @property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> float:
+    def min_count(self) -> int:
         """
         Minimum number of nodes for auto-scaling
         """
@@ -2521,7 +2521,7 @@ class GetKubernetesClusterAgentPoolProfileResult(dict):
 
     @property
     @pulumi.getter(name="osDiskSizeGb")
-    def os_disk_size_gb(self) -> float:
+    def os_disk_size_gb(self) -> int:
         """
         The size of the Agent VM's Operating System Disk in GB.
         """

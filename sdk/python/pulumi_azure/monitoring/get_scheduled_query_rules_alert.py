@@ -36,8 +36,8 @@ class GetScheduledQueryRulesAlertResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if frequency and not isinstance(frequency, float):
-            raise TypeError("Expected argument 'frequency' to be a float")
+        if frequency and not isinstance(frequency, int):
+            raise TypeError("Expected argument 'frequency' to be a int")
         pulumi.set(__self__, "frequency", frequency)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -57,17 +57,17 @@ class GetScheduledQueryRulesAlertResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         pulumi.set(__self__, "resource_group_name", resource_group_name)
-        if severity and not isinstance(severity, float):
-            raise TypeError("Expected argument 'severity' to be a float")
+        if severity and not isinstance(severity, int):
+            raise TypeError("Expected argument 'severity' to be a int")
         pulumi.set(__self__, "severity", severity)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
-        if throttling and not isinstance(throttling, float):
-            raise TypeError("Expected argument 'throttling' to be a float")
+        if throttling and not isinstance(throttling, int):
+            raise TypeError("Expected argument 'throttling' to be a int")
         pulumi.set(__self__, "throttling", throttling)
-        if time_window and not isinstance(time_window, float):
-            raise TypeError("Expected argument 'time_window' to be a float")
+        if time_window and not isinstance(time_window, int):
+            raise TypeError("Expected argument 'time_window' to be a int")
         pulumi.set(__self__, "time_window", time_window)
         if triggers and not isinstance(triggers, list):
             raise TypeError("Expected argument 'triggers' to be a list")
@@ -115,7 +115,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter
-    def frequency(self) -> float:
+    def frequency(self) -> int:
         """
         Frequency at which rule condition should be evaluated.
         """
@@ -159,7 +159,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter
-    def severity(self) -> float:
+    def severity(self) -> int:
         """
         Severity of the alert.
         """
@@ -172,7 +172,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter
-    def throttling(self) -> float:
+    def throttling(self) -> int:
         """
         Time for which alerts should be throttled or suppressed.
         """
@@ -180,7 +180,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> float:
+    def time_window(self) -> int:
         """
         Time window for which data needs to be fetched for query.
         """

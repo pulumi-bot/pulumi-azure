@@ -21,7 +21,7 @@ class MxRecord(pulumi.CustomResource):
                  records: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MxRecordRecordArgs']]]]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -111,7 +111,7 @@ class MxRecord(pulumi.CustomResource):
             records: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MxRecordRecordArgs']]]]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             zone_name: Optional[pulumi.Input[str]] = None) -> 'MxRecord':
         """
         Get an existing MxRecord resource's state with the given name, id, and optional extra
@@ -182,7 +182,7 @@ class MxRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[float]:
+    def ttl(self) -> pulumi.Output[int]:
         return pulumi.get(self, "ttl")
 
     @property

@@ -46,7 +46,7 @@ __all__ = [
 class EndpointDeliveryRule(dict):
     def __init__(__self__, *,
                  name: str,
-                 order: float,
+                 order: int,
                  cache_expiration_action: Optional['outputs.EndpointDeliveryRuleCacheExpirationAction'] = None,
                  cache_key_query_string_action: Optional['outputs.EndpointDeliveryRuleCacheKeyQueryStringAction'] = None,
                  cookies_conditions: Optional[List['outputs.EndpointDeliveryRuleCookiesCondition']] = None,
@@ -69,7 +69,7 @@ class EndpointDeliveryRule(dict):
                  url_rewrite_action: Optional['outputs.EndpointDeliveryRuleUrlRewriteAction'] = None):
         """
         :param str name: The Name which should be used for this Delivery Rule.
-        :param float order: The order used for this rule, which must be larger than 1.
+        :param int order: The order used for this rule, which must be larger than 1.
         :param 'EndpointDeliveryRuleCacheExpirationActionArgs' cache_expiration_action: A `cache_expiration_action` block as defined above.
         :param 'EndpointDeliveryRuleCacheKeyQueryStringActionArgs' cache_key_query_string_action: A `cache_key_query_string_action` block as defined above.
         :param List['EndpointDeliveryRuleCookiesConditionArgs'] cookies_conditions: A `cookies_condition` block as defined above.
@@ -144,7 +144,7 @@ class EndpointDeliveryRule(dict):
 
     @property
     @pulumi.getter
-    def order(self) -> float:
+    def order(self) -> int:
         """
         The order used for this rule, which must be larger than 1.
         """
@@ -1763,13 +1763,13 @@ class EndpointOrigin(dict):
     def __init__(__self__, *,
                  host_name: str,
                  name: str,
-                 http_port: Optional[float] = None,
-                 https_port: Optional[float] = None):
+                 http_port: Optional[int] = None,
+                 https_port: Optional[int] = None):
         """
         :param str host_name: A string that determines the hostname/IP address of the origin server. This string can be a domain name, Storage Account endpoint, Web App endpoint, IPv4 address or IPv6 address. Changing this forces a new resource to be created.
         :param str name: The name of the origin. This is an arbitrary value. However, this value needs to be unique under the endpoint. Changing this forces a new resource to be created.
-        :param float http_port: The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
-        :param float https_port: The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
+        :param int http_port: The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
+        :param int https_port: The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "name", name)
@@ -1796,7 +1796,7 @@ class EndpointOrigin(dict):
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[float]:
+    def http_port(self) -> Optional[int]:
         """
         The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
         """
@@ -1804,7 +1804,7 @@ class EndpointOrigin(dict):
 
     @property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> Optional[float]:
+    def https_port(self) -> Optional[int]:
         """
         The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
         """

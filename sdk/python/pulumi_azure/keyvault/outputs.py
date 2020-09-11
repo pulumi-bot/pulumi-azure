@@ -256,12 +256,12 @@ class CertifiateCertificatePolicyIssuerParameters(dict):
 class CertifiateCertificatePolicyKeyProperties(dict):
     def __init__(__self__, *,
                  exportable: bool,
-                 key_size: float,
+                 key_size: int,
                  key_type: str,
                  reuse_key: bool):
         """
         :param bool exportable: Is this Certificate Exportable? Changing this forces a new resource to be created.
-        :param float key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
+        :param int key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         :param str key_type: Specifies the Type of Key, such as `RSA`. Changing this forces a new resource to be created.
         :param bool reuse_key: Is the key reusable? Changing this forces a new resource to be created.
         """
@@ -280,7 +280,7 @@ class CertifiateCertificatePolicyKeyProperties(dict):
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> float:
+    def key_size(self) -> int:
         """
         The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         """
@@ -362,11 +362,11 @@ class CertifiateCertificatePolicyLifetimeActionAction(dict):
 @pulumi.output_type
 class CertifiateCertificatePolicyLifetimeActionTrigger(dict):
     def __init__(__self__, *,
-                 days_before_expiry: Optional[float] = None,
-                 lifetime_percentage: Optional[float] = None):
+                 days_before_expiry: Optional[int] = None,
+                 lifetime_percentage: Optional[int] = None):
         """
-        :param float days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
-        :param float lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
+        :param int days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
+        :param int lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         if days_before_expiry is not None:
             pulumi.set(__self__, "days_before_expiry", days_before_expiry)
@@ -375,7 +375,7 @@ class CertifiateCertificatePolicyLifetimeActionTrigger(dict):
 
     @property
     @pulumi.getter(name="daysBeforeExpiry")
-    def days_before_expiry(self) -> Optional[float]:
+    def days_before_expiry(self) -> Optional[int]:
         """
         The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
         """
@@ -383,7 +383,7 @@ class CertifiateCertificatePolicyLifetimeActionTrigger(dict):
 
     @property
     @pulumi.getter(name="lifetimePercentage")
-    def lifetime_percentage(self) -> Optional[float]:
+    def lifetime_percentage(self) -> Optional[int]:
         """
         The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
@@ -419,13 +419,13 @@ class CertifiateCertificatePolicyX509CertificateProperties(dict):
     def __init__(__self__, *,
                  key_usages: List[str],
                  subject: str,
-                 validity_in_months: float,
+                 validity_in_months: int,
                  extended_key_usages: Optional[List[str]] = None,
                  subject_alternative_names: Optional['outputs.CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames'] = None):
         """
         :param List[str] key_usages: A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive. Changing this forces a new resource to be created.
         :param str subject: The Certificate's Subject. Changing this forces a new resource to be created.
-        :param float validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
+        :param int validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         :param List[str] extended_key_usages: A list of Extended/Enhanced Key Usages. Changing this forces a new resource to be created.
         :param 'CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs' subject_alternative_names: A `subject_alternative_names` block as defined below.
         """
@@ -455,7 +455,7 @@ class CertifiateCertificatePolicyX509CertificateProperties(dict):
 
     @property
     @pulumi.getter(name="validityInMonths")
-    def validity_in_months(self) -> float:
+    def validity_in_months(self) -> int:
         """
         The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         """
@@ -734,12 +734,12 @@ class CertificateCertificatePolicyIssuerParameters(dict):
 class CertificateCertificatePolicyKeyProperties(dict):
     def __init__(__self__, *,
                  exportable: bool,
-                 key_size: float,
+                 key_size: int,
                  key_type: str,
                  reuse_key: bool):
         """
         :param bool exportable: Is this Certificate Exportable? Changing this forces a new resource to be created.
-        :param float key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
+        :param int key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         :param str key_type: Specifies the Type of Key, such as `RSA`. Changing this forces a new resource to be created.
         :param bool reuse_key: Is the key reusable? Changing this forces a new resource to be created.
         """
@@ -758,7 +758,7 @@ class CertificateCertificatePolicyKeyProperties(dict):
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> float:
+    def key_size(self) -> int:
         """
         The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         """
@@ -840,11 +840,11 @@ class CertificateCertificatePolicyLifetimeActionAction(dict):
 @pulumi.output_type
 class CertificateCertificatePolicyLifetimeActionTrigger(dict):
     def __init__(__self__, *,
-                 days_before_expiry: Optional[float] = None,
-                 lifetime_percentage: Optional[float] = None):
+                 days_before_expiry: Optional[int] = None,
+                 lifetime_percentage: Optional[int] = None):
         """
-        :param float days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
-        :param float lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
+        :param int days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
+        :param int lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         if days_before_expiry is not None:
             pulumi.set(__self__, "days_before_expiry", days_before_expiry)
@@ -853,7 +853,7 @@ class CertificateCertificatePolicyLifetimeActionTrigger(dict):
 
     @property
     @pulumi.getter(name="daysBeforeExpiry")
-    def days_before_expiry(self) -> Optional[float]:
+    def days_before_expiry(self) -> Optional[int]:
         """
         The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
         """
@@ -861,7 +861,7 @@ class CertificateCertificatePolicyLifetimeActionTrigger(dict):
 
     @property
     @pulumi.getter(name="lifetimePercentage")
-    def lifetime_percentage(self) -> Optional[float]:
+    def lifetime_percentage(self) -> Optional[int]:
         """
         The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
@@ -897,13 +897,13 @@ class CertificateCertificatePolicyX509CertificateProperties(dict):
     def __init__(__self__, *,
                  key_usages: List[str],
                  subject: str,
-                 validity_in_months: float,
+                 validity_in_months: int,
                  extended_key_usages: Optional[List[str]] = None,
                  subject_alternative_names: Optional['outputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames'] = None):
         """
         :param List[str] key_usages: A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive. Changing this forces a new resource to be created.
         :param str subject: The Certificate's Subject. Changing this forces a new resource to be created.
-        :param float validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
+        :param int validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         :param List[str] extended_key_usages: A list of Extended/Enhanced Key Usages. Changing this forces a new resource to be created.
         :param 'CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs' subject_alternative_names: A `subject_alternative_names` block as defined below.
         """
@@ -933,7 +933,7 @@ class CertificateCertificatePolicyX509CertificateProperties(dict):
 
     @property
     @pulumi.getter(name="validityInMonths")
-    def validity_in_months(self) -> float:
+    def validity_in_months(self) -> int:
         """
         The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         """
@@ -1295,12 +1295,12 @@ class GetCertificateCertificatePolicyIssuerParameterResult(dict):
 class GetCertificateCertificatePolicyKeyPropertyResult(dict):
     def __init__(__self__, *,
                  exportable: bool,
-                 key_size: float,
+                 key_size: int,
                  key_type: str,
                  reuse_key: bool):
         """
         :param bool exportable: Is this Certificate Exportable?
-        :param float key_size: The size of the Key used in the Certificate.
+        :param int key_size: The size of the Key used in the Certificate.
         :param str key_type: Specifies the Type of Key, for example `RSA`.
         :param bool reuse_key: Is the key reusable?
         """
@@ -1319,7 +1319,7 @@ class GetCertificateCertificatePolicyKeyPropertyResult(dict):
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> float:
+    def key_size(self) -> int:
         """
         The size of the Key used in the Certificate.
         """
@@ -1392,18 +1392,18 @@ class GetCertificateCertificatePolicyLifetimeActionActionResult(dict):
 @pulumi.output_type
 class GetCertificateCertificatePolicyLifetimeActionTriggerResult(dict):
     def __init__(__self__, *,
-                 days_before_expiry: float,
-                 lifetime_percentage: float):
+                 days_before_expiry: int,
+                 lifetime_percentage: int):
         """
-        :param float days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run.
-        :param float lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run.
+        :param int days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run.
+        :param int lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run.
         """
         pulumi.set(__self__, "days_before_expiry", days_before_expiry)
         pulumi.set(__self__, "lifetime_percentage", lifetime_percentage)
 
     @property
     @pulumi.getter(name="daysBeforeExpiry")
-    def days_before_expiry(self) -> float:
+    def days_before_expiry(self) -> int:
         """
         The number of days before the Certificate expires that the action associated with this Trigger should run.
         """
@@ -1411,7 +1411,7 @@ class GetCertificateCertificatePolicyLifetimeActionTriggerResult(dict):
 
     @property
     @pulumi.getter(name="lifetimePercentage")
-    def lifetime_percentage(self) -> float:
+    def lifetime_percentage(self) -> int:
         """
         The percentage at which during the Certificates Lifetime the action associated with this Trigger should run.
         """
@@ -1443,13 +1443,13 @@ class GetCertificateCertificatePolicyX509CertificatePropertyResult(dict):
                  key_usages: List[str],
                  subject: str,
                  subject_alternative_names: List['outputs.GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeNameResult'],
-                 validity_in_months: float):
+                 validity_in_months: int):
         """
         :param List[str] extended_key_usages: A list of Extended/Enhanced Key Usages.
         :param List[str] key_usages: A list of uses associated with this Key.
         :param str subject: The Certificate's Subject.
         :param List['GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeNameArgs'] subject_alternative_names: A `subject_alternative_names` block as defined below.
-        :param float validity_in_months: The Certificates Validity Period in Months.
+        :param int validity_in_months: The Certificates Validity Period in Months.
         """
         pulumi.set(__self__, "extended_key_usages", extended_key_usages)
         pulumi.set(__self__, "key_usages", key_usages)
@@ -1491,7 +1491,7 @@ class GetCertificateCertificatePolicyX509CertificatePropertyResult(dict):
 
     @property
     @pulumi.getter(name="validityInMonths")
-    def validity_in_months(self) -> float:
+    def validity_in_months(self) -> int:
         """
         The Certificates Validity Period in Months.
         """

@@ -49,15 +49,15 @@ class PolicyFileShareBackup(dict):
 @pulumi.output_type
 class PolicyFileShareRetentionDaily(dict):
     def __init__(__self__, *,
-                 count: float):
+                 count: int):
         """
-        :param float count: The number of daily backups to keep. Must be between `1` and `180` (inclusive)
+        :param int count: The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
@@ -114,15 +114,15 @@ class PolicyVMBackup(dict):
 @pulumi.output_type
 class PolicyVMRetentionDaily(dict):
     def __init__(__self__, *,
-                 count: float):
+                 count: int):
         """
-        :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param int count: The number of yearly backups to keep. Must be between `1` and `9999`
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
@@ -135,11 +135,11 @@ class PolicyVMRetentionDaily(dict):
 @pulumi.output_type
 class PolicyVMRetentionMonthly(dict):
     def __init__(__self__, *,
-                 count: float,
+                 count: int,
                  weekdays: List[str],
                  weeks: List[str]):
         """
-        :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param int count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         :param List[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """
@@ -149,7 +149,7 @@ class PolicyVMRetentionMonthly(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
@@ -178,10 +178,10 @@ class PolicyVMRetentionMonthly(dict):
 @pulumi.output_type
 class PolicyVMRetentionWeekly(dict):
     def __init__(__self__, *,
-                 count: float,
+                 count: int,
                  weekdays: List[str]):
         """
-        :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param int count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
         pulumi.set(__self__, "count", count)
@@ -189,7 +189,7 @@ class PolicyVMRetentionWeekly(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
@@ -210,12 +210,12 @@ class PolicyVMRetentionWeekly(dict):
 @pulumi.output_type
 class PolicyVMRetentionYearly(dict):
     def __init__(__self__, *,
-                 count: float,
+                 count: int,
                  months: List[str],
                  weekdays: List[str],
                  weeks: List[str]):
         """
-        :param float count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param int count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param List[str] months: The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
         :param List[str] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         :param List[str] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
@@ -227,7 +227,7 @@ class PolicyVMRetentionYearly(dict):
 
     @property
     @pulumi.getter
-    def count(self) -> float:
+    def count(self) -> int:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """

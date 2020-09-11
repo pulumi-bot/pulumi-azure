@@ -115,7 +115,7 @@ class AccountActiveDirectoryArgs:
 class VolumeExportPolicyRuleArgs:
     def __init__(__self__, *,
                  allowed_clients: pulumi.Input[List[pulumi.Input[str]]],
-                 rule_index: pulumi.Input[float],
+                 rule_index: pulumi.Input[int],
                  cifs_enabled: Optional[pulumi.Input[bool]] = None,
                  nfsv3_enabled: Optional[pulumi.Input[bool]] = None,
                  nfsv4_enabled: Optional[pulumi.Input[bool]] = None,
@@ -124,7 +124,7 @@ class VolumeExportPolicyRuleArgs:
                  unix_read_write: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_clients: A list of allowed clients IPv4 addresses.
-        :param pulumi.Input[float] rule_index: The index number of the rule.
+        :param pulumi.Input[int] rule_index: The index number of the rule.
         :param pulumi.Input[bool] cifs_enabled: Is the CIFS protocol allowed?
         :param pulumi.Input[bool] nfsv3_enabled: Is the NFSv3 protocol allowed?
         :param pulumi.Input[bool] nfsv4_enabled: Is the NFSv4 protocol allowed?
@@ -170,14 +170,14 @@ class VolumeExportPolicyRuleArgs:
 
     @property
     @pulumi.getter(name="ruleIndex")
-    def rule_index(self) -> pulumi.Input[float]:
+    def rule_index(self) -> pulumi.Input[int]:
         """
         The index number of the rule.
         """
         return pulumi.get(self, "rule_index")
 
     @rule_index.setter
-    def rule_index(self, value: pulumi.Input[float]):
+    def rule_index(self, value: pulumi.Input[int]):
         pulumi.set(self, "rule_index", value)
 
     @property

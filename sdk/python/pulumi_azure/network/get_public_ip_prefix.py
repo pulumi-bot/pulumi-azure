@@ -32,8 +32,8 @@ class GetPublicIpPrefixResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if prefix_length and not isinstance(prefix_length, float):
-            raise TypeError("Expected argument 'prefix_length' to be a float")
+        if prefix_length and not isinstance(prefix_length, int):
+            raise TypeError("Expected argument 'prefix_length' to be a int")
         pulumi.set(__self__, "prefix_length", prefix_length)
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
@@ -79,7 +79,7 @@ class GetPublicIpPrefixResult:
 
     @property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> float:
+    def prefix_length(self) -> int:
         """
         The number of bits of the prefix.
         """

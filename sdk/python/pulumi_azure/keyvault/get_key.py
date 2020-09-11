@@ -29,8 +29,8 @@ class GetKeyResult:
         if key_opts and not isinstance(key_opts, list):
             raise TypeError("Expected argument 'key_opts' to be a list")
         pulumi.set(__self__, "key_opts", key_opts)
-        if key_size and not isinstance(key_size, float):
-            raise TypeError("Expected argument 'key_size' to be a float")
+        if key_size and not isinstance(key_size, int):
+            raise TypeError("Expected argument 'key_size' to be a int")
         pulumi.set(__self__, "key_size", key_size)
         if key_type and not isinstance(key_type, str):
             raise TypeError("Expected argument 'key_type' to be a str")
@@ -77,7 +77,7 @@ class GetKeyResult:
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> float:
+    def key_size(self) -> int:
         """
         Specifies the Size of this Key Vault Key.
         """

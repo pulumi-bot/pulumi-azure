@@ -148,18 +148,18 @@ class FirewallPolicyCustomRuleArgs:
                  type: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
                  match_conditions: Optional[pulumi.Input[List[pulumi.Input['FirewallPolicyCustomRuleMatchConditionArgs']]]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 rate_limit_duration_in_minutes: Optional[pulumi.Input[float]] = None,
-                 rate_limit_threshold: Optional[pulumi.Input[float]] = None):
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rate_limit_duration_in_minutes: Optional[pulumi.Input[int]] = None,
+                 rate_limit_threshold: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] action: The action to perform when the rule is matched. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
         :param pulumi.Input[str] name: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
         :param pulumi.Input[str] type: The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
         :param pulumi.Input[bool] enabled: Is the rule is enabled or disabled? Defaults to `true`.
         :param pulumi.Input[List[pulumi.Input['FirewallPolicyCustomRuleMatchConditionArgs']]] match_conditions: One or more `match_condition` block defined below.
-        :param pulumi.Input[float] priority: The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
-        :param pulumi.Input[float] rate_limit_duration_in_minutes: The rate limit duration in minutes. Defaults to `1`.
-        :param pulumi.Input[float] rate_limit_threshold: The rate limit threshold. Defaults to `10`.
+        :param pulumi.Input[int] priority: The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
+        :param pulumi.Input[int] rate_limit_duration_in_minutes: The rate limit duration in minutes. Defaults to `1`.
+        :param pulumi.Input[int] rate_limit_threshold: The rate limit threshold. Defaults to `10`.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "name", name)
@@ -237,38 +237,38 @@ class FirewallPolicyCustomRuleArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter(name="rateLimitDurationInMinutes")
-    def rate_limit_duration_in_minutes(self) -> Optional[pulumi.Input[float]]:
+    def rate_limit_duration_in_minutes(self) -> Optional[pulumi.Input[int]]:
         """
         The rate limit duration in minutes. Defaults to `1`.
         """
         return pulumi.get(self, "rate_limit_duration_in_minutes")
 
     @rate_limit_duration_in_minutes.setter
-    def rate_limit_duration_in_minutes(self, value: Optional[pulumi.Input[float]]):
+    def rate_limit_duration_in_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rate_limit_duration_in_minutes", value)
 
     @property
     @pulumi.getter(name="rateLimitThreshold")
-    def rate_limit_threshold(self) -> Optional[pulumi.Input[float]]:
+    def rate_limit_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The rate limit threshold. Defaults to `10`.
         """
         return pulumi.get(self, "rate_limit_threshold")
 
     @rate_limit_threshold.setter
-    def rate_limit_threshold(self, value: Optional[pulumi.Input[float]]):
+    def rate_limit_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rate_limit_threshold", value)
 
 
@@ -808,19 +808,19 @@ class FrontdoorBackendPoolBackendArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  host_header: pulumi.Input[str],
-                 http_port: pulumi.Input[float],
-                 https_port: pulumi.Input[float],
+                 http_port: pulumi.Input[int],
+                 https_port: pulumi.Input[int],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
+                 priority: Optional[pulumi.Input[int]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] address: Location of the backend (IP address or FQDN)
         :param pulumi.Input[str] host_header: The value to use as the host header sent to the backend.
-        :param pulumi.Input[float] http_port: The HTTP TCP port number. Possible values are between `1` - `65535`.
-        :param pulumi.Input[float] https_port: The HTTPS TCP port number. Possible values are between `1` - `65535`.
+        :param pulumi.Input[int] http_port: The HTTP TCP port number. Possible values are between `1` - `65535`.
+        :param pulumi.Input[int] https_port: The HTTPS TCP port number. Possible values are between `1` - `65535`.
         :param pulumi.Input[bool] enabled: Specifies if the backend is enabled or not. Valid options are `true` or `false`. Defaults to `true`.
-        :param pulumi.Input[float] priority: Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy. Defaults to `1`.
-        :param pulumi.Input[float] weight: Weight of this endpoint for load balancing purposes. Defaults to `50`.
+        :param pulumi.Input[int] priority: Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy. Defaults to `1`.
+        :param pulumi.Input[int] weight: Weight of this endpoint for load balancing purposes. Defaults to `50`.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "host_header", host_header)
@@ -859,26 +859,26 @@ class FrontdoorBackendPoolBackendArgs:
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> pulumi.Input[float]:
+    def http_port(self) -> pulumi.Input[int]:
         """
         The HTTP TCP port number. Possible values are between `1` - `65535`.
         """
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: pulumi.Input[float]):
+    def http_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "http_port", value)
 
     @property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> pulumi.Input[float]:
+    def https_port(self) -> pulumi.Input[int]:
         """
         The HTTPS TCP port number. Possible values are between `1` - `65535`.
         """
         return pulumi.get(self, "https_port")
 
     @https_port.setter
-    def https_port(self, value: pulumi.Input[float]):
+    def https_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "https_port", value)
 
     @property
@@ -895,26 +895,26 @@ class FrontdoorBackendPoolBackendArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy. Defaults to `1`.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
+    def weight(self) -> Optional[pulumi.Input[int]]:
         """
         Weight of this endpoint for load balancing purposes. Defaults to `50`.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
+    def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -924,7 +924,7 @@ class FrontdoorBackendPoolHealthProbeArgs:
                  name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 interval_in_seconds: Optional[pulumi.Input[float]] = None,
+                 interval_in_seconds: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  probe_method: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
@@ -932,7 +932,7 @@ class FrontdoorBackendPoolHealthProbeArgs:
         :param pulumi.Input[str] name: Specifies the name of the Health Probe.
         :param pulumi.Input[bool] enabled: Is this health probe enabled? Dafaults to `true`.
         :param pulumi.Input[str] id: The ID of the FrontDoor.
-        :param pulumi.Input[float] interval_in_seconds: The number of seconds between each Health Probe. Defaults to `120`.
+        :param pulumi.Input[int] interval_in_seconds: The number of seconds between each Health Probe. Defaults to `120`.
         :param pulumi.Input[str] path: The path to use for the Health Probe. Default is `/`.
         :param pulumi.Input[str] probe_method: Specifies HTTP method the health probe uses when querying the backend pool instances. Possible values include: `Get` and `Head`. Defaults to `Get`.
         :param pulumi.Input[str] protocol: Protocol scheme to use for the Health Probe. Defaults to `Http`.
@@ -989,14 +989,14 @@ class FrontdoorBackendPoolHealthProbeArgs:
 
     @property
     @pulumi.getter(name="intervalInSeconds")
-    def interval_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def interval_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of seconds between each Health Probe. Defaults to `120`.
         """
         return pulumi.get(self, "interval_in_seconds")
 
     @interval_in_seconds.setter
-    def interval_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def interval_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_in_seconds", value)
 
     @property
@@ -1040,16 +1040,16 @@ class FrontdoorBackendPoolHealthProbeArgs:
 class FrontdoorBackendPoolLoadBalancingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 additional_latency_milliseconds: Optional[pulumi.Input[float]] = None,
+                 additional_latency_milliseconds: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 sample_size: Optional[pulumi.Input[float]] = None,
-                 successful_samples_required: Optional[pulumi.Input[float]] = None):
+                 sample_size: Optional[pulumi.Input[int]] = None,
+                 successful_samples_required: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] name: Specifies the name of the Load Balancer.
-        :param pulumi.Input[float] additional_latency_milliseconds: The additional latency in milliseconds for probes to fall into the lowest latency bucket. Defaults to `0`.
+        :param pulumi.Input[int] additional_latency_milliseconds: The additional latency in milliseconds for probes to fall into the lowest latency bucket. Defaults to `0`.
         :param pulumi.Input[str] id: The ID of the FrontDoor.
-        :param pulumi.Input[float] sample_size: The number of samples to consider for load balancing decisions. Defaults to `4`.
-        :param pulumi.Input[float] successful_samples_required: The number of samples within the sample period that must succeed. Defaults to `2`.
+        :param pulumi.Input[int] sample_size: The number of samples to consider for load balancing decisions. Defaults to `4`.
+        :param pulumi.Input[int] successful_samples_required: The number of samples within the sample period that must succeed. Defaults to `2`.
         """
         pulumi.set(__self__, "name", name)
         if additional_latency_milliseconds is not None:
@@ -1075,14 +1075,14 @@ class FrontdoorBackendPoolLoadBalancingArgs:
 
     @property
     @pulumi.getter(name="additionalLatencyMilliseconds")
-    def additional_latency_milliseconds(self) -> Optional[pulumi.Input[float]]:
+    def additional_latency_milliseconds(self) -> Optional[pulumi.Input[int]]:
         """
         The additional latency in milliseconds for probes to fall into the lowest latency bucket. Defaults to `0`.
         """
         return pulumi.get(self, "additional_latency_milliseconds")
 
     @additional_latency_milliseconds.setter
-    def additional_latency_milliseconds(self, value: Optional[pulumi.Input[float]]):
+    def additional_latency_milliseconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "additional_latency_milliseconds", value)
 
     @property
@@ -1099,26 +1099,26 @@ class FrontdoorBackendPoolLoadBalancingArgs:
 
     @property
     @pulumi.getter(name="sampleSize")
-    def sample_size(self) -> Optional[pulumi.Input[float]]:
+    def sample_size(self) -> Optional[pulumi.Input[int]]:
         """
         The number of samples to consider for load balancing decisions. Defaults to `4`.
         """
         return pulumi.get(self, "sample_size")
 
     @sample_size.setter
-    def sample_size(self, value: Optional[pulumi.Input[float]]):
+    def sample_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "sample_size", value)
 
     @property
     @pulumi.getter(name="successfulSamplesRequired")
-    def successful_samples_required(self) -> Optional[pulumi.Input[float]]:
+    def successful_samples_required(self) -> Optional[pulumi.Input[int]]:
         """
         The number of samples within the sample period that must succeed. Defaults to `2`.
         """
         return pulumi.get(self, "successful_samples_required")
 
     @successful_samples_required.setter
-    def successful_samples_required(self, value: Optional[pulumi.Input[float]]):
+    def successful_samples_required(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "successful_samples_required", value)
 
 
@@ -1131,7 +1131,7 @@ class FrontdoorFrontendEndpointArgs:
                  custom_https_provisioning_enabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  session_affinity_enabled: Optional[pulumi.Input[bool]] = None,
-                 session_affinity_ttl_seconds: Optional[pulumi.Input[float]] = None,
+                 session_affinity_ttl_seconds: Optional[pulumi.Input[int]] = None,
                  web_application_firewall_policy_link_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] host_name: Specifies the host name of the `frontend_endpoint`. Must be a domain name.
@@ -1140,7 +1140,7 @@ class FrontdoorFrontendEndpointArgs:
         :param pulumi.Input[bool] custom_https_provisioning_enabled: Should the HTTPS protocol be enabled for a custom domain associated with the Front Door?
         :param pulumi.Input[str] id: The ID of the FrontDoor.
         :param pulumi.Input[bool] session_affinity_enabled: Whether to allow session affinity on this host. Valid options are `true` or `false` Defaults to `false`.
-        :param pulumi.Input[float] session_affinity_ttl_seconds: The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
+        :param pulumi.Input[int] session_affinity_ttl_seconds: The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
         :param pulumi.Input[str] web_application_firewall_policy_link_id: Defines the Web Application Firewall policy `ID` for each host.
         """
         pulumi.set(__self__, "host_name", host_name)
@@ -1238,14 +1238,14 @@ class FrontdoorFrontendEndpointArgs:
 
     @property
     @pulumi.getter(name="sessionAffinityTtlSeconds")
-    def session_affinity_ttl_seconds(self) -> Optional[pulumi.Input[float]]:
+    def session_affinity_ttl_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
         """
         return pulumi.get(self, "session_affinity_ttl_seconds")
 
     @session_affinity_ttl_seconds.setter
-    def session_affinity_ttl_seconds(self, value: Optional[pulumi.Input[float]]):
+    def session_affinity_ttl_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "session_affinity_ttl_seconds", value)
 
     @property

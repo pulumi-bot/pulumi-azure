@@ -18,7 +18,7 @@ class FirewallPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_block_response_body: Optional[pulumi.Input[str]] = None,
-                 custom_block_response_status_code: Optional[pulumi.Input[float]] = None,
+                 custom_block_response_status_code: Optional[pulumi.Input[int]] = None,
                  custom_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  managed_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]]] = None,
@@ -142,7 +142,7 @@ class FirewallPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-        :param pulumi.Input[float] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+        :param pulumi.Input[int] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]] custom_rules: One or more `custom_rule` blocks as defined below.
         :param pulumi.Input[bool] enabled: Is the policy a enabled state or disabled state. Defaults to `true`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyManagedRuleArgs']]]] managed_rules: One or more `managed_rule` blocks as defined below.
@@ -194,7 +194,7 @@ class FirewallPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_block_response_body: Optional[pulumi.Input[str]] = None,
-            custom_block_response_status_code: Optional[pulumi.Input[float]] = None,
+            custom_block_response_status_code: Optional[pulumi.Input[int]] = None,
             custom_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             frontend_endpoint_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -213,7 +213,7 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-        :param pulumi.Input[float] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
+        :param pulumi.Input[int] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FirewallPolicyCustomRuleArgs']]]] custom_rules: One or more `custom_rule` blocks as defined below.
         :param pulumi.Input[bool] enabled: Is the policy a enabled state or disabled state. Defaults to `true`.
         :param pulumi.Input[List[pulumi.Input[str]]] frontend_endpoint_ids: The Frontend Endpoints associated with this Front Door Web Application Firewall policy.
@@ -253,7 +253,7 @@ class FirewallPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customBlockResponseStatusCode")
-    def custom_block_response_status_code(self) -> pulumi.Output[Optional[float]]:
+    def custom_block_response_status_code(self) -> pulumi.Output[Optional[int]]:
         """
         If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
         """

@@ -117,11 +117,11 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             primary_access_key: Optional[pulumi.Input[str]] = None,
             primary_connection_string: Optional[pulumi.Input[str]] = None,
-            public_port: Optional[pulumi.Input[float]] = None,
+            public_port: Optional[pulumi.Input[int]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             secondary_access_key: Optional[pulumi.Input[str]] = None,
             secondary_connection_string: Optional[pulumi.Input[str]] = None,
-            server_port: Optional[pulumi.Input[float]] = None,
+            server_port: Optional[pulumi.Input[int]] = None,
             sku: Optional[pulumi.Input[pulumi.InputType['ServiceSkuArgs']]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Service':
         """
@@ -139,11 +139,11 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the SignalR service. Changing this forces a new resource to be created.
         :param pulumi.Input[str] primary_access_key: The primary access key for the SignalR service.
         :param pulumi.Input[str] primary_connection_string: The primary connection string for the SignalR service.
-        :param pulumi.Input[float] public_port: The publicly accessible port of the SignalR service which is designed for browser/client use.
+        :param pulumi.Input[int] public_port: The publicly accessible port of the SignalR service which is designed for browser/client use.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the SignalR service. Changing this forces a new resource to be created.
         :param pulumi.Input[str] secondary_access_key: The secondary access key for the SignalR service.
         :param pulumi.Input[str] secondary_connection_string: The secondary connection string for the SignalR service.
-        :param pulumi.Input[float] server_port: The publicly accessible port of the SignalR service which is designed for customer server side use.
+        :param pulumi.Input[int] server_port: The publicly accessible port of the SignalR service which is designed for customer server side use.
         :param pulumi.Input[pulumi.InputType['ServiceSkuArgs']] sku: A `sku` block as documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -234,7 +234,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicPort")
-    def public_port(self) -> pulumi.Output[float]:
+    def public_port(self) -> pulumi.Output[int]:
         """
         The publicly accessible port of the SignalR service which is designed for browser/client use.
         """
@@ -266,7 +266,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverPort")
-    def server_port(self) -> pulumi.Output[float]:
+    def server_port(self) -> pulumi.Output[int]:
         """
         The publicly accessible port of the SignalR service which is designed for customer server side use.
         """

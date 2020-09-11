@@ -28,7 +28,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
                  suppression_enabled: Optional[pulumi.Input[bool]] = None,
                  tactics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  trigger_operator: Optional[pulumi.Input[str]] = None,
-                 trigger_threshold: Optional[pulumi.Input[float]] = None,
+                 trigger_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -72,7 +72,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
         :param pulumi.Input[bool] suppression_enabled: Should the Sentinel Scheduled Alert Rulea stop running query after alert is generated? Defaults to `false`.
         :param pulumi.Input[List[pulumi.Input[str]]] tactics: A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `Impact`, `InitialAccess`, `LateralMovement`, `Persistence` and `PrivilegeEscalation`.
         :param pulumi.Input[str] trigger_operator: The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`.
-        :param pulumi.Input[float] trigger_threshold: The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule.
+        :param pulumi.Input[int] trigger_threshold: The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -136,7 +136,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
             suppression_enabled: Optional[pulumi.Input[bool]] = None,
             tactics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             trigger_operator: Optional[pulumi.Input[str]] = None,
-            trigger_threshold: Optional[pulumi.Input[float]] = None) -> 'AlertRuleScheduled':
+            trigger_threshold: Optional[pulumi.Input[int]] = None) -> 'AlertRuleScheduled':
         """
         Get an existing AlertRuleScheduled resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -157,7 +157,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
         :param pulumi.Input[bool] suppression_enabled: Should the Sentinel Scheduled Alert Rulea stop running query after alert is generated? Defaults to `false`.
         :param pulumi.Input[List[pulumi.Input[str]]] tactics: A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `Impact`, `InitialAccess`, `LateralMovement`, `Persistence` and `PrivilegeEscalation`.
         :param pulumi.Input[str] trigger_operator: The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`.
-        :param pulumi.Input[float] trigger_threshold: The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule.
+        :param pulumi.Input[int] trigger_threshold: The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -285,7 +285,7 @@ class AlertRuleScheduled(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerThreshold")
-    def trigger_threshold(self) -> pulumi.Output[Optional[float]]:
+    def trigger_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule.
         """

@@ -707,12 +707,12 @@ class EventSubscriptionAdvancedFilterStringNotIn(dict):
 class EventSubscriptionAzureFunctionEndpoint(dict):
     def __init__(__self__, *,
                  function_id: str,
-                 max_events_per_batch: Optional[float] = None,
-                 preferred_batch_size_in_kilobytes: Optional[float] = None):
+                 max_events_per_batch: Optional[int] = None,
+                 preferred_batch_size_in_kilobytes: Optional[int] = None):
         """
         :param str function_id: Specifies the ID of the Function where the Event Subscription will receive events. This must be the functions ID in format {function_app.id}/functions/{name}.
-        :param float max_events_per_batch: Maximum number of events per batch.
-        :param float preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
+        :param int max_events_per_batch: Maximum number of events per batch.
+        :param int preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
         """
         pulumi.set(__self__, "function_id", function_id)
         if max_events_per_batch is not None:
@@ -730,7 +730,7 @@ class EventSubscriptionAzureFunctionEndpoint(dict):
 
     @property
     @pulumi.getter(name="maxEventsPerBatch")
-    def max_events_per_batch(self) -> Optional[float]:
+    def max_events_per_batch(self) -> Optional[int]:
         """
         Maximum number of events per batch.
         """
@@ -738,7 +738,7 @@ class EventSubscriptionAzureFunctionEndpoint(dict):
 
     @property
     @pulumi.getter(name="preferredBatchSizeInKilobytes")
-    def preferred_batch_size_in_kilobytes(self) -> Optional[float]:
+    def preferred_batch_size_in_kilobytes(self) -> Optional[int]:
         """
         Preferred batch size in Kilobytes.
         """
@@ -795,18 +795,18 @@ class EventSubscriptionHybridConnectionEndpoint(dict):
 @pulumi.output_type
 class EventSubscriptionRetryPolicy(dict):
     def __init__(__self__, *,
-                 event_time_to_live: float,
-                 max_delivery_attempts: float):
+                 event_time_to_live: int,
+                 max_delivery_attempts: int):
         """
-        :param float event_time_to_live: Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
-        :param float max_delivery_attempts: Specifies the maximum number of delivery retry attempts for events.
+        :param int event_time_to_live: Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
+        :param int max_delivery_attempts: Specifies the maximum number of delivery retry attempts for events.
         """
         pulumi.set(__self__, "event_time_to_live", event_time_to_live)
         pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
 
     @property
     @pulumi.getter(name="eventTimeToLive")
-    def event_time_to_live(self) -> float:
+    def event_time_to_live(self) -> int:
         """
         Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
         """
@@ -814,7 +814,7 @@ class EventSubscriptionRetryPolicy(dict):
 
     @property
     @pulumi.getter(name="maxDeliveryAttempts")
-    def max_delivery_attempts(self) -> float:
+    def max_delivery_attempts(self) -> int:
         """
         Specifies the maximum number of delivery retry attempts for events.
         """
@@ -941,15 +941,15 @@ class EventSubscriptionWebhookEndpoint(dict):
                  active_directory_app_id_or_uri: Optional[str] = None,
                  active_directory_tenant_id: Optional[str] = None,
                  base_url: Optional[str] = None,
-                 max_events_per_batch: Optional[float] = None,
-                 preferred_batch_size_in_kilobytes: Optional[float] = None):
+                 max_events_per_batch: Optional[int] = None,
+                 preferred_batch_size_in_kilobytes: Optional[int] = None):
         """
         :param str url: Specifies the url of the webhook where the Event Subscription will receive events.
         :param str active_directory_app_id_or_uri: The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
         :param str active_directory_tenant_id: The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
         :param str base_url: The base url of the webhook where the Event Subscription will receive events.
-        :param float max_events_per_batch: Maximum number of events per batch.
-        :param float preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
+        :param int max_events_per_batch: Maximum number of events per batch.
+        :param int preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
         """
         pulumi.set(__self__, "url", url)
         if active_directory_app_id_or_uri is not None:
@@ -997,7 +997,7 @@ class EventSubscriptionWebhookEndpoint(dict):
 
     @property
     @pulumi.getter(name="maxEventsPerBatch")
-    def max_events_per_batch(self) -> Optional[float]:
+    def max_events_per_batch(self) -> Optional[int]:
         """
         Maximum number of events per batch.
         """
@@ -1005,7 +1005,7 @@ class EventSubscriptionWebhookEndpoint(dict):
 
     @property
     @pulumi.getter(name="preferredBatchSizeInKilobytes")
-    def preferred_batch_size_in_kilobytes(self) -> Optional[float]:
+    def preferred_batch_size_in_kilobytes(self) -> Optional[int]:
         """
         Preferred batch size in Kilobytes.
         """

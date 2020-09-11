@@ -41,8 +41,8 @@ class GetInsightsResult:
         if resource_group_name and not isinstance(resource_group_name, str):
             raise TypeError("Expected argument 'resource_group_name' to be a str")
         pulumi.set(__self__, "resource_group_name", resource_group_name)
-        if retention_in_days and not isinstance(retention_in_days, float):
-            raise TypeError("Expected argument 'retention_in_days' to be a float")
+        if retention_in_days and not isinstance(retention_in_days, int):
+            raise TypeError("Expected argument 'retention_in_days' to be a int")
         pulumi.set(__self__, "retention_in_days", retention_in_days)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
@@ -100,7 +100,7 @@ class GetInsightsResult:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> float:
+    def retention_in_days(self) -> int:
         """
         The retention period in days.
         """

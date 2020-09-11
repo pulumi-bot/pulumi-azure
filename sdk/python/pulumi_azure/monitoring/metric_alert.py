@@ -28,7 +28,7 @@ class MetricAlert(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 severity: Optional[pulumi.Input[float]] = None,
+                 severity: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_resource_location: Optional[pulumi.Input[str]] = None,
                  target_resource_type: Optional[pulumi.Input[str]] = None,
@@ -92,7 +92,7 @@ class MetricAlert(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Metric Alert. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Metric Alert instance.
         :param pulumi.Input[List[pulumi.Input[str]]] scopes: A set of strings of resource IDs at which the metric criteria should be applied.
-        :param pulumi.Input[float] severity: The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
+        :param pulumi.Input[int] severity: The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_resource_location: The location of the target resource.
         :param pulumi.Input[str] target_resource_type: The resource type (e.g. `Microsoft.Compute/virtualMachines`) of the target resource.
@@ -156,7 +156,7 @@ class MetricAlert(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            severity: Optional[pulumi.Input[float]] = None,
+            severity: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             target_resource_location: Optional[pulumi.Input[str]] = None,
             target_resource_type: Optional[pulumi.Input[str]] = None,
@@ -179,7 +179,7 @@ class MetricAlert(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Metric Alert. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Metric Alert instance.
         :param pulumi.Input[List[pulumi.Input[str]]] scopes: A set of strings of resource IDs at which the metric criteria should be applied.
-        :param pulumi.Input[float] severity: The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
+        :param pulumi.Input[int] severity: The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_resource_location: The location of the target resource.
         :param pulumi.Input[str] target_resource_type: The resource type (e.g. `Microsoft.Compute/virtualMachines`) of the target resource.
@@ -297,7 +297,7 @@ class MetricAlert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def severity(self) -> pulumi.Output[Optional[float]]:
+    def severity(self) -> pulumi.Output[Optional[int]]:
         """
         The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
         """

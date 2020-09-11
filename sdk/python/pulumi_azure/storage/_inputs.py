@@ -82,14 +82,14 @@ class AccountBlobPropertiesCorsRuleArgs:
                  allowed_methods: pulumi.Input[List[pulumi.Input[str]]],
                  allowed_origins: pulumi.Input[List[pulumi.Input[str]]],
                  exposed_headers: pulumi.Input[List[pulumi.Input[str]]],
-                 max_age_in_seconds: pulumi.Input[float]):
+                 max_age_in_seconds: pulumi.Input[int]):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: A list of headers that are allowed to be a part of the cross-origin request.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: A list of http headers that are allowed to be executed by the origin. Valid options are
                `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: A list of origin domains that will be allowed by CORS.
         :param pulumi.Input[List[pulumi.Input[str]]] exposed_headers: A list of response headers that are exposed to CORS clients.
-        :param pulumi.Input[float] max_age_in_seconds: The number of seconds the client should cache a preflight response.
+        :param pulumi.Input[int] max_age_in_seconds: The number of seconds the client should cache a preflight response.
         """
         pulumi.set(__self__, "allowed_headers", allowed_headers)
         pulumi.set(__self__, "allowed_methods", allowed_methods)
@@ -148,37 +148,37 @@ class AccountBlobPropertiesCorsRuleArgs:
 
     @property
     @pulumi.getter(name="maxAgeInSeconds")
-    def max_age_in_seconds(self) -> pulumi.Input[float]:
+    def max_age_in_seconds(self) -> pulumi.Input[int]:
         """
         The number of seconds the client should cache a preflight response.
         """
         return pulumi.get(self, "max_age_in_seconds")
 
     @max_age_in_seconds.setter
-    def max_age_in_seconds(self, value: pulumi.Input[float]):
+    def max_age_in_seconds(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_age_in_seconds", value)
 
 
 @pulumi.input_type
 class AccountBlobPropertiesDeleteRetentionPolicyArgs:
     def __init__(__self__, *,
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] days: Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
+        :param pulumi.Input[int] days: Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -424,14 +424,14 @@ class AccountQueuePropertiesCorsRuleArgs:
                  allowed_methods: pulumi.Input[List[pulumi.Input[str]]],
                  allowed_origins: pulumi.Input[List[pulumi.Input[str]]],
                  exposed_headers: pulumi.Input[List[pulumi.Input[str]]],
-                 max_age_in_seconds: pulumi.Input[float]):
+                 max_age_in_seconds: pulumi.Input[int]):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: A list of headers that are allowed to be a part of the cross-origin request.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: A list of http headers that are allowed to be executed by the origin. Valid options are
                `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PUT` or `PATCH`.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: A list of origin domains that will be allowed by CORS.
         :param pulumi.Input[List[pulumi.Input[str]]] exposed_headers: A list of response headers that are exposed to CORS clients.
-        :param pulumi.Input[float] max_age_in_seconds: The number of seconds the client should cache a preflight response.
+        :param pulumi.Input[int] max_age_in_seconds: The number of seconds the client should cache a preflight response.
         """
         pulumi.set(__self__, "allowed_headers", allowed_headers)
         pulumi.set(__self__, "allowed_methods", allowed_methods)
@@ -490,14 +490,14 @@ class AccountQueuePropertiesCorsRuleArgs:
 
     @property
     @pulumi.getter(name="maxAgeInSeconds")
-    def max_age_in_seconds(self) -> pulumi.Input[float]:
+    def max_age_in_seconds(self) -> pulumi.Input[int]:
         """
         The number of seconds the client should cache a preflight response.
         """
         return pulumi.get(self, "max_age_in_seconds")
 
     @max_age_in_seconds.setter
-    def max_age_in_seconds(self, value: pulumi.Input[float]):
+    def max_age_in_seconds(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_age_in_seconds", value)
 
 
@@ -507,12 +507,12 @@ class AccountQueuePropertiesHourMetricsArgs:
                  enabled: pulumi.Input[bool],
                  version: pulumi.Input[str],
                  include_apis: Optional[pulumi.Input[bool]] = None,
-                 retention_policy_days: Optional[pulumi.Input[float]] = None):
+                 retention_policy_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: Indicates whether hour metrics are enabled for the Queue service. Changing this forces a new resource.
         :param pulumi.Input[str] version: The version of storage analytics to configure. Changing this forces a new resource.
         :param pulumi.Input[bool] include_apis: Indicates whether metrics should generate summary statistics for called API operations.
-        :param pulumi.Input[float] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
+        :param pulumi.Input[int] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "version", version)
@@ -559,14 +559,14 @@ class AccountQueuePropertiesHourMetricsArgs:
 
     @property
     @pulumi.getter(name="retentionPolicyDays")
-    def retention_policy_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_policy_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         return pulumi.get(self, "retention_policy_days")
 
     @retention_policy_days.setter
-    def retention_policy_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_policy_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_policy_days", value)
 
 
@@ -577,13 +577,13 @@ class AccountQueuePropertiesLoggingArgs:
                  read: pulumi.Input[bool],
                  version: pulumi.Input[str],
                  write: pulumi.Input[bool],
-                 retention_policy_days: Optional[pulumi.Input[float]] = None):
+                 retention_policy_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] delete: Indicates whether all delete requests should be logged. Changing this forces a new resource.
         :param pulumi.Input[bool] read: Indicates whether all read requests should be logged. Changing this forces a new resource.
         :param pulumi.Input[str] version: The version of storage analytics to configure. Changing this forces a new resource.
         :param pulumi.Input[bool] write: Indicates whether all write requests should be logged. Changing this forces a new resource.
-        :param pulumi.Input[float] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
+        :param pulumi.Input[int] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         pulumi.set(__self__, "delete", delete)
         pulumi.set(__self__, "read", read)
@@ -642,14 +642,14 @@ class AccountQueuePropertiesLoggingArgs:
 
     @property
     @pulumi.getter(name="retentionPolicyDays")
-    def retention_policy_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_policy_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         return pulumi.get(self, "retention_policy_days")
 
     @retention_policy_days.setter
-    def retention_policy_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_policy_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_policy_days", value)
 
 
@@ -659,12 +659,12 @@ class AccountQueuePropertiesMinuteMetricsArgs:
                  enabled: pulumi.Input[bool],
                  version: pulumi.Input[str],
                  include_apis: Optional[pulumi.Input[bool]] = None,
-                 retention_policy_days: Optional[pulumi.Input[float]] = None):
+                 retention_policy_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: Indicates whether minute metrics are enabled for the Queue service. Changing this forces a new resource.
         :param pulumi.Input[str] version: The version of storage analytics to configure. Changing this forces a new resource.
         :param pulumi.Input[bool] include_apis: Indicates whether metrics should generate summary statistics for called API operations.
-        :param pulumi.Input[float] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
+        :param pulumi.Input[int] retention_policy_days: Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "version", version)
@@ -711,14 +711,14 @@ class AccountQueuePropertiesMinuteMetricsArgs:
 
     @property
     @pulumi.getter(name="retentionPolicyDays")
-    def retention_policy_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_policy_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days that logs will be retained. Changing this forces a new resource.
         """
         return pulumi.get(self, "retention_policy_days")
 
     @retention_policy_days.setter
-    def retention_policy_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_policy_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_policy_days", value)
 
 
@@ -871,13 +871,13 @@ class ManagementPolicyRuleActionsArgs:
 @pulumi.input_type
 class ManagementPolicyRuleActionsBaseBlobArgs:
     def __init__(__self__, *,
-                 delete_after_days_since_modification_greater_than: Optional[pulumi.Input[float]] = None,
-                 tier_to_archive_after_days_since_modification_greater_than: Optional[pulumi.Input[float]] = None,
-                 tier_to_cool_after_days_since_modification_greater_than: Optional[pulumi.Input[float]] = None):
+                 delete_after_days_since_modification_greater_than: Optional[pulumi.Input[int]] = None,
+                 tier_to_archive_after_days_since_modification_greater_than: Optional[pulumi.Input[int]] = None,
+                 tier_to_cool_after_days_since_modification_greater_than: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] delete_after_days_since_modification_greater_than: The age in days after last modification to delete the blob. Must be at least 0.
-        :param pulumi.Input[float] tier_to_archive_after_days_since_modification_greater_than: The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
-        :param pulumi.Input[float] tier_to_cool_after_days_since_modification_greater_than: The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
+        :param pulumi.Input[int] delete_after_days_since_modification_greater_than: The age in days after last modification to delete the blob. Must be at least 0.
+        :param pulumi.Input[int] tier_to_archive_after_days_since_modification_greater_than: The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
+        :param pulumi.Input[int] tier_to_cool_after_days_since_modification_greater_than: The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
         """
         if delete_after_days_since_modification_greater_than is not None:
             pulumi.set(__self__, "delete_after_days_since_modification_greater_than", delete_after_days_since_modification_greater_than)
@@ -888,61 +888,61 @@ class ManagementPolicyRuleActionsBaseBlobArgs:
 
     @property
     @pulumi.getter(name="deleteAfterDaysSinceModificationGreaterThan")
-    def delete_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[float]]:
+    def delete_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[int]]:
         """
         The age in days after last modification to delete the blob. Must be at least 0.
         """
         return pulumi.get(self, "delete_after_days_since_modification_greater_than")
 
     @delete_after_days_since_modification_greater_than.setter
-    def delete_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[float]]):
+    def delete_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delete_after_days_since_modification_greater_than", value)
 
     @property
     @pulumi.getter(name="tierToArchiveAfterDaysSinceModificationGreaterThan")
-    def tier_to_archive_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[float]]:
+    def tier_to_archive_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[int]]:
         """
         The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be at least 0.
         """
         return pulumi.get(self, "tier_to_archive_after_days_since_modification_greater_than")
 
     @tier_to_archive_after_days_since_modification_greater_than.setter
-    def tier_to_archive_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[float]]):
+    def tier_to_archive_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tier_to_archive_after_days_since_modification_greater_than", value)
 
     @property
     @pulumi.getter(name="tierToCoolAfterDaysSinceModificationGreaterThan")
-    def tier_to_cool_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[float]]:
+    def tier_to_cool_after_days_since_modification_greater_than(self) -> Optional[pulumi.Input[int]]:
         """
         The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be at least 0.
         """
         return pulumi.get(self, "tier_to_cool_after_days_since_modification_greater_than")
 
     @tier_to_cool_after_days_since_modification_greater_than.setter
-    def tier_to_cool_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[float]]):
+    def tier_to_cool_after_days_since_modification_greater_than(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tier_to_cool_after_days_since_modification_greater_than", value)
 
 
 @pulumi.input_type
 class ManagementPolicyRuleActionsSnapshotArgs:
     def __init__(__self__, *,
-                 delete_after_days_since_creation_greater_than: Optional[pulumi.Input[float]] = None):
+                 delete_after_days_since_creation_greater_than: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] delete_after_days_since_creation_greater_than: The age in days after create to delete the snaphot. Must be at least 0.
+        :param pulumi.Input[int] delete_after_days_since_creation_greater_than: The age in days after create to delete the snaphot. Must be at least 0.
         """
         if delete_after_days_since_creation_greater_than is not None:
             pulumi.set(__self__, "delete_after_days_since_creation_greater_than", delete_after_days_since_creation_greater_than)
 
     @property
     @pulumi.getter(name="deleteAfterDaysSinceCreationGreaterThan")
-    def delete_after_days_since_creation_greater_than(self) -> Optional[pulumi.Input[float]]:
+    def delete_after_days_since_creation_greater_than(self) -> Optional[pulumi.Input[int]]:
         """
         The age in days after create to delete the snaphot. Must be at least 0.
         """
         return pulumi.get(self, "delete_after_days_since_creation_greater_than")
 
     @delete_after_days_since_creation_greater_than.setter
-    def delete_after_days_since_creation_greater_than(self, value: Optional[pulumi.Input[float]]):
+    def delete_after_days_since_creation_greater_than(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delete_after_days_since_creation_greater_than", value)
 
 

@@ -25,7 +25,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -68,7 +68,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linfked Service.
         :param pulumi.Input[str] password: Password to logon to the SFTP Server for Basic Authentication.
-        :param pulumi.Input[float] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
+        :param pulumi.Input[int] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service. Changing this forces a new resource
         :param pulumi.Input[str] username: The username used to log on to the SFTP server.
         """
@@ -136,7 +136,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'LinkedServiceSftp':
         """
@@ -156,7 +156,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) for all restrictions.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of parameters to associate with the Data Factory Linfked Service.
         :param pulumi.Input[str] password: Password to logon to the SFTP Server for Basic Authentication.
-        :param pulumi.Input[float] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
+        :param pulumi.Input[int] port: The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to create the Data Factory Linked Service. Changing this forces a new resource
         :param pulumi.Input[str] username: The username used to log on to the SFTP server.
         """
@@ -261,7 +261,7 @@ class LinkedServiceSftp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         """
         The TCP port number that the SFTP server uses to lsiten for client connection. Default value is 22.
         """

@@ -45,7 +45,7 @@ __all__ = [
 class EndpointDeliveryRuleArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 order: pulumi.Input[float],
+                 order: pulumi.Input[int],
                  cache_expiration_action: Optional[pulumi.Input['EndpointDeliveryRuleCacheExpirationActionArgs']] = None,
                  cache_key_query_string_action: Optional[pulumi.Input['EndpointDeliveryRuleCacheKeyQueryStringActionArgs']] = None,
                  cookies_conditions: Optional[pulumi.Input[List[pulumi.Input['EndpointDeliveryRuleCookiesConditionArgs']]]] = None,
@@ -68,7 +68,7 @@ class EndpointDeliveryRuleArgs:
                  url_rewrite_action: Optional[pulumi.Input['EndpointDeliveryRuleUrlRewriteActionArgs']] = None):
         """
         :param pulumi.Input[str] name: The Name which should be used for this Delivery Rule.
-        :param pulumi.Input[float] order: The order used for this rule, which must be larger than 1.
+        :param pulumi.Input[int] order: The order used for this rule, which must be larger than 1.
         :param pulumi.Input['EndpointDeliveryRuleCacheExpirationActionArgs'] cache_expiration_action: A `cache_expiration_action` block as defined above.
         :param pulumi.Input['EndpointDeliveryRuleCacheKeyQueryStringActionArgs'] cache_key_query_string_action: A `cache_key_query_string_action` block as defined above.
         :param pulumi.Input[List[pulumi.Input['EndpointDeliveryRuleCookiesConditionArgs']]] cookies_conditions: A `cookies_condition` block as defined above.
@@ -147,14 +147,14 @@ class EndpointDeliveryRuleArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Input[float]:
+    def order(self) -> pulumi.Input[int]:
         """
         The order used for this rule, which must be larger than 1.
         """
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: pulumi.Input[float]):
+    def order(self, value: pulumi.Input[int]):
         pulumi.set(self, "order", value)
 
     @property
@@ -2167,13 +2167,13 @@ class EndpointOriginArgs:
     def __init__(__self__, *,
                  host_name: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 http_port: Optional[pulumi.Input[float]] = None,
-                 https_port: Optional[pulumi.Input[float]] = None):
+                 http_port: Optional[pulumi.Input[int]] = None,
+                 https_port: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] host_name: A string that determines the hostname/IP address of the origin server. This string can be a domain name, Storage Account endpoint, Web App endpoint, IPv4 address or IPv6 address. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the origin. This is an arbitrary value. However, this value needs to be unique under the endpoint. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] http_port: The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] https_port: The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] http_port: The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] https_port: The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "name", name)
@@ -2208,26 +2208,26 @@ class EndpointOriginArgs:
 
     @property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[pulumi.Input[float]]:
+    def http_port(self) -> Optional[pulumi.Input[int]]:
         """
         The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: Optional[pulumi.Input[float]]):
+    def http_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_port", value)
 
     @property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> Optional[pulumi.Input[float]]:
+    def https_port(self) -> Optional[pulumi.Input[int]]:
         """
         The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "https_port")
 
     @https_port.setter
-    def https_port(self, value: Optional[pulumi.Input[float]]):
+    def https_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "https_port", value)
 
 

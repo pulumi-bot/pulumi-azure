@@ -21,8 +21,8 @@ class Schedule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  expiry_time: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
-                 interval: Optional[pulumi.Input[float]] = None,
-                 month_days: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
+                 month_days: Optional[pulumi.Input[List[pulumi.Input[int]]]] = None,
                  monthly_occurrences: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScheduleMonthlyOccurrenceArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -41,8 +41,8 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description for this Schedule.
         :param pulumi.Input[str] expiry_time: The end time of the schedule.
         :param pulumi.Input[str] frequency: The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
-        :param pulumi.Input[float] interval: The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
-        :param pulumi.Input[List[pulumi.Input[float]]] month_days: List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
+        :param pulumi.Input[int] interval: The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
+        :param pulumi.Input[List[pulumi.Input[int]]] month_days: List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScheduleMonthlyOccurrenceArgs']]]] monthly_occurrences: List of occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
         :param pulumi.Input[str] name: Specifies the name of the Schedule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Schedule is created. Changing this forces a new resource to be created.
@@ -99,8 +99,8 @@ class Schedule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             expiry_time: Optional[pulumi.Input[str]] = None,
             frequency: Optional[pulumi.Input[str]] = None,
-            interval: Optional[pulumi.Input[float]] = None,
-            month_days: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+            interval: Optional[pulumi.Input[int]] = None,
+            month_days: Optional[pulumi.Input[List[pulumi.Input[int]]]] = None,
             monthly_occurrences: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ScheduleMonthlyOccurrenceArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -118,8 +118,8 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description for this Schedule.
         :param pulumi.Input[str] expiry_time: The end time of the schedule.
         :param pulumi.Input[str] frequency: The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
-        :param pulumi.Input[float] interval: The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
-        :param pulumi.Input[List[pulumi.Input[float]]] month_days: List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
+        :param pulumi.Input[int] interval: The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
+        :param pulumi.Input[List[pulumi.Input[int]]] month_days: List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ScheduleMonthlyOccurrenceArgs']]]] monthly_occurrences: List of occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields documented below.
         :param pulumi.Input[str] name: Specifies the name of the Schedule. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Schedule is created. Changing this forces a new resource to be created.
@@ -179,7 +179,7 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interval(self) -> pulumi.Output[float]:
+    def interval(self) -> pulumi.Output[int]:
         """
         The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
         """
@@ -187,7 +187,7 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="monthDays")
-    def month_days(self) -> pulumi.Output[Optional[List[float]]]:
+    def month_days(self) -> pulumi.Output[Optional[List[int]]]:
         """
         List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
         """

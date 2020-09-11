@@ -75,18 +75,18 @@ class ClusterIdentity(dict):
 @pulumi.output_type
 class ClusterOptimizedAutoScale(dict):
     def __init__(__self__, *,
-                 maximum_instances: float,
-                 minimum_instances: float):
+                 maximum_instances: int,
+                 minimum_instances: int):
         """
-        :param float maximum_instances: The maximum number of allowed instances. Must between `0` and `1000`.
-        :param float minimum_instances: The minimum number of allowed instances. Must between `0` and `1000`.
+        :param int maximum_instances: The maximum number of allowed instances. Must between `0` and `1000`.
+        :param int minimum_instances: The minimum number of allowed instances. Must between `0` and `1000`.
         """
         pulumi.set(__self__, "maximum_instances", maximum_instances)
         pulumi.set(__self__, "minimum_instances", minimum_instances)
 
     @property
     @pulumi.getter(name="maximumInstances")
-    def maximum_instances(self) -> float:
+    def maximum_instances(self) -> int:
         """
         The maximum number of allowed instances. Must between `0` and `1000`.
         """
@@ -94,7 +94,7 @@ class ClusterOptimizedAutoScale(dict):
 
     @property
     @pulumi.getter(name="minimumInstances")
-    def minimum_instances(self) -> float:
+    def minimum_instances(self) -> int:
         """
         The minimum number of allowed instances. Must between `0` and `1000`.
         """
@@ -108,10 +108,10 @@ class ClusterOptimizedAutoScale(dict):
 class ClusterSku(dict):
     def __init__(__self__, *,
                  name: str,
-                 capacity: Optional[float] = None):
+                 capacity: Optional[int] = None):
         """
         :param str name: The name of the SKU. Valid values are: `Dev(No SLA)_Standard_D11_v2`, `Dev(No SLA)_Standard_E2a_v4`, `Standard_D11_v2`, `Standard_D12_v2`, `Standard_D13_v2`, `Standard_D14_v2`, `Standard_DS13_v2+1TB_PS`, `Standard_DS13_v2+2TB_PS`, `Standard_DS14_v2+3TB_PS`, `Standard_DS14_v2+4TB_PS`, `Standard_E16as_v4+3TB_PS`, `Standard_E16as_v4+4TB_PS`, `Standard_E16a_v4`, `Standard_E2a_v4`, `Standard_E4a_v4`, `Standard_E8as_v4+1TB_PS`, `Standard_E8as_v4+2TB_PS`, `Standard_E8a_v4`, `Standard_L16s`, `Standard_L4s` and `Standard_L8s`
-        :param float capacity: Specifies the node count for the cluster. Boundaries depend on the sku name.
+        :param int capacity: Specifies the node count for the cluster. Boundaries depend on the sku name.
         """
         pulumi.set(__self__, "name", name)
         if capacity is not None:
@@ -127,7 +127,7 @@ class ClusterSku(dict):
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[float]:
+    def capacity(self) -> Optional[int]:
         """
         Specifies the node count for the cluster. Boundaries depend on the sku name.
         """

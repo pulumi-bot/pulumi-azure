@@ -77,13 +77,13 @@ class ServiceCorsConfigurationArgs:
                  allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allowed_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_age_in_seconds: Optional[pulumi.Input[float]] = None):
+                 max_age_in_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] allow_credentials: If credentials are allowed via CORS.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: A set of headers to be allowed via CORS.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: The methods to be allowed via CORS.
         :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: A set of origins to be allowed via CORS.
-        :param pulumi.Input[float] max_age_in_seconds: The max age to be allowed via CORS.
+        :param pulumi.Input[int] max_age_in_seconds: The max age to be allowed via CORS.
         """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
@@ -146,14 +146,14 @@ class ServiceCorsConfigurationArgs:
 
     @property
     @pulumi.getter(name="maxAgeInSeconds")
-    def max_age_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_age_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The max age to be allowed via CORS.
         """
         return pulumi.get(self, "max_age_in_seconds")
 
     @max_age_in_seconds.setter
-    def max_age_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_age_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_in_seconds", value)
 
 

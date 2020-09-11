@@ -26,14 +26,14 @@ class GetManagedDiskResult:
         if disk_encryption_set_id and not isinstance(disk_encryption_set_id, str):
             raise TypeError("Expected argument 'disk_encryption_set_id' to be a str")
         pulumi.set(__self__, "disk_encryption_set_id", disk_encryption_set_id)
-        if disk_iops_read_write and not isinstance(disk_iops_read_write, float):
-            raise TypeError("Expected argument 'disk_iops_read_write' to be a float")
+        if disk_iops_read_write and not isinstance(disk_iops_read_write, int):
+            raise TypeError("Expected argument 'disk_iops_read_write' to be a int")
         pulumi.set(__self__, "disk_iops_read_write", disk_iops_read_write)
-        if disk_mbps_read_write and not isinstance(disk_mbps_read_write, float):
-            raise TypeError("Expected argument 'disk_mbps_read_write' to be a float")
+        if disk_mbps_read_write and not isinstance(disk_mbps_read_write, int):
+            raise TypeError("Expected argument 'disk_mbps_read_write' to be a int")
         pulumi.set(__self__, "disk_mbps_read_write", disk_mbps_read_write)
-        if disk_size_gb and not isinstance(disk_size_gb, float):
-            raise TypeError("Expected argument 'disk_size_gb' to be a float")
+        if disk_size_gb and not isinstance(disk_size_gb, int):
+            raise TypeError("Expected argument 'disk_size_gb' to be a int")
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -84,7 +84,7 @@ class GetManagedDiskResult:
 
     @property
     @pulumi.getter(name="diskIopsReadWrite")
-    def disk_iops_read_write(self) -> float:
+    def disk_iops_read_write(self) -> int:
         """
         The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
         """
@@ -92,7 +92,7 @@ class GetManagedDiskResult:
 
     @property
     @pulumi.getter(name="diskMbpsReadWrite")
-    def disk_mbps_read_write(self) -> float:
+    def disk_mbps_read_write(self) -> int:
         """
         The bandwidth allowed for this disk.
         """
@@ -100,7 +100,7 @@ class GetManagedDiskResult:
 
     @property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> float:
+    def disk_size_gb(self) -> int:
         """
         The size of the Managed Disk in gigabytes.
         """

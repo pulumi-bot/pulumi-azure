@@ -27,12 +27,12 @@ class DatabaseExtendedAuditingPolicyArgs:
     def __init__(__self__, *,
                  storage_account_access_key: pulumi.Input[str],
                  storage_endpoint: pulumi.Input[str],
-                 retention_in_days: Optional[pulumi.Input[float]] = None,
+                 retention_in_days: Optional[pulumi.Input[int]] = None,
                  storage_account_access_key_is_secondary: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] storage_account_access_key: Specifies the access key to use for the auditing storage account.
         :param pulumi.Input[str] storage_endpoint: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net).
-        :param pulumi.Input[float] retention_in_days: Specifies the number of days to retain logs for in the storage account.
+        :param pulumi.Input[int] retention_in_days: Specifies the number of days to retain logs for in the storage account.
         :param pulumi.Input[bool] storage_account_access_key_is_secondary: Specifies whether `storage_account_access_key` value is the storage's secondary key.
         """
         pulumi.set(__self__, "storage_account_access_key", storage_account_access_key)
@@ -68,14 +68,14 @@ class DatabaseExtendedAuditingPolicyArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days to retain logs for in the storage account.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_in_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -97,7 +97,7 @@ class DatabaseThreatDetectionPolicyArgs:
                  disabled_alerts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  email_account_admins: Optional[pulumi.Input[str]] = None,
                  email_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 retention_days: Optional[pulumi.Input[float]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  storage_account_access_key: Optional[pulumi.Input[str]] = None,
                  storage_endpoint: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class DatabaseThreatDetectionPolicyArgs:
         :param pulumi.Input[List[pulumi.Input[str]]] disabled_alerts: Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
         :param pulumi.Input[str] email_account_admins: Should the account administrators be emailed when this alert is triggered?
         :param pulumi.Input[List[pulumi.Input[str]]] email_addresses: A list of email addresses which alerts should be sent to.
-        :param pulumi.Input[float] retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
+        :param pulumi.Input[int] retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
         :param pulumi.Input[str] state: The State of the Policy. Possible values are `Enabled`, `Disabled` or `New`.
         :param pulumi.Input[str] storage_account_access_key: Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
         :param pulumi.Input[str] storage_endpoint: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
@@ -167,14 +167,14 @@ class DatabaseThreatDetectionPolicyArgs:
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days to keep in the Threat Detection audit logs.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_days", value)
 
     @property
@@ -288,12 +288,12 @@ class ElasticPoolPerDatabaseSettingsArgs:
 @pulumi.input_type
 class ElasticPoolSkuArgs:
     def __init__(__self__, *,
-                 capacity: pulumi.Input[float],
+                 capacity: pulumi.Input[int],
                  name: pulumi.Input[str],
                  tier: pulumi.Input[str],
                  family: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] capacity: The scale up/out capacity, representing server's compute units. For more information see the documentation for your Elasticpool configuration: [vCore-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) or [DTU-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools).
+        :param pulumi.Input[int] capacity: The scale up/out capacity, representing server's compute units. For more information see the documentation for your Elasticpool configuration: [vCore-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) or [DTU-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools).
         :param pulumi.Input[str] name: Specifies the SKU Name for this Elasticpool. The name of the SKU, will be either `vCore` based `tier` + `family` pattern (e.g. GP_Gen4, BC_Gen5) or the `DTU` based `BasicPool`, `StandardPool`, or `PremiumPool` pattern.
         :param pulumi.Input[str] tier: The tier of the particular SKU. Possible values are `GeneralPurpose`, `BusinessCritical`, `Basic`, `Standard`, or `Premium`. For more information see the documentation for your Elasticpool configuration: [vCore-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) or [DTU-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools).
         :param pulumi.Input[str] family: The `family` of hardware `Gen4` or `Gen5`.
@@ -306,14 +306,14 @@ class ElasticPoolSkuArgs:
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Input[float]:
+    def capacity(self) -> pulumi.Input[int]:
         """
         The scale up/out capacity, representing server's compute units. For more information see the documentation for your Elasticpool configuration: [vCore-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) or [DTU-based](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools).
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: pulumi.Input[float]):
+    def capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "capacity", value)
 
     @property
@@ -411,12 +411,12 @@ class ServerExtendedAuditingPolicyArgs:
     def __init__(__self__, *,
                  storage_account_access_key: pulumi.Input[str],
                  storage_endpoint: pulumi.Input[str],
-                 retention_in_days: Optional[pulumi.Input[float]] = None,
+                 retention_in_days: Optional[pulumi.Input[int]] = None,
                  storage_account_access_key_is_secondary: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] storage_account_access_key: (Required)  Specifies the access key to use for the auditing storage account.
         :param pulumi.Input[str] storage_endpoint: (Required) Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net).
-        :param pulumi.Input[float] retention_in_days: (Optional) Specifies the number of days to retain logs for in the storage account.
+        :param pulumi.Input[int] retention_in_days: (Optional) Specifies the number of days to retain logs for in the storage account.
         :param pulumi.Input[bool] storage_account_access_key_is_secondary: (Optional) Specifies whether `storage_account_access_key` value is the storage's secondary key.
         """
         pulumi.set(__self__, "storage_account_access_key", storage_account_access_key)
@@ -452,14 +452,14 @@ class ServerExtendedAuditingPolicyArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         (Optional) Specifies the number of days to retain logs for in the storage account.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_in_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -588,12 +588,12 @@ class ServerVulnerabilityAssessmentRecurringScansArgs:
 class VirtualMachineAutoPatchingArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
-                 maintenance_window_duration_in_minutes: pulumi.Input[float],
-                 maintenance_window_starting_hour: pulumi.Input[float]):
+                 maintenance_window_duration_in_minutes: pulumi.Input[int],
+                 maintenance_window_starting_hour: pulumi.Input[int]):
         """
         :param pulumi.Input[str] day_of_week: The day of week to apply the patch on.
-        :param pulumi.Input[float] maintenance_window_duration_in_minutes: The size of the Maintenance Window in minutes.
-        :param pulumi.Input[float] maintenance_window_starting_hour: The Hour, in the Virtual Machine Time-Zone when the patching maintenance window should begin.
+        :param pulumi.Input[int] maintenance_window_duration_in_minutes: The size of the Maintenance Window in minutes.
+        :param pulumi.Input[int] maintenance_window_starting_hour: The Hour, in the Virtual Machine Time-Zone when the patching maintenance window should begin.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "maintenance_window_duration_in_minutes", maintenance_window_duration_in_minutes)
@@ -613,26 +613,26 @@ class VirtualMachineAutoPatchingArgs:
 
     @property
     @pulumi.getter(name="maintenanceWindowDurationInMinutes")
-    def maintenance_window_duration_in_minutes(self) -> pulumi.Input[float]:
+    def maintenance_window_duration_in_minutes(self) -> pulumi.Input[int]:
         """
         The size of the Maintenance Window in minutes.
         """
         return pulumi.get(self, "maintenance_window_duration_in_minutes")
 
     @maintenance_window_duration_in_minutes.setter
-    def maintenance_window_duration_in_minutes(self, value: pulumi.Input[float]):
+    def maintenance_window_duration_in_minutes(self, value: pulumi.Input[int]):
         pulumi.set(self, "maintenance_window_duration_in_minutes", value)
 
     @property
     @pulumi.getter(name="maintenanceWindowStartingHour")
-    def maintenance_window_starting_hour(self) -> pulumi.Input[float]:
+    def maintenance_window_starting_hour(self) -> pulumi.Input[int]:
         """
         The Hour, in the Virtual Machine Time-Zone when the patching maintenance window should begin.
         """
         return pulumi.get(self, "maintenance_window_starting_hour")
 
     @maintenance_window_starting_hour.setter
-    def maintenance_window_starting_hour(self, value: pulumi.Input[float]):
+    def maintenance_window_starting_hour(self, value: pulumi.Input[int]):
         pulumi.set(self, "maintenance_window_starting_hour", value)
 
 

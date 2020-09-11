@@ -118,13 +118,13 @@ class EndpointPrivateDnsZoneConfigRecordSet(dict):
                  fqdn: Optional[str] = None,
                  ip_addresses: Optional[List[str]] = None,
                  name: Optional[str] = None,
-                 ttl: Optional[float] = None,
+                 ttl: Optional[int] = None,
                  type: Optional[str] = None):
         """
         :param str fqdn: The fully qualified domain name to the `private_dns_zone`.
         :param List[str] ip_addresses: A list of all IP Addresses that map to the `private_dns_zone` fqdn.
         :param str name: Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-        :param float ttl: The time to live for each connection to the `private_dns_zone`.
+        :param int ttl: The time to live for each connection to the `private_dns_zone`.
         :param str type: The type of DNS record.
         """
         if fqdn is not None:
@@ -164,7 +164,7 @@ class EndpointPrivateDnsZoneConfigRecordSet(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> Optional[int]:
         """
         The time to live for each connection to the `private_dns_zone`.
         """

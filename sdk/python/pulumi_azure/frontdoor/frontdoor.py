@@ -20,7 +20,7 @@ class Frontdoor(pulumi.CustomResource):
                  backend_pool_health_probes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]]] = None,
                  backend_pool_load_balancings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolLoadBalancingArgs']]]]] = None,
                  backend_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolArgs']]]]] = None,
-                 backend_pools_send_receive_timeout_seconds: Optional[pulumi.Input[float]] = None,
+                 backend_pools_send_receive_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  enforce_backend_pools_certificate_name_check: Optional[pulumi.Input[bool]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  frontend_endpoints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorFrontendEndpointArgs']]]]] = None,
@@ -95,7 +95,7 @@ class Frontdoor(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]] backend_pool_health_probes: A `backend_pool_health_probe` block as defined below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolLoadBalancingArgs']]]] backend_pool_load_balancings: A `backend_pool_load_balancing` block as defined below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolArgs']]]] backend_pools: A `backend_pool` block as defined below.
-        :param pulumi.Input[float] backend_pools_send_receive_timeout_seconds: Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
+        :param pulumi.Input[int] backend_pools_send_receive_timeout_seconds: Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
         :param pulumi.Input[bool] enforce_backend_pools_certificate_name_check: Enforce certificate name check on `HTTPS` requests to all backend pools, this setting will have no effect on `HTTP` requests. Permitted values are `true` or `false`.
         :param pulumi.Input[str] friendly_name: A friendly name for the Front Door service.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorFrontendEndpointArgs']]]] frontend_endpoints: A `frontend_endpoint` block as defined below.
@@ -167,7 +167,7 @@ class Frontdoor(pulumi.CustomResource):
             backend_pool_health_probes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]]] = None,
             backend_pool_load_balancings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolLoadBalancingArgs']]]]] = None,
             backend_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolArgs']]]]] = None,
-            backend_pools_send_receive_timeout_seconds: Optional[pulumi.Input[float]] = None,
+            backend_pools_send_receive_timeout_seconds: Optional[pulumi.Input[int]] = None,
             cname: Optional[pulumi.Input[str]] = None,
             enforce_backend_pools_certificate_name_check: Optional[pulumi.Input[bool]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
@@ -189,7 +189,7 @@ class Frontdoor(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]] backend_pool_health_probes: A `backend_pool_health_probe` block as defined below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolLoadBalancingArgs']]]] backend_pool_load_balancings: A `backend_pool_load_balancing` block as defined below.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolArgs']]]] backend_pools: A `backend_pool` block as defined below.
-        :param pulumi.Input[float] backend_pools_send_receive_timeout_seconds: Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
+        :param pulumi.Input[int] backend_pools_send_receive_timeout_seconds: Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
         :param pulumi.Input[str] cname: The host that each frontendEndpoint must CNAME to.
         :param pulumi.Input[bool] enforce_backend_pools_certificate_name_check: Enforce certificate name check on `HTTPS` requests to all backend pools, this setting will have no effect on `HTTP` requests. Permitted values are `true` or `false`.
         :param pulumi.Input[str] friendly_name: A friendly name for the Front Door service.
@@ -248,7 +248,7 @@ class Frontdoor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendPoolsSendReceiveTimeoutSeconds")
-    def backend_pools_send_receive_timeout_seconds(self) -> pulumi.Output[Optional[float]]:
+    def backend_pools_send_receive_timeout_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
         """

@@ -25,13 +25,13 @@ class PolicyCustomRule(dict):
     def __init__(__self__, *,
                  action: str,
                  match_conditions: List['outputs.PolicyCustomRuleMatchCondition'],
-                 priority: float,
+                 priority: int,
                  rule_type: str,
                  name: Optional[str] = None):
         """
         :param str action: Type of action.
         :param List['PolicyCustomRuleMatchConditionArgs'] match_conditions: One or more `match_conditions` blocks as defined below.
-        :param float priority: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
+        :param int priority: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
         :param str rule_type: Describes the type of rule.
         :param str name: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
         """
@@ -60,7 +60,7 @@ class PolicyCustomRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
         """
@@ -343,8 +343,8 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverride(dict):
 class PolicyPolicySettings(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 file_upload_limit_in_mb: Optional[float] = None,
-                 max_request_body_size_in_kb: Optional[float] = None,
+                 file_upload_limit_in_mb: Optional[int] = None,
+                 max_request_body_size_in_kb: Optional[int] = None,
                  mode: Optional[str] = None,
                  request_body_check: Optional[bool] = None):
         """
@@ -373,12 +373,12 @@ class PolicyPolicySettings(dict):
 
     @property
     @pulumi.getter(name="fileUploadLimitInMb")
-    def file_upload_limit_in_mb(self) -> Optional[float]:
+    def file_upload_limit_in_mb(self) -> Optional[int]:
         return pulumi.get(self, "file_upload_limit_in_mb")
 
     @property
     @pulumi.getter(name="maxRequestBodySizeInKb")
-    def max_request_body_size_in_kb(self) -> Optional[float]:
+    def max_request_body_size_in_kb(self) -> Optional[int]:
         return pulumi.get(self, "max_request_body_size_in_kb")
 
     @property

@@ -365,15 +365,15 @@ class EventHubCaptureDescriptionArgs:
                  destination: pulumi.Input['EventHubCaptureDescriptionDestinationArgs'],
                  enabled: pulumi.Input[bool],
                  encoding: pulumi.Input[str],
-                 interval_in_seconds: Optional[pulumi.Input[float]] = None,
-                 size_limit_in_bytes: Optional[pulumi.Input[float]] = None,
+                 interval_in_seconds: Optional[pulumi.Input[int]] = None,
+                 size_limit_in_bytes: Optional[pulumi.Input[int]] = None,
                  skip_empty_archives: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input['EventHubCaptureDescriptionDestinationArgs'] destination: A `destination` block as defined below.
         :param pulumi.Input[bool] enabled: Specifies if the Capture Description is Enabled.
         :param pulumi.Input[str] encoding: Specifies the Encoding used for the Capture Description. Possible values are `Avro` and `AvroDeflate`.
-        :param pulumi.Input[float] interval_in_seconds: Specifies the time interval in seconds at which the capture will happen. Values can be between `60` and `900` seconds. Defaults to `300` seconds.
-        :param pulumi.Input[float] size_limit_in_bytes: Specifies the amount of data built up in your EventHub before a Capture Operation occurs. Value should be between `10485760` and `524288000`  bytes. Defaults to `314572800` bytes.
+        :param pulumi.Input[int] interval_in_seconds: Specifies the time interval in seconds at which the capture will happen. Values can be between `60` and `900` seconds. Defaults to `300` seconds.
+        :param pulumi.Input[int] size_limit_in_bytes: Specifies the amount of data built up in your EventHub before a Capture Operation occurs. Value should be between `10485760` and `524288000`  bytes. Defaults to `314572800` bytes.
         :param pulumi.Input[bool] skip_empty_archives: Specifies if empty files should not be emitted if no events occur during the Capture time window.  Defaults to `false`.
         """
         pulumi.set(__self__, "destination", destination)
@@ -424,26 +424,26 @@ class EventHubCaptureDescriptionArgs:
 
     @property
     @pulumi.getter(name="intervalInSeconds")
-    def interval_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def interval_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the time interval in seconds at which the capture will happen. Values can be between `60` and `900` seconds. Defaults to `300` seconds.
         """
         return pulumi.get(self, "interval_in_seconds")
 
     @interval_in_seconds.setter
-    def interval_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def interval_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_in_seconds", value)
 
     @property
     @pulumi.getter(name="sizeLimitInBytes")
-    def size_limit_in_bytes(self) -> Optional[pulumi.Input[float]]:
+    def size_limit_in_bytes(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the amount of data built up in your EventHub before a Capture Operation occurs. Value should be between `10485760` and `524288000`  bytes. Defaults to `314572800` bytes.
         """
         return pulumi.get(self, "size_limit_in_bytes")
 
     @size_limit_in_bytes.setter
-    def size_limit_in_bytes(self, value: Optional[pulumi.Input[float]]):
+    def size_limit_in_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_limit_in_bytes", value)
 
     @property
@@ -1357,12 +1357,12 @@ class EventSubscriptionAdvancedFilterStringNotInArgs:
 class EventSubscriptionAzureFunctionEndpointArgs:
     def __init__(__self__, *,
                  function_id: pulumi.Input[str],
-                 max_events_per_batch: Optional[pulumi.Input[float]] = None,
-                 preferred_batch_size_in_kilobytes: Optional[pulumi.Input[float]] = None):
+                 max_events_per_batch: Optional[pulumi.Input[int]] = None,
+                 preferred_batch_size_in_kilobytes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] function_id: Specifies the ID of the Function where the Event Subscription will receive events. This must be the functions ID in format {function_app.id}/functions/{name}.
-        :param pulumi.Input[float] max_events_per_batch: Maximum number of events per batch.
-        :param pulumi.Input[float] preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
+        :param pulumi.Input[int] max_events_per_batch: Maximum number of events per batch.
+        :param pulumi.Input[int] preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
         """
         pulumi.set(__self__, "function_id", function_id)
         if max_events_per_batch is not None:
@@ -1384,26 +1384,26 @@ class EventSubscriptionAzureFunctionEndpointArgs:
 
     @property
     @pulumi.getter(name="maxEventsPerBatch")
-    def max_events_per_batch(self) -> Optional[pulumi.Input[float]]:
+    def max_events_per_batch(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of events per batch.
         """
         return pulumi.get(self, "max_events_per_batch")
 
     @max_events_per_batch.setter
-    def max_events_per_batch(self, value: Optional[pulumi.Input[float]]):
+    def max_events_per_batch(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_events_per_batch", value)
 
     @property
     @pulumi.getter(name="preferredBatchSizeInKilobytes")
-    def preferred_batch_size_in_kilobytes(self) -> Optional[pulumi.Input[float]]:
+    def preferred_batch_size_in_kilobytes(self) -> Optional[pulumi.Input[int]]:
         """
         Preferred batch size in Kilobytes.
         """
         return pulumi.get(self, "preferred_batch_size_in_kilobytes")
 
     @preferred_batch_size_in_kilobytes.setter
-    def preferred_batch_size_in_kilobytes(self, value: Optional[pulumi.Input[float]]):
+    def preferred_batch_size_in_kilobytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "preferred_batch_size_in_kilobytes", value)
 
 
@@ -1456,37 +1456,37 @@ class EventSubscriptionHybridConnectionEndpointArgs:
 @pulumi.input_type
 class EventSubscriptionRetryPolicyArgs:
     def __init__(__self__, *,
-                 event_time_to_live: pulumi.Input[float],
-                 max_delivery_attempts: pulumi.Input[float]):
+                 event_time_to_live: pulumi.Input[int],
+                 max_delivery_attempts: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] event_time_to_live: Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
-        :param pulumi.Input[float] max_delivery_attempts: Specifies the maximum number of delivery retry attempts for events.
+        :param pulumi.Input[int] event_time_to_live: Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
+        :param pulumi.Input[int] max_delivery_attempts: Specifies the maximum number of delivery retry attempts for events.
         """
         pulumi.set(__self__, "event_time_to_live", event_time_to_live)
         pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
 
     @property
     @pulumi.getter(name="eventTimeToLive")
-    def event_time_to_live(self) -> pulumi.Input[float]:
+    def event_time_to_live(self) -> pulumi.Input[int]:
         """
         Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. Defaults to `1440`. See [official documentation](https://docs.microsoft.com/en-us/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
         """
         return pulumi.get(self, "event_time_to_live")
 
     @event_time_to_live.setter
-    def event_time_to_live(self, value: pulumi.Input[float]):
+    def event_time_to_live(self, value: pulumi.Input[int]):
         pulumi.set(self, "event_time_to_live", value)
 
     @property
     @pulumi.getter(name="maxDeliveryAttempts")
-    def max_delivery_attempts(self) -> pulumi.Input[float]:
+    def max_delivery_attempts(self) -> pulumi.Input[int]:
         """
         Specifies the maximum number of delivery retry attempts for events.
         """
         return pulumi.get(self, "max_delivery_attempts")
 
     @max_delivery_attempts.setter
-    def max_delivery_attempts(self, value: pulumi.Input[float]):
+    def max_delivery_attempts(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_delivery_attempts", value)
 
 
@@ -1626,15 +1626,15 @@ class EventSubscriptionWebhookEndpointArgs:
                  active_directory_app_id_or_uri: Optional[pulumi.Input[str]] = None,
                  active_directory_tenant_id: Optional[pulumi.Input[str]] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
-                 max_events_per_batch: Optional[pulumi.Input[float]] = None,
-                 preferred_batch_size_in_kilobytes: Optional[pulumi.Input[float]] = None):
+                 max_events_per_batch: Optional[pulumi.Input[int]] = None,
+                 preferred_batch_size_in_kilobytes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] url: Specifies the url of the webhook where the Event Subscription will receive events.
         :param pulumi.Input[str] active_directory_app_id_or_uri: The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
         :param pulumi.Input[str] active_directory_tenant_id: The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
         :param pulumi.Input[str] base_url: The base url of the webhook where the Event Subscription will receive events.
-        :param pulumi.Input[float] max_events_per_batch: Maximum number of events per batch.
-        :param pulumi.Input[float] preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
+        :param pulumi.Input[int] max_events_per_batch: Maximum number of events per batch.
+        :param pulumi.Input[int] preferred_batch_size_in_kilobytes: Preferred batch size in Kilobytes.
         """
         pulumi.set(__self__, "url", url)
         if active_directory_app_id_or_uri is not None:
@@ -1698,26 +1698,26 @@ class EventSubscriptionWebhookEndpointArgs:
 
     @property
     @pulumi.getter(name="maxEventsPerBatch")
-    def max_events_per_batch(self) -> Optional[pulumi.Input[float]]:
+    def max_events_per_batch(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of events per batch.
         """
         return pulumi.get(self, "max_events_per_batch")
 
     @max_events_per_batch.setter
-    def max_events_per_batch(self, value: Optional[pulumi.Input[float]]):
+    def max_events_per_batch(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_events_per_batch", value)
 
     @property
     @pulumi.getter(name="preferredBatchSizeInKilobytes")
-    def preferred_batch_size_in_kilobytes(self) -> Optional[pulumi.Input[float]]:
+    def preferred_batch_size_in_kilobytes(self) -> Optional[pulumi.Input[int]]:
         """
         Preferred batch size in Kilobytes.
         """
         return pulumi.get(self, "preferred_batch_size_in_kilobytes")
 
     @preferred_batch_size_in_kilobytes.setter
-    def preferred_batch_size_in_kilobytes(self, value: Optional[pulumi.Input[float]]):
+    def preferred_batch_size_in_kilobytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "preferred_batch_size_in_kilobytes", value)
 
 

@@ -1588,12 +1588,12 @@ class ActionRuleSuppressionSuppressionScheduleArgs:
     def __init__(__self__, *,
                  end_date_utc: pulumi.Input[str],
                  start_date_utc: pulumi.Input[str],
-                 recurrence_monthlies: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None,
+                 recurrence_monthlies: Optional[pulumi.Input[List[pulumi.Input[int]]]] = None,
                  recurrence_weeklies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] end_date_utc: specifies the recurrence UTC end datetime (Y-m-d'T'H:M:S'Z').
         :param pulumi.Input[str] start_date_utc: specifies the recurrence UTC start datetime (Y-m-d'T'H:M:S'Z').
-        :param pulumi.Input[List[pulumi.Input[float]]] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
+        :param pulumi.Input[List[pulumi.Input[int]]] recurrence_monthlies: specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
         :param pulumi.Input[List[pulumi.Input[str]]] recurrence_weeklies: specifies the list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and  `Saturday`.
         """
         pulumi.set(__self__, "end_date_utc", end_date_utc)
@@ -1629,14 +1629,14 @@ class ActionRuleSuppressionSuppressionScheduleArgs:
 
     @property
     @pulumi.getter(name="recurrenceMonthlies")
-    def recurrence_monthlies(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def recurrence_monthlies(self) -> Optional[pulumi.Input[List[pulumi.Input[int]]]]:
         """
         specifies the list of dayOfMonth to recurrence. Possible values are between `1` - `31`. Required if `recurrence_type` is `Monthly`.
         """
         return pulumi.get(self, "recurrence_monthlies")
 
     @recurrence_monthlies.setter
-    def recurrence_monthlies(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def recurrence_monthlies(self, value: Optional[pulumi.Input[List[pulumi.Input[int]]]]):
         pulumi.set(self, "recurrence_monthlies", value)
 
     @property
@@ -2124,13 +2124,13 @@ class AutoscaleSettingProfileArgs:
 @pulumi.input_type
 class AutoscaleSettingProfileCapacityArgs:
     def __init__(__self__, *,
-                 default: pulumi.Input[float],
-                 maximum: pulumi.Input[float],
-                 minimum: pulumi.Input[float]):
+                 default: pulumi.Input[int],
+                 maximum: pulumi.Input[int],
+                 minimum: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] default: The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
-        :param pulumi.Input[float] maximum: The maximum number of instances for this resource. Valid values are between `0` and `1000`.
-        :param pulumi.Input[float] minimum: The minimum number of instances for this resource. Valid values are between `0` and `1000`.
+        :param pulumi.Input[int] default: The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
+        :param pulumi.Input[int] maximum: The maximum number of instances for this resource. Valid values are between `0` and `1000`.
+        :param pulumi.Input[int] minimum: The minimum number of instances for this resource. Valid values are between `0` and `1000`.
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "maximum", maximum)
@@ -2138,38 +2138,38 @@ class AutoscaleSettingProfileCapacityArgs:
 
     @property
     @pulumi.getter
-    def default(self) -> pulumi.Input[float]:
+    def default(self) -> pulumi.Input[int]:
         """
         The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: pulumi.Input[float]):
+    def default(self, value: pulumi.Input[int]):
         pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter
-    def maximum(self) -> pulumi.Input[float]:
+    def maximum(self) -> pulumi.Input[int]:
         """
         The maximum number of instances for this resource. Valid values are between `0` and `1000`.
         """
         return pulumi.get(self, "maximum")
 
     @maximum.setter
-    def maximum(self, value: pulumi.Input[float]):
+    def maximum(self, value: pulumi.Input[int]):
         pulumi.set(self, "maximum", value)
 
     @property
     @pulumi.getter
-    def minimum(self) -> pulumi.Input[float]:
+    def minimum(self) -> pulumi.Input[int]:
         """
         The minimum number of instances for this resource. Valid values are between `0` and `1000`.
         """
         return pulumi.get(self, "minimum")
 
     @minimum.setter
-    def minimum(self, value: pulumi.Input[float]):
+    def minimum(self, value: pulumi.Input[int]):
         pulumi.set(self, "minimum", value)
 
 
@@ -2230,13 +2230,13 @@ class AutoscaleSettingProfileFixedDateArgs:
 class AutoscaleSettingProfileRecurrenceArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[List[pulumi.Input[str]]],
-                 hours: pulumi.Input[float],
-                 minutes: pulumi.Input[float],
+                 hours: pulumi.Input[int],
+                 minutes: pulumi.Input[int],
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] days: A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-        :param pulumi.Input[float] hours: A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
-        :param pulumi.Input[float] minutes: A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
+        :param pulumi.Input[int] hours: A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
+        :param pulumi.Input[int] minutes: A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
         :param pulumi.Input[str] timezone: The Time Zone used for the `hours` field. A list of [possible values can be found here](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx). Defaults to `UTC`.
         """
         pulumi.set(__self__, "days", days)
@@ -2259,26 +2259,26 @@ class AutoscaleSettingProfileRecurrenceArgs:
 
     @property
     @pulumi.getter
-    def hours(self) -> pulumi.Input[float]:
+    def hours(self) -> pulumi.Input[int]:
         """
         A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
         """
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: pulumi.Input[float]):
+    def hours(self, value: pulumi.Input[int]):
         pulumi.set(self, "hours", value)
 
     @property
     @pulumi.getter
-    def minutes(self) -> pulumi.Input[float]:
+    def minutes(self) -> pulumi.Input[int]:
         """
         A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: pulumi.Input[float]):
+    def minutes(self, value: pulumi.Input[int]):
         pulumi.set(self, "minutes", value)
 
     @property
@@ -2464,12 +2464,12 @@ class AutoscaleSettingProfileRuleScaleActionArgs:
                  cooldown: pulumi.Input[str],
                  direction: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 value: pulumi.Input[float]):
+                 value: pulumi.Input[int]):
         """
         :param pulumi.Input[str] cooldown: The amount of time to wait since the last scaling action before this action occurs. Must be between 1 minute and 1 week and formatted as a ISO 8601 string.
         :param pulumi.Input[str] direction: The scale direction. Possible values are `Increase` and `Decrease`.
         :param pulumi.Input[str] type: The type of action that should occur. Possible values are `ChangeCount`, `ExactCount` and `PercentChangeCount`.
-        :param pulumi.Input[float] value: The number of instances involved in the scaling action. Defaults to `1`.
+        :param pulumi.Input[int] value: The number of instances involved in the scaling action. Defaults to `1`.
         """
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "direction", direction)
@@ -2514,14 +2514,14 @@ class AutoscaleSettingProfileRuleScaleActionArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[float]:
+    def value(self) -> pulumi.Input[int]:
         """
         The number of instances involved in the scaling action. Defaults to `1`.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[float]):
+    def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
 
@@ -2583,10 +2583,10 @@ class DiagnosticSettingLogArgs:
 class DiagnosticSettingLogRetentionPolicyArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: Is this Retention Policy enabled?
-        :param pulumi.Input[float] days: The number of days for which this Retention Policy should apply.
+        :param pulumi.Input[int] days: The number of days for which this Retention Policy should apply.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2606,14 +2606,14 @@ class DiagnosticSettingLogRetentionPolicyArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days for which this Retention Policy should apply.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -2675,10 +2675,10 @@ class DiagnosticSettingMetricArgs:
 class DiagnosticSettingMetricRetentionPolicyArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: Is this Retention Policy enabled?
-        :param pulumi.Input[float] days: The number of days for which this Retention Policy should apply.
+        :param pulumi.Input[int] days: The number of days for which this Retention Policy should apply.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2698,14 +2698,14 @@ class DiagnosticSettingMetricRetentionPolicyArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days for which this Retention Policy should apply.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -2713,10 +2713,10 @@ class DiagnosticSettingMetricRetentionPolicyArgs:
 class LogProfileRetentionPolicyArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 days: Optional[pulumi.Input[float]] = None):
+                 days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enabled: A boolean value to indicate whether the retention policy is enabled.
-        :param pulumi.Input[float] days: The number of days for the retention policy. Defaults to 0.
+        :param pulumi.Input[int] days: The number of days for the retention policy. Defaults to 0.
         """
         pulumi.set(__self__, "enabled", enabled)
         if days is not None:
@@ -2736,14 +2736,14 @@ class LogProfileRetentionPolicyArgs:
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[float]]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days for the retention policy. Defaults to 0.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[float]]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
 
@@ -2789,11 +2789,11 @@ class MetricAlertActionArgs:
 class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs:
     def __init__(__self__, *,
                  component_id: pulumi.Input[str],
-                 failed_location_count: pulumi.Input[float],
+                 failed_location_count: pulumi.Input[int],
                  web_test_id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] component_id: The ID of the Application Insights Resource.
-        :param pulumi.Input[float] failed_location_count: The number of failed locations.
+        :param pulumi.Input[int] failed_location_count: The number of failed locations.
         :param pulumi.Input[str] web_test_id: The ID of the Application Insights Web Test.
         """
         pulumi.set(__self__, "component_id", component_id)
@@ -2814,14 +2814,14 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs:
 
     @property
     @pulumi.getter(name="failedLocationCount")
-    def failed_location_count(self) -> pulumi.Input[float]:
+    def failed_location_count(self) -> pulumi.Input[int]:
         """
         The number of failed locations.
         """
         return pulumi.get(self, "failed_location_count")
 
     @failed_location_count.setter
-    def failed_location_count(self, value: pulumi.Input[float]):
+    def failed_location_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "failed_location_count", value)
 
     @property
@@ -2996,8 +2996,8 @@ class MetricAlertDynamicCriteriaArgs:
                  metric_namespace: pulumi.Input[str],
                  operator: pulumi.Input[str],
                  dimensions: Optional[pulumi.Input[List[pulumi.Input['MetricAlertDynamicCriteriaDimensionArgs']]]] = None,
-                 evaluation_failure_count: Optional[pulumi.Input[float]] = None,
-                 evaluation_total_count: Optional[pulumi.Input[float]] = None,
+                 evaluation_failure_count: Optional[pulumi.Input[int]] = None,
+                 evaluation_total_count: Optional[pulumi.Input[int]] = None,
                  ignore_data_before: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] aggregation: The statistic that runs over the metric values. Possible values are `Average`, `Count`, `Minimum`, `Maximum` and `Total`.
@@ -3006,8 +3006,8 @@ class MetricAlertDynamicCriteriaArgs:
         :param pulumi.Input[str] metric_namespace: One of the metric namespaces to be monitored.
         :param pulumi.Input[str] operator: The criteria operator. Possible values are `LessThan`, `GreaterThan` and `GreaterOrLessThan`.
         :param pulumi.Input[List[pulumi.Input['MetricAlertDynamicCriteriaDimensionArgs']]] dimensions: One or more `dimension` blocks as defined below.
-        :param pulumi.Input[float] evaluation_failure_count: The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
-        :param pulumi.Input[float] evaluation_total_count: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
+        :param pulumi.Input[int] evaluation_failure_count: The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
+        :param pulumi.Input[int] evaluation_total_count: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
         :param pulumi.Input[str] ignore_data_before: The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
         """
         pulumi.set(__self__, "aggregation", aggregation)
@@ -3098,26 +3098,26 @@ class MetricAlertDynamicCriteriaArgs:
 
     @property
     @pulumi.getter(name="evaluationFailureCount")
-    def evaluation_failure_count(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_failure_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of violations to trigger an alert. Should be smaller or equal to `evaluation_total_count`.
         """
         return pulumi.get(self, "evaluation_failure_count")
 
     @evaluation_failure_count.setter
-    def evaluation_failure_count(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_failure_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_failure_count", value)
 
     @property
     @pulumi.getter(name="evaluationTotalCount")
-    def evaluation_total_count(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_total_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`window_size`) and the selected number of aggregated points.
         """
         return pulumi.get(self, "evaluation_total_count")
 
     @evaluation_total_count.setter
-    def evaluation_total_count(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_total_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_total_count", value)
 
     @property

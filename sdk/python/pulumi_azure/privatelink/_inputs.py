@@ -132,13 +132,13 @@ class EndpointPrivateDnsZoneConfigRecordSetArgs:
                  fqdn: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] fqdn: The fully qualified domain name to the `private_dns_zone`.
         :param pulumi.Input[List[pulumi.Input[str]]] ip_addresses: A list of all IP Addresses that map to the `private_dns_zone` fqdn.
         :param pulumi.Input[str] name: Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] ttl: The time to live for each connection to the `private_dns_zone`.
+        :param pulumi.Input[int] ttl: The time to live for each connection to the `private_dns_zone`.
         :param pulumi.Input[str] type: The type of DNS record.
         """
         if fqdn is not None:
@@ -190,14 +190,14 @@ class EndpointPrivateDnsZoneConfigRecordSetArgs:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[float]]:
+    def ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The time to live for each connection to the `private_dns_zone`.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[float]]):
+    def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
     @property

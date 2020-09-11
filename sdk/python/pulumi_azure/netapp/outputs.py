@@ -94,7 +94,7 @@ class AccountActiveDirectory(dict):
 class VolumeExportPolicyRule(dict):
     def __init__(__self__, *,
                  allowed_clients: List[str],
-                 rule_index: float,
+                 rule_index: int,
                  cifs_enabled: Optional[bool] = None,
                  nfsv3_enabled: Optional[bool] = None,
                  nfsv4_enabled: Optional[bool] = None,
@@ -103,7 +103,7 @@ class VolumeExportPolicyRule(dict):
                  unix_read_write: Optional[bool] = None):
         """
         :param List[str] allowed_clients: A list of allowed clients IPv4 addresses.
-        :param float rule_index: The index number of the rule.
+        :param int rule_index: The index number of the rule.
         :param bool cifs_enabled: Is the CIFS protocol allowed?
         :param bool nfsv3_enabled: Is the NFSv3 protocol allowed?
         :param bool nfsv4_enabled: Is the NFSv4 protocol allowed?
@@ -136,7 +136,7 @@ class VolumeExportPolicyRule(dict):
 
     @property
     @pulumi.getter(name="ruleIndex")
-    def rule_index(self) -> float:
+    def rule_index(self) -> int:
         """
         The index number of the rule.
         """

@@ -24,13 +24,13 @@ class PolicyCustomRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  match_conditions: pulumi.Input[List[pulumi.Input['PolicyCustomRuleMatchConditionArgs']]],
-                 priority: pulumi.Input[float],
+                 priority: pulumi.Input[int],
                  rule_type: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Type of action.
         :param pulumi.Input[List[pulumi.Input['PolicyCustomRuleMatchConditionArgs']]] match_conditions: One or more `match_conditions` blocks as defined below.
-        :param pulumi.Input[float] priority: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
+        :param pulumi.Input[int] priority: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
         :param pulumi.Input[str] rule_type: Describes the type of rule.
         :param pulumi.Input[str] name: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
         """
@@ -67,14 +67,14 @@ class PolicyCustomRuleArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Input[float]:
+    def priority(self) -> pulumi.Input[int]:
         """
         Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: pulumi.Input[float]):
+    def priority(self, value: pulumi.Input[int]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -409,8 +409,8 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverrideArgs:
 class PolicyPolicySettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 file_upload_limit_in_mb: Optional[pulumi.Input[float]] = None,
-                 max_request_body_size_in_kb: Optional[pulumi.Input[float]] = None,
+                 file_upload_limit_in_mb: Optional[pulumi.Input[int]] = None,
+                 max_request_body_size_in_kb: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  request_body_check: Optional[pulumi.Input[bool]] = None):
         """
@@ -443,20 +443,20 @@ class PolicyPolicySettingsArgs:
 
     @property
     @pulumi.getter(name="fileUploadLimitInMb")
-    def file_upload_limit_in_mb(self) -> Optional[pulumi.Input[float]]:
+    def file_upload_limit_in_mb(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "file_upload_limit_in_mb")
 
     @file_upload_limit_in_mb.setter
-    def file_upload_limit_in_mb(self, value: Optional[pulumi.Input[float]]):
+    def file_upload_limit_in_mb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "file_upload_limit_in_mb", value)
 
     @property
     @pulumi.getter(name="maxRequestBodySizeInKb")
-    def max_request_body_size_in_kb(self) -> Optional[pulumi.Input[float]]:
+    def max_request_body_size_in_kb(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_request_body_size_in_kb")
 
     @max_request_body_size_in_kb.setter
-    def max_request_body_size_in_kb(self, value: Optional[pulumi.Input[float]]):
+    def max_request_body_size_in_kb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_request_body_size_in_kb", value)
 
     @property

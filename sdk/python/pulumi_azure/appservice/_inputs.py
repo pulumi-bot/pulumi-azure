@@ -623,16 +623,16 @@ class AppServiceBackupArgs:
 @pulumi.input_type
 class AppServiceBackupScheduleArgs:
     def __init__(__self__, *,
-                 frequency_interval: pulumi.Input[float],
+                 frequency_interval: pulumi.Input[int],
                  frequency_unit: pulumi.Input[str],
                  keep_at_least_one_backup: Optional[pulumi.Input[bool]] = None,
-                 retention_period_in_days: Optional[pulumi.Input[float]] = None,
+                 retention_period_in_days: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] frequency_interval: Sets how often the backup should be executed.
+        :param pulumi.Input[int] frequency_interval: Sets how often the backup should be executed.
         :param pulumi.Input[str] frequency_unit: Sets the unit of time for how often the backup should be executed. Possible values are `Day` or `Hour`.
         :param pulumi.Input[bool] keep_at_least_one_backup: Should at least one backup always be kept in the Storage Account by the Retention Policy, regardless of how old it is?
-        :param pulumi.Input[float] retention_period_in_days: Specifies the number of days after which Backups should be deleted.
+        :param pulumi.Input[int] retention_period_in_days: Specifies the number of days after which Backups should be deleted.
         :param pulumi.Input[str] start_time: Sets when the schedule should start working.
         """
         pulumi.set(__self__, "frequency_interval", frequency_interval)
@@ -646,14 +646,14 @@ class AppServiceBackupScheduleArgs:
 
     @property
     @pulumi.getter(name="frequencyInterval")
-    def frequency_interval(self) -> pulumi.Input[float]:
+    def frequency_interval(self) -> pulumi.Input[int]:
         """
         Sets how often the backup should be executed.
         """
         return pulumi.get(self, "frequency_interval")
 
     @frequency_interval.setter
-    def frequency_interval(self, value: pulumi.Input[float]):
+    def frequency_interval(self, value: pulumi.Input[int]):
         pulumi.set(self, "frequency_interval", value)
 
     @property
@@ -682,14 +682,14 @@ class AppServiceBackupScheduleArgs:
 
     @property
     @pulumi.getter(name="retentionPeriodInDays")
-    def retention_period_in_days(self) -> Optional[pulumi.Input[float]]:
+    def retention_period_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after which Backups should be deleted.
         """
         return pulumi.get(self, "retention_period_in_days")
 
     @retention_period_in_days.setter
-    def retention_period_in_days(self, value: Optional[pulumi.Input[float]]):
+    def retention_period_in_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retention_period_in_days", value)
 
     @property
@@ -905,11 +905,11 @@ class AppServiceLogsApplicationLogsArgs:
 class AppServiceLogsApplicationLogsAzureBlobStorageArgs:
     def __init__(__self__, *,
                  level: pulumi.Input[str],
-                 retention_in_days: pulumi.Input[float],
+                 retention_in_days: pulumi.Input[int],
                  sas_url: pulumi.Input[str]):
         """
         :param pulumi.Input[str] level: The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
         :param pulumi.Input[str] sas_url: The URL to the storage container, with a Service SAS token appended. **NOTE:** there is currently no means of generating Service SAS tokens with the `azurerm` provider.
         """
         pulumi.set(__self__, "level", level)
@@ -930,14 +930,14 @@ class AppServiceLogsApplicationLogsAzureBlobStorageArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -995,10 +995,10 @@ class AppServiceLogsHttpLogsArgs:
 @pulumi.input_type
 class AppServiceLogsHttpLogsAzureBlobStorageArgs:
     def __init__(__self__, *,
-                 retention_in_days: pulumi.Input[float],
+                 retention_in_days: pulumi.Input[int],
                  sas_url: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
         :param pulumi.Input[str] sas_url: The URL to the storage container, with a Service SAS token appended. **NOTE:** there is currently no means of generating Service SAS tokens with the `azurerm` provider.
         """
         pulumi.set(__self__, "retention_in_days", retention_in_days)
@@ -1006,14 +1006,14 @@ class AppServiceLogsHttpLogsAzureBlobStorageArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -1032,37 +1032,37 @@ class AppServiceLogsHttpLogsAzureBlobStorageArgs:
 @pulumi.input_type
 class AppServiceLogsHttpLogsFileSystemArgs:
     def __init__(__self__, *,
-                 retention_in_days: pulumi.Input[float],
-                 retention_in_mb: pulumi.Input[float]):
+                 retention_in_days: pulumi.Input[int],
+                 retention_in_mb: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
-        :param pulumi.Input[float] retention_in_mb: The maximum size in megabytes that http log files can use before being removed.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_mb: The maximum size in megabytes that http log files can use before being removed.
         """
         pulumi.set(__self__, "retention_in_days", retention_in_days)
         pulumi.set(__self__, "retention_in_mb", retention_in_mb)
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
     @pulumi.getter(name="retentionInMb")
-    def retention_in_mb(self) -> pulumi.Input[float]:
+    def retention_in_mb(self) -> pulumi.Input[int]:
         """
         The maximum size in megabytes that http log files can use before being removed.
         """
         return pulumi.get(self, "retention_in_mb")
 
     @retention_in_mb.setter
-    def retention_in_mb(self, value: pulumi.Input[float]):
+    def retention_in_mb(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_mb", value)
 
 
@@ -1545,14 +1545,14 @@ class AppServiceSiteConfigIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -1609,14 +1609,14 @@ class AppServiceSiteConfigIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -1647,14 +1647,14 @@ class AppServiceSiteConfigScmIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Allow or Deny access for this IP range. Defaults to Allow.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -1711,14 +1711,14 @@ class AppServiceSiteConfigScmIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -2641,7 +2641,7 @@ class FunctionAppSiteConfigArgs:
                  ip_restrictions: Optional[pulumi.Input[List[pulumi.Input['FunctionAppSiteConfigIpRestrictionArgs']]]] = None,
                  linux_fx_version: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
-                 pre_warmed_instance_count: Optional[pulumi.Input[float]] = None,
+                 pre_warmed_instance_count: Optional[pulumi.Input[int]] = None,
                  scm_ip_restrictions: Optional[pulumi.Input[List[pulumi.Input['FunctionAppSiteConfigScmIpRestrictionArgs']]]] = None,
                  scm_type: Optional[pulumi.Input[str]] = None,
                  scm_use_main_ip_restriction: Optional[pulumi.Input[bool]] = None,
@@ -2655,7 +2655,7 @@ class FunctionAppSiteConfigArgs:
         :param pulumi.Input[List[pulumi.Input['FunctionAppSiteConfigIpRestrictionArgs']]] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param pulumi.Input[str] linux_fx_version: Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
         :param pulumi.Input[str] min_tls_version: The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
-        :param pulumi.Input[float] pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
+        :param pulumi.Input[int] pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
         :param pulumi.Input[List[pulumi.Input['FunctionAppSiteConfigScmIpRestrictionArgs']]] scm_ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param pulumi.Input[str] scm_type: The type of Source Control used by the Function App. Valid values include: `BitBucketGit`, `BitBucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None` (dafault), `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
         :param pulumi.Input[bool] scm_use_main_ip_restriction: IP security restrictions for scm to use main. Defaults to false.
@@ -2786,14 +2786,14 @@ class FunctionAppSiteConfigArgs:
 
     @property
     @pulumi.getter(name="preWarmedInstanceCount")
-    def pre_warmed_instance_count(self) -> Optional[pulumi.Input[float]]:
+    def pre_warmed_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
         """
         return pulumi.get(self, "pre_warmed_instance_count")
 
     @pre_warmed_instance_count.setter
-    def pre_warmed_instance_count(self, value: Optional[pulumi.Input[float]]):
+    def pre_warmed_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "pre_warmed_instance_count", value)
 
     @property
@@ -2901,14 +2901,14 @@ class FunctionAppSiteConfigIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, the priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, the priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -2965,14 +2965,14 @@ class FunctionAppSiteConfigIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, the priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -3003,14 +3003,14 @@ class FunctionAppSiteConfigScmIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Allow or Deny access for this IP range. Defaults to Allow.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -3067,14 +3067,14 @@ class FunctionAppSiteConfigScmIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -3741,7 +3741,7 @@ class FunctionAppSlotSiteConfigArgs:
                  ip_restrictions: Optional[pulumi.Input[List[pulumi.Input['FunctionAppSlotSiteConfigIpRestrictionArgs']]]] = None,
                  linux_fx_version: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
-                 pre_warmed_instance_count: Optional[pulumi.Input[float]] = None,
+                 pre_warmed_instance_count: Optional[pulumi.Input[int]] = None,
                  scm_ip_restrictions: Optional[pulumi.Input[List[pulumi.Input['FunctionAppSlotSiteConfigScmIpRestrictionArgs']]]] = None,
                  scm_type: Optional[pulumi.Input[str]] = None,
                  scm_use_main_ip_restriction: Optional[pulumi.Input[bool]] = None,
@@ -3756,7 +3756,7 @@ class FunctionAppSlotSiteConfigArgs:
         :param pulumi.Input[List[pulumi.Input['FunctionAppSlotSiteConfigIpRestrictionArgs']]] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param pulumi.Input[str] linux_fx_version: Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
         :param pulumi.Input[str] min_tls_version: The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
-        :param pulumi.Input[float] pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
+        :param pulumi.Input[int] pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
         :param pulumi.Input[bool] use32_bit_worker_process: Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
         :param pulumi.Input[bool] websockets_enabled: Should WebSockets be enabled?
         """
@@ -3887,14 +3887,14 @@ class FunctionAppSlotSiteConfigArgs:
 
     @property
     @pulumi.getter(name="preWarmedInstanceCount")
-    def pre_warmed_instance_count(self) -> Optional[pulumi.Input[float]]:
+    def pre_warmed_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
         """
         return pulumi.get(self, "pre_warmed_instance_count")
 
     @pre_warmed_instance_count.setter
-    def pre_warmed_instance_count(self, value: Optional[pulumi.Input[float]]):
+    def pre_warmed_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "pre_warmed_instance_count", value)
 
     @property
@@ -3993,14 +3993,14 @@ class FunctionAppSlotSiteConfigIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -4057,14 +4057,14 @@ class FunctionAppSlotSiteConfigIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -4095,14 +4095,14 @@ class FunctionAppSlotSiteConfigScmIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: Specifies the name of the Function App. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -4159,14 +4159,14 @@ class FunctionAppSlotSiteConfigScmIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -4322,11 +4322,11 @@ class PlanSkuArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[str],
                  tier: pulumi.Input[str],
-                 capacity: Optional[pulumi.Input[float]] = None):
+                 capacity: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] size: Specifies the plan's instance size.
         :param pulumi.Input[str] tier: Specifies the plan's pricing tier.
-        :param pulumi.Input[float] capacity: Specifies the number of workers associated with this App Service Plan.
+        :param pulumi.Input[int] capacity: Specifies the number of workers associated with this App Service Plan.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "tier", tier)
@@ -4359,14 +4359,14 @@ class PlanSkuArgs:
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input[float]]:
+    def capacity(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of workers associated with this App Service Plan.
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input[float]]):
+    def capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "capacity", value)
 
 
@@ -5036,11 +5036,11 @@ class SlotLogsApplicationLogsArgs:
 class SlotLogsApplicationLogsAzureBlobStorageArgs:
     def __init__(__self__, *,
                  level: pulumi.Input[str],
-                 retention_in_days: pulumi.Input[float],
+                 retention_in_days: pulumi.Input[int],
                  sas_url: pulumi.Input[str]):
         """
         :param pulumi.Input[str] level: The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
         :param pulumi.Input[str] sas_url: The URL to the storage container, with a Service SAS token appended. **NOTE:** there is currently no means of generating Service SAS tokens with the `azurerm` provider.
         """
         pulumi.set(__self__, "level", level)
@@ -5061,14 +5061,14 @@ class SlotLogsApplicationLogsAzureBlobStorageArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -5126,10 +5126,10 @@ class SlotLogsHttpLogsArgs:
 @pulumi.input_type
 class SlotLogsHttpLogsAzureBlobStorageArgs:
     def __init__(__self__, *,
-                 retention_in_days: pulumi.Input[float],
+                 retention_in_days: pulumi.Input[int],
                  sas_url: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
         :param pulumi.Input[str] sas_url: The URL to the storage container, with a Service SAS token appended. **NOTE:** there is currently no means of generating Service SAS tokens with the `azurerm` provider.
         """
         pulumi.set(__self__, "retention_in_days", retention_in_days)
@@ -5137,14 +5137,14 @@ class SlotLogsHttpLogsAzureBlobStorageArgs:
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
@@ -5163,37 +5163,37 @@ class SlotLogsHttpLogsAzureBlobStorageArgs:
 @pulumi.input_type
 class SlotLogsHttpLogsFileSystemArgs:
     def __init__(__self__, *,
-                 retention_in_days: pulumi.Input[float],
-                 retention_in_mb: pulumi.Input[float]):
+                 retention_in_days: pulumi.Input[int],
+                 retention_in_mb: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] retention_in_days: The number of days to retain logs for.
-        :param pulumi.Input[float] retention_in_mb: The maximum size in megabytes that http log files can use before being removed.
+        :param pulumi.Input[int] retention_in_days: The number of days to retain logs for.
+        :param pulumi.Input[int] retention_in_mb: The maximum size in megabytes that http log files can use before being removed.
         """
         pulumi.set(__self__, "retention_in_days", retention_in_days)
         pulumi.set(__self__, "retention_in_mb", retention_in_mb)
 
     @property
     @pulumi.getter(name="retentionInDays")
-    def retention_in_days(self) -> pulumi.Input[float]:
+    def retention_in_days(self) -> pulumi.Input[int]:
         """
         The number of days to retain logs for.
         """
         return pulumi.get(self, "retention_in_days")
 
     @retention_in_days.setter
-    def retention_in_days(self, value: pulumi.Input[float]):
+    def retention_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_days", value)
 
     @property
     @pulumi.getter(name="retentionInMb")
-    def retention_in_mb(self) -> pulumi.Input[float]:
+    def retention_in_mb(self) -> pulumi.Input[int]:
         """
         The maximum size in megabytes that http log files can use before being removed.
         """
         return pulumi.get(self, "retention_in_mb")
 
     @retention_in_mb.setter
-    def retention_in_mb(self, value: pulumi.Input[float]):
+    def retention_in_mb(self, value: pulumi.Input[int]):
         pulumi.set(self, "retention_in_mb", value)
 
 
@@ -5656,14 +5656,14 @@ class SlotSiteConfigIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: The name for this IP Restriction.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -5720,14 +5720,14 @@ class SlotSiteConfigIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -5758,14 +5758,14 @@ class SlotSiteConfigScmIpRestrictionArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Does this restriction `Allow` or `Deny` access for this IP range. Defaults to `Allow`.
         :param pulumi.Input[str] ip_address: The IP Address used for this IP Restriction in CIDR notation.
         :param pulumi.Input[str] name: Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
+        :param pulumi.Input[int] priority: The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         :param pulumi.Input[str] virtual_network_subnet_id: The Virtual Network Subnet ID used for this IP Restriction.
         """
         if action is not None:
@@ -5822,14 +5822,14 @@ class SlotSiteConfigScmIpRestrictionArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority for this IP Restriction. Restrictions are enforced in priority order. By default, priority is set to 65000 if not specified.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property

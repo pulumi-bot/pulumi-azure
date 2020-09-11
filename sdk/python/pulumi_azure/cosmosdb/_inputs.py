@@ -47,12 +47,12 @@ class AccountCapabilityArgs:
 class AccountConsistencyPolicyArgs:
     def __init__(__self__, *,
                  consistency_level: pulumi.Input[str],
-                 max_interval_in_seconds: Optional[pulumi.Input[float]] = None,
-                 max_staleness_prefix: Optional[pulumi.Input[float]] = None):
+                 max_interval_in_seconds: Optional[pulumi.Input[int]] = None,
+                 max_staleness_prefix: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] consistency_level: The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
-        :param pulumi.Input[float] max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
-        :param pulumi.Input[float] max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param pulumi.Input[int] max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param pulumi.Input[int] max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
         pulumi.set(__self__, "consistency_level", consistency_level)
         if max_interval_in_seconds is not None:
@@ -74,38 +74,38 @@ class AccountConsistencyPolicyArgs:
 
     @property
     @pulumi.getter(name="maxIntervalInSeconds")
-    def max_interval_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_interval_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
         return pulumi.get(self, "max_interval_in_seconds")
 
     @max_interval_in_seconds.setter
-    def max_interval_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_interval_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_interval_in_seconds", value)
 
     @property
     @pulumi.getter(name="maxStalenessPrefix")
-    def max_staleness_prefix(self) -> Optional[pulumi.Input[float]]:
+    def max_staleness_prefix(self) -> Optional[pulumi.Input[int]]:
         """
         When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
         return pulumi.get(self, "max_staleness_prefix")
 
     @max_staleness_prefix.setter
-    def max_staleness_prefix(self, value: Optional[pulumi.Input[float]]):
+    def max_staleness_prefix(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_staleness_prefix", value)
 
 
 @pulumi.input_type
 class AccountGeoLocationArgs:
     def __init__(__self__, *,
-                 failover_priority: pulumi.Input[float],
+                 failover_priority: pulumi.Input[int],
                  location: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[float] failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
+        :param pulumi.Input[int] failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         :param pulumi.Input[str] location: The name of the Azure region to host replicated data.
         :param pulumi.Input[str] id: The ID of the virtual network subnet.
         :param pulumi.Input[str] prefix: The string used to generate the document endpoints for this region. If not specified it defaults to `${cosmosdb_account.name}-${location}`. Changing this causes the location to be deleted and re-provisioned and cannot be changed for the location with failover priority `0`.
@@ -122,14 +122,14 @@ class AccountGeoLocationArgs:
 
     @property
     @pulumi.getter(name="failoverPriority")
-    def failover_priority(self) -> pulumi.Input[float]:
+    def failover_priority(self) -> pulumi.Input[int]:
         """
         The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         """
         return pulumi.get(self, "failover_priority")
 
     @failover_priority.setter
-    def failover_priority(self, value: pulumi.Input[float]):
+    def failover_priority(self, value: pulumi.Input[int]):
         pulumi.set(self, "failover_priority", value)
 
     @property

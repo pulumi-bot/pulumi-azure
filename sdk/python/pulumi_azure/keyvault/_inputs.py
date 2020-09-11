@@ -287,12 +287,12 @@ class CertifiateCertificatePolicyIssuerParametersArgs:
 class CertifiateCertificatePolicyKeyPropertiesArgs:
     def __init__(__self__, *,
                  exportable: pulumi.Input[bool],
-                 key_size: pulumi.Input[float],
+                 key_size: pulumi.Input[int],
                  key_type: pulumi.Input[str],
                  reuse_key: pulumi.Input[bool]):
         """
         :param pulumi.Input[bool] exportable: Is this Certificate Exportable? Changing this forces a new resource to be created.
-        :param pulumi.Input[float] key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] key_type: Specifies the Type of Key, such as `RSA`. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] reuse_key: Is the key reusable? Changing this forces a new resource to be created.
         """
@@ -315,14 +315,14 @@ class CertifiateCertificatePolicyKeyPropertiesArgs:
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> pulumi.Input[float]:
+    def key_size(self) -> pulumi.Input[int]:
         """
         The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "key_size")
 
     @key_size.setter
-    def key_size(self, value: pulumi.Input[float]):
+    def key_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "key_size", value)
 
     @property
@@ -412,11 +412,11 @@ class CertifiateCertificatePolicyLifetimeActionActionArgs:
 @pulumi.input_type
 class CertifiateCertificatePolicyLifetimeActionTriggerArgs:
     def __init__(__self__, *,
-                 days_before_expiry: Optional[pulumi.Input[float]] = None,
-                 lifetime_percentage: Optional[pulumi.Input[float]] = None):
+                 days_before_expiry: Optional[pulumi.Input[int]] = None,
+                 lifetime_percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
-        :param pulumi.Input[float] lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
+        :param pulumi.Input[int] days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
+        :param pulumi.Input[int] lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         if days_before_expiry is not None:
             pulumi.set(__self__, "days_before_expiry", days_before_expiry)
@@ -425,26 +425,26 @@ class CertifiateCertificatePolicyLifetimeActionTriggerArgs:
 
     @property
     @pulumi.getter(name="daysBeforeExpiry")
-    def days_before_expiry(self) -> Optional[pulumi.Input[float]]:
+    def days_before_expiry(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
         """
         return pulumi.get(self, "days_before_expiry")
 
     @days_before_expiry.setter
-    def days_before_expiry(self, value: Optional[pulumi.Input[float]]):
+    def days_before_expiry(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days_before_expiry", value)
 
     @property
     @pulumi.getter(name="lifetimePercentage")
-    def lifetime_percentage(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_percentage(self) -> Optional[pulumi.Input[int]]:
         """
         The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         return pulumi.get(self, "lifetime_percentage")
 
     @lifetime_percentage.setter
-    def lifetime_percentage(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_percentage", value)
 
 
@@ -475,13 +475,13 @@ class CertifiateCertificatePolicyX509CertificatePropertiesArgs:
     def __init__(__self__, *,
                  key_usages: pulumi.Input[List[pulumi.Input[str]]],
                  subject: pulumi.Input[str],
-                 validity_in_months: pulumi.Input[float],
+                 validity_in_months: pulumi.Input[int],
                  extended_key_usages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  subject_alternative_names: Optional[pulumi.Input['CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs']] = None):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] key_usages: A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive. Changing this forces a new resource to be created.
         :param pulumi.Input[str] subject: The Certificate's Subject. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         :param pulumi.Input[List[pulumi.Input[str]]] extended_key_usages: A list of Extended/Enhanced Key Usages. Changing this forces a new resource to be created.
         :param pulumi.Input['CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs'] subject_alternative_names: A `subject_alternative_names` block as defined below.
         """
@@ -519,14 +519,14 @@ class CertifiateCertificatePolicyX509CertificatePropertiesArgs:
 
     @property
     @pulumi.getter(name="validityInMonths")
-    def validity_in_months(self) -> pulumi.Input[float]:
+    def validity_in_months(self) -> pulumi.Input[int]:
         """
         The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "validity_in_months")
 
     @validity_in_months.setter
-    def validity_in_months(self, value: pulumi.Input[float]):
+    def validity_in_months(self, value: pulumi.Input[int]):
         pulumi.set(self, "validity_in_months", value)
 
     @property
@@ -860,12 +860,12 @@ class CertificateCertificatePolicyIssuerParametersArgs:
 class CertificateCertificatePolicyKeyPropertiesArgs:
     def __init__(__self__, *,
                  exportable: pulumi.Input[bool],
-                 key_size: pulumi.Input[float],
+                 key_size: pulumi.Input[int],
                  key_type: pulumi.Input[str],
                  reuse_key: pulumi.Input[bool]):
         """
         :param pulumi.Input[bool] exportable: Is this Certificate Exportable? Changing this forces a new resource to be created.
-        :param pulumi.Input[float] key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] key_size: The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] key_type: Specifies the Type of Key, such as `RSA`. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] reuse_key: Is the key reusable? Changing this forces a new resource to be created.
         """
@@ -888,14 +888,14 @@ class CertificateCertificatePolicyKeyPropertiesArgs:
 
     @property
     @pulumi.getter(name="keySize")
-    def key_size(self) -> pulumi.Input[float]:
+    def key_size(self) -> pulumi.Input[int]:
         """
         The size of the Key used in the Certificate. Possible values include `2048` and `4096`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "key_size")
 
     @key_size.setter
-    def key_size(self, value: pulumi.Input[float]):
+    def key_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "key_size", value)
 
     @property
@@ -985,11 +985,11 @@ class CertificateCertificatePolicyLifetimeActionActionArgs:
 @pulumi.input_type
 class CertificateCertificatePolicyLifetimeActionTriggerArgs:
     def __init__(__self__, *,
-                 days_before_expiry: Optional[pulumi.Input[float]] = None,
-                 lifetime_percentage: Optional[pulumi.Input[float]] = None):
+                 days_before_expiry: Optional[pulumi.Input[int]] = None,
+                 lifetime_percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
-        :param pulumi.Input[float] lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
+        :param pulumi.Input[int] days_before_expiry: The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
+        :param pulumi.Input[int] lifetime_percentage: The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         if days_before_expiry is not None:
             pulumi.set(__self__, "days_before_expiry", days_before_expiry)
@@ -998,26 +998,26 @@ class CertificateCertificatePolicyLifetimeActionTriggerArgs:
 
     @property
     @pulumi.getter(name="daysBeforeExpiry")
-    def days_before_expiry(self) -> Optional[pulumi.Input[float]]:
+    def days_before_expiry(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days before the Certificate expires that the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `lifetime_percentage`.
         """
         return pulumi.get(self, "days_before_expiry")
 
     @days_before_expiry.setter
-    def days_before_expiry(self, value: Optional[pulumi.Input[float]]):
+    def days_before_expiry(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days_before_expiry", value)
 
     @property
     @pulumi.getter(name="lifetimePercentage")
-    def lifetime_percentage(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_percentage(self) -> Optional[pulumi.Input[int]]:
         """
         The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Changing this forces a new resource to be created. Conflicts with `days_before_expiry`.
         """
         return pulumi.get(self, "lifetime_percentage")
 
     @lifetime_percentage.setter
-    def lifetime_percentage(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_percentage", value)
 
 
@@ -1048,13 +1048,13 @@ class CertificateCertificatePolicyX509CertificatePropertiesArgs:
     def __init__(__self__, *,
                  key_usages: pulumi.Input[List[pulumi.Input[str]]],
                  subject: pulumi.Input[str],
-                 validity_in_months: pulumi.Input[float],
+                 validity_in_months: pulumi.Input[int],
                  extended_key_usages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  subject_alternative_names: Optional[pulumi.Input['CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs']] = None):
         """
         :param pulumi.Input[List[pulumi.Input[str]]] key_usages: A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive. Changing this forces a new resource to be created.
         :param pulumi.Input[str] subject: The Certificate's Subject. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
+        :param pulumi.Input[int] validity_in_months: The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         :param pulumi.Input[List[pulumi.Input[str]]] extended_key_usages: A list of Extended/Enhanced Key Usages. Changing this forces a new resource to be created.
         :param pulumi.Input['CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs'] subject_alternative_names: A `subject_alternative_names` block as defined below.
         """
@@ -1092,14 +1092,14 @@ class CertificateCertificatePolicyX509CertificatePropertiesArgs:
 
     @property
     @pulumi.getter(name="validityInMonths")
-    def validity_in_months(self) -> pulumi.Input[float]:
+    def validity_in_months(self) -> pulumi.Input[int]:
         """
         The Certificates Validity Period in Months. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "validity_in_months")
 
     @validity_in_months.setter
-    def validity_in_months(self, value: pulumi.Input[float]):
+    def validity_in_months(self, value: pulumi.Input[int]):
         pulumi.set(self, "validity_in_months", value)
 
     @property

@@ -155,11 +155,11 @@ class ApplicationGatewayAuthenticationCertificate(dict):
 @pulumi.output_type
 class ApplicationGatewayAutoscaleConfiguration(dict):
     def __init__(__self__, *,
-                 min_capacity: float,
-                 max_capacity: Optional[float] = None):
+                 min_capacity: int,
+                 max_capacity: Optional[int] = None):
         """
-        :param float min_capacity: Minimum capacity for autoscaling. Accepted values are in the range `0` to `100`.
-        :param float max_capacity: Maximum capacity for autoscaling. Accepted values are in the range `2` to `125`.
+        :param int min_capacity: Minimum capacity for autoscaling. Accepted values are in the range `0` to `100`.
+        :param int max_capacity: Maximum capacity for autoscaling. Accepted values are in the range `2` to `125`.
         """
         pulumi.set(__self__, "min_capacity", min_capacity)
         if max_capacity is not None:
@@ -167,7 +167,7 @@ class ApplicationGatewayAutoscaleConfiguration(dict):
 
     @property
     @pulumi.getter(name="minCapacity")
-    def min_capacity(self) -> float:
+    def min_capacity(self) -> int:
         """
         Minimum capacity for autoscaling. Accepted values are in the range `0` to `100`.
         """
@@ -175,7 +175,7 @@ class ApplicationGatewayAutoscaleConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxCapacity")
-    def max_capacity(self) -> Optional[float]:
+    def max_capacity(self) -> Optional[int]:
         """
         Maximum capacity for autoscaling. Accepted values are in the range `2` to `125`.
         """
@@ -247,7 +247,7 @@ class ApplicationGatewayBackendHttpSetting(dict):
     def __init__(__self__, *,
                  cookie_based_affinity: str,
                  name: str,
-                 port: float,
+                 port: int,
                  protocol: str,
                  affinity_cookie_name: Optional[str] = None,
                  authentication_certificates: Optional[List['outputs.ApplicationGatewayBackendHttpSettingAuthenticationCertificate']] = None,
@@ -258,12 +258,12 @@ class ApplicationGatewayBackendHttpSetting(dict):
                  pick_host_name_from_backend_address: Optional[bool] = None,
                  probe_id: Optional[str] = None,
                  probe_name: Optional[str] = None,
-                 request_timeout: Optional[float] = None,
+                 request_timeout: Optional[int] = None,
                  trusted_root_certificate_names: Optional[List[str]] = None):
         """
         :param str cookie_based_affinity: Is Cookie-Based Affinity enabled? Possible values are `Enabled` and `Disabled`.
         :param str name: The name of the Backend HTTP Settings Collection.
-        :param float port: The port which should be used for this Backend HTTP Settings Collection.
+        :param int port: The port which should be used for this Backend HTTP Settings Collection.
         :param str protocol: The Protocol which should be used. Possible values are `Http` and `Https`.
         :param str affinity_cookie_name: The name of the affinity cookie.
         :param List['ApplicationGatewayBackendHttpSettingAuthenticationCertificateArgs'] authentication_certificates: One or more `authentication_certificate` blocks.
@@ -274,7 +274,7 @@ class ApplicationGatewayBackendHttpSetting(dict):
         :param bool pick_host_name_from_backend_address: Whether host header should be picked from the host name of the backend server. Defaults to `false`.
         :param str probe_id: The ID of the associated Probe.
         :param str probe_name: The name of an associated HTTP Probe.
-        :param float request_timeout: The request timeout in seconds, which must be between 1 and 86400 seconds.
+        :param int request_timeout: The request timeout in seconds, which must be between 1 and 86400 seconds.
         :param List[str] trusted_root_certificate_names: A list of `trusted_root_certificate` names.
         """
         pulumi.set(__self__, "cookie_based_affinity", cookie_based_affinity)
@@ -322,7 +322,7 @@ class ApplicationGatewayBackendHttpSetting(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port which should be used for this Backend HTTP Settings Collection.
         """
@@ -410,7 +410,7 @@ class ApplicationGatewayBackendHttpSetting(dict):
 
     @property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[float]:
+    def request_timeout(self) -> Optional[int]:
         """
         The request timeout in seconds, which must be between 1 and 86400 seconds.
         """
@@ -464,10 +464,10 @@ class ApplicationGatewayBackendHttpSettingAuthenticationCertificate(dict):
 @pulumi.output_type
 class ApplicationGatewayBackendHttpSettingConnectionDraining(dict):
     def __init__(__self__, *,
-                 drain_timeout_sec: float,
+                 drain_timeout_sec: int,
                  enabled: bool):
         """
-        :param float drain_timeout_sec: The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
+        :param int drain_timeout_sec: The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
         :param bool enabled: If connection draining is enabled or not.
         """
         pulumi.set(__self__, "drain_timeout_sec", drain_timeout_sec)
@@ -475,7 +475,7 @@ class ApplicationGatewayBackendHttpSettingConnectionDraining(dict):
 
     @property
     @pulumi.getter(name="drainTimeoutSec")
-    def drain_timeout_sec(self) -> float:
+    def drain_timeout_sec(self) -> int:
         """
         The number of seconds connection draining is active. Acceptable values are from `1` second to `3600` seconds.
         """
@@ -622,11 +622,11 @@ class ApplicationGatewayFrontendIpConfiguration(dict):
 class ApplicationGatewayFrontendPort(dict):
     def __init__(__self__, *,
                  name: str,
-                 port: float,
+                 port: int,
                  id: Optional[str] = None):
         """
         :param str name: The name of the Frontend Port.
-        :param float port: The port used for this Frontend Port.
+        :param int port: The port used for this Frontend Port.
         :param str id: The ID of the Rewrite Rule Set
         """
         pulumi.set(__self__, "name", name)
@@ -644,7 +644,7 @@ class ApplicationGatewayFrontendPort(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port used for this Frontend Port.
         """
@@ -960,31 +960,31 @@ class ApplicationGatewayIdentity(dict):
 @pulumi.output_type
 class ApplicationGatewayProbe(dict):
     def __init__(__self__, *,
-                 interval: float,
+                 interval: int,
                  name: str,
                  path: str,
                  protocol: str,
-                 timeout: float,
-                 unhealthy_threshold: float,
+                 timeout: int,
+                 unhealthy_threshold: int,
                  host: Optional[str] = None,
                  id: Optional[str] = None,
                  match: Optional['outputs.ApplicationGatewayProbeMatch'] = None,
-                 minimum_servers: Optional[float] = None,
+                 minimum_servers: Optional[int] = None,
                  pick_host_name_from_backend_http_settings: Optional[bool] = None,
-                 port: Optional[float] = None):
+                 port: Optional[int] = None):
         """
-        :param float interval: The Interval between two consecutive probes in seconds. Possible values range from 1 second to a maximum of 86,400 seconds.
+        :param int interval: The Interval between two consecutive probes in seconds. Possible values range from 1 second to a maximum of 86,400 seconds.
         :param str name: The Name of the Probe.
         :param str path: The Path used for this Probe.
         :param str protocol: The Protocol used for this Probe. Possible values are `Http` and `Https`.
-        :param float timeout: The Timeout used for this Probe, which indicates when a probe becomes unhealthy. Possible values range from 1 second to a maximum of 86,400 seconds.
-        :param float unhealthy_threshold: The Unhealthy Threshold for this Probe, which indicates the amount of retries which should be attempted before a node is deemed unhealthy. Possible values are from 1 - 20 seconds.
+        :param int timeout: The Timeout used for this Probe, which indicates when a probe becomes unhealthy. Possible values range from 1 second to a maximum of 86,400 seconds.
+        :param int unhealthy_threshold: The Unhealthy Threshold for this Probe, which indicates the amount of retries which should be attempted before a node is deemed unhealthy. Possible values are from 1 - 20 seconds.
         :param str host: The Hostname used for this Probe. If the Application Gateway is configured for a single site, by default the Host name should be specified as ‘127.0.0.1’, unless otherwise configured in custom probe. Cannot be set if `pick_host_name_from_backend_http_settings` is set to `true`.
         :param str id: The ID of the Rewrite Rule Set
         :param 'ApplicationGatewayProbeMatchArgs' match: A `match` block as defined above.
-        :param float minimum_servers: The minimum number of servers that are always marked as healthy. Defaults to `0`.
+        :param int minimum_servers: The minimum number of servers that are always marked as healthy. Defaults to `0`.
         :param bool pick_host_name_from_backend_http_settings: Whether the host header should be picked from the backend http settings. Defaults to `false`.
-        :param float port: Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
+        :param int port: Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
         """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "name", name)
@@ -1007,7 +1007,7 @@ class ApplicationGatewayProbe(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> float:
+    def interval(self) -> int:
         """
         The Interval between two consecutive probes in seconds. Possible values range from 1 second to a maximum of 86,400 seconds.
         """
@@ -1039,7 +1039,7 @@ class ApplicationGatewayProbe(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> int:
         """
         The Timeout used for this Probe, which indicates when a probe becomes unhealthy. Possible values range from 1 second to a maximum of 86,400 seconds.
         """
@@ -1047,7 +1047,7 @@ class ApplicationGatewayProbe(dict):
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> float:
+    def unhealthy_threshold(self) -> int:
         """
         The Unhealthy Threshold for this Probe, which indicates the amount of retries which should be attempted before a node is deemed unhealthy. Possible values are from 1 - 20 seconds.
         """
@@ -1079,7 +1079,7 @@ class ApplicationGatewayProbe(dict):
 
     @property
     @pulumi.getter(name="minimumServers")
-    def minimum_servers(self) -> Optional[float]:
+    def minimum_servers(self) -> Optional[int]:
         """
         The minimum number of servers that are always marked as healthy. Defaults to `0`.
         """
@@ -1095,7 +1095,7 @@ class ApplicationGatewayProbe(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
         """
@@ -1475,13 +1475,13 @@ class ApplicationGatewayRewriteRuleSet(dict):
 class ApplicationGatewayRewriteRuleSetRewriteRule(dict):
     def __init__(__self__, *,
                  name: str,
-                 rule_sequence: float,
+                 rule_sequence: int,
                  conditions: Optional[List['outputs.ApplicationGatewayRewriteRuleSetRewriteRuleCondition']] = None,
                  request_header_configurations: Optional[List['outputs.ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration']] = None,
                  response_header_configurations: Optional[List['outputs.ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration']] = None):
         """
         :param str name: Unique name of the rewrite rule block
-        :param float rule_sequence: Rule sequence of the rewrite rule that determines the order of execution in a set.
+        :param int rule_sequence: Rule sequence of the rewrite rule that determines the order of execution in a set.
         :param List['ApplicationGatewayRewriteRuleSetRewriteRuleConditionArgs'] conditions: One or more `condition` blocks as defined above.
         :param List['ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfigurationArgs'] request_header_configurations: One or more `request_header_configuration` blocks as defined above.
         :param List['ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfigurationArgs'] response_header_configurations: One or more `response_header_configuration` blocks as defined above.
@@ -1505,7 +1505,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRule(dict):
 
     @property
     @pulumi.getter(name="ruleSequence")
-    def rule_sequence(self) -> float:
+    def rule_sequence(self) -> int:
         """
         Rule sequence of the rewrite rule that determines the order of execution in a set.
         """
@@ -1664,11 +1664,11 @@ class ApplicationGatewaySku(dict):
     def __init__(__self__, *,
                  name: str,
                  tier: str,
-                 capacity: Optional[float] = None):
+                 capacity: Optional[int] = None):
         """
         :param str name: The Name of the SKU to use for this Application Gateway. Possible values are `Standard_Small`, `Standard_Medium`, `Standard_Large`, `Standard_v2`, `WAF_Medium`, `WAF_Large`, and `WAF_v2`.
         :param str tier: The Tier of the SKU to use for this Application Gateway. Possible values are `Standard`, `Standard_v2`, `WAF` and `WAF_v2`.
-        :param float capacity: The Capacity of the SKU to use for this Application Gateway. When using a V1 SKU this value must be between 1 and 32, and 1 to 125 for a V2 SKU. This property is optional if `autoscale_configuration` is set.
+        :param int capacity: The Capacity of the SKU to use for this Application Gateway. When using a V1 SKU this value must be between 1 and 32, and 1 to 125 for a V2 SKU. This property is optional if `autoscale_configuration` is set.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "tier", tier)
@@ -1693,7 +1693,7 @@ class ApplicationGatewaySku(dict):
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[float]:
+    def capacity(self) -> Optional[int]:
         """
         The Capacity of the SKU to use for this Application Gateway. When using a V1 SKU this value must be between 1 and 32, and 1 to 125 for a V2 SKU. This property is optional if `autoscale_configuration` is set.
         """
@@ -2184,8 +2184,8 @@ class ApplicationGatewayWafConfiguration(dict):
                  rule_set_version: str,
                  disabled_rule_groups: Optional[List['outputs.ApplicationGatewayWafConfigurationDisabledRuleGroup']] = None,
                  exclusions: Optional[List['outputs.ApplicationGatewayWafConfigurationExclusion']] = None,
-                 file_upload_limit_mb: Optional[float] = None,
-                 max_request_body_size_kb: Optional[float] = None,
+                 file_upload_limit_mb: Optional[int] = None,
+                 max_request_body_size_kb: Optional[int] = None,
                  request_body_check: Optional[bool] = None,
                  rule_set_type: Optional[str] = None):
         """
@@ -2194,8 +2194,8 @@ class ApplicationGatewayWafConfiguration(dict):
         :param str rule_set_version: The Version of the Rule Set used for this Web Application Firewall. Possible values are `2.2.9`, `3.0`, and `3.1`.
         :param List['ApplicationGatewayWafConfigurationDisabledRuleGroupArgs'] disabled_rule_groups: one or more `disabled_rule_group` blocks as defined below.
         :param List['ApplicationGatewayWafConfigurationExclusionArgs'] exclusions: one or more `exclusion` blocks as defined below.
-        :param float file_upload_limit_mb: The File Upload Limit in MB. Accepted values are in the range `1`MB to `500`MB. Defaults to `100`MB.
-        :param float max_request_body_size_kb: The Maximum Request Body Size in KB.  Accepted values are in the range `1`KB to `128`KB.  Defaults to `128`KB.
+        :param int file_upload_limit_mb: The File Upload Limit in MB. Accepted values are in the range `1`MB to `500`MB. Defaults to `100`MB.
+        :param int max_request_body_size_kb: The Maximum Request Body Size in KB.  Accepted values are in the range `1`KB to `128`KB.  Defaults to `128`KB.
         :param bool request_body_check: Is Request Body Inspection enabled?  Defaults to `true`.
         :param str rule_set_type: The Type of the Rule Set used for this Web Application Firewall. Currently, only `OWASP` is supported.
         """
@@ -2257,7 +2257,7 @@ class ApplicationGatewayWafConfiguration(dict):
 
     @property
     @pulumi.getter(name="fileUploadLimitMb")
-    def file_upload_limit_mb(self) -> Optional[float]:
+    def file_upload_limit_mb(self) -> Optional[int]:
         """
         The File Upload Limit in MB. Accepted values are in the range `1`MB to `500`MB. Defaults to `100`MB.
         """
@@ -2265,7 +2265,7 @@ class ApplicationGatewayWafConfiguration(dict):
 
     @property
     @pulumi.getter(name="maxRequestBodySizeKb")
-    def max_request_body_size_kb(self) -> Optional[float]:
+    def max_request_body_size_kb(self) -> Optional[int]:
         """
         The Maximum Request Body Size in KB.  Accepted values are in the range `1`KB to `128`KB.  Defaults to `128`KB.
         """
@@ -2295,10 +2295,10 @@ class ApplicationGatewayWafConfiguration(dict):
 class ApplicationGatewayWafConfigurationDisabledRuleGroup(dict):
     def __init__(__self__, *,
                  rule_group_name: str,
-                 rules: Optional[List[float]] = None):
+                 rules: Optional[List[int]] = None):
         """
         :param str rule_group_name: The rule group where specific rules should be disabled. Accepted values are:  `crs_20_protocol_violations`, `crs_21_protocol_anomalies`, `crs_23_request_limits`, `crs_30_http_policy`, `crs_35_bad_robots`, `crs_40_generic_attacks`, `crs_41_sql_injection_attacks`, `crs_41_xss_attacks`, `crs_42_tight_security`, `crs_45_trojans`, `General`, `REQUEST-911-METHOD-ENFORCEMENT`, `REQUEST-913-SCANNER-DETECTION`, `REQUEST-920-PROTOCOL-ENFORCEMENT`, `REQUEST-921-PROTOCOL-ATTACK`, `REQUEST-930-APPLICATION-ATTACK-LFI`, `REQUEST-931-APPLICATION-ATTACK-RFI`, `REQUEST-932-APPLICATION-ATTACK-RCE`, `REQUEST-933-APPLICATION-ATTACK-PHP`, `REQUEST-941-APPLICATION-ATTACK-XSS`, `REQUEST-942-APPLICATION-ATTACK-SQLI`, `REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION`
-        :param List[float] rules: A list of rules which should be disabled in that group. Disables all rules in the specified group if `rules` is not specified.
+        :param List[int] rules: A list of rules which should be disabled in that group. Disables all rules in the specified group if `rules` is not specified.
         """
         pulumi.set(__self__, "rule_group_name", rule_group_name)
         if rules is not None:
@@ -2314,7 +2314,7 @@ class ApplicationGatewayWafConfigurationDisabledRuleGroup(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[List[float]]:
+    def rules(self) -> Optional[List[int]]:
         """
         A list of rules which should be disabled in that group. Disables all rules in the specified group if `rules` is not specified.
         """
@@ -2373,11 +2373,11 @@ class ApplicationGatewayWafConfigurationExclusion(dict):
 class ExpressRouteCircuitPeeringMicrosoftPeeringConfig(dict):
     def __init__(__self__, *,
                  advertised_public_prefixes: List[str],
-                 customer_asn: Optional[float] = None,
+                 customer_asn: Optional[int] = None,
                  routing_registry_name: Optional[str] = None):
         """
         :param List[str] advertised_public_prefixes: A list of Advertised Public Prefixes
-        :param float customer_asn: The CustomerASN of the peering
+        :param int customer_asn: The CustomerASN of the peering
         :param str routing_registry_name: The RoutingRegistryName of the configuration
         """
         pulumi.set(__self__, "advertised_public_prefixes", advertised_public_prefixes)
@@ -2396,7 +2396,7 @@ class ExpressRouteCircuitPeeringMicrosoftPeeringConfig(dict):
 
     @property
     @pulumi.getter(name="customerAsn")
-    def customer_asn(self) -> Optional[float]:
+    def customer_asn(self) -> Optional[int]:
         """
         The CustomerASN of the peering
         """
@@ -2530,10 +2530,10 @@ class FirewallApplicationRuleCollectionRule(dict):
 class FirewallApplicationRuleCollectionRuleProtocol(dict):
     def __init__(__self__, *,
                  type: str,
-                 port: Optional[float] = None):
+                 port: Optional[int] = None):
         """
         :param str type: Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
-        :param float port: Specify a port for the connection.
+        :param int port: Specify a port for the connection.
         """
         pulumi.set(__self__, "type", type)
         if port is not None:
@@ -2549,7 +2549,7 @@ class FirewallApplicationRuleCollectionRuleProtocol(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         Specify a port for the connection.
         """
@@ -2794,14 +2794,14 @@ class FirewallNetworkRuleCollectionRule(dict):
 @pulumi.output_type
 class LocalNetworkGatewayBgpSettings(dict):
     def __init__(__self__, *,
-                 asn: float,
+                 asn: int,
                  bgp_peering_address: str,
-                 peer_weight: Optional[float] = None):
+                 peer_weight: Optional[int] = None):
         """
-        :param float asn: The BGP speaker's ASN.
+        :param int asn: The BGP speaker's ASN.
         :param str bgp_peering_address: The BGP peering address and BGP identifier
                of this BGP speaker.
-        :param float peer_weight: The weight added to routes learned from this
+        :param int peer_weight: The weight added to routes learned from this
                BGP speaker.
         """
         pulumi.set(__self__, "asn", asn)
@@ -2811,7 +2811,7 @@ class LocalNetworkGatewayBgpSettings(dict):
 
     @property
     @pulumi.getter
-    def asn(self) -> float:
+    def asn(self) -> int:
         """
         The BGP speaker's ASN.
         """
@@ -2828,7 +2828,7 @@ class LocalNetworkGatewayBgpSettings(dict):
 
     @property
     @pulumi.getter(name="peerWeight")
-    def peer_weight(self) -> Optional[float]:
+    def peer_weight(self) -> Optional[int]:
         """
         The weight added to routes learned from this
         BGP speaker.
@@ -2842,11 +2842,11 @@ class LocalNetworkGatewayBgpSettings(dict):
 @pulumi.output_type
 class NetworkConnectionMonitorDestination(dict):
     def __init__(__self__, *,
-                 port: float,
+                 port: int,
                  address: Optional[str] = None,
                  virtual_machine_id: Optional[str] = None):
         """
-        :param float port: The destination port used by connection monitor.
+        :param int port: The destination port used by connection monitor.
         :param str address: The address of the connection monitor destination (IP or domain name). Conflicts with `destination.0.virtual_machine_id`
         :param str virtual_machine_id: The ID of the virtual machine used as the destination by connection monitor. Conflicts with `destination.0.address`
         """
@@ -2858,7 +2858,7 @@ class NetworkConnectionMonitorDestination(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The destination port used by connection monitor.
         """
@@ -2888,10 +2888,10 @@ class NetworkConnectionMonitorDestination(dict):
 class NetworkConnectionMonitorSource(dict):
     def __init__(__self__, *,
                  virtual_machine_id: str,
-                 port: Optional[float] = None):
+                 port: Optional[int] = None):
         """
         :param str virtual_machine_id: The ID of the virtual machine used as the source by connection monitor.
-        :param float port: The source port used by connection monitor.
+        :param int port: The source port used by connection monitor.
         """
         pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
         if port is not None:
@@ -2907,7 +2907,7 @@ class NetworkConnectionMonitorSource(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The source port used by connection monitor.
         """
@@ -3130,7 +3130,7 @@ class NetworkSecurityGroupSecurityRule(dict):
                  access: str,
                  direction: str,
                  name: str,
-                 priority: float,
+                 priority: int,
                  protocol: str,
                  description: Optional[str] = None,
                  destination_address_prefix: Optional[str] = None,
@@ -3147,7 +3147,7 @@ class NetworkSecurityGroupSecurityRule(dict):
         :param str access: Specifies whether network traffic is allowed or denied. Possible values are `Allow` and `Deny`.
         :param str direction: The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
         :param str name: The name of the security rule.
-        :param float priority: Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+        :param int priority: Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
         :param str protocol: Network protocol this rule applies to. Can be `Tcp`, `Udp`, `Icmp`, or `*` to match all.
         :param str description: A description for this rule. Restricted to 140 characters.
         :param str destination_address_prefix: CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used. This is required if `destination_address_prefixes` is not specified.
@@ -3215,7 +3215,7 @@ class NetworkSecurityGroupSecurityRule(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
         """
@@ -3324,10 +3324,10 @@ class NetworkSecurityGroupSecurityRule(dict):
 @pulumi.output_type
 class NetworkWatcherFlowLogRetentionPolicy(dict):
     def __init__(__self__, *,
-                 days: float,
+                 days: int,
                  enabled: bool):
         """
-        :param float days: The number of days to retain flow log records.
+        :param int days: The number of days to retain flow log records.
         :param bool enabled: Boolean flag to enable/disable traffic analytics.
         """
         pulumi.set(__self__, "days", days)
@@ -3335,7 +3335,7 @@ class NetworkWatcherFlowLogRetentionPolicy(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> float:
+    def days(self) -> int:
         """
         The number of days to retain flow log records.
         """
@@ -3360,13 +3360,13 @@ class NetworkWatcherFlowLogTrafficAnalytics(dict):
                  workspace_id: str,
                  workspace_region: str,
                  workspace_resource_id: str,
-                 interval_in_minutes: Optional[float] = None):
+                 interval_in_minutes: Optional[int] = None):
         """
         :param bool enabled: Boolean flag to enable/disable traffic analytics.
         :param str workspace_id: The resource guid of the attached workspace.
         :param str workspace_region: The location of the attached workspace.
         :param str workspace_resource_id: The resource ID of the attached workspace.
-        :param float interval_in_minutes: How frequently service should do flow analytics in minutes.
+        :param int interval_in_minutes: How frequently service should do flow analytics in minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "workspace_id", workspace_id)
@@ -3409,7 +3409,7 @@ class NetworkWatcherFlowLogTrafficAnalytics(dict):
 
     @property
     @pulumi.getter(name="intervalInMinutes")
-    def interval_in_minutes(self) -> Optional[float]:
+    def interval_in_minutes(self) -> Optional[int]:
         """
         How frequently service should do flow analytics in minutes.
         """
@@ -3862,11 +3862,11 @@ class TrafficManagerEndpointSubnet(dict):
     def __init__(__self__, *,
                  first: str,
                  last: Optional[str] = None,
-                 scope: Optional[float] = None):
+                 scope: Optional[int] = None):
         """
         :param str first: The First IP....
         :param str last: The Last IP...
-        :param float scope: The Scope...
+        :param int scope: The Scope...
         """
         pulumi.set(__self__, "first", first)
         if last is not None:
@@ -3892,7 +3892,7 @@ class TrafficManagerEndpointSubnet(dict):
 
     @property
     @pulumi.getter
-    def scope(self) -> Optional[float]:
+    def scope(self) -> Optional[int]:
         """
         The Scope...
         """
@@ -3906,10 +3906,10 @@ class TrafficManagerEndpointSubnet(dict):
 class TrafficManagerProfileDnsConfig(dict):
     def __init__(__self__, *,
                  relative_name: str,
-                 ttl: float):
+                 ttl: int):
         """
         :param str relative_name: The relative domain name, this is combined with the domain name used by Traffic Manager to form the FQDN which is exported as documented below. Changing this forces a new resource to be created.
-        :param float ttl: The TTL value of the Profile used by Local DNS resolvers and clients.
+        :param int ttl: The TTL value of the Profile used by Local DNS resolvers and clients.
         """
         pulumi.set(__self__, "relative_name", relative_name)
         pulumi.set(__self__, "ttl", ttl)
@@ -3924,7 +3924,7 @@ class TrafficManagerProfileDnsConfig(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         """
         The TTL value of the Profile used by Local DNS resolvers and clients.
         """
@@ -3937,23 +3937,23 @@ class TrafficManagerProfileDnsConfig(dict):
 @pulumi.output_type
 class TrafficManagerProfileMonitorConfig(dict):
     def __init__(__self__, *,
-                 port: float,
+                 port: int,
                  protocol: str,
                  custom_headers: Optional[List['outputs.TrafficManagerProfileMonitorConfigCustomHeader']] = None,
                  expected_status_code_ranges: Optional[List[str]] = None,
-                 interval_in_seconds: Optional[float] = None,
+                 interval_in_seconds: Optional[int] = None,
                  path: Optional[str] = None,
-                 timeout_in_seconds: Optional[float] = None,
-                 tolerated_number_of_failures: Optional[float] = None):
+                 timeout_in_seconds: Optional[int] = None,
+                 tolerated_number_of_failures: Optional[int] = None):
         """
-        :param float port: The port number used by the monitoring checks.
+        :param int port: The port number used by the monitoring checks.
         :param str protocol: The protocol used by the monitoring checks, supported values are `HTTP`, `HTTPS` and `TCP`.
         :param List['TrafficManagerProfileMonitorConfigCustomHeaderArgs'] custom_headers: One or more `custom_header` blocks as defined below.
         :param List[str] expected_status_code_ranges: A list of status code ranges in the format of `100-101`.
-        :param float interval_in_seconds: The interval used to check the endpoint health from a Traffic Manager probing agent. You can specify two values here: `30` (normal probing) and `10` (fast probing). The default value is `30`.
+        :param int interval_in_seconds: The interval used to check the endpoint health from a Traffic Manager probing agent. You can specify two values here: `30` (normal probing) and `10` (fast probing). The default value is `30`.
         :param str path: The path used by the monitoring checks. Required when `protocol` is set to `HTTP` or `HTTPS` - cannot be set when `protocol` is set to `TCP`.
-        :param float timeout_in_seconds: The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
-        :param float tolerated_number_of_failures: The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy. Valid values are between `0` and `9`. The default value is `3`
+        :param int timeout_in_seconds: The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
+        :param int tolerated_number_of_failures: The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy. Valid values are between `0` and `9`. The default value is `3`
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
@@ -3972,7 +3972,7 @@ class TrafficManagerProfileMonitorConfig(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port number used by the monitoring checks.
         """
@@ -4004,7 +4004,7 @@ class TrafficManagerProfileMonitorConfig(dict):
 
     @property
     @pulumi.getter(name="intervalInSeconds")
-    def interval_in_seconds(self) -> Optional[float]:
+    def interval_in_seconds(self) -> Optional[int]:
         """
         The interval used to check the endpoint health from a Traffic Manager probing agent. You can specify two values here: `30` (normal probing) and `10` (fast probing). The default value is `30`.
         """
@@ -4020,7 +4020,7 @@ class TrafficManagerProfileMonitorConfig(dict):
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
-    def timeout_in_seconds(self) -> Optional[float]:
+    def timeout_in_seconds(self) -> Optional[int]:
         """
         The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
         """
@@ -4028,7 +4028,7 @@ class TrafficManagerProfileMonitorConfig(dict):
 
     @property
     @pulumi.getter(name="toleratedNumberOfFailures")
-    def tolerated_number_of_failures(self) -> Optional[float]:
+    def tolerated_number_of_failures(self) -> Optional[int]:
         """
         The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy. Valid values are between `0` and `9`. The default value is `3`
         """
@@ -4137,12 +4137,12 @@ class VirtualNetworkDdosProtectionPlan(dict):
 @pulumi.output_type
 class VirtualNetworkGatewayBgpSettings(dict):
     def __init__(__self__, *,
-                 asn: Optional[float] = None,
-                 peer_weight: Optional[float] = None,
+                 asn: Optional[int] = None,
+                 peer_weight: Optional[int] = None,
                  peering_address: Optional[str] = None):
         """
-        :param float asn: The Autonomous System Number (ASN) to use as part of the BGP.
-        :param float peer_weight: The weight added to routes which have been learned
+        :param int asn: The Autonomous System Number (ASN) to use as part of the BGP.
+        :param int peer_weight: The weight added to routes which have been learned
                through BGP peering. Valid values can be between `0` and `100`.
         :param str peering_address: The BGP peer IP address of the virtual network
                gateway. This address is needed to configure the created gateway as a BGP Peer
@@ -4158,7 +4158,7 @@ class VirtualNetworkGatewayBgpSettings(dict):
 
     @property
     @pulumi.getter
-    def asn(self) -> Optional[float]:
+    def asn(self) -> Optional[int]:
         """
         The Autonomous System Number (ASN) to use as part of the BGP.
         """
@@ -4166,7 +4166,7 @@ class VirtualNetworkGatewayBgpSettings(dict):
 
     @property
     @pulumi.getter(name="peerWeight")
-    def peer_weight(self) -> Optional[float]:
+    def peer_weight(self) -> Optional[int]:
         """
         The weight added to routes which have been learned
         through BGP peering. Valid values can be between `0` and `100`.
@@ -4197,8 +4197,8 @@ class VirtualNetworkGatewayConnectionIpsecPolicy(dict):
                  ipsec_encryption: str,
                  ipsec_integrity: str,
                  pfs_group: str,
-                 sa_datasize: Optional[float] = None,
-                 sa_lifetime: Optional[float] = None):
+                 sa_datasize: Optional[int] = None,
+                 sa_lifetime: Optional[int] = None):
         """
         :param str dh_group: The DH group used in IKE phase 1 for initial SA. Valid
                options are `DHGroup1`, `DHGroup14`, `DHGroup2`, `DHGroup2048`, `DHGroup24`,
@@ -4214,9 +4214,9 @@ class VirtualNetworkGatewayConnectionIpsecPolicy(dict):
         :param str pfs_group: The DH group used in IKE phase 2 for new child SA.
                Valid options are `ECP256`, `ECP384`, `PFS1`, `PFS2`, `PFS2048`, `PFS24`,
                or `None`.
-        :param float sa_datasize: The IPSec SA payload size in KB. Must be at least
+        :param int sa_datasize: The IPSec SA payload size in KB. Must be at least
                `1024` KB. Defaults to `102400000` KB.
-        :param float sa_lifetime: The IPSec SA lifetime in seconds. Must be at least
+        :param int sa_lifetime: The IPSec SA lifetime in seconds. Must be at least
                `300` seconds. Defaults to `27000` seconds.
         """
         pulumi.set(__self__, "dh_group", dh_group)
@@ -4288,7 +4288,7 @@ class VirtualNetworkGatewayConnectionIpsecPolicy(dict):
 
     @property
     @pulumi.getter(name="saDatasize")
-    def sa_datasize(self) -> Optional[float]:
+    def sa_datasize(self) -> Optional[int]:
         """
         The IPSec SA payload size in KB. Must be at least
         `1024` KB. Defaults to `102400000` KB.
@@ -4297,7 +4297,7 @@ class VirtualNetworkGatewayConnectionIpsecPolicy(dict):
 
     @property
     @pulumi.getter(name="saLifetime")
-    def sa_lifetime(self) -> Optional[float]:
+    def sa_lifetime(self) -> Optional[int]:
         """
         The IPSec SA lifetime in seconds. Must be at least
         `300` seconds. Defaults to `27000` seconds.
@@ -4682,12 +4682,12 @@ class VirtualNetworkSubnet(dict):
 @pulumi.output_type
 class VpnGatewayBgpSetting(dict):
     def __init__(__self__, *,
-                 asn: float,
-                 peer_weight: float,
+                 asn: int,
+                 peer_weight: int,
                  bgp_peering_address: Optional[str] = None):
         """
-        :param float asn: The ASN of the BGP Speaker. Changing this forces a new resource to be created.
-        :param float peer_weight: The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
+        :param int asn: The ASN of the BGP Speaker. Changing this forces a new resource to be created.
+        :param int peer_weight: The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
         :param str bgp_peering_address: The Address which should be used for the BGP Peering.
         """
         pulumi.set(__self__, "asn", asn)
@@ -4697,7 +4697,7 @@ class VpnGatewayBgpSetting(dict):
 
     @property
     @pulumi.getter
-    def asn(self) -> float:
+    def asn(self) -> int:
         """
         The ASN of the BGP Speaker. Changing this forces a new resource to be created.
         """
@@ -4705,7 +4705,7 @@ class VpnGatewayBgpSetting(dict):
 
     @property
     @pulumi.getter(name="peerWeight")
-    def peer_weight(self) -> float:
+    def peer_weight(self) -> int:
         """
         The weight added to Routes learned from this BGP Speaker. Changing this forces a new resource to be created.
         """
@@ -4839,8 +4839,8 @@ class VpnServerConfigurationIpsecPolicy(dict):
                  ipsec_encryption: str,
                  ipsec_integrity: str,
                  pfs_group: str,
-                 sa_data_size_kilobytes: float,
-                 sa_lifetime_seconds: float):
+                 sa_data_size_kilobytes: int,
+                 sa_lifetime_seconds: int):
         """
         :param str dh_group: The DH Group, used in IKE Phase 1. Possible values include `DHGroup1`, `DHGroup2`, `DHGroup14`, `DHGroup24`, `DHGroup2048`, `ECP256`, `ECP384` and `None`.
         :param str ike_encryption: The IKE encryption algorithm, used for IKE Phase 2. Possible values include `AES128`, `AES192`, `AES256`, `DES`, `DES3`, `GCMAES128` and `GCMAES256`.
@@ -4848,8 +4848,8 @@ class VpnServerConfigurationIpsecPolicy(dict):
         :param str ipsec_encryption: The IPSec encryption algorithm, used for IKE phase 1. Possible values include `AES128`, `AES192`, `AES256`, `DES`, `DES3`, `GCMAES128`, `GCMAES192`, `GCMAES256` and `None`.
         :param str ipsec_integrity: The IPSec integrity algorithm, used for IKE phase 1. Possible values include `GCMAES128`, `GCMAES192`, `GCMAES256`, `MD5`, `SHA1` and `SHA256`.
         :param str pfs_group: The Pfs Group, used in IKE Phase 2. Possible values include `ECP256`, `ECP384`, `PFS1`, `PFS2`, `PFS14`, `PFS24`, `PFS2048`, `PFSMM` and `None`.
-        :param float sa_data_size_kilobytes: The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
-        :param float sa_lifetime_seconds: The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
+        :param int sa_data_size_kilobytes: The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
+        :param int sa_lifetime_seconds: The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
         """
         pulumi.set(__self__, "dh_group", dh_group)
         pulumi.set(__self__, "ike_encryption", ike_encryption)
@@ -4910,7 +4910,7 @@ class VpnServerConfigurationIpsecPolicy(dict):
 
     @property
     @pulumi.getter(name="saDataSizeKilobytes")
-    def sa_data_size_kilobytes(self) -> float:
+    def sa_data_size_kilobytes(self) -> int:
         """
         The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
         """
@@ -4918,7 +4918,7 @@ class VpnServerConfigurationIpsecPolicy(dict):
 
     @property
     @pulumi.getter(name="saLifetimeSeconds")
-    def sa_lifetime_seconds(self) -> float:
+    def sa_lifetime_seconds(self) -> int:
         """
         The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
         """
@@ -5050,21 +5050,21 @@ class VpnServerConfigurationRadiusServerServerRootCertificate(dict):
 @pulumi.output_type
 class GetExpressRouteCircuitPeeringResult(dict):
     def __init__(__self__, *,
-                 azure_asn: float,
-                 peer_asn: float,
+                 azure_asn: int,
+                 peer_asn: int,
                  peering_type: str,
                  primary_peer_address_prefix: str,
                  secondary_peer_address_prefix: str,
                  shared_key: str,
-                 vlan_id: float):
+                 vlan_id: int):
         """
-        :param float azure_asn: The Either a 16-bit or a 32-bit ASN for Azure.
-        :param float peer_asn: The Either a 16-bit or a 32-bit ASN. Can either be public or private.
+        :param int azure_asn: The Either a 16-bit or a 32-bit ASN for Azure.
+        :param int peer_asn: The Either a 16-bit or a 32-bit ASN. Can either be public or private.
         :param str peering_type: The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`. Changing this forces a new resource to be created.
         :param str primary_peer_address_prefix: A `/30` subnet for the primary link.
         :param str secondary_peer_address_prefix: A `/30` subnet for the secondary link.
         :param str shared_key: The shared key. Can be a maximum of 25 characters.
-        :param float vlan_id: A valid VLAN ID to establish this peering on.
+        :param int vlan_id: A valid VLAN ID to establish this peering on.
         """
         pulumi.set(__self__, "azure_asn", azure_asn)
         pulumi.set(__self__, "peer_asn", peer_asn)
@@ -5076,7 +5076,7 @@ class GetExpressRouteCircuitPeeringResult(dict):
 
     @property
     @pulumi.getter(name="azureAsn")
-    def azure_asn(self) -> float:
+    def azure_asn(self) -> int:
         """
         The Either a 16-bit or a 32-bit ASN for Azure.
         """
@@ -5084,7 +5084,7 @@ class GetExpressRouteCircuitPeeringResult(dict):
 
     @property
     @pulumi.getter(name="peerAsn")
-    def peer_asn(self) -> float:
+    def peer_asn(self) -> int:
         """
         The Either a 16-bit or a 32-bit ASN. Can either be public or private.
         """
@@ -5124,7 +5124,7 @@ class GetExpressRouteCircuitPeeringResult(dict):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> float:
+    def vlan_id(self) -> int:
         """
         A valid VLAN ID to establish this peering on.
         """
@@ -5134,11 +5134,11 @@ class GetExpressRouteCircuitPeeringResult(dict):
 @pulumi.output_type
 class GetExpressRouteCircuitServiceProviderPropertyResult(dict):
     def __init__(__self__, *,
-                 bandwidth_in_mbps: float,
+                 bandwidth_in_mbps: int,
                  peering_location: str,
                  service_provider_name: str):
         """
-        :param float bandwidth_in_mbps: The bandwidth in Mbps of the ExpressRoute circuit.
+        :param int bandwidth_in_mbps: The bandwidth in Mbps of the ExpressRoute circuit.
         :param str peering_location: The name of the peering location and **not** the Azure resource location.
         :param str service_provider_name: The name of the ExpressRoute Service Provider.
         """
@@ -5148,7 +5148,7 @@ class GetExpressRouteCircuitServiceProviderPropertyResult(dict):
 
     @property
     @pulumi.getter(name="bandwidthInMbps")
-    def bandwidth_in_mbps(self) -> float:
+    def bandwidth_in_mbps(self) -> int:
         """
         The bandwidth in Mbps of the ExpressRoute circuit.
         """
@@ -5263,8 +5263,8 @@ class GetGatewayConnectionIpsecPolicyResult(dict):
                  ipsec_encryption: str,
                  ipsec_integrity: str,
                  pfs_group: str,
-                 sa_datasize: float,
-                 sa_lifetime: float):
+                 sa_datasize: int,
+                 sa_lifetime: int):
         """
         :param str dh_group: The DH group used in IKE phase 1 for initial SA. Valid
                options are `DHGroup1`, `DHGroup14`, `DHGroup2`, `DHGroup2048`, `DHGroup24`,
@@ -5280,9 +5280,9 @@ class GetGatewayConnectionIpsecPolicyResult(dict):
         :param str pfs_group: The DH group used in IKE phase 2 for new child SA.
                Valid options are `ECP256`, `ECP384`, `PFS1`, `PFS2`, `PFS2048`, `PFS24`,
                or `None`.
-        :param float sa_datasize: The IPSec SA payload size in KB. Must be at least
+        :param int sa_datasize: The IPSec SA payload size in KB. Must be at least
                `1024` KB.
-        :param float sa_lifetime: The IPSec SA lifetime in seconds. Must be at least
+        :param int sa_lifetime: The IPSec SA lifetime in seconds. Must be at least
                `300` seconds.
         """
         pulumi.set(__self__, "dh_group", dh_group)
@@ -5352,7 +5352,7 @@ class GetGatewayConnectionIpsecPolicyResult(dict):
 
     @property
     @pulumi.getter(name="saDatasize")
-    def sa_datasize(self) -> float:
+    def sa_datasize(self) -> int:
         """
         The IPSec SA payload size in KB. Must be at least
         `1024` KB.
@@ -5361,7 +5361,7 @@ class GetGatewayConnectionIpsecPolicyResult(dict):
 
     @property
     @pulumi.getter(name="saLifetime")
-    def sa_lifetime(self) -> float:
+    def sa_lifetime(self) -> int:
         """
         The IPSec SA lifetime in seconds. Must be at least
         `300` seconds.
@@ -5529,7 +5529,7 @@ class GetNetworkSecurityGroupSecurityRuleResult(dict):
                  destination_port_ranges: List[str],
                  direction: str,
                  name: str,
-                 priority: float,
+                 priority: int,
                  protocol: str,
                  source_address_prefix: str,
                  source_address_prefixes: List[str],
@@ -5545,7 +5545,7 @@ class GetNetworkSecurityGroupSecurityRuleResult(dict):
         :param str destination_port_range: The Destination Port or Range.
         :param str direction: The direction specifies if rule will be evaluated on incoming or outgoing traffic.
         :param str name: Specifies the Name of the Network Security Group.
-        :param float priority: The priority of the rule
+        :param int priority: The priority of the rule
         :param str protocol: The network protocol this rule applies to.
         :param str source_address_prefix: CIDR or source IP range or * to match any IP.
         :param List[str] source_address_prefixes: A list of CIDRs or source IP ranges.
@@ -5635,7 +5635,7 @@ class GetNetworkSecurityGroupSecurityRuleResult(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> int:
         """
         The priority of the rule
         """
@@ -5858,12 +5858,12 @@ class GetRouteTableRouteResult(dict):
 @pulumi.output_type
 class GetVirtualNetworkGatewayBgpSettingResult(dict):
     def __init__(__self__, *,
-                 asn: float,
-                 peer_weight: float,
+                 asn: int,
+                 peer_weight: int,
                  peering_address: str):
         """
-        :param float asn: The Autonomous System Number (ASN) to use as part of the BGP.
-        :param float peer_weight: The weight added to routes which have been learned
+        :param int asn: The Autonomous System Number (ASN) to use as part of the BGP.
+        :param int peer_weight: The weight added to routes which have been learned
                through BGP peering.
         :param str peering_address: The BGP peer IP address of the virtual network
                gateway. This address is needed to configure the created gateway as a BGP Peer
@@ -5875,7 +5875,7 @@ class GetVirtualNetworkGatewayBgpSettingResult(dict):
 
     @property
     @pulumi.getter
-    def asn(self) -> float:
+    def asn(self) -> int:
         """
         The Autonomous System Number (ASN) to use as part of the BGP.
         """
@@ -5883,7 +5883,7 @@ class GetVirtualNetworkGatewayBgpSettingResult(dict):
 
     @property
     @pulumi.getter(name="peerWeight")
-    def peer_weight(self) -> float:
+    def peer_weight(self) -> int:
         """
         The weight added to routes which have been learned
         through BGP peering.

@@ -43,8 +43,8 @@ class GetPoolResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if max_tasks_per_node and not isinstance(max_tasks_per_node, float):
-            raise TypeError("Expected argument 'max_tasks_per_node' to be a float")
+        if max_tasks_per_node and not isinstance(max_tasks_per_node, int):
+            raise TypeError("Expected argument 'max_tasks_per_node' to be a int")
         pulumi.set(__self__, "max_tasks_per_node", max_tasks_per_node)
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
@@ -126,7 +126,7 @@ class GetPoolResult:
 
     @property
     @pulumi.getter(name="maxTasksPerNode")
-    def max_tasks_per_node(self) -> float:
+    def max_tasks_per_node(self) -> int:
         """
         The maximum number of tasks that can run concurrently on a single compute node in the pool.
         """

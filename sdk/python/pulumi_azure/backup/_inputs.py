@@ -54,22 +54,22 @@ class PolicyFileShareBackupArgs:
 @pulumi.input_type
 class PolicyFileShareRetentionDailyArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float]):
+                 count: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] count: The number of daily backups to keep. Must be between `1` and `180` (inclusive)
+        :param pulumi.Input[int] count: The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of daily backups to keep. Must be between `1` and `180` (inclusive)
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
 
@@ -129,33 +129,33 @@ class PolicyVMBackupArgs:
 @pulumi.input_type
 class PolicyVMRetentionDailyArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float]):
+                 count: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param pulumi.Input[int] count: The number of yearly backups to keep. Must be between `1` and `9999`
         """
         pulumi.set(__self__, "count", count)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
 
 @pulumi.input_type
 class PolicyVMRetentionMonthlyArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float],
+                 count: pulumi.Input[int],
                  weekdays: pulumi.Input[List[pulumi.Input[str]]],
                  weeks: pulumi.Input[List[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[float] count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param pulumi.Input[int] count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param pulumi.Input[List[pulumi.Input[str]]] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         :param pulumi.Input[List[pulumi.Input[str]]] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
         """
@@ -165,14 +165,14 @@ class PolicyVMRetentionMonthlyArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
@@ -203,10 +203,10 @@ class PolicyVMRetentionMonthlyArgs:
 @pulumi.input_type
 class PolicyVMRetentionWeeklyArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float],
+                 count: pulumi.Input[int],
                  weekdays: pulumi.Input[List[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[float] count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param pulumi.Input[int] count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param pulumi.Input[List[pulumi.Input[str]]] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         """
         pulumi.set(__self__, "count", count)
@@ -214,14 +214,14 @@ class PolicyVMRetentionWeeklyArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
@@ -240,12 +240,12 @@ class PolicyVMRetentionWeeklyArgs:
 @pulumi.input_type
 class PolicyVMRetentionYearlyArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float],
+                 count: pulumi.Input[int],
                  months: pulumi.Input[List[pulumi.Input[str]]],
                  weekdays: pulumi.Input[List[pulumi.Input[str]]],
                  weeks: pulumi.Input[List[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[float] count: The number of yearly backups to keep. Must be between `1` and `9999`
+        :param pulumi.Input[int] count: The number of yearly backups to keep. Must be between `1` and `9999`
         :param pulumi.Input[List[pulumi.Input[str]]] months: The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
         :param pulumi.Input[List[pulumi.Input[str]]] weekdays: The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
         :param pulumi.Input[List[pulumi.Input[str]]] weeks: The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
@@ -257,14 +257,14 @@ class PolicyVMRetentionYearlyArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         """
         The number of yearly backups to keep. Must be between `1` and `9999`
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
