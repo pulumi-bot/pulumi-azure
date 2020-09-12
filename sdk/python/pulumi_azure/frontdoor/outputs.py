@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -123,7 +123,7 @@ class FirewallPolicyCustomRule(dict):
                  name: str,
                  type: str,
                  enabled: Optional[bool] = None,
-                 match_conditions: Optional[List['outputs.FirewallPolicyCustomRuleMatchCondition']] = None,
+                 match_conditions: Optional[Sequence['outputs.FirewallPolicyCustomRuleMatchCondition']] = None,
                  priority: Optional[float] = None,
                  rate_limit_duration_in_minutes: Optional[float] = None,
                  rate_limit_threshold: Optional[float] = None):
@@ -132,7 +132,7 @@ class FirewallPolicyCustomRule(dict):
         :param str name: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
         :param str type: The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
         :param bool enabled: Is the rule is enabled or disabled? Defaults to `true`.
-        :param List['FirewallPolicyCustomRuleMatchConditionArgs'] match_conditions: One or more `match_condition` block defined below.
+        :param Sequence['FirewallPolicyCustomRuleMatchConditionArgs'] match_conditions: One or more `match_condition` block defined below.
         :param float priority: The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
         :param float rate_limit_duration_in_minutes: The rate limit duration in minutes. Defaults to `1`.
         :param float rate_limit_threshold: The rate limit threshold. Defaults to `10`.
@@ -185,7 +185,7 @@ class FirewallPolicyCustomRule(dict):
 
     @property
     @pulumi.getter(name="matchConditions")
-    def match_conditions(self) -> Optional[List['outputs.FirewallPolicyCustomRuleMatchCondition']]:
+    def match_conditions(self) -> Optional[Sequence['outputs.FirewallPolicyCustomRuleMatchCondition']]:
         """
         One or more `match_condition` block defined below.
         """
@@ -222,19 +222,19 @@ class FirewallPolicyCustomRule(dict):
 @pulumi.output_type
 class FirewallPolicyCustomRuleMatchCondition(dict):
     def __init__(__self__, *,
-                 match_values: List[str],
+                 match_values: Sequence[str],
                  match_variable: str,
                  operator: str,
                  negation_condition: Optional[bool] = None,
                  selector: Optional[str] = None,
-                 transforms: Optional[List[str]] = None):
+                 transforms: Optional[Sequence[str]] = None):
         """
-        :param List[str] match_values: Up to `100` possible values to match.
+        :param Sequence[str] match_values: Up to `100` possible values to match.
         :param str match_variable: The request variable to compare with. Possible values are `Cookies`, `PostArgs`, `QueryString`, `RemoteAddr`, `RequestBody`, `RequestHeader`, `RequestMethod`, `RequestUri`, or `SocketAddr`.
         :param str operator: Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
         :param bool negation_condition: Should the result of the condition be negated.
         :param str selector: Match against a specific key if the `match_variable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
-        :param List[str] transforms: Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
+        :param Sequence[str] transforms: Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
         """
         pulumi.set(__self__, "match_values", match_values)
         pulumi.set(__self__, "match_variable", match_variable)
@@ -248,7 +248,7 @@ class FirewallPolicyCustomRuleMatchCondition(dict):
 
     @property
     @pulumi.getter(name="matchValues")
-    def match_values(self) -> List[str]:
+    def match_values(self) -> Sequence[str]:
         """
         Up to `100` possible values to match.
         """
@@ -288,7 +288,7 @@ class FirewallPolicyCustomRuleMatchCondition(dict):
 
     @property
     @pulumi.getter
-    def transforms(self) -> Optional[List[str]]:
+    def transforms(self) -> Optional[Sequence[str]]:
         """
         Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
         """
@@ -303,13 +303,13 @@ class FirewallPolicyManagedRule(dict):
     def __init__(__self__, *,
                  type: str,
                  version: str,
-                 exclusions: Optional[List['outputs.FirewallPolicyManagedRuleExclusion']] = None,
-                 overrides: Optional[List['outputs.FirewallPolicyManagedRuleOverride']] = None):
+                 exclusions: Optional[Sequence['outputs.FirewallPolicyManagedRuleExclusion']] = None,
+                 overrides: Optional[Sequence['outputs.FirewallPolicyManagedRuleOverride']] = None):
         """
         :param str type: The name of the managed rule to use with this resource.
         :param str version: The version on the managed rule to use with this resource.
-        :param List['FirewallPolicyManagedRuleExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
-        :param List['FirewallPolicyManagedRuleOverrideArgs'] overrides: One or more `override` blocks as defined below.
+        :param Sequence['FirewallPolicyManagedRuleExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
+        :param Sequence['FirewallPolicyManagedRuleOverrideArgs'] overrides: One or more `override` blocks as defined below.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
@@ -336,7 +336,7 @@ class FirewallPolicyManagedRule(dict):
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[List['outputs.FirewallPolicyManagedRuleExclusion']]:
+    def exclusions(self) -> Optional[Sequence['outputs.FirewallPolicyManagedRuleExclusion']]:
         """
         One or more `exclusion` blocks as defined below.
         """
@@ -344,7 +344,7 @@ class FirewallPolicyManagedRule(dict):
 
     @property
     @pulumi.getter
-    def overrides(self) -> Optional[List['outputs.FirewallPolicyManagedRuleOverride']]:
+    def overrides(self) -> Optional[Sequence['outputs.FirewallPolicyManagedRuleOverride']]:
         """
         One or more `override` blocks as defined below.
         """
@@ -401,12 +401,12 @@ class FirewallPolicyManagedRuleExclusion(dict):
 class FirewallPolicyManagedRuleOverride(dict):
     def __init__(__self__, *,
                  rule_group_name: str,
-                 exclusions: Optional[List['outputs.FirewallPolicyManagedRuleOverrideExclusion']] = None,
-                 rules: Optional[List['outputs.FirewallPolicyManagedRuleOverrideRule']] = None):
+                 exclusions: Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideExclusion']] = None,
+                 rules: Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideRule']] = None):
         """
         :param str rule_group_name: The managed rule group to override.
-        :param List['FirewallPolicyManagedRuleOverrideExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
-        :param List['FirewallPolicyManagedRuleOverrideRuleArgs'] rules: One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
+        :param Sequence['FirewallPolicyManagedRuleOverrideExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
+        :param Sequence['FirewallPolicyManagedRuleOverrideRuleArgs'] rules: One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
         """
         pulumi.set(__self__, "rule_group_name", rule_group_name)
         if exclusions is not None:
@@ -424,7 +424,7 @@ class FirewallPolicyManagedRuleOverride(dict):
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[List['outputs.FirewallPolicyManagedRuleOverrideExclusion']]:
+    def exclusions(self) -> Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideExclusion']]:
         """
         One or more `exclusion` blocks as defined below.
         """
@@ -432,7 +432,7 @@ class FirewallPolicyManagedRuleOverride(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[List['outputs.FirewallPolicyManagedRuleOverrideRule']]:
+    def rules(self) -> Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideRule']]:
         """
         One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
         """
@@ -491,12 +491,12 @@ class FirewallPolicyManagedRuleOverrideRule(dict):
                  action: str,
                  rule_id: str,
                  enabled: Optional[bool] = None,
-                 exclusions: Optional[List['outputs.FirewallPolicyManagedRuleOverrideRuleExclusion']] = None):
+                 exclusions: Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideRuleExclusion']] = None):
         """
         :param str action: The action to be applied when the rule matches. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
         :param str rule_id: Identifier for the managed rule.
         :param bool enabled: Is the managed rule override enabled or disabled. Defaults to `false`
-        :param List['FirewallPolicyManagedRuleOverrideRuleExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
+        :param Sequence['FirewallPolicyManagedRuleOverrideRuleExclusionArgs'] exclusions: One or more `exclusion` blocks as defined below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "rule_id", rule_id)
@@ -531,7 +531,7 @@ class FirewallPolicyManagedRuleOverrideRule(dict):
 
     @property
     @pulumi.getter
-    def exclusions(self) -> Optional[List['outputs.FirewallPolicyManagedRuleOverrideRuleExclusion']]:
+    def exclusions(self) -> Optional[Sequence['outputs.FirewallPolicyManagedRuleOverrideRuleExclusion']]:
         """
         One or more `exclusion` blocks as defined below.
         """
@@ -587,13 +587,13 @@ class FirewallPolicyManagedRuleOverrideRuleExclusion(dict):
 @pulumi.output_type
 class FrontdoorBackendPool(dict):
     def __init__(__self__, *,
-                 backends: List['outputs.FrontdoorBackendPoolBackend'],
+                 backends: Sequence['outputs.FrontdoorBackendPoolBackend'],
                  health_probe_name: str,
                  load_balancing_name: str,
                  name: str,
                  id: Optional[str] = None):
         """
-        :param List['FrontdoorBackendPoolBackendArgs'] backends: A `backend` block as defined below.
+        :param Sequence['FrontdoorBackendPoolBackendArgs'] backends: A `backend` block as defined below.
         :param str health_probe_name: Specifies the name of the `backend_pool_health_probe` block whithin this resource to use for this `Backend Pool`.
         :param str load_balancing_name: Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
         :param str name: Specifies the name of the Backend Pool.
@@ -608,7 +608,7 @@ class FrontdoorBackendPool(dict):
 
     @property
     @pulumi.getter
-    def backends(self) -> List['outputs.FrontdoorBackendPoolBackend']:
+    def backends(self) -> Sequence['outputs.FrontdoorBackendPoolBackend']:
         """
         A `backend` block as defined below.
         """
@@ -1103,19 +1103,19 @@ class FrontdoorFrontendEndpointCustomHttpsConfiguration(dict):
 @pulumi.output_type
 class FrontdoorRoutingRule(dict):
     def __init__(__self__, *,
-                 accepted_protocols: List[str],
-                 frontend_endpoints: List[str],
+                 accepted_protocols: Sequence[str],
+                 frontend_endpoints: Sequence[str],
                  name: str,
-                 patterns_to_matches: List[str],
+                 patterns_to_matches: Sequence[str],
                  enabled: Optional[bool] = None,
                  forwarding_configuration: Optional['outputs.FrontdoorRoutingRuleForwardingConfiguration'] = None,
                  id: Optional[str] = None,
                  redirect_configuration: Optional['outputs.FrontdoorRoutingRuleRedirectConfiguration'] = None):
         """
-        :param List[str] accepted_protocols: Protocol schemes to match for the Backend Routing Rule. Defaults to `Http`.
-        :param List[str] frontend_endpoints: The names of the `frontend_endpoint` blocks whithin this resource to associate with this `routing_rule`.
+        :param Sequence[str] accepted_protocols: Protocol schemes to match for the Backend Routing Rule. Defaults to `Http`.
+        :param Sequence[str] frontend_endpoints: The names of the `frontend_endpoint` blocks whithin this resource to associate with this `routing_rule`.
         :param str name: Specifies the name of the Routing Rule.
-        :param List[str] patterns_to_matches: The route patterns for the Backend Routing Rule. Defaults to `/*`.
+        :param Sequence[str] patterns_to_matches: The route patterns for the Backend Routing Rule. Defaults to `/*`.
         :param bool enabled: `Enable` or `Disable` use of this Backend Routing Rule. Permitted values are `true` or `false`. Defaults to `true`.
         :param 'FrontdoorRoutingRuleForwardingConfigurationArgs' forwarding_configuration: A `forwarding_configuration` block as defined below.
         :param str id: The ID of the FrontDoor.
@@ -1136,7 +1136,7 @@ class FrontdoorRoutingRule(dict):
 
     @property
     @pulumi.getter(name="acceptedProtocols")
-    def accepted_protocols(self) -> List[str]:
+    def accepted_protocols(self) -> Sequence[str]:
         """
         Protocol schemes to match for the Backend Routing Rule. Defaults to `Http`.
         """
@@ -1144,7 +1144,7 @@ class FrontdoorRoutingRule(dict):
 
     @property
     @pulumi.getter(name="frontendEndpoints")
-    def frontend_endpoints(self) -> List[str]:
+    def frontend_endpoints(self) -> Sequence[str]:
         """
         The names of the `frontend_endpoint` blocks whithin this resource to associate with this `routing_rule`.
         """
@@ -1160,7 +1160,7 @@ class FrontdoorRoutingRule(dict):
 
     @property
     @pulumi.getter(name="patternsToMatches")
-    def patterns_to_matches(self) -> List[str]:
+    def patterns_to_matches(self) -> Sequence[str]:
         """
         The route patterns for the Backend Routing Rule. Defaults to `/*`.
         """

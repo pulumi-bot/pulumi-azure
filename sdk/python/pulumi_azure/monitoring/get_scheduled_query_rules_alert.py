@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -75,7 +75,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter
-    def actions(self) -> List['outputs.GetScheduledQueryRulesAlertActionResult']:
+    def actions(self) -> Sequence['outputs.GetScheduledQueryRulesAlertActionResult']:
         """
         An `action` block as defined below.
         """
@@ -83,7 +83,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter(name="authorizedResourceIds")
-    def authorized_resource_ids(self) -> List[str]:
+    def authorized_resource_ids(self) -> Sequence[str]:
         """
         The list of Resource IDs referred into query.
         """
@@ -188,7 +188,7 @@ class GetScheduledQueryRulesAlertResult:
 
     @property
     @pulumi.getter
-    def triggers(self) -> List['outputs.GetScheduledQueryRulesAlertTriggerResult']:
+    def triggers(self) -> Sequence['outputs.GetScheduledQueryRulesAlertTriggerResult']:
         """
         A `trigger` block as defined below.
         """

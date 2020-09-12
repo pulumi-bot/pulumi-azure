@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -80,7 +80,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter(name="mountIpAddresses")
-    def mount_ip_addresses(self) -> List[str]:
+    def mount_ip_addresses(self) -> Sequence[str]:
         """
         A list of IPv4 Addresses which should be used to mount the volume.
         """
@@ -98,7 +98,7 @@ class GetVolumeResult:
 
     @property
     @pulumi.getter
-    def protocols(self) -> List[str]:
+    def protocols(self) -> Sequence[str]:
         return pulumi.get(self, "protocols")
 
     @property

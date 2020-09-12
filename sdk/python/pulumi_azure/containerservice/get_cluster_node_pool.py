@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -92,7 +92,7 @@ class GetClusterNodePoolResult:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> List[str]:
+    def availability_zones(self) -> Sequence[str]:
         """
         A list of Availability Zones in which the Nodes in this Node Pool exists.
         """
@@ -190,7 +190,7 @@ class GetClusterNodePoolResult:
 
     @property
     @pulumi.getter(name="nodeTaints")
-    def node_taints(self) -> List[str]:
+    def node_taints(self) -> Sequence[str]:
         """
         A map of Kubernetes Taints applied to each Node in this Node Pool.
         """

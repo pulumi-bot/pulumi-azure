@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -266,13 +266,13 @@ class GremlinGraphIndexPolicyArgs:
     def __init__(__self__, *,
                  indexing_mode: pulumi.Input[str],
                  automatic: Optional[pulumi.Input[bool]] = None,
-                 excluded_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 included_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 excluded_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] indexing_mode: Indicates the indexing mode. Possible values include: `Consistent`, `Lazy`, `None`.
         :param pulumi.Input[bool] automatic: Indicates if the indexing policy is automatic. Defaults to `true`.
-        :param pulumi.Input[List[pulumi.Input[str]]] excluded_paths: List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
-        :param pulumi.Input[List[pulumi.Input[str]]] included_paths: List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_paths: List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_paths: List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
         pulumi.set(__self__, "indexing_mode", indexing_mode)
         if automatic is not None:
@@ -308,58 +308,58 @@ class GremlinGraphIndexPolicyArgs:
 
     @property
     @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excluded_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
         return pulumi.get(self, "excluded_paths")
 
     @excluded_paths.setter
-    def excluded_paths(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excluded_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excluded_paths", value)
 
     @property
     @pulumi.getter(name="includedPaths")
-    def included_paths(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def included_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
         return pulumi.get(self, "included_paths")
 
     @included_paths.setter
-    def included_paths(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def included_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "included_paths", value)
 
 
 @pulumi.input_type
 class GremlinGraphUniqueKeyArgs:
     def __init__(__self__, *,
-                 paths: pulumi.Input[List[pulumi.Input[str]]]):
+                 paths: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] paths: A list of paths to use for this unique key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: A list of paths to use for this unique key.
         """
         pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
-    def paths(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def paths(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of paths to use for this unique key.
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def paths(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "paths", value)
 
 
 @pulumi.input_type
 class MongoCollectionIndexArgs:
     def __init__(__self__, *,
-                 keys: pulumi.Input[List[pulumi.Input[str]]],
+                 keys: pulumi.Input[Sequence[pulumi.Input[str]]],
                  unique: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         :param pulumi.Input[bool] unique: Is the index unique or not? Defaults to `false`.
         """
         pulumi.set(__self__, "keys", keys)
@@ -368,14 +368,14 @@ class MongoCollectionIndexArgs:
 
     @property
     @pulumi.getter
-    def keys(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def keys(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def keys(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "keys", value)
 
     @property
@@ -394,10 +394,10 @@ class MongoCollectionIndexArgs:
 @pulumi.input_type
 class MongoCollectionSystemIndexArgs:
     def __init__(__self__, *,
-                 keys: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  unique: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         :param pulumi.Input[bool] unique: Is the index unique or not? Defaults to `false`.
         """
         if keys is not None:
@@ -407,14 +407,14 @@ class MongoCollectionSystemIndexArgs:
 
     @property
     @pulumi.getter
-    def keys(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "keys", value)
 
     @property
@@ -433,22 +433,22 @@ class MongoCollectionSystemIndexArgs:
 @pulumi.input_type
 class SqlContainerUniqueKeyArgs:
     def __init__(__self__, *,
-                 paths: pulumi.Input[List[pulumi.Input[str]]]):
+                 paths: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] paths: A list of paths to use for this unique key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: A list of paths to use for this unique key.
         """
         pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
-    def paths(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def paths(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of paths to use for this unique key.
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def paths(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "paths", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -84,7 +84,7 @@ class GetCertificateOrderResult:
 
     @property
     @pulumi.getter(name="appServiceCertificateNotRenewableReasons")
-    def app_service_certificate_not_renewable_reasons(self) -> List[str]:
+    def app_service_certificate_not_renewable_reasons(self) -> Sequence[str]:
         """
         Reasons why App Service Certificate is not renewable at the current moment.
         """
@@ -100,7 +100,7 @@ class GetCertificateOrderResult:
 
     @property
     @pulumi.getter
-    def certificates(self) -> List['outputs.GetCertificateOrderCertificateResult']:
+    def certificates(self) -> Sequence['outputs.GetCertificateOrderCertificateResult']:
         """
         State of the Key Vault secret. A `certificates` block as defined below.
         """

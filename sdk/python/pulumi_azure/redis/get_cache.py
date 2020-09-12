@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -154,7 +154,7 @@ class GetCacheResult:
 
     @property
     @pulumi.getter(name="patchSchedules")
-    def patch_schedules(self) -> List['outputs.GetCachePatchScheduleResult']:
+    def patch_schedules(self) -> Sequence['outputs.GetCachePatchScheduleResult']:
         """
         A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
         """
@@ -191,7 +191,7 @@ class GetCacheResult:
 
     @property
     @pulumi.getter(name="redisConfigurations")
-    def redis_configurations(self) -> List['outputs.GetCacheRedisConfigurationResult']:
+    def redis_configurations(self) -> Sequence['outputs.GetCacheRedisConfigurationResult']:
         """
         A `redis_configuration` block as defined below.
         """
@@ -251,7 +251,7 @@ class GetCacheResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List[str]:
+    def zones(self) -> Sequence[str]:
         return pulumi.get(self, "zones")
 
 
@@ -288,7 +288,7 @@ class AwaitableGetCacheResult(GetCacheResult):
 
 def get_cache(name: Optional[str] = None,
               resource_group_name: Optional[str] = None,
-              zones: Optional[List[str]] = None,
+              zones: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCacheResult:
     """
     Use this data source to access information about an existing Redis Cache

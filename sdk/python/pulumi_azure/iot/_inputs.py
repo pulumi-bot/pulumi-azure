@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -158,12 +158,12 @@ class IoTHubFallbackRouteArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 endpoint_names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 endpoint_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] condition: The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language.
         :param pulumi.Input[bool] enabled: Used to specify whether the fallback route is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] endpoint_names: The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_names: The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
         :param pulumi.Input[str] source: The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `RoutingSourceInvalid`, `RoutingSourceDeviceMessages`, `RoutingSourceTwinChangeEvents`, `RoutingSourceDeviceLifecycleEvents`, `RoutingSourceDeviceJobLifecycleEvents`.
         """
         if condition is not None:
@@ -201,14 +201,14 @@ class IoTHubFallbackRouteArgs:
 
     @property
     @pulumi.getter(name="endpointNames")
-    def endpoint_names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def endpoint_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
         """
         return pulumi.get(self, "endpoint_names")
 
     @endpoint_names.setter
-    def endpoint_names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def endpoint_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "endpoint_names", value)
 
     @property
@@ -397,13 +397,13 @@ class IoTHubIpFilterRuleArgs:
 class IoTHubRouteArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 endpoint_names: pulumi.Input[List[pulumi.Input[str]]],
+                 endpoint_names: pulumi.Input[Sequence[pulumi.Input[str]]],
                  name: pulumi.Input[str],
                  source: pulumi.Input[str],
                  condition: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Used to specify whether a route is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] endpoint_names: The list of endpoints to which messages that satisfy the condition are routed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_names: The list of endpoints to which messages that satisfy the condition are routed.
         :param pulumi.Input[str] name: The name of the route.
         :param pulumi.Input[str] source: The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `RoutingSourceInvalid`, `RoutingSourceDeviceMessages`, `RoutingSourceTwinChangeEvents`, `RoutingSourceDeviceLifecycleEvents`, `RoutingSourceDeviceJobLifecycleEvents`.
         :param pulumi.Input[str] condition: The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language.
@@ -429,14 +429,14 @@ class IoTHubRouteArgs:
 
     @property
     @pulumi.getter(name="endpointNames")
-    def endpoint_names(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def endpoint_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of endpoints to which messages that satisfy the condition are routed.
         """
         return pulumi.get(self, "endpoint_names")
 
     @endpoint_names.setter
-    def endpoint_names(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def endpoint_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "endpoint_names", value)
 
     @property

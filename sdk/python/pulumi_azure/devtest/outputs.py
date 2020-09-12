@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -252,10 +252,10 @@ class ScheduleNotificationSettings(dict):
 class ScheduleWeeklyRecurrence(dict):
     def __init__(__self__, *,
                  time: str,
-                 week_days: Optional[List[str]] = None):
+                 week_days: Optional[Sequence[str]] = None):
         """
         :param str time: The time when the schedule takes effect.
-        :param List[str] week_days: A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
+        :param Sequence[str] week_days: A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
         """
         pulumi.set(__self__, "time", time)
         if week_days is not None:
@@ -271,7 +271,7 @@ class ScheduleWeeklyRecurrence(dict):
 
     @property
     @pulumi.getter(name="weekDays")
-    def week_days(self) -> Optional[List[str]]:
+    def week_days(self) -> Optional[Sequence[str]]:
         """
         A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
         """

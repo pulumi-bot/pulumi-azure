@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class Cache(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  minimum_tls_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 patch_schedules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]]] = None,
+                 patch_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]]] = None,
                  private_static_ip_address: Optional[pulumi.Input[str]] = None,
                  redis_configuration: Optional[pulumi.Input[pulumi.InputType['CacheRedisConfigurationArgs']]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class Cache(pulumi.CustomResource):
         :param pulumi.Input[str] minimum_tls_version: The minimum TLS version.  Defaults to `1.0`.
         :param pulumi.Input[str] name: The name of the Redis instance. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]] patch_schedules: A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]] patch_schedules: A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
         :param pulumi.Input[str] private_static_ip_address: The Static IP Address to assign to the Redis Cache when hosted inside the Virtual Network. Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['CacheRedisConfigurationArgs']] redis_configuration: A `redis_configuration` as defined below - with some limitations by SKU - defaults/details are shown below.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which to
@@ -169,7 +169,7 @@ class Cache(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             minimum_tls_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            patch_schedules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]]] = None,
+            patch_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]]] = None,
             port: Optional[pulumi.Input[float]] = None,
             primary_access_key: Optional[pulumi.Input[str]] = None,
             primary_connection_string: Optional[pulumi.Input[str]] = None,
@@ -199,7 +199,7 @@ class Cache(pulumi.CustomResource):
         :param pulumi.Input[str] minimum_tls_version: The minimum TLS version.  Defaults to `1.0`.
         :param pulumi.Input[str] name: The name of the Redis instance. Changing this forces a
                new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]] patch_schedules: A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CachePatchScheduleArgs']]]] patch_schedules: A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
         :param pulumi.Input[float] port: The non-SSL Port of the Redis Instance
         :param pulumi.Input[str] primary_access_key: The Primary Access Key for the Redis Instance
         :param pulumi.Input[str] primary_connection_string: The primary connection string of the Redis Instance.
@@ -303,7 +303,7 @@ class Cache(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="patchSchedules")
-    def patch_schedules(self) -> pulumi.Output[Optional[List['outputs.CachePatchSchedule']]]:
+    def patch_schedules(self) -> pulumi.Output[Optional[Sequence['outputs.CachePatchSchedule']]]:
         """
         A list of `patch_schedule` blocks as defined below - only available for Premium SKU's.
         """

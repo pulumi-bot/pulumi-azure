@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -81,18 +81,18 @@ class DatabaseExtendedAuditingPolicy(dict):
 @pulumi.output_type
 class DatabaseThreatDetectionPolicy(dict):
     def __init__(__self__, *,
-                 disabled_alerts: Optional[List[str]] = None,
+                 disabled_alerts: Optional[Sequence[str]] = None,
                  email_account_admins: Optional[str] = None,
-                 email_addresses: Optional[List[str]] = None,
+                 email_addresses: Optional[Sequence[str]] = None,
                  retention_days: Optional[float] = None,
                  state: Optional[str] = None,
                  storage_account_access_key: Optional[str] = None,
                  storage_endpoint: Optional[str] = None,
                  use_server_default: Optional[str] = None):
         """
-        :param List[str] disabled_alerts: Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
+        :param Sequence[str] disabled_alerts: Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
         :param str email_account_admins: Should the account administrators be emailed when this alert is triggered?
-        :param List[str] email_addresses: A list of email addresses which alerts should be sent to.
+        :param Sequence[str] email_addresses: A list of email addresses which alerts should be sent to.
         :param float retention_days: Specifies the number of days to keep in the Threat Detection audit logs.
         :param str state: The State of the Policy. Possible values are `Enabled`, `Disabled` or `New`.
         :param str storage_account_access_key: Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
@@ -118,7 +118,7 @@ class DatabaseThreatDetectionPolicy(dict):
 
     @property
     @pulumi.getter(name="disabledAlerts")
-    def disabled_alerts(self) -> Optional[List[str]]:
+    def disabled_alerts(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
         """
@@ -134,7 +134,7 @@ class DatabaseThreatDetectionPolicy(dict):
 
     @property
     @pulumi.getter(name="emailAddresses")
-    def email_addresses(self) -> Optional[List[str]]:
+    def email_addresses(self) -> Optional[Sequence[str]]:
         """
         A list of email addresses which alerts should be sent to.
         """
@@ -187,15 +187,15 @@ class DatabaseThreatDetectionPolicy(dict):
 @pulumi.output_type
 class DatabaseVulnerabilityAssessmentRuleBaselineBaselineResult(dict):
     def __init__(__self__, *,
-                 results: List[str]):
+                 results: Sequence[str]):
         """
-        :param List[str] results: A list representing a result of the baseline.
+        :param Sequence[str] results: A list representing a result of the baseline.
         """
         pulumi.set(__self__, "results", results)
 
     @property
     @pulumi.getter
-    def results(self) -> List[str]:
+    def results(self) -> Sequence[str]:
         """
         A list representing a result of the baseline.
         """
@@ -441,11 +441,11 @@ class ServerIdentity(dict):
 class ServerVulnerabilityAssessmentRecurringScans(dict):
     def __init__(__self__, *,
                  email_subscription_admins: Optional[bool] = None,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  enabled: Optional[bool] = None):
         """
         :param bool email_subscription_admins: Boolean flag which specifies if the schedule scan notification will be sent to the subscription administrators. Defaults to `false`.
-        :param List[str] emails: Specifies an array of e-mail addresses to which the scan notification is sent.
+        :param Sequence[str] emails: Specifies an array of e-mail addresses to which the scan notification is sent.
         :param bool enabled: Boolean flag which specifies if recurring scans is enabled or disabled. Defaults to `false`.
         """
         if email_subscription_admins is not None:
@@ -465,7 +465,7 @@ class ServerVulnerabilityAssessmentRecurringScans(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         """
         Specifies an array of e-mail addresses to which the scan notification is sent.
         """

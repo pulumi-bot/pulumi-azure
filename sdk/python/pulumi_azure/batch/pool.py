@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class Pool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  auto_scale: Optional[pulumi.Input[pulumi.InputType['PoolAutoScaleArgs']]] = None,
-                 certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]]] = None,
                  container_configuration: Optional[pulumi.Input[pulumi.InputType['PoolContainerConfigurationArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fixed_scale: Optional[pulumi.Input[pulumi.InputType['PoolFixedScaleArgs']]] = None,
@@ -43,7 +43,7 @@ class Pool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['PoolAutoScaleArgs']] auto_scale: A `auto_scale` block that describes the scale settings when using auto scale.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]] certificates: One or more `certificate` blocks that describe the certificates to be installed on each compute node in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]] certificates: One or more `certificate` blocks that describe the certificates to be installed on each compute node in the pool.
         :param pulumi.Input[pulumi.InputType['PoolContainerConfigurationArgs']] container_configuration: The container configuration used in the pool's VMs.
         :param pulumi.Input[str] display_name: Specifies the display name of the Batch pool.
         :param pulumi.Input[pulumi.InputType['PoolFixedScaleArgs']] fixed_scale: A `fixed_scale` block that describes the scale settings when using fixed scale.
@@ -112,7 +112,7 @@ class Pool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_name: Optional[pulumi.Input[str]] = None,
             auto_scale: Optional[pulumi.Input[pulumi.InputType['PoolAutoScaleArgs']]] = None,
-            certificates: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]]] = None,
+            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]]] = None,
             container_configuration: Optional[pulumi.Input[pulumi.InputType['PoolContainerConfigurationArgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             fixed_scale: Optional[pulumi.Input[pulumi.InputType['PoolFixedScaleArgs']]] = None,
@@ -135,7 +135,7 @@ class Pool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['PoolAutoScaleArgs']] auto_scale: A `auto_scale` block that describes the scale settings when using auto scale.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]] certificates: One or more `certificate` blocks that describe the certificates to be installed on each compute node in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PoolCertificateArgs']]]] certificates: One or more `certificate` blocks that describe the certificates to be installed on each compute node in the pool.
         :param pulumi.Input[pulumi.InputType['PoolContainerConfigurationArgs']] container_configuration: The container configuration used in the pool's VMs.
         :param pulumi.Input[str] display_name: Specifies the display name of the Batch pool.
         :param pulumi.Input[pulumi.InputType['PoolFixedScaleArgs']] fixed_scale: A `fixed_scale` block that describes the scale settings when using fixed scale.
@@ -189,7 +189,7 @@ class Pool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Output[Optional[List['outputs.PoolCertificate']]]:
+    def certificates(self) -> pulumi.Output[Optional[Sequence['outputs.PoolCertificate']]]:
         """
         One or more `certificate` blocks that describe the certificates to be installed on each compute node in the pool.
         """

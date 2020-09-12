@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -151,7 +151,7 @@ class GetPublicIPResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List[str]:
+    def zones(self) -> Sequence[str]:
         return pulumi.get(self, "zones")
 
 
@@ -180,7 +180,7 @@ class AwaitableGetPublicIPResult(GetPublicIPResult):
 def get_public_ip(name: Optional[str] = None,
                   resource_group_name: Optional[str] = None,
                   tags: Optional[Mapping[str, str]] = None,
-                  zones: Optional[List[str]] = None,
+                  zones: Optional[Sequence[str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIPResult:
     """
     Use this data source to access information about an existing Public IP Address.

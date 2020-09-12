@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -105,7 +105,7 @@ class AppServiceAuthSettings(dict):
                  enabled: bool,
                  active_directory: Optional['outputs.AppServiceAuthSettingsActiveDirectory'] = None,
                  additional_login_params: Optional[Mapping[str, str]] = None,
-                 allowed_external_redirect_urls: Optional[List[str]] = None,
+                 allowed_external_redirect_urls: Optional[Sequence[str]] = None,
                  default_provider: Optional[str] = None,
                  facebook: Optional['outputs.AppServiceAuthSettingsFacebook'] = None,
                  google: Optional['outputs.AppServiceAuthSettingsGoogle'] = None,
@@ -120,7 +120,7 @@ class AppServiceAuthSettings(dict):
         :param bool enabled: Is Authentication enabled?
         :param 'AppServiceAuthSettingsActiveDirectoryArgs' active_directory: A `active_directory` block as defined below.
         :param Mapping[str, str] additional_login_params: Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-        :param List[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
+        :param Sequence[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
         :param str default_provider: The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
         :param 'AppServiceAuthSettingsFacebookArgs' facebook: A `facebook` block as defined below.
         :param 'AppServiceAuthSettingsGoogleArgs' google: A `google` block as defined below.
@@ -186,7 +186,7 @@ class AppServiceAuthSettings(dict):
 
     @property
     @pulumi.getter(name="allowedExternalRedirectUrls")
-    def allowed_external_redirect_urls(self) -> Optional[List[str]]:
+    def allowed_external_redirect_urls(self) -> Optional[Sequence[str]]:
         """
         External URLs that can be redirected to as part of logging in or logging out of the app.
         """
@@ -280,11 +280,11 @@ class AppServiceAuthSettings(dict):
 class AppServiceAuthSettingsActiveDirectory(dict):
     def __init__(__self__, *,
                  client_id: str,
-                 allowed_audiences: Optional[List[str]] = None,
+                 allowed_audiences: Optional[Sequence[str]] = None,
                  client_secret: Optional[str] = None):
         """
         :param str client_id: The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
-        :param List[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
+        :param Sequence[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         :param str client_secret: The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -303,7 +303,7 @@ class AppServiceAuthSettingsActiveDirectory(dict):
 
     @property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[List[str]]:
+    def allowed_audiences(self) -> Optional[Sequence[str]]:
         """
         Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         """
@@ -326,11 +326,11 @@ class AppServiceAuthSettingsFacebook(dict):
     def __init__(__self__, *,
                  app_id: str,
                  app_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str app_id: The App ID of the Facebook app used for login
         :param str app_secret: The App Secret of the Facebook app used for Facebook Login.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_secret", app_secret)
@@ -355,7 +355,7 @@ class AppServiceAuthSettingsFacebook(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
@@ -370,11 +370,11 @@ class AppServiceAuthSettingsGoogle(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OpenID Connect Client ID for the Google web application.
         :param str client_secret: The client secret associated with the Google web application.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -399,7 +399,7 @@ class AppServiceAuthSettingsGoogle(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
@@ -414,11 +414,11 @@ class AppServiceAuthSettingsMicrosoft(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OAuth 2.0 client ID that was created for the app used for authentication.
         :param str client_secret: The OAuth 2.0 client secret that was created for the app used for authentication.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -443,7 +443,7 @@ class AppServiceAuthSettingsMicrosoft(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
@@ -645,12 +645,12 @@ class AppServiceConnectionString(dict):
 class AppServiceIdentity(dict):
     def __init__(__self__, *,
                  type: str,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
         """
         :param str type: Specifies the identity type of the App Service. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
-        :param List[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
+        :param Sequence[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         :param str principal_id: The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
         :param str tenant_id: The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
         """
@@ -672,7 +672,7 @@ class AppServiceIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         """
@@ -910,12 +910,12 @@ class AppServiceSiteConfig(dict):
                  app_command_line: Optional[str] = None,
                  auto_swap_slot_name: Optional[str] = None,
                  cors: Optional['outputs.AppServiceSiteConfigCors'] = None,
-                 default_documents: Optional[List[str]] = None,
+                 default_documents: Optional[Sequence[str]] = None,
                  dotnet_framework_version: Optional[str] = None,
                  ftps_state: Optional[str] = None,
                  health_check_path: Optional[str] = None,
                  http2_enabled: Optional[bool] = None,
-                 ip_restrictions: Optional[List['outputs.AppServiceSiteConfigIpRestriction']] = None,
+                 ip_restrictions: Optional[Sequence['outputs.AppServiceSiteConfigIpRestriction']] = None,
                  java_container: Optional[str] = None,
                  java_container_version: Optional[str] = None,
                  java_version: Optional[str] = None,
@@ -927,7 +927,7 @@ class AppServiceSiteConfig(dict):
                  python_version: Optional[str] = None,
                  remote_debugging_enabled: Optional[bool] = None,
                  remote_debugging_version: Optional[str] = None,
-                 scm_ip_restrictions: Optional[List['outputs.AppServiceSiteConfigScmIpRestriction']] = None,
+                 scm_ip_restrictions: Optional[Sequence['outputs.AppServiceSiteConfigScmIpRestriction']] = None,
                  scm_type: Optional[str] = None,
                  scm_use_main_ip_restriction: Optional[bool] = None,
                  use32_bit_worker_process: Optional[bool] = None,
@@ -937,12 +937,12 @@ class AppServiceSiteConfig(dict):
         :param bool always_on: Should the app be loaded at all times? Defaults to `false`.
         :param str app_command_line: App command line to launch, e.g. `/sbin/myserver -b 0.0.0.0`.
         :param 'AppServiceSiteConfigCorsArgs' cors: A `cors` block as defined below.
-        :param List[str] default_documents: The ordering of default documents to load, if an address isn't specified.
+        :param Sequence[str] default_documents: The ordering of default documents to load, if an address isn't specified.
         :param str dotnet_framework_version: The version of the .net framework's CLR used in this App Service. Possible values are `v2.0` (which will use the latest version of the .net framework for the .net CLR v2 - currently `.net 3.5`) and `v4.0` (which corresponds to the latest version of the .net CLR v4 - which at the time of writing is `.net 4.7.1`). [For more information on which .net CLR version to use based on the .net framework you're targeting - please see this table](https://en.wikipedia.org/wiki/.NET_Framework_version_history#Overview). Defaults to `v4.0`.
         :param str ftps_state: State of FTP / FTPS service for this App Service. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
         :param str health_check_path: The health check path to be pinged by App Service. [For more information - please see the corresponding Kudu Wiki page](https://github.com/projectkudu/kudu/wiki/Health-Check-(Preview)).
         :param bool http2_enabled: Is HTTP2 Enabled on this App Service? Defaults to `false`.
-        :param List['AppServiceSiteConfigIpRestrictionArgs'] ip_restrictions: A list of objects representing ip restrictions as defined below.
+        :param Sequence['AppServiceSiteConfigIpRestrictionArgs'] ip_restrictions: A list of objects representing ip restrictions as defined below.
         :param str java_container: The Java Container to use. If specified `java_version` and `java_container_version` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
         :param str java_container_version: The version of the Java Container to use. If specified `java_version` and `java_container` must also be specified.
         :param str java_version: The version of Java to use. If specified `java_container` and `java_container_version` must also be specified. Possible values are `1.7`, `1.8` and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
@@ -954,7 +954,7 @@ class AppServiceSiteConfig(dict):
         :param str python_version: The version of Python to use in this App Service. Possible values are `2.7` and `3.4`.
         :param bool remote_debugging_enabled: Is Remote Debugging Enabled? Defaults to `false`.
         :param str remote_debugging_version: Which version of Visual Studio should the Remote Debugger be compatible with? Possible values are `VS2012`, `VS2013`, `VS2015` and `VS2017`.
-        :param List['AppServiceSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
+        :param Sequence['AppServiceSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param str scm_type: The type of Source Control enabled for this App Service. Defaults to `None`. Possible values are: `BitbucketGit`, `BitbucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None`, `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
         :param bool scm_use_main_ip_restriction: IP security restrictions for scm to use main. Defaults to false.
         :param bool use32_bit_worker_process: Should the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -1047,7 +1047,7 @@ class AppServiceSiteConfig(dict):
 
     @property
     @pulumi.getter(name="defaultDocuments")
-    def default_documents(self) -> Optional[List[str]]:
+    def default_documents(self) -> Optional[Sequence[str]]:
         """
         The ordering of default documents to load, if an address isn't specified.
         """
@@ -1087,7 +1087,7 @@ class AppServiceSiteConfig(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> Optional[List['outputs.AppServiceSiteConfigIpRestriction']]:
+    def ip_restrictions(self) -> Optional[Sequence['outputs.AppServiceSiteConfigIpRestriction']]:
         """
         A list of objects representing ip restrictions as defined below.
         """
@@ -1183,7 +1183,7 @@ class AppServiceSiteConfig(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> Optional[List['outputs.AppServiceSiteConfigScmIpRestriction']]:
+    def scm_ip_restrictions(self) -> Optional[Sequence['outputs.AppServiceSiteConfigScmIpRestriction']]:
         """
         A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         """
@@ -1236,10 +1236,10 @@ class AppServiceSiteConfig(dict):
 @pulumi.output_type
 class AppServiceSiteConfigCors(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: Optional[bool] = None):
         """
-        :param List[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
+        :param Sequence[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         :param bool support_credentials: Are credentials supported?
         """
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -1248,7 +1248,7 @@ class AppServiceSiteConfigCors(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         """
@@ -1667,7 +1667,7 @@ class FunctionAppAuthSettings(dict):
                  enabled: bool,
                  active_directory: Optional['outputs.FunctionAppAuthSettingsActiveDirectory'] = None,
                  additional_login_params: Optional[Mapping[str, str]] = None,
-                 allowed_external_redirect_urls: Optional[List[str]] = None,
+                 allowed_external_redirect_urls: Optional[Sequence[str]] = None,
                  default_provider: Optional[str] = None,
                  facebook: Optional['outputs.FunctionAppAuthSettingsFacebook'] = None,
                  google: Optional['outputs.FunctionAppAuthSettingsGoogle'] = None,
@@ -1682,7 +1682,7 @@ class FunctionAppAuthSettings(dict):
         :param bool enabled: Is Authentication enabled?
         :param 'FunctionAppAuthSettingsActiveDirectoryArgs' active_directory: A `active_directory` block as defined below.
         :param Mapping[str, str] additional_login_params: Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-        :param List[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
+        :param Sequence[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
         :param str default_provider: The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
         :param 'FunctionAppAuthSettingsFacebookArgs' facebook: A `facebook` block as defined below.
         :param 'FunctionAppAuthSettingsGoogleArgs' google: A `google` block as defined below.
@@ -1748,7 +1748,7 @@ class FunctionAppAuthSettings(dict):
 
     @property
     @pulumi.getter(name="allowedExternalRedirectUrls")
-    def allowed_external_redirect_urls(self) -> Optional[List[str]]:
+    def allowed_external_redirect_urls(self) -> Optional[Sequence[str]]:
         """
         External URLs that can be redirected to as part of logging in or logging out of the app.
         """
@@ -1842,11 +1842,11 @@ class FunctionAppAuthSettings(dict):
 class FunctionAppAuthSettingsActiveDirectory(dict):
     def __init__(__self__, *,
                  client_id: str,
-                 allowed_audiences: Optional[List[str]] = None,
+                 allowed_audiences: Optional[Sequence[str]] = None,
                  client_secret: Optional[str] = None):
         """
         :param str client_id: The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
-        :param List[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
+        :param Sequence[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         :param str client_secret: The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -1865,7 +1865,7 @@ class FunctionAppAuthSettingsActiveDirectory(dict):
 
     @property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[List[str]]:
+    def allowed_audiences(self) -> Optional[Sequence[str]]:
         """
         Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         """
@@ -1888,11 +1888,11 @@ class FunctionAppAuthSettingsFacebook(dict):
     def __init__(__self__, *,
                  app_id: str,
                  app_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str app_id: The App ID of the Facebook app used for login
         :param str app_secret: The App Secret of the Facebook app used for Facebook Login.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_secret", app_secret)
@@ -1917,7 +1917,7 @@ class FunctionAppAuthSettingsFacebook(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
@@ -1932,11 +1932,11 @@ class FunctionAppAuthSettingsGoogle(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OpenID Connect Client ID for the Google web application.
         :param str client_secret: The client secret associated with the Google web application.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -1961,7 +1961,7 @@ class FunctionAppAuthSettingsGoogle(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
@@ -1976,11 +1976,11 @@ class FunctionAppAuthSettingsMicrosoft(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OAuth 2.0 client ID that was created for the app used for authentication.
         :param str client_secret: The OAuth 2.0 client secret that was created for the app used for authentication.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -2005,7 +2005,7 @@ class FunctionAppAuthSettingsMicrosoft(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
@@ -2084,12 +2084,12 @@ class FunctionAppConnectionString(dict):
 class FunctionAppIdentity(dict):
     def __init__(__self__, *,
                  type: str,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
         """
         :param str type: Specifies the identity type of the Function App. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
-        :param List[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
+        :param Sequence[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         :param str principal_id: The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
         :param str tenant_id: The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
         """
@@ -2111,7 +2111,7 @@ class FunctionAppIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         """
@@ -2145,11 +2145,11 @@ class FunctionAppSiteConfig(dict):
                  cors: Optional['outputs.FunctionAppSiteConfigCors'] = None,
                  ftps_state: Optional[str] = None,
                  http2_enabled: Optional[bool] = None,
-                 ip_restrictions: Optional[List['outputs.FunctionAppSiteConfigIpRestriction']] = None,
+                 ip_restrictions: Optional[Sequence['outputs.FunctionAppSiteConfigIpRestriction']] = None,
                  linux_fx_version: Optional[str] = None,
                  min_tls_version: Optional[str] = None,
                  pre_warmed_instance_count: Optional[float] = None,
-                 scm_ip_restrictions: Optional[List['outputs.FunctionAppSiteConfigScmIpRestriction']] = None,
+                 scm_ip_restrictions: Optional[Sequence['outputs.FunctionAppSiteConfigScmIpRestriction']] = None,
                  scm_type: Optional[str] = None,
                  scm_use_main_ip_restriction: Optional[bool] = None,
                  use32_bit_worker_process: Optional[bool] = None,
@@ -2159,11 +2159,11 @@ class FunctionAppSiteConfig(dict):
         :param 'FunctionAppSiteConfigCorsArgs' cors: A `cors` block as defined below.
         :param str ftps_state: State of FTP / FTPS service for this function app. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
         :param bool http2_enabled: Specifies whether or not the http2 protocol should be enabled. Defaults to `false`.
-        :param List['FunctionAppSiteConfigIpRestrictionArgs'] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
+        :param Sequence['FunctionAppSiteConfigIpRestrictionArgs'] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param str linux_fx_version: Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
         :param str min_tls_version: The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
         :param float pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
-        :param List['FunctionAppSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
+        :param Sequence['FunctionAppSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param str scm_type: The type of Source Control used by the Function App. Valid values include: `BitBucketGit`, `BitBucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None` (dafault), `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
         :param bool scm_use_main_ip_restriction: IP security restrictions for scm to use main. Defaults to false.
         :param bool use32_bit_worker_process: Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
@@ -2237,7 +2237,7 @@ class FunctionAppSiteConfig(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> Optional[List['outputs.FunctionAppSiteConfigIpRestriction']]:
+    def ip_restrictions(self) -> Optional[Sequence['outputs.FunctionAppSiteConfigIpRestriction']]:
         """
         A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         """
@@ -2269,7 +2269,7 @@ class FunctionAppSiteConfig(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> Optional[List['outputs.FunctionAppSiteConfigScmIpRestriction']]:
+    def scm_ip_restrictions(self) -> Optional[Sequence['outputs.FunctionAppSiteConfigScmIpRestriction']]:
         """
         A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         """
@@ -2314,10 +2314,10 @@ class FunctionAppSiteConfig(dict):
 @pulumi.output_type
 class FunctionAppSiteConfigCors(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: Optional[bool] = None):
         """
-        :param List[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
+        :param Sequence[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         :param bool support_credentials: Are credentials supported?
         """
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -2326,7 +2326,7 @@ class FunctionAppSiteConfigCors(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         """
@@ -2540,7 +2540,7 @@ class FunctionAppSlotAuthSettings(dict):
                  enabled: bool,
                  active_directory: Optional['outputs.FunctionAppSlotAuthSettingsActiveDirectory'] = None,
                  additional_login_params: Optional[Mapping[str, str]] = None,
-                 allowed_external_redirect_urls: Optional[List[str]] = None,
+                 allowed_external_redirect_urls: Optional[Sequence[str]] = None,
                  default_provider: Optional[str] = None,
                  facebook: Optional['outputs.FunctionAppSlotAuthSettingsFacebook'] = None,
                  google: Optional['outputs.FunctionAppSlotAuthSettingsGoogle'] = None,
@@ -2555,7 +2555,7 @@ class FunctionAppSlotAuthSettings(dict):
         :param bool enabled: Is Authentication enabled?
         :param 'FunctionAppSlotAuthSettingsActiveDirectoryArgs' active_directory: An `active_directory` block as defined below.
         :param Mapping[str, str] additional_login_params: Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-        :param List[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
+        :param Sequence[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
         :param str default_provider: The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
         :param 'FunctionAppSlotAuthSettingsFacebookArgs' facebook: A `facebook` block as defined below.
         :param 'FunctionAppSlotAuthSettingsGoogleArgs' google: A `google` block as defined below.
@@ -2621,7 +2621,7 @@ class FunctionAppSlotAuthSettings(dict):
 
     @property
     @pulumi.getter(name="allowedExternalRedirectUrls")
-    def allowed_external_redirect_urls(self) -> Optional[List[str]]:
+    def allowed_external_redirect_urls(self) -> Optional[Sequence[str]]:
         """
         External URLs that can be redirected to as part of logging in or logging out of the app.
         """
@@ -2715,11 +2715,11 @@ class FunctionAppSlotAuthSettings(dict):
 class FunctionAppSlotAuthSettingsActiveDirectory(dict):
     def __init__(__self__, *,
                  client_id: str,
-                 allowed_audiences: Optional[List[str]] = None,
+                 allowed_audiences: Optional[Sequence[str]] = None,
                  client_secret: Optional[str] = None):
         """
         :param str client_id: The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
-        :param List[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
+        :param Sequence[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         :param str client_secret: The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -2738,7 +2738,7 @@ class FunctionAppSlotAuthSettingsActiveDirectory(dict):
 
     @property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[List[str]]:
+    def allowed_audiences(self) -> Optional[Sequence[str]]:
         """
         Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         """
@@ -2761,11 +2761,11 @@ class FunctionAppSlotAuthSettingsFacebook(dict):
     def __init__(__self__, *,
                  app_id: str,
                  app_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str app_id: The App ID of the Facebook app used for login
         :param str app_secret: The App Secret of the Facebook app used for Facebook Login.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_secret", app_secret)
@@ -2790,7 +2790,7 @@ class FunctionAppSlotAuthSettingsFacebook(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
@@ -2805,11 +2805,11 @@ class FunctionAppSlotAuthSettingsGoogle(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OpenID Connect Client ID for the Google web application.
         :param str client_secret: The client secret associated with the Google web application.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -2834,7 +2834,7 @@ class FunctionAppSlotAuthSettingsGoogle(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
@@ -2849,11 +2849,11 @@ class FunctionAppSlotAuthSettingsMicrosoft(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OAuth 2.0 client ID that was created for the app used for authentication.
         :param str client_secret: The OAuth 2.0 client secret that was created for the app used for authentication.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -2878,7 +2878,7 @@ class FunctionAppSlotAuthSettingsMicrosoft(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
@@ -2957,12 +2957,12 @@ class FunctionAppSlotConnectionString(dict):
 class FunctionAppSlotIdentity(dict):
     def __init__(__self__, *,
                  type: str,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
         """
         :param str type: Specifies the identity type of the Function App. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
-        :param List[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
+        :param Sequence[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         :param str principal_id: The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
         :param str tenant_id: The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
         """
@@ -2984,7 +2984,7 @@ class FunctionAppSlotIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         """
@@ -3018,11 +3018,11 @@ class FunctionAppSlotSiteConfig(dict):
                  cors: Optional['outputs.FunctionAppSlotSiteConfigCors'] = None,
                  ftps_state: Optional[str] = None,
                  http2_enabled: Optional[bool] = None,
-                 ip_restrictions: Optional[List['outputs.FunctionAppSlotSiteConfigIpRestriction']] = None,
+                 ip_restrictions: Optional[Sequence['outputs.FunctionAppSlotSiteConfigIpRestriction']] = None,
                  linux_fx_version: Optional[str] = None,
                  min_tls_version: Optional[str] = None,
                  pre_warmed_instance_count: Optional[float] = None,
-                 scm_ip_restrictions: Optional[List['outputs.FunctionAppSlotSiteConfigScmIpRestriction']] = None,
+                 scm_ip_restrictions: Optional[Sequence['outputs.FunctionAppSlotSiteConfigScmIpRestriction']] = None,
                  scm_type: Optional[str] = None,
                  scm_use_main_ip_restriction: Optional[bool] = None,
                  use32_bit_worker_process: Optional[bool] = None,
@@ -3033,7 +3033,7 @@ class FunctionAppSlotSiteConfig(dict):
         :param 'FunctionAppSlotSiteConfigCorsArgs' cors: A `cors` block as defined below.
         :param str ftps_state: State of FTP / FTPS service for this function app. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
         :param bool http2_enabled: Specifies whether or not the http2 protocol should be enabled. Defaults to `false`.
-        :param List['FunctionAppSlotSiteConfigIpRestrictionArgs'] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
+        :param Sequence['FunctionAppSlotSiteConfigIpRestrictionArgs'] ip_restrictions: A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         :param str linux_fx_version: Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
         :param str min_tls_version: The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
         :param float pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
@@ -3111,7 +3111,7 @@ class FunctionAppSlotSiteConfig(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> Optional[List['outputs.FunctionAppSlotSiteConfigIpRestriction']]:
+    def ip_restrictions(self) -> Optional[Sequence['outputs.FunctionAppSlotSiteConfigIpRestriction']]:
         """
         A [List of objects](https://www.terraform.io/docs/configuration/attr-as-blocks.html) representing ip restrictions as defined below.
         """
@@ -3143,7 +3143,7 @@ class FunctionAppSlotSiteConfig(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> Optional[List['outputs.FunctionAppSlotSiteConfigScmIpRestriction']]:
+    def scm_ip_restrictions(self) -> Optional[Sequence['outputs.FunctionAppSlotSiteConfigScmIpRestriction']]:
         return pulumi.get(self, "scm_ip_restrictions")
 
     @property
@@ -3179,10 +3179,10 @@ class FunctionAppSlotSiteConfig(dict):
 @pulumi.output_type
 class FunctionAppSlotSiteConfigCors(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: Optional[bool] = None):
         """
-        :param List[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
+        :param Sequence[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         :param bool support_credentials: Are credentials supported?
         """
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -3191,7 +3191,7 @@ class FunctionAppSlotSiteConfigCors(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         """
@@ -3519,7 +3519,7 @@ class SlotAuthSettings(dict):
                  enabled: bool,
                  active_directory: Optional['outputs.SlotAuthSettingsActiveDirectory'] = None,
                  additional_login_params: Optional[Mapping[str, str]] = None,
-                 allowed_external_redirect_urls: Optional[List[str]] = None,
+                 allowed_external_redirect_urls: Optional[Sequence[str]] = None,
                  default_provider: Optional[str] = None,
                  facebook: Optional['outputs.SlotAuthSettingsFacebook'] = None,
                  google: Optional['outputs.SlotAuthSettingsGoogle'] = None,
@@ -3534,7 +3534,7 @@ class SlotAuthSettings(dict):
         :param bool enabled: Is Authentication enabled?
         :param 'SlotAuthSettingsActiveDirectoryArgs' active_directory: A `active_directory` block as defined below.
         :param Mapping[str, str] additional_login_params: Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-        :param List[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
+        :param Sequence[str] allowed_external_redirect_urls: External URLs that can be redirected to as part of logging in or logging out of the app.
         :param str default_provider: The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
         :param 'SlotAuthSettingsFacebookArgs' facebook: A `facebook` block as defined below.
         :param 'SlotAuthSettingsGoogleArgs' google: A `google` block as defined below.
@@ -3600,7 +3600,7 @@ class SlotAuthSettings(dict):
 
     @property
     @pulumi.getter(name="allowedExternalRedirectUrls")
-    def allowed_external_redirect_urls(self) -> Optional[List[str]]:
+    def allowed_external_redirect_urls(self) -> Optional[Sequence[str]]:
         """
         External URLs that can be redirected to as part of logging in or logging out of the app.
         """
@@ -3694,11 +3694,11 @@ class SlotAuthSettings(dict):
 class SlotAuthSettingsActiveDirectory(dict):
     def __init__(__self__, *,
                  client_id: str,
-                 allowed_audiences: Optional[List[str]] = None,
+                 allowed_audiences: Optional[Sequence[str]] = None,
                  client_secret: Optional[str] = None):
         """
         :param str client_id: The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
-        :param List[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
+        :param Sequence[str] allowed_audiences: Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         :param str client_secret: The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -3717,7 +3717,7 @@ class SlotAuthSettingsActiveDirectory(dict):
 
     @property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[List[str]]:
+    def allowed_audiences(self) -> Optional[Sequence[str]]:
         """
         Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
         """
@@ -3740,11 +3740,11 @@ class SlotAuthSettingsFacebook(dict):
     def __init__(__self__, *,
                  app_id: str,
                  app_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str app_id: The App ID of the Facebook app used for login
         :param str app_secret: The App Secret of the Facebook app used for Facebook Login.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_secret", app_secret)
@@ -3769,7 +3769,7 @@ class SlotAuthSettingsFacebook(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. https://developers.facebook.com/docs/facebook-login
         """
@@ -3784,11 +3784,11 @@ class SlotAuthSettingsGoogle(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OpenID Connect Client ID for the Google web application.
         :param str client_secret: The client secret associated with the Google web application.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -3813,7 +3813,7 @@ class SlotAuthSettingsGoogle(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. https://developers.google.com/identity/sign-in/web/
         """
@@ -3828,11 +3828,11 @@ class SlotAuthSettingsMicrosoft(dict):
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
-                 oauth_scopes: Optional[List[str]] = None):
+                 oauth_scopes: Optional[Sequence[str]] = None):
         """
         :param str client_id: The OAuth 2.0 client ID that was created for the app used for authentication.
         :param str client_secret: The OAuth 2.0 client secret that was created for the app used for authentication.
-        :param List[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
+        :param Sequence[str] oauth_scopes: The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -3857,7 +3857,7 @@ class SlotAuthSettingsMicrosoft(dict):
 
     @property
     @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> Optional[List[str]]:
+    def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
         The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. https://msdn.microsoft.com/en-us/library/dn631845.aspx
         """
@@ -3936,12 +3936,12 @@ class SlotConnectionString(dict):
 class SlotIdentity(dict):
     def __init__(__self__, *,
                  type: str,
-                 identity_ids: Optional[List[str]] = None,
+                 identity_ids: Optional[Sequence[str]] = None,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
         """
         :param str type: Specifies the identity type of the App Service. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
-        :param List[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
+        :param Sequence[str] identity_ids: Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         """
         pulumi.set(__self__, "type", type)
         if identity_ids is not None:
@@ -3961,7 +3961,7 @@ class SlotIdentity(dict):
 
     @property
     @pulumi.getter(name="identityIds")
-    def identity_ids(self) -> Optional[List[str]]:
+    def identity_ids(self) -> Optional[Sequence[str]]:
         """
         Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
         """
@@ -4197,12 +4197,12 @@ class SlotSiteConfig(dict):
                  app_command_line: Optional[str] = None,
                  auto_swap_slot_name: Optional[str] = None,
                  cors: Optional['outputs.SlotSiteConfigCors'] = None,
-                 default_documents: Optional[List[str]] = None,
+                 default_documents: Optional[Sequence[str]] = None,
                  dotnet_framework_version: Optional[str] = None,
                  ftps_state: Optional[str] = None,
                  health_check_path: Optional[str] = None,
                  http2_enabled: Optional[bool] = None,
-                 ip_restrictions: Optional[List['outputs.SlotSiteConfigIpRestriction']] = None,
+                 ip_restrictions: Optional[Sequence['outputs.SlotSiteConfigIpRestriction']] = None,
                  java_container: Optional[str] = None,
                  java_container_version: Optional[str] = None,
                  java_version: Optional[str] = None,
@@ -4214,7 +4214,7 @@ class SlotSiteConfig(dict):
                  python_version: Optional[str] = None,
                  remote_debugging_enabled: Optional[bool] = None,
                  remote_debugging_version: Optional[str] = None,
-                 scm_ip_restrictions: Optional[List['outputs.SlotSiteConfigScmIpRestriction']] = None,
+                 scm_ip_restrictions: Optional[Sequence['outputs.SlotSiteConfigScmIpRestriction']] = None,
                  scm_type: Optional[str] = None,
                  scm_use_main_ip_restriction: Optional[bool] = None,
                  use32_bit_worker_process: Optional[bool] = None,
@@ -4225,10 +4225,10 @@ class SlotSiteConfig(dict):
         :param str app_command_line: App command line to launch, e.g. `/sbin/myserver -b 0.0.0.0`.
         :param str auto_swap_slot_name: The name of the slot to automatically swap to during deployment
         :param 'SlotSiteConfigCorsArgs' cors: A `cors` block as defined below.
-        :param List[str] default_documents: The ordering of default documents to load, if an address isn't specified.
+        :param Sequence[str] default_documents: The ordering of default documents to load, if an address isn't specified.
         :param str dotnet_framework_version: The version of the .net framework's CLR used in this App Service Slot. Possible values are `v2.0` (which will use the latest version of the .net framework for the .net CLR v2 - currently `.net 3.5`) and `v4.0` (which corresponds to the latest version of the .net CLR v4 - which at the time of writing is `.net 4.7.1`). [For more information on which .net CLR version to use based on the .net framework you're targeting - please see this table](https://en.wikipedia.org/wiki/.NET_Framework_version_history#Overview). Defaults to `v4.0`.
         :param bool http2_enabled: Is HTTP2 Enabled on this App Service? Defaults to `false`.
-        :param List['SlotSiteConfigIpRestrictionArgs'] ip_restrictions: A list of objects representing ip restrictions as defined below.
+        :param Sequence['SlotSiteConfigIpRestrictionArgs'] ip_restrictions: A list of objects representing ip restrictions as defined below.
         :param str java_container: The Java Container to use. If specified `java_version` and `java_container_version` must also be specified. Possible values are `JETTY` and `TOMCAT`.
         :param str java_container_version: The version of the Java Container to use. If specified `java_version` and `java_container` must also be specified.
         :param str java_version: The version of Java to use. If specified `java_container` and `java_container_version` must also be specified. Possible values are `1.7`, `1.8`, and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
@@ -4332,7 +4332,7 @@ class SlotSiteConfig(dict):
 
     @property
     @pulumi.getter(name="defaultDocuments")
-    def default_documents(self) -> Optional[List[str]]:
+    def default_documents(self) -> Optional[Sequence[str]]:
         """
         The ordering of default documents to load, if an address isn't specified.
         """
@@ -4366,7 +4366,7 @@ class SlotSiteConfig(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> Optional[List['outputs.SlotSiteConfigIpRestriction']]:
+    def ip_restrictions(self) -> Optional[Sequence['outputs.SlotSiteConfigIpRestriction']]:
         """
         A list of objects representing ip restrictions as defined below.
         """
@@ -4459,7 +4459,7 @@ class SlotSiteConfig(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> Optional[List['outputs.SlotSiteConfigScmIpRestriction']]:
+    def scm_ip_restrictions(self) -> Optional[Sequence['outputs.SlotSiteConfigScmIpRestriction']]:
         return pulumi.get(self, "scm_ip_restrictions")
 
     @property
@@ -4503,10 +4503,10 @@ class SlotSiteConfig(dict):
 @pulumi.output_type
 class SlotSiteConfigCors(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: Optional[bool] = None):
         """
-        :param List[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
+        :param Sequence[str] allowed_origins: A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         :param bool support_credentials: Are credentials supported?
         """
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -4515,7 +4515,7 @@ class SlotSiteConfigCors(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
         """
@@ -4808,13 +4808,13 @@ class GetAppServiceSiteConfigResult(dict):
     def __init__(__self__, *,
                  always_on: bool,
                  app_command_line: str,
-                 cors: List['outputs.GetAppServiceSiteConfigCorResult'],
-                 default_documents: List[str],
+                 cors: Sequence['outputs.GetAppServiceSiteConfigCorResult'],
+                 default_documents: Sequence[str],
                  dotnet_framework_version: str,
                  ftps_state: str,
                  health_check_path: str,
                  http2_enabled: bool,
-                 ip_restrictions: List['outputs.GetAppServiceSiteConfigIpRestrictionResult'],
+                 ip_restrictions: Sequence['outputs.GetAppServiceSiteConfigIpRestrictionResult'],
                  java_container: str,
                  java_container_version: str,
                  java_version: str,
@@ -4826,7 +4826,7 @@ class GetAppServiceSiteConfigResult(dict):
                  python_version: str,
                  remote_debugging_enabled: bool,
                  remote_debugging_version: str,
-                 scm_ip_restrictions: List['outputs.GetAppServiceSiteConfigScmIpRestrictionResult'],
+                 scm_ip_restrictions: Sequence['outputs.GetAppServiceSiteConfigScmIpRestrictionResult'],
                  scm_type: str,
                  scm_use_main_ip_restriction: bool,
                  use32_bit_worker_process: bool,
@@ -4835,13 +4835,13 @@ class GetAppServiceSiteConfigResult(dict):
         """
         :param bool always_on: Is the app loaded at all times?
         :param str app_command_line: App command line to launch.
-        :param List['GetAppServiceSiteConfigCorArgs'] cors: A `cors` block as defined above.
-        :param List[str] default_documents: The ordering of default documents to load, if an address isn't specified.
+        :param Sequence['GetAppServiceSiteConfigCorArgs'] cors: A `cors` block as defined above.
+        :param Sequence[str] default_documents: The ordering of default documents to load, if an address isn't specified.
         :param str dotnet_framework_version: The version of the .net framework's CLR used in this App Service.
         :param str ftps_state: State of FTP / FTPS service for this AppService.
         :param str health_check_path: The health check path to be pinged by App Service.
         :param bool http2_enabled: Is HTTP2 Enabled on this App Service?
-        :param List['GetAppServiceSiteConfigIpRestrictionArgs'] ip_restrictions: One or more `ip_restriction` blocks as defined above.
+        :param Sequence['GetAppServiceSiteConfigIpRestrictionArgs'] ip_restrictions: One or more `ip_restriction` blocks as defined above.
         :param str java_container: The Java Container in use.
         :param str java_container_version: The version of the Java Container in use.
         :param str java_version: The version of Java in use.
@@ -4853,7 +4853,7 @@ class GetAppServiceSiteConfigResult(dict):
         :param str python_version: The version of Python used in this App Service.
         :param bool remote_debugging_enabled: Is Remote Debugging Enabled in this App Service?
         :param str remote_debugging_version: Which version of Visual Studio is the Remote Debugger compatible with?
-        :param List['GetAppServiceSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: One or more `scm_ip_restriction` blocks as defined above.
+        :param Sequence['GetAppServiceSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: One or more `scm_ip_restriction` blocks as defined above.
         :param str scm_type: The type of Source Control enabled for this App Service.
         :param bool scm_use_main_ip_restriction: IP security restrictions for scm to use main.
         :param bool use32_bit_worker_process: Does the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -4905,7 +4905,7 @@ class GetAppServiceSiteConfigResult(dict):
 
     @property
     @pulumi.getter
-    def cors(self) -> List['outputs.GetAppServiceSiteConfigCorResult']:
+    def cors(self) -> Sequence['outputs.GetAppServiceSiteConfigCorResult']:
         """
         A `cors` block as defined above.
         """
@@ -4913,7 +4913,7 @@ class GetAppServiceSiteConfigResult(dict):
 
     @property
     @pulumi.getter(name="defaultDocuments")
-    def default_documents(self) -> List[str]:
+    def default_documents(self) -> Sequence[str]:
         """
         The ordering of default documents to load, if an address isn't specified.
         """
@@ -4953,7 +4953,7 @@ class GetAppServiceSiteConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> List['outputs.GetAppServiceSiteConfigIpRestrictionResult']:
+    def ip_restrictions(self) -> Sequence['outputs.GetAppServiceSiteConfigIpRestrictionResult']:
         """
         One or more `ip_restriction` blocks as defined above.
         """
@@ -5049,7 +5049,7 @@ class GetAppServiceSiteConfigResult(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> List['outputs.GetAppServiceSiteConfigScmIpRestrictionResult']:
+    def scm_ip_restrictions(self) -> Sequence['outputs.GetAppServiceSiteConfigScmIpRestrictionResult']:
         """
         One or more `scm_ip_restriction` blocks as defined above.
         """
@@ -5099,10 +5099,10 @@ class GetAppServiceSiteConfigResult(dict):
 @pulumi.output_type
 class GetAppServiceSiteConfigCorResult(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: bool):
         """
-        :param List[str] allowed_origins: A list of origins which are able to make cross-origin calls.
+        :param Sequence[str] allowed_origins: A list of origins which are able to make cross-origin calls.
         :param bool support_credentials: Are credentials supported?
         """
         pulumi.set(__self__, "allowed_origins", allowed_origins)
@@ -5110,7 +5110,7 @@ class GetAppServiceSiteConfigCorResult(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         """
         A list of origins which are able to make cross-origin calls.
         """
@@ -5443,11 +5443,11 @@ class GetFunctionAppSiteConfigResult(dict):
                  cors: 'outputs.GetFunctionAppSiteConfigCorsResult',
                  ftps_state: str,
                  http2_enabled: bool,
-                 ip_restrictions: List['outputs.GetFunctionAppSiteConfigIpRestrictionResult'],
+                 ip_restrictions: Sequence['outputs.GetFunctionAppSiteConfigIpRestrictionResult'],
                  linux_fx_version: str,
                  min_tls_version: str,
                  pre_warmed_instance_count: float,
-                 scm_ip_restrictions: List['outputs.GetFunctionAppSiteConfigScmIpRestrictionResult'],
+                 scm_ip_restrictions: Sequence['outputs.GetFunctionAppSiteConfigScmIpRestrictionResult'],
                  scm_type: str,
                  scm_use_main_ip_restriction: bool,
                  use32_bit_worker_process: bool,
@@ -5457,11 +5457,11 @@ class GetFunctionAppSiteConfigResult(dict):
         :param 'GetFunctionAppSiteConfigCorsArgs' cors: A `cors` block as defined above.
         :param str ftps_state: State of FTP / FTPS service for this AppService.
         :param bool http2_enabled: Is HTTP2 Enabled on this App Service?
-        :param List['GetFunctionAppSiteConfigIpRestrictionArgs'] ip_restrictions: One or more `ip_restriction` blocks as defined above.
+        :param Sequence['GetFunctionAppSiteConfigIpRestrictionArgs'] ip_restrictions: One or more `ip_restriction` blocks as defined above.
         :param str linux_fx_version: Linux App Framework and version for the AppService.
         :param str min_tls_version: The minimum supported TLS version for this App Service.
         :param float pre_warmed_instance_count: The number of pre-warmed instances for this function app. Only applicable to apps on the Premium plan.
-        :param List['GetFunctionAppSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: One or more `scm_ip_restriction` blocks as defined above.
+        :param Sequence['GetFunctionAppSiteConfigScmIpRestrictionArgs'] scm_ip_restrictions: One or more `scm_ip_restriction` blocks as defined above.
         :param str scm_type: The type of Source Control enabled for this App Service.
         :param bool scm_use_main_ip_restriction: IP security restrictions for scm to use main.
         :param bool use32_bit_worker_process: Does the App Service run in 32 bit mode, rather than 64 bit mode?
@@ -5521,7 +5521,7 @@ class GetFunctionAppSiteConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipRestrictions")
-    def ip_restrictions(self) -> List['outputs.GetFunctionAppSiteConfigIpRestrictionResult']:
+    def ip_restrictions(self) -> Sequence['outputs.GetFunctionAppSiteConfigIpRestrictionResult']:
         """
         One or more `ip_restriction` blocks as defined above.
         """
@@ -5553,7 +5553,7 @@ class GetFunctionAppSiteConfigResult(dict):
 
     @property
     @pulumi.getter(name="scmIpRestrictions")
-    def scm_ip_restrictions(self) -> List['outputs.GetFunctionAppSiteConfigScmIpRestrictionResult']:
+    def scm_ip_restrictions(self) -> Sequence['outputs.GetFunctionAppSiteConfigScmIpRestrictionResult']:
         """
         One or more `scm_ip_restriction` blocks as defined above.
         """
@@ -5595,7 +5595,7 @@ class GetFunctionAppSiteConfigResult(dict):
 @pulumi.output_type
 class GetFunctionAppSiteConfigCorsResult(dict):
     def __init__(__self__, *,
-                 allowed_origins: List[str],
+                 allowed_origins: Sequence[str],
                  support_credentials: Optional[bool] = None):
         pulumi.set(__self__, "allowed_origins", allowed_origins)
         if support_credentials is not None:
@@ -5603,7 +5603,7 @@ class GetFunctionAppSiteConfigCorsResult(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> List[str]:
+    def allowed_origins(self) -> Sequence[str]:
         return pulumi.get(self, "allowed_origins")
 
     @property

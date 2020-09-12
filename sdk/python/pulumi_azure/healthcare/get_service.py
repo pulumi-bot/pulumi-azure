@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -54,12 +54,12 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="accessPolicyObjectIds")
-    def access_policy_object_ids(self) -> List[str]:
+    def access_policy_object_ids(self) -> Sequence[str]:
         return pulumi.get(self, "access_policy_object_ids")
 
     @property
     @pulumi.getter(name="authenticationConfigurations")
-    def authentication_configurations(self) -> List['outputs.GetServiceAuthenticationConfigurationResult']:
+    def authentication_configurations(self) -> Sequence['outputs.GetServiceAuthenticationConfigurationResult']:
         """
         An `authentication_configuration` block as defined below.
         """
@@ -67,7 +67,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="corsConfigurations")
-    def cors_configurations(self) -> List['outputs.GetServiceCorsConfigurationResult']:
+    def cors_configurations(self) -> Sequence['outputs.GetServiceCorsConfigurationResult']:
         """
         A `cors_configuration` block as defined below.
         """

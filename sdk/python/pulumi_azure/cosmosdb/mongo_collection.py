@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class MongoCollection(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[str]] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
                  default_ttl_seconds: Optional[pulumi.Input[float]] = None,
-                 indices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]]] = None,
+                 indices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  shard_key: Optional[pulumi.Input[str]] = None,
@@ -55,7 +55,7 @@ class MongoCollection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the Cosmos DB Mongo Database in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] default_ttl_seconds: The default Time To Live in seconds. If the value is `-1` or `0`, items are not automatically expired.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]] indices: One or more `index` blocks as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]] indices: One or more `index` blocks as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Cosmos DB Mongo Collection. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] shard_key: The name of the key to partition on for sharding. There must not be any other unique index keys.
@@ -106,11 +106,11 @@ class MongoCollection(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[str]] = None,
             database_name: Optional[pulumi.Input[str]] = None,
             default_ttl_seconds: Optional[pulumi.Input[float]] = None,
-            indices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]]] = None,
+            indices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             shard_key: Optional[pulumi.Input[str]] = None,
-            system_indexes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionSystemIndexArgs']]]]] = None,
+            system_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionSystemIndexArgs']]]]] = None,
             throughput: Optional[pulumi.Input[float]] = None) -> 'MongoCollection':
         """
         Get an existing MongoCollection resource's state with the given name, id, and optional extra
@@ -121,11 +121,11 @@ class MongoCollection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the Cosmos DB Mongo Database in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
         :param pulumi.Input[float] default_ttl_seconds: The default Time To Live in seconds. If the value is `-1` or `0`, items are not automatically expired.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]] indices: One or more `index` blocks as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionIndexArgs']]]] indices: One or more `index` blocks as defined below.
         :param pulumi.Input[str] name: Specifies the name of the Cosmos DB Mongo Collection. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] shard_key: The name of the key to partition on for sharding. There must not be any other unique index keys.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MongoCollectionSystemIndexArgs']]]] system_indexes: One or more `system_indexes` blocks as defined below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MongoCollectionSystemIndexArgs']]]] system_indexes: One or more `system_indexes` blocks as defined below.
         :param pulumi.Input[float] throughput: The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -166,7 +166,7 @@ class MongoCollection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def indices(self) -> pulumi.Output[Optional[List['outputs.MongoCollectionIndex']]]:
+    def indices(self) -> pulumi.Output[Optional[Sequence['outputs.MongoCollectionIndex']]]:
         """
         One or more `index` blocks as defined below.
         """
@@ -198,7 +198,7 @@ class MongoCollection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemIndexes")
-    def system_indexes(self) -> pulumi.Output[List['outputs.MongoCollectionSystemIndex']]:
+    def system_indexes(self) -> pulumi.Output[Sequence['outputs.MongoCollectionSystemIndex']]:
         """
         One or more `system_indexes` blocks as defined below.
         """
