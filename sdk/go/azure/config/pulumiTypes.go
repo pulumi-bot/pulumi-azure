@@ -17,36 +17,6 @@ type Features struct {
 	VirtualMachineScaleSet *FeaturesVirtualMachineScaleSet `pulumi:"virtualMachineScaleSet"`
 }
 
-// FeaturesInput is an input type that accepts FeaturesArgs and FeaturesOutput values.
-// You can construct a concrete instance of `FeaturesInput` via:
-//
-//          FeaturesArgs{...}
-type FeaturesInput interface {
-	pulumi.Input
-
-	ToFeaturesOutput() FeaturesOutput
-	ToFeaturesOutputWithContext(context.Context) FeaturesOutput
-}
-
-type FeaturesArgs struct {
-	KeyVault               FeaturesKeyVaultPtrInput               `pulumi:"keyVault"`
-	Network                FeaturesNetworkPtrInput                `pulumi:"network"`
-	VirtualMachine         FeaturesVirtualMachinePtrInput         `pulumi:"virtualMachine"`
-	VirtualMachineScaleSet FeaturesVirtualMachineScaleSetPtrInput `pulumi:"virtualMachineScaleSet"`
-}
-
-func (FeaturesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Features)(nil)).Elem()
-}
-
-func (i FeaturesArgs) ToFeaturesOutput() FeaturesOutput {
-	return i.ToFeaturesOutputWithContext(context.Background())
-}
-
-func (i FeaturesArgs) ToFeaturesOutputWithContext(ctx context.Context) FeaturesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesOutput)
-}
-
 type FeaturesOutput struct{ *pulumi.OutputState }
 
 func (FeaturesOutput) ElementType() reflect.Type {
@@ -80,75 +50,6 @@ func (o FeaturesOutput) VirtualMachineScaleSet() FeaturesVirtualMachineScaleSetP
 type FeaturesKeyVault struct {
 	PurgeSoftDeleteOnDestroy    *bool `pulumi:"purgeSoftDeleteOnDestroy"`
 	RecoverSoftDeletedKeyVaults *bool `pulumi:"recoverSoftDeletedKeyVaults"`
-}
-
-// FeaturesKeyVaultInput is an input type that accepts FeaturesKeyVaultArgs and FeaturesKeyVaultOutput values.
-// You can construct a concrete instance of `FeaturesKeyVaultInput` via:
-//
-//          FeaturesKeyVaultArgs{...}
-type FeaturesKeyVaultInput interface {
-	pulumi.Input
-
-	ToFeaturesKeyVaultOutput() FeaturesKeyVaultOutput
-	ToFeaturesKeyVaultOutputWithContext(context.Context) FeaturesKeyVaultOutput
-}
-
-type FeaturesKeyVaultArgs struct {
-	PurgeSoftDeleteOnDestroy    pulumi.BoolPtrInput `pulumi:"purgeSoftDeleteOnDestroy"`
-	RecoverSoftDeletedKeyVaults pulumi.BoolPtrInput `pulumi:"recoverSoftDeletedKeyVaults"`
-}
-
-func (FeaturesKeyVaultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeaturesKeyVault)(nil)).Elem()
-}
-
-func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultOutput() FeaturesKeyVaultOutput {
-	return i.ToFeaturesKeyVaultOutputWithContext(context.Background())
-}
-
-func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultOutputWithContext(ctx context.Context) FeaturesKeyVaultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultOutput)
-}
-
-func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultPtrOutput() FeaturesKeyVaultPtrOutput {
-	return i.ToFeaturesKeyVaultPtrOutputWithContext(context.Background())
-}
-
-func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) FeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultOutput).ToFeaturesKeyVaultPtrOutputWithContext(ctx)
-}
-
-// FeaturesKeyVaultPtrInput is an input type that accepts FeaturesKeyVaultArgs, FeaturesKeyVaultPtr and FeaturesKeyVaultPtrOutput values.
-// You can construct a concrete instance of `FeaturesKeyVaultPtrInput` via:
-//
-//          FeaturesKeyVaultArgs{...}
-//
-//  or:
-//
-//          nil
-type FeaturesKeyVaultPtrInput interface {
-	pulumi.Input
-
-	ToFeaturesKeyVaultPtrOutput() FeaturesKeyVaultPtrOutput
-	ToFeaturesKeyVaultPtrOutputWithContext(context.Context) FeaturesKeyVaultPtrOutput
-}
-
-type featuresKeyVaultPtrType FeaturesKeyVaultArgs
-
-func FeaturesKeyVaultPtr(v *FeaturesKeyVaultArgs) FeaturesKeyVaultPtrInput {
-	return (*featuresKeyVaultPtrType)(v)
-}
-
-func (*featuresKeyVaultPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeaturesKeyVault)(nil)).Elem()
-}
-
-func (i *featuresKeyVaultPtrType) ToFeaturesKeyVaultPtrOutput() FeaturesKeyVaultPtrOutput {
-	return i.ToFeaturesKeyVaultPtrOutputWithContext(context.Background())
-}
-
-func (i *featuresKeyVaultPtrType) ToFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) FeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultPtrOutput)
 }
 
 type FeaturesKeyVaultOutput struct{ *pulumi.OutputState }
@@ -222,74 +123,6 @@ type FeaturesNetwork struct {
 	RelaxedLocking *bool `pulumi:"relaxedLocking"`
 }
 
-// FeaturesNetworkInput is an input type that accepts FeaturesNetworkArgs and FeaturesNetworkOutput values.
-// You can construct a concrete instance of `FeaturesNetworkInput` via:
-//
-//          FeaturesNetworkArgs{...}
-type FeaturesNetworkInput interface {
-	pulumi.Input
-
-	ToFeaturesNetworkOutput() FeaturesNetworkOutput
-	ToFeaturesNetworkOutputWithContext(context.Context) FeaturesNetworkOutput
-}
-
-type FeaturesNetworkArgs struct {
-	RelaxedLocking pulumi.BoolPtrInput `pulumi:"relaxedLocking"`
-}
-
-func (FeaturesNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeaturesNetwork)(nil)).Elem()
-}
-
-func (i FeaturesNetworkArgs) ToFeaturesNetworkOutput() FeaturesNetworkOutput {
-	return i.ToFeaturesNetworkOutputWithContext(context.Background())
-}
-
-func (i FeaturesNetworkArgs) ToFeaturesNetworkOutputWithContext(ctx context.Context) FeaturesNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkOutput)
-}
-
-func (i FeaturesNetworkArgs) ToFeaturesNetworkPtrOutput() FeaturesNetworkPtrOutput {
-	return i.ToFeaturesNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i FeaturesNetworkArgs) ToFeaturesNetworkPtrOutputWithContext(ctx context.Context) FeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkOutput).ToFeaturesNetworkPtrOutputWithContext(ctx)
-}
-
-// FeaturesNetworkPtrInput is an input type that accepts FeaturesNetworkArgs, FeaturesNetworkPtr and FeaturesNetworkPtrOutput values.
-// You can construct a concrete instance of `FeaturesNetworkPtrInput` via:
-//
-//          FeaturesNetworkArgs{...}
-//
-//  or:
-//
-//          nil
-type FeaturesNetworkPtrInput interface {
-	pulumi.Input
-
-	ToFeaturesNetworkPtrOutput() FeaturesNetworkPtrOutput
-	ToFeaturesNetworkPtrOutputWithContext(context.Context) FeaturesNetworkPtrOutput
-}
-
-type featuresNetworkPtrType FeaturesNetworkArgs
-
-func FeaturesNetworkPtr(v *FeaturesNetworkArgs) FeaturesNetworkPtrInput {
-	return (*featuresNetworkPtrType)(v)
-}
-
-func (*featuresNetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeaturesNetwork)(nil)).Elem()
-}
-
-func (i *featuresNetworkPtrType) ToFeaturesNetworkPtrOutput() FeaturesNetworkPtrOutput {
-	return i.ToFeaturesNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *featuresNetworkPtrType) ToFeaturesNetworkPtrOutputWithContext(ctx context.Context) FeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkPtrOutput)
-}
-
 type FeaturesNetworkOutput struct{ *pulumi.OutputState }
 
 func (FeaturesNetworkOutput) ElementType() reflect.Type {
@@ -348,74 +181,6 @@ type FeaturesVirtualMachine struct {
 	DeleteOsDiskOnDeletion bool `pulumi:"deleteOsDiskOnDeletion"`
 }
 
-// FeaturesVirtualMachineInput is an input type that accepts FeaturesVirtualMachineArgs and FeaturesVirtualMachineOutput values.
-// You can construct a concrete instance of `FeaturesVirtualMachineInput` via:
-//
-//          FeaturesVirtualMachineArgs{...}
-type FeaturesVirtualMachineInput interface {
-	pulumi.Input
-
-	ToFeaturesVirtualMachineOutput() FeaturesVirtualMachineOutput
-	ToFeaturesVirtualMachineOutputWithContext(context.Context) FeaturesVirtualMachineOutput
-}
-
-type FeaturesVirtualMachineArgs struct {
-	DeleteOsDiskOnDeletion pulumi.BoolInput `pulumi:"deleteOsDiskOnDeletion"`
-}
-
-func (FeaturesVirtualMachineArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeaturesVirtualMachine)(nil)).Elem()
-}
-
-func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachineOutput() FeaturesVirtualMachineOutput {
-	return i.ToFeaturesVirtualMachineOutputWithContext(context.Background())
-}
-
-func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachineOutputWithContext(ctx context.Context) FeaturesVirtualMachineOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineOutput)
-}
-
-func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachinePtrOutput() FeaturesVirtualMachinePtrOutput {
-	return i.ToFeaturesVirtualMachinePtrOutputWithContext(context.Background())
-}
-
-func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) FeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineOutput).ToFeaturesVirtualMachinePtrOutputWithContext(ctx)
-}
-
-// FeaturesVirtualMachinePtrInput is an input type that accepts FeaturesVirtualMachineArgs, FeaturesVirtualMachinePtr and FeaturesVirtualMachinePtrOutput values.
-// You can construct a concrete instance of `FeaturesVirtualMachinePtrInput` via:
-//
-//          FeaturesVirtualMachineArgs{...}
-//
-//  or:
-//
-//          nil
-type FeaturesVirtualMachinePtrInput interface {
-	pulumi.Input
-
-	ToFeaturesVirtualMachinePtrOutput() FeaturesVirtualMachinePtrOutput
-	ToFeaturesVirtualMachinePtrOutputWithContext(context.Context) FeaturesVirtualMachinePtrOutput
-}
-
-type featuresVirtualMachinePtrType FeaturesVirtualMachineArgs
-
-func FeaturesVirtualMachinePtr(v *FeaturesVirtualMachineArgs) FeaturesVirtualMachinePtrInput {
-	return (*featuresVirtualMachinePtrType)(v)
-}
-
-func (*featuresVirtualMachinePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeaturesVirtualMachine)(nil)).Elem()
-}
-
-func (i *featuresVirtualMachinePtrType) ToFeaturesVirtualMachinePtrOutput() FeaturesVirtualMachinePtrOutput {
-	return i.ToFeaturesVirtualMachinePtrOutputWithContext(context.Background())
-}
-
-func (i *featuresVirtualMachinePtrType) ToFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) FeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachinePtrOutput)
-}
-
 type FeaturesVirtualMachineOutput struct{ *pulumi.OutputState }
 
 func (FeaturesVirtualMachineOutput) ElementType() reflect.Type {
@@ -472,74 +237,6 @@ func (o FeaturesVirtualMachinePtrOutput) DeleteOsDiskOnDeletion() pulumi.BoolPtr
 
 type FeaturesVirtualMachineScaleSet struct {
 	RollInstancesWhenRequired bool `pulumi:"rollInstancesWhenRequired"`
-}
-
-// FeaturesVirtualMachineScaleSetInput is an input type that accepts FeaturesVirtualMachineScaleSetArgs and FeaturesVirtualMachineScaleSetOutput values.
-// You can construct a concrete instance of `FeaturesVirtualMachineScaleSetInput` via:
-//
-//          FeaturesVirtualMachineScaleSetArgs{...}
-type FeaturesVirtualMachineScaleSetInput interface {
-	pulumi.Input
-
-	ToFeaturesVirtualMachineScaleSetOutput() FeaturesVirtualMachineScaleSetOutput
-	ToFeaturesVirtualMachineScaleSetOutputWithContext(context.Context) FeaturesVirtualMachineScaleSetOutput
-}
-
-type FeaturesVirtualMachineScaleSetArgs struct {
-	RollInstancesWhenRequired pulumi.BoolInput `pulumi:"rollInstancesWhenRequired"`
-}
-
-func (FeaturesVirtualMachineScaleSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeaturesVirtualMachineScaleSet)(nil)).Elem()
-}
-
-func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetOutput() FeaturesVirtualMachineScaleSetOutput {
-	return i.ToFeaturesVirtualMachineScaleSetOutputWithContext(context.Background())
-}
-
-func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetOutputWithContext(ctx context.Context) FeaturesVirtualMachineScaleSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetOutput)
-}
-
-func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetPtrOutput() FeaturesVirtualMachineScaleSetPtrOutput {
-	return i.ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(context.Background())
-}
-
-func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) FeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetOutput).ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx)
-}
-
-// FeaturesVirtualMachineScaleSetPtrInput is an input type that accepts FeaturesVirtualMachineScaleSetArgs, FeaturesVirtualMachineScaleSetPtr and FeaturesVirtualMachineScaleSetPtrOutput values.
-// You can construct a concrete instance of `FeaturesVirtualMachineScaleSetPtrInput` via:
-//
-//          FeaturesVirtualMachineScaleSetArgs{...}
-//
-//  or:
-//
-//          nil
-type FeaturesVirtualMachineScaleSetPtrInput interface {
-	pulumi.Input
-
-	ToFeaturesVirtualMachineScaleSetPtrOutput() FeaturesVirtualMachineScaleSetPtrOutput
-	ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(context.Context) FeaturesVirtualMachineScaleSetPtrOutput
-}
-
-type featuresVirtualMachineScaleSetPtrType FeaturesVirtualMachineScaleSetArgs
-
-func FeaturesVirtualMachineScaleSetPtr(v *FeaturesVirtualMachineScaleSetArgs) FeaturesVirtualMachineScaleSetPtrInput {
-	return (*featuresVirtualMachineScaleSetPtrType)(v)
-}
-
-func (*featuresVirtualMachineScaleSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeaturesVirtualMachineScaleSet)(nil)).Elem()
-}
-
-func (i *featuresVirtualMachineScaleSetPtrType) ToFeaturesVirtualMachineScaleSetPtrOutput() FeaturesVirtualMachineScaleSetPtrOutput {
-	return i.ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(context.Background())
-}
-
-func (i *featuresVirtualMachineScaleSetPtrType) ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) FeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetPtrOutput)
 }
 
 type FeaturesVirtualMachineScaleSetOutput struct{ *pulumi.OutputState }
