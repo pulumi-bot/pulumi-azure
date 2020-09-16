@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = ['Table']
@@ -18,7 +18,7 @@ class Table(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 throughput: Optional[pulumi.Input[float]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,7 +44,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Cosmos DB Table. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB Table is created. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] throughput: The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
+        :param pulumi.Input[int] throughput: The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +84,7 @@ class Table(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
-            throughput: Optional[pulumi.Input[float]] = None) -> 'Table':
+            throughput: Optional[pulumi.Input[int]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -95,7 +95,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Cosmos DB Table. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_group_name: The name of the resource group in which the Cosmos DB Table is created. Changing this forces a new resource to be created.
-        :param pulumi.Input[float] throughput: The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
+        :param pulumi.Input[int] throughput: The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -133,7 +133,7 @@ class Table(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def throughput(self) -> pulumi.Output[float]:
+    def throughput(self) -> pulumi.Output[int]:
         """
         The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
         """
