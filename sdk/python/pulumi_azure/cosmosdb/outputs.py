@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -50,12 +50,12 @@ class AccountCapability(dict):
 class AccountConsistencyPolicy(dict):
     def __init__(__self__, *,
                  consistency_level: str,
-                 max_interval_in_seconds: Optional[float] = None,
-                 max_staleness_prefix: Optional[float] = None):
+                 max_interval_in_seconds: Optional[int] = None,
+                 max_staleness_prefix: Optional[int] = None):
         """
         :param str consistency_level: The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
-        :param float max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
-        :param float max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param int max_interval_in_seconds: When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
+        :param int max_staleness_prefix: When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
         pulumi.set(__self__, "consistency_level", consistency_level)
         if max_interval_in_seconds is not None:
@@ -73,7 +73,7 @@ class AccountConsistencyPolicy(dict):
 
     @property
     @pulumi.getter(name="maxIntervalInSeconds")
-    def max_interval_in_seconds(self) -> Optional[float]:
+    def max_interval_in_seconds(self) -> Optional[int]:
         """
         When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
@@ -81,7 +81,7 @@ class AccountConsistencyPolicy(dict):
 
     @property
     @pulumi.getter(name="maxStalenessPrefix")
-    def max_staleness_prefix(self) -> Optional[float]:
+    def max_staleness_prefix(self) -> Optional[int]:
         """
         When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
         """
@@ -94,12 +94,12 @@ class AccountConsistencyPolicy(dict):
 @pulumi.output_type
 class AccountGeoLocation(dict):
     def __init__(__self__, *,
-                 failover_priority: float,
+                 failover_priority: int,
                  location: str,
                  id: Optional[str] = None,
                  prefix: Optional[str] = None):
         """
-        :param float failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
+        :param int failover_priority: The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         :param str location: The name of the Azure region to host replicated data.
         :param str id: The ID of the virtual network subnet.
         :param str prefix: The string used to generate the document endpoints for this region. If not specified it defaults to `${cosmosdb_account.name}-${location}`. Changing this causes the location to be deleted and re-provisioned and cannot be changed for the location with failover priority `0`.
@@ -113,7 +113,7 @@ class AccountGeoLocation(dict):
 
     @property
     @pulumi.getter(name="failoverPriority")
-    def failover_priority(self) -> float:
+    def failover_priority(self) -> int:
         """
         The failover priority of the region. A failover priority of `0` indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. Changing this causes the location to be re-provisioned and cannot be changed for the location with failover priority `0`.
         """
@@ -230,13 +230,13 @@ class GremlinGraphIndexPolicy(dict):
     def __init__(__self__, *,
                  indexing_mode: str,
                  automatic: Optional[bool] = None,
-                 excluded_paths: Optional[List[str]] = None,
-                 included_paths: Optional[List[str]] = None):
+                 excluded_paths: Optional[Sequence[str]] = None,
+                 included_paths: Optional[Sequence[str]] = None):
         """
         :param str indexing_mode: Indicates the indexing mode. Possible values include: `Consistent`, `Lazy`, `None`.
         :param bool automatic: Indicates if the indexing policy is automatic. Defaults to `true`.
-        :param List[str] excluded_paths: List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
-        :param List[str] included_paths: List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
+        :param Sequence[str] excluded_paths: List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
+        :param Sequence[str] included_paths: List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
         pulumi.set(__self__, "indexing_mode", indexing_mode)
         if automatic is not None:
@@ -264,7 +264,7 @@ class GremlinGraphIndexPolicy(dict):
 
     @property
     @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[List[str]]:
+    def excluded_paths(self) -> Optional[Sequence[str]]:
         """
         List of paths to exclude from indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
@@ -272,7 +272,7 @@ class GremlinGraphIndexPolicy(dict):
 
     @property
     @pulumi.getter(name="includedPaths")
-    def included_paths(self) -> Optional[List[str]]:
+    def included_paths(self) -> Optional[Sequence[str]]:
         """
         List of paths to include in the indexing. Required if `indexing_mode` is `Consistent` or `Lazy`.
         """
@@ -285,15 +285,15 @@ class GremlinGraphIndexPolicy(dict):
 @pulumi.output_type
 class GremlinGraphUniqueKey(dict):
     def __init__(__self__, *,
-                 paths: List[str]):
+                 paths: Sequence[str]):
         """
-        :param List[str] paths: A list of paths to use for this unique key.
+        :param Sequence[str] paths: A list of paths to use for this unique key.
         """
         pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
-    def paths(self) -> List[str]:
+    def paths(self) -> Sequence[str]:
         """
         A list of paths to use for this unique key.
         """
@@ -306,10 +306,10 @@ class GremlinGraphUniqueKey(dict):
 @pulumi.output_type
 class MongoCollectionIndex(dict):
     def __init__(__self__, *,
-                 keys: List[str],
+                 keys: Sequence[str],
                  unique: Optional[bool] = None):
         """
-        :param List[str] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
+        :param Sequence[str] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         :param bool unique: Is the index unique or not? Defaults to `false`.
         """
         pulumi.set(__self__, "keys", keys)
@@ -318,7 +318,7 @@ class MongoCollectionIndex(dict):
 
     @property
     @pulumi.getter
-    def keys(self) -> List[str]:
+    def keys(self) -> Sequence[str]:
         """
         Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         """
@@ -339,10 +339,10 @@ class MongoCollectionIndex(dict):
 @pulumi.output_type
 class MongoCollectionSystemIndex(dict):
     def __init__(__self__, *,
-                 keys: Optional[List[str]] = None,
+                 keys: Optional[Sequence[str]] = None,
                  unique: Optional[bool] = None):
         """
-        :param List[str] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
+        :param Sequence[str] keys: Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         :param bool unique: Is the index unique or not? Defaults to `false`.
         """
         if keys is not None:
@@ -352,7 +352,7 @@ class MongoCollectionSystemIndex(dict):
 
     @property
     @pulumi.getter
-    def keys(self) -> Optional[List[str]]:
+    def keys(self) -> Optional[Sequence[str]]:
         """
         Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
         """
@@ -373,15 +373,15 @@ class MongoCollectionSystemIndex(dict):
 @pulumi.output_type
 class SqlContainerUniqueKey(dict):
     def __init__(__self__, *,
-                 paths: List[str]):
+                 paths: Sequence[str]):
         """
-        :param List[str] paths: A list of paths to use for this unique key.
+        :param Sequence[str] paths: A list of paths to use for this unique key.
         """
         pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
-    def paths(self) -> List[str]:
+    def paths(self) -> Sequence[str]:
         """
         A list of paths to use for this unique key.
         """
@@ -413,12 +413,12 @@ class GetAccountCapabilityResult(dict):
 class GetAccountConsistencyPolicyResult(dict):
     def __init__(__self__, *,
                  consistency_level: str,
-                 max_interval_in_seconds: float,
-                 max_staleness_prefix: float):
+                 max_interval_in_seconds: int,
+                 max_staleness_prefix: int):
         """
         :param str consistency_level: The Consistency Level used by this CosmosDB Account.
-        :param float max_interval_in_seconds: The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
-        :param float max_staleness_prefix: The number of stale requests tolerated when the consistency level is Bounded Staleness.
+        :param int max_interval_in_seconds: The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
+        :param int max_staleness_prefix: The number of stale requests tolerated when the consistency level is Bounded Staleness.
         """
         pulumi.set(__self__, "consistency_level", consistency_level)
         pulumi.set(__self__, "max_interval_in_seconds", max_interval_in_seconds)
@@ -434,7 +434,7 @@ class GetAccountConsistencyPolicyResult(dict):
 
     @property
     @pulumi.getter(name="maxIntervalInSeconds")
-    def max_interval_in_seconds(self) -> float:
+    def max_interval_in_seconds(self) -> int:
         """
         The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
         """
@@ -442,7 +442,7 @@ class GetAccountConsistencyPolicyResult(dict):
 
     @property
     @pulumi.getter(name="maxStalenessPrefix")
-    def max_staleness_prefix(self) -> float:
+    def max_staleness_prefix(self) -> int:
         """
         The number of stale requests tolerated when the consistency level is Bounded Staleness.
         """
@@ -452,7 +452,7 @@ class GetAccountConsistencyPolicyResult(dict):
 @pulumi.output_type
 class GetAccountGeoLocationResult(dict):
     def __init__(__self__, *,
-                 failover_priority: float,
+                 failover_priority: int,
                  id: str,
                  location: str):
         """
@@ -465,7 +465,7 @@ class GetAccountGeoLocationResult(dict):
 
     @property
     @pulumi.getter(name="failoverPriority")
-    def failover_priority(self) -> float:
+    def failover_priority(self) -> int:
         return pulumi.get(self, "failover_priority")
 
     @property
