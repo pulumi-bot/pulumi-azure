@@ -772,6 +772,7 @@
         "trafficmanager/getGeographicalLocation.ts",
         "trafficmanager/index.ts",
         "trafficmanager/profile.ts",
+        "types/enums.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
