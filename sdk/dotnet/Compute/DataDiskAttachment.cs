@@ -27,7 +27,7 @@ namespace Pulumi.Azure.Compute
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var prefix = config.Get("prefix") ?? "example";
+    ///         var prefix = Output.Create(config.Get("prefix")) ?? "example";
     ///         var vmName = $"{prefix}-vm";
     ///         var mainResourceGroup = new Azure.Core.ResourceGroup("mainResourceGroup", new Azure.Core.ResourceGroupArgs
     ///         {

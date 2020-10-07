@@ -23,8 +23,8 @@ namespace Pulumi.Azure.Dashboard
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var mdContent = config.Get("mdContent") ?? "# Hello all :)";
-    ///         var videoLink = config.Get("videoLink") ?? "https://www.youtube.com/watch?v=......";
+    ///         var mdContent = Output.Create(config.Get("mdContent")) ?? "# Hello all :)";
+    ///         var videoLink = Output.Create(config.Get("videoLink")) ?? "https://www.youtube.com/watch?v=......";
     ///         var current = Output.Create(Azure.Core.GetSubscription.InvokeAsync());
     ///         var my_group = new Azure.Core.ResourceGroup("my-group", new Azure.Core.ResourceGroupArgs
     ///         {
