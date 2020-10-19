@@ -4,6 +4,7 @@
 package servicefabric
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -167,4 +168,43 @@ type MeshApplicationArgs struct {
 
 func (MeshApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshApplicationArgs)(nil)).Elem()
+}
+
+type MeshApplicationInput interface {
+	pulumi.Input
+
+	ToMeshApplicationOutput() MeshApplicationOutput
+	ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput
+}
+
+func (MeshApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshApplication)(nil)).Elem()
+}
+
+func (i MeshApplication) ToMeshApplicationOutput() MeshApplicationOutput {
+	return i.ToMeshApplicationOutputWithContext(context.Background())
+}
+
+func (i MeshApplication) ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationOutput)
+}
+
+type MeshApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshApplicationOutput)(nil)).Elem()
+}
+
+func (o MeshApplicationOutput) ToMeshApplicationOutput() MeshApplicationOutput {
+	return o
+}
+
+func (o MeshApplicationOutput) ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshApplicationOutput{})
 }

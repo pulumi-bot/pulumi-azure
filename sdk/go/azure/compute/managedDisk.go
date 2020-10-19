@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -329,4 +330,43 @@ type ManagedDiskArgs struct {
 
 func (ManagedDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedDiskArgs)(nil)).Elem()
+}
+
+type ManagedDiskInput interface {
+	pulumi.Input
+
+	ToManagedDiskOutput() ManagedDiskOutput
+	ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput
+}
+
+func (ManagedDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDisk)(nil)).Elem()
+}
+
+func (i ManagedDisk) ToManagedDiskOutput() ManagedDiskOutput {
+	return i.ToManagedDiskOutputWithContext(context.Background())
+}
+
+func (i ManagedDisk) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskOutput)
+}
+
+type ManagedDiskOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskOutput)(nil)).Elem()
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutput() ManagedDiskOutput {
+	return o
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedDiskOutput{})
 }

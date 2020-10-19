@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -236,4 +237,43 @@ type IntegrationRuntimeManagedArgs struct {
 
 func (IntegrationRuntimeManagedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationRuntimeManagedArgs)(nil)).Elem()
+}
+
+type IntegrationRuntimeManagedInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput
+	ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput
+}
+
+func (IntegrationRuntimeManaged) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeManaged)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput {
+	return i.ToIntegrationRuntimeManagedOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedOutput)
+}
+
+type IntegrationRuntimeManagedOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationRuntimeManagedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeManagedOutput)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeManagedOutput) ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput {
+	return o
+}
+
+func (o IntegrationRuntimeManagedOutput) ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntegrationRuntimeManagedOutput{})
 }

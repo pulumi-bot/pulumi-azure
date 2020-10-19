@@ -4,6 +4,7 @@
 package desktopvirtualization
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -144,4 +145,43 @@ type WorkspaceApplicationGroupAssociationArgs struct {
 
 func (WorkspaceApplicationGroupAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceApplicationGroupAssociationArgs)(nil)).Elem()
+}
+
+type WorkspaceApplicationGroupAssociationInput interface {
+	pulumi.Input
+
+	ToWorkspaceApplicationGroupAssociationOutput() WorkspaceApplicationGroupAssociationOutput
+	ToWorkspaceApplicationGroupAssociationOutputWithContext(ctx context.Context) WorkspaceApplicationGroupAssociationOutput
+}
+
+func (WorkspaceApplicationGroupAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceApplicationGroupAssociation)(nil)).Elem()
+}
+
+func (i WorkspaceApplicationGroupAssociation) ToWorkspaceApplicationGroupAssociationOutput() WorkspaceApplicationGroupAssociationOutput {
+	return i.ToWorkspaceApplicationGroupAssociationOutputWithContext(context.Background())
+}
+
+func (i WorkspaceApplicationGroupAssociation) ToWorkspaceApplicationGroupAssociationOutputWithContext(ctx context.Context) WorkspaceApplicationGroupAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceApplicationGroupAssociationOutput)
+}
+
+type WorkspaceApplicationGroupAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkspaceApplicationGroupAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceApplicationGroupAssociationOutput)(nil)).Elem()
+}
+
+func (o WorkspaceApplicationGroupAssociationOutput) ToWorkspaceApplicationGroupAssociationOutput() WorkspaceApplicationGroupAssociationOutput {
+	return o
+}
+
+func (o WorkspaceApplicationGroupAssociationOutput) ToWorkspaceApplicationGroupAssociationOutputWithContext(ctx context.Context) WorkspaceApplicationGroupAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkspaceApplicationGroupAssociationOutput{})
 }

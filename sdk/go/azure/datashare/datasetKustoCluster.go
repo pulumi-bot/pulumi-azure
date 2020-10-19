@@ -4,6 +4,7 @@
 package datashare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,4 +111,43 @@ type DatasetKustoClusterArgs struct {
 
 func (DatasetKustoClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetKustoClusterArgs)(nil)).Elem()
+}
+
+type DatasetKustoClusterInput interface {
+	pulumi.Input
+
+	ToDatasetKustoClusterOutput() DatasetKustoClusterOutput
+	ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput
+}
+
+func (DatasetKustoCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetKustoCluster)(nil)).Elem()
+}
+
+func (i DatasetKustoCluster) ToDatasetKustoClusterOutput() DatasetKustoClusterOutput {
+	return i.ToDatasetKustoClusterOutputWithContext(context.Background())
+}
+
+func (i DatasetKustoCluster) ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetKustoClusterOutput)
+}
+
+type DatasetKustoClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetKustoClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetKustoClusterOutput)(nil)).Elem()
+}
+
+func (o DatasetKustoClusterOutput) ToDatasetKustoClusterOutput() DatasetKustoClusterOutput {
+	return o
+}
+
+func (o DatasetKustoClusterOutput) ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetKustoClusterOutput{})
 }

@@ -4,6 +4,7 @@
 package servicebus
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -305,4 +306,43 @@ type SubscriptionRuleArgs struct {
 
 func (SubscriptionRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionRuleArgs)(nil)).Elem()
+}
+
+type SubscriptionRuleInput interface {
+	pulumi.Input
+
+	ToSubscriptionRuleOutput() SubscriptionRuleOutput
+	ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput
+}
+
+func (SubscriptionRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRule)(nil)).Elem()
+}
+
+func (i SubscriptionRule) ToSubscriptionRuleOutput() SubscriptionRuleOutput {
+	return i.ToSubscriptionRuleOutputWithContext(context.Background())
+}
+
+func (i SubscriptionRule) ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleOutput)
+}
+
+type SubscriptionRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRuleOutput)(nil)).Elem()
+}
+
+func (o SubscriptionRuleOutput) ToSubscriptionRuleOutput() SubscriptionRuleOutput {
+	return o
+}
+
+func (o SubscriptionRuleOutput) ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubscriptionRuleOutput{})
 }

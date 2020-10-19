@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -291,4 +292,43 @@ type MLServicesClusterArgs struct {
 
 func (MLServicesClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mlservicesClusterArgs)(nil)).Elem()
+}
+
+type MLServicesClusterInput interface {
+	pulumi.Input
+
+	ToMLServicesClusterOutput() MLServicesClusterOutput
+	ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput
+}
+
+func (MLServicesCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLServicesCluster)(nil)).Elem()
+}
+
+func (i MLServicesCluster) ToMLServicesClusterOutput() MLServicesClusterOutput {
+	return i.ToMLServicesClusterOutputWithContext(context.Background())
+}
+
+func (i MLServicesCluster) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterOutput)
+}
+
+type MLServicesClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (MLServicesClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLServicesClusterOutput)(nil)).Elem()
+}
+
+func (o MLServicesClusterOutput) ToMLServicesClusterOutput() MLServicesClusterOutput {
+	return o
+}
+
+func (o MLServicesClusterOutput) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MLServicesClusterOutput{})
 }
