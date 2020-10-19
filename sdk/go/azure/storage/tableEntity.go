@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type TableEntityArgs struct {
 
 func (TableEntityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableEntityArgs)(nil)).Elem()
+}
+
+type TableEntityInput interface {
+	pulumi.Input
+
+	ToTableEntityOutput() TableEntityOutput
+	ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput
+}
+
+func (TableEntity) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableEntity)(nil)).Elem()
+}
+
+func (i TableEntity) ToTableEntityOutput() TableEntityOutput {
+	return i.ToTableEntityOutputWithContext(context.Background())
+}
+
+func (i TableEntity) ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableEntityOutput)
+}
+
+type TableEntityOutput struct {
+	*pulumi.OutputState
+}
+
+func (TableEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableEntityOutput)(nil)).Elem()
+}
+
+func (o TableEntityOutput) ToTableEntityOutput() TableEntityOutput {
+	return o
+}
+
+func (o TableEntityOutput) ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TableEntityOutput{})
 }

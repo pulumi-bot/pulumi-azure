@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -194,4 +195,43 @@ type StoreArgs struct {
 
 func (StoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeArgs)(nil)).Elem()
+}
+
+type StoreInput interface {
+	pulumi.Input
+
+	ToStoreOutput() StoreOutput
+	ToStoreOutputWithContext(ctx context.Context) StoreOutput
+}
+
+func (Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Store)(nil)).Elem()
+}
+
+func (i Store) ToStoreOutput() StoreOutput {
+	return i.ToStoreOutputWithContext(context.Background())
+}
+
+func (i Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
+}
+
+type StoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreOutput)(nil)).Elem()
+}
+
+func (o StoreOutput) ToStoreOutput() StoreOutput {
+	return o
+}
+
+func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoreOutput{})
 }

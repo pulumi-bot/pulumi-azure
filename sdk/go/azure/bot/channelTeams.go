@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -165,4 +166,43 @@ type ChannelTeamsArgs struct {
 
 func (ChannelTeamsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelTeamsArgs)(nil)).Elem()
+}
+
+type ChannelTeamsInput interface {
+	pulumi.Input
+
+	ToChannelTeamsOutput() ChannelTeamsOutput
+	ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput
+}
+
+func (ChannelTeams) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelTeams)(nil)).Elem()
+}
+
+func (i ChannelTeams) ToChannelTeamsOutput() ChannelTeamsOutput {
+	return i.ToChannelTeamsOutputWithContext(context.Background())
+}
+
+func (i ChannelTeams) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelTeamsOutput)
+}
+
+type ChannelTeamsOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelTeamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelTeamsOutput)(nil)).Elem()
+}
+
+func (o ChannelTeamsOutput) ToChannelTeamsOutput() ChannelTeamsOutput {
+	return o
+}
+
+func (o ChannelTeamsOutput) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelTeamsOutput{})
 }

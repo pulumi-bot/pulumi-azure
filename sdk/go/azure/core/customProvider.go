@@ -4,6 +4,7 @@
 package core
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -171,4 +172,43 @@ type CustomProviderArgs struct {
 
 func (CustomProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customProviderArgs)(nil)).Elem()
+}
+
+type CustomProviderInput interface {
+	pulumi.Input
+
+	ToCustomProviderOutput() CustomProviderOutput
+	ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput
+}
+
+func (CustomProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomProvider)(nil)).Elem()
+}
+
+func (i CustomProvider) ToCustomProviderOutput() CustomProviderOutput {
+	return i.ToCustomProviderOutputWithContext(context.Background())
+}
+
+func (i CustomProvider) ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomProviderOutput)
+}
+
+type CustomProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomProviderOutput)(nil)).Elem()
+}
+
+func (o CustomProviderOutput) ToCustomProviderOutput() CustomProviderOutput {
+	return o
+}
+
+func (o CustomProviderOutput) ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomProviderOutput{})
 }

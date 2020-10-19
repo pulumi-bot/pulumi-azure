@@ -4,6 +4,7 @@
 package securitycenter
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -116,4 +117,43 @@ type SettingArgs struct {
 
 func (SettingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingArgs)(nil)).Elem()
+}
+
+type SettingInput interface {
+	pulumi.Input
+
+	ToSettingOutput() SettingOutput
+	ToSettingOutputWithContext(ctx context.Context) SettingOutput
+}
+
+func (Setting) ElementType() reflect.Type {
+	return reflect.TypeOf((*Setting)(nil)).Elem()
+}
+
+func (i Setting) ToSettingOutput() SettingOutput {
+	return i.ToSettingOutputWithContext(context.Background())
+}
+
+func (i Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
+}
+
+type SettingOutput struct {
+	*pulumi.OutputState
+}
+
+func (SettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingOutput)(nil)).Elem()
+}
+
+func (o SettingOutput) ToSettingOutput() SettingOutput {
+	return o
+}
+
+func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SettingOutput{})
 }
