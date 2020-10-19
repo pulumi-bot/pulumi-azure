@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -169,4 +170,43 @@ type EventhubNamespaceDisasterRecoveryConfigArgs struct {
 
 func (EventhubNamespaceDisasterRecoveryConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventhubNamespaceDisasterRecoveryConfigArgs)(nil)).Elem()
+}
+
+type EventhubNamespaceDisasterRecoveryConfigInput interface {
+	pulumi.Input
+
+	ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput
+	ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput
+}
+
+func (EventhubNamespaceDisasterRecoveryConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubNamespaceDisasterRecoveryConfig)(nil)).Elem()
+}
+
+func (i EventhubNamespaceDisasterRecoveryConfig) ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput {
+	return i.ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i EventhubNamespaceDisasterRecoveryConfig) ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventhubNamespaceDisasterRecoveryConfigOutput)
+}
+
+type EventhubNamespaceDisasterRecoveryConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventhubNamespaceDisasterRecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubNamespaceDisasterRecoveryConfigOutput)(nil)).Elem()
+}
+
+func (o EventhubNamespaceDisasterRecoveryConfigOutput) ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput {
+	return o
+}
+
+func (o EventhubNamespaceDisasterRecoveryConfigOutput) ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventhubNamespaceDisasterRecoveryConfigOutput{})
 }

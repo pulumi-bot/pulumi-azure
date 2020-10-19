@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -227,4 +228,43 @@ type OutputEventHubArgs struct {
 
 func (OutputEventHubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputEventHubArgs)(nil)).Elem()
+}
+
+type OutputEventHubInput interface {
+	pulumi.Input
+
+	ToOutputEventHubOutput() OutputEventHubOutput
+	ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput
+}
+
+func (OutputEventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputEventHub)(nil)).Elem()
+}
+
+func (i OutputEventHub) ToOutputEventHubOutput() OutputEventHubOutput {
+	return i.ToOutputEventHubOutputWithContext(context.Background())
+}
+
+func (i OutputEventHub) ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubOutput)
+}
+
+type OutputEventHubOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputEventHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputEventHubOutput)(nil)).Elem()
+}
+
+func (o OutputEventHubOutput) ToOutputEventHubOutput() OutputEventHubOutput {
+	return o
+}
+
+func (o OutputEventHubOutput) ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputEventHubOutput{})
 }

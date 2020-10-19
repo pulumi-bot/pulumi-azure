@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -194,4 +195,43 @@ type DataSourceWindowsPerformanceCounterArgs struct {
 
 func (DataSourceWindowsPerformanceCounterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSourceWindowsPerformanceCounterArgs)(nil)).Elem()
+}
+
+type DataSourceWindowsPerformanceCounterInput interface {
+	pulumi.Input
+
+	ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput
+	ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput
+}
+
+func (DataSourceWindowsPerformanceCounter) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsPerformanceCounter)(nil)).Elem()
+}
+
+func (i DataSourceWindowsPerformanceCounter) ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput {
+	return i.ToDataSourceWindowsPerformanceCounterOutputWithContext(context.Background())
+}
+
+func (i DataSourceWindowsPerformanceCounter) ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceWindowsPerformanceCounterOutput)
+}
+
+type DataSourceWindowsPerformanceCounterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataSourceWindowsPerformanceCounterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsPerformanceCounterOutput)(nil)).Elem()
+}
+
+func (o DataSourceWindowsPerformanceCounterOutput) ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput {
+	return o
+}
+
+func (o DataSourceWindowsPerformanceCounterOutput) ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataSourceWindowsPerformanceCounterOutput{})
 }

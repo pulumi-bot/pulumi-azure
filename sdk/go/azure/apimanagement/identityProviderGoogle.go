@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type IdentityProviderGoogleArgs struct {
 
 func (IdentityProviderGoogleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderGoogleArgs)(nil)).Elem()
+}
+
+type IdentityProviderGoogleInput interface {
+	pulumi.Input
+
+	ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput
+	ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput
+}
+
+func (IdentityProviderGoogle) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderGoogle)(nil)).Elem()
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput {
+	return i.ToIdentityProviderGoogleOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderGoogleOutput)
+}
+
+type IdentityProviderGoogleOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderGoogleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderGoogleOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderGoogleOutput) ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput {
+	return o
+}
+
+func (o IdentityProviderGoogleOutput) ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderGoogleOutput{})
 }

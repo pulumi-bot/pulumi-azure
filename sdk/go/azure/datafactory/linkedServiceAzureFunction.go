@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -219,4 +220,43 @@ type LinkedServiceAzureFunctionArgs struct {
 
 func (LinkedServiceAzureFunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureFunctionArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureFunctionInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput
+	ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput
+}
+
+func (LinkedServiceAzureFunction) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
+	return i.ToLinkedServiceAzureFunctionOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFunctionOutput)
+}
+
+type LinkedServiceAzureFunctionOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFunctionOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureFunctionOutput{})
 }
