@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -203,4 +204,43 @@ type CaaRecordArgs struct {
 
 func (CaaRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*caaRecordArgs)(nil)).Elem()
+}
+
+type CaaRecordInput interface {
+	pulumi.Input
+
+	ToCaaRecordOutput() CaaRecordOutput
+	ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput
+}
+
+func (CaaRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaaRecord)(nil)).Elem()
+}
+
+func (i CaaRecord) ToCaaRecordOutput() CaaRecordOutput {
+	return i.ToCaaRecordOutputWithContext(context.Background())
+}
+
+func (i CaaRecord) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordOutput)
+}
+
+type CaaRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (CaaRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaaRecordOutput)(nil)).Elem()
+}
+
+func (o CaaRecordOutput) ToCaaRecordOutput() CaaRecordOutput {
+	return o
+}
+
+func (o CaaRecordOutput) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CaaRecordOutput{})
 }

@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -246,4 +247,43 @@ type GremlinGraphArgs struct {
 
 func (GremlinGraphArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gremlinGraphArgs)(nil)).Elem()
+}
+
+type GremlinGraphInput interface {
+	pulumi.Input
+
+	ToGremlinGraphOutput() GremlinGraphOutput
+	ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput
+}
+
+func (GremlinGraph) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinGraph)(nil)).Elem()
+}
+
+func (i GremlinGraph) ToGremlinGraphOutput() GremlinGraphOutput {
+	return i.ToGremlinGraphOutputWithContext(context.Background())
+}
+
+func (i GremlinGraph) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphOutput)
+}
+
+type GremlinGraphOutput struct {
+	*pulumi.OutputState
+}
+
+func (GremlinGraphOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinGraphOutput)(nil)).Elem()
+}
+
+func (o GremlinGraphOutput) ToGremlinGraphOutput() GremlinGraphOutput {
+	return o
+}
+
+func (o GremlinGraphOutput) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GremlinGraphOutput{})
 }

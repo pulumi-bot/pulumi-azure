@@ -4,6 +4,7 @@
 package mssql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -180,4 +181,43 @@ type DatabaseExtendedAuditingPolicyArgs struct {
 
 func (DatabaseExtendedAuditingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseExtendedAuditingPolicyArgs)(nil)).Elem()
+}
+
+type DatabaseExtendedAuditingPolicyInput interface {
+	pulumi.Input
+
+	ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput
+	ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput
+}
+
+func (DatabaseExtendedAuditingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicy)(nil)).Elem()
+}
+
+func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
+	return i.ToDatabaseExtendedAuditingPolicyOutputWithContext(context.Background())
+}
+
+func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput)
+}
+
+type DatabaseExtendedAuditingPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseExtendedAuditingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicyOutput)(nil)).Elem()
+}
+
+func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
+	return o
+}
+
+func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseExtendedAuditingPolicyOutput{})
 }

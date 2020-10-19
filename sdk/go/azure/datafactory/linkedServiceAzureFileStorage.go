@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -220,4 +221,43 @@ type LinkedServiceAzureFileStorageArgs struct {
 
 func (LinkedServiceAzureFileStorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureFileStorageArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureFileStorageInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput
+	ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput
+}
+
+func (LinkedServiceAzureFileStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFileStorage)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput {
+	return i.ToLinkedServiceAzureFileStorageOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFileStorageOutput)
+}
+
+type LinkedServiceAzureFileStorageOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFileStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFileStorageOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFileStorageOutput) ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFileStorageOutput) ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureFileStorageOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -200,4 +201,43 @@ type LinkedServicePostgresqlArgs struct {
 
 func (LinkedServicePostgresqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServicePostgresqlArgs)(nil)).Elem()
+}
+
+type LinkedServicePostgresqlInput interface {
+	pulumi.Input
+
+	ToLinkedServicePostgresqlOutput() LinkedServicePostgresqlOutput
+	ToLinkedServicePostgresqlOutputWithContext(ctx context.Context) LinkedServicePostgresqlOutput
+}
+
+func (LinkedServicePostgresql) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServicePostgresql)(nil)).Elem()
+}
+
+func (i LinkedServicePostgresql) ToLinkedServicePostgresqlOutput() LinkedServicePostgresqlOutput {
+	return i.ToLinkedServicePostgresqlOutputWithContext(context.Background())
+}
+
+func (i LinkedServicePostgresql) ToLinkedServicePostgresqlOutputWithContext(ctx context.Context) LinkedServicePostgresqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServicePostgresqlOutput)
+}
+
+type LinkedServicePostgresqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServicePostgresqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServicePostgresqlOutput)(nil)).Elem()
+}
+
+func (o LinkedServicePostgresqlOutput) ToLinkedServicePostgresqlOutput() LinkedServicePostgresqlOutput {
+	return o
+}
+
+func (o LinkedServicePostgresqlOutput) ToLinkedServicePostgresqlOutputWithContext(ctx context.Context) LinkedServicePostgresqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServicePostgresqlOutput{})
 }

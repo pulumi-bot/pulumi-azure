@@ -4,6 +4,7 @@
 package policy
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -174,4 +175,43 @@ type RemediationArgs struct {
 
 func (RemediationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*remediationArgs)(nil)).Elem()
+}
+
+type RemediationInput interface {
+	pulumi.Input
+
+	ToRemediationOutput() RemediationOutput
+	ToRemediationOutputWithContext(ctx context.Context) RemediationOutput
+}
+
+func (Remediation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Remediation)(nil)).Elem()
+}
+
+func (i Remediation) ToRemediationOutput() RemediationOutput {
+	return i.ToRemediationOutputWithContext(context.Background())
+}
+
+func (i Remediation) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationOutput)
+}
+
+type RemediationOutput struct {
+	*pulumi.OutputState
+}
+
+func (RemediationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationOutput)(nil)).Elem()
+}
+
+func (o RemediationOutput) ToRemediationOutput() RemediationOutput {
+	return o
+}
+
+func (o RemediationOutput) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RemediationOutput{})
 }

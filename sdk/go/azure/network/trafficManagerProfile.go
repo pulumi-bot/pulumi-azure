@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -212,4 +213,43 @@ type TrafficManagerProfileArgs struct {
 
 func (TrafficManagerProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficManagerProfileArgs)(nil)).Elem()
+}
+
+type TrafficManagerProfileInput interface {
+	pulumi.Input
+
+	ToTrafficManagerProfileOutput() TrafficManagerProfileOutput
+	ToTrafficManagerProfileOutputWithContext(ctx context.Context) TrafficManagerProfileOutput
+}
+
+func (TrafficManagerProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficManagerProfile)(nil)).Elem()
+}
+
+func (i TrafficManagerProfile) ToTrafficManagerProfileOutput() TrafficManagerProfileOutput {
+	return i.ToTrafficManagerProfileOutputWithContext(context.Background())
+}
+
+func (i TrafficManagerProfile) ToTrafficManagerProfileOutputWithContext(ctx context.Context) TrafficManagerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileOutput)
+}
+
+type TrafficManagerProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficManagerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficManagerProfileOutput)(nil)).Elem()
+}
+
+func (o TrafficManagerProfileOutput) ToTrafficManagerProfileOutput() TrafficManagerProfileOutput {
+	return o
+}
+
+func (o TrafficManagerProfileOutput) ToTrafficManagerProfileOutputWithContext(ctx context.Context) TrafficManagerProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrafficManagerProfileOutput{})
 }

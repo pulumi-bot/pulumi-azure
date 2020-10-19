@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type SharedImageGalleryArgs struct {
 
 func (SharedImageGalleryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedImageGalleryArgs)(nil)).Elem()
+}
+
+type SharedImageGalleryInput interface {
+	pulumi.Input
+
+	ToSharedImageGalleryOutput() SharedImageGalleryOutput
+	ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput
+}
+
+func (SharedImageGallery) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageGallery)(nil)).Elem()
+}
+
+func (i SharedImageGallery) ToSharedImageGalleryOutput() SharedImageGalleryOutput {
+	return i.ToSharedImageGalleryOutputWithContext(context.Background())
+}
+
+func (i SharedImageGallery) ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageGalleryOutput)
+}
+
+type SharedImageGalleryOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedImageGalleryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageGalleryOutput)(nil)).Elem()
+}
+
+func (o SharedImageGalleryOutput) ToSharedImageGalleryOutput() SharedImageGalleryOutput {
+	return o
+}
+
+func (o SharedImageGalleryOutput) ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedImageGalleryOutput{})
 }

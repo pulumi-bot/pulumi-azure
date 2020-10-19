@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -191,4 +192,43 @@ type MxRecordArgs struct {
 
 func (MxRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mxRecordArgs)(nil)).Elem()
+}
+
+type MxRecordInput interface {
+	pulumi.Input
+
+	ToMxRecordOutput() MxRecordOutput
+	ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput
+}
+
+func (MxRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxRecord)(nil)).Elem()
+}
+
+func (i MxRecord) ToMxRecordOutput() MxRecordOutput {
+	return i.ToMxRecordOutputWithContext(context.Background())
+}
+
+func (i MxRecord) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxRecordOutput)
+}
+
+type MxRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (MxRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxRecordOutput)(nil)).Elem()
+}
+
+func (o MxRecordOutput) ToMxRecordOutput() MxRecordOutput {
+	return o
+}
+
+func (o MxRecordOutput) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MxRecordOutput{})
 }

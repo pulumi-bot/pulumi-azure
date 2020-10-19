@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -170,4 +171,43 @@ type VirtualNetworkSwiftConnectionArgs struct {
 
 func (VirtualNetworkSwiftConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNetworkSwiftConnectionArgs)(nil)).Elem()
+}
+
+type VirtualNetworkSwiftConnectionInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkSwiftConnectionOutput() VirtualNetworkSwiftConnectionOutput
+	ToVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionOutput
+}
+
+func (VirtualNetworkSwiftConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkSwiftConnection)(nil)).Elem()
+}
+
+func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionOutput() VirtualNetworkSwiftConnectionOutput {
+	return i.ToVirtualNetworkSwiftConnectionOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSwiftConnectionOutput)
+}
+
+type VirtualNetworkSwiftConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkSwiftConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkSwiftConnectionOutput)(nil)).Elem()
+}
+
+func (o VirtualNetworkSwiftConnectionOutput) ToVirtualNetworkSwiftConnectionOutput() VirtualNetworkSwiftConnectionOutput {
+	return o
+}
+
+func (o VirtualNetworkSwiftConnectionOutput) ToVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualNetworkSwiftConnectionOutput{})
 }

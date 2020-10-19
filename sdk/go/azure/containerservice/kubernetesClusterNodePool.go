@@ -4,6 +4,7 @@
 package containerservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -334,4 +335,43 @@ type KubernetesClusterNodePoolArgs struct {
 
 func (KubernetesClusterNodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterNodePoolArgs)(nil)).Elem()
+}
+
+type KubernetesClusterNodePoolInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput
+	ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput
+}
+
+func (KubernetesClusterNodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePool)(nil)).Elem()
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput {
+	return i.ToKubernetesClusterNodePoolOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolOutput)
+}
+
+type KubernetesClusterNodePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterNodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePoolOutput)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesClusterNodePoolOutput{})
 }
