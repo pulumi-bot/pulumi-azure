@@ -24,7 +24,7 @@ namespace Pulumi.Azure.Policy.Inputs
         /// <summary>
         /// Parameters for the policy set definition. This field is a json object that allows you to parameterize your policy definition.
         /// </summary>
-        [Obsolete(@"Deprecated in favour of `parameter_values`")]
+    [Obsolete(@"Deprecated in favour of `parameter_values`")]
         public InputMap<object> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<object>());
