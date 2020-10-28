@@ -208,7 +208,7 @@ namespace Pulumi.Azure.Sentinel
 
         [Input("textWhitelists")]
         private InputList<string>? _textWhitelists;
-        [Obsolete(@"this property has been renamed to display_name_filter to better match the SDK & API")]
+    [Obsolete(@"this property has been renamed to display_name_filter to better match the SDK & API")]
         public InputList<string> TextWhitelists
         {
             get => _textWhitelists ?? (_textWhitelists = new InputList<string>());
@@ -284,7 +284,7 @@ namespace Pulumi.Azure.Sentinel
 
         [Input("textWhitelists")]
         private InputList<string>? _textWhitelists;
-        [Obsolete(@"this property has been renamed to display_name_filter to better match the SDK & API")]
+    [Obsolete(@"this property has been renamed to display_name_filter to better match the SDK & API")]
         public InputList<string> TextWhitelists
         {
             get => _textWhitelists ?? (_textWhitelists = new InputList<string>());

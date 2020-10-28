@@ -237,7 +237,7 @@ namespace Pulumi.Azure.AppService
 
         [Input("userWhitelistedIpRanges")]
         private InputList<string>? _userWhitelistedIpRanges;
-        [Obsolete(@"this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format")]
+    [Obsolete(@"this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format")]
         public InputList<string> UserWhitelistedIpRanges
         {
             get => _userWhitelistedIpRanges ?? (_userWhitelistedIpRanges = new InputList<string>());
@@ -319,7 +319,7 @@ namespace Pulumi.Azure.AppService
 
         [Input("userWhitelistedIpRanges")]
         private InputList<string>? _userWhitelistedIpRanges;
-        [Obsolete(@"this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format")]
+    [Obsolete(@"this property has been renamed to `allowed_user_ip_cidrs` better reflect the expected ip range format")]
         public InputList<string> UserWhitelistedIpRanges
         {
             get => _userWhitelistedIpRanges ?? (_userWhitelistedIpRanges = new InputList<string>());
