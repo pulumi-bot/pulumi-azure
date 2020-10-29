@@ -11,39 +11,6 @@ import (
 )
 
 // Manages a Virtual Desktop Workspace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/desktopvirtualization"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("eastus"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = desktopvirtualization.NewWorkspace(ctx, "workspace", &desktopvirtualization.WorkspaceArgs{
-// 			Location:          example.Location,
-// 			ResourceGroupName: example.Name,
-// 			FriendlyName:      pulumi.String("FriendlyName"),
-// 			Description:       pulumi.String("A description of my workspace"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Workspace struct {
 	pulumi.CustomResourceState
 

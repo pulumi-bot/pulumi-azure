@@ -144,18 +144,6 @@ def get_published_version(blueprint_name: Optional[str] = None,
 
     > **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    current = azure.core.get_subscription()
-    test = azure.blueprint.get_published_version(scope_id=current.id,
-        blueprint_name="exampleBluePrint",
-        version="dev_v2.3")
-    ```
-
 
     :param str blueprint_name: The name of the Blueprint Definition
     :param str scope_id: The ID of the Management Group / Subscription where this Blueprint Definition is stored.

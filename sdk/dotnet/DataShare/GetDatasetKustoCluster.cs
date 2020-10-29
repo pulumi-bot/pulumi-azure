@@ -13,33 +13,6 @@ namespace Pulumi.Azure.DataShare
     {
         /// <summary>
         /// Use this data source to access information about an existing Data Share Kusto Cluster Dataset.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.DataShare.GetDatasetKustoCluster.InvokeAsync(new Azure.DataShare.GetDatasetKustoClusterArgs
-        ///         {
-        ///             Name = "example-dskc",
-        ///             ShareId = "example-share-id",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatasetKustoClusterResult> InvokeAsync(GetDatasetKustoClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetKustoClusterResult>("azure:datashare/getDatasetKustoCluster:getDatasetKustoCluster", args ?? new GetDatasetKustoClusterArgs(), options.WithVersion());

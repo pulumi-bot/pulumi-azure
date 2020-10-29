@@ -28,25 +28,6 @@ class SavedSearch(pulumi.CustomResource):
         """
         Manages a Log Analytics (formally Operational Insights) Saved Search.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="East US")
-        example_analytics_workspace = azure.operationalinsights.AnalyticsWorkspace("exampleAnalyticsWorkspace",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku="PerGB2018",
-            retention_in_days=30)
-        example_saved_search = azure.loganalytics.SavedSearch("exampleSavedSearch",
-            log_analytics_workspace_id=azurerm_log_analytics_workspace["test"]["id"],
-            category="exampleCategory",
-            display_name="exampleDisplayName",
-            query="exampleQuery")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The category that the Saved Search will be listed under. Changing this forces a new resource to be created.

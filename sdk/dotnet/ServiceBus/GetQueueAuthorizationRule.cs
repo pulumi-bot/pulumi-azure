@@ -13,35 +13,6 @@ namespace Pulumi.Azure.ServiceBus
     {
         /// <summary>
         /// Use this data source to access information about an existing ServiceBus Queue Authorisation Rule within a ServiceBus Queue.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.ServiceBus.GetQueueAuthorizationRule.InvokeAsync(new Azure.ServiceBus.GetQueueAuthorizationRuleArgs
-        ///         {
-        ///             Name = "example-tfex_name",
-        ///             ResourceGroupName = "example-resources",
-        ///             QueueName = "example-servicebus_queue",
-        ///             NamespaceName = "example-namespace",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQueueAuthorizationRuleResult> InvokeAsync(GetQueueAuthorizationRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQueueAuthorizationRuleResult>("azure:servicebus/getQueueAuthorizationRule:getQueueAuthorizationRule", args ?? new GetQueueAuthorizationRuleArgs(), options.WithVersion());

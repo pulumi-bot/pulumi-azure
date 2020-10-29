@@ -28,30 +28,6 @@ class ClusterPrincipalAssignment(pulumi.CustomResource):
         """
         Manages a Kusto Cluster Principal Assignment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        rg = azure.core.ResourceGroup("rg", location="East US")
-        example_cluster = azure.kusto.Cluster("exampleCluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
-        example_cluster_principal_assignment = azure.kusto.ClusterPrincipalAssignment("exampleClusterPrincipalAssignment",
-            resource_group_name=rg.name,
-            cluster_name=example_cluster.name,
-            tenant_id=current.tenant_id,
-            principal_id=current.client_id,
-            principal_type="App",
-            role="AllDatabasesAdmin")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster in which to create the resource. Changing this forces a new resource to be created.

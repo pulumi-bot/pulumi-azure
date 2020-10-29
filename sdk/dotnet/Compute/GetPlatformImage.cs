@@ -13,35 +13,6 @@ namespace Pulumi.Azure.Compute
     {
         /// <summary>
         /// Use this data source to access information about a Platform Image.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Compute.GetPlatformImage.InvokeAsync(new Azure.Compute.GetPlatformImageArgs
-        ///         {
-        ///             Location = "West Europe",
-        ///             Publisher = "Canonical",
-        ///             Offer = "UbuntuServer",
-        ///             Sku = "16.04-LTS",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPlatformImageResult> InvokeAsync(GetPlatformImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlatformImageResult>("azure:compute/getPlatformImage:getPlatformImage", args ?? new GetPlatformImageArgs(), options.WithVersion());

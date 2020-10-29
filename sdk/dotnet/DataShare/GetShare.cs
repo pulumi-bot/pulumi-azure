@@ -13,38 +13,6 @@ namespace Pulumi.Azure.DataShare
     {
         /// <summary>
         /// Use this data source to access information about an existing Data Share.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleAccount = Output.Create(Azure.DataShare.GetAccount.InvokeAsync(new Azure.DataShare.GetAccountArgs
-        ///         {
-        ///             Name = "example-account",
-        ///             ResourceGroupName = "example-resource-group",
-        ///         }));
-        ///         var exampleShare = exampleAccount.Apply(exampleAccount =&gt; Output.Create(Azure.DataShare.GetShare.InvokeAsync(new Azure.DataShare.GetShareArgs
-        ///         {
-        ///             Name = "existing",
-        ///             AccountId = exampleAccount.Id,
-        ///         })));
-        ///         this.Id = exampleShare.Apply(exampleShare =&gt; exampleShare.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("azure:datashare/getShare:getShare", args ?? new GetShareArgs(), options.WithVersion());

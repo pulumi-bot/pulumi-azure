@@ -12,67 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE** Private Endpoint is currently in Public Preview.
  *
  * Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. The service could be an Azure service such as Azure Storage, SQL, etc. or your own Private Link Service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleVirtualNetwork = new azure.network.VirtualNetwork("exampleVirtualNetwork", {
- *     addressSpaces: ["10.0.0.0/16"],
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const service = new azure.network.Subnet("service", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     virtualNetworkName: exampleVirtualNetwork.name,
- *     addressPrefixes: ["10.0.1.0/24"],
- *     enforcePrivateLinkServiceNetworkPolicies: true,
- * });
- * const endpoint = new azure.network.Subnet("endpoint", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     virtualNetworkName: exampleVirtualNetwork.name,
- *     addressPrefixes: ["10.0.2.0/24"],
- *     enforcePrivateLinkEndpointNetworkPolicies: true,
- * });
- * const examplePublicIp = new azure.network.PublicIp("examplePublicIp", {
- *     sku: "Standard",
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     allocationMethod: "Static",
- * });
- * const exampleLoadBalancer = new azure.lb.LoadBalancer("exampleLoadBalancer", {
- *     sku: "Standard",
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     frontendIpConfigurations: [{
- *         name: examplePublicIp.name,
- *         publicIpAddressId: examplePublicIp.id,
- *     }],
- * });
- * const exampleLinkService = new azure.privatedns.LinkService("exampleLinkService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     natIpConfigurations: [{
- *         name: examplePublicIp.name,
- *         primary: true,
- *         subnetId: service.id,
- *     }],
- *     loadBalancerFrontendIpConfigurationIds: [exampleLoadBalancer.frontendIpConfigurations.apply(frontendIpConfigurations => frontendIpConfigurations[0].id)],
- * });
- * const exampleEndpoint = new azure.privatelink.Endpoint("exampleEndpoint", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     subnetId: endpoint.id,
- *     privateServiceConnection: {
- *         name: "example-privateserviceconnection",
- *         privateConnectionResourceId: exampleLinkService.id,
- *         isManualConnection: false,
- *     },
- * });
- * ```
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

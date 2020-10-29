@@ -13,36 +13,6 @@ namespace Pulumi.Azure.Network
     {
         /// <summary>
         /// Use this data source to access information about an existing ExpressRoute circuit.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Network.GetExpressRouteCircuit.InvokeAsync(new Azure.Network.GetExpressRouteCircuitArgs
-        ///         {
-        ///             ResourceGroupName = azurerm_resource_group.Example.Name,
-        ///             Name = azurerm_express_route_circuit.Example.Name,
-        ///         }));
-        ///         this.ExpressRouteCircuitId = example.Apply(example =&gt; example.Id);
-        ///         this.ServiceKey = example.Apply(example =&gt; example.ServiceKey);
-        ///     }
-        /// 
-        ///     [Output("expressRouteCircuitId")]
-        ///     public Output&lt;string&gt; ExpressRouteCircuitId { get; set; }
-        ///     [Output("serviceKey")]
-        ///     public Output&lt;string&gt; ServiceKey { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetExpressRouteCircuitResult> InvokeAsync(GetExpressRouteCircuitArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExpressRouteCircuitResult>("azure:network/getExpressRouteCircuit:getExpressRouteCircuit", args ?? new GetExpressRouteCircuitArgs(), options.WithVersion());

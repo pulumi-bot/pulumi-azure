@@ -42,39 +42,6 @@ class DatasetDelimitedText(pulumi.CustomResource):
         """
         Manages an Azure Delimited Text Dataset inside an Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_linked_service_web = azure.datafactory.LinkedServiceWeb("exampleLinkedServiceWeb",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            authentication_type="Anonymous",
-            url="https://www.bing.com")
-        example_dataset_delimited_text = azure.datafactory.DatasetDelimitedText("exampleDatasetDelimitedText",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            linked_service_name=example_linked_service_web.name,
-            http_server_location=azure.datafactory.DatasetDelimitedTextHttpServerLocationArgs(
-                relative_url="http://www.bing.com",
-                path="foo/bar/",
-                filename="fizz.txt",
-            ),
-            column_delimiter=",",
-            row_delimiter="NEW",
-            encoding="UTF-8",
-            quote_character="x",
-            escape_character="f",
-            first_row_as_header=True,
-            null_value="NULL")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Dataset.

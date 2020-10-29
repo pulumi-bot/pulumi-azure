@@ -11,65 +11,6 @@ namespace Pulumi.Azure.Synapse
 {
     /// <summary>
     /// Manages a Synapse Spark Pool.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///             AccountKind = "StorageV2",
-    ///             IsHnsEnabled = true,
-    ///         });
-    ///         var exampleDataLakeGen2Filesystem = new Azure.Storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", new Azure.Storage.DataLakeGen2FilesystemArgs
-    ///         {
-    ///             StorageAccountId = exampleAccount.Id,
-    ///         });
-    ///         var exampleWorkspace = new Azure.Synapse.Workspace("exampleWorkspace", new Azure.Synapse.WorkspaceArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             StorageDataLakeGen2FilesystemId = exampleDataLakeGen2Filesystem.Id,
-    ///             SqlAdministratorLogin = "sqladminuser",
-    ///             SqlAdministratorLoginPassword = "H@Sh1CoR3!",
-    ///         });
-    ///         var exampleSparkPool = new Azure.Synapse.SparkPool("exampleSparkPool", new Azure.Synapse.SparkPoolArgs
-    ///         {
-    ///             SynapseWorkspaceId = exampleWorkspace.Id,
-    ///             NodeSizeFamily = "MemoryOptimized",
-    ///             NodeSize = "Small",
-    ///             AutoScale = new Azure.Synapse.Inputs.SparkPoolAutoScaleArgs
-    ///             {
-    ///                 MaxNodeCount = 50,
-    ///                 MinNodeCount = 3,
-    ///             },
-    ///             AutoPause = new Azure.Synapse.Inputs.SparkPoolAutoPauseArgs
-    ///             {
-    ///                 DelayInMinutes = 15,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "ENV", "Production" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SparkPool : Pulumi.CustomResource
     {

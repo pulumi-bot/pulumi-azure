@@ -35,43 +35,6 @@ class SparkPool(pulumi.CustomResource):
         """
         Manages a Synapse Spark Pool.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS",
-            account_kind="StorageV2",
-            is_hns_enabled=True)
-        example_data_lake_gen2_filesystem = azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", storage_account_id=example_account.id)
-        example_workspace = azure.synapse.Workspace("exampleWorkspace",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            storage_data_lake_gen2_filesystem_id=example_data_lake_gen2_filesystem.id,
-            sql_administrator_login="sqladminuser",
-            sql_administrator_login_password="H@Sh1CoR3!")
-        example_spark_pool = azure.synapse.SparkPool("exampleSparkPool",
-            synapse_workspace_id=example_workspace.id,
-            node_size_family="MemoryOptimized",
-            node_size="Small",
-            auto_scale=azure.synapse.SparkPoolAutoScaleArgs(
-                max_node_count=50,
-                min_node_count=3,
-            ),
-            auto_pause=azure.synapse.SparkPoolAutoPauseArgs(
-                delay_in_minutes=15,
-            ),
-            tags={
-                "ENV": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SparkPoolAutoPauseArgs']] auto_pause: An `auto_pause` block as defined below.

@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about Service Tags.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const example = azure.network.getServiceTags({
- *     location: "westcentralus",
- *     service: "AzureKeyVault",
- *     locationFilter: "northeurope",
- * });
- * export const addressPrefixes = data.azurerm_service_tags.example.address_prefixes;
- * ```
  */
 export function getServiceTags(args: GetServiceTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTagsResult> {
     if (!opts) {

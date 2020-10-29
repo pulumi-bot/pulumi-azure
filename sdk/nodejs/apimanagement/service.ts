@@ -8,31 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleService = new azure.apimanagement.Service("exampleService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     publisherName: "My Company",
- *     publisherEmail: "company@exmaple.com",
- *     skuName: "Developer_1",
- *     policy: {
- *         xmlContent: `    <policies>
- *       <inbound />
- *       <backend />
- *       <outbound />
- *       <on-error />
- *     </policies>
- * `,
- *     },
- * });
- * ```
  */
 export class Service extends pulumi.CustomResource {
     /**

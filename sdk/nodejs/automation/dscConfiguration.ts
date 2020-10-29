@@ -6,28 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Automation DSC Configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.automation.Account("exampleAccount", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: [{
- *         name: "Basic",
- *     }],
- * });
- * const exampleDscConfiguration = new azure.automation.DscConfiguration("exampleDscConfiguration", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     automationAccountName: exampleAccount.name,
- *     location: exampleResourceGroup.location,
- *     contentEmbedded: "configuration test {}",
- * });
- * ```
  */
 export class DscConfiguration extends pulumi.CustomResource {
     /**

@@ -35,24 +35,6 @@ class LinkedServiceAzureFileStorage(pulumi.CustomResource):
 
         > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_account = example_resource_group.name.apply(lambda name: azure.storage.get_account(name="storageaccountname",
-            resource_group_name=name))
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_linked_service_azure_file_storage = azure.datafactory.LinkedServiceAzureFileStorage("exampleLinkedServiceAzureFileStorage",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            connection_string=example_account.primary_connection_string)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.

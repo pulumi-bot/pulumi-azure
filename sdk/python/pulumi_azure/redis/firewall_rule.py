@@ -26,39 +26,6 @@ class FirewallRule(pulumi.CustomResource):
         """
         Manages a Firewall Rule associated with a Redis Cache.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-        import pulumi_random as random
-
-        server = random.RandomId("server",
-            keepers={
-                "azi_id": 1,
-            },
-            byte_length=8)
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_cache = azure.redis.Cache("exampleCache",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            capacity=1,
-            family="P",
-            sku_name="Premium",
-            enable_non_ssl_port=False,
-            redis_configuration=azure.redis.CacheRedisConfigurationArgs(
-                maxclients=256,
-                maxmemory_reserved=2,
-                maxmemory_delta=2,
-                maxmemory_policy="allkeys-lru",
-            ))
-        example_firewall_rule = azure.redis.FirewallRule("exampleFirewallRule",
-            redis_cache_name=example_cache.name,
-            resource_group_name=example_resource_group.name,
-            start_ip="1.2.3.4",
-            end_ip="2.3.4.5")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip: The highest IP address included in the range.

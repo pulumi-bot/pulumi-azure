@@ -13,33 +13,6 @@ namespace Pulumi.Azure.MSSql
     {
         /// <summary>
         /// Use this data source to access information about an existing Microsoft SQL Server.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.MSSql.GetServer.InvokeAsync(new Azure.MSSql.GetServerArgs
-        ///         {
-        ///             Name = "existingMsSqlServer",
-        ///             ResourceGroupName = "existingResGroup",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("azure:mssql/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());

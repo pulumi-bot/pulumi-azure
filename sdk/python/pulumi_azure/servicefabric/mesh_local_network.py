@@ -27,19 +27,6 @@ class MeshLocalNetwork(pulumi.CustomResource):
         """
         Manages a Service Fabric Mesh Local Network.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_mesh_local_network = azure.servicefabric.MeshLocalNetwork("exampleMeshLocalNetwork",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            network_address_prefix="10.0.0.0/22")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of this Service Fabric Mesh Local Network.

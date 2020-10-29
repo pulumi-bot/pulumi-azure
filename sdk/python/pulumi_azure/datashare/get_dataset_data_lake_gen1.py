@@ -114,17 +114,6 @@ def get_dataset_data_lake_gen1(data_share_id: Optional[str] = None,
     """
     Use this data source to access information about an existing DataShareDataLakeGen1Dataset.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.datashare.get_dataset_data_lake_gen1(name="example-dsdsdlg1",
-        data_share_id="example-share-id")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str data_share_id: The resource ID of the Data Share where this Data Share Data Lake Gen1 Dataset should be created.
     :param str name: The name of the Data Share Data Lake Gen1 Dataset.

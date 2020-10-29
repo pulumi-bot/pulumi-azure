@@ -11,38 +11,6 @@ namespace Pulumi.Azure.Lighthouse
 {
     /// <summary>
     /// Manages a Lighthouse Definition.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var contributor = Output.Create(Azure.Authorization.GetRoleDefinition.InvokeAsync(new Azure.Authorization.GetRoleDefinitionArgs
-    ///         {
-    ///             RoleDefinitionId = "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    ///         }));
-    ///         var example = new Azure.Lighthouse.Definition("example", new Azure.Lighthouse.DefinitionArgs
-    ///         {
-    ///             Description = "This is a lighthouse definition created via Terraform",
-    ///             ManagingTenantId = "00000000-0000-0000-0000-000000000000",
-    ///             Authorizations = 
-    ///             {
-    ///                 new Azure.Lighthouse.Inputs.DefinitionAuthorizationArgs
-    ///                 {
-    ///                     PrincipalId = "00000000-0000-0000-0000-000000000000",
-    ///                     RoleDefinitionId = contributor.Apply(contributor =&gt; contributor.RoleDefinitionId),
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Definition : Pulumi.CustomResource
     {

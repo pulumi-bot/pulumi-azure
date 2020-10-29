@@ -13,35 +13,6 @@ namespace Pulumi.Azure.Automation
     {
         /// <summary>
         /// Use this data source to access information about an existing Automation Datetime Variable.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Automation.GetDateTimeVariable.InvokeAsync(new Azure.Automation.GetDateTimeVariableArgs
-        ///         {
-        ///             Name = "tfex-example-var",
-        ///             ResourceGroupName = "tfex-example-rg",
-        ///             AutomationAccountName = "tfex-example-account",
-        ///         }));
-        ///         this.VariableId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("variableId")]
-        ///     public Output&lt;string&gt; VariableId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDateTimeVariableResult> InvokeAsync(GetDateTimeVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDateTimeVariableResult>("azure:automation/getDateTimeVariable:getDateTimeVariable", args ?? new GetDateTimeVariableArgs(), options.WithVersion());

@@ -24,24 +24,6 @@ class DomainTopic(pulumi.CustomResource):
         """
         Manages an EventGrid Domain Topic
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US 2")
-        example_domain = azure.eventgrid.Domain("exampleDomain",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            tags={
-                "environment": "Production",
-            })
-        example_domain_topic = azure.eventgrid.DomainTopic("exampleDomainTopic",
-            domain_name=example_domain.name,
-            resource_group_name=example_resource_group.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.

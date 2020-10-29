@@ -11,31 +11,6 @@ namespace Pulumi.Azure.EventHub
 {
     /// <summary>
     /// Manages an EventHub Cluster
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Core.ResourceGroup("example", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West US 2",
-    ///         });
-    ///         var test = new Azure.EventHub.Cluster("test", new Azure.EventHub.ClusterArgs
-    ///         {
-    ///             ResourceGroupName = azurerm_resource_group.Test.Name,
-    ///             Location = azurerm_resource_group.Test.Location,
-    ///             SkuName = "Dedicated_1",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

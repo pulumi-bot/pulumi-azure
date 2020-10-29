@@ -29,47 +29,6 @@ class Pipeline(pulumi.CustomResource):
         """
         Manages a Pipeline inside a Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_pipeline = azure.datafactory.Pipeline("examplePipeline",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name)
-        ```
-        ### With Activities
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        test = azure.datafactory.Pipeline("test",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            data_factory_name=azurerm_data_factory["test"]["name"],
-            variables={
-                "bob": "item1",
-            },
-            activities_json=\"\"\"[
-        	{
-        		"name": "Append variable1",
-        		"type": "AppendVariable",
-        		"dependsOn": [],
-        		"userProperties": [],
-        		"typeProperties": {
-        			"variableName": "bob",
-        			"value": "something"
-        		}
-        	}
-        ]
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activities_json: A JSON object that contains the activities that will be associated with the Data Factory Pipeline.

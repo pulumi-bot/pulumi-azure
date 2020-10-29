@@ -25,21 +25,6 @@ class PlacementGroup(pulumi.CustomResource):
         """
         Manages a proximity placement group for virtual machines, virtual machine scale sets and availability sets.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_placement_group = azure.proximity.PlacementGroup("examplePlacementGroup",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            tags={
-                "environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

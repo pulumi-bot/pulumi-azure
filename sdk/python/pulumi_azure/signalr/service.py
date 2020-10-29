@@ -30,29 +30,6 @@ class Service(pulumi.CustomResource):
         """
         Manages an Azure SignalR service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_service = azure.signalr.Service("exampleService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku=azure.signalr.ServiceSkuArgs(
-                name="Free_F1",
-                capacity=1,
-            ),
-            cors=[azure.signalr.ServiceCorArgs(
-                allowed_origins=["http://www.example.com"],
-            )],
-            features=[azure.signalr.ServiceFeatureArgs(
-                flag="ServiceMode",
-                value="Default",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCorArgs']]]] cors: A `cors` block as documented below.

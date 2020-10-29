@@ -6,26 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Azure Site Recovery replication policy within a recovery vault. Replication policies define the frequency at which recovery points are created and how long they are stored.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const secondary = new azure.core.ResourceGroup("secondary", {location: "East US"});
- * const vault = new azure.recoveryservices.Vault("vault", {
- *     location: secondary.location,
- *     resourceGroupName: secondary.name,
- *     sku: "Standard",
- * });
- * const policy = new azure.siterecovery.ReplicationPolicy("policy", {
- *     resourceGroupName: secondary.name,
- *     recoveryVaultName: vault.name,
- *     recoveryPointRetentionInMinutes: 24 * 60,
- *     applicationConsistentSnapshotFrequencyInMinutes: 4 * 60,
- * });
- * ```
  */
 export class ReplicationPolicy extends pulumi.CustomResource {
     /**

@@ -11,49 +11,6 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages an Azure Blob Dataset inside an Azure Data Factory.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "northeurope",
-    ///         });
-    ///         var exampleAccount = exampleResourceGroup.Name.Apply(name =&gt; Azure.Storage.GetAccount.InvokeAsync(new Azure.Storage.GetAccountArgs
-    ///         {
-    ///             Name = "storageaccountname",
-    ///             ResourceGroupName = name,
-    ///         }));
-    ///         var exampleFactory = new Azure.DataFactory.Factory("exampleFactory", new Azure.DataFactory.FactoryArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///         });
-    ///         var exampleLinkedServiceAzureBlobStorage = new Azure.DataFactory.LinkedServiceAzureBlobStorage("exampleLinkedServiceAzureBlobStorage", new Azure.DataFactory.LinkedServiceAzureBlobStorageArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             ConnectionString = exampleAccount.Apply(exampleAccount =&gt; exampleAccount.PrimaryConnectionString),
-    ///         });
-    ///         var exampleDatasetAzureBlob = new Azure.DataFactory.DatasetAzureBlob("exampleDatasetAzureBlob", new Azure.DataFactory.DatasetAzureBlobArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             LinkedServiceName = exampleLinkedServiceAzureBlobStorage.Name,
-    ///             Path = "foo",
-    ///             Filename = "bar.png",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DatasetAzureBlob : Pulumi.CustomResource
     {

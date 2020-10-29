@@ -8,53 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a CosmosDB (formally DocumentDB) Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- * import * as random from "@pulumi/random";
- *
- * const rg = new azure.core.ResourceGroup("rg", {location: _var.resource_group_location});
- * const ri = new random.RandomInteger("ri", {
- *     min: 10000,
- *     max: 99999,
- * });
- * const db = new azure.cosmosdb.Account("db", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     offerType: "Standard",
- *     kind: "GlobalDocumentDB",
- *     enableAutomaticFailover: true,
- *     capabilities: [
- *         {
- *             name: "EnableAggregationPipeline",
- *         },
- *         {
- *             name: "mongoEnableDocLevelTTL",
- *         },
- *         {
- *             name: "MongoDBv3.4",
- *         },
- *     ],
- *     consistencyPolicy: {
- *         consistencyLevel: "BoundedStaleness",
- *         maxIntervalInSeconds: 10,
- *         maxStalenessPrefix: 200,
- *     },
- *     geoLocations: [
- *         {
- *             location: _var.failover_location,
- *             failoverPriority: 1,
- *         },
- *         {
- *             location: rg.location,
- *             failoverPriority: 0,
- *         },
- *     ],
- * });
- * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

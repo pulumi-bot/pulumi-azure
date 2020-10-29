@@ -11,50 +11,6 @@ namespace Pulumi.Azure.Maintenance
 {
     /// <summary>
     /// Manages a maintenance assignment to Dedicated Host.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleDedicatedHostGroup = new Azure.Compute.DedicatedHostGroup("exampleDedicatedHostGroup", new Azure.Compute.DedicatedHostGroupArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             PlatformFaultDomainCount = 2,
-    ///         });
-    ///         var exampleDedicatedHost = new Azure.Compute.DedicatedHost("exampleDedicatedHost", new Azure.Compute.DedicatedHostArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             DedicatedHostGroupId = exampleDedicatedHostGroup.Id,
-    ///             SkuName = "DSv3-Type1",
-    ///             PlatformFaultDomain = 1,
-    ///         });
-    ///         var exampleConfiguration = new Azure.Maintenance.Configuration("exampleConfiguration", new Azure.Maintenance.ConfigurationArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             Scope = "All",
-    ///         });
-    ///         var exampleAssignmentDedicatedHost = new Azure.Maintenance.AssignmentDedicatedHost("exampleAssignmentDedicatedHost", new Azure.Maintenance.AssignmentDedicatedHostArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             MaintenanceConfigurationId = exampleConfiguration.Id,
-    ///             DedicatedHostId = exampleDedicatedHost.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AssignmentDedicatedHost : Pulumi.CustomResource
     {

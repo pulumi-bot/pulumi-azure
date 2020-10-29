@@ -26,26 +26,6 @@ class IPGroup(pulumi.CustomResource):
         """
         Manages an IP group that contains a list of CIDRs and/or IP addresses.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="westus")
-        example_ip_group = azure.network.IPGroup("exampleIPGroup",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            cidrs=[
-                "192.168.0.1",
-                "172.16.240.0/20",
-                "10.48.0.0/12",
-            ],
-            tags={
-                "environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: A list of CIDRs or IP addresses.

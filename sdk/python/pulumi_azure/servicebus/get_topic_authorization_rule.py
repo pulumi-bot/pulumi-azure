@@ -161,19 +161,6 @@ def get_topic_authorization_rule(name: Optional[str] = None,
     """
     Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.servicebus.get_topic_authorization_rule(name="example-tfex_name",
-        namespace_name="example-namespace",
-        resource_group_name="example-resources",
-        topic_name="example-servicebus_topic")
-    pulumi.export("servicebusAuthorizationRuleId", data["azurem_servicebus_topic_authorization_rule"]["example"]["id"])
-    ```
-
 
     :param str name: The name of the ServiceBus Topic Authorization Rule resource.
     :param str namespace_name: The name of the ServiceBus Namespace.

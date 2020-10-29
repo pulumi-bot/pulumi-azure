@@ -13,40 +13,6 @@ namespace Pulumi.Azure.Advisor
     {
         /// <summary>
         /// Use this data source to access information about an existing Advisor Recommendations.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Advisor.GetRecommendations.InvokeAsync(new Azure.Advisor.GetRecommendationsArgs
-        ///         {
-        ///             FilterByCategories = 
-        ///             {
-        ///                 "security",
-        ///                 "cost",
-        ///             },
-        ///             FilterByResourceGroups = 
-        ///             {
-        ///                 "example-resgroups",
-        ///             },
-        ///         }));
-        ///         this.Recommendations = example.Apply(example =&gt; example.Recommendations);
-        ///     }
-        /// 
-        ///     [Output("recommendations")]
-        ///     public Output&lt;string&gt; Recommendations { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecommendationsResult> InvokeAsync(GetRecommendationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecommendationsResult>("azure:advisor/getRecommendations:getRecommendations", args ?? new GetRecommendationsArgs(), options.WithVersion());

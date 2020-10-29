@@ -6,48 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
- *
- * ## Example Usage
- *
- * This example provisions an App Service, a Relay Hybrid Connection, and a Service Bus using their outputs to create the App Service Hybrid Connection.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const examplePlan = new azure.appservice.Plan("examplePlan", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: {
- *         tier: "Standard",
- *         size: "S1",
- *     },
- * });
- * const exampleAppService = new azure.appservice.AppService("exampleAppService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     appServicePlanId: examplePlan.id,
- * });
- * const exampleNamespace = new azure.relay.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "Standard",
- * });
- * const exampleHybridConnection = new azure.relay.HybridConnection("exampleHybridConnection", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     relayNamespaceName: exampleNamespace.name,
- *     userMetadata: "examplemetadata",
- * });
- * const exampleAppservice_hybridConnectionHybridConnection = new azure.appservice.HybridConnection("exampleAppservice/hybridConnectionHybridConnection", {
- *     appServiceName: exampleAppService.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     relayId: exampleHybridConnection.id,
- *     hostname: "testhostname.example",
- *     port: 8080,
- *     sendKeyName: "exampleSharedAccessKey",
- * });
- * ```
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

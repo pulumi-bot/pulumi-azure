@@ -43,30 +43,6 @@ class EventSubscription(pulumi.CustomResource):
         """
         Manages an EventGrid Event Subscription
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        default_resource_group = azure.core.ResourceGroup("defaultResourceGroup", location="West US 2")
-        default_account = azure.storage.Account("defaultAccount",
-            resource_group_name=default_resource_group.name,
-            location=default_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS",
-            tags={
-                "environment": "staging",
-            })
-        default_queue = azure.storage.Queue("defaultQueue", storage_account_name=default_account.name)
-        default_event_subscription = azure.eventgrid.EventSubscription("defaultEventSubscription",
-            scope=default_resource_group.id,
-            storage_queue_endpoint=azure.eventgrid.EventSubscriptionStorageQueueEndpointArgs(
-                storage_account_id=default_account.id,
-                queue_name=default_queue.name,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EventSubscriptionAdvancedFilterArgs']] advanced_filter: A `advanced_filter` block as defined below.

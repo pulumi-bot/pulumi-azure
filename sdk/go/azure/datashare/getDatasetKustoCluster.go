@@ -8,31 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Data Share Kusto Cluster Dataset.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datashare"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datashare.LookupDatasetKustoCluster(ctx, &datashare.LookupDatasetKustoClusterArgs{
-// 			Name:    "example-dskc",
-// 			ShareId: "example-share-id",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("id", example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupDatasetKustoCluster(ctx *pulumi.Context, args *LookupDatasetKustoClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatasetKustoClusterResult, error) {
 	var rv LookupDatasetKustoClusterResult
 	err := ctx.Invoke("azure:datashare/getDatasetKustoCluster:getDatasetKustoCluster", args, &rv, opts...)

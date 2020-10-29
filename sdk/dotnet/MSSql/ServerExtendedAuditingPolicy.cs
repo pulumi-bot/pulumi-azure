@@ -13,48 +13,6 @@ namespace Pulumi.Azure.MSSql
     /// Manages a Ms Sql Server Extended Auditing Policy.
     /// 
     /// &gt; **NOTE:** The Server Extended Auditing Policy Can be set inline here as well as with the mssql_server_extended_auditing_policy resource resource. You can only use one or the other and using both will cause a conflict.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleServer = new Azure.MSSql.Server("exampleServer", new Azure.MSSql.ServerArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             Version = "12.0",
-    ///             AdministratorLogin = "missadministrator",
-    ///             AdministratorLoginPassword = "AdminPassword123!",
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///         });
-    ///         var exampleServerExtendedAuditingPolicy = new Azure.MSSql.ServerExtendedAuditingPolicy("exampleServerExtendedAuditingPolicy", new Azure.MSSql.ServerExtendedAuditingPolicyArgs
-    ///         {
-    ///             ServerId = exampleServer.Id,
-    ///             StorageEndpoint = exampleAccount.PrimaryBlobEndpoint,
-    ///             StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
-    ///             StorageAccountAccessKeyIsSecondary = false,
-    ///             RetentionInDays = 6,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ServerExtendedAuditingPolicy : Pulumi.CustomResource
     {

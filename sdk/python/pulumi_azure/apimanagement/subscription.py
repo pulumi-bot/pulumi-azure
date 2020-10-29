@@ -31,28 +31,6 @@ class Subscription(pulumi.CustomResource):
         """
         Manages a Subscription within a API Management Service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_service = azure.apimanagement.get_service(name="example-apim",
-            resource_group_name="example-resources")
-        example_product = azure.apimanagement.get_product(product_id="00000000-0000-0000-0000-000000000000",
-            api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
-        example_user = azure.apimanagement.get_user(user_id="11111111-1111-1111-1111-111111111111",
-            api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name)
-        example_subscription = azure.apimanagement.Subscription("exampleSubscription",
-            api_management_name=example_service.name,
-            resource_group_name=example_service.resource_group_name,
-            user_id=example_user.id,
-            product_id=example_product.id,
-            display_name="Parser API")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_tracing: Determines whether tracing can be enabled.  Defaults to `true`.

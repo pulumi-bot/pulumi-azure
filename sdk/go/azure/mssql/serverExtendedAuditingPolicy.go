@@ -13,60 +13,6 @@ import (
 // Manages a Ms Sql Server Extended Auditing Policy.
 //
 // > **NOTE:** The Server Extended Auditing Policy Can be set inline here as well as with the mssqlServerExtendedAuditingPolicy resource resource. You can only use one or the other and using both will cause a conflict.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/mssql"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West Europe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleServer, err := mssql.NewServer(ctx, "exampleServer", &mssql.ServerArgs{
-// 			ResourceGroupName:          exampleResourceGroup.Name,
-// 			Location:                   exampleResourceGroup.Location,
-// 			Version:                    pulumi.String("12.0"),
-// 			AdministratorLogin:         pulumi.String("missadministrator"),
-// 			AdministratorLoginPassword: pulumi.String("AdminPassword123!"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleAccount, err := storage.NewAccount(ctx, "exampleAccount", &storage.AccountArgs{
-// 			ResourceGroupName:      exampleResourceGroup.Name,
-// 			Location:               exampleResourceGroup.Location,
-// 			AccountTier:            pulumi.String("Standard"),
-// 			AccountReplicationType: pulumi.String("LRS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mssql.NewServerExtendedAuditingPolicy(ctx, "exampleServerExtendedAuditingPolicy", &mssql.ServerExtendedAuditingPolicyArgs{
-// 			ServerId:                           exampleServer.ID(),
-// 			StorageEndpoint:                    exampleAccount.PrimaryBlobEndpoint,
-// 			StorageAccountAccessKey:            exampleAccount.PrimaryAccessKey,
-// 			StorageAccountAccessKeyIsSecondary: pulumi.Bool(false),
-// 			RetentionInDays:                    pulumi.Int(6),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ServerExtendedAuditingPolicy struct {
 	pulumi.CustomResourceState
 

@@ -13,32 +13,6 @@ namespace Pulumi.Azure.AppService
     {
         /// <summary>
         /// Use this data source to fetch the Host Keys of an existing Function App
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.AppService.GetFunctionAppHostKeys.InvokeAsync(new Azure.AppService.GetFunctionAppHostKeysArgs
-        ///         {
-        ///             Name = "example-function",
-        ///             ResourceGroupName = azurerm_resource_group.Example.Name,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// &gt; **Note:** All arguments including the secret value will be stored in the raw state as plain-text, including `default_function_key` and `master_key`. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionAppHostKeysResult> InvokeAsync(GetFunctionAppHostKeysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionAppHostKeysResult>("azure:appservice/getFunctionAppHostKeys:getFunctionAppHostKeys", args ?? new GetFunctionAppHostKeysArgs(), options.WithVersion());

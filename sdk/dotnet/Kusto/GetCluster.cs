@@ -13,30 +13,6 @@ namespace Pulumi.Azure.Kusto
     {
         /// <summary>
         /// Use this data source to access information about an existing Kusto (also known as Azure Data Explorer) Cluster
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Kusto.GetCluster.InvokeAsync(new Azure.Kusto.GetClusterArgs
-        ///         {
-        ///             Name = "kustocluster",
-        ///             ResourceGroupName = "test_resource_group",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("azure:kusto/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());

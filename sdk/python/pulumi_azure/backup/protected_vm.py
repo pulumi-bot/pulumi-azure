@@ -26,31 +26,6 @@ class ProtectedVM(pulumi.CustomResource):
         """
         Manages Azure Backup for an Azure VM
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_vault = azure.recoveryservices.Vault("exampleVault",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku="Standard")
-        example_policy_vm = azure.backup.PolicyVM("examplePolicyVM",
-            resource_group_name=example_resource_group.name,
-            recovery_vault_name=example_vault.name,
-            backup=azure.backup.PolicyVMBackupArgs(
-                frequency="Daily",
-                time="23:00",
-            ))
-        vm1 = azure.backup.ProtectedVM("vm1",
-            resource_group_name=example_resource_group.name,
-            recovery_vault_name=example_vault.name,
-            source_vm_id=azurerm_virtual_machine["example"]["id"],
-            backup_policy_id=example_policy_vm.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_policy_id: Specifies the id of the backup policy to use.

@@ -16,33 +16,6 @@ namespace Pulumi.Azure.Authorization
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Reference An Existing)
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Authorization.GetUserAssignedIdentity.InvokeAsync(new Azure.Authorization.GetUserAssignedIdentityArgs
-        ///         {
-        ///             Name = "name_of_user_assigned_identity",
-        ///             ResourceGroupName = "name_of_resource_group",
-        ///         }));
-        ///         this.UaiClientId = example.Apply(example =&gt; example.ClientId);
-        ///         this.UaiPrincipalId = example.Apply(example =&gt; example.PrincipalId);
-        ///     }
-        /// 
-        ///     [Output("uaiClientId")]
-        ///     public Output&lt;string&gt; UaiClientId { get; set; }
-        ///     [Output("uaiPrincipalId")]
-        ///     public Output&lt;string&gt; UaiPrincipalId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserAssignedIdentityResult> InvokeAsync(GetUserAssignedIdentityArgs args, InvokeOptions? options = null)

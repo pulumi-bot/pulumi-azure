@@ -11,36 +11,6 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages a Route Filter.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Network.RouteFilter("example", new Azure.Network.RouteFilterArgs
-    ///         {
-    ///             Location = "East US",
-    ///             ResourceGroupName = "example",
-    ///             Rule = new Azure.Network.Inputs.RouteFilterRuleArgs
-    ///             {
-    ///                 Access = "Allow",
-    ///                 Communities = 
-    ///                 {
-    ///                     "12076:52004",
-    ///                 },
-    ///                 Name = "rule",
-    ///                 RuleType = "Community",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RouteFilter : Pulumi.CustomResource
     {

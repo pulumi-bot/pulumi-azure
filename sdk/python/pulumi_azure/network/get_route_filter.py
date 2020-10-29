@@ -106,17 +106,6 @@ def get_route_filter(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Route Filter.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.network.get_route_filter(name="existing",
-        resource_group_name="existing")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str name: The Name of this Route Filter.
     :param str resource_group_name: The name of the Resource Group where the Route Filter exists.

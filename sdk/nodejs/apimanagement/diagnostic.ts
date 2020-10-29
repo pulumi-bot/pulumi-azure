@@ -6,40 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Service Diagnostic.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleInsights = new azure.appinsights.Insights("exampleInsights", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     applicationType: "web",
- * });
- * const exampleService = new azure.apimanagement.Service("exampleService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     publisherName: "My Company",
- *     publisherEmail: "company@mycompany.io",
- *     skuName: "Developer_1",
- * });
- * const exampleLogger = new azure.apimanagement.Logger("exampleLogger", {
- *     apiManagementName: exampleService.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     applicationInsights: {
- *         instrumentationKey: exampleInsights.instrumentationKey,
- *     },
- * });
- * const exampleDiagnostic = new azure.apimanagement.Diagnostic("exampleDiagnostic", {
- *     identifier: "applicationinsights",
- *     resourceGroupName: exampleResourceGroup.name,
- *     apiManagementName: exampleService.name,
- *     apiManagementLoggerId: exampleLogger.id,
- * });
- * ```
  */
 export class Diagnostic extends pulumi.CustomResource {
     /**

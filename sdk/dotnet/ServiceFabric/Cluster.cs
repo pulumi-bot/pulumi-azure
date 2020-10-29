@@ -11,46 +11,6 @@ namespace Pulumi.Azure.ServiceFabric
 {
     /// <summary>
     /// Manages a Service Fabric Cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleCluster = new Azure.ServiceFabric.Cluster("exampleCluster", new Azure.ServiceFabric.ClusterArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             ReliabilityLevel = "Bronze",
-    ///             UpgradeMode = "Manual",
-    ///             ClusterCodeVersion = "7.1.456.959",
-    ///             VmImage = "Windows",
-    ///             ManagementEndpoint = "https://example:80",
-    ///             NodeTypes = 
-    ///             {
-    ///                 new Azure.ServiceFabric.Inputs.ClusterNodeTypeArgs
-    ///                 {
-    ///                     Name = "first",
-    ///                     InstanceCount = 3,
-    ///                     IsPrimary = true,
-    ///                     ClientEndpointPort = 2020,
-    ///                     HttpEndpointPort = 80,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

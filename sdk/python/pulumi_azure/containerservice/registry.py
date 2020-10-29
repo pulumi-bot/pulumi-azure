@@ -34,24 +34,6 @@ class Registry(pulumi.CustomResource):
         """
         Manages an Azure Container Registry.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        rg = azure.core.ResourceGroup("rg", location="West US")
-        acr = azure.containerservice.Registry("acr",
-            resource_group_name=rg.name,
-            location=rg.location,
-            sku="Premium",
-            admin_enabled=False,
-            georeplication_locations=[
-                "East US",
-                "West Europe",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Specifies whether the admin user is enabled. Defaults to `false`.

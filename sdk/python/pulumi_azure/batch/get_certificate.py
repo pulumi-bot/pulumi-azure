@@ -124,18 +124,6 @@ def get_certificate(account_name: Optional[str] = None,
     """
     Use this data source to access information about an existing certificate in a Batch Account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.batch.get_certificate(name="SHA1-42C107874FD0E4A9583292A2F1098E8FE4B2EDDA",
-        account_name="examplebatchaccount",
-        resource_group_name="example")
-    pulumi.export("thumbprint", example.thumbprint)
-    ```
-
 
     :param str account_name: The name of the Batch account.
     :param str name: The name of the Batch certificate.

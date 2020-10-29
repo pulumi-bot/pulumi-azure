@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * Manages a NetApp Account.
  *
  * > **NOTE:** Azure allows only one active directory can be joined to a single subscription at a time for NetApp Account.
- *
- * ## NetApp Account Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.netapp.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     activeDirectory: {
- *         username: "aduser",
- *         password: "aduserpwd",
- *         smbServerName: "SMBSERVER",
- *         dnsServers: ["1.2.3.4"],
- *         domain: "westcentralus.com",
- *         organizationalUnit: "OU=FirstLevel",
- *     },
- * });
- * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

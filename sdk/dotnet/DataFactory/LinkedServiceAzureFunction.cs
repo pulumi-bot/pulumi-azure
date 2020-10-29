@@ -13,42 +13,6 @@ namespace Pulumi.Azure.DataFactory
     /// Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
     /// 
     /// &gt; **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "northeurope",
-    ///         });
-    ///         var exampleFunctionApp = exampleResourceGroup.Name.Apply(name =&gt; Azure.AppService.GetFunctionApp.InvokeAsync(new Azure.AppService.GetFunctionAppArgs
-    ///         {
-    ///             Name = "test-azure-functions",
-    ///             ResourceGroupName = name,
-    ///         }));
-    ///         var exampleFactory = new Azure.DataFactory.Factory("exampleFactory", new Azure.DataFactory.FactoryArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///         });
-    ///         var exampleLinkedServiceAzureFunction = new Azure.DataFactory.LinkedServiceAzureFunction("exampleLinkedServiceAzureFunction", new Azure.DataFactory.LinkedServiceAzureFunctionArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             Url = exampleFunctionApp.Apply(exampleFunctionApp =&gt; exampleFunctionApp.DefaultHostname),
-    ///             Key = "foo",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class LinkedServiceAzureFunction : Pulumi.CustomResource
     {

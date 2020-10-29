@@ -8,29 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Data Lake Gen2 File System within an Azure Storage Account.
  *
  * > **NOTE:** This Resource requires using Azure Active Directory to connect to Azure Storage, which in turn requires the `Storage` specific roles - which are not granted by default.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- *     accountKind: "StorageV2",
- *     isHnsEnabled: "true",
- * });
- * const exampleDataLakeGen2Filesystem = new azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", {
- *     storageAccountId: exampleAccount.id,
- *     properties: {
- *         hello: "aGVsbG8=",
- *     },
- * });
- * ```
  */
 export class DataLakeGen2Filesystem extends pulumi.CustomResource {
     /**

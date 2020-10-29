@@ -13,29 +13,6 @@ namespace Pulumi.Azure.Core
     {
         /// <summary>
         /// Use this data source to access the configuration of the AzureRM provider.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Azure.Core.GetClientConfig.InvokeAsync());
-        ///         this.AccountId = current.Apply(current =&gt; current.ClientId);
-        ///     }
-        /// 
-        ///     [Output("accountId")]
-        ///     public Output&lt;string&gt; AccountId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("azure:core/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());

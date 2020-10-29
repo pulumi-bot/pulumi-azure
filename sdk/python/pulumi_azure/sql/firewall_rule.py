@@ -26,26 +26,6 @@ class FirewallRule(pulumi.CustomResource):
         """
         Allows you to manage an Azure SQL Firewall Rule
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_sql_server = azure.sql.SqlServer("exampleSqlServer",
-            resource_group_name=example_resource_group.name,
-            location="West US",
-            version="12.0",
-            administrator_login="4dm1n157r470r",
-            administrator_login_password="4-v3ry-53cr37-p455w0rd")
-        example_firewall_rule = azure.sql.FirewallRule("exampleFirewallRule",
-            resource_group_name=example_resource_group.name,
-            server_name=example_sql_server.name,
-            start_ip_address="10.0.17.62",
-            end_ip_address="10.0.17.62")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip_address: The ending IP address to allow through the firewall for this rule.

@@ -15,26 +15,6 @@ namespace Pulumi.Azure.SecurityCenter
     /// &gt; **NOTE:** This resource requires the `Owner` permission on the Subscription.
     /// 
     /// &gt; **NOTE:** Deletion of this resource does not change or reset the data access settings
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.SecurityCenter.Setting("example", new Azure.SecurityCenter.SettingArgs
-    ///         {
-    ///             Enabled = true,
-    ///             SettingName = "MCAS",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Setting : Pulumi.CustomResource
     {

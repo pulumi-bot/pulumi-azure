@@ -31,34 +31,6 @@ class ResourceGroupExport(pulumi.CustomResource):
         """
         Manages an Azure Cost Management Export for a Resource Group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS")
-        example_resource_group_export = azure.costmanagement.ResourceGroupExport("exampleResourceGroupExport",
-            resource_group_id=example_resource_group.id,
-            recurrence_type="Monthly",
-            recurrence_period_start="2020-08-18T00:00:00Z",
-            recurrence_period_end="2020-09-18T00:00:00Z",
-            delivery_info=azure.costmanagement.ResourceGroupExportDeliveryInfoArgs(
-                storage_account_id=example_account.id,
-                container_name="examplecontainer",
-                root_folder_path="/root/updated",
-            ),
-            query=azure.costmanagement.ResourceGroupExportQueryArgs(
-                type="Usage",
-                time_frame="WeekToDate",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Is the cost management export active? Default is `true`.

@@ -114,16 +114,6 @@ def get_log_profile(name: Optional[str] = None,
     """
     Use this data source to access the properties of a Log Profile.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.monitoring.get_log_profile(name="test-logprofile")
-    pulumi.export("logProfileStorageAccountId", example.storage_account_id)
-    ```
-
 
     :param str name: Specifies the Name of the Log Profile.
     """

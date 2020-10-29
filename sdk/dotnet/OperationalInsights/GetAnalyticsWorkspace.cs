@@ -13,33 +13,6 @@ namespace Pulumi.Azure.OperationalInsights
     {
         /// <summary>
         /// Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.OperationalInsights.GetAnalyticsWorkspace.InvokeAsync(new Azure.OperationalInsights.GetAnalyticsWorkspaceArgs
-        ///         {
-        ///             Name = "acctest-01",
-        ///             ResourceGroupName = "acctest",
-        ///         }));
-        ///         this.LogAnalyticsWorkspaceId = example.Apply(example =&gt; example.WorkspaceId);
-        ///     }
-        /// 
-        ///     [Output("logAnalyticsWorkspaceId")]
-        ///     public Output&lt;string&gt; LogAnalyticsWorkspaceId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAnalyticsWorkspaceResult> InvokeAsync(GetAnalyticsWorkspaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAnalyticsWorkspaceResult>("azure:operationalinsights/getAnalyticsWorkspace:getAnalyticsWorkspace", args ?? new GetAnalyticsWorkspaceArgs(), options.WithVersion());

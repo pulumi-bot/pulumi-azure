@@ -11,67 +11,6 @@ import (
 )
 
 // Manages a Kusto (also known as Azure Data Explorer) Database Principal Assignment.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/kusto"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := core.GetClientConfig(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		rg, err := core.NewResourceGroup(ctx, "rg", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("East US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleCluster, err := kusto.NewCluster(ctx, "exampleCluster", &kusto.ClusterArgs{
-// 			Location:          rg.Location,
-// 			ResourceGroupName: rg.Name,
-// 			Sku: &kusto.ClusterSkuArgs{
-// 				Name:     pulumi.String("Standard_D13_v2"),
-// 				Capacity: pulumi.Int(2),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDatabase, err := kusto.NewDatabase(ctx, "exampleDatabase", &kusto.DatabaseArgs{
-// 			ResourceGroupName: rg.Name,
-// 			Location:          rg.Location,
-// 			ClusterName:       exampleCluster.Name,
-// 			HotCachePeriod:    pulumi.String("P7D"),
-// 			SoftDeletePeriod:  pulumi.String("P31D"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kusto.NewDatabasePrincipalAssignment(ctx, "exampleDatabasePrincipalAssignment", &kusto.DatabasePrincipalAssignmentArgs{
-// 			ResourceGroupName: rg.Name,
-// 			ClusterName:       exampleCluster.Name,
-// 			DatabaseName:      exampleDatabase.Name,
-// 			TenantId:          pulumi.String(current.TenantId),
-// 			PrincipalId:       pulumi.String(current.ClientId),
-// 			PrincipalType:     pulumi.String("App"),
-// 			Role:              pulumi.String("Viewer"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 

@@ -6,28 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Enables you to manage DNS NS Records within Azure DNS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleZone = new azure.dns.Zone("exampleZone", {resourceGroupName: exampleResourceGroup.name});
- * const exampleNsRecord = new azure.dns.NsRecord("exampleNsRecord", {
- *     zoneName: exampleZone.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     ttl: 300,
- *     records: [
- *         "ns1.contoso.com",
- *         "ns2.contoso.com",
- *     ],
- *     tags: {
- *         Environment: "Production",
- *     },
- * });
- * ```
  */
 export class NsRecord extends pulumi.CustomResource {
     /**

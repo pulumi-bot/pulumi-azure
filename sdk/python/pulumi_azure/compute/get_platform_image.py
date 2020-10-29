@@ -96,19 +96,6 @@ def get_platform_image(location: Optional[str] = None,
     """
     Use this data source to access information about a Platform Image.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.compute.get_platform_image(location="West Europe",
-        publisher="Canonical",
-        offer="UbuntuServer",
-        sku="16.04-LTS")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str location: Specifies the Location to pull information about this Platform Image from.
     :param str offer: Specifies the Offer associated with the Platform Image.

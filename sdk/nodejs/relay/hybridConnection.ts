@@ -6,29 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Relay Hybrid Connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleNamespace = new azure.relay.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "Standard",
- *     tags: {
- *         source: "managed",
- *     },
- * });
- * const exampleHybridConnection = new azure.relay.HybridConnection("exampleHybridConnection", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     relayNamespaceName: exampleNamespace.name,
- *     requiresClientAuthorization: false,
- *     userMetadata: "testmetadata",
- * });
- * ```
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

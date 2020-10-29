@@ -6,32 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Kusto Cluster Principal Assignment.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const current = azure.core.getClientConfig({});
- * const rg = new azure.core.ResourceGroup("rg", {location: "East US"});
- * const exampleCluster = new azure.kusto.Cluster("exampleCluster", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: {
- *         name: "Standard_D13_v2",
- *         capacity: 2,
- *     },
- * });
- * const exampleClusterPrincipalAssignment = new azure.kusto.ClusterPrincipalAssignment("exampleClusterPrincipalAssignment", {
- *     resourceGroupName: rg.name,
- *     clusterName: exampleCluster.name,
- *     tenantId: current.then(current => current.tenantId),
- *     principalId: current.then(current => current.clientId),
- *     principalType: "App",
- *     role: "AllDatabasesAdmin",
- * });
- * ```
  */
 export class ClusterPrincipalAssignment extends pulumi.CustomResource {
     /**

@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const example = azure.appservice.getAppServicePlan({
- *     name: "search-app-service-plan",
- *     resourceGroupName: "search-service",
- * });
- * export const appServicePlanId = example.then(example => example.id);
- * ```
  */
 export function getAppServicePlan(args: GetAppServicePlanArgs, opts?: pulumi.InvokeOptions): Promise<GetAppServicePlanResult> {
     if (!opts) {

@@ -13,52 +13,6 @@ namespace Pulumi.Azure.MSSql
     /// Manages a Ms Sql Database Extended Auditing Policy.
     /// 
     /// &gt; **NOTE:** The Database Extended Auditing Policy Can be set inline here as well as with the mssql_database_extended_auditing_policy resource resource. You can only use one or the other and using both will cause a conflict.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleServer = new Azure.MSSql.Server("exampleServer", new Azure.MSSql.ServerArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             Version = "12.0",
-    ///             AdministratorLogin = "missadministrator",
-    ///             AdministratorLoginPassword = "AdminPassword123!",
-    ///         });
-    ///         var exampleDatabase = new Azure.MSSql.Database("exampleDatabase", new Azure.MSSql.DatabaseArgs
-    ///         {
-    ///             ServerId = exampleServer.Id,
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///         });
-    ///         var exampleDatabaseExtendedAuditingPolicy = new Azure.MSSql.DatabaseExtendedAuditingPolicy("exampleDatabaseExtendedAuditingPolicy", new Azure.MSSql.DatabaseExtendedAuditingPolicyArgs
-    ///         {
-    ///             DatabaseId = exampleDatabase.Id,
-    ///             StorageEndpoint = exampleAccount.PrimaryBlobEndpoint,
-    ///             StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
-    ///             StorageAccountAccessKeyIsSecondary = false,
-    ///             RetentionInDays = 6,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DatabaseExtendedAuditingPolicy : Pulumi.CustomResource
     {

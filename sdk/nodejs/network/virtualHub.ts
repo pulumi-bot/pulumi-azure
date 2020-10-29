@@ -8,25 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Virtual Hub within a Virtual WAN.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleVirtualWan = new azure.network.VirtualWan("exampleVirtualWan", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- * });
- * const exampleVirtualHub = new azure.network.VirtualHub("exampleVirtualHub", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     virtualWanId: exampleVirtualWan.id,
- *     addressPrefix: "10.0.1.0/24",
- * });
- * ```
  */
 export class VirtualHub extends pulumi.CustomResource {
     /**

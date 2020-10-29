@@ -32,44 +32,6 @@ class NetworkConnectionMonitor(pulumi.CustomResource):
         """
         Manages a Network Connection Monitor.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.get_resource_group(name="example-resources")
-        example_network_watcher = azure.network.NetworkWatcher("exampleNetworkWatcher",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        src_virtual_machine = azure.compute.get_virtual_machine(name="example-vm",
-            resource_group_name=example_resource_group.name)
-        src_extension = azure.compute.Extension("srcExtension",
-            virtual_machine_id=src_virtual_machine.id,
-            publisher="Microsoft.Azure.NetworkWatcher",
-            type="NetworkWatcherAgentLinux",
-            type_handler_version="1.4",
-            auto_upgrade_minor_version=True)
-        example_network_connection_monitor = azure.network.NetworkConnectionMonitor("exampleNetworkConnectionMonitor",
-            network_watcher_name=example_network_watcher.name,
-            resource_group_name=example_resource_group.name,
-            location=example_network_watcher.location,
-            auto_start=False,
-            interval_in_seconds=30,
-            source=azure.network.NetworkConnectionMonitorSourceArgs(
-                virtual_machine_id=src_virtual_machine.id,
-                port=20020,
-            ),
-            destination=azure.network.NetworkConnectionMonitorDestinationArgs(
-                address="mycompany.io",
-                port=443,
-            ),
-            tags={
-                "foo": "bar",
-            },
-            opts=ResourceOptions(depends_on=[src_extension]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_start: Will the connection monitor start automatically once created? Changing this forces a new Network Connection Monitor to be created.

@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleKeyVault = azure.keyvault.getKeyVault({
- *     name: "examplekv",
- *     resourceGroupName: "some-resource-group",
- * });
- * const exampleCertificate = exampleKeyVault.then(exampleKeyVault => azure.keyvault.getCertificate({
- *     name: "secret-sauce",
- *     keyVaultId: exampleKeyVault.id,
- * }));
- * export const certificateThumbprint = exampleCertificate.then(exampleCertificate => exampleCertificate.thumbprint);
- * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {

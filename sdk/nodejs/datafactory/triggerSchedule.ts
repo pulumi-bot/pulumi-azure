@@ -6,30 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Trigger Schedule inside a Azure Data Factory.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const testPipeline = new azure.datafactory.Pipeline("testPipeline", {
- *     resourceGroupName: azurerm_resource_group.test.name,
- *     dataFactoryName: azurerm_data_factory.test.name,
- * });
- * const testTriggerSchedule = new azure.datafactory.TriggerSchedule("testTriggerSchedule", {
- *     dataFactoryName: azurerm_data_factory.test.name,
- *     resourceGroupName: azurerm_resource_group.test.name,
- *     pipelineName: testPipeline.name,
- *     interval: 5,
- *     frequency: "Day",
- * });
- * ```
  */
 export class TriggerSchedule extends pulumi.CustomResource {
     /**

@@ -10,41 +10,6 @@ import * as utilities from "../utilities";
  * Manages a Load Balancer Outbound Rule.
  *
  * > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration and a Backend Address Pool Attached.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const examplePublicIp = new azure.network.PublicIp("examplePublicIp", {
- *     location: "West US",
- *     resourceGroupName: exampleResourceGroup.name,
- *     allocationMethod: "Static",
- * });
- * const exampleLoadBalancer = new azure.lb.LoadBalancer("exampleLoadBalancer", {
- *     location: "West US",
- *     resourceGroupName: exampleResourceGroup.name,
- *     frontendIpConfigurations: [{
- *         name: "PublicIPAddress",
- *         publicIpAddressId: examplePublicIp.id,
- *     }],
- * });
- * const exampleBackendAddressPool = new azure.lb.BackendAddressPool("exampleBackendAddressPool", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     loadbalancerId: exampleLoadBalancer.id,
- * });
- * const exampleOutboundRule = new azure.lb.OutboundRule("exampleOutboundRule", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     loadbalancerId: exampleLoadBalancer.id,
- *     protocol: "Tcp",
- *     backendAddressPoolId: exampleBackendAddressPool.id,
- *     frontendIpConfigurations: [{
- *         name: "PublicIPAddress",
- *     }],
- * });
- * ```
  */
 export class OutboundRule extends pulumi.CustomResource {
     /**

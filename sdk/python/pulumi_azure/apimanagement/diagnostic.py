@@ -26,36 +26,6 @@ class Diagnostic(pulumi.CustomResource):
         """
         Manages an API Management Service Diagnostic.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_insights = azure.appinsights.Insights("exampleInsights",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            application_type="web")
-        example_service = azure.apimanagement.Service("exampleService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            publisher_name="My Company",
-            publisher_email="company@mycompany.io",
-            sku_name="Developer_1")
-        example_logger = azure.apimanagement.Logger("exampleLogger",
-            api_management_name=example_service.name,
-            resource_group_name=example_resource_group.name,
-            application_insights=azure.apimanagement.LoggerApplicationInsightsArgs(
-                instrumentation_key=example_insights.instrumentation_key,
-            ))
-        example_diagnostic = azure.apimanagement.Diagnostic("exampleDiagnostic",
-            identifier="applicationinsights",
-            resource_group_name=example_resource_group.name,
-            api_management_name=example_service.name,
-            api_management_logger_id=example_logger.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_logger_id: The id of the target API Management Logger where the API Management Diagnostic should be saved.

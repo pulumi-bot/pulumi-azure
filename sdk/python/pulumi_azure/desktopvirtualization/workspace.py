@@ -27,20 +27,6 @@ class Workspace(pulumi.CustomResource):
         """
         Manages a Virtual Desktop Workspace.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="eastus")
-        workspace = azure.desktopvirtualization.Workspace("workspace",
-            location=example.location,
-            resource_group_name=example.name,
-            friendly_name="FriendlyName",
-            description="A description of my workspace")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the Virtual Desktop Workspace.

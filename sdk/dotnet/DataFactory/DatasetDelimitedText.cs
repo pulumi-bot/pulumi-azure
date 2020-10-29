@@ -11,56 +11,6 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages an Azure Delimited Text Dataset inside an Azure Data Factory.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "northeurope",
-    ///         });
-    ///         var exampleFactory = new Azure.DataFactory.Factory("exampleFactory", new Azure.DataFactory.FactoryArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///         });
-    ///         var exampleLinkedServiceWeb = new Azure.DataFactory.LinkedServiceWeb("exampleLinkedServiceWeb", new Azure.DataFactory.LinkedServiceWebArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             AuthenticationType = "Anonymous",
-    ///             Url = "https://www.bing.com",
-    ///         });
-    ///         var exampleDatasetDelimitedText = new Azure.DataFactory.DatasetDelimitedText("exampleDatasetDelimitedText", new Azure.DataFactory.DatasetDelimitedTextArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             LinkedServiceName = exampleLinkedServiceWeb.Name,
-    ///             HttpServerLocation = new Azure.DataFactory.Inputs.DatasetDelimitedTextHttpServerLocationArgs
-    ///             {
-    ///                 RelativeUrl = "http://www.bing.com",
-    ///                 Path = "foo/bar/",
-    ///                 Filename = "fizz.txt",
-    ///             },
-    ///             ColumnDelimiter = ",",
-    ///             RowDelimiter = "NEW",
-    ///             Encoding = "UTF-8",
-    ///             QuoteCharacter = "x",
-    ///             EscapeCharacter = "f",
-    ///             FirstRowAsHeader = true,
-    ///             NullValue = "NULL",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DatasetDelimitedText : Pulumi.CustomResource
     {

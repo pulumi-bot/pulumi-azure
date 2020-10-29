@@ -11,26 +11,6 @@ namespace Pulumi.Azure.Lighthouse
 {
     /// <summary>
     /// Manages a Lighthouse Assignment to a subscription, or to a resource group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Lighthouse.Assignment("example", new Azure.Lighthouse.AssignmentArgs
-    ///         {
-    ///             LighthouseDefinitionId = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedServices/registrationDefinitions/00000000-0000-0000-0000-000000000000",
-    ///             Scope = "/subscription/00000000-0000-0000-0000-000000000000",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Assignment : Pulumi.CustomResource
     {

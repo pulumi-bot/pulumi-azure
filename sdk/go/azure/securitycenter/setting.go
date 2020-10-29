@@ -15,30 +15,6 @@ import (
 // > **NOTE:** This resource requires the `Owner` permission on the Subscription.
 //
 // > **NOTE:** Deletion of this resource does not change or reset the data access settings
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/securitycenter"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := securitycenter.NewSetting(ctx, "example", &securitycenter.SettingArgs{
-// 			Enabled:     pulumi.Bool(true),
-// 			SettingName: pulumi.String("MCAS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Setting struct {
 	pulumi.CustomResourceState
 

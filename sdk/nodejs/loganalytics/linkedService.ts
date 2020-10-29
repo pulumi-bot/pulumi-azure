@@ -6,34 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Links a Log Analytics (formally Operational Insights) Workspace to another resource. The (currently) only linkable service is an Azure Automation Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.automation.Account("exampleAccount", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "Basic",
- *     tags: {
- *         environment: "development",
- *     },
- * });
- * const exampleAnalyticsWorkspace = new azure.operationalinsights.AnalyticsWorkspace("exampleAnalyticsWorkspace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: "PerGB2018",
- *     retentionInDays: 30,
- * });
- * const exampleLinkedService = new azure.loganalytics.LinkedService("exampleLinkedService", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     workspaceName: exampleAnalyticsWorkspace.name,
- *     resourceId: exampleAccount.id,
- * });
- * ```
  */
 export class LinkedService extends pulumi.CustomResource {
     /**

@@ -6,49 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an App Service Virtual Network Association (this is for the [Regional VNet Integration](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#regional-vnet-integration) which is still in preview).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "uksouth"});
- * const exampleVirtualNetwork = new azure.network.VirtualNetwork("exampleVirtualNetwork", {
- *     addressSpaces: ["10.0.0.0/16"],
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleSubnet = new azure.network.Subnet("exampleSubnet", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     virtualNetworkName: exampleVirtualNetwork.name,
- *     addressPrefixes: ["10.0.1.0/24"],
- *     delegations: [{
- *         name: "example-delegation",
- *         serviceDelegation: {
- *             name: "Microsoft.Web/serverFarms",
- *             actions: ["Microsoft.Network/virtualNetworks/subnets/action"],
- *         },
- *     }],
- * });
- * const examplePlan = new azure.appservice.Plan("examplePlan", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: {
- *         tier: "Standard",
- *         size: "S1",
- *     },
- * });
- * const exampleAppService = new azure.appservice.AppService("exampleAppService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     appServicePlanId: examplePlan.id,
- * });
- * const exampleVirtualNetworkSwiftConnection = new azure.appservice.VirtualNetworkSwiftConnection("exampleVirtualNetworkSwiftConnection", {
- *     appServiceId: exampleAppService.id,
- *     subnetId: exampleSubnet.id,
- * });
- * ```
  */
 export class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
     /**

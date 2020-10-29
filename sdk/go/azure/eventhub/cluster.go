@@ -11,38 +11,6 @@ import (
 )
 
 // Manages an EventHub Cluster
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/eventhub"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West US 2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eventhub.NewCluster(ctx, "test", &eventhub.ClusterArgs{
-// 			ResourceGroupName: pulumi.Any(azurerm_resource_group.Test.Name),
-// 			Location:          pulumi.Any(azurerm_resource_group.Test.Location),
-// 			SkuName:           pulumi.String("Dedicated_1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

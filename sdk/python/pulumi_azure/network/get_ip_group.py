@@ -102,17 +102,6 @@ def get_ip_group(name: Optional[str] = None,
     """
     Use this data source to access information about an existing IP Group.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.network.get_ip_group(name="example1-ipgroup",
-        resource_group_name="example-rg")
-    pulumi.export("cidrs", example.cidrs)
-    ```
-
 
     :param str name: Specifies the Name of the IP Group.
     :param str resource_group_name: Specifies the Name of the Resource Group within which the IP Group exists

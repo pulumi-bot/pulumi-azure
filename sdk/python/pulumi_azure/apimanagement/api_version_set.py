@@ -29,26 +29,6 @@ class ApiVersionSet(pulumi.CustomResource):
         """
         Manages an API Version Set within an API Management Service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_service = azure.apimanagement.Service("exampleService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            publisher_name="pub1",
-            publisher_email="pub1@email.com",
-            sku_name="Developer_1")
-        example_api_version_set = azure.apimanagement.ApiVersionSet("exampleApiVersionSet",
-            resource_group_name=example_resource_group.name,
-            api_management_name=example_service.name,
-            display_name="ExampleAPIVersionSet",
-            versioning_scheme="Segment")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The name of the API Management Service in which the API Version Set should exist. Changing this forces a new resource to be created.

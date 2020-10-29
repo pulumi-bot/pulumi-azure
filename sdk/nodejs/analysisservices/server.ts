@@ -8,32 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Analysis Services Server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const rg = new azure.core.ResourceGroup("rg", {location: "northeurope"});
- * const server = new azure.analysisservices.Server("server", {
- *     location: "northeurope",
- *     resourceGroupName: rg.name,
- *     sku: "S0",
- *     adminUsers: ["myuser@domain.tld"],
- *     enablePowerBiService: true,
- *     ipv4FirewallRules: [{
- *         name: "myRule1",
- *         rangeStart: "210.117.252.0",
- *         rangeEnd: "210.117.252.255",
- *     }],
- *     tags: {
- *         abc: 123,
- *     },
- * });
- * ```
- *
- * > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
  */
 export class Server extends pulumi.CustomResource {
     /**

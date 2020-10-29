@@ -8,31 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Storage Sync.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storage.LookupSync(ctx, &storage.LookupSyncArgs{
-// 			Name:              "existingStorageSyncName",
-// 			ResourceGroupName: "existingResGroup",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("id", example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupSync(ctx *pulumi.Context, args *LookupSyncArgs, opts ...pulumi.InvokeOption) (*LookupSyncResult, error) {
 	var rv LookupSyncResult
 	err := ctx.Invoke("azure:storage/getSync:getSync", args, &rv, opts...)

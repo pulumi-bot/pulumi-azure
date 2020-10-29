@@ -27,27 +27,6 @@ class IdentityProviderAad(pulumi.CustomResource):
         """
         Manages an API Management AAD Identity Provider.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_service = azure.apimanagement.Service("exampleService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            publisher_name="My Company",
-            publisher_email="company@mycompany.io",
-            sku_name="Developer_1")
-        example_identity_provider_aad = azure.apimanagement.IdentityProviderAad("exampleIdentityProviderAad",
-            resource_group_name=example_resource_group.name,
-            api_management_name=example_service.name,
-            client_id="00000000-0000-0000-0000-000000000000",
-            client_secret="00000000000000000000000000000000",
-            allowed_tenants=["00000000-0000-0000-0000-000000000000"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_tenants: List of allowed AAD Tenants.

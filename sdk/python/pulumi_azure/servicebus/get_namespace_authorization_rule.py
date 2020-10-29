@@ -124,18 +124,6 @@ def get_namespace_authorization_rule(name: Optional[str] = None,
     """
     Use this data source to access information about an existing ServiceBus Namespace Authorization Rule.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.servicebus.get_namespace_authorization_rule(name="examplerule",
-        namespace_name="examplenamespace",
-        resource_group_name="example-resources")
-    pulumi.export("ruleId", example.id)
-    ```
-
 
     :param str name: Specifies the name of the ServiceBus Namespace Authorization Rule.
     :param str namespace_name: Specifies the name of the ServiceBus Namespace.

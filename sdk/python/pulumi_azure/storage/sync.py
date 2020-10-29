@@ -26,21 +26,6 @@ class Sync(pulumi.CustomResource):
         """
         Manages a Storage Sync.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="West Europe")
-        test = azure.storage.Sync("test",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            location=azurerm_resource_group["test"]["location"],
-            tags={
-                "foo": "bar",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] incoming_traffic_policy: Incoming traffic policy. Possible values are `AllowAllTraffic` and `AllowVirtualNetworksOnly`.

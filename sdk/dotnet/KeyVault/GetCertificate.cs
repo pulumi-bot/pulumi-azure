@@ -16,38 +16,6 @@ namespace Pulumi.Azure.KeyVault
         /// 
         /// &gt; **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
         /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleKeyVault = Output.Create(Azure.KeyVault.GetKeyVault.InvokeAsync(new Azure.KeyVault.GetKeyVaultArgs
-        ///         {
-        ///             Name = "examplekv",
-        ///             ResourceGroupName = "some-resource-group",
-        ///         }));
-        ///         var exampleCertificate = exampleKeyVault.Apply(exampleKeyVault =&gt; Output.Create(Azure.KeyVault.GetCertificate.InvokeAsync(new Azure.KeyVault.GetCertificateArgs
-        ///         {
-        ///             Name = "secret-sauce",
-        ///             KeyVaultId = exampleKeyVault.Id,
-        ///         })));
-        ///         this.CertificateThumbprint = exampleCertificate.Apply(exampleCertificate =&gt; exampleCertificate.Thumbprint);
-        ///     }
-        /// 
-        ///     [Output("certificateThumbprint")]
-        ///     public Output&lt;string&gt; CertificateThumbprint { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("azure:keyvault/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());

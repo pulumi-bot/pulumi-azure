@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Recovery Services Vault.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const rg = new azure.core.ResourceGroup("rg", {location: "West US"});
- * const vault = new azure.recoveryservices.Vault("vault", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: "Standard",
- *     softDeleteEnabled: true,
- * });
- * ```
  */
 export class Vault extends pulumi.CustomResource {
     /**

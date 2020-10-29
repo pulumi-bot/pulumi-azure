@@ -36,31 +36,6 @@ class Subscription(pulumi.CustomResource):
         """
         Manages a ServiceBus Subscription.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_namespace = azure.servicebus.Namespace("exampleNamespace",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku="Standard",
-            tags={
-                "source": "example",
-            })
-        example_topic = azure.servicebus.Topic("exampleTopic",
-            resource_group_name=example_resource_group.name,
-            namespace_name=example_namespace.name,
-            enable_partitioning=True)
-        example_subscription = azure.servicebus.Subscription("exampleSubscription",
-            resource_group_name=example_resource_group.name,
-            namespace_name=example_namespace.name,
-            topic_name=example_topic.name,
-            max_delivery_count=1)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_delete_on_idle: The idle interval after which the topic is automatically deleted as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `5` minutes or `P5M`.

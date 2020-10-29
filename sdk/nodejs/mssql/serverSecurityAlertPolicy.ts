@@ -8,40 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Security Alert Policy for a MSSQL Server.
  *
  * > **NOTE** Security Alert Policy is currently only available for MS SQL databases.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleSqlServer = new azure.sql.SqlServer("exampleSqlServer", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     version: "12.0",
- *     administratorLogin: "4dm1n157r470r",
- *     administratorLoginPassword: "4-v3ry-53cr37-p455w0rd",
- * });
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "GRS",
- * });
- * const exampleServerSecurityAlertPolicy = new azure.mssql.ServerSecurityAlertPolicy("exampleServerSecurityAlertPolicy", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     serverName: exampleSqlServer.name,
- *     state: "Enabled",
- *     storageEndpoint: exampleAccount.primaryBlobEndpoint,
- *     storageAccountAccessKey: exampleAccount.primaryAccessKey,
- *     disabledAlerts: [
- *         "Sql_Injection",
- *         "Data_Exfiltration",
- *     ],
- *     retentionDays: 20,
- * });
- * ```
  */
 export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     /**

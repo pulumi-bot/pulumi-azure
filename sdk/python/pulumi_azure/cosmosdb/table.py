@@ -28,20 +28,6 @@ class Table(pulumi.CustomResource):
         """
         Manages a Table within a Cosmos DB Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_account = azure.cosmosdb.get_account(name="tfex-cosmosdb-account",
-            resource_group_name="tfex-cosmosdb-account-rg")
-        example_table = azure.cosmosdb.Table("exampleTable",
-            resource_group_name=example_account.resource_group_name,
-            account_name=example_account.name,
-            throughput=400)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.

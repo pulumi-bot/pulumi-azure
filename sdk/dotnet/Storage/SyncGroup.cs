@@ -11,34 +11,6 @@ namespace Pulumi.Azure.Storage
 {
     /// <summary>
     /// Manages a Storage Sync Group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleSync = new Azure.Storage.Sync("exampleSync", new Azure.Storage.SyncArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///         });
-    ///         var exampleSyncGroup = new Azure.Storage.SyncGroup("exampleSyncGroup", new Azure.Storage.SyncGroupArgs
-    ///         {
-    ///             StorageSyncId = exampleSync.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SyncGroup : Pulumi.CustomResource
     {

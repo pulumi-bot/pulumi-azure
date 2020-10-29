@@ -39,40 +39,6 @@ class Server(pulumi.CustomResource):
         > **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS")
-        example_server = azure.mssql.Server("exampleServer",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            version="12.0",
-            administrator_login="missadministrator",
-            administrator_login_password="thisIsKat11",
-            minimum_tls_version="1.2",
-            azuread_administrator=azure.mssql.ServerAzureadAdministratorArgs(
-                login_username="AzureAD Admin",
-                object_id="00000000-0000-0000-0000-000000000000",
-            ),
-            extended_auditing_policy=azure.mssql.ServerExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
-            tags={
-                "environment": "production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The administrator login name for the new server. Changing this forces a new resource to be created.

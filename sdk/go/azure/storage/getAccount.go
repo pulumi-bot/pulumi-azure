@@ -8,32 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Storage Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "packer-storage"
-// 		example, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
-// 			Name:              "packerimages",
-// 			ResourceGroupName: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("storageAccountTier", example.AccountTier)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("azure:storage/getAccount:getAccount", args, &rv, opts...)

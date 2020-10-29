@@ -6,25 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Management Group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const current = azure.core.getSubscription({});
- * const exampleParent = new azure.management.Group("exampleParent", {
- *     displayName: "ParentGroup",
- *     subscriptionIds: [current.then(current => current.subscriptionId)],
- * });
- * const exampleChild = new azure.management.Group("exampleChild", {
- *     displayName: "ChildGroup",
- *     parentManagementGroupId: exampleParent.id,
- *     subscriptionIds: [current.then(current => current.subscriptionId)],
- * });
- * // other subscription IDs can go here
- * ```
  */
 export class Group extends pulumi.CustomResource {
     /**

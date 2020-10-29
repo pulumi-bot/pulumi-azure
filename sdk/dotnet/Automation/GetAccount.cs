@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Automation
     {
         /// <summary>
         /// Use this data source to access information about an existing Automation Account.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Automation.GetAccount.InvokeAsync(new Azure.Automation.GetAccountArgs
-        ///         {
-        ///             Name = "example-account",
-        ///             ResourceGroupName = "example-resources",
-        ///         }));
-        ///         this.AutomationAccountId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("automationAccountId")]
-        ///     public Output&lt;string&gt; AutomationAccountId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("azure:automation/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());

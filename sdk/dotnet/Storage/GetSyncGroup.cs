@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Storage
     {
         /// <summary>
         /// Use this data source to access information about an existing Storage Sync Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Storage.GetSyncGroup.InvokeAsync(new Azure.Storage.GetSyncGroupArgs
-        ///         {
-        ///             Name = "existing-ss-group",
-        ///             StorageSyncId = "existing-ss-id",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSyncGroupResult> InvokeAsync(GetSyncGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSyncGroupResult>("azure:storage/getSyncGroup:getSyncGroup", args ?? new GetSyncGroupArgs(), options.WithVersion());

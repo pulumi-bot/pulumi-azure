@@ -13,34 +13,6 @@ namespace Pulumi.Azure.ApiManagement
     {
         /// <summary>
         /// Use this data source to access information about an existing API Management Product.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.ApiManagement.GetProduct.InvokeAsync(new Azure.ApiManagement.GetProductArgs
-        ///         {
-        ///             ProductId = "my-product",
-        ///             ApiManagementName = "example-apim",
-        ///             ResourceGroupName = "search-service",
-        ///         }));
-        ///         this.ProductTerms = example.Apply(example =&gt; example.Terms);
-        ///     }
-        /// 
-        ///     [Output("productTerms")]
-        ///     public Output&lt;string&gt; ProductTerms { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("azure:apimanagement/getProduct:getProduct", args ?? new GetProductArgs(), options.WithVersion());

@@ -35,31 +35,6 @@ class RegistryWebook(pulumi.CustomResource):
         """
         Manages an Azure Container Registry Webhook.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        rg = azure.core.ResourceGroup("rg", location="West US")
-        acr = azure.containerservice.Registry("acr",
-            resource_group_name=rg.name,
-            location=rg.location,
-            sku="Standard",
-            admin_enabled=False)
-        webhook = azure.containerservice.RegistryWebhook("webhook",
-            resource_group_name=rg.name,
-            registry_name=acr.name,
-            location=rg.location,
-            service_uri="https://mywebhookreceiver.example/mytag",
-            status="enabled",
-            scope="mytag:*",
-            actions=["push"],
-            custom_headers={
-                "Content-Type": "application/json",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`

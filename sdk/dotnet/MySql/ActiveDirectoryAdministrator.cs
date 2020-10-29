@@ -11,44 +11,6 @@ namespace Pulumi.Azure.MySql
 {
     /// <summary>
     /// Allows you to set a user or group as the AD administrator for an MySQL server in Azure
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(Azure.Core.GetClientConfig.InvokeAsync());
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West US",
-    ///         });
-    ///         var exampleServer = new Azure.MySql.Server("exampleServer", new Azure.MySql.ServerArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             AdministratorLogin = "mysqladminun",
-    ///             AdministratorLoginPassword = "H@Sh1CoR3!",
-    ///             SkuName = "B_Gen5_2",
-    ///             StorageMb = 5120,
-    ///             Version = "5.7",
-    ///         });
-    ///         var exampleActiveDirectoryAdministrator = new Azure.MySql.ActiveDirectoryAdministrator("exampleActiveDirectoryAdministrator", new Azure.MySql.ActiveDirectoryAdministratorArgs
-    ///         {
-    ///             ServerName = exampleServer.Name,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Login = "sqladmin",
-    ///             TenantId = current.Apply(current =&gt; current.TenantId),
-    ///             ObjectId = current.Apply(current =&gt; current.ObjectId),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ActiveDirectoryAdministrator : Pulumi.CustomResource
     {

@@ -24,50 +24,6 @@ class SlotVirtualNetworkSwiftConnection(pulumi.CustomResource):
         """
         Manages an App Service Slot's Virtual Network Association (this is for the [Regional VNet Integration](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#regional-vnet-integration) which is still in preview).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="uksouth")
-        example_virtual_network = azure.network.VirtualNetwork("exampleVirtualNetwork",
-            address_spaces=["10.0.0.0/16"],
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_subnet = azure.network.Subnet("exampleSubnet",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.1.0/24"],
-            delegations=[azure.network.SubnetDelegationArgs(
-                name="example-delegation",
-                service_delegation=azure.network.SubnetDelegationServiceDelegationArgs(
-                    name="Microsoft.Web/serverFarms",
-                    actions=["Microsoft.Network/virtualNetworks/subnets/action"],
-                ),
-            )])
-        example_plan = azure.appservice.Plan("examplePlan",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Standard",
-                size="S1",
-            ))
-        example_app_service = azure.appservice.AppService("exampleAppService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            app_service_plan_id=example_plan.id)
-        example_staging = azure.appservice.Slot("example-staging",
-            app_service_name=example_app_service.name,
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            app_service_plan_id=example_plan.id)
-        example_slot_virtual_network_swift_connection = azure.appservice.SlotVirtualNetworkSwiftConnection("exampleSlotVirtualNetworkSwiftConnection",
-            slot_name=example_staging.name,
-            app_service_id=example_app_service.id,
-            subnet_id=example_subnet.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_id: The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.

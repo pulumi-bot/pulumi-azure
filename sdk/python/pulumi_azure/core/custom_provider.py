@@ -30,22 +30,6 @@ class CustomProvider(pulumi.CustomResource):
         """
         Manages an Azure Custom Provider.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_custom_provider = azure.core.CustomProvider("exampleCustomProvider",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            resource_types=[azure.core.CustomProviderResourceTypeArgs(
-                name="dEf1",
-                endpoint="https://testendpoint.com/",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomProviderActionArgs']]]] actions: Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.

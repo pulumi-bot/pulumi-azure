@@ -6,28 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management Property.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleService = new azure.apimanagement.Service("exampleService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     publisherName: "pub1",
- *     publisherEmail: "pub1@email.com",
- *     skuName: "Developer_1",
- * });
- * const exampleProperty = new azure.apimanagement.Property("exampleProperty", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     apiManagementName: exampleService.name,
- *     displayName: "ExampleProperty",
- *     value: "Example Value",
- * });
- * ```
  */
 export class Property extends pulumi.CustomResource {
     /**

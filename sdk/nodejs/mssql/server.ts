@@ -11,42 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- * });
- * const exampleServer = new azure.mssql.Server("exampleServer", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     version: "12.0",
- *     administratorLogin: "missadministrator",
- *     administratorLoginPassword: "thisIsKat11",
- *     minimumTlsVersion: "1.2",
- *     azureadAdministrator: {
- *         loginUsername: "AzureAD Admin",
- *         objectId: "00000000-0000-0000-0000-000000000000",
- *     },
- *     extendedAuditingPolicy: {
- *         storageEndpoint: exampleAccount.primaryBlobEndpoint,
- *         storageAccountAccessKey: exampleAccount.primaryAccessKey,
- *         storageAccountAccessKeyIsSecondary: true,
- *         retentionInDays: 6,
- *     },
- *     tags: {
- *         environment: "production",
- *     },
- * });
- * ```
  */
 export class Server extends pulumi.CustomResource {
     /**

@@ -13,34 +13,6 @@ namespace Pulumi.Azure.DatabaseMigration
     {
         /// <summary>
         /// Use this data source to access information about an existing Database Migration Service.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.DatabaseMigration.GetService.InvokeAsync(new Azure.DatabaseMigration.GetServiceArgs
-        ///         {
-        ///             Name = "example-dms",
-        ///             ResourceGroupName = "example-rg",
-        ///         }));
-        ///         this.AzurermDmsId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("azurermDmsId")]
-        ///     public Output&lt;string&gt; AzurermDmsId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("azure:databasemigration/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());

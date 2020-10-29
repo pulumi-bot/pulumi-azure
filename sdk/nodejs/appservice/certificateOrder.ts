@@ -8,21 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an App Service Certificate Order.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleCertificateOrder = new azure.appservice.CertificateOrder("exampleCertificateOrder", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: "global",
- *     distinguishedName: "CN=example.com",
- *     productType: "Standard",
- * });
- * ```
  */
 export class CertificateOrder extends pulumi.CustomResource {
     /**

@@ -8,35 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Blob Dataset inside an Azure Data Factory.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleAccount = exampleResourceGroup.name.apply(name => azure.storage.getAccount({
- *     name: "storageaccountname",
- *     resourceGroupName: name,
- * }));
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleLinkedServiceAzureBlobStorage = new azure.datafactory.LinkedServiceAzureBlobStorage("exampleLinkedServiceAzureBlobStorage", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     connectionString: exampleAccount.primaryConnectionString,
- * });
- * const exampleDatasetAzureBlob = new azure.datafactory.DatasetAzureBlob("exampleDatasetAzureBlob", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     linkedServiceName: exampleLinkedServiceAzureBlobStorage.name,
- *     path: "foo",
- *     filename: "bar.png",
- * });
- * ```
  */
 export class DatasetAzureBlob extends pulumi.CustomResource {
     /**

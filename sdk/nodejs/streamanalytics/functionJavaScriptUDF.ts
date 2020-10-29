@@ -8,35 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = azure.core.getResourceGroup({
- *     name: "example-resources",
- * });
- * const exampleJob = azure.streamanalytics.getJob({
- *     name: "example-job",
- *     resourceGroupName: azurerm_resource_group.example.name,
- * });
- * const exampleFunctionJavaScriptUDF = new azure.streamanalytics.FunctionJavaScriptUDF("exampleFunctionJavaScriptUDF", {
- *     streamAnalyticsJobName: exampleJob.then(exampleJob => exampleJob.name),
- *     resourceGroupName: exampleJob.then(exampleJob => exampleJob.resourceGroupName),
- *     script: `function getRandomNumber(in) {
- *   return in;
- * }
- * `,
- *     inputs: [{
- *         type: "bigint",
- *     }],
- *     output: {
- *         type: "bigint",
- *     },
- * });
- * ```
  */
 export class FunctionJavaScriptUDF extends pulumi.CustomResource {
     /**

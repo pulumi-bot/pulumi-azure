@@ -23,19 +23,6 @@ class SyncGroup(pulumi.CustomResource):
         """
         Manages a Storage Sync Group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_sync = azure.storage.Sync("exampleSync",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location)
-        example_sync_group = azure.storage.SyncGroup("exampleSyncGroup", storage_sync_id=example_sync.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.

@@ -13,49 +13,6 @@ import (
 // Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
 //
 // > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("northeurope"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleFactory, err := datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datafactory.NewLinkedServiceSftp(ctx, "exampleLinkedServiceSftp", &datafactory.LinkedServiceSftpArgs{
-// 			ResourceGroupName:  exampleResourceGroup.Name,
-// 			DataFactoryName:    exampleFactory.Name,
-// 			AuthenticationType: pulumi.String("Basic"),
-// 			Host:               pulumi.String("http://www.bing.com"),
-// 			Port:               pulumi.Int(22),
-// 			Username:           pulumi.String("foo"),
-// 			Password:           pulumi.String("bar"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type LinkedServiceSftp struct {
 	pulumi.CustomResourceState
 

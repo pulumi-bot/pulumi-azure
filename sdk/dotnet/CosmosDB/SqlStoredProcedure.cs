@@ -11,48 +11,6 @@ namespace Pulumi.Azure.CosmosDB
 {
     /// <summary>
     /// Manages a SQL Stored Procedure within a Cosmos DB Account SQL Database.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleAccount = Output.Create(Azure.CosmosDB.GetAccount.InvokeAsync(new Azure.CosmosDB.GetAccountArgs
-    ///         {
-    ///             Name = "tfex-cosmosdb-account",
-    ///             ResourceGroupName = "tfex-cosmosdb-account-rg",
-    ///         }));
-    ///         var exampleSqlDatabase = new Azure.CosmosDB.SqlDatabase("exampleSqlDatabase", new Azure.CosmosDB.SqlDatabaseArgs
-    ///         {
-    ///             ResourceGroupName = exampleAccount.Apply(exampleAccount =&gt; exampleAccount.ResourceGroupName),
-    ///             AccountName = exampleAccount.Apply(exampleAccount =&gt; exampleAccount.Name),
-    ///             Throughput = 400,
-    ///         });
-    ///         var exampleSqlContainer = new Azure.CosmosDB.SqlContainer("exampleSqlContainer", new Azure.CosmosDB.SqlContainerArgs
-    ///         {
-    ///             ResourceGroupName = azurerm_cosmosdb_account.Example.Resource_group_name,
-    ///             AccountName = azurerm_cosmosdb_account.Example.Name,
-    ///             DatabaseName = exampleSqlDatabase.Name,
-    ///             PartitionKeyPath = "/id",
-    ///         });
-    ///         var exampleSqlStoredProcedure = new Azure.CosmosDB.SqlStoredProcedure("exampleSqlStoredProcedure", new Azure.CosmosDB.SqlStoredProcedureArgs
-    ///         {
-    ///             ResourceGroupName = azurerm_cosmosdb_account.Example.Resource_group_name,
-    ///             AccountName = azurerm_cosmosdb_account.Example.Name,
-    ///             DatabaseName = exampleSqlDatabase.Name,
-    ///             ContainerName = exampleSqlContainer.Name,
-    ///             Body = @"  	function () { var context = getContext(); var response = context.getResponse(); response.setBody('Hello, World'); }
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SqlStoredProcedure : Pulumi.CustomResource
     {

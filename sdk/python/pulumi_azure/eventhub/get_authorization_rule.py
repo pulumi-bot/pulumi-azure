@@ -197,18 +197,6 @@ def get_authorization_rule(eventhub_name: Optional[str] = None,
     """
     Use this data source to access information about an existing Event Hubs Authorization Rule within an Event Hub.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    test = azure.eventhub.get_authorization_rule(eventhub_name=azurerm_eventhub["test"]["name"],
-        name="test",
-        namespace_name=azurerm_eventhub_namespace["test"]["name"],
-        resource_group_name=azurerm_resource_group["test"]["name"])
-    ```
-
 
     :param str eventhub_name: Specifies the name of the EventHub.
     :param str name: Specifies the name of the EventHub Authorization Rule resource. be created.

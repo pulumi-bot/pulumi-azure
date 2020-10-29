@@ -11,50 +11,6 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages an Azure JSON Dataset inside an Azure Data Factory.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "northeurope",
-    ///         });
-    ///         var exampleFactory = new Azure.DataFactory.Factory("exampleFactory", new Azure.DataFactory.FactoryArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///         });
-    ///         var exampleLinkedServiceWeb = new Azure.DataFactory.LinkedServiceWeb("exampleLinkedServiceWeb", new Azure.DataFactory.LinkedServiceWebArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             AuthenticationType = "Anonymous",
-    ///             Url = "https://www.bing.com",
-    ///         });
-    ///         var exampleDatasetJson = new Azure.DataFactory.DatasetJson("exampleDatasetJson", new Azure.DataFactory.DatasetJsonArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DataFactoryName = exampleFactory.Name,
-    ///             LinkedServiceName = exampleLinkedServiceWeb.Name,
-    ///             HttpServerLocation = new Azure.DataFactory.Inputs.DatasetJsonHttpServerLocationArgs
-    ///             {
-    ///                 RelativeUrl = "/fizz/buzz/",
-    ///                 Path = "foo/bar/",
-    ///                 Filename = "foo.txt",
-    ///             },
-    ///             Encoding = "UTF-8",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DatasetJson : Pulumi.CustomResource
     {

@@ -28,23 +28,6 @@ class RouteFilter(pulumi.CustomResource):
         """
         Manages a Route Filter.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.network.RouteFilter("example",
-            location="East US",
-            resource_group_name="example",
-            rule=azure.network.RouteFilterRuleArgs(
-                access="Allow",
-                communities=["12076:52004"],
-                name="rule",
-                rule_type="Community",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure Region where the Route Filter should exist. Changing this forces a new Route Filter to be created.

@@ -13,46 +13,6 @@ namespace Pulumi.Azure.Sql
     /// Allows you to manage an Azure SQL Elastic Pool.
     /// 
     /// &gt; **NOTE:** -  This version of the `Elasticpool` resource is being **deprecated** and should no longer be used. Please use the azure.mssql.ElasticPool version instead.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West US",
-    ///         });
-    ///         var exampleSqlServer = new Azure.Sql.SqlServer("exampleSqlServer", new Azure.Sql.SqlServerArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             Version = "12.0",
-    ///             AdministratorLogin = "4dm1n157r470r",
-    ///             AdministratorLoginPassword = "4-v3ry-53cr37-p455w0rd",
-    ///         });
-    ///         var exampleElasticPool = new Azure.Sql.ElasticPool("exampleElasticPool", new Azure.Sql.ElasticPoolArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             ServerName = exampleSqlServer.Name,
-    ///             Edition = "Basic",
-    ///             Dtu = 50,
-    ///             DbDtuMin = 0,
-    ///             DbDtuMax = 5,
-    ///             PoolSize = 5000,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &gt; **NOTE on `azure.sql.ElasticPool`:** -  The values of `edition`, `dtu`, and `pool_size` must be consistent with the [Azure SQL Database Service Tiers](https://docs.microsoft.com/en-gb/azure/sql-database/sql-database-service-tiers#elastic-pool-service-tiers-and-performance-in-edtus). Any inconsistent argument configuration will be rejected.
     /// </summary>
     public partial class ElasticPool : Pulumi.CustomResource
     {

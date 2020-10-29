@@ -222,17 +222,6 @@ def get_pool(account_name: Optional[str] = None,
     """
     Use this data source to access information about an existing Batch pool
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.batch.get_pool(account_name="testbatchaccount",
-        name="testbatchpool",
-        resource_group_name="test")
-    ```
-
 
     :param str account_name: The name of the Batch account.
     :param Sequence[pulumi.InputType['GetPoolCertificateArgs']] certificates: One or more `certificate` blocks that describe the certificates installed on each compute node in the pool.

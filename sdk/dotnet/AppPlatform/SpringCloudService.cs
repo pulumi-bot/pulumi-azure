@@ -11,55 +11,6 @@ namespace Pulumi.Azure.AppPlatform
 {
     /// <summary>
     /// Manages an Azure Spring Cloud Service.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "Southeast Asia",
-    ///         });
-    ///         var exampleInsights = new Azure.AppInsights.Insights("exampleInsights", new Azure.AppInsights.InsightsArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             ApplicationType = "web",
-    ///         });
-    ///         var exampleSpringCloudService = new Azure.AppPlatform.SpringCloudService("exampleSpringCloudService", new Azure.AppPlatform.SpringCloudServiceArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             SkuName = "S0",
-    ///             ConfigServerGitSetting = new Azure.AppPlatform.Inputs.SpringCloudServiceConfigServerGitSettingArgs
-    ///             {
-    ///                 Uri = "https://github.com/Azure-Samples/piggymetrics",
-    ///                 Label = "config",
-    ///                 SearchPaths = 
-    ///                 {
-    ///                     "dir1",
-    ///                     "dir2",
-    ///                 },
-    ///             },
-    ///             Trace = new Azure.AppPlatform.Inputs.SpringCloudServiceTraceArgs
-    ///             {
-    ///                 InstrumentationKey = exampleInsights.InstrumentationKey,
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Env", "staging" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SpringCloudService : Pulumi.CustomResource
     {

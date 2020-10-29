@@ -11,42 +11,6 @@ import (
 )
 
 // Manages a CDN Profile to create a collection of CDN Endpoints.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/cdn"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cdn.NewProfile(ctx, "exampleProfile", &cdn.ProfileArgs{
-// 			Location:          pulumi.String("West US"),
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Sku:               pulumi.String("Standard_Verizon"),
-// 			Tags: pulumi.StringMap{
-// 				"environment": pulumi.String("Production"),
-// 				"cost_center": pulumi.String("MSFT"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Profile struct {
 	pulumi.CustomResourceState
 

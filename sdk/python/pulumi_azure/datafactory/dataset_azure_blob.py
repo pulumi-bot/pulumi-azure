@@ -35,30 +35,6 @@ class DatasetAzureBlob(pulumi.CustomResource):
         """
         Manages an Azure Blob Dataset inside an Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_account = example_resource_group.name.apply(lambda name: azure.storage.get_account(name="storageaccountname",
-            resource_group_name=name))
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_linked_service_azure_blob_storage = azure.datafactory.LinkedServiceAzureBlobStorage("exampleLinkedServiceAzureBlobStorage",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            connection_string=example_account.primary_connection_string)
-        example_dataset_azure_blob = azure.datafactory.DatasetAzureBlob("exampleDatasetAzureBlob",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            linked_service_name=example_linked_service_azure_blob_storage.name,
-            path="foo",
-            filename="bar.png")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Dataset.

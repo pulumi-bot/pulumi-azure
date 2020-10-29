@@ -33,43 +33,6 @@ class GremlinGraph(pulumi.CustomResource):
         """
         Manages a Gremlin Graph within a Cosmos DB Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_account = azure.cosmosdb.get_account(name="tfex-cosmosdb-account",
-            resource_group_name="tfex-cosmosdb-account-rg")
-        example_gremlin_database = azure.cosmosdb.GremlinDatabase("exampleGremlinDatabase",
-            resource_group_name=example_account.resource_group_name,
-            account_name=example_account.name)
-        example_gremlin_graph = azure.cosmosdb.GremlinGraph("exampleGremlinGraph",
-            resource_group_name=azurerm_cosmosdb_account["example"]["resource_group_name"],
-            account_name=azurerm_cosmosdb_account["example"]["name"],
-            database_name=example_gremlin_database.name,
-            partition_key_path="/Example",
-            throughput=400,
-            index_policies=[azure.cosmosdb.GremlinGraphIndexPolicyArgs(
-                automatic=True,
-                indexing_mode="Consistent",
-                included_paths=["/*"],
-                excluded_paths=["/\"_etag\"/?"],
-            )],
-            conflict_resolution_policies=[azure.cosmosdb.GremlinGraphConflictResolutionPolicyArgs(
-                mode="LastWriterWins",
-                conflict_resolution_path="/_ts",
-            )],
-            unique_keys=[azure.cosmosdb.GremlinGraphUniqueKeyArgs(
-                paths=[
-                    "/definition/id1",
-                    "/definition/id2",
-                ],
-            )])
-        ```
-
-        > **NOTE:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `cosmosdb.Account` resource.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.

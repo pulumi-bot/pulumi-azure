@@ -29,28 +29,6 @@ class VirtualNetwork(pulumi.CustomResource):
         """
         Manages a Virtual Network within a DevTest Lab.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_lab = azure.devtest.Lab("exampleLab",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            tags={
-                "Sydney": "Australia",
-            })
-        example_virtual_network = azure.devtest.VirtualNetwork("exampleVirtualNetwork",
-            lab_name=example_lab.name,
-            resource_group_name=example_resource_group.name,
-            subnet=azure.devtest.VirtualNetworkSubnetArgs(
-                use_public_ip_address="Allow",
-                use_in_virtual_machine_creation="Allow",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the Virtual Network.

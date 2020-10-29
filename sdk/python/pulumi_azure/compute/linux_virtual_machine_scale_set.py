@@ -70,54 +70,6 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
 
         > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `compute.ScaleSet` resource instead
 
-        ## Example Usage
-
-        This example provisions a basic Linux Virtual Machine Scale Set on an internal network.
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_virtual_network = azure.network.VirtualNetwork("exampleVirtualNetwork",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            address_spaces=["10.0.0.0/16"])
-        internal = azure.network.Subnet("internal",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.2.0/24"])
-        example_linux_virtual_machine_scale_set = azure.compute.LinuxVirtualMachineScaleSet("exampleLinuxVirtualMachineScaleSet",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sku="Standard_F2",
-            instances=1,
-            admin_username="adminuser",
-            admin_ssh_keys=[azure.compute.LinuxVirtualMachineScaleSetAdminSshKeyArgs(
-                username="adminuser",
-                public_key=(lambda path: open(path).read())("~/.ssh/id_rsa.pub"),
-            )],
-            source_image_reference=azure.compute.LinuxVirtualMachineScaleSetSourceImageReferenceArgs(
-                publisher="Canonical",
-                offer="UbuntuServer",
-                sku="16.04-LTS",
-                version="latest",
-            ),
-            os_disk=azure.compute.LinuxVirtualMachineScaleSetOsDiskArgs(
-                storage_account_type="Standard_LRS",
-                caching="ReadWrite",
-            ),
-            network_interfaces=[azure.compute.LinuxVirtualMachineScaleSetNetworkInterfaceArgs(
-                name="example",
-                primary=True,
-                ip_configurations=[{
-                    "name": "internal",
-                    "primary": True,
-                    "subnet_id": internal.id,
-                }],
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']] additional_capabilities: A `additional_capabilities` block as defined below.

@@ -7,28 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a ServiceBus Queue.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleNamespace = new azure.servicebus.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: "Standard",
- *     tags: {
- *         source: "example",
- *     },
- * });
- * const exampleQueue = new azure.servicebus.Queue("exampleQueue", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     namespaceName: exampleNamespace.name,
- *     enablePartitioning: true,
- * });
- * ```
- *
  * @deprecated azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue
  */
 export class Queue extends pulumi.CustomResource {

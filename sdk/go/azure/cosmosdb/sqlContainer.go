@@ -11,57 +11,6 @@ import (
 )
 
 // Manages a SQL Container within a Cosmos DB Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/cosmosdb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cosmosdb.NewSqlContainer(ctx, "example", &cosmosdb.SqlContainerArgs{
-// 			ResourceGroupName: pulumi.Any(azurerm_cosmosdb_account.Example.Resource_group_name),
-// 			AccountName:       pulumi.Any(azurerm_cosmosdb_account.Example.Name),
-// 			DatabaseName:      pulumi.Any(azurerm_cosmosdb_sql_database.Example.Name),
-// 			PartitionKeyPath:  pulumi.String("/definition/id"),
-// 			Throughput:        pulumi.Int(400),
-// 			IndexingPolicy: &cosmosdb.SqlContainerIndexingPolicyArgs{
-// 				IndexingMode: pulumi.String("Consistent"),
-// 				IncludedPaths: cosmosdb.SqlContainerIndexingPolicyIncludedPathArray{
-// 					&cosmosdb.SqlContainerIndexingPolicyIncludedPathArgs{
-// 						Path: pulumi.String("/*"),
-// 					},
-// 					&cosmosdb.SqlContainerIndexingPolicyIncludedPathArgs{
-// 						Path: pulumi.String("/included/?"),
-// 					},
-// 				},
-// 				ExcludedPaths: cosmosdb.SqlContainerIndexingPolicyExcludedPathArray{
-// 					&cosmosdb.SqlContainerIndexingPolicyExcludedPathArgs{
-// 						Path: pulumi.String("/excluded/?"),
-// 					},
-// 				},
-// 			},
-// 			UniqueKeys: cosmosdb.SqlContainerUniqueKeyArray{
-// 				&cosmosdb.SqlContainerUniqueKeyArgs{
-// 					Paths: pulumi.StringArray{
-// 						pulumi.String("/definition/idlong"),
-// 						pulumi.String("/definition/idshort"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SqlContainer struct {
 	pulumi.CustomResourceState
 

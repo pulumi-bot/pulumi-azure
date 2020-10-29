@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Relay Namespace.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleNamespace = new azure.relay.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "Standard",
- *     tags: {
- *         source: "example",
- *     },
- * });
- * ```
  */
 export class Namespace extends pulumi.CustomResource {
     /**

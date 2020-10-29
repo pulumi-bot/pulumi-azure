@@ -33,23 +33,6 @@ class Definition(pulumi.CustomResource):
         """
         Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        primary = azure.core.get_subscription()
-        example = azure.authorization.RoleDefinition("example",
-            scope=primary.id,
-            description="This is a custom role created",
-            permissions=[azure.authorization.RoleDefinitionPermissionArgs(
-                actions=["*"],
-                not_actions=[],
-            )],
-            assignable_scopes=[primary.id])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] assignable_scopes: One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.

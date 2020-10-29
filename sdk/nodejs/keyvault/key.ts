@@ -6,54 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Key Vault Key.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- * import * as random from "@pulumi/random";
- *
- * const current = azure.core.getClientConfig({});
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const server = new random.RandomId("server", {
- *     keepers: {
- *         ami_id: 1,
- *     },
- *     byteLength: 8,
- * });
- * const exampleKeyVault = new azure.keyvault.KeyVault("exampleKeyVault", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     tenantId: current.then(current => current.tenantId),
- *     skuName: "premium",
- *     accessPolicies: [{
- *         tenantId: current.then(current => current.tenantId),
- *         objectId: current.then(current => current.objectId),
- *         keyPermissions: [
- *             "create",
- *             "get",
- *         ],
- *         secretPermissions: ["set"],
- *     }],
- *     tags: {
- *         environment: "Production",
- *     },
- * });
- * const generated = new azure.keyvault.Key("generated", {
- *     keyVaultId: exampleKeyVault.id,
- *     keyType: "RSA",
- *     keySize: 2048,
- *     keyOpts: [
- *         "decrypt",
- *         "encrypt",
- *         "sign",
- *         "unwrapKey",
- *         "verify",
- *         "wrapKey",
- *     ],
- * });
- * ```
  */
 export class Key extends pulumi.CustomResource {
     /**

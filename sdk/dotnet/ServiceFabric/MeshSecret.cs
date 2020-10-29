@@ -11,30 +11,6 @@ namespace Pulumi.Azure.ServiceFabric
 {
     /// <summary>
     /// Manages a Service Fabric Mesh Secret.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleMeshSecret = new Azure.ServiceFabric.MeshSecret("exampleMeshSecret", new Azure.ServiceFabric.MeshSecretArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class MeshSecret : Pulumi.CustomResource
     {

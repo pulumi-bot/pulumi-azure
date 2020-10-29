@@ -29,37 +29,6 @@ class SRVRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS SRV Records within Azure Private DNS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="West US")
-        test_zone = azure.privatedns.Zone("testZone", resource_group_name=azurerm_resource_group["test"]["name"])
-        test_srv_record = azure.privatedns.SRVRecord("testSRVRecord",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            zone_name=test_zone.name,
-            ttl=300,
-            records=[
-                azure.privatedns.SRVRecordRecordArgs(
-                    priority=1,
-                    weight=5,
-                    port=8080,
-                    target="target1.contoso.com",
-                ),
-                azure.privatedns.SRVRecordRecordArgs(
-                    priority=10,
-                    weight=10,
-                    port=8080,
-                    target="target2.contoso.com",
-                ),
-            ],
-            tags={
-                "Environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS SRV Record. Changing this forces a new resource to be created.

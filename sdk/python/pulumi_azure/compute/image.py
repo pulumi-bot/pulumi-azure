@@ -33,35 +33,6 @@ class Image(pulumi.CustomResource):
         Manages a custom virtual machine image that can be used to create virtual machines.
 
         ## Example Usage
-        ### Creating From VHD
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_image = azure.compute.Image("exampleImage",
-            location="West US",
-            resource_group_name=example_resource_group.name,
-            os_disk=azure.compute.ImageOsDiskArgs(
-                os_type="Linux",
-                os_state="Generalized",
-                blob_uri="{blob_uri}",
-                size_gb=30,
-            ))
-        ```
-        ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_image = azure.compute.Image("exampleImage",
-            location="West US",
-            resource_group_name=example_resource_group.name,
-            source_virtual_machine_id="{vm_id}")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

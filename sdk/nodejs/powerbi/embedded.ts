@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a PowerBI Embedded.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleEmbedded = new azure.powerbi.Embedded("exampleEmbedded", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "A1",
- *     administrators: ["azsdktest@microsoft.com"],
- * });
- * ```
  */
 export class Embedded extends pulumi.CustomResource {
     /**

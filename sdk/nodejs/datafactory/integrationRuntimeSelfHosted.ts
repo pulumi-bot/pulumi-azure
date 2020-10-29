@@ -8,23 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Data Factory Self-hosted Integration Runtime.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "eastus"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleIntegrationRuntimeSelfHosted = new azure.datafactory.IntegrationRuntimeSelfHosted("exampleIntegrationRuntimeSelfHosted", {
- *     resourceGroupName: "example",
- *     dataFactoryName: "example",
- * });
- * ```
  */
 export class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     /**

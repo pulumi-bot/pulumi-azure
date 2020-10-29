@@ -8,25 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Lighthouse Definition.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const contributor = azure.authorization.getRoleDefinition({
- *     roleDefinitionId: "b24988ac-6180-42a0-ab88-20f7382dd24c",
- * });
- * const example = new azure.lighthouse.Definition("example", {
- *     description: "This is a lighthouse definition created via Terraform",
- *     managingTenantId: "00000000-0000-0000-0000-000000000000",
- *     authorizations: [{
- *         principalId: "00000000-0000-0000-0000-000000000000",
- *         roleDefinitionId: contributor.then(contributor => contributor.roleDefinitionId),
- *     }],
- * });
- * ```
  */
 export class Definition extends pulumi.CustomResource {
     /**

@@ -29,22 +29,6 @@ class Definition(pulumi.CustomResource):
         """
         Manages a Lighthouse Definition.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        contributor = azure.authorization.get_role_definition(role_definition_id="b24988ac-6180-42a0-ab88-20f7382dd24c")
-        example = azure.lighthouse.Definition("example",
-            description="This is a lighthouse definition created via Terraform",
-            managing_tenant_id="00000000-0000-0000-0000-000000000000",
-            authorizations=[azure.lighthouse.DefinitionAuthorizationArgs(
-                principal_id="00000000-0000-0000-0000-000000000000",
-                role_definition_id=contributor.role_definition_id,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefinitionAuthorizationArgs']]]] authorizations: An authorization block as defined below.

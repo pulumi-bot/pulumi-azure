@@ -10,50 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Azure Backup for Azure File Shares is currently in public preview. During the preview, the service is subject to additional limitations and unsupported backup scenarios. [Read More](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files#limitations-for-azure-file-share-backup-during-preview)
  *
  * > **NOTE** Azure Backup for Azure File Shares does not support Soft Delete at this time. Deleting this resource will also delete all associated backup data. Please exercise caution. Consider using [`protect`](https://www.pulumi.com/docs/intro/concepts/programming-model/#protect) to guard against accidental deletion.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const rg = new azure.core.ResourceGroup("rg", {location: "West US"});
- * const vault = new azure.recoveryservices.Vault("vault", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: "Standard",
- * });
- * const sa = new azure.storage.Account("sa", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- * });
- * const exampleShare = new azure.storage.Share("exampleShare", {storageAccountName: sa.name});
- * const protection_container = new azure.backup.ContainerStorageAccount("protection-container", {
- *     resourceGroupName: rg.name,
- *     recoveryVaultName: vault.name,
- *     storageAccountId: sa.id,
- * });
- * const examplePolicyFileShare = new azure.backup.PolicyFileShare("examplePolicyFileShare", {
- *     resourceGroupName: rg.name,
- *     recoveryVaultName: vault.name,
- *     backup: {
- *         frequency: "Daily",
- *         time: "23:00",
- *     },
- *     retentionDaily: {
- *         count: 10,
- *     },
- * });
- * const share1 = new azure.backup.ProtectedFileShare("share1", {
- *     resourceGroupName: rg.name,
- *     recoveryVaultName: vault.name,
- *     sourceStorageAccountId: protection_container.storageAccountId,
- *     sourceFileShareName: exampleShare.name,
- *     backupPolicyId: examplePolicyFileShare.id,
- * });
- * ```
  */
 export class ProtectedFileShare extends pulumi.CustomResource {
     /**
