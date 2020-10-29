@@ -35,33 +35,6 @@ class NatRule(pulumi.CustomResource):
 
         > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_public_ip = azure.network.PublicIp("examplePublicIp",
-            location="West US",
-            resource_group_name=example_resource_group.name,
-            allocation_method="Static")
-        example_load_balancer = azure.lb.LoadBalancer("exampleLoadBalancer",
-            location="West US",
-            resource_group_name=example_resource_group.name,
-            frontend_ip_configurations=[azure.lb.LoadBalancerFrontendIpConfigurationArgs(
-                name="PublicIPAddress",
-                public_ip_address_id=example_public_ip.id,
-            )])
-        example_nat_rule = azure.lb.NatRule("exampleNatRule",
-            resource_group_name=example_resource_group.name,
-            loadbalancer_id=example_load_balancer.id,
-            protocol="Tcp",
-            frontend_port=3389,
-            backend_port=3389,
-            frontend_ip_configuration_name="PublicIPAddress")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] backend_port: The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.

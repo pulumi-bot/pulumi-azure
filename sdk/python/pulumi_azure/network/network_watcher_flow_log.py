@@ -31,49 +31,6 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
         """
         Manages a Network Watcher Flow Log.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        test_resource_group = azure.core.ResourceGroup("testResourceGroup", location="eastus")
-        test_network_security_group = azure.network.NetworkSecurityGroup("testNetworkSecurityGroup",
-            location=test_resource_group.location,
-            resource_group_name=test_resource_group.name)
-        test_network_watcher = azure.network.NetworkWatcher("testNetworkWatcher",
-            location=test_resource_group.location,
-            resource_group_name=test_resource_group.name)
-        test_account = azure.storage.Account("testAccount",
-            resource_group_name=test_resource_group.name,
-            location=test_resource_group.location,
-            account_tier="Standard",
-            account_kind="StorageV2",
-            account_replication_type="LRS",
-            enable_https_traffic_only=True)
-        test_analytics_workspace = azure.operationalinsights.AnalyticsWorkspace("testAnalyticsWorkspace",
-            location=test_resource_group.location,
-            resource_group_name=test_resource_group.name,
-            sku="PerGB2018")
-        test_network_watcher_flow_log = azure.network.NetworkWatcherFlowLog("testNetworkWatcherFlowLog",
-            network_watcher_name=test_network_watcher.name,
-            resource_group_name=test_resource_group.name,
-            network_security_group_id=test_network_security_group.id,
-            storage_account_id=test_account.id,
-            enabled=True,
-            retention_policy=azure.network.NetworkWatcherFlowLogRetentionPolicyArgs(
-                enabled=True,
-                days=7,
-            ),
-            traffic_analytics=azure.network.NetworkWatcherFlowLogTrafficAnalyticsArgs(
-                enabled=True,
-                workspace_id=test_analytics_workspace.workspace_id,
-                workspace_region=test_analytics_workspace.location,
-                workspace_resource_id=test_analytics_workspace.id,
-                interval_in_minutes=10,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean flag to enable/disable traffic analytics.

@@ -13,33 +13,6 @@ namespace Pulumi.Azure.LogicApps
     {
         /// <summary>
         /// Use this data source to access information about an existing Logic App Workflow.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.LogicApps.GetWorkflow.InvokeAsync(new Azure.LogicApps.GetWorkflowArgs
-        ///         {
-        ///             Name = "workflow1",
-        ///             ResourceGroupName = "my-resource-group",
-        ///         }));
-        ///         this.AccessEndpoint = example.Apply(example =&gt; example.AccessEndpoint);
-        ///     }
-        /// 
-        ///     [Output("accessEndpoint")]
-        ///     public Output&lt;string&gt; AccessEndpoint { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("azure:logicapps/getWorkflow:getWorkflow", args ?? new GetWorkflowArgs(), options.WithVersion());

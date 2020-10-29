@@ -8,28 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
  *
  * > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleAccount = exampleResourceGroup.name.apply(name => azure.storage.getAccount({
- *     name: "storageaccountname",
- *     resourceGroupName: name,
- * }));
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleLinkedServiceAzureBlobStorage = new azure.datafactory.LinkedServiceAzureBlobStorage("exampleLinkedServiceAzureBlobStorage", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     connectionString: exampleAccount.primaryConnectionString,
- * });
- * ```
  */
 export class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     /**

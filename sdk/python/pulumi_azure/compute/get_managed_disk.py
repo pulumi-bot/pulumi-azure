@@ -221,17 +221,6 @@ def get_managed_disk(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Managed Disk.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    existing = azure.compute.get_managed_disk(name="example-datadisk",
-        resource_group_name="example-resources")
-    pulumi.export("id", existing.id)
-    ```
-
 
     :param str name: Specifies the name of the Managed Disk.
     :param str resource_group_name: Specifies the name of the Resource Group where this Managed Disk exists.

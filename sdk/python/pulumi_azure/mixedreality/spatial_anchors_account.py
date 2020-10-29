@@ -25,18 +25,6 @@ class SpatialAnchorsAccount(pulumi.CustomResource):
         """
         Manages an Azure Spatial Anchors Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_spatial_anchors_account = azure.mixedreality.SpatialAnchorsAccount("exampleSpatialAnchorsAccount",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

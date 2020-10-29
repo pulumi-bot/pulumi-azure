@@ -37,44 +37,6 @@ class Group(pulumi.CustomResource):
         """
         Manages as an Azure Container Group instance.
 
-        ## Example Usage
-
-        This example provisions a Basic Container.
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_group = azure.containerservice.Group("exampleGroup",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            ip_address_type="public",
-            dns_name_label="aci-label",
-            os_type="Linux",
-            containers=[
-                azure.containerservice.GroupContainerArgs(
-                    name="hello-world",
-                    image="microsoft/aci-helloworld:latest",
-                    cpu=0.5,
-                    memory=1.5,
-                    ports=[azure.containerservice.GroupContainerPortArgs(
-                        port=443,
-                        protocol="TCP",
-                    )],
-                ),
-                azure.containerservice.GroupContainerArgs(
-                    name="sidecar",
-                    image="microsoft/aci-tutorial-sidecar",
-                    cpu=0.5,
-                    memory=1.5,
-                ),
-            ],
-            tags={
-                "environment": "testing",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupContainerArgs']]]] containers: The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.

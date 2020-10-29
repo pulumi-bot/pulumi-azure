@@ -32,21 +32,6 @@ class Topic(pulumi.CustomResource):
 
         > **Note:** at this time EventGrid Topic's are only available in a limited number of regions.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US 2")
-        example_topic = azure.eventgrid.Topic("exampleTopic",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            tags={
-                "environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TopicInputMappingDefaultValuesArgs']] input_mapping_default_values: A `input_mapping_default_values` block as defined below.

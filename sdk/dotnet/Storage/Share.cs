@@ -13,53 +13,6 @@ namespace Pulumi.Azure.Storage
     /// Manages a File Share within Azure Storage.
     /// 
     /// &gt; **Note:** The storage share supports two storage tiers: premium and standard. Standard file shares are created in general purpose (GPv1 or GPv2) storage accounts and premium file shares are created in FileStorage storage accounts. For further information, refer to the section "What storage tiers are supported in Azure Files?" of [documentation](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-faq#general).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///         });
-    ///         var exampleShare = new Azure.Storage.Share("exampleShare", new Azure.Storage.ShareArgs
-    ///         {
-    ///             StorageAccountName = exampleAccount.Name,
-    ///             Quota = 50,
-    ///             Acls = 
-    ///             {
-    ///                 new Azure.Storage.Inputs.ShareAclArgs
-    ///                 {
-    ///                     Id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
-    ///                     AccessPolicies = 
-    ///                     {
-    ///                         new Azure.Storage.Inputs.ShareAclAccessPolicyArgs
-    ///                         {
-    ///                             Permissions = "rwdl",
-    ///                             Start = "2019-07-02T09:38:21.0000000Z",
-    ///                             Expiry = "2019-07-02T10:38:21.0000000Z",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Share : Pulumi.CustomResource
     {

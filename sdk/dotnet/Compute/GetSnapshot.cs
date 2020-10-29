@@ -13,30 +13,6 @@ namespace Pulumi.Azure.Compute
     {
         /// <summary>
         /// Use this data source to access information about an existing Snapshot.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Compute.GetSnapshot.InvokeAsync(new Azure.Compute.GetSnapshotArgs
-        ///         {
-        ///             Name = "my-snapshot",
-        ///             ResourceGroupName = "my-resource-group",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("azure:compute/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());

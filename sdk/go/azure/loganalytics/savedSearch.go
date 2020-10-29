@@ -11,49 +11,6 @@ import (
 )
 
 // Manages a Log Analytics (formally Operational Insights) Saved Search.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/loganalytics"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/operationalinsights"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("East US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = operationalinsights.NewAnalyticsWorkspace(ctx, "exampleAnalyticsWorkspace", &operationalinsights.AnalyticsWorkspaceArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Sku:               pulumi.String("PerGB2018"),
-// 			RetentionInDays:   pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = loganalytics.NewSavedSearch(ctx, "exampleSavedSearch", &loganalytics.SavedSearchArgs{
-// 			LogAnalyticsWorkspaceId: pulumi.Any(azurerm_log_analytics_workspace.Test.Id),
-// 			Category:                pulumi.String("exampleCategory"),
-// 			DisplayName:             pulumi.String("exampleDisplayName"),
-// 			Query:                   pulumi.String("exampleQuery"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SavedSearch struct {
 	pulumi.CustomResourceState
 

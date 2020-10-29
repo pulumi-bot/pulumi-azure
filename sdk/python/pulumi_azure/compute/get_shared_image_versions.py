@@ -99,17 +99,6 @@ def get_shared_image_versions(gallery_name: Optional[str] = None,
     """
     Use this data source to access information about existing Versions of a Shared Image within a Shared Image Gallery.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.compute.get_shared_image_versions(gallery_name="my-image-gallery",
-        image_name="my-image",
-        resource_group_name="example-resources")
-    ```
-
 
     :param str gallery_name: The name of the Shared Image in which the Shared Image exists.
     :param str image_name: The name of the Shared Image in which this Version exists.

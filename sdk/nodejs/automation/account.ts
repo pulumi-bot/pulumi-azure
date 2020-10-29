@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Automation Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.automation.Account("exampleAccount", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "Basic",
- *     tags: {
- *         environment: "development",
- *     },
- * });
- * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

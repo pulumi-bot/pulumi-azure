@@ -8,52 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Network Connection Monitor.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = azure.core.getResourceGroup({
- *     name: "example-resources",
- * });
- * const exampleNetworkWatcher = new azure.network.NetworkWatcher("exampleNetworkWatcher", {
- *     location: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.location),
- *     resourceGroupName: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.name),
- * });
- * const srcVirtualMachine = exampleResourceGroup.then(exampleResourceGroup => azure.compute.getVirtualMachine({
- *     name: "example-vm",
- *     resourceGroupName: exampleResourceGroup.name,
- * }));
- * const srcExtension = new azure.compute.Extension("srcExtension", {
- *     virtualMachineId: srcVirtualMachine.then(srcVirtualMachine => srcVirtualMachine.id),
- *     publisher: "Microsoft.Azure.NetworkWatcher",
- *     type: "NetworkWatcherAgentLinux",
- *     typeHandlerVersion: "1.4",
- *     autoUpgradeMinorVersion: true,
- * });
- * const exampleNetworkConnectionMonitor = new azure.network.NetworkConnectionMonitor("exampleNetworkConnectionMonitor", {
- *     networkWatcherName: exampleNetworkWatcher.name,
- *     resourceGroupName: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.name),
- *     location: exampleNetworkWatcher.location,
- *     autoStart: false,
- *     intervalInSeconds: 30,
- *     source: {
- *         virtualMachineId: srcVirtualMachine.then(srcVirtualMachine => srcVirtualMachine.id),
- *         port: 20020,
- *     },
- *     destination: {
- *         address: "mycompany.io",
- *         port: 443,
- *     },
- *     tags: {
- *         foo: "bar",
- *     },
- * }, {
- *     dependsOn: [srcExtension],
- * });
- * ```
  */
 export class NetworkConnectionMonitor extends pulumi.CustomResource {
     /**

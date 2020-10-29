@@ -11,26 +11,6 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Manages a Firewall Policy.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Network.FirewallPolicy("example", new Azure.Network.FirewallPolicyArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///             ResourceGroupName = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class FirewallPolicy : Pulumi.CustomResource
     {

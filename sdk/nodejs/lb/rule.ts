@@ -8,36 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Load Balancer Rule.
  *
  * > **NOTE** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const examplePublicIp = new azure.network.PublicIp("examplePublicIp", {
- *     location: "West US",
- *     resourceGroupName: exampleResourceGroup.name,
- *     allocationMethod: "Static",
- * });
- * const exampleLoadBalancer = new azure.lb.LoadBalancer("exampleLoadBalancer", {
- *     location: "West US",
- *     resourceGroupName: exampleResourceGroup.name,
- *     frontendIpConfigurations: [{
- *         name: "PublicIPAddress",
- *         publicIpAddressId: examplePublicIp.id,
- *     }],
- * });
- * const exampleRule = new azure.lb.Rule("exampleRule", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     loadbalancerId: exampleLoadBalancer.id,
- *     protocol: "Tcp",
- *     frontendPort: 3389,
- *     backendPort: 3389,
- *     frontendIpConfigurationName: "PublicIPAddress",
- * });
- * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**

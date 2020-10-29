@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Monitoring
     {
         /// <summary>
         /// Use this data source to access the properties of an Action Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Monitoring.GetActionGroup.InvokeAsync(new Azure.Monitoring.GetActionGroupArgs
-        ///         {
-        ///             ResourceGroupName = "example-rg",
-        ///             Name = "tfex-actiongroup",
-        ///         }));
-        ///         this.ActionGroupId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("actionGroupId")]
-        ///     public Output&lt;string&gt; ActionGroupId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetActionGroupResult> InvokeAsync(GetActionGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActionGroupResult>("azure:monitoring/getActionGroup:getActionGroup", args ?? new GetActionGroupArgs(), options.WithVersion());

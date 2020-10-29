@@ -11,43 +11,6 @@ namespace Pulumi.Azure.EventGrid
 {
     /// <summary>
     /// Manages an Event Grid System Topic.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///             Tags = 
-    ///             {
-    ///                 { "environment", "staging" },
-    ///             },
-    ///         });
-    ///         var examplegetSystemTopic = new Azure.EventGrid.GetSystemTopic("examplegetSystemTopic", new Azure.EventGrid.GetSystemTopicArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             SourceArmResourceId = exampleAccount.Id,
-    ///             TopicType = "Microsoft.Storage.StorageAccounts",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class GetSystemTopic : Pulumi.CustomResource
     {

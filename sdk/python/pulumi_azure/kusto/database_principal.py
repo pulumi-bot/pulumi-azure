@@ -30,37 +30,6 @@ class DatabasePrincipal(pulumi.CustomResource):
 
         > **NOTE:** This resource is being **deprecated** due to API updates and should no longer be used.  Please use kusto.DatabasePrincipalAssignment instead.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        rg = azure.core.ResourceGroup("rg", location="East US")
-        cluster = azure.kusto.Cluster("cluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
-        database = azure.kusto.Database("database",
-            resource_group_name=rg.name,
-            location=rg.location,
-            cluster_name=cluster.name,
-            hot_cache_period="P7D",
-            soft_delete_period="P31D")
-        principal = azure.kusto.DatabasePrincipal("principal",
-            resource_group_name=rg.name,
-            cluster_name=cluster.name,
-            database_name=azurerm_kusto_database["test"]["name"],
-            role="Viewer",
-            type="User",
-            client_id=current.tenant_id,
-            object_id=current.client_id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The Client ID that owns the specified `object_id`. Changing this forces a new resource to be created.

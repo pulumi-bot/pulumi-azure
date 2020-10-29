@@ -16,29 +16,6 @@ namespace Pulumi.Azure.Network
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### World)
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Network.GetTrafficManager.InvokeAsync(new Azure.Network.GetTrafficManagerArgs
-        ///         {
-        ///             Name = "World",
-        ///         }));
-        ///         this.LocationCode = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("locationCode")]
-        ///     public Output&lt;string&gt; LocationCode { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficManagerResult> InvokeAsync(GetTrafficManagerArgs args, InvokeOptions? options = null)

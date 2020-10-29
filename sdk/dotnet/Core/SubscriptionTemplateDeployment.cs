@@ -11,42 +11,6 @@ namespace Pulumi.Azure.Core
 {
     /// <summary>
     /// Manages a Subscription Template Deployment.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Core.SubscriptionTemplateDeployment("example", new Azure.Core.SubscriptionTemplateDeploymentArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///             TemplateContent = @" {
-    ///    ""$schema"": ""https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"",
-    ///    ""contentVersion"": ""1.0.0.0"",
-    ///    ""parameters"": {},
-    ///    ""variables"": {},
-    ///    ""resources"": [
-    ///      {
-    ///        ""type"": ""Microsoft.Resources/resourceGroups"",
-    ///        ""apiVersion"": ""2018-05-01"",
-    ///        ""location"": ""West Europe"",
-    ///        ""name"": ""some-resource-group"",
-    ///        ""properties"": {}
-    ///      }
-    ///    ]
-    ///  }
-    ///  
-    /// ",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SubscriptionTemplateDeployment : Pulumi.CustomResource
     {

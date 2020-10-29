@@ -29,39 +29,6 @@ class ApplicationGroup(pulumi.CustomResource):
         """
         Manages a Virtual Desktop Application Group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="eastus")
-        pooledbreadthfirst = azure.desktopvirtualization.HostPool("pooledbreadthfirst",
-            location=example.location,
-            resource_group_name=example.name,
-            type="Pooled",
-            load_balancer_type="BreadthFirst")
-        personalautomatic = azure.desktopvirtualization.HostPool("personalautomatic",
-            location=example.location,
-            resource_group_name=example.name,
-            type="Personal",
-            personal_desktop_assignment_type="Automatic")
-        remoteapp = azure.desktopvirtualization.ApplicationGroup("remoteapp",
-            location=example.location,
-            resource_group_name=example.name,
-            type="RemoteApp",
-            host_pool_id=pooledbreadthfirst.id,
-            friendly_name="TestAppGroup",
-            description="Acceptance Test: An application group")
-        desktopapp = azure.desktopvirtualization.ApplicationGroup("desktopapp",
-            location=example.location,
-            resource_group_name=example.name,
-            type="Desktop",
-            host_pool_id=personalautomatic.id,
-            friendly_name="TestAppGroup",
-            description="Acceptance Test: An application group")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Option to set a description for the Virtual Desktop Application Group.

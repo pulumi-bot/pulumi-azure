@@ -31,42 +31,6 @@ class ActivityLogAlert(pulumi.CustomResource):
         """
         Manages an Activity Log Alert within Azure Monitor.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        main_resource_group = azure.core.ResourceGroup("mainResourceGroup", location="West US")
-        main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
-            resource_group_name=main_resource_group.name,
-            short_name="p0action",
-            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
-                name="callmyapi",
-                service_uri="http://example.com/alert",
-            )])
-        to_monitor = azure.storage.Account("toMonitor",
-            resource_group_name=main_resource_group.name,
-            location=main_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="GRS")
-        main_activity_log_alert = azure.monitoring.ActivityLogAlert("mainActivityLogAlert",
-            resource_group_name=main_resource_group.name,
-            scopes=[main_resource_group.id],
-            description="This alert will monitor a specific storage account updates.",
-            criteria=azure.monitoring.ActivityLogAlertCriteriaArgs(
-                resource_id=to_monitor.id,
-                operation_name="Microsoft.Storage/storageAccounts/write",
-                category="Recommendation",
-            ),
-            actions=[azure.monitoring.ActivityLogAlertActionArgs(
-                action_group_id=main_action_group.id,
-                webhook_properties={
-                    "from": "source",
-                },
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActivityLogAlertActionArgs']]]] actions: One or more `action` blocks as defined below.

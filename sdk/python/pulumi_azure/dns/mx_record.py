@@ -29,33 +29,6 @@ class MxRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS MX Records within Azure DNS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_zone = azure.dns.Zone("exampleZone", resource_group_name=example_resource_group.name)
-        example_mx_record = azure.dns.MxRecord("exampleMxRecord",
-            zone_name=example_zone.name,
-            resource_group_name=example_resource_group.name,
-            ttl=300,
-            records=[
-                azure.dns.MxRecordRecordArgs(
-                    preference="10",
-                    exchange="mail1.contoso.com",
-                ),
-                azure.dns.MxRecordRecordArgs(
-                    preference="20",
-                    exchange="mail2.contoso.com",
-                ),
-            ],
-            tags={
-                "Environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS MX Record. Defaults to `@` (root). Changing this forces a new resource to be created.

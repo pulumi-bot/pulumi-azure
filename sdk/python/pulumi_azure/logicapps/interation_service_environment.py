@@ -28,55 +28,6 @@ class InterationServiceEnvironment(pulumi.CustomResource):
         """
         Manages private and isolated Logic App instances within an Azure virtual network.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="westeurope")
-        example_virtual_network = azure.network.VirtualNetwork("exampleVirtualNetwork",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            address_spaces=["10.0.0.0/22"])
-        isesubnet1 = azure.network.Subnet("isesubnet1",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.1.0/26"],
-            delegations=[azure.network.SubnetDelegationArgs(
-                name="integrationServiceEnvironments",
-                service_delegation=azure.network.SubnetDelegationServiceDelegationArgs(
-                    name="Microsoft.Logic/integrationServiceEnvironments",
-                ),
-            )])
-        isesubnet2 = azure.network.Subnet("isesubnet2",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.1.64/26"])
-        isesubnet3 = azure.network.Subnet("isesubnet3",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.1.128/26"])
-        isesubnet4 = azure.network.Subnet("isesubnet4",
-            resource_group_name=example_resource_group.name,
-            virtual_network_name=example_virtual_network.name,
-            address_prefixes=["10.0.1.192/26"])
-        example_interation_service_environment = azure.logicapps.InterationServiceEnvironment("exampleInterationServiceEnvironment",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku_name="Developer_0",
-            access_endpoint_type="Internal",
-            virtual_network_subnet_ids=[
-                isesubnet1.id,
-                isesubnet2.id,
-                isesubnet3.id,
-                isesubnet4.id,
-            ],
-            tags={
-                "environment": "development",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_endpoint_type: The type of access endpoint to use for the Integration Service Environment. Possible Values are `Internal` and `External`. Changing this forces a new Integration Service Environment to be created.

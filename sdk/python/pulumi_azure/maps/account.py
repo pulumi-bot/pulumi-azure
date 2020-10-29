@@ -25,21 +25,6 @@ class Account(pulumi.CustomResource):
         """
         Manages an Azure Maps Account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = azure.maps.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            sku_name="S1",
-            tags={
-                "environment": "Test",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Azure Maps Account. Changing this forces a new resource to be created.

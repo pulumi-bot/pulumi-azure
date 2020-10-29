@@ -114,17 +114,6 @@ def get_dedicated_host_group(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Dedicated Host Group.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.compute.get_dedicated_host_group(name="example-dedicated-host-group",
-        resource_group_name="example-rg")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str name: Specifies the name of the Dedicated Host Group.
     :param str resource_group_name: Specifies the name of the resource group the Dedicated Host Group is located in.

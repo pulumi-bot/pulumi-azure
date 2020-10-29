@@ -8,30 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a PostgreSQL Server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleServer = new azure.postgresql.Server("exampleServer", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     administratorLogin: "psqladminun",
- *     administratorLoginPassword: "H@Sh1CoR3!",
- *     skuName: "GP_Gen5_4",
- *     version: "9.6",
- *     storageMb: 640000,
- *     backupRetentionDays: 7,
- *     geoRedundantBackupEnabled: true,
- *     autoGrowEnabled: true,
- *     publicNetworkAccessEnabled: false,
- *     sslEnforcementEnabled: true,
- *     sslMinimalTlsVersionEnforced: "TLS1_2",
- * });
- * ```
  */
 export class Server extends pulumi.CustomResource {
     /**

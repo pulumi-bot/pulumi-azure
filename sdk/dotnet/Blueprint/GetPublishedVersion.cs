@@ -15,32 +15,6 @@ namespace Pulumi.Azure.Blueprint
         /// Use this data source to access information about an existing Blueprint Published Version
         /// 
         /// &gt; **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Azure.Core.GetSubscription.InvokeAsync());
-        ///         var test = current.Apply(current =&gt; Output.Create(Azure.Blueprint.GetPublishedVersion.InvokeAsync(new Azure.Blueprint.GetPublishedVersionArgs
-        ///         {
-        ///             ScopeId = current.Id,
-        ///             BlueprintName = "exampleBluePrint",
-        ///             Version = "dev_v2.3",
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPublishedVersionResult> InvokeAsync(GetPublishedVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublishedVersionResult>("azure:blueprint/getPublishedVersion:getPublishedVersion", args ?? new GetPublishedVersionArgs(), options.WithVersion());

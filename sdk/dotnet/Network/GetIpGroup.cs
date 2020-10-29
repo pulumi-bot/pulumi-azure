@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Network
     {
         /// <summary>
         /// Use this data source to access information about an existing IP Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Network.GetIpGroup.InvokeAsync(new Azure.Network.GetIpGroupArgs
-        ///         {
-        ///             Name = "example1-ipgroup",
-        ///             ResourceGroupName = "example-rg",
-        ///         }));
-        ///         this.Cidrs = example.Apply(example =&gt; example.Cidrs);
-        ///     }
-        /// 
-        ///     [Output("cidrs")]
-        ///     public Output&lt;string&gt; Cidrs { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpGroupResult> InvokeAsync(GetIpGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpGroupResult>("azure:network/getIpGroup:getIpGroup", args ?? new GetIpGroupArgs(), options.WithVersion());

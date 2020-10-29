@@ -31,27 +31,6 @@ class TriggerSchedule(pulumi.CustomResource):
         """
         Manages a Trigger Schedule inside a Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        test_pipeline = azure.datafactory.Pipeline("testPipeline",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            data_factory_name=azurerm_data_factory["test"]["name"])
-        test_trigger_schedule = azure.datafactory.TriggerSchedule("testTriggerSchedule",
-            data_factory_name=azurerm_data_factory["test"]["name"],
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            pipeline_name=test_pipeline.name,
-            interval=5,
-            frequency="Day")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] annotations: List of tags that can be used for describing the Data Factory Schedule Trigger.

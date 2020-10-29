@@ -27,33 +27,6 @@ class SubscriptionTemplateDeployment(pulumi.CustomResource):
         """
         Manages a Subscription Template Deployment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.SubscriptionTemplateDeployment("example",
-            location="West Europe",
-            template_content=\"\"\" {
-           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-           "contentVersion": "1.0.0.0",
-           "parameters": {},
-           "variables": {},
-           "resources": [
-             {
-               "type": "Microsoft.Resources/resourceGroups",
-               "apiVersion": "2018-05-01",
-               "location": "West Europe",
-               "name": "some-resource-group",
-               "properties": {}
-             }
-           ]
-         }
-         
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] debug_level: The Debug Level which should be used for this Subscription Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.

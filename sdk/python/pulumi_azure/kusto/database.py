@@ -27,28 +27,6 @@ class Database(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Database
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        rg = azure.core.ResourceGroup("rg", location="East US")
-        cluster = azure.kusto.Cluster("cluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
-        database = azure.kusto.Database("database",
-            resource_group_name=rg.name,
-            location=rg.location,
-            cluster_name=cluster.name,
-            hot_cache_period="P7D",
-            soft_delete_period="P31D")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.

@@ -118,19 +118,6 @@ def get_share(account_id: Optional[str] = None,
     """
     Use this data source to access information about an existing Data Share.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example_account = azure.datashare.get_account(name="example-account",
-        resource_group_name="example-resource-group")
-    example_share = azure.datashare.get_share(name="existing",
-        account_id=example_account.id)
-    pulumi.export("id", example_share.id)
-    ```
-
 
     :param str account_id: The ID of the Data Share account in which the Data Share is created.
     :param str name: The name of this Data Share.

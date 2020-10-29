@@ -8,32 +8,6 @@ import (
 )
 
 // Use this data source to fetch the Host Keys of an existing Function App
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := appservice.GetFunctionAppHostKeys(ctx, &appservice.GetFunctionAppHostKeysArgs{
-// 			Name:              "example-function",
-// 			ResourceGroupName: azurerm_resource_group.Example.Name,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// > **Note:** All arguments including the secret value will be stored in the raw state as plain-text, including `defaultFunctionKey` and `masterKey`. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 func GetFunctionAppHostKeys(ctx *pulumi.Context, args *GetFunctionAppHostKeysArgs, opts ...pulumi.InvokeOption) (*GetFunctionAppHostKeysResult, error) {
 	var rv GetFunctionAppHostKeysResult
 	err := ctx.Invoke("azure:appservice/getFunctionAppHostKeys:getFunctionAppHostKeys", args, &rv, opts...)

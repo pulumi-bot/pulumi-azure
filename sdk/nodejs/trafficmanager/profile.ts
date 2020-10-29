@@ -9,41 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a Traffic Manager Profile to which multiple endpoints can be attached.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- * import * as random from "@pulumi/random";
- *
- * const server = new random.RandomId("server", {
- *     keepers: {
- *         azi_id: 1,
- *     },
- *     byteLength: 8,
- * });
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleTrafficManagerProfile = new azure.network.TrafficManagerProfile("exampleTrafficManagerProfile", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     trafficRoutingMethod: "Weighted",
- *     dnsConfig: {
- *         relativeName: server.hex,
- *         ttl: 100,
- *     },
- *     monitorConfig: {
- *         protocol: "http",
- *         port: 80,
- *         path: "/",
- *         intervalInSeconds: 30,
- *         timeoutInSeconds: 9,
- *         toleratedNumberOfFailures: 3,
- *     },
- *     tags: {
- *         environment: "Production",
- *     },
- * });
- * ```
- *
  * @deprecated azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile
  */
 export class Profile extends pulumi.CustomResource {

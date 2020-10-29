@@ -13,32 +13,6 @@ namespace Pulumi.Azure.Policy
     {
         /// <summary>
         /// Use this data source to access information about an existing Policy Set Definition.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Policy.GetPolicySetDefinition.InvokeAsync(new Azure.Policy.GetPolicySetDefinitionArgs
-        ///         {
-        ///             DisplayName = "Policy Set Definition Example",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicySetDefinitionResult> InvokeAsync(GetPolicySetDefinitionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicySetDefinitionResult>("azure:policy/getPolicySetDefinition:getPolicySetDefinition", args ?? new GetPolicySetDefinitionArgs(), options.WithVersion());

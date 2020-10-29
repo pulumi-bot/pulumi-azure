@@ -43,54 +43,6 @@ class Frontdoor(pulumi.CustomResource):
         * Use Front Door to improve application performance with SSL offload and routing requests to the fastest available application backend.
         * Use Front Door for application layer security and DDoS protection for your application.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="EastUS2")
-        example_frontdoor = azure.frontdoor.Frontdoor("exampleFrontdoor",
-            location="EastUS2",
-            resource_group_name=example_resource_group.name,
-            enforce_backend_pools_certificate_name_check=False,
-            routing_rules=[azure.frontdoor.FrontdoorRoutingRuleArgs(
-                name="exampleRoutingRule1",
-                accepted_protocols=[
-                    "Http",
-                    "Https",
-                ],
-                patterns_to_matches=["/*"],
-                frontend_endpoints=["exampleFrontendEndpoint1"],
-                forwarding_configuration=azure.frontdoor.FrontdoorRoutingRuleForwardingConfigurationArgs(
-                    forwarding_protocol="MatchRequest",
-                    backend_pool_name="exampleBackendBing",
-                ),
-            )],
-            backend_pool_load_balancings=[azure.frontdoor.FrontdoorBackendPoolLoadBalancingArgs(
-                name="exampleLoadBalancingSettings1",
-            )],
-            backend_pool_health_probes=[azure.frontdoor.FrontdoorBackendPoolHealthProbeArgs(
-                name="exampleHealthProbeSetting1",
-            )],
-            backend_pools=[azure.frontdoor.FrontdoorBackendPoolArgs(
-                name="exampleBackendBing",
-                backends=[azure.frontdoor.FrontdoorBackendPoolBackendArgs(
-                    host_header="www.bing.com",
-                    address="www.bing.com",
-                    http_port=80,
-                    https_port=443,
-                )],
-                load_balancing_name="exampleLoadBalancingSettings1",
-                health_probe_name="exampleHealthProbeSetting1",
-            )],
-            frontend_endpoints=[azure.frontdoor.FrontdoorFrontendEndpointArgs(
-                name="exampleFrontendEndpoint1",
-                host_name="example-FrontDoor.azurefd.net",
-                custom_https_provisioning_enabled=False,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FrontdoorBackendPoolHealthProbeArgs']]]] backend_pool_health_probes: A `backend_pool_health_probe` block as defined below.

@@ -27,20 +27,6 @@ class Vault(pulumi.CustomResource):
         """
         Manages an Recovery Services Vault.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        rg = azure.core.ResourceGroup("rg", location="West US")
-        vault = azure.recoveryservices.Vault("vault",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku="Standard",
-            soft_delete_enabled=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

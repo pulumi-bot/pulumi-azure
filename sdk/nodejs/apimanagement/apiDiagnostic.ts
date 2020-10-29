@@ -6,52 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a API Management Service API Diagnostics Logs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleInsights = new azure.appinsights.Insights("exampleInsights", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     applicationType: "web",
- * });
- * const exampleService = new azure.apimanagement.Service("exampleService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     publisherName: "My Company",
- *     publisherEmail: "company@terraform.io",
- *     skuName: "Developer_1",
- * });
- * const exampleApi = new azure.apimanagement.Api("exampleApi", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     apiManagementName: exampleService.name,
- *     revision: "1",
- *     displayName: "Example API",
- *     path: "example",
- *     protocols: ["https"],
- *     "import": {
- *         contentFormat: "swagger-link-json",
- *         contentValue: "http://conferenceapi.azurewebsites.net/?format=json",
- *     },
- * });
- * const exampleLogger = new azure.apimanagement.Logger("exampleLogger", {
- *     apiManagementName: exampleService.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     applicationInsights: {
- *         instrumentationKey: exampleInsights.instrumentationKey,
- *     },
- * });
- * const exampleApiDiagnostic = new azure.apimanagement.ApiDiagnostic("exampleApiDiagnostic", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     apiManagementName: exampleService.name,
- *     apiName: exampleApi.name,
- *     apiManagementLoggerId: exampleLogger.id,
- * });
- * ```
  */
 export class ApiDiagnostic extends pulumi.CustomResource {
     /**

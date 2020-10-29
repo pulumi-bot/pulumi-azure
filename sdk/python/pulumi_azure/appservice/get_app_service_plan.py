@@ -187,17 +187,6 @@ def get_app_service_plan(name: Optional[str] = None,
     """
     Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.appservice.get_app_service_plan(name="search-app-service-plan",
-        resource_group_name="search-service")
-    pulumi.export("appServicePlanId", example.id)
-    ```
-
 
     :param str name: The name of the App Service Plan.
     :param str resource_group_name: The Name of the Resource Group where the App Service Plan exists.

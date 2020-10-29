@@ -27,18 +27,6 @@ class MeshSecret(pulumi.CustomResource):
         """
         Manages a Service Fabric Mesh Secret.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_mesh_secret = azure.servicefabric.MeshSecret("exampleMeshSecret",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The type of the content stored in the secret value. Changing this forces a new resource to be created.

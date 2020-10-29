@@ -32,28 +32,6 @@ class ExpressRouteCircuit(pulumi.CustomResource):
         """
         Manages an ExpressRoute circuit.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_express_route_circuit = azure.network.ExpressRouteCircuit("exampleExpressRouteCircuit",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            service_provider_name="Equinix",
-            peering_location="Silicon Valley",
-            bandwidth_in_mbps=50,
-            sku=azure.network.ExpressRouteCircuitSkuArgs(
-                tier="Standard",
-                family="MeteredData",
-            ),
-            tags={
-                "environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_classic_operations: Allow the circuit to interact with classic (RDFE) resources. The default value is `false`.

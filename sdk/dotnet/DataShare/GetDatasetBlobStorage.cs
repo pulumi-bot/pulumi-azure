@@ -13,33 +13,6 @@ namespace Pulumi.Azure.DataShare
     {
         /// <summary>
         /// Use this data source to access information about an existing Data Share Blob Storage Dataset.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.DataShare.GetDatasetBlobStorage.InvokeAsync(new Azure.DataShare.GetDatasetBlobStorageArgs
-        ///         {
-        ///             Name = "example-dsbsds",
-        ///             DataShareId = "example-share-id",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatasetBlobStorageResult> InvokeAsync(GetDatasetBlobStorageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetBlobStorageResult>("azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage", args ?? new GetDatasetBlobStorageArgs(), options.WithVersion());

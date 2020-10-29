@@ -13,29 +13,6 @@ namespace Pulumi.Azure.Core
     {
         /// <summary>
         /// Use this data source to access information about an existing Subscription.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Azure.Core.GetSubscription.InvokeAsync());
-        ///         this.CurrentSubscriptionDisplayName = current.Apply(current =&gt; current.DisplayName);
-        ///     }
-        /// 
-        ///     [Output("currentSubscriptionDisplayName")]
-        ///     public Output&lt;string&gt; CurrentSubscriptionDisplayName { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("azure:core/getSubscription:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());

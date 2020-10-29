@@ -29,37 +29,6 @@ class DatabasePrincipalAssignment(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Database Principal Assignment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        rg = azure.core.ResourceGroup("rg", location="East US")
-        example_cluster = azure.kusto.Cluster("exampleCluster",
-            location=rg.location,
-            resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
-        example_database = azure.kusto.Database("exampleDatabase",
-            resource_group_name=rg.name,
-            location=rg.location,
-            cluster_name=example_cluster.name,
-            hot_cache_period="P7D",
-            soft_delete_period="P31D")
-        example_database_principal_assignment = azure.kusto.DatabasePrincipalAssignment("exampleDatabasePrincipalAssignment",
-            resource_group_name=rg.name,
-            cluster_name=example_cluster.name,
-            database_name=example_database.name,
-            tenant_id=current.tenant_id,
-            principal_id=current.client_id,
-            principal_type="App",
-            role="Viewer")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster in which to create the resource. Changing this forces a new resource to be created.

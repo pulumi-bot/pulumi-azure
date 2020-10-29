@@ -29,22 +29,6 @@ class IotHubDps(pulumi.CustomResource):
         """
         Manages an IotHub Device Provisioning Service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_iot_hub_dps = azure.iot.IotHubDps("exampleIotHubDps",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sku=azure.iot.IotHubDpsSkuArgs(
-                name="S1",
-                capacity=1,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]] linked_hubs: A `linked_hub` block as defined below.

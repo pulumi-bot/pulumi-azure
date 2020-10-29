@@ -11,44 +11,6 @@ import (
 )
 
 // Manages a Lighthouse Definition.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/authorization"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/lighthouse"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "b24988ac-6180-42a0-ab88-20f7382dd24c"
-// 		contributor, err := authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
-// 			RoleDefinitionId: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = lighthouse.NewDefinition(ctx, "example", &lighthouse.DefinitionArgs{
-// 			Description:      pulumi.String("This is a lighthouse definition created via Terraform"),
-// 			ManagingTenantId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// 			Authorizations: lighthouse.DefinitionAuthorizationArray{
-// 				&lighthouse.DefinitionAuthorizationArgs{
-// 					PrincipalId:      pulumi.String("00000000-0000-0000-0000-000000000000"),
-// 					RoleDefinitionId: pulumi.String(contributor.RoleDefinitionId),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Definition struct {
 	pulumi.CustomResourceState
 

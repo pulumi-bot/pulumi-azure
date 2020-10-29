@@ -27,19 +27,6 @@ class Contact(pulumi.CustomResource):
 
         > **NOTE:** Owner access permission is required.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.securitycenter.Contact("example",
-            alert_notifications=True,
-            alerts_to_admins=True,
-            email="contact@example.com",
-            phone="+1-555-555-5555")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] alert_notifications: Whether to send security alerts notifications to the security contact.

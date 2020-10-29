@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Waf
     {
         /// <summary>
         /// Use this data source to access information about an existing Web Application Firewall Policy.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Waf.GetFirewallPolicy.InvokeAsync(new Azure.Waf.GetFirewallPolicyArgs
-        ///         {
-        ///             ResourceGroupName = "existing",
-        ///             Name = "existing",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFirewallPolicyResult> InvokeAsync(GetFirewallPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallPolicyResult>("azure:waf/getFirewallPolicy:getFirewallPolicy", args ?? new GetFirewallPolicyArgs(), options.WithVersion());

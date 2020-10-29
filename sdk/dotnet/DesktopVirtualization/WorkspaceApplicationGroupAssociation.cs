@@ -11,49 +11,6 @@ namespace Pulumi.Azure.DesktopVirtualization
 {
     /// <summary>
     /// Manages a Virtual Desktop Workspace Application Group Association.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Core.ResourceGroup("example", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "eastus",
-    ///         });
-    ///         var pooledbreadthfirst = new Azure.DesktopVirtualization.HostPool("pooledbreadthfirst", new Azure.DesktopVirtualization.HostPoolArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "Pooled",
-    ///             LoadBalancerType = "BreadthFirst",
-    ///         });
-    ///         var remoteapp = new Azure.DesktopVirtualization.ApplicationGroup("remoteapp", new Azure.DesktopVirtualization.ApplicationGroupArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "RemoteApp",
-    ///             HostPoolId = pooledbreadthfirst.Id,
-    ///         });
-    ///         var workspace = new Azure.DesktopVirtualization.Workspace("workspace", new Azure.DesktopVirtualization.WorkspaceArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///         });
-    ///         var workspaceremoteapp = new Azure.DesktopVirtualization.WorkspaceApplicationGroupAssociation("workspaceremoteapp", new Azure.DesktopVirtualization.WorkspaceApplicationGroupAssociationArgs
-    ///         {
-    ///             WorkspaceId = workspace.Id,
-    ///             ApplicationGroupId = remoteapp.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class WorkspaceApplicationGroupAssociation : Pulumi.CustomResource
     {

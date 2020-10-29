@@ -30,40 +30,6 @@ class ResourceGroupTemplateDeployment(pulumi.CustomResource):
 
         > **Note:** This resource will automatically attempt to delete resources deployed by the ARM Template when it is deleted. You can opt-out of this by setting the `delete_nested_items_during_deletion` field within the `template_deployment` block of the `features` block to `false`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroupTemplateDeployment("example",
-            deployment_mode="Complete",
-            resource_group_name="example-group",
-            template_content=\"\"\"{
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-            {
-              "type": "Microsoft.Network/virtualNetworks",
-              "apiVersion": "2020-05-01",
-              "name": "acctest-network",
-              "location": "[resourceGroup().location]",
-              "properties": {
-                "addressSpace": {
-                  "addressPrefixes": [
-                    "10.0.0.0/16"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] debug_level: The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.

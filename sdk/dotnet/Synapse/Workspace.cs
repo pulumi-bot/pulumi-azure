@@ -11,56 +11,6 @@ namespace Pulumi.Azure.Synapse
 {
     /// <summary>
     /// Manages a Synapse Workspace.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleAccount = new Azure.Storage.Account("exampleAccount", new Azure.Storage.AccountArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             AccountTier = "Standard",
-    ///             AccountReplicationType = "LRS",
-    ///             AccountKind = "StorageV2",
-    ///             IsHnsEnabled = true,
-    ///         });
-    ///         var exampleDataLakeGen2Filesystem = new Azure.Storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", new Azure.Storage.DataLakeGen2FilesystemArgs
-    ///         {
-    ///             StorageAccountId = exampleAccount.Id,
-    ///         });
-    ///         var exampleWorkspace = new Azure.Synapse.Workspace("exampleWorkspace", new Azure.Synapse.WorkspaceArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             StorageDataLakeGen2FilesystemId = exampleDataLakeGen2Filesystem.Id,
-    ///             SqlAdministratorLogin = "sqladminuser",
-    ///             SqlAdministratorLoginPassword = "H@Sh1CoR3!",
-    ///             AadAdmin = new Azure.Synapse.Inputs.WorkspaceAadAdminArgs
-    ///             {
-    ///                 Login = "AzureAD Admin",
-    ///                 ObjectId = "00000000-0000-0000-0000-000000000000",
-    ///                 TenantId = "00000000-0000-0000-0000-000000000000",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Env", "production" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

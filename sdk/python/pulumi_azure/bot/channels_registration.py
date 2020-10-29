@@ -32,21 +32,6 @@ class ChannelsRegistration(pulumi.CustomResource):
         """
         Manages a Bot Channels Registration.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_channels_registration = azure.bot.ChannelsRegistration("exampleChannelsRegistration",
-            location="global",
-            resource_group_name=example_resource_group.name,
-            sku="F0",
-            microsoft_app_id=current.client_id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] developer_app_insights_api_key: The Application Insights API Key to associate with the Bot Channels Registration.

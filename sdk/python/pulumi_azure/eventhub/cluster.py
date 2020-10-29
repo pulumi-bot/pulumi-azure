@@ -26,19 +26,6 @@ class Cluster(pulumi.CustomResource):
         """
         Manages an EventHub Cluster
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="West US 2")
-        test = azure.eventhub.Cluster("test",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            location=azurerm_resource_group["test"]["location"],
-            sku_name="Dedicated_1")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

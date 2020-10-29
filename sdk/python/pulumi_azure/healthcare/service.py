@@ -32,45 +32,6 @@ class Service(pulumi.CustomResource):
         """
         Manages a Healthcare Service.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.healthcare.Service("example",
-            access_policy_object_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
-            authentication_configuration=azure.healthcare.ServiceAuthenticationConfigurationArgs(
-                audience="https://azurehealthcareapis.com/",
-                authority="https://login.microsoftonline.com/$%7Bdata.azurerm_client_config.current.tenant_id%7D",
-                smart_proxy_enabled=True,
-            ),
-            cors_configuration=azure.healthcare.ServiceCorsConfigurationArgs(
-                allow_credentials=True,
-                allowed_headers=[
-                    "x-tempo-*",
-                    "x-tempo2-*",
-                ],
-                allowed_methods=[
-                    "GET",
-                    "PUT",
-                ],
-                allowed_origins=[
-                    "http://www.example.com",
-                    "http://www.example2.com",
-                ],
-                max_age_in_seconds=500,
-            ),
-            cosmosdb_throughput=2000,
-            kind="fhir-R4",
-            location="westus2",
-            resource_group_name="sample-resource-group",
-            tags={
-                "environment": "testenv",
-                "purpose": "AcceptanceTests",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceAuthenticationConfigurationArgs']] authentication_configuration: An `authentication_configuration` block as defined below.

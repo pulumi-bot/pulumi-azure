@@ -8,33 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure HTTP Dataset inside an Azure Data Factory.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleLinkedServiceWeb = new azure.datafactory.LinkedServiceWeb("exampleLinkedServiceWeb", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     authenticationType: "Anonymous",
- *     url: "https://www.bing.com",
- * });
- * const exampleDatasetHttp = new azure.datafactory.DatasetHttp("exampleDatasetHttp", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     linkedServiceName: exampleLinkedServiceWeb.name,
- *     relativeUrl: "http://www.bing.com",
- *     requestBody: "foo=bar",
- *     requestMethod: "POST",
- * });
- * ```
  */
 export class DatasetHttp extends pulumi.CustomResource {
     /**

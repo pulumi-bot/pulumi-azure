@@ -13,34 +13,6 @@ namespace Pulumi.Azure.ApiManagement
     {
         /// <summary>
         /// Use this data source to access information about an existing API Management Group.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.ApiManagement.GetGroup.InvokeAsync(new Azure.ApiManagement.GetGroupArgs
-        ///         {
-        ///             Name = "my-group",
-        ///             ApiManagementName = "example-apim",
-        ///             ResourceGroupName = "search-service",
-        ///         }));
-        ///         this.GroupType = example.Apply(example =&gt; example.Type);
-        ///     }
-        /// 
-        ///     [Output("groupType")]
-        ///     public Output&lt;string&gt; GroupType { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("azure:apimanagement/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());

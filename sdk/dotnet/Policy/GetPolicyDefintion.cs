@@ -13,32 +13,6 @@ namespace Pulumi.Azure.Policy
     {
         /// <summary>
         /// Use this data source to access information about a Policy Definition, both custom and built in. Retrieves Policy Definitions from your current subscription by default.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Policy.GetPolicyDefintion.InvokeAsync(new Azure.Policy.GetPolicyDefintionArgs
-        ///         {
-        ///             DisplayName = "Allowed resource types",
-        ///         }));
-        ///         this.Id = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyDefintionResult> InvokeAsync(GetPolicyDefintionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyDefintionResult>("azure:policy/getPolicyDefintion:getPolicyDefintion", args ?? new GetPolicyDefintionArgs(), options.WithVersion());

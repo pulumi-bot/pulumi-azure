@@ -29,30 +29,6 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
         """
         Manages a JavaScript UDF Function within Stream Analytics Streaming Job.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.get_resource_group(name="example-resources")
-        example_job = azure.streamanalytics.get_job(name="example-job",
-            resource_group_name=azurerm_resource_group["example"]["name"])
-        example_function_java_script_udf = azure.streamanalytics.FunctionJavaScriptUDF("exampleFunctionJavaScriptUDF",
-            stream_analytics_job_name=example_job.name,
-            resource_group_name=example_job.resource_group_name,
-            script=\"\"\"function getRandomNumber(in) {
-          return in;
-        }
-        \"\"\",
-            inputs=[azure.streamanalytics.FunctionJavaScriptUDFInputArgs(
-                type="bigint",
-            )],
-            output=azure.streamanalytics.FunctionJavaScriptUDFOutputArgs(
-                type="bigint",
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]] inputs: One or more `input` blocks as defined below.

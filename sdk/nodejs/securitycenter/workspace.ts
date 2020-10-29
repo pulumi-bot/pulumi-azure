@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Owner access permission is required.
  *
  * > **NOTE:** The subscription's pricing model can not be `Free` for this to have any affect.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "westus"});
- * const exampleAnalyticsWorkspace = new azure.operationalinsights.AnalyticsWorkspace("exampleAnalyticsWorkspace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: "PerGB2018",
- * });
- * const exampleWorkspace = new azure.securitycenter.Workspace("exampleWorkspace", {
- *     scope: "/subscriptions/00000000-0000-0000-0000-000000000000",
- *     workspaceId: exampleAnalyticsWorkspace.id,
- * });
- * ```
  */
 export class Workspace extends pulumi.CustomResource {
     /**

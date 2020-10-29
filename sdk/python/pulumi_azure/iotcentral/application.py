@@ -29,25 +29,6 @@ class Application(pulumi.CustomResource):
         """
         Manages an IoT Central Application
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_application = azure.iotcentral.Application("exampleApplication",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sub_domain="example-iotcentral-app-subdomain",
-            display_name="example-iotcentral-app-display-name",
-            sku="S1",
-            template="iotc-default@1.0.0",
-            tags={
-                "Foo": "Bar",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: A `display_name` name. Custom display name for the IoT Central application. Default is resource name.

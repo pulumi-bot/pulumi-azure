@@ -15,35 +15,6 @@ namespace Pulumi.Azure.Blueprint
         /// Use this data source to access information about an existing Azure Blueprint Definition
         /// 
         /// &gt; **NOTE:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Azure.Core.GetClientConfig.InvokeAsync());
-        ///         var root = current.Apply(current =&gt; Output.Create(Azure.Management.GetGroup.InvokeAsync(new Azure.Management.GetGroupArgs
-        ///         {
-        ///             Name = current.TenantId,
-        ///         })));
-        ///         var example = root.Apply(root =&gt; Output.Create(Azure.Blueprint.GetDefinition.InvokeAsync(new Azure.Blueprint.GetDefinitionArgs
-        ///         {
-        ///             Name = "exampleManagementGroupBP",
-        ///             ScopeId = root.Id,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDefinitionResult> InvokeAsync(GetDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefinitionResult>("azure:blueprint/getDefinition:getDefinition", args ?? new GetDefinitionArgs(), options.WithVersion());

@@ -6,27 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Log Analytics (formally Operational Insights) Saved Search.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "East US"});
- * const exampleAnalyticsWorkspace = new azure.operationalinsights.AnalyticsWorkspace("exampleAnalyticsWorkspace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: "PerGB2018",
- *     retentionInDays: 30,
- * });
- * const exampleSavedSearch = new azure.loganalytics.SavedSearch("exampleSavedSearch", {
- *     logAnalyticsWorkspaceId: azurerm_log_analytics_workspace.test.id,
- *     category: "exampleCategory",
- *     displayName: "exampleDisplayName",
- *     query: "exampleQuery",
- * });
- * ```
  */
 export class SavedSearch extends pulumi.CustomResource {
     /**

@@ -13,30 +13,6 @@ namespace Pulumi.Azure.AppService
     {
         /// <summary>
         /// Use this data source to access information about a Function App.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.AppService.GetFunctionApp.InvokeAsync(new Azure.AppService.GetFunctionAppArgs
-        ///         {
-        ///             Name = "test-azure-functions",
-        ///             ResourceGroupName = azurerm_resource_group.Example.Name,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionAppResult> InvokeAsync(GetFunctionAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionAppResult>("azure:appservice/getFunctionApp:getFunctionApp", args ?? new GetFunctionAppArgs(), options.WithVersion());

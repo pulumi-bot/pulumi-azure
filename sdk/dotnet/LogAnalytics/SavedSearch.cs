@@ -11,39 +11,6 @@ namespace Pulumi.Azure.LogAnalytics
 {
     /// <summary>
     /// Manages a Log Analytics (formally Operational Insights) Saved Search.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "East US",
-    ///         });
-    ///         var exampleAnalyticsWorkspace = new Azure.OperationalInsights.AnalyticsWorkspace("exampleAnalyticsWorkspace", new Azure.OperationalInsights.AnalyticsWorkspaceArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Sku = "PerGB2018",
-    ///             RetentionInDays = 30,
-    ///         });
-    ///         var exampleSavedSearch = new Azure.LogAnalytics.SavedSearch("exampleSavedSearch", new Azure.LogAnalytics.SavedSearchArgs
-    ///         {
-    ///             LogAnalyticsWorkspaceId = azurerm_log_analytics_workspace.Test.Id,
-    ///             Category = "exampleCategory",
-    ///             DisplayName = "exampleDisplayName",
-    ///             Query = "exampleQuery",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SavedSearch : Pulumi.CustomResource
     {

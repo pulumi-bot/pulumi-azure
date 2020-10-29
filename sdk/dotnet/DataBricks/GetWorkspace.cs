@@ -13,33 +13,6 @@ namespace Pulumi.Azure.DataBricks
     {
         /// <summary>
         /// Use this data source to access information about an existing Databricks workspace.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.DataBricks.GetWorkspace.InvokeAsync(new Azure.DataBricks.GetWorkspaceArgs
-        ///         {
-        ///             Name = "example-workspace",
-        ///             ResourceGroupName = "example-rg",
-        ///         }));
-        ///         this.DatabricksWorkspaceId = example.Apply(example =&gt; example.WorkspaceId);
-        ///     }
-        /// 
-        ///     [Output("databricksWorkspaceId")]
-        ///     public Output&lt;string&gt; DatabricksWorkspaceId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWorkspaceResult> InvokeAsync(GetWorkspaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceResult>("azure:databricks/getWorkspace:getWorkspace", args ?? new GetWorkspaceArgs(), options.WithVersion());

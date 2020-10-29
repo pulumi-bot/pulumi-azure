@@ -198,17 +198,6 @@ def get_workflow(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Logic App Workflow.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.logicapps.get_workflow(name="workflow1",
-        resource_group_name="my-resource-group")
-    pulumi.export("accessEndpoint", example.access_endpoint)
-    ```
-
 
     :param str name: The name of the Logic App Workflow.
     :param str resource_group_name: The name of the Resource Group in which the Logic App Workflow exists.

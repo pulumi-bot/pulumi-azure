@@ -23,31 +23,6 @@ class WorkspaceApplicationGroupAssociation(pulumi.CustomResource):
         """
         Manages a Virtual Desktop Workspace Application Group Association.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="eastus")
-        pooledbreadthfirst = azure.desktopvirtualization.HostPool("pooledbreadthfirst",
-            location=example.location,
-            resource_group_name=example.name,
-            type="Pooled",
-            load_balancer_type="BreadthFirst")
-        remoteapp = azure.desktopvirtualization.ApplicationGroup("remoteapp",
-            location=example.location,
-            resource_group_name=example.name,
-            type="RemoteApp",
-            host_pool_id=pooledbreadthfirst.id)
-        workspace = azure.desktopvirtualization.Workspace("workspace",
-            location=example.location,
-            resource_group_name=example.name)
-        workspaceremoteapp = azure.desktopvirtualization.WorkspaceApplicationGroupAssociation("workspaceremoteapp",
-            workspace_id=workspace.id,
-            application_group_id=remoteapp.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_group_id: The resource ID for the Virtual Desktop Application Group.

@@ -151,17 +151,6 @@ def get_server(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Microsoft SQL Server.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.mssql.get_server(name="existingMsSqlServer",
-        resource_group_name="existingResGroup")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str name: The name of this Microsoft SQL Server.
     :param str resource_group_name: The name of the Resource Group where the Microsoft SQL Server exists.

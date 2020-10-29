@@ -8,36 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Cost Management Export for a Resource Group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- * });
- * const exampleResourceGroupExport = new azure.costmanagement.ResourceGroupExport("exampleResourceGroupExport", {
- *     resourceGroupId: exampleResourceGroup.id,
- *     recurrenceType: "Monthly",
- *     recurrencePeriodStart: "2020-08-18T00:00:00Z",
- *     recurrencePeriodEnd: "2020-09-18T00:00:00Z",
- *     deliveryInfo: {
- *         storageAccountId: exampleAccount.id,
- *         containerName: "examplecontainer",
- *         rootFolderPath: "/root/updated",
- *     },
- *     query: {
- *         type: "Usage",
- *         timeFrame: "WeekToDate",
- *     },
- * });
- * ```
  */
 export class ResourceGroupExport extends pulumi.CustomResource {
     /**

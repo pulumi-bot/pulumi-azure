@@ -6,30 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to set a user or group as the AD administrator for an Azure SQL server
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const current = azure.core.getClientConfig({});
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleSqlServer = new azure.sql.SqlServer("exampleSqlServer", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     version: "12.0",
- *     administratorLogin: "4dm1n157r470r",
- *     administratorLoginPassword: "4-v3ry-53cr37-p455w0rd",
- * });
- * const exampleActiveDirectoryAdministrator = new azure.sql.ActiveDirectoryAdministrator("exampleActiveDirectoryAdministrator", {
- *     serverName: exampleSqlServer.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     login: "sqladmin",
- *     tenantId: current.then(current => current.tenantId),
- *     objectId: current.then(current => current.objectId),
- * });
- * ```
  */
 export class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     /**

@@ -11,35 +11,6 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages a Data Factory Self-hosted Integration Runtime.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "eastus",
-    ///         });
-    ///         var exampleFactory = new Azure.DataFactory.Factory("exampleFactory", new Azure.DataFactory.FactoryArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///         });
-    ///         var exampleIntegrationRuntimeSelfHosted = new Azure.DataFactory.IntegrationRuntimeSelfHosted("exampleIntegrationRuntimeSelfHosted", new Azure.DataFactory.IntegrationRuntimeSelfHostedArgs
-    ///         {
-    ///             ResourceGroupName = "example",
-    ///             DataFactoryName = "example",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IntegrationRuntimeSelfHosted : Pulumi.CustomResource
     {

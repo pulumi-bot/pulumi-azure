@@ -13,38 +13,6 @@ namespace Pulumi.Azure.KeyVault
     {
         /// <summary>
         /// Use this data source to access information about an existing Key Vault Certificate Issuer.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var exampleKeyVault = Output.Create(Azure.KeyVault.GetKeyVault.InvokeAsync(new Azure.KeyVault.GetKeyVaultArgs
-        ///         {
-        ///             Name = "mykeyvault",
-        ///             ResourceGroupName = "some-resource-group",
-        ///         }));
-        ///         var exampleCertificateIssuer = exampleKeyVault.Apply(exampleKeyVault =&gt; Output.Create(Azure.KeyVault.GetCertificateIssuer.InvokeAsync(new Azure.KeyVault.GetCertificateIssuerArgs
-        ///         {
-        ///             Name = "existing",
-        ///             KeyVaultId = exampleKeyVault.Id,
-        ///         })));
-        ///         this.Id = exampleCertificateIssuer.Apply(exampleCertificateIssuer =&gt; exampleCertificateIssuer.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateIssuerResult> InvokeAsync(GetCertificateIssuerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateIssuerResult>("azure:keyvault/getCertificateIssuer:getCertificateIssuer", args ?? new GetCertificateIssuerArgs(), options.WithVersion());

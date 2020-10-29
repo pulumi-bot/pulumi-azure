@@ -8,36 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure JSON Dataset inside an Azure Data Factory.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleLinkedServiceWeb = new azure.datafactory.LinkedServiceWeb("exampleLinkedServiceWeb", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     authenticationType: "Anonymous",
- *     url: "https://www.bing.com",
- * });
- * const exampleDatasetJson = new azure.datafactory.DatasetJson("exampleDatasetJson", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     linkedServiceName: exampleLinkedServiceWeb.name,
- *     httpServerLocation: {
- *         relativeUrl: "/fizz/buzz/",
- *         path: "foo/bar/",
- *         filename: "foo.txt",
- *     },
- *     encoding: "UTF-8",
- * });
- * ```
  */
 export class DatasetJson extends pulumi.CustomResource {
     /**

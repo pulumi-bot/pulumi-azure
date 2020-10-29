@@ -11,60 +11,6 @@ import (
 )
 
 // Manages an Azure JSON Dataset inside an Azure Data Factory.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("northeurope"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleFactory, err := datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleLinkedServiceWeb, err := datafactory.NewLinkedServiceWeb(ctx, "exampleLinkedServiceWeb", &datafactory.LinkedServiceWebArgs{
-// 			ResourceGroupName:  exampleResourceGroup.Name,
-// 			DataFactoryName:    exampleFactory.Name,
-// 			AuthenticationType: pulumi.String("Anonymous"),
-// 			Url:                pulumi.String("https://www.bing.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datafactory.NewDatasetJson(ctx, "exampleDatasetJson", &datafactory.DatasetJsonArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			DataFactoryName:   exampleFactory.Name,
-// 			LinkedServiceName: exampleLinkedServiceWeb.Name,
-// 			HttpServerLocation: &datafactory.DatasetJsonHttpServerLocationArgs{
-// 				RelativeUrl: pulumi.String("/fizz/buzz/"),
-// 				Path:        pulumi.String("foo/bar/"),
-// 				Filename:    pulumi.String("foo.txt"),
-// 			},
-// 			Encoding: pulumi.String("UTF-8"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DatasetJson struct {
 	pulumi.CustomResourceState
 

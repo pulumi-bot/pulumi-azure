@@ -7,19 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a user assigned identity.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "eastus"});
- * const exampleUserAssignedIdentity = new azure.authorization.UserAssignedIdentity("exampleUserAssignedIdentity", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- * });
- * ```
- *
  * @deprecated azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity
  */
 export class UserAssignedIdentity extends pulumi.CustomResource {

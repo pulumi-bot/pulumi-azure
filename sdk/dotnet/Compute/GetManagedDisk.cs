@@ -13,33 +13,6 @@ namespace Pulumi.Azure.Compute
     {
         /// <summary>
         /// Use this data source to access information about an existing Managed Disk.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var existing = Output.Create(Azure.Compute.GetManagedDisk.InvokeAsync(new Azure.Compute.GetManagedDiskArgs
-        ///         {
-        ///             Name = "example-datadisk",
-        ///             ResourceGroupName = "example-resources",
-        ///         }));
-        ///         this.Id = existing.Apply(existing =&gt; existing.Id);
-        ///     }
-        /// 
-        ///     [Output("id")]
-        ///     public Output&lt;string&gt; Id { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetManagedDiskResult> InvokeAsync(GetManagedDiskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedDiskResult>("azure:compute/getManagedDisk:getManagedDisk", args ?? new GetManagedDiskArgs(), options.WithVersion());

@@ -13,31 +13,6 @@ namespace Pulumi.Azure.Batch
     {
         /// <summary>
         /// Use this data source to access information about an existing Batch pool
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.Batch.GetPool.InvokeAsync(new Azure.Batch.GetPoolArgs
-        ///         {
-        ///             AccountName = "testbatchaccount",
-        ///             Name = "testbatchpool",
-        ///             ResourceGroupName = "test",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoolResult> InvokeAsync(GetPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoolResult>("azure:batch/getPool:getPool", args ?? new GetPoolArgs(), options.WithVersion());

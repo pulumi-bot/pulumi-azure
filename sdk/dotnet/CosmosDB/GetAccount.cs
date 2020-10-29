@@ -13,33 +13,6 @@ namespace Pulumi.Azure.CosmosDB
     {
         /// <summary>
         /// Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.CosmosDB.GetAccount.InvokeAsync(new Azure.CosmosDB.GetAccountArgs
-        ///         {
-        ///             Name = "tfex-cosmosdb-account",
-        ///             ResourceGroupName = "tfex-cosmosdb-account-rg",
-        ///         }));
-        ///         this.CosmosdbAccountEndpoint = data.Azurerm_cosmosdb_account.Jobs.Endpoint;
-        ///     }
-        /// 
-        ///     [Output("cosmosdbAccountEndpoint")]
-        ///     public Output&lt;string&gt; CosmosdbAccountEndpoint { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("azure:cosmosdb/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());

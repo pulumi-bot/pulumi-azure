@@ -32,35 +32,6 @@ class DiagnosticSetting(pulumi.CustomResource):
         """
         Manages a Diagnostic Setting for an existing Resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = example_resource_group.name.apply(lambda name: azure.storage.get_account(name="examplestoracc",
-            resource_group_name=name))
-        example_key_vault = example_resource_group.name.apply(lambda name: azure.keyvault.get_key_vault(name="example-vault",
-            resource_group_name=name))
-        example_diagnostic_setting = azure.monitoring.DiagnosticSetting("exampleDiagnosticSetting",
-            target_resource_id=example_key_vault.id,
-            storage_account_id=example_account.id,
-            logs=[azure.monitoring.DiagnosticSettingLogArgs(
-                category="AuditEvent",
-                enabled=False,
-                retention_policy={
-                    "enabled": False,
-                },
-            )],
-            metrics=[azure.monitoring.DiagnosticSettingMetricArgs(
-                category="AllMetrics",
-                retention_policy={
-                    "enabled": False,
-                },
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eventhub_authorization_rule_id: Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.

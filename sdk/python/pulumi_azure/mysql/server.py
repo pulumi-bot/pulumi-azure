@@ -46,30 +46,6 @@ class Server(pulumi.CustomResource):
         """
         Manages a MySQL Server.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_server = azure.mysql.Server("exampleServer",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            administrator_login="mysqladminun",
-            administrator_login_password="H@Sh1CoR3!",
-            sku_name="B_Gen5_2",
-            storage_mb=5120,
-            version="5.7",
-            auto_grow_enabled=True,
-            backup_retention_days=7,
-            geo_redundant_backup_enabled=False,
-            infrastructure_encryption_enabled=False,
-            public_network_access_enabled=True,
-            ssl_enforcement_enabled=True,
-            ssl_minimal_tls_version_enforced="TLS1_2")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the MySQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.

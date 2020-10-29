@@ -33,30 +33,6 @@ class SharedImageVersion(pulumi.CustomResource):
         """
         Manages a Version of a Shared Image within a Shared Image Gallery.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        existing_image = azure.compute.get_image(name="search-api",
-            resource_group_name="packerimages")
-        existing_shared_image = azure.compute.get_shared_image(name="existing-image",
-            gallery_name="existing_gallery",
-            resource_group_name="existing-resources")
-        example = azure.compute.SharedImageVersion("example",
-            gallery_name=existing_shared_image.gallery_name,
-            image_name=existing_shared_image.name,
-            resource_group_name=existing_shared_image.resource_group_name,
-            location=existing_shared_image.location,
-            managed_image_id=existing_image.id,
-            target_regions=[azure.compute.SharedImageVersionTargetRegionArgs(
-                name=existing_shared_image.location,
-                regional_replica_count=5,
-                storage_account_type="Standard_LRS",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] exclude_from_latest: Should this Image Version be excluded from the `latest` filter? If set to `true` this Image Version won't be returned for the `latest` version. Defaults to `false`.

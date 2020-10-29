@@ -27,17 +27,6 @@ class SubscriptionPricing(pulumi.CustomResource):
 
         > **NOTE:** Deletion of this resource does not change or reset the pricing tier to `Free`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.securitycenter.SubscriptionPricing("example",
-            resource_type="VirtualMachines",
-            tier="Standard")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_type: The resource type this setting affects. Possible values are `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, and `VirtualMachines`.

@@ -11,58 +11,6 @@ import (
 )
 
 // Manages an Azure Blob Dataset inside an Azure Data Factory.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("northeurope"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleFactory, err := datafactory.NewFactory(ctx, "exampleFactory", &datafactory.FactoryArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleLinkedServiceAzureBlobStorage, err := datafactory.NewLinkedServiceAzureBlobStorage(ctx, "exampleLinkedServiceAzureBlobStorage", &datafactory.LinkedServiceAzureBlobStorageArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			DataFactoryName:   exampleFactory.Name,
-// 			ConnectionString: exampleAccount.ApplyT(func(exampleAccount storage.LookupAccountResult) (string, error) {
-// 				return exampleAccount.PrimaryConnectionString, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datafactory.NewDatasetAzureBlob(ctx, "exampleDatasetAzureBlob", &datafactory.DatasetAzureBlobArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			DataFactoryName:   exampleFactory.Name,
-// 			LinkedServiceName: exampleLinkedServiceAzureBlobStorage.Name,
-// 			Path:              pulumi.String("foo"),
-// 			Filename:          pulumi.String("bar.png"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DatasetAzureBlob struct {
 	pulumi.CustomResourceState
 

@@ -174,17 +174,6 @@ def get_lab(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Dev Test Lab.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.devtest.get_lab(name="example-lab",
-        resource_group_name="example-resources")
-    pulumi.export("uniqueIdentifier", example.unique_identifier)
-    ```
-
 
     :param str name: The name of the Dev Test Lab.
     :param str resource_group_name: The Name of the Resource Group where the Dev Test Lab exists.

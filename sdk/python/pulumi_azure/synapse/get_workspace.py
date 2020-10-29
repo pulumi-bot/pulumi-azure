@@ -102,17 +102,6 @@ def get_workspace(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Synapse Workspace.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.synapse.get_workspace(name="existing",
-        resource_group_name="example-resource-group")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str name: The name of this Synapse Workspace.
     :param str resource_group_name: The name of the Resource Group where the Synapse Workspace exists.

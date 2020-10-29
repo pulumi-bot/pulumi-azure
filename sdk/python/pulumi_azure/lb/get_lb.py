@@ -142,17 +142,6 @@ def get_lb(name: Optional[str] = None,
     """
     Use this data source to access information about an existing Load Balancer
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.lb.get_lb(name="example-lb",
-        resource_group_name="example-resources")
-    pulumi.export("loadbalancerId", example.id)
-    ```
-
 
     :param str name: Specifies the name of the Load Balancer.
     :param str resource_group_name: The name of the Resource Group in which the Load Balancer exists.

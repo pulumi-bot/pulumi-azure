@@ -69,17 +69,6 @@ def get_policy(storage_account_id: Optional[str] = None,
     """
     Use this data source to access information about an existing Storage Management Policy.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example_account = azure.storage.get_account(name="storageaccountname",
-        resource_group_name="resourcegroupname")
-    example_policy = azure.storage.get_policy(storage_account_id=azurerm_storage_account["example"]["id"])
-    ```
-
 
     :param str storage_account_id: Specifies the id of the storage account to retrieve the management policy for.
     """

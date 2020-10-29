@@ -11,57 +11,6 @@ namespace Pulumi.Azure.Monitoring
 {
     /// <summary>
     /// Manages an Monitor Action Rule which type is suppression.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleActionRuleSuppression = new Azure.Monitoring.ActionRuleSuppression("exampleActionRuleSuppression", new Azure.Monitoring.ActionRuleSuppressionArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Scope = new Azure.Monitoring.Inputs.ActionRuleSuppressionScopeArgs
-    ///             {
-    ///                 Type = "ResourceGroup",
-    ///                 ResourceIds = 
-    ///                 {
-    ///                     exampleResourceGroup.Id,
-    ///                 },
-    ///             },
-    ///             Suppression = new Azure.Monitoring.Inputs.ActionRuleSuppressionSuppressionArgs
-    ///             {
-    ///                 RecurrenceType = "Weekly",
-    ///                 Schedule = new Azure.Monitoring.Inputs.ActionRuleSuppressionSuppressionScheduleArgs
-    ///                 {
-    ///                     StartDateUtc = "2019-01-01T01:02:03Z",
-    ///                     EndDateUtc = "2019-01-03T15:02:07Z",
-    ///                     RecurrenceWeeklies = 
-    ///                     {
-    ///                         "Sunday",
-    ///                         "Monday",
-    ///                         "Friday",
-    ///                         "Saturday",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ActionRuleSuppression : Pulumi.CustomResource
     {

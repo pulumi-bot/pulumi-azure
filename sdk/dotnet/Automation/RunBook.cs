@@ -11,45 +11,6 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a Automation Runbook.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleAccount = new Azure.Automation.Account("exampleAccount", new Azure.Automation.AccountArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             SkuName = "Basic",
-    ///         });
-    ///         var exampleRunBook = new Azure.Automation.RunBook("exampleRunBook", new Azure.Automation.RunBookArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             AutomationAccountName = exampleAccount.Name,
-    ///             LogVerbose = true,
-    ///             LogProgress = true,
-    ///             Description = "This is an example runbook",
-    ///             RunbookType = "PowerShellWorkflow",
-    ///             PublishContentLink = new Azure.Automation.Inputs.RunBookPublishContentLinkArgs
-    ///             {
-    ///                 Uri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/c4935ffb69246a6058eb24f54640f53f69d3ac9f/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RunBook : Pulumi.CustomResource
     {

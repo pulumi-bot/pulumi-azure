@@ -8,31 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing DataShareDataLakeGen1Dataset.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datashare"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datashare.LookupDatasetDataLakeGen1(ctx, &datashare.LookupDatasetDataLakeGen1Args{
-// 			Name:        "example-dsdsdlg1",
-// 			DataShareId: "example-share-id",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("id", example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupDatasetDataLakeGen1(ctx *pulumi.Context, args *LookupDatasetDataLakeGen1Args, opts ...pulumi.InvokeOption) (*LookupDatasetDataLakeGen1Result, error) {
 	var rv LookupDatasetDataLakeGen1Result
 	err := ctx.Invoke("azure:datashare/getDatasetDataLakeGen1:getDatasetDataLakeGen1", args, &rv, opts...)

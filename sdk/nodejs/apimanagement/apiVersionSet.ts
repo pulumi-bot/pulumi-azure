@@ -6,28 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Version Set within an API Management Service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleService = new azure.apimanagement.Service("exampleService", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     publisherName: "pub1",
- *     publisherEmail: "pub1@email.com",
- *     skuName: "Developer_1",
- * });
- * const exampleApiVersionSet = new azure.apimanagement.ApiVersionSet("exampleApiVersionSet", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     apiManagementName: exampleService.name,
- *     displayName: "ExampleAPIVersionSet",
- *     versioningScheme: "Segment",
- * });
- * ```
  */
 export class ApiVersionSet extends pulumi.CustomResource {
     /**

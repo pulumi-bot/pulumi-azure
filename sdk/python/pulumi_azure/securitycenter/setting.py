@@ -27,17 +27,6 @@ class Setting(pulumi.CustomResource):
 
         > **NOTE:** Deletion of this resource does not change or reset the data access settings
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.securitycenter.Setting("example",
-            enabled=True,
-            setting_name="MCAS")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean flag to enable/disable data access.

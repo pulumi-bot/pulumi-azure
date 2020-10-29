@@ -13,33 +13,6 @@ namespace Pulumi.Azure.KeyVault
     {
         /// <summary>
         /// Use this data source to access information about an existing Key Vault.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.KeyVault.GetKeyVault.InvokeAsync(new Azure.KeyVault.GetKeyVaultArgs
-        ///         {
-        ///             Name = "mykeyvault",
-        ///             ResourceGroupName = "some-resource-group",
-        ///         }));
-        ///         this.VaultUri = example.Apply(example =&gt; example.VaultUri);
-        ///     }
-        /// 
-        ///     [Output("vaultUri")]
-        ///     public Output&lt;string&gt; VaultUri { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyVaultResult> InvokeAsync(GetKeyVaultArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyVaultResult>("azure:keyvault/getKeyVault:getKeyVault", args ?? new GetKeyVaultArgs(), options.WithVersion());

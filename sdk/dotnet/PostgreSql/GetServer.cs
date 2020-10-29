@@ -13,33 +13,6 @@ namespace Pulumi.Azure.PostgreSql
     {
         /// <summary>
         /// Use this data source to access information about an existing PostgreSQL Azure Database Server.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.PostgreSql.GetServer.InvokeAsync(new Azure.PostgreSql.GetServerArgs
-        ///         {
-        ///             Name = "postgresql-server-1",
-        ///             ResourceGroupName = "api-rg-pro",
-        ///         }));
-        ///         this.PostgresqlServerId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("postgresqlServerId")]
-        ///     public Output&lt;string&gt; PostgresqlServerId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("azure:postgresql/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());

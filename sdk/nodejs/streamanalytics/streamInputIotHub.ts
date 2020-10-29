@@ -8,42 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Stream Analytics Stream Input IoTHub.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = azure.core.getResourceGroup({
- *     name: "example-resources",
- * });
- * const exampleJob = azure.streamanalytics.getJob({
- *     name: "example-job",
- *     resourceGroupName: azurerm_resource_group.example.name,
- * });
- * const exampleIoTHub = new azure.iot.IoTHub("exampleIoTHub", {
- *     resourceGroupName: azurerm_resource_group.example.name,
- *     location: azurerm_resource_group.example.location,
- *     sku: {
- *         name: "S1",
- *         capacity: "1",
- *     },
- * });
- * const exampleStreamInputIotHub = new azure.streamanalytics.StreamInputIotHub("exampleStreamInputIotHub", {
- *     streamAnalyticsJobName: exampleJob.then(exampleJob => exampleJob.name),
- *     resourceGroupName: exampleJob.then(exampleJob => exampleJob.resourceGroupName),
- *     endpoint: "messages/events",
- *     eventhubConsumerGroupName: `$Default`,
- *     iothubNamespace: exampleIoTHub.name,
- *     sharedAccessPolicyKey: exampleIoTHub.sharedAccessPolicies.apply(sharedAccessPolicies => sharedAccessPolicies[0].primaryKey),
- *     sharedAccessPolicyName: "iothubowner",
- *     serialization: {
- *         type: "Json",
- *         encoding: "UTF8",
- *     },
- * });
- * ```
  */
 export class StreamInputIotHub extends pulumi.CustomResource {
     /**

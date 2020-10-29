@@ -11,32 +11,6 @@ namespace Pulumi.Azure.DesktopVirtualization
 {
     /// <summary>
     /// Manages a Virtual Desktop Workspace.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Core.ResourceGroup("example", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "eastus",
-    ///         });
-    ///         var workspace = new Azure.DesktopVirtualization.Workspace("workspace", new Azure.DesktopVirtualization.WorkspaceArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             FriendlyName = "FriendlyName",
-    ///             Description = "A description of my workspace",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

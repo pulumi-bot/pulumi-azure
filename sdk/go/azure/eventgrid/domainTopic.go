@@ -11,47 +11,6 @@ import (
 )
 
 // Manages an EventGrid Domain Topic
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/eventgrid"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West US 2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDomain, err := eventgrid.NewDomain(ctx, "exampleDomain", &eventgrid.DomainArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Tags: pulumi.StringMap{
-// 				"environment": pulumi.String("Production"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eventgrid.NewDomainTopic(ctx, "exampleDomainTopic", &eventgrid.DomainTopicArgs{
-// 			DomainName:        exampleDomain.Name,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DomainTopic struct {
 	pulumi.CustomResourceState
 

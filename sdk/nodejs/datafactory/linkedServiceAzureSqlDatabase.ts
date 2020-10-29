@@ -8,24 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Linked Service (connection) between Azure SQL Database and Azure Data Factory.
  *
  * > **Note:** All arguments including the connectionString will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const exampleLinkedServiceAzureSqlDatabase = new azure.datafactory.LinkedServiceAzureSqlDatabase("exampleLinkedServiceAzureSqlDatabase", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- *     connectionString: "data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30",
- * });
- * ```
  */
 export class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     /**

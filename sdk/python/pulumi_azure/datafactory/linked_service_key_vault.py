@@ -30,28 +30,6 @@ class LinkedServiceKeyVault(pulumi.CustomResource):
         """
         Manages a Linked Service (connection) between Key Vault and Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="eastus")
-        example_key_vault = azure.keyvault.KeyVault("exampleKeyVault",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            tenant_id=current.tenant_id,
-            sku_name="standard")
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_linked_service_key_vault = azure.datafactory.LinkedServiceKeyVault("exampleLinkedServiceKeyVault",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            key_vault_id=example_key_vault.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service Key Vault.

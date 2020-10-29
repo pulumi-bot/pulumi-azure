@@ -8,37 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Cassandra KeySpace within a Cosmos DB Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = azure.core.getResourceGroup({
- *     name: "tflex-cosmosdb-account-rg",
- * });
- * const exampleAccount = new azure.cosmosdb.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.name),
- *     location: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.location),
- *     offerType: "Standard",
- *     capabilities: [{
- *         name: "EnableCassandra",
- *     }],
- *     consistencyPolicy: {
- *         consistencyLevel: "Strong",
- *     },
- *     geoLocations: [{
- *         location: "West US",
- *         failoverPriority: 0,
- *     }],
- * });
- * const exampleCassandraKeyspace = new azure.cosmosdb.CassandraKeyspace("exampleCassandraKeyspace", {
- *     resourceGroupName: exampleAccount.resourceGroupName,
- *     accountName: exampleAccount.name,
- *     throughput: 400,
- * });
- * ```
  */
 export class CassandraKeyspace extends pulumi.CustomResource {
     /**

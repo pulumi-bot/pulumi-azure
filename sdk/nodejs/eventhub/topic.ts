@@ -9,28 +9,6 @@ import * as utilities from "../utilities";
  *
  * **Note** Topics can only be created in Namespaces with an SKU of `standard` or higher.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleNamespace = new azure.servicebus.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     sku: "Standard",
- *     tags: {
- *         source: "example",
- *     },
- * });
- * const exampleTopic = new azure.servicebus.Topic("exampleTopic", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     namespaceName: exampleNamespace.name,
- *     enablePartitioning: true,
- * });
- * ```
- *
  * @deprecated azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic
  */
 export class Topic extends pulumi.CustomResource {

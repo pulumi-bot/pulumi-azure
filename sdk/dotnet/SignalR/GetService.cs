@@ -13,30 +13,6 @@ namespace Pulumi.Azure.SignalR
     {
         /// <summary>
         /// Use this data source to access information about an existing Azure SignalR service.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.SignalR.GetService.InvokeAsync(new Azure.SignalR.GetServiceArgs
-        ///         {
-        ///             Name = "test-signalr",
-        ///             ResourceGroupName = "signalr-resource-group",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("azure:signalr/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());

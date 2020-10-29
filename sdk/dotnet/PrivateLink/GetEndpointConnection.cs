@@ -13,33 +13,6 @@ namespace Pulumi.Azure.PrivateLink
     {
         /// <summary>
         /// Use this data source to access the connection status information about an existing Private Endpoint Connection.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.PrivateLink.GetEndpointConnection.InvokeAsync(new Azure.PrivateLink.GetEndpointConnectionArgs
-        ///         {
-        ///             Name = "example-private-endpoint",
-        ///             ResourceGroupName = "example-rg",
-        ///         }));
-        ///         this.PrivateEndpointStatus = example.Apply(example =&gt; example.PrivateServiceConnections[0].Status);
-        ///     }
-        /// 
-        ///     [Output("privateEndpointStatus")]
-        ///     public Output&lt;string&gt; PrivateEndpointStatus { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointConnectionResult> InvokeAsync(GetEndpointConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointConnectionResult>("azure:privatelink/getEndpointConnection:getEndpointConnection", args ?? new GetEndpointConnectionArgs(), options.WithVersion());

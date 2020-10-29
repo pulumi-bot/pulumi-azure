@@ -39,46 +39,6 @@ class MetricAlert(pulumi.CustomResource):
         """
         Manages a Metric Alert within Azure Monitor.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        main_resource_group = azure.core.ResourceGroup("mainResourceGroup", location="West US")
-        to_monitor = azure.storage.Account("toMonitor",
-            resource_group_name=main_resource_group.name,
-            location=main_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS")
-        main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
-            resource_group_name=main_resource_group.name,
-            short_name="exampleact",
-            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
-                name="callmyapi",
-                service_uri="http://example.com/alert",
-            )])
-        example = azure.monitoring.MetricAlert("example",
-            resource_group_name=main_resource_group.name,
-            scopes=[to_monitor.id],
-            description="Action will be triggered when Transactions count is greater than 50.",
-            criterias=[azure.monitoring.MetricAlertCriteriaArgs(
-                metric_namespace="Microsoft.Storage/storageAccounts",
-                metric_name="Transactions",
-                aggregation="Total",
-                operator="GreaterThan",
-                threshold=50,
-                dimensions=[azure.monitoring.MetricAlertCriteriaDimensionArgs(
-                    name="ApiName",
-                    operator="Include",
-                    values=["*"],
-                )],
-            )],
-            actions=[azure.monitoring.MetricAlertActionArgs(
-                action_group_id=main_action_group.id,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricAlertActionArgs']]]] actions: One or more `action` blocks as defined below.

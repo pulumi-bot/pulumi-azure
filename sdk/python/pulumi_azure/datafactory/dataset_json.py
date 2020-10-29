@@ -36,33 +36,6 @@ class DatasetJson(pulumi.CustomResource):
         """
         Manages an Azure JSON Dataset inside an Azure Data Factory.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_factory = azure.datafactory.Factory("exampleFactory",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name)
-        example_linked_service_web = azure.datafactory.LinkedServiceWeb("exampleLinkedServiceWeb",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            authentication_type="Anonymous",
-            url="https://www.bing.com")
-        example_dataset_json = azure.datafactory.DatasetJson("exampleDatasetJson",
-            resource_group_name=example_resource_group.name,
-            data_factory_name=example_factory.name,
-            linked_service_name=example_linked_service_web.name,
-            http_server_location=azure.datafactory.DatasetJsonHttpServerLocationArgs(
-                relative_url="/fizz/buzz/",
-                path="foo/bar/",
-                filename="foo.txt",
-            ),
-            encoding="UTF-8")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Dataset.

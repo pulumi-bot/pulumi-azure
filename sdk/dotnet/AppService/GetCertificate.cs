@@ -13,33 +13,6 @@ namespace Pulumi.Azure.AppService
     {
         /// <summary>
         /// Use this data source to access information about an App Service Certificate.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Azure = Pulumi.Azure;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(Azure.AppService.GetCertificate.InvokeAsync(new Azure.AppService.GetCertificateArgs
-        ///         {
-        ///             Name = "example-app-service-certificate",
-        ///             ResourceGroupName = "example-rg",
-        ///         }));
-        ///         this.AppServiceCertificateId = example.Apply(example =&gt; example.Id);
-        ///     }
-        /// 
-        ///     [Output("appServiceCertificateId")]
-        ///     public Output&lt;string&gt; AppServiceCertificateId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("azure:appservice/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());

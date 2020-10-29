@@ -27,43 +27,6 @@ class HybridConnection(pulumi.CustomResource):
         """
         Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
 
-        ## Example Usage
-
-        This example provisions an App Service, a Relay Hybrid Connection, and a Service Bus using their outputs to create the App Service Hybrid Connection.
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_plan = azure.appservice.Plan("examplePlan",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Standard",
-                size="S1",
-            ))
-        example_app_service = azure.appservice.AppService("exampleAppService",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            app_service_plan_id=example_plan.id)
-        example_namespace = azure.relay.Namespace("exampleNamespace",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku_name="Standard")
-        example_hybrid_connection = azure.relay.HybridConnection("exampleHybridConnection",
-            resource_group_name=example_resource_group.name,
-            relay_namespace_name=example_namespace.name,
-            user_metadata="examplemetadata")
-        example_appservice_hybrid_connection_hybrid_connection = azure.appservice.HybridConnection("exampleAppservice/hybridConnectionHybridConnection",
-            app_service_name=example_app_service.name,
-            resource_group_name=example_resource_group.name,
-            relay_id=example_hybrid_connection.id,
-            hostname="testhostname.example",
-            port=8080,
-            send_key_name="exampleSharedAccessKey")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_name: Specifies the name of the App Service. Changing this forces a new resource to be created.

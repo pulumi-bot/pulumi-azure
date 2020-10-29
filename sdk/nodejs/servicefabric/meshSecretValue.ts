@@ -6,24 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Service Fabric Mesh Secret Value.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleMeshSecret = new azure.servicefabric.MeshSecret("exampleMeshSecret", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- * });
- * const exampleMeshSecretValue = new azure.servicefabric.MeshSecretValue("exampleMeshSecretValue", {
- *     serviceFabricMeshSecretId: azurerm_service_fabric_mesh_secret_inline.test.id,
- *     location: azurerm_resource_group.test.location,
- *     value: "testValue",
- * });
- * ```
  */
 export class MeshSecretValue extends pulumi.CustomResource {
     /**

@@ -33,35 +33,6 @@ class SqlServer(pulumi.CustomResource):
         """
         Manages a Microsoft SQL Azure Database Server.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS")
-        example_sql_server = azure.sql.SqlServer("exampleSqlServer",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            version="12.0",
-            administrator_login="mradministrator",
-            administrator_login_password="thisIsDog11",
-            extended_auditing_policy=azure.sql.SqlServerExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
-            tags={
-                "environment": "production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The administrator login name for the new server. Changing this forces a new resource to be created.

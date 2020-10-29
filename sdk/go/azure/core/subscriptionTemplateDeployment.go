@@ -11,32 +11,6 @@ import (
 )
 
 // Manages a Subscription Template Deployment.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := core.NewSubscriptionTemplateDeployment(ctx, "example", &core.SubscriptionTemplateDeploymentArgs{
-// 			Location:        pulumi.String("West Europe"),
-// 			TemplateContent: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", " {\n", "   \"", "$", "schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\n", "   \"contentVersion\": \"1.0.0.0\",\n", "   \"parameters\": {},\n", "   \"variables\": {},\n", "   \"resources\": [\n", "     {\n", "       \"type\": \"Microsoft.Resources/resourceGroups\",\n", "       \"apiVersion\": \"2018-05-01\",\n", "       \"location\": \"West Europe\",\n", "       \"name\": \"some-resource-group\",\n", "       \"properties\": {}\n", "     }\n", "   ]\n", " }\n", " \n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SubscriptionTemplateDeployment struct {
 	pulumi.CustomResourceState
 

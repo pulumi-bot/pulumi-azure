@@ -30,22 +30,6 @@ class Workspace(pulumi.CustomResource):
         """
         Manages a Databricks Workspace
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_workspace = azure.databricks.Workspace("exampleWorkspace",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sku="standard",
-            tags={
-                "Environment": "Production",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['WorkspaceCustomParametersArgs']] custom_parameters: A `custom_parameters` block as documented below.

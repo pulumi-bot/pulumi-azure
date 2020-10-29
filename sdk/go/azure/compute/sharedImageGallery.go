@@ -11,42 +11,6 @@ import (
 )
 
 // Manages a Shared Image Gallery.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West Europe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSharedImageGallery(ctx, "exampleSharedImageGallery", &compute.SharedImageGalleryArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Location:          exampleResourceGroup.Location,
-// 			Description:       pulumi.String("Shared images and things."),
-// 			Tags: pulumi.StringMap{
-// 				"Hello": pulumi.String("There"),
-// 				"World": pulumi.String("Example"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SharedImageGallery struct {
 	pulumi.CustomResourceState
 

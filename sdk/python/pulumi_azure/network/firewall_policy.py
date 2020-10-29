@@ -31,17 +31,6 @@ class FirewallPolicy(pulumi.CustomResource):
         """
         Manages a Firewall Policy.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.network.FirewallPolicy("example",
-            location="West Europe",
-            resource_group_name="example")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base_policy_id: The ID of the base Firewall Policy.

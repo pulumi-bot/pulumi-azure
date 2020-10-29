@@ -11,47 +11,6 @@ namespace Pulumi.Azure.Monitoring
 {
     /// <summary>
     /// Manages an Monitor Action Rule which type is action group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleActionGroup = new Azure.Monitoring.ActionGroup("exampleActionGroup", new Azure.Monitoring.ActionGroupArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             ShortName = "exampleactiongroup",
-    ///         });
-    ///         var exampleActionRuleActionGroup = new Azure.Monitoring.ActionRuleActionGroup("exampleActionRuleActionGroup", new Azure.Monitoring.ActionRuleActionGroupArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             ActionGroupId = exampleActionGroup.Id,
-    ///             Scope = new Azure.Monitoring.Inputs.ActionRuleActionGroupScopeArgs
-    ///             {
-    ///                 Type = "ResourceGroup",
-    ///                 ResourceIds = 
-    ///                 {
-    ///                     exampleResourceGroup.Id,
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ActionRuleActionGroup : Pulumi.CustomResource
     {

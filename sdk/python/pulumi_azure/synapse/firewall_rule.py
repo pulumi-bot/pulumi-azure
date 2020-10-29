@@ -25,33 +25,6 @@ class FirewallRule(pulumi.CustomResource):
         """
         Allows you to Manages a Synapse Firewall Rule.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_account = azure.storage.Account("exampleAccount",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            account_tier="Standard",
-            account_replication_type="LRS",
-            account_kind="StorageV2",
-            is_hns_enabled=True)
-        example_data_lake_gen2_filesystem = azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", storage_account_id=example_account.id)
-        example_workspace = azure.synapse.Workspace("exampleWorkspace",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            storage_data_lake_gen2_filesystem_id=example_data_lake_gen2_filesystem.id,
-            sql_administrator_login="sqladminuser",
-            sql_administrator_login_password="H@Sh1CoR3!")
-        example_firewall_rule = azure.synapse.FirewallRule("exampleFirewallRule",
-            synapse_workspace_id=azurerm_synapse_workspace["test"]["id"],
-            start_ip_address="0.0.0.0",
-            end_ip_address="255.255.255.255")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip_address: The ending IP address to allow through the firewall for this rule.

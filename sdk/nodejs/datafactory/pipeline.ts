@@ -6,50 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Pipeline inside a Azure Data Factory.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleFactory = new azure.datafactory.Factory("exampleFactory", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * const examplePipeline = new azure.datafactory.Pipeline("examplePipeline", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     dataFactoryName: exampleFactory.name,
- * });
- * ```
- * ### With Activities
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const test = new azure.datafactory.Pipeline("test", {
- *     resourceGroupName: azurerm_resource_group.test.name,
- *     dataFactoryName: azurerm_data_factory.test.name,
- *     variables: {
- *         bob: "item1",
- *     },
- *     activitiesJson: `[
- * 	{
- * 		"name": "Append variable1",
- * 		"type": "AppendVariable",
- * 		"dependsOn": [],
- * 		"userProperties": [],
- * 		"typeProperties": {
- * 			"variableName": "bob",
- * 			"value": "something"
- * 		}
- * 	}
- * ]
- * `,
- * });
- * ```
  */
 export class Pipeline extends pulumi.CustomResource {
     /**

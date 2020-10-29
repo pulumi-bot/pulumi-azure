@@ -6,32 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Allows you to set a user or group as the AD administrator for an MySQL server in Azure
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const current = azure.core.getClientConfig({});
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleServer = new azure.mysql.Server("exampleServer", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     administratorLogin: "mysqladminun",
- *     administratorLoginPassword: "H@Sh1CoR3!",
- *     skuName: "B_Gen5_2",
- *     storageMb: 5120,
- *     version: "5.7",
- * });
- * const exampleActiveDirectoryAdministrator = new azure.mysql.ActiveDirectoryAdministrator("exampleActiveDirectoryAdministrator", {
- *     serverName: exampleServer.name,
- *     resourceGroupName: exampleResourceGroup.name,
- *     login: "sqladmin",
- *     tenantId: current.then(current => current.tenantId),
- *     objectId: current.then(current => current.objectId),
- * });
- * ```
  */
 export class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     /**

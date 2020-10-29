@@ -121,16 +121,6 @@ def get_topic(name: Optional[str] = None,
     """
     Use this data source to access information about an existing EventGrid Topic
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.eventgrid.get_topic(name="my-eventgrid-topic",
-        resource_group_name="example-resources")
-    ```
-
 
     :param str name: The name of the EventGrid Topic resource.
     :param str resource_group_name: The name of the resource group in which the EventGrid Topic exists.

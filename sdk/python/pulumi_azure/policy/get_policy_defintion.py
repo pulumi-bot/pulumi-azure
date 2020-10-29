@@ -162,16 +162,6 @@ def get_policy_defintion(display_name: Optional[str] = None,
     """
     Use this data source to access information about a Policy Definition, both custom and built in. Retrieves Policy Definitions from your current subscription by default.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azure as azure
-
-    example = azure.policy.get_policy_defintion(display_name="Allowed resource types")
-    pulumi.export("id", example.id)
-    ```
-
 
     :param str display_name: Specifies the display name of the Policy Definition. Conflicts with `name`.
     :param str management_group_name: Only retrieve Policy Definitions from this Management Group.

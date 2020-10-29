@@ -31,28 +31,6 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         """
         Manages an Monitor Action Rule which type is action group.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_action_group = azure.monitoring.ActionGroup("exampleActionGroup",
-            resource_group_name=example_resource_group.name,
-            short_name="exampleactiongroup")
-        example_action_rule_action_group = azure.monitoring.ActionRuleActionGroup("exampleActionRuleActionGroup",
-            resource_group_name=example_resource_group.name,
-            action_group_id=example_action_group.id,
-            scope=azure.monitoring.ActionRuleActionGroupScopeArgs(
-                type="ResourceGroup",
-                resource_ids=[example_resource_group.id],
-            ),
-            tags={
-                "foo": "bar",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_group_id: Specifies the resource id of monitor action group.

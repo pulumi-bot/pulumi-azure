@@ -8,31 +8,6 @@ import (
 )
 
 // Use this data source to access information about an existing Policy Set Definition.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/policy"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Policy Set Definition Example"
-// 		example, err := policy.LookupPolicySetDefinition(ctx, &policy.LookupPolicySetDefinitionArgs{
-// 			DisplayName: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("id", example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 func LookupPolicySetDefinition(ctx *pulumi.Context, args *LookupPolicySetDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupPolicySetDefinitionResult, error) {
 	var rv LookupPolicySetDefinitionResult
 	err := ctx.Invoke("azure:policy/getPolicySetDefinition:getPolicySetDefinition", args, &rv, opts...)

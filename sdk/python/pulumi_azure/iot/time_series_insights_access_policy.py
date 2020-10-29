@@ -26,24 +26,6 @@ class TimeSeriesInsightsAccessPolicy(pulumi.CustomResource):
         """
         Manages an Azure IoT Time Series Insights Access Policy.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="northeurope")
-        example_time_series_insights_standard_environment = azure.iot.TimeSeriesInsightsStandardEnvironment("exampleTimeSeriesInsightsStandardEnvironment",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            sku_name="S1_1",
-            data_retention_time="P30D")
-        example_time_series_insights_access_policy = azure.iot.TimeSeriesInsightsAccessPolicy("exampleTimeSeriesInsightsAccessPolicy",
-            time_series_insights_environment_id=example_time_series_insights_standard_environment.name,
-            principal_object_id="aGUID",
-            roles=["Reader"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Azure IoT Time Series Insights Access Policy.

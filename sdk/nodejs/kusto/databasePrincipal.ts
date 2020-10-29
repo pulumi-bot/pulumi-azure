@@ -8,40 +8,6 @@ import * as utilities from "../utilities";
  * Manages a Kusto (also known as Azure Data Explorer) Database Principal
  *
  * > **NOTE:** This resource is being **deprecated** due to API updates and should no longer be used.  Please use azure.kusto.DatabasePrincipalAssignment instead.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const current = azure.core.getClientConfig({});
- * const rg = new azure.core.ResourceGroup("rg", {location: "East US"});
- * const cluster = new azure.kusto.Cluster("cluster", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: {
- *         name: "Standard_D13_v2",
- *         capacity: 2,
- *     },
- * });
- * const database = new azure.kusto.Database("database", {
- *     resourceGroupName: rg.name,
- *     location: rg.location,
- *     clusterName: cluster.name,
- *     hotCachePeriod: "P7D",
- *     softDeletePeriod: "P31D",
- * });
- * const principal = new azure.kusto.DatabasePrincipal("principal", {
- *     resourceGroupName: rg.name,
- *     clusterName: cluster.name,
- *     databaseName: azurerm_kusto_database.test.name,
- *     role: "Viewer",
- *     type: "User",
- *     clientId: current.then(current => current.tenantId),
- *     objectId: current.then(current => current.clientId),
- * });
- * ```
  */
 export class DatabasePrincipal extends pulumi.CustomResource {
     /**

@@ -29,23 +29,6 @@ class TxtRecord(pulumi.CustomResource):
         """
         Enables you to manage DNS TXT Records within Azure Private DNS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.core.ResourceGroup("example", location="West US")
-        test_zone = azure.privatedns.Zone("testZone", resource_group_name=azurerm_resource_group["test"]["name"])
-        test_txt_record = azure.privatedns.TxtRecord("testTxtRecord",
-            resource_group_name=azurerm_resource_group["test"]["name"],
-            zone_name=test_zone.name,
-            ttl=300,
-            records=[azure.privatedns.TxtRecordRecordArgs(
-                value="v=spf1 mx ~all",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS TXT Record. Changing this forces a new resource to be created.

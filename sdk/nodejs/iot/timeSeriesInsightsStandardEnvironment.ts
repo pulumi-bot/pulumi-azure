@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure IoT Time Series Insights Standard Environment.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "northeurope"});
- * const exampleTimeSeriesInsightsStandardEnvironment = new azure.iot.TimeSeriesInsightsStandardEnvironment("exampleTimeSeriesInsightsStandardEnvironment", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     skuName: "S1_1",
- *     dataRetentionTime: "P30D",
- * });
- * ```
  */
 export class TimeSeriesInsightsStandardEnvironment extends pulumi.CustomResource {
     /**

@@ -44,39 +44,6 @@ class KeyVault(pulumi.CustomResource):
 
         > **Note:** This provi will automatically recover a soft-deleted Key Vault during Creation if one is found - you can opt out of this using the `features` configuration within the Provider configuration block.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        current = azure.core.get_client_config()
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West US")
-        example_key_vault = azure.keyvault.KeyVault("exampleKeyVault",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            enabled_for_disk_encryption=True,
-            tenant_id=current.tenant_id,
-            soft_delete_enabled=True,
-            soft_delete_retention_days=7,
-            purge_protection_enabled=False,
-            sku_name="standard",
-            access_policies=[azure.keyvault.KeyVaultAccessPolicyArgs(
-                tenant_id=current.tenant_id,
-                object_id=current.object_id,
-                key_permissions=["get"],
-                secret_permissions=["get"],
-                storage_permissions=["get"],
-            )],
-            network_acls=azure.keyvault.KeyVaultNetworkAclsArgs(
-                default_action="Deny",
-                bypass="AzureServices",
-            ),
-            tags={
-                "environment": "Testing",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyVaultAccessPolicyArgs']]]] access_policies: A list of up to 16 objects describing access policies, as described below.

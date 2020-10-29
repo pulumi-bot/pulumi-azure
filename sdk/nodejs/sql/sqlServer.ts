@@ -8,37 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Microsoft SQL Azure Database Server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US"});
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- * });
- * const exampleSqlServer = new azure.sql.SqlServer("exampleSqlServer", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     version: "12.0",
- *     administratorLogin: "mradministrator",
- *     administratorLoginPassword: "thisIsDog11",
- *     extendedAuditingPolicy: {
- *         storageEndpoint: exampleAccount.primaryBlobEndpoint,
- *         storageAccountAccessKey: exampleAccount.primaryAccessKey,
- *         storageAccountAccessKeyIsSecondary: true,
- *         retentionInDays: 6,
- *     },
- *     tags: {
- *         environment: "production",
- *     },
- * });
- * ```
  */
 export class SqlServer extends pulumi.CustomResource {
     /**

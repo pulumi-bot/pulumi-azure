@@ -8,39 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Synapse Workspace.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleAccount = new azure.storage.Account("exampleAccount", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     accountTier: "Standard",
- *     accountReplicationType: "LRS",
- *     accountKind: "StorageV2",
- *     isHnsEnabled: "true",
- * });
- * const exampleDataLakeGen2Filesystem = new azure.storage.DataLakeGen2Filesystem("exampleDataLakeGen2Filesystem", {storageAccountId: exampleAccount.id});
- * const exampleWorkspace = new azure.synapse.Workspace("exampleWorkspace", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- *     storageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.id,
- *     sqlAdministratorLogin: "sqladminuser",
- *     sqlAdministratorLoginPassword: "H@Sh1CoR3!",
- *     aadAdmin: {
- *         login: "AzureAD Admin",
- *         objectId: "00000000-0000-0000-0000-000000000000",
- *         tenantId: "00000000-0000-0000-0000-000000000000",
- *     },
- *     tags: {
- *         Env: "production",
- *     },
- * });
- * ```
  */
 export class Workspace extends pulumi.CustomResource {
     /**

@@ -6,26 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EventGrid Domain Topic
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West US 2"});
- * const exampleDomain = new azure.eventgrid.Domain("exampleDomain", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     tags: {
- *         environment: "Production",
- *     },
- * });
- * const exampleDomainTopic = new azure.eventgrid.DomainTopic("exampleDomainTopic", {
- *     domainName: exampleDomain.name,
- *     resourceGroupName: exampleResourceGroup.name,
- * });
- * ```
  */
 export class DomainTopic extends pulumi.CustomResource {
     /**
