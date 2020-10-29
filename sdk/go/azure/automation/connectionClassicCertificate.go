@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,4 +148,43 @@ type ConnectionClassicCertificateArgs struct {
 
 func (ConnectionClassicCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionClassicCertificateArgs)(nil)).Elem()
+}
+
+type ConnectionClassicCertificateInput interface {
+	pulumi.Input
+
+	ToConnectionClassicCertificateOutput() ConnectionClassicCertificateOutput
+	ToConnectionClassicCertificateOutputWithContext(ctx context.Context) ConnectionClassicCertificateOutput
+}
+
+func (ConnectionClassicCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionClassicCertificate)(nil)).Elem()
+}
+
+func (i ConnectionClassicCertificate) ToConnectionClassicCertificateOutput() ConnectionClassicCertificateOutput {
+	return i.ToConnectionClassicCertificateOutputWithContext(context.Background())
+}
+
+func (i ConnectionClassicCertificate) ToConnectionClassicCertificateOutputWithContext(ctx context.Context) ConnectionClassicCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionClassicCertificateOutput)
+}
+
+type ConnectionClassicCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionClassicCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionClassicCertificateOutput)(nil)).Elem()
+}
+
+func (o ConnectionClassicCertificateOutput) ToConnectionClassicCertificateOutput() ConnectionClassicCertificateOutput {
+	return o
+}
+
+func (o ConnectionClassicCertificateOutput) ToConnectionClassicCertificateOutputWithContext(ctx context.Context) ConnectionClassicCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionClassicCertificateOutput{})
 }

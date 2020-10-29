@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -240,4 +241,43 @@ type NetworkWatcherFlowLogArgs struct {
 
 func (NetworkWatcherFlowLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkWatcherFlowLogArgs)(nil)).Elem()
+}
+
+type NetworkWatcherFlowLogInput interface {
+	pulumi.Input
+
+	ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput
+	ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput
+}
+
+func (NetworkWatcherFlowLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcherFlowLog)(nil)).Elem()
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput {
+	return i.ToNetworkWatcherFlowLogOutputWithContext(context.Background())
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogOutput)
+}
+
+type NetworkWatcherFlowLogOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkWatcherFlowLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcherFlowLogOutput)(nil)).Elem()
+}
+
+func (o NetworkWatcherFlowLogOutput) ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput {
+	return o
+}
+
+func (o NetworkWatcherFlowLogOutput) ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkWatcherFlowLogOutput{})
 }

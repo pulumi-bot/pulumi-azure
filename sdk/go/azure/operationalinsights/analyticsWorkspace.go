@@ -4,6 +4,7 @@
 package operationalinsights
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -182,4 +183,43 @@ type AnalyticsWorkspaceArgs struct {
 
 func (AnalyticsWorkspaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsWorkspaceArgs)(nil)).Elem()
+}
+
+type AnalyticsWorkspaceInput interface {
+	pulumi.Input
+
+	ToAnalyticsWorkspaceOutput() AnalyticsWorkspaceOutput
+	ToAnalyticsWorkspaceOutputWithContext(ctx context.Context) AnalyticsWorkspaceOutput
+}
+
+func (AnalyticsWorkspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsWorkspace)(nil)).Elem()
+}
+
+func (i AnalyticsWorkspace) ToAnalyticsWorkspaceOutput() AnalyticsWorkspaceOutput {
+	return i.ToAnalyticsWorkspaceOutputWithContext(context.Background())
+}
+
+func (i AnalyticsWorkspace) ToAnalyticsWorkspaceOutputWithContext(ctx context.Context) AnalyticsWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsWorkspaceOutput)
+}
+
+type AnalyticsWorkspaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsWorkspaceOutput)(nil)).Elem()
+}
+
+func (o AnalyticsWorkspaceOutput) ToAnalyticsWorkspaceOutput() AnalyticsWorkspaceOutput {
+	return o
+}
+
+func (o AnalyticsWorkspaceOutput) ToAnalyticsWorkspaceOutputWithContext(ctx context.Context) AnalyticsWorkspaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsWorkspaceOutput{})
 }

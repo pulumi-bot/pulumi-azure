@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -243,4 +244,43 @@ type DatasetAzureBlobArgs struct {
 
 func (DatasetAzureBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetAzureBlobArgs)(nil)).Elem()
+}
+
+type DatasetAzureBlobInput interface {
+	pulumi.Input
+
+	ToDatasetAzureBlobOutput() DatasetAzureBlobOutput
+	ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput
+}
+
+func (DatasetAzureBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAzureBlob)(nil)).Elem()
+}
+
+func (i DatasetAzureBlob) ToDatasetAzureBlobOutput() DatasetAzureBlobOutput {
+	return i.ToDatasetAzureBlobOutputWithContext(context.Background())
+}
+
+func (i DatasetAzureBlob) ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAzureBlobOutput)
+}
+
+type DatasetAzureBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetAzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAzureBlobOutput)(nil)).Elem()
+}
+
+func (o DatasetAzureBlobOutput) ToDatasetAzureBlobOutput() DatasetAzureBlobOutput {
+	return o
+}
+
+func (o DatasetAzureBlobOutput) ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetAzureBlobOutput{})
 }

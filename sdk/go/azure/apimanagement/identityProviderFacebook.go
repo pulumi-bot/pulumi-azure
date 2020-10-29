@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type IdentityProviderFacebookArgs struct {
 
 func (IdentityProviderFacebookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderFacebookArgs)(nil)).Elem()
+}
+
+type IdentityProviderFacebookInput interface {
+	pulumi.Input
+
+	ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput
+	ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput
+}
+
+func (IdentityProviderFacebook) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderFacebook)(nil)).Elem()
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput {
+	return i.ToIdentityProviderFacebookOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderFacebookOutput)
+}
+
+type IdentityProviderFacebookOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderFacebookOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderFacebookOutput) ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput {
+	return o
+}
+
+func (o IdentityProviderFacebookOutput) ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderFacebookOutput{})
 }

@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -160,4 +161,43 @@ type NetworkInterfaceApplicationSecurityGroupAssociationArgs struct {
 
 func (NetworkInterfaceApplicationSecurityGroupAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceApplicationSecurityGroupAssociationArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceApplicationSecurityGroupAssociationInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput
+	ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput
+}
+
+func (NetworkInterfaceApplicationSecurityGroupAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceApplicationSecurityGroupAssociation)(nil)).Elem()
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return i.ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceApplicationSecurityGroupAssociationOutput)
+}
+
+type NetworkInterfaceApplicationSecurityGroupAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceApplicationSecurityGroupAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceApplicationSecurityGroupAssociationOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return o
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceApplicationSecurityGroupAssociationOutput{})
 }

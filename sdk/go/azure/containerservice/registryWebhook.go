@@ -4,6 +4,7 @@
 package containerservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -225,4 +226,43 @@ type RegistryWebhookArgs struct {
 
 func (RegistryWebhookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryWebhookArgs)(nil)).Elem()
+}
+
+type RegistryWebhookInput interface {
+	pulumi.Input
+
+	ToRegistryWebhookOutput() RegistryWebhookOutput
+	ToRegistryWebhookOutputWithContext(ctx context.Context) RegistryWebhookOutput
+}
+
+func (RegistryWebhook) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebhook)(nil)).Elem()
+}
+
+func (i RegistryWebhook) ToRegistryWebhookOutput() RegistryWebhookOutput {
+	return i.ToRegistryWebhookOutputWithContext(context.Background())
+}
+
+func (i RegistryWebhook) ToRegistryWebhookOutputWithContext(ctx context.Context) RegistryWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryWebhookOutput)
+}
+
+type RegistryWebhookOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebhookOutput)(nil)).Elem()
+}
+
+func (o RegistryWebhookOutput) ToRegistryWebhookOutput() RegistryWebhookOutput {
+	return o
+}
+
+func (o RegistryWebhookOutput) ToRegistryWebhookOutputWithContext(ctx context.Context) RegistryWebhookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryWebhookOutput{})
 }

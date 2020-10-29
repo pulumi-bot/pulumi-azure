@@ -4,6 +4,7 @@
 package sentinel
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -208,4 +209,43 @@ type AlertRuleMsSecurityIncidentArgs struct {
 
 func (AlertRuleMsSecurityIncidentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRuleMsSecurityIncidentArgs)(nil)).Elem()
+}
+
+type AlertRuleMsSecurityIncidentInput interface {
+	pulumi.Input
+
+	ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput
+	ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput
+}
+
+func (AlertRuleMsSecurityIncident) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleMsSecurityIncident)(nil)).Elem()
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput {
+	return i.ToAlertRuleMsSecurityIncidentOutputWithContext(context.Background())
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleMsSecurityIncidentOutput)
+}
+
+type AlertRuleMsSecurityIncidentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleMsSecurityIncidentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleMsSecurityIncidentOutput)(nil)).Elem()
+}
+
+func (o AlertRuleMsSecurityIncidentOutput) ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput {
+	return o
+}
+
+func (o AlertRuleMsSecurityIncidentOutput) ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertRuleMsSecurityIncidentOutput{})
 }

@@ -4,6 +4,7 @@
 package privatedns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -176,4 +177,43 @@ type PTRRecordArgs struct {
 
 func (PTRRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ptrrecordArgs)(nil)).Elem()
+}
+
+type PTRRecordInput interface {
+	pulumi.Input
+
+	ToPTRRecordOutput() PTRRecordOutput
+	ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput
+}
+
+func (PTRRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*PTRRecord)(nil)).Elem()
+}
+
+func (i PTRRecord) ToPTRRecordOutput() PTRRecordOutput {
+	return i.ToPTRRecordOutputWithContext(context.Background())
+}
+
+func (i PTRRecord) ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PTRRecordOutput)
+}
+
+type PTRRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (PTRRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PTRRecordOutput)(nil)).Elem()
+}
+
+func (o PTRRecordOutput) ToPTRRecordOutput() PTRRecordOutput {
+	return o
+}
+
+func (o PTRRecordOutput) ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PTRRecordOutput{})
 }

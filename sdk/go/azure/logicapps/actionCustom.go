@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -138,4 +139,43 @@ type ActionCustomArgs struct {
 
 func (ActionCustomArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionCustomArgs)(nil)).Elem()
+}
+
+type ActionCustomInput interface {
+	pulumi.Input
+
+	ToActionCustomOutput() ActionCustomOutput
+	ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput
+}
+
+func (ActionCustom) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionCustom)(nil)).Elem()
+}
+
+func (i ActionCustom) ToActionCustomOutput() ActionCustomOutput {
+	return i.ToActionCustomOutputWithContext(context.Background())
+}
+
+func (i ActionCustom) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionCustomOutput)
+}
+
+type ActionCustomOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionCustomOutput)(nil)).Elem()
+}
+
+func (o ActionCustomOutput) ToActionCustomOutput() ActionCustomOutput {
+	return o
+}
+
+func (o ActionCustomOutput) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionCustomOutput{})
 }
