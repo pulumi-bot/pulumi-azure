@@ -4,6 +4,7 @@
 package siterecovery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -224,4 +225,43 @@ type ReplicatedVMArgs struct {
 
 func (ReplicatedVMArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicatedVMArgs)(nil)).Elem()
+}
+
+type ReplicatedVMInput interface {
+	pulumi.Input
+
+	ToReplicatedVMOutput() ReplicatedVMOutput
+	ToReplicatedVMOutputWithContext(ctx context.Context) ReplicatedVMOutput
+}
+
+func (ReplicatedVM) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicatedVM)(nil)).Elem()
+}
+
+func (i ReplicatedVM) ToReplicatedVMOutput() ReplicatedVMOutput {
+	return i.ToReplicatedVMOutputWithContext(context.Background())
+}
+
+func (i ReplicatedVM) ToReplicatedVMOutputWithContext(ctx context.Context) ReplicatedVMOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicatedVMOutput)
+}
+
+type ReplicatedVMOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicatedVMOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicatedVMOutput)(nil)).Elem()
+}
+
+func (o ReplicatedVMOutput) ToReplicatedVMOutput() ReplicatedVMOutput {
+	return o
+}
+
+func (o ReplicatedVMOutput) ToReplicatedVMOutputWithContext(ctx context.Context) ReplicatedVMOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReplicatedVMOutput{})
 }

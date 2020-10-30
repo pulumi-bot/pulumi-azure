@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -240,4 +241,43 @@ type DatabasePrincipalArgs struct {
 
 func (DatabasePrincipalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databasePrincipalArgs)(nil)).Elem()
+}
+
+type DatabasePrincipalInput interface {
+	pulumi.Input
+
+	ToDatabasePrincipalOutput() DatabasePrincipalOutput
+	ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput
+}
+
+func (DatabasePrincipal) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePrincipal)(nil)).Elem()
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalOutput() DatabasePrincipalOutput {
+	return i.ToDatabasePrincipalOutputWithContext(context.Background())
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePrincipalOutput)
+}
+
+type DatabasePrincipalOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabasePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePrincipalOutput)(nil)).Elem()
+}
+
+func (o DatabasePrincipalOutput) ToDatabasePrincipalOutput() DatabasePrincipalOutput {
+	return o
+}
+
+func (o DatabasePrincipalOutput) ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabasePrincipalOutput{})
 }

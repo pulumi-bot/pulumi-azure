@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -210,4 +211,43 @@ type EventHubNamespaceAuthorizationRuleArgs struct {
 
 func (EventHubNamespaceAuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubNamespaceAuthorizationRuleArgs)(nil)).Elem()
+}
+
+type EventHubNamespaceAuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToEventHubNamespaceAuthorizationRuleOutput() EventHubNamespaceAuthorizationRuleOutput
+	ToEventHubNamespaceAuthorizationRuleOutputWithContext(ctx context.Context) EventHubNamespaceAuthorizationRuleOutput
+}
+
+func (EventHubNamespaceAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespaceAuthorizationRule)(nil)).Elem()
+}
+
+func (i EventHubNamespaceAuthorizationRule) ToEventHubNamespaceAuthorizationRuleOutput() EventHubNamespaceAuthorizationRuleOutput {
+	return i.ToEventHubNamespaceAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i EventHubNamespaceAuthorizationRule) ToEventHubNamespaceAuthorizationRuleOutputWithContext(ctx context.Context) EventHubNamespaceAuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceAuthorizationRuleOutput)
+}
+
+type EventHubNamespaceAuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubNamespaceAuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespaceAuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o EventHubNamespaceAuthorizationRuleOutput) ToEventHubNamespaceAuthorizationRuleOutput() EventHubNamespaceAuthorizationRuleOutput {
+	return o
+}
+
+func (o EventHubNamespaceAuthorizationRuleOutput) ToEventHubNamespaceAuthorizationRuleOutputWithContext(ctx context.Context) EventHubNamespaceAuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubNamespaceAuthorizationRuleOutput{})
 }

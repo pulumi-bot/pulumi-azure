@@ -4,6 +4,7 @@
 package privatedns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -169,4 +170,43 @@ type ZoneVirtualNetworkLinkArgs struct {
 
 func (ZoneVirtualNetworkLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneVirtualNetworkLinkArgs)(nil)).Elem()
+}
+
+type ZoneVirtualNetworkLinkInput interface {
+	pulumi.Input
+
+	ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput
+	ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput
+}
+
+func (ZoneVirtualNetworkLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVirtualNetworkLink)(nil)).Elem()
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput {
+	return i.ToZoneVirtualNetworkLinkOutputWithContext(context.Background())
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVirtualNetworkLinkOutput)
+}
+
+type ZoneVirtualNetworkLinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneVirtualNetworkLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVirtualNetworkLinkOutput)(nil)).Elem()
+}
+
+func (o ZoneVirtualNetworkLinkOutput) ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput {
+	return o
+}
+
+func (o ZoneVirtualNetworkLinkOutput) ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneVirtualNetworkLinkOutput{})
 }

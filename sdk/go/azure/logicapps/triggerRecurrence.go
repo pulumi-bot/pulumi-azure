@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -170,4 +171,43 @@ type TriggerRecurrenceArgs struct {
 
 func (TriggerRecurrenceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerRecurrenceArgs)(nil)).Elem()
+}
+
+type TriggerRecurrenceInput interface {
+	pulumi.Input
+
+	ToTriggerRecurrenceOutput() TriggerRecurrenceOutput
+	ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput
+}
+
+func (TriggerRecurrence) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRecurrence)(nil)).Elem()
+}
+
+func (i TriggerRecurrence) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
+	return i.ToTriggerRecurrenceOutputWithContext(context.Background())
+}
+
+func (i TriggerRecurrence) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRecurrenceOutput)
+}
+
+type TriggerRecurrenceOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRecurrenceOutput)(nil)).Elem()
+}
+
+func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
+	return o
+}
+
+func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerRecurrenceOutput{})
 }

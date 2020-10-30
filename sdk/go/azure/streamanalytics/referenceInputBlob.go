@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -254,4 +255,43 @@ type ReferenceInputBlobArgs struct {
 
 func (ReferenceInputBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*referenceInputBlobArgs)(nil)).Elem()
+}
+
+type ReferenceInputBlobInput interface {
+	pulumi.Input
+
+	ToReferenceInputBlobOutput() ReferenceInputBlobOutput
+	ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput
+}
+
+func (ReferenceInputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceInputBlob)(nil)).Elem()
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobOutput() ReferenceInputBlobOutput {
+	return i.ToReferenceInputBlobOutputWithContext(context.Background())
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobOutput)
+}
+
+type ReferenceInputBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReferenceInputBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceInputBlobOutput)(nil)).Elem()
+}
+
+func (o ReferenceInputBlobOutput) ToReferenceInputBlobOutput() ReferenceInputBlobOutput {
+	return o
+}
+
+func (o ReferenceInputBlobOutput) ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReferenceInputBlobOutput{})
 }

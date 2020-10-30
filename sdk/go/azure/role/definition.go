@@ -4,6 +4,7 @@
 package role
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -173,4 +174,43 @@ type DefinitionArgs struct {
 
 func (DefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*definitionArgs)(nil)).Elem()
+}
+
+type DefinitionInput interface {
+	pulumi.Input
+
+	ToDefinitionOutput() DefinitionOutput
+	ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput
+}
+
+func (Definition) ElementType() reflect.Type {
+	return reflect.TypeOf((*Definition)(nil)).Elem()
+}
+
+func (i Definition) ToDefinitionOutput() DefinitionOutput {
+	return i.ToDefinitionOutputWithContext(context.Background())
+}
+
+func (i Definition) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefinitionOutput)
+}
+
+type DefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefinitionOutput)(nil)).Elem()
+}
+
+func (o DefinitionOutput) ToDefinitionOutput() DefinitionOutput {
+	return o
+}
+
+func (o DefinitionOutput) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefinitionOutput{})
 }

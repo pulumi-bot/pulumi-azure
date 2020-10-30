@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -164,4 +165,43 @@ type ProductApiArgs struct {
 
 func (ProductApiArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*productApiArgs)(nil)).Elem()
+}
+
+type ProductApiInput interface {
+	pulumi.Input
+
+	ToProductApiOutput() ProductApiOutput
+	ToProductApiOutputWithContext(ctx context.Context) ProductApiOutput
+}
+
+func (ProductApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductApi)(nil)).Elem()
+}
+
+func (i ProductApi) ToProductApiOutput() ProductApiOutput {
+	return i.ToProductApiOutputWithContext(context.Background())
+}
+
+func (i ProductApi) ToProductApiOutputWithContext(ctx context.Context) ProductApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductApiOutput)
+}
+
+type ProductApiOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductApiOutput)(nil)).Elem()
+}
+
+func (o ProductApiOutput) ToProductApiOutput() ProductApiOutput {
+	return o
+}
+
+func (o ProductApiOutput) ToProductApiOutputWithContext(ctx context.Context) ProductApiOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductApiOutput{})
 }

@@ -4,6 +4,7 @@
 package appplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -200,4 +201,43 @@ type SpringCloudServiceArgs struct {
 
 func (SpringCloudServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*springCloudServiceArgs)(nil)).Elem()
+}
+
+type SpringCloudServiceInput interface {
+	pulumi.Input
+
+	ToSpringCloudServiceOutput() SpringCloudServiceOutput
+	ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput
+}
+
+func (SpringCloudService) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudService)(nil)).Elem()
+}
+
+func (i SpringCloudService) ToSpringCloudServiceOutput() SpringCloudServiceOutput {
+	return i.ToSpringCloudServiceOutputWithContext(context.Background())
+}
+
+func (i SpringCloudService) ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceOutput)
+}
+
+type SpringCloudServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpringCloudServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudServiceOutput)(nil)).Elem()
+}
+
+func (o SpringCloudServiceOutput) ToSpringCloudServiceOutput() SpringCloudServiceOutput {
+	return o
+}
+
+func (o SpringCloudServiceOutput) ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpringCloudServiceOutput{})
 }
