@@ -14,6 +14,7 @@ namespace Pulumi.Azure.NotificationHub
         /// <summary>
         /// Use this data source to access information about an existing Notification Hub within a Notification Hub Namespace.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

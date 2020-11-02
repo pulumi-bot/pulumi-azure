@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NS records can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class NsRecord : Pulumi.CustomResource
     {

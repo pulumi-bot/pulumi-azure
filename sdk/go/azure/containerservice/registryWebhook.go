@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Container Registry Webhooks can be imported using the `resource id`, e.g. shell
 type RegistryWebhook struct {
 	pulumi.CustomResourceState
 

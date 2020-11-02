@@ -62,6 +62,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CosmosDB SQL Stored Procedures can be imported using the `resource id`, e.g. shell
 type SqlStoredProcedure struct {
 	pulumi.CustomResourceState
 

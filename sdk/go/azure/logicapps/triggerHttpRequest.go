@@ -51,6 +51,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Logic App HTTP Request Triggers can be imported using the `resource id`, e.g. shell
+//
+//  -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
 type TriggerHttpRequest struct {
 	pulumi.CustomResourceState
 

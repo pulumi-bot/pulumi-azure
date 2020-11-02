@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Spatial Anchors Account can be imported using the `resource id`, e.g. shell
 type SpatialAnchorsAccount struct {
 	pulumi.CustomResourceState
 

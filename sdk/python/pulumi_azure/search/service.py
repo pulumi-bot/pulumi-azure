@@ -46,6 +46,10 @@ class Service(pulumi.CustomResource):
             sku="standard")
         ```
 
+        ## Import
+
+        Search Services can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_ips: A list of IPv4 addresses that are allowed access to the search service endpoint.

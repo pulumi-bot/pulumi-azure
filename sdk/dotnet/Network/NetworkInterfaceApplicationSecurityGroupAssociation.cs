@@ -72,6 +72,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Associations between Network Interfaces and Application Security Groups can be imported using the `resource id`, e.g. shell
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{applicationSecurityGroupId}`.
     /// </summary>
     public partial class NetworkInterfaceApplicationSecurityGroupAssociation : Pulumi.CustomResource
     {

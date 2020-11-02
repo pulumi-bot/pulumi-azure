@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     clientSecret: "exampleSecret",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Bot Connection can be imported using the `resource id`, e.g. shell
  */
 export class Connection extends pulumi.CustomResource {
     /**

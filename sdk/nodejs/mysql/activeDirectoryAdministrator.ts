@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     objectId: current.then(current => current.objectId),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A MySQL Active Directory Administrator can be imported using the `resource id`, e.g. shell
  */
 export class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     /**

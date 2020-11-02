@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Synapse
         /// <summary>
         /// Use this data source to access information about an existing Synapse Workspace.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

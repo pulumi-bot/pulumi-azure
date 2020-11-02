@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Key Vault's can be imported using the `resource id`, e.g. shell
  */
 export class KeyVault extends pulumi.CustomResource {
     /**

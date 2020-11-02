@@ -42,6 +42,10 @@ class MeshSecretValue(pulumi.CustomResource):
             value="testValue")
         ```
 
+        ## Import
+
+        Service Fabric Mesh Secret Value can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the Azure Region where the Service Fabric Mesh Secret Value should exist. Changing this forces a new resource to be created.

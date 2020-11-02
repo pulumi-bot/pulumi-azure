@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Shared Image Versions can be imported using the `resource id`, e.g. shell
 type SharedImageVersion struct {
 	pulumi.CustomResourceState
 

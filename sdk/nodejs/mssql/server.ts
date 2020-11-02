@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SQL Servers can be imported using the `resource id`, e.g. shell
  */
 export class Server extends pulumi.CustomResource {
     /**

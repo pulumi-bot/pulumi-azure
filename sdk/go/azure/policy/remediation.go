@@ -67,6 +67,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Policy Remediations can be imported using the `resource id`, e.g. shell
+//
+//  or shell
+//
+//  or shell
+//
+//  or shell
 type Remediation struct {
 	pulumi.CustomResourceState
 

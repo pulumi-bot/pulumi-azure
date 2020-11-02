@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Certificate within an API Management Service.
+//
+// ## Import
+//
+// API Management Certificates can be imported using the `resource id`, e.g. shell
 type Certificate struct {
 	pulumi.CustomResourceState
 

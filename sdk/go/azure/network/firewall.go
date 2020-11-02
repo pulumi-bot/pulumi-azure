@@ -78,6 +78,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Firewalls can be imported using the `resource id`, e.g. shell
 type Firewall struct {
 	pulumi.CustomResourceState
 

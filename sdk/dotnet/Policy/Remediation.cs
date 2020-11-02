@@ -81,6 +81,16 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Policy Remediations can be imported using the `resource id`, e.g. shell
+    /// 
+    ///  or shell
+    /// 
+    ///  or shell
+    /// 
+    ///  or shell
     /// </summary>
     public partial class Remediation : Pulumi.CustomResource
     {

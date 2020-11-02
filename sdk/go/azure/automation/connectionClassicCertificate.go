@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Automation Connection with type `AzureClassicCertificate`.
+//
+// ## Import
+//
+// Automation Connection can be imported using the `resource id`, e.g. shell
 type ConnectionClassicCertificate struct {
 	pulumi.CustomResourceState
 

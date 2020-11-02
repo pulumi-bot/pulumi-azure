@@ -58,6 +58,10 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MySQL Configurations can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

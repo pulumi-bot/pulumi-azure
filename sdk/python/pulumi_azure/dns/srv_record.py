@@ -52,6 +52,10 @@ class SrvRecord(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        SRV records can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS SRV Record.

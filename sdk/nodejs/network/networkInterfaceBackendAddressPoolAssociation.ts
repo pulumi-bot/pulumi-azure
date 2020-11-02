@@ -56,6 +56,12 @@ import * as utilities from "../utilities";
  *     backendAddressPoolId: exampleBackendAddressPool.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Network Interfaces and Load Balancer Backend Address Pools can be imported using the `resource id`, e.g. shell
+ *
+ *  -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
  */
 export class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResource {
     /**

@@ -49,6 +49,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factories can be imported using the `resource id`, e.g. shell
 type IntegrationRuntimeSelfHosted struct {
 	pulumi.CustomResourceState
 

@@ -36,6 +36,10 @@ class Agreement(pulumi.CustomResource):
             publisher="barracudanetworks")
         ```
 
+        ## Import
+
+        Marketplace Agreement can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] offer: The Offer of the Marketplace Image. Changing this forces a new resource to be created.

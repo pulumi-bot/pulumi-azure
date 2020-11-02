@@ -26,6 +26,12 @@ import * as utilities from "../utilities";
  *     assignableScopes: [primary.then(primary => primary.id)],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Role Definitions can be imported using the `resource id`, e.g. shell
+ *
+ *  -> **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
  */
 export class RoleDefinition extends pulumi.CustomResource {
     /**

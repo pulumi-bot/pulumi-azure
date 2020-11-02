@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Watchers can be imported using the `resource id`, e.g. shell
 type NetworkWatcher struct {
 	pulumi.CustomResourceState
 

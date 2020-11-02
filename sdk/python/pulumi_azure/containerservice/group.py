@@ -75,6 +75,10 @@ class Group(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Container Group's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupContainerArgs']]]] containers: The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.

@@ -53,6 +53,10 @@ class Service(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        SignalR services can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCorArgs']]]] cors: A `cors` block as documented below.

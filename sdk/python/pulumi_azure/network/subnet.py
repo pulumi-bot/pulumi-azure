@@ -63,6 +63,10 @@ class Subnet(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Subnets can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_prefix: The address prefix to use for the subnet.

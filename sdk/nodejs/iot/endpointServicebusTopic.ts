@@ -51,6 +51,10 @@ import * as utilities from "../utilities";
  *     connectionString: exampleTopicAuthorizationRule.primaryConnectionString,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub ServiceBus Topic Endpoint can be imported using the `resource id`, e.g. shell
  */
 export class EndpointServicebusTopic extends pulumi.CustomResource {
     /**

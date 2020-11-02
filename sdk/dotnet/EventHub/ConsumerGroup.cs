@@ -55,6 +55,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventHub Consumer Groups can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ConsumerGroup : Pulumi.CustomResource
     {

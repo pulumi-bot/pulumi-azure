@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a boolean variable in Azure Automation
+//
+// ## Import
+//
+// Automation Bool Variable can be imported using the `resource id`, e.g. shell
 type BoolVariable struct {
 	pulumi.CustomResourceState
 

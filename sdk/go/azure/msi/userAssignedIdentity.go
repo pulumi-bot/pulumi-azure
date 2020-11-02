@@ -43,6 +43,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// User Assigned Identities can be imported using the `resource id`, e.g. shell
+//
 // Deprecated: azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState

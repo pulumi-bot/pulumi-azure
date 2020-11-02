@@ -43,6 +43,10 @@ class Fabric(pulumi.CustomResource):
             location=primary.location)
         ```
 
+        ## Import
+
+        Site Recovery Fabric can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: In what region should the fabric be located.

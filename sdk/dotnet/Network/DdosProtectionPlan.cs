@@ -37,6 +37,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure DDoS Protection Plan can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class DdosProtectionPlan : Pulumi.CustomResource
     {

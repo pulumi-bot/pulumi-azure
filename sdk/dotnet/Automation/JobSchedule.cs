@@ -40,6 +40,10 @@ namespace Pulumi.Azure.Automation
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Job Schedules can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class JobSchedule : Pulumi.CustomResource
     {

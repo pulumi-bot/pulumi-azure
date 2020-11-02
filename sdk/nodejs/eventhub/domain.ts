@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * EventGrid Domains can be imported using the `resource id`, e.g. shell
+ *
  * @deprecated azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain
  */
 export class Domain extends pulumi.CustomResource {

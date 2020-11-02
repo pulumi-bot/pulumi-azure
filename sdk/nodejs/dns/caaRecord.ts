@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CAA records can be imported using the `resource id`, e.g. shell
  */
 export class CaaRecord extends pulumi.CustomResource {
     /**

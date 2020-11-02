@@ -54,6 +54,12 @@ class NetworkInterfaceSecurityGroupAssociation(pulumi.CustomResource):
             network_security_group_id=example_network_security_group.id)
         ```
 
+        ## Import
+
+        Associations between Network Interfaces and Network Security Group can be imported using the `resource id`, e.g. shell
+
+         -> **NOTE:** This ID is specific to Terraform - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_interface_id: The ID of the Network Interface. Changing this forces a new resource to be created.

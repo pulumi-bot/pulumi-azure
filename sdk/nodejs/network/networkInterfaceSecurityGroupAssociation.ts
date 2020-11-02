@@ -42,6 +42,12 @@ import * as utilities from "../utilities";
  *     networkSecurityGroupId: exampleNetworkSecurityGroup.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Network Interfaces and Network Security Group can be imported using the `resource id`, e.g. shell
+ *
+ *  -> **NOTE:** This ID is specific to Terraform - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
  */
 export class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     /**

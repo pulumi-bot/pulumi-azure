@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Sentinel MS Security Incident Alert Rules can be imported using the `resource id`, e.g. shell
 type AlertRuleMsSecurityIncident struct {
 	pulumi.CustomResourceState
 

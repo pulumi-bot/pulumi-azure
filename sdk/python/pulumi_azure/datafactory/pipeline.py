@@ -70,6 +70,10 @@ class Pipeline(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        Data Factory Pipeline's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activities_json: A JSON object that contains the activities that will be associated with the Data Factory Pipeline.

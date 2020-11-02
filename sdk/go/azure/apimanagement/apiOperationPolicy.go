@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management API Operation Policy can be imported using the `resource id`, e.g. shell
 type ApiOperationPolicy struct {
 	pulumi.CustomResourceState
 

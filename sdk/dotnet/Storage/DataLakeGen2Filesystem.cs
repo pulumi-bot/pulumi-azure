@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Lake Gen2 File System's can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class DataLakeGen2Filesystem : Pulumi.CustomResource
     {

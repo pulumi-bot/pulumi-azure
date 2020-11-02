@@ -66,6 +66,12 @@ class PolicySetDefinition(pulumi.CustomResource):
             policy_type="Custom")
         ```
 
+        ## Import
+
+        Policy Set Definitions can be imported using the `resource id`, e.g. shell
+
+         or shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the policy set definition.

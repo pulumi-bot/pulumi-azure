@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management API Operation's can be imported using the `resource id`, e.g. shell
 type ApiOperation struct {
 	pulumi.CustomResourceState
 

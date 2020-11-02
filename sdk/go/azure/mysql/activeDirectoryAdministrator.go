@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A MySQL Active Directory Administrator can be imported using the `resource id`, e.g. shell
 type ActiveDirectoryAdministrator struct {
 	pulumi.CustomResourceState
 

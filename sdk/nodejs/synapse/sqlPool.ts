@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     createMode: "Default",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Synapse Sql Pool can be imported using the `resource id`, e.g. shell
  */
 export class SqlPool extends pulumi.CustomResource {
     /**

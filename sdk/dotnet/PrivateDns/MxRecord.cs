@@ -57,6 +57,10 @@ namespace Pulumi.Azure.PrivateDns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Private DNS MX Records can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class MxRecord : Pulumi.CustomResource
     {

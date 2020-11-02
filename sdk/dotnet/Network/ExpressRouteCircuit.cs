@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ExpressRoute circuits can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ExpressRouteCircuit : Pulumi.CustomResource
     {

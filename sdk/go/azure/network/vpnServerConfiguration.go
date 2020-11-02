@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VPN Server Configurations can be imported using the `resource id`, e.g. shell
 type VpnServerConfiguration struct {
 	pulumi.CustomResourceState
 

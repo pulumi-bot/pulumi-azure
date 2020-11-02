@@ -102,6 +102,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Site Recovery Protection Container Mappings can be imported using the `resource id`, e.g. shell
 type ProtectionContainerMapping struct {
 	pulumi.CustomResourceState
 

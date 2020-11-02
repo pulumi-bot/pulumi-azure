@@ -14,6 +14,7 @@ namespace Pulumi.Azure.EventHub
         /// <summary>
         /// Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     applicationConsistentSnapshotFrequencyInMinutes: 4 * 60,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Site Recovery Replication Policies can be imported using the `resource id`, e.g. shell
  */
 export class ReplicationPolicy extends pulumi.CustomResource {
     /**

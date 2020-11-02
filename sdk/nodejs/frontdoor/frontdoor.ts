@@ -64,6 +64,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Front Doors can be imported using the `resource id`, e.g. shell
  */
 export class Frontdoor extends pulumi.CustomResource {
     /**

@@ -93,6 +93,10 @@ namespace Pulumi.Azure.Hpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Blob Targets within an HPC Cache can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class CacheBlobTarget : Pulumi.CustomResource
     {

@@ -152,6 +152,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Key Vault Certificates can be imported using the `resource id`, e.g. shell
+//
 // Deprecated: azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate
 type Certifiate struct {
 	pulumi.CustomResourceState

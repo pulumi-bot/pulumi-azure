@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A Log Profile can be imported using the `resource id`, e.g. shell
  */
 export class LogProfile extends pulumi.CustomResource {
     /**

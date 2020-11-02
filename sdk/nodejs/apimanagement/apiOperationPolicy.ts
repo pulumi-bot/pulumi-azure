@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management API Operation Policy can be imported using the `resource id`, e.g. shell
  */
 export class ApiOperationPolicy extends pulumi.CustomResource {
     /**

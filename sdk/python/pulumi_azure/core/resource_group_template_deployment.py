@@ -64,6 +64,10 @@ class ResourceGroupTemplateDeployment(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        Resource Group Template Deployments can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] debug_level: The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.

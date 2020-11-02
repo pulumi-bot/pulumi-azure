@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Policy Assignments can be imported using the `policy name`, e.g. shell
 type Assignment struct {
 	pulumi.CustomResourceState
 

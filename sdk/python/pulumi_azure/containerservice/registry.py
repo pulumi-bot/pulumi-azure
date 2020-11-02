@@ -52,6 +52,10 @@ class Registry(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Container Registries can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Specifies whether the admin user is enabled. Defaults to `false`.

@@ -35,6 +35,12 @@ import * as utilities from "../utilities";
  *     applicationGroupId: remoteapp.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Virtual Desktop Workspaces and Virtual Desktop Application Groups can be imported using the `resource id`, e.g. shell
+ *
+ *  -> **NOTE:** This ID is specific to Terraform - and is of the format `{virtualDesktopWorkspaceID}|{virtualDesktopApplicationGroupID}`.
  */
 export class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     /**

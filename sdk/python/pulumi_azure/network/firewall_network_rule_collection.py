@@ -77,6 +77,10 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Azure Firewall Network Rule Collections can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Specifies the action the rule will apply to matching traffic. Possible values are `Allow` and `Deny`.

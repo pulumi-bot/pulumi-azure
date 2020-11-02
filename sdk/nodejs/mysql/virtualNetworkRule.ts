@@ -45,6 +45,10 @@ import * as utilities from "../utilities";
  *     subnetId: internal.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MySQL Virtual Network Rules can be imported using the `resource id`, e.g. shell
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**

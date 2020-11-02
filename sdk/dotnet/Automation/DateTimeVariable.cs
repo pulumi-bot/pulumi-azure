@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a DateTime variable in Azure Automation
+    /// 
+    /// ## Import
+    /// 
+    /// Automation DateTime Variable can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class DateTimeVariable : Pulumi.CustomResource
     {

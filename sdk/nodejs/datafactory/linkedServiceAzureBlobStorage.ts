@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     connectionString: exampleAccount.primaryConnectionString,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Linked Service's can be imported using the `resource id`, e.g. shell
  */
 export class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     /**

@@ -14,8 +14,10 @@ namespace Pulumi.Azure.Authorization
         /// <summary>
         /// Use this data source to access information about an existing User Assigned Identity.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// 
         /// {{% example %}}
         /// ### Reference An Existing)
         /// 

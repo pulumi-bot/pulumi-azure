@@ -141,6 +141,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Spring Cloud Certificate can be imported using the `resource id`, e.g. shell
 type SpringCloudCertificate struct {
 	pulumi.CustomResourceState
 

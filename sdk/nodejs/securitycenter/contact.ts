@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     phone: "+1-555-555-5555",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The contact can be imported using the `resource id`, e.g. shell
  */
 export class Contact extends pulumi.CustomResource {
     /**

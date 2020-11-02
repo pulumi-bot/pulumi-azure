@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Ms Sql Server Extended Auditing Policys can be imported using the `resource id`, e.g. shell
 type ServerExtendedAuditingPolicy struct {
 	pulumi.CustomResourceState
 

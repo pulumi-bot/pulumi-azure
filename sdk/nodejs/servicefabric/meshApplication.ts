@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Fabric Mesh Application can be imported using the `resource id`, e.g. shell
  */
 export class MeshApplication extends pulumi.CustomResource {
     /**

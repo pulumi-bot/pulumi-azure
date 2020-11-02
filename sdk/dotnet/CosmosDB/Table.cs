@@ -37,6 +37,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CosmosDB Tables can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {

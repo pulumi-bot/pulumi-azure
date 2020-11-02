@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Redis Firewall Rules can be imported using the `resource id`, e.g. shell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

@@ -119,6 +119,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Machines can be imported using the `resource id`, e.g. shell
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

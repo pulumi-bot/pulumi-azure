@@ -51,6 +51,10 @@ class EventHub(pulumi.CustomResource):
             message_retention=1)
         ```
 
+        ## Import
+
+        EventHubs can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['EventHubCaptureDescriptionArgs']] capture_description: A `capture_description` block as defined below.

@@ -70,6 +70,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Bastion Hosts can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class BastionHost : Pulumi.CustomResource
     {

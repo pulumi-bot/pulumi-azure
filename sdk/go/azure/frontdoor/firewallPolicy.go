@@ -152,6 +152,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// FrontDoor Web Application Firewall Policy can be imported using the `resource id`, e.g. shell
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 

@@ -46,6 +46,10 @@ class Workspace(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Databrick Workspaces can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['WorkspaceCustomParametersArgs']] custom_parameters: A `custom_parameters` block as documented below.

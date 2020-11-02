@@ -62,6 +62,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Traffic Manager Profiles can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class TrafficManagerProfile : Pulumi.CustomResource
     {

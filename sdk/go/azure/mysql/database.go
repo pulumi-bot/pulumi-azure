@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MySQL Database's can be imported using the `resource id`, e.g. shell
 type Database struct {
 	pulumi.CustomResourceState
 

@@ -47,6 +47,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory SQL Server Table Datasets can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class DatasetSqlServerTable : Pulumi.CustomResource
     {

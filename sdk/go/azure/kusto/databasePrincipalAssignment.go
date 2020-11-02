@@ -72,6 +72,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kusto Database Principal Assignment can be imported using the `resource id`, e.g. shell
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 

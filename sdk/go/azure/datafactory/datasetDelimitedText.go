@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Datasets can be imported using the `resource id`, e.g. shell
 type DatasetDelimitedText struct {
 	pulumi.CustomResourceState
 

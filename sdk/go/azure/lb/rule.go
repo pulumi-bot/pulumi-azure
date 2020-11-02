@@ -70,6 +70,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer Rules can be imported using the `resource id`, e.g. shell
 type Rule struct {
 	pulumi.CustomResourceState
 

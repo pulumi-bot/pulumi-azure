@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventGrid Domain Topics can be imported using the `resource id`, e.g. shell
 type DomainTopic struct {
 	pulumi.CustomResourceState
 

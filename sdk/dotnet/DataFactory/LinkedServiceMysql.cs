@@ -41,6 +41,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory MySql Linked Service's can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class LinkedServiceMysql : Pulumi.CustomResource
     {

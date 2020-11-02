@@ -50,6 +50,10 @@ class DpsSharedAccessPolicy(pulumi.CustomResource):
             enrollment_read=True)
         ```
 
+        ## Import
+
+        IoTHub Device Provisioning Service Shared Access Policies can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enrollment_read: Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.

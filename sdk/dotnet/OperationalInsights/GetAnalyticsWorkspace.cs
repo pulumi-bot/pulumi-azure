@@ -14,6 +14,7 @@ namespace Pulumi.Azure.OperationalInsights
         /// <summary>
         /// Use this data source to access information about an existing Log Analytics (formally Operational Insights) Workspace.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cost Management Export for a Resource Group can be imported using the `resource id`, e.g. shell
 type ResourceGroupExport struct {
 	pulumi.CustomResourceState
 

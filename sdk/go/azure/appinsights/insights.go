@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Application Insights instances can be imported using the `resource id`, e.g. shell
 type Insights struct {
 	pulumi.CustomResourceState
 

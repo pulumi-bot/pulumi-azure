@@ -45,6 +45,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Network Profile can be imported using the `resource id`, e.g. shell
  */
 export class Profile extends pulumi.CustomResource {
     /**

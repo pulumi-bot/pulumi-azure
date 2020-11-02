@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CosmosDB Tables can be imported using the `resource id`, e.g. shell
 type Table struct {
 	pulumi.CustomResourceState
 

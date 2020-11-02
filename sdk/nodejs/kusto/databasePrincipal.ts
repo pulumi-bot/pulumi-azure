@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     objectId: current.then(current => current.clientId),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Kusto Database Principals can be imported using the `resource id`, e.g. shell
  */
 export class DatabasePrincipal extends pulumi.CustomResource {
     /**

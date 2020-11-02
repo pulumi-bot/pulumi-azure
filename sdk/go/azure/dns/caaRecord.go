@@ -74,6 +74,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CAA records can be imported using the `resource id`, e.g. shell
 type CaaRecord struct {
 	pulumi.CustomResourceState
 

@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * TXT records can be imported using the `resource id`, e.g. shell
  */
 export class TxtRecord extends pulumi.CustomResource {
     /**

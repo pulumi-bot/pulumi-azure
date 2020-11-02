@@ -14,6 +14,7 @@ namespace Pulumi.Azure.PostgreSql
         /// <summary>
         /// Use this data source to access information about an existing PostgreSQL Azure Database Server.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

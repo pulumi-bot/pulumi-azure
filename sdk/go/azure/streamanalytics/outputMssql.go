@@ -77,6 +77,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Outputs to Microsoft SQL Server Database can be imported using the `resource id`, e.g. shell
 type OutputMssql struct {
 	pulumi.CustomResourceState
 

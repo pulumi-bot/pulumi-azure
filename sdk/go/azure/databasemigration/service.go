@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Database Migration Services can be imported using the `resource id`, e.g. shell
 type Service struct {
 	pulumi.CustomResourceState
 

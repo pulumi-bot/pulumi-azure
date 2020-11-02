@@ -94,6 +94,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight Spark Clusters can be imported using the `resource id`, e.g. shell
 type SparkCluster struct {
 	pulumi.CustomResourceState
 

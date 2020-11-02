@@ -43,6 +43,10 @@ namespace Pulumi.Azure.IotCentral
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The IoT Central Application can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

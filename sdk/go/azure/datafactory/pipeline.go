@@ -78,6 +78,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Pipeline's can be imported using the `resource id`, e.g. shell
 type Pipeline struct {
 	pulumi.CustomResourceState
 

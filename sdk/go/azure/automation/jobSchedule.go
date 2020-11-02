@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Automation Job Schedules can be imported using the `resource id`, e.g. shell
 type JobSchedule struct {
 	pulumi.CustomResourceState
 

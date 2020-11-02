@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Product Groups can be imported using the `resource id`, e.g. shell
 type ProductGroup struct {
 	pulumi.CustomResourceState
 

@@ -36,6 +36,10 @@ namespace Pulumi.Azure.Search
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Search Services can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

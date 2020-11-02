@@ -51,6 +51,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Management Groups can be imported using the `management group resource id`, e.g. shell
 type Group struct {
 	pulumi.CustomResourceState
 

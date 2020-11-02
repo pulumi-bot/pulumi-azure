@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     value: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Bool Variable can be imported using the `resource id`, e.g. shell
  */
 export class BoolVariable extends pulumi.CustomResource {
     /**

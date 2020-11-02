@@ -54,6 +54,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServiceBus Topic authorization rules can be imported using the `resource id`, e.g. shell
     /// </summary>
     [Obsolete(@"azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule")]
     public partial class TopicAuthorizationRule : Pulumi.CustomResource

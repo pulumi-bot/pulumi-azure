@@ -37,6 +37,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cosmos Mongo Database can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class MongoDatabase : Pulumi.CustomResource
     {

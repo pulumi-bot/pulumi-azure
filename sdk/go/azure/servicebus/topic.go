@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Topics can be imported using the `resource id`, e.g. shell
 type Topic struct {
 	pulumi.CustomResourceState
 

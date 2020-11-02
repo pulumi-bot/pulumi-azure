@@ -52,6 +52,10 @@ class FirewallRule(pulumi.CustomResource):
             end_ip_address="255.255.255.255")
         ```
 
+        ## Import
+
+        Synapse Firewall Rule can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip_address: The ending IP address to allow through the firewall for this rule.

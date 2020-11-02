@@ -14,6 +14,10 @@ import (
 //
 // > **Note:** If you want to change the data in the remote file without changing the `localFilePath`, then
 // taint the resource so the `datalake.StoreFile` gets recreated with the new data.
+//
+// ## Import
+//
+// Data Lake Store File's can be imported using the `resource id`, e.g. shell
 type StoreFile struct {
 	pulumi.CustomResourceState
 

@@ -54,6 +54,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SRV records can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class SrvRecord : Pulumi.CustomResource
     {

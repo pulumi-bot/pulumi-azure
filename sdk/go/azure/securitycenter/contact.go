@@ -39,6 +39,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The contact can be imported using the `resource id`, e.g. shell
 type Contact struct {
 	pulumi.CustomResourceState
 

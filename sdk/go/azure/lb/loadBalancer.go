@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancers can be imported using the `resource id`, e.g. shell
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

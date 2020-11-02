@@ -20,6 +20,10 @@ import * as utilities from "../utilities";
  *     skuName: "Dedicated_1",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHub Cluster's can be imported using the `resource id`, e.g. shell
  */
 export class Cluster extends pulumi.CustomResource {
     /**

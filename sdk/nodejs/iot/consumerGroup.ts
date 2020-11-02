@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Consumer Groups can be imported using the `resource id`, e.g. shell
  */
 export class ConsumerGroup extends pulumi.CustomResource {
     /**

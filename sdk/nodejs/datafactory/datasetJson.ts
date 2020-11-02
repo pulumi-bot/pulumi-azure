@@ -38,6 +38,10 @@ import * as utilities from "../utilities";
  *     encoding: "UTF-8",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Datasets can be imported using the `resource id`, e.g. shell
  */
 export class DatasetJson extends pulumi.CustomResource {
     /**

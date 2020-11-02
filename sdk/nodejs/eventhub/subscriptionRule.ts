@@ -87,6 +87,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Service Bus Subscription Rule can be imported using the `resource id`, e.g. shell
+ *
  * @deprecated azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule
  */
 export class SubscriptionRule extends pulumi.CustomResource {

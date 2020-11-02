@@ -61,6 +61,10 @@ class Firewall(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Azure Firewalls can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallIpConfigurationArgs']]]] ip_configurations: An `ip_configuration` block as documented below.

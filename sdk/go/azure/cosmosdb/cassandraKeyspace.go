@@ -65,6 +65,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cosmos Cassandra KeySpace can be imported using the `resource id`, e.g. shell
 type CassandraKeyspace struct {
 	pulumi.CustomResourceState
 

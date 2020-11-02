@@ -70,6 +70,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Synapse Sql Pool can be imported using the `resource id`, e.g. shell
 type SqlPool struct {
 	pulumi.CustomResourceState
 

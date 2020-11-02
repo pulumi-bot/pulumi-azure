@@ -119,6 +119,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Network Gateways can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class VirtualNetworkGateway : Pulumi.CustomResource
     {

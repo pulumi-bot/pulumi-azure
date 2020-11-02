@@ -143,6 +143,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Subscription Rule can be imported using the `resource id`, e.g. shell
 type SubscriptionRule struct {
 	pulumi.CustomResourceState
 

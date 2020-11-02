@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure DDoS Protection Plan can be imported using the `resource id`, e.g. shell
 type DdosProtectionPlan struct {
 	pulumi.CustomResourceState
 

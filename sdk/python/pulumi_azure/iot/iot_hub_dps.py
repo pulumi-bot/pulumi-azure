@@ -45,6 +45,10 @@ class IotHubDps(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        IoT Device Provisioning Service can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IotHubDpsLinkedHubArgs']]]] linked_hubs: A `linked_hub` block as defined below.

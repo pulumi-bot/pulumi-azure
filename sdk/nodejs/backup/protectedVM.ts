@@ -34,6 +34,12 @@ import * as utilities from "../utilities";
  *     backupPolicyId: examplePolicyVM.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Recovery Services Protected VMs can be imported using the `resource id`, e.g. shell
+ *
+ *  Note the ID requires quoting as there are semicolons
  */
 export class ProtectedVM extends pulumi.CustomResource {
     /**

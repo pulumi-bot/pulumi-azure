@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     messageRetention: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHubs can be imported using the `resource id`, e.g. shell
  */
 export class EventHub extends pulumi.CustomResource {
     /**

@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Configurations can be imported using the `resource id`, e.g. shell
 type ConfigurationStore struct {
 	pulumi.CustomResourceState
 

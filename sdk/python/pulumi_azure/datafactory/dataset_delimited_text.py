@@ -75,6 +75,10 @@ class DatasetDelimitedText(pulumi.CustomResource):
             null_value="NULL")
         ```
 
+        ## Import
+
+        Data Factory Datasets can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Dataset.

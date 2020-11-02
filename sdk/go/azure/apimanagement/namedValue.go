@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Properties can be imported using the `resource id`, e.g. shell
 type NamedValue struct {
 	pulumi.CustomResourceState
 

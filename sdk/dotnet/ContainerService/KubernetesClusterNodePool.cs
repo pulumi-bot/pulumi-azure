@@ -61,6 +61,10 @@ namespace Pulumi.Azure.ContainerService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Kubernetes Cluster Node Pools can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class KubernetesClusterNodePool : Pulumi.CustomResource
     {

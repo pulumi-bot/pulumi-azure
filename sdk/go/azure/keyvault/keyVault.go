@@ -88,6 +88,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Key Vault's can be imported using the `resource id`, e.g. shell
 type KeyVault struct {
 	pulumi.CustomResourceState
 

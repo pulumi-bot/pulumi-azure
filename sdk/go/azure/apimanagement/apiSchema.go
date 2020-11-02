@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an API Schema within an API Management Service.
+//
+// ## Import
+//
+// API Management API Schema's can be imported using the `resource id`, e.g. shell
 type ApiSchema struct {
 	pulumi.CustomResourceState
 

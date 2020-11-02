@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Automation DSC Node Configuration.
+//
+// ## Import
+//
+// Automation DSC Node Configuration's can be imported using the `resource id`, e.g. shell
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 

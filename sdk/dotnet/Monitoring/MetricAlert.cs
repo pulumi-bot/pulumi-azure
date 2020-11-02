@@ -89,6 +89,10 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Metric Alerts can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class MetricAlert : Pulumi.CustomResource
     {

@@ -68,6 +68,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Storage Account Management Policies can be imported using the `resource id`, e.g. shell
  */
 export class ManagementPolicy extends pulumi.CustomResource {
     /**

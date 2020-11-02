@@ -53,6 +53,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ExpressRoute Gateways can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ExpressRouteGateway : Pulumi.CustomResource
     {

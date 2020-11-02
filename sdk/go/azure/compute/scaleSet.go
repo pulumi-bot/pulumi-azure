@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Machine Scale Sets can be imported using the `resource id`, e.g. shell
 type ScaleSet struct {
 	pulumi.CustomResourceState
 

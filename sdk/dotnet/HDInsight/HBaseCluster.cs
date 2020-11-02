@@ -90,6 +90,10 @@ namespace Pulumi.Azure.HDInsight
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HDInsight HBase Clusters can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class HBaseCluster : Pulumi.CustomResource
     {

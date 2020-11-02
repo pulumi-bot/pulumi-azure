@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     apiSecretKey: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Twitter Identity Provider can be imported using the `resource id`, e.g. shell
  */
 export class IdentityProviderTwitter extends pulumi.CustomResource {
     /**

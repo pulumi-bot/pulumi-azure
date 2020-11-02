@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * ServiceBus Namespace authorization rules can be imported using the `resource id`, e.g. shell
+ *
  * @deprecated azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule
  */
 export class NamespaceAuthorizationRule extends pulumi.CustomResource {

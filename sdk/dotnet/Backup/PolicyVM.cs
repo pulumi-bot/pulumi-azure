@@ -92,6 +92,10 @@ namespace Pulumi.Azure.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// VM Backup Policies can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class PolicyVM : Pulumi.CustomResource
     {

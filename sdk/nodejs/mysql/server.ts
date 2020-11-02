@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     sslMinimalTlsVersionEnforced: "TLS1_2",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MySQL Server's can be imported using the `resource id`, e.g. shell
  */
 export class Server extends pulumi.CustomResource {
     /**

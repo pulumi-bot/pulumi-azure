@@ -60,6 +60,10 @@ namespace Pulumi.Azure.Hpc
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HPC Caches can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Cache : Pulumi.CustomResource
     {

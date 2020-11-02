@@ -66,6 +66,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Windows Virtual Machines can be imported using the `resource id`, e.g. shell
  */
 export class WindowsVirtualMachine extends pulumi.CustomResource {
     /**

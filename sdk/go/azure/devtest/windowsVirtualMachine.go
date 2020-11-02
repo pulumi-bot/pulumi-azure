@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Windows Virtual Machine within a Dev Test Lab.
+//
+// ## Import
+//
+// DevTest Windows Virtual Machines can be imported using the `resource id`, e.g. shell
 type WindowsVirtualMachine struct {
 	pulumi.CustomResourceState
 

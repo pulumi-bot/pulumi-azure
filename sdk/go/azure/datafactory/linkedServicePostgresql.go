@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory PostgreSQL Linked Service's can be imported using the `resource id`, e.g. shell
 type LinkedServicePostgresql struct {
 	pulumi.CustomResourceState
 

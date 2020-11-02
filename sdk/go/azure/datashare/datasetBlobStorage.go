@@ -96,6 +96,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Share Blob Storage Datasets can be imported using the `resource id`, e.g. shell
 type DatasetBlobStorage struct {
 	pulumi.CustomResourceState
 

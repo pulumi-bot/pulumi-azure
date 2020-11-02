@@ -73,6 +73,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private Endpoints can be imported using the `resource id`, e.g. shell
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

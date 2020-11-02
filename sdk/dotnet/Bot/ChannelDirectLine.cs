@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Bot
 {
     /// <summary>
     /// Manages a Directline integration for a Bot Channel
+    /// 
+    /// ## Import
+    /// 
+    /// The Directline Channel for a Bot can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ChannelDirectLine : Pulumi.CustomResource
     {

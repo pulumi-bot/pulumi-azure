@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an App Service certificate.
+ *
+ * ## Import
+ *
+ * App Service Certificates can be imported using the `resource id`, e.g. shell
  */
 export class Certificate extends pulumi.CustomResource {
     /**

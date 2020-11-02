@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics JavaScript UDF Functions can be imported using the `resource id`, e.g. shell
 type FunctionJavaScriptUDF struct {
 	pulumi.CustomResourceState
 

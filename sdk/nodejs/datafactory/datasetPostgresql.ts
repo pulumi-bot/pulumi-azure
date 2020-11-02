@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServicePostgresql.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory PostgreSQL Datasets can be imported using the `resource id`, e.g. shell
  */
 export class DatasetPostgresql extends pulumi.CustomResource {
     /**

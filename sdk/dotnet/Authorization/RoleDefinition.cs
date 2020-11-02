@@ -47,6 +47,12 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Role Definitions can be imported using the `resource id`, e.g. shell
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
     /// </summary>
     public partial class RoleDefinition : Pulumi.CustomResource
     {

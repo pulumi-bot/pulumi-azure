@@ -76,6 +76,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NAT Gateway can be imported using the `resource id`, e.g. shell
 type NatGateway struct {
 	pulumi.CustomResourceState
 

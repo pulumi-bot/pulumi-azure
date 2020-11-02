@@ -128,6 +128,10 @@ class FunctionApp(pulumi.CustomResource):
             os_type="linux")
         ```
 
+        ## Import
+
+        Function Apps can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_plan_id: The ID of the App Service Plan within which to create this Function App.

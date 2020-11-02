@@ -108,6 +108,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NetApp Snapshot can be imported using the `resource id`, e.g. shell
 type Snapshot struct {
 	pulumi.CustomResourceState
 

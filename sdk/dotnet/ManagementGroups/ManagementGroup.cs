@@ -45,6 +45,10 @@ namespace Pulumi.Azure.ManagementGroups
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Management Groups can be imported using the `management group resource id`, e.g. shell
     /// </summary>
     [Obsolete(@"azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group")]
     public partial class ManagementGroup : Pulumi.CustomResource

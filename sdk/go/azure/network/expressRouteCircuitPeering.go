@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ExpressRoute Circuit Peerings can be imported using the `resource id`, e.g. shell
 type ExpressRouteCircuitPeering struct {
 	pulumi.CustomResourceState
 

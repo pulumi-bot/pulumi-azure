@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a boolean variable in Azure Automation
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Bool Variable can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class BoolVariable : Pulumi.CustomResource
     {

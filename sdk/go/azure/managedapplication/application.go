@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Managed Application.
+//
+// ## Import
+//
+// Managed Application can be imported using the `resource id`, e.g. shell
 type Application struct {
 	pulumi.CustomResourceState
 

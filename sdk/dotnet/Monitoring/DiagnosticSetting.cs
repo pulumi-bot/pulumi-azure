@@ -68,6 +68,12 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Diagnostic Settings can be imported using the `resource id`, e.g.
+    /// 
+    ///  -&gt; **NOTE:** This is an ID specific to this resource provider which uses the format `{resourceId}|{diagnosticSettingName}`
     /// </summary>
     public partial class DiagnosticSetting : Pulumi.CustomResource
     {

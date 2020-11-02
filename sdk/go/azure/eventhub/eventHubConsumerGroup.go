@@ -66,6 +66,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// EventHub Consumer Groups can be imported using the `resource id`, e.g. shell
+//
 // Deprecated: azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup
 type EventHubConsumerGroup struct {
 	pulumi.CustomResourceState

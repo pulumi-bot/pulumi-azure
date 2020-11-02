@@ -94,6 +94,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight Interactive Query Clusters can be imported using the `resource id`, e.g. shell
 type InteractiveQueryCluster struct {
 	pulumi.CustomResourceState
 

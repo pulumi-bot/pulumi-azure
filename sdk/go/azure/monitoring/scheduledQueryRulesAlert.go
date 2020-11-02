@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
+//
+// ## Import
+//
+// Scheduled Query Rule Alerts can be imported using the `resource id`, e.g. shell
 type ScheduledQueryRulesAlert struct {
 	pulumi.CustomResourceState
 

@@ -65,6 +65,10 @@ class OutboundRule(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Load Balancer Outbound Rules can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocated_outbound_ports: The number of outbound ports to be used for NAT.

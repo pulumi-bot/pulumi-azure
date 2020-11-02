@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     verificationToken: "exampleVerificationToken",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The Slack Integration for a Bot Channel can be imported using the `resource id`, e.g. shell
  */
 export class ChannelSlack extends pulumi.CustomResource {
     /**

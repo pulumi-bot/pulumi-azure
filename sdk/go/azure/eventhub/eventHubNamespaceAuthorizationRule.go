@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHub Namespace Authorization Rules can be imported using the `resource id`, e.g. shell
 type EventHubNamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 

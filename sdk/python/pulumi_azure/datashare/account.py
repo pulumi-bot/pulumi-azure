@@ -46,6 +46,10 @@ class Account(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Data Share Accounts can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AccountIdentityArgs']] identity: An `identity` block as defined below.

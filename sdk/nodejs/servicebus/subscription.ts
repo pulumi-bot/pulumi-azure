@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     maxDeliveryCount: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Bus Subscriptions can be imported using the `resource id`, e.g. shell
  */
 export class Subscription extends pulumi.CustomResource {
     /**

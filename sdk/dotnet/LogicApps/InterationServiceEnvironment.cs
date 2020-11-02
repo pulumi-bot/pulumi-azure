@@ -104,6 +104,10 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Integration Service Environments can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class InterationServiceEnvironment : Pulumi.CustomResource
     {

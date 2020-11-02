@@ -97,6 +97,12 @@ class DataDiskAttachment(pulumi.CustomResource):
             caching="ReadWrite")
         ```
 
+        ## Import
+
+        Virtual Machines Data Disk Attachments can be imported using the `resource id`, e.g. shell
+
+         -> **Please Note:** This is a ID (specific to this provider) matching the format`{virtualMachineID}/dataDisks/{diskName}`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] caching: Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.

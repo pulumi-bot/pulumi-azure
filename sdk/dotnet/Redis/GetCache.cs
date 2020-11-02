@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Redis
         /// <summary>
         /// Use this data source to access information about an existing Redis Cache
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

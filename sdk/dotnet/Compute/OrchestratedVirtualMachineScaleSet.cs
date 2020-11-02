@@ -44,6 +44,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class OrchestratedVirtualMachineScaleSet : Pulumi.CustomResource
     {

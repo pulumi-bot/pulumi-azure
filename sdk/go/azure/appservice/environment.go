@@ -79,6 +79,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The App Service Environment can be imported using the `resource id`, e.g. shell
 type Environment struct {
 	pulumi.CustomResourceState
 

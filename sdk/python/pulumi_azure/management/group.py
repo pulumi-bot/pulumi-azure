@@ -43,6 +43,10 @@ class Group(pulumi.CustomResource):
         # other subscription IDs can go here
         ```
 
+        ## Import
+
+        Management Groups can be imported using the `management group resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: A friendly name for this Management Group. If not specified, this'll be the same as the `name`.

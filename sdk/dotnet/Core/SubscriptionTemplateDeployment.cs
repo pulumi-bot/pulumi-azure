@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Core
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subscription Template Deployments can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class SubscriptionTemplateDeployment : Pulumi.CustomResource
     {

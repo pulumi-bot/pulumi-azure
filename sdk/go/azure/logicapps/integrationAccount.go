@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Logic App Integration Accounts can be imported using the `resource id`, e.g. shell
 type IntegrationAccount struct {
 	pulumi.CustomResourceState
 

@@ -72,6 +72,10 @@ namespace Pulumi.Azure.Redis
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Rediss can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class LinkedServer : Pulumi.CustomResource
     {

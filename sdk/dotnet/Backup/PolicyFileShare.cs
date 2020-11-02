@@ -53,6 +53,10 @@ namespace Pulumi.Azure.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure File Share Backup Policies can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class PolicyFileShare : Pulumi.CustomResource
     {

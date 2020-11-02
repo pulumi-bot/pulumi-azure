@@ -43,6 +43,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management API Operation Policy can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ApiOperationPolicy : Pulumi.CustomResource
     {

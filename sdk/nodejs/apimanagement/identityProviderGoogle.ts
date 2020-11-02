@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     clientSecret: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Google Identity Provider can be imported using the `resource id`, e.g. shell
  */
 export class IdentityProviderGoogle extends pulumi.CustomResource {
     /**

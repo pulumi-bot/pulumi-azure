@@ -45,6 +45,10 @@ class IdentityProviderGoogle(pulumi.CustomResource):
             client_secret="00000000000000000000000000000000")
         ```
 
+        ## Import
+
+        API Management Google Identity Provider can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where this Google Identity Provider should be created. Changing this forces a new resource to be created.

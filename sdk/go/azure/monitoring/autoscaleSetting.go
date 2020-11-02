@@ -311,6 +311,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AutoScale Setting can be imported using the `resource id`, e.g.
 type AutoscaleSetting struct {
 	pulumi.CustomResourceState
 

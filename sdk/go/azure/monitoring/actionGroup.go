@@ -124,6 +124,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Action Groups can be imported using the `resource id`, e.g. shell
 type ActionGroup struct {
 	pulumi.CustomResourceState
 

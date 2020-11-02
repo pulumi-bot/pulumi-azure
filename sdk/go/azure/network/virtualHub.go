@@ -51,6 +51,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Hub's can be imported using the `resource id`, e.g. shell
 type VirtualHub struct {
 	pulumi.CustomResourceState
 

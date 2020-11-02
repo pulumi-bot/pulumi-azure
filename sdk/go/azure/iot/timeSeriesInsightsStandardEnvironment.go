@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure IoT Time Series Insights Standard Environment can be imported using the `resource id`, e.g. shell
 type TimeSeriesInsightsStandardEnvironment struct {
 	pulumi.CustomResourceState
 

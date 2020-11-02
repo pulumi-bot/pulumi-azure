@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Fabric Clusters can be imported using the `resource id`, e.g. shell
 type Cluster struct {
 	pulumi.CustomResourceState
 

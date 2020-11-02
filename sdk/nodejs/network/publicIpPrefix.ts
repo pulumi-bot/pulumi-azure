@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Public IP Prefixes can be imported using the `resource id`, e.g. shell
  */
 export class PublicIpPrefix extends pulumi.CustomResource {
     /**

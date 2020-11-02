@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a certificate in an Azure Batch account.
+//
+// ## Import
+//
+// Batch Certificates can be imported using the `resource id`, e.g. shell
 type Certificate struct {
 	pulumi.CustomResourceState
 

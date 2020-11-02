@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Queue can be imported using the `resource id`, e.g. shell
 type Queue struct {
 	pulumi.CustomResourceState
 

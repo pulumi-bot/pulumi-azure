@@ -50,6 +50,10 @@ class AssignmentDedicatedHost(pulumi.CustomResource):
             dedicated_host_id=example_dedicated_host.id)
         ```
 
+        ## Import
+
+        Maintenance Assignment can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dedicated_host_id: Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.

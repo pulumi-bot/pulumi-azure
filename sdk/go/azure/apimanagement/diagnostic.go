@@ -73,6 +73,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Diagnostics can be imported using the `resource id`, e.g. shell
 type Diagnostic struct {
 	pulumi.CustomResourceState
 

@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SignalR services can be imported using the `resource id`, e.g. shell
  */
 export class Service extends pulumi.CustomResource {
     /**

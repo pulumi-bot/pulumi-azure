@@ -46,6 +46,10 @@ class Pool(pulumi.CustomResource):
             size_in_tb=4)
         ```
 
+        ## Import
+
+        NetApp Pool can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.

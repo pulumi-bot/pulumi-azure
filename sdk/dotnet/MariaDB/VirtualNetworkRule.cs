@@ -76,6 +76,10 @@ namespace Pulumi.Azure.MariaDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MariaDB Virtual Network Rules can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class VirtualNetworkRule : Pulumi.CustomResource
     {

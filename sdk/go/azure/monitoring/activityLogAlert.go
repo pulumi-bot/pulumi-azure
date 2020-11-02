@@ -81,6 +81,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Activity log alerts can be imported using the `resource id`, e.g. shell
 type ActivityLogAlert struct {
 	pulumi.CustomResourceState
 

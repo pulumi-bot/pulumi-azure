@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     subscriptionId: exampleClientConfig.then(exampleClientConfig => exampleClientConfig.subscriptionId),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Connection can be imported using the `resource id`, e.g. shell
  */
 export class ConnectionClassicCertificate extends pulumi.CustomResource {
     /**

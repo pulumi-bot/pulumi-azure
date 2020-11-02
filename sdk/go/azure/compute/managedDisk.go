@@ -99,6 +99,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Managed Disks can be imported using the `resource id`, e.g. shell
 type ManagedDisk struct {
 	pulumi.CustomResourceState
 

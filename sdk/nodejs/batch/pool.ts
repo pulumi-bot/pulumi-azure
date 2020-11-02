@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Batch pool.
+ *
+ * ## Import
+ *
+ * Batch Pools can be imported using the `resource id`, e.g. shell
  */
 export class Pool extends pulumi.CustomResource {
     /**

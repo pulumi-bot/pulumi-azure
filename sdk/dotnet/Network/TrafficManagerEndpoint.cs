@@ -69,6 +69,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Traffic Manager Endpoints can be imported using the `resource id`, e.g. shell
+    /// 
+    ///  -&gt; **NOTE:** `azureEndpoints` in the above shell command should be replaced with `externalEndpoints` or `nestedEndpoints` while using other endpoint types.
     /// </summary>
     public partial class TrafficManagerEndpoint : Pulumi.CustomResource
     {

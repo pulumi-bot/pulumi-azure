@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     skuName: "Free",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Notification Hub Namespaces can be imported using the `resource id`, e.g. shell
  */
 export class Namespace extends pulumi.CustomResource {
     /**

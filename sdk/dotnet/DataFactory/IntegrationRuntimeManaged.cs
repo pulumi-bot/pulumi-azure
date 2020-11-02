@@ -42,6 +42,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory Integration Managed Runtimes can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class IntegrationRuntimeManaged : Pulumi.CustomResource
     {

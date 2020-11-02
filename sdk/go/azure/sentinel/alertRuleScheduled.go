@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Sentinel Scheduled Alert Rules can be imported using the `resource id`, e.g. shell
 type AlertRuleScheduled struct {
 	pulumi.CustomResourceState
 

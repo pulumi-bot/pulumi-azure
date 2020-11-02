@@ -11,6 +11,10 @@ namespace Pulumi.Azure.PostgreSql
 {
     /// <summary>
     /// Manages a Customer Managed Key for a PostgreSQL Server.
+    /// 
+    /// ## Import
+    /// 
+    /// A PostgreSQL Server Key can be imported using the `resource id` of the PostgreSQL Server Key, e.g. shell
     /// </summary>
     public partial class ServerKey : Pulumi.CustomResource
     {

@@ -44,6 +44,10 @@ namespace Pulumi.Azure.Kusto
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Kusto Clusters can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

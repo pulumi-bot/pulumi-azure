@@ -57,6 +57,10 @@ class AuthorizationRule(pulumi.CustomResource):
             manage=False)
         ```
 
+        ## Import
+
+        EventHub Authorization Rules can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eventhub_name: Specifies the name of the EventHub. Changing this forces a new resource to be created.

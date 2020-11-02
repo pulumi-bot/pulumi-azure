@@ -11,6 +11,10 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Windows Virtual Machine within a Dev Test Lab.
+    /// 
+    /// ## Import
+    /// 
+    /// DevTest Windows Virtual Machines can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class WindowsVirtualMachine : Pulumi.CustomResource
     {

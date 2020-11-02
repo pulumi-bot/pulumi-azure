@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ServiceBus Queue Authorization Rules can be imported using the `resource id`, e.g. shell
  */
 export class QueueAuthorizationRule extends pulumi.CustomResource {
     /**

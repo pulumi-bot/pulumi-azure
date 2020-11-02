@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cosmos Mongo Database can be imported using the `resource id`, e.g. shell
  */
 export class MongoDatabase extends pulumi.CustomResource {
     /**

@@ -41,6 +41,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Route Filters can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class RouteFilter : Pulumi.CustomResource
     {

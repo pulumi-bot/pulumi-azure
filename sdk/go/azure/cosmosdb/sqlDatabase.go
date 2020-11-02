@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cosmos SQL Database can be imported using the `resource id`, e.g. shell
 type SqlDatabase struct {
 	pulumi.CustomResourceState
 

@@ -32,6 +32,10 @@ class ScheduledQueryRulesLog(pulumi.CustomResource):
         """
         Manages a LogToMetricAction Scheduled Query Rules resource within Azure Monitor.
 
+        ## Import
+
+        Scheduled Query Rule Log can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ScheduledQueryRulesLogCriteriaArgs']] criteria: A `criteria` block as defined below.

@@ -11,6 +11,10 @@ import (
 )
 
 // Configures Network Packet Capturing against a Virtual Machine using a Network Watcher.
+//
+// ## Import
+//
+// Packet Captures can be imported using the `resource id`, e.g. shell
 type NetworkPacketCapture struct {
 	pulumi.CustomResourceState
 

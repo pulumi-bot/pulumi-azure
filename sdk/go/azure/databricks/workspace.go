@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Databrick Workspaces can be imported using the `resource id`, e.g. shell
 type Workspace struct {
 	pulumi.CustomResourceState
 

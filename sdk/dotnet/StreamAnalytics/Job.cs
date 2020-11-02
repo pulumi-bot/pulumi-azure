@@ -50,6 +50,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Job's can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Job : Pulumi.CustomResource
     {

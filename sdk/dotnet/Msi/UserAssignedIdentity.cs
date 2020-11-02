@@ -35,6 +35,10 @@ namespace Pulumi.Azure.Msi
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// User Assigned Identities can be imported using the `resource id`, e.g. shell
     /// </summary>
     [Obsolete(@"azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity")]
     public partial class UserAssignedIdentity : Pulumi.CustomResource

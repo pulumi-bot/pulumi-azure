@@ -14,6 +14,7 @@ namespace Pulumi.Azure.KeyVault
         /// <summary>
         /// Use this data source to access information about an existing Key Vault.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

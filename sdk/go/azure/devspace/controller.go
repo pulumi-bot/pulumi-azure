@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a DevSpace Controller.
+//
+// ## Import
+//
+// DevSpace Controller's can be imported using the `resource id`, e.g. shell
 type Controller struct {
 	pulumi.CustomResourceState
 

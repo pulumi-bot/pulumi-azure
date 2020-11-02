@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Monitoring
         /// <summary>
         /// Use this data source to access the properties of an Action Group.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

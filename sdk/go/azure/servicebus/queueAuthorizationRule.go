@@ -65,6 +65,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ServiceBus Queue Authorization Rules can be imported using the `resource id`, e.g. shell
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState
 

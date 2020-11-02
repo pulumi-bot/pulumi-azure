@@ -38,6 +38,10 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Bot Web App's can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class WebApp : Pulumi.CustomResource
     {

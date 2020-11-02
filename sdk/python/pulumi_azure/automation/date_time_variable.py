@@ -27,6 +27,10 @@ class DateTimeVariable(pulumi.CustomResource):
         """
         Manages a DateTime variable in Azure Automation
 
+        ## Import
+
+        Automation DateTime Variable can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.

@@ -83,6 +83,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Connection Monitors can be imported using the `resource id`, e.g. shell
 type NetworkConnectionMonitor struct {
 	pulumi.CustomResourceState
 

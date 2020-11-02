@@ -48,6 +48,10 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServiceBus Namespace authorization rules can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class NamespaceAuthorizationRule : Pulumi.CustomResource
     {

@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     apiManagementLoggerId: exampleLogger.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Diagnostics can be imported using the `resource id`, e.g. shell
  */
 export class Diagnostic extends pulumi.CustomResource {
     /**

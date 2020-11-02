@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Monitoring
 {
     /// <summary>
     /// Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
+    /// 
+    /// ## Import
+    /// 
+    /// Scheduled Query Rule Alerts can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ScheduledQueryRulesAlert : Pulumi.CustomResource
     {

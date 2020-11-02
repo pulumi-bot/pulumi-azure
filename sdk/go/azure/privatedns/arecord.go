@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS A Records can be imported using the `resource id`, e.g. shell
 type ARecord struct {
 	pulumi.CustomResourceState
 

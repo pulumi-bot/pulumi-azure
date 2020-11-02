@@ -28,6 +28,10 @@ class Certificate(pulumi.CustomResource):
         """
         Manages a certificate in an Azure Batch account.
 
+        ## Import
+
+        Batch Certificates can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: Specifies the name of the Batch account. Changing this forces a new resource to be created.

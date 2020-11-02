@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Analytics Firewall Rules can be imported using the `resource id`, e.g. shell
 type AnalyticsFirewallRule struct {
 	pulumi.CustomResourceState
 

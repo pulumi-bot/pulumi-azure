@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Twitter Identity Provider can be imported using the `resource id`, e.g. shell
 type IdentityProviderTwitter struct {
 	pulumi.CustomResourceState
 

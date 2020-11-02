@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventGrid Domain Topics can be imported using the `resource id`, e.g. shell
  */
 export class DomainTopic extends pulumi.CustomResource {
     /**

@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Windows Event DataSources can be imported using the `resource id`, e.g. shell
 type DataSourceWindowsEvent struct {
 	pulumi.CustomResourceState
 

@@ -104,6 +104,12 @@ namespace Pulumi.Azure.DevTest
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An existing Dev Test Global Shutdown Schedule can be imported using the `resource id`, e.g. shell
+    /// 
+    ///  The name of the resource within the `resource id` will always follow the format `shutdown-computevm-&lt;VM Name&gt;` where `&lt;VM Name&gt;` is replaced by the name of the target Virtual Machine
     /// </summary>
     public partial class GlobalVMShutdownSchedule : Pulumi.CustomResource
     {

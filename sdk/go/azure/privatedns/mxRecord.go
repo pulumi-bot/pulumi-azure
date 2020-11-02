@@ -62,6 +62,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS MX Records can be imported using the `resource id`, e.g. shell
 type MxRecord struct {
 	pulumi.CustomResourceState
 

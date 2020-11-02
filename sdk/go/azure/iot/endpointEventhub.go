@@ -89,6 +89,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub EventHub Endpoint can be imported using the `resource id`, e.g. shell
 type EndpointEventhub struct {
 	pulumi.CustomResourceState
 

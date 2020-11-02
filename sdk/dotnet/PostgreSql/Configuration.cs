@@ -55,6 +55,10 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PostgreSQL Configurations can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

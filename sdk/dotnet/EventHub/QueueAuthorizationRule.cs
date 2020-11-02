@@ -55,6 +55,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServiceBus Queue Authorization Rules can be imported using the `resource id`, e.g. shell
     /// </summary>
     [Obsolete(@"azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule")]
     public partial class QueueAuthorizationRule : Pulumi.CustomResource

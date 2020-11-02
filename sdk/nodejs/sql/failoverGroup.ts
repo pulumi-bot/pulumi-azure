@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SQL Failover Groups can be imported using the `resource id`, e.g. shell
  */
 export class FailoverGroup extends pulumi.CustomResource {
     /**

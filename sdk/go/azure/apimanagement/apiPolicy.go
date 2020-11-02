@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an API Management API Policy
+//
+// ## Import
+//
+// API Management API Policy can be imported using the `resource id`, e.g. shell
 type ApiPolicy struct {
 	pulumi.CustomResourceState
 

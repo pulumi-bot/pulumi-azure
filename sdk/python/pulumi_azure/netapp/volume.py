@@ -81,6 +81,10 @@ class Volume(pulumi.CustomResource):
             storage_quota_in_gb=100)
         ```
 
+        ## Import
+
+        NetApp Volumes can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.

@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Healthcare
         /// <summary>
         /// Use this data source to access information about an existing Healthcare Service
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

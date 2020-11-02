@@ -40,6 +40,10 @@ namespace Pulumi.Azure.DataBricks
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Databrick Workspaces can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

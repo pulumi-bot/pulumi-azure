@@ -48,6 +48,10 @@ class Route(pulumi.CustomResource):
             next_hop_type="vnetlocal")
         ```
 
+        ## Import
+
+        Routes can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_prefix: The destination CIDR to which the route applies, such as `10.1.0.0/16`

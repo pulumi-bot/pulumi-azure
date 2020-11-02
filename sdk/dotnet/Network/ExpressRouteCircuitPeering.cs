@@ -66,6 +66,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ExpressRoute Circuit Peerings can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class ExpressRouteCircuitPeering : Pulumi.CustomResource
     {

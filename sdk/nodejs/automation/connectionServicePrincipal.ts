@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     certificateThumbprint: fs.readFileSync("automation_certificate_test.thumb"),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Connection can be imported using the `resource id`, e.g. shell
  */
 export class ConnectionServicePrincipal extends pulumi.CustomResource {
     /**

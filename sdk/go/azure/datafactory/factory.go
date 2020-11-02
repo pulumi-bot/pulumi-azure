@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory can be imported using the `resource id`, e.g. shell
 type Factory struct {
 	pulumi.CustomResourceState
 

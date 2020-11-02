@@ -94,6 +94,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight HBase Clusters can be imported using the `resource id`, e.g. shell
 type HBaseCluster struct {
 	pulumi.CustomResourceState
 

@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     productType: "Standard",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Certificate Orders can be imported using the `resource id`, e.g. shell
  */
 export class CertificateOrder extends pulumi.CustomResource {
     /**

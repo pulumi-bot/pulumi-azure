@@ -40,6 +40,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Resource Group Template Deployments can be imported using the `resource id`, e.g. shell
 type ResourceGroupTemplateDeployment struct {
 	pulumi.CustomResourceState
 

@@ -40,6 +40,10 @@ class MeshLocalNetwork(pulumi.CustomResource):
             network_address_prefix="10.0.0.0/22")
         ```
 
+        ## Import
+
+        Service Fabric Mesh Local Network can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of this Service Fabric Mesh Local Network.

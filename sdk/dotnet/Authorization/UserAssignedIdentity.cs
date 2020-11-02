@@ -35,6 +35,10 @@ namespace Pulumi.Azure.Authorization
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// User Assigned Identities can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class UserAssignedIdentity : Pulumi.CustomResource
     {

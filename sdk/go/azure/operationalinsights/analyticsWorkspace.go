@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Workspaces can be imported using the `resource id`, e.g. shell
 type AnalyticsWorkspace struct {
 	pulumi.CustomResourceState
 

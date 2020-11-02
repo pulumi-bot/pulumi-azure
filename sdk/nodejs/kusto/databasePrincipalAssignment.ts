@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     role: "Viewer",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Kusto Database Principal Assignment can be imported using the `resource id`, e.g. shell
  */
 export class DatabasePrincipalAssignment extends pulumi.CustomResource {
     /**

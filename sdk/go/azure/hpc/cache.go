@@ -70,6 +70,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HPC Caches can be imported using the `resource id`, e.g. shell
 type Cache struct {
 	pulumi.CustomResourceState
 

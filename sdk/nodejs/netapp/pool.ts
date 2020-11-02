@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     sizeInTb: 4,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * NetApp Pool can be imported using the `resource id`, e.g. shell
  */
 export class Pool extends pulumi.CustomResource {
     /**

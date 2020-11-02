@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHubs can be imported using the `resource id`, e.g. shell
 type EventHub struct {
 	pulumi.CustomResourceState
 

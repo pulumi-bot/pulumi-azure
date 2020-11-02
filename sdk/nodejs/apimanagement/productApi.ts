@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleService.then(exampleService => exampleService.resourceGroupName),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Product API's can be imported using the `resource id`, e.g. shell
  */
 export class ProductApi extends pulumi.CustomResource {
     /**

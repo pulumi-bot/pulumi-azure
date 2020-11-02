@@ -71,6 +71,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CAA records can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class CaaRecord : Pulumi.CustomResource
     {

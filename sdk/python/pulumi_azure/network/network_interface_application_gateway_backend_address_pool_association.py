@@ -110,6 +110,12 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation(pulumi.Cus
             backend_address_pool_id=network.backend_address_pools[0].id)
         ```
 
+        ## Import
+
+        Associations between Network Interfaces and Application Gateway Backend Address Pools can be imported using the `resource id`, e.g. shell
+
+         -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_address_pool_id: The ID of the Application Gateway's Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.

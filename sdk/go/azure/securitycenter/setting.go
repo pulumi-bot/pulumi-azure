@@ -39,6 +39,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The setting can be imported using the `resource id`, e.g. shell
 type Setting struct {
 	pulumi.CustomResourceState
 

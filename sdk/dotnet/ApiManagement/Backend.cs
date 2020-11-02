@@ -11,6 +11,10 @@ namespace Pulumi.Azure.ApiManagement
 {
     /// <summary>
     /// Manages a backend within an API Management Service.
+    /// 
+    /// ## Import
+    /// 
+    /// API Management backends can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Backend : Pulumi.CustomResource
     {

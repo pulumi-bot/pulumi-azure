@@ -64,6 +64,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HDInsight Spark Clusters can be imported using the `resource id`, e.g. shell
  */
 export class SparkCluster extends pulumi.CustomResource {
     /**

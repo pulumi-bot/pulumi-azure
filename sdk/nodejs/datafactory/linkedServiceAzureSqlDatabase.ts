@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     connectionString: "data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Azure SQL Database Linked Service's can be imported using the `resource id`, e.g. shell
  */
 export class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     /**

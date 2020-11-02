@@ -49,6 +49,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The IoT Central Application can be imported using the `resource id`, e.g. shell
 type Application struct {
 	pulumi.CustomResourceState
 

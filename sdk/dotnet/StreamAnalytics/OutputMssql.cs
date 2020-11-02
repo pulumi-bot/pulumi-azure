@@ -63,6 +63,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Outputs to Microsoft SQL Server Database can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class OutputMssql : Pulumi.CustomResource
     {

@@ -47,6 +47,10 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Data Lake Gen2 File System's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.

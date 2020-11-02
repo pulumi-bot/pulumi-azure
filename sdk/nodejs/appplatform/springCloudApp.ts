@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Spring Cloud Application can be imported using the `resource id`, e.g. shell
  */
 export class SpringCloudApp extends pulumi.CustomResource {
     /**

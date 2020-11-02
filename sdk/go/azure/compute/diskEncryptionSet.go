@@ -13,6 +13,10 @@ import (
 // Manages a Disk Encryption Set.
 //
 // > **NOTE:** At this time the Key Vault used to store the Active Key for this Disk Encryption Set must have both Soft Delete & Purge Protection enabled - which are not yet supported by this provider.
+//
+// ## Import
+//
+// Disk Encryption Sets can be imported using the `resource id`, e.g. shell
 type DiskEncryptionSet struct {
 	pulumi.CustomResourceState
 

@@ -55,6 +55,10 @@ class Blob(pulumi.CustomResource):
             source=pulumi.FileAsset("some-local-file.zip"))
         ```
 
+        ## Import
+
+        Storage Blob's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_tier: The access tier of the storage blob. Possible values are `Archive`, `Cool` and `Hot`.

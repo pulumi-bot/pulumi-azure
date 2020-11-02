@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Bot Connection can be imported using the `resource id`, e.g. shell
 type Connection struct {
 	pulumi.CustomResourceState
 

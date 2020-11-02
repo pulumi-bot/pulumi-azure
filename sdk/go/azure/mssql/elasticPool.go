@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Elastic Pool can be imported using the `resource id`, e.g. shell
 type ElasticPool struct {
 	pulumi.CustomResourceState
 

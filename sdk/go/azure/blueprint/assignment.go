@@ -114,6 +114,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Blueprint Assignments can be imported using the `resource id`, e.g. shell
 type Assignment struct {
 	pulumi.CustomResourceState
 

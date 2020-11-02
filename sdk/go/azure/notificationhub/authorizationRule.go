@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Notification Hub Authorization Rule can be imported using the `resource id`, e.g. shell
 type AuthorizationRule struct {
 	pulumi.CustomResourceState
 

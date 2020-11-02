@@ -69,6 +69,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Maintenance Assignment can be imported using the `resource id`, e.g. shell
 type AssignmentDedicatedHost struct {
 	pulumi.CustomResourceState
 

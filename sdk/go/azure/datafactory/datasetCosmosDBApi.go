@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Azure Cosmos DB SQL API Dataset inside an Azure Data Factory.
+//
+// ## Import
+//
+// Data Factory Datasets can be imported using the `resource id`, e.g. shell
 type DatasetCosmosDBApi struct {
 	pulumi.CustomResourceState
 

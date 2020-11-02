@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  *     networkSecurityGroupId: exampleNetworkSecurityGroup.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnet `<->` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g. shell
  */
 export class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     /**

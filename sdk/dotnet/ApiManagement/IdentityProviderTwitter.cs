@@ -45,6 +45,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Twitter Identity Provider can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class IdentityProviderTwitter : Pulumi.CustomResource
     {

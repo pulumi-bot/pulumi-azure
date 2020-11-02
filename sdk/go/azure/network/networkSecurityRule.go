@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Security Rules can be imported using the `resource id`, e.g. shell
 type NetworkSecurityRule struct {
 	pulumi.CustomResourceState
 

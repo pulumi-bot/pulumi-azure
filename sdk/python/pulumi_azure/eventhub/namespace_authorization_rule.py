@@ -53,6 +53,10 @@ class NamespaceAuthorizationRule(pulumi.CustomResource):
             manage=False)
         ```
 
+        ## Import
+
+        ServiceBus Namespace authorization rules can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] listen: Grants listen access to this this Authorization Rule. Defaults to `false`.

@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Product Policy can be imported using the `resource id`, e.g. shell
  */
 export class ProductPolicy extends pulumi.CustomResource {
     /**

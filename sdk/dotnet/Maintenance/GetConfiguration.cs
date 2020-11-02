@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Maintenance
         /// <summary>
         /// Use this data source to access information about an existing Maintenance Configuration.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

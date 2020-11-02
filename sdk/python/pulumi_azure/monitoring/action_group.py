@@ -114,6 +114,10 @@ class ActionGroup(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Action Groups can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionGroupArmRoleReceiverArgs']]]] arm_role_receivers: One or more `arm_role_receiver` blocks as defined below.

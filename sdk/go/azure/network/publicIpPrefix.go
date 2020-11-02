@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Public IP Prefixes can be imported using the `resource id`, e.g. shell
 type PublicIpPrefix struct {
 	pulumi.CustomResourceState
 

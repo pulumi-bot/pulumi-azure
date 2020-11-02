@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Analytics Account can be imported using the `resource id`, e.g. shell
 type AnalyticsAccount struct {
 	pulumi.CustomResourceState
 

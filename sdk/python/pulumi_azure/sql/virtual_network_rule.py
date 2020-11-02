@@ -54,6 +54,10 @@ class VirtualNetworkRule(pulumi.CustomResource):
             subnet_id=subnet.id)
         ```
 
+        ## Import
+
+        SQL Virtual Network Rules can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ignore_missing_vnet_service_endpoint: Create the virtual network rule before the subnet has the virtual network service endpoint enabled. The default value is false.

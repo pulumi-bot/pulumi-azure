@@ -11,6 +11,10 @@ namespace Pulumi.Azure.AppInsights
 {
     /// <summary>
     /// Manages an Application Insights WebTest.
+    /// 
+    /// ## Import
+    /// 
+    /// Application Insights Web Tests can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class WebTest : Pulumi.CustomResource
     {

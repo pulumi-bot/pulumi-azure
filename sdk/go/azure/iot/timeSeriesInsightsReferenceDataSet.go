@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure IoT Time Series Insights Reference Data Set can be imported using the `resource id`, e.g. shell
 type TimeSeriesInsightsReferenceDataSet struct {
 	pulumi.CustomResourceState
 

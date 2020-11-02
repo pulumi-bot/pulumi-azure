@@ -71,6 +71,10 @@ class Service(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Healthcare Service can be imported using the resource`id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceAuthenticationConfigurationArgs']] authentication_configuration: An `authentication_configuration` block as defined below.

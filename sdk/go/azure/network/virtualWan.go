@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual WAN can be imported using the `resource id`, e.g. shell
 type VirtualWan struct {
 	pulumi.CustomResourceState
 

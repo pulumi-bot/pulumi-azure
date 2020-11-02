@@ -47,6 +47,10 @@ class Topic(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        EventGrid Topic's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TopicInputMappingDefaultValuesArgs']] input_mapping_default_values: A `input_mapping_default_values` block as defined below.

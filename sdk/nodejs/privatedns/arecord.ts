@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     records: ["10.0.180.17"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS A Records can be imported using the `resource id`, e.g. shell
  */
 export class ARecord extends pulumi.CustomResource {
     /**

@@ -80,6 +80,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer Outbound Rules can be imported using the `resource id`, e.g. shell
 type OutboundRule struct {
 	pulumi.CustomResourceState
 

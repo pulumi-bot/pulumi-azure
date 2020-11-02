@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Solutions can be imported using the `resource id`, e.g. shell
 type AnalyticsSolution struct {
 	pulumi.CustomResourceState
 

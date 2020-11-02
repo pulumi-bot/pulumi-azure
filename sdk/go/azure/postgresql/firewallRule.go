@@ -85,6 +85,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PostgreSQL Firewall Rule's can be imported using the `resource id`, e.g. shell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

@@ -121,6 +121,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Subscription Rule can be imported using the `resource id`, e.g. shell
     /// </summary>
     [Obsolete(@"azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule")]
     public partial class SubscriptionRule : Pulumi.CustomResource

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Key Vault Secret.
+//
+// ## Import
+//
+// Key Vault Secrets which are Enabled can be imported using the `resource id`, e.g. shell
 type Secret struct {
 	pulumi.CustomResourceState
 

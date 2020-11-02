@@ -59,6 +59,12 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Fallback Route can be imported using the `resource id`, e.g. shell
+ *
+ *  ~> **NOTE:** As there may only be a single fallback route per IoTHub, the id always ends with `/FallbackRoute/default`.
  */
 export class FallbackRoute extends pulumi.CustomResource {
     /**

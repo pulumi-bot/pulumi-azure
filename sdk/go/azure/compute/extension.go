@@ -148,6 +148,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Machine Extensions can be imported using the `resource id`, e.g. shell
 type Extension struct {
 	pulumi.CustomResourceState
 

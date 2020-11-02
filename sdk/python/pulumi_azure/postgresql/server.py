@@ -69,6 +69,10 @@ class Server(pulumi.CustomResource):
             ssl_minimal_tls_version_enforced="TLS1_2")
         ```
 
+        ## Import
+
+        PostgreSQL Server's can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the PostgreSQL Server. Required when `create_mode` is `Default`. Changing this forces a new resource to be created.

@@ -83,6 +83,10 @@ class ManagementPolicy(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Storage Account Management Policies can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementPolicyRuleArgs']]]] rules: A `rule` block as documented below.

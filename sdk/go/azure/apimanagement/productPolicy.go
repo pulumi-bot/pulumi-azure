@@ -47,6 +47,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Product Policy can be imported using the `resource id`, e.g. shell
 type ProductPolicy struct {
 	pulumi.CustomResourceState
 

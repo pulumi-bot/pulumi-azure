@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS CName Records can be imported using the `resource id`, e.g. shell
 type CnameRecord struct {
 	pulumi.CustomResourceState
 

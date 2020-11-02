@@ -73,6 +73,10 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SQL Failover Groups can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class FailoverGroup : Pulumi.CustomResource
     {

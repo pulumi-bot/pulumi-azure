@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PostgreSQL Server's can be imported using the `resource id`, e.g. shell
 type Server struct {
 	pulumi.CustomResourceState
 

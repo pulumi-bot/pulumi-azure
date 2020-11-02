@@ -41,6 +41,10 @@ namespace Pulumi.Azure.ServiceFabric
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Fabric Mesh Secret Value can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class MeshSecretValue : Pulumi.CustomResource
     {

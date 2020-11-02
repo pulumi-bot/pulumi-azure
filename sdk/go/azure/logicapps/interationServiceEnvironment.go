@@ -112,6 +112,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Integration Service Environments can be imported using the `resource id`, e.g. shell
 type InterationServiceEnvironment struct {
 	pulumi.CustomResourceState
 

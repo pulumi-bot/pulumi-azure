@@ -161,6 +161,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// App Service Slots can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Slot : Pulumi.CustomResource
     {

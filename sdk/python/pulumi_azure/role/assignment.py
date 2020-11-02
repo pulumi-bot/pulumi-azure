@@ -113,6 +113,12 @@ class Assignment(pulumi.CustomResource):
             principal_id=example_client_config.object_id)
         ```
 
+        ## Import
+
+        Role Assignments can be imported using the `resource id`, e.g. shell
+
+         ~> **NOTE:** The format of `resource id` could be different for different kinds of `scope`- for scope `Subscription`, the id format is `/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000` - for scope `Resource Group`, the id format is `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique UUID/GUID for this Role Assignment - one will be generated if not specified. Changing this forces a new resource to be created.

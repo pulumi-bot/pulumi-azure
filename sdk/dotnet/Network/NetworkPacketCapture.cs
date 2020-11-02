@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Network
 {
     /// <summary>
     /// Configures Network Packet Capturing against a Virtual Machine using a Network Watcher.
+    /// 
+    /// ## Import
+    /// 
+    /// Packet Captures can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class NetworkPacketCapture : Pulumi.CustomResource
     {

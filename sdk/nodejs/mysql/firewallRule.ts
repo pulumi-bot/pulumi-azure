@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     endIpAddress: "0.0.0.0",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MySQL Firewall Rule's can be imported using the `resource id`, e.g. shell
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory can be imported using the `resource id`, e.g. shell
  */
 export class Factory extends pulumi.CustomResource {
     /**

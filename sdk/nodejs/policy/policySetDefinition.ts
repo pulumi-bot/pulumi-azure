@@ -40,6 +40,12 @@ import * as utilities from "../utilities";
  *     policyType: "Custom",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Policy Set Definitions can be imported using the `resource id`, e.g. shell
+ *
+ *  or shell
  */
 export class PolicySetDefinition extends pulumi.CustomResource {
     /**

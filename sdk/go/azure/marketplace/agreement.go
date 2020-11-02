@@ -36,6 +36,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Marketplace Agreement can be imported using the `resource id`, e.g. shell
 type Agreement struct {
 	pulumi.CustomResourceState
 

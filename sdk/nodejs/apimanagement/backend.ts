@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a backend within an API Management Service.
+ *
+ * ## Import
+ *
+ * API Management backends can be imported using the `resource id`, e.g. shell
  */
 export class Backend extends pulumi.CustomResource {
     /**

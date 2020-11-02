@@ -72,6 +72,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Services can be imported using the `resource id`, e.g. shell
 type AppService struct {
 	pulumi.CustomResourceState
 

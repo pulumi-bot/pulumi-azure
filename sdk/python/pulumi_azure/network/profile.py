@@ -62,6 +62,10 @@ class Profile(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Network Profile can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProfileContainerNetworkInterfaceArgs']] container_network_interface: A `container_network_interface` block as documented below.

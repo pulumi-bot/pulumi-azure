@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     records: ["test.example.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS PTR Records can be imported using the `resource id`, e.g. shell
  */
 export class PTRRecord extends pulumi.CustomResource {
     /**

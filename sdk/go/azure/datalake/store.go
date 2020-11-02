@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Store's can be imported using the `resource id`, e.g. shell
 type Store struct {
 	pulumi.CustomResourceState
 

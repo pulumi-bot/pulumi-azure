@@ -136,6 +136,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHubs can be imported using the `resource id`, e.g. shell
 type IoTHub struct {
 	pulumi.CustomResourceState
 

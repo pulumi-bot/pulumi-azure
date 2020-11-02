@@ -40,6 +40,10 @@ namespace Pulumi.Azure.Maintenance
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Maintenance Configuration can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

@@ -127,6 +127,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHubs can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class IoTHub : Pulumi.CustomResource
     {

@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Explorer Cluster Principal Assignments can be imported using the `resource id`, e.g. shell
 type ClusterPrincipalAssignment struct {
 	pulumi.CustomResourceState
 

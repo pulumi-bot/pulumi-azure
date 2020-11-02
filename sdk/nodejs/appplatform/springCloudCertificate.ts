@@ -97,6 +97,10 @@ import * as utilities from "../utilities";
  *     keyVaultCertificateId: exampleCertificate.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Spring Cloud Certificate can be imported using the `resource id`, e.g. shell
  */
 export class SpringCloudCertificate extends pulumi.CustomResource {
     /**

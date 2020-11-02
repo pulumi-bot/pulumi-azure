@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Application Security Groups can be imported using the `resource id`, e.g. shell
 type ApplicationSecurityGroup struct {
 	pulumi.CustomResourceState
 

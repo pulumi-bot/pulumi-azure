@@ -77,6 +77,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Virtual Network Rules can be imported using the `resource id`, e.g. shell
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 

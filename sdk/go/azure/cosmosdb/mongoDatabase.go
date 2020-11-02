@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cosmos Mongo Database can be imported using the `resource id`, e.g. shell
 type MongoDatabase struct {
 	pulumi.CustomResourceState
 

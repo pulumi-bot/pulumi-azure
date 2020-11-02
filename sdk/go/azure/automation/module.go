@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Automation Module.
+//
+// ## Import
+//
+// Automation Modules can be imported using the `resource id`, e.g. shell
 type Module struct {
 	pulumi.CustomResourceState
 

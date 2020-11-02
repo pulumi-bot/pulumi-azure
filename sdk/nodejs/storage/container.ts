@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     containerAccessType: "private",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Storage Containers can be imported using the `resource id`, e.g. shell
  */
 export class Container extends pulumi.CustomResource {
     /**

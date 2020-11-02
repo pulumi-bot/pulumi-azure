@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory MySQL Datasets can be imported using the `resource id`, e.g. shell
 type DatasetMysql struct {
 	pulumi.CustomResourceState
 

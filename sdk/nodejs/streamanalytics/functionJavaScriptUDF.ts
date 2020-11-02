@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics JavaScript UDF Functions can be imported using the `resource id`, e.g. shell
  */
 export class FunctionJavaScriptUDF extends pulumi.CustomResource {
     /**

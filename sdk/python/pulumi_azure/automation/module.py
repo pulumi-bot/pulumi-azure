@@ -27,6 +27,10 @@ class Module(pulumi.CustomResource):
         """
         Manages a Automation Module.
 
+        ## Import
+
+        Automation Modules can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Module is created. Changing this forces a new resource to be created.

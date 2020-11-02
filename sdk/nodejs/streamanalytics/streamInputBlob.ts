@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Stream Input Blob's can be imported using the `resource id`, e.g. shell
  */
 export class StreamInputBlob extends pulumi.CustomResource {
     /**

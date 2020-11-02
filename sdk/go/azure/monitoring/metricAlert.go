@@ -91,6 +91,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Metric Alerts can be imported using the `resource id`, e.g. shell
 type MetricAlert struct {
 	pulumi.CustomResourceState
 

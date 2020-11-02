@@ -59,6 +59,10 @@ import (
 // ```
 //
 // > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
+//
+// ## Import
+//
+// Analysis Services Server can be imported using the `resource id`, e.g. shell
 type Server struct {
 	pulumi.CustomResourceState
 

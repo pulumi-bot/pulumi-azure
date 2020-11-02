@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *     storageAccountAccessKey: exampleAccount.primaryAccessKey,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Function Apps Deployment Slots can be imported using the `resource id`, e.g. shell
  */
 export class FunctionAppSlot extends pulumi.CustomResource {
     /**

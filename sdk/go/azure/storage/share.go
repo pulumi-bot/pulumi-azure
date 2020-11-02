@@ -65,6 +65,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Shares can be imported using the `resource id`, e.g. shell
 type Share struct {
 	pulumi.CustomResourceState
 

@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  *     nullValue: "NULL",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Datasets can be imported using the `resource id`, e.g. shell
  */
 export class DatasetDelimitedText extends pulumi.CustomResource {
     /**

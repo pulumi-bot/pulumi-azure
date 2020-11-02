@@ -61,6 +61,10 @@ class DatabasePrincipal(pulumi.CustomResource):
             object_id=current.client_id)
         ```
 
+        ## Import
+
+        Kusto Database Principals can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The Client ID that owns the specified `object_id`. Changing this forces a new resource to be created.

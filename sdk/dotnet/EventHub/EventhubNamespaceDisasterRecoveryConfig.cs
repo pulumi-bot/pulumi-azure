@@ -48,6 +48,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventHubs can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class EventhubNamespaceDisasterRecoveryConfig : Pulumi.CustomResource
     {

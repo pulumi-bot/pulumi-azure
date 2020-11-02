@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Compute
         /// <summary>
         /// Use this data source to access information about existing Versions of a Shared Image within a Shared Image Gallery.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

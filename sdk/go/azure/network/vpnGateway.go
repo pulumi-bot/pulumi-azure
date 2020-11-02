@@ -69,6 +69,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VPN Gateways can be imported using the `resource id`, e.g. shell
 type VpnGateway struct {
 	pulumi.CustomResourceState
 

@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
  * Manages a Linked Service (connection) between a SFTP Server and Azure Data Factory.
  *
  * > **Note:** All arguments including the client secret will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ *
+ * ## Import
+ *
+ * Data Factory Linked Service's can be imported using the `resource id`, e.g. shell
  */
 export class LinkedServiceCosmosDb extends pulumi.CustomResource {
     /**

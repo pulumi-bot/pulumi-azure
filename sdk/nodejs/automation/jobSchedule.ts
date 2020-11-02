@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     scheduleName: "hour",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Job Schedules can be imported using the `resource id`, e.g. shell
  */
 export class JobSchedule extends pulumi.CustomResource {
     /**

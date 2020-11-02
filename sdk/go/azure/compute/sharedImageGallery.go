@@ -47,6 +47,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Shared Image Galleries can be imported using the `resource id`, e.g. shell
 type SharedImageGallery struct {
 	pulumi.CustomResourceState
 

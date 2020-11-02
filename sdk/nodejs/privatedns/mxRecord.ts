@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS MX Records can be imported using the `resource id`, e.g. shell
  */
 export class MxRecord extends pulumi.CustomResource {
     /**

@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub Device Provisioning Service Shared Access Policies can be imported using the `resource id`, e.g. shell
 type DpsSharedAccessPolicy struct {
 	pulumi.CustomResourceState
 

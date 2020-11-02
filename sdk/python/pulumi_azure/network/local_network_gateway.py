@@ -45,6 +45,10 @@ class LocalNetworkGateway(pulumi.CustomResource):
             address_spaces=["10.0.0.0/16"])
         ```
 
+        ## Import
+
+        Local Network Gateways can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_spaces: The list of string CIDRs representing the

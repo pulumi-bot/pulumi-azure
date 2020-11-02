@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Kusto
 {
     /// <summary>
     /// Manages a Kusto (also known as Azure Data Explorer) Attached Database Configuration
+    /// 
+    /// ## Import
+    /// 
+    /// Kusto Attached Database Configurations can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class AttachedDatabaseConfiguration : Pulumi.CustomResource
     {

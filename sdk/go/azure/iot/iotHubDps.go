@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoT Device Provisioning Service can be imported using the `resource id`, e.g. shell
 type IotHubDps struct {
 	pulumi.CustomResourceState
 

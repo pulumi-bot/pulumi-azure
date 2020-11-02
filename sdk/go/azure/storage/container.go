@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Containers can be imported using the `resource id`, e.g. shell
 type Container struct {
 	pulumi.CustomResourceState
 

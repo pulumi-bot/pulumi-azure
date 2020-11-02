@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     value: 1234,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Int Variable can be imported using the `resource id`, e.g. shell
  */
 export class IntVariable extends pulumi.CustomResource {
     /**

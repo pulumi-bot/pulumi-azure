@@ -14,6 +14,7 @@ namespace Pulumi.Azure.DataLake
         /// <summary>
         /// Use this data source to access information about an existing Data Lake Store.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

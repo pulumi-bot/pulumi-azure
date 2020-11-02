@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Network Interfaces can be imported using the `resource id`, e.g. shell
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**

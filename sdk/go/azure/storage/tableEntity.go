@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Entity within a Table in an Azure Storage Account.
+//
+// ## Import
+//
+// Entities within a Table in an Azure Storage Account can be imported using the `resource id`, e.g. shell
 type TableEntity struct {
 	pulumi.CustomResourceState
 

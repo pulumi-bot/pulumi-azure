@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The App Service Environment can be imported using the `resource id`, e.g. shell
  */
 export class Environment extends pulumi.CustomResource {
     /**

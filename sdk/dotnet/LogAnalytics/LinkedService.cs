@@ -53,6 +53,10 @@ namespace Pulumi.Azure.LogAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Analytics Workspaces can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class LinkedService : Pulumi.CustomResource
     {

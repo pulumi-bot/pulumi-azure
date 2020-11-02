@@ -90,6 +90,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Networks can be imported using the `resource id`, e.g. shell
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 

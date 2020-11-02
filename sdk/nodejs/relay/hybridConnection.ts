@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     userMetadata: "testmetadata",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Relay Hybrid Connection's can be imported using the `resource id`, e.g. shell
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

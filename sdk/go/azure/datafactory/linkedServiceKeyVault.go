@@ -64,6 +64,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Key Vault Linked Service's can be imported using the `resource id`, e.g. shell
 type LinkedServiceKeyVault struct {
 	pulumi.CustomResourceState
 

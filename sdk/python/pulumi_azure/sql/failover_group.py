@@ -67,6 +67,10 @@ class FailoverGroup(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        SQL Failover Groups can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] databases: A list of database ids to add to the failover group

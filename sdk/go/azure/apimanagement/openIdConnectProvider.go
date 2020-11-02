@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management OpenID Connect Providers can be imported using the `resource id`, e.g. shell
 type OpenIdConnectProvider struct {
 	pulumi.CustomResourceState
 

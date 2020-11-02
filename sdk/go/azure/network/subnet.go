@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Subnets can be imported using the `resource id`, e.g. shell
 type Subnet struct {
 	pulumi.CustomResourceState
 

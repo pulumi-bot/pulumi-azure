@@ -76,6 +76,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Reference Input Blob's can be imported using the `resource id`, e.g. shell
 type ReferenceInputBlob struct {
 	pulumi.CustomResourceState
 

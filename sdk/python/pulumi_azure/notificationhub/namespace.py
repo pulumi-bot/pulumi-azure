@@ -42,6 +42,10 @@ class Namespace(pulumi.CustomResource):
             sku_name="Free")
         ```
 
+        ## Import
+
+        Notification Hub Namespaces can be imported using the `resource id`, e.g. shell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Is this Notification Hub Namespace enabled? Defaults to `true`.

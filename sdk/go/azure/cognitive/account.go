@@ -47,6 +47,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cognitive Service Accounts can be imported using the `resource id`, e.g. shell
 type Account struct {
 	pulumi.CustomResourceState
 

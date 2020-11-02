@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  *     subnetId: exampleSubnet.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Virtual Network Associations can be imported using the `resource id`, e.g. shell
  */
 export class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
     /**

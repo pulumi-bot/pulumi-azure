@@ -43,6 +43,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Dedicated Hosts can be imported using the `resource id`, e.g. shell
     /// </summary>
     public partial class DedicatedHost : Pulumi.CustomResource
     {
