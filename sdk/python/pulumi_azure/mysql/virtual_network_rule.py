@@ -60,6 +60,10 @@ class VirtualNetworkRule(pulumi.CustomResource):
             subnet_id=internal.id)
         ```
 
+        ## Import
+
+        MySQL Virtual Network Rules can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the MySQL Virtual Network Rule. Cannot be empty and must only contain alphanumeric characters and hyphens. Cannot start with a number, and cannot start or end with a hyphen. Changing this forces a new resource to be created.

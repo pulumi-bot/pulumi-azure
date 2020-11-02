@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     appSecret: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Facebook Identity Provider can be imported using the `resource id`, e.g. ell
  */
 export class IdentityProviderFacebook extends pulumi.CustomResource {
     /**

@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CDN Endpoints can be imported using the `resource id`, e.g. ell
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

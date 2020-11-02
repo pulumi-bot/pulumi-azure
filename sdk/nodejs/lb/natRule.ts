@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     frontendIpConfigurationName: "PublicIPAddress",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer NAT Rules can be imported using the `resource id`, e.g. ell
  */
 export class NatRule extends pulumi.CustomResource {
     /**

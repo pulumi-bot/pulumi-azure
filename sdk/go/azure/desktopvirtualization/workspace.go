@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Desktop Workspaces can be imported using the `resource id`, e.g.
 type Workspace struct {
 	pulumi.CustomResourceState
 

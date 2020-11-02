@@ -55,6 +55,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TXT records can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class TxtRecord : Pulumi.CustomResource
     {

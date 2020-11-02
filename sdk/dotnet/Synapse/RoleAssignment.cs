@@ -70,6 +70,12 @@ namespace Pulumi.Azure.Synapse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Synapse Role Assignment can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to Terraform - and is of the format `{synapseWorkspaceId}|{synapseRoleAssignmentId}`.
     /// </summary>
     public partial class RoleAssignment : Pulumi.CustomResource
     {

@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Directories within an Azure Storage File Share can be imported using the `resource id`, e.g. ell
 type ShareDirectory struct {
 	pulumi.CustomResourceState
 

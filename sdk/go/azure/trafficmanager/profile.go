@@ -68,6 +68,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Traffic Manager Profiles can be imported using the `resource id`, e.g. ell
+//
 // Deprecated: azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile
 type Profile struct {
 	pulumi.CustomResourceState

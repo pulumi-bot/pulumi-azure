@@ -14,6 +14,7 @@ namespace Pulumi.Azure.RecoveryServices
         /// <summary>
         /// Use this data source to access information about an existing Recovery Services Vault.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -35,6 +35,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// networks can be imported using the `resource id`, e.g. ell
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 

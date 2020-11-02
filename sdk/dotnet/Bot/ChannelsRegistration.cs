@@ -38,6 +38,10 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Bot Channels Registration can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ChannelsRegistration : Pulumi.CustomResource
     {

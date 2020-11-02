@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     password: "bar",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Linked Service's can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServiceSftp extends pulumi.CustomResource {
     /**

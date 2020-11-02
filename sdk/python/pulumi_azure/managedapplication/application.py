@@ -65,6 +65,10 @@ class Application(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Managed Application can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_definition_id: The application definition ID to deploy.

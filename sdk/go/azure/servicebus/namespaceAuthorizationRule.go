@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ServiceBus Namespace authorization rules can be imported using the `resource id`, e.g. ell
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 

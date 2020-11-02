@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     location: primary.location,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Site Recovery Fabric can be imported using the `resource id`, e.g. ell
  */
 export class Fabric extends pulumi.CustomResource {
     /**

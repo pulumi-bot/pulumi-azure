@@ -52,6 +52,10 @@ namespace Pulumi.Azure.NotificationHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Notification Hub Authorization Rule can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class AuthorizationRule : Pulumi.CustomResource
     {

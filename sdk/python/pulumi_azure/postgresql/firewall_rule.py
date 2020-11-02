@@ -58,6 +58,10 @@ class FirewallRule(pulumi.CustomResource):
             end_ip_address="40.112.255.255")
         ```
 
+        ## Import
+
+        PostgreSQL Firewall Rule's can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_ip_address: Specifies the End IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.

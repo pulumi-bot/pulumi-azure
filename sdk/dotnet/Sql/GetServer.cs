@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Sql
         /// <summary>
         /// Use this data source to access information about an existing SQL Azure Database Server.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

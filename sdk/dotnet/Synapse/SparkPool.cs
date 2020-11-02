@@ -70,6 +70,10 @@ namespace Pulumi.Azure.Synapse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Synapse Spark Pool can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SparkPool : Pulumi.CustomResource
     {

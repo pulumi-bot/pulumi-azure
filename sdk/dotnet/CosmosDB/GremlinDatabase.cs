@@ -37,6 +37,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CosmosDB Gremlin Databases can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class GremlinDatabase : Pulumi.CustomResource
     {

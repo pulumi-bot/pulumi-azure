@@ -104,6 +104,10 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Storage Account Management Policies can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ManagementPolicy : Pulumi.CustomResource
     {

@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Route can be imported using the `resource id`, e.g. ell
  */
 export class Route extends pulumi.CustomResource {
     /**

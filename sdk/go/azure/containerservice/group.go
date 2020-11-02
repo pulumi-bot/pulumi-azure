@@ -70,6 +70,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Container Group's can be imported using the `resource id`, e.g. ell
 type Group struct {
 	pulumi.CustomResourceState
 

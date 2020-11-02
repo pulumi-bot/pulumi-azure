@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     url: "https://datalakestoragegen2",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Data Lake Storage Gen2 Linked Services can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
     /**

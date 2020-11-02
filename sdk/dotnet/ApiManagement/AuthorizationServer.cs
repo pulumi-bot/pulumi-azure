@@ -46,6 +46,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Authorization Servers can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class AuthorizationServer : Pulumi.CustomResource
     {

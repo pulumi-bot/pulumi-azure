@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     dependsOn: [exampleDscConfiguration],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation DSC Node Configuration's can be imported using the `resource id`, e.g. ell
  */
 export class DscNodeConfiguration extends pulumi.CustomResource {
     /**

@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Automation Credentials can be imported using the `resource id`, e.g. ell
 type Credential struct {
 	pulumi.CustomResourceState
 

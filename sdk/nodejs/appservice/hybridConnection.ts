@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     sendKeyName: "exampleSharedAccessKey",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Hybrid Connections can be imported using the `resource id`, e.g. ell
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**

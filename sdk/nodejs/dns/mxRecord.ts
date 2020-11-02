@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MX records can be imported using the `resource id`, e.g. ell
  */
 export class MxRecord extends pulumi.CustomResource {
     /**

@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Azure Cosmos DB SQL API Dataset inside an Azure Data Factory.
+ *
+ * ## Import
+ *
+ * Data Factory Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetCosmosDBApi extends pulumi.CustomResource {
     /**

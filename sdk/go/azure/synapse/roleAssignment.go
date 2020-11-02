@@ -85,6 +85,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Synapse Role Assignment can be imported using the `resource id`, e.g. ell
+//
+//  -> **NOTE:** This ID is specific to Terraform - and is of the format `{synapseWorkspaceId}|{synapseRoleAssignmentId}`.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 

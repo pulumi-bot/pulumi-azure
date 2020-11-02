@@ -45,6 +45,10 @@ class IdentityProviderTwitter(pulumi.CustomResource):
             api_secret_key="00000000000000000000000000000000")
         ```
 
+        ## Import
+
+        API Management Twitter Identity Provider can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: App Consumer API key for Twitter.

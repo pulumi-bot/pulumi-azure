@@ -53,6 +53,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Stream Input EventHub's can be imported using the `resource id`, e.g. ell
  */
 export class StreamInputEventHub extends pulumi.CustomResource {
     /**

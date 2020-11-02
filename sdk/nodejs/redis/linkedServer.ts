@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  *     serverRole: "Secondary",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Rediss can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServer extends pulumi.CustomResource {
     /**

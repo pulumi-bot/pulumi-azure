@@ -53,6 +53,10 @@ import * as utilities from "../utilities";
  *     dependsOn: [exampleAssignment],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Share Data Lake Gen1 Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetDataLakeGen1 extends pulumi.CustomResource {
     /**

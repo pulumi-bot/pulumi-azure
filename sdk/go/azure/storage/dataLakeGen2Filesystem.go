@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Gen2 File System's can be imported using the `resource id`, e.g. ell
 type DataLakeGen2Filesystem struct {
 	pulumi.CustomResourceState
 

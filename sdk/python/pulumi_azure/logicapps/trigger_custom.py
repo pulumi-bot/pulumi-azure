@@ -46,6 +46,12 @@ class TriggerCustom(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        Logic App Custom Triggers can be imported using the `resource id`, e.g. ell
+
+         -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: Specifies the JSON Blob defining the Body of this Custom Trigger.

@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS AAAA Records can be imported using the `resource id`, e.g. ell
 type AAAARecord struct {
 	pulumi.CustomResourceState
 

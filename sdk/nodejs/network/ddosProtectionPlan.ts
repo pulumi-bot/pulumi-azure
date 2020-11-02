@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure DDoS Protection Plan can be imported using the `resource id`, e.g. ell
  */
 export class DdosProtectionPlan extends pulumi.CustomResource {
     /**

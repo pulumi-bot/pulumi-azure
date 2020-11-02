@@ -50,6 +50,10 @@ class TimeSeriesInsightsReferenceDataSet(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Azure IoT Time Series Insights Reference Data Set can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_string_comparison_behavior: The comparison behavior that will be used to compare keys. Valid values include `Ordinal` and `OrdinalIgnoreCase`. Defaults to `Ordinal`.

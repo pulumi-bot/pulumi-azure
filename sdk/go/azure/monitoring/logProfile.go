@@ -81,6 +81,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A Log Profile can be imported using the `resource id`, e.g. ell
 type LogProfile struct {
 	pulumi.CustomResourceState
 

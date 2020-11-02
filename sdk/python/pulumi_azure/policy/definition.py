@@ -76,6 +76,12 @@ class Definition(pulumi.CustomResource):
             policy_type="Custom")
         ```
 
+        ## Import
+
+        Policy Definitions can be imported using the `policy name`, e.g. ell
+
+         or ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the policy definition.

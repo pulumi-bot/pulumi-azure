@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an App Service certificate.
+//
+// ## Import
+//
+// App Service Certificates can be imported using the `resource id`, e.g. ell
 type Certificate struct {
 	pulumi.CustomResourceState
 

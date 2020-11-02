@@ -72,6 +72,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer NAT Rules can be imported using the `resource id`, e.g. ell
 type NatRule struct {
 	pulumi.CustomResourceState
 

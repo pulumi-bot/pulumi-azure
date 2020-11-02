@@ -41,6 +41,12 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Logic App HTTP Actions can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  -&gt; **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
     /// </summary>
     public partial class ActionHttp : Pulumi.CustomResource
     {

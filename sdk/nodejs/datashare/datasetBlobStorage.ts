@@ -59,6 +59,10 @@ import * as utilities from "../utilities";
  *     dependsOn: [exampleAssignment],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Share Blob Storage Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetBlobStorage extends pulumi.CustomResource {
     /**

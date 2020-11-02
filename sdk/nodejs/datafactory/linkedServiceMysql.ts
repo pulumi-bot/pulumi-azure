@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *     connectionString: "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory MySql Linked Service's can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServiceMysql extends pulumi.CustomResource {
     /**

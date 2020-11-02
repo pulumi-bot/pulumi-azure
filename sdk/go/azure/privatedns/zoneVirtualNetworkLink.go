@@ -49,6 +49,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS Zone Virtual Network Links can be imported using the `resource id`, e.g. ell
 type ZoneVirtualNetworkLink struct {
 	pulumi.CustomResourceState
 

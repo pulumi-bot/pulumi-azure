@@ -49,6 +49,10 @@ class GetSystemTopic(pulumi.CustomResource):
             topic_type="Microsoft.Storage.StorageAccounts")
         ```
 
+        ## Import
+
+        Event Grid System Topic can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure Region where the Event Grid System Topic should exist. Changing this forces a new Event Grid System Topic to be created.

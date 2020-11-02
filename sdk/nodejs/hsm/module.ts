@@ -83,6 +83,10 @@ import * as utilities from "../utilities";
  *     dependsOn: [exampleVirtualNetworkGateway],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Dedicated Hardware Security Module can be imported using the `resource id`, e.g. ell
  */
 export class Module extends pulumi.CustomResource {
     /**

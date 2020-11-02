@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Local Network Gateways can be imported using the `resource id`, e.g. ell
 type LocalNetworkGateway struct {
 	pulumi.CustomResourceState
 

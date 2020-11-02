@@ -53,6 +53,12 @@ namespace Pulumi.Azure.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Recovery Services Protected VMs can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  Note the ID requires quoting as there are semicolons
     /// </summary>
     public partial class ProtectedVM : Pulumi.CustomResource
     {

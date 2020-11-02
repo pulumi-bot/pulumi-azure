@@ -20,6 +20,10 @@ import * as utilities from "../utilities";
  *     networkAddressPrefix: "10.0.0.0/22",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Fabric Mesh Local Network can be imported using the `resource id`, e.g. ell
  */
 export class MeshLocalNetwork extends pulumi.CustomResource {
     /**

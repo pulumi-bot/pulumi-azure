@@ -78,6 +78,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CosmosDB Accounts can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

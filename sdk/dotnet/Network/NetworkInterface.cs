@@ -62,6 +62,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network Interfaces can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {

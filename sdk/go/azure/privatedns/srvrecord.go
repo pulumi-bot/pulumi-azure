@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS SRV Records can be imported using the `resource id`, e.g. ell
 type SRVRecord struct {
 	pulumi.CustomResourceState
 

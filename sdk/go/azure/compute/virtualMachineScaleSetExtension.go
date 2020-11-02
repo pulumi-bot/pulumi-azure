@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Machine Scale Set Extensions can be imported using the `resource id`, e.g. ell
 type VirtualMachineScaleSetExtension struct {
 	pulumi.CustomResourceState
 

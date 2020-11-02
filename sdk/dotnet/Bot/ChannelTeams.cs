@@ -46,6 +46,10 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Microsoft Teams Integration for a Bot Channel can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ChannelTeams : Pulumi.CustomResource
     {

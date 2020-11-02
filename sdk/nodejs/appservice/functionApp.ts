@@ -101,6 +101,10 @@ import * as utilities from "../utilities";
  *     osType: "linux",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Function Apps can be imported using the `resource id`, e.g. ell
  */
 export class FunctionApp extends pulumi.CustomResource {
     /**

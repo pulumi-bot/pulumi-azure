@@ -68,6 +68,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// App Services can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class AppService : Pulumi.CustomResource
     {

@@ -50,6 +50,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure IoT Time Series Insights Reference Data Set can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class TimeSeriesInsightsReferenceDataSet : Pulumi.CustomResource
     {

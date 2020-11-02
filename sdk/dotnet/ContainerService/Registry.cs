@@ -42,6 +42,10 @@ namespace Pulumi.Azure.ContainerService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Registries can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {

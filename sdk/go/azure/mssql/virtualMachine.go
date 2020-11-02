@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Sql Virtual Machines can be imported using the `resource id`, e.g. ell
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 

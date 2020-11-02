@@ -173,6 +173,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Slots can be imported using the `resource id`, e.g. ell
 type Slot struct {
 	pulumi.CustomResourceState
 

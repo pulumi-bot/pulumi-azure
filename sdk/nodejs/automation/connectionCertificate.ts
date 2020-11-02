@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Automation Connection with type `Azure`.
+ *
+ * ## Import
+ *
+ * Automation Connection can be imported using the `resource id`, e.g. ell
  */
 export class ConnectionCertificate extends pulumi.CustomResource {
     /**

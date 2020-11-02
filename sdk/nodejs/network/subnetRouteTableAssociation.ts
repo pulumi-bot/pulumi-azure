@@ -39,6 +39,10 @@ import * as utilities from "../utilities";
  *     routeTableId: exampleRouteTable.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnet Route Table Associations can be imported using the `resource id` of the Subnet, e.g. ell
  */
 export class SubnetRouteTableAssociation extends pulumi.CustomResource {
     /**

@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     dedicatedHostId: exampleDedicatedHost.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Maintenance Assignment can be imported using the `resource id`, e.g. ell
  */
 export class AssignmentDedicatedHost extends pulumi.CustomResource {
     /**

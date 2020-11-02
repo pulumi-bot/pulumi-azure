@@ -55,6 +55,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Management Locks can be imported using the `resource id`, e.g. ell
+ *
  * @deprecated azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock
  */
 export class ManangementLock extends pulumi.CustomResource {

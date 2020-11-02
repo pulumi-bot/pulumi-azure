@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DevTest Virtual Networks can be imported using the `resource id`, e.g. ell
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 

@@ -53,6 +53,10 @@ namespace Pulumi.Azure.LogAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Analytics Linked Storage Accounts can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class LinkedStorageAccount : Pulumi.CustomResource
     {

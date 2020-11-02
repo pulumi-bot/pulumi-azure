@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Healthcare Service can be imported using the resource`id`, e.g. ell
  */
 export class Service extends pulumi.CustomResource {
     /**

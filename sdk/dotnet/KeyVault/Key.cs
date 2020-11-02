@@ -83,6 +83,10 @@ namespace Pulumi.Azure.KeyVault
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Key Vault Key which is Enabled can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {

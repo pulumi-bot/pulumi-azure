@@ -119,6 +119,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Key Vault Certificates can be imported using the `resource id`, e.g. ell
+ *
  * @deprecated azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate
  */
 export class Certifiate extends pulumi.CustomResource {

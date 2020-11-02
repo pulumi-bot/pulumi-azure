@@ -97,6 +97,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// AAAA records can be imported using the `resource id`, e.g. ell
 type AaaaRecord struct {
 	pulumi.CustomResourceState
 

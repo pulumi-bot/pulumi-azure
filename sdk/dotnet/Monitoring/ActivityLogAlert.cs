@@ -76,6 +76,10 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Activity log alerts can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ActivityLogAlert : Pulumi.CustomResource
     {

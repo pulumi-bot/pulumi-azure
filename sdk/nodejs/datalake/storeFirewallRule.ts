@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     endIpAddress: "2.3.4.5",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Lake Store Firewall Rules can be imported using the `resource id`, e.g. ell
  */
 export class StoreFirewallRule extends pulumi.CustomResource {
     /**

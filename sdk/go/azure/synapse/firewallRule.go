@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Synapse Firewall Rule can be imported using the `resource id`, e.g. ell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

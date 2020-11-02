@@ -60,6 +60,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Output ServiceBus Queue's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class OutputServiceBusQueue : Pulumi.CustomResource
     {

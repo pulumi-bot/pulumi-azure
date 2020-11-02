@@ -35,6 +35,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Factory : Pulumi.CustomResource
     {

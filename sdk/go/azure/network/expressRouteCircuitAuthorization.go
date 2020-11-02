@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ExpressRoute Circuit Authorizations can be imported using the `resource id`, e.g. ell
 type ExpressRouteCircuitAuthorization struct {
 	pulumi.CustomResourceState
 

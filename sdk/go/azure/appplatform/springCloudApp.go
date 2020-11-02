@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Spring Cloud Application can be imported using the `resource id`, e.g. ell
 type SpringCloudApp struct {
 	pulumi.CustomResourceState
 

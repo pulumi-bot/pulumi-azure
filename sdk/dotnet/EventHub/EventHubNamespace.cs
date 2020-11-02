@@ -41,6 +41,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventHub Namespaces can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class EventHubNamespace : Pulumi.CustomResource
     {

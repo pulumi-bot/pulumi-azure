@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     remoteVirtualNetworkId: exampleVirtualNetwork.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Hub Connection's can be imported using the `resource id`, e.g. ell
  */
 export class VirtualHubConnection extends pulumi.CustomResource {
     /**

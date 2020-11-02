@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  * ```
  *
  * > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
+ *
+ * ## Import
+ *
+ * Analysis Services Server can be imported using the `resource id`, e.g. ell
  */
 export class Server extends pulumi.CustomResource {
     /**

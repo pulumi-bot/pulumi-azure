@@ -160,6 +160,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Associations between Network Interfaces and Application Gateway Backend Address Pools can be imported using the `resource id`, e.g. ell
+//
+//  -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
 type NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation struct {
 	pulumi.CustomResourceState
 

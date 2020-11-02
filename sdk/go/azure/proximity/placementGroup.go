@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Proximity Placement Groups can be imported using the `resource id`, e.g. ell
 type PlacementGroup struct {
 	pulumi.CustomResourceState
 

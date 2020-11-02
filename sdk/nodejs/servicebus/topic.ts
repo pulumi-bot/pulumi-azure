@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     enablePartitioning: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Bus Topics can be imported using the `resource id`, e.g. ell
  */
 export class Topic extends pulumi.CustomResource {
     /**

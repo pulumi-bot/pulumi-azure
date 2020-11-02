@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Saved Searches can be imported using the `resource id`, e.g. ell
 type SavedSearch struct {
 	pulumi.CustomResourceState
 

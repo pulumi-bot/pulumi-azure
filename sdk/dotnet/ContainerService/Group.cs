@@ -69,6 +69,10 @@ namespace Pulumi.Azure.ContainerService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Group's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

@@ -15,6 +15,7 @@ namespace Pulumi.Azure.NetApp
         /// Uses this data source to access information about an existing NetApp Pool.
         /// 
         /// 
+        /// 
         /// ## NetApp Pool Usage
         /// 
         /// ```csharp

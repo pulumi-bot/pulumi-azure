@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     tableNames: ["Heartbeat"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Data Export Rule can be imported using the `resource id`, e.g. ell
  */
 export class DataExportRule extends pulumi.CustomResource {
     /**

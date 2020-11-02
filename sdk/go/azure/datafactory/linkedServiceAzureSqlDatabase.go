@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Azure SQL Database Linked Service's can be imported using the `resource id`, e.g. ell
 type LinkedServiceAzureSqlDatabase struct {
 	pulumi.CustomResourceState
 

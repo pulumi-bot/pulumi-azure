@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Management
         /// <summary>
         /// Use this data source to access information about an existing Management Group.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

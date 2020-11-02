@@ -68,6 +68,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnet Route Table Associations can be imported using the `resource id` of the Subnet, e.g. ell
     /// </summary>
     public partial class SubnetRouteTableAssociation : Pulumi.CustomResource
     {

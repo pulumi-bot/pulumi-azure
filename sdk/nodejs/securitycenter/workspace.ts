@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     workspaceId: exampleAnalyticsWorkspace.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The contact can be imported using the `resource id`, e.g. ell
  */
 export class Workspace extends pulumi.CustomResource {
     /**

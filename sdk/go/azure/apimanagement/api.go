@@ -62,6 +62,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management API's can be imported using the `resource id`, e.g. ell
 type Api struct {
 	pulumi.CustomResourceState
 

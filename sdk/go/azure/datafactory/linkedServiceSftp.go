@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Linked Service's can be imported using the `resource id`, e.g. ell
 type LinkedServiceSftp struct {
 	pulumi.CustomResourceState
 

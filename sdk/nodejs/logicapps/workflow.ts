@@ -19,6 +19,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Logic App Workflows can be imported using the `resource id`, e.g. ell
  */
 export class Workflow extends pulumi.CustomResource {
     /**

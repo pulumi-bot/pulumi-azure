@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Network Watcher Flow Logs can be imported using the `resource id`, e.g. ell
  */
 export class NetworkWatcherFlowLog extends pulumi.CustomResource {
     /**

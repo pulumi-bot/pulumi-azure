@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A Maps Account can be imported using the `resource id`, e.g. ell
 type Account struct {
 	pulumi.CustomResourceState
 

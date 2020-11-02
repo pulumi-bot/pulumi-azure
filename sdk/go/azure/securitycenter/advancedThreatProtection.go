@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Advanced Threat Protection can be imported using the `resource id`, e.g. ell
 type AdvancedThreatProtection struct {
 	pulumi.CustomResourceState
 

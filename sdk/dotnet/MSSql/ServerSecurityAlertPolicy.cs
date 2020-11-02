@@ -61,6 +61,10 @@ namespace Pulumi.Azure.MSSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MS SQL Server Security Alert Policy can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ServerSecurityAlertPolicy : Pulumi.CustomResource
     {

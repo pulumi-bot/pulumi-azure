@@ -20,6 +20,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * User Assigned Identities can be imported using the `resource id`, e.g. ell
+ *
  * @deprecated azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity
  */
 export class UserAssignedIdentity extends pulumi.CustomResource {

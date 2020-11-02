@@ -51,6 +51,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Role Definitions can be imported using the `resource id`, e.g. ell
+//
+//  -> **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
 type RoleDefinition struct {
 	pulumi.CustomResourceState
 

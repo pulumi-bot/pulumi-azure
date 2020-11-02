@@ -45,6 +45,10 @@ class ShareDirectory(pulumi.CustomResource):
             storage_account_name=example_account.name)
         ```
 
+        ## Import
+
+        Directories within an Azure Storage File Share can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A mapping of metadata to assign to this Directory.

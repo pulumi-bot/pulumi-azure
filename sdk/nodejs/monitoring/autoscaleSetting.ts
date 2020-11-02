@@ -229,6 +229,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * AutoScale Setting can be imported using the `resource id`, e.g.
  */
 export class AutoscaleSetting extends pulumi.CustomResource {
     /**

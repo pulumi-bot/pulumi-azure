@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Certificate Orders can be imported using the `resource id`, e.g. ell
 type CertificateOrder struct {
 	pulumi.CustomResourceState
 

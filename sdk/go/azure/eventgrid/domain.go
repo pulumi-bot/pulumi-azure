@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventGrid Domains can be imported using the `resource id`, e.g. ell
 type Domain struct {
 	pulumi.CustomResourceState
 

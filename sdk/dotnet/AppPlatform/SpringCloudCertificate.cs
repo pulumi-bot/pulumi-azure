@@ -138,6 +138,10 @@ namespace Pulumi.Azure.AppPlatform
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Spring Cloud Certificate can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SpringCloudCertificate : Pulumi.CustomResource
     {

@@ -34,6 +34,10 @@ namespace Pulumi.Azure.PrivateDns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Private DNS Zones can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

@@ -27,6 +27,10 @@ class IntVariable(pulumi.CustomResource):
         """
         Manages a integer variable in Azure Automation
 
+        ## Import
+
+        Automation Int Variable can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.

@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     filename: "bar.png",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetAzureBlob extends pulumi.CustomResource {
     /**

@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Key Vault Secret.
+ *
+ * ## Import
+ *
+ * Key Vault Secrets which are Enabled can be imported using the `resource id`, e.g. ell
  */
 export class Secret extends pulumi.CustomResource {
     /**

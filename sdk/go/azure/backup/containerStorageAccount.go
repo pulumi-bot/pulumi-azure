@@ -64,6 +64,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Backup Storage Account Containers can be imported using the `resource id`, e.g. ell
+//
+//  Note the ID requires quoting as there are semicolons
 type ContainerStorageAccount struct {
 	pulumi.CustomResourceState
 

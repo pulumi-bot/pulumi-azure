@@ -42,6 +42,10 @@ class Table(pulumi.CustomResource):
             throughput=400)
         ```
 
+        ## Import
+
+        CosmosDB Tables can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Cosmos DB Table to create the table within. Changing this forces a new resource to be created.

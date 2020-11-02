@@ -58,6 +58,10 @@ class NatGateway(pulumi.CustomResource):
             zones=["1"])
         ```
 
+        ## Import
+
+        NAT Gateway can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] idle_timeout_in_minutes: The idle timeout which should be used in minutes. Defaults to `4`.

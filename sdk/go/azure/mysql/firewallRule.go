@@ -121,6 +121,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MySQL Firewall Rule's can be imported using the `resource id`, e.g. ell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

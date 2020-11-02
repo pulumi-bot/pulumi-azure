@@ -115,6 +115,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Management Locks can be imported using the `resource id`, e.g. ell
 type Lock struct {
 	pulumi.CustomResourceState
 

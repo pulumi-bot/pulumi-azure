@@ -71,6 +71,10 @@ class DatasetBlobStorage(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[example_assignment]))
         ```
 
+        ## Import
+
+        Data Share Blob Storage Datasets can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_name: The name of the storage account container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.

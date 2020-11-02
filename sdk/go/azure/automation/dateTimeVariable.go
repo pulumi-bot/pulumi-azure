@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a DateTime variable in Azure Automation
+//
+// ## Import
+//
+// Automation DateTime Variable can be imported using the `resource id`, e.g. ell
 type DateTimeVariable struct {
 	pulumi.CustomResourceState
 

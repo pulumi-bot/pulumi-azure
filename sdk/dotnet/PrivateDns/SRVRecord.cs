@@ -61,6 +61,10 @@ namespace Pulumi.Azure.PrivateDns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Private DNS SRV Records can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SRVRecord : Pulumi.CustomResource
     {

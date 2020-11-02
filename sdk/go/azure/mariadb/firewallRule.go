@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MariaDB Firewall rules can be imported using the `resource id`, e.g. ell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

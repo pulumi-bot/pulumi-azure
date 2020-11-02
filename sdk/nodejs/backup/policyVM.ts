@@ -60,6 +60,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * VM Backup Policies can be imported using the `resource id`, e.g. ell
  */
 export class PolicyVM extends pulumi.CustomResource {
     /**

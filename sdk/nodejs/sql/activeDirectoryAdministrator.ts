@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     objectId: current.then(current => current.objectId),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A SQL Active Directory Administrator can be imported using the `resource id`, e.g. ell
  */
 export class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     /**

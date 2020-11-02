@@ -56,6 +56,10 @@ namespace Pulumi.Azure.Synapse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Synapse Sql Pool can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SqlPool : Pulumi.CustomResource
     {

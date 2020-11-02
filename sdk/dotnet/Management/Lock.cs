@@ -90,6 +90,10 @@ namespace Pulumi.Azure.Management
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Management Locks can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Lock : Pulumi.CustomResource
     {

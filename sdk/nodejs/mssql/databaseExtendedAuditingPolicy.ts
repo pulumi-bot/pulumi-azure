@@ -38,6 +38,10 @@ import * as utilities from "../utilities";
  *     retentionInDays: 6,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Ms Sql Database Extended Auditing Policys can be imported using the `resource id`, e.g. ell
  */
 export class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
     /**

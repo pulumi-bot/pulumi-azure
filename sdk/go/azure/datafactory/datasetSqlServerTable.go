@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory SQL Server Table Datasets can be imported using the `resource id`, e.g. ell
 type DatasetSqlServerTable struct {
 	pulumi.CustomResourceState
 

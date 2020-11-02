@@ -45,6 +45,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Facebook Identity Provider can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class IdentityProviderFacebook : Pulumi.CustomResource
     {

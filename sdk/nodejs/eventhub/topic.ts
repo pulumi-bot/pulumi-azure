@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Service Bus Topics can be imported using the `resource id`, e.g. ell
+ *
  * @deprecated azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic
  */
 export class Topic extends pulumi.CustomResource {

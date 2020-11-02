@@ -86,6 +86,10 @@ namespace Pulumi.Azure.SiteRecovery
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Site Recovery Network Mapping can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class NetworkMapping : Pulumi.CustomResource
     {

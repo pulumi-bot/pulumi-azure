@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Cognitive
         /// <summary>
         /// Use this data source to access information about an existing Cognitive Services Account.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

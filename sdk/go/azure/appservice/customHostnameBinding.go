@@ -72,6 +72,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Custom Hostname Bindings can be imported using the `resource id`, e.g. ell
 type CustomHostnameBinding struct {
 	pulumi.CustomResourceState
 

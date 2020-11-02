@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     value: "2019-04-24T21:40:54.074Z",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation DateTime Variable can be imported using the `resource id`, e.g. ell
  */
 export class DateTimeVariable extends pulumi.CustomResource {
     /**

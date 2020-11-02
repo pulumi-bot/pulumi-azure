@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     collation: "utf8_general_ci",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MariaDB Database's can be imported using the `resource id`, e.g. ell
  */
 export class Database extends pulumi.CustomResource {
     /**

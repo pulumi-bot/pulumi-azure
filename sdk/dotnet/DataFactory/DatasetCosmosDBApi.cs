@@ -11,6 +11,10 @@ namespace Pulumi.Azure.DataFactory
 {
     /// <summary>
     /// Manages an Azure Cosmos DB SQL API Dataset inside an Azure Data Factory.
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory Datasets can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class DatasetCosmosDBApi : Pulumi.CustomResource
     {

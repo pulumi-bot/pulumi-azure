@@ -73,6 +73,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Output ServiceBus Queue's can be imported using the `resource id`, e.g. ell
 type OutputServiceBusQueue struct {
 	pulumi.CustomResourceState
 

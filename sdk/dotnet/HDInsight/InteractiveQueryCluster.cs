@@ -90,6 +90,10 @@ namespace Pulumi.Azure.HDInsight
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HDInsight Interactive Query Clusters can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class InteractiveQueryCluster : Pulumi.CustomResource
     {

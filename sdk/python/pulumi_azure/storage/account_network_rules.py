@@ -66,6 +66,10 @@ class AccountNetworkRules(pulumi.CustomResource):
             bypasses=["Metrics"])
         ```
 
+        ## Import
+
+        Storage Account Network Rules can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bypasses: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`.

@@ -111,6 +111,10 @@ class Extension(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Virtual Machine Extensions can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade_minor_version: Specifies if the platform deploys

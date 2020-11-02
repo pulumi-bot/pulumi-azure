@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     apiManagementName: exampleUser.then(exampleUser => exampleUser.apiManagementName),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Group Users can be imported using the `resource id`, e.g. ell
  */
 export class GroupUser extends pulumi.CustomResource {
     /**

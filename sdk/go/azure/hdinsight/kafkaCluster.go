@@ -95,6 +95,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight Kafka Clusters can be imported using the `resource id`, e.g. ell
 type KafkaCluster struct {
 	pulumi.CustomResourceState
 

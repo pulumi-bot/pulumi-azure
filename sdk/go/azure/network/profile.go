@@ -82,6 +82,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Profile can be imported using the `resource id`, e.g. ell
 type Profile struct {
 	pulumi.CustomResourceState
 

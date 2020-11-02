@@ -158,6 +158,10 @@ namespace Pulumi.Azure.KeyVault
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Key Vault Certificates can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

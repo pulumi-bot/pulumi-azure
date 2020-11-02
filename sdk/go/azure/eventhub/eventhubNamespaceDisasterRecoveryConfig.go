@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHubs can be imported using the `resource id`, e.g. ell
 type EventhubNamespaceDisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 

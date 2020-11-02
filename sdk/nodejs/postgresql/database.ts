@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     collation: "English_United States.1252",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Database's can be imported using the `resource id`, e.g. ell
  */
 export class Database extends pulumi.CustomResource {
     /**

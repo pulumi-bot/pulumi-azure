@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PTR records can be imported using the `resource id`, e.g. ell
 type PtrRecord struct {
 	pulumi.CustomResourceState
 

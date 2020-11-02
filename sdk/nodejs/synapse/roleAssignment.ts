@@ -44,6 +44,12 @@ import * as utilities from "../utilities";
  *     dependsOn: [exampleFirewallRule],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Synapse Role Assignment can be imported using the `resource id`, e.g. ell
+ *
+ *  -> **NOTE:** This ID is specific to Terraform - and is of the format `{synapseWorkspaceId}|{synapseRoleAssignmentId}`.
  */
 export class RoleAssignment extends pulumi.CustomResource {
     /**

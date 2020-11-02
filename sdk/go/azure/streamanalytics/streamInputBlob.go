@@ -76,6 +76,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Stream Input Blob's can be imported using the `resource id`, e.g. ell
 type StreamInputBlob struct {
 	pulumi.CustomResourceState
 

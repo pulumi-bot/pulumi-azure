@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     nodeSize: "Standard_D8_v3",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Integration Managed Runtimes can be imported using the `resource id`, e.g. ell
  */
 export class IntegrationRuntimeManaged extends pulumi.CustomResource {
     /**

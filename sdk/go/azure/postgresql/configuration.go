@@ -64,6 +64,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PostgreSQL Configurations can be imported using the `resource id`, e.g. ell
 type Configuration struct {
 	pulumi.CustomResourceState
 

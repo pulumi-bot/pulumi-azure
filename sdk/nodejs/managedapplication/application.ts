@@ -45,6 +45,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Managed Application can be imported using the `resource id`, e.g. ell
  */
 export class Application extends pulumi.CustomResource {
     /**

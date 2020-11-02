@@ -11,6 +11,10 @@ namespace Pulumi.Azure.DevSpace
 {
     /// <summary>
     /// Manages a DevSpace Controller.
+    /// 
+    /// ## Import
+    /// 
+    /// DevSpace Controller's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Controller : Pulumi.CustomResource
     {

@@ -111,6 +111,10 @@ class WindowsVirtualMachine(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Windows Virtual Machines can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['WindowsVirtualMachineAdditionalCapabilitiesArgs']] additional_capabilities: A `additional_capabilities` block as defined below.

@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Outputs to Blob Storage can be imported using the `resource id`, e.g. ell
  */
 export class OutputBlob extends pulumi.CustomResource {
     /**

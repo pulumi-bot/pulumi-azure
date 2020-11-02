@@ -104,6 +104,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Firewall Application Rule Collections can be imported using the `resource id`, e.g. ell
 type FirewallApplicationRuleCollection struct {
 	pulumi.CustomResourceState
 

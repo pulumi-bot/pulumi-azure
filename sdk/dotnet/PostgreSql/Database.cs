@@ -51,6 +51,10 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PostgreSQL Database's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

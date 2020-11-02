@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS TXT Records can be imported using the `resource id`, e.g. ell
 type TxtRecord struct {
 	pulumi.CustomResourceState
 

@@ -47,6 +47,12 @@ namespace Pulumi.Azure.Role
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Role Definitions can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
     /// </summary>
     [Obsolete(@"azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition")]
     public partial class Definition : Pulumi.CustomResource

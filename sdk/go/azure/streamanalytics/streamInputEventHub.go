@@ -85,6 +85,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Stream Input EventHub's can be imported using the `resource id`, e.g. ell
 type StreamInputEventHub struct {
 	pulumi.CustomResourceState
 

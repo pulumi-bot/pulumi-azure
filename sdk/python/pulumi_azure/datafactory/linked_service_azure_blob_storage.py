@@ -50,6 +50,10 @@ class LinkedServiceAzureBlobStorage(pulumi.CustomResource):
             connection_string=example_account.primary_connection_string)
         ```
 
+        ## Import
+
+        Data Factory Linked Service's can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service.

@@ -62,6 +62,10 @@ class ApplicationGroup(pulumi.CustomResource):
             description="Acceptance Test: An application group")
         ```
 
+        ## Import
+
+        Virtual Desktop Application Groups can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Option to set a description for the Virtual Desktop Application Group.

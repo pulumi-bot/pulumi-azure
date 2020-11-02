@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VPN Sites can be imported using the `resource id`, e.g. ell
 type VpnSite struct {
 	pulumi.CustomResourceState
 

@@ -62,6 +62,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Cosmos SQL Containers can be imported using the `resource id`, e.g. ell
 type SqlContainer struct {
 	pulumi.CustomResourceState
 

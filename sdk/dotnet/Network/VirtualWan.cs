@@ -35,6 +35,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual WAN can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VirtualWan : Pulumi.CustomResource
     {

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a maintenance assignment to virtual machine.
+//
+// ## Import
+//
+// Maintenance Assignment can be imported using the `resource id`, e.g. ell
 type AssignmentVirtualMachine struct {
 	pulumi.CustomResourceState
 

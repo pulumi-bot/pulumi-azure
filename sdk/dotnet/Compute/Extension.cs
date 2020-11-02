@@ -141,6 +141,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Machine Extensions can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Extension : Pulumi.CustomResource
     {

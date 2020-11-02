@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     addressSpaces: ["10.0.0.0/16"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Local Network Gateways can be imported using the `resource id`, e.g. ell
  */
 export class LocalNetworkGateway extends pulumi.CustomResource {
     /**

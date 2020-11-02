@@ -129,6 +129,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private Endpoints can be imported using the `resource id`, e.g. ell
 type Endpoint struct {
 	pulumi.CustomResourceState
 

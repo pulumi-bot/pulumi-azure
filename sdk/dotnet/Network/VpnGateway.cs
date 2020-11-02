@@ -57,6 +57,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// VPN Gateways can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VpnGateway : Pulumi.CustomResource
     {

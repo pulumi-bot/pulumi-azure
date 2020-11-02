@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
  * Manages a Email integration for a Bot Channel
  *
  * > **Note** A bot can only have a single Email Channel associated with it.
+ *
+ * ## Import
+ *
+ * The Email Integration for a Bot Channel can be imported using the `resource id`, e.g. ell
  */
 export class ChannelEmail extends pulumi.CustomResource {
     /**

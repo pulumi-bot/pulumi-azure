@@ -84,6 +84,12 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub Fallback Route can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  ~&gt; **NOTE:** As there may only be a single fallback route per IoTHub, the id always ends with `/FallbackRoute/default`.
     /// </summary>
     public partial class FallbackRoute : Pulumi.CustomResource
     {

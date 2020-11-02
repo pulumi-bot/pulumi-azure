@@ -65,6 +65,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub Storage Container Endpoint can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class EndpointStorageContainer : Pulumi.CustomResource
     {

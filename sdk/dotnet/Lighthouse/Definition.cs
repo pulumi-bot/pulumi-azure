@@ -43,6 +43,10 @@ namespace Pulumi.Azure.Lighthouse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Lighthouse Definitions can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Definition : Pulumi.CustomResource
     {

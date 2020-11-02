@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     settingName: "MCAS",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The setting can be imported using the `resource id`, e.g. ell
  */
 export class Setting extends pulumi.CustomResource {
     /**

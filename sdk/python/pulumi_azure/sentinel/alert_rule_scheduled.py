@@ -57,6 +57,10 @@ class AlertRuleScheduled(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        Sentinel Scheduled Alert Rules can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of this Sentinel Scheduled Alert Rule.

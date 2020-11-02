@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     description: "This is an example credential",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Credentials can be imported using the `resource id`, e.g. ell
  */
 export class Credential extends pulumi.CustomResource {
     /**

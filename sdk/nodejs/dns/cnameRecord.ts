@@ -43,6 +43,10 @@ import * as utilities from "../utilities";
  *     targetResourceId: target.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CNAME records can be imported using the `resource id`, e.g. ell
  */
 export class CNameRecord extends pulumi.CustomResource {
     /**

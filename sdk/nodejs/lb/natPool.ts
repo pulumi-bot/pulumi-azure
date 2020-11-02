@@ -41,6 +41,10 @@ import * as utilities from "../utilities";
  *     frontendIpConfigurationName: "PublicIPAddress",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer NAT Pools can be imported using the `resource id`, e.g. ell
  */
 export class NatPool extends pulumi.CustomResource {
     /**

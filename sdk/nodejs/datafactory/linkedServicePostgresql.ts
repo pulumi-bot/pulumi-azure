@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *     connectionString: "Host=example;Port=5432;Database=example;UID=example;EncryptionMethod=0;Password=example",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory PostgreSQL Linked Service's can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServicePostgresql extends pulumi.CustomResource {
     /**

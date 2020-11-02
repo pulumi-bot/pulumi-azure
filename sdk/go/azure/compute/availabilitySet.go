@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Availability Sets can be imported using the `resource id`, e.g. ell
 type AvailabilitySet struct {
 	pulumi.CustomResourceState
 

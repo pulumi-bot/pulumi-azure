@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Route Filters can be imported using the `resource id`, e.g. ell
 type RouteFilter struct {
 	pulumi.CustomResourceState
 

@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Monitor Action Rule can be imported using the `resource id`, e.g. ell
 type ActionRuleActionGroup struct {
 	pulumi.CustomResourceState
 

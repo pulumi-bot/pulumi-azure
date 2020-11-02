@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The Microsoft Teams Integration for a Bot Channel can be imported using the `resource id`, e.g. ell
  */
 export class ChannelTeams extends pulumi.CustomResource {
     /**

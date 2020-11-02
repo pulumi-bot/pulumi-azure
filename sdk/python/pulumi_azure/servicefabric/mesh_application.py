@@ -54,6 +54,10 @@ class MeshApplication(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Service Fabric Mesh Application can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the Azure Region where the Service Fabric Mesh Application should exist. Changing this forces a new resource to be created.

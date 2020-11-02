@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MariaDB Database's can be imported using the `resource id`, e.g. ell
 type Database struct {
 	pulumi.CustomResourceState
 

@@ -102,6 +102,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Linux Virtual Machine Scale Sets can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class LinuxVirtualMachineScaleSet : Pulumi.CustomResource
     {

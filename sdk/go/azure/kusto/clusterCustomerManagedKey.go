@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Customer Managed Key for a Kusto Cluster.
+//
+// ## Import
+//
+// Customer Managed Keys for a Kusto Cluster can be imported using the `resource id`, e.g. ell
 type ClusterCustomerManagedKey struct {
 	pulumi.CustomResourceState
 

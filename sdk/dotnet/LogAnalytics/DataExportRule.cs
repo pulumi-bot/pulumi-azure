@@ -54,6 +54,10 @@ namespace Pulumi.Azure.LogAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Analytics Data Export Rule can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class DataExportRule : Pulumi.CustomResource
     {

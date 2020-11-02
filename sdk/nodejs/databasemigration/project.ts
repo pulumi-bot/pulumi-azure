@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     targetPlatform: "SQLDB",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Database Migration Projects can be imported using the `resource id`, e.g. ell
  */
 export class Project extends pulumi.CustomResource {
     /**

@@ -93,6 +93,12 @@ namespace Pulumi.Azure.AppInsights
     ///     public Output&lt;string&gt; FullPermissionsApiKey { get; set; }
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Application Insights API keys can be imported using the `resource id`, e.g. ell
+    /// 
+    ///  -&gt; **Note:** The secret `api_key` cannot be retrieved during an import. You will need to edit the state by hand to set the secret value if you happen to have it backed up somewhere.
     /// </summary>
     public partial class ApiKey : Pulumi.CustomResource
     {

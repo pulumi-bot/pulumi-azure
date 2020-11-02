@@ -48,6 +48,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Products can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Product : Pulumi.CustomResource
     {

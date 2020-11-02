@@ -53,6 +53,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ExpressRoute Circuit Authorizations can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ExpressRouteCircuitAuthorization : Pulumi.CustomResource
     {

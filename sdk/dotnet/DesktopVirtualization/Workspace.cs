@@ -37,6 +37,10 @@ namespace Pulumi.Azure.DesktopVirtualization
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Desktop Workspaces can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

@@ -46,6 +46,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management OpenID Connect Providers can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class OpenIdConnectProvider : Pulumi.CustomResource
     {

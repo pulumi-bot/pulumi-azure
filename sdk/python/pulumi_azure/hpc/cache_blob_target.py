@@ -72,6 +72,10 @@ class CacheBlobTarget(pulumi.CustomResource):
             namespace_path="/blob_storage")
         ```
 
+        ## Import
+
+        Blob Targets within an HPC Cache can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cache_name: The name HPC Cache, which the HPC Cache Blob Target will be added to. Changing this forces a new resource to be created.

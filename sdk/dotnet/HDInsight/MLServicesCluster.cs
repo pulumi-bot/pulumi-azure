@@ -95,6 +95,10 @@ namespace Pulumi.Azure.HDInsight
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HDInsight ML Services Clusters can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class MLServicesCluster : Pulumi.CustomResource
     {

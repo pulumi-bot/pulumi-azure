@@ -80,6 +80,10 @@ namespace Pulumi.Azure.SiteRecovery
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Site Recovery Protection Container Mappings can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ProtectionContainerMapping : Pulumi.CustomResource
     {

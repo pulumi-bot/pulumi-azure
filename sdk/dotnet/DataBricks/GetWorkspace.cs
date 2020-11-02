@@ -14,6 +14,7 @@ namespace Pulumi.Azure.DataBricks
         /// <summary>
         /// Use this data source to access information about an existing Databricks workspace.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

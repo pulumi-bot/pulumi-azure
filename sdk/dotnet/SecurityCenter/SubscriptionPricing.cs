@@ -35,6 +35,10 @@ namespace Pulumi.Azure.SecurityCenter
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The pricing tier can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SubscriptionPricing : Pulumi.CustomResource
     {

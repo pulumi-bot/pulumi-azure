@@ -81,6 +81,10 @@ class VirtualNetwork(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Virtual Networks can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_spaces: The address space that is used the virtual network. You can supply more than one address space.

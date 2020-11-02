@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Google Identity Provider can be imported using the `resource id`, e.g. ell
 type IdentityProviderGoogle struct {
 	pulumi.CustomResourceState
 

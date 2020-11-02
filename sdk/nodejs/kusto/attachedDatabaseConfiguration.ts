@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  *     defaultPrincipalModificationsKind: "None",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Kusto Attached Database Configurations can be imported using the `resource id`, e.g. ell
  */
 export class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     /**

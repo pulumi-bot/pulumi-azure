@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHub Namespace Authorization Rules can be imported using the `resource id`, e.g. ell
  */
 export class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
     /**

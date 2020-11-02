@@ -77,6 +77,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Subnet Route Table Associations can be imported using the `resource id` of the Subnet, e.g. ell
 type SubnetRouteTableAssociation struct {
 	pulumi.CustomResourceState
 

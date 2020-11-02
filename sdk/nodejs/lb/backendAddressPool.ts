@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     loadbalancerId: exampleLoadBalancer.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Backend Address Pools can be imported using the `resource id`, e.g. ell
  */
 export class BackendAddressPool extends pulumi.CustomResource {
     /**

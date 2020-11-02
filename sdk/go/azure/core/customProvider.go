@@ -47,6 +47,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Custom Provider can be imported using the `resource id`, e.g. ell
 type CustomProvider struct {
 	pulumi.CustomResourceState
 

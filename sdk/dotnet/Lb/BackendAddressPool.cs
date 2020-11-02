@@ -56,6 +56,10 @@ namespace Pulumi.Azure.Lb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer Backend Address Pools can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class BackendAddressPool : Pulumi.CustomResource
     {

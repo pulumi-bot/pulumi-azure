@@ -49,6 +49,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Lighthouse Definitions can be imported using the `resource id`, e.g. ell
 type Definition struct {
 	pulumi.CustomResourceState
 

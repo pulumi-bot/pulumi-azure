@@ -51,6 +51,10 @@ class VirtualNetwork(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        DevTest Virtual Networks can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the Virtual Network.

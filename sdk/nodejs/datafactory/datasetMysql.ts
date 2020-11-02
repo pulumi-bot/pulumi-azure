@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServiceMysql.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory MySQL Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetMysql extends pulumi.CustomResource {
     /**

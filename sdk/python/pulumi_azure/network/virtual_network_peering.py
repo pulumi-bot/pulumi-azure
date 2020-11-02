@@ -58,6 +58,10 @@ class VirtualNetworkPeering(pulumi.CustomResource):
 
         Virtual Network peerings cannot be created, updated or deleted concurrently.
 
+        ## Import
+
+        Virtual Network Peerings can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_forwarded_traffic: Controls if forwarded traffic from  VMs

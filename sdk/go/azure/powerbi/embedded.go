@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PowerBI Embedded can be imported using the `resource id`, e.g. ell
 type Embedded struct {
 	pulumi.CustomResourceState
 

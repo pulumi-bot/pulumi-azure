@@ -43,6 +43,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Traffic Manager Profiles can be imported using the `resource id`, e.g. ell
  */
 export class TrafficManagerProfile extends pulumi.CustomResource {
     /**

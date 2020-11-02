@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Job's can be imported using the `resource id`, e.g. ell
 type Job struct {
 	pulumi.CustomResourceState
 

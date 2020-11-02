@@ -67,6 +67,12 @@ class NetworkInterfaceBackendAddressPoolAssociation(pulumi.CustomResource):
             backend_address_pool_id=example_backend_address_pool.id)
         ```
 
+        ## Import
+
+        Associations between Network Interfaces and Load Balancer Backend Address Pools can be imported using the `resource id`, e.g. ell
+
+         -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_address_pool_id: The ID of the Load Balancer Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.

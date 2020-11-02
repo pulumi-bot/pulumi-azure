@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     administrators: ["azsdktest@microsoft.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PowerBI Embedded can be imported using the `resource id`, e.g. ell
  */
 export class Embedded extends pulumi.CustomResource {
     /**

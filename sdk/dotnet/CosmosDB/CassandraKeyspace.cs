@@ -61,6 +61,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cosmos Cassandra KeySpace can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class CassandraKeyspace : Pulumi.CustomResource
     {

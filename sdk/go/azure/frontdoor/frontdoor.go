@@ -101,6 +101,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Front Doors can be imported using the `resource id`, e.g. ell
 type Frontdoor struct {
 	pulumi.CustomResourceState
 

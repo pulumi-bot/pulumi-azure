@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Services can be imported using the `resource id`, e.g. ell
  */
 export class AppService extends pulumi.CustomResource {
     /**

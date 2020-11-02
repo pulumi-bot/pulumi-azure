@@ -52,6 +52,10 @@ import * as utilities from "../utilities";
  *     targetNetworkId: secondaryVirtualNetwork.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Site Recovery Network Mapping can be imported using the `resource id`, e.g. ell
  */
 export class NetworkMapping extends pulumi.CustomResource {
     /**

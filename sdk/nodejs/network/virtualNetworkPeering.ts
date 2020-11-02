@@ -39,6 +39,10 @@ import * as utilities from "../utilities";
  * ## Note
  *
  * Virtual Network peerings cannot be created, updated or deleted concurrently.
+ *
+ * ## Import
+ *
+ * Virtual Network Peerings can be imported using the `resource id`, e.g. ell
  */
 export class VirtualNetworkPeering extends pulumi.CustomResource {
     /**

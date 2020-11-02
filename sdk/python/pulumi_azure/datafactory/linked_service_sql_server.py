@@ -46,6 +46,10 @@ class LinkedServiceSqlServer(pulumi.CustomResource):
             connection_string="Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test")
         ```
 
+        ## Import
+
+        Data Factory SQL Server Linked Service's can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: A map of additional properties to associate with the Data Factory Linked Service SQL Server.

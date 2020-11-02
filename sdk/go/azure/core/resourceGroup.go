@@ -33,6 +33,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Resource Groups can be imported using the `resource id`, e.g. ell
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

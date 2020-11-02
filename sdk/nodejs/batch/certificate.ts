@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a certificate in an Azure Batch account.
+ *
+ * ## Import
+ *
+ * Batch Certificates can be imported using the `resource id`, e.g. ell
  */
 export class Certificate extends pulumi.CustomResource {
     /**

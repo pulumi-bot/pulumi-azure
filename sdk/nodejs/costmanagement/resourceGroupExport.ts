@@ -38,6 +38,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cost Management Export for a Resource Group can be imported using the `resource id`, e.g. ell
  */
 export class ResourceGroupExport extends pulumi.CustomResource {
     /**

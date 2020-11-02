@@ -55,6 +55,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Service Bus Queue can be imported using the `resource id`, e.g. ell
+//
 // Deprecated: azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue
 type Queue struct {
 	pulumi.CustomResourceState

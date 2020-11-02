@@ -87,6 +87,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Networks can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VirtualNetwork : Pulumi.CustomResource
     {

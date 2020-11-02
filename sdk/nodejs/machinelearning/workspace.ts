@@ -45,6 +45,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Machine Learning Workspace can be imported using the `resource id`, e.g. ell
  */
 export class Workspace extends pulumi.CustomResource {
     /**

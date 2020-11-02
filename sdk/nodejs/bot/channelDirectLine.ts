@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Directline integration for a Bot Channel
+ *
+ * ## Import
+ *
+ * The Directline Channel for a Bot can be imported using the `resource id`, e.g. ell
  */
 export class ChannelDirectLine extends pulumi.CustomResource {
     /**

@@ -96,6 +96,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kusto EventHub Data Connections can be imported using the `resource id`, e.g. ell
 type EventhubDataConnection struct {
 	pulumi.CustomResourceState
 

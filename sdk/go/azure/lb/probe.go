@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer Probes can be imported using the `resource id`, e.g. ell
 type Probe struct {
 	pulumi.CustomResourceState
 

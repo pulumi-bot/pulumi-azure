@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a Automation Module.
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Modules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Module : Pulumi.CustomResource
     {

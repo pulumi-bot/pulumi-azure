@@ -69,6 +69,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Interfaces can be imported using the `resource id`, e.g. ell
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 

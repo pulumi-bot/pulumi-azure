@@ -173,6 +173,10 @@ namespace Pulumi.Azure.FrontDoor
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// FrontDoor Web Application Firewall Policy can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class FirewallPolicy : Pulumi.CustomResource
     {

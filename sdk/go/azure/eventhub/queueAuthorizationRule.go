@@ -66,6 +66,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// ServiceBus Queue Authorization Rules can be imported using the `resource id`, e.g. ell
+//
 // Deprecated: azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState

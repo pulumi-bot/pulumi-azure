@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     severityFilters: ["High"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Sentinel MS Security Incident Alert Rules can be imported using the `resource id`, e.g. ell
  */
 export class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
     /**

@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub Shared Access Policies can be imported using the `resource id`, e.g. ell
 type SharedAccessPolicy struct {
 	pulumi.CustomResourceState
 

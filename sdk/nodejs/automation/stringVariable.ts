@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     value: "Hello, Basic Test.",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation String Variable can be imported using the `resource id`, e.g. ell
  */
 export class StringVariable extends pulumi.CustomResource {
     /**

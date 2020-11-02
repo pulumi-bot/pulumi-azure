@@ -53,6 +53,10 @@ import * as utilities from "../utilities";
  *     connectionString: exampleAuthorizationRule.primaryConnectionString,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub EventHub Endpoint can be imported using the `resource id`, e.g. ell
  */
 export class EndpointEventhub extends pulumi.CustomResource {
     /**

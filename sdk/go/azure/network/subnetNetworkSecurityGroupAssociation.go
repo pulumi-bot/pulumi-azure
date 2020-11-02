@@ -82,6 +82,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Subnet `<->` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g. ell
 type SubnetNetworkSecurityGroupAssociation struct {
 	pulumi.CustomResourceState
 

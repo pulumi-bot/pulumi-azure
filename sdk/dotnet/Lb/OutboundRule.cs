@@ -70,6 +70,10 @@ namespace Pulumi.Azure.Lb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer Outbound Rules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class OutboundRule : Pulumi.CustomResource
     {

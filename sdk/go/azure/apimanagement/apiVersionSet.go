@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Version Set can be imported using the `resource id`, e.g. ell
 type ApiVersionSet struct {
 	pulumi.CustomResourceState
 

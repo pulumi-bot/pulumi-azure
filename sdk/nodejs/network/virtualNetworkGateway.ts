@@ -80,6 +80,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Network Gateways can be imported using the `resource id`, e.g.
  */
 export class VirtualNetworkGateway extends pulumi.CustomResource {
     /**

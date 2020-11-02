@@ -103,6 +103,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Slot Virtual Network Associations can be imported using the `resource id`, e.g. ell
 type SlotVirtualNetworkSwiftConnection struct {
 	pulumi.CustomResourceState
 

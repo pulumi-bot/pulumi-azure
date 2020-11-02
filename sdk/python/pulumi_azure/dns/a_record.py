@@ -62,6 +62,10 @@ class ARecord(pulumi.CustomResource):
             target_resource_id=example_public_ip.id)
         ```
 
+        ## Import
+
+        A records can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the DNS A Record.

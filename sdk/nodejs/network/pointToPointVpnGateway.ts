@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     scaleUnit: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Point-to-Site VPN Gateway's can be imported using the `resource id`, e.g. ell
  */
 export class PointToPointVpnGateway extends pulumi.CustomResource {
     /**

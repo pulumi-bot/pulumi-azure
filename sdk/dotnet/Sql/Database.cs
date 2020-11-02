@@ -68,6 +68,10 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SQL Databases can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

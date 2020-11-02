@@ -60,6 +60,10 @@ namespace Pulumi.Azure.Lb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer Rules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Rule : Pulumi.CustomResource
     {

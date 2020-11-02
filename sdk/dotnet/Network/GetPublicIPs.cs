@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Network
         /// <summary>
         /// Use this data source to access information about a set of existing Public IP Addresses.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

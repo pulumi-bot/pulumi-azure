@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     skuName: "Standard_1vCores",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Database Migration Services can be imported using the `resource id`, e.g. ell
  */
 export class Service extends pulumi.CustomResource {
     /**

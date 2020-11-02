@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ExpressRoute Gateways can be imported using the `resource id`, e.g. ell
  */
 export class ExpressRouteGateway extends pulumi.CustomResource {
     /**

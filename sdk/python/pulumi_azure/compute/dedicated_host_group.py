@@ -40,6 +40,10 @@ class DedicatedHostGroup(pulumi.CustomResource):
             platform_fault_domain_count=1)
         ```
 
+        ## Import
+
+        Dedicated Host Group can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The Azure location where the Dedicated Host Group exists. Changing this forces a new resource to be created.

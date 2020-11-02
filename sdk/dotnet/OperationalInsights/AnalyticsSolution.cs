@@ -58,6 +58,10 @@ namespace Pulumi.Azure.OperationalInsights
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Analytics Solutions can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class AnalyticsSolution : Pulumi.CustomResource
     {

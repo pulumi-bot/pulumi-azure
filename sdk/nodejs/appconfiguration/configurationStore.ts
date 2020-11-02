@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     location: rg.location,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Configurations can be imported using the `resource id`, e.g. ell
  */
 export class ConfigurationStore extends pulumi.CustomResource {
     /**

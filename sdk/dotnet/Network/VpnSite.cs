@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// VPN Sites can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VpnSite : Pulumi.CustomResource
     {

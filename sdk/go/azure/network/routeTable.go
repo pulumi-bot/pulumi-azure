@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Route Tables can be imported using the `resource id`, e.g. ell
 type RouteTable struct {
 	pulumi.CustomResourceState
 

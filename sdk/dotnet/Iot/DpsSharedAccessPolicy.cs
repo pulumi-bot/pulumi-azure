@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub Device Provisioning Service Shared Access Policies can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class DpsSharedAccessPolicy : Pulumi.CustomResource
     {

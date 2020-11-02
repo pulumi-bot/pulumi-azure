@@ -59,6 +59,10 @@ import * as utilities from "../utilities";
  *     storageQuotaInGb: 100,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * NetApp Volumes can be imported using the `resource id`, e.g. ell
  */
 export class Volume extends pulumi.CustomResource {
     /**

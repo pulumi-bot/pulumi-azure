@@ -48,6 +48,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Bot Channels Registration can be imported using the `resource id`, e.g. ell
 type ChannelsRegistration struct {
 	pulumi.CustomResourceState
 

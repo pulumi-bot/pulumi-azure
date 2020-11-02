@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Blob's can be imported using the `resource id`, e.g. ell
 type Blob struct {
 	pulumi.CustomResourceState
 

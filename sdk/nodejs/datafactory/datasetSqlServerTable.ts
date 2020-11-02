@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     linkedServiceName: exampleLinkedServiceSqlServer.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory SQL Server Table Datasets can be imported using the `resource id`, e.g. ell
  */
 export class DatasetSqlServerTable extends pulumi.CustomResource {
     /**

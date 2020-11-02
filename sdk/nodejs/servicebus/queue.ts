@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     enablePartitioning: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Bus Queue can be imported using the `resource id`, e.g. ell
  */
 export class Queue extends pulumi.CustomResource {
     /**

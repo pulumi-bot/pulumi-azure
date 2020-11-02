@@ -54,6 +54,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Shared Images can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class SharedImage : Pulumi.CustomResource
     {

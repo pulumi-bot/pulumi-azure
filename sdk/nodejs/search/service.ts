@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     sku: "standard",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Search Services can be imported using the `resource id`, e.g. ell
  */
 export class Service extends pulumi.CustomResource {
     /**

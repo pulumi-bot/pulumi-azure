@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     sslMinimalTlsVersionEnforced: "TLS1_2",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Server's can be imported using the `resource id`, e.g. ell
  */
 export class Server extends pulumi.CustomResource {
     /**

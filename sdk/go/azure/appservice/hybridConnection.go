@@ -84,6 +84,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Hybrid Connections can be imported using the `resource id`, e.g. ell
 type HybridConnection struct {
 	pulumi.CustomResourceState
 

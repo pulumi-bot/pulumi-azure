@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     records: ["yourdomain.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PTR records can be imported using the `resource id`, e.g. ell
  */
 export class PtrRecord extends pulumi.CustomResource {
     /**

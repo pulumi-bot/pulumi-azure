@@ -38,6 +38,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Point-to-Site VPN Gateway's can be imported using the `resource id`, e.g. ell
 type PointToPointVpnGateway struct {
 	pulumi.CustomResourceState
 

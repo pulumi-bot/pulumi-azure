@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IP Groups can be imported using the `resource id`, e.g. ell
  */
 export class IPGroup extends pulumi.CustomResource {
     /**

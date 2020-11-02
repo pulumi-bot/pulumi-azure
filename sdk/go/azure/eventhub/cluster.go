@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHub Cluster's can be imported using the `resource id`, e.g. ell
 type Cluster struct {
 	pulumi.CustomResourceState
 

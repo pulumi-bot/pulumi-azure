@@ -71,6 +71,10 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PostgreSQL Firewall Rule's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

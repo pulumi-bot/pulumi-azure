@@ -63,6 +63,10 @@ namespace Pulumi.Azure.MachineLearning
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Machine Learning Workspace can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource
     {

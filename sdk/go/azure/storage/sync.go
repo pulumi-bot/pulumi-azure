@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Syncs can be imported using the `resource id`, e.g. ell
 type Sync struct {
 	pulumi.CustomResourceState
 

@@ -37,6 +37,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Subscription Template Deployments can be imported using the `resource id`, e.g. ell
 type SubscriptionTemplateDeployment struct {
 	pulumi.CustomResourceState
 

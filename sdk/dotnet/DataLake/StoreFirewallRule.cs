@@ -42,6 +42,10 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Lake Store Firewall Rules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class StoreFirewallRule : Pulumi.CustomResource
     {

@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Sql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A SQL Active Directory Administrator can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ActiveDirectoryAdministrator : Pulumi.CustomResource
     {

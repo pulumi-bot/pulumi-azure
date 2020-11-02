@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Azure Batch pool.
+//
+// ## Import
+//
+// Batch Pools can be imported using the `resource id`, e.g. ell
 type Pool struct {
 	pulumi.CustomResourceState
 

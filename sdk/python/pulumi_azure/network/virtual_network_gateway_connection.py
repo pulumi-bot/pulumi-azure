@@ -163,6 +163,10 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             shared_key="4-v3ry-53cr37-1p53c-5h4r3d-k3y")
         ```
 
+        ## Import
+
+        Virtual Network Gateway Connections can be imported using their `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_key: The authorization key associated with the

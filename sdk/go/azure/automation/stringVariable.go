@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a string variable in Azure Automation
+//
+// ## Import
+//
+// Automation String Variable can be imported using the `resource id`, e.g. ell
 type StringVariable struct {
 	pulumi.CustomResourceState
 

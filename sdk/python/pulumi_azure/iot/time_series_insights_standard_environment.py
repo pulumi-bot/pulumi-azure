@@ -43,6 +43,10 @@ class TimeSeriesInsightsStandardEnvironment(pulumi.CustomResource):
             data_retention_time="P30D")
         ```
 
+        ## Import
+
+        Azure IoT Time Series Insights Standard Environment can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_retention_time: Specifies the ISO8601 timespan specifying the minimum number of days the environment's events will be available for query. Changing this forces a new resource to be created.

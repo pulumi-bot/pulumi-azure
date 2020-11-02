@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Sentinel
         /// <summary>
         /// Use this data source to access information about an existing Sentinel Alert Rule.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

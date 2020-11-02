@@ -68,6 +68,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Hub Connection's can be imported using the `resource id`, e.g. ell
 type VirtualHubConnection struct {
 	pulumi.CustomResourceState
 

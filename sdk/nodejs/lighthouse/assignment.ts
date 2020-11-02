@@ -18,6 +18,10 @@ import * as utilities from "../utilities";
  *     scope: "/subscription/00000000-0000-0000-0000-000000000000",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Lighthouse Assignments can be imported using the `resource id`, e.g. ell
  */
 export class Assignment extends pulumi.CustomResource {
     /**

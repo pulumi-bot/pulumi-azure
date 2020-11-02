@@ -80,6 +80,10 @@ import (
 // ```
 //
 // > **NOTE:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `cosmosdb.Account` resource.
+//
+// ## Import
+//
+// Cosmos Gremlin Graphs can be imported using the `resource id`, e.g. ell
 type GremlinGraph struct {
 	pulumi.CustomResourceState
 

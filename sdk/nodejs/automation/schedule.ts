@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     weekDays: ["Friday"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Schedule can be imported using the `resource id`, e.g. ell
  */
 export class Schedule extends pulumi.CustomResource {
     /**

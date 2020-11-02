@@ -68,6 +68,12 @@ class ApiKey(pulumi.CustomResource):
         pulumi.export("fullPermissionsApiKey", full_permissions.api_key)
         ```
 
+        ## Import
+
+        Application Insights API keys can be imported using the `resource id`, e.g. ell
+
+         -> **Note:** The secret `api_key` cannot be retrieved during an import. You will need to edit the state by hand to set the secret value if you happen to have it backed up somewhere.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.

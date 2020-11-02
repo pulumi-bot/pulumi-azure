@@ -47,6 +47,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory PostgreSQL Datasets can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class DatasetPostgresql : Pulumi.CustomResource
     {

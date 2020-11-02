@@ -14,6 +14,7 @@ namespace Pulumi.Azure.AppService
         /// <summary>
         /// Use this data source to fetch the Host Keys of an existing Function App
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

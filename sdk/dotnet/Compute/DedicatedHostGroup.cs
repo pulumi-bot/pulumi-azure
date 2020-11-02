@@ -36,6 +36,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Dedicated Host Group can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class DedicatedHostGroup : Pulumi.CustomResource
     {

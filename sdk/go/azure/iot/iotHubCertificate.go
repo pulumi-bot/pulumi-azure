@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an IotHub Device Provisioning Service Certificate.
+//
+// ## Import
+//
+// IoTHub Device Provisioning Service Certificates can be imported using the `resource id`, e.g. ell
 type IotHubCertificate struct {
 	pulumi.CustomResourceState
 

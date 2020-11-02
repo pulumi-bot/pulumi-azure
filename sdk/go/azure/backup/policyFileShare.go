@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure File Share Backup Policies can be imported using the `resource id`, e.g. ell
 type PolicyFileShare struct {
 	pulumi.CustomResourceState
 

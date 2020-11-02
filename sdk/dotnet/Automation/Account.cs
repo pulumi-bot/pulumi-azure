@@ -40,6 +40,10 @@ namespace Pulumi.Azure.Automation
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Accounts can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

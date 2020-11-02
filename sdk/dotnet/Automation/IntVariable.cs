@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a integer variable in Azure Automation
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Int Variable can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class IntVariable : Pulumi.CustomResource
     {

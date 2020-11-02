@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Notification Hub Namespaces can be imported using the `resource id`, e.g. ell
 type Namespace struct {
 	pulumi.CustomResourceState
 

@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Relay Hybrid Connection's can be imported using the `resource id`, e.g. ell
 type HybridConnection struct {
 	pulumi.CustomResourceState
 

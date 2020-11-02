@@ -49,6 +49,10 @@ namespace Pulumi.Azure.MSSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Sql Virtual Machines can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VirtualMachine : Pulumi.CustomResource
     {

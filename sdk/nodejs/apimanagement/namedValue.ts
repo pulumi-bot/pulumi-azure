@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     value: "Example Value",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Properties can be imported using the `resource id`, e.g. ell
  */
 export class NamedValue extends pulumi.CustomResource {
     /**

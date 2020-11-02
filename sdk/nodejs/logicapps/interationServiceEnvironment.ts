@@ -61,6 +61,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Integration Service Environments can be imported using the `resource id`, e.g. ell
  */
 export class InterationServiceEnvironment extends pulumi.CustomResource {
     /**

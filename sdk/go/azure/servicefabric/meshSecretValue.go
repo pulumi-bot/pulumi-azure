@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Fabric Mesh Secret Value can be imported using the `resource id`, e.g. ell
 type MeshSecretValue struct {
 	pulumi.CustomResourceState
 

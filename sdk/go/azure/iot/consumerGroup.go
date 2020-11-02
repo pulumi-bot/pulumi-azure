@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub Consumer Groups can be imported using the `resource id`, e.g. ell
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
 

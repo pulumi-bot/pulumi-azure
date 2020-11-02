@@ -48,6 +48,10 @@ class Hub(pulumi.CustomResource):
             location=example_resource_group.location)
         ```
 
+        ## Import
+
+        Notification Hubs can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HubApnsCredentialArgs']] apns_credential: A `apns_credential` block as defined below.

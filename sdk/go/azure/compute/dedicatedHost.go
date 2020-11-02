@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Dedicated Hosts can be imported using the `resource id`, e.g. ell
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 

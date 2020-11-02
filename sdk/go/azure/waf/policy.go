@@ -134,6 +134,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Web Application Firewall Policy can be imported using the `resource id`, e.g. ell
 type Policy struct {
 	pulumi.CustomResourceState
 

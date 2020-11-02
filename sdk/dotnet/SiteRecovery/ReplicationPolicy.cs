@@ -43,6 +43,10 @@ namespace Pulumi.Azure.SiteRecovery
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Site Recovery Replication Policies can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ReplicationPolicy : Pulumi.CustomResource
     {

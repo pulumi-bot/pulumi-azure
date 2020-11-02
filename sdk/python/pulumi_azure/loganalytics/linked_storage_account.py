@@ -48,6 +48,10 @@ class LinkedStorageAccount(pulumi.CustomResource):
             storage_account_ids=[example_account.id])
         ```
 
+        ## Import
+
+        Log Analytics Linked Storage Accounts can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_source_type: The data source type which should be used for this Log Analytics Linked Storage Account. Possible values are "customlogs", "azurewatson", "query", "ingestion" and "alerts". Changing this forces a new Log Analytics Linked Storage Account to be created.

@@ -91,6 +91,10 @@ namespace Pulumi.Azure.HDInsight
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HDInsight Kafka Clusters can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class KafkaCluster : Pulumi.CustomResource
     {

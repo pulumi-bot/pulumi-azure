@@ -14,6 +14,7 @@ namespace Pulumi.Azure.StreamAnalytics
         /// <summary>
         /// Use this data source to access information about an existing Stream Analytics Job.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

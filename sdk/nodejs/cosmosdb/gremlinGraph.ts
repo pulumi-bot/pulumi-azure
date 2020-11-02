@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  * ```
  *
  * > **NOTE:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `azure.cosmosdb.Account` resource.
+ *
+ * ## Import
+ *
+ * Cosmos Gremlin Graphs can be imported using the `resource id`, e.g. ell
  */
 export class GremlinGraph extends pulumi.CustomResource {
     /**

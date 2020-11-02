@@ -53,6 +53,10 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Stream Analytics JavaScript UDF Functions can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionJavaScriptUDFInputArgs']]]] inputs: One or more `input` blocks as defined below.

@@ -60,6 +60,16 @@ import * as utilities from "../utilities";
  *     locationFilters: ["West Europe"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Policy Remediations can be imported using the `resource id`, e.g. ell
+ *
+ *  or ell
+ *
+ *  or ell
+ *
+ *  or ell
  */
 export class Remediation extends pulumi.CustomResource {
     /**

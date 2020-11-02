@@ -68,6 +68,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// EventHub Authorization Rules can be imported using the `resource id`, e.g. ell
+//
 // Deprecated: azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule
 type EventHubAuthorizationRule struct {
 	pulumi.CustomResourceState

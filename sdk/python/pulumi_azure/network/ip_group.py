@@ -46,6 +46,10 @@ class IPGroup(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        IP Groups can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: A list of CIDRs or IP addresses.

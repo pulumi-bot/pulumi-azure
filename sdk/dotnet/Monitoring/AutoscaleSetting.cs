@@ -331,6 +331,10 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// AutoScale Setting can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AutoscaleSetting : Pulumi.CustomResource
     {

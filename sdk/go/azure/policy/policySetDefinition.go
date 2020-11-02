@@ -46,6 +46,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Policy Set Definitions can be imported using the `resource id`, e.g. ell
+//
+//  or ell
 type PolicySetDefinition struct {
 	pulumi.CustomResourceState
 

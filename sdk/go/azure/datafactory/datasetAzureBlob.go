@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Datasets can be imported using the `resource id`, e.g. ell
 type DatasetAzureBlob struct {
 	pulumi.CustomResourceState
 

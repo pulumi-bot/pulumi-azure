@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CosmosDB Mongo Collection can be imported using the `resource id`, e.g. ell
  */
 export class MongoCollection extends pulumi.CustomResource {
     /**

@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Kusto (also known as Azure Data Explorer) Attached Database Configuration
+//
+// ## Import
+//
+// Kusto Attached Database Configurations can be imported using the `resource id`, e.g. ell
 type AttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 

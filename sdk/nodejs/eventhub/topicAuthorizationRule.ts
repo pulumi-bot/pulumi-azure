@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * ServiceBus Topic authorization rules can be imported using the `resource id`, e.g. ell
+ *
  * @deprecated azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule
  */
 export class TopicAuthorizationRule extends pulumi.CustomResource {

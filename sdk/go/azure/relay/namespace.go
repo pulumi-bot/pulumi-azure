@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Relay Namespace's can be imported using the `resource id`, e.g. ell
 type Namespace struct {
 	pulumi.CustomResourceState
 

@@ -67,6 +67,10 @@ class NetworkMapping(pulumi.CustomResource):
             target_network_id=secondary_virtual_network.id)
         ```
 
+        ## Import
+
+        Site Recovery Network Mapping can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the network mapping.

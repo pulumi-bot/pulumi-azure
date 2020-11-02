@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     description: "A description of my workspace",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Desktop Workspaces can be imported using the `resource id`, e.g.
  */
 export class Workspace extends pulumi.CustomResource {
     /**

@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Fabric Mesh Local Network can be imported using the `resource id`, e.g. ell
 type MeshLocalNetwork struct {
 	pulumi.CustomResourceState
 

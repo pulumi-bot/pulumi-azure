@@ -42,6 +42,12 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Diagnostic Settings can be imported using the `resource id`, e.g.
+ *
+ *  -> **NOTE:** This is an ID specific to this resource provider which uses the format `{resourceId}|{diagnosticSettingName}`
  */
 export class DiagnosticSetting extends pulumi.CustomResource {
     /**

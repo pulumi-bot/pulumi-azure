@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Key Vault Certificate Issuers can be imported using the `resource id`, e.g. ell
 type CertificateIssuer struct {
 	pulumi.CustomResourceState
 

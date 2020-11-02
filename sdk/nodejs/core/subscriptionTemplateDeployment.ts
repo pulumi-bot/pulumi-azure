@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *  `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subscription Template Deployments can be imported using the `resource id`, e.g. ell
  */
 export class SubscriptionTemplateDeployment extends pulumi.CustomResource {
     /**

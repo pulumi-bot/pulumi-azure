@@ -68,6 +68,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnets can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Subnet : Pulumi.CustomResource
     {

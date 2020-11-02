@@ -14,6 +14,7 @@ namespace Pulumi.Azure.EventGrid
         /// <summary>
         /// Use this data source to access information about an existing EventGrid Topic
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

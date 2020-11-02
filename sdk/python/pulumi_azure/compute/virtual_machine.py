@@ -113,6 +113,10 @@ class VirtualMachine(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Virtual Machines can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['VirtualMachineAdditionalCapabilitiesArgs']] additional_capabilities: A `additional_capabilities` block.

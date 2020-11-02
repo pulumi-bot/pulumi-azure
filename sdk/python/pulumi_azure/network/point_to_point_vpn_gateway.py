@@ -45,6 +45,10 @@ class PointToPointVpnGateway(pulumi.CustomResource):
             scale_unit=1)
         ```
 
+        ## Import
+
+        Point-to-Site VPN Gateway's can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['PointToPointVpnGatewayConnectionConfigurationArgs']] connection_configuration: A `connection_configuration` block as defined below.

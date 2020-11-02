@@ -14,6 +14,7 @@ namespace Pulumi.Azure.EventHub
         /// <summary>
         /// Use this data source to access information about an existing EventHub.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

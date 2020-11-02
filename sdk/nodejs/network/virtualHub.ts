@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     addressPrefix: "10.0.1.0/24",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Hub's can be imported using the `resource id`, e.g. ell
  */
 export class VirtualHub extends pulumi.CustomResource {
     /**

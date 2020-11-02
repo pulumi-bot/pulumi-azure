@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     description: "This is an example API management group.",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Groups can be imported using the `resource id`, e.g. ell
  */
 export class Group extends pulumi.CustomResource {
     /**

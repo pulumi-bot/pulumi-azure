@@ -50,6 +50,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub Consumer Groups can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ConsumerGroup : Pulumi.CustomResource
     {

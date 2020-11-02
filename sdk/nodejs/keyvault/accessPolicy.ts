@@ -10,6 +10,14 @@ import * as utilities from "../utilities";
  * > **NOTE:** It's possible to define Key Vault Access Policies both within the `azure.keyvault.KeyVault` resource via the `accessPolicy` block and by using the `azure.keyvault.AccessPolicy` resource. However it's not possible to use both methods to manage Access Policies within a KeyVault, since there'll be conflicts.
  *
  * > **NOTE:** Azure permits a maximum of 1024 Access Policies per Key Vault - [more information can be found in this document](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-access-control).
+ *
+ * ## Import
+ *
+ * Key Vault Access Policies can be imported using the Resource ID of the Key Vault, plus some additional metadata. If both an `object_id` and `application_id` are specified, then the Access Policy can be imported using the following codeell
+ *
+ *  where `11111111-1111-1111-1111-111111111111` is the `object_id` and `22222222-2222-2222-2222-222222222222` is the `application_id`. --- Access Policies with an `object_id` but no `application_id` can be imported using the following commandell
+ *
+ *  where `11111111-1111-1111-1111-111111111111` is the `object_id`. -> **NOTE:** Both Identifiers are unique to this provider and don't map to an existing object within Azure.
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

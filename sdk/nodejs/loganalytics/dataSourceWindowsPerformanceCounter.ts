@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     intervalSeconds: 10,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Windows Performance Counter DataSources can be imported using the `resource id`, e.g. ell
  */
 export class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
     /**

@@ -88,6 +88,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub ServiceBus Queue Endpoint can be imported using the `resource id`, e.g. ell
 type EndpointServicebusQueue struct {
 	pulumi.CustomResourceState
 

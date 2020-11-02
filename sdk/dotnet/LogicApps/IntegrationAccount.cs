@@ -40,6 +40,10 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Logic App Integration Accounts can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class IntegrationAccount : Pulumi.CustomResource
     {

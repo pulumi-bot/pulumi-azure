@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Schedule Trigger can be imported using the `resource id`, e.g. ell
 type TriggerSchedule struct {
 	pulumi.CustomResourceState
 

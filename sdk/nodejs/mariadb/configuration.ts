@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     value: "600",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MariaDB Configurations can be imported using the `resource id`, e.g. ell
  */
 export class Configuration extends pulumi.CustomResource {
     /**

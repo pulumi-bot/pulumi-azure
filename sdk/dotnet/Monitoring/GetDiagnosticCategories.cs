@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Monitoring
         /// <summary>
         /// Use this data source to access information about the Monitor Diagnostics Categories supported by an existing Resource.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

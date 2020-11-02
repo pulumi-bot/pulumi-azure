@@ -84,6 +84,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// App Service Virtual Network Associations can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class VirtualNetworkSwiftConnection : Pulumi.CustomResource
     {

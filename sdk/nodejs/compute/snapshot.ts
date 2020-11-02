@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     sourceUri: exampleManagedDisk.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Snapshots can be imported using the `resource id`, e.g. ell
  */
 export class Snapshot extends pulumi.CustomResource {
     /**

@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     endIpAddress: "255.255.255.255",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Synapse Firewall Rule can be imported using the `resource id`, e.g. ell
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

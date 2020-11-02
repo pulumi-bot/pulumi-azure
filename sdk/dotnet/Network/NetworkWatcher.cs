@@ -35,6 +35,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network Watchers can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class NetworkWatcher : Pulumi.CustomResource
     {

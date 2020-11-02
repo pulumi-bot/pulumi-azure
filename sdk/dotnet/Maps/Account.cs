@@ -39,6 +39,10 @@ namespace Pulumi.Azure.Maps
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A Maps Account can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

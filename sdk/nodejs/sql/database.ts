@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SQL Databases can be imported using the `resource id`, e.g. ell
  */
 export class Database extends pulumi.CustomResource {
     /**

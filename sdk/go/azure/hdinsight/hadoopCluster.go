@@ -94,6 +94,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight Hadoop Clusters can be imported using the `resource id`, e.g. ell
 type HadoopCluster struct {
 	pulumi.CustomResourceState
 

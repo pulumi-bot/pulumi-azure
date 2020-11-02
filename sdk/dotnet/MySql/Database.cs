@@ -54,6 +54,10 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MySQL Database's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

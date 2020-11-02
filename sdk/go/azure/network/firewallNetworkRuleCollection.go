@@ -106,6 +106,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Firewall Network Rule Collections can be imported using the `resource id`, e.g. ell
 type FirewallNetworkRuleCollection struct {
 	pulumi.CustomResourceState
 

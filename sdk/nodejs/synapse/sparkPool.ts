@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Synapse Spark Pool can be imported using the `resource id`, e.g. ell
  */
 export class SparkPool extends pulumi.CustomResource {
     /**

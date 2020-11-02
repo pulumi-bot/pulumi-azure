@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     eventTypes: ["error"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Windows Event DataSources can be imported using the `resource id`, e.g. ell
  */
 export class DataSourceWindowsEvent extends pulumi.CustomResource {
     /**

@@ -45,6 +45,10 @@ import * as utilities from "../utilities";
  *     encoding: "JSON",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Storage Container Endpoint can be imported using the `resource id`, e.g. ell
  */
 export class EndpointStorageContainer extends pulumi.CustomResource {
     /**

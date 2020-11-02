@@ -71,6 +71,12 @@ class NetworkInterfaceNatRuleAssociation(pulumi.CustomResource):
             nat_rule_id=example_nat_rule.id)
         ```
 
+        ## Import
+
+        Associations between Network Interfaces and Load Balancer NAT Rule can be imported using the `resource id`, e.g. ell
+
+         -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{natRuleId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_configuration_name: The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.

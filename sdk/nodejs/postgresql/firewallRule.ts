@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     endIpAddress: "40.112.255.255",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Firewall Rule's can be imported using the `resource id`, e.g. ell
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

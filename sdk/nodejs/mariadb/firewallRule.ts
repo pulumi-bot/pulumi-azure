@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     startIpAddress: "40.112.0.0",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MariaDB Firewall rules can be imported using the `resource id`, e.g. ell
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

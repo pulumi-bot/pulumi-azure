@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  * export const clientCertificate = exampleKubernetesCluster.kubeConfigs.apply(kubeConfigs => kubeConfigs[0].clientCertificate);
  * export const kubeConfig = exampleKubernetesCluster.kubeConfigRaw;
  * ```
+ *
+ * ## Import
+ *
+ * Managed Kubernetes Clusters can be imported using the `resource id`, e.g. ell
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**

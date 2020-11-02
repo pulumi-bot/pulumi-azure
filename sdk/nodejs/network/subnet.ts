@@ -41,6 +41,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnets can be imported using the `resource id`, e.g. ell
  */
 export class Subnet extends pulumi.CustomResource {
     /**

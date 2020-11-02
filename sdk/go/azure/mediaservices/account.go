@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Media Services Accounts can be imported using the `resource id`, e.g. ell
 type Account struct {
 	pulumi.CustomResourceState
 

@@ -51,6 +51,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Integration Managed Runtimes can be imported using the `resource id`, e.g. ell
 type IntegrationRuntimeManaged struct {
 	pulumi.CustomResourceState
 

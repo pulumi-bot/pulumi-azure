@@ -61,6 +61,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Networks can be imported using the `resource id`, e.g. ell
  */
 export class VirtualNetwork extends pulumi.CustomResource {
     /**

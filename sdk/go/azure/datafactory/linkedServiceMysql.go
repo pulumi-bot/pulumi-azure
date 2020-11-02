@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory MySql Linked Service's can be imported using the `resource id`, e.g. ell
 type LinkedServiceMysql struct {
 	pulumi.CustomResourceState
 

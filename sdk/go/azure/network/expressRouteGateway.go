@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ExpressRoute Gateways can be imported using the `resource id`, e.g. ell
 type ExpressRouteGateway struct {
 	pulumi.CustomResourceState
 

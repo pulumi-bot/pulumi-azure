@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Subscriptions can be imported using the `resource id`, e.g. ell
 type Subscription struct {
 	pulumi.CustomResourceState
 

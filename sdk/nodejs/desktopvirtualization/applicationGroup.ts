@@ -43,6 +43,10 @@ import * as utilities from "../utilities";
  *     description: "Acceptance Test: An application group",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Desktop Application Groups can be imported using the `resource id`, e.g.
  */
 export class ApplicationGroup extends pulumi.CustomResource {
     /**

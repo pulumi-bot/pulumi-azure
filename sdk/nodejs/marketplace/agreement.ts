@@ -19,6 +19,10 @@ import * as utilities from "../utilities";
  *     publisher: "barracudanetworks",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Marketplace Agreement can be imported using the `resource id`, e.g. ell
  */
 export class Agreement extends pulumi.CustomResource {
     /**

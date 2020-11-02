@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Monitor Action Rule can be imported using the `resource id`, e.g. ell
  */
 export class ActionRuleSuppression extends pulumi.CustomResource {
     /**

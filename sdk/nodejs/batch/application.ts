@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     accountName: exampleBatch / accountAccount.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Batch Applications can be imported using the `resource id`, e.g. ell
  */
 export class Application extends pulumi.CustomResource {
     /**

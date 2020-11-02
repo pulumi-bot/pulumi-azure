@@ -82,6 +82,10 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Namespace can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class NamespaceNetworkRuleSet : Pulumi.CustomResource
     {

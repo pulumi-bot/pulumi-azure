@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Linux Virtual Machine within a Dev Test Lab.
+ *
+ * ## Import
+ *
+ * Dev Test Linux Virtual Machines can be imported using the `resource id`, e.g. ell
  */
 export class LinuxVirtualMachine extends pulumi.CustomResource {
     /**

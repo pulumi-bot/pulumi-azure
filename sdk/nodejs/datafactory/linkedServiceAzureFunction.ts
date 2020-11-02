@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     key: "foo",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Linked Service's can be imported using the `resource id`, e.g. ell
  */
 export class LinkedServiceAzureFunction extends pulumi.CustomResource {
     /**

@@ -61,6 +61,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// App Service Custom Hostname Bindings can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class CustomHostnameBinding : Pulumi.CustomResource
     {

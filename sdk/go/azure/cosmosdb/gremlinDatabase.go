@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CosmosDB Gremlin Databases can be imported using the `resource id`, e.g. ell
 type GremlinDatabase struct {
 	pulumi.CustomResourceState
 

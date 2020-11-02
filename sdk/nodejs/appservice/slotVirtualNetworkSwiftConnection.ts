@@ -56,6 +56,10 @@ import * as utilities from "../utilities";
  *     subnetId: exampleSubnet.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Slot Virtual Network Associations can be imported using the `resource id`, e.g. ell
  */
 export class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
     /**

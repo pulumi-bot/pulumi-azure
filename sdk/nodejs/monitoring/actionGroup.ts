@@ -85,6 +85,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Action Groups can be imported using the `resource id`, e.g. ell
  */
 export class ActionGroup extends pulumi.CustomResource {
     /**

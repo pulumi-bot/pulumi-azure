@@ -179,6 +179,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Function Apps can be imported using the `resource id`, e.g. ell
 type FunctionApp struct {
 	pulumi.CustomResourceState
 

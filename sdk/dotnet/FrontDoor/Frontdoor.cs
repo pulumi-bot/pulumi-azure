@@ -110,6 +110,10 @@ namespace Pulumi.Azure.FrontDoor
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Front Doors can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Frontdoor : Pulumi.CustomResource
     {

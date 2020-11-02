@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     frequency: "Day",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Schedule Trigger can be imported using the `resource id`, e.g. ell
  */
 export class TriggerSchedule extends pulumi.CustomResource {
     /**

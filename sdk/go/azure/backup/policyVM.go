@@ -91,6 +91,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VM Backup Policies can be imported using the `resource id`, e.g. ell
 type PolicyVM struct {
 	pulumi.CustomResourceState
 

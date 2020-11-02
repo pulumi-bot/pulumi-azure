@@ -19,6 +19,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Spatial Anchors Account can be imported using the `resource id`, e.g. ell
  */
 export class SpatialAnchorsAccount extends pulumi.CustomResource {
     /**

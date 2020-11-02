@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Runbooks can be imported using the `resource id`, e.g. ell
  */
 export class RunBook extends pulumi.CustomResource {
     /**

@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cosmos SQL Database can be imported using the `resource id`, e.g. ell
  */
 export class SqlDatabase extends pulumi.CustomResource {
     /**

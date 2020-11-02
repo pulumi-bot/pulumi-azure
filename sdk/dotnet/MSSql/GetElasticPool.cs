@@ -14,6 +14,7 @@ namespace Pulumi.Azure.MSSql
         /// <summary>
         /// Use this data source to access information about an existing SQL elastic pool.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

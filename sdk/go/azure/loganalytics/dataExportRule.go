@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Data Export Rule can be imported using the `resource id`, e.g. ell
 type DataExportRule struct {
 	pulumi.CustomResourceState
 

@@ -80,6 +80,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network Profile can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Profile : Pulumi.CustomResource
     {

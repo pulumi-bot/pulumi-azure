@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Output ServiceBus Queue's can be imported using the `resource id`, e.g. ell
  */
 export class OutputServiceBusQueue extends pulumi.CustomResource {
     /**

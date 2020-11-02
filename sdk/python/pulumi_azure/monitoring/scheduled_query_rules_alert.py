@@ -39,6 +39,10 @@ class ScheduledQueryRulesAlert(pulumi.CustomResource):
         """
         Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
 
+        ## Import
+
+        Scheduled Query Rule Alerts can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ScheduledQueryRulesAlertActionArgs']] action: An `action` block as defined below.

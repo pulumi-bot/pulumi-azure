@@ -67,6 +67,10 @@ namespace Pulumi.Azure.Monitoring
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A Log Profile can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class LogProfile : Pulumi.CustomResource
     {

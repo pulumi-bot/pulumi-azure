@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHub Authorization Rules can be imported using the `resource id`, e.g. ell
 type AuthorizationRule struct {
 	pulumi.CustomResourceState
 

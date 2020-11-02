@@ -75,6 +75,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub EventHub Endpoint can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class EndpointEventhub : Pulumi.CustomResource
     {

@@ -54,6 +54,10 @@ import * as utilities from "../utilities";
  *     dependsOn: [srcExtension],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Network Connection Monitors can be imported using the `resource id`, e.g. ell
  */
 export class NetworkConnectionMonitor extends pulumi.CustomResource {
     /**

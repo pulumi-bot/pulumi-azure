@@ -52,6 +52,10 @@ class SqlStoredProcedure(pulumi.CustomResource):
             body="  	function () { var context = getContext(); var response = context.getResponse(); response.setBody('Hello, World'); }\n")
         ```
 
+        ## Import
+
+        CosmosDB SQL Stored Procedures can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.

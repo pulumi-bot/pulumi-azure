@@ -76,6 +76,10 @@ import (
 //
 //  - [Azure Redis Cache: SKU specific configuration limitations](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#advanced-settings)
 //  - [Redis: Available Configuration Settings](http://redis.io/topics/config)
+//
+// ## Import
+//
+// Redis Cache's can be imported using the `resource id`, e.g. ell
 type Cache struct {
 	pulumi.CustomResourceState
 

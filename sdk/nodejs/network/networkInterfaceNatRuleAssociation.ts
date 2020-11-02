@@ -60,6 +60,12 @@ import * as utilities from "../utilities";
  *     natRuleId: exampleNatRule.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Network Interfaces and Load Balancer NAT Rule can be imported using the `resource id`, e.g. ell
+ *
+ *  -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{natRuleId}`.
  */
 export class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     /**

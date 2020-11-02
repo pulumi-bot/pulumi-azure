@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     endIpAddress: "10.0.17.62",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SQL Firewall Rules can be imported using the `resource id`, e.g. ell
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

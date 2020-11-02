@@ -46,6 +46,10 @@ namespace Pulumi.Azure.KeyVault
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Key Vault Certificate Issuers can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class CertificateIssuer : Pulumi.CustomResource
     {

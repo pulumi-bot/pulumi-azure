@@ -48,6 +48,10 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Topics can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

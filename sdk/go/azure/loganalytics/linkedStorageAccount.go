@@ -65,6 +65,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Log Analytics Linked Storage Accounts can be imported using the `resource id`, e.g. ell
 type LinkedStorageAccount struct {
 	pulumi.CustomResourceState
 

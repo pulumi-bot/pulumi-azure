@@ -46,6 +46,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Namespace can be imported using the `resource id`, e.g. ell
 type Namespace struct {
 	pulumi.CustomResourceState
 

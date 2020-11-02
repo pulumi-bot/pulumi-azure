@@ -38,6 +38,10 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHub Authorization Rules can be imported using the `resource id`, e.g. ell
  */
 export class AuthorizationRule extends pulumi.CustomResource {
     /**

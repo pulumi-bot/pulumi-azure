@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A PostgreSQL Active Directory Administrator can be imported using the `resource id`, e.g. ell
 type ActiveDirectoryAdministrator struct {
 	pulumi.CustomResourceState
 

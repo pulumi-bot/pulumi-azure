@@ -46,6 +46,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Queue can be imported using the `resource id`, e.g. ell
     /// </summary>
     [Obsolete(@"azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue")]
     public partial class Queue : Pulumi.CustomResource

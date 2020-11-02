@@ -14,6 +14,7 @@ namespace Pulumi.Azure.PrivateLink
         /// <summary>
         /// Use this data source to access the connection status information about an existing Private Endpoint Connection.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -41,6 +41,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventGrid Topic's can be imported using the `resource id`, e.g. ell
     /// </summary>
     [Obsolete(@"azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic")]
     public partial class EventGridTopic : Pulumi.CustomResource

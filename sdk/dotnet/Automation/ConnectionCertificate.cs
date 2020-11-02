@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages an Automation Connection with type `Azure`.
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Connection can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ConnectionCertificate : Pulumi.CustomResource
     {

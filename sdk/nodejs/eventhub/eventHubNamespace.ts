@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHub Namespaces can be imported using the `resource id`, e.g. ell
  */
 export class EventHubNamespace extends pulumi.CustomResource {
     /**

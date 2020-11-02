@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Firewall Rules can be imported using the `resource id`, e.g. ell
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

@@ -100,6 +100,10 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MySQL Firewall Rule's can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

@@ -13,6 +13,10 @@ namespace Pulumi.Azure.Bot
     /// Manages a Email integration for a Bot Channel
     /// 
     /// &gt; **Note** A bot can only have a single Email Channel associated with it.
+    /// 
+    /// ## Import
+    /// 
+    /// The Email Integration for a Bot Channel can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ChannelEmail : Pulumi.CustomResource
     {

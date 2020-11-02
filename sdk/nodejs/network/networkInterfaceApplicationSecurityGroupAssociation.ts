@@ -42,6 +42,12 @@ import * as utilities from "../utilities";
  *     applicationSecurityGroupId: exampleApplicationSecurityGroup.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Network Interfaces and Application Security Groups can be imported using the `resource id`, e.g. ell
+ *
+ *  -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{applicationSecurityGroupId}`.
  */
 export class NetworkInterfaceApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     /**

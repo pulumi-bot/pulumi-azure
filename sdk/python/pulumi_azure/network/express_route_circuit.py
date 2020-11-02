@@ -54,6 +54,10 @@ class ExpressRouteCircuit(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ExpressRoute circuits can be imported using the `resource id`, e.g. ell
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_classic_operations: Allow the circuit to interact with classic (RDFE) resources. The default value is `false`.

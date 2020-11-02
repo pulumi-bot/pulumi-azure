@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Search Services can be imported using the `resource id`, e.g. ell
 type Service struct {
 	pulumi.CustomResourceState
 

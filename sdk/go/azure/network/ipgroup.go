@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IP Groups can be imported using the `resource id`, e.g. ell
 type IPGroup struct {
 	pulumi.CustomResourceState
 

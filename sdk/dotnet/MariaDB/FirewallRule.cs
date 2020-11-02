@@ -55,6 +55,10 @@ namespace Pulumi.Azure.MariaDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MariaDB Firewall rules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

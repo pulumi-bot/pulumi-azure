@@ -57,6 +57,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Service Bus Topics can be imported using the `resource id`, e.g. ell
+//
 // Deprecated: azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic
 type Topic struct {
 	pulumi.CustomResourceState

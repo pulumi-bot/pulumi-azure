@@ -43,6 +43,10 @@ import * as utilities from "../utilities";
  *     targetResourceId: examplePublicIp.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A records can be imported using the `resource id`, e.g. ell
  */
 export class ARecord extends pulumi.CustomResource {
     /**

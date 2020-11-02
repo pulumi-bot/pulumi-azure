@@ -83,6 +83,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Associations between Network Interfaces and Network Security Group can be imported using the `resource id`, e.g. ell
+//
+//  -> **NOTE:** This ID is specific to Terraform - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
 type NetworkInterfaceSecurityGroupAssociation struct {
 	pulumi.CustomResourceState
 

@@ -71,6 +71,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Synapse Workspace can be imported using the `resource id`, e.g. ell
 type Workspace struct {
 	pulumi.CustomResourceState
 

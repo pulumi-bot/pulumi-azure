@@ -40,6 +40,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IoT Device Provisioning Service can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class IotHubDps : Pulumi.CustomResource
     {

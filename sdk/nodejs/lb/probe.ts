@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     port: 22,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Load Balancer Probes can be imported using the `resource id`, e.g. ell
  */
 export class Probe extends pulumi.CustomResource {
     /**

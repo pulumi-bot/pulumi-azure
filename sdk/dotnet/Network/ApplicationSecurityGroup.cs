@@ -39,6 +39,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Application Security Groups can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class ApplicationSecurityGroup : Pulumi.CustomResource
     {

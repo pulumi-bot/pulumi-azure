@@ -62,6 +62,10 @@ namespace Pulumi.Azure.Redis
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Redis Firewall Rules can be imported using the `resource id`, e.g. ell
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

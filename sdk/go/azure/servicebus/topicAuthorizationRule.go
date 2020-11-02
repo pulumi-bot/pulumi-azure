@@ -64,6 +64,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ServiceBus Topic authorization rules can be imported using the `resource id`, e.g. ell
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 

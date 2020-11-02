@@ -15,6 +15,7 @@ namespace Pulumi.Azure.Automation
         /// Use this data source to access information about an existing Automation Bool Variable.
         /// 
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

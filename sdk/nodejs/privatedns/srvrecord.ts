@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS SRV Records can be imported using the `resource id`, e.g. ell
  */
 export class SRVRecord extends pulumi.CustomResource {
     /**

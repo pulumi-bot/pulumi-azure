@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Compute
         /// <summary>
         /// Use this data source to access information about a Platform Image.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
