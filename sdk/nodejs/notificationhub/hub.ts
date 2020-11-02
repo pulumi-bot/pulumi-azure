@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     location: exampleResourceGroup.location,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Notification Hubs can be imported using the `resource id`, e.g.
  */
 export class Hub extends pulumi.CustomResource {
     /**

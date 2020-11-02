@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     encryptionType: "ServiceManaged",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Lake Store's can be imported using the `resource id`, e.g.
  */
 export class Store extends pulumi.CustomResource {
     /**

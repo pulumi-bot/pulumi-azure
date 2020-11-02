@@ -48,6 +48,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Bot Web App's can be imported using the `resource id`, e.g.
 type WebApp struct {
 	pulumi.CustomResourceState
 

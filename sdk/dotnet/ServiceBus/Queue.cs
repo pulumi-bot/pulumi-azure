@@ -46,6 +46,10 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Queue can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {

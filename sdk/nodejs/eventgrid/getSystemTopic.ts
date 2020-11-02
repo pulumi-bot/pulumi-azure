@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     topicType: "Microsoft.Storage.StorageAccounts",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Event Grid System Topic can be imported using the `resource id`, e.g.
  */
 export class GetSystemTopic extends pulumi.CustomResource {
     /**

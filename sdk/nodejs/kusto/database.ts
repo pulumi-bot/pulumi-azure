@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     softDeletePeriod: "P31D",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Kusto Clusters can be imported using the `resource id`, e.g.
  */
 export class Database extends pulumi.CustomResource {
     /**

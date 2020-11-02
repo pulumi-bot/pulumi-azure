@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a Automation Schedule.
+//
+// ## Import
+//
+// Automation Schedule can be imported using the `resource id`, e.g.
 type Schedule struct {
 	pulumi.CustomResourceState
 

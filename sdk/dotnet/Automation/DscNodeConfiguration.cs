@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages a Automation DSC Node Configuration.
+    /// 
+    /// ## Import
+    /// 
+    /// Automation DSC Node Configuration's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DscNodeConfiguration : Pulumi.CustomResource
     {

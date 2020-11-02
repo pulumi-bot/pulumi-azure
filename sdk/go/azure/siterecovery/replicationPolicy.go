@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Site Recovery Replication Policies can be imported using the `resource id`, e.g.
 type ReplicationPolicy struct {
 	pulumi.CustomResourceState
 

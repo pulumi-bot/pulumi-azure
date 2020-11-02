@@ -77,6 +77,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CNAME records can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class CNameRecord : Pulumi.CustomResource
     {

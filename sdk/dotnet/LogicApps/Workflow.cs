@@ -35,6 +35,10 @@ namespace Pulumi.Azure.LogicApps
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Logic App Workflows can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Workflow : Pulumi.CustomResource
     {

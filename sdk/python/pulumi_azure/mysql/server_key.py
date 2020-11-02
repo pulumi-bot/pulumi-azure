@@ -23,6 +23,10 @@ class ServerKey(pulumi.CustomResource):
         """
         Manages a Customer Managed Key for a MySQL Server.
 
+        ## Import
+
+        A MySQL Server Key can be imported using the `resource id` of the MySQL Server Key, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_vault_key_id: The URL to a Key Vault Key.

@@ -81,6 +81,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Synapse Spark Pool can be imported using the `resource id`, e.g.
 type SparkPool struct {
 	pulumi.CustomResourceState
 

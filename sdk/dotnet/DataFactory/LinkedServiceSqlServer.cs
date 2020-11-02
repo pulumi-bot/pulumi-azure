@@ -41,6 +41,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory SQL Server Linked Service's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class LinkedServiceSqlServer : Pulumi.CustomResource
     {

@@ -45,6 +45,10 @@ namespace Pulumi.Azure.PrivateDns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Private DNS AAAA Records can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AAAARecord : Pulumi.CustomResource
     {

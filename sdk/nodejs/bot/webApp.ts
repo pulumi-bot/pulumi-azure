@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     microsoftAppId: current.then(current => current.clientId),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Bot Web App's can be imported using the `resource id`, e.g.
  */
 export class WebApp extends pulumi.CustomResource {
     /**

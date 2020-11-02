@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Automation Certificate.
+//
+// ## Import
+//
+// Automation Certificates can be imported using the `resource id`, e.g.
 type Certificate struct {
 	pulumi.CustomResourceState
 

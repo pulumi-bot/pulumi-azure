@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Event Grid System Topic can be imported using the `resource id`, e.g.
 type GetSystemTopic struct {
 	pulumi.CustomResourceState
 

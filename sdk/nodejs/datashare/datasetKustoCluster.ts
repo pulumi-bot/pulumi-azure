@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Data Share Kusto Cluster Dataset.
+ *
+ * ## Import
+ *
+ * Data Share Kusto Cluster Datasets can be imported using the `resource id`, e.g.
  */
 export class DatasetKustoCluster extends pulumi.CustomResource {
     /**

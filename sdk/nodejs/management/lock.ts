@@ -54,6 +54,10 @@ import * as utilities from "../utilities";
  *     notes: "Locked because it's needed by a third-party",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Management Locks can be imported using the `resource id`, e.g.
  */
 export class Lock extends pulumi.CustomResource {
     /**

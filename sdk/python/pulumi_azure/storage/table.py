@@ -41,6 +41,10 @@ class Table(pulumi.CustomResource):
         example_table = azure.storage.Table("exampleTable", storage_account_name=example_account.name)
         ```
 
+        ## Import
+
+        Table's within a Storage Account can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableAclArgs']]]] acls: One or more `acl` blocks as defined below.

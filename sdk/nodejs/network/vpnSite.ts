@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * VPN Sites can be imported using the `resource id`, e.g.
  */
 export class VpnSite extends pulumi.CustomResource {
     /**

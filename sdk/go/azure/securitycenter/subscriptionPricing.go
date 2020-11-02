@@ -39,6 +39,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The pricing tier can be imported using the `resource id`, e.g.
 type SubscriptionPricing struct {
 	pulumi.CustomResourceState
 

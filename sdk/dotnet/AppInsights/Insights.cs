@@ -42,6 +42,10 @@ namespace Pulumi.Azure.AppInsights
     ///     public Output&lt;string&gt; AppId { get; set; }
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Application Insights instances can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Insights : Pulumi.CustomResource
     {

@@ -74,6 +74,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Stream Input IoTHub's can be imported using the `resource id`, e.g.
 type StreamInputIotHub struct {
 	pulumi.CustomResourceState
 

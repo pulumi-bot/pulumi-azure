@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Groups can be imported using the `resource id`, e.g.
 type Group struct {
 	pulumi.CustomResourceState
 

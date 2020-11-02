@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  * });
  * // other subscription IDs can go here
  * ```
+ *
+ * ## Import
+ *
+ * Management Groups can be imported using the `management group resource id`, e.g.
  */
 export class Group extends pulumi.CustomResource {
     /**

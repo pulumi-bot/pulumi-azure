@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  *     location: "West Europe",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Resource Groups can be imported using the `resource id`, e.g.
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

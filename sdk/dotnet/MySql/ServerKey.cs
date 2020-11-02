@@ -11,6 +11,10 @@ namespace Pulumi.Azure.MySql
 {
     /// <summary>
     /// Manages a Customer Managed Key for a MySQL Server.
+    /// 
+    /// ## Import
+    /// 
+    /// A MySQL Server Key can be imported using the `resource id` of the MySQL Server Key, e.g.
     /// </summary>
     public partial class ServerKey : Pulumi.CustomResource
     {

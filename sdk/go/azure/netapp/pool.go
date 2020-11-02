@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NetApp Pool can be imported using the `resource id`, e.g.
 type Pool struct {
 	pulumi.CustomResourceState
 

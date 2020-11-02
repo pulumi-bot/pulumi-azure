@@ -51,6 +51,10 @@ namespace Pulumi.Azure.ServiceFabric
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Fabric Clusters can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

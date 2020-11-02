@@ -76,6 +76,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network Watcher Flow Logs can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class NetworkWatcherFlowLog : Pulumi.CustomResource
     {

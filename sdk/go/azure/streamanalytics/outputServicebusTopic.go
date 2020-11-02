@@ -73,6 +73,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Output ServiceBus Topic's can be imported using the `resource id`, e.g.
 type OutputServicebusTopic struct {
 	pulumi.CustomResourceState
 

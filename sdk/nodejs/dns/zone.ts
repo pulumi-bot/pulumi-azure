@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  * const example_public = new azure.dns.Zone("example-public", {resourceGroupName: example.name});
  * const example_private = new azure.privatedns.Zone("example-private", {resourceGroupName: example.name});
  * ```
+ *
+ * ## Import
+ *
+ * DNS Zones can be imported using the `resource id`, e.g.
  */
 export class Zone extends pulumi.CustomResource {
     /**

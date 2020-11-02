@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * VPN Server Configurations can be imported using the `resource id`, e.g.
  */
 export class VpnServerConfiguration extends pulumi.CustomResource {
     /**

@@ -38,6 +38,10 @@ import * as utilities from "../utilities";
  *     value: "on",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Configurations can be imported using the `resource id`, e.g.
  */
 export class Configuration extends pulumi.CustomResource {
     /**

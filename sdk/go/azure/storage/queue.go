@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Queue's can be imported using the `resource id`, e.g.
 type Queue struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Batch
 {
     /// <summary>
     /// Manages a certificate in an Azure Batch account.
+    /// 
+    /// ## Import
+    /// 
+    /// Batch Certificates can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

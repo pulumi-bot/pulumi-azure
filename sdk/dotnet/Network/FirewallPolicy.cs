@@ -31,6 +31,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// networks can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class FirewallPolicy : Pulumi.CustomResource
     {

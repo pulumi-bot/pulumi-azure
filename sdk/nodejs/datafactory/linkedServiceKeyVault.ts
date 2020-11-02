@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     keyVaultId: exampleKeyVault.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Key Vault Linked Service's can be imported using the `resource id`, e.g.
  */
 export class LinkedServiceKeyVault extends pulumi.CustomResource {
     /**

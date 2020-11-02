@@ -83,6 +83,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Rediss can be imported using the `resource id`, e.g.
 type LinkedServer struct {
 	pulumi.CustomResourceState
 

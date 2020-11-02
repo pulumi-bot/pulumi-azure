@@ -28,6 +28,10 @@ class AttachedDatabaseConfiguration(pulumi.CustomResource):
         """
         Manages a Kusto (also known as Azure Data Explorer) Attached Database Configuration
 
+        ## Import
+
+        Kusto Attached Database Configurations can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.

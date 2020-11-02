@@ -100,6 +100,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Site Recovery Network Mapping can be imported using the `resource id`, e.g.
 type NetworkMapping struct {
 	pulumi.CustomResourceState
 

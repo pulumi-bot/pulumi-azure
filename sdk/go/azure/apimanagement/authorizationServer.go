@@ -51,6 +51,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Authorization Servers can be imported using the `resource id`, e.g.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 

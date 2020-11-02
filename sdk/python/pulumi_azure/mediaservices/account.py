@@ -48,6 +48,10 @@ class Account(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Media Services Accounts can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

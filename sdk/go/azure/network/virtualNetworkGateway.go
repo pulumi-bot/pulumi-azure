@@ -104,6 +104,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Virtual Network Gateways can be imported using the `resource id`, e.g.
 type VirtualNetworkGateway struct {
 	pulumi.CustomResourceState
 

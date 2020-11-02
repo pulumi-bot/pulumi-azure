@@ -29,6 +29,10 @@ class ConnectionServicePrincipal(pulumi.CustomResource):
         """
         Manages an Automation Connection with type `AzureServicePrincipal`.
 
+        ## Import
+
+        Automation Connection can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The (Client) ID of the Service Principal.

@@ -39,6 +39,10 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventGrid Domains can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

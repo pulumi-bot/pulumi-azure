@@ -17,6 +17,10 @@ import (
 // > **Note** This provider will automatically update & reimage the nodes in the Scale Set (if Required) during an Update - this behaviour can be configured using the `features` configuration within the Provider configuration block.
 //
 // > **Note:** This resource does not support Unmanaged Disks. If you need to use Unmanaged Disks you can continue to use the `compute.ScaleSet` resource instead
+//
+// ## Import
+//
+// Linux Virtual Machine Scale Sets can be imported using the `resource id`, e.g.
 type LinuxVirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 

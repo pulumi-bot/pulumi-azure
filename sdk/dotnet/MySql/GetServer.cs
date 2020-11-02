@@ -14,6 +14,7 @@ namespace Pulumi.Azure.MySql
         /// <summary>
         /// Use this data source to access information about an existing MySQL Server.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

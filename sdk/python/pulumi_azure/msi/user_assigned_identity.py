@@ -41,6 +41,10 @@ class UserAssignedIdentity(pulumi.CustomResource):
             location=example_resource_group.location)
         ```
 
+        ## Import
+
+        User Assigned Identities can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location/region where the user assigned identity is

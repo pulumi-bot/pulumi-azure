@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     retentionInDays: 30,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Workspaces can be imported using the `resource id`, e.g.
  */
 export class AnalyticsWorkspace extends pulumi.CustomResource {
     /**

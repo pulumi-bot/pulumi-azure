@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Traffic Manager Profiles can be imported using the `resource id`, e.g.
 type TrafficManagerProfile struct {
 	pulumi.CustomResourceState
 

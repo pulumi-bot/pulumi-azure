@@ -48,6 +48,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// EventGrid Topic's can be imported using the `resource id`, e.g.
+//
 // Deprecated: azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic
 type EventGridTopic struct {
 	pulumi.CustomResourceState

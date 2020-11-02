@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     zones: ["1"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g.
  */
 export class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     /**

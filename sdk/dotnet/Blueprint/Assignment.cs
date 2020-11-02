@@ -111,6 +111,10 @@ namespace Pulumi.Azure.Blueprint
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure Blueprint Assignments can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Assignment : Pulumi.CustomResource
     {

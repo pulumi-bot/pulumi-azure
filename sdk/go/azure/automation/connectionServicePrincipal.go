@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Automation Connection with type `AzureServicePrincipal`.
+//
+// ## Import
+//
+// Automation Connection can be imported using the `resource id`, e.g.
 type ConnectionServicePrincipal struct {
 	pulumi.CustomResourceState
 

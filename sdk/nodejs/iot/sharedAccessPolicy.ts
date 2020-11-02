@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     registryWrite: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Shared Access Policies can be imported using the `resource id`, e.g.
  */
 export class SharedAccessPolicy extends pulumi.CustomResource {
     /**

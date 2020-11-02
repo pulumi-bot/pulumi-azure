@@ -97,6 +97,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CNAME records can be imported using the `resource id`, e.g.
 type CNameRecord struct {
 	pulumi.CustomResourceState
 

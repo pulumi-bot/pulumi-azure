@@ -134,6 +134,10 @@ namespace Pulumi.Azure.Hsm
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Dedicated Hardware Security Module can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Module : Pulumi.CustomResource
     {

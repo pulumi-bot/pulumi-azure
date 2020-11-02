@@ -16,6 +16,7 @@ namespace Pulumi.Azure.Storage
         /// 
         /// Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account Blob Container.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

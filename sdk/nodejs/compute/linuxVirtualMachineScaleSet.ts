@@ -66,6 +66,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Linux Virtual Machine Scale Sets can be imported using the `resource id`, e.g.
  */
 export class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     /**

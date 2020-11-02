@@ -36,6 +36,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventHub Cluster's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

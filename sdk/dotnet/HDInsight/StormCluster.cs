@@ -92,6 +92,10 @@ namespace Pulumi.Azure.HDInsight
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HDInsight Storm Clusters can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class StormCluster : Pulumi.CustomResource
     {

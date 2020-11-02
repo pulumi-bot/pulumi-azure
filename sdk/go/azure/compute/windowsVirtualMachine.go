@@ -107,6 +107,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Windows Virtual Machines can be imported using the `resource id`, e.g.
 type WindowsVirtualMachine struct {
 	pulumi.CustomResourceState
 

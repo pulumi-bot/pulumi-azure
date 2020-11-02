@@ -37,6 +37,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// App Service Certificate Orders can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class CertificateOrder : Pulumi.CustomResource
     {

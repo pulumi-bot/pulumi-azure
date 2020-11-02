@@ -8,6 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a LogToMetricAction Scheduled Query Rules resource within Azure Monitor.
+ *
+ * ## Import
+ *
+ * Scheduled Query Rule Log can be imported using the `resource id`, e.g.
  */
 export class ScheduledQueryRulesLog extends pulumi.CustomResource {
     /**

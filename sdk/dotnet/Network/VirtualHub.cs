@@ -42,6 +42,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Hub's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class VirtualHub : Pulumi.CustomResource
     {

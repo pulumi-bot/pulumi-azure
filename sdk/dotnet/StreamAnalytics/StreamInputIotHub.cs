@@ -60,6 +60,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Stream Input IoTHub's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class StreamInputIotHub : Pulumi.CustomResource
     {

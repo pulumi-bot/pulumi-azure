@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     softDeleteEnabled: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Recovery Services Vaults can be imported using the `resource id`, e.g.
  */
 export class Vault extends pulumi.CustomResource {
     /**

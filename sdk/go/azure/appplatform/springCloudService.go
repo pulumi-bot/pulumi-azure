@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Spring Cloud services can be imported using the `resource id`, e.g.
 type SpringCloudService struct {
 	pulumi.CustomResourceState
 

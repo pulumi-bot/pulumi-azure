@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Dev Test Policies can be imported using the `resource id`, e.g.
  */
 export class Policy extends pulumi.CustomResource {
     /**

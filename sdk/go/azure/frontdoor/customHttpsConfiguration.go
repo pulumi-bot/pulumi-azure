@@ -130,6 +130,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Front Door Custom Https Configurations can be imported using the `resource id` of the Frontend Endpoint, e.g.
 type CustomHttpsConfiguration struct {
 	pulumi.CustomResourceState
 

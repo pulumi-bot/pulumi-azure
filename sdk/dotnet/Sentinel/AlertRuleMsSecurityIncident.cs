@@ -46,6 +46,10 @@ namespace Pulumi.Azure.Sentinel
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Sentinel MS Security Incident Alert Rules can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AlertRuleMsSecurityIncident : Pulumi.CustomResource
     {

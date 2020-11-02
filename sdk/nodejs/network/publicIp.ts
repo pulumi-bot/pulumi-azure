@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Public IPs can be imported using the `resource id`, e.g.
  */
 export class PublicIp extends pulumi.CustomResource {
     /**

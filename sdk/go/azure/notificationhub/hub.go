@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Notification Hubs can be imported using the `resource id`, e.g.
 type Hub struct {
 	pulumi.CustomResourceState
 

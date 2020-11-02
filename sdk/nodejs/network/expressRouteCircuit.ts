@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ExpressRoute circuits can be imported using the `resource id`, e.g.
  */
 export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**

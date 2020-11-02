@@ -56,6 +56,10 @@ class RegistryWebhook(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Container Registry Webhooks can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`

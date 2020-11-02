@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Traffic Manager Profiles can be imported using the `resource id`, e.g.
+ *
  * @deprecated azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile
  */
 export class Profile extends pulumi.CustomResource {

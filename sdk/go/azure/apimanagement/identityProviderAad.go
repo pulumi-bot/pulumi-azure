@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management AAD Identity Provider can be imported using the `resource id`, e.g.
 type IdentityProviderAad struct {
 	pulumi.CustomResourceState
 

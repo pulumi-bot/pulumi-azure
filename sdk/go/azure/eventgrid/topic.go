@@ -47,6 +47,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventGrid Topic's can be imported using the `resource id`, e.g.
 type Topic struct {
 	pulumi.CustomResourceState
 

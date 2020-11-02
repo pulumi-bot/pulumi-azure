@@ -47,6 +47,10 @@ class EventhubNamespaceDisasterRecoveryConfig(pulumi.CustomResource):
             partner_namespace_id=secondary.id)
         ```
 
+        ## Import
+
+        EventHubs can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_name: An alternate name to use when the Disaster Recovery Config's name is the same as the replicated namespace's name.

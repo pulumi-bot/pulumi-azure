@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Container Registry Webhooks can be imported using the `resource id`, e.g.
  */
 export class RegistryWebhook extends pulumi.CustomResource {
     /**

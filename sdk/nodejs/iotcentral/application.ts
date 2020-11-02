@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The IoT Central Application can be imported using the `resource id`, e.g.
  */
 export class Application extends pulumi.CustomResource {
     /**

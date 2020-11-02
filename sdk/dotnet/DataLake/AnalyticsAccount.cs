@@ -41,6 +41,10 @@ namespace Pulumi.Azure.DataLake
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Lake Analytics Account can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AnalyticsAccount : Pulumi.CustomResource
     {

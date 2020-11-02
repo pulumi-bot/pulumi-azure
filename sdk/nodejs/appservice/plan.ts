@@ -81,6 +81,10 @@ import {Kind} from "./index";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Plan instances can be imported using the `resource id`, e.g.
  */
 export class Plan extends pulumi.CustomResource {
     /**

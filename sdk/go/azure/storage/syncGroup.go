@@ -48,6 +48,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Sync Groups can be imported using the `resource id`, e.g.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 

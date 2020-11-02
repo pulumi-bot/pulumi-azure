@@ -80,6 +80,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Images can be imported using the `resource id`, e.g.
 type Image struct {
 	pulumi.CustomResourceState
 

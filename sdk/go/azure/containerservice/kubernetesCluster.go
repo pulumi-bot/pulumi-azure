@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Managed Kubernetes Clusters can be imported using the `resource id`, e.g.
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 

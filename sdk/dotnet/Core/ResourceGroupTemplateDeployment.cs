@@ -56,6 +56,10 @@ namespace Pulumi.Azure.Core
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Group Template Deployments can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ResourceGroupTemplateDeployment : Pulumi.CustomResource
     {

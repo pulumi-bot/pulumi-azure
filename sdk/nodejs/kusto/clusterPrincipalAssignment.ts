@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     role: "AllDatabasesAdmin",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Explorer Cluster Principal Assignments can be imported using the `resource id`, e.g.
  */
 export class ClusterPrincipalAssignment extends pulumi.CustomResource {
     /**

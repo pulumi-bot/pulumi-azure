@@ -130,6 +130,10 @@ namespace Pulumi.Azure.FrontDoor
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Front Door Custom Https Configurations can be imported using the `resource id` of the Frontend Endpoint, e.g.
     /// </summary>
     public partial class CustomHttpsConfiguration : Pulumi.CustomResource
     {

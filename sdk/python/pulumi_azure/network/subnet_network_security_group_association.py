@@ -57,6 +57,10 @@ class SubnetNetworkSecurityGroupAssociation(pulumi.CustomResource):
             network_security_group_id=example_network_security_group.id)
         ```
 
+        ## Import
+
+        Subnet `<->` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_security_group_id: The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.

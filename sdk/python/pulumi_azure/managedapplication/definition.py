@@ -56,6 +56,10 @@ class Definition(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Managed Application Definition can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefinitionAuthorizationArgs']]]] authorizations: One or more `authorization` block defined below.

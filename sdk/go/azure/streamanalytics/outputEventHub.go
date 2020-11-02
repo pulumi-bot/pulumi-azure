@@ -75,6 +75,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Stream Analytics Outputs to an EventHub can be imported using the `resource id`, e.g.
 type OutputEventHub struct {
 	pulumi.CustomResourceState
 

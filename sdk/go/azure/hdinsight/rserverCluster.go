@@ -99,6 +99,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight RServer Clusters can be imported using the `resource id`, e.g.
 type RServerCluster struct {
 	pulumi.CustomResourceState
 

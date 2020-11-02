@@ -43,6 +43,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cosmos SQL Containers can be imported using the `resource id`, e.g.
  */
 export class SqlContainer extends pulumi.CustomResource {
     /**

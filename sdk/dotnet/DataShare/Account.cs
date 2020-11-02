@@ -43,6 +43,10 @@ namespace Pulumi.Azure.DataShare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Share Accounts can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

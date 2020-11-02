@@ -48,6 +48,10 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Event Grid System Topic can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class GetSystemTopic : Pulumi.CustomResource
     {

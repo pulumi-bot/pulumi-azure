@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     clientSecret: "00000000000000000000000000000000",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Microsoft Identity Provider can be imported using the `resource id`, e.g.
  */
 export class IdentityProviderMicrosoft extends pulumi.CustomResource {
     /**

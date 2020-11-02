@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Service Bus Queue can be imported using the `resource id`, e.g.
+ *
  * @deprecated azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue
  */
 export class Queue extends pulumi.CustomResource {

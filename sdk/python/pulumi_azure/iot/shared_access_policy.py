@@ -49,6 +49,10 @@ class SharedAccessPolicy(pulumi.CustomResource):
             registry_write=True)
         ```
 
+        ## Import
+
+        IoTHub Shared Access Policies can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] device_connect: Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.

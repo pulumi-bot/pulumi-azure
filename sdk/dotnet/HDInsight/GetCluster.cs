@@ -14,6 +14,7 @@ namespace Pulumi.Azure.HDInsight
         /// <summary>
         /// Use this data source to access information about an existing HDInsight Cluster.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

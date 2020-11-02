@@ -24,6 +24,12 @@ import * as utilities from "../utilities";
  *     interval: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Logic App Recurrence Triggers can be imported using the `resource id`, e.g.
+ *
+ *  -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
  */
 export class TriggerRecurrence extends pulumi.CustomResource {
     /**

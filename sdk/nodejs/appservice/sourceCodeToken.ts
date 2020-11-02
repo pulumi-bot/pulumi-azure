@@ -20,6 +20,10 @@ import * as utilities from "../utilities";
  *     type: "GitHub",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Source Control Token's can be imported using the `type`, e.g.
  */
 export class SourceCodeToken extends pulumi.CustomResource {
     /**

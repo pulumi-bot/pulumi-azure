@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Automation
         /// <summary>
         /// Use this data source to access information about an existing Automation Account.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

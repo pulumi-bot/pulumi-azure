@@ -59,6 +59,10 @@ class ResourceGroupExport(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Cost Management Export for a Resource Group can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Is the cost management export active? Default is `true`.

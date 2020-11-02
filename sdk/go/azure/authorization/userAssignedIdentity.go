@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// User Assigned Identities can be imported using the `resource id`, e.g.
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState
 

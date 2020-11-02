@@ -45,6 +45,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Dev Test Labs can be imported using the `resource id`, e.g.
 type Lab struct {
 	pulumi.CustomResourceState
 

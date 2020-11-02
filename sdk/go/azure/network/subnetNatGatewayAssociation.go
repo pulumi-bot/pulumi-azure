@@ -69,6 +69,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Subnet NAT Gateway Associations can be imported using the `resource id` of the Subnet, e.g.
 type SubnetNatGatewayAssociation struct {
 	pulumi.CustomResourceState
 

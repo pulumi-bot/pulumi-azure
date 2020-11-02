@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     tier: "Standard",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The pricing tier can be imported using the `resource id`, e.g.
  */
 export class SubscriptionPricing extends pulumi.CustomResource {
     /**

@@ -61,6 +61,10 @@ namespace Pulumi.Azure.Kusto
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Kusto Database Principals can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DatabasePrincipal : Pulumi.CustomResource
     {

@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     body: "  	function () { var context = getContext(); var response = context.getResponse(); response.setBody('Hello, World'); }\n",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * CosmosDB SQL Stored Procedures can be imported using the `resource id`, e.g.
  */
 export class SqlStoredProcedure extends pulumi.CustomResource {
     /**

@@ -64,6 +64,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Loggers can be imported using the `resource id`, e.g.
 type Logger struct {
 	pulumi.CustomResourceState
 

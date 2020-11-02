@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     roles: ["Reader"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure IoT Time Series Insights Access Policy can be imported using the `resource id`, e.g.
  */
 export class TimeSeriesInsightsAccessPolicy extends pulumi.CustomResource {
     /**

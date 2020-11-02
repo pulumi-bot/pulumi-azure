@@ -118,6 +118,10 @@ class Policy(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Web Application Firewall Policy can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyCustomRuleArgs']]]] custom_rules: One or more `custom_rules` blocks as defined below.

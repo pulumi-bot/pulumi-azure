@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Table's within a Storage Account can be imported using the `resource id`, e.g.
 type Table struct {
 	pulumi.CustomResourceState
 

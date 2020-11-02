@@ -73,6 +73,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnet `&lt;-&gt;` Network Security Group Associations can be imported using the `resource id` of the Subnet, e.g.
     /// </summary>
     public partial class SubnetNetworkSecurityGroupAssociation : Pulumi.CustomResource
     {

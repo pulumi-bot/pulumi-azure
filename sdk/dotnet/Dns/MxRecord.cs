@@ -57,6 +57,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// MX records can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class MxRecord : Pulumi.CustomResource
     {

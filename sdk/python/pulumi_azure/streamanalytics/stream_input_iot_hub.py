@@ -62,6 +62,10 @@ class StreamInputIotHub(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Stream Analytics Stream Input IoTHub's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).

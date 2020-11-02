@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     natGatewayId: exampleNatGateway.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Subnet NAT Gateway Associations can be imported using the `resource id` of the Subnet, e.g.
  */
 export class SubnetNatGatewayAssociation extends pulumi.CustomResource {
     /**

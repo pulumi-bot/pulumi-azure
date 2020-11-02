@@ -57,6 +57,12 @@ class RoleAssignment(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[example_firewall_rule]))
         ```
 
+        ## Import
+
+        Synapse Role Assignment can be imported using the `resource id`, e.g.
+
+         -> **NOTE:** This ID is specific to Terraform - and is of the format `{synapseWorkspaceId}|{synapseRoleAssignmentId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] principal_id: The ID of the Principal (User, Group or Service Principal) to assign the Synapse Role Definition to. Changing this forces a new resource to be created.

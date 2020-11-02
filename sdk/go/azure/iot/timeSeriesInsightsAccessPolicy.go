@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure IoT Time Series Insights Access Policy can be imported using the `resource id`, e.g.
 type TimeSeriesInsightsAccessPolicy struct {
 	pulumi.CustomResourceState
 

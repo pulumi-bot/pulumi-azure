@@ -154,6 +154,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Plan instances can be imported using the `resource id`, e.g.
 type Plan struct {
 	pulumi.CustomResourceState
 

@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     metadataEndpoint: "https://example.com/example",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management OpenID Connect Providers can be imported using the `resource id`, e.g.
  */
 export class OpenIdConnectProvider extends pulumi.CustomResource {
     /**

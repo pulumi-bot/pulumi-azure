@@ -52,6 +52,10 @@ class EventHubNamespace(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        EventHub Namespaces can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_inflate_enabled: Is Auto Inflate enabled for the EventHub Namespace?

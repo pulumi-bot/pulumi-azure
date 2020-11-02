@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Site Recovery Fabric can be imported using the `resource id`, e.g.
 type Fabric struct {
 	pulumi.CustomResourceState
 

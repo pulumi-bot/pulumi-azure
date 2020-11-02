@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Fabric Mesh Application can be imported using the `resource id`, e.g.
 type MeshApplication struct {
 	pulumi.CustomResourceState
 

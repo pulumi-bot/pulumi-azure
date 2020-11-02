@@ -40,6 +40,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * App Service Custom Hostname Bindings can be imported using the `resource id`, e.g.
  */
 export class CustomHostnameBinding extends pulumi.CustomResource {
     /**

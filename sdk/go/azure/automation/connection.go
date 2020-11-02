@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Automation Connection.
+//
+// ## Import
+//
+// Automation Connection can be imported using the `resource id`, e.g.
 type Connection struct {
 	pulumi.CustomResourceState
 

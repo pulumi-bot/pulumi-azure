@@ -60,6 +60,10 @@ class DatabasePrincipalAssignment(pulumi.CustomResource):
             role="Viewer")
         ```
 
+        ## Import
+
+        Kusto Database Principal Assignment can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The name of the cluster in which to create the resource. Changing this forces a new resource to be created.

@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Automation Runbooks can be imported using the `resource id`, e.g.
 type RunBook struct {
 	pulumi.CustomResourceState
 

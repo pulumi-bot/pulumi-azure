@@ -39,6 +39,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * EventHub Authorization Rules can be imported using the `resource id`, e.g.
+ *
  * @deprecated azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule
  */
 export class EventHubAuthorizationRule extends pulumi.CustomResource {

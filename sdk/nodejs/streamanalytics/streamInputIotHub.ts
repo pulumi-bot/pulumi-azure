@@ -44,6 +44,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Stream Input IoTHub's can be imported using the `resource id`, e.g.
  */
 export class StreamInputIotHub extends pulumi.CustomResource {
     /**

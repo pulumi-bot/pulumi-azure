@@ -52,6 +52,12 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Role Definitions can be imported using the `resource id`, e.g.
+//
+//  -> **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
+//
 // Deprecated: azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition
 type Definition struct {
 	pulumi.CustomResourceState

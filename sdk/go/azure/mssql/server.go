@@ -72,6 +72,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Servers can be imported using the `resource id`, e.g.
 type Server struct {
 	pulumi.CustomResourceState
 

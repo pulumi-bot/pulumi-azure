@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     collation: "utf8_unicode_ci",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MySQL Database's can be imported using the `resource id`, e.g.
  */
 export class Database extends pulumi.CustomResource {
     /**

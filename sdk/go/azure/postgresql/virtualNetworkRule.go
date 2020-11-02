@@ -87,6 +87,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// PostgreSQL Virtual Network Rules can be imported using the `resource id`, e.g.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 

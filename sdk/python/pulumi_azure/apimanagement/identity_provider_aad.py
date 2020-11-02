@@ -48,6 +48,10 @@ class IdentityProviderAad(pulumi.CustomResource):
             allowed_tenants=["00000000-0000-0000-0000-000000000000"])
         ```
 
+        ## Import
+
+        API Management AAD Identity Provider can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_tenants: List of allowed AAD Tenants.

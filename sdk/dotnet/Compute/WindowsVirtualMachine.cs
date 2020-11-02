@@ -98,6 +98,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Windows Virtual Machines can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class WindowsVirtualMachine : Pulumi.CustomResource
     {

@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     listen: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Notification Hub Authorization Rule can be imported using the `resource id`, e.g.
  */
 export class AuthorizationRule extends pulumi.CustomResource {
     /**

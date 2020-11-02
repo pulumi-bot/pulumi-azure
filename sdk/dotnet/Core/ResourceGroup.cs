@@ -30,6 +30,10 @@ namespace Pulumi.Azure.Core
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Resource Groups can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource
     {

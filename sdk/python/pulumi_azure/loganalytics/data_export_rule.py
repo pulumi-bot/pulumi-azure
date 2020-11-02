@@ -51,6 +51,10 @@ class DataExportRule(pulumi.CustomResource):
             table_names=["Heartbeat"])
         ```
 
+        ## Import
+
+        Log Analytics Data Export Rule can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_resource_id: The destination resource ID. It should be a storage account, an event hub namespace or an event hub. If the destination is an event hub namespace, an event hub would be created for each table automatically.

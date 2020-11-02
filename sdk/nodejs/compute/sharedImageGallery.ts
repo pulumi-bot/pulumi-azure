@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Shared Image Galleries can be imported using the `resource id`, e.g.
  */
 export class SharedImageGallery extends pulumi.CustomResource {
     /**

@@ -117,6 +117,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private Link Services can be imported using the `resource id`, e.g.
 type LinkService struct {
 	pulumi.CustomResourceState
 

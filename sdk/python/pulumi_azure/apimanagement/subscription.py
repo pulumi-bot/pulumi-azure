@@ -53,6 +53,10 @@ class Subscription(pulumi.CustomResource):
             display_name="Parser API")
         ```
 
+        ## Import
+
+        API Management Subscriptions can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_tracing: Determines whether tracing can be enabled.  Defaults to `true`.

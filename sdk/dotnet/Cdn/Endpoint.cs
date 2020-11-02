@@ -50,6 +50,10 @@ namespace Pulumi.Azure.Cdn
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// CDN Endpoints can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {

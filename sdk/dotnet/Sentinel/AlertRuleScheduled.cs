@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Sentinel
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Sentinel Scheduled Alert Rules can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AlertRuleScheduled : Pulumi.CustomResource
     {

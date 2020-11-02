@@ -70,6 +70,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Linux Virtual Machines can be imported using the `resource id`, e.g.
  */
 export class LinuxVirtualMachine extends pulumi.CustomResource {
     /**

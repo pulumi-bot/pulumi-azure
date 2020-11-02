@@ -61,6 +61,10 @@ import * as utilities from "../utilities";
  *     namespacePath: "/blob_storage",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Blob Targets within an HPC Cache can be imported using the `resource id`, e.g.
  */
 export class CacheBlobTarget extends pulumi.CustomResource {
     /**

@@ -47,6 +47,10 @@ class CertificateOrder(pulumi.CustomResource):
             product_type="Standard")
         ```
 
+        ## Import
+
+        App Service Certificate Orders can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to true.

@@ -37,6 +37,10 @@ namespace Pulumi.Azure.OperationalInsights
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Log Analytics Workspaces can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AnalyticsWorkspace : Pulumi.CustomResource
     {

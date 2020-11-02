@@ -21,6 +21,10 @@ import (
 // > **Note** This resource does not support attaching existing OS Disks. You can instead capture an image of the OS Disk or continue to use the `compute.VirtualMachine` resource instead.
 //
 // > In this release there's a known issue where the `publicIpAddress` and `publicIpAddresses` fields may not be fully populated for Dynamic Public IP's.
+//
+// ## Import
+//
+// Linux Virtual Machines can be imported using the `resource id`, e.g.
 type LinuxVirtualMachine struct {
 	pulumi.CustomResourceState
 

@@ -45,6 +45,10 @@ class Domain(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        EventGrid Domains can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DomainInputMappingDefaultValuesArgs']] input_mapping_default_values: A `input_mapping_default_values` block as defined below.

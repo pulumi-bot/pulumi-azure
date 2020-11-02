@@ -44,6 +44,10 @@ namespace Pulumi.Azure.EventGrid
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventGrid Domain Topics can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DomainTopic : Pulumi.CustomResource
     {

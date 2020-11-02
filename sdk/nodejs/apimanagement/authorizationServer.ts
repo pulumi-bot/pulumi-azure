@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     grantTypes: ["authorizationCode"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Authorization Servers can be imported using the `resource id`, e.g.
  */
 export class AuthorizationServer extends pulumi.CustomResource {
     /**

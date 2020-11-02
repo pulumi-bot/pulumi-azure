@@ -54,6 +54,10 @@ class SubscriptionTemplateDeployment(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        Subscription Template Deployments can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] debug_level: The Debug Level which should be used for this Subscription Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.

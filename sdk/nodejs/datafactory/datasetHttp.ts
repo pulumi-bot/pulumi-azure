@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     requestMethod: "POST",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Datasets can be imported using the `resource id`, e.g.
  */
 export class DatasetHttp extends pulumi.CustomResource {
     /**

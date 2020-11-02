@@ -49,6 +49,10 @@ namespace Pulumi.Azure.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A MySQL Active Directory Administrator can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ActiveDirectoryAdministrator : Pulumi.CustomResource
     {

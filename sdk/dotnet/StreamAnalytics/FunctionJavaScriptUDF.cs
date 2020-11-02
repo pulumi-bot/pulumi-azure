@@ -55,6 +55,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics JavaScript UDF Functions can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class FunctionJavaScriptUDF : Pulumi.CustomResource
     {

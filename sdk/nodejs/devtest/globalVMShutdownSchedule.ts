@@ -70,6 +70,12 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An existing Dev Test Global Shutdown Schedule can be imported using the `resource id`, e.g.
+ *
+ *  The name of the resource within the `resource id` will always follow the format `shutdown-computevm-<VM Name>` where `<VM Name>` is replaced by the name of the target Virtual Machine
  */
 export class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     /**

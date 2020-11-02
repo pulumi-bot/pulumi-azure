@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages an Automation Connection.
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Connection can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

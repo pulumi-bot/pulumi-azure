@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Customer Managed Key for a Kusto Cluster.
+ *
+ * ## Import
+ *
+ * Customer Managed Keys for a Kusto Cluster can be imported using the `resource id`, e.g.
  */
 export class ClusterCustomerManagedKey extends pulumi.CustomResource {
     /**

@@ -58,6 +58,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory PostgreSQL Datasets can be imported using the `resource id`, e.g.
 type DatasetPostgresql struct {
 	pulumi.CustomResourceState
 

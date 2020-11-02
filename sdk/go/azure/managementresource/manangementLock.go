@@ -116,6 +116,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Management Locks can be imported using the `resource id`, e.g.
+//
 // Deprecated: azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock
 type ManangementLock struct {
 	pulumi.CustomResourceState

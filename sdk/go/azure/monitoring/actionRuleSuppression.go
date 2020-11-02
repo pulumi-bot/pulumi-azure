@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Monitor Action Rule can be imported using the `resource id`, e.g.
 type ActionRuleSuppression struct {
 	pulumi.CustomResourceState
 

@@ -96,6 +96,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Associations between Network Interfaces and Load Balancer NAT Rule can be imported using the `resource id`, e.g.
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{natRuleId}`.
     /// </summary>
     public partial class NetworkInterfaceNatRuleAssociation : Pulumi.CustomResource
     {

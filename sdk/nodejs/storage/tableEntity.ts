@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Entities within a Table in an Azure Storage Account can be imported using the `resource id`, e.g.
  */
 export class TableEntity extends pulumi.CustomResource {
     /**

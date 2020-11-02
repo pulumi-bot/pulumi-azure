@@ -37,6 +37,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure IoT Time Series Insights Standard Environment can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class TimeSeriesInsightsStandardEnvironment : Pulumi.CustomResource
     {

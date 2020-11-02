@@ -101,6 +101,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure Firewall Network Rule Collections can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class FirewallNetworkRuleCollection : Pulumi.CustomResource
     {

@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     manage: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ServiceBus Namespace authorization rules can be imported using the `resource id`, e.g.
  */
 export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**

@@ -97,6 +97,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Web Application Firewall Policy can be imported using the `resource id`, e.g.
  */
 export class Policy extends pulumi.CustomResource {
     /**

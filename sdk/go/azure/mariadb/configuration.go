@@ -61,6 +61,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MariaDB Configurations can be imported using the `resource id`, e.g.
 type Configuration struct {
 	pulumi.CustomResourceState
 

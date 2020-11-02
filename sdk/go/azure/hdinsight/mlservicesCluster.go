@@ -99,6 +99,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// HDInsight ML Services Clusters can be imported using the `resource id`, e.g.
 type MLServicesCluster struct {
 	pulumi.CustomResourceState
 

@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     url: "http://www.bing.com",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Linked Service's can be imported using the `resource id`, e.g.
  */
 export class LinkedServiceWeb extends pulumi.CustomResource {
     /**

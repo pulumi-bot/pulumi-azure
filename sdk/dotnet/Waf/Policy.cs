@@ -154,6 +154,10 @@ namespace Pulumi.Azure.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Web Application Firewall Policy can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

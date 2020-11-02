@@ -53,6 +53,10 @@ class Snapshot(pulumi.CustomResource):
             source_uri=example_managed_disk.id)
         ```
 
+        ## Import
+
+        Snapshots can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_option: Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`. Changing this forces a new resource to be created.

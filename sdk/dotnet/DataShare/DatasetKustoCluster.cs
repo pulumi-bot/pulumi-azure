@@ -11,6 +11,10 @@ namespace Pulumi.Azure.DataShare
 {
     /// <summary>
     /// Manages a Data Share Kusto Cluster Dataset.
+    /// 
+    /// ## Import
+    /// 
+    /// Data Share Kusto Cluster Datasets can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DatasetKustoCluster : Pulumi.CustomResource
     {

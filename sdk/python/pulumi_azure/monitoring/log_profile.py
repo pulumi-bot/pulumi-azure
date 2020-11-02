@@ -66,6 +66,10 @@ class LogProfile(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        A Log Profile can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: List of categories of the logs.

@@ -41,6 +41,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS Zones can be imported using the `resource id`, e.g.
 type Zone struct {
 	pulumi.CustomResourceState
 

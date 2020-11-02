@@ -46,6 +46,10 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Storage Containers can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Container : Pulumi.CustomResource
     {

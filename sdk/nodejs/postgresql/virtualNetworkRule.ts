@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     ignoreMissingVnetServiceEndpoint: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Virtual Network Rules can be imported using the `resource id`, e.g.
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**

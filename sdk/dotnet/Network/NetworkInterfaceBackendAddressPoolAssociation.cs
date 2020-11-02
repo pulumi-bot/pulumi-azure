@@ -92,6 +92,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Associations between Network Interfaces and Load Balancer Backend Address Pools can be imported using the `resource id`, e.g.
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
     /// </summary>
     public partial class NetworkInterfaceBackendAddressPoolAssociation : Pulumi.CustomResource
     {

@@ -41,6 +41,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Spring Cloud services can be imported using the `resource id`, e.g.
  */
 export class SpringCloudService extends pulumi.CustomResource {
     /**

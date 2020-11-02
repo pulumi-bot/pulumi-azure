@@ -55,6 +55,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory Datasets can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DatasetJson : Pulumi.CustomResource
     {

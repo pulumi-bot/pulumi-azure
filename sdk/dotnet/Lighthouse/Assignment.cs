@@ -31,6 +31,10 @@ namespace Pulumi.Azure.Lighthouse
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Lighthouse Assignments can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Assignment : Pulumi.CustomResource
     {

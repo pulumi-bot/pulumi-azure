@@ -78,6 +78,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Function Apps Deployment Slots can be imported using the `resource id`, e.g.
 type FunctionAppSlot struct {
 	pulumi.CustomResourceState
 

@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Lake Gen2 File System's can be imported using the `resource id`, e.g.
  */
 export class DataLakeGen2Filesystem extends pulumi.CustomResource {
     /**

@@ -39,6 +39,10 @@ import * as utilities from "../utilities";
  *     throughput: 400,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Cosmos Cassandra KeySpace can be imported using the `resource id`, e.g.
  */
 export class CassandraKeyspace extends pulumi.CustomResource {
     /**

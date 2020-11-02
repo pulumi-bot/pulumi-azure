@@ -126,6 +126,10 @@ class ApplicationGateway(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Application Gateway's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationGatewayAuthenticationCertificateArgs']]]] authentication_certificates: One or more `authentication_certificate` blocks as defined below.

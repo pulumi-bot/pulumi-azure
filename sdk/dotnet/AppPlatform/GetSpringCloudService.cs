@@ -14,6 +14,7 @@ namespace Pulumi.Azure.AppPlatform
         /// <summary>
         /// Use this data source to access information about an existing Spring Cloud Service.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

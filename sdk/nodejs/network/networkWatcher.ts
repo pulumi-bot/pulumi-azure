@@ -19,6 +19,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Network Watchers can be imported using the `resource id`, e.g.
  */
 export class NetworkWatcher extends pulumi.CustomResource {
     /**

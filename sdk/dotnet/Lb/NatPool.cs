@@ -63,6 +63,10 @@ namespace Pulumi.Azure.Lb
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Load Balancer NAT Pools can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class NatPool : Pulumi.CustomResource
     {

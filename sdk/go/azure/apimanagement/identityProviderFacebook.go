@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Facebook Identity Provider can be imported using the `resource id`, e.g.
 type IdentityProviderFacebook struct {
 	pulumi.CustomResourceState
 

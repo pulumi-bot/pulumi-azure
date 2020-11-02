@@ -37,6 +37,12 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Logic App Custom Actions can be imported using the `resource id`, e.g.
+ *
+ *  -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
  */
 export class ActionCustom extends pulumi.CustomResource {
     /**

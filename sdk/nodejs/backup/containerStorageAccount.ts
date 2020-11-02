@@ -33,6 +33,12 @@ import * as utilities from "../utilities";
  *     storageAccountId: sa.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Backup Storage Account Containers can be imported using the `resource id`, e.g.
+ *
+ *  Note the ID requires quoting as there are semicolons
  */
 export class ContainerStorageAccount extends pulumi.CustomResource {
     /**

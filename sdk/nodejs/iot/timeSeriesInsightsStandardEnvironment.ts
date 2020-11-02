@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     dataRetentionTime: "P30D",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure IoT Time Series Insights Standard Environment can be imported using the `resource id`, e.g.
  */
 export class TimeSeriesInsightsStandardEnvironment extends pulumi.CustomResource {
     /**

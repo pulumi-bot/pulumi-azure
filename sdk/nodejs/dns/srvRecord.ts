@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SRV records can be imported using the `resource id`, e.g.
  */
 export class SrvRecord extends pulumi.CustomResource {
     /**

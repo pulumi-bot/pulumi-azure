@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a DevSpace Controller.
+ *
+ * ## Import
+ *
+ * DevSpace Controller's can be imported using the `resource id`, e.g.
  */
 export class Controller extends pulumi.CustomResource {
     /**

@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     resourceId: exampleAccount.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Workspaces can be imported using the `resource id`, e.g.
  */
 export class LinkedService extends pulumi.CustomResource {
     /**

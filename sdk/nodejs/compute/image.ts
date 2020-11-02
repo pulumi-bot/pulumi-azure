@@ -41,6 +41,10 @@ import * as utilities from "../utilities";
  *     sourceVirtualMachineId: "{vm_id}",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Images can be imported using the `resource id`, e.g.
  */
 export class Image extends pulumi.CustomResource {
     /**

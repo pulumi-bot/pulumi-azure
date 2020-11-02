@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Iot
 {
     /// <summary>
     /// Manages an IotHub Device Provisioning Service Certificate.
+    /// 
+    /// ## Import
+    /// 
+    /// IoTHub Device Provisioning Service Certificates can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class IotHubCertificate : Pulumi.CustomResource
     {

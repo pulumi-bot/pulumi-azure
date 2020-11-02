@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a integer variable in Azure Automation
+//
+// ## Import
+//
+// Automation Int Variable can be imported using the `resource id`, e.g.
 type IntVariable struct {
 	pulumi.CustomResourceState
 

@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an IotHub Device Provisioning Service Certificate.
+ *
+ * ## Import
+ *
+ * IoTHub Device Provisioning Service Certificates can be imported using the `resource id`, e.g.
  */
 export class IotHubCertificate extends pulumi.CustomResource {
     /**

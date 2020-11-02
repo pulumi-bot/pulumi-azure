@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     storageAccountIds: [exampleAccount.id],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Linked Storage Accounts can be imported using the `resource id`, e.g.
  */
 export class LinkedStorageAccount extends pulumi.CustomResource {
     /**

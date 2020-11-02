@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Waf
         /// <summary>
         /// Use this data source to access information about an existing Web Application Firewall Policy.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

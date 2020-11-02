@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Routes can be imported using the `resource id`, e.g.
 type Route struct {
 	pulumi.CustomResourceState
 

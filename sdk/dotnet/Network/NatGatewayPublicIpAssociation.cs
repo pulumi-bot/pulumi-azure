@@ -48,6 +48,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Associations between Nat Gateway and Public IP Addresses can be imported using the `resource id`, e.g.
+    /// 
+    ///  -&gt; **Note:** This is a Terraform Specific ID in the format `{natGatewayID}|{publicIPAddressID}`
     /// </summary>
     public partial class NatGatewayPublicIpAssociation : Pulumi.CustomResource
     {

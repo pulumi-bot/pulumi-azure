@@ -44,6 +44,10 @@ class TimeSeriesInsightsAccessPolicy(pulumi.CustomResource):
             roles=["Reader"])
         ```
 
+        ## Import
+
+        Azure IoT Time Series Insights Access Policy can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Azure IoT Time Series Insights Access Policy.

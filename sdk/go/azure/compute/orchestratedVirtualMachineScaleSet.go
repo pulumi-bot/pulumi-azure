@@ -50,6 +50,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g.
 type OrchestratedVirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 

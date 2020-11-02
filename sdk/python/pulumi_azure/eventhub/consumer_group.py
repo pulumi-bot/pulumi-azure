@@ -53,6 +53,10 @@ class ConsumerGroup(pulumi.CustomResource):
             user_metadata="some-meta-data")
         ```
 
+        ## Import
+
+        EventHub Consumer Groups can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eventhub_name: Specifies the name of the EventHub. Changing this forces a new resource to be created.

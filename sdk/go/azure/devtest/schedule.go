@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// DevTest Schedule's can be imported using the `resource id`, e.g.
 type Schedule struct {
 	pulumi.CustomResourceState
 

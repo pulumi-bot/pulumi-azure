@@ -43,6 +43,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Policy Definitions can be imported using the `policy name`, e.g.
+//
+//  or
 type Definition struct {
 	pulumi.CustomResourceState
 

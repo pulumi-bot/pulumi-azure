@@ -50,6 +50,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * Traffic Manager Endpoints can be imported using the `resource id`, e.g.
+ *
+ *  -> **NOTE:** `azureEndpoints` in the above shell command should be replaced with `externalEndpoints` or `nestedEndpoints` while using other endpoint types.
+ *
  * @deprecated azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint
  */
 export class Endpoint extends pulumi.CustomResource {

@@ -50,6 +50,10 @@ namespace Pulumi.Azure.MediaServices
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Media Services Accounts can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

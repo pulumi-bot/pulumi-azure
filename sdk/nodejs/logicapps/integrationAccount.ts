@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Logic App Integration Accounts can be imported using the `resource id`, e.g.
  */
 export class IntegrationAccount extends pulumi.CustomResource {
     /**

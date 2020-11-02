@@ -56,6 +56,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NS records can be imported using the `resource id`, e.g.
 type NsRecord struct {
 	pulumi.CustomResourceState
 

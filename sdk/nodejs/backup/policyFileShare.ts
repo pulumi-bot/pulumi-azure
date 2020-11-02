@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure File Share Backup Policies can be imported using the `resource id`, e.g.
  */
 export class PolicyFileShare extends pulumi.CustomResource {
     /**

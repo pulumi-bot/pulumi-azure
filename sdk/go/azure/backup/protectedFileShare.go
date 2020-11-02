@@ -96,6 +96,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Backup Protected File Shares can be imported using the `resource id`, e.g.
+//
+//  Note the ID requires quoting as there are semicolons
 type ProtectedFileShare struct {
 	pulumi.CustomResourceState
 

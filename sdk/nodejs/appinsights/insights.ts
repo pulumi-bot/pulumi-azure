@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  * export const instrumentationKey = exampleInsights.instrumentationKey;
  * export const appId = exampleInsights.appId;
  * ```
+ *
+ * ## Import
+ *
+ * Application Insights instances can be imported using the `resource id`, e.g.
  */
 export class Insights extends pulumi.CustomResource {
     /**

@@ -137,6 +137,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Application Gateway's can be imported using the `resource id`, e.g.
 type ApplicationGateway struct {
 	pulumi.CustomResourceState
 

@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     allowedTenants: ["00000000-0000-0000-0000-000000000000"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management AAD Identity Provider can be imported using the `resource id`, e.g.
  */
 export class IdentityProviderAad extends pulumi.CustomResource {
     /**

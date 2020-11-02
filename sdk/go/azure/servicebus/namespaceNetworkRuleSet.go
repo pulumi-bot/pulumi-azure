@@ -89,6 +89,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Namespace can be imported using the `resource id`, e.g.
 type NamespaceNetworkRuleSet struct {
 	pulumi.CustomResourceState
 

@@ -63,6 +63,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Service Bus Subscriptions can be imported using the `resource id`, e.g.
 type Subscription struct {
 	pulumi.CustomResourceState
 

@@ -62,6 +62,10 @@ class Endpoint(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        CDN Endpoints can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types_to_compresses: An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.

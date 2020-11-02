@@ -64,6 +64,10 @@ class Server(pulumi.CustomResource):
             ssl_enforcement_enabled=True)
         ```
 
+        ## Import
+
+        MariaDB Server's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrator_login: The Administrator Login for the MariaDB Server. Changing this forces a new resource to be created.

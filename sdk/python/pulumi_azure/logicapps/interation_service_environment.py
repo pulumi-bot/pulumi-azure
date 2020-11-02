@@ -77,6 +77,10 @@ class InterationServiceEnvironment(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Integration Service Environments can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_endpoint_type: The type of access endpoint to use for the Integration Service Environment. Possible Values are `Internal` and `External`. Changing this forces a new Integration Service Environment to be created.

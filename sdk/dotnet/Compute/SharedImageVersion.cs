@@ -54,6 +54,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Shared Image Versions can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class SharedImageVersion : Pulumi.CustomResource
     {

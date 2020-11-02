@@ -51,6 +51,10 @@ class VirtualHubConnection(pulumi.CustomResource):
             remote_virtual_network_id=example_virtual_network.id)
         ```
 
+        ## Import
+
+        Virtual Hub Connection's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] internet_security_enabled: Should Internet Security be enabled to secure internet traffic? Changing this forces a new resource to be created. Defaults to `false`.

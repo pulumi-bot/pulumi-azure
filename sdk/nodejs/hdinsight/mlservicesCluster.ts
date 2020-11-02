@@ -69,6 +69,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HDInsight ML Services Clusters can be imported using the `resource id`, e.g.
  */
 export class MLServicesCluster extends pulumi.CustomResource {
     /**

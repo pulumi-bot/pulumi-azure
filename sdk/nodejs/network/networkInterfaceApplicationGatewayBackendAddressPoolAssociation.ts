@@ -99,6 +99,12 @@ import * as utilities from "../utilities";
  *     backendAddressPoolId: network.backendAddressPools.apply(backendAddressPools => backendAddressPools[0].id),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Associations between Network Interfaces and Application Gateway Backend Address Pools can be imported using the `resource id`, e.g.
+ *
+ *  -> **NOTE:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
  */
 export class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pulumi.CustomResource {
     /**

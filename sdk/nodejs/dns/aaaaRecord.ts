@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     targetResourceId: examplePublicIp.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * AAAA records can be imported using the `resource id`, e.g.
  */
 export class AaaaRecord extends pulumi.CustomResource {
     /**

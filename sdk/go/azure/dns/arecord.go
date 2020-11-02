@@ -100,6 +100,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A records can be imported using the `resource id`, e.g.
 type ARecord struct {
 	pulumi.CustomResourceState
 

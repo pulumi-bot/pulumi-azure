@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Bot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The Slack Integration for a Bot Channel can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ChannelSlack : Pulumi.CustomResource
     {

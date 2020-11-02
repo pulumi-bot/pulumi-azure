@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     state: "active",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Users can be imported using the `resource id`, e.g.
  */
 export class User extends pulumi.CustomResource {
     /**

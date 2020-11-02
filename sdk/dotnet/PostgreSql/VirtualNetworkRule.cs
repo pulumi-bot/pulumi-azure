@@ -77,6 +77,10 @@ namespace Pulumi.Azure.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PostgreSQL Virtual Network Rules can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class VirtualNetworkRule : Pulumi.CustomResource
     {

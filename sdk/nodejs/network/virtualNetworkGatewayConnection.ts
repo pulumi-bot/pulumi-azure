@@ -146,6 +146,10 @@ import * as utilities from "../utilities";
  *     sharedKey: "4-v3ry-53cr37-1p53c-5h4r3d-k3y",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Network Gateway Connections can be imported using their `resource id`, e.g.
  */
 export class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     /**

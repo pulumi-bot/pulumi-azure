@@ -11,6 +11,10 @@ namespace Pulumi.Azure.AppService
 {
     /// <summary>
     /// Manages an App Service certificate.
+    /// 
+    /// ## Import
+    /// 
+    /// App Service Certificates can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

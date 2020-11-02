@@ -97,6 +97,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub Fallback Route can be imported using the `resource id`, e.g.
+//
+//  ~> **NOTE:** As there may only be a single fallback route per IoTHub, the id always ends with `/FallbackRoute/default`.
 type FallbackRoute struct {
 	pulumi.CustomResourceState
 

@@ -44,6 +44,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Recovery Services Vaults can be imported using the `resource id`, e.g.
 type Vault struct {
 	pulumi.CustomResourceState
 

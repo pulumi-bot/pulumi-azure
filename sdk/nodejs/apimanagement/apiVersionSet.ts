@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     versioningScheme: "Segment",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Version Set can be imported using the `resource id`, e.g.
  */
 export class ApiVersionSet extends pulumi.CustomResource {
     /**

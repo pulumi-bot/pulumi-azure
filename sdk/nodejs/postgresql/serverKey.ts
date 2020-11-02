@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Customer Managed Key for a PostgreSQL Server.
+ *
+ * ## Import
+ *
+ * A PostgreSQL Server Key can be imported using the `resource id` of the PostgreSQL Server Key, e.g.
  */
 export class ServerKey extends pulumi.CustomResource {
     /**

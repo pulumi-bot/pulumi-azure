@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Automation
 {
     /// <summary>
     /// Manages an Automation Connection with type `AzureServicePrincipal`.
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Connection can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ConnectionServicePrincipal : Pulumi.CustomResource
     {

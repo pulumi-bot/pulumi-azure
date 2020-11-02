@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventGrid Domains can be imported using the `resource id`, e.g.
  */
 export class Domain extends pulumi.CustomResource {
     /**

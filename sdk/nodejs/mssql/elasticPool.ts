@@ -41,6 +41,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * SQL Elastic Pool can be imported using the `resource id`, e.g.
  */
 export class ElasticPool extends pulumi.CustomResource {
     /**

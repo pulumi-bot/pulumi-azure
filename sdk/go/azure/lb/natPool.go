@@ -73,6 +73,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer NAT Pools can be imported using the `resource id`, e.g.
 type NatPool struct {
 	pulumi.CustomResourceState
 

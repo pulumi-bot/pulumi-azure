@@ -54,6 +54,10 @@ class Share(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Data Shares can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.

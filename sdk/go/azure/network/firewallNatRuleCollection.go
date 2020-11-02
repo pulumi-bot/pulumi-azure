@@ -107,6 +107,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Firewall NAT Rule Collections can be imported using the `resource id`, e.g.
 type FirewallNatRuleCollection struct {
 	pulumi.CustomResourceState
 

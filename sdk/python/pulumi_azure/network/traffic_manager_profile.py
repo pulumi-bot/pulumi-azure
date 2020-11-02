@@ -63,6 +63,10 @@ class TrafficManagerProfile(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Traffic Manager Profiles can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TrafficManagerProfileDnsConfigArgs']] dns_config: This block specifies the DNS configuration of the Profile, it supports the fields documented below.

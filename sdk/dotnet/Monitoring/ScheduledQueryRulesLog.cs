@@ -11,6 +11,10 @@ namespace Pulumi.Azure.Monitoring
 {
     /// <summary>
     /// Manages a LogToMetricAction Scheduled Query Rules resource within Azure Monitor.
+    /// 
+    /// ## Import
+    /// 
+    /// Scheduled Query Rule Log can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ScheduledQueryRulesLog : Pulumi.CustomResource
     {

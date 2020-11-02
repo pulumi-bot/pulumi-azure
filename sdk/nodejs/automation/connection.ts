@@ -34,6 +34,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Automation Connection can be imported using the `resource id`, e.g.
  */
 export class Connection extends pulumi.CustomResource {
     /**

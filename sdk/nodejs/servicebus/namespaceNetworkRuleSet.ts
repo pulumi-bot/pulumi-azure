@@ -48,6 +48,10 @@ import * as utilities from "../utilities";
  *     ipRules: ["1.1.1.1"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Bus Namespace can be imported using the `resource id`, e.g.
  */
 export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**

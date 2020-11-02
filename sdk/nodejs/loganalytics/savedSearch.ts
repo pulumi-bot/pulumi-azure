@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  *     query: "exampleQuery",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Log Analytics Saved Searches can be imported using the `resource id`, e.g.
  */
 export class SavedSearch extends pulumi.CustomResource {
     /**

@@ -42,6 +42,10 @@ class AnalyticsWorkspace(pulumi.CustomResource):
             retention_in_days=30)
         ```
 
+        ## Import
+
+        Log Analytics Workspaces can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] daily_quota_gb: The workspace daily quota for ingestion in GB.  Defaults to -1 (unlimited).

@@ -76,6 +76,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Traffic Manager Endpoints can be imported using the `resource id`, e.g.
+//
+//  -> **NOTE:** `azureEndpoints` in the above shell command should be replaced with `externalEndpoints` or `nestedEndpoints` while using other endpoint types.
 type TrafficManagerEndpoint struct {
 	pulumi.CustomResourceState
 

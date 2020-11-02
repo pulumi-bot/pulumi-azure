@@ -62,6 +62,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Outputs to an EventHub can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class OutputEventHub : Pulumi.CustomResource
     {

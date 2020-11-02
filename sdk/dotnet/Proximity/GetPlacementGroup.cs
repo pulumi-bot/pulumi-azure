@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Proximity
         /// <summary>
         /// Use this data source to access information about an existing Proximity Placement Group.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

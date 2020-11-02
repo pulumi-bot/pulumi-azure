@@ -65,6 +65,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventHub Consumer Groups can be imported using the `resource id`, e.g.
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
 

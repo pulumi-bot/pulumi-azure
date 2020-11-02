@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *     value: "testValue",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Fabric Mesh Secret Value can be imported using the `resource id`, e.g.
  */
 export class MeshSecretValue extends pulumi.CustomResource {
     /**

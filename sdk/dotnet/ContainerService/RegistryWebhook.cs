@@ -54,6 +54,10 @@ namespace Pulumi.Azure.ContainerService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Container Registry Webhooks can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class RegistryWebhook : Pulumi.CustomResource
     {

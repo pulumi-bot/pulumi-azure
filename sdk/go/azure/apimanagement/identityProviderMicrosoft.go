@@ -54,6 +54,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Microsoft Identity Provider can be imported using the `resource id`, e.g.
 type IdentityProviderMicrosoft struct {
 	pulumi.CustomResourceState
 

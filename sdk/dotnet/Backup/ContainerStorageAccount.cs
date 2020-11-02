@@ -51,6 +51,12 @@ namespace Pulumi.Azure.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Backup Storage Account Containers can be imported using the `resource id`, e.g.
+    /// 
+    ///  Note the ID requires quoting as there are semicolons
     /// </summary>
     public partial class ContainerStorageAccount : Pulumi.CustomResource
     {

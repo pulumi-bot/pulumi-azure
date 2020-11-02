@@ -80,6 +80,10 @@ namespace Pulumi.Azure.DataShare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Share Data Lake Gen2 Datasets can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class DatasetDataLakeGen2 : Pulumi.CustomResource
     {

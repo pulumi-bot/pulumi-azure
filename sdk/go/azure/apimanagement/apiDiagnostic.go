@@ -90,6 +90,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Service API Diagnostics Logs can be imported using the `resource id`, e.g.
 type ApiDiagnostic struct {
 	pulumi.CustomResourceState
 

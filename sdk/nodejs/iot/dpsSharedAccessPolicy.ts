@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     enrollmentRead: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub Device Provisioning Service Shared Access Policies can be imported using the `resource id`, e.g.
  */
 export class DpsSharedAccessPolicy extends pulumi.CustomResource {
     /**

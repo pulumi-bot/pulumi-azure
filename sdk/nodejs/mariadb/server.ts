@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     sslEnforcementEnabled: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MariaDB Server's can be imported using the `resource id`, e.g.
  */
 export class Server extends pulumi.CustomResource {
     /**

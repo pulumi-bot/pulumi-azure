@@ -44,6 +44,10 @@ namespace Pulumi.Azure.Automation
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Automation Credentials can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Credential : Pulumi.CustomResource
     {

@@ -57,6 +57,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Managed Disks can be imported using the `resource id`, e.g.
  */
 export class ManagedDisk extends pulumi.CustomResource {
     /**

@@ -57,6 +57,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Firewall Application Rule Collections can be imported using the `resource id`, e.g.
  */
 export class FirewallApplicationRuleCollection extends pulumi.CustomResource {
     /**

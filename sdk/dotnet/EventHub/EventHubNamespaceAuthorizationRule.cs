@@ -49,6 +49,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventHub Namespace Authorization Rules can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class EventHubNamespaceAuthorizationRule : Pulumi.CustomResource
     {

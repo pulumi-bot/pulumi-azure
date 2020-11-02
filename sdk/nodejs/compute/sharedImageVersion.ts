@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Shared Image Versions can be imported using the `resource id`, e.g.
  */
 export class SharedImageVersion extends pulumi.CustomResource {
     /**

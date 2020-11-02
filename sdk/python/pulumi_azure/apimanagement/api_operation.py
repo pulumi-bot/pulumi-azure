@@ -58,6 +58,10 @@ class ApiOperation(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        API Management API Operation's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.

@@ -6,6 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an API Management API Policy
+ *
+ * ## Import
+ *
+ * API Management API Policy can be imported using the `resource id`, e.g.
  */
 export class ApiPolicy extends pulumi.CustomResource {
     /**

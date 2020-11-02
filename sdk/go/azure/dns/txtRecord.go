@@ -60,6 +60,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// TXT records can be imported using the `resource id`, e.g.
 type TxtRecord struct {
 	pulumi.CustomResourceState
 

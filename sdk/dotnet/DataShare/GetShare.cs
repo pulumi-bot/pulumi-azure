@@ -14,6 +14,7 @@ namespace Pulumi.Azure.DataShare
         /// <summary>
         /// Use this data source to access information about an existing Data Share.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

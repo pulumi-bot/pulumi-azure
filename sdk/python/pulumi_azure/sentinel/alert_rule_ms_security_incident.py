@@ -48,6 +48,10 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
             severity_filters=["High"])
         ```
 
+        ## Import
+
+        Sentinel MS Security Incident Alert Rules can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of this Sentinel MS Security Incident Alert Rule.

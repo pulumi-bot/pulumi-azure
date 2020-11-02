@@ -76,6 +76,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// AAAA records can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class AaaaRecord : Pulumi.CustomResource
     {

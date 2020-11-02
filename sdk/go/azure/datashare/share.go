@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Shares can be imported using the `resource id`, e.g.
 type Share struct {
 	pulumi.CustomResourceState
 

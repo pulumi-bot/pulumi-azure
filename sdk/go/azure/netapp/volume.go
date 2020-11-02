@@ -101,6 +101,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NetApp Volumes can be imported using the `resource id`, e.g.
 type Volume struct {
 	pulumi.CustomResourceState
 

@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  *     virtualNetworkId: azurerm_virtual_network.example.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS Zone Virtual Network Links can be imported using the `resource id`, e.g.
  */
 export class ZoneVirtualNetworkLink extends pulumi.CustomResource {
     /**

@@ -48,6 +48,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Topics can be imported using the `resource id`, e.g.
     /// </summary>
     [Obsolete(@"azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic")]
     public partial class Topic : Pulumi.CustomResource

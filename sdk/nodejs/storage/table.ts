@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  * });
  * const exampleTable = new azure.storage.Table("exampleTable", {storageAccountName: exampleAccount.name});
  * ```
+ *
+ * ## Import
+ *
+ * Table's within a Storage Account can be imported using the `resource id`, e.g.
  */
 export class Table extends pulumi.CustomResource {
     /**

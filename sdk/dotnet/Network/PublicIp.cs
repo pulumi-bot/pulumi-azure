@@ -40,6 +40,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Public IPs can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class PublicIp : Pulumi.CustomResource
     {

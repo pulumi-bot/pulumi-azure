@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Load Balancer Backend Address Pools can be imported using the `resource id`, e.g.
 type BackendAddressPool struct {
 	pulumi.CustomResourceState
 

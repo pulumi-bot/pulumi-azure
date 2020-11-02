@@ -61,6 +61,10 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Policy Assignments can be imported using the `policy name`, e.g.
  */
 export class Assignment extends pulumi.CustomResource {
     /**

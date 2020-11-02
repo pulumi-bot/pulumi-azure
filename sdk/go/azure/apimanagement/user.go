@@ -57,6 +57,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// API Management Users can be imported using the `resource id`, e.g.
 type User struct {
 	pulumi.CustomResourceState
 

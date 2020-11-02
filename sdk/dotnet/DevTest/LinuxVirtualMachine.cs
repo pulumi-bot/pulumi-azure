@@ -11,6 +11,10 @@ namespace Pulumi.Azure.DevTest
 {
     /// <summary>
     /// Manages a Linux Virtual Machine within a Dev Test Lab.
+    /// 
+    /// ## Import
+    /// 
+    /// Dev Test Linux Virtual Machines can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class LinuxVirtualMachine : Pulumi.CustomResource
     {

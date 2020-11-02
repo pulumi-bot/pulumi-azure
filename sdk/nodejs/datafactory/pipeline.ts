@@ -50,6 +50,10 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Data Factory Pipeline's can be imported using the `resource id`, e.g.
  */
 export class Pipeline extends pulumi.CustomResource {
     /**

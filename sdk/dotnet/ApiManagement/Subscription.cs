@@ -61,6 +61,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Subscriptions can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

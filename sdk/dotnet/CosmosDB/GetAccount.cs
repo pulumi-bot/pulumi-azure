@@ -14,6 +14,7 @@ namespace Pulumi.Azure.CosmosDB
         /// <summary>
         /// Use this data source to access information about an existing CosmosDB (formally DocumentDB) Account.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

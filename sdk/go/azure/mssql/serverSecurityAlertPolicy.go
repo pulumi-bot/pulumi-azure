@@ -73,6 +73,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MS SQL Server Security Alert Policy can be imported using the `resource id`, e.g.
 type ServerSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 

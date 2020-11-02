@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Proximity Placement Groups can be imported using the `resource id`, e.g.
  */
 export class PlacementGroup extends pulumi.CustomResource {
     /**

@@ -37,6 +37,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// App Service Source Control Token's can be imported using the `type`, e.g.
 type SourceCodeToken struct {
 	pulumi.CustomResourceState
 

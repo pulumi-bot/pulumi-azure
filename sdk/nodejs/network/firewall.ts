@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure Firewalls can be imported using the `resource id`, e.g.
  */
 export class Firewall extends pulumi.CustomResource {
     /**

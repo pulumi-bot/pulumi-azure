@@ -41,6 +41,10 @@ class ConfigurationStore(pulumi.CustomResource):
             location=rg.location)
         ```
 
+        ## Import
+
+        App Configurations can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConfigurationStoreIdentityArgs']] identity: An `identity` block as defined below.

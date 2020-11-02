@@ -58,6 +58,10 @@ import * as utilities from "../utilities";
  * });
  * //(Optional)
  * ```
+ *
+ * ## Import
+ *
+ * Kusto EventHub Data Connections can be imported using the `resource id`, e.g.
  */
 export class EventhubDataConnection extends pulumi.CustomResource {
     /**

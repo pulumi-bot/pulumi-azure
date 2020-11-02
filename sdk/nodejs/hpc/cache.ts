@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     skuName: "Standard_2G",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HPC Caches can be imported using the `resource id`, e.g.
  */
 export class Cache extends pulumi.CustomResource {
     /**

@@ -66,6 +66,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HDInsight Storm Clusters can be imported using the `resource id`, e.g.
  */
 export class StormCluster extends pulumi.CustomResource {
     /**

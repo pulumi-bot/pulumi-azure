@@ -30,6 +30,10 @@ import * as utilities from "../utilities";
  *     partnerNamespaceId: secondary.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHubs can be imported using the `resource id`, e.g.
  */
 export class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     /**

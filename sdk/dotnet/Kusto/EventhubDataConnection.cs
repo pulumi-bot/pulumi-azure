@@ -80,6 +80,10 @@ namespace Pulumi.Azure.Kusto
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Kusto EventHub Data Connections can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class EventhubDataConnection : Pulumi.CustomResource
     {

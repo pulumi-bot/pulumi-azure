@@ -46,6 +46,10 @@ namespace Pulumi.Azure.SiteRecovery
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Site Recovery Fabric can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Fabric : Pulumi.CustomResource
     {

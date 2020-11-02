@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// MariaDB Server's can be imported using the `resource id`, e.g.
 type Server struct {
 	pulumi.CustomResourceState
 

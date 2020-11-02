@@ -64,6 +64,10 @@ class HybridConnection(pulumi.CustomResource):
             send_key_name="exampleSharedAccessKey")
         ```
 
+        ## Import
+
+        App Service Hybrid Connections can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_service_name: Specifies the name of the App Service. Changing this forces a new resource to be created.

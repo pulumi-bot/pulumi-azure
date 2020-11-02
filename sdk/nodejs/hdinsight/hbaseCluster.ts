@@ -64,6 +64,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * HDInsight HBase Clusters can be imported using the `resource id`, e.g.
  */
 export class HBaseCluster extends pulumi.CustomResource {
     /**

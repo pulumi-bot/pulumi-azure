@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Sql Virtual Machines can be imported using the `resource id`, e.g.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**

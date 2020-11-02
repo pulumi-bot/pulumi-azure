@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Dev Test Labs can be imported using the `resource id`, e.g.
  */
 export class Lab extends pulumi.CustomResource {
     /**

@@ -87,6 +87,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub ServiceBus Topic Endpoint can be imported using the `resource id`, e.g.
 type EndpointServicebusTopic struct {
 	pulumi.CustomResourceState
 

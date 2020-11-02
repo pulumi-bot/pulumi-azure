@@ -45,6 +45,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Snapshots can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

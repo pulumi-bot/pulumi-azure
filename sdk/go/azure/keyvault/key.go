@@ -90,6 +90,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Key Vault Key which is Enabled can be imported using the `resource id`, e.g.
 type Key struct {
 	pulumi.CustomResourceState
 

@@ -69,6 +69,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure Firewalls can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Firewall : Pulumi.CustomResource
     {

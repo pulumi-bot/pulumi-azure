@@ -48,6 +48,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Container Registries can be imported using the `resource id`, e.g.
 type Registry struct {
 	pulumi.CustomResourceState
 

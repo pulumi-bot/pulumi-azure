@@ -67,6 +67,10 @@ namespace Pulumi.Azure.CosmosDB
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Cosmos SQL Containers can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class SqlContainer : Pulumi.CustomResource
     {

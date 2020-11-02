@@ -65,6 +65,10 @@ namespace Pulumi.Azure.MSSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SQL Servers can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Server : Pulumi.CustomResource
     {

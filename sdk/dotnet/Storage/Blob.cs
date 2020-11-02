@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Storage
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Storage Blob's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Blob : Pulumi.CustomResource
     {

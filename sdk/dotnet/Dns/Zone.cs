@@ -38,6 +38,10 @@ namespace Pulumi.Azure.Dns
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DNS Zones can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

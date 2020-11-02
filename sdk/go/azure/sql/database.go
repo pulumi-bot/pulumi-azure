@@ -77,6 +77,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Databases can be imported using the `resource id`, e.g.
 type Database struct {
 	pulumi.CustomResourceState
 

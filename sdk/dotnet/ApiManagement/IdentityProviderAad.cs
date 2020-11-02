@@ -49,6 +49,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management AAD Identity Provider can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class IdentityProviderAad : Pulumi.CustomResource
     {

@@ -53,6 +53,10 @@ namespace Pulumi.Azure.ServiceBus
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service Bus Subscriptions can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

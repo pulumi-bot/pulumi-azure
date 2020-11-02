@@ -49,6 +49,10 @@ namespace Pulumi.Azure.Batch
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Batch Applications can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

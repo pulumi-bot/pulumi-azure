@@ -60,6 +60,10 @@ class Topic(pulumi.CustomResource):
             enable_partitioning=True)
         ```
 
+        ## Import
+
+        Service Bus Topics can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_delete_on_idle: The ISO 8601 timespan duration of the idle interval after which the

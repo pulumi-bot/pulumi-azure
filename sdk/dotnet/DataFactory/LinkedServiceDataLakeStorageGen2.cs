@@ -45,6 +45,10 @@ namespace Pulumi.Azure.DataFactory
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Data Factory Data Lake Storage Gen2 Linked Services can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class LinkedServiceDataLakeStorageGen2 : Pulumi.CustomResource
     {

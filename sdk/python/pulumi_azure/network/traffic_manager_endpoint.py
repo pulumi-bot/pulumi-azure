@@ -75,6 +75,12 @@ class TrafficManagerEndpoint(pulumi.CustomResource):
             weight=100)
         ```
 
+        ## Import
+
+        Traffic Manager Endpoints can be imported using the `resource id`, e.g.
+
+         -> **NOTE:** `azureEndpoints` in the above shell command should be replaced with `externalEndpoints` or `nestedEndpoints` while using other endpoint types.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficManagerEndpointCustomHeaderArgs']]]] custom_headers: One or more `custom_header` blocks as defined below

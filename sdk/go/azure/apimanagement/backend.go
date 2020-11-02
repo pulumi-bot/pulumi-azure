@@ -11,6 +11,10 @@ import (
 )
 
 // Manages a backend within an API Management Service.
+//
+// ## Import
+//
+// API Management backends can be imported using the `resource id`, e.g.
 type Backend struct {
 	pulumi.CustomResourceState
 

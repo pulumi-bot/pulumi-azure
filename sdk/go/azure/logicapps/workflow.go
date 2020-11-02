@@ -42,6 +42,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Logic App Workflows can be imported using the `resource id`, e.g.
 type Workflow struct {
 	pulumi.CustomResourceState
 

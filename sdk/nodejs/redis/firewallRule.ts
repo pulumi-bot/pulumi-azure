@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     endIp: "2.3.4.5",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Redis Firewall Rules can be imported using the `resource id`, e.g.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

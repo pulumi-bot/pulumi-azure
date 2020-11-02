@@ -77,6 +77,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Service API Diagnostics Logs can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class ApiDiagnostic : Pulumi.CustomResource
     {

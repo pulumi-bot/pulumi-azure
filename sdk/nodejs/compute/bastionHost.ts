@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Bastion Hosts can be imported using the `resource id`, e.g.
  */
 export class BastionHost extends pulumi.CustomResource {
     /**

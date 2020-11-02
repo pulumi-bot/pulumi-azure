@@ -59,6 +59,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Dev Test Policies can be imported using the `resource id`, e.g.
 type Policy struct {
 	pulumi.CustomResourceState
 

@@ -90,6 +90,10 @@ class SparkCluster(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        HDInsight Spark Clusters can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_version: Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

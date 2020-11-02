@@ -63,6 +63,10 @@ namespace Pulumi.Azure.StreamAnalytics
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Stream Analytics Stream Input Blob's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class StreamInputBlob : Pulumi.CustomResource
     {

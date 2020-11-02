@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *     value: fs.readFileSync("api_management_api_schema.xml"),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management API Schema's can be imported using the `resource id`, e.g.
  */
 export class ApiSchema extends pulumi.CustomResource {
     /**

@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     userMetadata: "some-meta-data",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventHub Consumer Groups can be imported using the `resource id`, e.g.
  */
 export class ConsumerGroup extends pulumi.CustomResource {
     /**

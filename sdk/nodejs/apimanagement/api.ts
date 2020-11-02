@@ -36,6 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management API's can be imported using the `resource id`, e.g.
  */
 export class Api extends pulumi.CustomResource {
     /**

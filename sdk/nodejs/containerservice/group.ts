@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Container Group's can be imported using the `resource id`, e.g.
  */
 export class Group extends pulumi.CustomResource {
     /**

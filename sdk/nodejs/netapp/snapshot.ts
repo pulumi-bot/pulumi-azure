@@ -63,6 +63,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: exampleResourceGroup.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * NetApp Snapshot can be imported using the `resource id`, e.g.
  */
 export class Snapshot extends pulumi.CustomResource {
     /**

@@ -47,6 +47,10 @@ namespace Pulumi.Azure.Relay
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Relay Hybrid Connection's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class HybridConnection : Pulumi.CustomResource
     {

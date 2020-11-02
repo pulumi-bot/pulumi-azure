@@ -39,6 +39,10 @@ namespace Pulumi.Azure.EventHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EventGrid Domains can be imported using the `resource id`, e.g.
     /// </summary>
     [Obsolete(@"azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain")]
     public partial class Domain : Pulumi.CustomResource

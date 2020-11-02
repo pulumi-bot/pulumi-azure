@@ -54,6 +54,10 @@ class ServerExtendedAuditingPolicy(pulumi.CustomResource):
             retention_in_days=6)
         ```
 
+        ## Import
+
+        Ms Sql Server Extended Auditing Policys can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] retention_in_days: The number of days to retain logs for in the storage account.

@@ -55,6 +55,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Linked Service's can be imported using the `resource id`, e.g.
 type LinkedServiceAzureFileStorage struct {
 	pulumi.CustomResourceState
 

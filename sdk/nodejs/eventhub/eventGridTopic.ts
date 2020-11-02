@@ -27,6 +27,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Import
+ *
+ * EventGrid Topic's can be imported using the `resource id`, e.g.
+ *
  * @deprecated azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic
  */
 export class EventGridTopic extends pulumi.CustomResource {

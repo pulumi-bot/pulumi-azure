@@ -102,6 +102,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure Firewall NAT Rule Collections can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class FirewallNatRuleCollection : Pulumi.CustomResource
     {

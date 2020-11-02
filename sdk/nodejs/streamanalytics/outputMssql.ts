@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  *     table: "ExampleTable",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Stream Analytics Outputs to Microsoft SQL Server Database can be imported using the `resource id`, e.g.
  */
 export class OutputMssql extends pulumi.CustomResource {
     /**

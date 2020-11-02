@@ -42,6 +42,10 @@ class FirewallPolicy(pulumi.CustomResource):
             resource_group_name="example")
         ```
 
+        ## Import
+
+        networks can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base_policy_id: The ID of the base Firewall Policy.

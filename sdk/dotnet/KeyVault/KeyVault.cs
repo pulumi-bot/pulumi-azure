@@ -87,6 +87,10 @@ namespace Pulumi.Azure.KeyVault
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Key Vault's can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class KeyVault : Pulumi.CustomResource
     {

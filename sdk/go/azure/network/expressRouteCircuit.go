@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ExpressRoute circuits can be imported using the `resource id`, e.g.
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 

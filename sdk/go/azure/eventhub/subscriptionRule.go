@@ -144,6 +144,10 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Service Bus Subscription Rule can be imported using the `resource id`, e.g.
+//
 // Deprecated: azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule
 type SubscriptionRule struct {
 	pulumi.CustomResourceState

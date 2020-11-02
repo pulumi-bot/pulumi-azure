@@ -98,6 +98,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Account Management Policies can be imported using the `resource id`, e.g.
 type ManagementPolicy struct {
 	pulumi.CustomResourceState
 

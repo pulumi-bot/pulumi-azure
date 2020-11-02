@@ -72,6 +72,12 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Associations between Network Interfaces and Network Security Group can be imported using the `resource id`, e.g.
+    /// 
+    ///  -&gt; **NOTE:** This ID is specific to Terraform - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
     /// </summary>
     public partial class NetworkInterfaceSecurityGroupAssociation : Pulumi.CustomResource
     {

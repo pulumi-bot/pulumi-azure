@@ -19,6 +19,10 @@ import * as utilities from "../utilities";
  *     location: exampleResourceGroup.location,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual WAN can be imported using the `resource id`, e.g.
  */
 export class VirtualWan extends pulumi.CustomResource {
     /**

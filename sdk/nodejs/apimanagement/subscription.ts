@@ -35,6 +35,10 @@ import * as utilities from "../utilities";
  *     displayName: "Parser API",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * API Management Subscriptions can be imported using the `resource id`, e.g.
  */
 export class Subscription extends pulumi.CustomResource {
     /**

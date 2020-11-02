@@ -70,6 +70,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NAT Gateway can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class NatGateway : Pulumi.CustomResource
     {

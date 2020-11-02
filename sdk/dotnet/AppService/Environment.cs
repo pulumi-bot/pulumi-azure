@@ -69,6 +69,10 @@ namespace Pulumi.Azure.AppService
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The App Service Environment can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {

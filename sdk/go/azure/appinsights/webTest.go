@@ -11,6 +11,10 @@ import (
 )
 
 // Manages an Application Insights WebTest.
+//
+// ## Import
+//
+// Application Insights Web Tests can be imported using the `resource id`, e.g.
 type WebTest struct {
 	pulumi.CustomResourceState
 

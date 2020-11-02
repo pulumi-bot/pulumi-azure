@@ -61,6 +61,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure Firewall Network Rule Collections can be imported using the `resource id`, e.g.
  */
 export class FirewallNetworkRuleCollection extends pulumi.CustomResource {
     /**

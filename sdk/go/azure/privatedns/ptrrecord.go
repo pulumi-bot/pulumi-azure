@@ -52,6 +52,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Private DNS PTR Records can be imported using the `resource id`, e.g.
 type PTRRecord struct {
 	pulumi.CustomResourceState
 

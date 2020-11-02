@@ -78,6 +78,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub Storage Container Endpoint can be imported using the `resource id`, e.g.
 type EndpointStorageContainer struct {
 	pulumi.CustomResourceState
 

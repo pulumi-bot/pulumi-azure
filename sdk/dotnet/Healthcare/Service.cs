@@ -68,6 +68,10 @@ namespace Pulumi.Azure.Healthcare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Healthcare Service can be imported using the resource`id`, e.g.
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

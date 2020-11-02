@@ -46,6 +46,10 @@ class ApiSchema(pulumi.CustomResource):
             value=(lambda path: open(path).read())("api_management_api_schema.xml"))
         ```
 
+        ## Import
+
+        API Management API Schema's can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.

@@ -48,6 +48,10 @@ class SavedSearch(pulumi.CustomResource):
             query="exampleQuery")
         ```
 
+        ## Import
+
+        Log Analytics Saved Searches can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The category that the Saved Search will be listed under. Changing this forces a new resource to be created.

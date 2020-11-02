@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     password: "example-password",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Key Vault Certificate Issuers can be imported using the `resource id`, e.g.
  */
 export class CertificateIssuer extends pulumi.CustomResource {
     /**

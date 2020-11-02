@@ -74,6 +74,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kusto Database Principals can be imported using the `resource id`, e.g.
 type DatabasePrincipal struct {
 	pulumi.CustomResourceState
 

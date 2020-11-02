@@ -20,6 +20,10 @@ import * as utilities from "../utilities";
  *     resourceGroupName: "example",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * networks can be imported using the `resource id`, e.g.
  */
 export class FirewallPolicy extends pulumi.CustomResource {
     /**

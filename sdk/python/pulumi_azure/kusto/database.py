@@ -49,6 +49,10 @@ class Database(pulumi.CustomResource):
             soft_delete_period="P31D")
         ```
 
+        ## Import
+
+        Kusto Clusters can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.

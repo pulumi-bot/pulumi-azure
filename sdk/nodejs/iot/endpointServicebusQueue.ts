@@ -52,6 +52,10 @@ import * as utilities from "../utilities";
  *     connectionString: exampleQueueAuthorizationRule.primaryConnectionString,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * IoTHub ServiceBus Queue Endpoint can be imported using the `resource id`, e.g.
  */
 export class EndpointServicebusQueue extends pulumi.CustomResource {
     /**

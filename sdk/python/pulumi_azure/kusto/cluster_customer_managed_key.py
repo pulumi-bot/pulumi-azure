@@ -25,6 +25,10 @@ class ClusterCustomerManagedKey(pulumi.CustomResource):
         """
         Manages a Customer Managed Key for a Kusto Cluster.
 
+        ## Import
+
+        Customer Managed Keys for a Kusto Cluster can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the Kusto Cluster. Changing this forces a new resource to be created.

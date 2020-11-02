@@ -37,6 +37,10 @@ namespace Pulumi.Azure.NotificationHub
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Notification Hub Namespaces can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

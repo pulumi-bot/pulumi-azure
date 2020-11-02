@@ -54,6 +54,12 @@ import * as utilities from "../utilities";
  *     backupPolicyId: examplePolicyFileShare.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure Backup Protected File Shares can be imported using the `resource id`, e.g.
+ *
+ *  Note the ID requires quoting as there are semicolons
  */
 export class ProtectedFileShare extends pulumi.CustomResource {
     /**

@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Storage Shares can be imported using the `resource id`, e.g.
  */
 export class Share extends pulumi.CustomResource {
     /**

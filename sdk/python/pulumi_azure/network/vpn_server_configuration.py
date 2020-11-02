@@ -71,6 +71,10 @@ class VpnServerConfiguration(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        VPN Server Configurations can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnServerConfigurationAzureActiveDirectoryAuthenticationArgs']]]] azure_active_directory_authentications: A `azure_active_directory_authentication` block as defined below.

@@ -118,6 +118,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Key Vault Certificates can be imported using the `resource id`, e.g.
  */
 export class Certificate extends pulumi.CustomResource {
     /**

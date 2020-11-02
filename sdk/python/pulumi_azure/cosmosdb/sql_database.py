@@ -42,6 +42,10 @@ class SqlDatabase(pulumi.CustomResource):
             throughput=400)
         ```
 
+        ## Import
+
+        Cosmos SQL Database can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Cosmos DB SQL Database to create the table within. Changing this forces a new resource to be created.

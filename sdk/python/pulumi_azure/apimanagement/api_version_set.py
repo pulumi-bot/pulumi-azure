@@ -49,6 +49,10 @@ class ApiVersionSet(pulumi.CustomResource):
             versioning_scheme="Segment")
         ```
 
+        ## Import
+
+        API Version Set can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_management_name: The name of the API Management Service in which the API Version Set should exist. Changing this forces a new resource to be created.

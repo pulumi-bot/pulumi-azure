@@ -46,6 +46,10 @@ namespace Pulumi.Azure.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Azure IoT Time Series Insights Access Policy can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class TimeSeriesInsightsAccessPolicy : Pulumi.CustomResource
     {

@@ -39,6 +39,10 @@ namespace Pulumi.Azure.Proximity
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Proximity Placement Groups can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class PlacementGroup : Pulumi.CustomResource
     {

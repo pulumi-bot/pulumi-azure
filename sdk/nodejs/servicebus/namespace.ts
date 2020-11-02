@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Service Bus Namespace can be imported using the `resource id`, e.g.
  */
 export class Namespace extends pulumi.CustomResource {
     /**

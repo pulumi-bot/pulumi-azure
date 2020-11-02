@@ -92,6 +92,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Share Data Lake Gen1 Datasets can be imported using the `resource id`, e.g.
 type DatasetDataLakeGen1 struct {
 	pulumi.CustomResourceState
 

@@ -118,6 +118,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Blob Targets within an HPC Cache can be imported using the `resource id`, e.g.
 type CacheBlobTarget struct {
 	pulumi.CustomResourceState
 

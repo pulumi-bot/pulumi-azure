@@ -61,6 +61,12 @@ class DiagnosticSetting(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Diagnostic Settings can be imported using the `resource id`, e.g.
+
+         -> **NOTE:** This is an ID specific to this resource provider which uses the format `{resourceId}|{diagnosticSettingName}`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] eventhub_authorization_rule_id: Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.

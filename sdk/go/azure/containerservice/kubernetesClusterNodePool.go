@@ -67,6 +67,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kubernetes Cluster Node Pools can be imported using the `resource id`, e.g.
 type KubernetesClusterNodePool struct {
 	pulumi.CustomResourceState
 

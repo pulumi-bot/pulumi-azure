@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Route Filters can be imported using the `resource id`, e.g.
  */
 export class RouteFilter extends pulumi.CustomResource {
     /**

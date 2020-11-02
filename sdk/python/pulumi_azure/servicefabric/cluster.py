@@ -66,6 +66,10 @@ class Cluster(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Service Fabric Clusters can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] add_on_features: A List of one or more features which should be enabled, such as `DnsService`.

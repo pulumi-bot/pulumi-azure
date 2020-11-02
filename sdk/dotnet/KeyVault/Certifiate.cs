@@ -158,6 +158,10 @@ namespace Pulumi.Azure.KeyVault
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Key Vault Certificates can be imported using the `resource id`, e.g.
     /// </summary>
     [Obsolete(@"azure.keyvault.Certifiate has been deprecated in favor of azure.keyvault.Certificate")]
     public partial class Certifiate : Pulumi.CustomResource

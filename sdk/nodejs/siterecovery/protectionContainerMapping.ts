@@ -55,6 +55,10 @@ import * as utilities from "../utilities";
  *     recoveryReplicationPolicyId: policy.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Site Recovery Protection Container Mappings can be imported using the `resource id`, e.g.
  */
 export class ProtectionContainerMapping extends pulumi.CustomResource {
     /**

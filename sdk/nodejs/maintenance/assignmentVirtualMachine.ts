@@ -66,6 +66,10 @@ import * as utilities from "../utilities";
  *     virtualMachineId: exampleLinuxVirtualMachine.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Maintenance Assignment can be imported using the `resource id`, e.g.
  */
 export class AssignmentVirtualMachine extends pulumi.CustomResource {
     /**

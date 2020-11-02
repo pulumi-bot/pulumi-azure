@@ -46,6 +46,10 @@ namespace Pulumi.Azure.Network
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Routes can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

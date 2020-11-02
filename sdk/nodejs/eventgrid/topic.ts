@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * EventGrid Topic's can be imported using the `resource id`, e.g.
  */
 export class Topic extends pulumi.CustomResource {
     /**

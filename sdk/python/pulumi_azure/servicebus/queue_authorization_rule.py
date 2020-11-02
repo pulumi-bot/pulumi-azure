@@ -55,6 +55,10 @@ class QueueAuthorizationRule(pulumi.CustomResource):
             manage=False)
         ```
 
+        ## Import
+
+        ServiceBus Queue Authorization Rules can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] listen: Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.

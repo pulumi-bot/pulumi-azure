@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  *     bypasses: ["Metrics"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Storage Account Network Rules can be imported using the `resource id`, e.g.
  */
 export class AccountNetworkRules extends pulumi.CustomResource {
     /**

@@ -45,6 +45,10 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Machine Scale Set Extensions can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class VirtualMachineScaleSetExtension : Pulumi.CustomResource
     {

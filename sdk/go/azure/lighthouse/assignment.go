@@ -35,6 +35,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Lighthouse Assignments can be imported using the `resource id`, e.g.
 type Assignment struct {
 	pulumi.CustomResourceState
 

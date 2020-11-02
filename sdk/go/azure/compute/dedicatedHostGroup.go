@@ -43,6 +43,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Dedicated Host Group can be imported using the `resource id`, e.g.
 type DedicatedHostGroup struct {
 	pulumi.CustomResourceState
 

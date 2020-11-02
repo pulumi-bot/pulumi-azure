@@ -53,6 +53,10 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CosmosDB Mongo Collection can be imported using the `resource id`, e.g.
 type MongoCollection struct {
 	pulumi.CustomResourceState
 

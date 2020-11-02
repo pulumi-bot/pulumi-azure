@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     platformFaultDomain: 1,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Dedicated Hosts can be imported using the `resource id`, e.g.
  */
 export class DedicatedHost extends pulumi.CustomResource {
     /**

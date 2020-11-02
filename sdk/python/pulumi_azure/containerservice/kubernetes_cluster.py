@@ -73,6 +73,10 @@ class KubernetesCluster(pulumi.CustomResource):
         pulumi.export("kubeConfig", example_kubernetes_cluster.kube_config_raw)
         ```
 
+        ## Import
+
+        Managed Kubernetes Clusters can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterAddonProfileArgs']] addon_profile: A `addon_profile` block as defined below.

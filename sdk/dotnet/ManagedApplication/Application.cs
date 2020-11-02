@@ -71,6 +71,10 @@ namespace Pulumi.Azure.ManagedApplication
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Managed Application can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

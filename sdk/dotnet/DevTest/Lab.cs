@@ -39,6 +39,10 @@ namespace Pulumi.Azure.DevTest
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Dev Test Labs can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class Lab : Pulumi.CustomResource
     {

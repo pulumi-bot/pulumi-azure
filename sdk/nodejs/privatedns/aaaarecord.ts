@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Private DNS AAAA Records can be imported using the `resource id`, e.g.
  */
 export class AAAARecord extends pulumi.CustomResource {
     /**

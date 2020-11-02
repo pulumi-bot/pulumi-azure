@@ -80,6 +80,12 @@ import * as utilities from "../utilities";
  *     caching: "ReadWrite",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Virtual Machines Data Disk Attachments can be imported using the `resource id`, e.g.
+ *
+ *  -> **Please Note:** This is a ID (specific to this provider) matching the format`{virtualMachineID}/dataDisks/{diskName}`
  */
 export class DataDiskAttachment extends pulumi.CustomResource {
     /**

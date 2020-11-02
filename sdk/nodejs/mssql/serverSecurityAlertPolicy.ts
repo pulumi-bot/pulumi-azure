@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     retentionDays: 20,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * MS SQL Server Security Alert Policy can be imported using the `resource id`, e.g.
  */
 export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     /**

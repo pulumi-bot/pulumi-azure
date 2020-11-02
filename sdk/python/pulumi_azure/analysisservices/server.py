@@ -58,6 +58,10 @@ class Server(pulumi.CustomResource):
 
         > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
 
+        ## Import
+
+        Analysis Services Server can be imported using the `resource id`, e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_users: List of email addresses of admin users.

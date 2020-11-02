@@ -65,6 +65,12 @@ namespace Pulumi.Azure.Policy
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Policy Definitions can be imported using the `policy name`, e.g.
+    /// 
+    ///  or
     /// </summary>
     public partial class Definition : Pulumi.CustomResource
     {

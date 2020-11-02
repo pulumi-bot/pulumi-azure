@@ -45,6 +45,10 @@ namespace Pulumi.Azure.ApiManagement
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// API Management Microsoft Identity Provider can be imported using the `resource id`, e.g.
     /// </summary>
     public partial class IdentityProviderMicrosoft : Pulumi.CustomResource
     {
