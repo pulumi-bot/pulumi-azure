@@ -92,9 +92,6 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NamespaceAuthorizationRuleArgs{}
-	}
 	var resource NamespaceAuthorizationRule
 	err := ctx.RegisterResource("azure:eventhub/namespaceAuthorizationRule:NamespaceAuthorizationRule", name, args, &resource, opts...)
 	if err != nil {

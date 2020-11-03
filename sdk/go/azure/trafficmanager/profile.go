@@ -105,9 +105,6 @@ func NewProfile(ctx *pulumi.Context,
 	if args == nil || args.TrafficRoutingMethod == nil {
 		return nil, errors.New("missing required argument 'TrafficRoutingMethod'")
 	}
-	if args == nil {
-		args = &ProfileArgs{}
-	}
 	var resource Profile
 	err := ctx.RegisterResource("azure:trafficmanager/profile:Profile", name, args, &resource, opts...)
 	if err != nil {

@@ -64,9 +64,6 @@ func NewContact(ctx *pulumi.Context,
 	if args == nil || args.Email == nil {
 		return nil, errors.New("missing required argument 'Email'")
 	}
-	if args == nil {
-		args = &ContactArgs{}
-	}
 	var resource Contact
 	err := ctx.RegisterResource("azure:securitycenter/contact:Contact", name, args, &resource, opts...)
 	if err != nil {

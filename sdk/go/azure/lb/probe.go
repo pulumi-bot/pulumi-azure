@@ -101,9 +101,6 @@ func NewProbe(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProbeArgs{}
-	}
 	var resource Probe
 	err := ctx.RegisterResource("azure:lb/probe:Probe", name, args, &resource, opts...)
 	if err != nil {

@@ -104,9 +104,6 @@ func NewAnalyticsSolution(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceResourceId == nil {
 		return nil, errors.New("missing required argument 'WorkspaceResourceId'")
 	}
-	if args == nil {
-		args = &AnalyticsSolutionArgs{}
-	}
 	var resource AnalyticsSolution
 	err := ctx.RegisterResource("azure:operationalinsights/analyticsSolution:AnalyticsSolution", name, args, &resource, opts...)
 	if err != nil {

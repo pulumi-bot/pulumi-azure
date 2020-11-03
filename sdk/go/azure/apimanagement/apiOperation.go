@@ -106,9 +106,6 @@ func NewApiOperation(ctx *pulumi.Context,
 	if args == nil || args.UrlTemplate == nil {
 		return nil, errors.New("missing required argument 'UrlTemplate'")
 	}
-	if args == nil {
-		args = &ApiOperationArgs{}
-	}
 	var resource ApiOperation
 	err := ctx.RegisterResource("azure:apimanagement/apiOperation:ApiOperation", name, args, &resource, opts...)
 	if err != nil {

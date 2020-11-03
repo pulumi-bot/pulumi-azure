@@ -53,9 +53,6 @@ func NewConnectionServicePrincipal(ctx *pulumi.Context,
 	if args == nil || args.TenantId == nil {
 		return nil, errors.New("missing required argument 'TenantId'")
 	}
-	if args == nil {
-		args = &ConnectionServicePrincipalArgs{}
-	}
 	var resource ConnectionServicePrincipal
 	err := ctx.RegisterResource("azure:automation/connectionServicePrincipal:ConnectionServicePrincipal", name, args, &resource, opts...)
 	if err != nil {

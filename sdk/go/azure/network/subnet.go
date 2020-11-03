@@ -105,9 +105,6 @@ func NewSubnet(ctx *pulumi.Context,
 	if args == nil || args.VirtualNetworkName == nil {
 		return nil, errors.New("missing required argument 'VirtualNetworkName'")
 	}
-	if args == nil {
-		args = &SubnetArgs{}
-	}
 	var resource Subnet
 	err := ctx.RegisterResource("azure:network/subnet:Subnet", name, args, &resource, opts...)
 	if err != nil {

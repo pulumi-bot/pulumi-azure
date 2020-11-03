@@ -82,9 +82,6 @@ func NewIdentityProviderTwitter(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IdentityProviderTwitterArgs{}
-	}
 	var resource IdentityProviderTwitter
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter", name, args, &resource, opts...)
 	if err != nil {

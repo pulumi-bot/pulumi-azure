@@ -73,9 +73,6 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil || args.SkuName == nil {
 		return nil, errors.New("missing required argument 'SkuName'")
 	}
-	if args == nil {
-		args = &AccountArgs{}
-	}
 	var resource Account
 	err := ctx.RegisterResource("azure:maps/account:Account", name, args, &resource, opts...)
 	if err != nil {

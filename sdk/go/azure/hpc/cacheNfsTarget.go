@@ -48,9 +48,6 @@ func NewCacheNfsTarget(ctx *pulumi.Context,
 	if args == nil || args.UsageModel == nil {
 		return nil, errors.New("missing required argument 'UsageModel'")
 	}
-	if args == nil {
-		args = &CacheNfsTargetArgs{}
-	}
 	var resource CacheNfsTarget
 	err := ctx.RegisterResource("azure:hpc/cacheNfsTarget:CacheNfsTarget", name, args, &resource, opts...)
 	if err != nil {

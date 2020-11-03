@@ -101,9 +101,6 @@ func NewSqlPool(ctx *pulumi.Context,
 	if args == nil || args.SynapseWorkspaceId == nil {
 		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
 	}
-	if args == nil {
-		args = &SqlPoolArgs{}
-	}
 	var resource SqlPool
 	err := ctx.RegisterResource("azure:synapse/sqlPool:SqlPool", name, args, &resource, opts...)
 	if err != nil {

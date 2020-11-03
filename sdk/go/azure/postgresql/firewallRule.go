@@ -116,9 +116,6 @@ func NewFirewallRule(ctx *pulumi.Context,
 	if args == nil || args.StartIpAddress == nil {
 		return nil, errors.New("missing required argument 'StartIpAddress'")
 	}
-	if args == nil {
-		args = &FirewallRuleArgs{}
-	}
 	var resource FirewallRule
 	err := ctx.RegisterResource("azure:postgresql/firewallRule:FirewallRule", name, args, &resource, opts...)
 	if err != nil {

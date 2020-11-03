@@ -123,9 +123,6 @@ func NewDatasetDataLakeGen2(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountId == nil {
 		return nil, errors.New("missing required argument 'StorageAccountId'")
 	}
-	if args == nil {
-		args = &DatasetDataLakeGen2Args{}
-	}
 	var resource DatasetDataLakeGen2
 	err := ctx.RegisterResource("azure:datashare/datasetDataLakeGen2:DatasetDataLakeGen2", name, args, &resource, opts...)
 	if err != nil {

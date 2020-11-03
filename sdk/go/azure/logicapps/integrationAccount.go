@@ -70,9 +70,6 @@ func NewIntegrationAccount(ctx *pulumi.Context,
 	if args == nil || args.SkuName == nil {
 		return nil, errors.New("missing required argument 'SkuName'")
 	}
-	if args == nil {
-		args = &IntegrationAccountArgs{}
-	}
 	var resource IntegrationAccount
 	err := ctx.RegisterResource("azure:logicapps/integrationAccount:IntegrationAccount", name, args, &resource, opts...)
 	if err != nil {

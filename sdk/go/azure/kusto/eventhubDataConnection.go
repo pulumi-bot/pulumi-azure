@@ -139,9 +139,6 @@ func NewEventhubDataConnection(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EventhubDataConnectionArgs{}
-	}
 	var resource EventhubDataConnection
 	err := ctx.RegisterResource("azure:kusto/eventhubDataConnection:EventhubDataConnection", name, args, &resource, opts...)
 	if err != nil {

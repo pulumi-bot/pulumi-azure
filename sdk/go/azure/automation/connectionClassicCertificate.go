@@ -48,9 +48,6 @@ func NewConnectionClassicCertificate(ctx *pulumi.Context,
 	if args == nil || args.SubscriptionName == nil {
 		return nil, errors.New("missing required argument 'SubscriptionName'")
 	}
-	if args == nil {
-		args = &ConnectionClassicCertificateArgs{}
-	}
 	var resource ConnectionClassicCertificate
 	err := ctx.RegisterResource("azure:automation/connectionClassicCertificate:ConnectionClassicCertificate", name, args, &resource, opts...)
 	if err != nil {

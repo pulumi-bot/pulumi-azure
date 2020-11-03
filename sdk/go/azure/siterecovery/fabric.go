@@ -80,9 +80,6 @@ func NewFabric(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &FabricArgs{}
-	}
 	var resource Fabric
 	err := ctx.RegisterResource("azure:siterecovery/fabric:Fabric", name, args, &resource, opts...)
 	if err != nil {

@@ -87,9 +87,6 @@ func NewInsights(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &InsightsArgs{}
-	}
 	var resource Insights
 	err := ctx.RegisterResource("azure:appinsights/insights:Insights", name, args, &resource, opts...)
 	if err != nil {

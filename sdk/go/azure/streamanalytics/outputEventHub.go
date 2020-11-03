@@ -120,9 +120,6 @@ func NewOutputEventHub(ctx *pulumi.Context,
 	if args == nil || args.StreamAnalyticsJobName == nil {
 		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
 	}
-	if args == nil {
-		args = &OutputEventHubArgs{}
-	}
 	var resource OutputEventHub
 	err := ctx.RegisterResource("azure:streamanalytics/outputEventHub:OutputEventHub", name, args, &resource, opts...)
 	if err != nil {

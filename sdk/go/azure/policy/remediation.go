@@ -91,9 +91,6 @@ func NewRemediation(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &RemediationArgs{}
-	}
 	var resource Remediation
 	err := ctx.RegisterResource("azure:policy/remediation:Remediation", name, args, &resource, opts...)
 	if err != nil {

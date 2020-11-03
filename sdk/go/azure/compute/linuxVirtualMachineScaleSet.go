@@ -127,9 +127,6 @@ func NewLinuxVirtualMachineScaleSet(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &LinuxVirtualMachineScaleSetArgs{}
-	}
 	var resource LinuxVirtualMachineScaleSet
 	err := ctx.RegisterResource("azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet", name, args, &resource, opts...)
 	if err != nil {

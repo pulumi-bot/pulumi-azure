@@ -77,9 +77,6 @@ func NewDefinition(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &DefinitionArgs{}
-	}
 	var resource Definition
 	err := ctx.RegisterResource("azure:lighthouse/definition:Definition", name, args, &resource, opts...)
 	if err != nil {

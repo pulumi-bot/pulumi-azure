@@ -42,9 +42,6 @@ func NewDiskEncryptionSet(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DiskEncryptionSetArgs{}
-	}
 	var resource DiskEncryptionSet
 	err := ctx.RegisterResource("azure:compute/diskEncryptionSet:DiskEncryptionSet", name, args, &resource, opts...)
 	if err != nil {

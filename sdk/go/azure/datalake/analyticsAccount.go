@@ -76,9 +76,6 @@ func NewAnalyticsAccount(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &AnalyticsAccountArgs{}
-	}
 	var resource AnalyticsAccount
 	err := ctx.RegisterResource("azure:datalake/analyticsAccount:AnalyticsAccount", name, args, &resource, opts...)
 	if err != nil {

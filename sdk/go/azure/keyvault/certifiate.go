@@ -187,9 +187,6 @@ func NewCertifiate(ctx *pulumi.Context,
 	if args == nil || args.KeyVaultId == nil {
 		return nil, errors.New("missing required argument 'KeyVaultId'")
 	}
-	if args == nil {
-		args = &CertifiateArgs{}
-	}
 	var resource Certifiate
 	err := ctx.RegisterResource("azure:keyvault/certifiate:Certifiate", name, args, &resource, opts...)
 	if err != nil {

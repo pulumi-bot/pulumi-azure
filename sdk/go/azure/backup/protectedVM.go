@@ -94,9 +94,6 @@ func NewProtectedVM(ctx *pulumi.Context,
 	if args == nil || args.SourceVmId == nil {
 		return nil, errors.New("missing required argument 'SourceVmId'")
 	}
-	if args == nil {
-		args = &ProtectedVMArgs{}
-	}
 	var resource ProtectedVM
 	err := ctx.RegisterResource("azure:backup/protectedVM:ProtectedVM", name, args, &resource, opts...)
 	if err != nil {

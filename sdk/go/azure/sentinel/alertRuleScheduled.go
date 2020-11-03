@@ -103,9 +103,6 @@ func NewAlertRuleScheduled(ctx *pulumi.Context,
 	if args == nil || args.Severity == nil {
 		return nil, errors.New("missing required argument 'Severity'")
 	}
-	if args == nil {
-		args = &AlertRuleScheduledArgs{}
-	}
 	var resource AlertRuleScheduled
 	err := ctx.RegisterResource("azure:sentinel/alertRuleScheduled:AlertRuleScheduled", name, args, &resource, opts...)
 	if err != nil {

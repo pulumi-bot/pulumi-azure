@@ -88,9 +88,6 @@ func NewVpnSite(ctx *pulumi.Context,
 	if args == nil || args.VirtualWanId == nil {
 		return nil, errors.New("missing required argument 'VirtualWanId'")
 	}
-	if args == nil {
-		args = &VpnSiteArgs{}
-	}
 	var resource VpnSite
 	err := ctx.RegisterResource("azure:network/vpnSite:VpnSite", name, args, &resource, opts...)
 	if err != nil {

@@ -98,9 +98,6 @@ func NewSqlContainer(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SqlContainerArgs{}
-	}
 	var resource SqlContainer
 	err := ctx.RegisterResource("azure:cosmosdb/sqlContainer:SqlContainer", name, args, &resource, opts...)
 	if err != nil {

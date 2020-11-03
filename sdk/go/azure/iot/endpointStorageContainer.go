@@ -117,9 +117,6 @@ func NewEndpointStorageContainer(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EndpointStorageContainerArgs{}
-	}
 	var resource EndpointStorageContainer
 	err := ctx.RegisterResource("azure:iot/endpointStorageContainer:EndpointStorageContainer", name, args, &resource, opts...)
 	if err != nil {

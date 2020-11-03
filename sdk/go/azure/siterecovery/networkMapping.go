@@ -140,9 +140,6 @@ func NewNetworkMapping(ctx *pulumi.Context,
 	if args == nil || args.TargetRecoveryFabricName == nil {
 		return nil, errors.New("missing required argument 'TargetRecoveryFabricName'")
 	}
-	if args == nil {
-		args = &NetworkMappingArgs{}
-	}
 	var resource NetworkMapping
 	err := ctx.RegisterResource("azure:siterecovery/networkMapping:NetworkMapping", name, args, &resource, opts...)
 	if err != nil {

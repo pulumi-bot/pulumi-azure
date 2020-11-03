@@ -127,9 +127,6 @@ func NewDatasetBlobStorage(ctx *pulumi.Context,
 	if args == nil || args.StorageAccount == nil {
 		return nil, errors.New("missing required argument 'StorageAccount'")
 	}
-	if args == nil {
-		args = &DatasetBlobStorageArgs{}
-	}
 	var resource DatasetBlobStorage
 	err := ctx.RegisterResource("azure:datashare/datasetBlobStorage:DatasetBlobStorage", name, args, &resource, opts...)
 	if err != nil {

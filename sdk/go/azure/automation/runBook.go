@@ -104,9 +104,6 @@ func NewRunBook(ctx *pulumi.Context,
 	if args == nil || args.RunbookType == nil {
 		return nil, errors.New("missing required argument 'RunbookType'")
 	}
-	if args == nil {
-		args = &RunBookArgs{}
-	}
 	var resource RunBook
 	err := ctx.RegisterResource("azure:automation/runBook:RunBook", name, args, &resource, opts...)
 	if err != nil {

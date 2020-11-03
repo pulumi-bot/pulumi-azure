@@ -36,9 +36,6 @@ func NewCustomerManagedKey(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountId == nil {
 		return nil, errors.New("missing required argument 'StorageAccountId'")
 	}
-	if args == nil {
-		args = &CustomerManagedKeyArgs{}
-	}
 	var resource CustomerManagedKey
 	err := ctx.RegisterResource("azure:storage/customerManagedKey:CustomerManagedKey", name, args, &resource, opts...)
 	if err != nil {

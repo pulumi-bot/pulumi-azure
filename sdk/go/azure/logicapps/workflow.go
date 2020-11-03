@@ -81,9 +81,6 @@ func NewWorkflow(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &WorkflowArgs{}
-	}
 	var resource Workflow
 	err := ctx.RegisterResource("azure:logicapps/workflow:Workflow", name, args, &resource, opts...)
 	if err != nil {

@@ -109,9 +109,6 @@ func NewSharedImage(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SharedImageArgs{}
-	}
 	var resource SharedImage
 	err := ctx.RegisterResource("azure:compute/sharedImage:SharedImage", name, args, &resource, opts...)
 	if err != nil {

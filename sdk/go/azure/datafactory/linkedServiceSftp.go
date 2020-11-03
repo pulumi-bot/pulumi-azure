@@ -111,9 +111,6 @@ func NewLinkedServiceSftp(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	if args == nil {
-		args = &LinkedServiceSftpArgs{}
-	}
 	var resource LinkedServiceSftp
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceSftp:LinkedServiceSftp", name, args, &resource, opts...)
 	if err != nil {

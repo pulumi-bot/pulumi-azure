@@ -39,9 +39,6 @@ func NewClusterCustomerManagedKey(ctx *pulumi.Context,
 	if args == nil || args.KeyVersion == nil {
 		return nil, errors.New("missing required argument 'KeyVersion'")
 	}
-	if args == nil {
-		args = &ClusterCustomerManagedKeyArgs{}
-	}
 	var resource ClusterCustomerManagedKey
 	err := ctx.RegisterResource("azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey", name, args, &resource, opts...)
 	if err != nil {

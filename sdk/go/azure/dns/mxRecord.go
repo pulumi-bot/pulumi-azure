@@ -96,9 +96,6 @@ func NewMxRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &MxRecordArgs{}
-	}
 	var resource MxRecord
 	err := ctx.RegisterResource("azure:dns/mxRecord:MxRecord", name, args, &resource, opts...)
 	if err != nil {

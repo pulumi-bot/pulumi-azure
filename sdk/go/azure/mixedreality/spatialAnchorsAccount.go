@@ -61,9 +61,6 @@ func NewSpatialAnchorsAccount(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SpatialAnchorsAccountArgs{}
-	}
 	var resource SpatialAnchorsAccount
 	err := ctx.RegisterResource("azure:mixedreality/spatialAnchorsAccount:SpatialAnchorsAccount", name, args, &resource, opts...)
 	if err != nil {

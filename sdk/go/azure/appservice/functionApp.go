@@ -245,9 +245,6 @@ func NewFunctionApp(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &FunctionAppArgs{}
-	}
 	var resource FunctionApp
 	err := ctx.RegisterResource("azure:appservice/functionApp:FunctionApp", name, args, &resource, opts...)
 	if err != nil {

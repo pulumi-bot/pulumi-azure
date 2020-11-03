@@ -31,9 +31,6 @@ func NewAssignmentVirtualMachine(ctx *pulumi.Context,
 	if args == nil || args.VirtualMachineId == nil {
 		return nil, errors.New("missing required argument 'VirtualMachineId'")
 	}
-	if args == nil {
-		args = &AssignmentVirtualMachineArgs{}
-	}
 	var resource AssignmentVirtualMachine
 	err := ctx.RegisterResource("azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine", name, args, &resource, opts...)
 	if err != nil {

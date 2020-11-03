@@ -90,9 +90,6 @@ func NewNsRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &NsRecordArgs{}
-	}
 	var resource NsRecord
 	err := ctx.RegisterResource("azure:dns/nsRecord:NsRecord", name, args, &resource, opts...)
 	if err != nil {

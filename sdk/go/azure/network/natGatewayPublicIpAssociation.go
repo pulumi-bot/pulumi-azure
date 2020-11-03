@@ -77,9 +77,6 @@ func NewNatGatewayPublicIpAssociation(ctx *pulumi.Context,
 	if args == nil || args.PublicIpAddressId == nil {
 		return nil, errors.New("missing required argument 'PublicIpAddressId'")
 	}
-	if args == nil {
-		args = &NatGatewayPublicIpAssociationArgs{}
-	}
 	var resource NatGatewayPublicIpAssociation
 	err := ctx.RegisterResource("azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation", name, args, &resource, opts...)
 	if err != nil {

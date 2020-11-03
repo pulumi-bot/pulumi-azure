@@ -52,9 +52,6 @@ func NewSchedule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ScheduleArgs{}
-	}
 	var resource Schedule
 	err := ctx.RegisterResource("azure:automation/schedule:Schedule", name, args, &resource, opts...)
 	if err != nil {

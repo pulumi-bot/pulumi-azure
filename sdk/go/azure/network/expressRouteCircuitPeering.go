@@ -124,9 +124,6 @@ func NewExpressRouteCircuitPeering(ctx *pulumi.Context,
 	if args == nil || args.VlanId == nil {
 		return nil, errors.New("missing required argument 'VlanId'")
 	}
-	if args == nil {
-		args = &ExpressRouteCircuitPeeringArgs{}
-	}
 	var resource ExpressRouteCircuitPeering
 	err := ctx.RegisterResource("azure:network/expressRouteCircuitPeering:ExpressRouteCircuitPeering", name, args, &resource, opts...)
 	if err != nil {

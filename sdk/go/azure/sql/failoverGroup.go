@@ -124,9 +124,6 @@ func NewFailoverGroup(ctx *pulumi.Context,
 	if args == nil || args.ServerName == nil {
 		return nil, errors.New("missing required argument 'ServerName'")
 	}
-	if args == nil {
-		args = &FailoverGroupArgs{}
-	}
 	var resource FailoverGroup
 	err := ctx.RegisterResource("azure:sql/failoverGroup:FailoverGroup", name, args, &resource, opts...)
 	if err != nil {

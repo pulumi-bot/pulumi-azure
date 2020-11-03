@@ -135,9 +135,6 @@ func NewStreamInputEventHub(ctx *pulumi.Context,
 	if args == nil || args.StreamAnalyticsJobName == nil {
 		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
 	}
-	if args == nil {
-		args = &StreamInputEventHubArgs{}
-	}
 	var resource StreamInputEventHub
 	err := ctx.RegisterResource("azure:streamanalytics/streamInputEventHub:StreamInputEventHub", name, args, &resource, opts...)
 	if err != nil {

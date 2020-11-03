@@ -131,9 +131,6 @@ func NewStreamInputBlob(ctx *pulumi.Context,
 	if args == nil || args.TimeFormat == nil {
 		return nil, errors.New("missing required argument 'TimeFormat'")
 	}
-	if args == nil {
-		args = &StreamInputBlobArgs{}
-	}
 	var resource StreamInputBlob
 	err := ctx.RegisterResource("azure:streamanalytics/streamInputBlob:StreamInputBlob", name, args, &resource, opts...)
 	if err != nil {

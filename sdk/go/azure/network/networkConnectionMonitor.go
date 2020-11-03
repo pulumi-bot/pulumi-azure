@@ -121,9 +121,6 @@ func NewNetworkConnectionMonitor(ctx *pulumi.Context,
 	if args == nil || args.Source == nil {
 		return nil, errors.New("missing required argument 'Source'")
 	}
-	if args == nil {
-		args = &NetworkConnectionMonitorArgs{}
-	}
 	var resource NetworkConnectionMonitor
 	err := ctx.RegisterResource("azure:network/networkConnectionMonitor:NetworkConnectionMonitor", name, args, &resource, opts...)
 	if err != nil {

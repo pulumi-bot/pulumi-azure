@@ -83,9 +83,6 @@ func NewActiveSlot(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ActiveSlotArgs{}
-	}
 	var resource ActiveSlot
 	err := ctx.RegisterResource("azure:appservice/activeSlot:ActiveSlot", name, args, &resource, opts...)
 	if err != nil {

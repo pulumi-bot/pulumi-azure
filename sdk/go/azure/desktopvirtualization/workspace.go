@@ -70,9 +70,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:desktopvirtualization/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

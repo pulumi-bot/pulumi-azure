@@ -90,9 +90,6 @@ func NewBackendAddressPool(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &BackendAddressPoolArgs{}
-	}
 	var resource BackendAddressPool
 	err := ctx.RegisterResource("azure:lb/backendAddressPool:BackendAddressPool", name, args, &resource, opts...)
 	if err != nil {

@@ -73,9 +73,6 @@ func NewResourceGroupTemplateDeployment(ctx *pulumi.Context,
 	if args == nil || args.TemplateContent == nil {
 		return nil, errors.New("missing required argument 'TemplateContent'")
 	}
-	if args == nil {
-		args = &ResourceGroupTemplateDeploymentArgs{}
-	}
 	var resource ResourceGroupTemplateDeployment
 	err := ctx.RegisterResource("azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment", name, args, &resource, opts...)
 	if err != nil {

@@ -69,9 +69,6 @@ func NewDedicatedHostGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DedicatedHostGroupArgs{}
-	}
 	var resource DedicatedHostGroup
 	err := ctx.RegisterResource("azure:compute/dedicatedHostGroup:DedicatedHostGroup", name, args, &resource, opts...)
 	if err != nil {

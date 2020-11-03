@@ -83,9 +83,6 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NetworkSecurityGroupArgs{}
-	}
 	var resource NetworkSecurityGroup
 	err := ctx.RegisterResource("azure:network/networkSecurityGroup:NetworkSecurityGroup", name, args, &resource, opts...)
 	if err != nil {

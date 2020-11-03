@@ -105,9 +105,6 @@ func NewDatasetHttp(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DatasetHttpArgs{}
-	}
 	var resource DatasetHttp
 	err := ctx.RegisterResource("azure:datafactory/datasetHttp:DatasetHttp", name, args, &resource, opts...)
 	if err != nil {

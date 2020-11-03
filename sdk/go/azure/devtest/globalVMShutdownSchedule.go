@@ -148,9 +148,6 @@ func NewGlobalVMShutdownSchedule(ctx *pulumi.Context,
 	if args == nil || args.VirtualMachineId == nil {
 		return nil, errors.New("missing required argument 'VirtualMachineId'")
 	}
-	if args == nil {
-		args = &GlobalVMShutdownScheduleArgs{}
-	}
 	var resource GlobalVMShutdownSchedule
 	err := ctx.RegisterResource("azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule", name, args, &resource, opts...)
 	if err != nil {

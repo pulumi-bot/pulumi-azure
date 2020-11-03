@@ -135,9 +135,6 @@ func NewKey(ctx *pulumi.Context,
 	if args == nil || args.KeyVaultId == nil {
 		return nil, errors.New("missing required argument 'KeyVaultId'")
 	}
-	if args == nil {
-		args = &KeyArgs{}
-	}
 	var resource Key
 	err := ctx.RegisterResource("azure:keyvault/key:Key", name, args, &resource, opts...)
 	if err != nil {

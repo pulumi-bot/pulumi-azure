@@ -89,9 +89,6 @@ func NewProductApi(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProductApiArgs{}
-	}
 	var resource ProductApi
 	err := ctx.RegisterResource("azure:apimanagement/productApi:ProductApi", name, args, &resource, opts...)
 	if err != nil {

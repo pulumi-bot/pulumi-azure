@@ -113,9 +113,6 @@ func NewSubscription(ctx *pulumi.Context,
 	if args == nil || args.TopicName == nil {
 		return nil, errors.New("missing required argument 'TopicName'")
 	}
-	if args == nil {
-		args = &SubscriptionArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:eventhub/subscription:Subscription"),

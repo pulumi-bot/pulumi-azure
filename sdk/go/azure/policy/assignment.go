@@ -94,9 +94,6 @@ func NewAssignment(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &AssignmentArgs{}
-	}
 	var resource Assignment
 	err := ctx.RegisterResource("azure:policy/assignment:Assignment", name, args, &resource, opts...)
 	if err != nil {

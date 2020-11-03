@@ -86,9 +86,6 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ExpressRouteCircuitAuthorizationArgs{}
-	}
 	var resource ExpressRouteCircuitAuthorization
 	err := ctx.RegisterResource("azure:network/expressRouteCircuitAuthorization:ExpressRouteCircuitAuthorization", name, args, &resource, opts...)
 	if err != nil {

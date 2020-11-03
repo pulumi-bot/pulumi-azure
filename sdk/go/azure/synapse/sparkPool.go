@@ -122,9 +122,6 @@ func NewSparkPool(ctx *pulumi.Context,
 	if args == nil || args.SynapseWorkspaceId == nil {
 		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
 	}
-	if args == nil {
-		args = &SparkPoolArgs{}
-	}
 	var resource SparkPool
 	err := ctx.RegisterResource("azure:synapse/sparkPool:SparkPool", name, args, &resource, opts...)
 	if err != nil {

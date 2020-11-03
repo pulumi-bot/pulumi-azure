@@ -65,9 +65,6 @@ func NewDdosProtectionPlan(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DdosProtectionPlanArgs{}
-	}
 	var resource DdosProtectionPlan
 	err := ctx.RegisterResource("azure:network/ddosProtectionPlan:DdosProtectionPlan", name, args, &resource, opts...)
 	if err != nil {

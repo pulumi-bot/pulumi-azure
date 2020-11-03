@@ -92,9 +92,6 @@ func NewExpressRouteGateway(ctx *pulumi.Context,
 	if args == nil || args.VirtualHubId == nil {
 		return nil, errors.New("missing required argument 'VirtualHubId'")
 	}
-	if args == nil {
-		args = &ExpressRouteGatewayArgs{}
-	}
 	var resource ExpressRouteGateway
 	err := ctx.RegisterResource("azure:network/expressRouteGateway:ExpressRouteGateway", name, args, &resource, opts...)
 	if err != nil {

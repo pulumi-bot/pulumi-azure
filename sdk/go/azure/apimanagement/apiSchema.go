@@ -49,9 +49,6 @@ func NewApiSchema(ctx *pulumi.Context,
 	if args == nil || args.Value == nil {
 		return nil, errors.New("missing required argument 'Value'")
 	}
-	if args == nil {
-		args = &ApiSchemaArgs{}
-	}
 	var resource ApiSchema
 	err := ctx.RegisterResource("azure:apimanagement/apiSchema:ApiSchema", name, args, &resource, opts...)
 	if err != nil {

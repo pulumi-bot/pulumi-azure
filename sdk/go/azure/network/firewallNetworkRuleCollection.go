@@ -141,9 +141,6 @@ func NewFirewallNetworkRuleCollection(ctx *pulumi.Context,
 	if args == nil || args.Rules == nil {
 		return nil, errors.New("missing required argument 'Rules'")
 	}
-	if args == nil {
-		args = &FirewallNetworkRuleCollectionArgs{}
-	}
 	var resource FirewallNetworkRuleCollection
 	err := ctx.RegisterResource("azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection", name, args, &resource, opts...)
 	if err != nil {

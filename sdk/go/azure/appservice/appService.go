@@ -130,9 +130,6 @@ func NewAppService(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &AppServiceArgs{}
-	}
 	var resource AppService
 	err := ctx.RegisterResource("azure:appservice/appService:AppService", name, args, &resource, opts...)
 	if err != nil {

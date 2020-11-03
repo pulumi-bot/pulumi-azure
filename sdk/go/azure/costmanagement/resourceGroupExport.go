@@ -105,9 +105,6 @@ func NewResourceGroupExport(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupId == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupId'")
 	}
-	if args == nil {
-		args = &ResourceGroupExportArgs{}
-	}
 	var resource ResourceGroupExport
 	err := ctx.RegisterResource("azure:costmanagement/resourceGroupExport:ResourceGroupExport", name, args, &resource, opts...)
 	if err != nil {

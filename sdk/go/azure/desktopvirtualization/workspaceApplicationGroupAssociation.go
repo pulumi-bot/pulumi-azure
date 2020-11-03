@@ -85,9 +85,6 @@ func NewWorkspaceApplicationGroupAssociation(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceId == nil {
 		return nil, errors.New("missing required argument 'WorkspaceId'")
 	}
-	if args == nil {
-		args = &WorkspaceApplicationGroupAssociationArgs{}
-	}
 	var resource WorkspaceApplicationGroupAssociation
 	err := ctx.RegisterResource("azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation", name, args, &resource, opts...)
 	if err != nil {

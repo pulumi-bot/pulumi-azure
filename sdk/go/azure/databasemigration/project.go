@@ -47,9 +47,6 @@ func NewProject(ctx *pulumi.Context,
 	if args == nil || args.TargetPlatform == nil {
 		return nil, errors.New("missing required argument 'TargetPlatform'")
 	}
-	if args == nil {
-		args = &ProjectArgs{}
-	}
 	var resource Project
 	err := ctx.RegisterResource("azure:databasemigration/project:Project", name, args, &resource, opts...)
 	if err != nil {

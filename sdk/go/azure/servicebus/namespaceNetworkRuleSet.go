@@ -113,9 +113,6 @@ func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NamespaceNetworkRuleSetArgs{}
-	}
 	var resource NamespaceNetworkRuleSet
 	err := ctx.RegisterResource("azure:servicebus/namespaceNetworkRuleSet:NamespaceNetworkRuleSet", name, args, &resource, opts...)
 	if err != nil {

@@ -152,9 +152,6 @@ func NewCustomHttpsConfiguration(ctx *pulumi.Context,
 	if args == nil || args.FrontendEndpointId == nil {
 		return nil, errors.New("missing required argument 'FrontendEndpointId'")
 	}
-	if args == nil {
-		args = &CustomHttpsConfigurationArgs{}
-	}
 	var resource CustomHttpsConfiguration
 	err := ctx.RegisterResource("azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration", name, args, &resource, opts...)
 	if err != nil {

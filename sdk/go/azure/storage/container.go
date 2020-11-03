@@ -79,9 +79,6 @@ func NewContainer(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountName == nil {
 		return nil, errors.New("missing required argument 'StorageAccountName'")
 	}
-	if args == nil {
-		args = &ContainerArgs{}
-	}
 	var resource Container
 	err := ctx.RegisterResource("azure:storage/container:Container", name, args, &resource, opts...)
 	if err != nil {

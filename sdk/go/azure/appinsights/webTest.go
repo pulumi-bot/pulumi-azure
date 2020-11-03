@@ -61,9 +61,6 @@ func NewWebTest(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &WebTestArgs{}
-	}
 	var resource WebTest
 	err := ctx.RegisterResource("azure:appinsights/webTest:WebTest", name, args, &resource, opts...)
 	if err != nil {

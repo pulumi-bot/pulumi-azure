@@ -131,9 +131,6 @@ func NewReferenceInputBlob(ctx *pulumi.Context,
 	if args == nil || args.TimeFormat == nil {
 		return nil, errors.New("missing required argument 'TimeFormat'")
 	}
-	if args == nil {
-		args = &ReferenceInputBlobArgs{}
-	}
 	var resource ReferenceInputBlob
 	err := ctx.RegisterResource("azure:streamanalytics/referenceInputBlob:ReferenceInputBlob", name, args, &resource, opts...)
 	if err != nil {

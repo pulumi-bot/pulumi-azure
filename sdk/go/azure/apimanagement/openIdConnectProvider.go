@@ -97,9 +97,6 @@ func NewOpenIdConnectProvider(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &OpenIdConnectProviderArgs{}
-	}
 	var resource OpenIdConnectProvider
 	err := ctx.RegisterResource("azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider", name, args, &resource, opts...)
 	if err != nil {

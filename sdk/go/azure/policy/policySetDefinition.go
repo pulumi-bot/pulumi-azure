@@ -84,9 +84,6 @@ func NewPolicySetDefinition(ctx *pulumi.Context,
 	if args == nil || args.PolicyType == nil {
 		return nil, errors.New("missing required argument 'PolicyType'")
 	}
-	if args == nil {
-		args = &PolicySetDefinitionArgs{}
-	}
 	var resource PolicySetDefinition
 	err := ctx.RegisterResource("azure:policy/policySetDefinition:PolicySetDefinition", name, args, &resource, opts...)
 	if err != nil {

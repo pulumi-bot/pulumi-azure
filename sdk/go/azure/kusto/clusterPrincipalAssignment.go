@@ -104,9 +104,6 @@ func NewClusterPrincipalAssignment(ctx *pulumi.Context,
 	if args == nil || args.TenantId == nil {
 		return nil, errors.New("missing required argument 'TenantId'")
 	}
-	if args == nil {
-		args = &ClusterPrincipalAssignmentArgs{}
-	}
 	var resource ClusterPrincipalAssignment
 	err := ctx.RegisterResource("azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment", name, args, &resource, opts...)
 	if err != nil {

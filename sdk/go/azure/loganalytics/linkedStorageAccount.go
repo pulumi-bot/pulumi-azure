@@ -93,9 +93,6 @@ func NewLinkedStorageAccount(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceResourceId == nil {
 		return nil, errors.New("missing required argument 'WorkspaceResourceId'")
 	}
-	if args == nil {
-		args = &LinkedStorageAccountArgs{}
-	}
 	var resource LinkedStorageAccount
 	err := ctx.RegisterResource("azure:loganalytics/linkedStorageAccount:LinkedStorageAccount", name, args, &resource, opts...)
 	if err != nil {

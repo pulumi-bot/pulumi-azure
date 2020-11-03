@@ -119,9 +119,6 @@ func NewNatPool(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NatPoolArgs{}
-	}
 	var resource NatPool
 	err := ctx.RegisterResource("azure:lb/natPool:NatPool", name, args, &resource, opts...)
 	if err != nil {

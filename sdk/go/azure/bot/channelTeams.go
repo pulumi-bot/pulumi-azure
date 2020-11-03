@@ -82,9 +82,6 @@ func NewChannelTeams(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ChannelTeamsArgs{}
-	}
 	var resource ChannelTeams
 	err := ctx.RegisterResource("azure:bot/channelTeams:ChannelTeams", name, args, &resource, opts...)
 	if err != nil {

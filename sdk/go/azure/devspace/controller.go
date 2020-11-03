@@ -49,9 +49,6 @@ func NewController(ctx *pulumi.Context,
 	if args == nil || args.TargetContainerHostResourceId == nil {
 		return nil, errors.New("missing required argument 'TargetContainerHostResourceId'")
 	}
-	if args == nil {
-		args = &ControllerArgs{}
-	}
 	var resource Controller
 	err := ctx.RegisterResource("azure:devspace/controller:Controller", name, args, &resource, opts...)
 	if err != nil {

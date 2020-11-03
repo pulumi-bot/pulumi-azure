@@ -121,9 +121,6 @@ func NewDatasetDataLakeGen1(ctx *pulumi.Context,
 	if args == nil || args.FolderPath == nil {
 		return nil, errors.New("missing required argument 'FolderPath'")
 	}
-	if args == nil {
-		args = &DatasetDataLakeGen1Args{}
-	}
 	var resource DatasetDataLakeGen1
 	err := ctx.RegisterResource("azure:datashare/datasetDataLakeGen1:DatasetDataLakeGen1", name, args, &resource, opts...)
 	if err != nil {

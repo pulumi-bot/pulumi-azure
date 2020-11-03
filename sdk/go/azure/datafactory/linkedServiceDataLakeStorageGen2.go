@@ -107,9 +107,6 @@ func NewLinkedServiceDataLakeStorageGen2(ctx *pulumi.Context,
 	if args == nil || args.Url == nil {
 		return nil, errors.New("missing required argument 'Url'")
 	}
-	if args == nil {
-		args = &LinkedServiceDataLakeStorageGen2Args{}
-	}
 	var resource LinkedServiceDataLakeStorageGen2
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceDataLakeStorageGen2:LinkedServiceDataLakeStorageGen2", name, args, &resource, opts...)
 	if err != nil {

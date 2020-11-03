@@ -67,9 +67,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ConfigurationArgs{}
-	}
 	var resource Configuration
 	err := ctx.RegisterResource("azure:maintenance/configuration:Configuration", name, args, &resource, opts...)
 	if err != nil {

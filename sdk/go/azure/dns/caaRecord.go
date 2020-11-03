@@ -108,9 +108,6 @@ func NewCaaRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &CaaRecordArgs{}
-	}
 	var resource CaaRecord
 	err := ctx.RegisterResource("azure:dns/caaRecord:CaaRecord", name, args, &resource, opts...)
 	if err != nil {

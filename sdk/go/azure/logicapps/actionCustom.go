@@ -71,9 +71,6 @@ func NewActionCustom(ctx *pulumi.Context,
 	if args == nil || args.LogicAppId == nil {
 		return nil, errors.New("missing required argument 'LogicAppId'")
 	}
-	if args == nil {
-		args = &ActionCustomArgs{}
-	}
 	var resource ActionCustom
 	err := ctx.RegisterResource("azure:logicapps/actionCustom:ActionCustom", name, args, &resource, opts...)
 	if err != nil {

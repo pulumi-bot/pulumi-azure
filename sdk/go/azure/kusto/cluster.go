@@ -95,9 +95,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("azure:kusto/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

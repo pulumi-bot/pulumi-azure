@@ -71,9 +71,6 @@ func NewIPGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IPGroupArgs{}
-	}
 	var resource IPGroup
 	err := ctx.RegisterResource("azure:network/iPGroup:IPGroup", name, args, &resource, opts...)
 	if err != nil {

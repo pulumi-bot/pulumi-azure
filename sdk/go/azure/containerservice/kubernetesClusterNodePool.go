@@ -123,9 +123,6 @@ func NewKubernetesClusterNodePool(ctx *pulumi.Context,
 	if args == nil || args.VmSize == nil {
 		return nil, errors.New("missing required argument 'VmSize'")
 	}
-	if args == nil {
-		args = &KubernetesClusterNodePoolArgs{}
-	}
 	var resource KubernetesClusterNodePool
 	err := ctx.RegisterResource("azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool", name, args, &resource, opts...)
 	if err != nil {

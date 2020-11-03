@@ -73,9 +73,6 @@ func NewPublicIpPrefix(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &PublicIpPrefixArgs{}
-	}
 	var resource PublicIpPrefix
 	err := ctx.RegisterResource("azure:network/publicIpPrefix:PublicIpPrefix", name, args, &resource, opts...)
 	if err != nil {

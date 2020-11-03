@@ -130,9 +130,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountId == nil {
 		return nil, errors.New("missing required argument 'StorageAccountId'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:machinelearning/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

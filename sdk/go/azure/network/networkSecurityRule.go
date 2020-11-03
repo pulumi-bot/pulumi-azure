@@ -123,9 +123,6 @@ func NewNetworkSecurityRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NetworkSecurityRuleArgs{}
-	}
 	var resource NetworkSecurityRule
 	err := ctx.RegisterResource("azure:network/networkSecurityRule:NetworkSecurityRule", name, args, &resource, opts...)
 	if err != nil {

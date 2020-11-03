@@ -110,9 +110,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &EnvironmentArgs{}
-	}
 	var resource Environment
 	err := ctx.RegisterResource("azure:appservice/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

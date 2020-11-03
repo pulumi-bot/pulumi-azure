@@ -108,9 +108,6 @@ func NewRoleAssignment(ctx *pulumi.Context,
 	if args == nil || args.SynapseWorkspaceId == nil {
 		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
 	}
-	if args == nil {
-		args = &RoleAssignmentArgs{}
-	}
 	var resource RoleAssignment
 	err := ctx.RegisterResource("azure:synapse/roleAssignment:RoleAssignment", name, args, &resource, opts...)
 	if err != nil {

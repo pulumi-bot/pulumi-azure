@@ -122,9 +122,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args == nil || args.VmImage == nil {
 		return nil, errors.New("missing required argument 'VmImage'")
 	}
-	if args == nil {
-		args = &ClusterArgs{}
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("azure:servicefabric/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

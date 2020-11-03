@@ -112,9 +112,6 @@ func NewImage(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ImageArgs{}
-	}
 	var resource Image
 	err := ctx.RegisterResource("azure:compute/image:Image", name, args, &resource, opts...)
 	if err != nil {

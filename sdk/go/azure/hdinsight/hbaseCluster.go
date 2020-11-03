@@ -151,9 +151,6 @@ func NewHBaseCluster(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &HBaseClusterArgs{}
-	}
 	var resource HBaseCluster
 	err := ctx.RegisterResource("azure:hdinsight/hBaseCluster:HBaseCluster", name, args, &resource, opts...)
 	if err != nil {

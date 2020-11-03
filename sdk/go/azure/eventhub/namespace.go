@@ -88,9 +88,6 @@ func NewNamespace(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &NamespaceArgs{}
-	}
 	var resource Namespace
 	err := ctx.RegisterResource("azure:eventhub/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {

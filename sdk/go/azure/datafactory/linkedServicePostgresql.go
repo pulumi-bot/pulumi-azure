@@ -85,9 +85,6 @@ func NewLinkedServicePostgresql(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkedServicePostgresqlArgs{}
-	}
 	var resource LinkedServicePostgresql
 	err := ctx.RegisterResource("azure:datafactory/linkedServicePostgresql:LinkedServicePostgresql", name, args, &resource, opts...)
 	if err != nil {

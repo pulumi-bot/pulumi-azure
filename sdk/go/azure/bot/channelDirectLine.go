@@ -36,9 +36,6 @@ func NewChannelDirectLine(ctx *pulumi.Context,
 	if args == nil || args.Sites == nil {
 		return nil, errors.New("missing required argument 'Sites'")
 	}
-	if args == nil {
-		args = &ChannelDirectLineArgs{}
-	}
 	var resource ChannelDirectLine
 	err := ctx.RegisterResource("azure:bot/channelDirectLine:ChannelDirectLine", name, args, &resource, opts...)
 	if err != nil {

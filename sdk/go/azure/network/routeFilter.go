@@ -64,9 +64,6 @@ func NewRouteFilter(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &RouteFilterArgs{}
-	}
 	var resource RouteFilter
 	err := ctx.RegisterResource("azure:network/routeFilter:RouteFilter", name, args, &resource, opts...)
 	if err != nil {

@@ -148,9 +148,6 @@ func NewCacheBlobTarget(ctx *pulumi.Context,
 	if args == nil || args.StorageContainerId == nil {
 		return nil, errors.New("missing required argument 'StorageContainerId'")
 	}
-	if args == nil {
-		args = &CacheBlobTargetArgs{}
-	}
 	var resource CacheBlobTarget
 	err := ctx.RegisterResource("azure:hpc/cacheBlobTarget:CacheBlobTarget", name, args, &resource, opts...)
 	if err != nil {

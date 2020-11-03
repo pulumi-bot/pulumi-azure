@@ -41,9 +41,6 @@ func NewSecret(ctx *pulumi.Context,
 	if args == nil || args.Value == nil {
 		return nil, errors.New("missing required argument 'Value'")
 	}
-	if args == nil {
-		args = &SecretArgs{}
-	}
 	var resource Secret
 	err := ctx.RegisterResource("azure:keyvault/secret:Secret", name, args, &resource, opts...)
 	if err != nil {

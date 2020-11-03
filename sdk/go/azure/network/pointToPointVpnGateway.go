@@ -77,9 +77,6 @@ func NewPointToPointVpnGateway(ctx *pulumi.Context,
 	if args == nil || args.VpnServerConfigurationId == nil {
 		return nil, errors.New("missing required argument 'VpnServerConfigurationId'")
 	}
-	if args == nil {
-		args = &PointToPointVpnGatewayArgs{}
-	}
 	var resource PointToPointVpnGateway
 	err := ctx.RegisterResource("azure:network/pointToPointVpnGateway:PointToPointVpnGateway", name, args, &resource, opts...)
 	if err != nil {

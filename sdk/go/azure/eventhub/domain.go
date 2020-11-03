@@ -78,9 +78,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DomainArgs{}
-	}
 	var resource Domain
 	err := ctx.RegisterResource("azure:eventhub/domain:Domain", name, args, &resource, opts...)
 	if err != nil {

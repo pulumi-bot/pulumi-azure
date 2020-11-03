@@ -151,9 +151,6 @@ func NewInteractiveQueryCluster(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &InteractiveQueryClusterArgs{}
-	}
 	var resource InteractiveQueryCluster
 	err := ctx.RegisterResource("azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster", name, args, &resource, opts...)
 	if err != nil {

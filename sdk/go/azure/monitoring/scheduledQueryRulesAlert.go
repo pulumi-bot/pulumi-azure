@@ -69,9 +69,6 @@ func NewScheduledQueryRulesAlert(ctx *pulumi.Context,
 	if args == nil || args.Trigger == nil {
 		return nil, errors.New("missing required argument 'Trigger'")
 	}
-	if args == nil {
-		args = &ScheduledQueryRulesAlertArgs{}
-	}
 	var resource ScheduledQueryRulesAlert
 	err := ctx.RegisterResource("azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert", name, args, &resource, opts...)
 	if err != nil {

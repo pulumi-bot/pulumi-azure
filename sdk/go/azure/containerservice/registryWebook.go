@@ -102,9 +102,6 @@ func NewRegistryWebook(ctx *pulumi.Context,
 	if args == nil || args.ServiceUri == nil {
 		return nil, errors.New("missing required argument 'ServiceUri'")
 	}
-	if args == nil {
-		args = &RegistryWebookArgs{}
-	}
 	var resource RegistryWebook
 	err := ctx.RegisterResource("azure:containerservice/registryWebook:RegistryWebook", name, args, &resource, opts...)
 	if err != nil {

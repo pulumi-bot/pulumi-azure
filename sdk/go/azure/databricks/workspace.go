@@ -80,9 +80,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:databricks/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

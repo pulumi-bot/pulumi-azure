@@ -46,9 +46,6 @@ func NewTableEntity(ctx *pulumi.Context,
 	if args == nil || args.TableName == nil {
 		return nil, errors.New("missing required argument 'TableName'")
 	}
-	if args == nil {
-		args = &TableEntityArgs{}
-	}
 	var resource TableEntity
 	err := ctx.RegisterResource("azure:storage/tableEntity:TableEntity", name, args, &resource, opts...)
 	if err != nil {

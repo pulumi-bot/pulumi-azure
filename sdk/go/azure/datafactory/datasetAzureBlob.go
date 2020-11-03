@@ -104,9 +104,6 @@ func NewDatasetAzureBlob(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DatasetAzureBlobArgs{}
-	}
 	var resource DatasetAzureBlob
 	err := ctx.RegisterResource("azure:datafactory/datasetAzureBlob:DatasetAzureBlob", name, args, &resource, opts...)
 	if err != nil {

@@ -65,9 +65,6 @@ func NewPool(ctx *pulumi.Context,
 	if args == nil || args.VmSize == nil {
 		return nil, errors.New("missing required argument 'VmSize'")
 	}
-	if args == nil {
-		args = &PoolArgs{}
-	}
 	var resource Pool
 	err := ctx.RegisterResource("azure:batch/pool:Pool", name, args, &resource, opts...)
 	if err != nil {

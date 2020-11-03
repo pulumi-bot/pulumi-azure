@@ -154,9 +154,6 @@ func NewLinkService(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkServiceArgs{}
-	}
 	var resource LinkService
 	err := ctx.RegisterResource("azure:privatedns/linkService:LinkService", name, args, &resource, opts...)
 	if err != nil {

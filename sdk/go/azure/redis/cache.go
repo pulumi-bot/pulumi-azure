@@ -142,9 +142,6 @@ func NewCache(ctx *pulumi.Context,
 	if args == nil || args.SkuName == nil {
 		return nil, errors.New("missing required argument 'SkuName'")
 	}
-	if args == nil {
-		args = &CacheArgs{}
-	}
 	var resource Cache
 	err := ctx.RegisterResource("azure:redis/cache:Cache", name, args, &resource, opts...)
 	if err != nil {

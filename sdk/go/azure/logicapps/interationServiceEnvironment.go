@@ -151,9 +151,6 @@ func NewInterationServiceEnvironment(ctx *pulumi.Context,
 	if args == nil || args.VirtualNetworkSubnetIds == nil {
 		return nil, errors.New("missing required argument 'VirtualNetworkSubnetIds'")
 	}
-	if args == nil {
-		args = &InterationServiceEnvironmentArgs{}
-	}
 	var resource InterationServiceEnvironment
 	err := ctx.RegisterResource("azure:logicapps/interationServiceEnvironment:InterationServiceEnvironment", name, args, &resource, opts...)
 	if err != nil {

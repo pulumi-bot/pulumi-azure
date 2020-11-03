@@ -92,9 +92,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	if args == nil || args.Value == nil {
 		return nil, errors.New("missing required argument 'Value'")
 	}
-	if args == nil {
-		args = &ConfigurationArgs{}
-	}
 	var resource Configuration
 	err := ctx.RegisterResource("azure:postgresql/configuration:Configuration", name, args, &resource, opts...)
 	if err != nil {

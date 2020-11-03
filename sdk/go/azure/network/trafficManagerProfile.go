@@ -103,9 +103,6 @@ func NewTrafficManagerProfile(ctx *pulumi.Context,
 	if args == nil || args.TrafficRoutingMethod == nil {
 		return nil, errors.New("missing required argument 'TrafficRoutingMethod'")
 	}
-	if args == nil {
-		args = &TrafficManagerProfileArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:trafficmanager/profile:Profile"),

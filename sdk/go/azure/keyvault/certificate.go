@@ -185,9 +185,6 @@ func NewCertificate(ctx *pulumi.Context,
 	if args == nil || args.KeyVaultId == nil {
 		return nil, errors.New("missing required argument 'KeyVaultId'")
 	}
-	if args == nil {
-		args = &CertificateArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:keyvault/certifiate:Certifiate"),

@@ -97,9 +97,6 @@ func NewVpnGateway(ctx *pulumi.Context,
 	if args == nil || args.VirtualHubId == nil {
 		return nil, errors.New("missing required argument 'VirtualHubId'")
 	}
-	if args == nil {
-		args = &VpnGatewayArgs{}
-	}
 	var resource VpnGateway
 	err := ctx.RegisterResource("azure:network/vpnGateway:VpnGateway", name, args, &resource, opts...)
 	if err != nil {

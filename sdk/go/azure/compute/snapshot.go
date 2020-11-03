@@ -87,9 +87,6 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SnapshotArgs{}
-	}
 	var resource Snapshot
 	err := ctx.RegisterResource("azure:compute/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

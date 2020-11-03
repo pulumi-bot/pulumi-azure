@@ -108,9 +108,6 @@ func NewPipeline(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &PipelineArgs{}
-	}
 	var resource Pipeline
 	err := ctx.RegisterResource("azure:datafactory/pipeline:Pipeline", name, args, &resource, opts...)
 	if err != nil {

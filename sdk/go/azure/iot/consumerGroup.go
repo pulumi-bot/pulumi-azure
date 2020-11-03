@@ -82,9 +82,6 @@ func NewConsumerGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ConsumerGroupArgs{}
-	}
 	var resource ConsumerGroup
 	err := ctx.RegisterResource("azure:iot/consumerGroup:ConsumerGroup", name, args, &resource, opts...)
 	if err != nil {

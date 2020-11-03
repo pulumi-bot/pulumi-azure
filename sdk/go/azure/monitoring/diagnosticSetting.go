@@ -94,9 +94,6 @@ func NewDiagnosticSetting(ctx *pulumi.Context,
 	if args == nil || args.TargetResourceId == nil {
 		return nil, errors.New("missing required argument 'TargetResourceId'")
 	}
-	if args == nil {
-		args = &DiagnosticSettingArgs{}
-	}
 	var resource DiagnosticSetting
 	err := ctx.RegisterResource("azure:monitoring/diagnosticSetting:DiagnosticSetting", name, args, &resource, opts...)
 	if err != nil {

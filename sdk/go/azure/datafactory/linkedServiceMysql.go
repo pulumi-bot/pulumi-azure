@@ -85,9 +85,6 @@ func NewLinkedServiceMysql(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkedServiceMysqlArgs{}
-	}
 	var resource LinkedServiceMysql
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceMysql:LinkedServiceMysql", name, args, &resource, opts...)
 	if err != nil {

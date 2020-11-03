@@ -78,9 +78,6 @@ func NewZoneVirtualNetworkLink(ctx *pulumi.Context,
 	if args == nil || args.VirtualNetworkId == nil {
 		return nil, errors.New("missing required argument 'VirtualNetworkId'")
 	}
-	if args == nil {
-		args = &ZoneVirtualNetworkLinkArgs{}
-	}
 	var resource ZoneVirtualNetworkLink
 	err := ctx.RegisterResource("azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink", name, args, &resource, opts...)
 	if err != nil {

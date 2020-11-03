@@ -87,9 +87,6 @@ func NewChannelsRegistration(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ChannelsRegistrationArgs{}
-	}
 	var resource ChannelsRegistration
 	err := ctx.RegisterResource("azure:bot/channelsRegistration:ChannelsRegistration", name, args, &resource, opts...)
 	if err != nil {

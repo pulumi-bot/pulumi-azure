@@ -114,9 +114,6 @@ func NewActivityLogAlert(ctx *pulumi.Context,
 	if args == nil || args.Scopes == nil {
 		return nil, errors.New("missing required argument 'Scopes'")
 	}
-	if args == nil {
-		args = &ActivityLogAlertArgs{}
-	}
 	var resource ActivityLogAlert
 	err := ctx.RegisterResource("azure:monitoring/activityLogAlert:ActivityLogAlert", name, args, &resource, opts...)
 	if err != nil {

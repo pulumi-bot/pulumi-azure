@@ -108,9 +108,6 @@ func NewSqlServer(ctx *pulumi.Context,
 	if args == nil || args.Version == nil {
 		return nil, errors.New("missing required argument 'Version'")
 	}
-	if args == nil {
-		args = &SqlServerArgs{}
-	}
 	var resource SqlServer
 	err := ctx.RegisterResource("azure:sql/sqlServer:SqlServer", name, args, &resource, opts...)
 	if err != nil {

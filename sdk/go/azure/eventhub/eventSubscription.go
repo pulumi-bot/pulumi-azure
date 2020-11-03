@@ -123,9 +123,6 @@ func NewEventSubscription(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &EventSubscriptionArgs{}
-	}
 	var resource EventSubscription
 	err := ctx.RegisterResource("azure:eventhub/eventSubscription:EventSubscription", name, args, &resource, opts...)
 	if err != nil {

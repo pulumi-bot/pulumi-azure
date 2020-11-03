@@ -102,9 +102,6 @@ func NewConnection(ctx *pulumi.Context,
 	if args == nil || args.ServiceProviderName == nil {
 		return nil, errors.New("missing required argument 'ServiceProviderName'")
 	}
-	if args == nil {
-		args = &ConnectionArgs{}
-	}
 	var resource Connection
 	err := ctx.RegisterResource("azure:bot/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

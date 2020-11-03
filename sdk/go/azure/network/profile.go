@@ -108,9 +108,6 @@ func NewProfile(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProfileArgs{}
-	}
 	var resource Profile
 	err := ctx.RegisterResource("azure:network/profile:Profile", name, args, &resource, opts...)
 	if err != nil {

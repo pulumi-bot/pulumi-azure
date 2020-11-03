@@ -111,9 +111,6 @@ func NewVirtualNetworkSwiftConnection(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &VirtualNetworkSwiftConnectionArgs{}
-	}
 	var resource VirtualNetworkSwiftConnection
 	err := ctx.RegisterResource("azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection", name, args, &resource, opts...)
 	if err != nil {

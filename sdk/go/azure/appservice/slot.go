@@ -223,9 +223,6 @@ func NewSlot(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SlotArgs{}
-	}
 	var resource Slot
 	err := ctx.RegisterResource("azure:appservice/slot:Slot", name, args, &resource, opts...)
 	if err != nil {

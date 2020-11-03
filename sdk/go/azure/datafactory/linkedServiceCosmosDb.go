@@ -51,9 +51,6 @@ func NewLinkedServiceCosmosDb(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkedServiceCosmosDbArgs{}
-	}
 	var resource LinkedServiceCosmosDb
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb", name, args, &resource, opts...)
 	if err != nil {

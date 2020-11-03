@@ -82,9 +82,6 @@ func NewIdentityProviderMicrosoft(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IdentityProviderMicrosoftArgs{}
-	}
 	var resource IdentityProviderMicrosoft
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft", name, args, &resource, opts...)
 	if err != nil {

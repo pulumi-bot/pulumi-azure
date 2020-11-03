@@ -69,9 +69,6 @@ func NewMeshLocalNetwork(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &MeshLocalNetworkArgs{}
-	}
 	var resource MeshLocalNetwork
 	err := ctx.RegisterResource("azure:servicefabric/meshLocalNetwork:MeshLocalNetwork", name, args, &resource, opts...)
 	if err != nil {

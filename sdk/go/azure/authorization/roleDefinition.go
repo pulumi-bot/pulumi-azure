@@ -78,9 +78,6 @@ func NewRoleDefinition(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &RoleDefinitionArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:role/definition:Definition"),

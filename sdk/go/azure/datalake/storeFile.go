@@ -37,9 +37,6 @@ func NewStoreFile(ctx *pulumi.Context,
 	if args == nil || args.RemoteFilePath == nil {
 		return nil, errors.New("missing required argument 'RemoteFilePath'")
 	}
-	if args == nil {
-		args = &StoreFileArgs{}
-	}
 	var resource StoreFile
 	err := ctx.RegisterResource("azure:datalake/storeFile:StoreFile", name, args, &resource, opts...)
 	if err != nil {

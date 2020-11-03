@@ -147,9 +147,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &EndpointArgs{}
-	}
 	var resource Endpoint
 	err := ctx.RegisterResource("azure:trafficmanager/endpoint:Endpoint", name, args, &resource, opts...)
 	if err != nil {

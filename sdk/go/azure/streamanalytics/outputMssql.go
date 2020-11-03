@@ -121,9 +121,6 @@ func NewOutputMssql(ctx *pulumi.Context,
 	if args == nil || args.User == nil {
 		return nil, errors.New("missing required argument 'User'")
 	}
-	if args == nil {
-		args = &OutputMssqlArgs{}
-	}
 	var resource OutputMssql
 	err := ctx.RegisterResource("azure:streamanalytics/outputMssql:OutputMssql", name, args, &resource, opts...)
 	if err != nil {

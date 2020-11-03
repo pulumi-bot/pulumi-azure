@@ -123,9 +123,6 @@ func NewApiDiagnostic(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ApiDiagnosticArgs{}
-	}
 	var resource ApiDiagnostic
 	err := ctx.RegisterResource("azure:apimanagement/apiDiagnostic:ApiDiagnostic", name, args, &resource, opts...)
 	if err != nil {

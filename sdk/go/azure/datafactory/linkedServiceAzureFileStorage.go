@@ -93,9 +93,6 @@ func NewLinkedServiceAzureFileStorage(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkedServiceAzureFileStorageArgs{}
-	}
 	var resource LinkedServiceAzureFileStorage
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage", name, args, &resource, opts...)
 	if err != nil {

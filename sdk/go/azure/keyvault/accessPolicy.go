@@ -59,9 +59,6 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	if args == nil || args.TenantId == nil {
 		return nil, errors.New("missing required argument 'TenantId'")
 	}
-	if args == nil {
-		args = &AccessPolicyArgs{}
-	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("azure:keyvault/accessPolicy:AccessPolicy", name, args, &resource, opts...)
 	if err != nil {

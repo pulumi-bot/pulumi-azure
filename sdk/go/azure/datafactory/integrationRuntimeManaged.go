@@ -93,9 +93,6 @@ func NewIntegrationRuntimeManaged(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IntegrationRuntimeManagedArgs{}
-	}
 	var resource IntegrationRuntimeManaged
 	err := ctx.RegisterResource("azure:datafactory/integrationRuntimeManaged:IntegrationRuntimeManaged", name, args, &resource, opts...)
 	if err != nil {

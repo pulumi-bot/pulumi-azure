@@ -71,9 +71,6 @@ func NewZone(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ZoneArgs{}
-	}
 	var resource Zone
 	err := ctx.RegisterResource("azure:dns/zone:Zone", name, args, &resource, opts...)
 	if err != nil {

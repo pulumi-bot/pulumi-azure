@@ -87,9 +87,6 @@ func NewRoute(ctx *pulumi.Context,
 	if args == nil || args.RouteTableName == nil {
 		return nil, errors.New("missing required argument 'RouteTableName'")
 	}
-	if args == nil {
-		args = &RouteArgs{}
-	}
 	var resource Route
 	err := ctx.RegisterResource("azure:network/route:Route", name, args, &resource, opts...)
 	if err != nil {

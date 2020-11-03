@@ -97,9 +97,6 @@ func NewExpressRouteCircuit(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ExpressRouteCircuitArgs{}
-	}
 	var resource ExpressRouteCircuit
 	err := ctx.RegisterResource("azure:network/expressRouteCircuit:ExpressRouteCircuit", name, args, &resource, opts...)
 	if err != nil {

@@ -43,9 +43,6 @@ func NewConnection(ctx *pulumi.Context,
 	if args == nil || args.Values == nil {
 		return nil, errors.New("missing required argument 'Values'")
 	}
-	if args == nil {
-		args = &ConnectionArgs{}
-	}
 	var resource Connection
 	err := ctx.RegisterResource("azure:automation/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

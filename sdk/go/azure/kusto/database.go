@@ -84,9 +84,6 @@ func NewDatabase(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DatabaseArgs{}
-	}
 	var resource Database
 	err := ctx.RegisterResource("azure:kusto/database:Database", name, args, &resource, opts...)
 	if err != nil {

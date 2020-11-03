@@ -28,9 +28,6 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProviderArgs{}
-	}
 	var resource Provider
 	err := ctx.RegisterResource("azure:attestation/provider:Provider", name, args, &resource, opts...)
 	if err != nil {

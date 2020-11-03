@@ -168,9 +168,6 @@ func NewActionGroup(ctx *pulumi.Context,
 	if args == nil || args.ShortName == nil {
 		return nil, errors.New("missing required argument 'ShortName'")
 	}
-	if args == nil {
-		args = &ActionGroupArgs{}
-	}
 	var resource ActionGroup
 	err := ctx.RegisterResource("azure:monitoring/actionGroup:ActionGroup", name, args, &resource, opts...)
 	if err != nil {

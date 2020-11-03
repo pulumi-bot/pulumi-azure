@@ -94,9 +94,6 @@ func NewServer(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ServerArgs{}
-	}
 	var resource Server
 	err := ctx.RegisterResource("azure:analysisservices/server:Server", name, args, &resource, opts...)
 	if err != nil {

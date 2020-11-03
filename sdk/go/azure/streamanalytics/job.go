@@ -98,9 +98,6 @@ func NewJob(ctx *pulumi.Context,
 	if args == nil || args.TransformationQuery == nil {
 		return nil, errors.New("missing required argument 'TransformationQuery'")
 	}
-	if args == nil {
-		args = &JobArgs{}
-	}
 	var resource Job
 	err := ctx.RegisterResource("azure:streamanalytics/job:Job", name, args, &resource, opts...)
 	if err != nil {

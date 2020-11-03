@@ -37,9 +37,6 @@ func NewIntVariable(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IntVariableArgs{}
-	}
 	var resource IntVariable
 	err := ctx.RegisterResource("azure:automation/intVariable:IntVariable", name, args, &resource, opts...)
 	if err != nil {

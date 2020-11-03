@@ -127,9 +127,6 @@ func NewFallbackRoute(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &FallbackRouteArgs{}
-	}
 	var resource FallbackRoute
 	err := ctx.RegisterResource("azure:iot/fallbackRoute:FallbackRoute", name, args, &resource, opts...)
 	if err != nil {

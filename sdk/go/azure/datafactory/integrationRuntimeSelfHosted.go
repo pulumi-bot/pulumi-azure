@@ -77,9 +77,6 @@ func NewIntegrationRuntimeSelfHosted(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IntegrationRuntimeSelfHostedArgs{}
-	}
 	var resource IntegrationRuntimeSelfHosted
 	err := ctx.RegisterResource("azure:datafactory/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted", name, args, &resource, opts...)
 	if err != nil {

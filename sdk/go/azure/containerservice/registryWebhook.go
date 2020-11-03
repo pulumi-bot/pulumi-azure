@@ -100,9 +100,6 @@ func NewRegistryWebhook(ctx *pulumi.Context,
 	if args == nil || args.ServiceUri == nil {
 		return nil, errors.New("missing required argument 'ServiceUri'")
 	}
-	if args == nil {
-		args = &RegistryWebhookArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:containerservice/registryWebook:RegistryWebook"),

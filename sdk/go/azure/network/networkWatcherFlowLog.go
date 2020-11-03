@@ -133,9 +133,6 @@ func NewNetworkWatcherFlowLog(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountId == nil {
 		return nil, errors.New("missing required argument 'StorageAccountId'")
 	}
-	if args == nil {
-		args = &NetworkWatcherFlowLogArgs{}
-	}
 	var resource NetworkWatcherFlowLog
 	err := ctx.RegisterResource("azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog", name, args, &resource, opts...)
 	if err != nil {

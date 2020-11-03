@@ -129,9 +129,6 @@ func NewAaaaRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &AaaaRecordArgs{}
-	}
 	var resource AaaaRecord
 	err := ctx.RegisterResource("azure:dns/aaaaRecord:AaaaRecord", name, args, &resource, opts...)
 	if err != nil {

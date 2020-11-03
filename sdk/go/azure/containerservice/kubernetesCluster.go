@@ -135,9 +135,6 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &KubernetesClusterArgs{}
-	}
 	var resource KubernetesCluster
 	err := ctx.RegisterResource("azure:containerservice/kubernetesCluster:KubernetesCluster", name, args, &resource, opts...)
 	if err != nil {

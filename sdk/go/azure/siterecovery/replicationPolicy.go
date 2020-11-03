@@ -83,9 +83,6 @@ func NewReplicationPolicy(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ReplicationPolicyArgs{}
-	}
 	var resource ReplicationPolicy
 	err := ctx.RegisterResource("azure:siterecovery/replicationPolicy:ReplicationPolicy", name, args, &resource, opts...)
 	if err != nil {

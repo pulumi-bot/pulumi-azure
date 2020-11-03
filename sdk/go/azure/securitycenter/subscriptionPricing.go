@@ -54,9 +54,6 @@ func NewSubscriptionPricing(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &SubscriptionPricingArgs{}
-	}
 	var resource SubscriptionPricing
 	err := ctx.RegisterResource("azure:securitycenter/subscriptionPricing:SubscriptionPricing", name, args, &resource, opts...)
 	if err != nil {

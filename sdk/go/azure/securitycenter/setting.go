@@ -57,9 +57,6 @@ func NewSetting(ctx *pulumi.Context,
 	if args == nil || args.SettingName == nil {
 		return nil, errors.New("missing required argument 'SettingName'")
 	}
-	if args == nil {
-		args = &SettingArgs{}
-	}
 	var resource Setting
 	err := ctx.RegisterResource("azure:securitycenter/setting:Setting", name, args, &resource, opts...)
 	if err != nil {

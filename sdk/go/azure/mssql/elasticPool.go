@@ -108,9 +108,6 @@ func NewElasticPool(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ElasticPoolArgs{}
-	}
 	var resource ElasticPool
 	err := ctx.RegisterResource("azure:mssql/elasticPool:ElasticPool", name, args, &resource, opts...)
 	if err != nil {

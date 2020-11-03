@@ -81,9 +81,6 @@ func NewTimeSeriesInsightsAccessPolicy(ctx *pulumi.Context,
 	if args == nil || args.TimeSeriesInsightsEnvironmentId == nil {
 		return nil, errors.New("missing required argument 'TimeSeriesInsightsEnvironmentId'")
 	}
-	if args == nil {
-		args = &TimeSeriesInsightsAccessPolicyArgs{}
-	}
 	var resource TimeSeriesInsightsAccessPolicy
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsAccessPolicy:TimeSeriesInsightsAccessPolicy", name, args, &resource, opts...)
 	if err != nil {

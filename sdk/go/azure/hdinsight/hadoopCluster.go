@@ -151,9 +151,6 @@ func NewHadoopCluster(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &HadoopClusterArgs{}
-	}
 	var resource HadoopCluster
 	err := ctx.RegisterResource("azure:hdinsight/hadoopCluster:HadoopCluster", name, args, &resource, opts...)
 	if err != nil {

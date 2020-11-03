@@ -91,9 +91,6 @@ func NewProtectionContainer(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProtectionContainerArgs{}
-	}
 	var resource ProtectionContainer
 	err := ctx.RegisterResource("azure:siterecovery/protectionContainer:ProtectionContainer", name, args, &resource, opts...)
 	if err != nil {

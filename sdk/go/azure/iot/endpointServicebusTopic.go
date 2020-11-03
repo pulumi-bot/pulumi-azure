@@ -110,9 +110,6 @@ func NewEndpointServicebusTopic(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EndpointServicebusTopicArgs{}
-	}
 	var resource EndpointServicebusTopic
 	err := ctx.RegisterResource("azure:iot/endpointServicebusTopic:EndpointServicebusTopic", name, args, &resource, opts...)
 	if err != nil {

@@ -87,9 +87,6 @@ func NewRegistry(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &RegistryArgs{}
-	}
 	var resource Registry
 	err := ctx.RegisterResource("azure:containerservice/registry:Registry", name, args, &resource, opts...)
 	if err != nil {

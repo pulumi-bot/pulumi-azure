@@ -92,9 +92,6 @@ func NewLogger(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LoggerArgs{}
-	}
 	var resource Logger
 	err := ctx.RegisterResource("azure:apimanagement/logger:Logger", name, args, &resource, opts...)
 	if err != nil {

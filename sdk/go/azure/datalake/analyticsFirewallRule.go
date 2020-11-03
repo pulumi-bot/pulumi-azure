@@ -89,9 +89,6 @@ func NewAnalyticsFirewallRule(ctx *pulumi.Context,
 	if args == nil || args.StartIpAddress == nil {
 		return nil, errors.New("missing required argument 'StartIpAddress'")
 	}
-	if args == nil {
-		args = &AnalyticsFirewallRuleArgs{}
-	}
 	var resource AnalyticsFirewallRule
 	err := ctx.RegisterResource("azure:datalake/analyticsFirewallRule:AnalyticsFirewallRule", name, args, &resource, opts...)
 	if err != nil {

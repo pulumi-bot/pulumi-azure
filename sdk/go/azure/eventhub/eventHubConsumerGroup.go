@@ -94,9 +94,6 @@ func NewEventHubConsumerGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EventHubConsumerGroupArgs{}
-	}
 	var resource EventHubConsumerGroup
 	err := ctx.RegisterResource("azure:eventhub/eventHubConsumerGroup:EventHubConsumerGroup", name, args, &resource, opts...)
 	if err != nil {

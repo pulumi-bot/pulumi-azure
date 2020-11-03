@@ -93,9 +93,6 @@ func NewSpringCloudService(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SpringCloudServiceArgs{}
-	}
 	var resource SpringCloudService
 	err := ctx.RegisterResource("azure:appplatform/springCloudService:SpringCloudService", name, args, &resource, opts...)
 	if err != nil {

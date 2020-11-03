@@ -117,9 +117,6 @@ func NewApiKey(ctx *pulumi.Context,
 	if args == nil || args.ApplicationInsightsId == nil {
 		return nil, errors.New("missing required argument 'ApplicationInsightsId'")
 	}
-	if args == nil {
-		args = &ApiKeyArgs{}
-	}
 	var resource ApiKey
 	err := ctx.RegisterResource("azure:appinsights/apiKey:ApiKey", name, args, &resource, opts...)
 	if err != nil {

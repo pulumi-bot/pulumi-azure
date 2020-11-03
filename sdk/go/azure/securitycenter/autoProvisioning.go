@@ -22,9 +22,6 @@ func NewAutoProvisioning(ctx *pulumi.Context,
 	if args == nil || args.AutoProvision == nil {
 		return nil, errors.New("missing required argument 'AutoProvision'")
 	}
-	if args == nil {
-		args = &AutoProvisioningArgs{}
-	}
 	var resource AutoProvisioning
 	err := ctx.RegisterResource("azure:securitycenter/autoProvisioning:AutoProvisioning", name, args, &resource, opts...)
 	if err != nil {

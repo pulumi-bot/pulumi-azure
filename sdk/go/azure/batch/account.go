@@ -88,9 +88,6 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &AccountArgs{}
-	}
 	var resource Account
 	err := ctx.RegisterResource("azure:batch/account:Account", name, args, &resource, opts...)
 	if err != nil {

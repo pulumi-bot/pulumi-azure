@@ -190,9 +190,6 @@ func NewIoTHub(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &IoTHubArgs{}
-	}
 	var resource IoTHub
 	err := ctx.RegisterResource("azure:iot/ioTHub:IoTHub", name, args, &resource, opts...)
 	if err != nil {

@@ -61,9 +61,6 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NetworkWatcherArgs{}
-	}
 	var resource NetworkWatcher
 	err := ctx.RegisterResource("azure:network/networkWatcher:NetworkWatcher", name, args, &resource, opts...)
 	if err != nil {

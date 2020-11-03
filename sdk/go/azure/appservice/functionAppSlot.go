@@ -151,9 +151,6 @@ func NewFunctionAppSlot(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountName == nil {
 		return nil, errors.New("missing required argument 'StorageAccountName'")
 	}
-	if args == nil {
-		args = &FunctionAppSlotArgs{}
-	}
 	var resource FunctionAppSlot
 	err := ctx.RegisterResource("azure:appservice/functionAppSlot:FunctionAppSlot", name, args, &resource, opts...)
 	if err != nil {

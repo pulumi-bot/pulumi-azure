@@ -91,9 +91,6 @@ func NewServerExtendedAuditingPolicy(ctx *pulumi.Context,
 	if args == nil || args.StorageEndpoint == nil {
 		return nil, errors.New("missing required argument 'StorageEndpoint'")
 	}
-	if args == nil {
-		args = &ServerExtendedAuditingPolicyArgs{}
-	}
 	var resource ServerExtendedAuditingPolicy
 	err := ctx.RegisterResource("azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy", name, args, &resource, opts...)
 	if err != nil {

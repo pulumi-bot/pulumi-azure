@@ -67,9 +67,6 @@ func NewFactory(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &FactoryArgs{}
-	}
 	var resource Factory
 	err := ctx.RegisterResource("azure:datafactory/factory:Factory", name, args, &resource, opts...)
 	if err != nil {

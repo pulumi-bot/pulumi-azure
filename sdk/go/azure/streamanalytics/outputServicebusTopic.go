@@ -118,9 +118,6 @@ func NewOutputServicebusTopic(ctx *pulumi.Context,
 	if args == nil || args.TopicName == nil {
 		return nil, errors.New("missing required argument 'TopicName'")
 	}
-	if args == nil {
-		args = &OutputServicebusTopicArgs{}
-	}
 	var resource OutputServicebusTopic
 	err := ctx.RegisterResource("azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic", name, args, &resource, opts...)
 	if err != nil {

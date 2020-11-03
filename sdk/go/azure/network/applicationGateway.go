@@ -226,9 +226,6 @@ func NewApplicationGateway(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ApplicationGatewayArgs{}
-	}
 	var resource ApplicationGateway
 	err := ctx.RegisterResource("azure:network/applicationGateway:ApplicationGateway", name, args, &resource, opts...)
 	if err != nil {

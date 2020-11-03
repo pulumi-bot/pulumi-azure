@@ -74,9 +74,6 @@ func NewMeshSecretValue(ctx *pulumi.Context,
 	if args == nil || args.Value == nil {
 		return nil, errors.New("missing required argument 'Value'")
 	}
-	if args == nil {
-		args = &MeshSecretValueArgs{}
-	}
 	var resource MeshSecretValue
 	err := ctx.RegisterResource("azure:servicefabric/meshSecretValue:MeshSecretValue", name, args, &resource, opts...)
 	if err != nil {

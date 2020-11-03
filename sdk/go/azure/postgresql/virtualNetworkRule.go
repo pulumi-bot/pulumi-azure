@@ -114,9 +114,6 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &VirtualNetworkRuleArgs{}
-	}
 	var resource VirtualNetworkRule
 	err := ctx.RegisterResource("azure:postgresql/virtualNetworkRule:VirtualNetworkRule", name, args, &resource, opts...)
 	if err != nil {

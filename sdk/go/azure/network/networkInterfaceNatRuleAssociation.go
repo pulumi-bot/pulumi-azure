@@ -133,9 +133,6 @@ func NewNetworkInterfaceNatRuleAssociation(ctx *pulumi.Context,
 	if args == nil || args.NetworkInterfaceId == nil {
 		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceNatRuleAssociationArgs{}
-	}
 	var resource NetworkInterfaceNatRuleAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation", name, args, &resource, opts...)
 	if err != nil {

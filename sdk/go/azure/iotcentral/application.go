@@ -79,9 +79,6 @@ func NewApplication(ctx *pulumi.Context,
 	if args == nil || args.SubDomain == nil {
 		return nil, errors.New("missing required argument 'SubDomain'")
 	}
-	if args == nil {
-		args = &ApplicationArgs{}
-	}
 	var resource Application
 	err := ctx.RegisterResource("azure:iotcentral/application:Application", name, args, &resource, opts...)
 	if err != nil {

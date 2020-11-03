@@ -86,9 +86,6 @@ func NewPool(ctx *pulumi.Context,
 	if args == nil || args.SizeInTb == nil {
 		return nil, errors.New("missing required argument 'SizeInTb'")
 	}
-	if args == nil {
-		args = &PoolArgs{}
-	}
 	var resource Pool
 	err := ctx.RegisterResource("azure:netapp/pool:Pool", name, args, &resource, opts...)
 	if err != nil {

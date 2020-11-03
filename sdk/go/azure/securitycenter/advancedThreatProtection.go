@@ -73,9 +73,6 @@ func NewAdvancedThreatProtection(ctx *pulumi.Context,
 	if args == nil || args.TargetResourceId == nil {
 		return nil, errors.New("missing required argument 'TargetResourceId'")
 	}
-	if args == nil {
-		args = &AdvancedThreatProtectionArgs{}
-	}
 	var resource AdvancedThreatProtection
 	err := ctx.RegisterResource("azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection", name, args, &resource, opts...)
 	if err != nil {

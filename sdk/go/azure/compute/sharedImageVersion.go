@@ -101,9 +101,6 @@ func NewSharedImageVersion(ctx *pulumi.Context,
 	if args == nil || args.TargetRegions == nil {
 		return nil, errors.New("missing required argument 'TargetRegions'")
 	}
-	if args == nil {
-		args = &SharedImageVersionArgs{}
-	}
 	var resource SharedImageVersion
 	err := ctx.RegisterResource("azure:compute/sharedImageVersion:SharedImageVersion", name, args, &resource, opts...)
 	if err != nil {

@@ -118,9 +118,6 @@ func NewLinkedServer(ctx *pulumi.Context,
 	if args == nil || args.TargetRedisCacheName == nil {
 		return nil, errors.New("missing required argument 'TargetRedisCacheName'")
 	}
-	if args == nil {
-		args = &LinkedServerArgs{}
-	}
 	var resource LinkedServer
 	err := ctx.RegisterResource("azure:redis/linkedServer:LinkedServer", name, args, &resource, opts...)
 	if err != nil {

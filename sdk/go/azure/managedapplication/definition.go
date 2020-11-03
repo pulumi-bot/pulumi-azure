@@ -97,9 +97,6 @@ func NewDefinition(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DefinitionArgs{}
-	}
 	var resource Definition
 	err := ctx.RegisterResource("azure:managedapplication/definition:Definition", name, args, &resource, opts...)
 	if err != nil {

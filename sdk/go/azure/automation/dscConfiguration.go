@@ -45,9 +45,6 @@ func NewDscConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DscConfigurationArgs{}
-	}
 	var resource DscConfiguration
 	err := ctx.RegisterResource("azure:automation/dscConfiguration:DscConfiguration", name, args, &resource, opts...)
 	if err != nil {

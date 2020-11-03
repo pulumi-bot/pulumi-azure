@@ -85,9 +85,6 @@ func NewCredential(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	if args == nil {
-		args = &CredentialArgs{}
-	}
 	var resource Credential
 	err := ctx.RegisterResource("azure:automation/credential:Credential", name, args, &resource, opts...)
 	if err != nil {

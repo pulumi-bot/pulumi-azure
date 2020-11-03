@@ -129,9 +129,6 @@ func NewProtectedFileShare(ctx *pulumi.Context,
 	if args == nil || args.SourceStorageAccountId == nil {
 		return nil, errors.New("missing required argument 'SourceStorageAccountId'")
 	}
-	if args == nil {
-		args = &ProtectedFileShareArgs{}
-	}
 	var resource ProtectedFileShare
 	err := ctx.RegisterResource("azure:backup/protectedFileShare:ProtectedFileShare", name, args, &resource, opts...)
 	if err != nil {

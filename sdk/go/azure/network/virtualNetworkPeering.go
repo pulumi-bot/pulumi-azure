@@ -122,9 +122,6 @@ func NewVirtualNetworkPeering(ctx *pulumi.Context,
 	if args == nil || args.VirtualNetworkName == nil {
 		return nil, errors.New("missing required argument 'VirtualNetworkName'")
 	}
-	if args == nil {
-		args = &VirtualNetworkPeeringArgs{}
-	}
 	var resource VirtualNetworkPeering
 	err := ctx.RegisterResource("azure:network/virtualNetworkPeering:VirtualNetworkPeering", name, args, &resource, opts...)
 	if err != nil {

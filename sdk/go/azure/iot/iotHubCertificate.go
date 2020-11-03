@@ -36,9 +36,6 @@ func NewIotHubCertificate(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IotHubCertificateArgs{}
-	}
 	var resource IotHubCertificate
 	err := ctx.RegisterResource("azure:iot/iotHubCertificate:IotHubCertificate", name, args, &resource, opts...)
 	if err != nil {

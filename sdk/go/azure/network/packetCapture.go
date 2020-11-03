@@ -51,9 +51,6 @@ func NewPacketCapture(ctx *pulumi.Context,
 	if args == nil || args.TargetResourceId == nil {
 		return nil, errors.New("missing required argument 'TargetResourceId'")
 	}
-	if args == nil {
-		args = &PacketCaptureArgs{}
-	}
 	var resource PacketCapture
 	err := ctx.RegisterResource("azure:network/packetCapture:PacketCapture", name, args, &resource, opts...)
 	if err != nil {

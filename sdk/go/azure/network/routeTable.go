@@ -81,9 +81,6 @@ func NewRouteTable(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &RouteTableArgs{}
-	}
 	var resource RouteTable
 	err := ctx.RegisterResource("azure:network/routeTable:RouteTable", name, args, &resource, opts...)
 	if err != nil {

@@ -120,9 +120,6 @@ func NewNatRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NatRuleArgs{}
-	}
 	var resource NatRule
 	err := ctx.RegisterResource("azure:lb/natRule:NatRule", name, args, &resource, opts...)
 	if err != nil {

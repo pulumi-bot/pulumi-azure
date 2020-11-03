@@ -63,9 +63,6 @@ func NewSyncGroup(ctx *pulumi.Context,
 	if args == nil || args.StorageSyncId == nil {
 		return nil, errors.New("missing required argument 'StorageSyncId'")
 	}
-	if args == nil {
-		args = &SyncGroupArgs{}
-	}
 	var resource SyncGroup
 	err := ctx.RegisterResource("azure:storage/syncGroup:SyncGroup", name, args, &resource, opts...)
 	if err != nil {

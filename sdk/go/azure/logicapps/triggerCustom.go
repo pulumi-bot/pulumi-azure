@@ -71,9 +71,6 @@ func NewTriggerCustom(ctx *pulumi.Context,
 	if args == nil || args.LogicAppId == nil {
 		return nil, errors.New("missing required argument 'LogicAppId'")
 	}
-	if args == nil {
-		args = &TriggerCustomArgs{}
-	}
 	var resource TriggerCustom
 	err := ctx.RegisterResource("azure:logicapps/triggerCustom:TriggerCustom", name, args, &resource, opts...)
 	if err != nil {

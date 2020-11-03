@@ -41,9 +41,6 @@ func NewZipBlob(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &ZipBlobArgs{}
-	}
 	var resource ZipBlob
 	err := ctx.RegisterResource("azure:storage/zipBlob:ZipBlob", name, args, &resource, opts...)
 	if err != nil {

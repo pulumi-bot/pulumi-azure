@@ -193,9 +193,6 @@ func NewExtension(ctx *pulumi.Context,
 	if args == nil || args.VirtualMachineId == nil {
 		return nil, errors.New("missing required argument 'VirtualMachineId'")
 	}
-	if args == nil {
-		args = &ExtensionArgs{}
-	}
 	var resource Extension
 	err := ctx.RegisterResource("azure:compute/extension:Extension", name, args, &resource, opts...)
 	if err != nil {

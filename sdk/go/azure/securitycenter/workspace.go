@@ -73,9 +73,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceId == nil {
 		return nil, errors.New("missing required argument 'WorkspaceId'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:securitycenter/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

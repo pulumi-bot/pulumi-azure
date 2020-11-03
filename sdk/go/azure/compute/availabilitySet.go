@@ -72,9 +72,6 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &AvailabilitySetArgs{}
-	}
 	var resource AvailabilitySet
 	err := ctx.RegisterResource("azure:compute/availabilitySet:AvailabilitySet", name, args, &resource, opts...)
 	if err != nil {

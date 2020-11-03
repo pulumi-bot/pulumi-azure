@@ -86,9 +86,6 @@ func NewPtrRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &PtrRecordArgs{}
-	}
 	var resource PtrRecord
 	err := ctx.RegisterResource("azure:dns/ptrRecord:PtrRecord", name, args, &resource, opts...)
 	if err != nil {

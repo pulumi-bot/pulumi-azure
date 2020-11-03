@@ -95,9 +95,6 @@ func NewFunctionJavaScriptUDF(ctx *pulumi.Context,
 	if args == nil || args.StreamAnalyticsJobName == nil {
 		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
 	}
-	if args == nil {
-		args = &FunctionJavaScriptUDFArgs{}
-	}
 	var resource FunctionJavaScriptUDF
 	err := ctx.RegisterResource("azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF", name, args, &resource, opts...)
 	if err != nil {

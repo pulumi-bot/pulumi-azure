@@ -100,9 +100,6 @@ func NewDataExportRule(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceResourceId == nil {
 		return nil, errors.New("missing required argument 'WorkspaceResourceId'")
 	}
-	if args == nil {
-		args = &DataExportRuleArgs{}
-	}
 	var resource DataExportRule
 	err := ctx.RegisterResource("azure:loganalytics/dataExportRule:DataExportRule", name, args, &resource, opts...)
 	if err != nil {

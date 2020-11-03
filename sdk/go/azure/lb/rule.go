@@ -125,9 +125,6 @@ func NewRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &RuleArgs{}
-	}
 	var resource Rule
 	err := ctx.RegisterResource("azure:lb/rule:Rule", name, args, &resource, opts...)
 	if err != nil {

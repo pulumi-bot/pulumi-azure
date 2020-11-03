@@ -79,9 +79,6 @@ func NewTriggerRecurrence(ctx *pulumi.Context,
 	if args == nil || args.LogicAppId == nil {
 		return nil, errors.New("missing required argument 'LogicAppId'")
 	}
-	if args == nil {
-		args = &TriggerRecurrenceArgs{}
-	}
 	var resource TriggerRecurrence
 	err := ctx.RegisterResource("azure:logicapps/triggerRecurrence:TriggerRecurrence", name, args, &resource, opts...)
 	if err != nil {

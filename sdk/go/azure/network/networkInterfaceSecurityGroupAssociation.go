@@ -101,9 +101,6 @@ func NewNetworkInterfaceSecurityGroupAssociation(ctx *pulumi.Context,
 	if args == nil || args.NetworkSecurityGroupId == nil {
 		return nil, errors.New("missing required argument 'NetworkSecurityGroupId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceSecurityGroupAssociationArgs{}
-	}
 	var resource NetworkInterfaceSecurityGroupAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation", name, args, &resource, opts...)
 	if err != nil {

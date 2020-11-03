@@ -37,9 +37,6 @@ func NewBoolVariable(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &BoolVariableArgs{}
-	}
 	var resource BoolVariable
 	err := ctx.RegisterResource("azure:automation/boolVariable:BoolVariable", name, args, &resource, opts...)
 	if err != nil {

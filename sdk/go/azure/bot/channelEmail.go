@@ -43,9 +43,6 @@ func NewChannelEmail(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ChannelEmailArgs{}
-	}
 	var resource ChannelEmail
 	err := ctx.RegisterResource("azure:bot/channelEmail:ChannelEmail", name, args, &resource, opts...)
 	if err != nil {

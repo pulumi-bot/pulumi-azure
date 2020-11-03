@@ -103,9 +103,6 @@ func NewUser(ctx *pulumi.Context,
 	if args == nil || args.UserId == nil {
 		return nil, errors.New("missing required argument 'UserId'")
 	}
-	if args == nil {
-		args = &UserArgs{}
-	}
 	var resource User
 	err := ctx.RegisterResource("azure:apimanagement/user:User", name, args, &resource, opts...)
 	if err != nil {

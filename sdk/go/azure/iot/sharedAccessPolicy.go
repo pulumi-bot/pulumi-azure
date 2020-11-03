@@ -91,9 +91,6 @@ func NewSharedAccessPolicy(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SharedAccessPolicyArgs{}
-	}
 	var resource SharedAccessPolicy
 	err := ctx.RegisterResource("azure:iot/sharedAccessPolicy:SharedAccessPolicy", name, args, &resource, opts...)
 	if err != nil {

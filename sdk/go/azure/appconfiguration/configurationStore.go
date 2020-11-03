@@ -75,9 +75,6 @@ func NewConfigurationStore(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ConfigurationStoreArgs{}
-	}
 	var resource ConfigurationStore
 	err := ctx.RegisterResource("azure:appconfiguration/configurationStore:ConfigurationStore", name, args, &resource, opts...)
 	if err != nil {

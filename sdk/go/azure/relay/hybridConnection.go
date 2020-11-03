@@ -79,9 +79,6 @@ func NewHybridConnection(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &HybridConnectionArgs{}
-	}
 	var resource HybridConnection
 	err := ctx.RegisterResource("azure:relay/hybridConnection:HybridConnection", name, args, &resource, opts...)
 	if err != nil {

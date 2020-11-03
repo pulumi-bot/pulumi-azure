@@ -94,9 +94,6 @@ func NewVirtualHubConnection(ctx *pulumi.Context,
 	if args == nil || args.VirtualHubId == nil {
 		return nil, errors.New("missing required argument 'VirtualHubId'")
 	}
-	if args == nil {
-		args = &VirtualHubConnectionArgs{}
-	}
 	var resource VirtualHubConnection
 	err := ctx.RegisterResource("azure:network/virtualHubConnection:VirtualHubConnection", name, args, &resource, opts...)
 	if err != nil {

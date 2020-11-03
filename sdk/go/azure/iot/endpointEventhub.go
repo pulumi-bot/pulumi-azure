@@ -112,9 +112,6 @@ func NewEndpointEventhub(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EndpointEventhubArgs{}
-	}
 	var resource EndpointEventhub
 	err := ctx.RegisterResource("azure:iot/endpointEventhub:EndpointEventhub", name, args, &resource, opts...)
 	if err != nil {

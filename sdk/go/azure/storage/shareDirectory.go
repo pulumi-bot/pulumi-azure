@@ -80,9 +80,6 @@ func NewShareDirectory(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountName == nil {
 		return nil, errors.New("missing required argument 'StorageAccountName'")
 	}
-	if args == nil {
-		args = &ShareDirectoryArgs{}
-	}
 	var resource ShareDirectory
 	err := ctx.RegisterResource("azure:storage/shareDirectory:ShareDirectory", name, args, &resource, opts...)
 	if err != nil {

@@ -94,9 +94,6 @@ func NewVirtualMachineScaleSetExtension(ctx *pulumi.Context,
 	if args == nil || args.VirtualMachineScaleSetId == nil {
 		return nil, errors.New("missing required argument 'VirtualMachineScaleSetId'")
 	}
-	if args == nil {
-		args = &VirtualMachineScaleSetExtensionArgs{}
-	}
 	var resource VirtualMachineScaleSetExtension
 	err := ctx.RegisterResource("azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension", name, args, &resource, opts...)
 	if err != nil {

@@ -111,9 +111,6 @@ func NewLogProfile(ctx *pulumi.Context,
 	if args == nil || args.RetentionPolicy == nil {
 		return nil, errors.New("missing required argument 'RetentionPolicy'")
 	}
-	if args == nil {
-		args = &LogProfileArgs{}
-	}
 	var resource LogProfile
 	err := ctx.RegisterResource("azure:monitoring/logProfile:LogProfile", name, args, &resource, opts...)
 	if err != nil {

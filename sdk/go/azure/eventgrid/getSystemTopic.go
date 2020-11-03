@@ -89,9 +89,6 @@ func NewGetSystemTopic(ctx *pulumi.Context,
 	if args == nil || args.TopicType == nil {
 		return nil, errors.New("missing required argument 'TopicType'")
 	}
-	if args == nil {
-		args = &GetSystemTopicArgs{}
-	}
 	var resource GetSystemTopic
 	err := ctx.RegisterResource("azure:eventgrid/getSystemTopic:getSystemTopic", name, args, &resource, opts...)
 	if err != nil {

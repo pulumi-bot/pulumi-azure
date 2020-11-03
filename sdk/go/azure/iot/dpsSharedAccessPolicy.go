@@ -93,9 +93,6 @@ func NewDpsSharedAccessPolicy(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DpsSharedAccessPolicyArgs{}
-	}
 	var resource DpsSharedAccessPolicy
 	err := ctx.RegisterResource("azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy", name, args, &resource, opts...)
 	if err != nil {

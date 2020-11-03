@@ -124,9 +124,6 @@ func NewStreamInputIotHub(ctx *pulumi.Context,
 	if args == nil || args.StreamAnalyticsJobName == nil {
 		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
 	}
-	if args == nil {
-		args = &StreamInputIotHubArgs{}
-	}
 	var resource StreamInputIotHub
 	err := ctx.RegisterResource("azure:streamanalytics/streamInputIotHub:StreamInputIotHub", name, args, &resource, opts...)
 	if err != nil {

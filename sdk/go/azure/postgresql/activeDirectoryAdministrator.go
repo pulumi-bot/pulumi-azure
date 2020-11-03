@@ -92,9 +92,6 @@ func NewActiveDirectoryAdministrator(ctx *pulumi.Context,
 	if args == nil || args.TenantId == nil {
 		return nil, errors.New("missing required argument 'TenantId'")
 	}
-	if args == nil {
-		args = &ActiveDirectoryAdministratorArgs{}
-	}
 	var resource ActiveDirectoryAdministrator
 	err := ctx.RegisterResource("azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator", name, args, &resource, opts...)
 	if err != nil {

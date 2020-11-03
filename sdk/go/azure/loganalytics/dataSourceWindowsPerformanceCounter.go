@@ -95,9 +95,6 @@ func NewDataSourceWindowsPerformanceCounter(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceName == nil {
 		return nil, errors.New("missing required argument 'WorkspaceName'")
 	}
-	if args == nil {
-		args = &DataSourceWindowsPerformanceCounterArgs{}
-	}
 	var resource DataSourceWindowsPerformanceCounter
 	err := ctx.RegisterResource("azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter", name, args, &resource, opts...)
 	if err != nil {

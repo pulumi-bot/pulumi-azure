@@ -333,9 +333,6 @@ func NewVirtualNetworkGatewayConnection(ctx *pulumi.Context,
 	if args == nil || args.VirtualNetworkGatewayId == nil {
 		return nil, errors.New("missing required argument 'VirtualNetworkGatewayId'")
 	}
-	if args == nil {
-		args = &VirtualNetworkGatewayConnectionArgs{}
-	}
 	var resource VirtualNetworkGatewayConnection
 	err := ctx.RegisterResource("azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection", name, args, &resource, opts...)
 	if err != nil {

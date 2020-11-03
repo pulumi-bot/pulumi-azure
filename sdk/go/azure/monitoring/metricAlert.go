@@ -137,9 +137,6 @@ func NewMetricAlert(ctx *pulumi.Context,
 	if args == nil || args.Scopes == nil {
 		return nil, errors.New("missing required argument 'Scopes'")
 	}
-	if args == nil {
-		args = &MetricAlertArgs{}
-	}
 	var resource MetricAlert
 	err := ctx.RegisterResource("azure:monitoring/metricAlert:MetricAlert", name, args, &resource, opts...)
 	if err != nil {

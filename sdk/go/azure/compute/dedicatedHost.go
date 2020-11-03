@@ -85,9 +85,6 @@ func NewDedicatedHost(ctx *pulumi.Context,
 	if args == nil || args.SkuName == nil {
 		return nil, errors.New("missing required argument 'SkuName'")
 	}
-	if args == nil {
-		args = &DedicatedHostArgs{}
-	}
 	var resource DedicatedHost
 	err := ctx.RegisterResource("azure:compute/dedicatedHost:DedicatedHost", name, args, &resource, opts...)
 	if err != nil {

@@ -113,9 +113,6 @@ func NewApplicationGroup(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &ApplicationGroupArgs{}
-	}
 	var resource ApplicationGroup
 	err := ctx.RegisterResource("azure:desktopvirtualization/applicationGroup:ApplicationGroup", name, args, &resource, opts...)
 	if err != nil {

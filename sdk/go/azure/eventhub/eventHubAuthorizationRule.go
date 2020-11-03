@@ -112,9 +112,6 @@ func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EventHubAuthorizationRuleArgs{}
-	}
 	var resource EventHubAuthorizationRule
 	err := ctx.RegisterResource("azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule", name, args, &resource, opts...)
 	if err != nil {

@@ -165,9 +165,6 @@ func NewDataDiskAttachment(ctx *pulumi.Context,
 	if args == nil || args.VirtualMachineId == nil {
 		return nil, errors.New("missing required argument 'VirtualMachineId'")
 	}
-	if args == nil {
-		args = &DataDiskAttachmentArgs{}
-	}
 	var resource DataDiskAttachment
 	err := ctx.RegisterResource("azure:compute/dataDiskAttachment:DataDiskAttachment", name, args, &resource, opts...)
 	if err != nil {

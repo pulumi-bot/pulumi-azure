@@ -97,9 +97,6 @@ func NewSqlStoredProcedure(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SqlStoredProcedureArgs{}
-	}
 	var resource SqlStoredProcedure
 	err := ctx.RegisterResource("azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure", name, args, &resource, opts...)
 	if err != nil {

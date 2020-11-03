@@ -89,9 +89,6 @@ func NewAssignmentDedicatedHost(ctx *pulumi.Context,
 	if args == nil || args.MaintenanceConfigurationId == nil {
 		return nil, errors.New("missing required argument 'MaintenanceConfigurationId'")
 	}
-	if args == nil {
-		args = &AssignmentDedicatedHostArgs{}
-	}
 	var resource AssignmentDedicatedHost
 	err := ctx.RegisterResource("azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost", name, args, &resource, opts...)
 	if err != nil {

@@ -85,9 +85,6 @@ func NewGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &GroupArgs{}
-	}
 	var resource Group
 	err := ctx.RegisterResource("azure:apimanagement/group:Group", name, args, &resource, opts...)
 	if err != nil {

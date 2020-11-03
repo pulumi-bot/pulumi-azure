@@ -62,9 +62,6 @@ func NewSubscriptionTemplateDeployment(ctx *pulumi.Context,
 	if args == nil || args.TemplateContent == nil {
 		return nil, errors.New("missing required argument 'TemplateContent'")
 	}
-	if args == nil {
-		args = &SubscriptionTemplateDeploymentArgs{}
-	}
 	var resource SubscriptionTemplateDeployment
 	err := ctx.RegisterResource("azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment", name, args, &resource, opts...)
 	if err != nil {

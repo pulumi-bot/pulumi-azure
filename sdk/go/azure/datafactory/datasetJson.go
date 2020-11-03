@@ -108,9 +108,6 @@ func NewDatasetJson(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DatasetJsonArgs{}
-	}
 	var resource DatasetJson
 	err := ctx.RegisterResource("azure:datafactory/datasetJson:DatasetJson", name, args, &resource, opts...)
 	if err != nil {

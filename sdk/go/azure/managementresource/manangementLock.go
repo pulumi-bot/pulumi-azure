@@ -139,9 +139,6 @@ func NewManangementLock(ctx *pulumi.Context,
 	if args == nil || args.Scope == nil {
 		return nil, errors.New("missing required argument 'Scope'")
 	}
-	if args == nil {
-		args = &ManangementLockArgs{}
-	}
 	var resource ManangementLock
 	err := ctx.RegisterResource("azure:managementresource/manangementLock:ManangementLock", name, args, &resource, opts...)
 	if err != nil {

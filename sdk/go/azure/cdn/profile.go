@@ -73,9 +73,6 @@ func NewProfile(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &ProfileArgs{}
-	}
 	var resource Profile
 	err := ctx.RegisterResource("azure:cdn/profile:Profile", name, args, &resource, opts...)
 	if err != nil {

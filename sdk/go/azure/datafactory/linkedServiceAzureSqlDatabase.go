@@ -87,9 +87,6 @@ func NewLinkedServiceAzureSqlDatabase(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &LinkedServiceAzureSqlDatabaseArgs{}
-	}
 	var resource LinkedServiceAzureSqlDatabase
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureSqlDatabase:LinkedServiceAzureSqlDatabase", name, args, &resource, opts...)
 	if err != nil {

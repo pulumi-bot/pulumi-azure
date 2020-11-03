@@ -82,9 +82,6 @@ func NewIdentityProviderGoogle(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &IdentityProviderGoogleArgs{}
-	}
 	var resource IdentityProviderGoogle
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle", name, args, &resource, opts...)
 	if err != nil {

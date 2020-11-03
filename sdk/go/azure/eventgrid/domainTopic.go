@@ -72,9 +72,6 @@ func NewDomainTopic(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DomainTopicArgs{}
-	}
 	var resource DomainTopic
 	err := ctx.RegisterResource("azure:eventgrid/domainTopic:DomainTopic", name, args, &resource, opts...)
 	if err != nil {

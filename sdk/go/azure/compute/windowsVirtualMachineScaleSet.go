@@ -217,9 +217,6 @@ func NewWindowsVirtualMachineScaleSet(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &WindowsVirtualMachineScaleSetArgs{}
-	}
 	var resource WindowsVirtualMachineScaleSet
 	err := ctx.RegisterResource("azure:compute/windowsVirtualMachineScaleSet:WindowsVirtualMachineScaleSet", name, args, &resource, opts...)
 	if err != nil {

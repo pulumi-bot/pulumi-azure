@@ -153,9 +153,6 @@ func NewAssignment(ctx *pulumi.Context,
 	if args == nil || args.VersionId == nil {
 		return nil, errors.New("missing required argument 'VersionId'")
 	}
-	if args == nil {
-		args = &AssignmentArgs{}
-	}
 	var resource Assignment
 	err := ctx.RegisterResource("azure:blueprint/assignment:Assignment", name, args, &resource, opts...)
 	if err != nil {

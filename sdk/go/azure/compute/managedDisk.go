@@ -150,9 +150,6 @@ func NewManagedDisk(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountType == nil {
 		return nil, errors.New("missing required argument 'StorageAccountType'")
 	}
-	if args == nil {
-		args = &ManagedDiskArgs{}
-	}
 	var resource ManagedDisk
 	err := ctx.RegisterResource("azure:compute/managedDisk:ManagedDisk", name, args, &resource, opts...)
 	if err != nil {

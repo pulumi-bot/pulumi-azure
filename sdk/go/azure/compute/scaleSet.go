@@ -126,9 +126,6 @@ func NewScaleSet(ctx *pulumi.Context,
 	if args == nil || args.UpgradePolicyMode == nil {
 		return nil, errors.New("missing required argument 'UpgradePolicyMode'")
 	}
-	if args == nil {
-		args = &ScaleSetArgs{}
-	}
 	var resource ScaleSet
 	err := ctx.RegisterResource("azure:compute/scaleSet:ScaleSet", name, args, &resource, opts...)
 	if err != nil {

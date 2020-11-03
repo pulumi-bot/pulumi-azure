@@ -90,9 +90,6 @@ func NewApiVersionSet(ctx *pulumi.Context,
 	if args == nil || args.VersioningScheme == nil {
 		return nil, errors.New("missing required argument 'VersioningScheme'")
 	}
-	if args == nil {
-		args = &ApiVersionSetArgs{}
-	}
 	var resource ApiVersionSet
 	err := ctx.RegisterResource("azure:apimanagement/apiVersionSet:ApiVersionSet", name, args, &resource, opts...)
 	if err != nil {

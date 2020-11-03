@@ -152,9 +152,6 @@ func NewRServerCluster(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &RServerClusterArgs{}
-	}
 	var resource RServerCluster
 	err := ctx.RegisterResource("azure:hdinsight/rServerCluster:RServerCluster", name, args, &resource, opts...)
 	if err != nil {

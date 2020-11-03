@@ -99,9 +99,6 @@ func NewSRVRecord(ctx *pulumi.Context,
 	if args == nil || args.ZoneName == nil {
 		return nil, errors.New("missing required argument 'ZoneName'")
 	}
-	if args == nil {
-		args = &SRVRecordArgs{}
-	}
 	var resource SRVRecord
 	err := ctx.RegisterResource("azure:privatedns/sRVRecord:SRVRecord", name, args, &resource, opts...)
 	if err != nil {

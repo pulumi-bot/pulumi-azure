@@ -99,9 +99,6 @@ func NewSubscription(ctx *pulumi.Context,
 	if args == nil || args.UserId == nil {
 		return nil, errors.New("missing required argument 'UserId'")
 	}
-	if args == nil {
-		args = &SubscriptionArgs{}
-	}
 	var resource Subscription
 	err := ctx.RegisterResource("azure:apimanagement/subscription:Subscription", name, args, &resource, opts...)
 	if err != nil {

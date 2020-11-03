@@ -80,9 +80,6 @@ func NewEventGridTopic(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EventGridTopicArgs{}
-	}
 	var resource EventGridTopic
 	err := ctx.RegisterResource("azure:eventhub/eventGridTopic:EventGridTopic", name, args, &resource, opts...)
 	if err != nil {

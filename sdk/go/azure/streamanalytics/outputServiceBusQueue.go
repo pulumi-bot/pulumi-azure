@@ -118,9 +118,6 @@ func NewOutputServiceBusQueue(ctx *pulumi.Context,
 	if args == nil || args.StreamAnalyticsJobName == nil {
 		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
 	}
-	if args == nil {
-		args = &OutputServiceBusQueueArgs{}
-	}
 	var resource OutputServiceBusQueue
 	err := ctx.RegisterResource("azure:streamanalytics/outputServiceBusQueue:OutputServiceBusQueue", name, args, &resource, opts...)
 	if err != nil {

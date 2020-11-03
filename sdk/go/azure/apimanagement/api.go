@@ -126,9 +126,6 @@ func NewApi(ctx *pulumi.Context,
 	if args == nil || args.Revision == nil {
 		return nil, errors.New("missing required argument 'Revision'")
 	}
-	if args == nil {
-		args = &ApiArgs{}
-	}
 	var resource Api
 	err := ctx.RegisterResource("azure:apimanagement/api:Api", name, args, &resource, opts...)
 	if err != nil {

@@ -89,9 +89,6 @@ func NewCassandraKeyspace(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &CassandraKeyspaceArgs{}
-	}
 	var resource CassandraKeyspace
 	err := ctx.RegisterResource("azure:cosmosdb/cassandraKeyspace:CassandraKeyspace", name, args, &resource, opts...)
 	if err != nil {

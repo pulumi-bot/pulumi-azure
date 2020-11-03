@@ -74,9 +74,6 @@ func NewProductPolicy(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProductPolicyArgs{}
-	}
 	var resource ProductPolicy
 	err := ctx.RegisterResource("azure:apimanagement/productPolicy:ProductPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -100,9 +100,6 @@ func NewHostPool(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &HostPoolArgs{}
-	}
 	var resource HostPool
 	err := ctx.RegisterResource("azure:desktopvirtualization/hostPool:HostPool", name, args, &resource, opts...)
 	if err != nil {

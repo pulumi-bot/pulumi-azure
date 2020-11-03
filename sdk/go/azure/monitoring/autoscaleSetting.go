@@ -344,9 +344,6 @@ func NewAutoscaleSetting(ctx *pulumi.Context,
 	if args == nil || args.TargetResourceId == nil {
 		return nil, errors.New("missing required argument 'TargetResourceId'")
 	}
-	if args == nil {
-		args = &AutoscaleSettingArgs{}
-	}
 	var resource AutoscaleSetting
 	err := ctx.RegisterResource("azure:monitoring/autoscaleSetting:AutoscaleSetting", name, args, &resource, opts...)
 	if err != nil {

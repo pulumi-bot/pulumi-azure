@@ -35,9 +35,6 @@ func NewDatasetKustoCluster(ctx *pulumi.Context,
 	if args == nil || args.ShareId == nil {
 		return nil, errors.New("missing required argument 'ShareId'")
 	}
-	if args == nil {
-		args = &DatasetKustoClusterArgs{}
-	}
 	var resource DatasetKustoCluster
 	err := ctx.RegisterResource("azure:datashare/datasetKustoCluster:DatasetKustoCluster", name, args, &resource, opts...)
 	if err != nil {

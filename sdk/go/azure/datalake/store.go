@@ -75,9 +75,6 @@ func NewStore(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &StoreArgs{}
-	}
 	var resource Store
 	err := ctx.RegisterResource("azure:datalake/store:Store", name, args, &resource, opts...)
 	if err != nil {

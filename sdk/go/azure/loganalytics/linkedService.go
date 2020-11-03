@@ -94,9 +94,6 @@ func NewLinkedService(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceName == nil {
 		return nil, errors.New("missing required argument 'WorkspaceName'")
 	}
-	if args == nil {
-		args = &LinkedServiceArgs{}
-	}
 	var resource LinkedService
 	err := ctx.RegisterResource("azure:loganalytics/linkedService:LinkedService", name, args, &resource, opts...)
 	if err != nil {

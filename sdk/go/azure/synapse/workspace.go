@@ -115,9 +115,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args == nil || args.StorageDataLakeGen2FilesystemId == nil {
 		return nil, errors.New("missing required argument 'StorageDataLakeGen2FilesystemId'")
 	}
-	if args == nil {
-		args = &WorkspaceArgs{}
-	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:synapse/workspace:Workspace", name, args, &resource, opts...)
 	if err != nil {

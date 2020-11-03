@@ -80,9 +80,6 @@ func NewHub(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &HubArgs{}
-	}
 	var resource Hub
 	err := ctx.RegisterResource("azure:notificationhub/hub:Hub", name, args, &resource, opts...)
 	if err != nil {

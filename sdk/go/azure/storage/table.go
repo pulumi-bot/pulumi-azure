@@ -68,9 +68,6 @@ func NewTable(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountName == nil {
 		return nil, errors.New("missing required argument 'StorageAccountName'")
 	}
-	if args == nil {
-		args = &TableArgs{}
-	}
 	var resource Table
 	err := ctx.RegisterResource("azure:storage/table:Table", name, args, &resource, opts...)
 	if err != nil {

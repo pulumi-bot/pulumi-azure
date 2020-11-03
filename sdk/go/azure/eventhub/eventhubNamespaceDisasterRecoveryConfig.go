@@ -86,9 +86,6 @@ func NewEventhubNamespaceDisasterRecoveryConfig(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EventhubNamespaceDisasterRecoveryConfigArgs{}
-	}
 	var resource EventhubNamespaceDisasterRecoveryConfig
 	err := ctx.RegisterResource("azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig", name, args, &resource, opts...)
 	if err != nil {

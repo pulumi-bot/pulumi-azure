@@ -84,9 +84,6 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &VirtualNetworkArgs{}
-	}
 	var resource VirtualNetwork
 	err := ctx.RegisterResource("azure:devtest/virtualNetwork:VirtualNetwork", name, args, &resource, opts...)
 	if err != nil {

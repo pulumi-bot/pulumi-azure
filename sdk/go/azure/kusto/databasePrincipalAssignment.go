@@ -120,9 +120,6 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 	if args == nil || args.TenantId == nil {
 		return nil, errors.New("missing required argument 'TenantId'")
 	}
-	if args == nil {
-		args = &DatabasePrincipalAssignmentArgs{}
-	}
 	var resource DatabasePrincipalAssignment
 	err := ctx.RegisterResource("azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment", name, args, &resource, opts...)
 	if err != nil {

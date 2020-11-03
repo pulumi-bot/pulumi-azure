@@ -105,9 +105,6 @@ func NewBlob(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &BlobArgs{}
-	}
 	var resource Blob
 	err := ctx.RegisterResource("azure:storage/blob:Blob", name, args, &resource, opts...)
 	if err != nil {

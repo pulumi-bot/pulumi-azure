@@ -106,9 +106,6 @@ func NewQueue(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &QueueArgs{}
-	}
 	var resource Queue
 	err := ctx.RegisterResource("azure:eventhub/queue:Queue", name, args, &resource, opts...)
 	if err != nil {

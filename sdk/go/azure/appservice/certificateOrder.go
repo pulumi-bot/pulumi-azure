@@ -93,9 +93,6 @@ func NewCertificateOrder(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &CertificateOrderArgs{}
-	}
 	var resource CertificateOrder
 	err := ctx.RegisterResource("azure:appservice/certificateOrder:CertificateOrder", name, args, &resource, opts...)
 	if err != nil {

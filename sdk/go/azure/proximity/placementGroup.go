@@ -64,9 +64,6 @@ func NewPlacementGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &PlacementGroupArgs{}
-	}
 	var resource PlacementGroup
 	err := ctx.RegisterResource("azure:proximity/placementGroup:PlacementGroup", name, args, &resource, opts...)
 	if err != nil {

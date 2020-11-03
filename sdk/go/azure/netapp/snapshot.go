@@ -142,9 +142,6 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args == nil || args.VolumeName == nil {
 		return nil, errors.New("missing required argument 'VolumeName'")
 	}
-	if args == nil {
-		args = &SnapshotArgs{}
-	}
 	var resource Snapshot
 	err := ctx.RegisterResource("azure:netapp/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

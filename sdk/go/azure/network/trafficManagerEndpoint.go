@@ -145,9 +145,6 @@ func NewTrafficManagerEndpoint(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &TrafficManagerEndpointArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:trafficmanager/endpoint:Endpoint"),

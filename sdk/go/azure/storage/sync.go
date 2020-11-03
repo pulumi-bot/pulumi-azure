@@ -66,9 +66,6 @@ func NewSync(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &SyncArgs{}
-	}
 	var resource Sync
 	err := ctx.RegisterResource("azure:storage/sync:Sync", name, args, &resource, opts...)
 	if err != nil {

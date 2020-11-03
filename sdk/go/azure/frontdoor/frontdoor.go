@@ -162,9 +162,6 @@ func NewFrontdoor(ctx *pulumi.Context,
 	if args == nil || args.RoutingRules == nil {
 		return nil, errors.New("missing required argument 'RoutingRules'")
 	}
-	if args == nil {
-		args = &FrontdoorArgs{}
-	}
 	var resource Frontdoor
 	err := ctx.RegisterResource("azure:frontdoor/frontdoor:Frontdoor", name, args, &resource, opts...)
 	if err != nil {

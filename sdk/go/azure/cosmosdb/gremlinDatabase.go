@@ -66,9 +66,6 @@ func NewGremlinDatabase(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &GremlinDatabaseArgs{}
-	}
 	var resource GremlinDatabase
 	err := ctx.RegisterResource("azure:cosmosdb/gremlinDatabase:GremlinDatabase", name, args, &resource, opts...)
 	if err != nil {

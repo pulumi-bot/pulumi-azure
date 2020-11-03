@@ -91,9 +91,6 @@ func NewWebApp(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &WebAppArgs{}
-	}
 	var resource WebApp
 	err := ctx.RegisterResource("azure:bot/webApp:WebApp", name, args, &resource, opts...)
 	if err != nil {

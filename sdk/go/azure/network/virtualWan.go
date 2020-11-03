@@ -71,9 +71,6 @@ func NewVirtualWan(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &VirtualWanArgs{}
-	}
 	var resource VirtualWan
 	err := ctx.RegisterResource("azure:network/virtualWan:VirtualWan", name, args, &resource, opts...)
 	if err != nil {

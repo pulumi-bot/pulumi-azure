@@ -81,9 +81,6 @@ func NewStoreFirewallRule(ctx *pulumi.Context,
 	if args == nil || args.StartIpAddress == nil {
 		return nil, errors.New("missing required argument 'StartIpAddress'")
 	}
-	if args == nil {
-		args = &StoreFirewallRuleArgs{}
-	}
 	var resource StoreFirewallRule
 	err := ctx.RegisterResource("azure:datalake/storeFirewallRule:StoreFirewallRule", name, args, &resource, opts...)
 	if err != nil {

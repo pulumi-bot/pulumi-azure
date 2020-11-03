@@ -97,9 +97,6 @@ func NewDatasetPostgresql(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DatasetPostgresqlArgs{}
-	}
 	var resource DatasetPostgresql
 	err := ctx.RegisterResource("azure:datafactory/datasetPostgresql:DatasetPostgresql", name, args, &resource, opts...)
 	if err != nil {

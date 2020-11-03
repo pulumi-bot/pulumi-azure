@@ -131,9 +131,6 @@ func NewRoute(ctx *pulumi.Context,
 	if args == nil || args.Source == nil {
 		return nil, errors.New("missing required argument 'Source'")
 	}
-	if args == nil {
-		args = &RouteArgs{}
-	}
 	var resource Route
 	err := ctx.RegisterResource("azure:iot/route:Route", name, args, &resource, opts...)
 	if err != nil {

@@ -81,9 +81,6 @@ func NewActionHttp(ctx *pulumi.Context,
 	if args == nil || args.Uri == nil {
 		return nil, errors.New("missing required argument 'Uri'")
 	}
-	if args == nil {
-		args = &ActionHttpArgs{}
-	}
 	var resource ActionHttp
 	err := ctx.RegisterResource("azure:logicapps/actionHttp:ActionHttp", name, args, &resource, opts...)
 	if err != nil {

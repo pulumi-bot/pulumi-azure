@@ -98,9 +98,6 @@ func NewChannelSlack(ctx *pulumi.Context,
 	if args == nil || args.VerificationToken == nil {
 		return nil, errors.New("missing required argument 'VerificationToken'")
 	}
-	if args == nil {
-		args = &ChannelSlackArgs{}
-	}
 	var resource ChannelSlack
 	err := ctx.RegisterResource("azure:bot/channelSlack:ChannelSlack", name, args, &resource, opts...)
 	if err != nil {

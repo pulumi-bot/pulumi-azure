@@ -113,9 +113,6 @@ func NewNetworkInterface(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceArgs{}
-	}
 	var resource NetworkInterface
 	err := ctx.RegisterResource("azure:network/networkInterface:NetworkInterface", name, args, &resource, opts...)
 	if err != nil {

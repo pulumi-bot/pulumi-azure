@@ -75,9 +75,6 @@ func NewTriggerHttpRequest(ctx *pulumi.Context,
 	if args == nil || args.Schema == nil {
 		return nil, errors.New("missing required argument 'Schema'")
 	}
-	if args == nil {
-		args = &TriggerHttpRequestArgs{}
-	}
 	var resource TriggerHttpRequest
 	err := ctx.RegisterResource("azure:logicapps/triggerHttpRequest:TriggerHttpRequest", name, args, &resource, opts...)
 	if err != nil {

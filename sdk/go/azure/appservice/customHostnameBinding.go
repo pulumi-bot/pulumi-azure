@@ -101,9 +101,6 @@ func NewCustomHostnameBinding(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &CustomHostnameBindingArgs{}
-	}
 	var resource CustomHostnameBinding
 	err := ctx.RegisterResource("azure:appservice/customHostnameBinding:CustomHostnameBinding", name, args, &resource, opts...)
 	if err != nil {

@@ -67,9 +67,6 @@ func NewQueue(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountName == nil {
 		return nil, errors.New("missing required argument 'StorageAccountName'")
 	}
-	if args == nil {
-		args = &QueueArgs{}
-	}
 	var resource Queue
 	err := ctx.RegisterResource("azure:storage/queue:Queue", name, args, &resource, opts...)
 	if err != nil {

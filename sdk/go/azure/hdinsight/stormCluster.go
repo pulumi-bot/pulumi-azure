@@ -151,9 +151,6 @@ func NewStormCluster(ctx *pulumi.Context,
 	if args == nil || args.Tier == nil {
 		return nil, errors.New("missing required argument 'Tier'")
 	}
-	if args == nil {
-		args = &StormClusterArgs{}
-	}
 	var resource StormCluster
 	err := ctx.RegisterResource("azure:hdinsight/stormCluster:StormCluster", name, args, &resource, opts...)
 	if err != nil {

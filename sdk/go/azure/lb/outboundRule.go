@@ -118,9 +118,6 @@ func NewOutboundRule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &OutboundRuleArgs{}
-	}
 	var resource OutboundRule
 	err := ctx.RegisterResource("azure:lb/outboundRule:OutboundRule", name, args, &resource, opts...)
 	if err != nil {

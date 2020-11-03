@@ -90,9 +90,6 @@ func NewAnalyticsItem(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &AnalyticsItemArgs{}
-	}
 	var resource AnalyticsItem
 	err := ctx.RegisterResource("azure:appinsights/analyticsItem:AnalyticsItem", name, args, &resource, opts...)
 	if err != nil {

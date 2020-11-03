@@ -36,9 +36,6 @@ func NewModule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ModuleArgs{}
-	}
 	var resource Module
 	err := ctx.RegisterResource("azure:automation/module:Module", name, args, &resource, opts...)
 	if err != nil {

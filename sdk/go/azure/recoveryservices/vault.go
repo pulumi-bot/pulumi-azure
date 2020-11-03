@@ -70,9 +70,6 @@ func NewVault(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &VaultArgs{}
-	}
 	var resource Vault
 	err := ctx.RegisterResource("azure:recoveryservices/vault:Vault", name, args, &resource, opts...)
 	if err != nil {

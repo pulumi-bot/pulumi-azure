@@ -74,9 +74,6 @@ func NewDataLakeGen2Filesystem(ctx *pulumi.Context,
 	if args == nil || args.StorageAccountId == nil {
 		return nil, errors.New("missing required argument 'StorageAccountId'")
 	}
-	if args == nil {
-		args = &DataLakeGen2FilesystemArgs{}
-	}
 	var resource DataLakeGen2Filesystem
 	err := ctx.RegisterResource("azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem", name, args, &resource, opts...)
 	if err != nil {

@@ -83,9 +83,6 @@ func NewTimeSeriesInsightsReferenceDataSet(ctx *pulumi.Context,
 	if args == nil || args.TimeSeriesInsightsEnvironmentId == nil {
 		return nil, errors.New("missing required argument 'TimeSeriesInsightsEnvironmentId'")
 	}
-	if args == nil {
-		args = &TimeSeriesInsightsReferenceDataSetArgs{}
-	}
 	var resource TimeSeriesInsightsReferenceDataSet
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsReferenceDataSet:TimeSeriesInsightsReferenceDataSet", name, args, &resource, opts...)
 	if err != nil {

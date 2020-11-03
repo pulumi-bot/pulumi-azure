@@ -43,9 +43,6 @@ func NewScheduledQueryRulesLog(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ScheduledQueryRulesLogArgs{}
-	}
 	var resource ScheduledQueryRulesLog
 	err := ctx.RegisterResource("azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog", name, args, &resource, opts...)
 	if err != nil {

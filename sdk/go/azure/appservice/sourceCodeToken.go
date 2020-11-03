@@ -57,9 +57,6 @@ func NewSourceCodeToken(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &SourceCodeTokenArgs{}
-	}
 	var resource SourceCodeToken
 	err := ctx.RegisterResource("azure:appservice/sourceCodeToken:SourceCodeToken", name, args, &resource, opts...)
 	if err != nil {

@@ -108,9 +108,6 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 	if args == nil || args.State == nil {
 		return nil, errors.New("missing required argument 'State'")
 	}
-	if args == nil {
-		args = &ServerSecurityAlertPolicyArgs{}
-	}
 	var resource ServerSecurityAlertPolicy
 	err := ctx.RegisterResource("azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy", name, args, &resource, opts...)
 	if err != nil {

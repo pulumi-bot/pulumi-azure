@@ -89,9 +89,6 @@ func NewVpnServerConfiguration(ctx *pulumi.Context,
 	if args == nil || args.VpnAuthenticationTypes == nil {
 		return nil, errors.New("missing required argument 'VpnAuthenticationTypes'")
 	}
-	if args == nil {
-		args = &VpnServerConfigurationArgs{}
-	}
 	var resource VpnServerConfiguration
 	err := ctx.RegisterResource("azure:network/vpnServerConfiguration:VpnServerConfiguration", name, args, &resource, opts...)
 	if err != nil {

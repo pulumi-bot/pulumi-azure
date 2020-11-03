@@ -183,9 +183,6 @@ func NewNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation(ctx *pul
 	if args == nil || args.NetworkInterfaceId == nil {
 		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs{}
-	}
 	var resource NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation", name, args, &resource, opts...)
 	if err != nil {

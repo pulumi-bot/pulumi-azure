@@ -81,9 +81,6 @@ func NewLinuxVirtualMachine(ctx *pulumi.Context,
 	if args == nil || args.Username == nil {
 		return nil, errors.New("missing required argument 'Username'")
 	}
-	if args == nil {
-		args = &LinuxVirtualMachineArgs{}
-	}
 	var resource LinuxVirtualMachine
 	err := ctx.RegisterResource("azure:devtest/linuxVirtualMachine:LinuxVirtualMachine", name, args, &resource, opts...)
 	if err != nil {

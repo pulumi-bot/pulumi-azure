@@ -96,9 +96,6 @@ func NewTriggerSchedule(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &TriggerScheduleArgs{}
-	}
 	var resource TriggerSchedule
 	err := ctx.RegisterResource("azure:datafactory/triggerSchedule:TriggerSchedule", name, args, &resource, opts...)
 	if err != nil {

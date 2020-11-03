@@ -47,9 +47,6 @@ func NewAttachedDatabaseConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &AttachedDatabaseConfigurationArgs{}
-	}
 	var resource AttachedDatabaseConfiguration
 	err := ctx.RegisterResource("azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration", name, args, &resource, opts...)
 	if err != nil {

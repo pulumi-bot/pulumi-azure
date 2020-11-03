@@ -85,9 +85,6 @@ func NewDataSourceWindowsEvent(ctx *pulumi.Context,
 	if args == nil || args.WorkspaceName == nil {
 		return nil, errors.New("missing required argument 'WorkspaceName'")
 	}
-	if args == nil {
-		args = &DataSourceWindowsEventArgs{}
-	}
 	var resource DataSourceWindowsEvent
 	err := ctx.RegisterResource("azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent", name, args, &resource, opts...)
 	if err != nil {

@@ -68,9 +68,6 @@ func NewUserAssignedIdentity(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &UserAssignedIdentityArgs{}
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:msi/userAssignedIdentity:UserAssignedIdentity"),

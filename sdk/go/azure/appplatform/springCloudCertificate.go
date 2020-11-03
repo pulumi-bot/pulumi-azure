@@ -166,9 +166,6 @@ func NewSpringCloudCertificate(ctx *pulumi.Context,
 	if args == nil || args.ServiceName == nil {
 		return nil, errors.New("missing required argument 'ServiceName'")
 	}
-	if args == nil {
-		args = &SpringCloudCertificateArgs{}
-	}
 	var resource SpringCloudCertificate
 	err := ctx.RegisterResource("azure:appplatform/springCloudCertificate:SpringCloudCertificate", name, args, &resource, opts...)
 	if err != nil {

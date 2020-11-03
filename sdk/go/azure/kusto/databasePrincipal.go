@@ -125,9 +125,6 @@ func NewDatabasePrincipal(ctx *pulumi.Context,
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
-	if args == nil {
-		args = &DatabasePrincipalArgs{}
-	}
 	var resource DatabasePrincipal
 	err := ctx.RegisterResource("azure:kusto/databasePrincipal:DatabasePrincipal", name, args, &resource, opts...)
 	if err != nil {

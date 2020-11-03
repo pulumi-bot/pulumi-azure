@@ -95,9 +95,6 @@ func NewLinkedServiceWeb(ctx *pulumi.Context,
 	if args == nil || args.Url == nil {
 		return nil, errors.New("missing required argument 'Url'")
 	}
-	if args == nil {
-		args = &LinkedServiceWebArgs{}
-	}
 	var resource LinkedServiceWeb
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceWeb:LinkedServiceWeb", name, args, &resource, opts...)
 	if err != nil {

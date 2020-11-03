@@ -106,9 +106,6 @@ func NewSchedule(ctx *pulumi.Context,
 	if args == nil || args.TimeZoneId == nil {
 		return nil, errors.New("missing required argument 'TimeZoneId'")
 	}
-	if args == nil {
-		args = &ScheduleArgs{}
-	}
 	var resource Schedule
 	err := ctx.RegisterResource("azure:devtest/schedule:Schedule", name, args, &resource, opts...)
 	if err != nil {

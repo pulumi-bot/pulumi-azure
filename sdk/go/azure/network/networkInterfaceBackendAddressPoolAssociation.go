@@ -129,9 +129,6 @@ func NewNetworkInterfaceBackendAddressPoolAssociation(ctx *pulumi.Context,
 	if args == nil || args.NetworkInterfaceId == nil {
 		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
 	}
-	if args == nil {
-		args = &NetworkInterfaceBackendAddressPoolAssociationArgs{}
-	}
 	var resource NetworkInterfaceBackendAddressPoolAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation", name, args, &resource, opts...)
 	if err != nil {

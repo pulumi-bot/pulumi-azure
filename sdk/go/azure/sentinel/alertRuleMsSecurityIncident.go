@@ -93,9 +93,6 @@ func NewAlertRuleMsSecurityIncident(ctx *pulumi.Context,
 	if args == nil || args.SeverityFilters == nil {
 		return nil, errors.New("missing required argument 'SeverityFilters'")
 	}
-	if args == nil {
-		args = &AlertRuleMsSecurityIncidentArgs{}
-	}
 	var resource AlertRuleMsSecurityIncident
 	err := ctx.RegisterResource("azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident", name, args, &resource, opts...)
 	if err != nil {

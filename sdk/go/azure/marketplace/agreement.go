@@ -61,9 +61,6 @@ func NewAgreement(ctx *pulumi.Context,
 	if args == nil || args.Publisher == nil {
 		return nil, errors.New("missing required argument 'Publisher'")
 	}
-	if args == nil {
-		args = &AgreementArgs{}
-	}
 	var resource Agreement
 	err := ctx.RegisterResource("azure:marketplace/agreement:Agreement", name, args, &resource, opts...)
 	if err != nil {

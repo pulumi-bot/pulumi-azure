@@ -37,9 +37,6 @@ func NewStringVariable(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &StringVariableArgs{}
-	}
 	var resource StringVariable
 	err := ctx.RegisterResource("azure:automation/stringVariable:StringVariable", name, args, &resource, opts...)
 	if err != nil {

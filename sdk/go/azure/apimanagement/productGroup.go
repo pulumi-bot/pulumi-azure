@@ -88,9 +88,6 @@ func NewProductGroup(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &ProductGroupArgs{}
-	}
 	var resource ProductGroup
 	err := ctx.RegisterResource("azure:apimanagement/productGroup:ProductGroup", name, args, &resource, opts...)
 	if err != nil {

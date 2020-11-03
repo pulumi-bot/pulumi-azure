@@ -73,9 +73,6 @@ func NewGroupUser(ctx *pulumi.Context,
 	if args == nil || args.UserId == nil {
 		return nil, errors.New("missing required argument 'UserId'")
 	}
-	if args == nil {
-		args = &GroupUserArgs{}
-	}
 	var resource GroupUser
 	err := ctx.RegisterResource("azure:apimanagement/groupUser:GroupUser", name, args, &resource, opts...)
 	if err != nil {

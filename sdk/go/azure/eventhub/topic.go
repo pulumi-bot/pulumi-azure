@@ -114,9 +114,6 @@ func NewTopic(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &TopicArgs{}
-	}
 	var resource Topic
 	err := ctx.RegisterResource("azure:eventhub/topic:Topic", name, args, &resource, opts...)
 	if err != nil {

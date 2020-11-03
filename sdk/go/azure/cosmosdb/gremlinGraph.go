@@ -123,9 +123,6 @@ func NewGremlinGraph(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &GremlinGraphArgs{}
-	}
 	var resource GremlinGraph
 	err := ctx.RegisterResource("azure:cosmosdb/gremlinGraph:GremlinGraph", name, args, &resource, opts...)
 	if err != nil {

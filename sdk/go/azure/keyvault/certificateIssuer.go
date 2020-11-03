@@ -86,9 +86,6 @@ func NewCertificateIssuer(ctx *pulumi.Context,
 	if args == nil || args.ProviderName == nil {
 		return nil, errors.New("missing required argument 'ProviderName'")
 	}
-	if args == nil {
-		args = &CertificateIssuerArgs{}
-	}
 	var resource CertificateIssuer
 	err := ctx.RegisterResource("azure:keyvault/certificateIssuer:CertificateIssuer", name, args, &resource, opts...)
 	if err != nil {

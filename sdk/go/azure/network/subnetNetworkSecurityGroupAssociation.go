@@ -100,9 +100,6 @@ func NewSubnetNetworkSecurityGroupAssociation(ctx *pulumi.Context,
 	if args == nil || args.SubnetId == nil {
 		return nil, errors.New("missing required argument 'SubnetId'")
 	}
-	if args == nil {
-		args = &SubnetNetworkSecurityGroupAssociationArgs{}
-	}
 	var resource SubnetNetworkSecurityGroupAssociation
 	err := ctx.RegisterResource("azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation", name, args, &resource, opts...)
 	if err != nil {

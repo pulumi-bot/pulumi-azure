@@ -73,9 +73,6 @@ func NewReplicatedVM(ctx *pulumi.Context,
 	if args == nil || args.TargetResourceGroupId == nil {
 		return nil, errors.New("missing required argument 'TargetResourceGroupId'")
 	}
-	if args == nil {
-		args = &ReplicatedVMArgs{}
-	}
 	var resource ReplicatedVM
 	err := ctx.RegisterResource("azure:siterecovery/replicatedVM:ReplicatedVM", name, args, &resource, opts...)
 	if err != nil {

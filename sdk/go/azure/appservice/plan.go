@@ -191,9 +191,6 @@ func NewPlan(ctx *pulumi.Context,
 	if args == nil || args.Sku == nil {
 		return nil, errors.New("missing required argument 'Sku'")
 	}
-	if args == nil {
-		args = &PlanArgs{}
-	}
 	var resource Plan
 	err := ctx.RegisterResource("azure:appservice/plan:Plan", name, args, &resource, opts...)
 	if err != nil {

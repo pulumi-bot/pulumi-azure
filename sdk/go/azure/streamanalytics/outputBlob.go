@@ -132,9 +132,6 @@ func NewOutputBlob(ctx *pulumi.Context,
 	if args == nil || args.TimeFormat == nil {
 		return nil, errors.New("missing required argument 'TimeFormat'")
 	}
-	if args == nil {
-		args = &OutputBlobArgs{}
-	}
 	var resource OutputBlob
 	err := ctx.RegisterResource("azure:streamanalytics/outputBlob:OutputBlob", name, args, &resource, opts...)
 	if err != nil {

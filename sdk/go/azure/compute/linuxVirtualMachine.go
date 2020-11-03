@@ -116,9 +116,6 @@ func NewLinuxVirtualMachine(ctx *pulumi.Context,
 	if args == nil || args.Size == nil {
 		return nil, errors.New("missing required argument 'Size'")
 	}
-	if args == nil {
-		args = &LinuxVirtualMachineArgs{}
-	}
 	var resource LinuxVirtualMachine
 	err := ctx.RegisterResource("azure:compute/linuxVirtualMachine:LinuxVirtualMachine", name, args, &resource, opts...)
 	if err != nil {

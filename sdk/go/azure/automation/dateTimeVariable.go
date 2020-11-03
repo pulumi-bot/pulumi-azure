@@ -37,9 +37,6 @@ func NewDateTimeVariable(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &DateTimeVariableArgs{}
-	}
 	var resource DateTimeVariable
 	err := ctx.RegisterResource("azure:automation/dateTimeVariable:DateTimeVariable", name, args, &resource, opts...)
 	if err != nil {

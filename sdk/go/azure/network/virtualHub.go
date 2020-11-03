@@ -82,9 +82,6 @@ func NewVirtualHub(ctx *pulumi.Context,
 	if args == nil || args.VirtualWanId == nil {
 		return nil, errors.New("missing required argument 'VirtualWanId'")
 	}
-	if args == nil {
-		args = &VirtualHubArgs{}
-	}
 	var resource VirtualHub
 	err := ctx.RegisterResource("azure:network/virtualHub:VirtualHub", name, args, &resource, opts...)
 	if err != nil {

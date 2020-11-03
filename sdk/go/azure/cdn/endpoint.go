@@ -112,9 +112,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &EndpointArgs{}
-	}
 	var resource Endpoint
 	err := ctx.RegisterResource("azure:cdn/endpoint:Endpoint", name, args, &resource, opts...)
 	if err != nil {

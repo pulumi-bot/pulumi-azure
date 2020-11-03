@@ -156,9 +156,6 @@ func NewVolume(ctx *pulumi.Context,
 	if args == nil || args.VolumePath == nil {
 		return nil, errors.New("missing required argument 'VolumePath'")
 	}
-	if args == nil {
-		args = &VolumeArgs{}
-	}
 	var resource Volume
 	err := ctx.RegisterResource("azure:netapp/volume:Volume", name, args, &resource, opts...)
 	if err != nil {

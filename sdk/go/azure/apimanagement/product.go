@@ -103,9 +103,6 @@ func NewProduct(ctx *pulumi.Context,
 	if args == nil || args.SubscriptionRequired == nil {
 		return nil, errors.New("missing required argument 'SubscriptionRequired'")
 	}
-	if args == nil {
-		args = &ProductArgs{}
-	}
 	var resource Product
 	err := ctx.RegisterResource("azure:apimanagement/product:Product", name, args, &resource, opts...)
 	if err != nil {

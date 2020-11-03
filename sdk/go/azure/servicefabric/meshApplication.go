@@ -84,9 +84,6 @@ func NewMeshApplication(ctx *pulumi.Context,
 	if args == nil || args.Services == nil {
 		return nil, errors.New("missing required argument 'Services'")
 	}
-	if args == nil {
-		args = &MeshApplicationArgs{}
-	}
 	var resource MeshApplication
 	err := ctx.RegisterResource("azure:servicefabric/meshApplication:MeshApplication", name, args, &resource, opts...)
 	if err != nil {

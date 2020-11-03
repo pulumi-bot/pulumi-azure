@@ -85,9 +85,6 @@ func NewShare(ctx *pulumi.Context,
 	if args == nil || args.Kind == nil {
 		return nil, errors.New("missing required argument 'Kind'")
 	}
-	if args == nil {
-		args = &ShareArgs{}
-	}
 	var resource Share
 	err := ctx.RegisterResource("azure:datashare/share:Share", name, args, &resource, opts...)
 	if err != nil {

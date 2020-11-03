@@ -93,9 +93,6 @@ func NewActionRuleSuppression(ctx *pulumi.Context,
 	if args == nil || args.Suppression == nil {
 		return nil, errors.New("missing required argument 'Suppression'")
 	}
-	if args == nil {
-		args = &ActionRuleSuppressionArgs{}
-	}
 	var resource ActionRuleSuppression
 	err := ctx.RegisterResource("azure:monitoring/actionRuleSuppression:ActionRuleSuppression", name, args, &resource, opts...)
 	if err != nil {

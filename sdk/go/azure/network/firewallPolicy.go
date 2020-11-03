@@ -68,9 +68,6 @@ func NewFirewallPolicy(ctx *pulumi.Context,
 	if args == nil || args.ResourceGroupName == nil {
 		return nil, errors.New("missing required argument 'ResourceGroupName'")
 	}
-	if args == nil {
-		args = &FirewallPolicyArgs{}
-	}
 	var resource FirewallPolicy
 	err := ctx.RegisterResource("azure:network/firewallPolicy:FirewallPolicy", name, args, &resource, opts...)
 	if err != nil {

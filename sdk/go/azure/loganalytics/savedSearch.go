@@ -90,9 +90,6 @@ func NewSavedSearch(ctx *pulumi.Context,
 	if args == nil || args.Query == nil {
 		return nil, errors.New("missing required argument 'Query'")
 	}
-	if args == nil {
-		args = &SavedSearchArgs{}
-	}
 	var resource SavedSearch
 	err := ctx.RegisterResource("azure:loganalytics/savedSearch:SavedSearch", name, args, &resource, opts...)
 	if err != nil {

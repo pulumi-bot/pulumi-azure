@@ -100,9 +100,6 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil || args.Threshold == nil {
 		return nil, errors.New("missing required argument 'Threshold'")
 	}
-	if args == nil {
-		args = &PolicyArgs{}
-	}
 	var resource Policy
 	err := ctx.RegisterResource("azure:devtest/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

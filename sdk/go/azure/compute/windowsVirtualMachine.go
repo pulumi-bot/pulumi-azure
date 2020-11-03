@@ -211,9 +211,6 @@ func NewWindowsVirtualMachine(ctx *pulumi.Context,
 	if args == nil || args.Size == nil {
 		return nil, errors.New("missing required argument 'Size'")
 	}
-	if args == nil {
-		args = &WindowsVirtualMachineArgs{}
-	}
 	var resource WindowsVirtualMachine
 	err := ctx.RegisterResource("azure:compute/windowsVirtualMachine:WindowsVirtualMachine", name, args, &resource, opts...)
 	if err != nil {

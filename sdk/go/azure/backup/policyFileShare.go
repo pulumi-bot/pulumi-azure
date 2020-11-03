@@ -93,9 +93,6 @@ func NewPolicyFileShare(ctx *pulumi.Context,
 	if args == nil || args.RetentionDaily == nil {
 		return nil, errors.New("missing required argument 'RetentionDaily'")
 	}
-	if args == nil {
-		args = &PolicyFileShareArgs{}
-	}
 	var resource PolicyFileShare
 	err := ctx.RegisterResource("azure:backup/policyFileShare:PolicyFileShare", name, args, &resource, opts...)
 	if err != nil {
