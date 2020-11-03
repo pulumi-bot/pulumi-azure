@@ -73,17 +73,17 @@ type VirtualHub struct {
 // NewVirtualHub registers a new resource with the given unique name, arguments, and options.
 func NewVirtualHub(ctx *pulumi.Context,
 	name string, args *VirtualHubArgs, opts ...pulumi.ResourceOption) (*VirtualHub, error) {
-	if args == nil || args.AddressPrefix == nil {
-		return nil, errors.New("missing required argument 'AddressPrefix'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualWanId == nil {
-		return nil, errors.New("missing required argument 'VirtualWanId'")
-	}
 	if args == nil {
-		args = &VirtualHubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AddressPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'AddressPrefix'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualWanId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualWanId'")
 	}
 	var resource VirtualHub
 	err := ctx.RegisterResource("azure:network/virtualHub:VirtualHub", name, args, &resource, opts...)
