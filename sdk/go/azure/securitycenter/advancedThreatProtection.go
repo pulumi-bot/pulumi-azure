@@ -4,6 +4,7 @@
 package securitycenter
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,14 +68,14 @@ type AdvancedThreatProtection struct {
 // NewAdvancedThreatProtection registers a new resource with the given unique name, arguments, and options.
 func NewAdvancedThreatProtection(ctx *pulumi.Context,
 	name string, args *AdvancedThreatProtectionArgs, opts ...pulumi.ResourceOption) (*AdvancedThreatProtection, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.TargetResourceId == nil {
-		return nil, errors.New("missing required argument 'TargetResourceId'")
-	}
 	if args == nil {
-		args = &AdvancedThreatProtectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.TargetResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetResourceId'")
 	}
 	var resource AdvancedThreatProtection
 	err := ctx.RegisterResource("azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection", name, args, &resource, opts...)

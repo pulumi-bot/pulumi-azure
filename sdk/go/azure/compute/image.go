@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -109,11 +110,11 @@ type Image struct {
 // NewImage registers a new resource with the given unique name, arguments, and options.
 func NewImage(ctx *pulumi.Context,
 	name string, args *ImageArgs, opts ...pulumi.ResourceOption) (*Image, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Image
 	err := ctx.RegisterResource("azure:compute/image:Image", name, args, &resource, opts...)

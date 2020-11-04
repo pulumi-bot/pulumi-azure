@@ -4,6 +4,7 @@
 package core
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -59,11 +60,11 @@ type SubscriptionTemplateDeployment struct {
 // NewSubscriptionTemplateDeployment registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionTemplateDeployment(ctx *pulumi.Context,
 	name string, args *SubscriptionTemplateDeploymentArgs, opts ...pulumi.ResourceOption) (*SubscriptionTemplateDeployment, error) {
-	if args == nil || args.TemplateContent == nil {
-		return nil, errors.New("missing required argument 'TemplateContent'")
-	}
 	if args == nil {
-		args = &SubscriptionTemplateDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TemplateContent == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateContent'")
 	}
 	var resource SubscriptionTemplateDeployment
 	err := ctx.RegisterResource("azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment", name, args, &resource, opts...)
