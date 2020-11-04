@@ -4,6 +4,7 @@
 package appplatform
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,11 +91,11 @@ type SpringCloudService struct {
 // NewSpringCloudService registers a new resource with the given unique name, arguments, and options.
 func NewSpringCloudService(ctx *pulumi.Context,
 	name string, args *SpringCloudServiceArgs, opts ...pulumi.ResourceOption) (*SpringCloudService, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SpringCloudServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SpringCloudService
 	err := ctx.RegisterResource("azure:appplatform/springCloudService:SpringCloudService", name, args, &resource, opts...)

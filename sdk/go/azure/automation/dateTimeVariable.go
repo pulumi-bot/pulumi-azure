@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,14 +32,14 @@ type DateTimeVariable struct {
 // NewDateTimeVariable registers a new resource with the given unique name, arguments, and options.
 func NewDateTimeVariable(ctx *pulumi.Context,
 	name string, args *DateTimeVariableArgs, opts ...pulumi.ResourceOption) (*DateTimeVariable, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DateTimeVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DateTimeVariable
 	err := ctx.RegisterResource("azure:automation/dateTimeVariable:DateTimeVariable", name, args, &resource, opts...)
