@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,14 +32,14 @@ type IntVariable struct {
 // NewIntVariable registers a new resource with the given unique name, arguments, and options.
 func NewIntVariable(ctx *pulumi.Context,
 	name string, args *IntVariableArgs, opts ...pulumi.ResourceOption) (*IntVariable, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IntVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IntVariable
 	err := ctx.RegisterResource("azure:automation/intVariable:IntVariable", name, args, &resource, opts...)

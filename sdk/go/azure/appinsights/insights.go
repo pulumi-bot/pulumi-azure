@@ -4,6 +4,7 @@
 package appinsights
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,14 +82,14 @@ type Insights struct {
 // NewInsights registers a new resource with the given unique name, arguments, and options.
 func NewInsights(ctx *pulumi.Context,
 	name string, args *InsightsArgs, opts ...pulumi.ResourceOption) (*Insights, error) {
-	if args == nil || args.ApplicationType == nil {
-		return nil, errors.New("missing required argument 'ApplicationType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &InsightsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationType == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Insights
 	err := ctx.RegisterResource("azure:appinsights/insights:Insights", name, args, &resource, opts...)

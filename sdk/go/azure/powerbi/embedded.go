@@ -4,6 +4,7 @@
 package powerbi
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -66,17 +67,17 @@ type Embedded struct {
 // NewEmbedded registers a new resource with the given unique name, arguments, and options.
 func NewEmbedded(ctx *pulumi.Context,
 	name string, args *EmbeddedArgs, opts ...pulumi.ResourceOption) (*Embedded, error) {
-	if args == nil || args.Administrators == nil {
-		return nil, errors.New("missing required argument 'Administrators'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &EmbeddedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Administrators == nil {
+		return nil, errors.New("invalid value for required argument 'Administrators'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource Embedded
 	err := ctx.RegisterResource("azure:powerbi/embedded:Embedded", name, args, &resource, opts...)
