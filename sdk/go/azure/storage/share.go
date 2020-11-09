@@ -65,6 +65,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Shares can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:storage/share:Share exampleShare https://account1.file.core.windows.net/share1
+// ```
 type Share struct {
 	pulumi.CustomResourceState
 

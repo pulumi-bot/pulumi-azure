@@ -98,6 +98,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Windows Virtual Machine Scale Sets can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:compute/windowsVirtualMachineScaleSet:WindowsVirtualMachineScaleSet example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/Microsoft.Compute/virtualMachineScaleSets/scaleset1
+// ```
 type WindowsVirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 
