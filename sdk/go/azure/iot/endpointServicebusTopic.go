@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -177,4 +178,43 @@ type EndpointServicebusTopicArgs struct {
 
 func (EndpointServicebusTopicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointServicebusTopicArgs)(nil)).Elem()
+}
+
+type EndpointServicebusTopicInput interface {
+	pulumi.Input
+
+	ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput
+	ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput
+}
+
+func (EndpointServicebusTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointServicebusTopic)(nil)).Elem()
+}
+
+func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput {
+	return i.ToEndpointServicebusTopicOutputWithContext(context.Background())
+}
+
+func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusTopicOutput)
+}
+
+type EndpointServicebusTopicOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointServicebusTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointServicebusTopicOutput)(nil)).Elem()
+}
+
+func (o EndpointServicebusTopicOutput) ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput {
+	return o
+}
+
+func (o EndpointServicebusTopicOutput) ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointServicebusTopicOutput{})
 }

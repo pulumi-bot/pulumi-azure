@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type AccountNetworkRulesArgs struct {
 
 func (AccountNetworkRulesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountNetworkRulesArgs)(nil)).Elem()
+}
+
+type AccountNetworkRulesInput interface {
+	pulumi.Input
+
+	ToAccountNetworkRulesOutput() AccountNetworkRulesOutput
+	ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput
+}
+
+func (AccountNetworkRules) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountNetworkRules)(nil)).Elem()
+}
+
+func (i AccountNetworkRules) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
+	return i.ToAccountNetworkRulesOutputWithContext(context.Background())
+}
+
+func (i AccountNetworkRules) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesOutput)
+}
+
+type AccountNetworkRulesOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountNetworkRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountNetworkRulesOutput)(nil)).Elem()
+}
+
+func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
+	return o
+}
+
+func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountNetworkRulesOutput{})
 }

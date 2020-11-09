@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -164,4 +165,43 @@ type NetworkPacketCaptureArgs struct {
 
 func (NetworkPacketCaptureArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPacketCaptureArgs)(nil)).Elem()
+}
+
+type NetworkPacketCaptureInput interface {
+	pulumi.Input
+
+	ToNetworkPacketCaptureOutput() NetworkPacketCaptureOutput
+	ToNetworkPacketCaptureOutputWithContext(ctx context.Context) NetworkPacketCaptureOutput
+}
+
+func (NetworkPacketCapture) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPacketCapture)(nil)).Elem()
+}
+
+func (i NetworkPacketCapture) ToNetworkPacketCaptureOutput() NetworkPacketCaptureOutput {
+	return i.ToNetworkPacketCaptureOutputWithContext(context.Background())
+}
+
+func (i NetworkPacketCapture) ToNetworkPacketCaptureOutputWithContext(ctx context.Context) NetworkPacketCaptureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketCaptureOutput)
+}
+
+type NetworkPacketCaptureOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkPacketCaptureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPacketCaptureOutput)(nil)).Elem()
+}
+
+func (o NetworkPacketCaptureOutput) ToNetworkPacketCaptureOutput() NetworkPacketCaptureOutput {
+	return o
+}
+
+func (o NetworkPacketCaptureOutput) ToNetworkPacketCaptureOutputWithContext(ctx context.Context) NetworkPacketCaptureOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkPacketCaptureOutput{})
 }

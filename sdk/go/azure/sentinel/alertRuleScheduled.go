@@ -4,6 +4,7 @@
 package sentinel
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -258,4 +259,43 @@ type AlertRuleScheduledArgs struct {
 
 func (AlertRuleScheduledArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRuleScheduledArgs)(nil)).Elem()
+}
+
+type AlertRuleScheduledInput interface {
+	pulumi.Input
+
+	ToAlertRuleScheduledOutput() AlertRuleScheduledOutput
+	ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput
+}
+
+func (AlertRuleScheduled) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleScheduled)(nil)).Elem()
+}
+
+func (i AlertRuleScheduled) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
+	return i.ToAlertRuleScheduledOutputWithContext(context.Background())
+}
+
+func (i AlertRuleScheduled) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledOutput)
+}
+
+type AlertRuleScheduledOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleScheduledOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleScheduledOutput)(nil)).Elem()
+}
+
+func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
+	return o
+}
+
+func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertRuleScheduledOutput{})
 }
