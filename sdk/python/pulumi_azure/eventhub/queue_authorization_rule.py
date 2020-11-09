@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['QueueAuthorizationRule']
 
-warnings.warn("azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule", DeprecationWarning)
+warnings.warn("""azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule""", DeprecationWarning)
 
 
 class QueueAuthorizationRule(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule", DeprecationWarning)
+    warnings.warn("""azure.eventhub.QueueAuthorizationRule has been deprecated in favor of azure.servicebus.QueueAuthorizationRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
