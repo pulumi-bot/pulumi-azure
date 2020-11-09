@@ -4,6 +4,8 @@
 package iot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -115,20 +117,20 @@ type FallbackRoute struct {
 // NewFallbackRoute registers a new resource with the given unique name, arguments, and options.
 func NewFallbackRoute(ctx *pulumi.Context,
 	name string, args *FallbackRouteArgs, opts ...pulumi.ResourceOption) (*FallbackRoute, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.EndpointNames == nil {
-		return nil, errors.New("missing required argument 'EndpointNames'")
-	}
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &FallbackRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.EndpointNames == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointNames'")
+	}
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource FallbackRoute
 	err := ctx.RegisterResource("azure:iot/fallbackRoute:FallbackRoute", name, args, &resource, opts...)
@@ -210,4 +212,43 @@ type FallbackRouteArgs struct {
 
 func (FallbackRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fallbackRouteArgs)(nil)).Elem()
+}
+
+type FallbackRouteInput interface {
+	pulumi.Input
+
+	ToFallbackRouteOutput() FallbackRouteOutput
+	ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput
+}
+
+func (FallbackRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackRoute)(nil)).Elem()
+}
+
+func (i FallbackRoute) ToFallbackRouteOutput() FallbackRouteOutput {
+	return i.ToFallbackRouteOutputWithContext(context.Background())
+}
+
+func (i FallbackRoute) ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FallbackRouteOutput)
+}
+
+type FallbackRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (FallbackRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackRouteOutput)(nil)).Elem()
+}
+
+func (o FallbackRouteOutput) ToFallbackRouteOutput() FallbackRouteOutput {
+	return o
+}
+
+func (o FallbackRouteOutput) ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FallbackRouteOutput{})
 }

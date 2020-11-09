@@ -4,6 +4,8 @@
 package logicapps
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,14 +67,14 @@ type TriggerCustom struct {
 // NewTriggerCustom registers a new resource with the given unique name, arguments, and options.
 func NewTriggerCustom(ctx *pulumi.Context,
 	name string, args *TriggerCustomArgs, opts ...pulumi.ResourceOption) (*TriggerCustom, error) {
-	if args == nil || args.Body == nil {
-		return nil, errors.New("missing required argument 'Body'")
-	}
-	if args == nil || args.LogicAppId == nil {
-		return nil, errors.New("missing required argument 'LogicAppId'")
-	}
 	if args == nil {
-		args = &TriggerCustomArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Body == nil {
+		return nil, errors.New("invalid value for required argument 'Body'")
+	}
+	if args.LogicAppId == nil {
+		return nil, errors.New("invalid value for required argument 'LogicAppId'")
 	}
 	var resource TriggerCustom
 	err := ctx.RegisterResource("azure:logicapps/triggerCustom:TriggerCustom", name, args, &resource, opts...)
@@ -138,4 +140,43 @@ type TriggerCustomArgs struct {
 
 func (TriggerCustomArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerCustomArgs)(nil)).Elem()
+}
+
+type TriggerCustomInput interface {
+	pulumi.Input
+
+	ToTriggerCustomOutput() TriggerCustomOutput
+	ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput
+}
+
+func (TriggerCustom) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerCustom)(nil)).Elem()
+}
+
+func (i TriggerCustom) ToTriggerCustomOutput() TriggerCustomOutput {
+	return i.ToTriggerCustomOutputWithContext(context.Background())
+}
+
+func (i TriggerCustom) ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerCustomOutput)
+}
+
+type TriggerCustomOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerCustomOutput)(nil)).Elem()
+}
+
+func (o TriggerCustomOutput) ToTriggerCustomOutput() TriggerCustomOutput {
+	return o
+}
+
+func (o TriggerCustomOutput) ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerCustomOutput{})
 }

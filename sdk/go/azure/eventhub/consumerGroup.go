@@ -4,6 +4,8 @@
 package eventhub
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,17 +85,17 @@ type ConsumerGroup struct {
 // NewConsumerGroup registers a new resource with the given unique name, arguments, and options.
 func NewConsumerGroup(ctx *pulumi.Context,
 	name string, args *ConsumerGroupArgs, opts ...pulumi.ResourceOption) (*ConsumerGroup, error) {
-	if args == nil || args.EventhubName == nil {
-		return nil, errors.New("missing required argument 'EventhubName'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ConsumerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.EventhubName == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubName'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -181,4 +183,43 @@ type ConsumerGroupArgs struct {
 
 func (ConsumerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumerGroupArgs)(nil)).Elem()
+}
+
+type ConsumerGroupInput interface {
+	pulumi.Input
+
+	ToConsumerGroupOutput() ConsumerGroupOutput
+	ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput
+}
+
+func (ConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroup)(nil)).Elem()
+}
+
+func (i ConsumerGroup) ToConsumerGroupOutput() ConsumerGroupOutput {
+	return i.ToConsumerGroupOutputWithContext(context.Background())
+}
+
+func (i ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupOutput)
+}
+
+type ConsumerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsumerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroupOutput)(nil)).Elem()
+}
+
+func (o ConsumerGroupOutput) ToConsumerGroupOutput() ConsumerGroupOutput {
+	return o
+}
+
+func (o ConsumerGroupOutput) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConsumerGroupOutput{})
 }

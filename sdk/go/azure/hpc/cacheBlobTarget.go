@@ -4,6 +4,8 @@
 package hpc
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,20 +138,20 @@ type CacheBlobTarget struct {
 // NewCacheBlobTarget registers a new resource with the given unique name, arguments, and options.
 func NewCacheBlobTarget(ctx *pulumi.Context,
 	name string, args *CacheBlobTargetArgs, opts ...pulumi.ResourceOption) (*CacheBlobTarget, error) {
-	if args == nil || args.CacheName == nil {
-		return nil, errors.New("missing required argument 'CacheName'")
-	}
-	if args == nil || args.NamespacePath == nil {
-		return nil, errors.New("missing required argument 'NamespacePath'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageContainerId == nil {
-		return nil, errors.New("missing required argument 'StorageContainerId'")
-	}
 	if args == nil {
-		args = &CacheBlobTargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CacheName == nil {
+		return nil, errors.New("invalid value for required argument 'CacheName'")
+	}
+	if args.NamespacePath == nil {
+		return nil, errors.New("invalid value for required argument 'NamespacePath'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageContainerId == nil {
+		return nil, errors.New("invalid value for required argument 'StorageContainerId'")
 	}
 	var resource CacheBlobTarget
 	err := ctx.RegisterResource("azure:hpc/cacheBlobTarget:CacheBlobTarget", name, args, &resource, opts...)
@@ -231,4 +233,43 @@ type CacheBlobTargetArgs struct {
 
 func (CacheBlobTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cacheBlobTargetArgs)(nil)).Elem()
+}
+
+type CacheBlobTargetInput interface {
+	pulumi.Input
+
+	ToCacheBlobTargetOutput() CacheBlobTargetOutput
+	ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput
+}
+
+func (CacheBlobTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheBlobTarget)(nil)).Elem()
+}
+
+func (i CacheBlobTarget) ToCacheBlobTargetOutput() CacheBlobTargetOutput {
+	return i.ToCacheBlobTargetOutputWithContext(context.Background())
+}
+
+func (i CacheBlobTarget) ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheBlobTargetOutput)
+}
+
+type CacheBlobTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (CacheBlobTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheBlobTargetOutput)(nil)).Elem()
+}
+
+func (o CacheBlobTargetOutput) ToCacheBlobTargetOutput() CacheBlobTargetOutput {
+	return o
+}
+
+func (o CacheBlobTargetOutput) ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CacheBlobTargetOutput{})
 }

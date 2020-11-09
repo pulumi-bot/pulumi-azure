@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,17 +78,17 @@ type DedicatedHost struct {
 // NewDedicatedHost registers a new resource with the given unique name, arguments, and options.
 func NewDedicatedHost(ctx *pulumi.Context,
 	name string, args *DedicatedHostArgs, opts ...pulumi.ResourceOption) (*DedicatedHost, error) {
-	if args == nil || args.DedicatedHostGroupId == nil {
-		return nil, errors.New("missing required argument 'DedicatedHostGroupId'")
-	}
-	if args == nil || args.PlatformFaultDomain == nil {
-		return nil, errors.New("missing required argument 'PlatformFaultDomain'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &DedicatedHostArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DedicatedHostGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'DedicatedHostGroupId'")
+	}
+	if args.PlatformFaultDomain == nil {
+		return nil, errors.New("invalid value for required argument 'PlatformFaultDomain'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource DedicatedHost
 	err := ctx.RegisterResource("azure:compute/dedicatedHost:DedicatedHost", name, args, &resource, opts...)
@@ -192,4 +194,43 @@ type DedicatedHostArgs struct {
 
 func (DedicatedHostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostArgs)(nil)).Elem()
+}
+
+type DedicatedHostInput interface {
+	pulumi.Input
+
+	ToDedicatedHostOutput() DedicatedHostOutput
+	ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput
+}
+
+func (DedicatedHost) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHost)(nil)).Elem()
+}
+
+func (i DedicatedHost) ToDedicatedHostOutput() DedicatedHostOutput {
+	return i.ToDedicatedHostOutputWithContext(context.Background())
+}
+
+func (i DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostOutput)
+}
+
+type DedicatedHostOutput struct {
+	*pulumi.OutputState
+}
+
+func (DedicatedHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHostOutput)(nil)).Elem()
+}
+
+func (o DedicatedHostOutput) ToDedicatedHostOutput() DedicatedHostOutput {
+	return o
+}
+
+func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DedicatedHostOutput{})
 }

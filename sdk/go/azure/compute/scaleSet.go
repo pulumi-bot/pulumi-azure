@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -108,26 +110,26 @@ type ScaleSet struct {
 // NewScaleSet registers a new resource with the given unique name, arguments, and options.
 func NewScaleSet(ctx *pulumi.Context,
 	name string, args *ScaleSetArgs, opts ...pulumi.ResourceOption) (*ScaleSet, error) {
-	if args == nil || args.NetworkProfiles == nil {
-		return nil, errors.New("missing required argument 'NetworkProfiles'")
-	}
-	if args == nil || args.OsProfile == nil {
-		return nil, errors.New("missing required argument 'OsProfile'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
-	if args == nil || args.StorageProfileOsDisk == nil {
-		return nil, errors.New("missing required argument 'StorageProfileOsDisk'")
-	}
-	if args == nil || args.UpgradePolicyMode == nil {
-		return nil, errors.New("missing required argument 'UpgradePolicyMode'")
-	}
 	if args == nil {
-		args = &ScaleSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.NetworkProfiles == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkProfiles'")
+	}
+	if args.OsProfile == nil {
+		return nil, errors.New("invalid value for required argument 'OsProfile'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
+	}
+	if args.StorageProfileOsDisk == nil {
+		return nil, errors.New("invalid value for required argument 'StorageProfileOsDisk'")
+	}
+	if args.UpgradePolicyMode == nil {
+		return nil, errors.New("invalid value for required argument 'UpgradePolicyMode'")
 	}
 	var resource ScaleSet
 	err := ctx.RegisterResource("azure:compute/scaleSet:ScaleSet", name, args, &resource, opts...)
@@ -389,4 +391,43 @@ type ScaleSetArgs struct {
 
 func (ScaleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scaleSetArgs)(nil)).Elem()
+}
+
+type ScaleSetInput interface {
+	pulumi.Input
+
+	ToScaleSetOutput() ScaleSetOutput
+	ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput
+}
+
+func (ScaleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSet)(nil)).Elem()
+}
+
+func (i ScaleSet) ToScaleSetOutput() ScaleSetOutput {
+	return i.ToScaleSetOutputWithContext(context.Background())
+}
+
+func (i ScaleSet) ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOutput)
+}
+
+type ScaleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScaleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSetOutput)(nil)).Elem()
+}
+
+func (o ScaleSetOutput) ToScaleSetOutput() ScaleSetOutput {
+	return o
+}
+
+func (o ScaleSetOutput) ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScaleSetOutput{})
 }

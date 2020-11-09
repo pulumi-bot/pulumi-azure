@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['ManangementLock']
 
-warnings.warn("azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock", DeprecationWarning)
+warnings.warn("""azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock""", DeprecationWarning)
 
 
 class ManangementLock(pulumi.CustomResource):
-    warnings.warn("azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock", DeprecationWarning)
+    warnings.warn("""azure.managementresource.ManangementLock has been deprecated in favor of azure.management.Lock""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,20 +84,20 @@ type VirtualMachineScaleSetExtension struct {
 // NewVirtualMachineScaleSetExtension registers a new resource with the given unique name, arguments, and options.
 func NewVirtualMachineScaleSetExtension(ctx *pulumi.Context,
 	name string, args *VirtualMachineScaleSetExtensionArgs, opts ...pulumi.ResourceOption) (*VirtualMachineScaleSetExtension, error) {
-	if args == nil || args.Publisher == nil {
-		return nil, errors.New("missing required argument 'Publisher'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.TypeHandlerVersion == nil {
-		return nil, errors.New("missing required argument 'TypeHandlerVersion'")
-	}
-	if args == nil || args.VirtualMachineScaleSetId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineScaleSetId'")
-	}
 	if args == nil {
-		args = &VirtualMachineScaleSetExtensionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Publisher == nil {
+		return nil, errors.New("invalid value for required argument 'Publisher'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.TypeHandlerVersion == nil {
+		return nil, errors.New("invalid value for required argument 'TypeHandlerVersion'")
+	}
+	if args.VirtualMachineScaleSetId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineScaleSetId'")
 	}
 	var resource VirtualMachineScaleSetExtension
 	err := ctx.RegisterResource("azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension", name, args, &resource, opts...)
@@ -217,4 +219,43 @@ type VirtualMachineScaleSetExtensionArgs struct {
 
 func (VirtualMachineScaleSetExtensionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineScaleSetExtensionArgs)(nil)).Elem()
+}
+
+type VirtualMachineScaleSetExtensionInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput
+	ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput
+}
+
+func (VirtualMachineScaleSetExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtension)(nil)).Elem()
+}
+
+func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput {
+	return i.ToVirtualMachineScaleSetExtensionOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionOutput)
+}
+
+type VirtualMachineScaleSetExtensionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineScaleSetExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtensionOutput)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionOutput) ToVirtualMachineScaleSetExtensionOutput() VirtualMachineScaleSetExtensionOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionOutput) ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionOutput{})
 }

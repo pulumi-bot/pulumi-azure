@@ -4,6 +4,8 @@
 package core
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,11 +71,11 @@ type CustomProvider struct {
 // NewCustomProvider registers a new resource with the given unique name, arguments, and options.
 func NewCustomProvider(ctx *pulumi.Context,
 	name string, args *CustomProviderArgs, opts ...pulumi.ResourceOption) (*CustomProvider, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &CustomProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource CustomProvider
 	err := ctx.RegisterResource("azure:core/customProvider:CustomProvider", name, args, &resource, opts...)
@@ -171,4 +173,43 @@ type CustomProviderArgs struct {
 
 func (CustomProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customProviderArgs)(nil)).Elem()
+}
+
+type CustomProviderInput interface {
+	pulumi.Input
+
+	ToCustomProviderOutput() CustomProviderOutput
+	ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput
+}
+
+func (CustomProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomProvider)(nil)).Elem()
+}
+
+func (i CustomProvider) ToCustomProviderOutput() CustomProviderOutput {
+	return i.ToCustomProviderOutputWithContext(context.Background())
+}
+
+func (i CustomProvider) ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomProviderOutput)
+}
+
+type CustomProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomProviderOutput)(nil)).Elem()
+}
+
+func (o CustomProviderOutput) ToCustomProviderOutput() CustomProviderOutput {
+	return o
+}
+
+func (o CustomProviderOutput) ToCustomProviderOutputWithContext(ctx context.Context) CustomProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomProviderOutput{})
 }

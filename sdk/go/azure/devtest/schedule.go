@@ -4,6 +4,8 @@
 package devtest
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,23 +93,23 @@ type Schedule struct {
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
 func NewSchedule(ctx *pulumi.Context,
 	name string, args *ScheduleArgs, opts ...pulumi.ResourceOption) (*Schedule, error) {
-	if args == nil || args.LabName == nil {
-		return nil, errors.New("missing required argument 'LabName'")
-	}
-	if args == nil || args.NotificationSettings == nil {
-		return nil, errors.New("missing required argument 'NotificationSettings'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TaskType == nil {
-		return nil, errors.New("missing required argument 'TaskType'")
-	}
-	if args == nil || args.TimeZoneId == nil {
-		return nil, errors.New("missing required argument 'TimeZoneId'")
-	}
 	if args == nil {
-		args = &ScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LabName == nil {
+		return nil, errors.New("invalid value for required argument 'LabName'")
+	}
+	if args.NotificationSettings == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationSettings'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TaskType == nil {
+		return nil, errors.New("invalid value for required argument 'TaskType'")
+	}
+	if args.TimeZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZoneId'")
 	}
 	var resource Schedule
 	err := ctx.RegisterResource("azure:devtest/schedule:Schedule", name, args, &resource, opts...)
@@ -229,4 +231,43 @@ type ScheduleArgs struct {
 
 func (ScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleArgs)(nil)).Elem()
+}
+
+type ScheduleInput interface {
+	pulumi.Input
+
+	ToScheduleOutput() ScheduleOutput
+	ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput
+}
+
+func (Schedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Schedule)(nil)).Elem()
+}
+
+func (i Schedule) ToScheduleOutput() ScheduleOutput {
+	return i.ToScheduleOutputWithContext(context.Background())
+}
+
+func (i Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
+}
+
+type ScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleOutput)(nil)).Elem()
+}
+
+func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
+	return o
+}
+
+func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScheduleOutput{})
 }

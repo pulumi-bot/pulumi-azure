@@ -4,6 +4,8 @@
 package core
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -59,11 +61,11 @@ type SubscriptionTemplateDeployment struct {
 // NewSubscriptionTemplateDeployment registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionTemplateDeployment(ctx *pulumi.Context,
 	name string, args *SubscriptionTemplateDeploymentArgs, opts ...pulumi.ResourceOption) (*SubscriptionTemplateDeployment, error) {
-	if args == nil || args.TemplateContent == nil {
-		return nil, errors.New("missing required argument 'TemplateContent'")
-	}
 	if args == nil {
-		args = &SubscriptionTemplateDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TemplateContent == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateContent'")
 	}
 	var resource SubscriptionTemplateDeployment
 	err := ctx.RegisterResource("azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type SubscriptionTemplateDeploymentArgs struct {
 
 func (SubscriptionTemplateDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionTemplateDeploymentArgs)(nil)).Elem()
+}
+
+type SubscriptionTemplateDeploymentInput interface {
+	pulumi.Input
+
+	ToSubscriptionTemplateDeploymentOutput() SubscriptionTemplateDeploymentOutput
+	ToSubscriptionTemplateDeploymentOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentOutput
+}
+
+func (SubscriptionTemplateDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionTemplateDeployment)(nil)).Elem()
+}
+
+func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentOutput() SubscriptionTemplateDeploymentOutput {
+	return i.ToSubscriptionTemplateDeploymentOutputWithContext(context.Background())
+}
+
+func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionTemplateDeploymentOutput)
+}
+
+type SubscriptionTemplateDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionTemplateDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionTemplateDeploymentOutput)(nil)).Elem()
+}
+
+func (o SubscriptionTemplateDeploymentOutput) ToSubscriptionTemplateDeploymentOutput() SubscriptionTemplateDeploymentOutput {
+	return o
+}
+
+func (o SubscriptionTemplateDeploymentOutput) ToSubscriptionTemplateDeploymentOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubscriptionTemplateDeploymentOutput{})
 }

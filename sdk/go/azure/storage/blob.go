@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -96,17 +98,17 @@ type Blob struct {
 // NewBlob registers a new resource with the given unique name, arguments, and options.
 func NewBlob(ctx *pulumi.Context,
 	name string, args *BlobArgs, opts ...pulumi.ResourceOption) (*Blob, error) {
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
-	if args == nil || args.StorageContainerName == nil {
-		return nil, errors.New("missing required argument 'StorageContainerName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &BlobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
+	}
+	if args.StorageContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageContainerName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Blob
 	err := ctx.RegisterResource("azure:storage/blob:Blob", name, args, &resource, opts...)
@@ -256,4 +258,43 @@ type BlobArgs struct {
 
 func (BlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*blobArgs)(nil)).Elem()
+}
+
+type BlobInput interface {
+	pulumi.Input
+
+	ToBlobOutput() BlobOutput
+	ToBlobOutputWithContext(ctx context.Context) BlobOutput
+}
+
+func (Blob) ElementType() reflect.Type {
+	return reflect.TypeOf((*Blob)(nil)).Elem()
+}
+
+func (i Blob) ToBlobOutput() BlobOutput {
+	return i.ToBlobOutputWithContext(context.Background())
+}
+
+func (i Blob) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobOutput)
+}
+
+type BlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (BlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlobOutput)(nil)).Elem()
+}
+
+func (o BlobOutput) ToBlobOutput() BlobOutput {
+	return o
+}
+
+func (o BlobOutput) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BlobOutput{})
 }

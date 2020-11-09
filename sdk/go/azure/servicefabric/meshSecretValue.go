@@ -4,6 +4,8 @@
 package servicefabric
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -68,14 +70,14 @@ type MeshSecretValue struct {
 // NewMeshSecretValue registers a new resource with the given unique name, arguments, and options.
 func NewMeshSecretValue(ctx *pulumi.Context,
 	name string, args *MeshSecretValueArgs, opts ...pulumi.ResourceOption) (*MeshSecretValue, error) {
-	if args == nil || args.ServiceFabricMeshSecretId == nil {
-		return nil, errors.New("missing required argument 'ServiceFabricMeshSecretId'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &MeshSecretValueArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ServiceFabricMeshSecretId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceFabricMeshSecretId'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource MeshSecretValue
 	err := ctx.RegisterResource("azure:servicefabric/meshSecretValue:MeshSecretValue", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type MeshSecretValueArgs struct {
 
 func (MeshSecretValueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshSecretValueArgs)(nil)).Elem()
+}
+
+type MeshSecretValueInput interface {
+	pulumi.Input
+
+	ToMeshSecretValueOutput() MeshSecretValueOutput
+	ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput
+}
+
+func (MeshSecretValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValue)(nil)).Elem()
+}
+
+func (i MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
+	return i.ToMeshSecretValueOutputWithContext(context.Background())
+}
+
+func (i MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretValueOutput)
+}
+
+type MeshSecretValueOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValueOutput)(nil)).Elem()
+}
+
+func (o MeshSecretValueOutput) ToMeshSecretValueOutput() MeshSecretValueOutput {
+	return o
+}
+
+func (o MeshSecretValueOutput) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshSecretValueOutput{})
 }

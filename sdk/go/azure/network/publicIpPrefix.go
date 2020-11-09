@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,11 +72,11 @@ type PublicIpPrefix struct {
 // NewPublicIpPrefix registers a new resource with the given unique name, arguments, and options.
 func NewPublicIpPrefix(ctx *pulumi.Context,
 	name string, args *PublicIpPrefixArgs, opts ...pulumi.ResourceOption) (*PublicIpPrefix, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &PublicIpPrefixArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource PublicIpPrefix
 	err := ctx.RegisterResource("azure:network/publicIpPrefix:PublicIpPrefix", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type PublicIpPrefixArgs struct {
 
 func (PublicIpPrefixArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpPrefixArgs)(nil)).Elem()
+}
+
+type PublicIpPrefixInput interface {
+	pulumi.Input
+
+	ToPublicIpPrefixOutput() PublicIpPrefixOutput
+	ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput
+}
+
+func (PublicIpPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpPrefix)(nil)).Elem()
+}
+
+func (i PublicIpPrefix) ToPublicIpPrefixOutput() PublicIpPrefixOutput {
+	return i.ToPublicIpPrefixOutputWithContext(context.Background())
+}
+
+func (i PublicIpPrefix) ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpPrefixOutput)
+}
+
+type PublicIpPrefixOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicIpPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpPrefixOutput)(nil)).Elem()
+}
+
+func (o PublicIpPrefixOutput) ToPublicIpPrefixOutput() PublicIpPrefixOutput {
+	return o
+}
+
+func (o PublicIpPrefixOutput) ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PublicIpPrefixOutput{})
 }

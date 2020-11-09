@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,14 +92,14 @@ type VirtualHubConnection struct {
 // NewVirtualHubConnection registers a new resource with the given unique name, arguments, and options.
 func NewVirtualHubConnection(ctx *pulumi.Context,
 	name string, args *VirtualHubConnectionArgs, opts ...pulumi.ResourceOption) (*VirtualHubConnection, error) {
-	if args == nil || args.RemoteVirtualNetworkId == nil {
-		return nil, errors.New("missing required argument 'RemoteVirtualNetworkId'")
-	}
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
 	if args == nil {
-		args = &VirtualHubConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RemoteVirtualNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'RemoteVirtualNetworkId'")
+	}
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
 	}
 	var resource VirtualHubConnection
 	err := ctx.RegisterResource("azure:network/virtualHubConnection:VirtualHubConnection", name, args, &resource, opts...)
@@ -195,4 +197,43 @@ type VirtualHubConnectionArgs struct {
 
 func (VirtualHubConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualHubConnectionArgs)(nil)).Elem()
+}
+
+type VirtualHubConnectionInput interface {
+	pulumi.Input
+
+	ToVirtualHubConnectionOutput() VirtualHubConnectionOutput
+	ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput
+}
+
+func (VirtualHubConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubConnection)(nil)).Elem()
+}
+
+func (i VirtualHubConnection) ToVirtualHubConnectionOutput() VirtualHubConnectionOutput {
+	return i.ToVirtualHubConnectionOutputWithContext(context.Background())
+}
+
+func (i VirtualHubConnection) ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionOutput)
+}
+
+type VirtualHubConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubConnectionOutput)(nil)).Elem()
+}
+
+func (o VirtualHubConnectionOutput) ToVirtualHubConnectionOutput() VirtualHubConnectionOutput {
+	return o
+}
+
+func (o VirtualHubConnectionOutput) ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualHubConnectionOutput{})
 }

@@ -4,6 +4,8 @@
 package datashare
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -118,17 +120,17 @@ type DatasetBlobStorage struct {
 // NewDatasetBlobStorage registers a new resource with the given unique name, arguments, and options.
 func NewDatasetBlobStorage(ctx *pulumi.Context,
 	name string, args *DatasetBlobStorageArgs, opts ...pulumi.ResourceOption) (*DatasetBlobStorage, error) {
-	if args == nil || args.ContainerName == nil {
-		return nil, errors.New("missing required argument 'ContainerName'")
-	}
-	if args == nil || args.DataShareId == nil {
-		return nil, errors.New("missing required argument 'DataShareId'")
-	}
-	if args == nil || args.StorageAccount == nil {
-		return nil, errors.New("missing required argument 'StorageAccount'")
-	}
 	if args == nil {
-		args = &DatasetBlobStorageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerName'")
+	}
+	if args.DataShareId == nil {
+		return nil, errors.New("invalid value for required argument 'DataShareId'")
+	}
+	if args.StorageAccount == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccount'")
 	}
 	var resource DatasetBlobStorage
 	err := ctx.RegisterResource("azure:datashare/datasetBlobStorage:DatasetBlobStorage", name, args, &resource, opts...)
@@ -222,4 +224,43 @@ type DatasetBlobStorageArgs struct {
 
 func (DatasetBlobStorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetBlobStorageArgs)(nil)).Elem()
+}
+
+type DatasetBlobStorageInput interface {
+	pulumi.Input
+
+	ToDatasetBlobStorageOutput() DatasetBlobStorageOutput
+	ToDatasetBlobStorageOutputWithContext(ctx context.Context) DatasetBlobStorageOutput
+}
+
+func (DatasetBlobStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetBlobStorage)(nil)).Elem()
+}
+
+func (i DatasetBlobStorage) ToDatasetBlobStorageOutput() DatasetBlobStorageOutput {
+	return i.ToDatasetBlobStorageOutputWithContext(context.Background())
+}
+
+func (i DatasetBlobStorage) ToDatasetBlobStorageOutputWithContext(ctx context.Context) DatasetBlobStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetBlobStorageOutput)
+}
+
+type DatasetBlobStorageOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetBlobStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetBlobStorageOutput)(nil)).Elem()
+}
+
+func (o DatasetBlobStorageOutput) ToDatasetBlobStorageOutput() DatasetBlobStorageOutput {
+	return o
+}
+
+func (o DatasetBlobStorageOutput) ToDatasetBlobStorageOutputWithContext(ctx context.Context) DatasetBlobStorageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetBlobStorageOutput{})
 }

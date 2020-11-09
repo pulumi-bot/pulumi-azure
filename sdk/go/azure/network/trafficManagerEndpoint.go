@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,17 +138,17 @@ type TrafficManagerEndpoint struct {
 // NewTrafficManagerEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewTrafficManagerEndpoint(ctx *pulumi.Context,
 	name string, args *TrafficManagerEndpointArgs, opts ...pulumi.ResourceOption) (*TrafficManagerEndpoint, error) {
-	if args == nil || args.ProfileName == nil {
-		return nil, errors.New("missing required argument 'ProfileName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &TrafficManagerEndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ProfileName == nil {
+		return nil, errors.New("invalid value for required argument 'ProfileName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -400,4 +402,43 @@ type TrafficManagerEndpointArgs struct {
 
 func (TrafficManagerEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficManagerEndpointArgs)(nil)).Elem()
+}
+
+type TrafficManagerEndpointInput interface {
+	pulumi.Input
+
+	ToTrafficManagerEndpointOutput() TrafficManagerEndpointOutput
+	ToTrafficManagerEndpointOutputWithContext(ctx context.Context) TrafficManagerEndpointOutput
+}
+
+func (TrafficManagerEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficManagerEndpoint)(nil)).Elem()
+}
+
+func (i TrafficManagerEndpoint) ToTrafficManagerEndpointOutput() TrafficManagerEndpointOutput {
+	return i.ToTrafficManagerEndpointOutputWithContext(context.Background())
+}
+
+func (i TrafficManagerEndpoint) ToTrafficManagerEndpointOutputWithContext(ctx context.Context) TrafficManagerEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerEndpointOutput)
+}
+
+type TrafficManagerEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficManagerEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficManagerEndpointOutput)(nil)).Elem()
+}
+
+func (o TrafficManagerEndpointOutput) ToTrafficManagerEndpointOutput() TrafficManagerEndpointOutput {
+	return o
+}
+
+func (o TrafficManagerEndpointOutput) ToTrafficManagerEndpointOutputWithContext(ctx context.Context) TrafficManagerEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TrafficManagerEndpointOutput{})
 }

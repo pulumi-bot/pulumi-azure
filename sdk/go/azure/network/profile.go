@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -102,14 +104,14 @@ type Profile struct {
 // NewProfile registers a new resource with the given unique name, arguments, and options.
 func NewProfile(ctx *pulumi.Context,
 	name string, args *ProfileArgs, opts ...pulumi.ResourceOption) (*Profile, error) {
-	if args == nil || args.ContainerNetworkInterface == nil {
-		return nil, errors.New("missing required argument 'ContainerNetworkInterface'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ContainerNetworkInterface == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerNetworkInterface'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Profile
 	err := ctx.RegisterResource("azure:network/profile:Profile", name, args, &resource, opts...)
@@ -195,4 +197,43 @@ type ProfileArgs struct {
 
 func (ProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*profileArgs)(nil)).Elem()
+}
+
+type ProfileInput interface {
+	pulumi.Input
+
+	ToProfileOutput() ProfileOutput
+	ToProfileOutputWithContext(ctx context.Context) ProfileOutput
+}
+
+func (Profile) ElementType() reflect.Type {
+	return reflect.TypeOf((*Profile)(nil)).Elem()
+}
+
+func (i Profile) ToProfileOutput() ProfileOutput {
+	return i.ToProfileOutputWithContext(context.Background())
+}
+
+func (i Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
+}
+
+type ProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProfileOutput)(nil)).Elem()
+}
+
+func (o ProfileOutput) ToProfileOutput() ProfileOutput {
+	return o
+}
+
+func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProfileOutput{})
 }

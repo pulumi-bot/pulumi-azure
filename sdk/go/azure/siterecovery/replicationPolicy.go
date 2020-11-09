@@ -4,6 +4,8 @@
 package siterecovery
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,20 +73,20 @@ type ReplicationPolicy struct {
 // NewReplicationPolicy registers a new resource with the given unique name, arguments, and options.
 func NewReplicationPolicy(ctx *pulumi.Context,
 	name string, args *ReplicationPolicyArgs, opts ...pulumi.ResourceOption) (*ReplicationPolicy, error) {
-	if args == nil || args.ApplicationConsistentSnapshotFrequencyInMinutes == nil {
-		return nil, errors.New("missing required argument 'ApplicationConsistentSnapshotFrequencyInMinutes'")
-	}
-	if args == nil || args.RecoveryPointRetentionInMinutes == nil {
-		return nil, errors.New("missing required argument 'RecoveryPointRetentionInMinutes'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ReplicationPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationConsistentSnapshotFrequencyInMinutes == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationConsistentSnapshotFrequencyInMinutes'")
+	}
+	if args.RecoveryPointRetentionInMinutes == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryPointRetentionInMinutes'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ReplicationPolicy
 	err := ctx.RegisterResource("azure:siterecovery/replicationPolicy:ReplicationPolicy", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type ReplicationPolicyArgs struct {
 
 func (ReplicationPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationPolicyArgs)(nil)).Elem()
+}
+
+type ReplicationPolicyInput interface {
+	pulumi.Input
+
+	ToReplicationPolicyOutput() ReplicationPolicyOutput
+	ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput
+}
+
+func (ReplicationPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationPolicy)(nil)).Elem()
+}
+
+func (i ReplicationPolicy) ToReplicationPolicyOutput() ReplicationPolicyOutput {
+	return i.ToReplicationPolicyOutputWithContext(context.Background())
+}
+
+func (i ReplicationPolicy) ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationPolicyOutput)
+}
+
+type ReplicationPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationPolicyOutput)(nil)).Elem()
+}
+
+func (o ReplicationPolicyOutput) ToReplicationPolicyOutput() ReplicationPolicyOutput {
+	return o
+}
+
+func (o ReplicationPolicyOutput) ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReplicationPolicyOutput{})
 }

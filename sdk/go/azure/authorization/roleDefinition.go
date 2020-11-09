@@ -4,6 +4,8 @@
 package authorization
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,14 +75,14 @@ type RoleDefinition struct {
 // NewRoleDefinition registers a new resource with the given unique name, arguments, and options.
 func NewRoleDefinition(ctx *pulumi.Context,
 	name string, args *RoleDefinitionArgs, opts ...pulumi.ResourceOption) (*RoleDefinition, error) {
-	if args == nil || args.Permissions == nil {
-		return nil, errors.New("missing required argument 'Permissions'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
 	if args == nil {
-		args = &RoleDefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Permissions == nil {
+		return nil, errors.New("invalid value for required argument 'Permissions'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -180,4 +182,43 @@ type RoleDefinitionArgs struct {
 
 func (RoleDefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleDefinitionArgs)(nil)).Elem()
+}
+
+type RoleDefinitionInput interface {
+	pulumi.Input
+
+	ToRoleDefinitionOutput() RoleDefinitionOutput
+	ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput
+}
+
+func (RoleDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleDefinition)(nil)).Elem()
+}
+
+func (i RoleDefinition) ToRoleDefinitionOutput() RoleDefinitionOutput {
+	return i.ToRoleDefinitionOutputWithContext(context.Background())
+}
+
+func (i RoleDefinition) ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleDefinitionOutput)
+}
+
+type RoleDefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleDefinitionOutput)(nil)).Elem()
+}
+
+func (o RoleDefinitionOutput) ToRoleDefinitionOutput() RoleDefinitionOutput {
+	return o
+}
+
+func (o RoleDefinitionOutput) ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleDefinitionOutput{})
 }

@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -153,20 +155,20 @@ type DataDiskAttachment struct {
 // NewDataDiskAttachment registers a new resource with the given unique name, arguments, and options.
 func NewDataDiskAttachment(ctx *pulumi.Context,
 	name string, args *DataDiskAttachmentArgs, opts ...pulumi.ResourceOption) (*DataDiskAttachment, error) {
-	if args == nil || args.Caching == nil {
-		return nil, errors.New("missing required argument 'Caching'")
-	}
-	if args == nil || args.Lun == nil {
-		return nil, errors.New("missing required argument 'Lun'")
-	}
-	if args == nil || args.ManagedDiskId == nil {
-		return nil, errors.New("missing required argument 'ManagedDiskId'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &DataDiskAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Caching == nil {
+		return nil, errors.New("invalid value for required argument 'Caching'")
+	}
+	if args.Lun == nil {
+		return nil, errors.New("invalid value for required argument 'Lun'")
+	}
+	if args.ManagedDiskId == nil {
+		return nil, errors.New("invalid value for required argument 'ManagedDiskId'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource DataDiskAttachment
 	err := ctx.RegisterResource("azure:compute/dataDiskAttachment:DataDiskAttachment", name, args, &resource, opts...)
@@ -256,4 +258,43 @@ type DataDiskAttachmentArgs struct {
 
 func (DataDiskAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataDiskAttachmentArgs)(nil)).Elem()
+}
+
+type DataDiskAttachmentInput interface {
+	pulumi.Input
+
+	ToDataDiskAttachmentOutput() DataDiskAttachmentOutput
+	ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput
+}
+
+func (DataDiskAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskAttachment)(nil)).Elem()
+}
+
+func (i DataDiskAttachment) ToDataDiskAttachmentOutput() DataDiskAttachmentOutput {
+	return i.ToDataDiskAttachmentOutputWithContext(context.Background())
+}
+
+func (i DataDiskAttachment) ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataDiskAttachmentOutput)
+}
+
+type DataDiskAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataDiskAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskAttachmentOutput)(nil)).Elem()
+}
+
+func (o DataDiskAttachmentOutput) ToDataDiskAttachmentOutput() DataDiskAttachmentOutput {
+	return o
+}
+
+func (o DataDiskAttachmentOutput) ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataDiskAttachmentOutput{})
 }

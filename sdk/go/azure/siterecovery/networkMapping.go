@@ -4,6 +4,8 @@
 package siterecovery
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -122,26 +124,26 @@ type NetworkMapping struct {
 // NewNetworkMapping registers a new resource with the given unique name, arguments, and options.
 func NewNetworkMapping(ctx *pulumi.Context,
 	name string, args *NetworkMappingArgs, opts ...pulumi.ResourceOption) (*NetworkMapping, error) {
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SourceNetworkId == nil {
-		return nil, errors.New("missing required argument 'SourceNetworkId'")
-	}
-	if args == nil || args.SourceRecoveryFabricName == nil {
-		return nil, errors.New("missing required argument 'SourceRecoveryFabricName'")
-	}
-	if args == nil || args.TargetNetworkId == nil {
-		return nil, errors.New("missing required argument 'TargetNetworkId'")
-	}
-	if args == nil || args.TargetRecoveryFabricName == nil {
-		return nil, errors.New("missing required argument 'TargetRecoveryFabricName'")
-	}
 	if args == nil {
-		args = &NetworkMappingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SourceNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceNetworkId'")
+	}
+	if args.SourceRecoveryFabricName == nil {
+		return nil, errors.New("invalid value for required argument 'SourceRecoveryFabricName'")
+	}
+	if args.TargetNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetNetworkId'")
+	}
+	if args.TargetRecoveryFabricName == nil {
+		return nil, errors.New("invalid value for required argument 'TargetRecoveryFabricName'")
 	}
 	var resource NetworkMapping
 	err := ctx.RegisterResource("azure:siterecovery/networkMapping:NetworkMapping", name, args, &resource, opts...)
@@ -239,4 +241,43 @@ type NetworkMappingArgs struct {
 
 func (NetworkMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkMappingArgs)(nil)).Elem()
+}
+
+type NetworkMappingInput interface {
+	pulumi.Input
+
+	ToNetworkMappingOutput() NetworkMappingOutput
+	ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput
+}
+
+func (NetworkMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMapping)(nil)).Elem()
+}
+
+func (i NetworkMapping) ToNetworkMappingOutput() NetworkMappingOutput {
+	return i.ToNetworkMappingOutputWithContext(context.Background())
+}
+
+func (i NetworkMapping) ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkMappingOutput)
+}
+
+type NetworkMappingOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMappingOutput)(nil)).Elem()
+}
+
+func (o NetworkMappingOutput) ToNetworkMappingOutput() NetworkMappingOutput {
+	return o
+}
+
+func (o NetworkMappingOutput) ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkMappingOutput{})
 }

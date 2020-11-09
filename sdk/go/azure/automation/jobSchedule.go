@@ -4,6 +4,8 @@
 package automation
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,20 +66,20 @@ type JobSchedule struct {
 // NewJobSchedule registers a new resource with the given unique name, arguments, and options.
 func NewJobSchedule(ctx *pulumi.Context,
 	name string, args *JobScheduleArgs, opts ...pulumi.ResourceOption) (*JobSchedule, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.RunbookName == nil {
-		return nil, errors.New("missing required argument 'RunbookName'")
-	}
-	if args == nil || args.ScheduleName == nil {
-		return nil, errors.New("missing required argument 'ScheduleName'")
-	}
 	if args == nil {
-		args = &JobScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.RunbookName == nil {
+		return nil, errors.New("invalid value for required argument 'RunbookName'")
+	}
+	if args.ScheduleName == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleName'")
 	}
 	var resource JobSchedule
 	err := ctx.RegisterResource("azure:automation/jobSchedule:JobSchedule", name, args, &resource, opts...)
@@ -171,4 +173,43 @@ type JobScheduleArgs struct {
 
 func (JobScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobScheduleArgs)(nil)).Elem()
+}
+
+type JobScheduleInput interface {
+	pulumi.Input
+
+	ToJobScheduleOutput() JobScheduleOutput
+	ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput
+}
+
+func (JobSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSchedule)(nil)).Elem()
+}
+
+func (i JobSchedule) ToJobScheduleOutput() JobScheduleOutput {
+	return i.ToJobScheduleOutputWithContext(context.Background())
+}
+
+func (i JobSchedule) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobScheduleOutput)
+}
+
+type JobScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobScheduleOutput)(nil)).Elem()
+}
+
+func (o JobScheduleOutput) ToJobScheduleOutput() JobScheduleOutput {
+	return o
+}
+
+func (o JobScheduleOutput) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(JobScheduleOutput{})
 }

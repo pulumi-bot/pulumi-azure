@@ -4,6 +4,8 @@
 package desktopvirtualization
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,11 +69,11 @@ type Workspace struct {
 // NewWorkspace registers a new resource with the given unique name, arguments, and options.
 func NewWorkspace(ctx *pulumi.Context,
 	name string, args *WorkspaceArgs, opts ...pulumi.ResourceOption) (*Workspace, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &WorkspaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Workspace
 	err := ctx.RegisterResource("azure:desktopvirtualization/workspace:Workspace", name, args, &resource, opts...)
@@ -173,4 +175,43 @@ type WorkspaceArgs struct {
 
 func (WorkspaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceArgs)(nil)).Elem()
+}
+
+type WorkspaceInput interface {
+	pulumi.Input
+
+	ToWorkspaceOutput() WorkspaceOutput
+	ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput
+}
+
+func (Workspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workspace)(nil)).Elem()
+}
+
+func (i Workspace) ToWorkspaceOutput() WorkspaceOutput {
+	return i.ToWorkspaceOutputWithContext(context.Background())
+}
+
+func (i Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceOutput)
+}
+
+type WorkspaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceOutput)(nil)).Elem()
+}
+
+func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
+	return o
+}
+
+func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkspaceOutput{})
 }

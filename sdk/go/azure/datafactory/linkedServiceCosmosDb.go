@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,14 +47,14 @@ type LinkedServiceCosmosDb struct {
 // NewLinkedServiceCosmosDb registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceCosmosDb(ctx *pulumi.Context,
 	name string, args *LinkedServiceCosmosDbArgs, opts ...pulumi.ResourceOption) (*LinkedServiceCosmosDb, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceCosmosDbArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceCosmosDb
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb", name, args, &resource, opts...)
@@ -190,4 +192,43 @@ type LinkedServiceCosmosDbArgs struct {
 
 func (LinkedServiceCosmosDbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceCosmosDbArgs)(nil)).Elem()
+}
+
+type LinkedServiceCosmosDbInput interface {
+	pulumi.Input
+
+	ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput
+	ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput
+}
+
+func (LinkedServiceCosmosDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceCosmosDb)(nil)).Elem()
+}
+
+func (i LinkedServiceCosmosDb) ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput {
+	return i.ToLinkedServiceCosmosDbOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceCosmosDb) ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceCosmosDbOutput)
+}
+
+type LinkedServiceCosmosDbOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceCosmosDbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceCosmosDbOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceCosmosDbOutput) ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput {
+	return o
+}
+
+func (o LinkedServiceCosmosDbOutput) ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceCosmosDbOutput{})
 }

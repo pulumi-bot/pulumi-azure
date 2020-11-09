@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,29 +92,29 @@ type LinkedServiceSftp struct {
 // NewLinkedServiceSftp registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceSftp(ctx *pulumi.Context,
 	name string, args *LinkedServiceSftpArgs, opts ...pulumi.ResourceOption) (*LinkedServiceSftp, error) {
-	if args == nil || args.AuthenticationType == nil {
-		return nil, errors.New("missing required argument 'AuthenticationType'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &LinkedServiceSftpArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AuthenticationType == nil {
+		return nil, errors.New("invalid value for required argument 'AuthenticationType'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource LinkedServiceSftp
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceSftp:LinkedServiceSftp", name, args, &resource, opts...)
@@ -258,4 +260,43 @@ type LinkedServiceSftpArgs struct {
 
 func (LinkedServiceSftpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceSftpArgs)(nil)).Elem()
+}
+
+type LinkedServiceSftpInput interface {
+	pulumi.Input
+
+	ToLinkedServiceSftpOutput() LinkedServiceSftpOutput
+	ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput
+}
+
+func (LinkedServiceSftp) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSftp)(nil)).Elem()
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpOutput() LinkedServiceSftpOutput {
+	return i.ToLinkedServiceSftpOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSftpOutput)
+}
+
+type LinkedServiceSftpOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceSftpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSftpOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceSftpOutput) ToLinkedServiceSftpOutput() LinkedServiceSftpOutput {
+	return o
+}
+
+func (o LinkedServiceSftpOutput) ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceSftpOutput{})
 }

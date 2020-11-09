@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -181,20 +183,20 @@ type Extension struct {
 // NewExtension registers a new resource with the given unique name, arguments, and options.
 func NewExtension(ctx *pulumi.Context,
 	name string, args *ExtensionArgs, opts ...pulumi.ResourceOption) (*Extension, error) {
-	if args == nil || args.Publisher == nil {
-		return nil, errors.New("missing required argument 'Publisher'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.TypeHandlerVersion == nil {
-		return nil, errors.New("missing required argument 'TypeHandlerVersion'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &ExtensionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Publisher == nil {
+		return nil, errors.New("invalid value for required argument 'Publisher'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.TypeHandlerVersion == nil {
+		return nil, errors.New("invalid value for required argument 'TypeHandlerVersion'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource Extension
 	err := ctx.RegisterResource("azure:compute/extension:Extension", name, args, &resource, opts...)
@@ -336,4 +338,43 @@ type ExtensionArgs struct {
 
 func (ExtensionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*extensionArgs)(nil)).Elem()
+}
+
+type ExtensionInput interface {
+	pulumi.Input
+
+	ToExtensionOutput() ExtensionOutput
+	ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput
+}
+
+func (Extension) ElementType() reflect.Type {
+	return reflect.TypeOf((*Extension)(nil)).Elem()
+}
+
+func (i Extension) ToExtensionOutput() ExtensionOutput {
+	return i.ToExtensionOutputWithContext(context.Background())
+}
+
+func (i Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionOutput)
+}
+
+type ExtensionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionOutput)(nil)).Elem()
+}
+
+func (o ExtensionOutput) ToExtensionOutput() ExtensionOutput {
+	return o
+}
+
+func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExtensionOutput{})
 }

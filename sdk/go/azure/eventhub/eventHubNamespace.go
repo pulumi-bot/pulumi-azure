@@ -4,6 +4,8 @@
 package eventhub
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,14 +97,14 @@ type EventHubNamespace struct {
 // NewEventHubNamespace registers a new resource with the given unique name, arguments, and options.
 func NewEventHubNamespace(ctx *pulumi.Context,
 	name string, args *EventHubNamespaceArgs, opts ...pulumi.ResourceOption) (*EventHubNamespace, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &EventHubNamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource EventHubNamespace
 	err := ctx.RegisterResource("azure:eventhub/eventHubNamespace:EventHubNamespace", name, args, &resource, opts...)
@@ -272,4 +274,43 @@ type EventHubNamespaceArgs struct {
 
 func (EventHubNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubNamespaceArgs)(nil)).Elem()
+}
+
+type EventHubNamespaceInput interface {
+	pulumi.Input
+
+	ToEventHubNamespaceOutput() EventHubNamespaceOutput
+	ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput
+}
+
+func (EventHubNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespace)(nil)).Elem()
+}
+
+func (i EventHubNamespace) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
+	return i.ToEventHubNamespaceOutputWithContext(context.Background())
+}
+
+func (i EventHubNamespace) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceOutput)
+}
+
+type EventHubNamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespaceOutput)(nil)).Elem()
+}
+
+func (o EventHubNamespaceOutput) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
+	return o
+}
+
+func (o EventHubNamespaceOutput) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubNamespaceOutput{})
 }

@@ -4,6 +4,8 @@
 package privatedns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,17 +71,17 @@ type ZoneVirtualNetworkLink struct {
 // NewZoneVirtualNetworkLink registers a new resource with the given unique name, arguments, and options.
 func NewZoneVirtualNetworkLink(ctx *pulumi.Context,
 	name string, args *ZoneVirtualNetworkLinkArgs, opts ...pulumi.ResourceOption) (*ZoneVirtualNetworkLink, error) {
-	if args == nil || args.PrivateDnsZoneName == nil {
-		return nil, errors.New("missing required argument 'PrivateDnsZoneName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualNetworkId == nil {
-		return nil, errors.New("missing required argument 'VirtualNetworkId'")
-	}
 	if args == nil {
-		args = &ZoneVirtualNetworkLinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.PrivateDnsZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateDnsZoneName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualNetworkId'")
 	}
 	var resource ZoneVirtualNetworkLink
 	err := ctx.RegisterResource("azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink", name, args, &resource, opts...)
@@ -169,4 +171,43 @@ type ZoneVirtualNetworkLinkArgs struct {
 
 func (ZoneVirtualNetworkLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneVirtualNetworkLinkArgs)(nil)).Elem()
+}
+
+type ZoneVirtualNetworkLinkInput interface {
+	pulumi.Input
+
+	ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput
+	ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput
+}
+
+func (ZoneVirtualNetworkLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVirtualNetworkLink)(nil)).Elem()
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput {
+	return i.ToZoneVirtualNetworkLinkOutputWithContext(context.Background())
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVirtualNetworkLinkOutput)
+}
+
+type ZoneVirtualNetworkLinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneVirtualNetworkLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVirtualNetworkLinkOutput)(nil)).Elem()
+}
+
+func (o ZoneVirtualNetworkLinkOutput) ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetworkLinkOutput {
+	return o
+}
+
+func (o ZoneVirtualNetworkLinkOutput) ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneVirtualNetworkLinkOutput{})
 }

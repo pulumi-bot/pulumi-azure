@@ -4,6 +4,8 @@
 package cosmosdb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,17 +82,17 @@ type MongoCollection struct {
 // NewMongoCollection registers a new resource with the given unique name, arguments, and options.
 func NewMongoCollection(ctx *pulumi.Context,
 	name string, args *MongoCollectionArgs, opts ...pulumi.ResourceOption) (*MongoCollection, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &MongoCollectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource MongoCollection
 	err := ctx.RegisterResource("azure:cosmosdb/mongoCollection:MongoCollection", name, args, &resource, opts...)
@@ -204,4 +206,43 @@ type MongoCollectionArgs struct {
 
 func (MongoCollectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongoCollectionArgs)(nil)).Elem()
+}
+
+type MongoCollectionInput interface {
+	pulumi.Input
+
+	ToMongoCollectionOutput() MongoCollectionOutput
+	ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput
+}
+
+func (MongoCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoCollection)(nil)).Elem()
+}
+
+func (i MongoCollection) ToMongoCollectionOutput() MongoCollectionOutput {
+	return i.ToMongoCollectionOutputWithContext(context.Background())
+}
+
+func (i MongoCollection) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionOutput)
+}
+
+type MongoCollectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoCollectionOutput)(nil)).Elem()
+}
+
+func (o MongoCollectionOutput) ToMongoCollectionOutput() MongoCollectionOutput {
+	return o
+}
+
+func (o MongoCollectionOutput) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MongoCollectionOutput{})
 }

@@ -4,6 +4,8 @@
 package streamanalytics
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -104,35 +106,35 @@ type ReferenceInputBlob struct {
 // NewReferenceInputBlob registers a new resource with the given unique name, arguments, and options.
 func NewReferenceInputBlob(ctx *pulumi.Context,
 	name string, args *ReferenceInputBlobArgs, opts ...pulumi.ResourceOption) (*ReferenceInputBlob, error) {
-	if args == nil || args.DateFormat == nil {
-		return nil, errors.New("missing required argument 'DateFormat'")
-	}
-	if args == nil || args.PathPattern == nil {
-		return nil, errors.New("missing required argument 'PathPattern'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Serialization == nil {
-		return nil, errors.New("missing required argument 'Serialization'")
-	}
-	if args == nil || args.StorageAccountKey == nil {
-		return nil, errors.New("missing required argument 'StorageAccountKey'")
-	}
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
-	if args == nil || args.StorageContainerName == nil {
-		return nil, errors.New("missing required argument 'StorageContainerName'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
-	if args == nil || args.TimeFormat == nil {
-		return nil, errors.New("missing required argument 'TimeFormat'")
-	}
 	if args == nil {
-		args = &ReferenceInputBlobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DateFormat == nil {
+		return nil, errors.New("invalid value for required argument 'DateFormat'")
+	}
+	if args.PathPattern == nil {
+		return nil, errors.New("invalid value for required argument 'PathPattern'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Serialization == nil {
+		return nil, errors.New("invalid value for required argument 'Serialization'")
+	}
+	if args.StorageAccountKey == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountKey'")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
+	}
+	if args.StorageContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageContainerName'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
+	}
+	if args.TimeFormat == nil {
+		return nil, errors.New("invalid value for required argument 'TimeFormat'")
 	}
 	var resource ReferenceInputBlob
 	err := ctx.RegisterResource("azure:streamanalytics/referenceInputBlob:ReferenceInputBlob", name, args, &resource, opts...)
@@ -254,4 +256,43 @@ type ReferenceInputBlobArgs struct {
 
 func (ReferenceInputBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*referenceInputBlobArgs)(nil)).Elem()
+}
+
+type ReferenceInputBlobInput interface {
+	pulumi.Input
+
+	ToReferenceInputBlobOutput() ReferenceInputBlobOutput
+	ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput
+}
+
+func (ReferenceInputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceInputBlob)(nil)).Elem()
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobOutput() ReferenceInputBlobOutput {
+	return i.ToReferenceInputBlobOutputWithContext(context.Background())
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobOutput)
+}
+
+type ReferenceInputBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReferenceInputBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceInputBlobOutput)(nil)).Elem()
+}
+
+func (o ReferenceInputBlobOutput) ToReferenceInputBlobOutput() ReferenceInputBlobOutput {
+	return o
+}
+
+func (o ReferenceInputBlobOutput) ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReferenceInputBlobOutput{})
 }

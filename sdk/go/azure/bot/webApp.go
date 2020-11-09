@@ -4,6 +4,8 @@
 package bot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,17 +84,17 @@ type WebApp struct {
 // NewWebApp registers a new resource with the given unique name, arguments, and options.
 func NewWebApp(ctx *pulumi.Context,
 	name string, args *WebAppArgs, opts ...pulumi.ResourceOption) (*WebApp, error) {
-	if args == nil || args.MicrosoftAppId == nil {
-		return nil, errors.New("missing required argument 'MicrosoftAppId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &WebAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MicrosoftAppId == nil {
+		return nil, errors.New("invalid value for required argument 'MicrosoftAppId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource WebApp
 	err := ctx.RegisterResource("azure:bot/webApp:WebApp", name, args, &resource, opts...)
@@ -238,4 +240,43 @@ type WebAppArgs struct {
 
 func (WebAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAppArgs)(nil)).Elem()
+}
+
+type WebAppInput interface {
+	pulumi.Input
+
+	ToWebAppOutput() WebAppOutput
+	ToWebAppOutputWithContext(ctx context.Context) WebAppOutput
+}
+
+func (WebApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebApp)(nil)).Elem()
+}
+
+func (i WebApp) ToWebAppOutput() WebAppOutput {
+	return i.ToWebAppOutputWithContext(context.Background())
+}
+
+func (i WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
+}
+
+type WebAppOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppOutput)(nil)).Elem()
+}
+
+func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
+	return o
+}
+
+func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAppOutput{})
 }

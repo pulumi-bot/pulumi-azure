@@ -4,6 +4,8 @@
 package redis
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,20 +91,20 @@ type FirewallRule struct {
 // NewFirewallRule registers a new resource with the given unique name, arguments, and options.
 func NewFirewallRule(ctx *pulumi.Context,
 	name string, args *FirewallRuleArgs, opts ...pulumi.ResourceOption) (*FirewallRule, error) {
-	if args == nil || args.EndIp == nil {
-		return nil, errors.New("missing required argument 'EndIp'")
-	}
-	if args == nil || args.RedisCacheName == nil {
-		return nil, errors.New("missing required argument 'RedisCacheName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StartIp == nil {
-		return nil, errors.New("missing required argument 'StartIp'")
-	}
 	if args == nil {
-		args = &FirewallRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.EndIp == nil {
+		return nil, errors.New("invalid value for required argument 'EndIp'")
+	}
+	if args.RedisCacheName == nil {
+		return nil, errors.New("invalid value for required argument 'RedisCacheName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StartIp == nil {
+		return nil, errors.New("invalid value for required argument 'StartIp'")
 	}
 	var resource FirewallRule
 	err := ctx.RegisterResource("azure:redis/firewallRule:FirewallRule", name, args, &resource, opts...)
@@ -184,4 +186,43 @@ type FirewallRuleArgs struct {
 
 func (FirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleArgs)(nil)).Elem()
+}
+
+type FirewallRuleInput interface {
+	pulumi.Input
+
+	ToFirewallRuleOutput() FirewallRuleOutput
+	ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput
+}
+
+func (FirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRule)(nil)).Elem()
+}
+
+func (i FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
+	return i.ToFirewallRuleOutputWithContext(context.Background())
+}
+
+func (i FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
+}
+
+type FirewallRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleOutput)(nil)).Elem()
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
+	return o
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallRuleOutput{})
 }

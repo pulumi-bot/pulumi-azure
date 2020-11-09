@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -41,17 +43,17 @@ type DatasetCosmosDBApi struct {
 // NewDatasetCosmosDBApi registers a new resource with the given unique name, arguments, and options.
 func NewDatasetCosmosDBApi(ctx *pulumi.Context,
 	name string, args *DatasetCosmosDBApiArgs, opts ...pulumi.ResourceOption) (*DatasetCosmosDBApi, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetCosmosDBApiArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetCosmosDBApi
 	err := ctx.RegisterResource("azure:datafactory/datasetCosmosDBApi:DatasetCosmosDBApi", name, args, &resource, opts...)
@@ -181,4 +183,43 @@ type DatasetCosmosDBApiArgs struct {
 
 func (DatasetCosmosDBApiArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetCosmosDBApiArgs)(nil)).Elem()
+}
+
+type DatasetCosmosDBApiInput interface {
+	pulumi.Input
+
+	ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput
+	ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput
+}
+
+func (DatasetCosmosDBApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetCosmosDBApi)(nil)).Elem()
+}
+
+func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
+	return i.ToDatasetCosmosDBApiOutputWithContext(context.Background())
+}
+
+func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetCosmosDBApiOutput)
+}
+
+type DatasetCosmosDBApiOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetCosmosDBApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetCosmosDBApiOutput)(nil)).Elem()
+}
+
+func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
+	return o
+}
+
+func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetCosmosDBApiOutput{})
 }

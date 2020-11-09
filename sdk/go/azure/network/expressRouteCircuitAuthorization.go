@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,14 +82,14 @@ type ExpressRouteCircuitAuthorization struct {
 // NewExpressRouteCircuitAuthorization registers a new resource with the given unique name, arguments, and options.
 func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 	name string, args *ExpressRouteCircuitAuthorizationArgs, opts ...pulumi.ResourceOption) (*ExpressRouteCircuitAuthorization, error) {
-	if args == nil || args.ExpressRouteCircuitName == nil {
-		return nil, errors.New("missing required argument 'ExpressRouteCircuitName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ExpressRouteCircuitAuthorizationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ExpressRouteCircuitName == nil {
+		return nil, errors.New("invalid value for required argument 'ExpressRouteCircuitName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ExpressRouteCircuitAuthorization
 	err := ctx.RegisterResource("azure:network/expressRouteCircuitAuthorization:ExpressRouteCircuitAuthorization", name, args, &resource, opts...)
@@ -169,4 +171,43 @@ type ExpressRouteCircuitAuthorizationArgs struct {
 
 func (ExpressRouteCircuitAuthorizationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*expressRouteCircuitAuthorizationArgs)(nil)).Elem()
+}
+
+type ExpressRouteCircuitAuthorizationInput interface {
+	pulumi.Input
+
+	ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput
+	ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput
+}
+
+func (ExpressRouteCircuitAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil)).Elem()
+}
+
+func (i ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
+	return i.ToExpressRouteCircuitAuthorizationOutputWithContext(context.Background())
+}
+
+func (i ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationOutput)
+}
+
+type ExpressRouteCircuitAuthorizationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteCircuitAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorizationOutput)(nil)).Elem()
+}
+
+func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
+	return o
+}
+
+func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationOutput{})
 }

@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -115,26 +117,26 @@ type NetworkWatcherFlowLog struct {
 // NewNetworkWatcherFlowLog registers a new resource with the given unique name, arguments, and options.
 func NewNetworkWatcherFlowLog(ctx *pulumi.Context,
 	name string, args *NetworkWatcherFlowLogArgs, opts ...pulumi.ResourceOption) (*NetworkWatcherFlowLog, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.NetworkSecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'NetworkSecurityGroupId'")
-	}
-	if args == nil || args.NetworkWatcherName == nil {
-		return nil, errors.New("missing required argument 'NetworkWatcherName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.RetentionPolicy == nil {
-		return nil, errors.New("missing required argument 'RetentionPolicy'")
-	}
-	if args == nil || args.StorageAccountId == nil {
-		return nil, errors.New("missing required argument 'StorageAccountId'")
-	}
 	if args == nil {
-		args = &NetworkWatcherFlowLogArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.NetworkSecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkSecurityGroupId'")
+	}
+	if args.NetworkWatcherName == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkWatcherName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.RetentionPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'RetentionPolicy'")
+	}
+	if args.StorageAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountId'")
 	}
 	var resource NetworkWatcherFlowLog
 	err := ctx.RegisterResource("azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog", name, args, &resource, opts...)
@@ -240,4 +242,43 @@ type NetworkWatcherFlowLogArgs struct {
 
 func (NetworkWatcherFlowLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkWatcherFlowLogArgs)(nil)).Elem()
+}
+
+type NetworkWatcherFlowLogInput interface {
+	pulumi.Input
+
+	ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput
+	ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput
+}
+
+func (NetworkWatcherFlowLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcherFlowLog)(nil)).Elem()
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput {
+	return i.ToNetworkWatcherFlowLogOutputWithContext(context.Background())
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogOutput)
+}
+
+type NetworkWatcherFlowLogOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkWatcherFlowLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcherFlowLogOutput)(nil)).Elem()
+}
+
+func (o NetworkWatcherFlowLogOutput) ToNetworkWatcherFlowLogOutput() NetworkWatcherFlowLogOutput {
+	return o
+}
+
+func (o NetworkWatcherFlowLogOutput) ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkWatcherFlowLogOutput{})
 }

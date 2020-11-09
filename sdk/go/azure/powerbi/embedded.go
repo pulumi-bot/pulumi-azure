@@ -4,6 +4,8 @@
 package powerbi
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -66,17 +68,17 @@ type Embedded struct {
 // NewEmbedded registers a new resource with the given unique name, arguments, and options.
 func NewEmbedded(ctx *pulumi.Context,
 	name string, args *EmbeddedArgs, opts ...pulumi.ResourceOption) (*Embedded, error) {
-	if args == nil || args.Administrators == nil {
-		return nil, errors.New("missing required argument 'Administrators'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &EmbeddedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Administrators == nil {
+		return nil, errors.New("invalid value for required argument 'Administrators'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource Embedded
 	err := ctx.RegisterResource("azure:powerbi/embedded:Embedded", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type EmbeddedArgs struct {
 
 func (EmbeddedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*embeddedArgs)(nil)).Elem()
+}
+
+type EmbeddedInput interface {
+	pulumi.Input
+
+	ToEmbeddedOutput() EmbeddedOutput
+	ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput
+}
+
+func (Embedded) ElementType() reflect.Type {
+	return reflect.TypeOf((*Embedded)(nil)).Elem()
+}
+
+func (i Embedded) ToEmbeddedOutput() EmbeddedOutput {
+	return i.ToEmbeddedOutputWithContext(context.Background())
+}
+
+func (i Embedded) ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmbeddedOutput)
+}
+
+type EmbeddedOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmbeddedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmbeddedOutput)(nil)).Elem()
+}
+
+func (o EmbeddedOutput) ToEmbeddedOutput() EmbeddedOutput {
+	return o
+}
+
+func (o EmbeddedOutput) ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EmbeddedOutput{})
 }

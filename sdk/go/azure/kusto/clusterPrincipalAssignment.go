@@ -4,6 +4,8 @@
 package kusto
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,26 +88,26 @@ type ClusterPrincipalAssignment struct {
 // NewClusterPrincipalAssignment registers a new resource with the given unique name, arguments, and options.
 func NewClusterPrincipalAssignment(ctx *pulumi.Context,
 	name string, args *ClusterPrincipalAssignmentArgs, opts ...pulumi.ResourceOption) (*ClusterPrincipalAssignment, error) {
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.PrincipalId == nil {
-		return nil, errors.New("missing required argument 'PrincipalId'")
-	}
-	if args == nil || args.PrincipalType == nil {
-		return nil, errors.New("missing required argument 'PrincipalType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &ClusterPrincipalAssignmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.PrincipalId == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalId'")
+	}
+	if args.PrincipalType == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource ClusterPrincipalAssignment
 	err := ctx.RegisterResource("azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment", name, args, &resource, opts...)
@@ -207,4 +209,43 @@ type ClusterPrincipalAssignmentArgs struct {
 
 func (ClusterPrincipalAssignmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterPrincipalAssignmentArgs)(nil)).Elem()
+}
+
+type ClusterPrincipalAssignmentInput interface {
+	pulumi.Input
+
+	ToClusterPrincipalAssignmentOutput() ClusterPrincipalAssignmentOutput
+	ToClusterPrincipalAssignmentOutputWithContext(ctx context.Context) ClusterPrincipalAssignmentOutput
+}
+
+func (ClusterPrincipalAssignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPrincipalAssignment)(nil)).Elem()
+}
+
+func (i ClusterPrincipalAssignment) ToClusterPrincipalAssignmentOutput() ClusterPrincipalAssignmentOutput {
+	return i.ToClusterPrincipalAssignmentOutputWithContext(context.Background())
+}
+
+func (i ClusterPrincipalAssignment) ToClusterPrincipalAssignmentOutputWithContext(ctx context.Context) ClusterPrincipalAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrincipalAssignmentOutput)
+}
+
+type ClusterPrincipalAssignmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterPrincipalAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPrincipalAssignmentOutput)(nil)).Elem()
+}
+
+func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutput() ClusterPrincipalAssignmentOutput {
+	return o
+}
+
+func (o ClusterPrincipalAssignmentOutput) ToClusterPrincipalAssignmentOutputWithContext(ctx context.Context) ClusterPrincipalAssignmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterPrincipalAssignmentOutput{})
 }

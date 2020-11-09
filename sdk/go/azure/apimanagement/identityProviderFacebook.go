@@ -4,6 +4,8 @@
 package apimanagement
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,20 +72,20 @@ type IdentityProviderFacebook struct {
 // NewIdentityProviderFacebook registers a new resource with the given unique name, arguments, and options.
 func NewIdentityProviderFacebook(ctx *pulumi.Context,
 	name string, args *IdentityProviderFacebookArgs, opts ...pulumi.ResourceOption) (*IdentityProviderFacebook, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.AppSecret == nil {
-		return nil, errors.New("missing required argument 'AppSecret'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IdentityProviderFacebookArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.AppSecret == nil {
+		return nil, errors.New("invalid value for required argument 'AppSecret'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IdentityProviderFacebook
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type IdentityProviderFacebookArgs struct {
 
 func (IdentityProviderFacebookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderFacebookArgs)(nil)).Elem()
+}
+
+type IdentityProviderFacebookInput interface {
+	pulumi.Input
+
+	ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput
+	ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput
+}
+
+func (IdentityProviderFacebook) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderFacebook)(nil)).Elem()
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput {
+	return i.ToIdentityProviderFacebookOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderFacebookOutput)
+}
+
+type IdentityProviderFacebookOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderFacebookOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderFacebookOutput) ToIdentityProviderFacebookOutput() IdentityProviderFacebookOutput {
+	return o
+}
+
+func (o IdentityProviderFacebookOutput) ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderFacebookOutput{})
 }

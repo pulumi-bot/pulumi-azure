@@ -4,6 +4,8 @@
 package containerservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,14 +119,14 @@ type KubernetesClusterNodePool struct {
 // NewKubernetesClusterNodePool registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesClusterNodePool(ctx *pulumi.Context,
 	name string, args *KubernetesClusterNodePoolArgs, opts ...pulumi.ResourceOption) (*KubernetesClusterNodePool, error) {
-	if args == nil || args.KubernetesClusterId == nil {
-		return nil, errors.New("missing required argument 'KubernetesClusterId'")
-	}
-	if args == nil || args.VmSize == nil {
-		return nil, errors.New("missing required argument 'VmSize'")
-	}
 	if args == nil {
-		args = &KubernetesClusterNodePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KubernetesClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesClusterId'")
+	}
+	if args.VmSize == nil {
+		return nil, errors.New("invalid value for required argument 'VmSize'")
 	}
 	var resource KubernetesClusterNodePool
 	err := ctx.RegisterResource("azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool", name, args, &resource, opts...)
@@ -334,4 +336,43 @@ type KubernetesClusterNodePoolArgs struct {
 
 func (KubernetesClusterNodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterNodePoolArgs)(nil)).Elem()
+}
+
+type KubernetesClusterNodePoolInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput
+	ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput
+}
+
+func (KubernetesClusterNodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePool)(nil)).Elem()
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput {
+	return i.ToKubernetesClusterNodePoolOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolOutput)
+}
+
+type KubernetesClusterNodePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterNodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNodePoolOutput)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolOutput() KubernetesClusterNodePoolOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesClusterNodePoolOutput{})
 }

@@ -4,6 +4,8 @@
 package servicefabric
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,11 +64,11 @@ type MeshSecret struct {
 // NewMeshSecret registers a new resource with the given unique name, arguments, and options.
 func NewMeshSecret(ctx *pulumi.Context,
 	name string, args *MeshSecretArgs, opts ...pulumi.ResourceOption) (*MeshSecret, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &MeshSecretArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource MeshSecret
 	err := ctx.RegisterResource("azure:servicefabric/meshSecret:MeshSecret", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type MeshSecretArgs struct {
 
 func (MeshSecretArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshSecretArgs)(nil)).Elem()
+}
+
+type MeshSecretInput interface {
+	pulumi.Input
+
+	ToMeshSecretOutput() MeshSecretOutput
+	ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput
+}
+
+func (MeshSecret) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecret)(nil)).Elem()
+}
+
+func (i MeshSecret) ToMeshSecretOutput() MeshSecretOutput {
+	return i.ToMeshSecretOutputWithContext(context.Background())
+}
+
+func (i MeshSecret) ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretOutput)
+}
+
+type MeshSecretOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretOutput)(nil)).Elem()
+}
+
+func (o MeshSecretOutput) ToMeshSecretOutput() MeshSecretOutput {
+	return o
+}
+
+func (o MeshSecretOutput) ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshSecretOutput{})
 }

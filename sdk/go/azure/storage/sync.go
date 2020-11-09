@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,11 +65,11 @@ type Sync struct {
 // NewSync registers a new resource with the given unique name, arguments, and options.
 func NewSync(ctx *pulumi.Context,
 	name string, args *SyncArgs, opts ...pulumi.ResourceOption) (*Sync, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SyncArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Sync
 	err := ctx.RegisterResource("azure:storage/sync:Sync", name, args, &resource, opts...)
@@ -149,4 +151,43 @@ type SyncArgs struct {
 
 func (SyncArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncArgs)(nil)).Elem()
+}
+
+type SyncInput interface {
+	pulumi.Input
+
+	ToSyncOutput() SyncOutput
+	ToSyncOutputWithContext(ctx context.Context) SyncOutput
+}
+
+func (Sync) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sync)(nil)).Elem()
+}
+
+func (i Sync) ToSyncOutput() SyncOutput {
+	return i.ToSyncOutputWithContext(context.Background())
+}
+
+func (i Sync) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyncOutput)
+}
+
+type SyncOutput struct {
+	*pulumi.OutputState
+}
+
+func (SyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyncOutput)(nil)).Elem()
+}
+
+func (o SyncOutput) ToSyncOutput() SyncOutput {
+	return o
+}
+
+func (o SyncOutput) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SyncOutput{})
 }

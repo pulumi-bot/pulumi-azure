@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,14 +73,14 @@ type NatGatewayPublicIpAssociation struct {
 // NewNatGatewayPublicIpAssociation registers a new resource with the given unique name, arguments, and options.
 func NewNatGatewayPublicIpAssociation(ctx *pulumi.Context,
 	name string, args *NatGatewayPublicIpAssociationArgs, opts ...pulumi.ResourceOption) (*NatGatewayPublicIpAssociation, error) {
-	if args == nil || args.NatGatewayId == nil {
-		return nil, errors.New("missing required argument 'NatGatewayId'")
-	}
-	if args == nil || args.PublicIpAddressId == nil {
-		return nil, errors.New("missing required argument 'PublicIpAddressId'")
-	}
 	if args == nil {
-		args = &NatGatewayPublicIpAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.NatGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'NatGatewayId'")
+	}
+	if args.PublicIpAddressId == nil {
+		return nil, errors.New("invalid value for required argument 'PublicIpAddressId'")
 	}
 	var resource NatGatewayPublicIpAssociation
 	err := ctx.RegisterResource("azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation", name, args, &resource, opts...)
@@ -136,4 +138,43 @@ type NatGatewayPublicIpAssociationArgs struct {
 
 func (NatGatewayPublicIpAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*natGatewayPublicIpAssociationArgs)(nil)).Elem()
+}
+
+type NatGatewayPublicIpAssociationInput interface {
+	pulumi.Input
+
+	ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput
+	ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput
+}
+
+func (NatGatewayPublicIpAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil)).Elem()
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
+	return i.ToNatGatewayPublicIpAssociationOutputWithContext(context.Background())
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationOutput)
+}
+
+type NatGatewayPublicIpAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayPublicIpAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayPublicIpAssociationOutput)(nil)).Elem()
+}
+
+func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
+	return o
+}
+
+func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationOutput{})
 }

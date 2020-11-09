@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,17 +97,17 @@ type DatasetAzureBlob struct {
 // NewDatasetAzureBlob registers a new resource with the given unique name, arguments, and options.
 func NewDatasetAzureBlob(ctx *pulumi.Context,
 	name string, args *DatasetAzureBlobArgs, opts ...pulumi.ResourceOption) (*DatasetAzureBlob, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetAzureBlobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetAzureBlob
 	err := ctx.RegisterResource("azure:datafactory/datasetAzureBlob:DatasetAzureBlob", name, args, &resource, opts...)
@@ -243,4 +245,43 @@ type DatasetAzureBlobArgs struct {
 
 func (DatasetAzureBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetAzureBlobArgs)(nil)).Elem()
+}
+
+type DatasetAzureBlobInput interface {
+	pulumi.Input
+
+	ToDatasetAzureBlobOutput() DatasetAzureBlobOutput
+	ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput
+}
+
+func (DatasetAzureBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAzureBlob)(nil)).Elem()
+}
+
+func (i DatasetAzureBlob) ToDatasetAzureBlobOutput() DatasetAzureBlobOutput {
+	return i.ToDatasetAzureBlobOutputWithContext(context.Background())
+}
+
+func (i DatasetAzureBlob) ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAzureBlobOutput)
+}
+
+type DatasetAzureBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetAzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAzureBlobOutput)(nil)).Elem()
+}
+
+func (o DatasetAzureBlobOutput) ToDatasetAzureBlobOutput() DatasetAzureBlobOutput {
+	return o
+}
+
+func (o DatasetAzureBlobOutput) ToDatasetAzureBlobOutputWithContext(ctx context.Context) DatasetAzureBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetAzureBlobOutput{})
 }

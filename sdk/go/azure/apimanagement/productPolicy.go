@@ -4,6 +4,8 @@
 package apimanagement
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,17 +67,17 @@ type ProductPolicy struct {
 // NewProductPolicy registers a new resource with the given unique name, arguments, and options.
 func NewProductPolicy(ctx *pulumi.Context,
 	name string, args *ProductPolicyArgs, opts ...pulumi.ResourceOption) (*ProductPolicy, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ProductId == nil {
-		return nil, errors.New("missing required argument 'ProductId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProductPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ProductPolicy
 	err := ctx.RegisterResource("azure:apimanagement/productPolicy:ProductPolicy", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type ProductPolicyArgs struct {
 
 func (ProductPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*productPolicyArgs)(nil)).Elem()
+}
+
+type ProductPolicyInput interface {
+	pulumi.Input
+
+	ToProductPolicyOutput() ProductPolicyOutput
+	ToProductPolicyOutputWithContext(ctx context.Context) ProductPolicyOutput
+}
+
+func (ProductPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductPolicy)(nil)).Elem()
+}
+
+func (i ProductPolicy) ToProductPolicyOutput() ProductPolicyOutput {
+	return i.ToProductPolicyOutputWithContext(context.Background())
+}
+
+func (i ProductPolicy) ToProductPolicyOutputWithContext(ctx context.Context) ProductPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductPolicyOutput)
+}
+
+type ProductPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductPolicyOutput)(nil)).Elem()
+}
+
+func (o ProductPolicyOutput) ToProductPolicyOutput() ProductPolicyOutput {
+	return o
+}
+
+func (o ProductPolicyOutput) ToProductPolicyOutputWithContext(ctx context.Context) ProductPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductPolicyOutput{})
 }

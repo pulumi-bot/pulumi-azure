@@ -4,6 +4,8 @@
 package automation
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,14 +33,14 @@ type StringVariable struct {
 // NewStringVariable registers a new resource with the given unique name, arguments, and options.
 func NewStringVariable(ctx *pulumi.Context,
 	name string, args *StringVariableArgs, opts ...pulumi.ResourceOption) (*StringVariable, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &StringVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource StringVariable
 	err := ctx.RegisterResource("azure:automation/stringVariable:StringVariable", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type StringVariableArgs struct {
 
 func (StringVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stringVariableArgs)(nil)).Elem()
+}
+
+type StringVariableInput interface {
+	pulumi.Input
+
+	ToStringVariableOutput() StringVariableOutput
+	ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput
+}
+
+func (StringVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringVariable)(nil)).Elem()
+}
+
+func (i StringVariable) ToStringVariableOutput() StringVariableOutput {
+	return i.ToStringVariableOutputWithContext(context.Background())
+}
+
+func (i StringVariable) ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringVariableOutput)
+}
+
+type StringVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (StringVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringVariableOutput)(nil)).Elem()
+}
+
+func (o StringVariableOutput) ToStringVariableOutput() StringVariableOutput {
+	return o
+}
+
+func (o StringVariableOutput) ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StringVariableOutput{})
 }

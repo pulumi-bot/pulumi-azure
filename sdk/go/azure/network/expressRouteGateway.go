@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,17 +85,17 @@ type ExpressRouteGateway struct {
 // NewExpressRouteGateway registers a new resource with the given unique name, arguments, and options.
 func NewExpressRouteGateway(ctx *pulumi.Context,
 	name string, args *ExpressRouteGatewayArgs, opts ...pulumi.ResourceOption) (*ExpressRouteGateway, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ScaleUnits == nil {
-		return nil, errors.New("missing required argument 'ScaleUnits'")
-	}
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
 	if args == nil {
-		args = &ExpressRouteGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ScaleUnits == nil {
+		return nil, errors.New("invalid value for required argument 'ScaleUnits'")
+	}
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
 	}
 	var resource ExpressRouteGateway
 	err := ctx.RegisterResource("azure:network/expressRouteGateway:ExpressRouteGateway", name, args, &resource, opts...)
@@ -183,4 +185,43 @@ type ExpressRouteGatewayArgs struct {
 
 func (ExpressRouteGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*expressRouteGatewayArgs)(nil)).Elem()
+}
+
+type ExpressRouteGatewayInput interface {
+	pulumi.Input
+
+	ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput
+	ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput
+}
+
+func (ExpressRouteGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteGateway)(nil)).Elem()
+}
+
+func (i ExpressRouteGateway) ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput {
+	return i.ToExpressRouteGatewayOutputWithContext(context.Background())
+}
+
+func (i ExpressRouteGateway) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayOutput)
+}
+
+type ExpressRouteGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteGatewayOutput)(nil)).Elem()
+}
+
+func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutput() ExpressRouteGatewayOutput {
+	return o
+}
+
+func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExpressRouteGatewayOutput{})
 }

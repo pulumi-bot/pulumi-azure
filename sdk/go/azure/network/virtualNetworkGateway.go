@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -162,20 +164,20 @@ type VirtualNetworkGateway struct {
 // NewVirtualNetworkGateway registers a new resource with the given unique name, arguments, and options.
 func NewVirtualNetworkGateway(ctx *pulumi.Context,
 	name string, args *VirtualNetworkGatewayArgs, opts ...pulumi.ResourceOption) (*VirtualNetworkGateway, error) {
-	if args == nil || args.IpConfigurations == nil {
-		return nil, errors.New("missing required argument 'IpConfigurations'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &VirtualNetworkGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.IpConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurations'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource VirtualNetworkGateway
 	err := ctx.RegisterResource("azure:network/virtualNetworkGateway:VirtualNetworkGateway", name, args, &resource, opts...)
@@ -417,4 +419,43 @@ type VirtualNetworkGatewayArgs struct {
 
 func (VirtualNetworkGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNetworkGatewayArgs)(nil)).Elem()
+}
+
+type VirtualNetworkGatewayInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayOutput() VirtualNetworkGatewayOutput
+	ToVirtualNetworkGatewayOutputWithContext(ctx context.Context) VirtualNetworkGatewayOutput
+}
+
+func (VirtualNetworkGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGateway)(nil)).Elem()
+}
+
+func (i VirtualNetworkGateway) ToVirtualNetworkGatewayOutput() VirtualNetworkGatewayOutput {
+	return i.ToVirtualNetworkGatewayOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGateway) ToVirtualNetworkGatewayOutputWithContext(ctx context.Context) VirtualNetworkGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayOutput)
+}
+
+type VirtualNetworkGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayOutput)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayOutput) ToVirtualNetworkGatewayOutput() VirtualNetworkGatewayOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayOutput) ToVirtualNetworkGatewayOutputWithContext(ctx context.Context) VirtualNetworkGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualNetworkGatewayOutput{})
 }

@@ -4,6 +4,8 @@
 package datashare
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -29,14 +31,14 @@ type DatasetKustoCluster struct {
 // NewDatasetKustoCluster registers a new resource with the given unique name, arguments, and options.
 func NewDatasetKustoCluster(ctx *pulumi.Context,
 	name string, args *DatasetKustoClusterArgs, opts ...pulumi.ResourceOption) (*DatasetKustoCluster, error) {
-	if args == nil || args.KustoClusterId == nil {
-		return nil, errors.New("missing required argument 'KustoClusterId'")
-	}
-	if args == nil || args.ShareId == nil {
-		return nil, errors.New("missing required argument 'ShareId'")
-	}
 	if args == nil {
-		args = &DatasetKustoClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KustoClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'KustoClusterId'")
+	}
+	if args.ShareId == nil {
+		return nil, errors.New("invalid value for required argument 'ShareId'")
 	}
 	var resource DatasetKustoCluster
 	err := ctx.RegisterResource("azure:datashare/datasetKustoCluster:DatasetKustoCluster", name, args, &resource, opts...)
@@ -110,4 +112,43 @@ type DatasetKustoClusterArgs struct {
 
 func (DatasetKustoClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetKustoClusterArgs)(nil)).Elem()
+}
+
+type DatasetKustoClusterInput interface {
+	pulumi.Input
+
+	ToDatasetKustoClusterOutput() DatasetKustoClusterOutput
+	ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput
+}
+
+func (DatasetKustoCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetKustoCluster)(nil)).Elem()
+}
+
+func (i DatasetKustoCluster) ToDatasetKustoClusterOutput() DatasetKustoClusterOutput {
+	return i.ToDatasetKustoClusterOutputWithContext(context.Background())
+}
+
+func (i DatasetKustoCluster) ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetKustoClusterOutput)
+}
+
+type DatasetKustoClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetKustoClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetKustoClusterOutput)(nil)).Elem()
+}
+
+func (o DatasetKustoClusterOutput) ToDatasetKustoClusterOutput() DatasetKustoClusterOutput {
+	return o
+}
+
+func (o DatasetKustoClusterOutput) ToDatasetKustoClusterOutputWithContext(ctx context.Context) DatasetKustoClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetKustoClusterOutput{})
 }

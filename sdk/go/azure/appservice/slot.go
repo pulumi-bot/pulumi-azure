@@ -4,6 +4,8 @@
 package appservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -214,17 +216,17 @@ type Slot struct {
 // NewSlot registers a new resource with the given unique name, arguments, and options.
 func NewSlot(ctx *pulumi.Context,
 	name string, args *SlotArgs, opts ...pulumi.ResourceOption) (*Slot, error) {
-	if args == nil || args.AppServiceName == nil {
-		return nil, errors.New("missing required argument 'AppServiceName'")
-	}
-	if args == nil || args.AppServicePlanId == nil {
-		return nil, errors.New("missing required argument 'AppServicePlanId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SlotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AppServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceName'")
+	}
+	if args.AppServicePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServicePlanId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Slot
 	err := ctx.RegisterResource("azure:appservice/slot:Slot", name, args, &resource, opts...)
@@ -390,4 +392,43 @@ type SlotArgs struct {
 
 func (SlotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*slotArgs)(nil)).Elem()
+}
+
+type SlotInput interface {
+	pulumi.Input
+
+	ToSlotOutput() SlotOutput
+	ToSlotOutputWithContext(ctx context.Context) SlotOutput
+}
+
+func (Slot) ElementType() reflect.Type {
+	return reflect.TypeOf((*Slot)(nil)).Elem()
+}
+
+func (i Slot) ToSlotOutput() SlotOutput {
+	return i.ToSlotOutputWithContext(context.Background())
+}
+
+func (i Slot) ToSlotOutputWithContext(ctx context.Context) SlotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlotOutput)
+}
+
+type SlotOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotOutput)(nil)).Elem()
+}
+
+func (o SlotOutput) ToSlotOutput() SlotOutput {
+	return o
+}
+
+func (o SlotOutput) ToSlotOutputWithContext(ctx context.Context) SlotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SlotOutput{})
 }

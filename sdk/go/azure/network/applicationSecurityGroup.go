@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,11 +63,11 @@ type ApplicationSecurityGroup struct {
 // NewApplicationSecurityGroup registers a new resource with the given unique name, arguments, and options.
 func NewApplicationSecurityGroup(ctx *pulumi.Context,
 	name string, args *ApplicationSecurityGroupArgs, opts ...pulumi.ResourceOption) (*ApplicationSecurityGroup, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ApplicationSecurityGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ApplicationSecurityGroup
 	err := ctx.RegisterResource("azure:network/applicationSecurityGroup:ApplicationSecurityGroup", name, args, &resource, opts...)
@@ -139,4 +141,43 @@ type ApplicationSecurityGroupArgs struct {
 
 func (ApplicationSecurityGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationSecurityGroupArgs)(nil)).Elem()
+}
+
+type ApplicationSecurityGroupInput interface {
+	pulumi.Input
+
+	ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput
+	ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput
+}
+
+func (ApplicationSecurityGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput {
+	return i.ToApplicationSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupOutput)
+}
+
+type ApplicationSecurityGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSecurityGroupOutput)(nil)).Elem()
+}
+
+func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput {
+	return o
+}
+
+func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationSecurityGroupOutput{})
 }

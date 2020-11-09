@@ -4,6 +4,8 @@
 package netapp
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,20 +76,20 @@ type Pool struct {
 // NewPool registers a new resource with the given unique name, arguments, and options.
 func NewPool(ctx *pulumi.Context,
 	name string, args *PoolArgs, opts ...pulumi.ResourceOption) (*Pool, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceLevel == nil {
-		return nil, errors.New("missing required argument 'ServiceLevel'")
-	}
-	if args == nil || args.SizeInTb == nil {
-		return nil, errors.New("missing required argument 'SizeInTb'")
-	}
 	if args == nil {
-		args = &PoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceLevel == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceLevel'")
+	}
+	if args.SizeInTb == nil {
+		return nil, errors.New("invalid value for required argument 'SizeInTb'")
 	}
 	var resource Pool
 	err := ctx.RegisterResource("azure:netapp/pool:Pool", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type PoolArgs struct {
 
 func (PoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolArgs)(nil)).Elem()
+}
+
+type PoolInput interface {
+	pulumi.Input
+
+	ToPoolOutput() PoolOutput
+	ToPoolOutputWithContext(ctx context.Context) PoolOutput
+}
+
+func (Pool) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pool)(nil)).Elem()
+}
+
+func (i Pool) ToPoolOutput() PoolOutput {
+	return i.ToPoolOutputWithContext(context.Background())
+}
+
+func (i Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
+}
+
+type PoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (PoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolOutput)(nil)).Elem()
+}
+
+func (o PoolOutput) ToPoolOutput() PoolOutput {
+	return o
+}
+
+func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PoolOutput{})
 }

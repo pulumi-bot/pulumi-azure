@@ -4,6 +4,8 @@
 package devtest
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -57,32 +59,32 @@ type LinuxVirtualMachine struct {
 // NewLinuxVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewLinuxVirtualMachine(ctx *pulumi.Context,
 	name string, args *LinuxVirtualMachineArgs, opts ...pulumi.ResourceOption) (*LinuxVirtualMachine, error) {
-	if args == nil || args.GalleryImageReference == nil {
-		return nil, errors.New("missing required argument 'GalleryImageReference'")
-	}
-	if args == nil || args.LabName == nil {
-		return nil, errors.New("missing required argument 'LabName'")
-	}
-	if args == nil || args.LabSubnetName == nil {
-		return nil, errors.New("missing required argument 'LabSubnetName'")
-	}
-	if args == nil || args.LabVirtualNetworkId == nil {
-		return nil, errors.New("missing required argument 'LabVirtualNetworkId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
-	if args == nil || args.StorageType == nil {
-		return nil, errors.New("missing required argument 'StorageType'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &LinuxVirtualMachineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.GalleryImageReference == nil {
+		return nil, errors.New("invalid value for required argument 'GalleryImageReference'")
+	}
+	if args.LabName == nil {
+		return nil, errors.New("invalid value for required argument 'LabName'")
+	}
+	if args.LabSubnetName == nil {
+		return nil, errors.New("invalid value for required argument 'LabSubnetName'")
+	}
+	if args.LabVirtualNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'LabVirtualNetworkId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
+	}
+	if args.StorageType == nil {
+		return nil, errors.New("invalid value for required argument 'StorageType'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource LinuxVirtualMachine
 	err := ctx.RegisterResource("azure:devtest/linuxVirtualMachine:LinuxVirtualMachine", name, args, &resource, opts...)
@@ -268,4 +270,43 @@ type LinuxVirtualMachineArgs struct {
 
 func (LinuxVirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linuxVirtualMachineArgs)(nil)).Elem()
+}
+
+type LinuxVirtualMachineInput interface {
+	pulumi.Input
+
+	ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput
+	ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput
+}
+
+func (LinuxVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachine)(nil)).Elem()
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput {
+	return i.ToLinuxVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOutput)
+}
+
+type LinuxVirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinuxVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachineOutput)(nil)).Elem()
+}
+
+func (o LinuxVirtualMachineOutput) ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput {
+	return o
+}
+
+func (o LinuxVirtualMachineOutput) ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinuxVirtualMachineOutput{})
 }

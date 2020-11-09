@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,23 +84,23 @@ type ExpressRouteCircuit struct {
 // NewExpressRouteCircuit registers a new resource with the given unique name, arguments, and options.
 func NewExpressRouteCircuit(ctx *pulumi.Context,
 	name string, args *ExpressRouteCircuitArgs, opts ...pulumi.ResourceOption) (*ExpressRouteCircuit, error) {
-	if args == nil || args.BandwidthInMbps == nil {
-		return nil, errors.New("missing required argument 'BandwidthInMbps'")
-	}
-	if args == nil || args.PeeringLocation == nil {
-		return nil, errors.New("missing required argument 'PeeringLocation'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceProviderName == nil {
-		return nil, errors.New("missing required argument 'ServiceProviderName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &ExpressRouteCircuitArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.BandwidthInMbps == nil {
+		return nil, errors.New("invalid value for required argument 'BandwidthInMbps'")
+	}
+	if args.PeeringLocation == nil {
+		return nil, errors.New("invalid value for required argument 'PeeringLocation'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceProviderName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceProviderName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource ExpressRouteCircuit
 	err := ctx.RegisterResource("azure:network/expressRouteCircuit:ExpressRouteCircuit", name, args, &resource, opts...)
@@ -220,4 +222,43 @@ type ExpressRouteCircuitArgs struct {
 
 func (ExpressRouteCircuitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*expressRouteCircuitArgs)(nil)).Elem()
+}
+
+type ExpressRouteCircuitInput interface {
+	pulumi.Input
+
+	ToExpressRouteCircuitOutput() ExpressRouteCircuitOutput
+	ToExpressRouteCircuitOutputWithContext(ctx context.Context) ExpressRouteCircuitOutput
+}
+
+func (ExpressRouteCircuit) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuit)(nil)).Elem()
+}
+
+func (i ExpressRouteCircuit) ToExpressRouteCircuitOutput() ExpressRouteCircuitOutput {
+	return i.ToExpressRouteCircuitOutputWithContext(context.Background())
+}
+
+func (i ExpressRouteCircuit) ToExpressRouteCircuitOutputWithContext(ctx context.Context) ExpressRouteCircuitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitOutput)
+}
+
+type ExpressRouteCircuitOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteCircuitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitOutput)(nil)).Elem()
+}
+
+func (o ExpressRouteCircuitOutput) ToExpressRouteCircuitOutput() ExpressRouteCircuitOutput {
+	return o
+}
+
+func (o ExpressRouteCircuitOutput) ToExpressRouteCircuitOutputWithContext(ctx context.Context) ExpressRouteCircuitOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExpressRouteCircuitOutput{})
 }

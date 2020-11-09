@@ -4,6 +4,8 @@
 package desktopvirtualization
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -104,17 +106,17 @@ type ApplicationGroup struct {
 // NewApplicationGroup registers a new resource with the given unique name, arguments, and options.
 func NewApplicationGroup(ctx *pulumi.Context,
 	name string, args *ApplicationGroupArgs, opts ...pulumi.ResourceOption) (*ApplicationGroup, error) {
-	if args == nil || args.HostPoolId == nil {
-		return nil, errors.New("missing required argument 'HostPoolId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ApplicationGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.HostPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'HostPoolId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ApplicationGroup
 	err := ctx.RegisterResource("azure:desktopvirtualization/applicationGroup:ApplicationGroup", name, args, &resource, opts...)
@@ -240,4 +242,43 @@ type ApplicationGroupArgs struct {
 
 func (ApplicationGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationGroupArgs)(nil)).Elem()
+}
+
+type ApplicationGroupInput interface {
+	pulumi.Input
+
+	ToApplicationGroupOutput() ApplicationGroupOutput
+	ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput
+}
+
+func (ApplicationGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGroup)(nil)).Elem()
+}
+
+func (i ApplicationGroup) ToApplicationGroupOutput() ApplicationGroupOutput {
+	return i.ToApplicationGroupOutputWithContext(context.Background())
+}
+
+func (i ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGroupOutput)
+}
+
+type ApplicationGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGroupOutput)(nil)).Elem()
+}
+
+func (o ApplicationGroupOutput) ToApplicationGroupOutput() ApplicationGroupOutput {
+	return o
+}
+
+func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationGroupOutput{})
 }

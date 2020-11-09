@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,14 +97,14 @@ type NetworkInterfaceApplicationSecurityGroupAssociation struct {
 // NewNetworkInterfaceApplicationSecurityGroupAssociation registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterfaceApplicationSecurityGroupAssociation(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceApplicationSecurityGroupAssociationArgs, opts ...pulumi.ResourceOption) (*NetworkInterfaceApplicationSecurityGroupAssociation, error) {
-	if args == nil || args.ApplicationSecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'ApplicationSecurityGroupId'")
-	}
-	if args == nil || args.NetworkInterfaceId == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceApplicationSecurityGroupAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationSecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationSecurityGroupId'")
+	}
+	if args.NetworkInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceId'")
 	}
 	var resource NetworkInterfaceApplicationSecurityGroupAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation", name, args, &resource, opts...)
@@ -160,4 +162,43 @@ type NetworkInterfaceApplicationSecurityGroupAssociationArgs struct {
 
 func (NetworkInterfaceApplicationSecurityGroupAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceApplicationSecurityGroupAssociationArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceApplicationSecurityGroupAssociationInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput
+	ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput
+}
+
+func (NetworkInterfaceApplicationSecurityGroupAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceApplicationSecurityGroupAssociation)(nil)).Elem()
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return i.ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceApplicationSecurityGroupAssociationOutput)
+}
+
+type NetworkInterfaceApplicationSecurityGroupAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceApplicationSecurityGroupAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceApplicationSecurityGroupAssociationOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationOutput() NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return o
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceApplicationSecurityGroupAssociationOutput{})
 }

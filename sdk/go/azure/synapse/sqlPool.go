@@ -4,6 +4,8 @@
 package synapse
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,14 +97,14 @@ type SqlPool struct {
 // NewSqlPool registers a new resource with the given unique name, arguments, and options.
 func NewSqlPool(ctx *pulumi.Context,
 	name string, args *SqlPoolArgs, opts ...pulumi.ResourceOption) (*SqlPool, error) {
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
-	if args == nil || args.SynapseWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
-	}
 	if args == nil {
-		args = &SqlPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
+	}
+	if args.SynapseWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'SynapseWorkspaceId'")
 	}
 	var resource SqlPool
 	err := ctx.RegisterResource("azure:synapse/sqlPool:SqlPool", name, args, &resource, opts...)
@@ -212,4 +214,43 @@ type SqlPoolArgs struct {
 
 func (SqlPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlPoolArgs)(nil)).Elem()
+}
+
+type SqlPoolInput interface {
+	pulumi.Input
+
+	ToSqlPoolOutput() SqlPoolOutput
+	ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput
+}
+
+func (SqlPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlPool)(nil)).Elem()
+}
+
+func (i SqlPool) ToSqlPoolOutput() SqlPoolOutput {
+	return i.ToSqlPoolOutputWithContext(context.Background())
+}
+
+func (i SqlPool) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolOutput)
+}
+
+type SqlPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlPoolOutput)(nil)).Elem()
+}
+
+func (o SqlPoolOutput) ToSqlPoolOutput() SqlPoolOutput {
+	return o
+}
+
+func (o SqlPoolOutput) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlPoolOutput{})
 }

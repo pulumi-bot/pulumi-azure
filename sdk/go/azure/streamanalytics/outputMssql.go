@@ -4,6 +4,8 @@
 package streamanalytics
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -100,29 +102,29 @@ type OutputMssql struct {
 // NewOutputMssql registers a new resource with the given unique name, arguments, and options.
 func NewOutputMssql(ctx *pulumi.Context,
 	name string, args *OutputMssqlArgs, opts ...pulumi.ResourceOption) (*OutputMssql, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Server == nil {
-		return nil, errors.New("missing required argument 'Server'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
-	if args == nil || args.Table == nil {
-		return nil, errors.New("missing required argument 'Table'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &OutputMssqlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Server == nil {
+		return nil, errors.New("invalid value for required argument 'Server'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
+	}
+	if args.Table == nil {
+		return nil, errors.New("invalid value for required argument 'Table'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource OutputMssql
 	err := ctx.RegisterResource("azure:streamanalytics/outputMssql:OutputMssql", name, args, &resource, opts...)
@@ -224,4 +226,43 @@ type OutputMssqlArgs struct {
 
 func (OutputMssqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputMssqlArgs)(nil)).Elem()
+}
+
+type OutputMssqlInput interface {
+	pulumi.Input
+
+	ToOutputMssqlOutput() OutputMssqlOutput
+	ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput
+}
+
+func (OutputMssql) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputMssql)(nil)).Elem()
+}
+
+func (i OutputMssql) ToOutputMssqlOutput() OutputMssqlOutput {
+	return i.ToOutputMssqlOutputWithContext(context.Background())
+}
+
+func (i OutputMssql) ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputMssqlOutput)
+}
+
+type OutputMssqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputMssqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputMssqlOutput)(nil)).Elem()
+}
+
+func (o OutputMssqlOutput) ToOutputMssqlOutput() OutputMssqlOutput {
+	return o
+}
+
+func (o OutputMssqlOutput) ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputMssqlOutput{})
 }
