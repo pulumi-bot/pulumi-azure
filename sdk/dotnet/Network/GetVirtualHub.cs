@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Network
         /// <summary>
         /// Uses this data source to access information about an existing Virtual Hub.
         /// 
+        /// 
         /// ## Virtual Hub Usage
         /// 
         /// ```csharp

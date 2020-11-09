@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Cdn
         /// <summary>
         /// Use this data source to access information about an existing CDN Profile.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

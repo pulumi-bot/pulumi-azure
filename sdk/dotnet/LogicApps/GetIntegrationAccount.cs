@@ -14,6 +14,7 @@ namespace Pulumi.Azure.LogicApps
         /// <summary>
         /// Use this data source to access information about an existing Logic App Integration Account.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

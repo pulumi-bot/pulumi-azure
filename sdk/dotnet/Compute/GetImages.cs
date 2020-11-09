@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Compute
         /// <summary>
         /// Use this data source to access information about existing Images within a Resource Group.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

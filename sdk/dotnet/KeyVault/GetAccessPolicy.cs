@@ -14,6 +14,7 @@ namespace Pulumi.Azure.KeyVault
         /// <summary>
         /// Use this data source to access information about the permissions from the Management Key Vault Templates.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

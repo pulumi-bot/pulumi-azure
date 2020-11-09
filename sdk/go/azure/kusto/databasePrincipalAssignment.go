@@ -72,6 +72,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Kusto Database Principal Assignment can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Kusto/Clusters/cluster1/Databases/database1/PrincipalAssignments/assignment1
+// ```
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 

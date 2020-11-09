@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Policy
         /// <summary>
         /// Use this data source to access information about an existing Policy Set Definition.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

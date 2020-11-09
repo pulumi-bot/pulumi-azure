@@ -14,6 +14,7 @@ namespace Pulumi.Azure.DatabaseMigration
         /// <summary>
         /// Use this data source to access information about an existing Database Migration Project.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

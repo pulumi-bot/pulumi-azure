@@ -14,6 +14,7 @@ namespace Pulumi.Azure.SignalR
         /// <summary>
         /// Use this data source to access information about an existing Azure SignalR service.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

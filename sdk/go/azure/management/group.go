@@ -51,6 +51,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Management Groups can be imported using the `management group resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:management/group:Group example /providers/Microsoft.Management/managementGroups/group1
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 

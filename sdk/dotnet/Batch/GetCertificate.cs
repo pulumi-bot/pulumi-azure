@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Batch
         /// <summary>
         /// Use this data source to access information about an existing certificate in a Batch Account.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

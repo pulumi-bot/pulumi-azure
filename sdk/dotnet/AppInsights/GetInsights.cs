@@ -14,6 +14,7 @@ namespace Pulumi.Azure.AppInsights
         /// <summary>
         /// Use this data source to access information about an existing Application Insights component.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

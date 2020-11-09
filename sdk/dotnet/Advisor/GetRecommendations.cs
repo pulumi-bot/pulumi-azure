@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Advisor
         /// <summary>
         /// Use this data source to access information about an existing Advisor Recommendations.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -47,6 +47,14 @@ import (
 // }
 // ```
 //
+// ## Import
+//
+// Service Bus Namespace can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:eventhub/namespace:Namespace example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.servicebus/namespaces/sbns1
+// ```
+//
 // Deprecated: azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace
 type Namespace struct {
 	pulumi.CustomResourceState

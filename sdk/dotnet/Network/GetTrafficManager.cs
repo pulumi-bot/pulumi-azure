@@ -14,8 +14,10 @@ namespace Pulumi.Azure.Network
         /// <summary>
         /// Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// 
         /// {{% example %}}
         /// ### World)
         /// 

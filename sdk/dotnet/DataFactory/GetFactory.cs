@@ -14,6 +14,7 @@ namespace Pulumi.Azure.DataFactory
         /// <summary>
         /// Use this data source to access information about an existing Azure Data Factory (Version 2).
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

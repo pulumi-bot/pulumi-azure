@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Core
         /// <summary>
         /// Use this data source to access information about an existing Subscription.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

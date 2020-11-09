@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Iot
         /// <summary>
         /// Use this data source to access information about an existing IotHub Shared Access Policy
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

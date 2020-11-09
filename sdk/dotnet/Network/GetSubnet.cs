@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Network
         /// <summary>
         /// Use this data source to access information about an existing Subnet within a Virtual Network.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -14,6 +14,7 @@ namespace Pulumi.Azure.PrivateLink
         /// <summary>
         /// Use this data source to access information about an existing Private Link Service.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

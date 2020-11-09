@@ -56,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// VPN Sites can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:network/vpnSite:VpnSite example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/vpnSites/site1
+// ```
 type VpnSite struct {
 	pulumi.CustomResourceState
 
