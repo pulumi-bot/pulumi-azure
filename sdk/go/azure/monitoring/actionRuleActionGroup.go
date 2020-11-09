@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -195,4 +196,43 @@ type ActionRuleActionGroupArgs struct {
 
 func (ActionRuleActionGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionRuleActionGroupArgs)(nil)).Elem()
+}
+
+type ActionRuleActionGroupInput interface {
+	pulumi.Input
+
+	ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput
+	ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput
+}
+
+func (ActionRuleActionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleActionGroup)(nil)).Elem()
+}
+
+func (i ActionRuleActionGroup) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
+	return i.ToActionRuleActionGroupOutputWithContext(context.Background())
+}
+
+func (i ActionRuleActionGroup) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupOutput)
+}
+
+type ActionRuleActionGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleActionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleActionGroupOutput)(nil)).Elem()
+}
+
+func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
+	return o
+}
+
+func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionRuleActionGroupOutput{})
 }

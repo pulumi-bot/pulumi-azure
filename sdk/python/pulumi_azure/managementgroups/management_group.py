@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['ManagementGroup']
 
-warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
+warnings.warn("""azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group""", DeprecationWarning)
 
 
 class ManagementGroup(pulumi.CustomResource):
-    warnings.warn("azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group", DeprecationWarning)
+    warnings.warn("""azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -75,7 +75,7 @@ class ManagementGroup(pulumi.CustomResource):
 
             __props__['display_name'] = display_name
             if group_id is not None:
-                warnings.warn("Deprecated in favour of `name`", DeprecationWarning)
+                warnings.warn("""Deprecated in favour of `name`""", DeprecationWarning)
                 pulumi.log.warn("group_id is deprecated: Deprecated in favour of `name`")
             __props__['group_id'] = group_id
             __props__['name'] = name
