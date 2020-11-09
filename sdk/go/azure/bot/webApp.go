@@ -48,6 +48,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Bot Web App's can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:bot/webApp:WebApp example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.BotService/botServices/example
+// ```
 type WebApp struct {
 	pulumi.CustomResourceState
 

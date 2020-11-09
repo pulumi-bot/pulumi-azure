@@ -51,6 +51,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Logic App Custom Actions can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:logicapps/actionCustom:ActionCustom custom1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1/actions/custom1
+// ```
+//
+//  -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
 type ActionCustom struct {
 	pulumi.CustomResourceState
 

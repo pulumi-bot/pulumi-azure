@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Backup
         /// <summary>
         /// Use this data source to access information about an existing VM Backup Policy.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

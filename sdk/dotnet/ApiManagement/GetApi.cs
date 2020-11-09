@@ -14,6 +14,7 @@ namespace Pulumi.Azure.ApiManagement
         /// <summary>
         /// Use this data source to access information about an existing API Management API.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

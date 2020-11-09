@@ -14,6 +14,7 @@ namespace Pulumi.Azure.ManagedApplication
         /// <summary>
         /// Uses this data source to access information about an existing Managed Application Definition.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

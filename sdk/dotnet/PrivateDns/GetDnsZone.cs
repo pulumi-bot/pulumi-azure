@@ -14,6 +14,7 @@ namespace Pulumi.Azure.PrivateDns
         /// <summary>
         /// Use this data source to access information about an existing Private DNS Zone.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

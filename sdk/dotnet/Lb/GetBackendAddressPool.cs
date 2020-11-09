@@ -14,6 +14,7 @@ namespace Pulumi.Azure.Lb
         /// <summary>
         /// Use this data source to access information about an existing Load Balancer's Backend Address Pool.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

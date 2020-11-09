@@ -60,6 +60,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Storage Blob's can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:storage/blob:Blob blob1 https://example.blob.core.windows.net/container/blob.vhd
+// ```
 type Blob struct {
 	pulumi.CustomResourceState
 

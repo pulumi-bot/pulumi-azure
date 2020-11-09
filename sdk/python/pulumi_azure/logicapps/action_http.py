@@ -46,6 +46,16 @@ class ActionHttp(pulumi.CustomResource):
             uri="http://example.com/some-webhook")
         ```
 
+        ## Import
+
+        Logic App HTTP Actions can be imported using the `resource id`, e.g.
+
+        ```sh
+         $ pulumi import azure:logicapps/actionHttp:ActionHttp webhook1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1/actions/webhook1
+        ```
+
+         -> **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.

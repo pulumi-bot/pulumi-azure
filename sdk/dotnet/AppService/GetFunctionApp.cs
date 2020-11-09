@@ -14,6 +14,7 @@ namespace Pulumi.Azure.AppService
         /// <summary>
         /// Use this data source to access information about a Function App.
         /// 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
