@@ -79,6 +79,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// CosmosDB Accounts can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:cosmosdb/account:Account account1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DocumentDB/databaseAccounts/account1
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 

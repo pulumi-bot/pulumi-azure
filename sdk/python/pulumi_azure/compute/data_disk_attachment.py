@@ -97,6 +97,16 @@ class DataDiskAttachment(pulumi.CustomResource):
             caching="ReadWrite")
         ```
 
+        ## Import
+
+        Virtual Machines Data Disk Attachments can be imported using the `resource id`, e.g.
+
+        ```sh
+         $ pulumi import azure:compute/dataDiskAttachment:DataDiskAttachment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.compute/virtualMachines/machine1/dataDisks/disk1
+        ```
+
+         -> **Please Note:** This is a ID (specific to this provider) matching the format`{virtualMachineID}/dataDisks/{diskName}`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] caching: Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.

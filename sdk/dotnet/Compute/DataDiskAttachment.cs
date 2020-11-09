@@ -118,6 +118,16 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Virtual Machines Data Disk Attachments can be imported using the `resource id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azure:compute/dataDiskAttachment:DataDiskAttachment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.compute/virtualMachines/machine1/dataDisks/disk1
+    /// ```
+    /// 
+    ///  -&gt; **Please Note:** This is a ID (specific to this provider) matching the format`{virtualMachineID}/dataDisks/{diskName}`
     /// </summary>
     public partial class DataDiskAttachment : Pulumi.CustomResource
     {

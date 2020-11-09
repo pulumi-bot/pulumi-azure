@@ -95,6 +95,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Application Insights API keys can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:appinsights/apiKey:ApiKey my_key /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/instance1/apikeys/00000000-0000-0000-0000-000000000000
+// ```
+//
+//  -> **Note:** The secret `api_key` cannot be retrieved during an import. You will need to edit the state by hand to set the secret value if you happen to have it backed up somewhere.
 type ApiKey struct {
 	pulumi.CustomResourceState
 

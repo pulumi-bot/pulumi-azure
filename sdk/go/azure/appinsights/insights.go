@@ -45,6 +45,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Application Insights instances can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:appinsights/insights:Insights instance1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/instance1
+// ```
 type Insights struct {
 	pulumi.CustomResourceState
 
