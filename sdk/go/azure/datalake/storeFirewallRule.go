@@ -51,6 +51,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Store Firewall Rules can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:datalake/storeFirewallRule:StoreFirewallRule rule1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.DataLakeStore/accounts/mydatalakeaccount/firewallRules/rule1
+// ```
 type StoreFirewallRule struct {
 	pulumi.CustomResourceState
 

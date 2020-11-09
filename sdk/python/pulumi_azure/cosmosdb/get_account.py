@@ -69,7 +69,7 @@ class GetAccountResult:
         if primary_master_key and not isinstance(primary_master_key, str):
             raise TypeError("Expected argument 'primary_master_key' to be a str")
         if primary_master_key is not None:
-            warnings.warn("This property has been renamed to `primary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes", DeprecationWarning)
+            warnings.warn("""This property has been renamed to `primary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes""", DeprecationWarning)
             pulumi.log.warn("primary_master_key is deprecated: This property has been renamed to `primary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes")
 
         pulumi.set(__self__, "primary_master_key", primary_master_key)
@@ -79,7 +79,7 @@ class GetAccountResult:
         if primary_readonly_master_key and not isinstance(primary_readonly_master_key, str):
             raise TypeError("Expected argument 'primary_readonly_master_key' to be a str")
         if primary_readonly_master_key is not None:
-            warnings.warn("This property has been renamed to `primary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes", DeprecationWarning)
+            warnings.warn("""This property has been renamed to `primary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes""", DeprecationWarning)
             pulumi.log.warn("primary_readonly_master_key is deprecated: This property has been renamed to `primary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes")
 
         pulumi.set(__self__, "primary_readonly_master_key", primary_readonly_master_key)
@@ -95,7 +95,7 @@ class GetAccountResult:
         if secondary_master_key and not isinstance(secondary_master_key, str):
             raise TypeError("Expected argument 'secondary_master_key' to be a str")
         if secondary_master_key is not None:
-            warnings.warn("This property has been renamed to `secondary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes", DeprecationWarning)
+            warnings.warn("""This property has been renamed to `secondary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes""", DeprecationWarning)
             pulumi.log.warn("secondary_master_key is deprecated: This property has been renamed to `secondary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes")
 
         pulumi.set(__self__, "secondary_master_key", secondary_master_key)
@@ -105,7 +105,7 @@ class GetAccountResult:
         if secondary_readonly_master_key and not isinstance(secondary_readonly_master_key, str):
             raise TypeError("Expected argument 'secondary_readonly_master_key' to be a str")
         if secondary_readonly_master_key is not None:
-            warnings.warn("This property has been renamed to `secondary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes", DeprecationWarning)
+            warnings.warn("""This property has been renamed to `secondary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes""", DeprecationWarning)
             pulumi.log.warn("secondary_readonly_master_key is deprecated: This property has been renamed to `secondary_readonly_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes")
 
         pulumi.set(__self__, "secondary_readonly_master_key", secondary_readonly_master_key)

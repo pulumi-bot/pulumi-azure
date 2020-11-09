@@ -58,6 +58,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// The Microsoft Teams Integration for a Bot Channel can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:bot/channelTeams:ChannelTeams example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.BotService/botServices/example/channels/MsTeamsChannel
+// ```
 type ChannelTeams struct {
 	pulumi.CustomResourceState
 

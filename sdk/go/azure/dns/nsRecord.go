@@ -56,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// NS records can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:dns/nsRecord:NsRecord example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/dnszones/zone1/NS/myrecord1
+// ```
 type NsRecord struct {
 	pulumi.CustomResourceState
 

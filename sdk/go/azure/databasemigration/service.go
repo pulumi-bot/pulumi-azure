@@ -67,6 +67,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Database Migration Services can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:databasemigration/service:Service example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.DataMigration/services/database_migration_service1
+// ```
 type Service struct {
 	pulumi.CustomResourceState
 

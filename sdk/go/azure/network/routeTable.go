@@ -56,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Route Tables can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:network/routeTable:RouteTable example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/routeTables/mytable1
+// ```
 type RouteTable struct {
 	pulumi.CustomResourceState
 

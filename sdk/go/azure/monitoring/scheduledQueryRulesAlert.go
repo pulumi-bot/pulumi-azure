@@ -11,6 +11,14 @@ import (
 )
 
 // Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
+//
+// ## Import
+//
+// Scheduled Query Rule Alerts can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Insights/scheduledQueryRules/myrulename
+// ```
 type ScheduledQueryRulesAlert struct {
 	pulumi.CustomResourceState
 

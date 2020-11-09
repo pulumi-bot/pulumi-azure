@@ -64,6 +64,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Backup Storage Account Containers can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:backup/containerStorageAccount:ContainerStorageAccount mycontainer "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.RecoveryServices/vaults/recovery-vault-name/backupFabrics/Azure/protectionContainers/StorageContainer;storage;storage-rg-name;storage-account"
+// ```
+//
+//  Note the ID requires quoting as there are semicolons
 type ContainerStorageAccount struct {
 	pulumi.CustomResourceState
 

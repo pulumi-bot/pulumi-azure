@@ -44,6 +44,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Notification Hub Namespaces can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:notificationhub/namespace:Namespace namespace1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}
+// ```
 type Namespace struct {
 	pulumi.CustomResourceState
 
