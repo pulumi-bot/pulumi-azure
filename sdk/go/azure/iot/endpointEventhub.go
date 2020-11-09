@@ -89,6 +89,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// IoTHub EventHub Endpoint can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:iot/endpointEventhub:EndpointEventhub eventhub1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Devices/IotHubs/hub1/Endpoints/eventhub_endpoint1
+// ```
 type EndpointEventhub struct {
 	pulumi.CustomResourceState
 

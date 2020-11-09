@@ -81,6 +81,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A Log Profile can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:monitoring/logProfile:LogProfile example /subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.insights/logprofiles/test
+// ```
 type LogProfile struct {
 	pulumi.CustomResourceState
 

@@ -58,6 +58,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Monitor Action Rule can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:monitoring/actionRuleActionGroup:ActionRuleActionGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AlertsManagement/actionRules/actionRule1
+// ```
 type ActionRuleActionGroup struct {
 	pulumi.CustomResourceState
 

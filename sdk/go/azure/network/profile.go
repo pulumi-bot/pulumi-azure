@@ -82,6 +82,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Network Profile can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:network/profile:Profile example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/networkProfiles/examplenetprofile
+// ```
 type Profile struct {
 	pulumi.CustomResourceState
 
