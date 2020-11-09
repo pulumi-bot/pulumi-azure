@@ -4,6 +4,8 @@
 package cosmosdb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,14 +85,14 @@ type CassandraKeyspace struct {
 // NewCassandraKeyspace registers a new resource with the given unique name, arguments, and options.
 func NewCassandraKeyspace(ctx *pulumi.Context,
 	name string, args *CassandraKeyspaceArgs, opts ...pulumi.ResourceOption) (*CassandraKeyspace, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &CassandraKeyspaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource CassandraKeyspace
 	err := ctx.RegisterResource("azure:cosmosdb/cassandraKeyspace:CassandraKeyspace", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type CassandraKeyspaceArgs struct {
 
 func (CassandraKeyspaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cassandraKeyspaceArgs)(nil)).Elem()
+}
+
+type CassandraKeyspaceInput interface {
+	pulumi.Input
+
+	ToCassandraKeyspaceOutput() CassandraKeyspaceOutput
+	ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput
+}
+
+func (CassandraKeyspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraKeyspace)(nil)).Elem()
+}
+
+func (i CassandraKeyspace) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
+	return i.ToCassandraKeyspaceOutputWithContext(context.Background())
+}
+
+func (i CassandraKeyspace) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceOutput)
+}
+
+type CassandraKeyspaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (CassandraKeyspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraKeyspaceOutput)(nil)).Elem()
+}
+
+func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
+	return o
+}
+
+func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CassandraKeyspaceOutput{})
 }

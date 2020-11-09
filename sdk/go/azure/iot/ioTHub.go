@@ -4,6 +4,8 @@
 package iot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -184,14 +186,14 @@ type IoTHub struct {
 // NewIoTHub registers a new resource with the given unique name, arguments, and options.
 func NewIoTHub(ctx *pulumi.Context,
 	name string, args *IoTHubArgs, opts ...pulumi.ResourceOption) (*IoTHub, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &IoTHubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource IoTHub
 	err := ctx.RegisterResource("azure:iot/ioTHub:IoTHub", name, args, &resource, opts...)
@@ -365,4 +367,43 @@ type IoTHubArgs struct {
 
 func (IoTHubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ioTHubArgs)(nil)).Elem()
+}
+
+type IoTHubInput interface {
+	pulumi.Input
+
+	ToIoTHubOutput() IoTHubOutput
+	ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput
+}
+
+func (IoTHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*IoTHub)(nil)).Elem()
+}
+
+func (i IoTHub) ToIoTHubOutput() IoTHubOutput {
+	return i.ToIoTHubOutputWithContext(context.Background())
+}
+
+func (i IoTHub) ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubOutput)
+}
+
+type IoTHubOutput struct {
+	*pulumi.OutputState
+}
+
+func (IoTHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IoTHubOutput)(nil)).Elem()
+}
+
+func (o IoTHubOutput) ToIoTHubOutput() IoTHubOutput {
+	return o
+}
+
+func (o IoTHubOutput) ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IoTHubOutput{})
 }

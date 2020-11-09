@@ -4,6 +4,8 @@
 package monitoring
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,14 +89,14 @@ type ActionRuleSuppression struct {
 // NewActionRuleSuppression registers a new resource with the given unique name, arguments, and options.
 func NewActionRuleSuppression(ctx *pulumi.Context,
 	name string, args *ActionRuleSuppressionArgs, opts ...pulumi.ResourceOption) (*ActionRuleSuppression, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Suppression == nil {
-		return nil, errors.New("missing required argument 'Suppression'")
-	}
 	if args == nil {
-		args = &ActionRuleSuppressionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Suppression == nil {
+		return nil, errors.New("invalid value for required argument 'Suppression'")
 	}
 	var resource ActionRuleSuppression
 	err := ctx.RegisterResource("azure:monitoring/actionRuleSuppression:ActionRuleSuppression", name, args, &resource, opts...)
@@ -200,4 +202,43 @@ type ActionRuleSuppressionArgs struct {
 
 func (ActionRuleSuppressionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionRuleSuppressionArgs)(nil)).Elem()
+}
+
+type ActionRuleSuppressionInput interface {
+	pulumi.Input
+
+	ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput
+	ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput
+}
+
+func (ActionRuleSuppression) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleSuppression)(nil)).Elem()
+}
+
+func (i ActionRuleSuppression) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
+	return i.ToActionRuleSuppressionOutputWithContext(context.Background())
+}
+
+func (i ActionRuleSuppression) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionOutput)
+}
+
+type ActionRuleSuppressionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleSuppressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleSuppressionOutput)(nil)).Elem()
+}
+
+func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
+	return o
+}
+
+func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionRuleSuppressionOutput{})
 }

@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,17 +93,17 @@ type LinkedServiceDataLakeStorageGen2 struct {
 // NewLinkedServiceDataLakeStorageGen2 registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceDataLakeStorageGen2(ctx *pulumi.Context,
 	name string, args *LinkedServiceDataLakeStorageGen2Args, opts ...pulumi.ResourceOption) (*LinkedServiceDataLakeStorageGen2, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &LinkedServiceDataLakeStorageGen2Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource LinkedServiceDataLakeStorageGen2
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceDataLakeStorageGen2:LinkedServiceDataLakeStorageGen2", name, args, &resource, opts...)
@@ -247,4 +249,43 @@ type LinkedServiceDataLakeStorageGen2Args struct {
 
 func (LinkedServiceDataLakeStorageGen2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceDataLakeStorageGen2Args)(nil)).Elem()
+}
+
+type LinkedServiceDataLakeStorageGen2Input interface {
+	pulumi.Input
+
+	ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output
+	ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output
+}
+
+func (LinkedServiceDataLakeStorageGen2) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceDataLakeStorageGen2)(nil)).Elem()
+}
+
+func (i LinkedServiceDataLakeStorageGen2) ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output {
+	return i.ToLinkedServiceDataLakeStorageGen2OutputWithContext(context.Background())
+}
+
+func (i LinkedServiceDataLakeStorageGen2) ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceDataLakeStorageGen2Output)
+}
+
+type LinkedServiceDataLakeStorageGen2Output struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceDataLakeStorageGen2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceDataLakeStorageGen2Output)(nil)).Elem()
+}
+
+func (o LinkedServiceDataLakeStorageGen2Output) ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output {
+	return o
+}
+
+func (o LinkedServiceDataLakeStorageGen2Output) ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceDataLakeStorageGen2Output{})
 }

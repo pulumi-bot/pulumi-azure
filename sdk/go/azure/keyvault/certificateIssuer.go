@@ -4,6 +4,8 @@
 package keyvault
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,14 +82,14 @@ type CertificateIssuer struct {
 // NewCertificateIssuer registers a new resource with the given unique name, arguments, and options.
 func NewCertificateIssuer(ctx *pulumi.Context,
 	name string, args *CertificateIssuerArgs, opts ...pulumi.ResourceOption) (*CertificateIssuer, error) {
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.ProviderName == nil {
-		return nil, errors.New("missing required argument 'ProviderName'")
-	}
 	if args == nil {
-		args = &CertificateIssuerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.ProviderName == nil {
+		return nil, errors.New("invalid value for required argument 'ProviderName'")
 	}
 	var resource CertificateIssuer
 	err := ctx.RegisterResource("azure:keyvault/certificateIssuer:CertificateIssuer", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type CertificateIssuerArgs struct {
 
 func (CertificateIssuerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateIssuerArgs)(nil)).Elem()
+}
+
+type CertificateIssuerInput interface {
+	pulumi.Input
+
+	ToCertificateIssuerOutput() CertificateIssuerOutput
+	ToCertificateIssuerOutputWithContext(ctx context.Context) CertificateIssuerOutput
+}
+
+func (CertificateIssuer) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuer)(nil)).Elem()
+}
+
+func (i CertificateIssuer) ToCertificateIssuerOutput() CertificateIssuerOutput {
+	return i.ToCertificateIssuerOutputWithContext(context.Background())
+}
+
+func (i CertificateIssuer) ToCertificateIssuerOutputWithContext(ctx context.Context) CertificateIssuerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuerOutput)
+}
+
+type CertificateIssuerOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateIssuerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuerOutput)(nil)).Elem()
+}
+
+func (o CertificateIssuerOutput) ToCertificateIssuerOutput() CertificateIssuerOutput {
+	return o
+}
+
+func (o CertificateIssuerOutput) ToCertificateIssuerOutputWithContext(ctx context.Context) CertificateIssuerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificateIssuerOutput{})
 }

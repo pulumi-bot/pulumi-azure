@@ -4,6 +4,8 @@
 package dns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -120,17 +122,17 @@ type CNameRecord struct {
 // NewCNameRecord registers a new resource with the given unique name, arguments, and options.
 func NewCNameRecord(ctx *pulumi.Context,
 	name string, args *CNameRecordArgs, opts ...pulumi.ResourceOption) (*CNameRecord, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &CNameRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource CNameRecord
 	err := ctx.RegisterResource("azure:dns/cNameRecord:CNameRecord", name, args, &resource, opts...)
@@ -228,4 +230,43 @@ type CNameRecordArgs struct {
 
 func (CNameRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cnameRecordArgs)(nil)).Elem()
+}
+
+type CNameRecordInput interface {
+	pulumi.Input
+
+	ToCNameRecordOutput() CNameRecordOutput
+	ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput
+}
+
+func (CNameRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*CNameRecord)(nil)).Elem()
+}
+
+func (i CNameRecord) ToCNameRecordOutput() CNameRecordOutput {
+	return i.ToCNameRecordOutputWithContext(context.Background())
+}
+
+func (i CNameRecord) ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CNameRecordOutput)
+}
+
+type CNameRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (CNameRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CNameRecordOutput)(nil)).Elem()
+}
+
+func (o CNameRecordOutput) ToCNameRecordOutput() CNameRecordOutput {
+	return o
+}
+
+func (o CNameRecordOutput) ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CNameRecordOutput{})
 }

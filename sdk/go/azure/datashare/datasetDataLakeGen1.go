@@ -4,6 +4,8 @@
 package datashare
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -112,17 +114,17 @@ type DatasetDataLakeGen1 struct {
 // NewDatasetDataLakeGen1 registers a new resource with the given unique name, arguments, and options.
 func NewDatasetDataLakeGen1(ctx *pulumi.Context,
 	name string, args *DatasetDataLakeGen1Args, opts ...pulumi.ResourceOption) (*DatasetDataLakeGen1, error) {
-	if args == nil || args.DataLakeStoreId == nil {
-		return nil, errors.New("missing required argument 'DataLakeStoreId'")
-	}
-	if args == nil || args.DataShareId == nil {
-		return nil, errors.New("missing required argument 'DataShareId'")
-	}
-	if args == nil || args.FolderPath == nil {
-		return nil, errors.New("missing required argument 'FolderPath'")
-	}
 	if args == nil {
-		args = &DatasetDataLakeGen1Args{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataLakeStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'DataLakeStoreId'")
+	}
+	if args.DataShareId == nil {
+		return nil, errors.New("invalid value for required argument 'DataShareId'")
+	}
+	if args.FolderPath == nil {
+		return nil, errors.New("invalid value for required argument 'FolderPath'")
 	}
 	var resource DatasetDataLakeGen1
 	err := ctx.RegisterResource("azure:datashare/datasetDataLakeGen1:DatasetDataLakeGen1", name, args, &resource, opts...)
@@ -208,4 +210,43 @@ type DatasetDataLakeGen1Args struct {
 
 func (DatasetDataLakeGen1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetDataLakeGen1Args)(nil)).Elem()
+}
+
+type DatasetDataLakeGen1Input interface {
+	pulumi.Input
+
+	ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output
+	ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output
+}
+
+func (DatasetDataLakeGen1) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen1)(nil)).Elem()
+}
+
+func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
+	return i.ToDatasetDataLakeGen1OutputWithContext(context.Background())
+}
+
+func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDataLakeGen1Output)
+}
+
+type DatasetDataLakeGen1Output struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDataLakeGen1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen1Output)(nil)).Elem()
+}
+
+func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
+	return o
+}
+
+func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetDataLakeGen1Output{})
 }

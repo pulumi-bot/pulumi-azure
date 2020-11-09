@@ -4,6 +4,8 @@
 package appservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +53,14 @@ type SourceCodeToken struct {
 // NewSourceCodeToken registers a new resource with the given unique name, arguments, and options.
 func NewSourceCodeToken(ctx *pulumi.Context,
 	name string, args *SourceCodeTokenArgs, opts ...pulumi.ResourceOption) (*SourceCodeToken, error) {
-	if args == nil || args.Token == nil {
-		return nil, errors.New("missing required argument 'Token'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SourceCodeTokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Token == nil {
+		return nil, errors.New("invalid value for required argument 'Token'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SourceCodeToken
 	err := ctx.RegisterResource("azure:appservice/sourceCodeToken:SourceCodeToken", name, args, &resource, opts...)
@@ -124,4 +126,43 @@ type SourceCodeTokenArgs struct {
 
 func (SourceCodeTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceCodeTokenArgs)(nil)).Elem()
+}
+
+type SourceCodeTokenInput interface {
+	pulumi.Input
+
+	ToSourceCodeTokenOutput() SourceCodeTokenOutput
+	ToSourceCodeTokenOutputWithContext(ctx context.Context) SourceCodeTokenOutput
+}
+
+func (SourceCodeToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceCodeToken)(nil)).Elem()
+}
+
+func (i SourceCodeToken) ToSourceCodeTokenOutput() SourceCodeTokenOutput {
+	return i.ToSourceCodeTokenOutputWithContext(context.Background())
+}
+
+func (i SourceCodeToken) ToSourceCodeTokenOutputWithContext(ctx context.Context) SourceCodeTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCodeTokenOutput)
+}
+
+type SourceCodeTokenOutput struct {
+	*pulumi.OutputState
+}
+
+func (SourceCodeTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceCodeTokenOutput)(nil)).Elem()
+}
+
+func (o SourceCodeTokenOutput) ToSourceCodeTokenOutput() SourceCodeTokenOutput {
+	return o
+}
+
+func (o SourceCodeTokenOutput) ToSourceCodeTokenOutputWithContext(ctx context.Context) SourceCodeTokenOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SourceCodeTokenOutput{})
 }

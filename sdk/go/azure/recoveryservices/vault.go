@@ -4,6 +4,8 @@
 package recoveryservices
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +66,14 @@ type Vault struct {
 // NewVault registers a new resource with the given unique name, arguments, and options.
 func NewVault(ctx *pulumi.Context,
 	name string, args *VaultArgs, opts ...pulumi.ResourceOption) (*Vault, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &VaultArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource Vault
 	err := ctx.RegisterResource("azure:recoveryservices/vault:Vault", name, args, &resource, opts...)
@@ -161,4 +163,43 @@ type VaultArgs struct {
 
 func (VaultArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vaultArgs)(nil)).Elem()
+}
+
+type VaultInput interface {
+	pulumi.Input
+
+	ToVaultOutput() VaultOutput
+	ToVaultOutputWithContext(ctx context.Context) VaultOutput
+}
+
+func (Vault) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vault)(nil)).Elem()
+}
+
+func (i Vault) ToVaultOutput() VaultOutput {
+	return i.ToVaultOutputWithContext(context.Background())
+}
+
+func (i Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultOutput)
+}
+
+type VaultOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultOutput)(nil)).Elem()
+}
+
+func (o VaultOutput) ToVaultOutput() VaultOutput {
+	return o
+}
+
+func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VaultOutput{})
 }

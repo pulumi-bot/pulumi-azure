@@ -4,6 +4,8 @@
 package cosmosdb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,14 +62,14 @@ type GremlinDatabase struct {
 // NewGremlinDatabase registers a new resource with the given unique name, arguments, and options.
 func NewGremlinDatabase(ctx *pulumi.Context,
 	name string, args *GremlinDatabaseArgs, opts ...pulumi.ResourceOption) (*GremlinDatabase, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &GremlinDatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource GremlinDatabase
 	err := ctx.RegisterResource("azure:cosmosdb/gremlinDatabase:GremlinDatabase", name, args, &resource, opts...)
@@ -145,4 +147,43 @@ type GremlinDatabaseArgs struct {
 
 func (GremlinDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gremlinDatabaseArgs)(nil)).Elem()
+}
+
+type GremlinDatabaseInput interface {
+	pulumi.Input
+
+	ToGremlinDatabaseOutput() GremlinDatabaseOutput
+	ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput
+}
+
+func (GremlinDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinDatabase)(nil)).Elem()
+}
+
+func (i GremlinDatabase) ToGremlinDatabaseOutput() GremlinDatabaseOutput {
+	return i.ToGremlinDatabaseOutputWithContext(context.Background())
+}
+
+func (i GremlinDatabase) ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseOutput)
+}
+
+type GremlinDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (GremlinDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinDatabaseOutput)(nil)).Elem()
+}
+
+func (o GremlinDatabaseOutput) ToGremlinDatabaseOutput() GremlinDatabaseOutput {
+	return o
+}
+
+func (o GremlinDatabaseOutput) ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GremlinDatabaseOutput{})
 }

@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,14 +101,14 @@ type Subnet struct {
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
 func NewSubnet(ctx *pulumi.Context,
 	name string, args *SubnetArgs, opts ...pulumi.ResourceOption) (*Subnet, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualNetworkName == nil {
-		return nil, errors.New("missing required argument 'VirtualNetworkName'")
-	}
 	if args == nil {
-		args = &SubnetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualNetworkName == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualNetworkName'")
 	}
 	var resource Subnet
 	err := ctx.RegisterResource("azure:network/subnet:Subnet", name, args, &resource, opts...)
@@ -228,4 +230,43 @@ type SubnetArgs struct {
 
 func (SubnetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetArgs)(nil)).Elem()
+}
+
+type SubnetInput interface {
+	pulumi.Input
+
+	ToSubnetOutput() SubnetOutput
+	ToSubnetOutputWithContext(ctx context.Context) SubnetOutput
+}
+
+func (Subnet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil)).Elem()
+}
+
+func (i Subnet) ToSubnetOutput() SubnetOutput {
+	return i.ToSubnetOutputWithContext(context.Background())
+}
+
+func (i Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
+}
+
+type SubnetOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetOutput)(nil)).Elem()
+}
+
+func (o SubnetOutput) ToSubnetOutput() SubnetOutput {
+	return o
+}
+
+func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetOutput{})
 }

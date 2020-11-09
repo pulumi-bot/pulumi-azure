@@ -4,6 +4,8 @@
 package keyvault
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -181,14 +183,14 @@ type Certifiate struct {
 // NewCertifiate registers a new resource with the given unique name, arguments, and options.
 func NewCertifiate(ctx *pulumi.Context,
 	name string, args *CertifiateArgs, opts ...pulumi.ResourceOption) (*Certifiate, error) {
-	if args == nil || args.CertificatePolicy == nil {
-		return nil, errors.New("missing required argument 'CertificatePolicy'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
 	if args == nil {
-		args = &CertifiateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.CertificatePolicy == nil {
+		return nil, errors.New("invalid value for required argument 'CertificatePolicy'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
 	}
 	var resource Certifiate
 	err := ctx.RegisterResource("azure:keyvault/certifiate:Certifiate", name, args, &resource, opts...)
@@ -290,4 +292,43 @@ type CertifiateArgs struct {
 
 func (CertifiateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certifiateArgs)(nil)).Elem()
+}
+
+type CertifiateInput interface {
+	pulumi.Input
+
+	ToCertifiateOutput() CertifiateOutput
+	ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput
+}
+
+func (Certifiate) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certifiate)(nil)).Elem()
+}
+
+func (i Certifiate) ToCertifiateOutput() CertifiateOutput {
+	return i.ToCertifiateOutputWithContext(context.Background())
+}
+
+func (i Certifiate) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateOutput)
+}
+
+type CertifiateOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertifiateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertifiateOutput)(nil)).Elem()
+}
+
+func (o CertifiateOutput) ToCertifiateOutput() CertifiateOutput {
+	return o
+}
+
+func (o CertifiateOutput) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertifiateOutput{})
 }

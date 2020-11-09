@@ -4,6 +4,8 @@
 package desktopvirtualization
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,17 +93,17 @@ type HostPool struct {
 // NewHostPool registers a new resource with the given unique name, arguments, and options.
 func NewHostPool(ctx *pulumi.Context,
 	name string, args *HostPoolArgs, opts ...pulumi.ResourceOption) (*HostPool, error) {
-	if args == nil || args.LoadBalancerType == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &HostPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LoadBalancerType == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource HostPool
 	err := ctx.RegisterResource("azure:desktopvirtualization/hostPool:HostPool", name, args, &resource, opts...)
@@ -283,4 +285,43 @@ type HostPoolArgs struct {
 
 func (HostPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostPoolArgs)(nil)).Elem()
+}
+
+type HostPoolInput interface {
+	pulumi.Input
+
+	ToHostPoolOutput() HostPoolOutput
+	ToHostPoolOutputWithContext(ctx context.Context) HostPoolOutput
+}
+
+func (HostPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPool)(nil)).Elem()
+}
+
+func (i HostPool) ToHostPoolOutput() HostPoolOutput {
+	return i.ToHostPoolOutputWithContext(context.Background())
+}
+
+func (i HostPool) ToHostPoolOutputWithContext(ctx context.Context) HostPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPoolOutput)
+}
+
+type HostPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPoolOutput)(nil)).Elem()
+}
+
+func (o HostPoolOutput) ToHostPoolOutput() HostPoolOutput {
+	return o
+}
+
+func (o HostPoolOutput) ToHostPoolOutputWithContext(ctx context.Context) HostPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostPoolOutput{})
 }

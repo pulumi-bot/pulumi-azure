@@ -4,6 +4,8 @@
 package servicebus
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -94,17 +96,17 @@ type TopicAuthorizationRule struct {
 // NewTopicAuthorizationRule registers a new resource with the given unique name, arguments, and options.
 func NewTopicAuthorizationRule(ctx *pulumi.Context,
 	name string, args *TopicAuthorizationRuleArgs, opts ...pulumi.ResourceOption) (*TopicAuthorizationRule, error) {
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TopicName == nil {
-		return nil, errors.New("missing required argument 'TopicName'")
-	}
 	if args == nil {
-		args = &TopicAuthorizationRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TopicName == nil {
+		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -224,4 +226,43 @@ type TopicAuthorizationRuleArgs struct {
 
 func (TopicAuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicAuthorizationRuleArgs)(nil)).Elem()
+}
+
+type TopicAuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput
+	ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput
+}
+
+func (TopicAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicAuthorizationRule)(nil)).Elem()
+}
+
+func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
+	return i.ToTopicAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicAuthorizationRuleOutput)
+}
+
+type TopicAuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicAuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicAuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
+	return o
+}
+
+func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TopicAuthorizationRuleOutput{})
 }

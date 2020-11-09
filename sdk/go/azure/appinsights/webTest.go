@@ -4,6 +4,8 @@
 package appinsights
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,23 +48,23 @@ type WebTest struct {
 // NewWebTest registers a new resource with the given unique name, arguments, and options.
 func NewWebTest(ctx *pulumi.Context,
 	name string, args *WebTestArgs, opts ...pulumi.ResourceOption) (*WebTest, error) {
-	if args == nil || args.ApplicationInsightsId == nil {
-		return nil, errors.New("missing required argument 'ApplicationInsightsId'")
-	}
-	if args == nil || args.Configuration == nil {
-		return nil, errors.New("missing required argument 'Configuration'")
-	}
-	if args == nil || args.GeoLocations == nil {
-		return nil, errors.New("missing required argument 'GeoLocations'")
-	}
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &WebTestArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ApplicationInsightsId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationInsightsId'")
+	}
+	if args.Configuration == nil {
+		return nil, errors.New("invalid value for required argument 'Configuration'")
+	}
+	if args.GeoLocations == nil {
+		return nil, errors.New("invalid value for required argument 'GeoLocations'")
+	}
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource WebTest
 	err := ctx.RegisterResource("azure:appinsights/webTest:WebTest", name, args, &resource, opts...)
@@ -210,4 +212,43 @@ type WebTestArgs struct {
 
 func (WebTestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webTestArgs)(nil)).Elem()
+}
+
+type WebTestInput interface {
+	pulumi.Input
+
+	ToWebTestOutput() WebTestOutput
+	ToWebTestOutputWithContext(ctx context.Context) WebTestOutput
+}
+
+func (WebTest) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTest)(nil)).Elem()
+}
+
+func (i WebTest) ToWebTestOutput() WebTestOutput {
+	return i.ToWebTestOutputWithContext(context.Background())
+}
+
+func (i WebTest) ToWebTestOutputWithContext(ctx context.Context) WebTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebTestOutput)
+}
+
+type WebTestOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTestOutput)(nil)).Elem()
+}
+
+func (o WebTestOutput) ToWebTestOutput() WebTestOutput {
+	return o
+}
+
+func (o WebTestOutput) ToWebTestOutputWithContext(ctx context.Context) WebTestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebTestOutput{})
 }

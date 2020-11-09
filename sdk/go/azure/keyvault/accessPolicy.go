@@ -4,6 +4,8 @@
 package keyvault
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -50,17 +52,17 @@ type AccessPolicy struct {
 // NewAccessPolicy registers a new resource with the given unique name, arguments, and options.
 func NewAccessPolicy(ctx *pulumi.Context,
 	name string, args *AccessPolicyArgs, opts ...pulumi.ResourceOption) (*AccessPolicy, error) {
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.ObjectId == nil {
-		return nil, errors.New("missing required argument 'ObjectId'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &AccessPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.ObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectId'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("azure:keyvault/accessPolicy:AccessPolicy", name, args, &resource, opts...)
@@ -210,4 +212,43 @@ type AccessPolicyArgs struct {
 
 func (AccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyArgs)(nil)).Elem()
+}
+
+type AccessPolicyInput interface {
+	pulumi.Input
+
+	ToAccessPolicyOutput() AccessPolicyOutput
+	ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput
+}
+
+func (AccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicy)(nil)).Elem()
+}
+
+func (i AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
+	return i.ToAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
+}
+
+type AccessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyOutput)(nil)).Elem()
+}
+
+func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
+	return o
+}
+
+func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessPolicyOutput{})
 }

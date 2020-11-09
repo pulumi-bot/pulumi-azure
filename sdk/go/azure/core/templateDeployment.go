@@ -4,6 +4,8 @@
 package core
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,14 +87,14 @@ type TemplateDeployment struct {
 // NewTemplateDeployment registers a new resource with the given unique name, arguments, and options.
 func NewTemplateDeployment(ctx *pulumi.Context,
 	name string, args *TemplateDeploymentArgs, opts ...pulumi.ResourceOption) (*TemplateDeployment, error) {
-	if args == nil || args.DeploymentMode == nil {
-		return nil, errors.New("missing required argument 'DeploymentMode'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &TemplateDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DeploymentMode == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentMode'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource TemplateDeployment
 	err := ctx.RegisterResource("azure:core/templateDeployment:TemplateDeployment", name, args, &resource, opts...)
@@ -202,4 +204,43 @@ type TemplateDeploymentArgs struct {
 
 func (TemplateDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateDeploymentArgs)(nil)).Elem()
+}
+
+type TemplateDeploymentInput interface {
+	pulumi.Input
+
+	ToTemplateDeploymentOutput() TemplateDeploymentOutput
+	ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput
+}
+
+func (TemplateDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateDeployment)(nil)).Elem()
+}
+
+func (i TemplateDeployment) ToTemplateDeploymentOutput() TemplateDeploymentOutput {
+	return i.ToTemplateDeploymentOutputWithContext(context.Background())
+}
+
+func (i TemplateDeployment) ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateDeploymentOutput)
+}
+
+type TemplateDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (TemplateDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateDeploymentOutput)(nil)).Elem()
+}
+
+func (o TemplateDeploymentOutput) ToTemplateDeploymentOutput() TemplateDeploymentOutput {
+	return o
+}
+
+func (o TemplateDeploymentOutput) ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TemplateDeploymentOutput{})
 }

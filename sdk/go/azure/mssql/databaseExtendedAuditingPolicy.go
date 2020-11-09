@@ -4,6 +4,8 @@
 package mssql
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,14 +93,14 @@ type DatabaseExtendedAuditingPolicy struct {
 // NewDatabaseExtendedAuditingPolicy registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseExtendedAuditingPolicy(ctx *pulumi.Context,
 	name string, args *DatabaseExtendedAuditingPolicyArgs, opts ...pulumi.ResourceOption) (*DatabaseExtendedAuditingPolicy, error) {
-	if args == nil || args.DatabaseId == nil {
-		return nil, errors.New("missing required argument 'DatabaseId'")
-	}
-	if args == nil || args.StorageEndpoint == nil {
-		return nil, errors.New("missing required argument 'StorageEndpoint'")
-	}
 	if args == nil {
-		args = &DatabaseExtendedAuditingPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DatabaseId == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseId'")
+	}
+	if args.StorageEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'StorageEndpoint'")
 	}
 	var resource DatabaseExtendedAuditingPolicy
 	err := ctx.RegisterResource("azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy", name, args, &resource, opts...)
@@ -180,4 +182,43 @@ type DatabaseExtendedAuditingPolicyArgs struct {
 
 func (DatabaseExtendedAuditingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseExtendedAuditingPolicyArgs)(nil)).Elem()
+}
+
+type DatabaseExtendedAuditingPolicyInput interface {
+	pulumi.Input
+
+	ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput
+	ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput
+}
+
+func (DatabaseExtendedAuditingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicy)(nil)).Elem()
+}
+
+func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
+	return i.ToDatabaseExtendedAuditingPolicyOutputWithContext(context.Background())
+}
+
+func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput)
+}
+
+type DatabaseExtendedAuditingPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseExtendedAuditingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicyOutput)(nil)).Elem()
+}
+
+func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
+	return o
+}
+
+func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseExtendedAuditingPolicyOutput{})
 }

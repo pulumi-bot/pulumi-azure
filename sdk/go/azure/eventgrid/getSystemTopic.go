@@ -4,6 +4,8 @@
 package eventgrid
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,17 +82,17 @@ type GetSystemTopic struct {
 // NewGetSystemTopic registers a new resource with the given unique name, arguments, and options.
 func NewGetSystemTopic(ctx *pulumi.Context,
 	name string, args *GetSystemTopicArgs, opts ...pulumi.ResourceOption) (*GetSystemTopic, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SourceArmResourceId == nil {
-		return nil, errors.New("missing required argument 'SourceArmResourceId'")
-	}
-	if args == nil || args.TopicType == nil {
-		return nil, errors.New("missing required argument 'TopicType'")
-	}
 	if args == nil {
-		args = &GetSystemTopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SourceArmResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceArmResourceId'")
+	}
+	if args.TopicType == nil {
+		return nil, errors.New("invalid value for required argument 'TopicType'")
 	}
 	var resource GetSystemTopic
 	err := ctx.RegisterResource("azure:eventgrid/getSystemTopic:getSystemTopic", name, args, &resource, opts...)
@@ -188,4 +190,43 @@ type GetSystemTopicArgs struct {
 
 func (GetSystemTopicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*getSystemTopicArgs)(nil)).Elem()
+}
+
+type GetSystemTopicInput interface {
+	pulumi.Input
+
+	ToGetSystemTopicOutput() GetSystemTopicOutput
+	ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput
+}
+
+func (GetSystemTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemTopic)(nil)).Elem()
+}
+
+func (i GetSystemTopic) ToGetSystemTopicOutput() GetSystemTopicOutput {
+	return i.ToGetSystemTopicOutputWithContext(context.Background())
+}
+
+func (i GetSystemTopic) ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSystemTopicOutput)
+}
+
+type GetSystemTopicOutput struct {
+	*pulumi.OutputState
+}
+
+func (GetSystemTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemTopicOutput)(nil)).Elem()
+}
+
+func (o GetSystemTopicOutput) ToGetSystemTopicOutput() GetSystemTopicOutput {
+	return o
+}
+
+func (o GetSystemTopicOutput) ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSystemTopicOutput{})
 }

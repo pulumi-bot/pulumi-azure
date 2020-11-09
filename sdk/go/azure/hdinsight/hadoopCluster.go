@@ -4,6 +4,8 @@
 package hdinsight
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,26 +135,26 @@ type HadoopCluster struct {
 // NewHadoopCluster registers a new resource with the given unique name, arguments, and options.
 func NewHadoopCluster(ctx *pulumi.Context,
 	name string, args *HadoopClusterArgs, opts ...pulumi.ResourceOption) (*HadoopCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.ComponentVersion == nil {
-		return nil, errors.New("missing required argument 'ComponentVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &HadoopClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.ComponentVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource HadoopCluster
 	err := ctx.RegisterResource("azure:hdinsight/hadoopCluster:HadoopCluster", name, args, &resource, opts...)
@@ -310,4 +312,43 @@ type HadoopClusterArgs struct {
 
 func (HadoopClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hadoopClusterArgs)(nil)).Elem()
+}
+
+type HadoopClusterInput interface {
+	pulumi.Input
+
+	ToHadoopClusterOutput() HadoopClusterOutput
+	ToHadoopClusterOutputWithContext(ctx context.Context) HadoopClusterOutput
+}
+
+func (HadoopCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*HadoopCluster)(nil)).Elem()
+}
+
+func (i HadoopCluster) ToHadoopClusterOutput() HadoopClusterOutput {
+	return i.ToHadoopClusterOutputWithContext(context.Background())
+}
+
+func (i HadoopCluster) ToHadoopClusterOutputWithContext(ctx context.Context) HadoopClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterOutput)
+}
+
+type HadoopClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (HadoopClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HadoopClusterOutput)(nil)).Elem()
+}
+
+func (o HadoopClusterOutput) ToHadoopClusterOutput() HadoopClusterOutput {
+	return o
+}
+
+func (o HadoopClusterOutput) ToHadoopClusterOutputWithContext(ctx context.Context) HadoopClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HadoopClusterOutput{})
 }

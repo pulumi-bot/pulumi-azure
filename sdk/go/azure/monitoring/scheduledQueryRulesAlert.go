@@ -4,6 +4,8 @@
 package monitoring
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,29 +50,29 @@ type ScheduledQueryRulesAlert struct {
 // NewScheduledQueryRulesAlert registers a new resource with the given unique name, arguments, and options.
 func NewScheduledQueryRulesAlert(ctx *pulumi.Context,
 	name string, args *ScheduledQueryRulesAlertArgs, opts ...pulumi.ResourceOption) (*ScheduledQueryRulesAlert, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.DataSourceId == nil {
-		return nil, errors.New("missing required argument 'DataSourceId'")
-	}
-	if args == nil || args.Frequency == nil {
-		return nil, errors.New("missing required argument 'Frequency'")
-	}
-	if args == nil || args.Query == nil {
-		return nil, errors.New("missing required argument 'Query'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TimeWindow == nil {
-		return nil, errors.New("missing required argument 'TimeWindow'")
-	}
-	if args == nil || args.Trigger == nil {
-		return nil, errors.New("missing required argument 'Trigger'")
-	}
 	if args == nil {
-		args = &ScheduledQueryRulesAlertArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.DataSourceId == nil {
+		return nil, errors.New("invalid value for required argument 'DataSourceId'")
+	}
+	if args.Frequency == nil {
+		return nil, errors.New("invalid value for required argument 'Frequency'")
+	}
+	if args.Query == nil {
+		return nil, errors.New("invalid value for required argument 'Query'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TimeWindow == nil {
+		return nil, errors.New("invalid value for required argument 'TimeWindow'")
+	}
+	if args.Trigger == nil {
+		return nil, errors.New("invalid value for required argument 'Trigger'")
 	}
 	var resource ScheduledQueryRulesAlert
 	err := ctx.RegisterResource("azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert", name, args, &resource, opts...)
@@ -228,4 +230,43 @@ type ScheduledQueryRulesAlertArgs struct {
 
 func (ScheduledQueryRulesAlertArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledQueryRulesAlertArgs)(nil)).Elem()
+}
+
+type ScheduledQueryRulesAlertInput interface {
+	pulumi.Input
+
+	ToScheduledQueryRulesAlertOutput() ScheduledQueryRulesAlertOutput
+	ToScheduledQueryRulesAlertOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertOutput
+}
+
+func (ScheduledQueryRulesAlert) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledQueryRulesAlert)(nil)).Elem()
+}
+
+func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertOutput() ScheduledQueryRulesAlertOutput {
+	return i.ToScheduledQueryRulesAlertOutputWithContext(context.Background())
+}
+
+func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertOutput)
+}
+
+type ScheduledQueryRulesAlertOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScheduledQueryRulesAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledQueryRulesAlertOutput)(nil)).Elem()
+}
+
+func (o ScheduledQueryRulesAlertOutput) ToScheduledQueryRulesAlertOutput() ScheduledQueryRulesAlertOutput {
+	return o
+}
+
+func (o ScheduledQueryRulesAlertOutput) ToScheduledQueryRulesAlertOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScheduledQueryRulesAlertOutput{})
 }

@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -101,11 +103,11 @@ type BastionHost struct {
 // NewBastionHost registers a new resource with the given unique name, arguments, and options.
 func NewBastionHost(ctx *pulumi.Context,
 	name string, args *BastionHostArgs, opts ...pulumi.ResourceOption) (*BastionHost, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &BastionHostArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource BastionHost
 	err := ctx.RegisterResource("azure:compute/bastionHost:BastionHost", name, args, &resource, opts...)
@@ -191,4 +193,43 @@ type BastionHostArgs struct {
 
 func (BastionHostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bastionHostArgs)(nil)).Elem()
+}
+
+type BastionHostInput interface {
+	pulumi.Input
+
+	ToBastionHostOutput() BastionHostOutput
+	ToBastionHostOutputWithContext(ctx context.Context) BastionHostOutput
+}
+
+func (BastionHost) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHost)(nil)).Elem()
+}
+
+func (i BastionHost) ToBastionHostOutput() BastionHostOutput {
+	return i.ToBastionHostOutputWithContext(context.Background())
+}
+
+func (i BastionHost) ToBastionHostOutputWithContext(ctx context.Context) BastionHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostOutput)
+}
+
+type BastionHostOutput struct {
+	*pulumi.OutputState
+}
+
+func (BastionHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostOutput)(nil)).Elem()
+}
+
+func (o BastionHostOutput) ToBastionHostOutput() BastionHostOutput {
+	return o
+}
+
+func (o BastionHostOutput) ToBastionHostOutputWithContext(ctx context.Context) BastionHostOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BastionHostOutput{})
 }

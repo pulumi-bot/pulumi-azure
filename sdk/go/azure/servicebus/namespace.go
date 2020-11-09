@@ -4,6 +4,8 @@
 package servicebus
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,14 +82,14 @@ type Namespace struct {
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
 func NewNamespace(ctx *pulumi.Context,
 	name string, args *NamespaceArgs, opts ...pulumi.ResourceOption) (*Namespace, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &NamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -219,4 +221,43 @@ type NamespaceArgs struct {
 
 func (NamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceArgs)(nil)).Elem()
+}
+
+type NamespaceInput interface {
+	pulumi.Input
+
+	ToNamespaceOutput() NamespaceOutput
+	ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput
+}
+
+func (Namespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*Namespace)(nil)).Elem()
+}
+
+func (i Namespace) ToNamespaceOutput() NamespaceOutput {
+	return i.ToNamespaceOutputWithContext(context.Background())
+}
+
+func (i Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
+}
+
+type NamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceOutput)(nil)).Elem()
+}
+
+func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
+	return o
+}
+
+func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NamespaceOutput{})
 }

@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -37,17 +39,17 @@ type AccountNetworkRules struct {
 // NewAccountNetworkRules registers a new resource with the given unique name, arguments, and options.
 func NewAccountNetworkRules(ctx *pulumi.Context,
 	name string, args *AccountNetworkRulesArgs, opts ...pulumi.ResourceOption) (*AccountNetworkRules, error) {
-	if args == nil || args.DefaultAction == nil {
-		return nil, errors.New("missing required argument 'DefaultAction'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
 	if args == nil {
-		args = &AccountNetworkRulesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DefaultAction == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultAction'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
 	}
 	var resource AccountNetworkRules
 	err := ctx.RegisterResource("azure:storage/accountNetworkRules:AccountNetworkRules", name, args, &resource, opts...)
@@ -137,4 +139,43 @@ type AccountNetworkRulesArgs struct {
 
 func (AccountNetworkRulesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountNetworkRulesArgs)(nil)).Elem()
+}
+
+type AccountNetworkRulesInput interface {
+	pulumi.Input
+
+	ToAccountNetworkRulesOutput() AccountNetworkRulesOutput
+	ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput
+}
+
+func (AccountNetworkRules) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountNetworkRules)(nil)).Elem()
+}
+
+func (i AccountNetworkRules) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
+	return i.ToAccountNetworkRulesOutputWithContext(context.Background())
+}
+
+func (i AccountNetworkRules) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesOutput)
+}
+
+type AccountNetworkRulesOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountNetworkRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountNetworkRulesOutput)(nil)).Elem()
+}
+
+func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
+	return o
+}
+
+func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountNetworkRulesOutput{})
 }

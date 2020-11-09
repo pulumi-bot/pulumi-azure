@@ -4,6 +4,8 @@
 package privatedns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,20 +75,20 @@ type PTRRecord struct {
 // NewPTRRecord registers a new resource with the given unique name, arguments, and options.
 func NewPTRRecord(ctx *pulumi.Context,
 	name string, args *PTRRecordArgs, opts ...pulumi.ResourceOption) (*PTRRecord, error) {
-	if args == nil || args.Records == nil {
-		return nil, errors.New("missing required argument 'Records'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &PTRRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Records == nil {
+		return nil, errors.New("invalid value for required argument 'Records'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource PTRRecord
 	err := ctx.RegisterResource("azure:privatedns/pTRRecord:PTRRecord", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type PTRRecordArgs struct {
 
 func (PTRRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ptrrecordArgs)(nil)).Elem()
+}
+
+type PTRRecordInput interface {
+	pulumi.Input
+
+	ToPTRRecordOutput() PTRRecordOutput
+	ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput
+}
+
+func (PTRRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*PTRRecord)(nil)).Elem()
+}
+
+func (i PTRRecord) ToPTRRecordOutput() PTRRecordOutput {
+	return i.ToPTRRecordOutputWithContext(context.Background())
+}
+
+func (i PTRRecord) ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PTRRecordOutput)
+}
+
+type PTRRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (PTRRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PTRRecordOutput)(nil)).Elem()
+}
+
+func (o PTRRecordOutput) ToPTRRecordOutput() PTRRecordOutput {
+	return o
+}
+
+func (o PTRRecordOutput) ToPTRRecordOutputWithContext(ctx context.Context) PTRRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PTRRecordOutput{})
 }

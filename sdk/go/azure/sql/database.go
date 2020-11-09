@@ -4,6 +4,8 @@
 package sql
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,14 +136,14 @@ type Database struct {
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
 func NewDatabase(ctx *pulumi.Context,
 	name string, args *DatabaseArgs, opts ...pulumi.ResourceOption) (*Database, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
 	if args == nil {
-		args = &DatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	var resource Database
 	err := ctx.RegisterResource("azure:sql/database:Database", name, args, &resource, opts...)
@@ -369,4 +371,43 @@ type DatabaseArgs struct {
 
 func (DatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
+}
+
+type DatabaseInput interface {
+	pulumi.Input
+
+	ToDatabaseOutput() DatabaseOutput
+	ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput
+}
+
+func (Database) ElementType() reflect.Type {
+	return reflect.TypeOf((*Database)(nil)).Elem()
+}
+
+func (i Database) ToDatabaseOutput() DatabaseOutput {
+	return i.ToDatabaseOutputWithContext(context.Background())
+}
+
+func (i Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
+}
+
+type DatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseOutput)(nil)).Elem()
+}
+
+func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
+	return o
+}
+
+func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseOutput{})
 }

@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,23 +126,23 @@ type FirewallApplicationRuleCollection struct {
 // NewFirewallApplicationRuleCollection registers a new resource with the given unique name, arguments, and options.
 func NewFirewallApplicationRuleCollection(ctx *pulumi.Context,
 	name string, args *FirewallApplicationRuleCollectionArgs, opts ...pulumi.ResourceOption) (*FirewallApplicationRuleCollection, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.AzureFirewallName == nil {
-		return nil, errors.New("missing required argument 'AzureFirewallName'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &FirewallApplicationRuleCollectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.AzureFirewallName == nil {
+		return nil, errors.New("invalid value for required argument 'AzureFirewallName'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource FirewallApplicationRuleCollection
 	err := ctx.RegisterResource("azure:network/firewallApplicationRuleCollection:FirewallApplicationRuleCollection", name, args, &resource, opts...)
@@ -230,4 +232,43 @@ type FirewallApplicationRuleCollectionArgs struct {
 
 func (FirewallApplicationRuleCollectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallApplicationRuleCollectionArgs)(nil)).Elem()
+}
+
+type FirewallApplicationRuleCollectionInput interface {
+	pulumi.Input
+
+	ToFirewallApplicationRuleCollectionOutput() FirewallApplicationRuleCollectionOutput
+	ToFirewallApplicationRuleCollectionOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionOutput
+}
+
+func (FirewallApplicationRuleCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallApplicationRuleCollection)(nil)).Elem()
+}
+
+func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionOutput() FirewallApplicationRuleCollectionOutput {
+	return i.ToFirewallApplicationRuleCollectionOutputWithContext(context.Background())
+}
+
+func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallApplicationRuleCollectionOutput)
+}
+
+type FirewallApplicationRuleCollectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallApplicationRuleCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallApplicationRuleCollectionOutput)(nil)).Elem()
+}
+
+func (o FirewallApplicationRuleCollectionOutput) ToFirewallApplicationRuleCollectionOutput() FirewallApplicationRuleCollectionOutput {
+	return o
+}
+
+func (o FirewallApplicationRuleCollectionOutput) ToFirewallApplicationRuleCollectionOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallApplicationRuleCollectionOutput{})
 }

@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,11 +112,11 @@ type ManagementPolicy struct {
 // NewManagementPolicy registers a new resource with the given unique name, arguments, and options.
 func NewManagementPolicy(ctx *pulumi.Context,
 	name string, args *ManagementPolicyArgs, opts ...pulumi.ResourceOption) (*ManagementPolicy, error) {
-	if args == nil || args.StorageAccountId == nil {
-		return nil, errors.New("missing required argument 'StorageAccountId'")
-	}
 	if args == nil {
-		args = &ManagementPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.StorageAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountId'")
 	}
 	var resource ManagementPolicy
 	err := ctx.RegisterResource("azure:storage/managementPolicy:ManagementPolicy", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type ManagementPolicyArgs struct {
 
 func (ManagementPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managementPolicyArgs)(nil)).Elem()
+}
+
+type ManagementPolicyInput interface {
+	pulumi.Input
+
+	ToManagementPolicyOutput() ManagementPolicyOutput
+	ToManagementPolicyOutputWithContext(ctx context.Context) ManagementPolicyOutput
+}
+
+func (ManagementPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementPolicy)(nil)).Elem()
+}
+
+func (i ManagementPolicy) ToManagementPolicyOutput() ManagementPolicyOutput {
+	return i.ToManagementPolicyOutputWithContext(context.Background())
+}
+
+func (i ManagementPolicy) ToManagementPolicyOutputWithContext(ctx context.Context) ManagementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyOutput)
+}
+
+type ManagementPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementPolicyOutput)(nil)).Elem()
+}
+
+func (o ManagementPolicyOutput) ToManagementPolicyOutput() ManagementPolicyOutput {
+	return o
+}
+
+func (o ManagementPolicyOutput) ToManagementPolicyOutputWithContext(ctx context.Context) ManagementPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagementPolicyOutput{})
 }

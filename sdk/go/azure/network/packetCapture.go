@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,20 +41,20 @@ type PacketCapture struct {
 // NewPacketCapture registers a new resource with the given unique name, arguments, and options.
 func NewPacketCapture(ctx *pulumi.Context,
 	name string, args *PacketCaptureArgs, opts ...pulumi.ResourceOption) (*PacketCapture, error) {
-	if args == nil || args.NetworkWatcherName == nil {
-		return nil, errors.New("missing required argument 'NetworkWatcherName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageLocation == nil {
-		return nil, errors.New("missing required argument 'StorageLocation'")
-	}
-	if args == nil || args.TargetResourceId == nil {
-		return nil, errors.New("missing required argument 'TargetResourceId'")
-	}
 	if args == nil {
-		args = &PacketCaptureArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.NetworkWatcherName == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkWatcherName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageLocation == nil {
+		return nil, errors.New("invalid value for required argument 'StorageLocation'")
+	}
+	if args.TargetResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetResourceId'")
 	}
 	var resource PacketCapture
 	err := ctx.RegisterResource("azure:network/packetCapture:PacketCapture", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type PacketCaptureArgs struct {
 
 func (PacketCaptureArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*packetCaptureArgs)(nil)).Elem()
+}
+
+type PacketCaptureInput interface {
+	pulumi.Input
+
+	ToPacketCaptureOutput() PacketCaptureOutput
+	ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput
+}
+
+func (PacketCapture) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketCapture)(nil)).Elem()
+}
+
+func (i PacketCapture) ToPacketCaptureOutput() PacketCaptureOutput {
+	return i.ToPacketCaptureOutputWithContext(context.Background())
+}
+
+func (i PacketCapture) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureOutput)
+}
+
+type PacketCaptureOutput struct {
+	*pulumi.OutputState
+}
+
+func (PacketCaptureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketCaptureOutput)(nil)).Elem()
+}
+
+func (o PacketCaptureOutput) ToPacketCaptureOutput() PacketCaptureOutput {
+	return o
+}
+
+func (o PacketCaptureOutput) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PacketCaptureOutput{})
 }

@@ -4,6 +4,8 @@
 package eventgrid
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,11 +75,11 @@ type Domain struct {
 // NewDomain registers a new resource with the given unique name, arguments, and options.
 func NewDomain(ctx *pulumi.Context,
 	name string, args *DomainArgs, opts ...pulumi.ResourceOption) (*Domain, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DomainArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -193,4 +195,43 @@ type DomainArgs struct {
 
 func (DomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainArgs)(nil)).Elem()
+}
+
+type DomainInput interface {
+	pulumi.Input
+
+	ToDomainOutput() DomainOutput
+	ToDomainOutputWithContext(ctx context.Context) DomainOutput
+}
+
+func (Domain) ElementType() reflect.Type {
+	return reflect.TypeOf((*Domain)(nil)).Elem()
+}
+
+func (i Domain) ToDomainOutput() DomainOutput {
+	return i.ToDomainOutputWithContext(context.Background())
+}
+
+func (i Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
+}
+
+type DomainOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainOutput)(nil)).Elem()
+}
+
+func (o DomainOutput) ToDomainOutput() DomainOutput {
+	return o
+}
+
+func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainOutput{})
 }

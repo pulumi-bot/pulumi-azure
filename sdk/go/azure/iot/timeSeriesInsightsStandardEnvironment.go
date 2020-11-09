@@ -4,6 +4,8 @@
 package iot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -68,17 +70,17 @@ type TimeSeriesInsightsStandardEnvironment struct {
 // NewTimeSeriesInsightsStandardEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewTimeSeriesInsightsStandardEnvironment(ctx *pulumi.Context,
 	name string, args *TimeSeriesInsightsStandardEnvironmentArgs, opts ...pulumi.ResourceOption) (*TimeSeriesInsightsStandardEnvironment, error) {
-	if args == nil || args.DataRetentionTime == nil {
-		return nil, errors.New("missing required argument 'DataRetentionTime'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &TimeSeriesInsightsStandardEnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataRetentionTime == nil {
+		return nil, errors.New("invalid value for required argument 'DataRetentionTime'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource TimeSeriesInsightsStandardEnvironment
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsStandardEnvironment:TimeSeriesInsightsStandardEnvironment", name, args, &resource, opts...)
@@ -184,4 +186,43 @@ type TimeSeriesInsightsStandardEnvironmentArgs struct {
 
 func (TimeSeriesInsightsStandardEnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeSeriesInsightsStandardEnvironmentArgs)(nil)).Elem()
+}
+
+type TimeSeriesInsightsStandardEnvironmentInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsStandardEnvironmentOutput() TimeSeriesInsightsStandardEnvironmentOutput
+	ToTimeSeriesInsightsStandardEnvironmentOutputWithContext(ctx context.Context) TimeSeriesInsightsStandardEnvironmentOutput
+}
+
+func (TimeSeriesInsightsStandardEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsStandardEnvironment)(nil)).Elem()
+}
+
+func (i TimeSeriesInsightsStandardEnvironment) ToTimeSeriesInsightsStandardEnvironmentOutput() TimeSeriesInsightsStandardEnvironmentOutput {
+	return i.ToTimeSeriesInsightsStandardEnvironmentOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesInsightsStandardEnvironment) ToTimeSeriesInsightsStandardEnvironmentOutputWithContext(ctx context.Context) TimeSeriesInsightsStandardEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsStandardEnvironmentOutput)
+}
+
+type TimeSeriesInsightsStandardEnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsStandardEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsStandardEnvironmentOutput)(nil)).Elem()
+}
+
+func (o TimeSeriesInsightsStandardEnvironmentOutput) ToTimeSeriesInsightsStandardEnvironmentOutput() TimeSeriesInsightsStandardEnvironmentOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsStandardEnvironmentOutput) ToTimeSeriesInsightsStandardEnvironmentOutputWithContext(ctx context.Context) TimeSeriesInsightsStandardEnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TimeSeriesInsightsStandardEnvironmentOutput{})
 }

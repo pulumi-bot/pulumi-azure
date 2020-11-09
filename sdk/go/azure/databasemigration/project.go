@@ -4,6 +4,8 @@
 package databasemigration
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,20 +37,20 @@ type Project struct {
 // NewProject registers a new resource with the given unique name, arguments, and options.
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
-	if args == nil || args.SourcePlatform == nil {
-		return nil, errors.New("missing required argument 'SourcePlatform'")
-	}
-	if args == nil || args.TargetPlatform == nil {
-		return nil, errors.New("missing required argument 'TargetPlatform'")
-	}
 	if args == nil {
-		args = &ProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
+	}
+	if args.SourcePlatform == nil {
+		return nil, errors.New("invalid value for required argument 'SourcePlatform'")
+	}
+	if args.TargetPlatform == nil {
+		return nil, errors.New("invalid value for required argument 'TargetPlatform'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("azure:databasemigration/project:Project", name, args, &resource, opts...)
@@ -146,4 +148,43 @@ type ProjectArgs struct {
 
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
+}
+
+type ProjectInput interface {
+	pulumi.Input
+
+	ToProjectOutput() ProjectOutput
+	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
+}
+
+func (Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil)).Elem()
+}
+
+func (i Project) ToProjectOutput() ProjectOutput {
+	return i.ToProjectOutputWithContext(context.Background())
+}
+
+func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
+}
+
+type ProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+}
+
+func (o ProjectOutput) ToProjectOutput() ProjectOutput {
+	return o
+}
+
+func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectOutput{})
 }

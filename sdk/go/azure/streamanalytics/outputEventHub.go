@@ -4,6 +4,8 @@
 package streamanalytics
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,29 +101,29 @@ type OutputEventHub struct {
 // NewOutputEventHub registers a new resource with the given unique name, arguments, and options.
 func NewOutputEventHub(ctx *pulumi.Context,
 	name string, args *OutputEventHubArgs, opts ...pulumi.ResourceOption) (*OutputEventHub, error) {
-	if args == nil || args.EventhubName == nil {
-		return nil, errors.New("missing required argument 'EventhubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Serialization == nil {
-		return nil, errors.New("missing required argument 'Serialization'")
-	}
-	if args == nil || args.ServicebusNamespace == nil {
-		return nil, errors.New("missing required argument 'ServicebusNamespace'")
-	}
-	if args == nil || args.SharedAccessPolicyKey == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyKey'")
-	}
-	if args == nil || args.SharedAccessPolicyName == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyName'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
 	if args == nil {
-		args = &OutputEventHubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.EventhubName == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Serialization == nil {
+		return nil, errors.New("invalid value for required argument 'Serialization'")
+	}
+	if args.ServicebusNamespace == nil {
+		return nil, errors.New("invalid value for required argument 'ServicebusNamespace'")
+	}
+	if args.SharedAccessPolicyKey == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyKey'")
+	}
+	if args.SharedAccessPolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyName'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
 	}
 	var resource OutputEventHub
 	err := ctx.RegisterResource("azure:streamanalytics/outputEventHub:OutputEventHub", name, args, &resource, opts...)
@@ -227,4 +229,43 @@ type OutputEventHubArgs struct {
 
 func (OutputEventHubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputEventHubArgs)(nil)).Elem()
+}
+
+type OutputEventHubInput interface {
+	pulumi.Input
+
+	ToOutputEventHubOutput() OutputEventHubOutput
+	ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput
+}
+
+func (OutputEventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputEventHub)(nil)).Elem()
+}
+
+func (i OutputEventHub) ToOutputEventHubOutput() OutputEventHubOutput {
+	return i.ToOutputEventHubOutputWithContext(context.Background())
+}
+
+func (i OutputEventHub) ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubOutput)
+}
+
+type OutputEventHubOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputEventHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputEventHubOutput)(nil)).Elem()
+}
+
+func (o OutputEventHubOutput) ToOutputEventHubOutput() OutputEventHubOutput {
+	return o
+}
+
+func (o OutputEventHubOutput) ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputEventHubOutput{})
 }

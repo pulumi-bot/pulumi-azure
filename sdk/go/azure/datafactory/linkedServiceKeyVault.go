@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,17 +92,17 @@ type LinkedServiceKeyVault struct {
 // NewLinkedServiceKeyVault registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceKeyVault(ctx *pulumi.Context,
 	name string, args *LinkedServiceKeyVaultArgs, opts ...pulumi.ResourceOption) (*LinkedServiceKeyVault, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceKeyVaultArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceKeyVault
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceKeyVault:LinkedServiceKeyVault", name, args, &resource, opts...)
@@ -214,4 +216,43 @@ type LinkedServiceKeyVaultArgs struct {
 
 func (LinkedServiceKeyVaultArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceKeyVaultArgs)(nil)).Elem()
+}
+
+type LinkedServiceKeyVaultInput interface {
+	pulumi.Input
+
+	ToLinkedServiceKeyVaultOutput() LinkedServiceKeyVaultOutput
+	ToLinkedServiceKeyVaultOutputWithContext(ctx context.Context) LinkedServiceKeyVaultOutput
+}
+
+func (LinkedServiceKeyVault) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceKeyVault)(nil)).Elem()
+}
+
+func (i LinkedServiceKeyVault) ToLinkedServiceKeyVaultOutput() LinkedServiceKeyVaultOutput {
+	return i.ToLinkedServiceKeyVaultOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceKeyVault) ToLinkedServiceKeyVaultOutputWithContext(ctx context.Context) LinkedServiceKeyVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceKeyVaultOutput)
+}
+
+type LinkedServiceKeyVaultOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceKeyVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceKeyVaultOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceKeyVaultOutput) ToLinkedServiceKeyVaultOutput() LinkedServiceKeyVaultOutput {
+	return o
+}
+
+func (o LinkedServiceKeyVaultOutput) ToLinkedServiceKeyVaultOutputWithContext(ctx context.Context) LinkedServiceKeyVaultOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceKeyVaultOutput{})
 }

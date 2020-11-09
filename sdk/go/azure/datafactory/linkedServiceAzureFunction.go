@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,20 +86,20 @@ type LinkedServiceAzureFunction struct {
 // NewLinkedServiceAzureFunction registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceAzureFunction(ctx *pulumi.Context,
 	name string, args *LinkedServiceAzureFunctionArgs, opts ...pulumi.ResourceOption) (*LinkedServiceAzureFunction, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &LinkedServiceAzureFunctionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource LinkedServiceAzureFunction
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureFunction:LinkedServiceAzureFunction", name, args, &resource, opts...)
@@ -219,4 +221,43 @@ type LinkedServiceAzureFunctionArgs struct {
 
 func (LinkedServiceAzureFunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureFunctionArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureFunctionInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput
+	ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput
+}
+
+func (LinkedServiceAzureFunction) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
+	return i.ToLinkedServiceAzureFunctionOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFunctionOutput)
+}
+
+type LinkedServiceAzureFunctionOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFunctionOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureFunctionOutput{})
 }

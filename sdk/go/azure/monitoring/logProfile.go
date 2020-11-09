@@ -4,6 +4,8 @@
 package monitoring
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -102,17 +104,17 @@ type LogProfile struct {
 // NewLogProfile registers a new resource with the given unique name, arguments, and options.
 func NewLogProfile(ctx *pulumi.Context,
 	name string, args *LogProfileArgs, opts ...pulumi.ResourceOption) (*LogProfile, error) {
-	if args == nil || args.Categories == nil {
-		return nil, errors.New("missing required argument 'Categories'")
-	}
-	if args == nil || args.Locations == nil {
-		return nil, errors.New("missing required argument 'Locations'")
-	}
-	if args == nil || args.RetentionPolicy == nil {
-		return nil, errors.New("missing required argument 'RetentionPolicy'")
-	}
 	if args == nil {
-		args = &LogProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Categories == nil {
+		return nil, errors.New("invalid value for required argument 'Categories'")
+	}
+	if args.Locations == nil {
+		return nil, errors.New("invalid value for required argument 'Locations'")
+	}
+	if args.RetentionPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'RetentionPolicy'")
 	}
 	var resource LogProfile
 	err := ctx.RegisterResource("azure:monitoring/logProfile:LogProfile", name, args, &resource, opts...)
@@ -206,4 +208,43 @@ type LogProfileArgs struct {
 
 func (LogProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logProfileArgs)(nil)).Elem()
+}
+
+type LogProfileInput interface {
+	pulumi.Input
+
+	ToLogProfileOutput() LogProfileOutput
+	ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput
+}
+
+func (LogProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogProfile)(nil)).Elem()
+}
+
+func (i LogProfile) ToLogProfileOutput() LogProfileOutput {
+	return i.ToLogProfileOutputWithContext(context.Background())
+}
+
+func (i LogProfile) ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogProfileOutput)
+}
+
+type LogProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogProfileOutput)(nil)).Elem()
+}
+
+func (o LogProfileOutput) ToLogProfileOutput() LogProfileOutput {
+	return o
+}
+
+func (o LogProfileOutput) ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogProfileOutput{})
 }

@@ -4,6 +4,8 @@
 package servicebus
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -101,20 +103,20 @@ type Subscription struct {
 // NewSubscription registers a new resource with the given unique name, arguments, and options.
 func NewSubscription(ctx *pulumi.Context,
 	name string, args *SubscriptionArgs, opts ...pulumi.ResourceOption) (*Subscription, error) {
-	if args == nil || args.MaxDeliveryCount == nil {
-		return nil, errors.New("missing required argument 'MaxDeliveryCount'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TopicName == nil {
-		return nil, errors.New("missing required argument 'TopicName'")
-	}
 	if args == nil {
-		args = &SubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MaxDeliveryCount == nil {
+		return nil, errors.New("invalid value for required argument 'MaxDeliveryCount'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TopicName == nil {
+		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -282,4 +284,43 @@ type SubscriptionArgs struct {
 
 func (SubscriptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionArgs)(nil)).Elem()
+}
+
+type SubscriptionInput interface {
+	pulumi.Input
+
+	ToSubscriptionOutput() SubscriptionOutput
+	ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput
+}
+
+func (Subscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subscription)(nil)).Elem()
+}
+
+func (i Subscription) ToSubscriptionOutput() SubscriptionOutput {
+	return i.ToSubscriptionOutputWithContext(context.Background())
+}
+
+func (i Subscription) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
+}
+
+type SubscriptionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionOutput)(nil)).Elem()
+}
+
+func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {
+	return o
+}
+
+func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubscriptionOutput{})
 }

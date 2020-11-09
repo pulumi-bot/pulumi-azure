@@ -4,6 +4,8 @@
 package devspace
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,20 +41,20 @@ type Controller struct {
 // NewController registers a new resource with the given unique name, arguments, and options.
 func NewController(ctx *pulumi.Context,
 	name string, args *ControllerArgs, opts ...pulumi.ResourceOption) (*Controller, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
-	if args == nil || args.TargetContainerHostCredentialsBase64 == nil {
-		return nil, errors.New("missing required argument 'TargetContainerHostCredentialsBase64'")
-	}
-	if args == nil || args.TargetContainerHostResourceId == nil {
-		return nil, errors.New("missing required argument 'TargetContainerHostResourceId'")
-	}
 	if args == nil {
-		args = &ControllerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
+	}
+	if args.TargetContainerHostCredentialsBase64 == nil {
+		return nil, errors.New("invalid value for required argument 'TargetContainerHostCredentialsBase64'")
+	}
+	if args.TargetContainerHostResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetContainerHostResourceId'")
 	}
 	var resource Controller
 	err := ctx.RegisterResource("azure:devspace/controller:Controller", name, args, &resource, opts...)
@@ -158,4 +160,43 @@ type ControllerArgs struct {
 
 func (ControllerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*controllerArgs)(nil)).Elem()
+}
+
+type ControllerInput interface {
+	pulumi.Input
+
+	ToControllerOutput() ControllerOutput
+	ToControllerOutputWithContext(ctx context.Context) ControllerOutput
+}
+
+func (Controller) ElementType() reflect.Type {
+	return reflect.TypeOf((*Controller)(nil)).Elem()
+}
+
+func (i Controller) ToControllerOutput() ControllerOutput {
+	return i.ToControllerOutputWithContext(context.Background())
+}
+
+func (i Controller) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControllerOutput)
+}
+
+type ControllerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ControllerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControllerOutput)(nil)).Elem()
+}
+
+func (o ControllerOutput) ToControllerOutput() ControllerOutput {
+	return o
+}
+
+func (o ControllerOutput) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ControllerOutput{})
 }

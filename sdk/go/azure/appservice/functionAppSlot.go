@@ -4,6 +4,8 @@
 package appservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,23 +138,23 @@ type FunctionAppSlot struct {
 // NewFunctionAppSlot registers a new resource with the given unique name, arguments, and options.
 func NewFunctionAppSlot(ctx *pulumi.Context,
 	name string, args *FunctionAppSlotArgs, opts ...pulumi.ResourceOption) (*FunctionAppSlot, error) {
-	if args == nil || args.AppServicePlanId == nil {
-		return nil, errors.New("missing required argument 'AppServicePlanId'")
-	}
-	if args == nil || args.FunctionAppName == nil {
-		return nil, errors.New("missing required argument 'FunctionAppName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageAccountAccessKey == nil {
-		return nil, errors.New("missing required argument 'StorageAccountAccessKey'")
-	}
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
 	if args == nil {
-		args = &FunctionAppSlotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AppServicePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServicePlanId'")
+	}
+	if args.FunctionAppName == nil {
+		return nil, errors.New("invalid value for required argument 'FunctionAppName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageAccountAccessKey == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountAccessKey'")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
 	}
 	var resource FunctionAppSlot
 	err := ctx.RegisterResource("azure:appservice/functionAppSlot:FunctionAppSlot", name, args, &resource, opts...)
@@ -374,4 +376,43 @@ type FunctionAppSlotArgs struct {
 
 func (FunctionAppSlotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionAppSlotArgs)(nil)).Elem()
+}
+
+type FunctionAppSlotInput interface {
+	pulumi.Input
+
+	ToFunctionAppSlotOutput() FunctionAppSlotOutput
+	ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput
+}
+
+func (FunctionAppSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppSlot)(nil)).Elem()
+}
+
+func (i FunctionAppSlot) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
+	return i.ToFunctionAppSlotOutputWithContext(context.Background())
+}
+
+func (i FunctionAppSlot) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotOutput)
+}
+
+type FunctionAppSlotOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionAppSlotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppSlotOutput)(nil)).Elem()
+}
+
+func (o FunctionAppSlotOutput) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
+	return o
+}
+
+func (o FunctionAppSlotOutput) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionAppSlotOutput{})
 }

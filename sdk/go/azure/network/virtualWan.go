@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -68,11 +70,11 @@ type VirtualWan struct {
 // NewVirtualWan registers a new resource with the given unique name, arguments, and options.
 func NewVirtualWan(ctx *pulumi.Context,
 	name string, args *VirtualWanArgs, opts ...pulumi.ResourceOption) (*VirtualWan, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &VirtualWanArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource VirtualWan
 	err := ctx.RegisterResource("azure:network/virtualWan:VirtualWan", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type VirtualWanArgs struct {
 
 func (VirtualWanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualWanArgs)(nil)).Elem()
+}
+
+type VirtualWanInput interface {
+	pulumi.Input
+
+	ToVirtualWanOutput() VirtualWanOutput
+	ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput
+}
+
+func (VirtualWan) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualWan)(nil)).Elem()
+}
+
+func (i VirtualWan) ToVirtualWanOutput() VirtualWanOutput {
+	return i.ToVirtualWanOutputWithContext(context.Background())
+}
+
+func (i VirtualWan) ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualWanOutput)
+}
+
+type VirtualWanOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualWanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualWanOutput)(nil)).Elem()
+}
+
+func (o VirtualWanOutput) ToVirtualWanOutput() VirtualWanOutput {
+	return o
+}
+
+func (o VirtualWanOutput) ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualWanOutput{})
 }

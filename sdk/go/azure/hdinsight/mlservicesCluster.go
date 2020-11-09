@@ -4,6 +4,8 @@
 package hdinsight
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,26 +136,26 @@ type MLServicesCluster struct {
 // NewMLServicesCluster registers a new resource with the given unique name, arguments, and options.
 func NewMLServicesCluster(ctx *pulumi.Context,
 	name string, args *MLServicesClusterArgs, opts ...pulumi.ResourceOption) (*MLServicesCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Rstudio == nil {
-		return nil, errors.New("missing required argument 'Rstudio'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &MLServicesClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Rstudio == nil {
+		return nil, errors.New("invalid value for required argument 'Rstudio'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource MLServicesCluster
 	err := ctx.RegisterResource("azure:hdinsight/mLServicesCluster:MLServicesCluster", name, args, &resource, opts...)
@@ -291,4 +293,43 @@ type MLServicesClusterArgs struct {
 
 func (MLServicesClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mlservicesClusterArgs)(nil)).Elem()
+}
+
+type MLServicesClusterInput interface {
+	pulumi.Input
+
+	ToMLServicesClusterOutput() MLServicesClusterOutput
+	ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput
+}
+
+func (MLServicesCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLServicesCluster)(nil)).Elem()
+}
+
+func (i MLServicesCluster) ToMLServicesClusterOutput() MLServicesClusterOutput {
+	return i.ToMLServicesClusterOutputWithContext(context.Background())
+}
+
+func (i MLServicesCluster) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterOutput)
+}
+
+type MLServicesClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (MLServicesClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLServicesClusterOutput)(nil)).Elem()
+}
+
+func (o MLServicesClusterOutput) ToMLServicesClusterOutput() MLServicesClusterOutput {
+	return o
+}
+
+func (o MLServicesClusterOutput) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MLServicesClusterOutput{})
 }

@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,14 +76,14 @@ type ShareDirectory struct {
 // NewShareDirectory registers a new resource with the given unique name, arguments, and options.
 func NewShareDirectory(ctx *pulumi.Context,
 	name string, args *ShareDirectoryArgs, opts ...pulumi.ResourceOption) (*ShareDirectory, error) {
-	if args == nil || args.ShareName == nil {
-		return nil, errors.New("missing required argument 'ShareName'")
-	}
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
 	if args == nil {
-		args = &ShareDirectoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ShareName == nil {
+		return nil, errors.New("invalid value for required argument 'ShareName'")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
 	}
 	var resource ShareDirectory
 	err := ctx.RegisterResource("azure:storage/shareDirectory:ShareDirectory", name, args, &resource, opts...)
@@ -155,4 +157,43 @@ type ShareDirectoryArgs struct {
 
 func (ShareDirectoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareDirectoryArgs)(nil)).Elem()
+}
+
+type ShareDirectoryInput interface {
+	pulumi.Input
+
+	ToShareDirectoryOutput() ShareDirectoryOutput
+	ToShareDirectoryOutputWithContext(ctx context.Context) ShareDirectoryOutput
+}
+
+func (ShareDirectory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareDirectory)(nil)).Elem()
+}
+
+func (i ShareDirectory) ToShareDirectoryOutput() ShareDirectoryOutput {
+	return i.ToShareDirectoryOutputWithContext(context.Background())
+}
+
+func (i ShareDirectory) ToShareDirectoryOutputWithContext(ctx context.Context) ShareDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareDirectoryOutput)
+}
+
+type ShareDirectoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareDirectoryOutput)(nil)).Elem()
+}
+
+func (o ShareDirectoryOutput) ToShareDirectoryOutput() ShareDirectoryOutput {
+	return o
+}
+
+func (o ShareDirectoryOutput) ToShareDirectoryOutputWithContext(ctx context.Context) ShareDirectoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShareDirectoryOutput{})
 }

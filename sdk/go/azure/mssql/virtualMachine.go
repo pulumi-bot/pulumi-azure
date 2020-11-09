@@ -4,6 +4,8 @@
 package mssql
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,14 +87,14 @@ type VirtualMachine struct {
 // NewVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewVirtualMachine(ctx *pulumi.Context,
 	name string, args *VirtualMachineArgs, opts ...pulumi.ResourceOption) (*VirtualMachine, error) {
-	if args == nil || args.SqlLicenseType == nil {
-		return nil, errors.New("missing required argument 'SqlLicenseType'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &VirtualMachineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.SqlLicenseType == nil {
+		return nil, errors.New("invalid value for required argument 'SqlLicenseType'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource VirtualMachine
 	err := ctx.RegisterResource("azure:mssql/virtualMachine:VirtualMachine", name, args, &resource, opts...)
@@ -222,4 +224,43 @@ type VirtualMachineArgs struct {
 
 func (VirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineArgs)(nil)).Elem()
+}
+
+type VirtualMachineInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOutput() VirtualMachineOutput
+	ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput
+}
+
+func (VirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (i VirtualMachine) ToVirtualMachineOutput() VirtualMachineOutput {
+	return i.ToVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput)
+}
+
+type VirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineOutput)(nil)).Elem()
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualMachineOutput{})
 }

@@ -4,6 +4,8 @@
 package blueprint
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -147,14 +149,14 @@ type Assignment struct {
 // NewAssignment registers a new resource with the given unique name, arguments, and options.
 func NewAssignment(ctx *pulumi.Context,
 	name string, args *AssignmentArgs, opts ...pulumi.ResourceOption) (*Assignment, error) {
-	if args == nil || args.TargetSubscriptionId == nil {
-		return nil, errors.New("missing required argument 'TargetSubscriptionId'")
-	}
-	if args == nil || args.VersionId == nil {
-		return nil, errors.New("missing required argument 'VersionId'")
-	}
 	if args == nil {
-		args = &AssignmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.TargetSubscriptionId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetSubscriptionId'")
+	}
+	if args.VersionId == nil {
+		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
 	var resource Assignment
 	err := ctx.RegisterResource("azure:blueprint/assignment:Assignment", name, args, &resource, opts...)
@@ -280,4 +282,43 @@ type AssignmentArgs struct {
 
 func (AssignmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assignmentArgs)(nil)).Elem()
+}
+
+type AssignmentInput interface {
+	pulumi.Input
+
+	ToAssignmentOutput() AssignmentOutput
+	ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput
+}
+
+func (Assignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Assignment)(nil)).Elem()
+}
+
+func (i Assignment) ToAssignmentOutput() AssignmentOutput {
+	return i.ToAssignmentOutputWithContext(context.Background())
+}
+
+func (i Assignment) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOutput)
+}
+
+type AssignmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentOutput)(nil)).Elem()
+}
+
+func (o AssignmentOutput) ToAssignmentOutput() AssignmentOutput {
+	return o
+}
+
+func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssignmentOutput{})
 }

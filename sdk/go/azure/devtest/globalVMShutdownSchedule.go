@@ -4,6 +4,8 @@
 package devtest
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,20 +138,20 @@ type GlobalVMShutdownSchedule struct {
 // NewGlobalVMShutdownSchedule registers a new resource with the given unique name, arguments, and options.
 func NewGlobalVMShutdownSchedule(ctx *pulumi.Context,
 	name string, args *GlobalVMShutdownScheduleArgs, opts ...pulumi.ResourceOption) (*GlobalVMShutdownSchedule, error) {
-	if args == nil || args.DailyRecurrenceTime == nil {
-		return nil, errors.New("missing required argument 'DailyRecurrenceTime'")
-	}
-	if args == nil || args.NotificationSettings == nil {
-		return nil, errors.New("missing required argument 'NotificationSettings'")
-	}
-	if args == nil || args.Timezone == nil {
-		return nil, errors.New("missing required argument 'Timezone'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &GlobalVMShutdownScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DailyRecurrenceTime == nil {
+		return nil, errors.New("invalid value for required argument 'DailyRecurrenceTime'")
+	}
+	if args.NotificationSettings == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationSettings'")
+	}
+	if args.Timezone == nil {
+		return nil, errors.New("invalid value for required argument 'Timezone'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource GlobalVMShutdownSchedule
 	err := ctx.RegisterResource("azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule", name, args, &resource, opts...)
@@ -243,4 +245,43 @@ type GlobalVMShutdownScheduleArgs struct {
 
 func (GlobalVMShutdownScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalVMShutdownScheduleArgs)(nil)).Elem()
+}
+
+type GlobalVMShutdownScheduleInput interface {
+	pulumi.Input
+
+	ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput
+	ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput
+}
+
+func (GlobalVMShutdownSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalVMShutdownSchedule)(nil)).Elem()
+}
+
+func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput {
+	return i.ToGlobalVMShutdownScheduleOutputWithContext(context.Background())
+}
+
+func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleOutput)
+}
+
+type GlobalVMShutdownScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalVMShutdownScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalVMShutdownScheduleOutput)(nil)).Elem()
+}
+
+func (o GlobalVMShutdownScheduleOutput) ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput {
+	return o
+}
+
+func (o GlobalVMShutdownScheduleOutput) ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalVMShutdownScheduleOutput{})
 }

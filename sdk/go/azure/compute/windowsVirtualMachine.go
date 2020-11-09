@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -193,26 +195,26 @@ type WindowsVirtualMachine struct {
 // NewWindowsVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewWindowsVirtualMachine(ctx *pulumi.Context,
 	name string, args *WindowsVirtualMachineArgs, opts ...pulumi.ResourceOption) (*WindowsVirtualMachine, error) {
-	if args == nil || args.AdminPassword == nil {
-		return nil, errors.New("missing required argument 'AdminPassword'")
-	}
-	if args == nil || args.AdminUsername == nil {
-		return nil, errors.New("missing required argument 'AdminUsername'")
-	}
-	if args == nil || args.NetworkInterfaceIds == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceIds'")
-	}
-	if args == nil || args.OsDisk == nil {
-		return nil, errors.New("missing required argument 'OsDisk'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &WindowsVirtualMachineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AdminPassword == nil {
+		return nil, errors.New("invalid value for required argument 'AdminPassword'")
+	}
+	if args.AdminUsername == nil {
+		return nil, errors.New("invalid value for required argument 'AdminUsername'")
+	}
+	if args.NetworkInterfaceIds == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceIds'")
+	}
+	if args.OsDisk == nil {
+		return nil, errors.New("invalid value for required argument 'OsDisk'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource WindowsVirtualMachine
 	err := ctx.RegisterResource("azure:compute/windowsVirtualMachine:WindowsVirtualMachine", name, args, &resource, opts...)
@@ -546,4 +548,43 @@ type WindowsVirtualMachineArgs struct {
 
 func (WindowsVirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*windowsVirtualMachineArgs)(nil)).Elem()
+}
+
+type WindowsVirtualMachineInput interface {
+	pulumi.Input
+
+	ToWindowsVirtualMachineOutput() WindowsVirtualMachineOutput
+	ToWindowsVirtualMachineOutputWithContext(ctx context.Context) WindowsVirtualMachineOutput
+}
+
+func (WindowsVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVirtualMachine)(nil)).Elem()
+}
+
+func (i WindowsVirtualMachine) ToWindowsVirtualMachineOutput() WindowsVirtualMachineOutput {
+	return i.ToWindowsVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i WindowsVirtualMachine) ToWindowsVirtualMachineOutputWithContext(ctx context.Context) WindowsVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOutput)
+}
+
+type WindowsVirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVirtualMachineOutput)(nil)).Elem()
+}
+
+func (o WindowsVirtualMachineOutput) ToWindowsVirtualMachineOutput() WindowsVirtualMachineOutput {
+	return o
+}
+
+func (o WindowsVirtualMachineOutput) ToWindowsVirtualMachineOutputWithContext(ctx context.Context) WindowsVirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WindowsVirtualMachineOutput{})
 }

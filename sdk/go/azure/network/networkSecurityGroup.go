@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,11 +82,11 @@ type NetworkSecurityGroup struct {
 // NewNetworkSecurityGroup registers a new resource with the given unique name, arguments, and options.
 func NewNetworkSecurityGroup(ctx *pulumi.Context,
 	name string, args *NetworkSecurityGroupArgs, opts ...pulumi.ResourceOption) (*NetworkSecurityGroup, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &NetworkSecurityGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource NetworkSecurityGroup
 	err := ctx.RegisterResource("azure:network/networkSecurityGroup:NetworkSecurityGroup", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type NetworkSecurityGroupArgs struct {
 
 func (NetworkSecurityGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkSecurityGroupArgs)(nil)).Elem()
+}
+
+type NetworkSecurityGroupInput interface {
+	pulumi.Input
+
+	ToNetworkSecurityGroupOutput() NetworkSecurityGroupOutput
+	ToNetworkSecurityGroupOutputWithContext(ctx context.Context) NetworkSecurityGroupOutput
+}
+
+func (NetworkSecurityGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityGroup)(nil)).Elem()
+}
+
+func (i NetworkSecurityGroup) ToNetworkSecurityGroupOutput() NetworkSecurityGroupOutput {
+	return i.ToNetworkSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i NetworkSecurityGroup) ToNetworkSecurityGroupOutputWithContext(ctx context.Context) NetworkSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupOutput)
+}
+
+type NetworkSecurityGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityGroupOutput)(nil)).Elem()
+}
+
+func (o NetworkSecurityGroupOutput) ToNetworkSecurityGroupOutput() NetworkSecurityGroupOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupOutput) ToNetworkSecurityGroupOutputWithContext(ctx context.Context) NetworkSecurityGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkSecurityGroupOutput{})
 }

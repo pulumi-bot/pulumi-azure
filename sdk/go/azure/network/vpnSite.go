@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,14 +84,14 @@ type VpnSite struct {
 // NewVpnSite registers a new resource with the given unique name, arguments, and options.
 func NewVpnSite(ctx *pulumi.Context,
 	name string, args *VpnSiteArgs, opts ...pulumi.ResourceOption) (*VpnSite, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualWanId == nil {
-		return nil, errors.New("missing required argument 'VirtualWanId'")
-	}
 	if args == nil {
-		args = &VpnSiteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualWanId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualWanId'")
 	}
 	var resource VpnSite
 	err := ctx.RegisterResource("azure:network/vpnSite:VpnSite", name, args, &resource, opts...)
@@ -203,4 +205,43 @@ type VpnSiteArgs struct {
 
 func (VpnSiteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnSiteArgs)(nil)).Elem()
+}
+
+type VpnSiteInput interface {
+	pulumi.Input
+
+	ToVpnSiteOutput() VpnSiteOutput
+	ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput
+}
+
+func (VpnSite) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnSite)(nil)).Elem()
+}
+
+func (i VpnSite) ToVpnSiteOutput() VpnSiteOutput {
+	return i.ToVpnSiteOutputWithContext(context.Background())
+}
+
+func (i VpnSite) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteOutput)
+}
+
+type VpnSiteOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnSiteOutput)(nil)).Elem()
+}
+
+func (o VpnSiteOutput) ToVpnSiteOutput() VpnSiteOutput {
+	return o
+}
+
+func (o VpnSiteOutput) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnSiteOutput{})
 }

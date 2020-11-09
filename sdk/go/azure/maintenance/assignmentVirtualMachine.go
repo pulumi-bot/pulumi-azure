@@ -4,6 +4,8 @@
 package maintenance
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -25,14 +27,14 @@ type AssignmentVirtualMachine struct {
 // NewAssignmentVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewAssignmentVirtualMachine(ctx *pulumi.Context,
 	name string, args *AssignmentVirtualMachineArgs, opts ...pulumi.ResourceOption) (*AssignmentVirtualMachine, error) {
-	if args == nil || args.MaintenanceConfigurationId == nil {
-		return nil, errors.New("missing required argument 'MaintenanceConfigurationId'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &AssignmentVirtualMachineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.MaintenanceConfigurationId == nil {
+		return nil, errors.New("invalid value for required argument 'MaintenanceConfigurationId'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource AssignmentVirtualMachine
 	err := ctx.RegisterResource("azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine", name, args, &resource, opts...)
@@ -98,4 +100,43 @@ type AssignmentVirtualMachineArgs struct {
 
 func (AssignmentVirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assignmentVirtualMachineArgs)(nil)).Elem()
+}
+
+type AssignmentVirtualMachineInput interface {
+	pulumi.Input
+
+	ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput
+	ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput
+}
+
+func (AssignmentVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentVirtualMachine)(nil)).Elem()
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
+	return i.ToAssignmentVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachineOutput)
+}
+
+type AssignmentVirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentVirtualMachineOutput)(nil)).Elem()
+}
+
+func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
+	return o
+}
+
+func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssignmentVirtualMachineOutput{})
 }

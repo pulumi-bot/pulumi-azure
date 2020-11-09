@@ -4,6 +4,8 @@
 package bot
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,14 +78,14 @@ type ChannelTeams struct {
 // NewChannelTeams registers a new resource with the given unique name, arguments, and options.
 func NewChannelTeams(ctx *pulumi.Context,
 	name string, args *ChannelTeamsArgs, opts ...pulumi.ResourceOption) (*ChannelTeams, error) {
-	if args == nil || args.BotName == nil {
-		return nil, errors.New("missing required argument 'BotName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ChannelTeamsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.BotName == nil {
+		return nil, errors.New("invalid value for required argument 'BotName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ChannelTeams
 	err := ctx.RegisterResource("azure:bot/channelTeams:ChannelTeams", name, args, &resource, opts...)
@@ -165,4 +167,43 @@ type ChannelTeamsArgs struct {
 
 func (ChannelTeamsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelTeamsArgs)(nil)).Elem()
+}
+
+type ChannelTeamsInput interface {
+	pulumi.Input
+
+	ToChannelTeamsOutput() ChannelTeamsOutput
+	ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput
+}
+
+func (ChannelTeams) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelTeams)(nil)).Elem()
+}
+
+func (i ChannelTeams) ToChannelTeamsOutput() ChannelTeamsOutput {
+	return i.ToChannelTeamsOutputWithContext(context.Background())
+}
+
+func (i ChannelTeams) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelTeamsOutput)
+}
+
+type ChannelTeamsOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelTeamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelTeamsOutput)(nil)).Elem()
+}
+
+func (o ChannelTeamsOutput) ToChannelTeamsOutput() ChannelTeamsOutput {
+	return o
+}
+
+func (o ChannelTeamsOutput) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelTeamsOutput{})
 }

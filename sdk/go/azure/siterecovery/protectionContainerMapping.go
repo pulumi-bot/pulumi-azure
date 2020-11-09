@@ -4,6 +4,8 @@
 package siterecovery
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,26 +126,26 @@ type ProtectionContainerMapping struct {
 // NewProtectionContainerMapping registers a new resource with the given unique name, arguments, and options.
 func NewProtectionContainerMapping(ctx *pulumi.Context,
 	name string, args *ProtectionContainerMappingArgs, opts ...pulumi.ResourceOption) (*ProtectionContainerMapping, error) {
-	if args == nil || args.RecoveryFabricName == nil {
-		return nil, errors.New("missing required argument 'RecoveryFabricName'")
-	}
-	if args == nil || args.RecoveryReplicationPolicyId == nil {
-		return nil, errors.New("missing required argument 'RecoveryReplicationPolicyId'")
-	}
-	if args == nil || args.RecoverySourceProtectionContainerName == nil {
-		return nil, errors.New("missing required argument 'RecoverySourceProtectionContainerName'")
-	}
-	if args == nil || args.RecoveryTargetProtectionContainerId == nil {
-		return nil, errors.New("missing required argument 'RecoveryTargetProtectionContainerId'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProtectionContainerMappingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RecoveryFabricName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryFabricName'")
+	}
+	if args.RecoveryReplicationPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryReplicationPolicyId'")
+	}
+	if args.RecoverySourceProtectionContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoverySourceProtectionContainerName'")
+	}
+	if args.RecoveryTargetProtectionContainerId == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryTargetProtectionContainerId'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ProtectionContainerMapping
 	err := ctx.RegisterResource("azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping", name, args, &resource, opts...)
@@ -241,4 +243,43 @@ type ProtectionContainerMappingArgs struct {
 
 func (ProtectionContainerMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectionContainerMappingArgs)(nil)).Elem()
+}
+
+type ProtectionContainerMappingInput interface {
+	pulumi.Input
+
+	ToProtectionContainerMappingOutput() ProtectionContainerMappingOutput
+	ToProtectionContainerMappingOutputWithContext(ctx context.Context) ProtectionContainerMappingOutput
+}
+
+func (ProtectionContainerMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionContainerMapping)(nil)).Elem()
+}
+
+func (i ProtectionContainerMapping) ToProtectionContainerMappingOutput() ProtectionContainerMappingOutput {
+	return i.ToProtectionContainerMappingOutputWithContext(context.Background())
+}
+
+func (i ProtectionContainerMapping) ToProtectionContainerMappingOutputWithContext(ctx context.Context) ProtectionContainerMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectionContainerMappingOutput)
+}
+
+type ProtectionContainerMappingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectionContainerMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionContainerMappingOutput)(nil)).Elem()
+}
+
+func (o ProtectionContainerMappingOutput) ToProtectionContainerMappingOutput() ProtectionContainerMappingOutput {
+	return o
+}
+
+func (o ProtectionContainerMappingOutput) ToProtectionContainerMappingOutputWithContext(ctx context.Context) ProtectionContainerMappingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectionContainerMappingOutput{})
 }

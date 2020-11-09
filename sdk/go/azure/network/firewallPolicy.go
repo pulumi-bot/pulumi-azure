@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,11 +67,11 @@ type FirewallPolicy struct {
 // NewFirewallPolicy registers a new resource with the given unique name, arguments, and options.
 func NewFirewallPolicy(ctx *pulumi.Context,
 	name string, args *FirewallPolicyArgs, opts ...pulumi.ResourceOption) (*FirewallPolicy, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &FirewallPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource FirewallPolicy
 	err := ctx.RegisterResource("azure:network/firewallPolicy:FirewallPolicy", name, args, &resource, opts...)
@@ -187,4 +189,43 @@ type FirewallPolicyArgs struct {
 
 func (FirewallPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallPolicyArgs)(nil)).Elem()
+}
+
+type FirewallPolicyInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyOutput() FirewallPolicyOutput
+	ToFirewallPolicyOutputWithContext(ctx context.Context) FirewallPolicyOutput
+}
+
+func (FirewallPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicy)(nil)).Elem()
+}
+
+func (i FirewallPolicy) ToFirewallPolicyOutput() FirewallPolicyOutput {
+	return i.ToFirewallPolicyOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicy) ToFirewallPolicyOutputWithContext(ctx context.Context) FirewallPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyOutput)
+}
+
+type FirewallPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyOutput)(nil)).Elem()
+}
+
+func (o FirewallPolicyOutput) ToFirewallPolicyOutput() FirewallPolicyOutput {
+	return o
+}
+
+func (o FirewallPolicyOutput) ToFirewallPolicyOutputWithContext(ctx context.Context) FirewallPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallPolicyOutput{})
 }

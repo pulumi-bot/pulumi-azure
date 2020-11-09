@@ -4,6 +4,8 @@
 package storage
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,23 +33,23 @@ type TableEntity struct {
 // NewTableEntity registers a new resource with the given unique name, arguments, and options.
 func NewTableEntity(ctx *pulumi.Context,
 	name string, args *TableEntityArgs, opts ...pulumi.ResourceOption) (*TableEntity, error) {
-	if args == nil || args.Entity == nil {
-		return nil, errors.New("missing required argument 'Entity'")
-	}
-	if args == nil || args.PartitionKey == nil {
-		return nil, errors.New("missing required argument 'PartitionKey'")
-	}
-	if args == nil || args.RowKey == nil {
-		return nil, errors.New("missing required argument 'RowKey'")
-	}
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
-	if args == nil || args.TableName == nil {
-		return nil, errors.New("missing required argument 'TableName'")
-	}
 	if args == nil {
-		args = &TableEntityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Entity == nil {
+		return nil, errors.New("invalid value for required argument 'Entity'")
+	}
+	if args.PartitionKey == nil {
+		return nil, errors.New("invalid value for required argument 'PartitionKey'")
+	}
+	if args.RowKey == nil {
+		return nil, errors.New("invalid value for required argument 'RowKey'")
+	}
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
+	}
+	if args.TableName == nil {
+		return nil, errors.New("invalid value for required argument 'TableName'")
 	}
 	var resource TableEntity
 	err := ctx.RegisterResource("azure:storage/tableEntity:TableEntity", name, args, &resource, opts...)
@@ -137,4 +139,43 @@ type TableEntityArgs struct {
 
 func (TableEntityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableEntityArgs)(nil)).Elem()
+}
+
+type TableEntityInput interface {
+	pulumi.Input
+
+	ToTableEntityOutput() TableEntityOutput
+	ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput
+}
+
+func (TableEntity) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableEntity)(nil)).Elem()
+}
+
+func (i TableEntity) ToTableEntityOutput() TableEntityOutput {
+	return i.ToTableEntityOutputWithContext(context.Background())
+}
+
+func (i TableEntity) ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableEntityOutput)
+}
+
+type TableEntityOutput struct {
+	*pulumi.OutputState
+}
+
+func (TableEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableEntityOutput)(nil)).Elem()
+}
+
+func (o TableEntityOutput) ToTableEntityOutput() TableEntityOutput {
+	return o
+}
+
+func (o TableEntityOutput) ToTableEntityOutputWithContext(ctx context.Context) TableEntityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TableEntityOutput{})
 }

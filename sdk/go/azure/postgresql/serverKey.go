@@ -4,6 +4,8 @@
 package postgresql
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,14 +25,14 @@ type ServerKey struct {
 // NewServerKey registers a new resource with the given unique name, arguments, and options.
 func NewServerKey(ctx *pulumi.Context,
 	name string, args *ServerKeyArgs, opts ...pulumi.ResourceOption) (*ServerKey, error) {
-	if args == nil || args.KeyVaultKeyId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultKeyId'")
-	}
-	if args == nil || args.ServerId == nil {
-		return nil, errors.New("missing required argument 'ServerId'")
-	}
 	if args == nil {
-		args = &ServerKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.KeyVaultKeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultKeyId'")
+	}
+	if args.ServerId == nil {
+		return nil, errors.New("invalid value for required argument 'ServerId'")
 	}
 	var resource ServerKey
 	err := ctx.RegisterResource("azure:postgresql/serverKey:ServerKey", name, args, &resource, opts...)
@@ -88,4 +90,43 @@ type ServerKeyArgs struct {
 
 func (ServerKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverKeyArgs)(nil)).Elem()
+}
+
+type ServerKeyInput interface {
+	pulumi.Input
+
+	ToServerKeyOutput() ServerKeyOutput
+	ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput
+}
+
+func (ServerKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerKey)(nil)).Elem()
+}
+
+func (i ServerKey) ToServerKeyOutput() ServerKeyOutput {
+	return i.ToServerKeyOutputWithContext(context.Background())
+}
+
+func (i ServerKey) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyOutput)
+}
+
+type ServerKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerKeyOutput)(nil)).Elem()
+}
+
+func (o ServerKeyOutput) ToServerKeyOutput() ServerKeyOutput {
+	return o
+}
+
+func (o ServerKeyOutput) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerKeyOutput{})
 }

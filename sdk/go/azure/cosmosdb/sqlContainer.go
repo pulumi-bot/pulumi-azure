@@ -4,6 +4,8 @@
 package cosmosdb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,17 +91,17 @@ type SqlContainer struct {
 // NewSqlContainer registers a new resource with the given unique name, arguments, and options.
 func NewSqlContainer(ctx *pulumi.Context,
 	name string, args *SqlContainerArgs, opts ...pulumi.ResourceOption) (*SqlContainer, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SqlContainerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SqlContainer
 	err := ctx.RegisterResource("azure:cosmosdb/sqlContainer:SqlContainer", name, args, &resource, opts...)
@@ -217,4 +219,43 @@ type SqlContainerArgs struct {
 
 func (SqlContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlContainerArgs)(nil)).Elem()
+}
+
+type SqlContainerInput interface {
+	pulumi.Input
+
+	ToSqlContainerOutput() SqlContainerOutput
+	ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput
+}
+
+func (SqlContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlContainer)(nil)).Elem()
+}
+
+func (i SqlContainer) ToSqlContainerOutput() SqlContainerOutput {
+	return i.ToSqlContainerOutputWithContext(context.Background())
+}
+
+func (i SqlContainer) ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerOutput)
+}
+
+type SqlContainerOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlContainerOutput)(nil)).Elem()
+}
+
+func (o SqlContainerOutput) ToSqlContainerOutput() SqlContainerOutput {
+	return o
+}
+
+func (o SqlContainerOutput) ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlContainerOutput{})
 }

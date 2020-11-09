@@ -4,6 +4,8 @@
 package compute
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -175,20 +177,20 @@ type VirtualMachine struct {
 // NewVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewVirtualMachine(ctx *pulumi.Context,
 	name string, args *VirtualMachineArgs, opts ...pulumi.ResourceOption) (*VirtualMachine, error) {
-	if args == nil || args.NetworkInterfaceIds == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceIds'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageOsDisk == nil {
-		return nil, errors.New("missing required argument 'StorageOsDisk'")
-	}
-	if args == nil || args.VmSize == nil {
-		return nil, errors.New("missing required argument 'VmSize'")
-	}
 	if args == nil {
-		args = &VirtualMachineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.NetworkInterfaceIds == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceIds'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageOsDisk == nil {
+		return nil, errors.New("invalid value for required argument 'StorageOsDisk'")
+	}
+	if args.VmSize == nil {
+		return nil, errors.New("invalid value for required argument 'VmSize'")
 	}
 	var resource VirtualMachine
 	err := ctx.RegisterResource("azure:compute/virtualMachine:VirtualMachine", name, args, &resource, opts...)
@@ -422,4 +424,43 @@ type VirtualMachineArgs struct {
 
 func (VirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineArgs)(nil)).Elem()
+}
+
+type VirtualMachineInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOutput() VirtualMachineOutput
+	ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput
+}
+
+func (VirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (i VirtualMachine) ToVirtualMachineOutput() VirtualMachineOutput {
+	return i.ToVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput)
+}
+
+type VirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineOutput)(nil)).Elem()
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualMachineOutput{})
 }

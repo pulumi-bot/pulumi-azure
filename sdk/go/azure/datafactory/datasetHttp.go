@@ -4,6 +4,8 @@
 package datafactory
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -96,17 +98,17 @@ type DatasetHttp struct {
 // NewDatasetHttp registers a new resource with the given unique name, arguments, and options.
 func NewDatasetHttp(ctx *pulumi.Context,
 	name string, args *DatasetHttpArgs, opts ...pulumi.ResourceOption) (*DatasetHttp, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetHttpArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetHttp
 	err := ctx.RegisterResource("azure:datafactory/datasetHttp:DatasetHttp", name, args, &resource, opts...)
@@ -252,4 +254,43 @@ type DatasetHttpArgs struct {
 
 func (DatasetHttpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetHttpArgs)(nil)).Elem()
+}
+
+type DatasetHttpInput interface {
+	pulumi.Input
+
+	ToDatasetHttpOutput() DatasetHttpOutput
+	ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput
+}
+
+func (DatasetHttp) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetHttp)(nil)).Elem()
+}
+
+func (i DatasetHttp) ToDatasetHttpOutput() DatasetHttpOutput {
+	return i.ToDatasetHttpOutputWithContext(context.Background())
+}
+
+func (i DatasetHttp) ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetHttpOutput)
+}
+
+type DatasetHttpOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetHttpOutput)(nil)).Elem()
+}
+
+func (o DatasetHttpOutput) ToDatasetHttpOutput() DatasetHttpOutput {
+	return o
+}
+
+func (o DatasetHttpOutput) ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetHttpOutput{})
 }

@@ -4,6 +4,8 @@
 package dns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -123,17 +125,17 @@ type ARecord struct {
 // NewARecord registers a new resource with the given unique name, arguments, and options.
 func NewARecord(ctx *pulumi.Context,
 	name string, args *ARecordArgs, opts ...pulumi.ResourceOption) (*ARecord, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &ARecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource ARecord
 	err := ctx.RegisterResource("azure:dns/aRecord:ARecord", name, args, &resource, opts...)
@@ -231,4 +233,43 @@ type ARecordArgs struct {
 
 func (ARecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*arecordArgs)(nil)).Elem()
+}
+
+type ARecordInput interface {
+	pulumi.Input
+
+	ToARecordOutput() ARecordOutput
+	ToARecordOutputWithContext(ctx context.Context) ARecordOutput
+}
+
+func (ARecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*ARecord)(nil)).Elem()
+}
+
+func (i ARecord) ToARecordOutput() ARecordOutput {
+	return i.ToARecordOutputWithContext(context.Background())
+}
+
+func (i ARecord) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ARecordOutput)
+}
+
+type ARecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (ARecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ARecordOutput)(nil)).Elem()
+}
+
+func (o ARecordOutput) ToARecordOutput() ARecordOutput {
+	return o
+}
+
+func (o ARecordOutput) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ARecordOutput{})
 }

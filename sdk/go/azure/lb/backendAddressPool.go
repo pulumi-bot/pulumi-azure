@@ -4,6 +4,8 @@
 package lb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,14 +86,14 @@ type BackendAddressPool struct {
 // NewBackendAddressPool registers a new resource with the given unique name, arguments, and options.
 func NewBackendAddressPool(ctx *pulumi.Context,
 	name string, args *BackendAddressPoolArgs, opts ...pulumi.ResourceOption) (*BackendAddressPool, error) {
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &BackendAddressPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource BackendAddressPool
 	err := ctx.RegisterResource("azure:lb/backendAddressPool:BackendAddressPool", name, args, &resource, opts...)
@@ -165,4 +167,43 @@ type BackendAddressPoolArgs struct {
 
 func (BackendAddressPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendAddressPoolArgs)(nil)).Elem()
+}
+
+type BackendAddressPoolInput interface {
+	pulumi.Input
+
+	ToBackendAddressPoolOutput() BackendAddressPoolOutput
+	ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput
+}
+
+func (BackendAddressPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendAddressPool)(nil)).Elem()
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolOutput() BackendAddressPoolOutput {
+	return i.ToBackendAddressPoolOutputWithContext(context.Background())
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendAddressPoolOutput)
+}
+
+type BackendAddressPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendAddressPoolOutput)(nil)).Elem()
+}
+
+func (o BackendAddressPoolOutput) ToBackendAddressPoolOutput() BackendAddressPoolOutput {
+	return o
+}
+
+func (o BackendAddressPoolOutput) ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendAddressPoolOutput{})
 }

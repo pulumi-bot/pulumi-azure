@@ -4,6 +4,8 @@
 package maintenance
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,14 +85,14 @@ type AssignmentDedicatedHost struct {
 // NewAssignmentDedicatedHost registers a new resource with the given unique name, arguments, and options.
 func NewAssignmentDedicatedHost(ctx *pulumi.Context,
 	name string, args *AssignmentDedicatedHostArgs, opts ...pulumi.ResourceOption) (*AssignmentDedicatedHost, error) {
-	if args == nil || args.DedicatedHostId == nil {
-		return nil, errors.New("missing required argument 'DedicatedHostId'")
-	}
-	if args == nil || args.MaintenanceConfigurationId == nil {
-		return nil, errors.New("missing required argument 'MaintenanceConfigurationId'")
-	}
 	if args == nil {
-		args = &AssignmentDedicatedHostArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DedicatedHostId == nil {
+		return nil, errors.New("invalid value for required argument 'DedicatedHostId'")
+	}
+	if args.MaintenanceConfigurationId == nil {
+		return nil, errors.New("invalid value for required argument 'MaintenanceConfigurationId'")
 	}
 	var resource AssignmentDedicatedHost
 	err := ctx.RegisterResource("azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost", name, args, &resource, opts...)
@@ -156,4 +158,43 @@ type AssignmentDedicatedHostArgs struct {
 
 func (AssignmentDedicatedHostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assignmentDedicatedHostArgs)(nil)).Elem()
+}
+
+type AssignmentDedicatedHostInput interface {
+	pulumi.Input
+
+	ToAssignmentDedicatedHostOutput() AssignmentDedicatedHostOutput
+	ToAssignmentDedicatedHostOutputWithContext(ctx context.Context) AssignmentDedicatedHostOutput
+}
+
+func (AssignmentDedicatedHost) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentDedicatedHost)(nil)).Elem()
+}
+
+func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostOutput() AssignmentDedicatedHostOutput {
+	return i.ToAssignmentDedicatedHostOutputWithContext(context.Background())
+}
+
+func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostOutputWithContext(ctx context.Context) AssignmentDedicatedHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentDedicatedHostOutput)
+}
+
+type AssignmentDedicatedHostOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentDedicatedHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentDedicatedHostOutput)(nil)).Elem()
+}
+
+func (o AssignmentDedicatedHostOutput) ToAssignmentDedicatedHostOutput() AssignmentDedicatedHostOutput {
+	return o
+}
+
+func (o AssignmentDedicatedHostOutput) ToAssignmentDedicatedHostOutputWithContext(ctx context.Context) AssignmentDedicatedHostOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssignmentDedicatedHostOutput{})
 }

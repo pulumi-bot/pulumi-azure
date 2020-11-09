@@ -4,6 +4,8 @@
 package privatedns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -145,17 +147,17 @@ type LinkService struct {
 // NewLinkService registers a new resource with the given unique name, arguments, and options.
 func NewLinkService(ctx *pulumi.Context,
 	name string, args *LinkServiceArgs, opts ...pulumi.ResourceOption) (*LinkService, error) {
-	if args == nil || args.LoadBalancerFrontendIpConfigurationIds == nil {
-		return nil, errors.New("missing required argument 'LoadBalancerFrontendIpConfigurationIds'")
-	}
-	if args == nil || args.NatIpConfigurations == nil {
-		return nil, errors.New("missing required argument 'NatIpConfigurations'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LoadBalancerFrontendIpConfigurationIds == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancerFrontendIpConfigurationIds'")
+	}
+	if args.NatIpConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'NatIpConfigurations'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkService
 	err := ctx.RegisterResource("azure:privatedns/linkService:LinkService", name, args, &resource, opts...)
@@ -273,4 +275,43 @@ type LinkServiceArgs struct {
 
 func (LinkServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkServiceArgs)(nil)).Elem()
+}
+
+type LinkServiceInput interface {
+	pulumi.Input
+
+	ToLinkServiceOutput() LinkServiceOutput
+	ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput
+}
+
+func (LinkService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkService)(nil)).Elem()
+}
+
+func (i LinkService) ToLinkServiceOutput() LinkServiceOutput {
+	return i.ToLinkServiceOutputWithContext(context.Background())
+}
+
+func (i LinkService) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkServiceOutput)
+}
+
+type LinkServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkServiceOutput)(nil)).Elem()
+}
+
+func (o LinkServiceOutput) ToLinkServiceOutput() LinkServiceOutput {
+	return o
+}
+
+func (o LinkServiceOutput) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkServiceOutput{})
 }

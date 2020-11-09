@@ -4,6 +4,8 @@
 package dns
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,20 +80,20 @@ type NsRecord struct {
 // NewNsRecord registers a new resource with the given unique name, arguments, and options.
 func NewNsRecord(ctx *pulumi.Context,
 	name string, args *NsRecordArgs, opts ...pulumi.ResourceOption) (*NsRecord, error) {
-	if args == nil || args.Records == nil {
-		return nil, errors.New("missing required argument 'Records'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &NsRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.Records == nil {
+		return nil, errors.New("invalid value for required argument 'Records'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource NsRecord
 	err := ctx.RegisterResource("azure:dns/nsRecord:NsRecord", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type NsRecordArgs struct {
 
 func (NsRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nsRecordArgs)(nil)).Elem()
+}
+
+type NsRecordInput interface {
+	pulumi.Input
+
+	ToNsRecordOutput() NsRecordOutput
+	ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput
+}
+
+func (NsRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsRecord)(nil)).Elem()
+}
+
+func (i NsRecord) ToNsRecordOutput() NsRecordOutput {
+	return i.ToNsRecordOutputWithContext(context.Background())
+}
+
+func (i NsRecord) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsRecordOutput)
+}
+
+type NsRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (NsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsRecordOutput)(nil)).Elem()
+}
+
+func (o NsRecordOutput) ToNsRecordOutput() NsRecordOutput {
+	return o
+}
+
+func (o NsRecordOutput) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NsRecordOutput{})
 }

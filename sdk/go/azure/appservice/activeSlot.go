@@ -4,6 +4,8 @@
 package appservice
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,17 +76,17 @@ type ActiveSlot struct {
 // NewActiveSlot registers a new resource with the given unique name, arguments, and options.
 func NewActiveSlot(ctx *pulumi.Context,
 	name string, args *ActiveSlotArgs, opts ...pulumi.ResourceOption) (*ActiveSlot, error) {
-	if args == nil || args.AppServiceName == nil {
-		return nil, errors.New("missing required argument 'AppServiceName'")
-	}
-	if args == nil || args.AppServiceSlotName == nil {
-		return nil, errors.New("missing required argument 'AppServiceSlotName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ActiveSlotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AppServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceName'")
+	}
+	if args.AppServiceSlotName == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceSlotName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ActiveSlot
 	err := ctx.RegisterResource("azure:appservice/activeSlot:ActiveSlot", name, args, &resource, opts...)
@@ -150,4 +152,43 @@ type ActiveSlotArgs struct {
 
 func (ActiveSlotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeSlotArgs)(nil)).Elem()
+}
+
+type ActiveSlotInput interface {
+	pulumi.Input
+
+	ToActiveSlotOutput() ActiveSlotOutput
+	ToActiveSlotOutputWithContext(ctx context.Context) ActiveSlotOutput
+}
+
+func (ActiveSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveSlot)(nil)).Elem()
+}
+
+func (i ActiveSlot) ToActiveSlotOutput() ActiveSlotOutput {
+	return i.ToActiveSlotOutputWithContext(context.Background())
+}
+
+func (i ActiveSlot) ToActiveSlotOutputWithContext(ctx context.Context) ActiveSlotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveSlotOutput)
+}
+
+type ActiveSlotOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveSlotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveSlotOutput)(nil)).Elem()
+}
+
+func (o ActiveSlotOutput) ToActiveSlotOutput() ActiveSlotOutput {
+	return o
+}
+
+func (o ActiveSlotOutput) ToActiveSlotOutputWithContext(ctx context.Context) ActiveSlotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActiveSlotOutput{})
 }

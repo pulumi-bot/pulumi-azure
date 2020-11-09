@@ -4,6 +4,8 @@
 package lb
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -92,17 +94,17 @@ type Probe struct {
 // NewProbe registers a new resource with the given unique name, arguments, and options.
 func NewProbe(ctx *pulumi.Context,
 	name string, args *ProbeArgs, opts ...pulumi.ResourceOption) (*Probe, error) {
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProbeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Probe
 	err := ctx.RegisterResource("azure:lb/probe:Probe", name, args, &resource, opts...)
@@ -210,4 +212,43 @@ type ProbeArgs struct {
 
 func (ProbeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*probeArgs)(nil)).Elem()
+}
+
+type ProbeInput interface {
+	pulumi.Input
+
+	ToProbeOutput() ProbeOutput
+	ToProbeOutputWithContext(ctx context.Context) ProbeOutput
+}
+
+func (Probe) ElementType() reflect.Type {
+	return reflect.TypeOf((*Probe)(nil)).Elem()
+}
+
+func (i Probe) ToProbeOutput() ProbeOutput {
+	return i.ToProbeOutputWithContext(context.Background())
+}
+
+func (i Probe) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeOutput)
+}
+
+type ProbeOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeOutput)(nil)).Elem()
+}
+
+func (o ProbeOutput) ToProbeOutput() ProbeOutput {
+	return o
+}
+
+func (o ProbeOutput) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProbeOutput{})
 }

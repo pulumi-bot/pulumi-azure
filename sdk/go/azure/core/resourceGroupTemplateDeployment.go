@@ -4,6 +4,8 @@
 package core
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,17 +66,17 @@ type ResourceGroupTemplateDeployment struct {
 // NewResourceGroupTemplateDeployment registers a new resource with the given unique name, arguments, and options.
 func NewResourceGroupTemplateDeployment(ctx *pulumi.Context,
 	name string, args *ResourceGroupTemplateDeploymentArgs, opts ...pulumi.ResourceOption) (*ResourceGroupTemplateDeployment, error) {
-	if args == nil || args.DeploymentMode == nil {
-		return nil, errors.New("missing required argument 'DeploymentMode'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TemplateContent == nil {
-		return nil, errors.New("missing required argument 'TemplateContent'")
-	}
 	if args == nil {
-		args = &ResourceGroupTemplateDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DeploymentMode == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentMode'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TemplateContent == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateContent'")
 	}
 	var resource ResourceGroupTemplateDeployment
 	err := ctx.RegisterResource("azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type ResourceGroupTemplateDeploymentArgs struct {
 
 func (ResourceGroupTemplateDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupTemplateDeploymentArgs)(nil)).Elem()
+}
+
+type ResourceGroupTemplateDeploymentInput interface {
+	pulumi.Input
+
+	ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput
+	ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput
+}
+
+func (ResourceGroupTemplateDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupTemplateDeployment)(nil)).Elem()
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput {
+	return i.ToResourceGroupTemplateDeploymentOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupTemplateDeploymentOutput)
+}
+
+type ResourceGroupTemplateDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupTemplateDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupTemplateDeploymentOutput)(nil)).Elem()
+}
+
+func (o ResourceGroupTemplateDeploymentOutput) ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput {
+	return o
+}
+
+func (o ResourceGroupTemplateDeploymentOutput) ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceGroupTemplateDeploymentOutput{})
 }

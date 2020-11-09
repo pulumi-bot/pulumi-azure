@@ -4,6 +4,8 @@
 package siterecovery
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,17 +84,17 @@ type ProtectionContainer struct {
 // NewProtectionContainer registers a new resource with the given unique name, arguments, and options.
 func NewProtectionContainer(ctx *pulumi.Context,
 	name string, args *ProtectionContainerArgs, opts ...pulumi.ResourceOption) (*ProtectionContainer, error) {
-	if args == nil || args.RecoveryFabricName == nil {
-		return nil, errors.New("missing required argument 'RecoveryFabricName'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProtectionContainerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.RecoveryFabricName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryFabricName'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ProtectionContainer
 	err := ctx.RegisterResource("azure:siterecovery/protectionContainer:ProtectionContainer", name, args, &resource, opts...)
@@ -166,4 +168,43 @@ type ProtectionContainerArgs struct {
 
 func (ProtectionContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectionContainerArgs)(nil)).Elem()
+}
+
+type ProtectionContainerInput interface {
+	pulumi.Input
+
+	ToProtectionContainerOutput() ProtectionContainerOutput
+	ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput
+}
+
+func (ProtectionContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionContainer)(nil)).Elem()
+}
+
+func (i ProtectionContainer) ToProtectionContainerOutput() ProtectionContainerOutput {
+	return i.ToProtectionContainerOutputWithContext(context.Background())
+}
+
+func (i ProtectionContainer) ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectionContainerOutput)
+}
+
+type ProtectionContainerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectionContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectionContainerOutput)(nil)).Elem()
+}
+
+func (o ProtectionContainerOutput) ToProtectionContainerOutput() ProtectionContainerOutput {
+	return o
+}
+
+func (o ProtectionContainerOutput) ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectionContainerOutput{})
 }

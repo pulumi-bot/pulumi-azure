@@ -4,6 +4,8 @@
 package datalake
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -28,17 +30,17 @@ type StoreFile struct {
 // NewStoreFile registers a new resource with the given unique name, arguments, and options.
 func NewStoreFile(ctx *pulumi.Context,
 	name string, args *StoreFileArgs, opts ...pulumi.ResourceOption) (*StoreFile, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.LocalFilePath == nil {
-		return nil, errors.New("missing required argument 'LocalFilePath'")
-	}
-	if args == nil || args.RemoteFilePath == nil {
-		return nil, errors.New("missing required argument 'RemoteFilePath'")
-	}
 	if args == nil {
-		args = &StoreFileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.LocalFilePath == nil {
+		return nil, errors.New("invalid value for required argument 'LocalFilePath'")
+	}
+	if args.RemoteFilePath == nil {
+		return nil, errors.New("invalid value for required argument 'RemoteFilePath'")
 	}
 	var resource StoreFile
 	err := ctx.RegisterResource("azure:datalake/storeFile:StoreFile", name, args, &resource, opts...)
@@ -104,4 +106,43 @@ type StoreFileArgs struct {
 
 func (StoreFileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeFileArgs)(nil)).Elem()
+}
+
+type StoreFileInput interface {
+	pulumi.Input
+
+	ToStoreFileOutput() StoreFileOutput
+	ToStoreFileOutputWithContext(ctx context.Context) StoreFileOutput
+}
+
+func (StoreFile) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreFile)(nil)).Elem()
+}
+
+func (i StoreFile) ToStoreFileOutput() StoreFileOutput {
+	return i.ToStoreFileOutputWithContext(context.Background())
+}
+
+func (i StoreFile) ToStoreFileOutputWithContext(ctx context.Context) StoreFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreFileOutput)
+}
+
+type StoreFileOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreFileOutput)(nil)).Elem()
+}
+
+func (o StoreFileOutput) ToStoreFileOutput() StoreFileOutput {
+	return o
+}
+
+func (o StoreFileOutput) ToStoreFileOutputWithContext(ctx context.Context) StoreFileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoreFileOutput{})
 }

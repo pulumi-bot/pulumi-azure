@@ -4,6 +4,8 @@
 package network
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,11 +60,11 @@ type NetworkWatcher struct {
 // NewNetworkWatcher registers a new resource with the given unique name, arguments, and options.
 func NewNetworkWatcher(ctx *pulumi.Context,
 	name string, args *NetworkWatcherArgs, opts ...pulumi.ResourceOption) (*NetworkWatcher, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &NetworkWatcherArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource NetworkWatcher
 	err := ctx.RegisterResource("azure:network/networkWatcher:NetworkWatcher", name, args, &resource, opts...)
@@ -136,4 +138,43 @@ type NetworkWatcherArgs struct {
 
 func (NetworkWatcherArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkWatcherArgs)(nil)).Elem()
+}
+
+type NetworkWatcherInput interface {
+	pulumi.Input
+
+	ToNetworkWatcherOutput() NetworkWatcherOutput
+	ToNetworkWatcherOutputWithContext(ctx context.Context) NetworkWatcherOutput
+}
+
+func (NetworkWatcher) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcher)(nil)).Elem()
+}
+
+func (i NetworkWatcher) ToNetworkWatcherOutput() NetworkWatcherOutput {
+	return i.ToNetworkWatcherOutputWithContext(context.Background())
+}
+
+func (i NetworkWatcher) ToNetworkWatcherOutputWithContext(ctx context.Context) NetworkWatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherOutput)
+}
+
+type NetworkWatcherOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkWatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkWatcherOutput)(nil)).Elem()
+}
+
+func (o NetworkWatcherOutput) ToNetworkWatcherOutput() NetworkWatcherOutput {
+	return o
+}
+
+func (o NetworkWatcherOutput) ToNetworkWatcherOutputWithContext(ctx context.Context) NetworkWatcherOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkWatcherOutput{})
 }

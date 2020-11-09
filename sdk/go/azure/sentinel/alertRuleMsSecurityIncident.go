@@ -4,6 +4,8 @@
 package sentinel
 
 import (
+	"context"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,20 +83,20 @@ type AlertRuleMsSecurityIncident struct {
 // NewAlertRuleMsSecurityIncident registers a new resource with the given unique name, arguments, and options.
 func NewAlertRuleMsSecurityIncident(ctx *pulumi.Context,
 	name string, args *AlertRuleMsSecurityIncidentArgs, opts ...pulumi.ResourceOption) (*AlertRuleMsSecurityIncident, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.LogAnalyticsWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'LogAnalyticsWorkspaceId'")
-	}
-	if args == nil || args.ProductFilter == nil {
-		return nil, errors.New("missing required argument 'ProductFilter'")
-	}
-	if args == nil || args.SeverityFilters == nil {
-		return nil, errors.New("missing required argument 'SeverityFilters'")
-	}
 	if args == nil {
-		args = &AlertRuleMsSecurityIncidentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.LogAnalyticsWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'LogAnalyticsWorkspaceId'")
+	}
+	if args.ProductFilter == nil {
+		return nil, errors.New("invalid value for required argument 'ProductFilter'")
+	}
+	if args.SeverityFilters == nil {
+		return nil, errors.New("invalid value for required argument 'SeverityFilters'")
 	}
 	var resource AlertRuleMsSecurityIncident
 	err := ctx.RegisterResource("azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident", name, args, &resource, opts...)
@@ -208,4 +210,43 @@ type AlertRuleMsSecurityIncidentArgs struct {
 
 func (AlertRuleMsSecurityIncidentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRuleMsSecurityIncidentArgs)(nil)).Elem()
+}
+
+type AlertRuleMsSecurityIncidentInput interface {
+	pulumi.Input
+
+	ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput
+	ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput
+}
+
+func (AlertRuleMsSecurityIncident) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleMsSecurityIncident)(nil)).Elem()
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput {
+	return i.ToAlertRuleMsSecurityIncidentOutputWithContext(context.Background())
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleMsSecurityIncidentOutput)
+}
+
+type AlertRuleMsSecurityIncidentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleMsSecurityIncidentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleMsSecurityIncidentOutput)(nil)).Elem()
+}
+
+func (o AlertRuleMsSecurityIncidentOutput) ToAlertRuleMsSecurityIncidentOutput() AlertRuleMsSecurityIncidentOutput {
+	return o
+}
+
+func (o AlertRuleMsSecurityIncidentOutput) ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertRuleMsSecurityIncidentOutput{})
 }
