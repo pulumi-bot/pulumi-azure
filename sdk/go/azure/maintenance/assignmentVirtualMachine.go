@@ -11,6 +11,14 @@ import (
 )
 
 // Manages a maintenance assignment to virtual machine.
+//
+// ## Import
+//
+// Maintenance Assignment can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine example /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resGroup1/providers/microsoft.compute/virtualMachines/vm1/providers/Microsoft.Maintenance/configurationAssignments/assign1
+// ```
 type AssignmentVirtualMachine struct {
 	pulumi.CustomResourceState
 

@@ -75,6 +75,14 @@ import (
 // ## Note
 //
 // Virtual Network peerings cannot be created, updated or deleted concurrently.
+//
+// ## Import
+//
+// Virtual Network Peerings can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:network/virtualNetworkPeering:VirtualNetworkPeering examplePeering /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/virtualNetworks/myvnet1/virtualNetworkPeerings/myvnet1peering
+// ```
 type VirtualNetworkPeering struct {
 	pulumi.CustomResourceState
 

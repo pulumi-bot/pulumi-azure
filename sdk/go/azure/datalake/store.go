@@ -44,6 +44,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Lake Store's can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:datalake/store:Store example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.DataLakeStore/accounts/mydatalakeaccount
+// ```
 type Store struct {
 	pulumi.CustomResourceState
 

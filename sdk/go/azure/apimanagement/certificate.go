@@ -11,6 +11,14 @@ import (
 )
 
 // Manages an Certificate within an API Management Service.
+//
+// ## Import
+//
+// API Management Certificates can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:apimanagement/certificate:Certificate example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.ApiManagement/service/instance1/certificates/certificate1
+// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 

@@ -65,6 +65,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Datasets can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:datafactory/datasetJson:DatasetJson example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/datasets/example
+// ```
 type DatasetJson struct {
 	pulumi.CustomResourceState
 

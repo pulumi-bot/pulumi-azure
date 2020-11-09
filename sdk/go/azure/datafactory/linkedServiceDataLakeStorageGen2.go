@@ -57,6 +57,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Data Factory Data Lake Storage Gen2 Linked Services can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:datafactory/linkedServiceDataLakeStorageGen2:LinkedServiceDataLakeStorageGen2 example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/linkedservices/example
+// ```
 type LinkedServiceDataLakeStorageGen2 struct {
 	pulumi.CustomResourceState
 
