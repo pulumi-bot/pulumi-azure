@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -160,4 +161,43 @@ type ConnectionServicePrincipalArgs struct {
 
 func (ConnectionServicePrincipalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionServicePrincipalArgs)(nil)).Elem()
+}
+
+type ConnectionServicePrincipalInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput
+	ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput
+}
+
+func (ConnectionServicePrincipal) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return i.ToConnectionServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput)
+}
+
+type ConnectionServicePrincipalOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipalOutput)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionServicePrincipalOutput{})
 }

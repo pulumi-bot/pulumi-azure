@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type GroupUserArgs struct {
 
 func (GroupUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupUserArgs)(nil)).Elem()
+}
+
+type GroupUserInput interface {
+	pulumi.Input
+
+	ToGroupUserOutput() GroupUserOutput
+	ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput
+}
+
+func (GroupUser) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUser)(nil)).Elem()
+}
+
+func (i GroupUser) ToGroupUserOutput() GroupUserOutput {
+	return i.ToGroupUserOutputWithContext(context.Background())
+}
+
+func (i GroupUser) ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUserOutput)
+}
+
+type GroupUserOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUserOutput)(nil)).Elem()
+}
+
+func (o GroupUserOutput) ToGroupUserOutput() GroupUserOutput {
+	return o
+}
+
+func (o GroupUserOutput) ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupUserOutput{})
 }

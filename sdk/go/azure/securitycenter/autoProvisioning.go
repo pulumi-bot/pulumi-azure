@@ -4,6 +4,7 @@
 package securitycenter
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -100,4 +101,43 @@ type AutoProvisioningArgs struct {
 
 func (AutoProvisioningArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoProvisioningArgs)(nil)).Elem()
+}
+
+type AutoProvisioningInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningOutput() AutoProvisioningOutput
+	ToAutoProvisioningOutputWithContext(ctx context.Context) AutoProvisioningOutput
+}
+
+func (AutoProvisioning) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioning)(nil)).Elem()
+}
+
+func (i AutoProvisioning) ToAutoProvisioningOutput() AutoProvisioningOutput {
+	return i.ToAutoProvisioningOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioning) ToAutoProvisioningOutputWithContext(ctx context.Context) AutoProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningOutput)
+}
+
+type AutoProvisioningOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningOutput)(nil)).Elem()
+}
+
+func (o AutoProvisioningOutput) ToAutoProvisioningOutput() AutoProvisioningOutput {
+	return o
+}
+
+func (o AutoProvisioningOutput) ToAutoProvisioningOutputWithContext(ctx context.Context) AutoProvisioningOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AutoProvisioningOutput{})
 }

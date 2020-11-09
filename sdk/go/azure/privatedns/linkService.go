@@ -4,6 +4,7 @@
 package privatedns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -273,4 +274,43 @@ type LinkServiceArgs struct {
 
 func (LinkServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkServiceArgs)(nil)).Elem()
+}
+
+type LinkServiceInput interface {
+	pulumi.Input
+
+	ToLinkServiceOutput() LinkServiceOutput
+	ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput
+}
+
+func (LinkService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkService)(nil)).Elem()
+}
+
+func (i LinkService) ToLinkServiceOutput() LinkServiceOutput {
+	return i.ToLinkServiceOutputWithContext(context.Background())
+}
+
+func (i LinkService) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkServiceOutput)
+}
+
+type LinkServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkServiceOutput)(nil)).Elem()
+}
+
+func (o LinkServiceOutput) ToLinkServiceOutput() LinkServiceOutput {
+	return o
+}
+
+func (o LinkServiceOutput) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkServiceOutput{})
 }

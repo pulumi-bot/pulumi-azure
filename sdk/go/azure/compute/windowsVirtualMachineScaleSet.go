@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -616,4 +617,43 @@ type WindowsVirtualMachineScaleSetArgs struct {
 
 func (WindowsVirtualMachineScaleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*windowsVirtualMachineScaleSetArgs)(nil)).Elem()
+}
+
+type WindowsVirtualMachineScaleSetInput interface {
+	pulumi.Input
+
+	ToWindowsVirtualMachineScaleSetOutput() WindowsVirtualMachineScaleSetOutput
+	ToWindowsVirtualMachineScaleSetOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOutput
+}
+
+func (WindowsVirtualMachineScaleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVirtualMachineScaleSet)(nil)).Elem()
+}
+
+func (i WindowsVirtualMachineScaleSet) ToWindowsVirtualMachineScaleSetOutput() WindowsVirtualMachineScaleSetOutput {
+	return i.ToWindowsVirtualMachineScaleSetOutputWithContext(context.Background())
+}
+
+func (i WindowsVirtualMachineScaleSet) ToWindowsVirtualMachineScaleSetOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOutput)
+}
+
+type WindowsVirtualMachineScaleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsVirtualMachineScaleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVirtualMachineScaleSetOutput)(nil)).Elem()
+}
+
+func (o WindowsVirtualMachineScaleSetOutput) ToWindowsVirtualMachineScaleSetOutput() WindowsVirtualMachineScaleSetOutput {
+	return o
+}
+
+func (o WindowsVirtualMachineScaleSetOutput) ToWindowsVirtualMachineScaleSetOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WindowsVirtualMachineScaleSetOutput{})
 }

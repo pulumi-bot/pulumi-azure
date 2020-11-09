@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -272,4 +273,43 @@ type EventHubNamespaceArgs struct {
 
 func (EventHubNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubNamespaceArgs)(nil)).Elem()
+}
+
+type EventHubNamespaceInput interface {
+	pulumi.Input
+
+	ToEventHubNamespaceOutput() EventHubNamespaceOutput
+	ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput
+}
+
+func (EventHubNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespace)(nil)).Elem()
+}
+
+func (i EventHubNamespace) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
+	return i.ToEventHubNamespaceOutputWithContext(context.Background())
+}
+
+func (i EventHubNamespace) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceOutput)
+}
+
+type EventHubNamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespaceOutput)(nil)).Elem()
+}
+
+func (o EventHubNamespaceOutput) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
+	return o
+}
+
+func (o EventHubNamespaceOutput) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubNamespaceOutput{})
 }

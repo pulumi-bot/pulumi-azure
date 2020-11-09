@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -168,4 +169,43 @@ type DataSourceWindowsEventArgs struct {
 
 func (DataSourceWindowsEventArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSourceWindowsEventArgs)(nil)).Elem()
+}
+
+type DataSourceWindowsEventInput interface {
+	pulumi.Input
+
+	ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput
+	ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput
+}
+
+func (DataSourceWindowsEvent) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsEvent)(nil)).Elem()
+}
+
+func (i DataSourceWindowsEvent) ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput {
+	return i.ToDataSourceWindowsEventOutputWithContext(context.Background())
+}
+
+func (i DataSourceWindowsEvent) ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceWindowsEventOutput)
+}
+
+type DataSourceWindowsEventOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataSourceWindowsEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsEventOutput)(nil)).Elem()
+}
+
+func (o DataSourceWindowsEventOutput) ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput {
+	return o
+}
+
+func (o DataSourceWindowsEventOutput) ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataSourceWindowsEventOutput{})
 }

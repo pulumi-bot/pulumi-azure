@@ -4,6 +4,7 @@
 package hpc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -139,4 +140,43 @@ type CacheNfsTargetArgs struct {
 
 func (CacheNfsTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cacheNfsTargetArgs)(nil)).Elem()
+}
+
+type CacheNfsTargetInput interface {
+	pulumi.Input
+
+	ToCacheNfsTargetOutput() CacheNfsTargetOutput
+	ToCacheNfsTargetOutputWithContext(ctx context.Context) CacheNfsTargetOutput
+}
+
+func (CacheNfsTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheNfsTarget)(nil)).Elem()
+}
+
+func (i CacheNfsTarget) ToCacheNfsTargetOutput() CacheNfsTargetOutput {
+	return i.ToCacheNfsTargetOutputWithContext(context.Background())
+}
+
+func (i CacheNfsTarget) ToCacheNfsTargetOutputWithContext(ctx context.Context) CacheNfsTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheNfsTargetOutput)
+}
+
+type CacheNfsTargetOutput struct {
+	*pulumi.OutputState
+}
+
+func (CacheNfsTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheNfsTargetOutput)(nil)).Elem()
+}
+
+func (o CacheNfsTargetOutput) ToCacheNfsTargetOutput() CacheNfsTargetOutput {
+	return o
+}
+
+func (o CacheNfsTargetOutput) ToCacheNfsTargetOutputWithContext(ctx context.Context) CacheNfsTargetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CacheNfsTargetOutput{})
 }
