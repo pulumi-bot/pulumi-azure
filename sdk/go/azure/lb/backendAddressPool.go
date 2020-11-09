@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -165,4 +166,43 @@ type BackendAddressPoolArgs struct {
 
 func (BackendAddressPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendAddressPoolArgs)(nil)).Elem()
+}
+
+type BackendAddressPoolInput interface {
+	pulumi.Input
+
+	ToBackendAddressPoolOutput() BackendAddressPoolOutput
+	ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput
+}
+
+func (BackendAddressPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendAddressPool)(nil)).Elem()
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolOutput() BackendAddressPoolOutput {
+	return i.ToBackendAddressPoolOutputWithContext(context.Background())
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendAddressPoolOutput)
+}
+
+type BackendAddressPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendAddressPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendAddressPoolOutput)(nil)).Elem()
+}
+
+func (o BackendAddressPoolOutput) ToBackendAddressPoolOutput() BackendAddressPoolOutput {
+	return o
+}
+
+func (o BackendAddressPoolOutput) ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendAddressPoolOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -219,4 +220,43 @@ type TriggerScheduleArgs struct {
 
 func (TriggerScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerScheduleArgs)(nil)).Elem()
+}
+
+type TriggerScheduleInput interface {
+	pulumi.Input
+
+	ToTriggerScheduleOutput() TriggerScheduleOutput
+	ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput
+}
+
+func (TriggerSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerSchedule)(nil)).Elem()
+}
+
+func (i TriggerSchedule) ToTriggerScheduleOutput() TriggerScheduleOutput {
+	return i.ToTriggerScheduleOutputWithContext(context.Background())
+}
+
+func (i TriggerSchedule) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerScheduleOutput)
+}
+
+type TriggerScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerScheduleOutput)(nil)).Elem()
+}
+
+func (o TriggerScheduleOutput) ToTriggerScheduleOutput() TriggerScheduleOutput {
+	return o
+}
+
+func (o TriggerScheduleOutput) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerScheduleOutput{})
 }

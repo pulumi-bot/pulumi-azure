@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -181,4 +182,43 @@ type PtrRecordArgs struct {
 
 func (PtrRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ptrRecordArgs)(nil)).Elem()
+}
+
+type PtrRecordInput interface {
+	pulumi.Input
+
+	ToPtrRecordOutput() PtrRecordOutput
+	ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput
+}
+
+func (PtrRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*PtrRecord)(nil)).Elem()
+}
+
+func (i PtrRecord) ToPtrRecordOutput() PtrRecordOutput {
+	return i.ToPtrRecordOutputWithContext(context.Background())
+}
+
+func (i PtrRecord) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordOutput)
+}
+
+type PtrRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (PtrRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PtrRecordOutput)(nil)).Elem()
+}
+
+func (o PtrRecordOutput) ToPtrRecordOutput() PtrRecordOutput {
+	return o
+}
+
+func (o PtrRecordOutput) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PtrRecordOutput{})
 }

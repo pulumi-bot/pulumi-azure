@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -145,4 +146,43 @@ type MongoDatabaseArgs struct {
 
 func (MongoDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongoDatabaseArgs)(nil)).Elem()
+}
+
+type MongoDatabaseInput interface {
+	pulumi.Input
+
+	ToMongoDatabaseOutput() MongoDatabaseOutput
+	ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput
+}
+
+func (MongoDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoDatabase)(nil)).Elem()
+}
+
+func (i MongoDatabase) ToMongoDatabaseOutput() MongoDatabaseOutput {
+	return i.ToMongoDatabaseOutputWithContext(context.Background())
+}
+
+func (i MongoDatabase) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseOutput)
+}
+
+type MongoDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoDatabaseOutput)(nil)).Elem()
+}
+
+func (o MongoDatabaseOutput) ToMongoDatabaseOutput() MongoDatabaseOutput {
+	return o
+}
+
+func (o MongoDatabaseOutput) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MongoDatabaseOutput{})
 }
