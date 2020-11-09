@@ -33,6 +33,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Resource Groups can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:core/resourceGroup:ResourceGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example
+// ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

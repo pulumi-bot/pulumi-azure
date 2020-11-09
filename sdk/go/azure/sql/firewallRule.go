@@ -54,6 +54,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// SQL Firewall Rules can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:sql/firewallRule:FirewallRule rule1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver/firewallRules/rule1
+// ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

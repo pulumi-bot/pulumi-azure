@@ -64,6 +64,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// EventGrid Event Subscription's can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:eventgrid/eventSubscription:EventSubscription eventSubscription1
+// ```
+//
+//  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.EventGrid/topics/topic1/providers/Microsoft.EventGrid/eventSubscriptions/eventSubscription1
 type EventSubscription struct {
 	pulumi.CustomResourceState
 

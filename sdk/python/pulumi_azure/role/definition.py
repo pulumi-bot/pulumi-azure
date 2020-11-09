@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['Definition']
 
-warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
+warnings.warn("""azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition""", DeprecationWarning)
 
 
 class Definition(pulumi.CustomResource):
-    warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
+    warnings.warn("""azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -49,6 +49,16 @@ class Definition(pulumi.CustomResource):
             )],
             assignable_scopes=[primary.id])
         ```
+
+        ## Import
+
+        Role Definitions can be imported using the `resource id`, e.g.
+
+        ```sh
+         $ pulumi import azure:role/definition:Definition example "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000|/subscriptions/00000000-0000-0000-0000-000000000000"
+        ```
+
+         -> **NOTE:** This ID is specific to Terraform - and is of the format `{roleDefinitionId}|{scope}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

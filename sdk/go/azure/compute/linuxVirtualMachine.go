@@ -21,6 +21,14 @@ import (
 // > **Note** This resource does not support attaching existing OS Disks. You can instead capture an image of the OS Disk or continue to use the `compute.VirtualMachine` resource instead.
 //
 // > In this release there's a known issue where the `publicIpAddress` and `publicIpAddresses` fields may not be fully populated for Dynamic Public IP's.
+//
+// ## Import
+//
+// Linux Virtual Machines can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:compute/linuxVirtualMachine:LinuxVirtualMachine example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/machine1
+// ```
 type LinuxVirtualMachine struct {
 	pulumi.CustomResourceState
 

@@ -59,6 +59,14 @@ import (
 // ```
 //
 // > **NOTE:** The server resource will automatically be started and stopped during an update if it is in `paused` state.
+//
+// ## Import
+//
+// Analysis Services Server can be imported using the `resource id`, e.g.
+//
+// ```sh
+//  $ pulumi import azure:analysisservices/server:Server server /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourcegroup1/providers/Microsoft.AnalysisServices/servers/server1
+// ```
 type Server struct {
 	pulumi.CustomResourceState
 
