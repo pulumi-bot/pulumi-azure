@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -146,4 +147,43 @@ type SubnetNatGatewayAssociationArgs struct {
 
 func (SubnetNatGatewayAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetNatGatewayAssociationArgs)(nil)).Elem()
+}
+
+type SubnetNatGatewayAssociationInput interface {
+	pulumi.Input
+
+	ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput
+	ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput
+}
+
+func (SubnetNatGatewayAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNatGatewayAssociation)(nil)).Elem()
+}
+
+func (i SubnetNatGatewayAssociation) ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput {
+	return i.ToSubnetNatGatewayAssociationOutputWithContext(context.Background())
+}
+
+func (i SubnetNatGatewayAssociation) ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetNatGatewayAssociationOutput)
+}
+
+type SubnetNatGatewayAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetNatGatewayAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNatGatewayAssociationOutput)(nil)).Elem()
+}
+
+func (o SubnetNatGatewayAssociationOutput) ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput {
+	return o
+}
+
+func (o SubnetNatGatewayAssociationOutput) ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetNatGatewayAssociationOutput{})
 }

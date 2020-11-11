@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['EventHubAuthorizationRule']
 
-warnings.warn("azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule", DeprecationWarning)
+warnings.warn("""azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule""", DeprecationWarning)
 
 
 class EventHubAuthorizationRule(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule", DeprecationWarning)
+    warnings.warn("""azure.eventhub.EventHubAuthorizationRule has been deprecated in favor of azure.eventhub.AuthorizationRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

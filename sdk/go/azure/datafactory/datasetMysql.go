@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -228,4 +229,43 @@ type DatasetMysqlArgs struct {
 
 func (DatasetMysqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetMysqlArgs)(nil)).Elem()
+}
+
+type DatasetMysqlInput interface {
+	pulumi.Input
+
+	ToDatasetMysqlOutput() DatasetMysqlOutput
+	ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput
+}
+
+func (DatasetMysql) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMysql)(nil)).Elem()
+}
+
+func (i DatasetMysql) ToDatasetMysqlOutput() DatasetMysqlOutput {
+	return i.ToDatasetMysqlOutputWithContext(context.Background())
+}
+
+func (i DatasetMysql) ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetMysqlOutput)
+}
+
+type DatasetMysqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMysqlOutput)(nil)).Elem()
+}
+
+func (o DatasetMysqlOutput) ToDatasetMysqlOutput() DatasetMysqlOutput {
+	return o
+}
+
+func (o DatasetMysqlOutput) ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetMysqlOutput{})
 }

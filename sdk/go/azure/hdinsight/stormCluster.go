@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -302,4 +303,43 @@ type StormClusterArgs struct {
 
 func (StormClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stormClusterArgs)(nil)).Elem()
+}
+
+type StormClusterInput interface {
+	pulumi.Input
+
+	ToStormClusterOutput() StormClusterOutput
+	ToStormClusterOutputWithContext(ctx context.Context) StormClusterOutput
+}
+
+func (StormCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*StormCluster)(nil)).Elem()
+}
+
+func (i StormCluster) ToStormClusterOutput() StormClusterOutput {
+	return i.ToStormClusterOutputWithContext(context.Background())
+}
+
+func (i StormCluster) ToStormClusterOutputWithContext(ctx context.Context) StormClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterOutput)
+}
+
+type StormClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (StormClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StormClusterOutput)(nil)).Elem()
+}
+
+func (o StormClusterOutput) ToStormClusterOutput() StormClusterOutput {
+	return o
+}
+
+func (o StormClusterOutput) ToStormClusterOutputWithContext(ctx context.Context) StormClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StormClusterOutput{})
 }

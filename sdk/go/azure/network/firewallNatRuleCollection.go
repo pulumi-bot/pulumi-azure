@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -233,4 +234,43 @@ type FirewallNatRuleCollectionArgs struct {
 
 func (FirewallNatRuleCollectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallNatRuleCollectionArgs)(nil)).Elem()
+}
+
+type FirewallNatRuleCollectionInput interface {
+	pulumi.Input
+
+	ToFirewallNatRuleCollectionOutput() FirewallNatRuleCollectionOutput
+	ToFirewallNatRuleCollectionOutputWithContext(ctx context.Context) FirewallNatRuleCollectionOutput
+}
+
+func (FirewallNatRuleCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallNatRuleCollection)(nil)).Elem()
+}
+
+func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionOutput() FirewallNatRuleCollectionOutput {
+	return i.ToFirewallNatRuleCollectionOutputWithContext(context.Background())
+}
+
+func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionOutputWithContext(ctx context.Context) FirewallNatRuleCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallNatRuleCollectionOutput)
+}
+
+type FirewallNatRuleCollectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallNatRuleCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallNatRuleCollectionOutput)(nil)).Elem()
+}
+
+func (o FirewallNatRuleCollectionOutput) ToFirewallNatRuleCollectionOutput() FirewallNatRuleCollectionOutput {
+	return o
+}
+
+func (o FirewallNatRuleCollectionOutput) ToFirewallNatRuleCollectionOutputWithContext(ctx context.Context) FirewallNatRuleCollectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallNatRuleCollectionOutput{})
 }

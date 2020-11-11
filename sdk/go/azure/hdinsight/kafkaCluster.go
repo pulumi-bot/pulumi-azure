@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -311,4 +312,43 @@ type KafkaClusterArgs struct {
 
 func (KafkaClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaClusterArgs)(nil)).Elem()
+}
+
+type KafkaClusterInput interface {
+	pulumi.Input
+
+	ToKafkaClusterOutput() KafkaClusterOutput
+	ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput
+}
+
+func (KafkaCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaCluster)(nil)).Elem()
+}
+
+func (i KafkaCluster) ToKafkaClusterOutput() KafkaClusterOutput {
+	return i.ToKafkaClusterOutputWithContext(context.Background())
+}
+
+func (i KafkaCluster) ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterOutput)
+}
+
+type KafkaClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaClusterOutput)(nil)).Elem()
+}
+
+func (o KafkaClusterOutput) ToKafkaClusterOutput() KafkaClusterOutput {
+	return o
+}
+
+func (o KafkaClusterOutput) ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KafkaClusterOutput{})
 }

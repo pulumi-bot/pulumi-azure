@@ -4,6 +4,7 @@
 package datashare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -208,4 +209,43 @@ type DatasetDataLakeGen1Args struct {
 
 func (DatasetDataLakeGen1Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetDataLakeGen1Args)(nil)).Elem()
+}
+
+type DatasetDataLakeGen1Input interface {
+	pulumi.Input
+
+	ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output
+	ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output
+}
+
+func (DatasetDataLakeGen1) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen1)(nil)).Elem()
+}
+
+func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
+	return i.ToDatasetDataLakeGen1OutputWithContext(context.Background())
+}
+
+func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDataLakeGen1Output)
+}
+
+type DatasetDataLakeGen1Output struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDataLakeGen1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen1Output)(nil)).Elem()
+}
+
+func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
+	return o
+}
+
+func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetDataLakeGen1Output{})
 }

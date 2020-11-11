@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -258,4 +259,43 @@ type LinkedServiceSftpArgs struct {
 
 func (LinkedServiceSftpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceSftpArgs)(nil)).Elem()
+}
+
+type LinkedServiceSftpInput interface {
+	pulumi.Input
+
+	ToLinkedServiceSftpOutput() LinkedServiceSftpOutput
+	ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput
+}
+
+func (LinkedServiceSftp) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSftp)(nil)).Elem()
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpOutput() LinkedServiceSftpOutput {
+	return i.ToLinkedServiceSftpOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSftpOutput)
+}
+
+type LinkedServiceSftpOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceSftpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSftpOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceSftpOutput) ToLinkedServiceSftpOutput() LinkedServiceSftpOutput {
+	return o
+}
+
+func (o LinkedServiceSftpOutput) ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceSftpOutput{})
 }
