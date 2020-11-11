@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -177,4 +178,43 @@ type EventHubConsumerGroupArgs struct {
 
 func (EventHubConsumerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubConsumerGroupArgs)(nil)).Elem()
+}
+
+type EventHubConsumerGroupInput interface {
+	pulumi.Input
+
+	ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput
+	ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput
+}
+
+func (EventHubConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConsumerGroup)(nil)).Elem()
+}
+
+func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
+	return i.ToEventHubConsumerGroupOutputWithContext(context.Background())
+}
+
+func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupOutput)
+}
+
+type EventHubConsumerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubConsumerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConsumerGroupOutput)(nil)).Elem()
+}
+
+func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
+	return o
+}
+
+func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubConsumerGroupOutput{})
 }

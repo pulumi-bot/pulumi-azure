@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -245,4 +246,43 @@ type PublicIpArgs struct {
 
 func (PublicIpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpArgs)(nil)).Elem()
+}
+
+type PublicIpInput interface {
+	pulumi.Input
+
+	ToPublicIpOutput() PublicIpOutput
+	ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput
+}
+
+func (PublicIp) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIp)(nil)).Elem()
+}
+
+func (i PublicIp) ToPublicIpOutput() PublicIpOutput {
+	return i.ToPublicIpOutputWithContext(context.Background())
+}
+
+func (i PublicIp) ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpOutput)
+}
+
+type PublicIpOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpOutput)(nil)).Elem()
+}
+
+func (o PublicIpOutput) ToPublicIpOutput() PublicIpOutput {
+	return o
+}
+
+func (o PublicIpOutput) ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PublicIpOutput{})
 }

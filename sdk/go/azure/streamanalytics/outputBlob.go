@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -255,4 +256,43 @@ type OutputBlobArgs struct {
 
 func (OutputBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputBlobArgs)(nil)).Elem()
+}
+
+type OutputBlobInput interface {
+	pulumi.Input
+
+	ToOutputBlobOutput() OutputBlobOutput
+	ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput
+}
+
+func (OutputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputBlob)(nil)).Elem()
+}
+
+func (i OutputBlob) ToOutputBlobOutput() OutputBlobOutput {
+	return i.ToOutputBlobOutputWithContext(context.Background())
+}
+
+func (i OutputBlob) ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobOutput)
+}
+
+type OutputBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputBlobOutput)(nil)).Elem()
+}
+
+func (o OutputBlobOutput) ToOutputBlobOutput() OutputBlobOutput {
+	return o
+}
+
+func (o OutputBlobOutput) ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputBlobOutput{})
 }

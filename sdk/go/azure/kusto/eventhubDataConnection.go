@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -262,4 +263,43 @@ type EventhubDataConnectionArgs struct {
 
 func (EventhubDataConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventhubDataConnectionArgs)(nil)).Elem()
+}
+
+type EventhubDataConnectionInput interface {
+	pulumi.Input
+
+	ToEventhubDataConnectionOutput() EventhubDataConnectionOutput
+	ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput
+}
+
+func (EventhubDataConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubDataConnection)(nil)).Elem()
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionOutput() EventhubDataConnectionOutput {
+	return i.ToEventhubDataConnectionOutputWithContext(context.Background())
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventhubDataConnectionOutput)
+}
+
+type EventhubDataConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventhubDataConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubDataConnectionOutput)(nil)).Elem()
+}
+
+func (o EventhubDataConnectionOutput) ToEventhubDataConnectionOutput() EventhubDataConnectionOutput {
+	return o
+}
+
+func (o EventhubDataConnectionOutput) ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventhubDataConnectionOutput{})
 }

@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -188,4 +189,43 @@ type SqlStoredProcedureArgs struct {
 
 func (SqlStoredProcedureArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlStoredProcedureArgs)(nil)).Elem()
+}
+
+type SqlStoredProcedureInput interface {
+	pulumi.Input
+
+	ToSqlStoredProcedureOutput() SqlStoredProcedureOutput
+	ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput
+}
+
+func (SqlStoredProcedure) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlStoredProcedure)(nil)).Elem()
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedureOutput() SqlStoredProcedureOutput {
+	return i.ToSqlStoredProcedureOutputWithContext(context.Background())
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlStoredProcedureOutput)
+}
+
+type SqlStoredProcedureOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlStoredProcedureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlStoredProcedureOutput)(nil)).Elem()
+}
+
+func (o SqlStoredProcedureOutput) ToSqlStoredProcedureOutput() SqlStoredProcedureOutput {
+	return o
+}
+
+func (o SqlStoredProcedureOutput) ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlStoredProcedureOutput{})
 }

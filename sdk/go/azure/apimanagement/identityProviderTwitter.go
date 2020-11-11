@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type IdentityProviderTwitterArgs struct {
 
 func (IdentityProviderTwitterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderTwitterArgs)(nil)).Elem()
+}
+
+type IdentityProviderTwitterInput interface {
+	pulumi.Input
+
+	ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput
+	ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput
+}
+
+func (IdentityProviderTwitter) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderTwitter)(nil)).Elem()
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
+	return i.ToIdentityProviderTwitterOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterOutput)
+}
+
+type IdentityProviderTwitterOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderTwitterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderTwitterOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
+	return o
+}
+
+func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderTwitterOutput{})
 }

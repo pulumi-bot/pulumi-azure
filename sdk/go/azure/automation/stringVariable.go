@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type StringVariableArgs struct {
 
 func (StringVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*stringVariableArgs)(nil)).Elem()
+}
+
+type StringVariableInput interface {
+	pulumi.Input
+
+	ToStringVariableOutput() StringVariableOutput
+	ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput
+}
+
+func (StringVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringVariable)(nil)).Elem()
+}
+
+func (i StringVariable) ToStringVariableOutput() StringVariableOutput {
+	return i.ToStringVariableOutputWithContext(context.Background())
+}
+
+func (i StringVariable) ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringVariableOutput)
+}
+
+type StringVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (StringVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringVariableOutput)(nil)).Elem()
+}
+
+func (o StringVariableOutput) ToStringVariableOutput() StringVariableOutput {
+	return o
+}
+
+func (o StringVariableOutput) ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StringVariableOutput{})
 }
