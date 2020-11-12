@@ -4,6 +4,7 @@
 package core
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -176,4 +177,43 @@ type ResourceGroupTemplateDeploymentArgs struct {
 
 func (ResourceGroupTemplateDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupTemplateDeploymentArgs)(nil)).Elem()
+}
+
+type ResourceGroupTemplateDeploymentInput interface {
+	pulumi.Input
+
+	ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput
+	ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput
+}
+
+func (ResourceGroupTemplateDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupTemplateDeployment)(nil)).Elem()
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput {
+	return i.ToResourceGroupTemplateDeploymentOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupTemplateDeploymentOutput)
+}
+
+type ResourceGroupTemplateDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupTemplateDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupTemplateDeploymentOutput)(nil)).Elem()
+}
+
+func (o ResourceGroupTemplateDeploymentOutput) ToResourceGroupTemplateDeploymentOutput() ResourceGroupTemplateDeploymentOutput {
+	return o
+}
+
+func (o ResourceGroupTemplateDeploymentOutput) ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceGroupTemplateDeploymentOutput{})
 }

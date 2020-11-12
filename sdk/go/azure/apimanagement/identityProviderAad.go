@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -183,4 +184,43 @@ type IdentityProviderAadArgs struct {
 
 func (IdentityProviderAadArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderAadArgs)(nil)).Elem()
+}
+
+type IdentityProviderAadInput interface {
+	pulumi.Input
+
+	ToIdentityProviderAadOutput() IdentityProviderAadOutput
+	ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput
+}
+
+func (IdentityProviderAad) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderAad)(nil)).Elem()
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadOutput() IdentityProviderAadOutput {
+	return i.ToIdentityProviderAadOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderAadOutput)
+}
+
+type IdentityProviderAadOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderAadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderAadOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderAadOutput) ToIdentityProviderAadOutput() IdentityProviderAadOutput {
+	return o
+}
+
+func (o IdentityProviderAadOutput) ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderAadOutput{})
 }

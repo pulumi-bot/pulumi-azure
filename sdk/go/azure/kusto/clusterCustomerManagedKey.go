@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,4 +115,43 @@ type ClusterCustomerManagedKeyArgs struct {
 
 func (ClusterCustomerManagedKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterCustomerManagedKeyArgs)(nil)).Elem()
+}
+
+type ClusterCustomerManagedKeyInput interface {
+	pulumi.Input
+
+	ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput
+	ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput
+}
+
+func (ClusterCustomerManagedKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCustomerManagedKey)(nil)).Elem()
+}
+
+func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
+	return i.ToClusterCustomerManagedKeyOutputWithContext(context.Background())
+}
+
+func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCustomerManagedKeyOutput)
+}
+
+type ClusterCustomerManagedKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterCustomerManagedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCustomerManagedKeyOutput)(nil)).Elem()
+}
+
+func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
+	return o
+}
+
+func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterCustomerManagedKeyOutput{})
 }

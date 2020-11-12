@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -250,4 +251,43 @@ type StreamInputEventHubArgs struct {
 
 func (StreamInputEventHubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamInputEventHubArgs)(nil)).Elem()
+}
+
+type StreamInputEventHubInput interface {
+	pulumi.Input
+
+	ToStreamInputEventHubOutput() StreamInputEventHubOutput
+	ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput
+}
+
+func (StreamInputEventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputEventHub)(nil)).Elem()
+}
+
+func (i StreamInputEventHub) ToStreamInputEventHubOutput() StreamInputEventHubOutput {
+	return i.ToStreamInputEventHubOutputWithContext(context.Background())
+}
+
+func (i StreamInputEventHub) ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubOutput)
+}
+
+type StreamInputEventHubOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputEventHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputEventHubOutput)(nil)).Elem()
+}
+
+func (o StreamInputEventHubOutput) ToStreamInputEventHubOutput() StreamInputEventHubOutput {
+	return o
+}
+
+func (o StreamInputEventHubOutput) ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StreamInputEventHubOutput{})
 }

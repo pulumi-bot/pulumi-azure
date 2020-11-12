@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -181,4 +182,43 @@ type DatasetCosmosDBApiArgs struct {
 
 func (DatasetCosmosDBApiArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetCosmosDBApiArgs)(nil)).Elem()
+}
+
+type DatasetCosmosDBApiInput interface {
+	pulumi.Input
+
+	ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput
+	ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput
+}
+
+func (DatasetCosmosDBApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetCosmosDBApi)(nil)).Elem()
+}
+
+func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
+	return i.ToDatasetCosmosDBApiOutputWithContext(context.Background())
+}
+
+func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetCosmosDBApiOutput)
+}
+
+type DatasetCosmosDBApiOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetCosmosDBApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetCosmosDBApiOutput)(nil)).Elem()
+}
+
+func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
+	return o
+}
+
+func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetCosmosDBApiOutput{})
 }

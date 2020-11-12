@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -195,4 +196,43 @@ type VirtualHubConnectionArgs struct {
 
 func (VirtualHubConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualHubConnectionArgs)(nil)).Elem()
+}
+
+type VirtualHubConnectionInput interface {
+	pulumi.Input
+
+	ToVirtualHubConnectionOutput() VirtualHubConnectionOutput
+	ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput
+}
+
+func (VirtualHubConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubConnection)(nil)).Elem()
+}
+
+func (i VirtualHubConnection) ToVirtualHubConnectionOutput() VirtualHubConnectionOutput {
+	return i.ToVirtualHubConnectionOutputWithContext(context.Background())
+}
+
+func (i VirtualHubConnection) ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionOutput)
+}
+
+type VirtualHubConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubConnectionOutput)(nil)).Elem()
+}
+
+func (o VirtualHubConnectionOutput) ToVirtualHubConnectionOutput() VirtualHubConnectionOutput {
+	return o
+}
+
+func (o VirtualHubConnectionOutput) ToVirtualHubConnectionOutputWithContext(ctx context.Context) VirtualHubConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualHubConnectionOutput{})
 }

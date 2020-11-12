@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -145,4 +146,43 @@ type GremlinDatabaseArgs struct {
 
 func (GremlinDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gremlinDatabaseArgs)(nil)).Elem()
+}
+
+type GremlinDatabaseInput interface {
+	pulumi.Input
+
+	ToGremlinDatabaseOutput() GremlinDatabaseOutput
+	ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput
+}
+
+func (GremlinDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinDatabase)(nil)).Elem()
+}
+
+func (i GremlinDatabase) ToGremlinDatabaseOutput() GremlinDatabaseOutput {
+	return i.ToGremlinDatabaseOutputWithContext(context.Background())
+}
+
+func (i GremlinDatabase) ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseOutput)
+}
+
+type GremlinDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (GremlinDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinDatabaseOutput)(nil)).Elem()
+}
+
+func (o GremlinDatabaseOutput) ToGremlinDatabaseOutput() GremlinDatabaseOutput {
+	return o
+}
+
+func (o GremlinDatabaseOutput) ToGremlinDatabaseOutputWithContext(ctx context.Context) GremlinDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GremlinDatabaseOutput{})
 }

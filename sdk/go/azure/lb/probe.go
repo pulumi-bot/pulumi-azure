@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -210,4 +211,43 @@ type ProbeArgs struct {
 
 func (ProbeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*probeArgs)(nil)).Elem()
+}
+
+type ProbeInput interface {
+	pulumi.Input
+
+	ToProbeOutput() ProbeOutput
+	ToProbeOutputWithContext(ctx context.Context) ProbeOutput
+}
+
+func (Probe) ElementType() reflect.Type {
+	return reflect.TypeOf((*Probe)(nil)).Elem()
+}
+
+func (i Probe) ToProbeOutput() ProbeOutput {
+	return i.ToProbeOutputWithContext(context.Background())
+}
+
+func (i Probe) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeOutput)
+}
+
+type ProbeOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeOutput)(nil)).Elem()
+}
+
+func (o ProbeOutput) ToProbeOutput() ProbeOutput {
+	return o
+}
+
+func (o ProbeOutput) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProbeOutput{})
 }

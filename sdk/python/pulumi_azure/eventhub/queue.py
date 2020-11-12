@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Queue']
 
-warnings.warn("azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue", DeprecationWarning)
+warnings.warn("""azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue""", DeprecationWarning)
 
 
 class Queue(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue", DeprecationWarning)
+    warnings.warn("""azure.eventhub.Queue has been deprecated in favor of azure.servicebus.Queue""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
