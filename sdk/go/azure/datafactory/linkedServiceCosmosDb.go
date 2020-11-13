@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -190,4 +191,43 @@ type LinkedServiceCosmosDbArgs struct {
 
 func (LinkedServiceCosmosDbArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceCosmosDbArgs)(nil)).Elem()
+}
+
+type LinkedServiceCosmosDbInput interface {
+	pulumi.Input
+
+	ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput
+	ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput
+}
+
+func (LinkedServiceCosmosDb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceCosmosDb)(nil)).Elem()
+}
+
+func (i LinkedServiceCosmosDb) ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput {
+	return i.ToLinkedServiceCosmosDbOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceCosmosDb) ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceCosmosDbOutput)
+}
+
+type LinkedServiceCosmosDbOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceCosmosDbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceCosmosDbOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceCosmosDbOutput) ToLinkedServiceCosmosDbOutput() LinkedServiceCosmosDbOutput {
+	return o
+}
+
+func (o LinkedServiceCosmosDbOutput) ToLinkedServiceCosmosDbOutputWithContext(ctx context.Context) LinkedServiceCosmosDbOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceCosmosDbOutput{})
 }

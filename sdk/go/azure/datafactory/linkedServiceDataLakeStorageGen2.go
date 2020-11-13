@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -247,4 +248,43 @@ type LinkedServiceDataLakeStorageGen2Args struct {
 
 func (LinkedServiceDataLakeStorageGen2Args) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceDataLakeStorageGen2Args)(nil)).Elem()
+}
+
+type LinkedServiceDataLakeStorageGen2Input interface {
+	pulumi.Input
+
+	ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output
+	ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output
+}
+
+func (LinkedServiceDataLakeStorageGen2) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceDataLakeStorageGen2)(nil)).Elem()
+}
+
+func (i LinkedServiceDataLakeStorageGen2) ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output {
+	return i.ToLinkedServiceDataLakeStorageGen2OutputWithContext(context.Background())
+}
+
+func (i LinkedServiceDataLakeStorageGen2) ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceDataLakeStorageGen2Output)
+}
+
+type LinkedServiceDataLakeStorageGen2Output struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceDataLakeStorageGen2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceDataLakeStorageGen2Output)(nil)).Elem()
+}
+
+func (o LinkedServiceDataLakeStorageGen2Output) ToLinkedServiceDataLakeStorageGen2Output() LinkedServiceDataLakeStorageGen2Output {
+	return o
+}
+
+func (o LinkedServiceDataLakeStorageGen2Output) ToLinkedServiceDataLakeStorageGen2OutputWithContext(ctx context.Context) LinkedServiceDataLakeStorageGen2Output {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceDataLakeStorageGen2Output{})
 }

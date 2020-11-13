@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -188,4 +189,43 @@ type CustomHostnameBindingArgs struct {
 
 func (CustomHostnameBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customHostnameBindingArgs)(nil)).Elem()
+}
+
+type CustomHostnameBindingInput interface {
+	pulumi.Input
+
+	ToCustomHostnameBindingOutput() CustomHostnameBindingOutput
+	ToCustomHostnameBindingOutputWithContext(ctx context.Context) CustomHostnameBindingOutput
+}
+
+func (CustomHostnameBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameBinding)(nil)).Elem()
+}
+
+func (i CustomHostnameBinding) ToCustomHostnameBindingOutput() CustomHostnameBindingOutput {
+	return i.ToCustomHostnameBindingOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameBinding) ToCustomHostnameBindingOutputWithContext(ctx context.Context) CustomHostnameBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameBindingOutput)
+}
+
+type CustomHostnameBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomHostnameBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameBindingOutput)(nil)).Elem()
+}
+
+func (o CustomHostnameBindingOutput) ToCustomHostnameBindingOutput() CustomHostnameBindingOutput {
+	return o
+}
+
+func (o CustomHostnameBindingOutput) ToCustomHostnameBindingOutputWithContext(ctx context.Context) CustomHostnameBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomHostnameBindingOutput{})
 }

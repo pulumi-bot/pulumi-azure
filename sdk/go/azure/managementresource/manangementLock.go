@@ -4,6 +4,7 @@
 package managementresource
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -214,4 +215,43 @@ type ManangementLockArgs struct {
 
 func (ManangementLockArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*manangementLockArgs)(nil)).Elem()
+}
+
+type ManangementLockInput interface {
+	pulumi.Input
+
+	ToManangementLockOutput() ManangementLockOutput
+	ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput
+}
+
+func (ManangementLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLock)(nil)).Elem()
+}
+
+func (i ManangementLock) ToManangementLockOutput() ManangementLockOutput {
+	return i.ToManangementLockOutputWithContext(context.Background())
+}
+
+func (i ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManangementLockOutput)
+}
+
+type ManangementLockOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManangementLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLockOutput)(nil)).Elem()
+}
+
+func (o ManangementLockOutput) ToManangementLockOutput() ManangementLockOutput {
+	return o
+}
+
+func (o ManangementLockOutput) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManangementLockOutput{})
 }

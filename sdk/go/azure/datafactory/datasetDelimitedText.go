@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -321,4 +322,43 @@ type DatasetDelimitedTextArgs struct {
 
 func (DatasetDelimitedTextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetDelimitedTextArgs)(nil)).Elem()
+}
+
+type DatasetDelimitedTextInput interface {
+	pulumi.Input
+
+	ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput
+	ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput
+}
+
+func (DatasetDelimitedText) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDelimitedText)(nil)).Elem()
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
+	return i.ToDatasetDelimitedTextOutputWithContext(context.Background())
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextOutput)
+}
+
+type DatasetDelimitedTextOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDelimitedTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDelimitedTextOutput)(nil)).Elem()
+}
+
+func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
+	return o
+}
+
+func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetDelimitedTextOutput{})
 }

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -264,4 +265,43 @@ type SharedImageArgs struct {
 
 func (SharedImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedImageArgs)(nil)).Elem()
+}
+
+type SharedImageInput interface {
+	pulumi.Input
+
+	ToSharedImageOutput() SharedImageOutput
+	ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput
+}
+
+func (SharedImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImage)(nil)).Elem()
+}
+
+func (i SharedImage) ToSharedImageOutput() SharedImageOutput {
+	return i.ToSharedImageOutputWithContext(context.Background())
+}
+
+func (i SharedImage) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageOutput)
+}
+
+type SharedImageOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageOutput)(nil)).Elem()
+}
+
+func (o SharedImageOutput) ToSharedImageOutput() SharedImageOutput {
+	return o
+}
+
+func (o SharedImageOutput) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedImageOutput{})
 }

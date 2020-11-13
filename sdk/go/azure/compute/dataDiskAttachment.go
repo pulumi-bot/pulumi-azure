@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -256,4 +257,43 @@ type DataDiskAttachmentArgs struct {
 
 func (DataDiskAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataDiskAttachmentArgs)(nil)).Elem()
+}
+
+type DataDiskAttachmentInput interface {
+	pulumi.Input
+
+	ToDataDiskAttachmentOutput() DataDiskAttachmentOutput
+	ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput
+}
+
+func (DataDiskAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskAttachment)(nil)).Elem()
+}
+
+func (i DataDiskAttachment) ToDataDiskAttachmentOutput() DataDiskAttachmentOutput {
+	return i.ToDataDiskAttachmentOutputWithContext(context.Background())
+}
+
+func (i DataDiskAttachment) ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataDiskAttachmentOutput)
+}
+
+type DataDiskAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataDiskAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataDiskAttachmentOutput)(nil)).Elem()
+}
+
+func (o DataDiskAttachmentOutput) ToDataDiskAttachmentOutput() DataDiskAttachmentOutput {
+	return o
+}
+
+func (o DataDiskAttachmentOutput) ToDataDiskAttachmentOutputWithContext(ctx context.Context) DataDiskAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataDiskAttachmentOutput{})
 }

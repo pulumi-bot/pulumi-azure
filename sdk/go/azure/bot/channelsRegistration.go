@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -218,4 +219,43 @@ type ChannelsRegistrationArgs struct {
 
 func (ChannelsRegistrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelsRegistrationArgs)(nil)).Elem()
+}
+
+type ChannelsRegistrationInput interface {
+	pulumi.Input
+
+	ToChannelsRegistrationOutput() ChannelsRegistrationOutput
+	ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput
+}
+
+func (ChannelsRegistration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsRegistration)(nil)).Elem()
+}
+
+func (i ChannelsRegistration) ToChannelsRegistrationOutput() ChannelsRegistrationOutput {
+	return i.ToChannelsRegistrationOutputWithContext(context.Background())
+}
+
+func (i ChannelsRegistration) ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelsRegistrationOutput)
+}
+
+type ChannelsRegistrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelsRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsRegistrationOutput)(nil)).Elem()
+}
+
+func (o ChannelsRegistrationOutput) ToChannelsRegistrationOutput() ChannelsRegistrationOutput {
+	return o
+}
+
+func (o ChannelsRegistrationOutput) ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelsRegistrationOutput{})
 }

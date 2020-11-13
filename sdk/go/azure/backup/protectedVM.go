@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -177,4 +178,43 @@ type ProtectedVMArgs struct {
 
 func (ProtectedVMArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectedVMArgs)(nil)).Elem()
+}
+
+type ProtectedVMInput interface {
+	pulumi.Input
+
+	ToProtectedVMOutput() ProtectedVMOutput
+	ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput
+}
+
+func (ProtectedVM) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedVM)(nil)).Elem()
+}
+
+func (i ProtectedVM) ToProtectedVMOutput() ProtectedVMOutput {
+	return i.ToProtectedVMOutputWithContext(context.Background())
+}
+
+func (i ProtectedVM) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedVMOutput)
+}
+
+type ProtectedVMOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedVMOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedVMOutput)(nil)).Elem()
+}
+
+func (o ProtectedVMOutput) ToProtectedVMOutput() ProtectedVMOutput {
+	return o
+}
+
+func (o ProtectedVMOutput) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectedVMOutput{})
 }

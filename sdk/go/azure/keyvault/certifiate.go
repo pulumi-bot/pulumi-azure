@@ -4,6 +4,7 @@
 package keyvault
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -290,4 +291,43 @@ type CertifiateArgs struct {
 
 func (CertifiateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certifiateArgs)(nil)).Elem()
+}
+
+type CertifiateInput interface {
+	pulumi.Input
+
+	ToCertifiateOutput() CertifiateOutput
+	ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput
+}
+
+func (Certifiate) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certifiate)(nil)).Elem()
+}
+
+func (i Certifiate) ToCertifiateOutput() CertifiateOutput {
+	return i.ToCertifiateOutputWithContext(context.Background())
+}
+
+func (i Certifiate) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateOutput)
+}
+
+type CertifiateOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertifiateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertifiateOutput)(nil)).Elem()
+}
+
+func (o CertifiateOutput) ToCertifiateOutput() CertifiateOutput {
+	return o
+}
+
+func (o CertifiateOutput) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertifiateOutput{})
 }

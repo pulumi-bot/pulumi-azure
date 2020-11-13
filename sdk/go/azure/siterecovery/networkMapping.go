@@ -4,6 +4,7 @@
 package siterecovery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -239,4 +240,43 @@ type NetworkMappingArgs struct {
 
 func (NetworkMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkMappingArgs)(nil)).Elem()
+}
+
+type NetworkMappingInput interface {
+	pulumi.Input
+
+	ToNetworkMappingOutput() NetworkMappingOutput
+	ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput
+}
+
+func (NetworkMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMapping)(nil)).Elem()
+}
+
+func (i NetworkMapping) ToNetworkMappingOutput() NetworkMappingOutput {
+	return i.ToNetworkMappingOutputWithContext(context.Background())
+}
+
+func (i NetworkMapping) ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkMappingOutput)
+}
+
+type NetworkMappingOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMappingOutput)(nil)).Elem()
+}
+
+func (o NetworkMappingOutput) ToNetworkMappingOutput() NetworkMappingOutput {
+	return o
+}
+
+func (o NetworkMappingOutput) ToNetworkMappingOutputWithContext(ctx context.Context) NetworkMappingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkMappingOutput{})
 }

@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['UserAssignedIdentity']
 
-warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
+warnings.warn("""azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity""", DeprecationWarning)
 
 
 class UserAssignedIdentity(pulumi.CustomResource):
-    warnings.warn("azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity", DeprecationWarning)
+    warnings.warn("""azure.msi.UserAssignedIdentity has been deprecated in favor of azure.authorization.UserAssignedIdentity""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
