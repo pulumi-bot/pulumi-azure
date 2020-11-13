@@ -4,6 +4,7 @@
 package devtest
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -268,4 +269,43 @@ type LinuxVirtualMachineArgs struct {
 
 func (LinuxVirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linuxVirtualMachineArgs)(nil)).Elem()
+}
+
+type LinuxVirtualMachineInput interface {
+	pulumi.Input
+
+	ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput
+	ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput
+}
+
+func (LinuxVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachine)(nil)).Elem()
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput {
+	return i.ToLinuxVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOutput)
+}
+
+type LinuxVirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinuxVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachineOutput)(nil)).Elem()
+}
+
+func (o LinuxVirtualMachineOutput) ToLinuxVirtualMachineOutput() LinuxVirtualMachineOutput {
+	return o
+}
+
+func (o LinuxVirtualMachineOutput) ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinuxVirtualMachineOutput{})
 }

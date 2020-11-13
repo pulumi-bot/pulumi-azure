@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Namespace']
 
-warnings.warn("azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace", DeprecationWarning)
+warnings.warn("""azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace""", DeprecationWarning)
 
 
 class Namespace(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace", DeprecationWarning)
+    warnings.warn("""azure.eventhub.Namespace has been deprecated in favor of azure.servicebus.Namespace""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -204,4 +205,43 @@ type MongoCollectionArgs struct {
 
 func (MongoCollectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongoCollectionArgs)(nil)).Elem()
+}
+
+type MongoCollectionInput interface {
+	pulumi.Input
+
+	ToMongoCollectionOutput() MongoCollectionOutput
+	ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput
+}
+
+func (MongoCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoCollection)(nil)).Elem()
+}
+
+func (i MongoCollection) ToMongoCollectionOutput() MongoCollectionOutput {
+	return i.ToMongoCollectionOutputWithContext(context.Background())
+}
+
+func (i MongoCollection) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionOutput)
+}
+
+type MongoCollectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoCollectionOutput)(nil)).Elem()
+}
+
+func (o MongoCollectionOutput) ToMongoCollectionOutput() MongoCollectionOutput {
+	return o
+}
+
+func (o MongoCollectionOutput) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MongoCollectionOutput{})
 }

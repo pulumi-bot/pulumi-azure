@@ -4,6 +4,7 @@
 package containerservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -221,4 +222,43 @@ type RegistryWebookArgs struct {
 
 func (RegistryWebookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryWebookArgs)(nil)).Elem()
+}
+
+type RegistryWebookInput interface {
+	pulumi.Input
+
+	ToRegistryWebookOutput() RegistryWebookOutput
+	ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput
+}
+
+func (RegistryWebook) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebook)(nil)).Elem()
+}
+
+func (i RegistryWebook) ToRegistryWebookOutput() RegistryWebookOutput {
+	return i.ToRegistryWebookOutputWithContext(context.Background())
+}
+
+func (i RegistryWebook) ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryWebookOutput)
+}
+
+type RegistryWebookOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryWebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebookOutput)(nil)).Elem()
+}
+
+func (o RegistryWebookOutput) ToRegistryWebookOutput() RegistryWebookOutput {
+	return o
+}
+
+func (o RegistryWebookOutput) ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryWebookOutput{})
 }

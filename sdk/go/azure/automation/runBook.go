@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -239,4 +240,43 @@ type RunBookArgs struct {
 
 func (RunBookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*runBookArgs)(nil)).Elem()
+}
+
+type RunBookInput interface {
+	pulumi.Input
+
+	ToRunBookOutput() RunBookOutput
+	ToRunBookOutputWithContext(ctx context.Context) RunBookOutput
+}
+
+func (RunBook) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunBook)(nil)).Elem()
+}
+
+func (i RunBook) ToRunBookOutput() RunBookOutput {
+	return i.ToRunBookOutputWithContext(context.Background())
+}
+
+func (i RunBook) ToRunBookOutputWithContext(ctx context.Context) RunBookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookOutput)
+}
+
+type RunBookOutput struct {
+	*pulumi.OutputState
+}
+
+func (RunBookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunBookOutput)(nil)).Elem()
+}
+
+func (o RunBookOutput) ToRunBookOutput() RunBookOutput {
+	return o
+}
+
+func (o RunBookOutput) ToRunBookOutputWithContext(ctx context.Context) RunBookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RunBookOutput{})
 }

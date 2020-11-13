@@ -4,6 +4,7 @@
 package appinsights
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -230,4 +231,43 @@ type InsightsArgs struct {
 
 func (InsightsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*insightsArgs)(nil)).Elem()
+}
+
+type InsightsInput interface {
+	pulumi.Input
+
+	ToInsightsOutput() InsightsOutput
+	ToInsightsOutputWithContext(ctx context.Context) InsightsOutput
+}
+
+func (Insights) ElementType() reflect.Type {
+	return reflect.TypeOf((*Insights)(nil)).Elem()
+}
+
+func (i Insights) ToInsightsOutput() InsightsOutput {
+	return i.ToInsightsOutputWithContext(context.Background())
+}
+
+func (i Insights) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsOutput)
+}
+
+type InsightsOutput struct {
+	*pulumi.OutputState
+}
+
+func (InsightsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsOutput)(nil)).Elem()
+}
+
+func (o InsightsOutput) ToInsightsOutput() InsightsOutput {
+	return o
+}
+
+func (o InsightsOutput) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InsightsOutput{})
 }

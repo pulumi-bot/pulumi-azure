@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -502,4 +503,43 @@ type LinuxVirtualMachineScaleSetArgs struct {
 
 func (LinuxVirtualMachineScaleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linuxVirtualMachineScaleSetArgs)(nil)).Elem()
+}
+
+type LinuxVirtualMachineScaleSetInput interface {
+	pulumi.Input
+
+	ToLinuxVirtualMachineScaleSetOutput() LinuxVirtualMachineScaleSetOutput
+	ToLinuxVirtualMachineScaleSetOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOutput
+}
+
+func (LinuxVirtualMachineScaleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachineScaleSet)(nil)).Elem()
+}
+
+func (i LinuxVirtualMachineScaleSet) ToLinuxVirtualMachineScaleSetOutput() LinuxVirtualMachineScaleSetOutput {
+	return i.ToLinuxVirtualMachineScaleSetOutputWithContext(context.Background())
+}
+
+func (i LinuxVirtualMachineScaleSet) ToLinuxVirtualMachineScaleSetOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOutput)
+}
+
+type LinuxVirtualMachineScaleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinuxVirtualMachineScaleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxVirtualMachineScaleSetOutput)(nil)).Elem()
+}
+
+func (o LinuxVirtualMachineScaleSetOutput) ToLinuxVirtualMachineScaleSetOutput() LinuxVirtualMachineScaleSetOutput {
+	return o
+}
+
+func (o LinuxVirtualMachineScaleSetOutput) ToLinuxVirtualMachineScaleSetOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinuxVirtualMachineScaleSetOutput{})
 }

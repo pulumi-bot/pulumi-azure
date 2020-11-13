@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type IdentityProviderMicrosoftArgs struct {
 
 func (IdentityProviderMicrosoftArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderMicrosoftArgs)(nil)).Elem()
+}
+
+type IdentityProviderMicrosoftInput interface {
+	pulumi.Input
+
+	ToIdentityProviderMicrosoftOutput() IdentityProviderMicrosoftOutput
+	ToIdentityProviderMicrosoftOutputWithContext(ctx context.Context) IdentityProviderMicrosoftOutput
+}
+
+func (IdentityProviderMicrosoft) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderMicrosoft)(nil)).Elem()
+}
+
+func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftOutput() IdentityProviderMicrosoftOutput {
+	return i.ToIdentityProviderMicrosoftOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftOutputWithContext(ctx context.Context) IdentityProviderMicrosoftOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderMicrosoftOutput)
+}
+
+type IdentityProviderMicrosoftOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderMicrosoftOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderMicrosoftOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderMicrosoftOutput) ToIdentityProviderMicrosoftOutput() IdentityProviderMicrosoftOutput {
+	return o
+}
+
+func (o IdentityProviderMicrosoftOutput) ToIdentityProviderMicrosoftOutputWithContext(ctx context.Context) IdentityProviderMicrosoftOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderMicrosoftOutput{})
 }

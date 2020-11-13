@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -217,4 +218,43 @@ type SqlContainerArgs struct {
 
 func (SqlContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlContainerArgs)(nil)).Elem()
+}
+
+type SqlContainerInput interface {
+	pulumi.Input
+
+	ToSqlContainerOutput() SqlContainerOutput
+	ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput
+}
+
+func (SqlContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlContainer)(nil)).Elem()
+}
+
+func (i SqlContainer) ToSqlContainerOutput() SqlContainerOutput {
+	return i.ToSqlContainerOutputWithContext(context.Background())
+}
+
+func (i SqlContainer) ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerOutput)
+}
+
+type SqlContainerOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlContainerOutput)(nil)).Elem()
+}
+
+func (o SqlContainerOutput) ToSqlContainerOutput() SqlContainerOutput {
+	return o
+}
+
+func (o SqlContainerOutput) ToSqlContainerOutputWithContext(ctx context.Context) SqlContainerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlContainerOutput{})
 }

@@ -4,6 +4,7 @@
 package frontdoor
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -325,4 +326,43 @@ type FrontdoorArgs struct {
 
 func (FrontdoorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*frontdoorArgs)(nil)).Elem()
+}
+
+type FrontdoorInput interface {
+	pulumi.Input
+
+	ToFrontdoorOutput() FrontdoorOutput
+	ToFrontdoorOutputWithContext(ctx context.Context) FrontdoorOutput
+}
+
+func (Frontdoor) ElementType() reflect.Type {
+	return reflect.TypeOf((*Frontdoor)(nil)).Elem()
+}
+
+func (i Frontdoor) ToFrontdoorOutput() FrontdoorOutput {
+	return i.ToFrontdoorOutputWithContext(context.Background())
+}
+
+func (i Frontdoor) ToFrontdoorOutputWithContext(ctx context.Context) FrontdoorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorOutput)
+}
+
+type FrontdoorOutput struct {
+	*pulumi.OutputState
+}
+
+func (FrontdoorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrontdoorOutput)(nil)).Elem()
+}
+
+func (o FrontdoorOutput) ToFrontdoorOutput() FrontdoorOutput {
+	return o
+}
+
+func (o FrontdoorOutput) ToFrontdoorOutputWithContext(ctx context.Context) FrontdoorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FrontdoorOutput{})
 }
