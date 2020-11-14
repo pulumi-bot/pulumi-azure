@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,12 @@ type Store struct {
 // NewStore registers a new resource with the given unique name, arguments, and options.
 func NewStore(ctx *pulumi.Context,
 	name string, args *StoreArgs, opts ...pulumi.ResourceOption) (*Store, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &StoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Store
 	err := ctx.RegisterResource("azure:datalake/store:Store", name, args, &resource, opts...)
@@ -194,4 +196,43 @@ type StoreArgs struct {
 
 func (StoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeArgs)(nil)).Elem()
+}
+
+type StoreInput interface {
+	pulumi.Input
+
+	ToStoreOutput() StoreOutput
+	ToStoreOutputWithContext(ctx context.Context) StoreOutput
+}
+
+func (Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Store)(nil)).Elem()
+}
+
+func (i Store) ToStoreOutput() StoreOutput {
+	return i.ToStoreOutputWithContext(context.Background())
+}
+
+func (i Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
+}
+
+type StoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreOutput)(nil)).Elem()
+}
+
+func (o StoreOutput) ToStoreOutput() StoreOutput {
+	return o
+}
+
+func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoreOutput{})
 }

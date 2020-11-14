@@ -118,7 +118,7 @@ class Definition(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             if management_group_id is not None:
-                warnings.warn("Deprecated in favour of `management_group_name`", DeprecationWarning)
+                warnings.warn("""Deprecated in favour of `management_group_name`""", DeprecationWarning)
                 pulumi.log.warn("management_group_id is deprecated: Deprecated in favour of `management_group_name`")
             __props__['management_group_id'] = management_group_id
             __props__['management_group_name'] = management_group_name

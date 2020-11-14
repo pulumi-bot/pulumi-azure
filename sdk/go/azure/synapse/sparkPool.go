@@ -4,6 +4,7 @@
 package synapse
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -113,17 +114,18 @@ type SparkPool struct {
 // NewSparkPool registers a new resource with the given unique name, arguments, and options.
 func NewSparkPool(ctx *pulumi.Context,
 	name string, args *SparkPoolArgs, opts ...pulumi.ResourceOption) (*SparkPool, error) {
-	if args == nil || args.NodeSize == nil {
-		return nil, errors.New("missing required argument 'NodeSize'")
-	}
-	if args == nil || args.NodeSizeFamily == nil {
-		return nil, errors.New("missing required argument 'NodeSizeFamily'")
-	}
-	if args == nil || args.SynapseWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
-	}
 	if args == nil {
-		args = &SparkPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodeSize == nil {
+		return nil, errors.New("invalid value for required argument 'NodeSize'")
+	}
+	if args.NodeSizeFamily == nil {
+		return nil, errors.New("invalid value for required argument 'NodeSizeFamily'")
+	}
+	if args.SynapseWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'SynapseWorkspaceId'")
 	}
 	var resource SparkPool
 	err := ctx.RegisterResource("azure:synapse/sparkPool:SparkPool", name, args, &resource, opts...)
@@ -261,4 +263,43 @@ type SparkPoolArgs struct {
 
 func (SparkPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sparkPoolArgs)(nil)).Elem()
+}
+
+type SparkPoolInput interface {
+	pulumi.Input
+
+	ToSparkPoolOutput() SparkPoolOutput
+	ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput
+}
+
+func (SparkPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkPool)(nil)).Elem()
+}
+
+func (i SparkPool) ToSparkPoolOutput() SparkPoolOutput {
+	return i.ToSparkPoolOutputWithContext(context.Background())
+}
+
+func (i SparkPool) ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolOutput)
+}
+
+type SparkPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (SparkPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkPoolOutput)(nil)).Elem()
+}
+
+func (o SparkPoolOutput) ToSparkPoolOutput() SparkPoolOutput {
+	return o
+}
+
+func (o SparkPoolOutput) ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SparkPoolOutput{})
 }

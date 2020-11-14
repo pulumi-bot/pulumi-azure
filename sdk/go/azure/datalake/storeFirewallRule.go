@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,20 +70,21 @@ type StoreFirewallRule struct {
 // NewStoreFirewallRule registers a new resource with the given unique name, arguments, and options.
 func NewStoreFirewallRule(ctx *pulumi.Context,
 	name string, args *StoreFirewallRuleArgs, opts ...pulumi.ResourceOption) (*StoreFirewallRule, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.EndIpAddress == nil {
-		return nil, errors.New("missing required argument 'EndIpAddress'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StartIpAddress == nil {
-		return nil, errors.New("missing required argument 'StartIpAddress'")
-	}
 	if args == nil {
-		args = &StoreFirewallRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.EndIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'EndIpAddress'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StartIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'StartIpAddress'")
 	}
 	var resource StoreFirewallRule
 	err := ctx.RegisterResource("azure:datalake/storeFirewallRule:StoreFirewallRule", name, args, &resource, opts...)
@@ -164,4 +166,43 @@ type StoreFirewallRuleArgs struct {
 
 func (StoreFirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeFirewallRuleArgs)(nil)).Elem()
+}
+
+type StoreFirewallRuleInput interface {
+	pulumi.Input
+
+	ToStoreFirewallRuleOutput() StoreFirewallRuleOutput
+	ToStoreFirewallRuleOutputWithContext(ctx context.Context) StoreFirewallRuleOutput
+}
+
+func (StoreFirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreFirewallRule)(nil)).Elem()
+}
+
+func (i StoreFirewallRule) ToStoreFirewallRuleOutput() StoreFirewallRuleOutput {
+	return i.ToStoreFirewallRuleOutputWithContext(context.Background())
+}
+
+func (i StoreFirewallRule) ToStoreFirewallRuleOutputWithContext(ctx context.Context) StoreFirewallRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreFirewallRuleOutput)
+}
+
+type StoreFirewallRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreFirewallRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreFirewallRuleOutput)(nil)).Elem()
+}
+
+func (o StoreFirewallRuleOutput) ToStoreFirewallRuleOutput() StoreFirewallRuleOutput {
+	return o
+}
+
+func (o StoreFirewallRuleOutput) ToStoreFirewallRuleOutputWithContext(ctx context.Context) StoreFirewallRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StoreFirewallRuleOutput{})
 }

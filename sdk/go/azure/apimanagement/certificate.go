@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,17 +36,18 @@ type Certificate struct {
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
 func NewCertificate(ctx *pulumi.Context,
 	name string, args *CertificateArgs, opts ...pulumi.ResourceOption) (*Certificate, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.Data == nil {
-		return nil, errors.New("missing required argument 'Data'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &CertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.Data == nil {
+		return nil, errors.New("invalid value for required argument 'Data'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Certificate
 	err := ctx.RegisterResource("azure:apimanagement/certificate:Certificate", name, args, &resource, opts...)
@@ -139,4 +141,43 @@ type CertificateArgs struct {
 
 func (CertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateArgs)(nil)).Elem()
+}
+
+type CertificateInput interface {
+	pulumi.Input
+
+	ToCertificateOutput() CertificateOutput
+	ToCertificateOutputWithContext(ctx context.Context) CertificateOutput
+}
+
+func (Certificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certificate)(nil)).Elem()
+}
+
+func (i Certificate) ToCertificateOutput() CertificateOutput {
+	return i.ToCertificateOutputWithContext(context.Background())
+}
+
+func (i Certificate) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
+}
+
+type CertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOutput)(nil)).Elem()
+}
+
+func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
+	return o
+}
+
+func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificateOutput{})
 }

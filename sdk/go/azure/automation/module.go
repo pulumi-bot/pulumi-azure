@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,17 +28,18 @@ type Module struct {
 // NewModule registers a new resource with the given unique name, arguments, and options.
 func NewModule(ctx *pulumi.Context,
 	name string, args *ModuleArgs, opts ...pulumi.ResourceOption) (*Module, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ModuleLink == nil {
-		return nil, errors.New("missing required argument 'ModuleLink'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ModuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ModuleLink == nil {
+		return nil, errors.New("invalid value for required argument 'ModuleLink'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Module
 	err := ctx.RegisterResource("azure:automation/module:Module", name, args, &resource, opts...)
@@ -111,4 +113,43 @@ type ModuleArgs struct {
 
 func (ModuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*moduleArgs)(nil)).Elem()
+}
+
+type ModuleInput interface {
+	pulumi.Input
+
+	ToModuleOutput() ModuleOutput
+	ToModuleOutputWithContext(ctx context.Context) ModuleOutput
+}
+
+func (Module) ElementType() reflect.Type {
+	return reflect.TypeOf((*Module)(nil)).Elem()
+}
+
+func (i Module) ToModuleOutput() ModuleOutput {
+	return i.ToModuleOutputWithContext(context.Background())
+}
+
+func (i Module) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleOutput)
+}
+
+type ModuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ModuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModuleOutput)(nil)).Elem()
+}
+
+func (o ModuleOutput) ToModuleOutput() ModuleOutput {
+	return o
+}
+
+func (o ModuleOutput) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ModuleOutput{})
 }

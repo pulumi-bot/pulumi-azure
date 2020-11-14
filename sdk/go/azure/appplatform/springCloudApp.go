@@ -4,6 +4,7 @@
 package appplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -68,14 +69,15 @@ type SpringCloudApp struct {
 // NewSpringCloudApp registers a new resource with the given unique name, arguments, and options.
 func NewSpringCloudApp(ctx *pulumi.Context,
 	name string, args *SpringCloudAppArgs, opts ...pulumi.ResourceOption) (*SpringCloudApp, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &SpringCloudAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource SpringCloudApp
 	err := ctx.RegisterResource("azure:appplatform/springCloudApp:SpringCloudApp", name, args, &resource, opts...)
@@ -149,4 +151,43 @@ type SpringCloudAppArgs struct {
 
 func (SpringCloudAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*springCloudAppArgs)(nil)).Elem()
+}
+
+type SpringCloudAppInput interface {
+	pulumi.Input
+
+	ToSpringCloudAppOutput() SpringCloudAppOutput
+	ToSpringCloudAppOutputWithContext(ctx context.Context) SpringCloudAppOutput
+}
+
+func (SpringCloudApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudApp)(nil)).Elem()
+}
+
+func (i SpringCloudApp) ToSpringCloudAppOutput() SpringCloudAppOutput {
+	return i.ToSpringCloudAppOutputWithContext(context.Background())
+}
+
+func (i SpringCloudApp) ToSpringCloudAppOutputWithContext(ctx context.Context) SpringCloudAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppOutput)
+}
+
+type SpringCloudAppOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpringCloudAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudAppOutput)(nil)).Elem()
+}
+
+func (o SpringCloudAppOutput) ToSpringCloudAppOutput() SpringCloudAppOutput {
+	return o
+}
+
+func (o SpringCloudAppOutput) ToSpringCloudAppOutputWithContext(ctx context.Context) SpringCloudAppOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpringCloudAppOutput{})
 }

@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,11 +63,12 @@ type DdosProtectionPlan struct {
 // NewDdosProtectionPlan registers a new resource with the given unique name, arguments, and options.
 func NewDdosProtectionPlan(ctx *pulumi.Context,
 	name string, args *DdosProtectionPlanArgs, opts ...pulumi.ResourceOption) (*DdosProtectionPlan, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DdosProtectionPlanArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DdosProtectionPlan
 	err := ctx.RegisterResource("azure:network/ddosProtectionPlan:DdosProtectionPlan", name, args, &resource, opts...)
@@ -144,4 +146,43 @@ type DdosProtectionPlanArgs struct {
 
 func (DdosProtectionPlanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosProtectionPlanArgs)(nil)).Elem()
+}
+
+type DdosProtectionPlanInput interface {
+	pulumi.Input
+
+	ToDdosProtectionPlanOutput() DdosProtectionPlanOutput
+	ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput
+}
+
+func (DdosProtectionPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosProtectionPlan)(nil)).Elem()
+}
+
+func (i DdosProtectionPlan) ToDdosProtectionPlanOutput() DdosProtectionPlanOutput {
+	return i.ToDdosProtectionPlanOutputWithContext(context.Background())
+}
+
+func (i DdosProtectionPlan) ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosProtectionPlanOutput)
+}
+
+type DdosProtectionPlanOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosProtectionPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosProtectionPlanOutput)(nil)).Elem()
+}
+
+func (o DdosProtectionPlanOutput) ToDdosProtectionPlanOutput() DdosProtectionPlanOutput {
+	return o
+}
+
+func (o DdosProtectionPlanOutput) ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DdosProtectionPlanOutput{})
 }

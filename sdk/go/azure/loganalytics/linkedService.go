@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,17 +86,18 @@ type LinkedService struct {
 // NewLinkedService registers a new resource with the given unique name, arguments, and options.
 func NewLinkedService(ctx *pulumi.Context,
 	name string, args *LinkedServiceArgs, opts ...pulumi.ResourceOption) (*LinkedService, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ResourceId == nil {
-		return nil, errors.New("missing required argument 'ResourceId'")
-	}
-	if args == nil || args.WorkspaceName == nil {
-		return nil, errors.New("missing required argument 'WorkspaceName'")
-	}
 	if args == nil {
-		args = &LinkedServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
+	}
+	if args.WorkspaceName == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	var resource LinkedService
 	err := ctx.RegisterResource("azure:loganalytics/linkedService:LinkedService", name, args, &resource, opts...)
@@ -181,4 +183,43 @@ type LinkedServiceArgs struct {
 
 func (LinkedServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceArgs)(nil)).Elem()
+}
+
+type LinkedServiceInput interface {
+	pulumi.Input
+
+	ToLinkedServiceOutput() LinkedServiceOutput
+	ToLinkedServiceOutputWithContext(ctx context.Context) LinkedServiceOutput
+}
+
+func (LinkedService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedService)(nil)).Elem()
+}
+
+func (i LinkedService) ToLinkedServiceOutput() LinkedServiceOutput {
+	return i.ToLinkedServiceOutputWithContext(context.Background())
+}
+
+func (i LinkedService) ToLinkedServiceOutputWithContext(ctx context.Context) LinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceOutput)
+}
+
+type LinkedServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceOutput) ToLinkedServiceOutput() LinkedServiceOutput {
+	return o
+}
+
+func (o LinkedServiceOutput) ToLinkedServiceOutputWithContext(ctx context.Context) LinkedServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceOutput{})
 }

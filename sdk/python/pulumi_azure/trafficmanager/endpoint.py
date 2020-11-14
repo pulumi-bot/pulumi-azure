@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['Endpoint']
 
-warnings.warn("azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint", DeprecationWarning)
+warnings.warn("""azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint""", DeprecationWarning)
 
 
 class Endpoint(pulumi.CustomResource):
-    warnings.warn("azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint", DeprecationWarning)
+    warnings.warn("""azure.trafficmanager.Endpoint has been deprecated in favor of azure.network.TrafficManagerEndpoint""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
