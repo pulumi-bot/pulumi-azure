@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,20 +106,21 @@ type EndpointStorageContainer struct {
 // NewEndpointStorageContainer registers a new resource with the given unique name, arguments, and options.
 func NewEndpointStorageContainer(ctx *pulumi.Context,
 	name string, args *EndpointStorageContainerArgs, opts ...pulumi.ResourceOption) (*EndpointStorageContainer, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.ContainerName == nil {
-		return nil, errors.New("missing required argument 'ContainerName'")
-	}
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EndpointStorageContainerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.ContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerName'")
+	}
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EndpointStorageContainer
 	err := ctx.RegisterResource("azure:iot/endpointStorageContainer:EndpointStorageContainer", name, args, &resource, opts...)
@@ -236,4 +238,43 @@ type EndpointStorageContainerArgs struct {
 
 func (EndpointStorageContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointStorageContainerArgs)(nil)).Elem()
+}
+
+type EndpointStorageContainerInput interface {
+	pulumi.Input
+
+	ToEndpointStorageContainerOutput() EndpointStorageContainerOutput
+	ToEndpointStorageContainerOutputWithContext(ctx context.Context) EndpointStorageContainerOutput
+}
+
+func (EndpointStorageContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointStorageContainer)(nil)).Elem()
+}
+
+func (i EndpointStorageContainer) ToEndpointStorageContainerOutput() EndpointStorageContainerOutput {
+	return i.ToEndpointStorageContainerOutputWithContext(context.Background())
+}
+
+func (i EndpointStorageContainer) ToEndpointStorageContainerOutputWithContext(ctx context.Context) EndpointStorageContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointStorageContainerOutput)
+}
+
+type EndpointStorageContainerOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointStorageContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointStorageContainerOutput)(nil)).Elem()
+}
+
+func (o EndpointStorageContainerOutput) ToEndpointStorageContainerOutput() EndpointStorageContainerOutput {
+	return o
+}
+
+func (o EndpointStorageContainerOutput) ToEndpointStorageContainerOutputWithContext(ctx context.Context) EndpointStorageContainerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointStorageContainerOutput{})
 }

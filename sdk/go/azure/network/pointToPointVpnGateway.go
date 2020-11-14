@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -62,23 +63,24 @@ type PointToPointVpnGateway struct {
 // NewPointToPointVpnGateway registers a new resource with the given unique name, arguments, and options.
 func NewPointToPointVpnGateway(ctx *pulumi.Context,
 	name string, args *PointToPointVpnGatewayArgs, opts ...pulumi.ResourceOption) (*PointToPointVpnGateway, error) {
-	if args == nil || args.ConnectionConfiguration == nil {
-		return nil, errors.New("missing required argument 'ConnectionConfiguration'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ScaleUnit == nil {
-		return nil, errors.New("missing required argument 'ScaleUnit'")
-	}
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
-	if args == nil || args.VpnServerConfigurationId == nil {
-		return nil, errors.New("missing required argument 'VpnServerConfigurationId'")
-	}
 	if args == nil {
-		args = &PointToPointVpnGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionConfiguration == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionConfiguration'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ScaleUnit == nil {
+		return nil, errors.New("invalid value for required argument 'ScaleUnit'")
+	}
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
+	}
+	if args.VpnServerConfigurationId == nil {
+		return nil, errors.New("invalid value for required argument 'VpnServerConfigurationId'")
 	}
 	var resource PointToPointVpnGateway
 	err := ctx.RegisterResource("azure:network/pointToPointVpnGateway:PointToPointVpnGateway", name, args, &resource, opts...)
@@ -184,4 +186,43 @@ type PointToPointVpnGatewayArgs struct {
 
 func (PointToPointVpnGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pointToPointVpnGatewayArgs)(nil)).Elem()
+}
+
+type PointToPointVpnGatewayInput interface {
+	pulumi.Input
+
+	ToPointToPointVpnGatewayOutput() PointToPointVpnGatewayOutput
+	ToPointToPointVpnGatewayOutputWithContext(ctx context.Context) PointToPointVpnGatewayOutput
+}
+
+func (PointToPointVpnGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*PointToPointVpnGateway)(nil)).Elem()
+}
+
+func (i PointToPointVpnGateway) ToPointToPointVpnGatewayOutput() PointToPointVpnGatewayOutput {
+	return i.ToPointToPointVpnGatewayOutputWithContext(context.Background())
+}
+
+func (i PointToPointVpnGateway) ToPointToPointVpnGatewayOutputWithContext(ctx context.Context) PointToPointVpnGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayOutput)
+}
+
+type PointToPointVpnGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (PointToPointVpnGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PointToPointVpnGatewayOutput)(nil)).Elem()
+}
+
+func (o PointToPointVpnGatewayOutput) ToPointToPointVpnGatewayOutput() PointToPointVpnGatewayOutput {
+	return o
+}
+
+func (o PointToPointVpnGatewayOutput) ToPointToPointVpnGatewayOutputWithContext(ctx context.Context) PointToPointVpnGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PointToPointVpnGatewayOutput{})
 }

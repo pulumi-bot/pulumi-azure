@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,23 +115,24 @@ type ProtectedFileShare struct {
 // NewProtectedFileShare registers a new resource with the given unique name, arguments, and options.
 func NewProtectedFileShare(ctx *pulumi.Context,
 	name string, args *ProtectedFileShareArgs, opts ...pulumi.ResourceOption) (*ProtectedFileShare, error) {
-	if args == nil || args.BackupPolicyId == nil {
-		return nil, errors.New("missing required argument 'BackupPolicyId'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SourceFileShareName == nil {
-		return nil, errors.New("missing required argument 'SourceFileShareName'")
-	}
-	if args == nil || args.SourceStorageAccountId == nil {
-		return nil, errors.New("missing required argument 'SourceStorageAccountId'")
-	}
 	if args == nil {
-		args = &ProtectedFileShareArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackupPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupPolicyId'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SourceFileShareName == nil {
+		return nil, errors.New("invalid value for required argument 'SourceFileShareName'")
+	}
+	if args.SourceStorageAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceStorageAccountId'")
 	}
 	var resource ProtectedFileShare
 	err := ctx.RegisterResource("azure:backup/protectedFileShare:ProtectedFileShare", name, args, &resource, opts...)
@@ -212,4 +214,43 @@ type ProtectedFileShareArgs struct {
 
 func (ProtectedFileShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectedFileShareArgs)(nil)).Elem()
+}
+
+type ProtectedFileShareInput interface {
+	pulumi.Input
+
+	ToProtectedFileShareOutput() ProtectedFileShareOutput
+	ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput
+}
+
+func (ProtectedFileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedFileShare)(nil)).Elem()
+}
+
+func (i ProtectedFileShare) ToProtectedFileShareOutput() ProtectedFileShareOutput {
+	return i.ToProtectedFileShareOutputWithContext(context.Background())
+}
+
+func (i ProtectedFileShare) ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedFileShareOutput)
+}
+
+type ProtectedFileShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedFileShareOutput)(nil)).Elem()
+}
+
+func (o ProtectedFileShareOutput) ToProtectedFileShareOutput() ProtectedFileShareOutput {
+	return o
+}
+
+func (o ProtectedFileShareOutput) ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectedFileShareOutput{})
 }

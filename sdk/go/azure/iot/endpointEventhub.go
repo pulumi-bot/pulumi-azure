@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,17 +104,18 @@ type EndpointEventhub struct {
 // NewEndpointEventhub registers a new resource with the given unique name, arguments, and options.
 func NewEndpointEventhub(ctx *pulumi.Context,
 	name string, args *EndpointEventhubArgs, opts ...pulumi.ResourceOption) (*EndpointEventhub, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EndpointEventhubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EndpointEventhub
 	err := ctx.RegisterResource("azure:iot/endpointEventhub:EndpointEventhub", name, args, &resource, opts...)
@@ -179,4 +181,43 @@ type EndpointEventhubArgs struct {
 
 func (EndpointEventhubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointEventhubArgs)(nil)).Elem()
+}
+
+type EndpointEventhubInput interface {
+	pulumi.Input
+
+	ToEndpointEventhubOutput() EndpointEventhubOutput
+	ToEndpointEventhubOutputWithContext(ctx context.Context) EndpointEventhubOutput
+}
+
+func (EndpointEventhub) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointEventhub)(nil)).Elem()
+}
+
+func (i EndpointEventhub) ToEndpointEventhubOutput() EndpointEventhubOutput {
+	return i.ToEndpointEventhubOutputWithContext(context.Background())
+}
+
+func (i EndpointEventhub) ToEndpointEventhubOutputWithContext(ctx context.Context) EndpointEventhubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointEventhubOutput)
+}
+
+type EndpointEventhubOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointEventhubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointEventhubOutput)(nil)).Elem()
+}
+
+func (o EndpointEventhubOutput) ToEndpointEventhubOutput() EndpointEventhubOutput {
+	return o
+}
+
+func (o EndpointEventhubOutput) ToEndpointEventhubOutputWithContext(ctx context.Context) EndpointEventhubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointEventhubOutput{})
 }

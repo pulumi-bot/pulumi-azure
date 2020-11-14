@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -94,14 +95,15 @@ type SubnetNetworkSecurityGroupAssociation struct {
 // NewSubnetNetworkSecurityGroupAssociation registers a new resource with the given unique name, arguments, and options.
 func NewSubnetNetworkSecurityGroupAssociation(ctx *pulumi.Context,
 	name string, args *SubnetNetworkSecurityGroupAssociationArgs, opts ...pulumi.ResourceOption) (*SubnetNetworkSecurityGroupAssociation, error) {
-	if args == nil || args.NetworkSecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'NetworkSecurityGroupId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &SubnetNetworkSecurityGroupAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkSecurityGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkSecurityGroupId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource SubnetNetworkSecurityGroupAssociation
 	err := ctx.RegisterResource("azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation", name, args, &resource, opts...)
@@ -159,4 +161,43 @@ type SubnetNetworkSecurityGroupAssociationArgs struct {
 
 func (SubnetNetworkSecurityGroupAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetNetworkSecurityGroupAssociationArgs)(nil)).Elem()
+}
+
+type SubnetNetworkSecurityGroupAssociationInput interface {
+	pulumi.Input
+
+	ToSubnetNetworkSecurityGroupAssociationOutput() SubnetNetworkSecurityGroupAssociationOutput
+	ToSubnetNetworkSecurityGroupAssociationOutputWithContext(ctx context.Context) SubnetNetworkSecurityGroupAssociationOutput
+}
+
+func (SubnetNetworkSecurityGroupAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNetworkSecurityGroupAssociation)(nil)).Elem()
+}
+
+func (i SubnetNetworkSecurityGroupAssociation) ToSubnetNetworkSecurityGroupAssociationOutput() SubnetNetworkSecurityGroupAssociationOutput {
+	return i.ToSubnetNetworkSecurityGroupAssociationOutputWithContext(context.Background())
+}
+
+func (i SubnetNetworkSecurityGroupAssociation) ToSubnetNetworkSecurityGroupAssociationOutputWithContext(ctx context.Context) SubnetNetworkSecurityGroupAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetNetworkSecurityGroupAssociationOutput)
+}
+
+type SubnetNetworkSecurityGroupAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetNetworkSecurityGroupAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNetworkSecurityGroupAssociationOutput)(nil)).Elem()
+}
+
+func (o SubnetNetworkSecurityGroupAssociationOutput) ToSubnetNetworkSecurityGroupAssociationOutput() SubnetNetworkSecurityGroupAssociationOutput {
+	return o
+}
+
+func (o SubnetNetworkSecurityGroupAssociationOutput) ToSubnetNetworkSecurityGroupAssociationOutputWithContext(ctx context.Context) SubnetNetworkSecurityGroupAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetNetworkSecurityGroupAssociationOutput{})
 }

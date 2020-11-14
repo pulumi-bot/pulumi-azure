@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,11 +70,12 @@ type AvailabilitySet struct {
 // NewAvailabilitySet registers a new resource with the given unique name, arguments, and options.
 func NewAvailabilitySet(ctx *pulumi.Context,
 	name string, args *AvailabilitySetArgs, opts ...pulumi.ResourceOption) (*AvailabilitySet, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AvailabilitySetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource AvailabilitySet
 	err := ctx.RegisterResource("azure:compute/availabilitySet:AvailabilitySet", name, args, &resource, opts...)
@@ -179,4 +181,43 @@ type AvailabilitySetArgs struct {
 
 func (AvailabilitySetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*availabilitySetArgs)(nil)).Elem()
+}
+
+type AvailabilitySetInput interface {
+	pulumi.Input
+
+	ToAvailabilitySetOutput() AvailabilitySetOutput
+	ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput
+}
+
+func (AvailabilitySet) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySet)(nil)).Elem()
+}
+
+func (i AvailabilitySet) ToAvailabilitySetOutput() AvailabilitySetOutput {
+	return i.ToAvailabilitySetOutputWithContext(context.Background())
+}
+
+func (i AvailabilitySet) ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetOutput)
+}
+
+type AvailabilitySetOutput struct {
+	*pulumi.OutputState
+}
+
+func (AvailabilitySetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySetOutput)(nil)).Elem()
+}
+
+func (o AvailabilitySetOutput) ToAvailabilitySetOutput() AvailabilitySetOutput {
+	return o
+}
+
+func (o AvailabilitySetOutput) ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AvailabilitySetOutput{})
 }

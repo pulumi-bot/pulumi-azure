@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,17 +86,18 @@ type EventHubConsumerGroup struct {
 // NewEventHubConsumerGroup registers a new resource with the given unique name, arguments, and options.
 func NewEventHubConsumerGroup(ctx *pulumi.Context,
 	name string, args *EventHubConsumerGroupArgs, opts ...pulumi.ResourceOption) (*EventHubConsumerGroup, error) {
-	if args == nil || args.EventhubName == nil {
-		return nil, errors.New("missing required argument 'EventhubName'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EventHubConsumerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EventhubName == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubName'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EventHubConsumerGroup
 	err := ctx.RegisterResource("azure:eventhub/eventHubConsumerGroup:EventHubConsumerGroup", name, args, &resource, opts...)
@@ -177,4 +179,43 @@ type EventHubConsumerGroupArgs struct {
 
 func (EventHubConsumerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubConsumerGroupArgs)(nil)).Elem()
+}
+
+type EventHubConsumerGroupInput interface {
+	pulumi.Input
+
+	ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput
+	ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput
+}
+
+func (EventHubConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConsumerGroup)(nil)).Elem()
+}
+
+func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
+	return i.ToEventHubConsumerGroupOutputWithContext(context.Background())
+}
+
+func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupOutput)
+}
+
+type EventHubConsumerGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubConsumerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConsumerGroupOutput)(nil)).Elem()
+}
+
+func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
+	return o
+}
+
+func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubConsumerGroupOutput{})
 }

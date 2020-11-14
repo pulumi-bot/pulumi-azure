@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -64,14 +65,15 @@ type IntegrationAccount struct {
 // NewIntegrationAccount registers a new resource with the given unique name, arguments, and options.
 func NewIntegrationAccount(ctx *pulumi.Context,
 	name string, args *IntegrationAccountArgs, opts ...pulumi.ResourceOption) (*IntegrationAccount, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &IntegrationAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource IntegrationAccount
 	err := ctx.RegisterResource("azure:logicapps/integrationAccount:IntegrationAccount", name, args, &resource, opts...)
@@ -153,4 +155,43 @@ type IntegrationAccountArgs struct {
 
 func (IntegrationAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationAccountArgs)(nil)).Elem()
+}
+
+type IntegrationAccountInput interface {
+	pulumi.Input
+
+	ToIntegrationAccountOutput() IntegrationAccountOutput
+	ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput
+}
+
+func (IntegrationAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccount)(nil)).Elem()
+}
+
+func (i IntegrationAccount) ToIntegrationAccountOutput() IntegrationAccountOutput {
+	return i.ToIntegrationAccountOutputWithContext(context.Background())
+}
+
+func (i IntegrationAccount) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountOutput)
+}
+
+type IntegrationAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccountOutput)(nil)).Elem()
+}
+
+func (o IntegrationAccountOutput) ToIntegrationAccountOutput() IntegrationAccountOutput {
+	return o
+}
+
+func (o IntegrationAccountOutput) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntegrationAccountOutput{})
 }

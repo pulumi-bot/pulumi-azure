@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,17 +37,18 @@ type DscConfiguration struct {
 // NewDscConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewDscConfiguration(ctx *pulumi.Context,
 	name string, args *DscConfigurationArgs, opts ...pulumi.ResourceOption) (*DscConfiguration, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ContentEmbedded == nil {
-		return nil, errors.New("missing required argument 'ContentEmbedded'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DscConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ContentEmbedded == nil {
+		return nil, errors.New("invalid value for required argument 'ContentEmbedded'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DscConfiguration
 	err := ctx.RegisterResource("azure:automation/dscConfiguration:DscConfiguration", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type DscConfigurationArgs struct {
 
 func (DscConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dscConfigurationArgs)(nil)).Elem()
+}
+
+type DscConfigurationInput interface {
+	pulumi.Input
+
+	ToDscConfigurationOutput() DscConfigurationOutput
+	ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput
+}
+
+func (DscConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*DscConfiguration)(nil)).Elem()
+}
+
+func (i DscConfiguration) ToDscConfigurationOutput() DscConfigurationOutput {
+	return i.ToDscConfigurationOutputWithContext(context.Background())
+}
+
+func (i DscConfiguration) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationOutput)
+}
+
+type DscConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (DscConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DscConfigurationOutput)(nil)).Elem()
+}
+
+func (o DscConfigurationOutput) ToDscConfigurationOutput() DscConfigurationOutput {
+	return o
+}
+
+func (o DscConfigurationOutput) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DscConfigurationOutput{})
 }

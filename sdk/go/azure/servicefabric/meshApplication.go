@@ -4,6 +4,7 @@
 package servicefabric
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,14 +79,15 @@ type MeshApplication struct {
 // NewMeshApplication registers a new resource with the given unique name, arguments, and options.
 func NewMeshApplication(ctx *pulumi.Context,
 	name string, args *MeshApplicationArgs, opts ...pulumi.ResourceOption) (*MeshApplication, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Services == nil {
-		return nil, errors.New("missing required argument 'Services'")
-	}
 	if args == nil {
-		args = &MeshApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Services == nil {
+		return nil, errors.New("invalid value for required argument 'Services'")
 	}
 	var resource MeshApplication
 	err := ctx.RegisterResource("azure:servicefabric/meshApplication:MeshApplication", name, args, &resource, opts...)
@@ -167,4 +169,43 @@ type MeshApplicationArgs struct {
 
 func (MeshApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshApplicationArgs)(nil)).Elem()
+}
+
+type MeshApplicationInput interface {
+	pulumi.Input
+
+	ToMeshApplicationOutput() MeshApplicationOutput
+	ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput
+}
+
+func (MeshApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshApplication)(nil)).Elem()
+}
+
+func (i MeshApplication) ToMeshApplicationOutput() MeshApplicationOutput {
+	return i.ToMeshApplicationOutputWithContext(context.Background())
+}
+
+func (i MeshApplication) ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationOutput)
+}
+
+type MeshApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshApplicationOutput)(nil)).Elem()
+}
+
+func (o MeshApplicationOutput) ToMeshApplicationOutput() MeshApplicationOutput {
+	return o
+}
+
+func (o MeshApplicationOutput) ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshApplicationOutput{})
 }

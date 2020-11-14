@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,26 +78,27 @@ type DataSourceWindowsPerformanceCounter struct {
 // NewDataSourceWindowsPerformanceCounter registers a new resource with the given unique name, arguments, and options.
 func NewDataSourceWindowsPerformanceCounter(ctx *pulumi.Context,
 	name string, args *DataSourceWindowsPerformanceCounterArgs, opts ...pulumi.ResourceOption) (*DataSourceWindowsPerformanceCounter, error) {
-	if args == nil || args.CounterName == nil {
-		return nil, errors.New("missing required argument 'CounterName'")
-	}
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.IntervalSeconds == nil {
-		return nil, errors.New("missing required argument 'IntervalSeconds'")
-	}
-	if args == nil || args.ObjectName == nil {
-		return nil, errors.New("missing required argument 'ObjectName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.WorkspaceName == nil {
-		return nil, errors.New("missing required argument 'WorkspaceName'")
-	}
 	if args == nil {
-		args = &DataSourceWindowsPerformanceCounterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CounterName == nil {
+		return nil, errors.New("invalid value for required argument 'CounterName'")
+	}
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.IntervalSeconds == nil {
+		return nil, errors.New("invalid value for required argument 'IntervalSeconds'")
+	}
+	if args.ObjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.WorkspaceName == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	var resource DataSourceWindowsPerformanceCounter
 	err := ctx.RegisterResource("azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter", name, args, &resource, opts...)
@@ -194,4 +196,43 @@ type DataSourceWindowsPerformanceCounterArgs struct {
 
 func (DataSourceWindowsPerformanceCounterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSourceWindowsPerformanceCounterArgs)(nil)).Elem()
+}
+
+type DataSourceWindowsPerformanceCounterInput interface {
+	pulumi.Input
+
+	ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput
+	ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput
+}
+
+func (DataSourceWindowsPerformanceCounter) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsPerformanceCounter)(nil)).Elem()
+}
+
+func (i DataSourceWindowsPerformanceCounter) ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput {
+	return i.ToDataSourceWindowsPerformanceCounterOutputWithContext(context.Background())
+}
+
+func (i DataSourceWindowsPerformanceCounter) ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceWindowsPerformanceCounterOutput)
+}
+
+type DataSourceWindowsPerformanceCounterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataSourceWindowsPerformanceCounterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsPerformanceCounterOutput)(nil)).Elem()
+}
+
+func (o DataSourceWindowsPerformanceCounterOutput) ToDataSourceWindowsPerformanceCounterOutput() DataSourceWindowsPerformanceCounterOutput {
+	return o
+}
+
+func (o DataSourceWindowsPerformanceCounterOutput) ToDataSourceWindowsPerformanceCounterOutputWithContext(ctx context.Context) DataSourceWindowsPerformanceCounterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataSourceWindowsPerformanceCounterOutput{})
 }

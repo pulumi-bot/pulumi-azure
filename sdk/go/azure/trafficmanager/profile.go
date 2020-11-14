@@ -4,6 +4,7 @@
 package trafficmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,20 +94,21 @@ type Profile struct {
 // NewProfile registers a new resource with the given unique name, arguments, and options.
 func NewProfile(ctx *pulumi.Context,
 	name string, args *ProfileArgs, opts ...pulumi.ResourceOption) (*Profile, error) {
-	if args == nil || args.DnsConfig == nil {
-		return nil, errors.New("missing required argument 'DnsConfig'")
-	}
-	if args == nil || args.MonitorConfig == nil {
-		return nil, errors.New("missing required argument 'MonitorConfig'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TrafficRoutingMethod == nil {
-		return nil, errors.New("missing required argument 'TrafficRoutingMethod'")
-	}
 	if args == nil {
-		args = &ProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DnsConfig == nil {
+		return nil, errors.New("invalid value for required argument 'DnsConfig'")
+	}
+	if args.MonitorConfig == nil {
+		return nil, errors.New("invalid value for required argument 'MonitorConfig'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TrafficRoutingMethod == nil {
+		return nil, errors.New("invalid value for required argument 'TrafficRoutingMethod'")
 	}
 	var resource Profile
 	err := ctx.RegisterResource("azure:trafficmanager/profile:Profile", name, args, &resource, opts...)
@@ -208,4 +210,43 @@ type ProfileArgs struct {
 
 func (ProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*profileArgs)(nil)).Elem()
+}
+
+type ProfileInput interface {
+	pulumi.Input
+
+	ToProfileOutput() ProfileOutput
+	ToProfileOutputWithContext(ctx context.Context) ProfileOutput
+}
+
+func (Profile) ElementType() reflect.Type {
+	return reflect.TypeOf((*Profile)(nil)).Elem()
+}
+
+func (i Profile) ToProfileOutput() ProfileOutput {
+	return i.ToProfileOutputWithContext(context.Background())
+}
+
+func (i Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
+}
+
+type ProfileOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProfileOutput)(nil)).Elem()
+}
+
+func (o ProfileOutput) ToProfileOutput() ProfileOutput {
+	return o
+}
+
+func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProfileOutput{})
 }

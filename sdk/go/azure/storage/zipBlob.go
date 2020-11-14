@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -32,17 +33,18 @@ type ZipBlob struct {
 // NewZipBlob registers a new resource with the given unique name, arguments, and options.
 func NewZipBlob(ctx *pulumi.Context,
 	name string, args *ZipBlobArgs, opts ...pulumi.ResourceOption) (*ZipBlob, error) {
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
-	if args == nil || args.StorageContainerName == nil {
-		return nil, errors.New("missing required argument 'StorageContainerName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &ZipBlobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
+	}
+	if args.StorageContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageContainerName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ZipBlob
 	err := ctx.RegisterResource("azure:storage/zipBlob:ZipBlob", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type ZipBlobArgs struct {
 
 func (ZipBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zipBlobArgs)(nil)).Elem()
+}
+
+type ZipBlobInput interface {
+	pulumi.Input
+
+	ToZipBlobOutput() ZipBlobOutput
+	ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput
+}
+
+func (ZipBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZipBlob)(nil)).Elem()
+}
+
+func (i ZipBlob) ToZipBlobOutput() ZipBlobOutput {
+	return i.ToZipBlobOutputWithContext(context.Background())
+}
+
+func (i ZipBlob) ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZipBlobOutput)
+}
+
+type ZipBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZipBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZipBlobOutput)(nil)).Elem()
+}
+
+func (o ZipBlobOutput) ToZipBlobOutput() ZipBlobOutput {
+	return o
+}
+
+func (o ZipBlobOutput) ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZipBlobOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -102,14 +103,15 @@ type Pipeline struct {
 // NewPipeline registers a new resource with the given unique name, arguments, and options.
 func NewPipeline(ctx *pulumi.Context,
 	name string, args *PipelineArgs, opts ...pulumi.ResourceOption) (*Pipeline, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &PipelineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Pipeline
 	err := ctx.RegisterResource("azure:datafactory/pipeline:Pipeline", name, args, &resource, opts...)
@@ -215,4 +217,43 @@ type PipelineArgs struct {
 
 func (PipelineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineArgs)(nil)).Elem()
+}
+
+type PipelineInput interface {
+	pulumi.Input
+
+	ToPipelineOutput() PipelineOutput
+	ToPipelineOutputWithContext(ctx context.Context) PipelineOutput
+}
+
+func (Pipeline) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pipeline)(nil)).Elem()
+}
+
+func (i Pipeline) ToPipelineOutput() PipelineOutput {
+	return i.ToPipelineOutputWithContext(context.Background())
+}
+
+func (i Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineOutput)
+}
+
+type PipelineOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineOutput)(nil)).Elem()
+}
+
+func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
+	return o
+}
+
+func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PipelineOutput{})
 }

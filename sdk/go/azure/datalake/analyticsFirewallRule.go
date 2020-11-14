@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,20 +78,21 @@ type AnalyticsFirewallRule struct {
 // NewAnalyticsFirewallRule registers a new resource with the given unique name, arguments, and options.
 func NewAnalyticsFirewallRule(ctx *pulumi.Context,
 	name string, args *AnalyticsFirewallRuleArgs, opts ...pulumi.ResourceOption) (*AnalyticsFirewallRule, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.EndIpAddress == nil {
-		return nil, errors.New("missing required argument 'EndIpAddress'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StartIpAddress == nil {
-		return nil, errors.New("missing required argument 'StartIpAddress'")
-	}
 	if args == nil {
-		args = &AnalyticsFirewallRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.EndIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'EndIpAddress'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StartIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'StartIpAddress'")
 	}
 	var resource AnalyticsFirewallRule
 	err := ctx.RegisterResource("azure:datalake/analyticsFirewallRule:AnalyticsFirewallRule", name, args, &resource, opts...)
@@ -172,4 +174,43 @@ type AnalyticsFirewallRuleArgs struct {
 
 func (AnalyticsFirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsFirewallRuleArgs)(nil)).Elem()
+}
+
+type AnalyticsFirewallRuleInput interface {
+	pulumi.Input
+
+	ToAnalyticsFirewallRuleOutput() AnalyticsFirewallRuleOutput
+	ToAnalyticsFirewallRuleOutputWithContext(ctx context.Context) AnalyticsFirewallRuleOutput
+}
+
+func (AnalyticsFirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsFirewallRule)(nil)).Elem()
+}
+
+func (i AnalyticsFirewallRule) ToAnalyticsFirewallRuleOutput() AnalyticsFirewallRuleOutput {
+	return i.ToAnalyticsFirewallRuleOutputWithContext(context.Background())
+}
+
+func (i AnalyticsFirewallRule) ToAnalyticsFirewallRuleOutputWithContext(ctx context.Context) AnalyticsFirewallRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsFirewallRuleOutput)
+}
+
+type AnalyticsFirewallRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsFirewallRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsFirewallRuleOutput)(nil)).Elem()
+}
+
+func (o AnalyticsFirewallRuleOutput) ToAnalyticsFirewallRuleOutput() AnalyticsFirewallRuleOutput {
+	return o
+}
+
+func (o AnalyticsFirewallRuleOutput) ToAnalyticsFirewallRuleOutputWithContext(ctx context.Context) AnalyticsFirewallRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsFirewallRuleOutput{})
 }

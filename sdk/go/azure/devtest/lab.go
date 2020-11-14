@@ -4,6 +4,7 @@
 package devtest
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,11 +76,12 @@ type Lab struct {
 // NewLab registers a new resource with the given unique name, arguments, and options.
 func NewLab(ctx *pulumi.Context,
 	name string, args *LabArgs, opts ...pulumi.ResourceOption) (*Lab, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LabArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Lab
 	err := ctx.RegisterResource("azure:devtest/lab:Lab", name, args, &resource, opts...)
@@ -185,4 +187,43 @@ type LabArgs struct {
 
 func (LabArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*labArgs)(nil)).Elem()
+}
+
+type LabInput interface {
+	pulumi.Input
+
+	ToLabOutput() LabOutput
+	ToLabOutputWithContext(ctx context.Context) LabOutput
+}
+
+func (Lab) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lab)(nil)).Elem()
+}
+
+func (i Lab) ToLabOutput() LabOutput {
+	return i.ToLabOutputWithContext(context.Background())
+}
+
+func (i Lab) ToLabOutputWithContext(ctx context.Context) LabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabOutput)
+}
+
+type LabOutput struct {
+	*pulumi.OutputState
+}
+
+func (LabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabOutput)(nil)).Elem()
+}
+
+func (o LabOutput) ToLabOutput() LabOutput {
+	return o
+}
+
+func (o LabOutput) ToLabOutputWithContext(ctx context.Context) LabOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LabOutput{})
 }

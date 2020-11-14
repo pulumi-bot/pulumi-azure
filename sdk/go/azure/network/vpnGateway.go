@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,14 +92,15 @@ type VpnGateway struct {
 // NewVpnGateway registers a new resource with the given unique name, arguments, and options.
 func NewVpnGateway(ctx *pulumi.Context,
 	name string, args *VpnGatewayArgs, opts ...pulumi.ResourceOption) (*VpnGateway, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
 	if args == nil {
-		args = &VpnGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
 	}
 	var resource VpnGateway
 	err := ctx.RegisterResource("azure:network/vpnGateway:VpnGateway", name, args, &resource, opts...)
@@ -196,4 +198,43 @@ type VpnGatewayArgs struct {
 
 func (VpnGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnGatewayArgs)(nil)).Elem()
+}
+
+type VpnGatewayInput interface {
+	pulumi.Input
+
+	ToVpnGatewayOutput() VpnGatewayOutput
+	ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput
+}
+
+func (VpnGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGateway)(nil)).Elem()
+}
+
+func (i VpnGateway) ToVpnGatewayOutput() VpnGatewayOutput {
+	return i.ToVpnGatewayOutputWithContext(context.Background())
+}
+
+func (i VpnGateway) ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayOutput)
+}
+
+type VpnGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayOutput)(nil)).Elem()
+}
+
+func (o VpnGatewayOutput) ToVpnGatewayOutput() VpnGatewayOutput {
+	return o
+}
+
+func (o VpnGatewayOutput) ToVpnGatewayOutputWithContext(ctx context.Context) VpnGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnGatewayOutput{})
 }
