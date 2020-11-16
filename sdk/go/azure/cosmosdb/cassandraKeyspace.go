@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -172,4 +173,43 @@ type CassandraKeyspaceArgs struct {
 
 func (CassandraKeyspaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cassandraKeyspaceArgs)(nil)).Elem()
+}
+
+type CassandraKeyspaceInput interface {
+	pulumi.Input
+
+	ToCassandraKeyspaceOutput() CassandraKeyspaceOutput
+	ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput
+}
+
+func (CassandraKeyspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraKeyspace)(nil)).Elem()
+}
+
+func (i CassandraKeyspace) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
+	return i.ToCassandraKeyspaceOutputWithContext(context.Background())
+}
+
+func (i CassandraKeyspace) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceOutput)
+}
+
+type CassandraKeyspaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (CassandraKeyspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraKeyspaceOutput)(nil)).Elem()
+}
+
+func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
+	return o
+}
+
+func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CassandraKeyspaceOutput{})
 }

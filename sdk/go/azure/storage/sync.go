@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -149,4 +150,43 @@ type SyncArgs struct {
 
 func (SyncArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncArgs)(nil)).Elem()
+}
+
+type SyncInput interface {
+	pulumi.Input
+
+	ToSyncOutput() SyncOutput
+	ToSyncOutputWithContext(ctx context.Context) SyncOutput
+}
+
+func (Sync) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sync)(nil)).Elem()
+}
+
+func (i Sync) ToSyncOutput() SyncOutput {
+	return i.ToSyncOutputWithContext(context.Background())
+}
+
+func (i Sync) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyncOutput)
+}
+
+type SyncOutput struct {
+	*pulumi.OutputState
+}
+
+func (SyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyncOutput)(nil)).Elem()
+}
+
+func (o SyncOutput) ToSyncOutput() SyncOutput {
+	return o
+}
+
+func (o SyncOutput) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SyncOutput{})
 }

@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,4 +137,43 @@ type NatGatewayPublicIpAssociationArgs struct {
 
 func (NatGatewayPublicIpAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*natGatewayPublicIpAssociationArgs)(nil)).Elem()
+}
+
+type NatGatewayPublicIpAssociationInput interface {
+	pulumi.Input
+
+	ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput
+	ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput
+}
+
+func (NatGatewayPublicIpAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil)).Elem()
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
+	return i.ToNatGatewayPublicIpAssociationOutputWithContext(context.Background())
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationOutput)
+}
+
+type NatGatewayPublicIpAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayPublicIpAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayPublicIpAssociationOutput)(nil)).Elem()
+}
+
+func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
+	return o
+}
+
+func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationOutput{})
 }

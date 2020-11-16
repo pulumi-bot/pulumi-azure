@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -212,4 +213,43 @@ type ProtectedFileShareArgs struct {
 
 func (ProtectedFileShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectedFileShareArgs)(nil)).Elem()
+}
+
+type ProtectedFileShareInput interface {
+	pulumi.Input
+
+	ToProtectedFileShareOutput() ProtectedFileShareOutput
+	ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput
+}
+
+func (ProtectedFileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedFileShare)(nil)).Elem()
+}
+
+func (i ProtectedFileShare) ToProtectedFileShareOutput() ProtectedFileShareOutput {
+	return i.ToProtectedFileShareOutputWithContext(context.Background())
+}
+
+func (i ProtectedFileShare) ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedFileShareOutput)
+}
+
+type ProtectedFileShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedFileShareOutput)(nil)).Elem()
+}
+
+func (o ProtectedFileShareOutput) ToProtectedFileShareOutput() ProtectedFileShareOutput {
+	return o
+}
+
+func (o ProtectedFileShareOutput) ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectedFileShareOutput{})
 }

@@ -4,6 +4,7 @@
 package servicefabric
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,4 +158,43 @@ type MeshSecretValueArgs struct {
 
 func (MeshSecretValueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshSecretValueArgs)(nil)).Elem()
+}
+
+type MeshSecretValueInput interface {
+	pulumi.Input
+
+	ToMeshSecretValueOutput() MeshSecretValueOutput
+	ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput
+}
+
+func (MeshSecretValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValue)(nil)).Elem()
+}
+
+func (i MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
+	return i.ToMeshSecretValueOutputWithContext(context.Background())
+}
+
+func (i MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretValueOutput)
+}
+
+type MeshSecretValueOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValueOutput)(nil)).Elem()
+}
+
+func (o MeshSecretValueOutput) ToMeshSecretValueOutput() MeshSecretValueOutput {
+	return o
+}
+
+func (o MeshSecretValueOutput) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshSecretValueOutput{})
 }

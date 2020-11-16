@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -197,4 +198,43 @@ type ChannelSlackArgs struct {
 
 func (ChannelSlackArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelSlackArgs)(nil)).Elem()
+}
+
+type ChannelSlackInput interface {
+	pulumi.Input
+
+	ToChannelSlackOutput() ChannelSlackOutput
+	ToChannelSlackOutputWithContext(ctx context.Context) ChannelSlackOutput
+}
+
+func (ChannelSlack) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelSlack)(nil)).Elem()
+}
+
+func (i ChannelSlack) ToChannelSlackOutput() ChannelSlackOutput {
+	return i.ToChannelSlackOutputWithContext(context.Background())
+}
+
+func (i ChannelSlack) ToChannelSlackOutputWithContext(ctx context.Context) ChannelSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelSlackOutput)
+}
+
+type ChannelSlackOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelSlackOutput)(nil)).Elem()
+}
+
+func (o ChannelSlackOutput) ToChannelSlackOutput() ChannelSlackOutput {
+	return o
+}
+
+func (o ChannelSlackOutput) ToChannelSlackOutputWithContext(ctx context.Context) ChannelSlackOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelSlackOutput{})
 }

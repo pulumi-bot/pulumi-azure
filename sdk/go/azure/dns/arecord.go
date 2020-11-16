@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -231,4 +232,43 @@ type ARecordArgs struct {
 
 func (ARecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*arecordArgs)(nil)).Elem()
+}
+
+type ARecordInput interface {
+	pulumi.Input
+
+	ToARecordOutput() ARecordOutput
+	ToARecordOutputWithContext(ctx context.Context) ARecordOutput
+}
+
+func (ARecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*ARecord)(nil)).Elem()
+}
+
+func (i ARecord) ToARecordOutput() ARecordOutput {
+	return i.ToARecordOutputWithContext(context.Background())
+}
+
+func (i ARecord) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ARecordOutput)
+}
+
+type ARecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (ARecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ARecordOutput)(nil)).Elem()
+}
+
+func (o ARecordOutput) ToARecordOutput() ARecordOutput {
+	return o
+}
+
+func (o ARecordOutput) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ARecordOutput{})
 }

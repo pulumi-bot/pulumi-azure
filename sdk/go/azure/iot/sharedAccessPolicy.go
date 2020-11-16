@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -206,4 +207,43 @@ type SharedAccessPolicyArgs struct {
 
 func (SharedAccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedAccessPolicyArgs)(nil)).Elem()
+}
+
+type SharedAccessPolicyInput interface {
+	pulumi.Input
+
+	ToSharedAccessPolicyOutput() SharedAccessPolicyOutput
+	ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput
+}
+
+func (SharedAccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedAccessPolicy)(nil)).Elem()
+}
+
+func (i SharedAccessPolicy) ToSharedAccessPolicyOutput() SharedAccessPolicyOutput {
+	return i.ToSharedAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i SharedAccessPolicy) ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessPolicyOutput)
+}
+
+type SharedAccessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedAccessPolicyOutput)(nil)).Elem()
+}
+
+func (o SharedAccessPolicyOutput) ToSharedAccessPolicyOutput() SharedAccessPolicyOutput {
+	return o
+}
+
+func (o SharedAccessPolicyOutput) ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedAccessPolicyOutput{})
 }
