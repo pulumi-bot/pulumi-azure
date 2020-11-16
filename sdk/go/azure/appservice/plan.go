@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -322,4 +323,43 @@ type PlanArgs struct {
 
 func (PlanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*planArgs)(nil)).Elem()
+}
+
+type PlanInput interface {
+	pulumi.Input
+
+	ToPlanOutput() PlanOutput
+	ToPlanOutputWithContext(ctx context.Context) PlanOutput
+}
+
+func (Plan) ElementType() reflect.Type {
+	return reflect.TypeOf((*Plan)(nil)).Elem()
+}
+
+func (i Plan) ToPlanOutput() PlanOutput {
+	return i.ToPlanOutputWithContext(context.Background())
+}
+
+func (i Plan) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
+}
+
+type PlanOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanOutput)(nil)).Elem()
+}
+
+func (o PlanOutput) ToPlanOutput() PlanOutput {
+	return o
+}
+
+func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PlanOutput{})
 }

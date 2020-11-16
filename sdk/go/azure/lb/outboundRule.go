@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -233,4 +234,43 @@ type OutboundRuleArgs struct {
 
 func (OutboundRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outboundRuleArgs)(nil)).Elem()
+}
+
+type OutboundRuleInput interface {
+	pulumi.Input
+
+	ToOutboundRuleOutput() OutboundRuleOutput
+	ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput
+}
+
+func (OutboundRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundRule)(nil)).Elem()
+}
+
+func (i OutboundRule) ToOutboundRuleOutput() OutboundRuleOutput {
+	return i.ToOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i OutboundRule) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleOutput)
+}
+
+type OutboundRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundRuleOutput)(nil)).Elem()
+}
+
+func (o OutboundRuleOutput) ToOutboundRuleOutput() OutboundRuleOutput {
+	return o
+}
+
+func (o OutboundRuleOutput) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutboundRuleOutput{})
 }

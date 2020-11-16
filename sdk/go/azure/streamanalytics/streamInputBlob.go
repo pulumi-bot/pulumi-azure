@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -254,4 +255,43 @@ type StreamInputBlobArgs struct {
 
 func (StreamInputBlobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamInputBlobArgs)(nil)).Elem()
+}
+
+type StreamInputBlobInput interface {
+	pulumi.Input
+
+	ToStreamInputBlobOutput() StreamInputBlobOutput
+	ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput
+}
+
+func (StreamInputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputBlob)(nil)).Elem()
+}
+
+func (i StreamInputBlob) ToStreamInputBlobOutput() StreamInputBlobOutput {
+	return i.ToStreamInputBlobOutputWithContext(context.Background())
+}
+
+func (i StreamInputBlob) ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobOutput)
+}
+
+type StreamInputBlobOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputBlobOutput)(nil)).Elem()
+}
+
+func (o StreamInputBlobOutput) ToStreamInputBlobOutput() StreamInputBlobOutput {
+	return o
+}
+
+func (o StreamInputBlobOutput) ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StreamInputBlobOutput{})
 }

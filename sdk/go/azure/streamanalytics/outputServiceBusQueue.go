@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -225,4 +226,43 @@ type OutputServiceBusQueueArgs struct {
 
 func (OutputServiceBusQueueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputServiceBusQueueArgs)(nil)).Elem()
+}
+
+type OutputServiceBusQueueInput interface {
+	pulumi.Input
+
+	ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput
+	ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput
+}
+
+func (OutputServiceBusQueue) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputServiceBusQueue)(nil)).Elem()
+}
+
+func (i OutputServiceBusQueue) ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput {
+	return i.ToOutputServiceBusQueueOutputWithContext(context.Background())
+}
+
+func (i OutputServiceBusQueue) ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueOutput)
+}
+
+type OutputServiceBusQueueOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputServiceBusQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputServiceBusQueueOutput)(nil)).Elem()
+}
+
+func (o OutputServiceBusQueueOutput) ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput {
+	return o
+}
+
+func (o OutputServiceBusQueueOutput) ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputServiceBusQueueOutput{})
 }
