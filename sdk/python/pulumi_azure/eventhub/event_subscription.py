@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['EventSubscription']
 
-warnings.warn("azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription", DeprecationWarning)
+warnings.warn("""azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription""", DeprecationWarning)
 
 
 class EventSubscription(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription", DeprecationWarning)
+    warnings.warn("""azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,
@@ -116,13 +116,13 @@ class EventSubscription(pulumi.CustomResource):
             __props__['azure_function_endpoint'] = azure_function_endpoint
             __props__['event_delivery_schema'] = event_delivery_schema
             if eventhub_endpoint is not None:
-                warnings.warn("Deprecated in favour of `eventhub_endpoint_id`", DeprecationWarning)
+                warnings.warn("""Deprecated in favour of `eventhub_endpoint_id`""", DeprecationWarning)
                 pulumi.log.warn("eventhub_endpoint is deprecated: Deprecated in favour of `eventhub_endpoint_id`")
             __props__['eventhub_endpoint'] = eventhub_endpoint
             __props__['eventhub_endpoint_id'] = eventhub_endpoint_id
             __props__['expiration_time_utc'] = expiration_time_utc
             if hybrid_connection_endpoint is not None:
-                warnings.warn("Deprecated in favour of `hybrid_connection_endpoint_id`", DeprecationWarning)
+                warnings.warn("""Deprecated in favour of `hybrid_connection_endpoint_id`""", DeprecationWarning)
                 pulumi.log.warn("hybrid_connection_endpoint is deprecated: Deprecated in favour of `hybrid_connection_endpoint_id`")
             __props__['hybrid_connection_endpoint'] = hybrid_connection_endpoint
             __props__['hybrid_connection_endpoint_id'] = hybrid_connection_endpoint_id
@@ -139,7 +139,7 @@ class EventSubscription(pulumi.CustomResource):
             __props__['storage_queue_endpoint'] = storage_queue_endpoint
             __props__['subject_filter'] = subject_filter
             if topic_name is not None:
-                warnings.warn("This field has been updated to readonly field since Apr 25, 2019 so no longer has any affect and will be removed in version 3.0 of the provider.", DeprecationWarning)
+                warnings.warn("""This field has been updated to readonly field since Apr 25, 2019 so no longer has any affect and will be removed in version 3.0 of the provider.""", DeprecationWarning)
                 pulumi.log.warn("topic_name is deprecated: This field has been updated to readonly field since Apr 25, 2019 so no longer has any affect and will be removed in version 3.0 of the provider.")
             __props__['topic_name'] = topic_name
             __props__['webhook_endpoint'] = webhook_endpoint

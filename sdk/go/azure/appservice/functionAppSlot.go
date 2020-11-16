@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -374,4 +375,43 @@ type FunctionAppSlotArgs struct {
 
 func (FunctionAppSlotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionAppSlotArgs)(nil)).Elem()
+}
+
+type FunctionAppSlotInput interface {
+	pulumi.Input
+
+	ToFunctionAppSlotOutput() FunctionAppSlotOutput
+	ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput
+}
+
+func (FunctionAppSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppSlot)(nil)).Elem()
+}
+
+func (i FunctionAppSlot) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
+	return i.ToFunctionAppSlotOutputWithContext(context.Background())
+}
+
+func (i FunctionAppSlot) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotOutput)
+}
+
+type FunctionAppSlotOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionAppSlotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppSlotOutput)(nil)).Elem()
+}
+
+func (o FunctionAppSlotOutput) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
+	return o
+}
+
+func (o FunctionAppSlotOutput) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionAppSlotOutput{})
 }

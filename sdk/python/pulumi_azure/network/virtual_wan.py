@@ -72,7 +72,7 @@ class VirtualWan(pulumi.CustomResource):
 
             __props__['allow_branch_to_branch_traffic'] = allow_branch_to_branch_traffic
             if allow_vnet_to_vnet_traffic is not None:
-                warnings.warn("this property has been removed from the API and will be removed in version 3.0 of the provider", DeprecationWarning)
+                warnings.warn("""this property has been removed from the API and will be removed in version 3.0 of the provider""", DeprecationWarning)
                 pulumi.log.warn("allow_vnet_to_vnet_traffic is deprecated: this property has been removed from the API and will be removed in version 3.0 of the provider")
             __props__['allow_vnet_to_vnet_traffic'] = allow_vnet_to_vnet_traffic
             __props__['disable_vpn_encryption'] = disable_vpn_encryption

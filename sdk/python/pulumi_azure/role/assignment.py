@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Assignment']
 
-warnings.warn("azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment", DeprecationWarning)
+warnings.warn("""azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment""", DeprecationWarning)
 
 
 class Assignment(pulumi.CustomResource):
-    warnings.warn("azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment", DeprecationWarning)
+    warnings.warn("""azure.role.Assignment has been deprecated in favor of azure.authorization.Assignment""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

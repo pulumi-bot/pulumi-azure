@@ -4,6 +4,7 @@
 package maintenance
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -98,4 +99,43 @@ type AssignmentVirtualMachineArgs struct {
 
 func (AssignmentVirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*assignmentVirtualMachineArgs)(nil)).Elem()
+}
+
+type AssignmentVirtualMachineInput interface {
+	pulumi.Input
+
+	ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput
+	ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput
+}
+
+func (AssignmentVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentVirtualMachine)(nil)).Elem()
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
+	return i.ToAssignmentVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachineOutput)
+}
+
+type AssignmentVirtualMachineOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentVirtualMachineOutput)(nil)).Elem()
+}
+
+func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
+	return o
+}
+
+func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AssignmentVirtualMachineOutput{})
 }

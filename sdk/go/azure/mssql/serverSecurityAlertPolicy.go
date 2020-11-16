@@ -4,6 +4,7 @@
 package mssql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -223,4 +224,43 @@ type ServerSecurityAlertPolicyArgs struct {
 
 func (ServerSecurityAlertPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverSecurityAlertPolicyArgs)(nil)).Elem()
+}
+
+type ServerSecurityAlertPolicyInput interface {
+	pulumi.Input
+
+	ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput
+	ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput
+}
+
+func (ServerSecurityAlertPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil)).Elem()
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
+	return i.ToServerSecurityAlertPolicyOutputWithContext(context.Background())
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyOutput)
+}
+
+type ServerSecurityAlertPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerSecurityAlertPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerSecurityAlertPolicyOutput)(nil)).Elem()
+}
+
+func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
+	return o
+}
+
+func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerSecurityAlertPolicyOutput{})
 }

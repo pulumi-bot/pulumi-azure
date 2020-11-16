@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -200,4 +201,43 @@ type NetworkInterfaceNatRuleAssociationArgs struct {
 
 func (NetworkInterfaceNatRuleAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceNatRuleAssociationArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceNatRuleAssociationInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput
+	ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput
+}
+
+func (NetworkInterfaceNatRuleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceNatRuleAssociation)(nil)).Elem()
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput {
+	return i.ToNetworkInterfaceNatRuleAssociationOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceNatRuleAssociationOutput)
+}
+
+type NetworkInterfaceNatRuleAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceNatRuleAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceNatRuleAssociationOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceNatRuleAssociationOutput) ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput {
+	return o
+}
+
+func (o NetworkInterfaceNatRuleAssociationOutput) ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceNatRuleAssociationOutput{})
 }

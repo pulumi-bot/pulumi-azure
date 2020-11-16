@@ -4,6 +4,7 @@
 package servicefabric
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -160,4 +161,43 @@ type MeshLocalNetworkArgs struct {
 
 func (MeshLocalNetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshLocalNetworkArgs)(nil)).Elem()
+}
+
+type MeshLocalNetworkInput interface {
+	pulumi.Input
+
+	ToMeshLocalNetworkOutput() MeshLocalNetworkOutput
+	ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput
+}
+
+func (MeshLocalNetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshLocalNetwork)(nil)).Elem()
+}
+
+func (i MeshLocalNetwork) ToMeshLocalNetworkOutput() MeshLocalNetworkOutput {
+	return i.ToMeshLocalNetworkOutputWithContext(context.Background())
+}
+
+func (i MeshLocalNetwork) ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshLocalNetworkOutput)
+}
+
+type MeshLocalNetworkOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshLocalNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshLocalNetworkOutput)(nil)).Elem()
+}
+
+func (o MeshLocalNetworkOutput) ToMeshLocalNetworkOutput() MeshLocalNetworkOutput {
+	return o
+}
+
+func (o MeshLocalNetworkOutput) ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshLocalNetworkOutput{})
 }
