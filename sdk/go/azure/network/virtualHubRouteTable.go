@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -206,4 +207,43 @@ type VirtualHubRouteTableArgs struct {
 
 func (VirtualHubRouteTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualHubRouteTableArgs)(nil)).Elem()
+}
+
+type VirtualHubRouteTableInput interface {
+	pulumi.Input
+
+	ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput
+	ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput
+}
+
+func (VirtualHubRouteTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubRouteTable)(nil)).Elem()
+}
+
+func (i VirtualHubRouteTable) ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput {
+	return i.ToVirtualHubRouteTableOutputWithContext(context.Background())
+}
+
+func (i VirtualHubRouteTable) ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubRouteTableOutput)
+}
+
+type VirtualHubRouteTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubRouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubRouteTableOutput)(nil)).Elem()
+}
+
+func (o VirtualHubRouteTableOutput) ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput {
+	return o
+}
+
+func (o VirtualHubRouteTableOutput) ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualHubRouteTableOutput{})
 }

@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -158,4 +159,43 @@ type TriggerHttpRequestArgs struct {
 
 func (TriggerHttpRequestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerHttpRequestArgs)(nil)).Elem()
+}
+
+type TriggerHttpRequestInput interface {
+	pulumi.Input
+
+	ToTriggerHttpRequestOutput() TriggerHttpRequestOutput
+	ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput
+}
+
+func (TriggerHttpRequest) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerHttpRequest)(nil)).Elem()
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestOutput() TriggerHttpRequestOutput {
+	return i.ToTriggerHttpRequestOutputWithContext(context.Background())
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerHttpRequestOutput)
+}
+
+type TriggerHttpRequestOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerHttpRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerHttpRequestOutput)(nil)).Elem()
+}
+
+func (o TriggerHttpRequestOutput) ToTriggerHttpRequestOutput() TriggerHttpRequestOutput {
+	return o
+}
+
+func (o TriggerHttpRequestOutput) ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerHttpRequestOutput{})
 }

@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -210,4 +211,43 @@ type FallbackRouteArgs struct {
 
 func (FallbackRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fallbackRouteArgs)(nil)).Elem()
+}
+
+type FallbackRouteInput interface {
+	pulumi.Input
+
+	ToFallbackRouteOutput() FallbackRouteOutput
+	ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput
+}
+
+func (FallbackRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackRoute)(nil)).Elem()
+}
+
+func (i FallbackRoute) ToFallbackRouteOutput() FallbackRouteOutput {
+	return i.ToFallbackRouteOutputWithContext(context.Background())
+}
+
+func (i FallbackRoute) ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FallbackRouteOutput)
+}
+
+type FallbackRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (FallbackRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackRouteOutput)(nil)).Elem()
+}
+
+func (o FallbackRouteOutput) ToFallbackRouteOutput() FallbackRouteOutput {
+	return o
+}
+
+func (o FallbackRouteOutput) ToFallbackRouteOutputWithContext(ctx context.Context) FallbackRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FallbackRouteOutput{})
 }

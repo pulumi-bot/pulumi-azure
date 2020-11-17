@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -126,4 +127,43 @@ type ChannelEmailArgs struct {
 
 func (ChannelEmailArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelEmailArgs)(nil)).Elem()
+}
+
+type ChannelEmailInput interface {
+	pulumi.Input
+
+	ToChannelEmailOutput() ChannelEmailOutput
+	ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput
+}
+
+func (ChannelEmail) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelEmail)(nil)).Elem()
+}
+
+func (i ChannelEmail) ToChannelEmailOutput() ChannelEmailOutput {
+	return i.ToChannelEmailOutputWithContext(context.Background())
+}
+
+func (i ChannelEmail) ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelEmailOutput)
+}
+
+type ChannelEmailOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelEmailOutput)(nil)).Elem()
+}
+
+func (o ChannelEmailOutput) ToChannelEmailOutput() ChannelEmailOutput {
+	return o
+}
+
+func (o ChannelEmailOutput) ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelEmailOutput{})
 }

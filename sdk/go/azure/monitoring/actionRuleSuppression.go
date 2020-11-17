@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -200,4 +201,43 @@ type ActionRuleSuppressionArgs struct {
 
 func (ActionRuleSuppressionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionRuleSuppressionArgs)(nil)).Elem()
+}
+
+type ActionRuleSuppressionInput interface {
+	pulumi.Input
+
+	ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput
+	ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput
+}
+
+func (ActionRuleSuppression) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleSuppression)(nil)).Elem()
+}
+
+func (i ActionRuleSuppression) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
+	return i.ToActionRuleSuppressionOutputWithContext(context.Background())
+}
+
+func (i ActionRuleSuppression) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionOutput)
+}
+
+type ActionRuleSuppressionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleSuppressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleSuppressionOutput)(nil)).Elem()
+}
+
+func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
+	return o
+}
+
+func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionRuleSuppressionOutput{})
 }

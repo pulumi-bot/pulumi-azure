@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -167,4 +168,43 @@ type AnalyticsAccountArgs struct {
 
 func (AnalyticsAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsAccountArgs)(nil)).Elem()
+}
+
+type AnalyticsAccountInput interface {
+	pulumi.Input
+
+	ToAnalyticsAccountOutput() AnalyticsAccountOutput
+	ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput
+}
+
+func (AnalyticsAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsAccount)(nil)).Elem()
+}
+
+func (i AnalyticsAccount) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
+	return i.ToAnalyticsAccountOutputWithContext(context.Background())
+}
+
+func (i AnalyticsAccount) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsAccountOutput)
+}
+
+type AnalyticsAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsAccountOutput)(nil)).Elem()
+}
+
+func (o AnalyticsAccountOutput) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
+	return o
+}
+
+func (o AnalyticsAccountOutput) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsAccountOutput{})
 }

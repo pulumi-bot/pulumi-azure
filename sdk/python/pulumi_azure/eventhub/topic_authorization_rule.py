@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['TopicAuthorizationRule']
 
-warnings.warn("azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule", DeprecationWarning)
+warnings.warn("""azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule""", DeprecationWarning)
 
 
 class TopicAuthorizationRule(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule", DeprecationWarning)
+    warnings.warn("""azure.eventhub.TopicAuthorizationRule has been deprecated in favor of azure.servicebus.TopicAuthorizationRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -310,4 +311,43 @@ type InteractiveQueryClusterArgs struct {
 
 func (InteractiveQueryClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interactiveQueryClusterArgs)(nil)).Elem()
+}
+
+type InteractiveQueryClusterInput interface {
+	pulumi.Input
+
+	ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput
+	ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput
+}
+
+func (InteractiveQueryCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryCluster)(nil)).Elem()
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
+	return i.ToInteractiveQueryClusterOutputWithContext(context.Background())
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterOutput)
+}
+
+type InteractiveQueryClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (InteractiveQueryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryClusterOutput)(nil)).Elem()
+}
+
+func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
+	return o
+}
+
+func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InteractiveQueryClusterOutput{})
 }

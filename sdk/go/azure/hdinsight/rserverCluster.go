@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -291,4 +292,43 @@ type RServerClusterArgs struct {
 
 func (RServerClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rserverClusterArgs)(nil)).Elem()
+}
+
+type RServerClusterInput interface {
+	pulumi.Input
+
+	ToRServerClusterOutput() RServerClusterOutput
+	ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput
+}
+
+func (RServerCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*RServerCluster)(nil)).Elem()
+}
+
+func (i RServerCluster) ToRServerClusterOutput() RServerClusterOutput {
+	return i.ToRServerClusterOutputWithContext(context.Background())
+}
+
+func (i RServerCluster) ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterOutput)
+}
+
+type RServerClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (RServerClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RServerClusterOutput)(nil)).Elem()
+}
+
+func (o RServerClusterOutput) ToRServerClusterOutput() RServerClusterOutput {
+	return o
+}
+
+func (o RServerClusterOutput) ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RServerClusterOutput{})
 }

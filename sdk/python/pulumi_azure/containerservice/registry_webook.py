@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['RegistryWebook']
 
-warnings.warn("azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook", DeprecationWarning)
+warnings.warn("""azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook""", DeprecationWarning)
 
 
 class RegistryWebook(pulumi.CustomResource):
-    warnings.warn("azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook", DeprecationWarning)
+    warnings.warn("""azure.containerservice.RegistryWebook has been deprecated in favor of azure.containerservice.RegistryWebhook""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

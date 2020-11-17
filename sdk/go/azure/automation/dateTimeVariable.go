@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,4 +129,43 @@ type DateTimeVariableArgs struct {
 
 func (DateTimeVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dateTimeVariableArgs)(nil)).Elem()
+}
+
+type DateTimeVariableInput interface {
+	pulumi.Input
+
+	ToDateTimeVariableOutput() DateTimeVariableOutput
+	ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput
+}
+
+func (DateTimeVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateTimeVariable)(nil)).Elem()
+}
+
+func (i DateTimeVariable) ToDateTimeVariableOutput() DateTimeVariableOutput {
+	return i.ToDateTimeVariableOutputWithContext(context.Background())
+}
+
+func (i DateTimeVariable) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateTimeVariableOutput)
+}
+
+type DateTimeVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (DateTimeVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateTimeVariableOutput)(nil)).Elem()
+}
+
+func (o DateTimeVariableOutput) ToDateTimeVariableOutput() DateTimeVariableOutput {
+	return o
+}
+
+func (o DateTimeVariableOutput) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DateTimeVariableOutput{})
 }
