@@ -70,6 +70,14 @@ class NetworkConnectionMonitor(pulumi.CustomResource):
             opts=ResourceOptions(depends_on=[src_extension]))
         ```
 
+        ## Import
+
+        Network Connection Monitors can be imported using the `resource id`, e.g.
+
+        ```sh
+         $ pulumi import azure:network/networkConnectionMonitor:NetworkConnectionMonitor example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/networkWatchers/watcher1/connectionMonitors/connectionMonitor1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_start: Will the connection monitor start automatically once created? Changing this forces a new Network Connection Monitor to be created.
