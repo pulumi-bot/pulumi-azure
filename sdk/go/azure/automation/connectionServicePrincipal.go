@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,26 +36,27 @@ type ConnectionServicePrincipal struct {
 // NewConnectionServicePrincipal registers a new resource with the given unique name, arguments, and options.
 func NewConnectionServicePrincipal(ctx *pulumi.Context,
 	name string, args *ConnectionServicePrincipalArgs, opts ...pulumi.ResourceOption) (*ConnectionServicePrincipal, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.CertificateThumbprint == nil {
-		return nil, errors.New("missing required argument 'CertificateThumbprint'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubscriptionId == nil {
-		return nil, errors.New("missing required argument 'SubscriptionId'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &ConnectionServicePrincipalArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.CertificateThumbprint == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateThumbprint'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubscriptionId == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource ConnectionServicePrincipal
 	err := ctx.RegisterResource("azure:automation/connectionServicePrincipal:ConnectionServicePrincipal", name, args, &resource, opts...)
@@ -160,4 +162,43 @@ type ConnectionServicePrincipalArgs struct {
 
 func (ConnectionServicePrincipalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionServicePrincipalArgs)(nil)).Elem()
+}
+
+type ConnectionServicePrincipalInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput
+	ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput
+}
+
+func (ConnectionServicePrincipal) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return i.ToConnectionServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput)
+}
+
+type ConnectionServicePrincipalOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipalOutput)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionServicePrincipalOutput{})
 }

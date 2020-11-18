@@ -4,6 +4,7 @@
 package datalake
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,14 +71,15 @@ type AnalyticsAccount struct {
 // NewAnalyticsAccount registers a new resource with the given unique name, arguments, and options.
 func NewAnalyticsAccount(ctx *pulumi.Context,
 	name string, args *AnalyticsAccountArgs, opts ...pulumi.ResourceOption) (*AnalyticsAccount, error) {
-	if args == nil || args.DefaultStoreAccountName == nil {
-		return nil, errors.New("missing required argument 'DefaultStoreAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AnalyticsAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DefaultStoreAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultStoreAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource AnalyticsAccount
 	err := ctx.RegisterResource("azure:datalake/analyticsAccount:AnalyticsAccount", name, args, &resource, opts...)
@@ -167,4 +169,43 @@ type AnalyticsAccountArgs struct {
 
 func (AnalyticsAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsAccountArgs)(nil)).Elem()
+}
+
+type AnalyticsAccountInput interface {
+	pulumi.Input
+
+	ToAnalyticsAccountOutput() AnalyticsAccountOutput
+	ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput
+}
+
+func (AnalyticsAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsAccount)(nil)).Elem()
+}
+
+func (i AnalyticsAccount) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
+	return i.ToAnalyticsAccountOutputWithContext(context.Background())
+}
+
+func (i AnalyticsAccount) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsAccountOutput)
+}
+
+type AnalyticsAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsAccountOutput)(nil)).Elem()
+}
+
+func (o AnalyticsAccountOutput) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
+	return o
+}
+
+func (o AnalyticsAccountOutput) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsAccountOutput{})
 }

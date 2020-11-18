@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -126,23 +127,24 @@ type FirewallNetworkRuleCollection struct {
 // NewFirewallNetworkRuleCollection registers a new resource with the given unique name, arguments, and options.
 func NewFirewallNetworkRuleCollection(ctx *pulumi.Context,
 	name string, args *FirewallNetworkRuleCollectionArgs, opts ...pulumi.ResourceOption) (*FirewallNetworkRuleCollection, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.AzureFirewallName == nil {
-		return nil, errors.New("missing required argument 'AzureFirewallName'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &FirewallNetworkRuleCollectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.AzureFirewallName == nil {
+		return nil, errors.New("invalid value for required argument 'AzureFirewallName'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource FirewallNetworkRuleCollection
 	err := ctx.RegisterResource("azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection", name, args, &resource, opts...)
@@ -232,4 +234,43 @@ type FirewallNetworkRuleCollectionArgs struct {
 
 func (FirewallNetworkRuleCollectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallNetworkRuleCollectionArgs)(nil)).Elem()
+}
+
+type FirewallNetworkRuleCollectionInput interface {
+	pulumi.Input
+
+	ToFirewallNetworkRuleCollectionOutput() FirewallNetworkRuleCollectionOutput
+	ToFirewallNetworkRuleCollectionOutputWithContext(ctx context.Context) FirewallNetworkRuleCollectionOutput
+}
+
+func (FirewallNetworkRuleCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallNetworkRuleCollection)(nil)).Elem()
+}
+
+func (i FirewallNetworkRuleCollection) ToFirewallNetworkRuleCollectionOutput() FirewallNetworkRuleCollectionOutput {
+	return i.ToFirewallNetworkRuleCollectionOutputWithContext(context.Background())
+}
+
+func (i FirewallNetworkRuleCollection) ToFirewallNetworkRuleCollectionOutputWithContext(ctx context.Context) FirewallNetworkRuleCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallNetworkRuleCollectionOutput)
+}
+
+type FirewallNetworkRuleCollectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallNetworkRuleCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallNetworkRuleCollectionOutput)(nil)).Elem()
+}
+
+func (o FirewallNetworkRuleCollectionOutput) ToFirewallNetworkRuleCollectionOutput() FirewallNetworkRuleCollectionOutput {
+	return o
+}
+
+func (o FirewallNetworkRuleCollectionOutput) ToFirewallNetworkRuleCollectionOutputWithContext(ctx context.Context) FirewallNetworkRuleCollectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallNetworkRuleCollectionOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,17 +88,18 @@ type TriggerSchedule struct {
 // NewTriggerSchedule registers a new resource with the given unique name, arguments, and options.
 func NewTriggerSchedule(ctx *pulumi.Context,
 	name string, args *TriggerScheduleArgs, opts ...pulumi.ResourceOption) (*TriggerSchedule, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.PipelineName == nil {
-		return nil, errors.New("missing required argument 'PipelineName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &TriggerScheduleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.PipelineName == nil {
+		return nil, errors.New("invalid value for required argument 'PipelineName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource TriggerSchedule
 	err := ctx.RegisterResource("azure:datafactory/triggerSchedule:TriggerSchedule", name, args, &resource, opts...)
@@ -219,4 +221,43 @@ type TriggerScheduleArgs struct {
 
 func (TriggerScheduleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerScheduleArgs)(nil)).Elem()
+}
+
+type TriggerScheduleInput interface {
+	pulumi.Input
+
+	ToTriggerScheduleOutput() TriggerScheduleOutput
+	ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput
+}
+
+func (TriggerSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerSchedule)(nil)).Elem()
+}
+
+func (i TriggerSchedule) ToTriggerScheduleOutput() TriggerScheduleOutput {
+	return i.ToTriggerScheduleOutputWithContext(context.Background())
+}
+
+func (i TriggerSchedule) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerScheduleOutput)
+}
+
+type TriggerScheduleOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerScheduleOutput)(nil)).Elem()
+}
+
+func (o TriggerScheduleOutput) ToTriggerScheduleOutput() TriggerScheduleOutput {
+	return o
+}
+
+func (o TriggerScheduleOutput) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerScheduleOutput{})
 }

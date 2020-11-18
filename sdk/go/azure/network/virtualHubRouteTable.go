@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -128,11 +129,12 @@ type VirtualHubRouteTable struct {
 // NewVirtualHubRouteTable registers a new resource with the given unique name, arguments, and options.
 func NewVirtualHubRouteTable(ctx *pulumi.Context,
 	name string, args *VirtualHubRouteTableArgs, opts ...pulumi.ResourceOption) (*VirtualHubRouteTable, error) {
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
 	if args == nil {
-		args = &VirtualHubRouteTableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
 	}
 	var resource VirtualHubRouteTable
 	err := ctx.RegisterResource("azure:network/virtualHubRouteTable:VirtualHubRouteTable", name, args, &resource, opts...)
@@ -206,4 +208,43 @@ type VirtualHubRouteTableArgs struct {
 
 func (VirtualHubRouteTableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualHubRouteTableArgs)(nil)).Elem()
+}
+
+type VirtualHubRouteTableInput interface {
+	pulumi.Input
+
+	ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput
+	ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput
+}
+
+func (VirtualHubRouteTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubRouteTable)(nil)).Elem()
+}
+
+func (i VirtualHubRouteTable) ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput {
+	return i.ToVirtualHubRouteTableOutputWithContext(context.Background())
+}
+
+func (i VirtualHubRouteTable) ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubRouteTableOutput)
+}
+
+type VirtualHubRouteTableOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubRouteTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubRouteTableOutput)(nil)).Elem()
+}
+
+func (o VirtualHubRouteTableOutput) ToVirtualHubRouteTableOutput() VirtualHubRouteTableOutput {
+	return o
+}
+
+func (o VirtualHubRouteTableOutput) ToVirtualHubRouteTableOutputWithContext(ctx context.Context) VirtualHubRouteTableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualHubRouteTableOutput{})
 }
