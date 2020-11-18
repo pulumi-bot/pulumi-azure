@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,14 +77,15 @@ type OrchestratedVirtualMachineScaleSet struct {
 // NewOrchestratedVirtualMachineScaleSet registers a new resource with the given unique name, arguments, and options.
 func NewOrchestratedVirtualMachineScaleSet(ctx *pulumi.Context,
 	name string, args *OrchestratedVirtualMachineScaleSetArgs, opts ...pulumi.ResourceOption) (*OrchestratedVirtualMachineScaleSet, error) {
-	if args == nil || args.PlatformFaultDomainCount == nil {
-		return nil, errors.New("missing required argument 'PlatformFaultDomainCount'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &OrchestratedVirtualMachineScaleSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PlatformFaultDomainCount == nil {
+		return nil, errors.New("invalid value for required argument 'PlatformFaultDomainCount'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource OrchestratedVirtualMachineScaleSet
 	err := ctx.RegisterResource("azure:compute/orchestratedVirtualMachineScaleSet:OrchestratedVirtualMachineScaleSet", name, args, &resource, opts...)
@@ -193,4 +195,43 @@ type OrchestratedVirtualMachineScaleSetArgs struct {
 
 func (OrchestratedVirtualMachineScaleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*orchestratedVirtualMachineScaleSetArgs)(nil)).Elem()
+}
+
+type OrchestratedVirtualMachineScaleSetInput interface {
+	pulumi.Input
+
+	ToOrchestratedVirtualMachineScaleSetOutput() OrchestratedVirtualMachineScaleSetOutput
+	ToOrchestratedVirtualMachineScaleSetOutputWithContext(ctx context.Context) OrchestratedVirtualMachineScaleSetOutput
+}
+
+func (OrchestratedVirtualMachineScaleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratedVirtualMachineScaleSet)(nil)).Elem()
+}
+
+func (i OrchestratedVirtualMachineScaleSet) ToOrchestratedVirtualMachineScaleSetOutput() OrchestratedVirtualMachineScaleSetOutput {
+	return i.ToOrchestratedVirtualMachineScaleSetOutputWithContext(context.Background())
+}
+
+func (i OrchestratedVirtualMachineScaleSet) ToOrchestratedVirtualMachineScaleSetOutputWithContext(ctx context.Context) OrchestratedVirtualMachineScaleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrchestratedVirtualMachineScaleSetOutput)
+}
+
+type OrchestratedVirtualMachineScaleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrchestratedVirtualMachineScaleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratedVirtualMachineScaleSetOutput)(nil)).Elem()
+}
+
+func (o OrchestratedVirtualMachineScaleSetOutput) ToOrchestratedVirtualMachineScaleSetOutput() OrchestratedVirtualMachineScaleSetOutput {
+	return o
+}
+
+func (o OrchestratedVirtualMachineScaleSetOutput) ToOrchestratedVirtualMachineScaleSetOutputWithContext(ctx context.Context) OrchestratedVirtualMachineScaleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrchestratedVirtualMachineScaleSetOutput{})
 }

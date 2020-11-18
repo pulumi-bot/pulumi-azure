@@ -4,6 +4,7 @@
 package sentinel
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,20 +92,21 @@ type AlertRuleScheduled struct {
 // NewAlertRuleScheduled registers a new resource with the given unique name, arguments, and options.
 func NewAlertRuleScheduled(ctx *pulumi.Context,
 	name string, args *AlertRuleScheduledArgs, opts ...pulumi.ResourceOption) (*AlertRuleScheduled, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.LogAnalyticsWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'LogAnalyticsWorkspaceId'")
-	}
-	if args == nil || args.Query == nil {
-		return nil, errors.New("missing required argument 'Query'")
-	}
-	if args == nil || args.Severity == nil {
-		return nil, errors.New("missing required argument 'Severity'")
-	}
 	if args == nil {
-		args = &AlertRuleScheduledArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.LogAnalyticsWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'LogAnalyticsWorkspaceId'")
+	}
+	if args.Query == nil {
+		return nil, errors.New("invalid value for required argument 'Query'")
+	}
+	if args.Severity == nil {
+		return nil, errors.New("invalid value for required argument 'Severity'")
 	}
 	var resource AlertRuleScheduled
 	err := ctx.RegisterResource("azure:sentinel/alertRuleScheduled:AlertRuleScheduled", name, args, &resource, opts...)
@@ -258,4 +260,43 @@ type AlertRuleScheduledArgs struct {
 
 func (AlertRuleScheduledArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRuleScheduledArgs)(nil)).Elem()
+}
+
+type AlertRuleScheduledInput interface {
+	pulumi.Input
+
+	ToAlertRuleScheduledOutput() AlertRuleScheduledOutput
+	ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput
+}
+
+func (AlertRuleScheduled) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleScheduled)(nil)).Elem()
+}
+
+func (i AlertRuleScheduled) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
+	return i.ToAlertRuleScheduledOutputWithContext(context.Background())
+}
+
+func (i AlertRuleScheduled) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledOutput)
+}
+
+type AlertRuleScheduledOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleScheduledOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleScheduledOutput)(nil)).Elem()
+}
+
+func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
+	return o
+}
+
+func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertRuleScheduledOutput{})
 }

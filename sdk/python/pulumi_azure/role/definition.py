@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['Definition']
 
-warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
+warnings.warn("""azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition""", DeprecationWarning)
 
 
 class Definition(pulumi.CustomResource):
-    warnings.warn("azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition", DeprecationWarning)
+    warnings.warn("""azure.role.Definition has been deprecated in favor of azure.authorization.RoleDefinition""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

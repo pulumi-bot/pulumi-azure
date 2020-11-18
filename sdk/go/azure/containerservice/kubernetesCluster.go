@@ -4,6 +4,7 @@
 package containerservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -125,17 +126,18 @@ type KubernetesCluster struct {
 // NewKubernetesCluster registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesCluster(ctx *pulumi.Context,
 	name string, args *KubernetesClusterArgs, opts ...pulumi.ResourceOption) (*KubernetesCluster, error) {
-	if args == nil || args.DefaultNodePool == nil {
-		return nil, errors.New("missing required argument 'DefaultNodePool'")
-	}
-	if args == nil || args.DnsPrefix == nil {
-		return nil, errors.New("missing required argument 'DnsPrefix'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &KubernetesClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DefaultNodePool == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultNodePool'")
+	}
+	if args.DnsPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'DnsPrefix'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource KubernetesCluster
 	err := ctx.RegisterResource("azure:containerservice/kubernetesCluster:KubernetesCluster", name, args, &resource, opts...)
@@ -377,4 +379,43 @@ type KubernetesClusterArgs struct {
 
 func (KubernetesClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterArgs)(nil)).Elem()
+}
+
+type KubernetesClusterInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterOutput() KubernetesClusterOutput
+	ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput
+}
+
+func (KubernetesCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesCluster)(nil)).Elem()
+}
+
+func (i KubernetesCluster) ToKubernetesClusterOutput() KubernetesClusterOutput {
+	return i.ToKubernetesClusterOutputWithContext(context.Background())
+}
+
+func (i KubernetesCluster) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterOutput)
+}
+
+type KubernetesClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterOutput)(nil)).Elem()
+}
+
+func (o KubernetesClusterOutput) ToKubernetesClusterOutput() KubernetesClusterOutput {
+	return o
+}
+
+func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KubernetesClusterOutput{})
 }

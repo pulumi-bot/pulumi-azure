@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,23 +83,24 @@ type SqlStoredProcedure struct {
 // NewSqlStoredProcedure registers a new resource with the given unique name, arguments, and options.
 func NewSqlStoredProcedure(ctx *pulumi.Context,
 	name string, args *SqlStoredProcedureArgs, opts ...pulumi.ResourceOption) (*SqlStoredProcedure, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.Body == nil {
-		return nil, errors.New("missing required argument 'Body'")
-	}
-	if args == nil || args.ContainerName == nil {
-		return nil, errors.New("missing required argument 'ContainerName'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SqlStoredProcedureArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.Body == nil {
+		return nil, errors.New("invalid value for required argument 'Body'")
+	}
+	if args.ContainerName == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerName'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SqlStoredProcedure
 	err := ctx.RegisterResource("azure:cosmosdb/sqlStoredProcedure:SqlStoredProcedure", name, args, &resource, opts...)
@@ -188,4 +190,43 @@ type SqlStoredProcedureArgs struct {
 
 func (SqlStoredProcedureArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlStoredProcedureArgs)(nil)).Elem()
+}
+
+type SqlStoredProcedureInput interface {
+	pulumi.Input
+
+	ToSqlStoredProcedureOutput() SqlStoredProcedureOutput
+	ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput
+}
+
+func (SqlStoredProcedure) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlStoredProcedure)(nil)).Elem()
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedureOutput() SqlStoredProcedureOutput {
+	return i.ToSqlStoredProcedureOutputWithContext(context.Background())
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlStoredProcedureOutput)
+}
+
+type SqlStoredProcedureOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlStoredProcedureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlStoredProcedureOutput)(nil)).Elem()
+}
+
+func (o SqlStoredProcedureOutput) ToSqlStoredProcedureOutput() SqlStoredProcedureOutput {
+	return o
+}
+
+func (o SqlStoredProcedureOutput) ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SqlStoredProcedureOutput{})
 }

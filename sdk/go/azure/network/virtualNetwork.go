@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -116,14 +117,15 @@ type VirtualNetwork struct {
 // NewVirtualNetwork registers a new resource with the given unique name, arguments, and options.
 func NewVirtualNetwork(ctx *pulumi.Context,
 	name string, args *VirtualNetworkArgs, opts ...pulumi.ResourceOption) (*VirtualNetwork, error) {
-	if args == nil || args.AddressSpaces == nil {
-		return nil, errors.New("missing required argument 'AddressSpaces'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &VirtualNetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AddressSpaces == nil {
+		return nil, errors.New("invalid value for required argument 'AddressSpaces'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource VirtualNetwork
 	err := ctx.RegisterResource("azure:network/virtualNetwork:VirtualNetwork", name, args, &resource, opts...)
@@ -233,4 +235,43 @@ type VirtualNetworkArgs struct {
 
 func (VirtualNetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNetworkArgs)(nil)).Elem()
+}
+
+type VirtualNetworkInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkOutput() VirtualNetworkOutput
+	ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput
+}
+
+func (VirtualNetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetwork)(nil)).Elem()
+}
+
+func (i VirtualNetwork) ToVirtualNetworkOutput() VirtualNetworkOutput {
+	return i.ToVirtualNetworkOutputWithContext(context.Background())
+}
+
+func (i VirtualNetwork) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkOutput)
+}
+
+type VirtualNetworkOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkOutput)(nil)).Elem()
+}
+
+func (o VirtualNetworkOutput) ToVirtualNetworkOutput() VirtualNetworkOutput {
+	return o
+}
+
+func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualNetworkOutput{})
 }

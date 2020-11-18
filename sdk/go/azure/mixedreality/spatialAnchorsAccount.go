@@ -4,6 +4,7 @@
 package mixedreality
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -58,11 +59,12 @@ type SpatialAnchorsAccount struct {
 // NewSpatialAnchorsAccount registers a new resource with the given unique name, arguments, and options.
 func NewSpatialAnchorsAccount(ctx *pulumi.Context,
 	name string, args *SpatialAnchorsAccountArgs, opts ...pulumi.ResourceOption) (*SpatialAnchorsAccount, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SpatialAnchorsAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SpatialAnchorsAccount
 	err := ctx.RegisterResource("azure:mixedreality/spatialAnchorsAccount:SpatialAnchorsAccount", name, args, &resource, opts...)
@@ -136,4 +138,43 @@ type SpatialAnchorsAccountArgs struct {
 
 func (SpatialAnchorsAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spatialAnchorsAccountArgs)(nil)).Elem()
+}
+
+type SpatialAnchorsAccountInput interface {
+	pulumi.Input
+
+	ToSpatialAnchorsAccountOutput() SpatialAnchorsAccountOutput
+	ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput
+}
+
+func (SpatialAnchorsAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpatialAnchorsAccount)(nil)).Elem()
+}
+
+func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountOutput() SpatialAnchorsAccountOutput {
+	return i.ToSpatialAnchorsAccountOutputWithContext(context.Background())
+}
+
+func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpatialAnchorsAccountOutput)
+}
+
+type SpatialAnchorsAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpatialAnchorsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpatialAnchorsAccountOutput)(nil)).Elem()
+}
+
+func (o SpatialAnchorsAccountOutput) ToSpatialAnchorsAccountOutput() SpatialAnchorsAccountOutput {
+	return o
+}
+
+func (o SpatialAnchorsAccountOutput) ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpatialAnchorsAccountOutput{})
 }

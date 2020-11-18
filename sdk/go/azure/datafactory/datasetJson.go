@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,17 +100,18 @@ type DatasetJson struct {
 // NewDatasetJson registers a new resource with the given unique name, arguments, and options.
 func NewDatasetJson(ctx *pulumi.Context,
 	name string, args *DatasetJsonArgs, opts ...pulumi.ResourceOption) (*DatasetJson, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetJsonArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetJson
 	err := ctx.RegisterResource("azure:datafactory/datasetJson:DatasetJson", name, args, &resource, opts...)
@@ -255,4 +257,43 @@ type DatasetJsonArgs struct {
 
 func (DatasetJsonArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetJsonArgs)(nil)).Elem()
+}
+
+type DatasetJsonInput interface {
+	pulumi.Input
+
+	ToDatasetJsonOutput() DatasetJsonOutput
+	ToDatasetJsonOutputWithContext(ctx context.Context) DatasetJsonOutput
+}
+
+func (DatasetJson) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetJson)(nil)).Elem()
+}
+
+func (i DatasetJson) ToDatasetJsonOutput() DatasetJsonOutput {
+	return i.ToDatasetJsonOutputWithContext(context.Background())
+}
+
+func (i DatasetJson) ToDatasetJsonOutputWithContext(ctx context.Context) DatasetJsonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonOutput)
+}
+
+type DatasetJsonOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetJsonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetJsonOutput)(nil)).Elem()
+}
+
+func (o DatasetJsonOutput) ToDatasetJsonOutput() DatasetJsonOutput {
+	return o
+}
+
+func (o DatasetJsonOutput) ToDatasetJsonOutputWithContext(ctx context.Context) DatasetJsonOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetJsonOutput{})
 }

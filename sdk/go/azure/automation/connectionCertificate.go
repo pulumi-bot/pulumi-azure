@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,20 +32,21 @@ type ConnectionCertificate struct {
 // NewConnectionCertificate registers a new resource with the given unique name, arguments, and options.
 func NewConnectionCertificate(ctx *pulumi.Context,
 	name string, args *ConnectionCertificateArgs, opts ...pulumi.ResourceOption) (*ConnectionCertificate, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.AutomationCertificateName == nil {
-		return nil, errors.New("missing required argument 'AutomationCertificateName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubscriptionId == nil {
-		return nil, errors.New("missing required argument 'SubscriptionId'")
-	}
 	if args == nil {
-		args = &ConnectionCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.AutomationCertificateName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationCertificateName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubscriptionId == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
 	}
 	var resource ConnectionCertificate
 	err := ctx.RegisterResource("azure:automation/connectionCertificate:ConnectionCertificate", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type ConnectionCertificateArgs struct {
 
 func (ConnectionCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionCertificateArgs)(nil)).Elem()
+}
+
+type ConnectionCertificateInput interface {
+	pulumi.Input
+
+	ToConnectionCertificateOutput() ConnectionCertificateOutput
+	ToConnectionCertificateOutputWithContext(ctx context.Context) ConnectionCertificateOutput
+}
+
+func (ConnectionCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCertificate)(nil)).Elem()
+}
+
+func (i ConnectionCertificate) ToConnectionCertificateOutput() ConnectionCertificateOutput {
+	return i.ToConnectionCertificateOutputWithContext(context.Background())
+}
+
+func (i ConnectionCertificate) ToConnectionCertificateOutputWithContext(ctx context.Context) ConnectionCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCertificateOutput)
+}
+
+type ConnectionCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCertificateOutput)(nil)).Elem()
+}
+
+func (o ConnectionCertificateOutput) ToConnectionCertificateOutput() ConnectionCertificateOutput {
+	return o
+}
+
+func (o ConnectionCertificateOutput) ToConnectionCertificateOutputWithContext(ctx context.Context) ConnectionCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionCertificateOutput{})
 }

@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,17 +79,18 @@ type ChannelsRegistration struct {
 // NewChannelsRegistration registers a new resource with the given unique name, arguments, and options.
 func NewChannelsRegistration(ctx *pulumi.Context,
 	name string, args *ChannelsRegistrationArgs, opts ...pulumi.ResourceOption) (*ChannelsRegistration, error) {
-	if args == nil || args.MicrosoftAppId == nil {
-		return nil, errors.New("missing required argument 'MicrosoftAppId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &ChannelsRegistrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.MicrosoftAppId == nil {
+		return nil, errors.New("invalid value for required argument 'MicrosoftAppId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource ChannelsRegistration
 	err := ctx.RegisterResource("azure:bot/channelsRegistration:ChannelsRegistration", name, args, &resource, opts...)
@@ -218,4 +220,43 @@ type ChannelsRegistrationArgs struct {
 
 func (ChannelsRegistrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelsRegistrationArgs)(nil)).Elem()
+}
+
+type ChannelsRegistrationInput interface {
+	pulumi.Input
+
+	ToChannelsRegistrationOutput() ChannelsRegistrationOutput
+	ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput
+}
+
+func (ChannelsRegistration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsRegistration)(nil)).Elem()
+}
+
+func (i ChannelsRegistration) ToChannelsRegistrationOutput() ChannelsRegistrationOutput {
+	return i.ToChannelsRegistrationOutputWithContext(context.Background())
+}
+
+func (i ChannelsRegistration) ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelsRegistrationOutput)
+}
+
+type ChannelsRegistrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelsRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelsRegistrationOutput)(nil)).Elem()
+}
+
+func (o ChannelsRegistrationOutput) ToChannelsRegistrationOutput() ChannelsRegistrationOutput {
+	return o
+}
+
+func (o ChannelsRegistrationOutput) ToChannelsRegistrationOutputWithContext(ctx context.Context) ChannelsRegistrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelsRegistrationOutput{})
 }

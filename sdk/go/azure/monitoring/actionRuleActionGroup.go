@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,14 +83,15 @@ type ActionRuleActionGroup struct {
 // NewActionRuleActionGroup registers a new resource with the given unique name, arguments, and options.
 func NewActionRuleActionGroup(ctx *pulumi.Context,
 	name string, args *ActionRuleActionGroupArgs, opts ...pulumi.ResourceOption) (*ActionRuleActionGroup, error) {
-	if args == nil || args.ActionGroupId == nil {
-		return nil, errors.New("missing required argument 'ActionGroupId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ActionRuleActionGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ActionGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ActionGroupId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ActionRuleActionGroup
 	err := ctx.RegisterResource("azure:monitoring/actionRuleActionGroup:ActionRuleActionGroup", name, args, &resource, opts...)
@@ -195,4 +197,43 @@ type ActionRuleActionGroupArgs struct {
 
 func (ActionRuleActionGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionRuleActionGroupArgs)(nil)).Elem()
+}
+
+type ActionRuleActionGroupInput interface {
+	pulumi.Input
+
+	ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput
+	ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput
+}
+
+func (ActionRuleActionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleActionGroup)(nil)).Elem()
+}
+
+func (i ActionRuleActionGroup) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
+	return i.ToActionRuleActionGroupOutputWithContext(context.Background())
+}
+
+func (i ActionRuleActionGroup) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupOutput)
+}
+
+type ActionRuleActionGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleActionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleActionGroupOutput)(nil)).Elem()
+}
+
+func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
+	return o
+}
+
+func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionRuleActionGroupOutput{})
 }

@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,20 +89,21 @@ type DataExportRule struct {
 // NewDataExportRule registers a new resource with the given unique name, arguments, and options.
 func NewDataExportRule(ctx *pulumi.Context,
 	name string, args *DataExportRuleArgs, opts ...pulumi.ResourceOption) (*DataExportRule, error) {
-	if args == nil || args.DestinationResourceId == nil {
-		return nil, errors.New("missing required argument 'DestinationResourceId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TableNames == nil {
-		return nil, errors.New("missing required argument 'TableNames'")
-	}
-	if args == nil || args.WorkspaceResourceId == nil {
-		return nil, errors.New("missing required argument 'WorkspaceResourceId'")
-	}
 	if args == nil {
-		args = &DataExportRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationResourceId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TableNames == nil {
+		return nil, errors.New("invalid value for required argument 'TableNames'")
+	}
+	if args.WorkspaceResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceResourceId'")
 	}
 	var resource DataExportRule
 	err := ctx.RegisterResource("azure:loganalytics/dataExportRule:DataExportRule", name, args, &resource, opts...)
@@ -195,4 +197,43 @@ type DataExportRuleArgs struct {
 
 func (DataExportRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExportRuleArgs)(nil)).Elem()
+}
+
+type DataExportRuleInput interface {
+	pulumi.Input
+
+	ToDataExportRuleOutput() DataExportRuleOutput
+	ToDataExportRuleOutputWithContext(ctx context.Context) DataExportRuleOutput
+}
+
+func (DataExportRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportRule)(nil)).Elem()
+}
+
+func (i DataExportRule) ToDataExportRuleOutput() DataExportRuleOutput {
+	return i.ToDataExportRuleOutputWithContext(context.Background())
+}
+
+func (i DataExportRule) ToDataExportRuleOutputWithContext(ctx context.Context) DataExportRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportRuleOutput)
+}
+
+type DataExportRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataExportRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportRuleOutput)(nil)).Elem()
+}
+
+func (o DataExportRuleOutput) ToDataExportRuleOutput() DataExportRuleOutput {
+	return o
+}
+
+func (o DataExportRuleOutput) ToDataExportRuleOutputWithContext(ctx context.Context) DataExportRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataExportRuleOutput{})
 }

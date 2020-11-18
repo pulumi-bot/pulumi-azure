@@ -4,6 +4,7 @@
 package keyvault
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -130,17 +131,18 @@ type KeyVault struct {
 // NewKeyVault registers a new resource with the given unique name, arguments, and options.
 func NewKeyVault(ctx *pulumi.Context,
 	name string, args *KeyVaultArgs, opts ...pulumi.ResourceOption) (*KeyVault, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &KeyVaultArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource KeyVault
 	err := ctx.RegisterResource("azure:keyvault/keyVault:KeyVault", name, args, &resource, opts...)
@@ -314,4 +316,43 @@ type KeyVaultArgs struct {
 
 func (KeyVaultArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyVaultArgs)(nil)).Elem()
+}
+
+type KeyVaultInput interface {
+	pulumi.Input
+
+	ToKeyVaultOutput() KeyVaultOutput
+	ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput
+}
+
+func (KeyVault) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVault)(nil)).Elem()
+}
+
+func (i KeyVault) ToKeyVaultOutput() KeyVaultOutput {
+	return i.ToKeyVaultOutputWithContext(context.Background())
+}
+
+func (i KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultOutput)
+}
+
+type KeyVaultOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultOutput)(nil)).Elem()
+}
+
+func (o KeyVaultOutput) ToKeyVaultOutput() KeyVaultOutput {
+	return o
+}
+
+func (o KeyVaultOutput) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyVaultOutput{})
 }
