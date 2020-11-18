@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,20 +71,21 @@ type IdentityProviderTwitter struct {
 // NewIdentityProviderTwitter registers a new resource with the given unique name, arguments, and options.
 func NewIdentityProviderTwitter(ctx *pulumi.Context,
 	name string, args *IdentityProviderTwitterArgs, opts ...pulumi.ResourceOption) (*IdentityProviderTwitter, error) {
-	if args == nil || args.ApiKey == nil {
-		return nil, errors.New("missing required argument 'ApiKey'")
-	}
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ApiSecretKey == nil {
-		return nil, errors.New("missing required argument 'ApiSecretKey'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IdentityProviderTwitterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiKey'")
+	}
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ApiSecretKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiSecretKey'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IdentityProviderTwitter
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type IdentityProviderTwitterArgs struct {
 
 func (IdentityProviderTwitterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderTwitterArgs)(nil)).Elem()
+}
+
+type IdentityProviderTwitterInput interface {
+	pulumi.Input
+
+	ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput
+	ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput
+}
+
+func (IdentityProviderTwitter) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderTwitter)(nil)).Elem()
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
+	return i.ToIdentityProviderTwitterOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterOutput)
+}
+
+type IdentityProviderTwitterOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderTwitterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderTwitterOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
+	return o
+}
+
+func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderTwitterOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,14 +72,15 @@ type IntegrationRuntimeSelfHosted struct {
 // NewIntegrationRuntimeSelfHosted registers a new resource with the given unique name, arguments, and options.
 func NewIntegrationRuntimeSelfHosted(ctx *pulumi.Context,
 	name string, args *IntegrationRuntimeSelfHostedArgs, opts ...pulumi.ResourceOption) (*IntegrationRuntimeSelfHosted, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IntegrationRuntimeSelfHostedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IntegrationRuntimeSelfHosted
 	err := ctx.RegisterResource("azure:datafactory/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted", name, args, &resource, opts...)
@@ -168,4 +170,43 @@ type IntegrationRuntimeSelfHostedArgs struct {
 
 func (IntegrationRuntimeSelfHostedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationRuntimeSelfHostedArgs)(nil)).Elem()
+}
+
+type IntegrationRuntimeSelfHostedInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeSelfHostedOutput() IntegrationRuntimeSelfHostedOutput
+	ToIntegrationRuntimeSelfHostedOutputWithContext(ctx context.Context) IntegrationRuntimeSelfHostedOutput
+}
+
+func (IntegrationRuntimeSelfHosted) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSelfHosted)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeSelfHosted) ToIntegrationRuntimeSelfHostedOutput() IntegrationRuntimeSelfHostedOutput {
+	return i.ToIntegrationRuntimeSelfHostedOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeSelfHosted) ToIntegrationRuntimeSelfHostedOutputWithContext(ctx context.Context) IntegrationRuntimeSelfHostedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSelfHostedOutput)
+}
+
+type IntegrationRuntimeSelfHostedOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationRuntimeSelfHostedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSelfHostedOutput)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSelfHostedOutput) ToIntegrationRuntimeSelfHostedOutput() IntegrationRuntimeSelfHostedOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSelfHostedOutput) ToIntegrationRuntimeSelfHostedOutputWithContext(ctx context.Context) IntegrationRuntimeSelfHostedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntegrationRuntimeSelfHostedOutput{})
 }

@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -239,14 +240,15 @@ type FunctionApp struct {
 // NewFunctionApp registers a new resource with the given unique name, arguments, and options.
 func NewFunctionApp(ctx *pulumi.Context,
 	name string, args *FunctionAppArgs, opts ...pulumi.ResourceOption) (*FunctionApp, error) {
-	if args == nil || args.AppServicePlanId == nil {
-		return nil, errors.New("missing required argument 'AppServicePlanId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &FunctionAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppServicePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServicePlanId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource FunctionApp
 	err := ctx.RegisterResource("azure:appservice/functionApp:FunctionApp", name, args, &resource, opts...)
@@ -476,4 +478,43 @@ type FunctionAppArgs struct {
 
 func (FunctionAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionAppArgs)(nil)).Elem()
+}
+
+type FunctionAppInput interface {
+	pulumi.Input
+
+	ToFunctionAppOutput() FunctionAppOutput
+	ToFunctionAppOutputWithContext(ctx context.Context) FunctionAppOutput
+}
+
+func (FunctionApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionApp)(nil)).Elem()
+}
+
+func (i FunctionApp) ToFunctionAppOutput() FunctionAppOutput {
+	return i.ToFunctionAppOutputWithContext(context.Background())
+}
+
+func (i FunctionApp) ToFunctionAppOutputWithContext(ctx context.Context) FunctionAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppOutput)
+}
+
+type FunctionAppOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppOutput)(nil)).Elem()
+}
+
+func (o FunctionAppOutput) ToFunctionAppOutput() FunctionAppOutput {
+	return o
+}
+
+func (o FunctionAppOutput) ToFunctionAppOutputWithContext(ctx context.Context) FunctionAppOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionAppOutput{})
 }

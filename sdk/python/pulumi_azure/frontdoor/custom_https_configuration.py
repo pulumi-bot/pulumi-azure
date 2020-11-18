@@ -126,7 +126,7 @@ class CustomHttpsConfiguration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'frontend_endpoint_id'")
             __props__['frontend_endpoint_id'] = frontend_endpoint_id
             if resource_group_name is not None:
-                warnings.warn("This field is no longer used and will be removed in the next major version of the Azure Provider", DeprecationWarning)
+                warnings.warn("""This field is no longer used and will be removed in the next major version of the Azure Provider""", DeprecationWarning)
                 pulumi.log.warn("resource_group_name is deprecated: This field is no longer used and will be removed in the next major version of the Azure Provider")
             __props__['resource_group_name'] = resource_group_name
         super(CustomHttpsConfiguration, __self__).__init__(

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -84,17 +85,18 @@ type LinkedServiceAzureFileStorage struct {
 // NewLinkedServiceAzureFileStorage registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceAzureFileStorage(ctx *pulumi.Context,
 	name string, args *LinkedServiceAzureFileStorageArgs, opts ...pulumi.ResourceOption) (*LinkedServiceAzureFileStorage, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceAzureFileStorageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceAzureFileStorage
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage", name, args, &resource, opts...)
@@ -220,4 +222,43 @@ type LinkedServiceAzureFileStorageArgs struct {
 
 func (LinkedServiceAzureFileStorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureFileStorageArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureFileStorageInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput
+	ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput
+}
+
+func (LinkedServiceAzureFileStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFileStorage)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput {
+	return i.ToLinkedServiceAzureFileStorageOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFileStorageOutput)
+}
+
+type LinkedServiceAzureFileStorageOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFileStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFileStorageOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFileStorageOutput) ToLinkedServiceAzureFileStorageOutput() LinkedServiceAzureFileStorageOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFileStorageOutput) ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureFileStorageOutput{})
 }

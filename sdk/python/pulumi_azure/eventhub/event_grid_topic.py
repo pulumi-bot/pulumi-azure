@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['EventGridTopic']
 
-warnings.warn("azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic", DeprecationWarning)
+warnings.warn("""azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic""", DeprecationWarning)
 
 
 class EventGridTopic(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic", DeprecationWarning)
+    warnings.warn("""azure.eventhub.EventGridTopic has been deprecated in favor of azure.eventgrid.Topic""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

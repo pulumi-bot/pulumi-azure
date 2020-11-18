@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,20 +74,21 @@ type DataSourceWindowsEvent struct {
 // NewDataSourceWindowsEvent registers a new resource with the given unique name, arguments, and options.
 func NewDataSourceWindowsEvent(ctx *pulumi.Context,
 	name string, args *DataSourceWindowsEventArgs, opts ...pulumi.ResourceOption) (*DataSourceWindowsEvent, error) {
-	if args == nil || args.EventLogName == nil {
-		return nil, errors.New("missing required argument 'EventLogName'")
-	}
-	if args == nil || args.EventTypes == nil {
-		return nil, errors.New("missing required argument 'EventTypes'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.WorkspaceName == nil {
-		return nil, errors.New("missing required argument 'WorkspaceName'")
-	}
 	if args == nil {
-		args = &DataSourceWindowsEventArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EventLogName == nil {
+		return nil, errors.New("invalid value for required argument 'EventLogName'")
+	}
+	if args.EventTypes == nil {
+		return nil, errors.New("invalid value for required argument 'EventTypes'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.WorkspaceName == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	var resource DataSourceWindowsEvent
 	err := ctx.RegisterResource("azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent", name, args, &resource, opts...)
@@ -168,4 +170,43 @@ type DataSourceWindowsEventArgs struct {
 
 func (DataSourceWindowsEventArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSourceWindowsEventArgs)(nil)).Elem()
+}
+
+type DataSourceWindowsEventInput interface {
+	pulumi.Input
+
+	ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput
+	ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput
+}
+
+func (DataSourceWindowsEvent) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsEvent)(nil)).Elem()
+}
+
+func (i DataSourceWindowsEvent) ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput {
+	return i.ToDataSourceWindowsEventOutputWithContext(context.Background())
+}
+
+func (i DataSourceWindowsEvent) ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceWindowsEventOutput)
+}
+
+type DataSourceWindowsEventOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataSourceWindowsEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceWindowsEventOutput)(nil)).Elem()
+}
+
+func (o DataSourceWindowsEventOutput) ToDataSourceWindowsEventOutput() DataSourceWindowsEventOutput {
+	return o
+}
+
+func (o DataSourceWindowsEventOutput) ToDataSourceWindowsEventOutputWithContext(ctx context.Context) DataSourceWindowsEventOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataSourceWindowsEventOutput{})
 }

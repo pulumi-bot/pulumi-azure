@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,20 +32,21 @@ type Connection struct {
 // NewConnection registers a new resource with the given unique name, arguments, and options.
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.Values == nil {
-		return nil, errors.New("missing required argument 'Values'")
-	}
 	if args == nil {
-		args = &ConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.Values == nil {
+		return nil, errors.New("invalid value for required argument 'Values'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("azure:automation/connection:Connection", name, args, &resource, opts...)
@@ -134,4 +136,43 @@ type ConnectionArgs struct {
 
 func (ConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionArgs)(nil)).Elem()
+}
+
+type ConnectionInput interface {
+	pulumi.Input
+
+	ToConnectionOutput() ConnectionOutput
+	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
+}
+
+func (Connection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Connection)(nil)).Elem()
+}
+
+func (i Connection) ToConnectionOutput() ConnectionOutput {
+	return i.ToConnectionOutputWithContext(context.Background())
+}
+
+func (i Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
+}
+
+type ConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOutput)(nil)).Elem()
+}
+
+func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
+	return o
+}
+
+func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionOutput{})
 }

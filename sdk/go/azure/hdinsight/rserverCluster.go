@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,26 +135,27 @@ type RServerCluster struct {
 // NewRServerCluster registers a new resource with the given unique name, arguments, and options.
 func NewRServerCluster(ctx *pulumi.Context,
 	name string, args *RServerClusterArgs, opts ...pulumi.ResourceOption) (*RServerCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Rstudio == nil {
-		return nil, errors.New("missing required argument 'Rstudio'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &RServerClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Rstudio == nil {
+		return nil, errors.New("invalid value for required argument 'Rstudio'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource RServerCluster
 	err := ctx.RegisterResource("azure:hdinsight/rServerCluster:RServerCluster", name, args, &resource, opts...)
@@ -291,4 +293,43 @@ type RServerClusterArgs struct {
 
 func (RServerClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rserverClusterArgs)(nil)).Elem()
+}
+
+type RServerClusterInput interface {
+	pulumi.Input
+
+	ToRServerClusterOutput() RServerClusterOutput
+	ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput
+}
+
+func (RServerCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*RServerCluster)(nil)).Elem()
+}
+
+func (i RServerCluster) ToRServerClusterOutput() RServerClusterOutput {
+	return i.ToRServerClusterOutputWithContext(context.Background())
+}
+
+func (i RServerCluster) ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterOutput)
+}
+
+type RServerClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (RServerClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RServerClusterOutput)(nil)).Elem()
+}
+
+func (o RServerClusterOutput) ToRServerClusterOutput() RServerClusterOutput {
+	return o
+}
+
+func (o RServerClusterOutput) ToRServerClusterOutputWithContext(ctx context.Context) RServerClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RServerClusterOutput{})
 }

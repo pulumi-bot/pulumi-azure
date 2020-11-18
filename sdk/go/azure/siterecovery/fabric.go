@@ -4,6 +4,7 @@
 package siterecovery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,14 +75,15 @@ type Fabric struct {
 // NewFabric registers a new resource with the given unique name, arguments, and options.
 func NewFabric(ctx *pulumi.Context,
 	name string, args *FabricArgs, opts ...pulumi.ResourceOption) (*Fabric, error) {
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &FabricArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Fabric
 	err := ctx.RegisterResource("azure:siterecovery/fabric:Fabric", name, args, &resource, opts...)
@@ -155,4 +157,43 @@ type FabricArgs struct {
 
 func (FabricArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fabricArgs)(nil)).Elem()
+}
+
+type FabricInput interface {
+	pulumi.Input
+
+	ToFabricOutput() FabricOutput
+	ToFabricOutputWithContext(ctx context.Context) FabricOutput
+}
+
+func (Fabric) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fabric)(nil)).Elem()
+}
+
+func (i Fabric) ToFabricOutput() FabricOutput {
+	return i.ToFabricOutputWithContext(context.Background())
+}
+
+func (i Fabric) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FabricOutput)
+}
+
+type FabricOutput struct {
+	*pulumi.OutputState
+}
+
+func (FabricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FabricOutput)(nil)).Elem()
+}
+
+func (o FabricOutput) ToFabricOutput() FabricOutput {
+	return o
+}
+
+func (o FabricOutput) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FabricOutput{})
 }

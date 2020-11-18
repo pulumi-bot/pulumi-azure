@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,29 +98,30 @@ type OutputServiceBusQueue struct {
 // NewOutputServiceBusQueue registers a new resource with the given unique name, arguments, and options.
 func NewOutputServiceBusQueue(ctx *pulumi.Context,
 	name string, args *OutputServiceBusQueueArgs, opts ...pulumi.ResourceOption) (*OutputServiceBusQueue, error) {
-	if args == nil || args.QueueName == nil {
-		return nil, errors.New("missing required argument 'QueueName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Serialization == nil {
-		return nil, errors.New("missing required argument 'Serialization'")
-	}
-	if args == nil || args.ServicebusNamespace == nil {
-		return nil, errors.New("missing required argument 'ServicebusNamespace'")
-	}
-	if args == nil || args.SharedAccessPolicyKey == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyKey'")
-	}
-	if args == nil || args.SharedAccessPolicyName == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyName'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
 	if args == nil {
-		args = &OutputServiceBusQueueArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.QueueName == nil {
+		return nil, errors.New("invalid value for required argument 'QueueName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Serialization == nil {
+		return nil, errors.New("invalid value for required argument 'Serialization'")
+	}
+	if args.ServicebusNamespace == nil {
+		return nil, errors.New("invalid value for required argument 'ServicebusNamespace'")
+	}
+	if args.SharedAccessPolicyKey == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyKey'")
+	}
+	if args.SharedAccessPolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyName'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
 	}
 	var resource OutputServiceBusQueue
 	err := ctx.RegisterResource("azure:streamanalytics/outputServiceBusQueue:OutputServiceBusQueue", name, args, &resource, opts...)
@@ -225,4 +227,43 @@ type OutputServiceBusQueueArgs struct {
 
 func (OutputServiceBusQueueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outputServiceBusQueueArgs)(nil)).Elem()
+}
+
+type OutputServiceBusQueueInput interface {
+	pulumi.Input
+
+	ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput
+	ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput
+}
+
+func (OutputServiceBusQueue) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputServiceBusQueue)(nil)).Elem()
+}
+
+func (i OutputServiceBusQueue) ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput {
+	return i.ToOutputServiceBusQueueOutputWithContext(context.Background())
+}
+
+func (i OutputServiceBusQueue) ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueOutput)
+}
+
+type OutputServiceBusQueueOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputServiceBusQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputServiceBusQueueOutput)(nil)).Elem()
+}
+
+func (o OutputServiceBusQueueOutput) ToOutputServiceBusQueueOutput() OutputServiceBusQueueOutput {
+	return o
+}
+
+func (o OutputServiceBusQueueOutput) ToOutputServiceBusQueueOutputWithContext(ctx context.Context) OutputServiceBusQueueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutputServiceBusQueueOutput{})
 }

@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,17 +77,18 @@ type LinkedServiceSqlServer struct {
 // NewLinkedServiceSqlServer registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceSqlServer(ctx *pulumi.Context,
 	name string, args *LinkedServiceSqlServerArgs, opts ...pulumi.ResourceOption) (*LinkedServiceSqlServer, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceSqlServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceSqlServer
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer", name, args, &resource, opts...)
@@ -200,4 +202,43 @@ type LinkedServiceSqlServerArgs struct {
 
 func (LinkedServiceSqlServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceSqlServerArgs)(nil)).Elem()
+}
+
+type LinkedServiceSqlServerInput interface {
+	pulumi.Input
+
+	ToLinkedServiceSqlServerOutput() LinkedServiceSqlServerOutput
+	ToLinkedServiceSqlServerOutputWithContext(ctx context.Context) LinkedServiceSqlServerOutput
+}
+
+func (LinkedServiceSqlServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSqlServer)(nil)).Elem()
+}
+
+func (i LinkedServiceSqlServer) ToLinkedServiceSqlServerOutput() LinkedServiceSqlServerOutput {
+	return i.ToLinkedServiceSqlServerOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceSqlServer) ToLinkedServiceSqlServerOutputWithContext(ctx context.Context) LinkedServiceSqlServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSqlServerOutput)
+}
+
+type LinkedServiceSqlServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceSqlServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSqlServerOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceSqlServerOutput) ToLinkedServiceSqlServerOutput() LinkedServiceSqlServerOutput {
+	return o
+}
+
+func (o LinkedServiceSqlServerOutput) ToLinkedServiceSqlServerOutputWithContext(ctx context.Context) LinkedServiceSqlServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceSqlServerOutput{})
 }

@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,20 +82,21 @@ type LinkedStorageAccount struct {
 // NewLinkedStorageAccount registers a new resource with the given unique name, arguments, and options.
 func NewLinkedStorageAccount(ctx *pulumi.Context,
 	name string, args *LinkedStorageAccountArgs, opts ...pulumi.ResourceOption) (*LinkedStorageAccount, error) {
-	if args == nil || args.DataSourceType == nil {
-		return nil, errors.New("missing required argument 'DataSourceType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageAccountIds == nil {
-		return nil, errors.New("missing required argument 'StorageAccountIds'")
-	}
-	if args == nil || args.WorkspaceResourceId == nil {
-		return nil, errors.New("missing required argument 'WorkspaceResourceId'")
-	}
 	if args == nil {
-		args = &LinkedStorageAccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataSourceType == nil {
+		return nil, errors.New("invalid value for required argument 'DataSourceType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageAccountIds == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountIds'")
+	}
+	if args.WorkspaceResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceResourceId'")
 	}
 	var resource LinkedStorageAccount
 	err := ctx.RegisterResource("azure:loganalytics/linkedStorageAccount:LinkedStorageAccount", name, args, &resource, opts...)
@@ -168,4 +170,43 @@ type LinkedStorageAccountArgs struct {
 
 func (LinkedStorageAccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedStorageAccountArgs)(nil)).Elem()
+}
+
+type LinkedStorageAccountInput interface {
+	pulumi.Input
+
+	ToLinkedStorageAccountOutput() LinkedStorageAccountOutput
+	ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput
+}
+
+func (LinkedStorageAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedStorageAccount)(nil)).Elem()
+}
+
+func (i LinkedStorageAccount) ToLinkedStorageAccountOutput() LinkedStorageAccountOutput {
+	return i.ToLinkedStorageAccountOutputWithContext(context.Background())
+}
+
+func (i LinkedStorageAccount) ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedStorageAccountOutput)
+}
+
+type LinkedStorageAccountOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedStorageAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedStorageAccountOutput)(nil)).Elem()
+}
+
+func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutput() LinkedStorageAccountOutput {
+	return o
+}
+
+func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedStorageAccountOutput{})
 }

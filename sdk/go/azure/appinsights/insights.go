@@ -4,6 +4,7 @@
 package appinsights
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,14 +82,15 @@ type Insights struct {
 // NewInsights registers a new resource with the given unique name, arguments, and options.
 func NewInsights(ctx *pulumi.Context,
 	name string, args *InsightsArgs, opts ...pulumi.ResourceOption) (*Insights, error) {
-	if args == nil || args.ApplicationType == nil {
-		return nil, errors.New("missing required argument 'ApplicationType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &InsightsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationType == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Insights
 	err := ctx.RegisterResource("azure:appinsights/insights:Insights", name, args, &resource, opts...)
@@ -230,4 +232,43 @@ type InsightsArgs struct {
 
 func (InsightsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*insightsArgs)(nil)).Elem()
+}
+
+type InsightsInput interface {
+	pulumi.Input
+
+	ToInsightsOutput() InsightsOutput
+	ToInsightsOutputWithContext(ctx context.Context) InsightsOutput
+}
+
+func (Insights) ElementType() reflect.Type {
+	return reflect.TypeOf((*Insights)(nil)).Elem()
+}
+
+func (i Insights) ToInsightsOutput() InsightsOutput {
+	return i.ToInsightsOutputWithContext(context.Background())
+}
+
+func (i Insights) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsOutput)
+}
+
+type InsightsOutput struct {
+	*pulumi.OutputState
+}
+
+func (InsightsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsOutput)(nil)).Elem()
+}
+
+func (o InsightsOutput) ToInsightsOutput() InsightsOutput {
+	return o
+}
+
+func (o InsightsOutput) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InsightsOutput{})
 }

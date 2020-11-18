@@ -4,6 +4,7 @@
 package securitycenter
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -51,14 +52,15 @@ type Setting struct {
 // NewSetting registers a new resource with the given unique name, arguments, and options.
 func NewSetting(ctx *pulumi.Context,
 	name string, args *SettingArgs, opts ...pulumi.ResourceOption) (*Setting, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.SettingName == nil {
-		return nil, errors.New("missing required argument 'SettingName'")
-	}
 	if args == nil {
-		args = &SettingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.SettingName == nil {
+		return nil, errors.New("invalid value for required argument 'SettingName'")
 	}
 	var resource Setting
 	err := ctx.RegisterResource("azure:securitycenter/setting:Setting", name, args, &resource, opts...)
@@ -116,4 +118,43 @@ type SettingArgs struct {
 
 func (SettingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingArgs)(nil)).Elem()
+}
+
+type SettingInput interface {
+	pulumi.Input
+
+	ToSettingOutput() SettingOutput
+	ToSettingOutputWithContext(ctx context.Context) SettingOutput
+}
+
+func (Setting) ElementType() reflect.Type {
+	return reflect.TypeOf((*Setting)(nil)).Elem()
+}
+
+func (i Setting) ToSettingOutput() SettingOutput {
+	return i.ToSettingOutputWithContext(context.Background())
+}
+
+func (i Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
+}
+
+type SettingOutput struct {
+	*pulumi.OutputState
+}
+
+func (SettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingOutput)(nil)).Elem()
+}
+
+func (o SettingOutput) ToSettingOutput() SettingOutput {
+	return o
+}
+
+func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SettingOutput{})
 }

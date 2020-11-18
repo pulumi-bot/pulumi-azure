@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -141,17 +142,18 @@ type ManagedDisk struct {
 // NewManagedDisk registers a new resource with the given unique name, arguments, and options.
 func NewManagedDisk(ctx *pulumi.Context,
 	name string, args *ManagedDiskArgs, opts ...pulumi.ResourceOption) (*ManagedDisk, error) {
-	if args == nil || args.CreateOption == nil {
-		return nil, errors.New("missing required argument 'CreateOption'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageAccountType == nil {
-		return nil, errors.New("missing required argument 'StorageAccountType'")
-	}
 	if args == nil {
-		args = &ManagedDiskArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CreateOption == nil {
+		return nil, errors.New("invalid value for required argument 'CreateOption'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageAccountType == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountType'")
 	}
 	var resource ManagedDisk
 	err := ctx.RegisterResource("azure:compute/managedDisk:ManagedDisk", name, args, &resource, opts...)
@@ -329,4 +331,43 @@ type ManagedDiskArgs struct {
 
 func (ManagedDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedDiskArgs)(nil)).Elem()
+}
+
+type ManagedDiskInput interface {
+	pulumi.Input
+
+	ToManagedDiskOutput() ManagedDiskOutput
+	ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput
+}
+
+func (ManagedDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDisk)(nil)).Elem()
+}
+
+func (i ManagedDisk) ToManagedDiskOutput() ManagedDiskOutput {
+	return i.ToManagedDiskOutputWithContext(context.Background())
+}
+
+func (i ManagedDisk) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskOutput)
+}
+
+type ManagedDiskOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskOutput)(nil)).Elem()
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutput() ManagedDiskOutput {
+	return o
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedDiskOutput{})
 }

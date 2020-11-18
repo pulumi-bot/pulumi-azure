@@ -4,6 +4,7 @@
 package postgresql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,23 +78,24 @@ type ActiveDirectoryAdministrator struct {
 // NewActiveDirectoryAdministrator registers a new resource with the given unique name, arguments, and options.
 func NewActiveDirectoryAdministrator(ctx *pulumi.Context,
 	name string, args *ActiveDirectoryAdministratorArgs, opts ...pulumi.ResourceOption) (*ActiveDirectoryAdministrator, error) {
-	if args == nil || args.Login == nil {
-		return nil, errors.New("missing required argument 'Login'")
-	}
-	if args == nil || args.ObjectId == nil {
-		return nil, errors.New("missing required argument 'ObjectId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
-	if args == nil || args.TenantId == nil {
-		return nil, errors.New("missing required argument 'TenantId'")
-	}
 	if args == nil {
-		args = &ActiveDirectoryAdministratorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Login == nil {
+		return nil, errors.New("invalid value for required argument 'Login'")
+	}
+	if args.ObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
+	}
+	if args.TenantId == nil {
+		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	var resource ActiveDirectoryAdministrator
 	err := ctx.RegisterResource("azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator", name, args, &resource, opts...)
@@ -175,4 +177,43 @@ type ActiveDirectoryAdministratorArgs struct {
 
 func (ActiveDirectoryAdministratorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*activeDirectoryAdministratorArgs)(nil)).Elem()
+}
+
+type ActiveDirectoryAdministratorInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryAdministratorOutput() ActiveDirectoryAdministratorOutput
+	ToActiveDirectoryAdministratorOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorOutput
+}
+
+func (ActiveDirectoryAdministrator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryAdministrator)(nil)).Elem()
+}
+
+func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorOutput() ActiveDirectoryAdministratorOutput {
+	return i.ToActiveDirectoryAdministratorOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryAdministratorOutput)
+}
+
+type ActiveDirectoryAdministratorOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveDirectoryAdministratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDirectoryAdministratorOutput)(nil)).Elem()
+}
+
+func (o ActiveDirectoryAdministratorOutput) ToActiveDirectoryAdministratorOutput() ActiveDirectoryAdministratorOutput {
+	return o
+}
+
+func (o ActiveDirectoryAdministratorOutput) ToActiveDirectoryAdministratorOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActiveDirectoryAdministratorOutput{})
 }
