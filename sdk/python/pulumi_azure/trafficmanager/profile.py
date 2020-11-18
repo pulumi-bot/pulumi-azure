@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['Profile']
 
-warnings.warn("azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile", DeprecationWarning)
+warnings.warn("""azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile""", DeprecationWarning)
 
 
 class Profile(pulumi.CustomResource):
-    warnings.warn("azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile", DeprecationWarning)
+    warnings.warn("""azure.trafficmanager.Profile has been deprecated in favor of azure.network.TrafficManagerProfile""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

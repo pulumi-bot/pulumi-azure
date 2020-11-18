@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,32 +98,33 @@ type AuthorizationServer struct {
 // NewAuthorizationServer registers a new resource with the given unique name, arguments, and options.
 func NewAuthorizationServer(ctx *pulumi.Context,
 	name string, args *AuthorizationServerArgs, opts ...pulumi.ResourceOption) (*AuthorizationServer, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.AuthorizationEndpoint == nil {
-		return nil, errors.New("missing required argument 'AuthorizationEndpoint'")
-	}
-	if args == nil || args.AuthorizationMethods == nil {
-		return nil, errors.New("missing required argument 'AuthorizationMethods'")
-	}
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClientRegistrationEndpoint == nil {
-		return nil, errors.New("missing required argument 'ClientRegistrationEndpoint'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.GrantTypes == nil {
-		return nil, errors.New("missing required argument 'GrantTypes'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AuthorizationServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.AuthorizationEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'AuthorizationEndpoint'")
+	}
+	if args.AuthorizationMethods == nil {
+		return nil, errors.New("invalid value for required argument 'AuthorizationMethods'")
+	}
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientRegistrationEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'ClientRegistrationEndpoint'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.GrantTypes == nil {
+		return nil, errors.New("invalid value for required argument 'GrantTypes'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource AuthorizationServer
 	err := ctx.RegisterResource("azure:apimanagement/authorizationServer:AuthorizationServer", name, args, &resource, opts...)
@@ -316,4 +318,43 @@ type AuthorizationServerArgs struct {
 
 func (AuthorizationServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationServerArgs)(nil)).Elem()
+}
+
+type AuthorizationServerInput interface {
+	pulumi.Input
+
+	ToAuthorizationServerOutput() AuthorizationServerOutput
+	ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput
+}
+
+func (AuthorizationServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationServer)(nil)).Elem()
+}
+
+func (i AuthorizationServer) ToAuthorizationServerOutput() AuthorizationServerOutput {
+	return i.ToAuthorizationServerOutputWithContext(context.Background())
+}
+
+func (i AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationServerOutput)
+}
+
+type AuthorizationServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizationServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationServerOutput)(nil)).Elem()
+}
+
+func (o AuthorizationServerOutput) ToAuthorizationServerOutput() AuthorizationServerOutput {
+	return o
+}
+
+func (o AuthorizationServerOutput) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthorizationServerOutput{})
 }

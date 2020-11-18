@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Topic']
 
-warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
+warnings.warn("""azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic""", DeprecationWarning)
 
 
 class Topic(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic", DeprecationWarning)
+    warnings.warn("""azure.eventhub.Topic has been deprecated in favor of azure.servicebus.Topic""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -108,23 +109,24 @@ type GremlinGraph struct {
 // NewGremlinGraph registers a new resource with the given unique name, arguments, and options.
 func NewGremlinGraph(ctx *pulumi.Context,
 	name string, args *GremlinGraphArgs, opts ...pulumi.ResourceOption) (*GremlinGraph, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.ConflictResolutionPolicies == nil {
-		return nil, errors.New("missing required argument 'ConflictResolutionPolicies'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.IndexPolicies == nil {
-		return nil, errors.New("missing required argument 'IndexPolicies'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &GremlinGraphArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.ConflictResolutionPolicies == nil {
+		return nil, errors.New("invalid value for required argument 'ConflictResolutionPolicies'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.IndexPolicies == nil {
+		return nil, errors.New("invalid value for required argument 'IndexPolicies'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource GremlinGraph
 	err := ctx.RegisterResource("azure:cosmosdb/gremlinGraph:GremlinGraph", name, args, &resource, opts...)
@@ -246,4 +248,43 @@ type GremlinGraphArgs struct {
 
 func (GremlinGraphArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gremlinGraphArgs)(nil)).Elem()
+}
+
+type GremlinGraphInput interface {
+	pulumi.Input
+
+	ToGremlinGraphOutput() GremlinGraphOutput
+	ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput
+}
+
+func (GremlinGraph) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinGraph)(nil)).Elem()
+}
+
+func (i GremlinGraph) ToGremlinGraphOutput() GremlinGraphOutput {
+	return i.ToGremlinGraphOutputWithContext(context.Background())
+}
+
+func (i GremlinGraph) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphOutput)
+}
+
+type GremlinGraphOutput struct {
+	*pulumi.OutputState
+}
+
+func (GremlinGraphOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinGraphOutput)(nil)).Elem()
+}
+
+func (o GremlinGraphOutput) ToGremlinGraphOutput() GremlinGraphOutput {
+	return o
+}
+
+func (o GremlinGraphOutput) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GremlinGraphOutput{})
 }

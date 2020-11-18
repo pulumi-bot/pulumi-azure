@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -162,14 +163,15 @@ type ActionGroup struct {
 // NewActionGroup registers a new resource with the given unique name, arguments, and options.
 func NewActionGroup(ctx *pulumi.Context,
 	name string, args *ActionGroupArgs, opts ...pulumi.ResourceOption) (*ActionGroup, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ShortName == nil {
-		return nil, errors.New("missing required argument 'ShortName'")
-	}
 	if args == nil {
-		args = &ActionGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ShortName == nil {
+		return nil, errors.New("invalid value for required argument 'ShortName'")
 	}
 	var resource ActionGroup
 	err := ctx.RegisterResource("azure:monitoring/actionGroup:ActionGroup", name, args, &resource, opts...)
@@ -331,4 +333,43 @@ type ActionGroupArgs struct {
 
 func (ActionGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionGroupArgs)(nil)).Elem()
+}
+
+type ActionGroupInput interface {
+	pulumi.Input
+
+	ToActionGroupOutput() ActionGroupOutput
+	ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput
+}
+
+func (ActionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGroup)(nil)).Elem()
+}
+
+func (i ActionGroup) ToActionGroupOutput() ActionGroupOutput {
+	return i.ToActionGroupOutputWithContext(context.Background())
+}
+
+func (i ActionGroup) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupOutput)
+}
+
+type ActionGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGroupOutput)(nil)).Elem()
+}
+
+func (o ActionGroupOutput) ToActionGroupOutput() ActionGroupOutput {
+	return o
+}
+
+func (o ActionGroupOutput) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionGroupOutput{})
 }

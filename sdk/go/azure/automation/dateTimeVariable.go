@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,14 +32,15 @@ type DateTimeVariable struct {
 // NewDateTimeVariable registers a new resource with the given unique name, arguments, and options.
 func NewDateTimeVariable(ctx *pulumi.Context,
 	name string, args *DateTimeVariableArgs, opts ...pulumi.ResourceOption) (*DateTimeVariable, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DateTimeVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DateTimeVariable
 	err := ctx.RegisterResource("azure:automation/dateTimeVariable:DateTimeVariable", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type DateTimeVariableArgs struct {
 
 func (DateTimeVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dateTimeVariableArgs)(nil)).Elem()
+}
+
+type DateTimeVariableInput interface {
+	pulumi.Input
+
+	ToDateTimeVariableOutput() DateTimeVariableOutput
+	ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput
+}
+
+func (DateTimeVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateTimeVariable)(nil)).Elem()
+}
+
+func (i DateTimeVariable) ToDateTimeVariableOutput() DateTimeVariableOutput {
+	return i.ToDateTimeVariableOutputWithContext(context.Background())
+}
+
+func (i DateTimeVariable) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateTimeVariableOutput)
+}
+
+type DateTimeVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (DateTimeVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateTimeVariableOutput)(nil)).Elem()
+}
+
+func (o DateTimeVariableOutput) ToDateTimeVariableOutput() DateTimeVariableOutput {
+	return o
+}
+
+func (o DateTimeVariableOutput) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DateTimeVariableOutput{})
 }

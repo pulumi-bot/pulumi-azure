@@ -4,6 +4,7 @@
 package notificationhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,17 +90,18 @@ type AuthorizationRule struct {
 // NewAuthorizationRule registers a new resource with the given unique name, arguments, and options.
 func NewAuthorizationRule(ctx *pulumi.Context,
 	name string, args *AuthorizationRuleArgs, opts ...pulumi.ResourceOption) (*AuthorizationRule, error) {
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.NotificationHubName == nil {
-		return nil, errors.New("missing required argument 'NotificationHubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AuthorizationRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.NotificationHubName == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationHubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource AuthorizationRule
 	err := ctx.RegisterResource("azure:notificationhub/authorizationRule:AuthorizationRule", name, args, &resource, opts...)
@@ -205,4 +207,43 @@ type AuthorizationRuleArgs struct {
 
 func (AuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationRuleArgs)(nil)).Elem()
+}
+
+type AuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToAuthorizationRuleOutput() AuthorizationRuleOutput
+	ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput
+}
+
+func (AuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationRule)(nil)).Elem()
+}
+
+func (i AuthorizationRule) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
+	return i.ToAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i AuthorizationRule) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationRuleOutput)
+}
+
+type AuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o AuthorizationRuleOutput) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
+	return o
+}
+
+func (o AuthorizationRuleOutput) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthorizationRuleOutput{})
 }

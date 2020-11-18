@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -75,14 +76,15 @@ type LocalNetworkGateway struct {
 // NewLocalNetworkGateway registers a new resource with the given unique name, arguments, and options.
 func NewLocalNetworkGateway(ctx *pulumi.Context,
 	name string, args *LocalNetworkGatewayArgs, opts ...pulumi.ResourceOption) (*LocalNetworkGateway, error) {
-	if args == nil || args.AddressSpaces == nil {
-		return nil, errors.New("missing required argument 'AddressSpaces'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LocalNetworkGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AddressSpaces == nil {
+		return nil, errors.New("invalid value for required argument 'AddressSpaces'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LocalNetworkGateway
 	err := ctx.RegisterResource("azure:network/localNetworkGateway:LocalNetworkGateway", name, args, &resource, opts...)
@@ -208,4 +210,43 @@ type LocalNetworkGatewayArgs struct {
 
 func (LocalNetworkGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*localNetworkGatewayArgs)(nil)).Elem()
+}
+
+type LocalNetworkGatewayInput interface {
+	pulumi.Input
+
+	ToLocalNetworkGatewayOutput() LocalNetworkGatewayOutput
+	ToLocalNetworkGatewayOutputWithContext(ctx context.Context) LocalNetworkGatewayOutput
+}
+
+func (LocalNetworkGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalNetworkGateway)(nil)).Elem()
+}
+
+func (i LocalNetworkGateway) ToLocalNetworkGatewayOutput() LocalNetworkGatewayOutput {
+	return i.ToLocalNetworkGatewayOutputWithContext(context.Background())
+}
+
+func (i LocalNetworkGateway) ToLocalNetworkGatewayOutputWithContext(ctx context.Context) LocalNetworkGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNetworkGatewayOutput)
+}
+
+type LocalNetworkGatewayOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocalNetworkGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalNetworkGatewayOutput)(nil)).Elem()
+}
+
+func (o LocalNetworkGatewayOutput) ToLocalNetworkGatewayOutput() LocalNetworkGatewayOutput {
+	return o
+}
+
+func (o LocalNetworkGatewayOutput) ToLocalNetworkGatewayOutputWithContext(ctx context.Context) LocalNetworkGatewayOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocalNetworkGatewayOutput{})
 }

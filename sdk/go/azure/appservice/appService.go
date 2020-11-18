@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,14 +125,15 @@ type AppService struct {
 // NewAppService registers a new resource with the given unique name, arguments, and options.
 func NewAppService(ctx *pulumi.Context,
 	name string, args *AppServiceArgs, opts ...pulumi.ResourceOption) (*AppService, error) {
-	if args == nil || args.AppServicePlanId == nil {
-		return nil, errors.New("missing required argument 'AppServicePlanId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AppServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppServicePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServicePlanId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource AppService
 	err := ctx.RegisterResource("azure:appservice/appService:AppService", name, args, &resource, opts...)
@@ -333,4 +335,43 @@ type AppServiceArgs struct {
 
 func (AppServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appServiceArgs)(nil)).Elem()
+}
+
+type AppServiceInput interface {
+	pulumi.Input
+
+	ToAppServiceOutput() AppServiceOutput
+	ToAppServiceOutputWithContext(ctx context.Context) AppServiceOutput
+}
+
+func (AppService) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppService)(nil)).Elem()
+}
+
+func (i AppService) ToAppServiceOutput() AppServiceOutput {
+	return i.ToAppServiceOutputWithContext(context.Background())
+}
+
+func (i AppService) ToAppServiceOutputWithContext(ctx context.Context) AppServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceOutput)
+}
+
+type AppServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServiceOutput)(nil)).Elem()
+}
+
+func (o AppServiceOutput) ToAppServiceOutput() AppServiceOutput {
+	return o
+}
+
+func (o AppServiceOutput) ToAppServiceOutputWithContext(ctx context.Context) AppServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppServiceOutput{})
 }

@@ -4,6 +4,7 @@
 package cosmosdb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,14 +61,15 @@ type MongoDatabase struct {
 // NewMongoDatabase registers a new resource with the given unique name, arguments, and options.
 func NewMongoDatabase(ctx *pulumi.Context,
 	name string, args *MongoDatabaseArgs, opts ...pulumi.ResourceOption) (*MongoDatabase, error) {
-	if args == nil || args.AccountName == nil {
-		return nil, errors.New("missing required argument 'AccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &MongoDatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource MongoDatabase
 	err := ctx.RegisterResource("azure:cosmosdb/mongoDatabase:MongoDatabase", name, args, &resource, opts...)
@@ -145,4 +147,43 @@ type MongoDatabaseArgs struct {
 
 func (MongoDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongoDatabaseArgs)(nil)).Elem()
+}
+
+type MongoDatabaseInput interface {
+	pulumi.Input
+
+	ToMongoDatabaseOutput() MongoDatabaseOutput
+	ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput
+}
+
+func (MongoDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoDatabase)(nil)).Elem()
+}
+
+func (i MongoDatabase) ToMongoDatabaseOutput() MongoDatabaseOutput {
+	return i.ToMongoDatabaseOutputWithContext(context.Background())
+}
+
+func (i MongoDatabase) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseOutput)
+}
+
+type MongoDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoDatabaseOutput)(nil)).Elem()
+}
+
+func (o MongoDatabaseOutput) ToMongoDatabaseOutput() MongoDatabaseOutput {
+	return o
+}
+
+func (o MongoDatabaseOutput) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MongoDatabaseOutput{})
 }

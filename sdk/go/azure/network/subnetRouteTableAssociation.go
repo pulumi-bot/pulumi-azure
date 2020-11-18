@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -89,14 +90,15 @@ type SubnetRouteTableAssociation struct {
 // NewSubnetRouteTableAssociation registers a new resource with the given unique name, arguments, and options.
 func NewSubnetRouteTableAssociation(ctx *pulumi.Context,
 	name string, args *SubnetRouteTableAssociationArgs, opts ...pulumi.ResourceOption) (*SubnetRouteTableAssociation, error) {
-	if args == nil || args.RouteTableId == nil {
-		return nil, errors.New("missing required argument 'RouteTableId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &SubnetRouteTableAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RouteTableId == nil {
+		return nil, errors.New("invalid value for required argument 'RouteTableId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource SubnetRouteTableAssociation
 	err := ctx.RegisterResource("azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation", name, args, &resource, opts...)
@@ -154,4 +156,43 @@ type SubnetRouteTableAssociationArgs struct {
 
 func (SubnetRouteTableAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetRouteTableAssociationArgs)(nil)).Elem()
+}
+
+type SubnetRouteTableAssociationInput interface {
+	pulumi.Input
+
+	ToSubnetRouteTableAssociationOutput() SubnetRouteTableAssociationOutput
+	ToSubnetRouteTableAssociationOutputWithContext(ctx context.Context) SubnetRouteTableAssociationOutput
+}
+
+func (SubnetRouteTableAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetRouteTableAssociation)(nil)).Elem()
+}
+
+func (i SubnetRouteTableAssociation) ToSubnetRouteTableAssociationOutput() SubnetRouteTableAssociationOutput {
+	return i.ToSubnetRouteTableAssociationOutputWithContext(context.Background())
+}
+
+func (i SubnetRouteTableAssociation) ToSubnetRouteTableAssociationOutputWithContext(ctx context.Context) SubnetRouteTableAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteTableAssociationOutput)
+}
+
+type SubnetRouteTableAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetRouteTableAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetRouteTableAssociationOutput)(nil)).Elem()
+}
+
+func (o SubnetRouteTableAssociationOutput) ToSubnetRouteTableAssociationOutput() SubnetRouteTableAssociationOutput {
+	return o
+}
+
+func (o SubnetRouteTableAssociationOutput) ToSubnetRouteTableAssociationOutputWithContext(ctx context.Context) SubnetRouteTableAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetRouteTableAssociationOutput{})
 }

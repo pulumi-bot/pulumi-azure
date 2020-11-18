@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,17 +73,18 @@ type ActionHttp struct {
 // NewActionHttp registers a new resource with the given unique name, arguments, and options.
 func NewActionHttp(ctx *pulumi.Context,
 	name string, args *ActionHttpArgs, opts ...pulumi.ResourceOption) (*ActionHttp, error) {
-	if args == nil || args.LogicAppId == nil {
-		return nil, errors.New("missing required argument 'LogicAppId'")
-	}
-	if args == nil || args.Method == nil {
-		return nil, errors.New("missing required argument 'Method'")
-	}
-	if args == nil || args.Uri == nil {
-		return nil, errors.New("missing required argument 'Uri'")
-	}
 	if args == nil {
-		args = &ActionHttpArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LogicAppId == nil {
+		return nil, errors.New("invalid value for required argument 'LogicAppId'")
+	}
+	if args.Method == nil {
+		return nil, errors.New("invalid value for required argument 'Method'")
+	}
+	if args.Uri == nil {
+		return nil, errors.New("invalid value for required argument 'Uri'")
 	}
 	var resource ActionHttp
 	err := ctx.RegisterResource("azure:logicapps/actionHttp:ActionHttp", name, args, &resource, opts...)
@@ -180,4 +182,43 @@ type ActionHttpArgs struct {
 
 func (ActionHttpArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionHttpArgs)(nil)).Elem()
+}
+
+type ActionHttpInput interface {
+	pulumi.Input
+
+	ToActionHttpOutput() ActionHttpOutput
+	ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput
+}
+
+func (ActionHttp) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionHttp)(nil)).Elem()
+}
+
+func (i ActionHttp) ToActionHttpOutput() ActionHttpOutput {
+	return i.ToActionHttpOutputWithContext(context.Background())
+}
+
+func (i ActionHttp) ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionHttpOutput)
+}
+
+type ActionHttpOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionHttpOutput)(nil)).Elem()
+}
+
+func (o ActionHttpOutput) ToActionHttpOutput() ActionHttpOutput {
+	return o
+}
+
+func (o ActionHttpOutput) ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionHttpOutput{})
 }

@@ -4,6 +4,7 @@
 package keyvault
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,14 +36,15 @@ type Secret struct {
 // NewSecret registers a new resource with the given unique name, arguments, and options.
 func NewSecret(ctx *pulumi.Context,
 	name string, args *SecretArgs, opts ...pulumi.ResourceOption) (*Secret, error) {
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &SecretArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource Secret
 	err := ctx.RegisterResource("azure:keyvault/secret:Secret", name, args, &resource, opts...)
@@ -144,4 +146,43 @@ type SecretArgs struct {
 
 func (SecretArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretArgs)(nil)).Elem()
+}
+
+type SecretInput interface {
+	pulumi.Input
+
+	ToSecretOutput() SecretOutput
+	ToSecretOutputWithContext(ctx context.Context) SecretOutput
+}
+
+func (Secret) ElementType() reflect.Type {
+	return reflect.TypeOf((*Secret)(nil)).Elem()
+}
+
+func (i Secret) ToSecretOutput() SecretOutput {
+	return i.ToSecretOutputWithContext(context.Background())
+}
+
+func (i Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
+}
+
+type SecretOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretOutput)(nil)).Elem()
+}
+
+func (o SecretOutput) ToSecretOutput() SecretOutput {
+	return o
+}
+
+func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretOutput{})
 }

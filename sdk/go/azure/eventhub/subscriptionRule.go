@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -171,23 +172,24 @@ type SubscriptionRule struct {
 // NewSubscriptionRule registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionRule(ctx *pulumi.Context,
 	name string, args *SubscriptionRuleArgs, opts ...pulumi.ResourceOption) (*SubscriptionRule, error) {
-	if args == nil || args.FilterType == nil {
-		return nil, errors.New("missing required argument 'FilterType'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubscriptionName == nil {
-		return nil, errors.New("missing required argument 'SubscriptionName'")
-	}
-	if args == nil || args.TopicName == nil {
-		return nil, errors.New("missing required argument 'TopicName'")
-	}
 	if args == nil {
-		args = &SubscriptionRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FilterType == nil {
+		return nil, errors.New("invalid value for required argument 'FilterType'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubscriptionName == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionName'")
+	}
+	if args.TopicName == nil {
+		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
 	var resource SubscriptionRule
 	err := ctx.RegisterResource("azure:eventhub/subscriptionRule:SubscriptionRule", name, args, &resource, opts...)
@@ -301,4 +303,43 @@ type SubscriptionRuleArgs struct {
 
 func (SubscriptionRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionRuleArgs)(nil)).Elem()
+}
+
+type SubscriptionRuleInput interface {
+	pulumi.Input
+
+	ToSubscriptionRuleOutput() SubscriptionRuleOutput
+	ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput
+}
+
+func (SubscriptionRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRule)(nil)).Elem()
+}
+
+func (i SubscriptionRule) ToSubscriptionRuleOutput() SubscriptionRuleOutput {
+	return i.ToSubscriptionRuleOutputWithContext(context.Background())
+}
+
+func (i SubscriptionRule) ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleOutput)
+}
+
+type SubscriptionRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionRuleOutput)(nil)).Elem()
+}
+
+func (o SubscriptionRuleOutput) ToSubscriptionRuleOutput() SubscriptionRuleOutput {
+	return o
+}
+
+func (o SubscriptionRuleOutput) ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubscriptionRuleOutput{})
 }

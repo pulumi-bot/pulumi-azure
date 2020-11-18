@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,17 +82,18 @@ type LinkedServiceAzureBlobStorage struct {
 // NewLinkedServiceAzureBlobStorage registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceAzureBlobStorage(ctx *pulumi.Context,
 	name string, args *LinkedServiceAzureBlobStorageArgs, opts ...pulumi.ResourceOption) (*LinkedServiceAzureBlobStorage, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceAzureBlobStorageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceAzureBlobStorage
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage", name, args, &resource, opts...)
@@ -205,4 +207,43 @@ type LinkedServiceAzureBlobStorageArgs struct {
 
 func (LinkedServiceAzureBlobStorageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureBlobStorageArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureBlobStorageInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureBlobStorageOutput() LinkedServiceAzureBlobStorageOutput
+	ToLinkedServiceAzureBlobStorageOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStorageOutput
+}
+
+func (LinkedServiceAzureBlobStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureBlobStorage)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStorageOutput() LinkedServiceAzureBlobStorageOutput {
+	return i.ToLinkedServiceAzureBlobStorageOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStorageOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureBlobStorageOutput)
+}
+
+type LinkedServiceAzureBlobStorageOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureBlobStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureBlobStorageOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureBlobStorageOutput) ToLinkedServiceAzureBlobStorageOutput() LinkedServiceAzureBlobStorageOutput {
+	return o
+}
+
+func (o LinkedServiceAzureBlobStorageOutput) ToLinkedServiceAzureBlobStorageOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStorageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureBlobStorageOutput{})
 }

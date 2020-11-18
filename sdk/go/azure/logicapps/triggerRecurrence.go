@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,17 +71,18 @@ type TriggerRecurrence struct {
 // NewTriggerRecurrence registers a new resource with the given unique name, arguments, and options.
 func NewTriggerRecurrence(ctx *pulumi.Context,
 	name string, args *TriggerRecurrenceArgs, opts ...pulumi.ResourceOption) (*TriggerRecurrence, error) {
-	if args == nil || args.Frequency == nil {
-		return nil, errors.New("missing required argument 'Frequency'")
-	}
-	if args == nil || args.Interval == nil {
-		return nil, errors.New("missing required argument 'Interval'")
-	}
-	if args == nil || args.LogicAppId == nil {
-		return nil, errors.New("missing required argument 'LogicAppId'")
-	}
 	if args == nil {
-		args = &TriggerRecurrenceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Frequency == nil {
+		return nil, errors.New("invalid value for required argument 'Frequency'")
+	}
+	if args.Interval == nil {
+		return nil, errors.New("invalid value for required argument 'Interval'")
+	}
+	if args.LogicAppId == nil {
+		return nil, errors.New("invalid value for required argument 'LogicAppId'")
 	}
 	var resource TriggerRecurrence
 	err := ctx.RegisterResource("azure:logicapps/triggerRecurrence:TriggerRecurrence", name, args, &resource, opts...)
@@ -170,4 +172,43 @@ type TriggerRecurrenceArgs struct {
 
 func (TriggerRecurrenceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerRecurrenceArgs)(nil)).Elem()
+}
+
+type TriggerRecurrenceInput interface {
+	pulumi.Input
+
+	ToTriggerRecurrenceOutput() TriggerRecurrenceOutput
+	ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput
+}
+
+func (TriggerRecurrence) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRecurrence)(nil)).Elem()
+}
+
+func (i TriggerRecurrence) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
+	return i.ToTriggerRecurrenceOutputWithContext(context.Background())
+}
+
+func (i TriggerRecurrence) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRecurrenceOutput)
+}
+
+type TriggerRecurrenceOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRecurrenceOutput)(nil)).Elem()
+}
+
+func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
+	return o
+}
+
+func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerRecurrenceOutput{})
 }
