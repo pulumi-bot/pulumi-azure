@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,17 +78,18 @@ type EventhubNamespaceDisasterRecoveryConfig struct {
 // NewEventhubNamespaceDisasterRecoveryConfig registers a new resource with the given unique name, arguments, and options.
 func NewEventhubNamespaceDisasterRecoveryConfig(ctx *pulumi.Context,
 	name string, args *EventhubNamespaceDisasterRecoveryConfigArgs, opts ...pulumi.ResourceOption) (*EventhubNamespaceDisasterRecoveryConfig, error) {
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.PartnerNamespaceId == nil {
-		return nil, errors.New("missing required argument 'PartnerNamespaceId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EventhubNamespaceDisasterRecoveryConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.PartnerNamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'PartnerNamespaceId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EventhubNamespaceDisasterRecoveryConfig
 	err := ctx.RegisterResource("azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig", name, args, &resource, opts...)
@@ -169,4 +171,43 @@ type EventhubNamespaceDisasterRecoveryConfigArgs struct {
 
 func (EventhubNamespaceDisasterRecoveryConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventhubNamespaceDisasterRecoveryConfigArgs)(nil)).Elem()
+}
+
+type EventhubNamespaceDisasterRecoveryConfigInput interface {
+	pulumi.Input
+
+	ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput
+	ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput
+}
+
+func (EventhubNamespaceDisasterRecoveryConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubNamespaceDisasterRecoveryConfig)(nil)).Elem()
+}
+
+func (i EventhubNamespaceDisasterRecoveryConfig) ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput {
+	return i.ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i EventhubNamespaceDisasterRecoveryConfig) ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventhubNamespaceDisasterRecoveryConfigOutput)
+}
+
+type EventhubNamespaceDisasterRecoveryConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventhubNamespaceDisasterRecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubNamespaceDisasterRecoveryConfigOutput)(nil)).Elem()
+}
+
+func (o EventhubNamespaceDisasterRecoveryConfigOutput) ToEventhubNamespaceDisasterRecoveryConfigOutput() EventhubNamespaceDisasterRecoveryConfigOutput {
+	return o
+}
+
+func (o EventhubNamespaceDisasterRecoveryConfigOutput) ToEventhubNamespaceDisasterRecoveryConfigOutputWithContext(ctx context.Context) EventhubNamespaceDisasterRecoveryConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventhubNamespaceDisasterRecoveryConfigOutput{})
 }

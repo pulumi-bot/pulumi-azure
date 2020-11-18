@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,20 +83,21 @@ type ProtectedVM struct {
 // NewProtectedVM registers a new resource with the given unique name, arguments, and options.
 func NewProtectedVM(ctx *pulumi.Context,
 	name string, args *ProtectedVMArgs, opts ...pulumi.ResourceOption) (*ProtectedVM, error) {
-	if args == nil || args.BackupPolicyId == nil {
-		return nil, errors.New("missing required argument 'BackupPolicyId'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SourceVmId == nil {
-		return nil, errors.New("missing required argument 'SourceVmId'")
-	}
 	if args == nil {
-		args = &ProtectedVMArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackupPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupPolicyId'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SourceVmId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceVmId'")
 	}
 	var resource ProtectedVM
 	err := ctx.RegisterResource("azure:backup/protectedVM:ProtectedVM", name, args, &resource, opts...)
@@ -177,4 +179,43 @@ type ProtectedVMArgs struct {
 
 func (ProtectedVMArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectedVMArgs)(nil)).Elem()
+}
+
+type ProtectedVMInput interface {
+	pulumi.Input
+
+	ToProtectedVMOutput() ProtectedVMOutput
+	ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput
+}
+
+func (ProtectedVM) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedVM)(nil)).Elem()
+}
+
+func (i ProtectedVM) ToProtectedVMOutput() ProtectedVMOutput {
+	return i.ToProtectedVMOutputWithContext(context.Background())
+}
+
+func (i ProtectedVM) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedVMOutput)
+}
+
+type ProtectedVMOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedVMOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedVMOutput)(nil)).Elem()
+}
+
+func (o ProtectedVMOutput) ToProtectedVMOutput() ProtectedVMOutput {
+	return o
+}
+
+func (o ProtectedVMOutput) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProtectedVMOutput{})
 }

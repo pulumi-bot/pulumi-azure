@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,17 +118,18 @@ type DatasetDelimitedText struct {
 // NewDatasetDelimitedText registers a new resource with the given unique name, arguments, and options.
 func NewDatasetDelimitedText(ctx *pulumi.Context,
 	name string, args *DatasetDelimitedTextArgs, opts ...pulumi.ResourceOption) (*DatasetDelimitedText, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetDelimitedTextArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetDelimitedText
 	err := ctx.RegisterResource("azure:datafactory/datasetDelimitedText:DatasetDelimitedText", name, args, &resource, opts...)
@@ -321,4 +323,43 @@ type DatasetDelimitedTextArgs struct {
 
 func (DatasetDelimitedTextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetDelimitedTextArgs)(nil)).Elem()
+}
+
+type DatasetDelimitedTextInput interface {
+	pulumi.Input
+
+	ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput
+	ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput
+}
+
+func (DatasetDelimitedText) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDelimitedText)(nil)).Elem()
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
+	return i.ToDatasetDelimitedTextOutputWithContext(context.Background())
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextOutput)
+}
+
+type DatasetDelimitedTextOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDelimitedTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDelimitedTextOutput)(nil)).Elem()
+}
+
+func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
+	return o
+}
+
+func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetDelimitedTextOutput{})
 }

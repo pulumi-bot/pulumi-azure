@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -151,14 +152,15 @@ type FirewallPolicyRuleCollectionGroup struct {
 // NewFirewallPolicyRuleCollectionGroup registers a new resource with the given unique name, arguments, and options.
 func NewFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context,
 	name string, args *FirewallPolicyRuleCollectionGroupArgs, opts ...pulumi.ResourceOption) (*FirewallPolicyRuleCollectionGroup, error) {
-	if args == nil || args.FirewallPolicyId == nil {
-		return nil, errors.New("missing required argument 'FirewallPolicyId'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
 	if args == nil {
-		args = &FirewallPolicyRuleCollectionGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FirewallPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'FirewallPolicyId'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
 	var resource FirewallPolicyRuleCollectionGroup
 	err := ctx.RegisterResource("azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup", name, args, &resource, opts...)
@@ -248,4 +250,43 @@ type FirewallPolicyRuleCollectionGroupArgs struct {
 
 func (FirewallPolicyRuleCollectionGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallPolicyRuleCollectionGroupArgs)(nil)).Elem()
+}
+
+type FirewallPolicyRuleCollectionGroupInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput
+	ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput
+}
+
+func (FirewallPolicyRuleCollectionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
+	return i.ToFirewallPolicyRuleCollectionGroupOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleCollectionGroupOutput)
+}
+
+type FirewallPolicyRuleCollectionGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallPolicyRuleCollectionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroupOutput)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallPolicyRuleCollectionGroupOutput{})
 }

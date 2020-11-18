@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,17 +77,18 @@ type LinkedServiceMysql struct {
 // NewLinkedServiceMysql registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceMysql(ctx *pulumi.Context,
 	name string, args *LinkedServiceMysqlArgs, opts ...pulumi.ResourceOption) (*LinkedServiceMysql, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceMysqlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceMysql
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceMysql:LinkedServiceMysql", name, args, &resource, opts...)
@@ -200,4 +202,43 @@ type LinkedServiceMysqlArgs struct {
 
 func (LinkedServiceMysqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceMysqlArgs)(nil)).Elem()
+}
+
+type LinkedServiceMysqlInput interface {
+	pulumi.Input
+
+	ToLinkedServiceMysqlOutput() LinkedServiceMysqlOutput
+	ToLinkedServiceMysqlOutputWithContext(ctx context.Context) LinkedServiceMysqlOutput
+}
+
+func (LinkedServiceMysql) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceMysql)(nil)).Elem()
+}
+
+func (i LinkedServiceMysql) ToLinkedServiceMysqlOutput() LinkedServiceMysqlOutput {
+	return i.ToLinkedServiceMysqlOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceMysql) ToLinkedServiceMysqlOutputWithContext(ctx context.Context) LinkedServiceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceMysqlOutput)
+}
+
+type LinkedServiceMysqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceMysqlOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceMysqlOutput) ToLinkedServiceMysqlOutput() LinkedServiceMysqlOutput {
+	return o
+}
+
+func (o LinkedServiceMysqlOutput) ToLinkedServiceMysqlOutputWithContext(ctx context.Context) LinkedServiceMysqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceMysqlOutput{})
 }

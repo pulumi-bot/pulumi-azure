@@ -4,6 +4,7 @@
 package management
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -131,14 +132,15 @@ type Lock struct {
 // NewLock registers a new resource with the given unique name, arguments, and options.
 func NewLock(ctx *pulumi.Context,
 	name string, args *LockArgs, opts ...pulumi.ResourceOption) (*Lock, error) {
-	if args == nil || args.LockLevel == nil {
-		return nil, errors.New("missing required argument 'LockLevel'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
 	if args == nil {
-		args = &LockArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LockLevel == nil {
+		return nil, errors.New("invalid value for required argument 'LockLevel'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -218,4 +220,43 @@ type LockArgs struct {
 
 func (LockArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lockArgs)(nil)).Elem()
+}
+
+type LockInput interface {
+	pulumi.Input
+
+	ToLockOutput() LockOutput
+	ToLockOutputWithContext(ctx context.Context) LockOutput
+}
+
+func (Lock) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lock)(nil)).Elem()
+}
+
+func (i Lock) ToLockOutput() LockOutput {
+	return i.ToLockOutputWithContext(context.Background())
+}
+
+func (i Lock) ToLockOutputWithContext(ctx context.Context) LockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LockOutput)
+}
+
+type LockOutput struct {
+	*pulumi.OutputState
+}
+
+func (LockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LockOutput)(nil)).Elem()
+}
+
+func (o LockOutput) ToLockOutput() LockOutput {
+	return o
+}
+
+func (o LockOutput) ToLockOutputWithContext(ctx context.Context) LockOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LockOutput{})
 }

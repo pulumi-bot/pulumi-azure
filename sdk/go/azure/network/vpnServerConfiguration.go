@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -83,14 +84,15 @@ type VpnServerConfiguration struct {
 // NewVpnServerConfiguration registers a new resource with the given unique name, arguments, and options.
 func NewVpnServerConfiguration(ctx *pulumi.Context,
 	name string, args *VpnServerConfigurationArgs, opts ...pulumi.ResourceOption) (*VpnServerConfiguration, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VpnAuthenticationTypes == nil {
-		return nil, errors.New("missing required argument 'VpnAuthenticationTypes'")
-	}
 	if args == nil {
-		args = &VpnServerConfigurationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VpnAuthenticationTypes == nil {
+		return nil, errors.New("invalid value for required argument 'VpnAuthenticationTypes'")
 	}
 	var resource VpnServerConfiguration
 	err := ctx.RegisterResource("azure:network/vpnServerConfiguration:VpnServerConfiguration", name, args, &resource, opts...)
@@ -220,4 +222,43 @@ type VpnServerConfigurationArgs struct {
 
 func (VpnServerConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnServerConfigurationArgs)(nil)).Elem()
+}
+
+type VpnServerConfigurationInput interface {
+	pulumi.Input
+
+	ToVpnServerConfigurationOutput() VpnServerConfigurationOutput
+	ToVpnServerConfigurationOutputWithContext(ctx context.Context) VpnServerConfigurationOutput
+}
+
+func (VpnServerConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnServerConfiguration)(nil)).Elem()
+}
+
+func (i VpnServerConfiguration) ToVpnServerConfigurationOutput() VpnServerConfigurationOutput {
+	return i.ToVpnServerConfigurationOutputWithContext(context.Background())
+}
+
+func (i VpnServerConfiguration) ToVpnServerConfigurationOutputWithContext(ctx context.Context) VpnServerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationOutput)
+}
+
+type VpnServerConfigurationOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnServerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnServerConfigurationOutput)(nil)).Elem()
+}
+
+func (o VpnServerConfigurationOutput) ToVpnServerConfigurationOutput() VpnServerConfigurationOutput {
+	return o
+}
+
+func (o VpnServerConfigurationOutput) ToVpnServerConfigurationOutputWithContext(ctx context.Context) VpnServerConfigurationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VpnServerConfigurationOutput{})
 }

@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,17 +28,18 @@ type CustomerManagedKey struct {
 // NewCustomerManagedKey registers a new resource with the given unique name, arguments, and options.
 func NewCustomerManagedKey(ctx *pulumi.Context,
 	name string, args *CustomerManagedKeyArgs, opts ...pulumi.ResourceOption) (*CustomerManagedKey, error) {
-	if args == nil || args.KeyName == nil {
-		return nil, errors.New("missing required argument 'KeyName'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.StorageAccountId == nil {
-		return nil, errors.New("missing required argument 'StorageAccountId'")
-	}
 	if args == nil {
-		args = &CustomerManagedKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyName == nil {
+		return nil, errors.New("invalid value for required argument 'KeyName'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.StorageAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountId'")
 	}
 	var resource CustomerManagedKey
 	err := ctx.RegisterResource("azure:storage/customerManagedKey:CustomerManagedKey", name, args, &resource, opts...)
@@ -111,4 +113,43 @@ type CustomerManagedKeyArgs struct {
 
 func (CustomerManagedKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customerManagedKeyArgs)(nil)).Elem()
+}
+
+type CustomerManagedKeyInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyOutput() CustomerManagedKeyOutput
+	ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput
+}
+
+func (CustomerManagedKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKey)(nil)).Elem()
+}
+
+func (i CustomerManagedKey) ToCustomerManagedKeyOutput() CustomerManagedKeyOutput {
+	return i.ToCustomerManagedKeyOutputWithContext(context.Background())
+}
+
+func (i CustomerManagedKey) ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyOutput)
+}
+
+type CustomerManagedKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomerManagedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyOutput)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyOutput) ToCustomerManagedKeyOutput() CustomerManagedKeyOutput {
+	return o
+}
+
+func (o CustomerManagedKeyOutput) ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomerManagedKeyOutput{})
 }

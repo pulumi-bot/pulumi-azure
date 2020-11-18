@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,14 +66,15 @@ type ActionCustom struct {
 // NewActionCustom registers a new resource with the given unique name, arguments, and options.
 func NewActionCustom(ctx *pulumi.Context,
 	name string, args *ActionCustomArgs, opts ...pulumi.ResourceOption) (*ActionCustom, error) {
-	if args == nil || args.Body == nil {
-		return nil, errors.New("missing required argument 'Body'")
-	}
-	if args == nil || args.LogicAppId == nil {
-		return nil, errors.New("missing required argument 'LogicAppId'")
-	}
 	if args == nil {
-		args = &ActionCustomArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Body == nil {
+		return nil, errors.New("invalid value for required argument 'Body'")
+	}
+	if args.LogicAppId == nil {
+		return nil, errors.New("invalid value for required argument 'LogicAppId'")
 	}
 	var resource ActionCustom
 	err := ctx.RegisterResource("azure:logicapps/actionCustom:ActionCustom", name, args, &resource, opts...)
@@ -138,4 +140,43 @@ type ActionCustomArgs struct {
 
 func (ActionCustomArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionCustomArgs)(nil)).Elem()
+}
+
+type ActionCustomInput interface {
+	pulumi.Input
+
+	ToActionCustomOutput() ActionCustomOutput
+	ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput
+}
+
+func (ActionCustom) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionCustom)(nil)).Elem()
+}
+
+func (i ActionCustom) ToActionCustomOutput() ActionCustomOutput {
+	return i.ToActionCustomOutputWithContext(context.Background())
+}
+
+func (i ActionCustom) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionCustomOutput)
+}
+
+type ActionCustomOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionCustomOutput)(nil)).Elem()
+}
+
+func (o ActionCustomOutput) ToActionCustomOutput() ActionCustomOutput {
+	return o
+}
+
+func (o ActionCustomOutput) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ActionCustomOutput{})
 }

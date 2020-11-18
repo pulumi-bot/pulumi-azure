@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,20 +98,21 @@ type SharedImage struct {
 // NewSharedImage registers a new resource with the given unique name, arguments, and options.
 func NewSharedImage(ctx *pulumi.Context,
 	name string, args *SharedImageArgs, opts ...pulumi.ResourceOption) (*SharedImage, error) {
-	if args == nil || args.GalleryName == nil {
-		return nil, errors.New("missing required argument 'GalleryName'")
-	}
-	if args == nil || args.Identifier == nil {
-		return nil, errors.New("missing required argument 'Identifier'")
-	}
-	if args == nil || args.OsType == nil {
-		return nil, errors.New("missing required argument 'OsType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SharedImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GalleryName == nil {
+		return nil, errors.New("invalid value for required argument 'GalleryName'")
+	}
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.OsType == nil {
+		return nil, errors.New("invalid value for required argument 'OsType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SharedImage
 	err := ctx.RegisterResource("azure:compute/sharedImage:SharedImage", name, args, &resource, opts...)
@@ -264,4 +266,43 @@ type SharedImageArgs struct {
 
 func (SharedImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedImageArgs)(nil)).Elem()
+}
+
+type SharedImageInput interface {
+	pulumi.Input
+
+	ToSharedImageOutput() SharedImageOutput
+	ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput
+}
+
+func (SharedImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImage)(nil)).Elem()
+}
+
+func (i SharedImage) ToSharedImageOutput() SharedImageOutput {
+	return i.ToSharedImageOutputWithContext(context.Background())
+}
+
+func (i SharedImage) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageOutput)
+}
+
+type SharedImageOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageOutput)(nil)).Elem()
+}
+
+func (o SharedImageOutput) ToSharedImageOutput() SharedImageOutput {
+	return o
+}
+
+func (o SharedImageOutput) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedImageOutput{})
 }

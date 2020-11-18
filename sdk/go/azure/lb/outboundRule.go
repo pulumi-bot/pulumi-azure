@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -106,20 +107,21 @@ type OutboundRule struct {
 // NewOutboundRule registers a new resource with the given unique name, arguments, and options.
 func NewOutboundRule(ctx *pulumi.Context,
 	name string, args *OutboundRuleArgs, opts ...pulumi.ResourceOption) (*OutboundRule, error) {
-	if args == nil || args.BackendAddressPoolId == nil {
-		return nil, errors.New("missing required argument 'BackendAddressPoolId'")
-	}
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &OutboundRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendAddressPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'BackendAddressPoolId'")
+	}
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource OutboundRule
 	err := ctx.RegisterResource("azure:lb/outboundRule:OutboundRule", name, args, &resource, opts...)
@@ -233,4 +235,43 @@ type OutboundRuleArgs struct {
 
 func (OutboundRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*outboundRuleArgs)(nil)).Elem()
+}
+
+type OutboundRuleInput interface {
+	pulumi.Input
+
+	ToOutboundRuleOutput() OutboundRuleOutput
+	ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput
+}
+
+func (OutboundRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundRule)(nil)).Elem()
+}
+
+func (i OutboundRule) ToOutboundRuleOutput() OutboundRuleOutput {
+	return i.ToOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i OutboundRule) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleOutput)
+}
+
+type OutboundRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundRuleOutput)(nil)).Elem()
+}
+
+func (o OutboundRuleOutput) ToOutboundRuleOutput() OutboundRuleOutput {
+	return o
+}
+
+func (o OutboundRuleOutput) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OutboundRuleOutput{})
 }

@@ -4,6 +4,7 @@
 package authorization
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -65,11 +66,12 @@ type UserAssignedIdentity struct {
 // NewUserAssignedIdentity registers a new resource with the given unique name, arguments, and options.
 func NewUserAssignedIdentity(ctx *pulumi.Context,
 	name string, args *UserAssignedIdentityArgs, opts ...pulumi.ResourceOption) (*UserAssignedIdentity, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &UserAssignedIdentityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -169,4 +171,43 @@ type UserAssignedIdentityArgs struct {
 
 func (UserAssignedIdentityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAssignedIdentityArgs)(nil)).Elem()
+}
+
+type UserAssignedIdentityInput interface {
+	pulumi.Input
+
+	ToUserAssignedIdentityOutput() UserAssignedIdentityOutput
+	ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput
+}
+
+func (UserAssignedIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentity)(nil)).Elem()
+}
+
+func (i UserAssignedIdentity) ToUserAssignedIdentityOutput() UserAssignedIdentityOutput {
+	return i.ToUserAssignedIdentityOutputWithContext(context.Background())
+}
+
+func (i UserAssignedIdentity) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
+}
+
+type UserAssignedIdentityOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserAssignedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityOutput)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedIdentityOutput {
+	return o
+}
+
+func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserAssignedIdentityOutput{})
 }
