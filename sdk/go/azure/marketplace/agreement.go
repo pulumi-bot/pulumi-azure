@@ -4,6 +4,7 @@
 package marketplace
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,17 +53,18 @@ type Agreement struct {
 // NewAgreement registers a new resource with the given unique name, arguments, and options.
 func NewAgreement(ctx *pulumi.Context,
 	name string, args *AgreementArgs, opts ...pulumi.ResourceOption) (*Agreement, error) {
-	if args == nil || args.Offer == nil {
-		return nil, errors.New("missing required argument 'Offer'")
-	}
-	if args == nil || args.Plan == nil {
-		return nil, errors.New("missing required argument 'Plan'")
-	}
-	if args == nil || args.Publisher == nil {
-		return nil, errors.New("missing required argument 'Publisher'")
-	}
 	if args == nil {
-		args = &AgreementArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Offer == nil {
+		return nil, errors.New("invalid value for required argument 'Offer'")
+	}
+	if args.Plan == nil {
+		return nil, errors.New("invalid value for required argument 'Plan'")
+	}
+	if args.Publisher == nil {
+		return nil, errors.New("invalid value for required argument 'Publisher'")
 	}
 	var resource Agreement
 	err := ctx.RegisterResource("azure:marketplace/agreement:Agreement", name, args, &resource, opts...)
@@ -132,4 +134,43 @@ type AgreementArgs struct {
 
 func (AgreementArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*agreementArgs)(nil)).Elem()
+}
+
+type AgreementInput interface {
+	pulumi.Input
+
+	ToAgreementOutput() AgreementOutput
+	ToAgreementOutputWithContext(ctx context.Context) AgreementOutput
+}
+
+func (Agreement) ElementType() reflect.Type {
+	return reflect.TypeOf((*Agreement)(nil)).Elem()
+}
+
+func (i Agreement) ToAgreementOutput() AgreementOutput {
+	return i.ToAgreementOutputWithContext(context.Background())
+}
+
+func (i Agreement) ToAgreementOutputWithContext(ctx context.Context) AgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgreementOutput)
+}
+
+type AgreementOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgreementOutput)(nil)).Elem()
+}
+
+func (o AgreementOutput) ToAgreementOutput() AgreementOutput {
+	return o
+}
+
+func (o AgreementOutput) ToAgreementOutputWithContext(ctx context.Context) AgreementOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AgreementOutput{})
 }

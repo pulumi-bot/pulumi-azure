@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -131,14 +132,15 @@ type MetricAlert struct {
 // NewMetricAlert registers a new resource with the given unique name, arguments, and options.
 func NewMetricAlert(ctx *pulumi.Context,
 	name string, args *MetricAlertArgs, opts ...pulumi.ResourceOption) (*MetricAlert, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Scopes == nil {
-		return nil, errors.New("missing required argument 'Scopes'")
-	}
 	if args == nil {
-		args = &MetricAlertArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	var resource MetricAlert
 	err := ctx.RegisterResource("azure:monitoring/metricAlert:MetricAlert", name, args, &resource, opts...)
@@ -308,4 +310,43 @@ type MetricAlertArgs struct {
 
 func (MetricAlertArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricAlertArgs)(nil)).Elem()
+}
+
+type MetricAlertInput interface {
+	pulumi.Input
+
+	ToMetricAlertOutput() MetricAlertOutput
+	ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput
+}
+
+func (MetricAlert) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlert)(nil)).Elem()
+}
+
+func (i MetricAlert) ToMetricAlertOutput() MetricAlertOutput {
+	return i.ToMetricAlertOutputWithContext(context.Background())
+}
+
+func (i MetricAlert) ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertOutput)
+}
+
+type MetricAlertOutput struct {
+	*pulumi.OutputState
+}
+
+func (MetricAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertOutput)(nil)).Elem()
+}
+
+func (o MetricAlertOutput) ToMetricAlertOutput() MetricAlertOutput {
+	return o
+}
+
+func (o MetricAlertOutput) ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MetricAlertOutput{})
 }

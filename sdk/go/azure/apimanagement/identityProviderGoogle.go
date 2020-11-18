@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -70,20 +71,21 @@ type IdentityProviderGoogle struct {
 // NewIdentityProviderGoogle registers a new resource with the given unique name, arguments, and options.
 func NewIdentityProviderGoogle(ctx *pulumi.Context,
 	name string, args *IdentityProviderGoogleArgs, opts ...pulumi.ResourceOption) (*IdentityProviderGoogle, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClientSecret == nil {
-		return nil, errors.New("missing required argument 'ClientSecret'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IdentityProviderGoogleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ClientSecret'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IdentityProviderGoogle
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type IdentityProviderGoogleArgs struct {
 
 func (IdentityProviderGoogleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderGoogleArgs)(nil)).Elem()
+}
+
+type IdentityProviderGoogleInput interface {
+	pulumi.Input
+
+	ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput
+	ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput
+}
+
+func (IdentityProviderGoogle) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderGoogle)(nil)).Elem()
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput {
+	return i.ToIdentityProviderGoogleOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderGoogleOutput)
+}
+
+type IdentityProviderGoogleOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderGoogleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderGoogleOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderGoogleOutput) ToIdentityProviderGoogleOutput() IdentityProviderGoogleOutput {
+	return o
+}
+
+func (o IdentityProviderGoogleOutput) ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderGoogleOutput{})
 }

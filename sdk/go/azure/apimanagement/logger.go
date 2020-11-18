@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -86,14 +87,15 @@ type Logger struct {
 // NewLogger registers a new resource with the given unique name, arguments, and options.
 func NewLogger(ctx *pulumi.Context,
 	name string, args *LoggerArgs, opts ...pulumi.ResourceOption) (*Logger, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LoggerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Logger
 	err := ctx.RegisterResource("azure:apimanagement/logger:Logger", name, args, &resource, opts...)
@@ -191,4 +193,43 @@ type LoggerArgs struct {
 
 func (LoggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loggerArgs)(nil)).Elem()
+}
+
+type LoggerInput interface {
+	pulumi.Input
+
+	ToLoggerOutput() LoggerOutput
+	ToLoggerOutputWithContext(ctx context.Context) LoggerOutput
+}
+
+func (Logger) ElementType() reflect.Type {
+	return reflect.TypeOf((*Logger)(nil)).Elem()
+}
+
+func (i Logger) ToLoggerOutput() LoggerOutput {
+	return i.ToLoggerOutputWithContext(context.Background())
+}
+
+func (i Logger) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerOutput)
+}
+
+type LoggerOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggerOutput)(nil)).Elem()
+}
+
+func (o LoggerOutput) ToLoggerOutput() LoggerOutput {
+	return o
+}
+
+func (o LoggerOutput) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LoggerOutput{})
 }

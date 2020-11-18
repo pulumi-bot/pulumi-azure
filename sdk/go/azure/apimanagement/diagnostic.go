@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -91,20 +92,21 @@ type Diagnostic struct {
 // NewDiagnostic registers a new resource with the given unique name, arguments, and options.
 func NewDiagnostic(ctx *pulumi.Context,
 	name string, args *DiagnosticArgs, opts ...pulumi.ResourceOption) (*Diagnostic, error) {
-	if args == nil || args.ApiManagementLoggerId == nil {
-		return nil, errors.New("missing required argument 'ApiManagementLoggerId'")
-	}
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.Identifier == nil {
-		return nil, errors.New("missing required argument 'Identifier'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DiagnosticArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementLoggerId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementLoggerId'")
+	}
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Diagnostic
 	err := ctx.RegisterResource("azure:apimanagement/diagnostic:Diagnostic", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type DiagnosticArgs struct {
 
 func (DiagnosticArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*diagnosticArgs)(nil)).Elem()
+}
+
+type DiagnosticInput interface {
+	pulumi.Input
+
+	ToDiagnosticOutput() DiagnosticOutput
+	ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput
+}
+
+func (Diagnostic) ElementType() reflect.Type {
+	return reflect.TypeOf((*Diagnostic)(nil)).Elem()
+}
+
+func (i Diagnostic) ToDiagnosticOutput() DiagnosticOutput {
+	return i.ToDiagnosticOutputWithContext(context.Background())
+}
+
+func (i Diagnostic) ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticOutput)
+}
+
+type DiagnosticOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiagnosticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticOutput)(nil)).Elem()
+}
+
+func (o DiagnosticOutput) ToDiagnosticOutput() DiagnosticOutput {
+	return o
+}
+
+func (o DiagnosticOutput) ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DiagnosticOutput{})
 }

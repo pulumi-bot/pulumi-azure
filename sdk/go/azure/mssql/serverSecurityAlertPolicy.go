@@ -4,6 +4,7 @@
 package mssql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -99,17 +100,18 @@ type ServerSecurityAlertPolicy struct {
 // NewServerSecurityAlertPolicy registers a new resource with the given unique name, arguments, and options.
 func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 	name string, args *ServerSecurityAlertPolicyArgs, opts ...pulumi.ResourceOption) (*ServerSecurityAlertPolicy, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
-	if args == nil || args.State == nil {
-		return nil, errors.New("missing required argument 'State'")
-	}
 	if args == nil {
-		args = &ServerSecurityAlertPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
+	}
+	if args.State == nil {
+		return nil, errors.New("invalid value for required argument 'State'")
 	}
 	var resource ServerSecurityAlertPolicy
 	err := ctx.RegisterResource("azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy", name, args, &resource, opts...)
@@ -223,4 +225,43 @@ type ServerSecurityAlertPolicyArgs struct {
 
 func (ServerSecurityAlertPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverSecurityAlertPolicyArgs)(nil)).Elem()
+}
+
+type ServerSecurityAlertPolicyInput interface {
+	pulumi.Input
+
+	ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput
+	ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput
+}
+
+func (ServerSecurityAlertPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil)).Elem()
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
+	return i.ToServerSecurityAlertPolicyOutputWithContext(context.Background())
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyOutput)
+}
+
+type ServerSecurityAlertPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerSecurityAlertPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerSecurityAlertPolicyOutput)(nil)).Elem()
+}
+
+func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
+	return o
+}
+
+func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerSecurityAlertPolicyOutput{})
 }

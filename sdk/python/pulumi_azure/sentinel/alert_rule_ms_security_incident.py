@@ -93,7 +93,7 @@ class AlertRuleMsSecurityIncident(pulumi.CustomResource):
                 raise TypeError("Missing required property 'severity_filters'")
             __props__['severity_filters'] = severity_filters
             if text_whitelists is not None:
-                warnings.warn("this property has been renamed to display_name_filter to better match the SDK & API", DeprecationWarning)
+                warnings.warn("""this property has been renamed to display_name_filter to better match the SDK & API""", DeprecationWarning)
                 pulumi.log.warn("text_whitelists is deprecated: this property has been renamed to display_name_filter to better match the SDK & API")
             __props__['text_whitelists'] = text_whitelists
         super(AlertRuleMsSecurityIncident, __self__).__init__(

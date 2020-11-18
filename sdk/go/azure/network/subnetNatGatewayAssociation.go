@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -81,14 +82,15 @@ type SubnetNatGatewayAssociation struct {
 // NewSubnetNatGatewayAssociation registers a new resource with the given unique name, arguments, and options.
 func NewSubnetNatGatewayAssociation(ctx *pulumi.Context,
 	name string, args *SubnetNatGatewayAssociationArgs, opts ...pulumi.ResourceOption) (*SubnetNatGatewayAssociation, error) {
-	if args == nil || args.NatGatewayId == nil {
-		return nil, errors.New("missing required argument 'NatGatewayId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &SubnetNatGatewayAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NatGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'NatGatewayId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource SubnetNatGatewayAssociation
 	err := ctx.RegisterResource("azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation", name, args, &resource, opts...)
@@ -146,4 +148,43 @@ type SubnetNatGatewayAssociationArgs struct {
 
 func (SubnetNatGatewayAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetNatGatewayAssociationArgs)(nil)).Elem()
+}
+
+type SubnetNatGatewayAssociationInput interface {
+	pulumi.Input
+
+	ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput
+	ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput
+}
+
+func (SubnetNatGatewayAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNatGatewayAssociation)(nil)).Elem()
+}
+
+func (i SubnetNatGatewayAssociation) ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput {
+	return i.ToSubnetNatGatewayAssociationOutputWithContext(context.Background())
+}
+
+func (i SubnetNatGatewayAssociation) ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetNatGatewayAssociationOutput)
+}
+
+type SubnetNatGatewayAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetNatGatewayAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetNatGatewayAssociationOutput)(nil)).Elem()
+}
+
+func (o SubnetNatGatewayAssociationOutput) ToSubnetNatGatewayAssociationOutput() SubnetNatGatewayAssociationOutput {
+	return o
+}
+
+func (o SubnetNatGatewayAssociationOutput) ToSubnetNatGatewayAssociationOutputWithContext(ctx context.Context) SubnetNatGatewayAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SubnetNatGatewayAssociationOutput{})
 }

@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,11 +91,12 @@ type CertificateOrder struct {
 // NewCertificateOrder registers a new resource with the given unique name, arguments, and options.
 func NewCertificateOrder(ctx *pulumi.Context,
 	name string, args *CertificateOrderArgs, opts ...pulumi.ResourceOption) (*CertificateOrder, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &CertificateOrderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource CertificateOrder
 	err := ctx.RegisterResource("azure:appservice/certificateOrder:CertificateOrder", name, args, &resource, opts...)
@@ -252,4 +254,43 @@ type CertificateOrderArgs struct {
 
 func (CertificateOrderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateOrderArgs)(nil)).Elem()
+}
+
+type CertificateOrderInput interface {
+	pulumi.Input
+
+	ToCertificateOrderOutput() CertificateOrderOutput
+	ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput
+}
+
+func (CertificateOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOrder)(nil)).Elem()
+}
+
+func (i CertificateOrder) ToCertificateOrderOutput() CertificateOrderOutput {
+	return i.ToCertificateOrderOutputWithContext(context.Background())
+}
+
+func (i CertificateOrder) ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOrderOutput)
+}
+
+type CertificateOrderOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOrderOutput)(nil)).Elem()
+}
+
+func (o CertificateOrderOutput) ToCertificateOrderOutput() CertificateOrderOutput {
+	return o
+}
+
+func (o CertificateOrderOutput) ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificateOrderOutput{})
 }
