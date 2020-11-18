@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['Subscription']
 
-warnings.warn("azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription", DeprecationWarning)
+warnings.warn("""azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription""", DeprecationWarning)
 
 
 class Subscription(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription", DeprecationWarning)
+    warnings.warn("""azure.eventhub.Subscription has been deprecated in favor of azure.servicebus.Subscription""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,26 +86,27 @@ type Product struct {
 // NewProduct registers a new resource with the given unique name, arguments, and options.
 func NewProduct(ctx *pulumi.Context,
 	name string, args *ProductArgs, opts ...pulumi.ResourceOption) (*Product, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.ProductId == nil {
-		return nil, errors.New("missing required argument 'ProductId'")
-	}
-	if args == nil || args.Published == nil {
-		return nil, errors.New("missing required argument 'Published'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubscriptionRequired == nil {
-		return nil, errors.New("missing required argument 'SubscriptionRequired'")
-	}
 	if args == nil {
-		args = &ProductArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.ProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductId'")
+	}
+	if args.Published == nil {
+		return nil, errors.New("invalid value for required argument 'Published'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubscriptionRequired == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionRequired'")
 	}
 	var resource Product
 	err := ctx.RegisterResource("azure:apimanagement/product:Product", name, args, &resource, opts...)
@@ -226,4 +228,43 @@ type ProductArgs struct {
 
 func (ProductArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*productArgs)(nil)).Elem()
+}
+
+type ProductInput interface {
+	pulumi.Input
+
+	ToProductOutput() ProductOutput
+	ToProductOutputWithContext(ctx context.Context) ProductOutput
+}
+
+func (Product) ElementType() reflect.Type {
+	return reflect.TypeOf((*Product)(nil)).Elem()
+}
+
+func (i Product) ToProductOutput() ProductOutput {
+	return i.ToProductOutputWithContext(context.Background())
+}
+
+func (i Product) ToProductOutputWithContext(ctx context.Context) ProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
+}
+
+type ProductOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductOutput)(nil)).Elem()
+}
+
+func (o ProductOutput) ToProductOutput() ProductOutput {
+	return o
+}
+
+func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductOutput{})
 }

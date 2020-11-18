@@ -4,6 +4,7 @@
 package backup
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -121,17 +122,18 @@ type PolicyVM struct {
 // NewPolicyVM registers a new resource with the given unique name, arguments, and options.
 func NewPolicyVM(ctx *pulumi.Context,
 	name string, args *PolicyVMArgs, opts ...pulumi.ResourceOption) (*PolicyVM, error) {
-	if args == nil || args.Backup == nil {
-		return nil, errors.New("missing required argument 'Backup'")
-	}
-	if args == nil || args.RecoveryVaultName == nil {
-		return nil, errors.New("missing required argument 'RecoveryVaultName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &PolicyVMArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Backup == nil {
+		return nil, errors.New("invalid value for required argument 'Backup'")
+	}
+	if args.RecoveryVaultName == nil {
+		return nil, errors.New("invalid value for required argument 'RecoveryVaultName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource PolicyVM
 	err := ctx.RegisterResource("azure:backup/policyVM:PolicyVM", name, args, &resource, opts...)
@@ -261,4 +263,43 @@ type PolicyVMArgs struct {
 
 func (PolicyVMArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyVMArgs)(nil)).Elem()
+}
+
+type PolicyVMInput interface {
+	pulumi.Input
+
+	ToPolicyVMOutput() PolicyVMOutput
+	ToPolicyVMOutputWithContext(ctx context.Context) PolicyVMOutput
+}
+
+func (PolicyVM) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyVM)(nil)).Elem()
+}
+
+func (i PolicyVM) ToPolicyVMOutput() PolicyVMOutput {
+	return i.ToPolicyVMOutputWithContext(context.Background())
+}
+
+func (i PolicyVM) ToPolicyVMOutputWithContext(ctx context.Context) PolicyVMOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMOutput)
+}
+
+type PolicyVMOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyVMOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyVMOutput)(nil)).Elem()
+}
+
+func (o PolicyVMOutput) ToPolicyVMOutput() PolicyVMOutput {
+	return o
+}
+
+func (o PolicyVMOutput) ToPolicyVMOutputWithContext(ctx context.Context) PolicyVMOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyVMOutput{})
 }

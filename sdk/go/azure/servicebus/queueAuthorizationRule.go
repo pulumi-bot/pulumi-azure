@@ -4,6 +4,7 @@
 package servicebus
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -95,17 +96,18 @@ type QueueAuthorizationRule struct {
 // NewQueueAuthorizationRule registers a new resource with the given unique name, arguments, and options.
 func NewQueueAuthorizationRule(ctx *pulumi.Context,
 	name string, args *QueueAuthorizationRuleArgs, opts ...pulumi.ResourceOption) (*QueueAuthorizationRule, error) {
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.QueueName == nil {
-		return nil, errors.New("missing required argument 'QueueName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &QueueAuthorizationRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.QueueName == nil {
+		return nil, errors.New("invalid value for required argument 'QueueName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -225,4 +227,43 @@ type QueueAuthorizationRuleArgs struct {
 
 func (QueueAuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueAuthorizationRuleArgs)(nil)).Elem()
+}
+
+type QueueAuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput
+	ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput
+}
+
+func (QueueAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueAuthorizationRule)(nil)).Elem()
+}
+
+func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput {
+	return i.ToQueueAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueAuthorizationRuleOutput)
+}
+
+type QueueAuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueueAuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueAuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutput() QueueAuthorizationRuleOutput {
+	return o
+}
+
+func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QueueAuthorizationRuleOutput{})
 }

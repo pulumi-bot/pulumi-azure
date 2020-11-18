@@ -4,6 +4,7 @@
 package servicebus
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -107,14 +108,15 @@ type NamespaceNetworkRuleSet struct {
 // NewNamespaceNetworkRuleSet registers a new resource with the given unique name, arguments, and options.
 func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 	name string, args *NamespaceNetworkRuleSetArgs, opts ...pulumi.ResourceOption) (*NamespaceNetworkRuleSet, error) {
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &NamespaceNetworkRuleSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource NamespaceNetworkRuleSet
 	err := ctx.RegisterResource("azure:servicebus/namespaceNetworkRuleSet:NamespaceNetworkRuleSet", name, args, &resource, opts...)
@@ -196,4 +198,43 @@ type NamespaceNetworkRuleSetArgs struct {
 
 func (NamespaceNetworkRuleSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceNetworkRuleSetArgs)(nil)).Elem()
+}
+
+type NamespaceNetworkRuleSetInput interface {
+	pulumi.Input
+
+	ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput
+	ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput
+}
+
+func (NamespaceNetworkRuleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceNetworkRuleSet)(nil)).Elem()
+}
+
+func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput {
+	return i.ToNamespaceNetworkRuleSetOutputWithContext(context.Background())
+}
+
+func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceNetworkRuleSetOutput)
+}
+
+type NamespaceNetworkRuleSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceNetworkRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceNetworkRuleSetOutput)(nil)).Elem()
+}
+
+func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutput() NamespaceNetworkRuleSetOutput {
+	return o
+}
+
+func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NamespaceNetworkRuleSetOutput{})
 }

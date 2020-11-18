@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,29 +86,30 @@ type ApiOperation struct {
 // NewApiOperation registers a new resource with the given unique name, arguments, and options.
 func NewApiOperation(ctx *pulumi.Context,
 	name string, args *ApiOperationArgs, opts ...pulumi.ResourceOption) (*ApiOperation, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ApiName == nil {
-		return nil, errors.New("missing required argument 'ApiName'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Method == nil {
-		return nil, errors.New("missing required argument 'Method'")
-	}
-	if args == nil || args.OperationId == nil {
-		return nil, errors.New("missing required argument 'OperationId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.UrlTemplate == nil {
-		return nil, errors.New("missing required argument 'UrlTemplate'")
-	}
 	if args == nil {
-		args = &ApiOperationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ApiName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiName'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Method == nil {
+		return nil, errors.New("invalid value for required argument 'Method'")
+	}
+	if args.OperationId == nil {
+		return nil, errors.New("invalid value for required argument 'OperationId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.UrlTemplate == nil {
+		return nil, errors.New("invalid value for required argument 'UrlTemplate'")
 	}
 	var resource ApiOperation
 	err := ctx.RegisterResource("azure:apimanagement/apiOperation:ApiOperation", name, args, &resource, opts...)
@@ -237,4 +239,43 @@ type ApiOperationArgs struct {
 
 func (ApiOperationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiOperationArgs)(nil)).Elem()
+}
+
+type ApiOperationInput interface {
+	pulumi.Input
+
+	ToApiOperationOutput() ApiOperationOutput
+	ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput
+}
+
+func (ApiOperation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiOperation)(nil)).Elem()
+}
+
+func (i ApiOperation) ToApiOperationOutput() ApiOperationOutput {
+	return i.ToApiOperationOutputWithContext(context.Background())
+}
+
+func (i ApiOperation) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationOutput)
+}
+
+type ApiOperationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiOperationOutput)(nil)).Elem()
+}
+
+func (o ApiOperationOutput) ToApiOperationOutput() ApiOperationOutput {
+	return o
+}
+
+func (o ApiOperationOutput) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiOperationOutput{})
 }

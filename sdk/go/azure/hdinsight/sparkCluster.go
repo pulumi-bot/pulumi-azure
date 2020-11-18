@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,26 +134,27 @@ type SparkCluster struct {
 // NewSparkCluster registers a new resource with the given unique name, arguments, and options.
 func NewSparkCluster(ctx *pulumi.Context,
 	name string, args *SparkClusterArgs, opts ...pulumi.ResourceOption) (*SparkCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.ComponentVersion == nil {
-		return nil, errors.New("missing required argument 'ComponentVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &SparkClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.ComponentVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource SparkCluster
 	err := ctx.RegisterResource("azure:hdinsight/sparkCluster:SparkCluster", name, args, &resource, opts...)
@@ -310,4 +312,43 @@ type SparkClusterArgs struct {
 
 func (SparkClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sparkClusterArgs)(nil)).Elem()
+}
+
+type SparkClusterInput interface {
+	pulumi.Input
+
+	ToSparkClusterOutput() SparkClusterOutput
+	ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput
+}
+
+func (SparkCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkCluster)(nil)).Elem()
+}
+
+func (i SparkCluster) ToSparkClusterOutput() SparkClusterOutput {
+	return i.ToSparkClusterOutputWithContext(context.Background())
+}
+
+func (i SparkCluster) ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterOutput)
+}
+
+type SparkClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (SparkClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkClusterOutput)(nil)).Elem()
+}
+
+func (o SparkClusterOutput) ToSparkClusterOutput() SparkClusterOutput {
+	return o
+}
+
+func (o SparkClusterOutput) ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SparkClusterOutput{})
 }

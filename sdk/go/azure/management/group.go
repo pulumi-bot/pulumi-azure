@@ -4,6 +4,7 @@
 package management
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -74,6 +75,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &GroupArgs{}
 	}
+
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure:managementgroups/managementGroup:ManagementGroup"),
@@ -168,4 +170,43 @@ type GroupArgs struct {
 
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
+}
+
+type GroupInput interface {
+	pulumi.Input
+
+	ToGroupOutput() GroupOutput
+	ToGroupOutputWithContext(ctx context.Context) GroupOutput
+}
+
+func (Group) ElementType() reflect.Type {
+	return reflect.TypeOf((*Group)(nil)).Elem()
+}
+
+func (i Group) ToGroupOutput() GroupOutput {
+	return i.ToGroupOutputWithContext(context.Background())
+}
+
+func (i Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupOutput)
+}
+
+type GroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupOutput)(nil)).Elem()
+}
+
+func (o GroupOutput) ToGroupOutput() GroupOutput {
+	return o
+}
+
+func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupOutput{})
 }

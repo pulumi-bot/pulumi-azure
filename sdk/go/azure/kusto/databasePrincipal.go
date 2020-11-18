@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -104,29 +105,30 @@ type DatabasePrincipal struct {
 // NewDatabasePrincipal registers a new resource with the given unique name, arguments, and options.
 func NewDatabasePrincipal(ctx *pulumi.Context,
 	name string, args *DatabasePrincipalArgs, opts ...pulumi.ResourceOption) (*DatabasePrincipal, error) {
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.ObjectId == nil {
-		return nil, errors.New("missing required argument 'ObjectId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &DatabasePrincipalArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.ObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource DatabasePrincipal
 	err := ctx.RegisterResource("azure:kusto/databasePrincipal:DatabasePrincipal", name, args, &resource, opts...)
@@ -240,4 +242,43 @@ type DatabasePrincipalArgs struct {
 
 func (DatabasePrincipalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databasePrincipalArgs)(nil)).Elem()
+}
+
+type DatabasePrincipalInput interface {
+	pulumi.Input
+
+	ToDatabasePrincipalOutput() DatabasePrincipalOutput
+	ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput
+}
+
+func (DatabasePrincipal) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePrincipal)(nil)).Elem()
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalOutput() DatabasePrincipalOutput {
+	return i.ToDatabasePrincipalOutputWithContext(context.Background())
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePrincipalOutput)
+}
+
+type DatabasePrincipalOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabasePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasePrincipalOutput)(nil)).Elem()
+}
+
+func (o DatabasePrincipalOutput) ToDatabasePrincipalOutput() DatabasePrincipalOutput {
+	return o
+}
+
+func (o DatabasePrincipalOutput) ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabasePrincipalOutput{})
 }
