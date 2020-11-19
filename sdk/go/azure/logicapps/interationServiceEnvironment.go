@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -142,17 +143,18 @@ type InterationServiceEnvironment struct {
 // NewInterationServiceEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewInterationServiceEnvironment(ctx *pulumi.Context,
 	name string, args *InterationServiceEnvironmentArgs, opts ...pulumi.ResourceOption) (*InterationServiceEnvironment, error) {
-	if args == nil || args.AccessEndpointType == nil {
-		return nil, errors.New("missing required argument 'AccessEndpointType'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualNetworkSubnetIds == nil {
-		return nil, errors.New("missing required argument 'VirtualNetworkSubnetIds'")
-	}
 	if args == nil {
-		args = &InterationServiceEnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessEndpointType == nil {
+		return nil, errors.New("invalid value for required argument 'AccessEndpointType'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualNetworkSubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualNetworkSubnetIds'")
 	}
 	var resource InterationServiceEnvironment
 	err := ctx.RegisterResource("azure:logicapps/interationServiceEnvironment:InterationServiceEnvironment", name, args, &resource, opts...)
@@ -266,4 +268,43 @@ type InterationServiceEnvironmentArgs struct {
 
 func (InterationServiceEnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interationServiceEnvironmentArgs)(nil)).Elem()
+}
+
+type InterationServiceEnvironmentInput interface {
+	pulumi.Input
+
+	ToInterationServiceEnvironmentOutput() InterationServiceEnvironmentOutput
+	ToInterationServiceEnvironmentOutputWithContext(ctx context.Context) InterationServiceEnvironmentOutput
+}
+
+func (InterationServiceEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterationServiceEnvironment)(nil)).Elem()
+}
+
+func (i InterationServiceEnvironment) ToInterationServiceEnvironmentOutput() InterationServiceEnvironmentOutput {
+	return i.ToInterationServiceEnvironmentOutputWithContext(context.Background())
+}
+
+func (i InterationServiceEnvironment) ToInterationServiceEnvironmentOutputWithContext(ctx context.Context) InterationServiceEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterationServiceEnvironmentOutput)
+}
+
+type InterationServiceEnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (InterationServiceEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterationServiceEnvironmentOutput)(nil)).Elem()
+}
+
+func (o InterationServiceEnvironmentOutput) ToInterationServiceEnvironmentOutput() InterationServiceEnvironmentOutput {
+	return o
+}
+
+func (o InterationServiceEnvironmentOutput) ToInterationServiceEnvironmentOutputWithContext(ctx context.Context) InterationServiceEnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InterationServiceEnvironmentOutput{})
 }

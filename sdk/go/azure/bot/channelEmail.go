@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,20 +32,21 @@ type ChannelEmail struct {
 // NewChannelEmail registers a new resource with the given unique name, arguments, and options.
 func NewChannelEmail(ctx *pulumi.Context,
 	name string, args *ChannelEmailArgs, opts ...pulumi.ResourceOption) (*ChannelEmail, error) {
-	if args == nil || args.BotName == nil {
-		return nil, errors.New("missing required argument 'BotName'")
-	}
-	if args == nil || args.EmailAddress == nil {
-		return nil, errors.New("missing required argument 'EmailAddress'")
-	}
-	if args == nil || args.EmailPassword == nil {
-		return nil, errors.New("missing required argument 'EmailPassword'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ChannelEmailArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BotName == nil {
+		return nil, errors.New("invalid value for required argument 'BotName'")
+	}
+	if args.EmailAddress == nil {
+		return nil, errors.New("invalid value for required argument 'EmailAddress'")
+	}
+	if args.EmailPassword == nil {
+		return nil, errors.New("invalid value for required argument 'EmailPassword'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ChannelEmail
 	err := ctx.RegisterResource("azure:bot/channelEmail:ChannelEmail", name, args, &resource, opts...)
@@ -126,4 +128,43 @@ type ChannelEmailArgs struct {
 
 func (ChannelEmailArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelEmailArgs)(nil)).Elem()
+}
+
+type ChannelEmailInput interface {
+	pulumi.Input
+
+	ToChannelEmailOutput() ChannelEmailOutput
+	ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput
+}
+
+func (ChannelEmail) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelEmail)(nil)).Elem()
+}
+
+func (i ChannelEmail) ToChannelEmailOutput() ChannelEmailOutput {
+	return i.ToChannelEmailOutputWithContext(context.Background())
+}
+
+func (i ChannelEmail) ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelEmailOutput)
+}
+
+type ChannelEmailOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelEmailOutput)(nil)).Elem()
+}
+
+func (o ChannelEmailOutput) ToChannelEmailOutput() ChannelEmailOutput {
+	return o
+}
+
+func (o ChannelEmailOutput) ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelEmailOutput{})
 }

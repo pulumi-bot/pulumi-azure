@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,14 +78,15 @@ type TimeSeriesInsightsReferenceDataSet struct {
 // NewTimeSeriesInsightsReferenceDataSet registers a new resource with the given unique name, arguments, and options.
 func NewTimeSeriesInsightsReferenceDataSet(ctx *pulumi.Context,
 	name string, args *TimeSeriesInsightsReferenceDataSetArgs, opts ...pulumi.ResourceOption) (*TimeSeriesInsightsReferenceDataSet, error) {
-	if args == nil || args.KeyProperties == nil {
-		return nil, errors.New("missing required argument 'KeyProperties'")
-	}
-	if args == nil || args.TimeSeriesInsightsEnvironmentId == nil {
-		return nil, errors.New("missing required argument 'TimeSeriesInsightsEnvironmentId'")
-	}
 	if args == nil {
-		args = &TimeSeriesInsightsReferenceDataSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyProperties == nil {
+		return nil, errors.New("invalid value for required argument 'KeyProperties'")
+	}
+	if args.TimeSeriesInsightsEnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TimeSeriesInsightsEnvironmentId'")
 	}
 	var resource TimeSeriesInsightsReferenceDataSet
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsReferenceDataSet:TimeSeriesInsightsReferenceDataSet", name, args, &resource, opts...)
@@ -174,4 +176,43 @@ type TimeSeriesInsightsReferenceDataSetArgs struct {
 
 func (TimeSeriesInsightsReferenceDataSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeSeriesInsightsReferenceDataSetArgs)(nil)).Elem()
+}
+
+type TimeSeriesInsightsReferenceDataSetInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsReferenceDataSetOutput() TimeSeriesInsightsReferenceDataSetOutput
+	ToTimeSeriesInsightsReferenceDataSetOutputWithContext(ctx context.Context) TimeSeriesInsightsReferenceDataSetOutput
+}
+
+func (TimeSeriesInsightsReferenceDataSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsReferenceDataSet)(nil)).Elem()
+}
+
+func (i TimeSeriesInsightsReferenceDataSet) ToTimeSeriesInsightsReferenceDataSetOutput() TimeSeriesInsightsReferenceDataSetOutput {
+	return i.ToTimeSeriesInsightsReferenceDataSetOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesInsightsReferenceDataSet) ToTimeSeriesInsightsReferenceDataSetOutputWithContext(ctx context.Context) TimeSeriesInsightsReferenceDataSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsReferenceDataSetOutput)
+}
+
+type TimeSeriesInsightsReferenceDataSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsReferenceDataSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsReferenceDataSetOutput)(nil)).Elem()
+}
+
+func (o TimeSeriesInsightsReferenceDataSetOutput) ToTimeSeriesInsightsReferenceDataSetOutput() TimeSeriesInsightsReferenceDataSetOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsReferenceDataSetOutput) ToTimeSeriesInsightsReferenceDataSetOutputWithContext(ctx context.Context) TimeSeriesInsightsReferenceDataSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TimeSeriesInsightsReferenceDataSetOutput{})
 }

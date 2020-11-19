@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['EventHubConsumerGroup']
 
-warnings.warn("azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup", DeprecationWarning)
+warnings.warn("""azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup""", DeprecationWarning)
 
 
 class EventHubConsumerGroup(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup", DeprecationWarning)
+    warnings.warn("""azure.eventhub.EventHubConsumerGroup has been deprecated in favor of azure.eventhub.ConsumerGroup""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

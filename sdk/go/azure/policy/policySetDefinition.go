@@ -4,6 +4,7 @@
 package policy
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,14 +79,15 @@ type PolicySetDefinition struct {
 // NewPolicySetDefinition registers a new resource with the given unique name, arguments, and options.
 func NewPolicySetDefinition(ctx *pulumi.Context,
 	name string, args *PolicySetDefinitionArgs, opts ...pulumi.ResourceOption) (*PolicySetDefinition, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.PolicyType == nil {
-		return nil, errors.New("missing required argument 'PolicyType'")
-	}
 	if args == nil {
-		args = &PolicySetDefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.PolicyType == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyType'")
 	}
 	var resource PolicySetDefinition
 	err := ctx.RegisterResource("azure:policy/policySetDefinition:PolicySetDefinition", name, args, &resource, opts...)
@@ -223,4 +225,43 @@ type PolicySetDefinitionArgs struct {
 
 func (PolicySetDefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policySetDefinitionArgs)(nil)).Elem()
+}
+
+type PolicySetDefinitionInput interface {
+	pulumi.Input
+
+	ToPolicySetDefinitionOutput() PolicySetDefinitionOutput
+	ToPolicySetDefinitionOutputWithContext(ctx context.Context) PolicySetDefinitionOutput
+}
+
+func (PolicySetDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetDefinition)(nil)).Elem()
+}
+
+func (i PolicySetDefinition) ToPolicySetDefinitionOutput() PolicySetDefinitionOutput {
+	return i.ToPolicySetDefinitionOutputWithContext(context.Background())
+}
+
+func (i PolicySetDefinition) ToPolicySetDefinitionOutputWithContext(ctx context.Context) PolicySetDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySetDefinitionOutput)
+}
+
+type PolicySetDefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicySetDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetDefinitionOutput)(nil)).Elem()
+}
+
+func (o PolicySetDefinitionOutput) ToPolicySetDefinitionOutput() PolicySetDefinitionOutput {
+	return o
+}
+
+func (o PolicySetDefinitionOutput) ToPolicySetDefinitionOutputWithContext(ctx context.Context) PolicySetDefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicySetDefinitionOutput{})
 }

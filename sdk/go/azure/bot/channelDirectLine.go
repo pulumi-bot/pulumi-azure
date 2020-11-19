@@ -4,6 +4,7 @@
 package bot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,17 +28,18 @@ type ChannelDirectLine struct {
 // NewChannelDirectLine registers a new resource with the given unique name, arguments, and options.
 func NewChannelDirectLine(ctx *pulumi.Context,
 	name string, args *ChannelDirectLineArgs, opts ...pulumi.ResourceOption) (*ChannelDirectLine, error) {
-	if args == nil || args.BotName == nil {
-		return nil, errors.New("missing required argument 'BotName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sites == nil {
-		return nil, errors.New("missing required argument 'Sites'")
-	}
 	if args == nil {
-		args = &ChannelDirectLineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BotName == nil {
+		return nil, errors.New("invalid value for required argument 'BotName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sites == nil {
+		return nil, errors.New("invalid value for required argument 'Sites'")
 	}
 	var resource ChannelDirectLine
 	err := ctx.RegisterResource("azure:bot/channelDirectLine:ChannelDirectLine", name, args, &resource, opts...)
@@ -111,4 +113,43 @@ type ChannelDirectLineArgs struct {
 
 func (ChannelDirectLineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*channelDirectLineArgs)(nil)).Elem()
+}
+
+type ChannelDirectLineInput interface {
+	pulumi.Input
+
+	ToChannelDirectLineOutput() ChannelDirectLineOutput
+	ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput
+}
+
+func (ChannelDirectLine) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelDirectLine)(nil)).Elem()
+}
+
+func (i ChannelDirectLine) ToChannelDirectLineOutput() ChannelDirectLineOutput {
+	return i.ToChannelDirectLineOutputWithContext(context.Background())
+}
+
+func (i ChannelDirectLine) ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelDirectLineOutput)
+}
+
+type ChannelDirectLineOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelDirectLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelDirectLineOutput)(nil)).Elem()
+}
+
+func (o ChannelDirectLineOutput) ToChannelDirectLineOutput() ChannelDirectLineOutput {
+	return o
+}
+
+func (o ChannelDirectLineOutput) ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelDirectLineOutput{})
 }

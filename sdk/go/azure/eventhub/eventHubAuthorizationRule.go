@@ -4,6 +4,7 @@
 package eventhub
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -103,17 +104,18 @@ type EventHubAuthorizationRule struct {
 // NewEventHubAuthorizationRule registers a new resource with the given unique name, arguments, and options.
 func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 	name string, args *EventHubAuthorizationRuleArgs, opts ...pulumi.ResourceOption) (*EventHubAuthorizationRule, error) {
-	if args == nil || args.EventhubName == nil {
-		return nil, errors.New("missing required argument 'EventhubName'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EventHubAuthorizationRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EventhubName == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubName'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EventHubAuthorizationRule
 	err := ctx.RegisterResource("azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule", name, args, &resource, opts...)
@@ -235,4 +237,43 @@ type EventHubAuthorizationRuleArgs struct {
 
 func (EventHubAuthorizationRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventHubAuthorizationRuleArgs)(nil)).Elem()
+}
+
+type EventHubAuthorizationRuleInput interface {
+	pulumi.Input
+
+	ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput
+	ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput
+}
+
+func (EventHubAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubAuthorizationRule)(nil)).Elem()
+}
+
+func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput {
+	return i.ToEventHubAuthorizationRuleOutputWithContext(context.Background())
+}
+
+func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRuleOutput)
+}
+
+type EventHubAuthorizationRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubAuthorizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubAuthorizationRuleOutput)(nil)).Elem()
+}
+
+func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput {
+	return o
+}
+
+func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventHubAuthorizationRuleOutput{})
 }

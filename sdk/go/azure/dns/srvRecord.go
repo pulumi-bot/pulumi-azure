@@ -4,6 +4,7 @@
 package dns
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -82,20 +83,21 @@ type SrvRecord struct {
 // NewSrvRecord registers a new resource with the given unique name, arguments, and options.
 func NewSrvRecord(ctx *pulumi.Context,
 	name string, args *SrvRecordArgs, opts ...pulumi.ResourceOption) (*SrvRecord, error) {
-	if args == nil || args.Records == nil {
-		return nil, errors.New("missing required argument 'Records'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &SrvRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Records == nil {
+		return nil, errors.New("invalid value for required argument 'Records'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource SrvRecord
 	err := ctx.RegisterResource("azure:dns/srvRecord:SrvRecord", name, args, &resource, opts...)
@@ -189,4 +191,43 @@ type SrvRecordArgs struct {
 
 func (SrvRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*srvRecordArgs)(nil)).Elem()
+}
+
+type SrvRecordInput interface {
+	pulumi.Input
+
+	ToSrvRecordOutput() SrvRecordOutput
+	ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput
+}
+
+func (SrvRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*SrvRecord)(nil)).Elem()
+}
+
+func (i SrvRecord) ToSrvRecordOutput() SrvRecordOutput {
+	return i.ToSrvRecordOutputWithContext(context.Background())
+}
+
+func (i SrvRecord) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordOutput)
+}
+
+type SrvRecordOutput struct {
+	*pulumi.OutputState
+}
+
+func (SrvRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SrvRecordOutput)(nil)).Elem()
+}
+
+func (o SrvRecordOutput) ToSrvRecordOutput() SrvRecordOutput {
+	return o
+}
+
+func (o SrvRecordOutput) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SrvRecordOutput{})
 }

@@ -4,6 +4,7 @@
 package appinsights
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,20 +79,21 @@ type AnalyticsItem struct {
 // NewAnalyticsItem registers a new resource with the given unique name, arguments, and options.
 func NewAnalyticsItem(ctx *pulumi.Context,
 	name string, args *AnalyticsItemArgs, opts ...pulumi.ResourceOption) (*AnalyticsItem, error) {
-	if args == nil || args.ApplicationInsightsId == nil {
-		return nil, errors.New("missing required argument 'ApplicationInsightsId'")
-	}
-	if args == nil || args.Content == nil {
-		return nil, errors.New("missing required argument 'Content'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &AnalyticsItemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationInsightsId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationInsightsId'")
+	}
+	if args.Content == nil {
+		return nil, errors.New("invalid value for required argument 'Content'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource AnalyticsItem
 	err := ctx.RegisterResource("azure:appinsights/analyticsItem:AnalyticsItem", name, args, &resource, opts...)
@@ -193,4 +195,43 @@ type AnalyticsItemArgs struct {
 
 func (AnalyticsItemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*analyticsItemArgs)(nil)).Elem()
+}
+
+type AnalyticsItemInput interface {
+	pulumi.Input
+
+	ToAnalyticsItemOutput() AnalyticsItemOutput
+	ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput
+}
+
+func (AnalyticsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsItem)(nil)).Elem()
+}
+
+func (i AnalyticsItem) ToAnalyticsItemOutput() AnalyticsItemOutput {
+	return i.ToAnalyticsItemOutputWithContext(context.Background())
+}
+
+func (i AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsItemOutput)
+}
+
+type AnalyticsItemOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsItemOutput)(nil)).Elem()
+}
+
+func (o AnalyticsItemOutput) ToAnalyticsItemOutput() AnalyticsItemOutput {
+	return o
+}
+
+func (o AnalyticsItemOutput) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AnalyticsItemOutput{})
 }

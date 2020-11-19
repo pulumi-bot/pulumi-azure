@@ -4,6 +4,7 @@
 package managementresource
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,14 +134,15 @@ type ManangementLock struct {
 // NewManangementLock registers a new resource with the given unique name, arguments, and options.
 func NewManangementLock(ctx *pulumi.Context,
 	name string, args *ManangementLockArgs, opts ...pulumi.ResourceOption) (*ManangementLock, error) {
-	if args == nil || args.LockLevel == nil {
-		return nil, errors.New("missing required argument 'LockLevel'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
 	if args == nil {
-		args = &ManangementLockArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LockLevel == nil {
+		return nil, errors.New("invalid value for required argument 'LockLevel'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	var resource ManangementLock
 	err := ctx.RegisterResource("azure:managementresource/manangementLock:ManangementLock", name, args, &resource, opts...)
@@ -214,4 +216,43 @@ type ManangementLockArgs struct {
 
 func (ManangementLockArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*manangementLockArgs)(nil)).Elem()
+}
+
+type ManangementLockInput interface {
+	pulumi.Input
+
+	ToManangementLockOutput() ManangementLockOutput
+	ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput
+}
+
+func (ManangementLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLock)(nil)).Elem()
+}
+
+func (i ManangementLock) ToManangementLockOutput() ManangementLockOutput {
+	return i.ToManangementLockOutputWithContext(context.Background())
+}
+
+func (i ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManangementLockOutput)
+}
+
+type ManangementLockOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManangementLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLockOutput)(nil)).Elem()
+}
+
+func (o ManangementLockOutput) ToManangementLockOutput() ManangementLockOutput {
+	return o
+}
+
+func (o ManangementLockOutput) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManangementLockOutput{})
 }

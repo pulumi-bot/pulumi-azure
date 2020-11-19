@@ -4,6 +4,7 @@
 package postgresql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -105,17 +106,18 @@ type VirtualNetworkRule struct {
 // NewVirtualNetworkRule registers a new resource with the given unique name, arguments, and options.
 func NewVirtualNetworkRule(ctx *pulumi.Context,
 	name string, args *VirtualNetworkRuleArgs, opts ...pulumi.ResourceOption) (*VirtualNetworkRule, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &VirtualNetworkRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource VirtualNetworkRule
 	err := ctx.RegisterResource("azure:postgresql/virtualNetworkRule:VirtualNetworkRule", name, args, &resource, opts...)
@@ -197,4 +199,43 @@ type VirtualNetworkRuleArgs struct {
 
 func (VirtualNetworkRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNetworkRuleArgs)(nil)).Elem()
+}
+
+type VirtualNetworkRuleInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput
+	ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput
+}
+
+func (VirtualNetworkRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkRule)(nil)).Elem()
+}
+
+func (i VirtualNetworkRule) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
+	return i.ToVirtualNetworkRuleOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkRule) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
+}
+
+type VirtualNetworkRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkRuleOutput)(nil)).Elem()
+}
+
+func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutput {
+	return o
+}
+
+func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})
 }

@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,20 +28,21 @@ type ClusterCustomerManagedKey struct {
 // NewClusterCustomerManagedKey registers a new resource with the given unique name, arguments, and options.
 func NewClusterCustomerManagedKey(ctx *pulumi.Context,
 	name string, args *ClusterCustomerManagedKeyArgs, opts ...pulumi.ResourceOption) (*ClusterCustomerManagedKey, error) {
-	if args == nil || args.ClusterId == nil {
-		return nil, errors.New("missing required argument 'ClusterId'")
-	}
-	if args == nil || args.KeyName == nil {
-		return nil, errors.New("missing required argument 'KeyName'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.KeyVersion == nil {
-		return nil, errors.New("missing required argument 'KeyVersion'")
-	}
 	if args == nil {
-		args = &ClusterCustomerManagedKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.KeyName == nil {
+		return nil, errors.New("invalid value for required argument 'KeyName'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.KeyVersion == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVersion'")
 	}
 	var resource ClusterCustomerManagedKey
 	err := ctx.RegisterResource("azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey", name, args, &resource, opts...)
@@ -114,4 +116,43 @@ type ClusterCustomerManagedKeyArgs struct {
 
 func (ClusterCustomerManagedKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterCustomerManagedKeyArgs)(nil)).Elem()
+}
+
+type ClusterCustomerManagedKeyInput interface {
+	pulumi.Input
+
+	ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput
+	ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput
+}
+
+func (ClusterCustomerManagedKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCustomerManagedKey)(nil)).Elem()
+}
+
+func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
+	return i.ToClusterCustomerManagedKeyOutputWithContext(context.Background())
+}
+
+func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCustomerManagedKeyOutput)
+}
+
+type ClusterCustomerManagedKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterCustomerManagedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCustomerManagedKeyOutput)(nil)).Elem()
+}
+
+func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
+	return o
+}
+
+func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterCustomerManagedKeyOutput{})
 }

@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,17 +125,18 @@ type NetworkInterfaceNatRuleAssociation struct {
 // NewNetworkInterfaceNatRuleAssociation registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterfaceNatRuleAssociation(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceNatRuleAssociationArgs, opts ...pulumi.ResourceOption) (*NetworkInterfaceNatRuleAssociation, error) {
-	if args == nil || args.IpConfigurationName == nil {
-		return nil, errors.New("missing required argument 'IpConfigurationName'")
-	}
-	if args == nil || args.NatRuleId == nil {
-		return nil, errors.New("missing required argument 'NatRuleId'")
-	}
-	if args == nil || args.NetworkInterfaceId == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceNatRuleAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpConfigurationName == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurationName'")
+	}
+	if args.NatRuleId == nil {
+		return nil, errors.New("invalid value for required argument 'NatRuleId'")
+	}
+	if args.NetworkInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceId'")
 	}
 	var resource NetworkInterfaceNatRuleAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation", name, args, &resource, opts...)
@@ -200,4 +202,43 @@ type NetworkInterfaceNatRuleAssociationArgs struct {
 
 func (NetworkInterfaceNatRuleAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceNatRuleAssociationArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceNatRuleAssociationInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput
+	ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput
+}
+
+func (NetworkInterfaceNatRuleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceNatRuleAssociation)(nil)).Elem()
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput {
+	return i.ToNetworkInterfaceNatRuleAssociationOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceNatRuleAssociationOutput)
+}
+
+type NetworkInterfaceNatRuleAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceNatRuleAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceNatRuleAssociationOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceNatRuleAssociationOutput) ToNetworkInterfaceNatRuleAssociationOutput() NetworkInterfaceNatRuleAssociationOutput {
+	return o
+}
+
+func (o NetworkInterfaceNatRuleAssociationOutput) ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceNatRuleAssociationOutput{})
 }

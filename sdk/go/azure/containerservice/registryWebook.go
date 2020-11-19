@@ -4,6 +4,7 @@
 package containerservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -90,20 +91,21 @@ type RegistryWebook struct {
 // NewRegistryWebook registers a new resource with the given unique name, arguments, and options.
 func NewRegistryWebook(ctx *pulumi.Context,
 	name string, args *RegistryWebookArgs, opts ...pulumi.ResourceOption) (*RegistryWebook, error) {
-	if args == nil || args.Actions == nil {
-		return nil, errors.New("missing required argument 'Actions'")
-	}
-	if args == nil || args.RegistryName == nil {
-		return nil, errors.New("missing required argument 'RegistryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceUri == nil {
-		return nil, errors.New("missing required argument 'ServiceUri'")
-	}
 	if args == nil {
-		args = &RegistryWebookArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Actions == nil {
+		return nil, errors.New("invalid value for required argument 'Actions'")
+	}
+	if args.RegistryName == nil {
+		return nil, errors.New("invalid value for required argument 'RegistryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceUri == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceUri'")
 	}
 	var resource RegistryWebook
 	err := ctx.RegisterResource("azure:containerservice/registryWebook:RegistryWebook", name, args, &resource, opts...)
@@ -221,4 +223,43 @@ type RegistryWebookArgs struct {
 
 func (RegistryWebookArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryWebookArgs)(nil)).Elem()
+}
+
+type RegistryWebookInput interface {
+	pulumi.Input
+
+	ToRegistryWebookOutput() RegistryWebookOutput
+	ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput
+}
+
+func (RegistryWebook) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebook)(nil)).Elem()
+}
+
+func (i RegistryWebook) ToRegistryWebookOutput() RegistryWebookOutput {
+	return i.ToRegistryWebookOutputWithContext(context.Background())
+}
+
+func (i RegistryWebook) ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryWebookOutput)
+}
+
+type RegistryWebookOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryWebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryWebookOutput)(nil)).Elem()
+}
+
+func (o RegistryWebookOutput) ToRegistryWebookOutput() RegistryWebookOutput {
+	return o
+}
+
+func (o RegistryWebookOutput) ToRegistryWebookOutputWithContext(ctx context.Context) RegistryWebookOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegistryWebookOutput{})
 }

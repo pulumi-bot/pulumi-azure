@@ -4,6 +4,7 @@
 package securitycenter
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,14 +68,15 @@ type AdvancedThreatProtection struct {
 // NewAdvancedThreatProtection registers a new resource with the given unique name, arguments, and options.
 func NewAdvancedThreatProtection(ctx *pulumi.Context,
 	name string, args *AdvancedThreatProtectionArgs, opts ...pulumi.ResourceOption) (*AdvancedThreatProtection, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.TargetResourceId == nil {
-		return nil, errors.New("missing required argument 'TargetResourceId'")
-	}
 	if args == nil {
-		args = &AdvancedThreatProtectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.TargetResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetResourceId'")
 	}
 	var resource AdvancedThreatProtection
 	err := ctx.RegisterResource("azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection", name, args, &resource, opts...)
@@ -132,4 +134,43 @@ type AdvancedThreatProtectionArgs struct {
 
 func (AdvancedThreatProtectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*advancedThreatProtectionArgs)(nil)).Elem()
+}
+
+type AdvancedThreatProtectionInput interface {
+	pulumi.Input
+
+	ToAdvancedThreatProtectionOutput() AdvancedThreatProtectionOutput
+	ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput
+}
+
+func (AdvancedThreatProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedThreatProtection)(nil)).Elem()
+}
+
+func (i AdvancedThreatProtection) ToAdvancedThreatProtectionOutput() AdvancedThreatProtectionOutput {
+	return i.ToAdvancedThreatProtectionOutputWithContext(context.Background())
+}
+
+func (i AdvancedThreatProtection) ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedThreatProtectionOutput)
+}
+
+type AdvancedThreatProtectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (AdvancedThreatProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedThreatProtectionOutput)(nil)).Elem()
+}
+
+func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutput() AdvancedThreatProtectionOutput {
+	return o
+}
+
+func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AdvancedThreatProtectionOutput{})
 }

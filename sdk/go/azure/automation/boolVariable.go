@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,14 +32,15 @@ type BoolVariable struct {
 // NewBoolVariable registers a new resource with the given unique name, arguments, and options.
 func NewBoolVariable(ctx *pulumi.Context,
 	name string, args *BoolVariableArgs, opts ...pulumi.ResourceOption) (*BoolVariable, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &BoolVariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource BoolVariable
 	err := ctx.RegisterResource("azure:automation/boolVariable:BoolVariable", name, args, &resource, opts...)
@@ -128,4 +130,43 @@ type BoolVariableArgs struct {
 
 func (BoolVariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*boolVariableArgs)(nil)).Elem()
+}
+
+type BoolVariableInput interface {
+	pulumi.Input
+
+	ToBoolVariableOutput() BoolVariableOutput
+	ToBoolVariableOutputWithContext(ctx context.Context) BoolVariableOutput
+}
+
+func (BoolVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolVariable)(nil)).Elem()
+}
+
+func (i BoolVariable) ToBoolVariableOutput() BoolVariableOutput {
+	return i.ToBoolVariableOutputWithContext(context.Background())
+}
+
+func (i BoolVariable) ToBoolVariableOutputWithContext(ctx context.Context) BoolVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoolVariableOutput)
+}
+
+type BoolVariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (BoolVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolVariableOutput)(nil)).Elem()
+}
+
+func (o BoolVariableOutput) ToBoolVariableOutput() BoolVariableOutput {
+	return o
+}
+
+func (o BoolVariableOutput) ToBoolVariableOutputWithContext(ctx context.Context) BoolVariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BoolVariableOutput{})
 }
