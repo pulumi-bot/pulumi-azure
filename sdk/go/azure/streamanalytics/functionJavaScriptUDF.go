@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,23 +81,24 @@ type FunctionJavaScriptUDF struct {
 // NewFunctionJavaScriptUDF registers a new resource with the given unique name, arguments, and options.
 func NewFunctionJavaScriptUDF(ctx *pulumi.Context,
 	name string, args *FunctionJavaScriptUDFArgs, opts ...pulumi.ResourceOption) (*FunctionJavaScriptUDF, error) {
-	if args == nil || args.Inputs == nil {
-		return nil, errors.New("missing required argument 'Inputs'")
-	}
-	if args == nil || args.Output == nil {
-		return nil, errors.New("missing required argument 'Output'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Script == nil {
-		return nil, errors.New("missing required argument 'Script'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
 	if args == nil {
-		args = &FunctionJavaScriptUDFArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Inputs == nil {
+		return nil, errors.New("invalid value for required argument 'Inputs'")
+	}
+	if args.Output == nil {
+		return nil, errors.New("invalid value for required argument 'Output'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Script == nil {
+		return nil, errors.New("invalid value for required argument 'Script'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
 	}
 	var resource FunctionJavaScriptUDF
 	err := ctx.RegisterResource("azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type FunctionJavaScriptUDFArgs struct {
 
 func (FunctionJavaScriptUDFArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionJavaScriptUDFArgs)(nil)).Elem()
+}
+
+type FunctionJavaScriptUDFInput interface {
+	pulumi.Input
+
+	ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput
+	ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput
+}
+
+func (FunctionJavaScriptUDF) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil)).Elem()
+}
+
+func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
+	return i.ToFunctionJavaScriptUDFOutputWithContext(context.Background())
+}
+
+func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutput)
+}
+
+type FunctionJavaScriptUDFOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionJavaScriptUDFOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionJavaScriptUDFOutput)(nil)).Elem()
+}
+
+func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionJavaScriptUDFOutput{})
 }

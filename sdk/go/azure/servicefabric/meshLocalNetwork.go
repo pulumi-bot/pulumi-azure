@@ -4,6 +4,7 @@
 package servicefabric
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -63,14 +64,15 @@ type MeshLocalNetwork struct {
 // NewMeshLocalNetwork registers a new resource with the given unique name, arguments, and options.
 func NewMeshLocalNetwork(ctx *pulumi.Context,
 	name string, args *MeshLocalNetworkArgs, opts ...pulumi.ResourceOption) (*MeshLocalNetwork, error) {
-	if args == nil || args.NetworkAddressPrefix == nil {
-		return nil, errors.New("missing required argument 'NetworkAddressPrefix'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &MeshLocalNetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkAddressPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkAddressPrefix'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource MeshLocalNetwork
 	err := ctx.RegisterResource("azure:servicefabric/meshLocalNetwork:MeshLocalNetwork", name, args, &resource, opts...)
@@ -160,4 +162,43 @@ type MeshLocalNetworkArgs struct {
 
 func (MeshLocalNetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*meshLocalNetworkArgs)(nil)).Elem()
+}
+
+type MeshLocalNetworkInput interface {
+	pulumi.Input
+
+	ToMeshLocalNetworkOutput() MeshLocalNetworkOutput
+	ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput
+}
+
+func (MeshLocalNetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshLocalNetwork)(nil)).Elem()
+}
+
+func (i MeshLocalNetwork) ToMeshLocalNetworkOutput() MeshLocalNetworkOutput {
+	return i.ToMeshLocalNetworkOutputWithContext(context.Background())
+}
+
+func (i MeshLocalNetwork) ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshLocalNetworkOutput)
+}
+
+type MeshLocalNetworkOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshLocalNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshLocalNetworkOutput)(nil)).Elem()
+}
+
+func (o MeshLocalNetworkOutput) ToMeshLocalNetworkOutput() MeshLocalNetworkOutput {
+	return o
+}
+
+func (o MeshLocalNetworkOutput) ToMeshLocalNetworkOutputWithContext(ctx context.Context) MeshLocalNetworkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MeshLocalNetworkOutput{})
 }

@@ -4,6 +4,7 @@
 package lb
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -98,29 +99,30 @@ type NatPool struct {
 // NewNatPool registers a new resource with the given unique name, arguments, and options.
 func NewNatPool(ctx *pulumi.Context,
 	name string, args *NatPoolArgs, opts ...pulumi.ResourceOption) (*NatPool, error) {
-	if args == nil || args.BackendPort == nil {
-		return nil, errors.New("missing required argument 'BackendPort'")
-	}
-	if args == nil || args.FrontendIpConfigurationName == nil {
-		return nil, errors.New("missing required argument 'FrontendIpConfigurationName'")
-	}
-	if args == nil || args.FrontendPortEnd == nil {
-		return nil, errors.New("missing required argument 'FrontendPortEnd'")
-	}
-	if args == nil || args.FrontendPortStart == nil {
-		return nil, errors.New("missing required argument 'FrontendPortStart'")
-	}
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &NatPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendPort == nil {
+		return nil, errors.New("invalid value for required argument 'BackendPort'")
+	}
+	if args.FrontendIpConfigurationName == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendIpConfigurationName'")
+	}
+	if args.FrontendPortEnd == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendPortEnd'")
+	}
+	if args.FrontendPortStart == nil {
+		return nil, errors.New("invalid value for required argument 'FrontendPortStart'")
+	}
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource NatPool
 	err := ctx.RegisterResource("azure:lb/natPool:NatPool", name, args, &resource, opts...)
@@ -228,4 +230,43 @@ type NatPoolArgs struct {
 
 func (NatPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*natPoolArgs)(nil)).Elem()
+}
+
+type NatPoolInput interface {
+	pulumi.Input
+
+	ToNatPoolOutput() NatPoolOutput
+	ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput
+}
+
+func (NatPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatPool)(nil)).Elem()
+}
+
+func (i NatPool) ToNatPoolOutput() NatPoolOutput {
+	return i.ToNatPoolOutputWithContext(context.Background())
+}
+
+func (i NatPool) ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatPoolOutput)
+}
+
+type NatPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatPoolOutput)(nil)).Elem()
+}
+
+func (o NatPoolOutput) ToNatPoolOutput() NatPoolOutput {
+	return o
+}
+
+func (o NatPoolOutput) ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NatPoolOutput{})
 }

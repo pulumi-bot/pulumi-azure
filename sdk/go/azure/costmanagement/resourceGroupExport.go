@@ -4,6 +4,7 @@
 package costmanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -87,26 +88,27 @@ type ResourceGroupExport struct {
 // NewResourceGroupExport registers a new resource with the given unique name, arguments, and options.
 func NewResourceGroupExport(ctx *pulumi.Context,
 	name string, args *ResourceGroupExportArgs, opts ...pulumi.ResourceOption) (*ResourceGroupExport, error) {
-	if args == nil || args.DeliveryInfo == nil {
-		return nil, errors.New("missing required argument 'DeliveryInfo'")
-	}
-	if args == nil || args.Query == nil {
-		return nil, errors.New("missing required argument 'Query'")
-	}
-	if args == nil || args.RecurrencePeriodEnd == nil {
-		return nil, errors.New("missing required argument 'RecurrencePeriodEnd'")
-	}
-	if args == nil || args.RecurrencePeriodStart == nil {
-		return nil, errors.New("missing required argument 'RecurrencePeriodStart'")
-	}
-	if args == nil || args.RecurrenceType == nil {
-		return nil, errors.New("missing required argument 'RecurrenceType'")
-	}
-	if args == nil || args.ResourceGroupId == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupId'")
-	}
 	if args == nil {
-		args = &ResourceGroupExportArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DeliveryInfo == nil {
+		return nil, errors.New("invalid value for required argument 'DeliveryInfo'")
+	}
+	if args.Query == nil {
+		return nil, errors.New("invalid value for required argument 'Query'")
+	}
+	if args.RecurrencePeriodEnd == nil {
+		return nil, errors.New("invalid value for required argument 'RecurrencePeriodEnd'")
+	}
+	if args.RecurrencePeriodStart == nil {
+		return nil, errors.New("invalid value for required argument 'RecurrencePeriodStart'")
+	}
+	if args.RecurrenceType == nil {
+		return nil, errors.New("invalid value for required argument 'RecurrenceType'")
+	}
+	if args.ResourceGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupId'")
 	}
 	var resource ResourceGroupExport
 	err := ctx.RegisterResource("azure:costmanagement/resourceGroupExport:ResourceGroupExport", name, args, &resource, opts...)
@@ -212,4 +214,43 @@ type ResourceGroupExportArgs struct {
 
 func (ResourceGroupExportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupExportArgs)(nil)).Elem()
+}
+
+type ResourceGroupExportInput interface {
+	pulumi.Input
+
+	ToResourceGroupExportOutput() ResourceGroupExportOutput
+	ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput
+}
+
+func (ResourceGroupExport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupExport)(nil)).Elem()
+}
+
+func (i ResourceGroupExport) ToResourceGroupExportOutput() ResourceGroupExportOutput {
+	return i.ToResourceGroupExportOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupExport) ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportOutput)
+}
+
+type ResourceGroupExportOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupExportOutput)(nil)).Elem()
+}
+
+func (o ResourceGroupExportOutput) ToResourceGroupExportOutput() ResourceGroupExportOutput {
+	return o
+}
+
+func (o ResourceGroupExportOutput) ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceGroupExportOutput{})
 }

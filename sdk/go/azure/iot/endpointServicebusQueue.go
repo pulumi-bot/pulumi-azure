@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -102,17 +103,18 @@ type EndpointServicebusQueue struct {
 // NewEndpointServicebusQueue registers a new resource with the given unique name, arguments, and options.
 func NewEndpointServicebusQueue(ctx *pulumi.Context,
 	name string, args *EndpointServicebusQueueArgs, opts ...pulumi.ResourceOption) (*EndpointServicebusQueue, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EndpointServicebusQueueArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EndpointServicebusQueue
 	err := ctx.RegisterResource("azure:iot/endpointServicebusQueue:EndpointServicebusQueue", name, args, &resource, opts...)
@@ -178,4 +180,43 @@ type EndpointServicebusQueueArgs struct {
 
 func (EndpointServicebusQueueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointServicebusQueueArgs)(nil)).Elem()
+}
+
+type EndpointServicebusQueueInput interface {
+	pulumi.Input
+
+	ToEndpointServicebusQueueOutput() EndpointServicebusQueueOutput
+	ToEndpointServicebusQueueOutputWithContext(ctx context.Context) EndpointServicebusQueueOutput
+}
+
+func (EndpointServicebusQueue) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointServicebusQueue)(nil)).Elem()
+}
+
+func (i EndpointServicebusQueue) ToEndpointServicebusQueueOutput() EndpointServicebusQueueOutput {
+	return i.ToEndpointServicebusQueueOutputWithContext(context.Background())
+}
+
+func (i EndpointServicebusQueue) ToEndpointServicebusQueueOutputWithContext(ctx context.Context) EndpointServicebusQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusQueueOutput)
+}
+
+type EndpointServicebusQueueOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointServicebusQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointServicebusQueueOutput)(nil)).Elem()
+}
+
+func (o EndpointServicebusQueueOutput) ToEndpointServicebusQueueOutput() EndpointServicebusQueueOutput {
+	return o
+}
+
+func (o EndpointServicebusQueueOutput) ToEndpointServicebusQueueOutputWithContext(ctx context.Context) EndpointServicebusQueueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointServicebusQueueOutput{})
 }

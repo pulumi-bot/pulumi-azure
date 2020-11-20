@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -67,11 +68,12 @@ type SharedImageGallery struct {
 // NewSharedImageGallery registers a new resource with the given unique name, arguments, and options.
 func NewSharedImageGallery(ctx *pulumi.Context,
 	name string, args *SharedImageGalleryArgs, opts ...pulumi.ResourceOption) (*SharedImageGallery, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SharedImageGalleryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SharedImageGallery
 	err := ctx.RegisterResource("azure:compute/sharedImageGallery:SharedImageGallery", name, args, &resource, opts...)
@@ -157,4 +159,43 @@ type SharedImageGalleryArgs struct {
 
 func (SharedImageGalleryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedImageGalleryArgs)(nil)).Elem()
+}
+
+type SharedImageGalleryInput interface {
+	pulumi.Input
+
+	ToSharedImageGalleryOutput() SharedImageGalleryOutput
+	ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput
+}
+
+func (SharedImageGallery) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageGallery)(nil)).Elem()
+}
+
+func (i SharedImageGallery) ToSharedImageGalleryOutput() SharedImageGalleryOutput {
+	return i.ToSharedImageGalleryOutputWithContext(context.Background())
+}
+
+func (i SharedImageGallery) ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageGalleryOutput)
+}
+
+type SharedImageGalleryOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedImageGalleryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageGalleryOutput)(nil)).Elem()
+}
+
+func (o SharedImageGalleryOutput) ToSharedImageGalleryOutput() SharedImageGalleryOutput {
+	return o
+}
+
+func (o SharedImageGalleryOutput) ToSharedImageGalleryOutputWithContext(ctx context.Context) SharedImageGalleryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedImageGalleryOutput{})
 }

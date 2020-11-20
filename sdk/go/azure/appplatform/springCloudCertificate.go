@@ -4,6 +4,7 @@
 package appplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -157,17 +158,18 @@ type SpringCloudCertificate struct {
 // NewSpringCloudCertificate registers a new resource with the given unique name, arguments, and options.
 func NewSpringCloudCertificate(ctx *pulumi.Context,
 	name string, args *SpringCloudCertificateArgs, opts ...pulumi.ResourceOption) (*SpringCloudCertificate, error) {
-	if args == nil || args.KeyVaultCertificateId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultCertificateId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &SpringCloudCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyVaultCertificateId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultCertificateId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource SpringCloudCertificate
 	err := ctx.RegisterResource("azure:appplatform/springCloudCertificate:SpringCloudCertificate", name, args, &resource, opts...)
@@ -241,4 +243,43 @@ type SpringCloudCertificateArgs struct {
 
 func (SpringCloudCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*springCloudCertificateArgs)(nil)).Elem()
+}
+
+type SpringCloudCertificateInput interface {
+	pulumi.Input
+
+	ToSpringCloudCertificateOutput() SpringCloudCertificateOutput
+	ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput
+}
+
+func (SpringCloudCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudCertificate)(nil)).Elem()
+}
+
+func (i SpringCloudCertificate) ToSpringCloudCertificateOutput() SpringCloudCertificateOutput {
+	return i.ToSpringCloudCertificateOutputWithContext(context.Background())
+}
+
+func (i SpringCloudCertificate) ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudCertificateOutput)
+}
+
+type SpringCloudCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpringCloudCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudCertificateOutput)(nil)).Elem()
+}
+
+func (o SpringCloudCertificateOutput) ToSpringCloudCertificateOutput() SpringCloudCertificateOutput {
+	return o
+}
+
+func (o SpringCloudCertificateOutput) ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpringCloudCertificateOutput{})
 }

@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,17 +73,18 @@ type TimeSeriesInsightsAccessPolicy struct {
 // NewTimeSeriesInsightsAccessPolicy registers a new resource with the given unique name, arguments, and options.
 func NewTimeSeriesInsightsAccessPolicy(ctx *pulumi.Context,
 	name string, args *TimeSeriesInsightsAccessPolicyArgs, opts ...pulumi.ResourceOption) (*TimeSeriesInsightsAccessPolicy, error) {
-	if args == nil || args.PrincipalObjectId == nil {
-		return nil, errors.New("missing required argument 'PrincipalObjectId'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.TimeSeriesInsightsEnvironmentId == nil {
-		return nil, errors.New("missing required argument 'TimeSeriesInsightsEnvironmentId'")
-	}
 	if args == nil {
-		args = &TimeSeriesInsightsAccessPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PrincipalObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'PrincipalObjectId'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.TimeSeriesInsightsEnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TimeSeriesInsightsEnvironmentId'")
 	}
 	var resource TimeSeriesInsightsAccessPolicy
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsAccessPolicy:TimeSeriesInsightsAccessPolicy", name, args, &resource, opts...)
@@ -164,4 +166,43 @@ type TimeSeriesInsightsAccessPolicyArgs struct {
 
 func (TimeSeriesInsightsAccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeSeriesInsightsAccessPolicyArgs)(nil)).Elem()
+}
+
+type TimeSeriesInsightsAccessPolicyInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput
+	ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput
+}
+
+func (TimeSeriesInsightsAccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicy)(nil)).Elem()
+}
+
+func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput {
+	return i.ToTimeSeriesInsightsAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsAccessPolicyOutput)
+}
+
+type TimeSeriesInsightsAccessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicyOutput)(nil)).Elem()
+}
+
+func (o TimeSeriesInsightsAccessPolicyOutput) ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsAccessPolicyOutput) ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TimeSeriesInsightsAccessPolicyOutput{})
 }

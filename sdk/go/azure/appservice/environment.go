@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -107,11 +108,12 @@ type Environment struct {
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewEnvironment(ctx *pulumi.Context,
 	name string, args *EnvironmentArgs, opts ...pulumi.ResourceOption) (*Environment, error) {
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &EnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("azure:appservice/environment:Environment", name, args, &resource, opts...)
@@ -229,4 +231,43 @@ type EnvironmentArgs struct {
 
 func (EnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentArgs)(nil)).Elem()
+}
+
+type EnvironmentInput interface {
+	pulumi.Input
+
+	ToEnvironmentOutput() EnvironmentOutput
+	ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput
+}
+
+func (Environment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Environment)(nil)).Elem()
+}
+
+func (i Environment) ToEnvironmentOutput() EnvironmentOutput {
+	return i.ToEnvironmentOutputWithContext(context.Background())
+}
+
+func (i Environment) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
+}
+
+type EnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentOutput)(nil)).Elem()
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
+	return o
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnvironmentOutput{})
 }

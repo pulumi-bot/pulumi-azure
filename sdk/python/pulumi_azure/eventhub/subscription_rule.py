@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['SubscriptionRule']
 
-warnings.warn("azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule", DeprecationWarning)
+warnings.warn("""azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule""", DeprecationWarning)
 
 
 class SubscriptionRule(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule", DeprecationWarning)
+    warnings.warn("""azure.eventhub.SubscriptionRule has been deprecated in favor of azure.servicebus.SubscriptionRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

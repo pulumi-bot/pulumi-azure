@@ -4,6 +4,7 @@
 package automation
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -73,20 +74,21 @@ type Credential struct {
 // NewCredential registers a new resource with the given unique name, arguments, and options.
 func NewCredential(ctx *pulumi.Context,
 	name string, args *CredentialArgs, opts ...pulumi.ResourceOption) (*Credential, error) {
-	if args == nil || args.AutomationAccountName == nil {
-		return nil, errors.New("missing required argument 'AutomationAccountName'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &CredentialArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutomationAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'AutomationAccountName'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource Credential
 	err := ctx.RegisterResource("azure:automation/credential:Credential", name, args, &resource, opts...)
@@ -176,4 +178,43 @@ type CredentialArgs struct {
 
 func (CredentialArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*credentialArgs)(nil)).Elem()
+}
+
+type CredentialInput interface {
+	pulumi.Input
+
+	ToCredentialOutput() CredentialOutput
+	ToCredentialOutputWithContext(ctx context.Context) CredentialOutput
+}
+
+func (Credential) ElementType() reflect.Type {
+	return reflect.TypeOf((*Credential)(nil)).Elem()
+}
+
+func (i Credential) ToCredentialOutput() CredentialOutput {
+	return i.ToCredentialOutputWithContext(context.Background())
+}
+
+func (i Credential) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CredentialOutput)
+}
+
+type CredentialOutput struct {
+	*pulumi.OutputState
+}
+
+func (CredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CredentialOutput)(nil)).Elem()
+}
+
+func (o CredentialOutput) ToCredentialOutput() CredentialOutput {
+	return o
+}
+
+func (o CredentialOutput) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CredentialOutput{})
 }

@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,11 +89,12 @@ type Share struct {
 // NewShare registers a new resource with the given unique name, arguments, and options.
 func NewShare(ctx *pulumi.Context,
 	name string, args *ShareArgs, opts ...pulumi.ResourceOption) (*Share, error) {
-	if args == nil || args.StorageAccountName == nil {
-		return nil, errors.New("missing required argument 'StorageAccountName'")
-	}
 	if args == nil {
-		args = &ShareArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StorageAccountName == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountName'")
 	}
 	var resource Share
 	err := ctx.RegisterResource("azure:storage/share:Share", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type ShareArgs struct {
 
 func (ShareArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareArgs)(nil)).Elem()
+}
+
+type ShareInput interface {
+	pulumi.Input
+
+	ToShareOutput() ShareOutput
+	ToShareOutputWithContext(ctx context.Context) ShareOutput
+}
+
+func (Share) ElementType() reflect.Type {
+	return reflect.TypeOf((*Share)(nil)).Elem()
+}
+
+func (i Share) ToShareOutput() ShareOutput {
+	return i.ToShareOutputWithContext(context.Background())
+}
+
+func (i Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
+}
+
+type ShareOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareOutput)(nil)).Elem()
+}
+
+func (o ShareOutput) ToShareOutput() ShareOutput {
+	return o
+}
+
+func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ShareOutput{})
 }

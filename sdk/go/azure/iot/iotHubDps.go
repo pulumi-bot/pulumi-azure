@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,14 +75,15 @@ type IotHubDps struct {
 // NewIotHubDps registers a new resource with the given unique name, arguments, and options.
 func NewIotHubDps(ctx *pulumi.Context,
 	name string, args *IotHubDpsArgs, opts ...pulumi.ResourceOption) (*IotHubDps, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &IotHubDpsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource IotHubDps
 	err := ctx.RegisterResource("azure:iot/iotHubDps:IotHubDps", name, args, &resource, opts...)
@@ -187,4 +189,43 @@ type IotHubDpsArgs struct {
 
 func (IotHubDpsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iotHubDpsArgs)(nil)).Elem()
+}
+
+type IotHubDpsInput interface {
+	pulumi.Input
+
+	ToIotHubDpsOutput() IotHubDpsOutput
+	ToIotHubDpsOutputWithContext(ctx context.Context) IotHubDpsOutput
+}
+
+func (IotHubDps) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotHubDps)(nil)).Elem()
+}
+
+func (i IotHubDps) ToIotHubDpsOutput() IotHubDpsOutput {
+	return i.ToIotHubDpsOutputWithContext(context.Background())
+}
+
+func (i IotHubDps) ToIotHubDpsOutputWithContext(ctx context.Context) IotHubDpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsOutput)
+}
+
+type IotHubDpsOutput struct {
+	*pulumi.OutputState
+}
+
+func (IotHubDpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IotHubDpsOutput)(nil)).Elem()
+}
+
+func (o IotHubDpsOutput) ToIotHubDpsOutput() IotHubDpsOutput {
+	return o
+}
+
+func (o IotHubDpsOutput) ToIotHubDpsOutputWithContext(ctx context.Context) IotHubDpsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IotHubDpsOutput{})
 }

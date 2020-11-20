@@ -4,6 +4,7 @@
 package analysisservices
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,14 +89,15 @@ type Server struct {
 // NewServer registers a new resource with the given unique name, arguments, and options.
 func NewServer(ctx *pulumi.Context,
 	name string, args *ServerArgs, opts ...pulumi.ResourceOption) (*Server, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &ServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource Server
 	err := ctx.RegisterResource("azure:analysisservices/server:Server", name, args, &resource, opts...)
@@ -217,4 +219,43 @@ type ServerArgs struct {
 
 func (ServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverArgs)(nil)).Elem()
+}
+
+type ServerInput interface {
+	pulumi.Input
+
+	ToServerOutput() ServerOutput
+	ToServerOutputWithContext(ctx context.Context) ServerOutput
+}
+
+func (Server) ElementType() reflect.Type {
+	return reflect.TypeOf((*Server)(nil)).Elem()
+}
+
+func (i Server) ToServerOutput() ServerOutput {
+	return i.ToServerOutputWithContext(context.Background())
+}
+
+func (i Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerOutput)
+}
+
+type ServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerOutput)(nil)).Elem()
+}
+
+func (o ServerOutput) ToServerOutput() ServerOutput {
+	return o
+}
+
+func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServerOutput{})
 }

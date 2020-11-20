@@ -80,7 +80,7 @@ class VirtualHubConnection(pulumi.CustomResource):
             __props__ = dict()
 
             if hub_to_vitual_network_traffic_allowed is not None:
-                warnings.warn("Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider", DeprecationWarning)
+                warnings.warn("""Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider""", DeprecationWarning)
                 pulumi.log.warn("hub_to_vitual_network_traffic_allowed is deprecated: Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider")
             __props__['hub_to_vitual_network_traffic_allowed'] = hub_to_vitual_network_traffic_allowed
             __props__['internet_security_enabled'] = internet_security_enabled
@@ -93,7 +93,7 @@ class VirtualHubConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'virtual_hub_id'")
             __props__['virtual_hub_id'] = virtual_hub_id
             if vitual_network_to_hub_gateways_traffic_allowed is not None:
-                warnings.warn("Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider", DeprecationWarning)
+                warnings.warn("""Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider""", DeprecationWarning)
                 pulumi.log.warn("vitual_network_to_hub_gateways_traffic_allowed is deprecated: Due to a breaking behavioural change in the Azure API this property is no longer functional and will be removed in version 3.0 of the provider")
             __props__['vitual_network_to_hub_gateways_traffic_allowed'] = vitual_network_to_hub_gateways_traffic_allowed
         super(VirtualHubConnection, __self__).__init__(

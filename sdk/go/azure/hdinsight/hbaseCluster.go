@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,26 +134,27 @@ type HBaseCluster struct {
 // NewHBaseCluster registers a new resource with the given unique name, arguments, and options.
 func NewHBaseCluster(ctx *pulumi.Context,
 	name string, args *HBaseClusterArgs, opts ...pulumi.ResourceOption) (*HBaseCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.ComponentVersion == nil {
-		return nil, errors.New("missing required argument 'ComponentVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &HBaseClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.ComponentVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource HBaseCluster
 	err := ctx.RegisterResource("azure:hdinsight/hBaseCluster:HBaseCluster", name, args, &resource, opts...)
@@ -310,4 +312,43 @@ type HBaseClusterArgs struct {
 
 func (HBaseClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hbaseClusterArgs)(nil)).Elem()
+}
+
+type HBaseClusterInput interface {
+	pulumi.Input
+
+	ToHBaseClusterOutput() HBaseClusterOutput
+	ToHBaseClusterOutputWithContext(ctx context.Context) HBaseClusterOutput
+}
+
+func (HBaseCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseCluster)(nil)).Elem()
+}
+
+func (i HBaseCluster) ToHBaseClusterOutput() HBaseClusterOutput {
+	return i.ToHBaseClusterOutputWithContext(context.Background())
+}
+
+func (i HBaseCluster) ToHBaseClusterOutputWithContext(ctx context.Context) HBaseClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterOutput)
+}
+
+type HBaseClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (HBaseClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseClusterOutput)(nil)).Elem()
+}
+
+func (o HBaseClusterOutput) ToHBaseClusterOutput() HBaseClusterOutput {
+	return o
+}
+
+func (o HBaseClusterOutput) ToHBaseClusterOutputWithContext(ctx context.Context) HBaseClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HBaseClusterOutput{})
 }
