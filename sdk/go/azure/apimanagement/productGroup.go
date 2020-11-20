@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,20 +77,21 @@ type ProductGroup struct {
 // NewProductGroup registers a new resource with the given unique name, arguments, and options.
 func NewProductGroup(ctx *pulumi.Context,
 	name string, args *ProductGroupArgs, opts ...pulumi.ResourceOption) (*ProductGroup, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
-	if args == nil || args.ProductId == nil {
-		return nil, errors.New("missing required argument 'ProductId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProductGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
+	}
+	if args.ProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ProductGroup
 	err := ctx.RegisterResource("azure:apimanagement/productGroup:ProductGroup", name, args, &resource, opts...)
@@ -163,4 +165,43 @@ type ProductGroupArgs struct {
 
 func (ProductGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*productGroupArgs)(nil)).Elem()
+}
+
+type ProductGroupInput interface {
+	pulumi.Input
+
+	ToProductGroupOutput() ProductGroupOutput
+	ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput
+}
+
+func (ProductGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductGroup)(nil)).Elem()
+}
+
+func (i ProductGroup) ToProductGroupOutput() ProductGroupOutput {
+	return i.ToProductGroupOutputWithContext(context.Background())
+}
+
+func (i ProductGroup) ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductGroupOutput)
+}
+
+type ProductGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductGroupOutput)(nil)).Elem()
+}
+
+func (o ProductGroupOutput) ToProductGroupOutput() ProductGroupOutput {
+	return o
+}
+
+func (o ProductGroupOutput) ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductGroupOutput{})
 }

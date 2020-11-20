@@ -10,11 +10,11 @@ from .. import _utilities, _tables
 
 __all__ = ['NamespaceAuthorizationRule']
 
-warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
+warnings.warn("""azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule""", DeprecationWarning)
 
 
 class NamespaceAuthorizationRule(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule", DeprecationWarning)
+    warnings.warn("""azure.eventhub.NamespaceAuthorizationRule has been deprecated in favor of azure.servicebus.NamespaceAuthorizationRule""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

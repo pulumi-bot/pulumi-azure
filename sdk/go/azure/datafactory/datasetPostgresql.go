@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,17 +89,18 @@ type DatasetPostgresql struct {
 // NewDatasetPostgresql registers a new resource with the given unique name, arguments, and options.
 func NewDatasetPostgresql(ctx *pulumi.Context,
 	name string, args *DatasetPostgresqlArgs, opts ...pulumi.ResourceOption) (*DatasetPostgresql, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.LinkedServiceName == nil {
-		return nil, errors.New("missing required argument 'LinkedServiceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DatasetPostgresqlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.LinkedServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'LinkedServiceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DatasetPostgresql
 	err := ctx.RegisterResource("azure:datafactory/datasetPostgresql:DatasetPostgresql", name, args, &resource, opts...)
@@ -228,4 +230,43 @@ type DatasetPostgresqlArgs struct {
 
 func (DatasetPostgresqlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetPostgresqlArgs)(nil)).Elem()
+}
+
+type DatasetPostgresqlInput interface {
+	pulumi.Input
+
+	ToDatasetPostgresqlOutput() DatasetPostgresqlOutput
+	ToDatasetPostgresqlOutputWithContext(ctx context.Context) DatasetPostgresqlOutput
+}
+
+func (DatasetPostgresql) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetPostgresql)(nil)).Elem()
+}
+
+func (i DatasetPostgresql) ToDatasetPostgresqlOutput() DatasetPostgresqlOutput {
+	return i.ToDatasetPostgresqlOutputWithContext(context.Background())
+}
+
+func (i DatasetPostgresql) ToDatasetPostgresqlOutputWithContext(ctx context.Context) DatasetPostgresqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetPostgresqlOutput)
+}
+
+type DatasetPostgresqlOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetPostgresqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetPostgresqlOutput)(nil)).Elem()
+}
+
+func (o DatasetPostgresqlOutput) ToDatasetPostgresqlOutput() DatasetPostgresqlOutput {
+	return o
+}
+
+func (o DatasetPostgresqlOutput) ToDatasetPostgresqlOutputWithContext(ctx context.Context) DatasetPostgresqlOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetPostgresqlOutput{})
 }

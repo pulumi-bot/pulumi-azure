@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -85,14 +86,15 @@ type SharedAccessPolicy struct {
 // NewSharedAccessPolicy registers a new resource with the given unique name, arguments, and options.
 func NewSharedAccessPolicy(ctx *pulumi.Context,
 	name string, args *SharedAccessPolicyArgs, opts ...pulumi.ResourceOption) (*SharedAccessPolicy, error) {
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SharedAccessPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SharedAccessPolicy
 	err := ctx.RegisterResource("azure:iot/sharedAccessPolicy:SharedAccessPolicy", name, args, &resource, opts...)
@@ -206,4 +208,43 @@ type SharedAccessPolicyArgs struct {
 
 func (SharedAccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedAccessPolicyArgs)(nil)).Elem()
+}
+
+type SharedAccessPolicyInput interface {
+	pulumi.Input
+
+	ToSharedAccessPolicyOutput() SharedAccessPolicyOutput
+	ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput
+}
+
+func (SharedAccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedAccessPolicy)(nil)).Elem()
+}
+
+func (i SharedAccessPolicy) ToSharedAccessPolicyOutput() SharedAccessPolicyOutput {
+	return i.ToSharedAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i SharedAccessPolicy) ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessPolicyOutput)
+}
+
+type SharedAccessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedAccessPolicyOutput)(nil)).Elem()
+}
+
+func (o SharedAccessPolicyOutput) ToSharedAccessPolicyOutput() SharedAccessPolicyOutput {
+	return o
+}
+
+func (o SharedAccessPolicyOutput) ToSharedAccessPolicyOutputWithContext(ctx context.Context) SharedAccessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedAccessPolicyOutput{})
 }

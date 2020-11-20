@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -77,23 +78,24 @@ type IdentityProviderAad struct {
 // NewIdentityProviderAad registers a new resource with the given unique name, arguments, and options.
 func NewIdentityProviderAad(ctx *pulumi.Context,
 	name string, args *IdentityProviderAadArgs, opts ...pulumi.ResourceOption) (*IdentityProviderAad, error) {
-	if args == nil || args.AllowedTenants == nil {
-		return nil, errors.New("missing required argument 'AllowedTenants'")
-	}
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClientSecret == nil {
-		return nil, errors.New("missing required argument 'ClientSecret'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IdentityProviderAadArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AllowedTenants == nil {
+		return nil, errors.New("invalid value for required argument 'AllowedTenants'")
+	}
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ClientSecret'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IdentityProviderAad
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderAad:IdentityProviderAad", name, args, &resource, opts...)
@@ -183,4 +185,43 @@ type IdentityProviderAadArgs struct {
 
 func (IdentityProviderAadArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityProviderAadArgs)(nil)).Elem()
+}
+
+type IdentityProviderAadInput interface {
+	pulumi.Input
+
+	ToIdentityProviderAadOutput() IdentityProviderAadOutput
+	ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput
+}
+
+func (IdentityProviderAad) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderAad)(nil)).Elem()
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadOutput() IdentityProviderAadOutput {
+	return i.ToIdentityProviderAadOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderAadOutput)
+}
+
+type IdentityProviderAadOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderAadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderAadOutput)(nil)).Elem()
+}
+
+func (o IdentityProviderAadOutput) ToIdentityProviderAadOutput() IdentityProviderAadOutput {
+	return o
+}
+
+func (o IdentityProviderAadOutput) ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IdentityProviderAadOutput{})
 }

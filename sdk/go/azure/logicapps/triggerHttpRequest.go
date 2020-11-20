@@ -4,6 +4,7 @@
 package logicapps
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,14 +70,15 @@ type TriggerHttpRequest struct {
 // NewTriggerHttpRequest registers a new resource with the given unique name, arguments, and options.
 func NewTriggerHttpRequest(ctx *pulumi.Context,
 	name string, args *TriggerHttpRequestArgs, opts ...pulumi.ResourceOption) (*TriggerHttpRequest, error) {
-	if args == nil || args.LogicAppId == nil {
-		return nil, errors.New("missing required argument 'LogicAppId'")
-	}
-	if args == nil || args.Schema == nil {
-		return nil, errors.New("missing required argument 'Schema'")
-	}
 	if args == nil {
-		args = &TriggerHttpRequestArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LogicAppId == nil {
+		return nil, errors.New("invalid value for required argument 'LogicAppId'")
+	}
+	if args.Schema == nil {
+		return nil, errors.New("invalid value for required argument 'Schema'")
 	}
 	var resource TriggerHttpRequest
 	err := ctx.RegisterResource("azure:logicapps/triggerHttpRequest:TriggerHttpRequest", name, args, &resource, opts...)
@@ -158,4 +160,43 @@ type TriggerHttpRequestArgs struct {
 
 func (TriggerHttpRequestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerHttpRequestArgs)(nil)).Elem()
+}
+
+type TriggerHttpRequestInput interface {
+	pulumi.Input
+
+	ToTriggerHttpRequestOutput() TriggerHttpRequestOutput
+	ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput
+}
+
+func (TriggerHttpRequest) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerHttpRequest)(nil)).Elem()
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestOutput() TriggerHttpRequestOutput {
+	return i.ToTriggerHttpRequestOutputWithContext(context.Background())
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerHttpRequestOutput)
+}
+
+type TriggerHttpRequestOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerHttpRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerHttpRequestOutput)(nil)).Elem()
+}
+
+func (o TriggerHttpRequestOutput) ToTriggerHttpRequestOutput() TriggerHttpRequestOutput {
+	return o
+}
+
+func (o TriggerHttpRequestOutput) ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerHttpRequestOutput{})
 }

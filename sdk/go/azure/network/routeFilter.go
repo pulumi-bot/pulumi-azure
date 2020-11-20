@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -61,11 +62,12 @@ type RouteFilter struct {
 // NewRouteFilter registers a new resource with the given unique name, arguments, and options.
 func NewRouteFilter(ctx *pulumi.Context,
 	name string, args *RouteFilterArgs, opts ...pulumi.ResourceOption) (*RouteFilter, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &RouteFilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource RouteFilter
 	err := ctx.RegisterResource("azure:network/routeFilter:RouteFilter", name, args, &resource, opts...)
@@ -147,4 +149,43 @@ type RouteFilterArgs struct {
 
 func (RouteFilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeFilterArgs)(nil)).Elem()
+}
+
+type RouteFilterInput interface {
+	pulumi.Input
+
+	ToRouteFilterOutput() RouteFilterOutput
+	ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput
+}
+
+func (RouteFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilter)(nil)).Elem()
+}
+
+func (i RouteFilter) ToRouteFilterOutput() RouteFilterOutput {
+	return i.ToRouteFilterOutputWithContext(context.Background())
+}
+
+func (i RouteFilter) ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterOutput)
+}
+
+type RouteFilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteFilterOutput)(nil)).Elem()
+}
+
+func (o RouteFilterOutput) ToRouteFilterOutput() RouteFilterOutput {
+	return o
+}
+
+func (o RouteFilterOutput) ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouteFilterOutput{})
 }

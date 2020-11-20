@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['Domain']
 
-warnings.warn("azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain", DeprecationWarning)
+warnings.warn("""azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain""", DeprecationWarning)
 
 
 class Domain(pulumi.CustomResource):
-    warnings.warn("azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain", DeprecationWarning)
+    warnings.warn("""azure.eventhub.Domain has been deprecated in favor of azure.eventgrid.Domain""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

@@ -4,6 +4,7 @@
 package appservice
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -117,17 +118,18 @@ type SlotVirtualNetworkSwiftConnection struct {
 // NewSlotVirtualNetworkSwiftConnection registers a new resource with the given unique name, arguments, and options.
 func NewSlotVirtualNetworkSwiftConnection(ctx *pulumi.Context,
 	name string, args *SlotVirtualNetworkSwiftConnectionArgs, opts ...pulumi.ResourceOption) (*SlotVirtualNetworkSwiftConnection, error) {
-	if args == nil || args.AppServiceId == nil {
-		return nil, errors.New("missing required argument 'AppServiceId'")
-	}
-	if args == nil || args.SlotName == nil {
-		return nil, errors.New("missing required argument 'SlotName'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &SlotVirtualNetworkSwiftConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceId'")
+	}
+	if args.SlotName == nil {
+		return nil, errors.New("invalid value for required argument 'SlotName'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource SlotVirtualNetworkSwiftConnection
 	err := ctx.RegisterResource("azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection", name, args, &resource, opts...)
@@ -193,4 +195,43 @@ type SlotVirtualNetworkSwiftConnectionArgs struct {
 
 func (SlotVirtualNetworkSwiftConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*slotVirtualNetworkSwiftConnectionArgs)(nil)).Elem()
+}
+
+type SlotVirtualNetworkSwiftConnectionInput interface {
+	pulumi.Input
+
+	ToSlotVirtualNetworkSwiftConnectionOutput() SlotVirtualNetworkSwiftConnectionOutput
+	ToSlotVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) SlotVirtualNetworkSwiftConnectionOutput
+}
+
+func (SlotVirtualNetworkSwiftConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotVirtualNetworkSwiftConnection)(nil)).Elem()
+}
+
+func (i SlotVirtualNetworkSwiftConnection) ToSlotVirtualNetworkSwiftConnectionOutput() SlotVirtualNetworkSwiftConnectionOutput {
+	return i.ToSlotVirtualNetworkSwiftConnectionOutputWithContext(context.Background())
+}
+
+func (i SlotVirtualNetworkSwiftConnection) ToSlotVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) SlotVirtualNetworkSwiftConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlotVirtualNetworkSwiftConnectionOutput)
+}
+
+type SlotVirtualNetworkSwiftConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlotVirtualNetworkSwiftConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotVirtualNetworkSwiftConnectionOutput)(nil)).Elem()
+}
+
+func (o SlotVirtualNetworkSwiftConnectionOutput) ToSlotVirtualNetworkSwiftConnectionOutput() SlotVirtualNetworkSwiftConnectionOutput {
+	return o
+}
+
+func (o SlotVirtualNetworkSwiftConnectionOutput) ToSlotVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) SlotVirtualNetworkSwiftConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SlotVirtualNetworkSwiftConnectionOutput{})
 }

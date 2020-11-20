@@ -4,6 +4,7 @@
 package kusto
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -124,23 +125,24 @@ type EventhubDataConnection struct {
 // NewEventhubDataConnection registers a new resource with the given unique name, arguments, and options.
 func NewEventhubDataConnection(ctx *pulumi.Context,
 	name string, args *EventhubDataConnectionArgs, opts ...pulumi.ResourceOption) (*EventhubDataConnection, error) {
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.ConsumerGroup == nil {
-		return nil, errors.New("missing required argument 'ConsumerGroup'")
-	}
-	if args == nil || args.DatabaseName == nil {
-		return nil, errors.New("missing required argument 'DatabaseName'")
-	}
-	if args == nil || args.EventhubId == nil {
-		return nil, errors.New("missing required argument 'EventhubId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &EventhubDataConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.ConsumerGroup == nil {
+		return nil, errors.New("invalid value for required argument 'ConsumerGroup'")
+	}
+	if args.DatabaseName == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseName'")
+	}
+	if args.EventhubId == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource EventhubDataConnection
 	err := ctx.RegisterResource("azure:kusto/eventhubDataConnection:EventhubDataConnection", name, args, &resource, opts...)
@@ -262,4 +264,43 @@ type EventhubDataConnectionArgs struct {
 
 func (EventhubDataConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventhubDataConnectionArgs)(nil)).Elem()
+}
+
+type EventhubDataConnectionInput interface {
+	pulumi.Input
+
+	ToEventhubDataConnectionOutput() EventhubDataConnectionOutput
+	ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput
+}
+
+func (EventhubDataConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubDataConnection)(nil)).Elem()
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionOutput() EventhubDataConnectionOutput {
+	return i.ToEventhubDataConnectionOutputWithContext(context.Background())
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventhubDataConnectionOutput)
+}
+
+type EventhubDataConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventhubDataConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventhubDataConnectionOutput)(nil)).Elem()
+}
+
+func (o EventhubDataConnectionOutput) ToEventhubDataConnectionOutput() EventhubDataConnectionOutput {
+	return o
+}
+
+func (o EventhubDataConnectionOutput) ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventhubDataConnectionOutput{})
 }

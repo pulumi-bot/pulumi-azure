@@ -4,6 +4,7 @@
 package loganalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,20 +79,21 @@ type SavedSearch struct {
 // NewSavedSearch registers a new resource with the given unique name, arguments, and options.
 func NewSavedSearch(ctx *pulumi.Context,
 	name string, args *SavedSearchArgs, opts ...pulumi.ResourceOption) (*SavedSearch, error) {
-	if args == nil || args.Category == nil {
-		return nil, errors.New("missing required argument 'Category'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.LogAnalyticsWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'LogAnalyticsWorkspaceId'")
-	}
-	if args == nil || args.Query == nil {
-		return nil, errors.New("missing required argument 'Query'")
-	}
 	if args == nil {
-		args = &SavedSearchArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Category == nil {
+		return nil, errors.New("invalid value for required argument 'Category'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.LogAnalyticsWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'LogAnalyticsWorkspaceId'")
+	}
+	if args.Query == nil {
+		return nil, errors.New("invalid value for required argument 'Query'")
 	}
 	var resource SavedSearch
 	err := ctx.RegisterResource("azure:loganalytics/savedSearch:SavedSearch", name, args, &resource, opts...)
@@ -197,4 +199,43 @@ type SavedSearchArgs struct {
 
 func (SavedSearchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*savedSearchArgs)(nil)).Elem()
+}
+
+type SavedSearchInput interface {
+	pulumi.Input
+
+	ToSavedSearchOutput() SavedSearchOutput
+	ToSavedSearchOutputWithContext(ctx context.Context) SavedSearchOutput
+}
+
+func (SavedSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedSearch)(nil)).Elem()
+}
+
+func (i SavedSearch) ToSavedSearchOutput() SavedSearchOutput {
+	return i.ToSavedSearchOutputWithContext(context.Background())
+}
+
+func (i SavedSearch) ToSavedSearchOutputWithContext(ctx context.Context) SavedSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedSearchOutput)
+}
+
+type SavedSearchOutput struct {
+	*pulumi.OutputState
+}
+
+func (SavedSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedSearchOutput)(nil)).Elem()
+}
+
+func (o SavedSearchOutput) ToSavedSearchOutput() SavedSearchOutput {
+	return o
+}
+
+func (o SavedSearchOutput) ToSavedSearchOutputWithContext(ctx context.Context) SavedSearchOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SavedSearchOutput{})
 }

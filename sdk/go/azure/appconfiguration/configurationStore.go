@@ -4,6 +4,7 @@
 package appconfiguration
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -72,11 +73,12 @@ type ConfigurationStore struct {
 // NewConfigurationStore registers a new resource with the given unique name, arguments, and options.
 func NewConfigurationStore(ctx *pulumi.Context,
 	name string, args *ConfigurationStoreArgs, opts ...pulumi.ResourceOption) (*ConfigurationStore, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ConfigurationStoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ConfigurationStore
 	err := ctx.RegisterResource("azure:appconfiguration/configurationStore:ConfigurationStore", name, args, &resource, opts...)
@@ -186,4 +188,43 @@ type ConfigurationStoreArgs struct {
 
 func (ConfigurationStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationStoreArgs)(nil)).Elem()
+}
+
+type ConfigurationStoreInput interface {
+	pulumi.Input
+
+	ToConfigurationStoreOutput() ConfigurationStoreOutput
+	ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput
+}
+
+func (ConfigurationStore) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationStore)(nil)).Elem()
+}
+
+func (i ConfigurationStore) ToConfigurationStoreOutput() ConfigurationStoreOutput {
+	return i.ToConfigurationStoreOutputWithContext(context.Background())
+}
+
+func (i ConfigurationStore) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreOutput)
+}
+
+type ConfigurationStoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationStoreOutput)(nil)).Elem()
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStoreOutput() ConfigurationStoreOutput {
+	return o
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfigurationStoreOutput{})
 }

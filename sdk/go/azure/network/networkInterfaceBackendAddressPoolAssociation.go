@@ -4,6 +4,7 @@
 package network
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -120,17 +121,18 @@ type NetworkInterfaceBackendAddressPoolAssociation struct {
 // NewNetworkInterfaceBackendAddressPoolAssociation registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterfaceBackendAddressPoolAssociation(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceBackendAddressPoolAssociationArgs, opts ...pulumi.ResourceOption) (*NetworkInterfaceBackendAddressPoolAssociation, error) {
-	if args == nil || args.BackendAddressPoolId == nil {
-		return nil, errors.New("missing required argument 'BackendAddressPoolId'")
-	}
-	if args == nil || args.IpConfigurationName == nil {
-		return nil, errors.New("missing required argument 'IpConfigurationName'")
-	}
-	if args == nil || args.NetworkInterfaceId == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaceId'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceBackendAddressPoolAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendAddressPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'BackendAddressPoolId'")
+	}
+	if args.IpConfigurationName == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurationName'")
+	}
+	if args.NetworkInterfaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkInterfaceId'")
 	}
 	var resource NetworkInterfaceBackendAddressPoolAssociation
 	err := ctx.RegisterResource("azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation", name, args, &resource, opts...)
@@ -196,4 +198,43 @@ type NetworkInterfaceBackendAddressPoolAssociationArgs struct {
 
 func (NetworkInterfaceBackendAddressPoolAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceBackendAddressPoolAssociationArgs)(nil)).Elem()
+}
+
+type NetworkInterfaceBackendAddressPoolAssociationInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput
+	ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput
+}
+
+func (NetworkInterfaceBackendAddressPoolAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociation)(nil)).Elem()
+}
+
+func (i NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput {
+	return i.ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceBackendAddressPoolAssociationOutput)
+}
+
+type NetworkInterfaceBackendAddressPoolAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceBackendAddressPoolAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociationOutput)(nil)).Elem()
+}
+
+func (o NetworkInterfaceBackendAddressPoolAssociationOutput) ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput {
+	return o
+}
+
+func (o NetworkInterfaceBackendAddressPoolAssociationOutput) ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkInterfaceBackendAddressPoolAssociationOutput{})
 }

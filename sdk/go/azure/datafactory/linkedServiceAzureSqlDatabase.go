@@ -4,6 +4,7 @@
 package datafactory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -78,17 +79,18 @@ type LinkedServiceAzureSqlDatabase struct {
 // NewLinkedServiceAzureSqlDatabase registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceAzureSqlDatabase(ctx *pulumi.Context,
 	name string, args *LinkedServiceAzureSqlDatabaseArgs, opts ...pulumi.ResourceOption) (*LinkedServiceAzureSqlDatabase, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceAzureSqlDatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceAzureSqlDatabase
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceAzureSqlDatabase:LinkedServiceAzureSqlDatabase", name, args, &resource, opts...)
@@ -202,4 +204,43 @@ type LinkedServiceAzureSqlDatabaseArgs struct {
 
 func (LinkedServiceAzureSqlDatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkedServiceAzureSqlDatabaseArgs)(nil)).Elem()
+}
+
+type LinkedServiceAzureSqlDatabaseInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureSqlDatabaseOutput() LinkedServiceAzureSqlDatabaseOutput
+	ToLinkedServiceAzureSqlDatabaseOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabaseOutput
+}
+
+func (LinkedServiceAzureSqlDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureSqlDatabase)(nil)).Elem()
+}
+
+func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabaseOutput() LinkedServiceAzureSqlDatabaseOutput {
+	return i.ToLinkedServiceAzureSqlDatabaseOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabaseOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureSqlDatabaseOutput)
+}
+
+type LinkedServiceAzureSqlDatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureSqlDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureSqlDatabaseOutput)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureSqlDatabaseOutput) ToLinkedServiceAzureSqlDatabaseOutput() LinkedServiceAzureSqlDatabaseOutput {
+	return o
+}
+
+func (o LinkedServiceAzureSqlDatabaseOutput) ToLinkedServiceAzureSqlDatabaseOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LinkedServiceAzureSqlDatabaseOutput{})
 }

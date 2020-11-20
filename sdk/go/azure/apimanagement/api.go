@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -108,26 +109,27 @@ type Api struct {
 // NewApi registers a new resource with the given unique name, arguments, and options.
 func NewApi(ctx *pulumi.Context,
 	name string, args *ApiArgs, opts ...pulumi.ResourceOption) (*Api, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Path == nil {
-		return nil, errors.New("missing required argument 'Path'")
-	}
-	if args == nil || args.Protocols == nil {
-		return nil, errors.New("missing required argument 'Protocols'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Revision == nil {
-		return nil, errors.New("missing required argument 'Revision'")
-	}
 	if args == nil {
-		args = &ApiArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Path == nil {
+		return nil, errors.New("invalid value for required argument 'Path'")
+	}
+	if args.Protocols == nil {
+		return nil, errors.New("invalid value for required argument 'Protocols'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Revision == nil {
+		return nil, errors.New("invalid value for required argument 'Revision'")
 	}
 	var resource Api
 	err := ctx.RegisterResource("azure:apimanagement/api:Api", name, args, &resource, opts...)
@@ -313,4 +315,43 @@ type ApiArgs struct {
 
 func (ApiArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiArgs)(nil)).Elem()
+}
+
+type ApiInput interface {
+	pulumi.Input
+
+	ToApiOutput() ApiOutput
+	ToApiOutputWithContext(ctx context.Context) ApiOutput
+}
+
+func (Api) ElementType() reflect.Type {
+	return reflect.TypeOf((*Api)(nil)).Elem()
+}
+
+func (i Api) ToApiOutput() ApiOutput {
+	return i.ToApiOutputWithContext(context.Background())
+}
+
+func (i Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
+}
+
+type ApiOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiOutput)(nil)).Elem()
+}
+
+func (o ApiOutput) ToApiOutput() ApiOutput {
+	return o
+}
+
+func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiOutput{})
 }

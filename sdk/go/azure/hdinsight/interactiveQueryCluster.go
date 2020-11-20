@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,26 +134,27 @@ type InteractiveQueryCluster struct {
 // NewInteractiveQueryCluster registers a new resource with the given unique name, arguments, and options.
 func NewInteractiveQueryCluster(ctx *pulumi.Context,
 	name string, args *InteractiveQueryClusterArgs, opts ...pulumi.ResourceOption) (*InteractiveQueryCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.ComponentVersion == nil {
-		return nil, errors.New("missing required argument 'ComponentVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &InteractiveQueryClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.ComponentVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource InteractiveQueryCluster
 	err := ctx.RegisterResource("azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster", name, args, &resource, opts...)
@@ -310,4 +312,43 @@ type InteractiveQueryClusterArgs struct {
 
 func (InteractiveQueryClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interactiveQueryClusterArgs)(nil)).Elem()
+}
+
+type InteractiveQueryClusterInput interface {
+	pulumi.Input
+
+	ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput
+	ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput
+}
+
+func (InteractiveQueryCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryCluster)(nil)).Elem()
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
+	return i.ToInteractiveQueryClusterOutputWithContext(context.Background())
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterOutput)
+}
+
+type InteractiveQueryClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (InteractiveQueryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryClusterOutput)(nil)).Elem()
+}
+
+func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
+	return o
+}
+
+func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InteractiveQueryClusterOutput{})
 }

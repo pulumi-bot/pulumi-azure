@@ -4,6 +4,7 @@
 package apimanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,20 +44,21 @@ type Backend struct {
 // NewBackend registers a new resource with the given unique name, arguments, and options.
 func NewBackend(ctx *pulumi.Context,
 	name string, args *BackendArgs, opts ...pulumi.ResourceOption) (*Backend, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &BackendArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource Backend
 	err := ctx.RegisterResource("azure:apimanagement/backend:Backend", name, args, &resource, opts...)
@@ -194,4 +196,43 @@ type BackendArgs struct {
 
 func (BackendArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendArgs)(nil)).Elem()
+}
+
+type BackendInput interface {
+	pulumi.Input
+
+	ToBackendOutput() BackendOutput
+	ToBackendOutputWithContext(ctx context.Context) BackendOutput
+}
+
+func (Backend) ElementType() reflect.Type {
+	return reflect.TypeOf((*Backend)(nil)).Elem()
+}
+
+func (i Backend) ToBackendOutput() BackendOutput {
+	return i.ToBackendOutputWithContext(context.Background())
+}
+
+func (i Backend) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendOutput)
+}
+
+type BackendOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendOutput)(nil)).Elem()
+}
+
+func (o BackendOutput) ToBackendOutput() BackendOutput {
+	return o
+}
+
+func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendOutput{})
 }

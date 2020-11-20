@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,17 +35,18 @@ type ScheduledQueryRulesLog struct {
 // NewScheduledQueryRulesLog registers a new resource with the given unique name, arguments, and options.
 func NewScheduledQueryRulesLog(ctx *pulumi.Context,
 	name string, args *ScheduledQueryRulesLogArgs, opts ...pulumi.ResourceOption) (*ScheduledQueryRulesLog, error) {
-	if args == nil || args.Criteria == nil {
-		return nil, errors.New("missing required argument 'Criteria'")
-	}
-	if args == nil || args.DataSourceId == nil {
-		return nil, errors.New("missing required argument 'DataSourceId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ScheduledQueryRulesLogArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Criteria == nil {
+		return nil, errors.New("invalid value for required argument 'Criteria'")
+	}
+	if args.DataSourceId == nil {
+		return nil, errors.New("invalid value for required argument 'DataSourceId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ScheduledQueryRulesLog
 	err := ctx.RegisterResource("azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog", name, args, &resource, opts...)
@@ -146,4 +148,43 @@ type ScheduledQueryRulesLogArgs struct {
 
 func (ScheduledQueryRulesLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledQueryRulesLogArgs)(nil)).Elem()
+}
+
+type ScheduledQueryRulesLogInput interface {
+	pulumi.Input
+
+	ToScheduledQueryRulesLogOutput() ScheduledQueryRulesLogOutput
+	ToScheduledQueryRulesLogOutputWithContext(ctx context.Context) ScheduledQueryRulesLogOutput
+}
+
+func (ScheduledQueryRulesLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledQueryRulesLog)(nil)).Elem()
+}
+
+func (i ScheduledQueryRulesLog) ToScheduledQueryRulesLogOutput() ScheduledQueryRulesLogOutput {
+	return i.ToScheduledQueryRulesLogOutputWithContext(context.Background())
+}
+
+func (i ScheduledQueryRulesLog) ToScheduledQueryRulesLogOutputWithContext(ctx context.Context) ScheduledQueryRulesLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesLogOutput)
+}
+
+type ScheduledQueryRulesLogOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScheduledQueryRulesLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledQueryRulesLogOutput)(nil)).Elem()
+}
+
+func (o ScheduledQueryRulesLogOutput) ToScheduledQueryRulesLogOutput() ScheduledQueryRulesLogOutput {
+	return o
+}
+
+func (o ScheduledQueryRulesLogOutput) ToScheduledQueryRulesLogOutputWithContext(ctx context.Context) ScheduledQueryRulesLogOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ScheduledQueryRulesLogOutput{})
 }

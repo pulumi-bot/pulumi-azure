@@ -4,6 +4,7 @@
 package streamanalytics
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -100,32 +101,33 @@ type StreamInputIotHub struct {
 // NewStreamInputIotHub registers a new resource with the given unique name, arguments, and options.
 func NewStreamInputIotHub(ctx *pulumi.Context,
 	name string, args *StreamInputIotHubArgs, opts ...pulumi.ResourceOption) (*StreamInputIotHub, error) {
-	if args == nil || args.Endpoint == nil {
-		return nil, errors.New("missing required argument 'Endpoint'")
-	}
-	if args == nil || args.EventhubConsumerGroupName == nil {
-		return nil, errors.New("missing required argument 'EventhubConsumerGroupName'")
-	}
-	if args == nil || args.IothubNamespace == nil {
-		return nil, errors.New("missing required argument 'IothubNamespace'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Serialization == nil {
-		return nil, errors.New("missing required argument 'Serialization'")
-	}
-	if args == nil || args.SharedAccessPolicyKey == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyKey'")
-	}
-	if args == nil || args.SharedAccessPolicyName == nil {
-		return nil, errors.New("missing required argument 'SharedAccessPolicyName'")
-	}
-	if args == nil || args.StreamAnalyticsJobName == nil {
-		return nil, errors.New("missing required argument 'StreamAnalyticsJobName'")
-	}
 	if args == nil {
-		args = &StreamInputIotHubArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Endpoint == nil {
+		return nil, errors.New("invalid value for required argument 'Endpoint'")
+	}
+	if args.EventhubConsumerGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'EventhubConsumerGroupName'")
+	}
+	if args.IothubNamespace == nil {
+		return nil, errors.New("invalid value for required argument 'IothubNamespace'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Serialization == nil {
+		return nil, errors.New("invalid value for required argument 'Serialization'")
+	}
+	if args.SharedAccessPolicyKey == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyKey'")
+	}
+	if args.SharedAccessPolicyName == nil {
+		return nil, errors.New("invalid value for required argument 'SharedAccessPolicyName'")
+	}
+	if args.StreamAnalyticsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'StreamAnalyticsJobName'")
 	}
 	var resource StreamInputIotHub
 	err := ctx.RegisterResource("azure:streamanalytics/streamInputIotHub:StreamInputIotHub", name, args, &resource, opts...)
@@ -239,4 +241,43 @@ type StreamInputIotHubArgs struct {
 
 func (StreamInputIotHubArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamInputIotHubArgs)(nil)).Elem()
+}
+
+type StreamInputIotHubInput interface {
+	pulumi.Input
+
+	ToStreamInputIotHubOutput() StreamInputIotHubOutput
+	ToStreamInputIotHubOutputWithContext(ctx context.Context) StreamInputIotHubOutput
+}
+
+func (StreamInputIotHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputIotHub)(nil)).Elem()
+}
+
+func (i StreamInputIotHub) ToStreamInputIotHubOutput() StreamInputIotHubOutput {
+	return i.ToStreamInputIotHubOutputWithContext(context.Background())
+}
+
+func (i StreamInputIotHub) ToStreamInputIotHubOutputWithContext(ctx context.Context) StreamInputIotHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubOutput)
+}
+
+type StreamInputIotHubOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputIotHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputIotHubOutput)(nil)).Elem()
+}
+
+func (o StreamInputIotHubOutput) ToStreamInputIotHubOutput() StreamInputIotHubOutput {
+	return o
+}
+
+func (o StreamInputIotHubOutput) ToStreamInputIotHubOutputWithContext(ctx context.Context) StreamInputIotHubOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StreamInputIotHubOutput{})
 }

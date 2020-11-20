@@ -4,6 +4,7 @@
 package hdinsight
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,26 +135,27 @@ type KafkaCluster struct {
 // NewKafkaCluster registers a new resource with the given unique name, arguments, and options.
 func NewKafkaCluster(ctx *pulumi.Context,
 	name string, args *KafkaClusterArgs, opts ...pulumi.ResourceOption) (*KafkaCluster, error) {
-	if args == nil || args.ClusterVersion == nil {
-		return nil, errors.New("missing required argument 'ClusterVersion'")
-	}
-	if args == nil || args.ComponentVersion == nil {
-		return nil, errors.New("missing required argument 'ComponentVersion'")
-	}
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Roles == nil {
-		return nil, errors.New("missing required argument 'Roles'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
 	if args == nil {
-		args = &KafkaClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterVersion'")
+	}
+	if args.ComponentVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ComponentVersion'")
+	}
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Roles == nil {
+		return nil, errors.New("invalid value for required argument 'Roles'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
 	var resource KafkaCluster
 	err := ctx.RegisterResource("azure:hdinsight/kafkaCluster:KafkaCluster", name, args, &resource, opts...)
@@ -311,4 +313,43 @@ type KafkaClusterArgs struct {
 
 func (KafkaClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaClusterArgs)(nil)).Elem()
+}
+
+type KafkaClusterInput interface {
+	pulumi.Input
+
+	ToKafkaClusterOutput() KafkaClusterOutput
+	ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput
+}
+
+func (KafkaCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaCluster)(nil)).Elem()
+}
+
+func (i KafkaCluster) ToKafkaClusterOutput() KafkaClusterOutput {
+	return i.ToKafkaClusterOutputWithContext(context.Background())
+}
+
+func (i KafkaCluster) ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterOutput)
+}
+
+type KafkaClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaClusterOutput)(nil)).Elem()
+}
+
+func (o KafkaClusterOutput) ToKafkaClusterOutput() KafkaClusterOutput {
+	return o
+}
+
+func (o KafkaClusterOutput) ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KafkaClusterOutput{})
 }

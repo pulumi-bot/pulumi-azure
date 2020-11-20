@@ -4,6 +4,7 @@
 package managedapplication
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -88,17 +89,18 @@ type Definition struct {
 // NewDefinition registers a new resource with the given unique name, arguments, and options.
 func NewDefinition(ctx *pulumi.Context,
 	name string, args *DefinitionArgs, opts ...pulumi.ResourceOption) (*Definition, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.LockLevel == nil {
-		return nil, errors.New("missing required argument 'LockLevel'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.LockLevel == nil {
+		return nil, errors.New("invalid value for required argument 'LockLevel'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Definition
 	err := ctx.RegisterResource("azure:managedapplication/definition:Definition", name, args, &resource, opts...)
@@ -236,4 +238,43 @@ type DefinitionArgs struct {
 
 func (DefinitionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*definitionArgs)(nil)).Elem()
+}
+
+type DefinitionInput interface {
+	pulumi.Input
+
+	ToDefinitionOutput() DefinitionOutput
+	ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput
+}
+
+func (Definition) ElementType() reflect.Type {
+	return reflect.TypeOf((*Definition)(nil)).Elem()
+}
+
+func (i Definition) ToDefinitionOutput() DefinitionOutput {
+	return i.ToDefinitionOutputWithContext(context.Background())
+}
+
+func (i Definition) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefinitionOutput)
+}
+
+type DefinitionOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefinitionOutput)(nil)).Elem()
+}
+
+func (o DefinitionOutput) ToDefinitionOutput() DefinitionOutput {
+	return o
+}
+
+func (o DefinitionOutput) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefinitionOutput{})
 }
