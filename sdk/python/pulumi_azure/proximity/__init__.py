@@ -5,3 +5,19 @@
 # Export this package's modules as members:
 from .get_placement_group import *
 from .placement_group import *
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:proximity/placementGroup:PlacementGroup":
+            return PlacementGroup(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "proximity/placementGroup", _module_instance)

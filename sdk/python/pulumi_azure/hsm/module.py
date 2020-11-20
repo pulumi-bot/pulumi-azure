@@ -136,13 +136,13 @@ class Module(pulumi.CustomResource):
 
             __props__['location'] = location
             __props__['name'] = name
-            if network_profile is None:
+            if network_profile is None and not opts.urn:
                 raise TypeError("Missing required property 'network_profile'")
             __props__['network_profile'] = network_profile
-            if resource_group_name is None:
+            if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
-            if sku_name is None:
+            if sku_name is None and not opts.urn:
                 raise TypeError("Missing required property 'sku_name'")
             __props__['sku_name'] = sku_name
             __props__['stamp_id'] = stamp_id

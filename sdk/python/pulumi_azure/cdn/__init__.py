@@ -8,3 +8,22 @@ from .get_profile import *
 from .profile import *
 from ._inputs import *
 from . import outputs
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:cdn/endpoint:Endpoint":
+            return Endpoint(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:cdn/profile:Profile":
+            return Profile(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "cdn/endpoint", _module_instance)
+pulumi.runtime.register_resource_module("azure", "cdn/profile", _module_instance)

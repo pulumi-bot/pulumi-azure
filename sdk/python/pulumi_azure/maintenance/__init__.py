@@ -7,3 +7,25 @@ from .assignment_dedicated_host import *
 from .assignment_virtual_machine import *
 from .configuration import *
 from .get_configuration import *
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost":
+            return AssignmentDedicatedHost(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine":
+            return AssignmentVirtualMachine(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:maintenance/configuration:Configuration":
+            return Configuration(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "maintenance/assignmentDedicatedHost", _module_instance)
+pulumi.runtime.register_resource_module("azure", "maintenance/assignmentVirtualMachine", _module_instance)
+pulumi.runtime.register_resource_module("azure", "maintenance/configuration", _module_instance)

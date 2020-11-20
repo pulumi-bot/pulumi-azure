@@ -6,3 +6,19 @@
 from .resource_group_export import *
 from ._inputs import *
 from . import outputs
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:costmanagement/resourceGroupExport:ResourceGroupExport":
+            return ResourceGroupExport(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "costmanagement/resourceGroupExport", _module_instance)

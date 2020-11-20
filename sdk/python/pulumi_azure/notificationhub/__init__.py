@@ -10,3 +10,25 @@ from .hub import *
 from .namespace import *
 from ._inputs import *
 from . import outputs
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:notificationhub/authorizationRule:AuthorizationRule":
+            return AuthorizationRule(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:notificationhub/hub:Hub":
+            return Hub(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:notificationhub/namespace:Namespace":
+            return Namespace(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "notificationhub/authorizationRule", _module_instance)
+pulumi.runtime.register_resource_module("azure", "notificationhub/hub", _module_instance)
+pulumi.runtime.register_resource_module("azure", "notificationhub/namespace", _module_instance)

@@ -102,7 +102,7 @@ class Provider(pulumi.ProviderResource):
             __props__['metadata_host'] = metadata_host
             if metadata_url is None:
                 metadata_url = (_utilities.get_env('ARM_METADATA_URL') or '')
-            if metadata_url is not None:
+            if metadata_url is not None and not opts.urn:
                 warnings.warn("""use `metadata_host` instead""", DeprecationWarning)
                 pulumi.log.warn("metadata_url is deprecated: use `metadata_host` instead")
             __props__['metadata_url'] = metadata_url

@@ -7,3 +7,22 @@ from .get_project import *
 from .get_service import *
 from .project import *
 from .service import *
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:databasemigration/project:Project":
+            return Project(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:databasemigration/service:Service":
+            return Service(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "databasemigration/project", _module_instance)
+pulumi.runtime.register_resource_module("azure", "databasemigration/service", _module_instance)

@@ -16,3 +16,31 @@ from .subscription_template_deployment import *
 from .template_deployment import *
 from ._inputs import *
 from . import outputs
+
+import pulumi
+
+class Module(pulumi.runtime.ResourceModule):
+    def version(self):
+        return None
+
+    def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+        if typ == "azure:core/customProvider:CustomProvider":
+            return CustomProvider(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:core/resourceGroup:ResourceGroup":
+            return ResourceGroup(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment":
+            return ResourceGroupTemplateDeployment(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment":
+            return SubscriptionTemplateDeployment(name, pulumi.ResourceOptions(urn=urn))
+        elif typ == "azure:core/templateDeployment:TemplateDeployment":
+            return TemplateDeployment(name, pulumi.ResourceOptions(urn=urn))
+        else:
+            raise Exception(f"unknown resource type {typ}")
+
+
+_module_instance = Module()
+pulumi.runtime.register_resource_module("azure", "core/customProvider", _module_instance)
+pulumi.runtime.register_resource_module("azure", "core/resourceGroup", _module_instance)
+pulumi.runtime.register_resource_module("azure", "core/resourceGroupTemplateDeployment", _module_instance)
+pulumi.runtime.register_resource_module("azure", "core/subscriptionTemplateDeployment", _module_instance)
+pulumi.runtime.register_resource_module("azure", "core/templateDeployment", _module_instance)
