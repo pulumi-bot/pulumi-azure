@@ -54,7 +54,7 @@ class RoleAssignment(pulumi.CustomResource):
             synapse_workspace_id=example_workspace.id,
             role_name="Sql Admin",
             principal_id=current.object_id,
-            opts=ResourceOptions(depends_on=[example_firewall_rule]))
+            opts=pulumi.ResourceOptions(depends_on=[example_firewall_rule]))
         ```
 
         ## Import
