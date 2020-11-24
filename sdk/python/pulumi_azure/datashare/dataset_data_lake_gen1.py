@@ -61,7 +61,7 @@ class DatasetDataLakeGen1(pulumi.CustomResource):
             data_lake_store_id=example_store.id,
             file_name="myfile.txt",
             folder_path="example",
-            opts=ResourceOptions(depends_on=[example_assignment]))
+            opts=pulumi.ResourceOptions(depends_on=[example_assignment]))
         ```
 
         ## Import
