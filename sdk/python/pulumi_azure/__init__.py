@@ -99,3 +99,20 @@ from . import (
     trafficmanager,
     waf,
 )
+
+def _register_module():
+    import pulumi
+
+    class Package(pulumi.runtime.ResourcePackage):
+        def version(self):
+            return None
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:azure":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("azure", Package())
+
+_register_module()
