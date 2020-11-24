@@ -100,19 +100,19 @@ class ApiDiagnostic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api_management_logger_id is None:
+            if api_management_logger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_management_logger_id'")
             __props__['api_management_logger_id'] = api_management_logger_id
-            if api_management_name is None:
+            if api_management_name is None and not opts.urn:
                 raise TypeError("Missing required property 'api_management_name'")
             __props__['api_management_name'] = api_management_name
-            if api_name is None:
+            if api_name is None and not opts.urn:
                 raise TypeError("Missing required property 'api_name'")
             __props__['api_name'] = api_name
-            if identifier is None:
+            if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__['identifier'] = identifier
-            if resource_group_name is None:
+            if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
         super(ApiDiagnostic, __self__).__init__(
