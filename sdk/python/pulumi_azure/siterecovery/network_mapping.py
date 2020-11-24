@@ -48,7 +48,7 @@ class NetworkMapping(pulumi.CustomResource):
             resource_group_name=secondary_resource_group.name,
             recovery_vault_name=vault.name,
             location=secondary_resource_group.location,
-            opts=ResourceOptions(depends_on=[primary_fabric]))
+            opts=pulumi.ResourceOptions(depends_on=[primary_fabric]))
         # Avoids issues with crearing fabrics simultainusly
         primary_virtual_network = azure.network.VirtualNetwork("primaryVirtualNetwork",
             resource_group_name=primary_resource_group.name,
