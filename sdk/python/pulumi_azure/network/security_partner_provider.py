@@ -54,7 +54,7 @@ class SecurityPartnerProvider(pulumi.CustomResource):
             tags={
                 "ENV": "Prod",
             },
-            opts=ResourceOptions(depends_on=[example_vpn_gateway]))
+            opts=pulumi.ResourceOptions(depends_on=[example_vpn_gateway]))
         ```
 
         ## Import
