@@ -49,15 +49,15 @@ class Key(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             tenant_id=current.tenant_id,
             sku_name="premium",
-            access_policies=[azure.keyvault.KeyVaultAccessPolicyArgs(
-                tenant_id=current.tenant_id,
-                object_id=current.object_id,
-                key_permissions=[
+            access_policies=[{
+                "tenant_id": current.tenant_id,
+                "object_id": current.object_id,
+                "key_permissions": [
                     "create",
                     "get",
                 ],
-                secret_permissions=["set"],
-            )],
+                "secret_permissions": ["set"],
+            }],
             tags={
                 "environment": "Production",
             })

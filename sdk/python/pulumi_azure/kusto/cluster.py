@@ -47,10 +47,10 @@ class Cluster(pulumi.CustomResource):
         example = azure.kusto.Cluster("example",
             location=rg.location,
             resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ),
+            sku={
+                "name": "Standard_D13_v2",
+                "capacity": 2,
+            },
             tags={
                 "Environment": "Production",
             })

@@ -39,10 +39,10 @@ class ClusterPrincipalAssignment(pulumi.CustomResource):
         example_cluster = azure.kusto.Cluster("exampleCluster",
             location=rg.location,
             resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
+            sku={
+                "name": "Standard_D13_v2",
+                "capacity": 2,
+            })
         example_cluster_principal_assignment = azure.kusto.ClusterPrincipalAssignment("exampleClusterPrincipalAssignment",
             resource_group_name=rg.name,
             cluster_name=example_cluster.name,

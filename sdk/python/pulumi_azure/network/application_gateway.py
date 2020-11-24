@@ -83,47 +83,47 @@ class ApplicationGateway(pulumi.CustomResource):
         network = azure.network.ApplicationGateway("network",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
-            sku=azure.network.ApplicationGatewaySkuArgs(
-                name="Standard_Small",
-                tier="Standard",
-                capacity=2,
-            ),
-            gateway_ip_configurations=[azure.network.ApplicationGatewayGatewayIpConfigurationArgs(
-                name="my-gateway-ip-configuration",
-                subnet_id=frontend.id,
-            )],
-            frontend_ports=[azure.network.ApplicationGatewayFrontendPortArgs(
-                name=frontend_port_name,
-                port=80,
-            )],
-            frontend_ip_configurations=[azure.network.ApplicationGatewayFrontendIpConfigurationArgs(
-                name=frontend_ip_configuration_name,
-                public_ip_address_id=example_public_ip.id,
-            )],
-            backend_address_pools=[azure.network.ApplicationGatewayBackendAddressPoolArgs(
-                name=backend_address_pool_name,
-            )],
-            backend_http_settings=[azure.network.ApplicationGatewayBackendHttpSettingArgs(
-                name=http_setting_name,
-                cookie_based_affinity="Disabled",
-                path="/path1/",
-                port=80,
-                protocol="Http",
-                request_timeout=60,
-            )],
-            http_listeners=[azure.network.ApplicationGatewayHttpListenerArgs(
-                name=listener_name,
-                frontend_ip_configuration_name=frontend_ip_configuration_name,
-                frontend_port_name=frontend_port_name,
-                protocol="Http",
-            )],
-            request_routing_rules=[azure.network.ApplicationGatewayRequestRoutingRuleArgs(
-                name=request_routing_rule_name,
-                rule_type="Basic",
-                http_listener_name=listener_name,
-                backend_address_pool_name=backend_address_pool_name,
-                backend_http_settings_name=http_setting_name,
-            )])
+            sku={
+                "name": "Standard_Small",
+                "tier": "Standard",
+                "capacity": 2,
+            },
+            gateway_ip_configurations=[{
+                "name": "my-gateway-ip-configuration",
+                "subnet_id": frontend.id,
+            }],
+            frontend_ports=[{
+                "name": frontend_port_name,
+                "port": 80,
+            }],
+            frontend_ip_configurations=[{
+                "name": frontend_ip_configuration_name,
+                "public_ip_address_id": example_public_ip.id,
+            }],
+            backend_address_pools=[{
+                "name": backend_address_pool_name,
+            }],
+            backend_http_settings=[{
+                "name": http_setting_name,
+                "cookieBasedAffinity": "Disabled",
+                "path": "/path1/",
+                "port": 80,
+                "protocol": "Http",
+                "requestTimeout": 60,
+            }],
+            http_listeners=[{
+                "name": listener_name,
+                "frontend_ip_configuration_name": frontend_ip_configuration_name,
+                "frontendPortName": frontend_port_name,
+                "protocol": "Http",
+            }],
+            request_routing_rules=[{
+                "name": request_routing_rule_name,
+                "ruleType": "Basic",
+                "httpListenerName": listener_name,
+                "backendAddressPoolName": backend_address_pool_name,
+                "backendHttpSettingsName": http_setting_name,
+            }])
         ```
 
         ## Import

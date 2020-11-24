@@ -57,9 +57,9 @@ class OutputEventHub(pulumi.CustomResource):
             servicebus_namespace=example_event_hub_namespace.name,
             shared_access_policy_key=example_event_hub_namespace.default_primary_key,
             shared_access_policy_name="RootManageSharedAccessKey",
-            serialization=azure.streamanalytics.OutputEventHubSerializationArgs(
-                type="Avro",
-            ))
+            serialization={
+                "type": "Avro",
+            })
         ```
 
         ## Import

@@ -50,16 +50,16 @@ class ApiDiagnostic(pulumi.CustomResource):
             display_name="Example API",
             path="example",
             protocols=["https"],
-            import_=azure.apimanagement.ApiImportArgs(
-                content_format="swagger-link-json",
-                content_value="http://conferenceapi.azurewebsites.net/?format=json",
-            ))
+            import_={
+                "contentFormat": "swagger-link-json",
+                "contentValue": "http://conferenceapi.azurewebsites.net/?format=json",
+            })
         example_logger = azure.apimanagement.Logger("exampleLogger",
             api_management_name=example_service.name,
             resource_group_name=example_resource_group.name,
-            application_insights=azure.apimanagement.LoggerApplicationInsightsArgs(
-                instrumentation_key=example_insights.instrumentation_key,
-            ))
+            application_insights={
+                "instrumentation_key": example_insights.instrumentation_key,
+            })
         example_api_diagnostic = azure.apimanagement.ApiDiagnostic("exampleApiDiagnostic",
             resource_group_name=example_resource_group.name,
             api_management_name=example_service.name,

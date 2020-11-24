@@ -39,16 +39,16 @@ class CassandraKeyspace(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             offer_type="Standard",
-            capabilities=[azure.cosmosdb.AccountCapabilityArgs(
-                name="EnableCassandra",
-            )],
-            consistency_policy=azure.cosmosdb.AccountConsistencyPolicyArgs(
-                consistency_level="Strong",
-            ),
-            geo_locations=[azure.cosmosdb.AccountGeoLocationArgs(
-                location="West US",
-                failover_priority=0,
-            )])
+            capabilities=[{
+                "name": "EnableCassandra",
+            }],
+            consistency_policy={
+                "consistencyLevel": "Strong",
+            },
+            geo_locations=[{
+                "location": "West US",
+                "failoverPriority": 0,
+            }])
         example_cassandra_keyspace = azure.cosmosdb.CassandraKeyspace("exampleCassandraKeyspace",
             resource_group_name=example_account.resource_group_name,
             account_name=example_account.name,

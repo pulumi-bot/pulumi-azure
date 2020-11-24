@@ -59,11 +59,11 @@ class OutputBlob(pulumi.CustomResource):
             path_pattern="some-pattern",
             date_format="yyyy-MM-dd",
             time_format="HH",
-            serialization=azure.streamanalytics.OutputBlobSerializationArgs(
-                type="Csv",
-                encoding="UTF8",
-                field_delimiter=",",
-            ))
+            serialization={
+                "type": "Csv",
+                "encoding": "UTF8",
+                "fieldDelimiter": ",",
+            })
         ```
 
         ## Import

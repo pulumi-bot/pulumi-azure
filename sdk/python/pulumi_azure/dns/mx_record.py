@@ -42,14 +42,14 @@ class MxRecord(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             ttl=300,
             records=[
-                azure.dns.MxRecordRecordArgs(
-                    preference="10",
-                    exchange="mail1.contoso.com",
-                ),
-                azure.dns.MxRecordRecordArgs(
-                    preference="20",
-                    exchange="mail2.contoso.com",
-                ),
+                {
+                    "preference": "10",
+                    "exchange": "mail1.contoso.com",
+                },
+                {
+                    "preference": "20",
+                    "exchange": "mail2.contoso.com",
+                },
             ],
             tags={
                 "Environment": "Production",

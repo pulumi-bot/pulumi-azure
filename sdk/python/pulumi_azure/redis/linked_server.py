@@ -40,11 +40,11 @@ class LinkedServer(pulumi.CustomResource):
             family="P",
             sku_name="Premium",
             enable_non_ssl_port=False,
-            redis_configuration=azure.redis.CacheRedisConfigurationArgs(
-                maxmemory_reserved=2,
-                maxmemory_delta=2,
-                maxmemory_policy="allkeys-lru",
-            ))
+            redis_configuration={
+                "maxmemoryReserved": 2,
+                "maxmemoryDelta": 2,
+                "maxmemoryPolicy": "allkeys-lru",
+            })
         example_secondary_resource_group = azure.core.ResourceGroup("example-secondaryResourceGroup", location="West US")
         example_secondary_cache = azure.redis.Cache("example-secondaryCache",
             location=example_secondary_resource_group.location,
@@ -53,11 +53,11 @@ class LinkedServer(pulumi.CustomResource):
             family="P",
             sku_name="Premium",
             enable_non_ssl_port=False,
-            redis_configuration=azure.redis.CacheRedisConfigurationArgs(
-                maxmemory_reserved=2,
-                maxmemory_delta=2,
-                maxmemory_policy="allkeys-lru",
-            ))
+            redis_configuration={
+                "maxmemoryReserved": 2,
+                "maxmemoryDelta": 2,
+                "maxmemoryPolicy": "allkeys-lru",
+            })
         example_link = azure.redis.LinkedServer("example-link",
             target_redis_cache_name=example_primary_cache.name,
             resource_group_name=example_primary_cache.resource_group_name,

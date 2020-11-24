@@ -37,10 +37,10 @@ class Database(pulumi.CustomResource):
         cluster = azure.kusto.Cluster("cluster",
             location=rg.location,
             resource_group_name=rg.name,
-            sku=azure.kusto.ClusterSkuArgs(
-                name="Standard_D13_v2",
-                capacity=2,
-            ))
+            sku={
+                "name": "Standard_D13_v2",
+                "capacity": 2,
+            })
         database = azure.kusto.Database("database",
             resource_group_name=rg.name,
             location=rg.location,

@@ -58,18 +58,18 @@ class KubernetesCluster(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             dns_prefix="exampleaks1",
-            default_node_pool=azure.containerservice.KubernetesClusterDefaultNodePoolArgs(
-                name="default",
-                node_count=1,
-                vm_size="Standard_D2_v2",
-            ),
-            identity=azure.containerservice.KubernetesClusterIdentityArgs(
-                type="SystemAssigned",
-            ),
+            default_node_pool={
+                "name": "default",
+                "node_count": 1,
+                "vm_size": "Standard_D2_v2",
+            },
+            identity={
+                "type": "SystemAssigned",
+            },
             tags={
                 "Environment": "Production",
             })
-        pulumi.export("clientCertificate", example_kubernetes_cluster.kube_configs[0].client_certificate)
+        pulumi.export("clientCertificate", example_kubernetes_cluster.kube_configs[0]["clientCertificate"])
         pulumi.export("kubeConfig", example_kubernetes_cluster.kube_config_raw)
         ```
 

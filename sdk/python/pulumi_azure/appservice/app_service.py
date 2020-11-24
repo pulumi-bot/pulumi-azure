@@ -55,26 +55,26 @@ class AppService(pulumi.CustomResource):
         example_plan = azure.appservice.Plan("examplePlan",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Standard",
-                size="S1",
-            ))
+            sku={
+                "tier": "Standard",
+                "size": "S1",
+            })
         example_app_service = azure.appservice.AppService("exampleAppService",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             app_service_plan_id=example_plan.id,
-            site_config=azure.appservice.AppServiceSiteConfigArgs(
-                dotnet_framework_version="v4.0",
-                scm_type="LocalGit",
-            ),
+            site_config={
+                "dotnetFrameworkVersion": "v4.0",
+                "scmType": "LocalGit",
+            },
             app_settings={
                 "SOME_KEY": "some-value",
             },
-            connection_strings=[azure.appservice.AppServiceConnectionStringArgs(
-                name="Database",
-                type="SQLServer",
-                value="Server=some-server.mydomain.com;Integrated Security=SSPI",
-            )])
+            connection_strings=[{
+                "name": "Database",
+                "type": "SQLServer",
+                "value": "Server=some-server.mydomain.com;Integrated Security=SSPI",
+            }])
         ```
 
         ## Import

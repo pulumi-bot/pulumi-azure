@@ -50,22 +50,22 @@ class GremlinGraph(pulumi.CustomResource):
             database_name=example_gremlin_database.name,
             partition_key_path="/Example",
             throughput=400,
-            index_policies=[azure.cosmosdb.GremlinGraphIndexPolicyArgs(
-                automatic=True,
-                indexing_mode="Consistent",
-                included_paths=["/*"],
-                excluded_paths=["/\"_etag\"/?"],
-            )],
-            conflict_resolution_policies=[azure.cosmosdb.GremlinGraphConflictResolutionPolicyArgs(
-                mode="LastWriterWins",
-                conflict_resolution_path="/_ts",
-            )],
-            unique_keys=[azure.cosmosdb.GremlinGraphUniqueKeyArgs(
-                paths=[
+            index_policies=[{
+                "automatic": True,
+                "indexingMode": "Consistent",
+                "includedPaths": ["/*"],
+                "excludedPaths": ["/\"_etag\"/?"],
+            }],
+            conflict_resolution_policies=[{
+                "mode": "LastWriterWins",
+                "conflictResolutionPath": "/_ts",
+            }],
+            unique_keys=[{
+                "paths": [
                     "/definition/id1",
                     "/definition/id2",
                 ],
-            )])
+            }])
         ```
 
         > **NOTE:** The CosmosDB Account needs to have the `EnableGremlin` capability enabled to use this resource - which can be done by adding this to the `capabilities` list within the `cosmosdb.Account` resource.

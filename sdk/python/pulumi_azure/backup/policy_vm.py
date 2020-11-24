@@ -49,39 +49,39 @@ class PolicyVM(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             recovery_vault_name=example_vault.name,
             timezone="UTC",
-            backup=azure.backup.PolicyVMBackupArgs(
-                frequency="Daily",
-                time="23:00",
-            ),
-            retention_daily=azure.backup.PolicyVMRetentionDailyArgs(
-                count=10,
-            ),
-            retention_weekly=azure.backup.PolicyVMRetentionWeeklyArgs(
-                count=42,
-                weekdays=[
+            backup={
+                "frequency": "Daily",
+                "time": "23:00",
+            },
+            retention_daily={
+                "count": 10,
+            },
+            retention_weekly={
+                "count": 42,
+                "weekdays": [
                     "Sunday",
                     "Wednesday",
                     "Friday",
                     "Saturday",
                 ],
-            ),
-            retention_monthly=azure.backup.PolicyVMRetentionMonthlyArgs(
-                count=7,
-                weekdays=[
+            },
+            retention_monthly={
+                "count": 7,
+                "weekdays": [
                     "Sunday",
                     "Wednesday",
                 ],
-                weeks=[
+                "weeks": [
                     "First",
                     "Last",
                 ],
-            ),
-            retention_yearly=azure.backup.PolicyVMRetentionYearlyArgs(
-                count=77,
-                weekdays=["Sunday"],
-                weeks=["Last"],
-                months=["January"],
-            ))
+            },
+            retention_yearly={
+                "count": 77,
+                "weekdays": ["Sunday"],
+                "weeks": ["Last"],
+                "months": ["January"],
+            })
         ```
 
         ## Import

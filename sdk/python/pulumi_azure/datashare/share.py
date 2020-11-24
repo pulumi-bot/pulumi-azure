@@ -47,11 +47,11 @@ class Share(pulumi.CustomResource):
             kind="CopyBased",
             description="example desc",
             terms="example terms",
-            snapshot_schedule=azure.datashare.ShareSnapshotScheduleArgs(
-                name="example-ss",
-                recurrence="Day",
-                start_time="2020-04-17T04:47:52.9614956Z",
-            ))
+            snapshot_schedule={
+                "name": "example-ss",
+                "recurrence": "Day",
+                "start_time": "2020-04-17T04:47:52.9614956Z",
+            })
         ```
 
         ## Import

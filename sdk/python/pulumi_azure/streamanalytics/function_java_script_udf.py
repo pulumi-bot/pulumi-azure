@@ -45,12 +45,12 @@ class FunctionJavaScriptUDF(pulumi.CustomResource):
           return in;
         }
         \"\"\",
-            inputs=[azure.streamanalytics.FunctionJavaScriptUDFInputArgs(
-                type="bigint",
-            )],
-            output=azure.streamanalytics.FunctionJavaScriptUDFOutputArgs(
-                type="bigint",
-            ))
+            inputs=[{
+                "type": "bigint",
+            }],
+            output={
+                "type": "bigint",
+            })
         ```
 
         ## Import

@@ -63,10 +63,10 @@ class StreamInputEventHub(pulumi.CustomResource):
             servicebus_namespace=example_event_hub_namespace.name,
             shared_access_policy_key=example_event_hub_namespace.default_primary_key,
             shared_access_policy_name="RootManageSharedAccessKey",
-            serialization=azure.streamanalytics.StreamInputEventHubSerializationArgs(
-                type="Json",
-                encoding="UTF8",
-            ))
+            serialization={
+                "type": "Json",
+                "encoding": "UTF8",
+            })
         ```
 
         ## Import

@@ -45,10 +45,10 @@ class ExpressRouteCircuit(pulumi.CustomResource):
             service_provider_name="Equinix",
             peering_location="Silicon Valley",
             bandwidth_in_mbps=50,
-            sku=azure.network.ExpressRouteCircuitSkuArgs(
-                tier="Standard",
-                family="MeteredData",
-            ),
+            sku={
+                "tier": "Standard",
+                "family": "MeteredData",
+            },
             tags={
                 "environment": "Production",
             })

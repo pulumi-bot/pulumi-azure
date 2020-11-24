@@ -56,7 +56,7 @@ class Cache(pulumi.CustomResource):
             sku_name="Standard",
             enable_non_ssl_port=False,
             minimum_tls_version="1.2",
-            redis_configuration=azure.redis.CacheRedisConfigurationArgs())
+            redis_configuration={})
         ```
         ## Default Redis Configuration Values
 

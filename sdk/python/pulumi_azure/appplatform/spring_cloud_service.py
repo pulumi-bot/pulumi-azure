@@ -46,17 +46,17 @@ class SpringCloudService(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             sku_name="S0",
-            config_server_git_setting=azure.appplatform.SpringCloudServiceConfigServerGitSettingArgs(
-                uri="https://github.com/Azure-Samples/piggymetrics",
-                label="config",
-                search_paths=[
+            config_server_git_setting={
+                "uri": "https://github.com/Azure-Samples/piggymetrics",
+                "label": "config",
+                "searchPaths": [
                     "dir1",
                     "dir2",
                 ],
-            ),
-            trace=azure.appplatform.SpringCloudServiceTraceArgs(
-                instrumentation_key=example_insights.instrumentation_key,
-            ),
+            },
+            trace={
+                "instrumentation_key": example_insights.instrumentation_key,
+            },
             tags={
                 "Env": "staging",
             })

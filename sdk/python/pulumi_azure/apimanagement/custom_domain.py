@@ -48,29 +48,29 @@ class CustomDomain(pulumi.CustomResource):
             sku_name="Developer_1")
         example_certificate = azure.keyvault.Certificate("exampleCertificate",
             key_vault_id=azurerm_key_vault["test"]["id"],
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties={
+            certificate_policy={
+                "issuerParameters": {
+                    "name": "Self",
+                },
+                "key_properties": {
                     "exportable": True,
                     "key_size": 2048,
                     "key_type": "RSA",
                     "reuseKey": True,
                 },
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    key_usages=[
+                "lifetimeActions": [{
+                    "action": {
+                        "actionType": "AutoRenew",
+                    },
+                    "trigger": {
+                        "daysBeforeExpiry": 30,
+                    },
+                }],
+                "secretProperties": {
+                    "content_type": "application/x-pkcs12",
+                },
+                "x509CertificateProperties": {
+                    "keyUsages": [
                         "cRLSign",
                         "dataEncipherment",
                         "digitalSignature",
@@ -78,26 +78,26 @@ class CustomDomain(pulumi.CustomResource):
                         "keyCertSign",
                         "keyEncipherment",
                     ],
-                    subject="CN=api.example.com",
-                    validity_in_months=12,
-                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
-                        dns_names=[
+                    "subject": "CN=api.example.com",
+                    "validityInMonths": 12,
+                    "subjectAlternativeNames": {
+                        "dnsNames": [
                             "api.example.com",
                             "portal.example.com",
                         ],
-                    ),
-                ),
-            ))
+                    },
+                },
+            })
         example_custom_domain = azure.apimanagement.CustomDomain("exampleCustomDomain",
             api_management_id=example_service.id,
-            proxies=[azure.apimanagement.CustomDomainProxyArgs(
-                host_name="api.example.com",
-                key_vault_id=azurerm_key_vault_certificate["test"]["secret_id"],
-            )],
-            developer_portals=[azure.apimanagement.CustomDomainDeveloperPortalArgs(
-                host_name="portal.example.com",
-                key_vault_id=azurerm_key_vault_certificate["test"]["secret_id"],
-            )])
+            proxies=[{
+                "host_name": "api.example.com",
+                "key_vault_id": azurerm_key_vault_certificate["test"]["secret_id"],
+            }],
+            developer_portals=[{
+                "host_name": "portal.example.com",
+                "key_vault_id": azurerm_key_vault_certificate["test"]["secret_id"],
+            }])
         ```
 
         ## Import

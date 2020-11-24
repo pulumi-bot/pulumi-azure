@@ -44,59 +44,59 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profiles=[azure.monitoring.AutoscaleSettingProfileArgs(
-                name="defaultProfile",
-                capacity=azure.monitoring.AutoscaleSettingProfileCapacityArgs(
-                    default=1,
-                    minimum=1,
-                    maximum=10,
-                ),
-                rules=[
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="GreaterThan",
-                            threshold=75,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Increase",
-                            type="ChangeCount",
-                            value=1,
-                            cooldown="PT1M",
-                        ),
-                    ),
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="LessThan",
-                            threshold=25,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Decrease",
-                            type="ChangeCount",
-                            value=1,
-                            cooldown="PT1M",
-                        ),
-                    ),
+            profiles=[{
+                "name": "defaultProfile",
+                "capacity": {
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 10,
+                },
+                "rules": [
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "GreaterThan",
+                            "threshold": 75,
+                        },
+                        "scaleAction": {
+                            "direction": "Increase",
+                            "type": "ChangeCount",
+                            "value": 1,
+                            "cooldown": "PT1M",
+                        },
+                    },
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "LessThan",
+                            "threshold": 25,
+                        },
+                        "scaleAction": {
+                            "direction": "Decrease",
+                            "type": "ChangeCount",
+                            "value": 1,
+                            "cooldown": "PT1M",
+                        },
+                    },
                 ],
-            )],
-            notification=azure.monitoring.AutoscaleSettingNotificationArgs(
-                email=azure.monitoring.AutoscaleSettingNotificationEmailArgs(
-                    send_to_subscription_administrator=True,
-                    send_to_subscription_co_administrator=True,
-                    custom_emails=["admin@contoso.com"],
-                ),
-            ))
+            }],
+            notification={
+                "email": {
+                    "sendToSubscriptionAdministrator": True,
+                    "sendToSubscriptionCoAdministrator": True,
+                    "customEmails": ["admin@contoso.com"],
+                },
+            })
         ```
         ### Repeating On Weekends)
 
@@ -111,69 +111,69 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profiles=[azure.monitoring.AutoscaleSettingProfileArgs(
-                name="Weekends",
-                capacity=azure.monitoring.AutoscaleSettingProfileCapacityArgs(
-                    default=1,
-                    minimum=1,
-                    maximum=10,
-                ),
-                rules=[
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="GreaterThan",
-                            threshold=90,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Increase",
-                            type="ChangeCount",
-                            value=2,
-                            cooldown="PT1M",
-                        ),
-                    ),
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="LessThan",
-                            threshold=10,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Decrease",
-                            type="ChangeCount",
-                            value=2,
-                            cooldown="PT1M",
-                        ),
-                    ),
+            profiles=[{
+                "name": "Weekends",
+                "capacity": {
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 10,
+                },
+                "rules": [
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "GreaterThan",
+                            "threshold": 90,
+                        },
+                        "scaleAction": {
+                            "direction": "Increase",
+                            "type": "ChangeCount",
+                            "value": 2,
+                            "cooldown": "PT1M",
+                        },
+                    },
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "LessThan",
+                            "threshold": 10,
+                        },
+                        "scaleAction": {
+                            "direction": "Decrease",
+                            "type": "ChangeCount",
+                            "value": 2,
+                            "cooldown": "PT1M",
+                        },
+                    },
                 ],
-                recurrence=azure.monitoring.AutoscaleSettingProfileRecurrenceArgs(
-                    frequency="Week",
-                    timezone="Pacific Standard Time",
-                    days=[
+                "recurrence": {
+                    "frequency": "Week",
+                    "timezone": "Pacific Standard Time",
+                    "days": [
                         "Saturday",
                         "Sunday",
                     ],
-                    hours=[12],
-                    minutes=[0],
-                ),
-            )],
-            notification=azure.monitoring.AutoscaleSettingNotificationArgs(
-                email=azure.monitoring.AutoscaleSettingNotificationEmailArgs(
-                    send_to_subscription_administrator=True,
-                    send_to_subscription_co_administrator=True,
-                    custom_emails=["admin@contoso.com"],
-                ),
-            ))
+                    "hours": [12],
+                    "minutes": [0],
+                },
+            }],
+            notification={
+                "email": {
+                    "sendToSubscriptionAdministrator": True,
+                    "sendToSubscriptionCoAdministrator": True,
+                    "customEmails": ["admin@contoso.com"],
+                },
+            })
         ```
         ### For Fixed Dates)
 
@@ -189,64 +189,64 @@ class AutoscaleSetting(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             target_resource_id=example_scale_set.id,
-            profiles=[azure.monitoring.AutoscaleSettingProfileArgs(
-                name="forJuly",
-                capacity=azure.monitoring.AutoscaleSettingProfileCapacityArgs(
-                    default=1,
-                    minimum=1,
-                    maximum=10,
-                ),
-                rules=[
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="GreaterThan",
-                            threshold=90,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Increase",
-                            type="ChangeCount",
-                            value=2,
-                            cooldown="PT1M",
-                        ),
-                    ),
-                    azure.monitoring.AutoscaleSettingProfileRuleArgs(
-                        metric_trigger=azure.monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs(
-                            metric_name="Percentage CPU",
-                            metric_resource_id=example_scale_set.id,
-                            time_grain="PT1M",
-                            statistic="Average",
-                            time_window="PT5M",
-                            time_aggregation="Average",
-                            operator="LessThan",
-                            threshold=10,
-                        ),
-                        scale_action=azure.monitoring.AutoscaleSettingProfileRuleScaleActionArgs(
-                            direction="Decrease",
-                            type="ChangeCount",
-                            value=2,
-                            cooldown="PT1M",
-                        ),
-                    ),
+            profiles=[{
+                "name": "forJuly",
+                "capacity": {
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 10,
+                },
+                "rules": [
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "GreaterThan",
+                            "threshold": 90,
+                        },
+                        "scaleAction": {
+                            "direction": "Increase",
+                            "type": "ChangeCount",
+                            "value": 2,
+                            "cooldown": "PT1M",
+                        },
+                    },
+                    {
+                        "metricTrigger": {
+                            "metricName": "Percentage CPU",
+                            "metricResourceId": example_scale_set.id,
+                            "timeGrain": "PT1M",
+                            "statistic": "Average",
+                            "time_window": "PT5M",
+                            "timeAggregation": "Average",
+                            "operator": "LessThan",
+                            "threshold": 10,
+                        },
+                        "scaleAction": {
+                            "direction": "Decrease",
+                            "type": "ChangeCount",
+                            "value": 2,
+                            "cooldown": "PT1M",
+                        },
+                    },
                 ],
-                fixed_date=azure.monitoring.AutoscaleSettingProfileFixedDateArgs(
-                    timezone="Pacific Standard Time",
-                    start="2020-07-01T00:00:00Z",
-                    end="2020-07-31T23:59:59Z",
-                ),
-            )],
-            notification=azure.monitoring.AutoscaleSettingNotificationArgs(
-                email=azure.monitoring.AutoscaleSettingNotificationEmailArgs(
-                    send_to_subscription_administrator=True,
-                    send_to_subscription_co_administrator=True,
-                    custom_emails=["admin@contoso.com"],
-                ),
-            ))
+                "fixedDate": {
+                    "timezone": "Pacific Standard Time",
+                    "start": "2020-07-01T00:00:00Z",
+                    "end": "2020-07-31T23:59:59Z",
+                },
+            }],
+            notification={
+                "email": {
+                    "sendToSubscriptionAdministrator": True,
+                    "sendToSubscriptionCoAdministrator": True,
+                    "customEmails": ["admin@contoso.com"],
+                },
+            })
         ```
 
         ## Import

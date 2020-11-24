@@ -78,36 +78,36 @@ class VirtualMachine(pulumi.CustomResource):
         main_network_interface = azure.network.NetworkInterface("mainNetworkInterface",
             location=main_resource_group.location,
             resource_group_name=main_resource_group.name,
-            ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
-                name="testconfiguration1",
-                subnet_id=internal.id,
-                private_ip_address_allocation="Dynamic",
-            )])
+            ip_configurations=[{
+                "name": "testconfiguration1",
+                "subnet_id": internal.id,
+                "privateIpAddressAllocation": "Dynamic",
+            }])
         main_virtual_machine = azure.compute.VirtualMachine("mainVirtualMachine",
             location=main_resource_group.location,
             resource_group_name=main_resource_group.name,
             network_interface_ids=[main_network_interface.id],
             vm_size="Standard_DS1_v2",
-            storage_image_reference=azure.compute.VirtualMachineStorageImageReferenceArgs(
-                publisher="Canonical",
-                offer="UbuntuServer",
-                sku="16.04-LTS",
-                version="latest",
-            ),
-            storage_os_disk=azure.compute.VirtualMachineStorageOsDiskArgs(
-                name="myosdisk1",
-                caching="ReadWrite",
-                create_option="FromImage",
-                managed_disk_type="Standard_LRS",
-            ),
-            os_profile=azure.compute.VirtualMachineOsProfileArgs(
-                computer_name="hostname",
-                admin_username="testadmin",
-                admin_password="Password1234!",
-            ),
-            os_profile_linux_config=azure.compute.VirtualMachineOsProfileLinuxConfigArgs(
-                disable_password_authentication=False,
-            ),
+            storage_image_reference={
+                "publisher": "Canonical",
+                "offer": "UbuntuServer",
+                "sku": "16.04-LTS",
+                "version": "latest",
+            },
+            storage_os_disk={
+                "name": "myosdisk1",
+                "caching": "ReadWrite",
+                "create_option": "FromImage",
+                "managedDiskType": "Standard_LRS",
+            },
+            os_profile={
+                "computer_name": "hostname",
+                "admin_username": "testadmin",
+                "admin_password": "Password1234!",
+            },
+            os_profile_linux_config={
+                "disable_password_authentication": False,
+            },
             tags={
                 "environment": "staging",
             })

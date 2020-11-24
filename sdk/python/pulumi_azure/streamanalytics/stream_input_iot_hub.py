@@ -44,22 +44,22 @@ class StreamInputIotHub(pulumi.CustomResource):
         example_io_t_hub = azure.iot.IoTHub("exampleIoTHub",
             resource_group_name=azurerm_resource_group["example"]["name"],
             location=azurerm_resource_group["example"]["location"],
-            sku=azure.iot.IoTHubSkuArgs(
-                name="S1",
-                capacity=1,
-            ))
+            sku={
+                "name": "S1",
+                "capacity": 1,
+            })
         example_stream_input_iot_hub = azure.streamanalytics.StreamInputIotHub("exampleStreamInputIotHub",
             stream_analytics_job_name=example_job.name,
             resource_group_name=example_job.resource_group_name,
             endpoint="messages/events",
             eventhub_consumer_group_name="$Default",
             iothub_namespace=example_io_t_hub.name,
-            shared_access_policy_key=example_io_t_hub.shared_access_policies[0].primary_key,
+            shared_access_policy_key=example_io_t_hub.shared_access_policies[0]["primary_key"],
             shared_access_policy_name="iothubowner",
-            serialization=azure.streamanalytics.StreamInputIotHubSerializationArgs(
-                type="Json",
-                encoding="UTF8",
-            ))
+            serialization={
+                "type": "Json",
+                "encoding": "UTF8",
+            })
         ```
 
         ## Import

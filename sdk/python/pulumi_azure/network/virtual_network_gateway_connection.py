@@ -77,11 +77,11 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             active_active=False,
             enable_bgp=False,
             sku="Basic",
-            ip_configurations=[azure.network.VirtualNetworkGatewayIpConfigurationArgs(
-                public_ip_address_id=example_public_ip.id,
-                private_ip_address_allocation="Dynamic",
-                subnet_id=example_subnet.id,
-            )])
+            ip_configurations=[{
+                "public_ip_address_id": example_public_ip.id,
+                "privateIpAddressAllocation": "Dynamic",
+                "subnet_id": example_subnet.id,
+            }])
         onpremise_virtual_network_gateway_connection = azure.network.VirtualNetworkGatewayConnection("onpremiseVirtualNetworkGatewayConnection",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
@@ -118,11 +118,11 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             type="Vpn",
             vpn_type="RouteBased",
             sku="Basic",
-            ip_configurations=[azure.network.VirtualNetworkGatewayIpConfigurationArgs(
-                public_ip_address_id=us_public_ip.id,
-                private_ip_address_allocation="Dynamic",
-                subnet_id=us_gateway.id,
-            )])
+            ip_configurations=[{
+                "public_ip_address_id": us_public_ip.id,
+                "privateIpAddressAllocation": "Dynamic",
+                "subnet_id": us_gateway.id,
+            }])
         europe_resource_group = azure.core.ResourceGroup("europeResourceGroup", location="West Europe")
         europe_virtual_network = azure.network.VirtualNetwork("europeVirtualNetwork",
             location=europe_resource_group.location,
@@ -142,11 +142,11 @@ class VirtualNetworkGatewayConnection(pulumi.CustomResource):
             type="Vpn",
             vpn_type="RouteBased",
             sku="Basic",
-            ip_configurations=[azure.network.VirtualNetworkGatewayIpConfigurationArgs(
-                public_ip_address_id=europe_public_ip.id,
-                private_ip_address_allocation="Dynamic",
-                subnet_id=europe_gateway.id,
-            )])
+            ip_configurations=[{
+                "public_ip_address_id": europe_public_ip.id,
+                "privateIpAddressAllocation": "Dynamic",
+                "subnet_id": europe_gateway.id,
+            }])
         us_to_europe = azure.network.VirtualNetworkGatewayConnection("usToEurope",
             location=us_resource_group.location,
             resource_group_name=us_resource_group.name,

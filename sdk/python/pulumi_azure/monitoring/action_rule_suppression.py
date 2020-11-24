@@ -40,23 +40,23 @@ class ActionRuleSuppression(pulumi.CustomResource):
         example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
         example_action_rule_suppression = azure.monitoring.ActionRuleSuppression("exampleActionRuleSuppression",
             resource_group_name=example_resource_group.name,
-            scope=azure.monitoring.ActionRuleSuppressionScopeArgs(
-                type="ResourceGroup",
-                resource_ids=[example_resource_group.id],
-            ),
-            suppression=azure.monitoring.ActionRuleSuppressionSuppressionArgs(
-                recurrence_type="Weekly",
-                schedule=azure.monitoring.ActionRuleSuppressionSuppressionScheduleArgs(
-                    start_date_utc="2019-01-01T01:02:03Z",
-                    end_date_utc="2019-01-03T15:02:07Z",
-                    recurrence_weeklies=[
+            scope={
+                "type": "ResourceGroup",
+                "resourceIds": [example_resource_group.id],
+            },
+            suppression={
+                "recurrence_type": "Weekly",
+                "schedule": {
+                    "startDateUtc": "2019-01-01T01:02:03Z",
+                    "endDateUtc": "2019-01-03T15:02:07Z",
+                    "recurrenceWeeklies": [
                         "Sunday",
                         "Monday",
                         "Friday",
                         "Saturday",
                     ],
-                ),
-            ),
+                },
+            },
             tags={
                 "foo": "bar",
             })

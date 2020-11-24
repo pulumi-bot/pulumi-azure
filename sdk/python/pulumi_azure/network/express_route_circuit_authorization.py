@@ -37,10 +37,10 @@ class ExpressRouteCircuitAuthorization(pulumi.CustomResource):
             service_provider_name="Equinix",
             peering_location="Silicon Valley",
             bandwidth_in_mbps=50,
-            sku=azure.network.ExpressRouteCircuitSkuArgs(
-                tier="Standard",
-                family="MeteredData",
-            ),
+            sku={
+                "tier": "Standard",
+                "family": "MeteredData",
+            },
             allow_classic_operations=False,
             tags={
                 "environment": "Production",

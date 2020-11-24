@@ -58,37 +58,37 @@ class StormCluster(pulumi.CustomResource):
             location=example_resource_group.location,
             cluster_version="3.6",
             tier="Standard",
-            component_version=azure.hdinsight.StormClusterComponentVersionArgs(
-                storm="1.1",
-            ),
-            gateway=azure.hdinsight.StormClusterGatewayArgs(
-                enabled=True,
-                username="acctestusrgw",
-                password="Password123!",
-            ),
-            storage_accounts=[azure.hdinsight.StormClusterStorageAccountArgs(
-                storage_container_id=example_container.id,
-                storage_account_key=example_account.primary_access_key,
-                is_default=True,
-            )],
-            roles=azure.hdinsight.StormClusterRolesArgs(
-                head_node=azure.hdinsight.StormClusterRolesHeadNodeArgs(
-                    vm_size="Standard_A3",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-                worker_node=azure.hdinsight.StormClusterRolesWorkerNodeArgs(
-                    vm_size="Standard_D3_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                    target_instance_count=3,
-                ),
-                zookeeper_node=azure.hdinsight.StormClusterRolesZookeeperNodeArgs(
-                    vm_size="Standard_A4_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-            ))
+            component_version={
+                "storm": "1.1",
+            },
+            gateway={
+                "enabled": True,
+                "username": "acctestusrgw",
+                "password": "Password123!",
+            },
+            storage_accounts=[{
+                "storage_container_id": example_container.id,
+                "storage_account_key": example_account.primary_access_key,
+                "isDefault": True,
+            }],
+            roles={
+                "headNode": {
+                    "vm_size": "Standard_A3",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+                "workerNode": {
+                    "vm_size": "Standard_D3_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                    "targetInstanceCount": 3,
+                },
+                "zookeeperNode": {
+                    "vm_size": "Standard_A4_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+            })
         ```
 
         ## Import

@@ -40,14 +40,14 @@ class Account(pulumi.CustomResource):
         example_account = azure.netapp.Account("exampleAccount",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
-            active_directory=azure.netapp.AccountActiveDirectoryArgs(
-                username="aduser",
-                password="aduserpwd",
-                smb_server_name="SMBSERVER",
-                dns_servers=["1.2.3.4"],
-                domain="westcentralus.com",
-                organizational_unit="OU=FirstLevel",
-            ))
+            active_directory={
+                "username": "aduser",
+                "password": "aduserpwd",
+                "smbServerName": "SMBSERVER",
+                "dns_servers": ["1.2.3.4"],
+                "domain": "westcentralus.com",
+                "organizationalUnit": "OU=FirstLevel",
+            })
         ```
 
         ## Import

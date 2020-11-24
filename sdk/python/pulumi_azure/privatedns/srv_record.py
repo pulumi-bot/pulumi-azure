@@ -42,18 +42,18 @@ class SRVRecord(pulumi.CustomResource):
             zone_name=test_zone.name,
             ttl=300,
             records=[
-                azure.privatedns.SRVRecordRecordArgs(
-                    priority=1,
-                    weight=5,
-                    port=8080,
-                    target="target1.contoso.com",
-                ),
-                azure.privatedns.SRVRecordRecordArgs(
-                    priority=10,
-                    weight=10,
-                    port=8080,
-                    target="target2.contoso.com",
-                ),
+                {
+                    "priority": 1,
+                    "weight": 5,
+                    "port": 8080,
+                    "target": "target1.contoso.com",
+                },
+                {
+                    "priority": 10,
+                    "weight": 10,
+                    "port": 8080,
+                    "target": "target2.contoso.com",
+                },
             ],
             tags={
                 "Environment": "Production",

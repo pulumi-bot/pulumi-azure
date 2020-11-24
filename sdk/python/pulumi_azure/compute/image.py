@@ -43,12 +43,12 @@ class Image(pulumi.CustomResource):
         example_image = azure.compute.Image("exampleImage",
             location="West US",
             resource_group_name=example_resource_group.name,
-            os_disk=azure.compute.ImageOsDiskArgs(
-                os_type="Linux",
-                os_state="Generalized",
-                blob_uri="{blob_uri}",
-                size_gb=30,
-            ))
+            os_disk={
+                "os_type": "Linux",
+                "osState": "Generalized",
+                "blobUri": "{blob_uri}",
+                "sizeGb": 30,
+            })
         ```
         ### Creating From Virtual Machine (VM Must Be Generalized Beforehand)
 

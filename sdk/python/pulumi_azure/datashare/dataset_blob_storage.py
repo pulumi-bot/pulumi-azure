@@ -40,9 +40,9 @@ class DatasetBlobStorage(pulumi.CustomResource):
         example_account = azure.datashare.Account("exampleAccount",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            identity=azure.datashare.AccountIdentityArgs(
-                type="SystemAssigned",
-            ))
+            identity={
+                "type": "SystemAssigned",
+            })
         example_share = azure.datashare.Share("exampleShare",
             account_id=example_account.id,
             kind="CopyBased")
@@ -62,11 +62,11 @@ class DatasetBlobStorage(pulumi.CustomResource):
         example_dataset_blob_storage = azure.datashare.DatasetBlobStorage("exampleDatasetBlobStorage",
             data_share_id=example_share.id,
             container_name=example_container.name,
-            storage_account=azure.datashare.DatasetBlobStorageStorageAccountArgs(
-                name=example_storage / account_account["name"],
-                resource_group_name=example_storage / account_account["resourceGroupName"],
-                subscription_id="00000000-0000-0000-0000-000000000000",
-            ),
+            storage_account={
+                "name": example_storage / account_account["name"],
+                "resource_group_name": example_storage / account_account["resourceGroupName"],
+                "subscription_id": "00000000-0000-0000-0000-000000000000",
+            },
             file_path="myfile.txt",
             opts=ResourceOptions(depends_on=[example_assignment]))
         ```

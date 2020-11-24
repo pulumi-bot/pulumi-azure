@@ -99,7 +99,7 @@ def get_endpoint_connection(name: Optional[str] = None,
 
     example = azure.privatelink.get_endpoint_connection(name="example-private-endpoint",
         resource_group_name="example-rg")
-    pulumi.export("privateEndpointStatus", example.private_service_connections[0].status)
+    pulumi.export("privateEndpointStatus", example.private_service_connections[0]["status"])
     ```
 
 

@@ -62,13 +62,13 @@ class VirtualHubRouteTable(pulumi.CustomResource):
         example_virtual_hub_route_table = azure.network.VirtualHubRouteTable("exampleVirtualHubRouteTable",
             virtual_hub_id=example_virtual_hub.id,
             labels=["label1"],
-            routes=[azure.network.VirtualHubRouteTableRouteArgs(
-                name="example-route",
-                destinations_type="CIDR",
-                destinations=["10.0.0.0/16"],
-                next_hop_type="ResourceId",
-                next_hop=example_virtual_hub_connection.id,
-            )])
+            routes=[{
+                "name": "example-route",
+                "destinationsType": "CIDR",
+                "destinations": ["10.0.0.0/16"],
+                "next_hop_type": "ResourceId",
+                "nextHop": example_virtual_hub_connection.id,
+            }])
         ```
 
         ## Import

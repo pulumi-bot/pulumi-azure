@@ -46,13 +46,13 @@ class PolicyFileShare(pulumi.CustomResource):
             resource_group_name=rg.name,
             recovery_vault_name=vault.name,
             timezone="UTC",
-            backup=azure.backup.PolicyFileShareBackupArgs(
-                frequency="Daily",
-                time="23:00",
-            ),
-            retention_daily=azure.backup.PolicyFileShareRetentionDailyArgs(
-                count=10,
-            ))
+            backup={
+                "frequency": "Daily",
+                "time": "23:00",
+            },
+            retention_daily={
+                "count": 10,
+            })
         ```
 
         ## Import

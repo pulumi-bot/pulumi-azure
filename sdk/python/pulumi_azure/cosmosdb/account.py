@@ -57,30 +57,30 @@ class Account(pulumi.CustomResource):
             kind="GlobalDocumentDB",
             enable_automatic_failover=True,
             capabilities=[
-                azure.cosmosdb.AccountCapabilityArgs(
-                    name="EnableAggregationPipeline",
-                ),
-                azure.cosmosdb.AccountCapabilityArgs(
-                    name="mongoEnableDocLevelTTL",
-                ),
-                azure.cosmosdb.AccountCapabilityArgs(
-                    name="MongoDBv3.4",
-                ),
+                {
+                    "name": "EnableAggregationPipeline",
+                },
+                {
+                    "name": "mongoEnableDocLevelTTL",
+                },
+                {
+                    "name": "MongoDBv3.4",
+                },
             ],
-            consistency_policy=azure.cosmosdb.AccountConsistencyPolicyArgs(
-                consistency_level="BoundedStaleness",
-                max_interval_in_seconds=10,
-                max_staleness_prefix=200,
-            ),
+            consistency_policy={
+                "consistencyLevel": "BoundedStaleness",
+                "maxIntervalInSeconds": 10,
+                "maxStalenessPrefix": 200,
+            },
             geo_locations=[
-                azure.cosmosdb.AccountGeoLocationArgs(
-                    location=var["failover_location"],
-                    failover_priority=1,
-                ),
-                azure.cosmosdb.AccountGeoLocationArgs(
-                    location=rg.location,
-                    failover_priority=0,
-                ),
+                {
+                    "location": var["failover_location"],
+                    "failoverPriority": 1,
+                },
+                {
+                    "location": rg.location,
+                    "failoverPriority": 0,
+                },
             ])
         ```
 

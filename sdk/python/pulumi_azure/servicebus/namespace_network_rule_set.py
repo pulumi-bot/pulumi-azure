@@ -57,10 +57,10 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
             namespace_name=example_namespace.name,
             resource_group_name=example_resource_group.name,
             default_action="Deny",
-            network_rules=[azure.servicebus.NamespaceNetworkRuleSetNetworkRuleArgs(
-                subnet_id=example_subnet.id,
-                ignore_missing_vnet_service_endpoint=False,
-            )],
+            network_rules=[{
+                "subnet_id": example_subnet.id,
+                "ignore_missing_vnet_service_endpoint": False,
+            }],
             ip_rules=["1.1.1.1"])
         ```
 

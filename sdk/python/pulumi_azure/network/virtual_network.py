@@ -59,24 +59,24 @@ class VirtualNetwork(pulumi.CustomResource):
                 "10.0.0.4",
                 "10.0.0.5",
             ],
-            ddos_protection_plan=azure.network.VirtualNetworkDdosProtectionPlanArgs(
-                id=example_ddos_protection_plan.id,
-                enable=True,
-            ),
+            ddos_protection_plan={
+                "id": example_ddos_protection_plan.id,
+                "enable": True,
+            },
             subnets=[
-                azure.network.VirtualNetworkSubnetArgs(
-                    name="subnet1",
-                    address_prefix="10.0.1.0/24",
-                ),
-                azure.network.VirtualNetworkSubnetArgs(
-                    name="subnet2",
-                    address_prefix="10.0.2.0/24",
-                ),
-                azure.network.VirtualNetworkSubnetArgs(
-                    name="subnet3",
-                    address_prefix="10.0.3.0/24",
-                    security_group=example_network_security_group.id,
-                ),
+                {
+                    "name": "subnet1",
+                    "address_prefix": "10.0.1.0/24",
+                },
+                {
+                    "name": "subnet2",
+                    "address_prefix": "10.0.2.0/24",
+                },
+                {
+                    "name": "subnet3",
+                    "address_prefix": "10.0.3.0/24",
+                    "securityGroup": example_network_security_group.id,
+                },
             ],
             tags={
                 "environment": "Production",

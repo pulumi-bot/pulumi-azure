@@ -55,11 +55,11 @@ class DatasetJson(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             data_factory_name=example_factory.name,
             linked_service_name=example_linked_service_web.name,
-            http_server_location=azure.datafactory.DatasetJsonHttpServerLocationArgs(
-                relative_url="/fizz/buzz/",
-                path="foo/bar/",
-                filename="foo.txt",
-            ),
+            http_server_location={
+                "relative_url": "/fizz/buzz/",
+                "path": "foo/bar/",
+                "filename": "foo.txt",
+            },
             encoding="UTF-8")
         ```
 

@@ -39,10 +39,10 @@ class Definition(pulumi.CustomResource):
         example = azure.lighthouse.Definition("example",
             description="This is a lighthouse definition created via Terraform",
             managing_tenant_id="00000000-0000-0000-0000-000000000000",
-            authorizations=[azure.lighthouse.DefinitionAuthorizationArgs(
-                principal_id="00000000-0000-0000-0000-000000000000",
-                role_definition_id=contributor.role_definition_id,
-            )])
+            authorizations=[{
+                "principal_id": "00000000-0000-0000-0000-000000000000",
+                "role_definition_id": contributor.role_definition_id,
+            }])
         ```
 
         ## Import

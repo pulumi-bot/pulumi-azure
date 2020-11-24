@@ -39,10 +39,10 @@ class IotHubDps(pulumi.CustomResource):
         example_iot_hub_dps = azure.iot.IotHubDps("exampleIotHubDps",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
-            sku=azure.iot.IotHubDpsSkuArgs(
-                name="S1",
-                capacity=1,
-            ))
+            sku={
+                "name": "S1",
+                "capacity": 1,
+            })
         ```
 
         ## Import

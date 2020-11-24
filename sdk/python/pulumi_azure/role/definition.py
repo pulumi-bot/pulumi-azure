@@ -43,10 +43,10 @@ class Definition(pulumi.CustomResource):
         example = azure.authorization.RoleDefinition("example",
             scope=primary.id,
             description="This is a custom role created",
-            permissions=[azure.authorization.RoleDefinitionPermissionArgs(
-                actions=["*"],
-                not_actions=[],
-            )],
+            permissions=[{
+                "actions": ["*"],
+                "notActions": [],
+            }],
             assignable_scopes=[primary.id])
         ```
 

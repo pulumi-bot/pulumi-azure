@@ -54,29 +54,29 @@ class MetricAlert(pulumi.CustomResource):
         main_action_group = azure.monitoring.ActionGroup("mainActionGroup",
             resource_group_name=main_resource_group.name,
             short_name="exampleact",
-            webhook_receivers=[azure.monitoring.ActionGroupWebhookReceiverArgs(
-                name="callmyapi",
-                service_uri="http://example.com/alert",
-            )])
+            webhook_receivers=[{
+                "name": "callmyapi",
+                "service_uri": "http://example.com/alert",
+            }])
         example = azure.monitoring.MetricAlert("example",
             resource_group_name=main_resource_group.name,
             scopes=[to_monitor.id],
             description="Action will be triggered when Transactions count is greater than 50.",
-            criterias=[azure.monitoring.MetricAlertCriteriaArgs(
-                metric_namespace="Microsoft.Storage/storageAccounts",
-                metric_name="Transactions",
-                aggregation="Total",
-                operator="GreaterThan",
-                threshold=50,
-                dimensions=[azure.monitoring.MetricAlertCriteriaDimensionArgs(
-                    name="ApiName",
-                    operator="Include",
-                    values=["*"],
-                )],
-            )],
-            actions=[azure.monitoring.MetricAlertActionArgs(
-                action_group_id=main_action_group.id,
-            )])
+            criterias=[{
+                "metricNamespace": "Microsoft.Storage/storageAccounts",
+                "metricName": "Transactions",
+                "aggregation": "Total",
+                "operator": "GreaterThan",
+                "threshold": 50,
+                "dimensions": [{
+                    "name": "ApiName",
+                    "operator": "Include",
+                    "values": ["*"],
+                }],
+            }],
+            actions=[{
+                "action_group_id": main_action_group.id,
+            }])
         ```
 
         ## Import

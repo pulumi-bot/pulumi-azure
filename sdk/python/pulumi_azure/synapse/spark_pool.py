@@ -60,13 +60,13 @@ class SparkPool(pulumi.CustomResource):
             synapse_workspace_id=example_workspace.id,
             node_size_family="MemoryOptimized",
             node_size="Small",
-            auto_scale=azure.synapse.SparkPoolAutoScaleArgs(
-                max_node_count=50,
-                min_node_count=3,
-            ),
-            auto_pause=azure.synapse.SparkPoolAutoPauseArgs(
-                delay_in_minutes=15,
-            ),
+            auto_scale={
+                "maxNodeCount": 50,
+                "minNodeCount": 3,
+            },
+            auto_pause={
+                "delayInMinutes": 15,
+            },
             tags={
                 "ENV": "Production",
             })

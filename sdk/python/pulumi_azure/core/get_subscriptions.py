@@ -87,7 +87,7 @@ def get_subscriptions(display_name_contains: Optional[str] = None,
 
     available = azure.core.get_subscriptions()
     pulumi.export("availableSubscriptions", available.subscriptions)
-    pulumi.export("firstAvailableSubscriptionDisplayName", available.subscriptions[0].display_name)
+    pulumi.export("firstAvailableSubscriptionDisplayName", available.subscriptions[0]["display_name"])
     ```
 
 

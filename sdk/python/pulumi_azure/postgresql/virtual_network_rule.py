@@ -48,11 +48,11 @@ class VirtualNetworkRule(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             sku_name="GP_Gen5_2",
-            storage_profile=azure.postgresql.ServerStorageProfileArgs(
-                storage_mb=5120,
-                backup_retention_days=7,
-                geo_redundant_backup="Disabled",
-            ),
+            storage_profile={
+                "storage_mb": 5120,
+                "backup_retention_days": 7,
+                "geoRedundantBackup": "Disabled",
+            },
             administrator_login="psqladminun",
             administrator_login_password="H@Sh1CoR3!",
             version="9.5",

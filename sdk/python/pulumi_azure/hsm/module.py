@@ -54,16 +54,16 @@ class Module(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             virtual_network_name=example_virtual_network.name,
             address_prefixes=["10.2.1.0/24"],
-            delegations=[azure.network.SubnetDelegationArgs(
-                name="first",
-                service_delegation=azure.network.SubnetDelegationServiceDelegationArgs(
-                    name="Microsoft.HardwareSecurityModules/dedicatedHSMs",
-                    actions=[
+            delegations=[{
+                "name": "first",
+                "serviceDelegation": {
+                    "name": "Microsoft.HardwareSecurityModules/dedicatedHSMs",
+                    "actions": [
                         "Microsoft.Network/networkinterfaces/*",
                         "Microsoft.Network/virtualNetworks/subnets/join/action",
                     ],
-                ),
-            )])
+                },
+            }])
         example3 = azure.network.Subnet("example3",
             resource_group_name=example_resource_group.name,
             virtual_network_name=example_virtual_network.name,
@@ -78,19 +78,19 @@ class Module(pulumi.CustomResource):
             type="ExpressRoute",
             vpn_type="PolicyBased",
             sku="Standard",
-            ip_configurations=[azure.network.VirtualNetworkGatewayIpConfigurationArgs(
-                public_ip_address_id=example_public_ip.id,
-                private_ip_address_allocation="Dynamic",
-                subnet_id=example3.id,
-            )])
+            ip_configurations=[{
+                "public_ip_address_id": example_public_ip.id,
+                "privateIpAddressAllocation": "Dynamic",
+                "subnet_id": example3.id,
+            }])
         example_module = azure.hsm.Module("exampleModule",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             sku_name="SafeNet Luna Network HSM A790",
-            network_profile=azure.hsm.ModuleNetworkProfileArgs(
-                network_interface_private_ip_addresses=["10.2.1.8"],
-                subnet_id=example2.id,
-            ),
+            network_profile={
+                "networkInterfacePrivateIpAddresses": ["10.2.1.8"],
+                "subnet_id": example2.id,
+            },
             stamp_id="stamp2",
             tags={
                 "env": "Test",

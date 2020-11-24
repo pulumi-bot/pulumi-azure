@@ -51,12 +51,12 @@ class SqlServer(pulumi.CustomResource):
             version="12.0",
             administrator_login="mradministrator",
             administrator_login_password="thisIsDog11",
-            extended_auditing_policy=azure.sql.SqlServerExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
+            extended_auditing_policy={
+                "storage_endpoint": example_account.primary_blob_endpoint,
+                "storage_account_access_key": example_account.primary_access_key,
+                "storage_account_access_key_is_secondary": True,
+                "retention_in_days": 6,
+            },
             tags={
                 "environment": "production",
             })

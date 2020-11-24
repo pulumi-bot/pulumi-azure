@@ -65,10 +65,10 @@ class EventSubscription(pulumi.CustomResource):
         default_queue = azure.storage.Queue("defaultQueue", storage_account_name=default_account.name)
         default_event_subscription = azure.eventgrid.EventSubscription("defaultEventSubscription",
             scope=default_resource_group.id,
-            storage_queue_endpoint=azure.eventgrid.EventSubscriptionStorageQueueEndpointArgs(
-                storage_account_id=default_account.id,
-                queue_name=default_queue.name,
-            ))
+            storage_queue_endpoint={
+                "storage_account_id": default_account.id,
+                "queue_name": default_queue.name,
+            })
         ```
 
         ## Import

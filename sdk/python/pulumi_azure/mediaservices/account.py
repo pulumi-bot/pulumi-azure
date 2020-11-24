@@ -42,10 +42,10 @@ class Account(pulumi.CustomResource):
         example_mediaservices_account_account = azure.mediaservices.Account("exampleMediaservices/accountAccount",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            storage_accounts=[azure.mediaservices.AccountStorageAccountArgs(
-                id=example_account.id,
-                is_primary=True,
-            )])
+            storage_accounts=[{
+                "id": example_account.id,
+                "isPrimary": True,
+            }])
         ```
 
         ## Import

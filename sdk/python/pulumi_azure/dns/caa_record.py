@@ -42,26 +42,26 @@ class CaaRecord(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             ttl=300,
             records=[
-                azure.dns.CaaRecordRecordArgs(
-                    flags=0,
-                    tag="issue",
-                    value="example.com",
-                ),
-                azure.dns.CaaRecordRecordArgs(
-                    flags=0,
-                    tag="issue",
-                    value="example.net",
-                ),
-                azure.dns.CaaRecordRecordArgs(
-                    flags=0,
-                    tag="issuewild",
-                    value=";",
-                ),
-                azure.dns.CaaRecordRecordArgs(
-                    flags=0,
-                    tag="iodef",
-                    value="mailto:user@nonexisting.tld",
-                ),
+                {
+                    "flags": 0,
+                    "tag": "issue",
+                    "value": "example.com",
+                },
+                {
+                    "flags": 0,
+                    "tag": "issue",
+                    "value": "example.net",
+                },
+                {
+                    "flags": 0,
+                    "tag": "issuewild",
+                    "value": ";",
+                },
+                {
+                    "flags": 0,
+                    "tag": "iodef",
+                    "value": "mailto:user@nonexisting.tld",
+                },
             ],
             tags={
                 "Environment": "Production",

@@ -58,16 +58,16 @@ class Server(pulumi.CustomResource):
             administrator_login="missadministrator",
             administrator_login_password="thisIsKat11",
             minimum_tls_version="1.2",
-            azuread_administrator=azure.mssql.ServerAzureadAdministratorArgs(
-                login_username="AzureAD Admin",
-                object_id="00000000-0000-0000-0000-000000000000",
-            ),
-            extended_auditing_policy=azure.mssql.ServerExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
+            azuread_administrator={
+                "loginUsername": "AzureAD Admin",
+                "object_id": "00000000-0000-0000-0000-000000000000",
+            },
+            extended_auditing_policy={
+                "storage_endpoint": example_account.primary_blob_endpoint,
+                "storage_account_access_key": example_account.primary_access_key,
+                "storage_account_access_key_is_secondary": True,
+                "retention_in_days": 6,
+            },
             tags={
                 "environment": "production",
             })

@@ -53,16 +53,16 @@ class ElasticPool(pulumi.CustomResource):
             server_name=example_sql_server.name,
             license_type="LicenseIncluded",
             max_size_gb=756,
-            sku=azure.mssql.ElasticPoolSkuArgs(
-                name="GP_Gen5",
-                tier="GeneralPurpose",
-                family="Gen5",
-                capacity=4,
-            ),
-            per_database_settings=azure.mssql.ElasticPoolPerDatabaseSettingsArgs(
-                min_capacity=0.25,
-                max_capacity=4,
-            ))
+            sku={
+                "name": "GP_Gen5",
+                "tier": "GeneralPurpose",
+                "family": "Gen5",
+                "capacity": 4,
+            },
+            per_database_settings={
+                "min_capacity": 0.25,
+                "maxCapacity": 4,
+            })
         ```
 
         ## Import

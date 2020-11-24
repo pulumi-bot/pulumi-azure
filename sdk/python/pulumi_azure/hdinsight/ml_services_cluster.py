@@ -57,39 +57,39 @@ class MLServicesCluster(pulumi.CustomResource):
             cluster_version="3.6",
             tier="Standard",
             rstudio=True,
-            gateway=azure.hdinsight.MLServicesClusterGatewayArgs(
-                enabled=True,
-                username="acctestusrgw",
-                password="Password123!",
-            ),
-            storage_accounts=[azure.hdinsight.MLServicesClusterStorageAccountArgs(
-                storage_container_id=example_container.id,
-                storage_account_key=example_account.primary_access_key,
-                is_default=True,
-            )],
-            roles=azure.hdinsight.MLServicesClusterRolesArgs(
-                head_node=azure.hdinsight.MLServicesClusterRolesHeadNodeArgs(
-                    vm_size="Standard_D3_v2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-                worker_node=azure.hdinsight.MLServicesClusterRolesWorkerNodeArgs(
-                    vm_size="Standard_D4_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                    target_instance_count=3,
-                ),
-                zookeeper_node=azure.hdinsight.MLServicesClusterRolesZookeeperNodeArgs(
-                    vm_size="Standard_D3_v2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-                edge_node=azure.hdinsight.MLServicesClusterRolesEdgeNodeArgs(
-                    vm_size="Standard_D3_v2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-            ))
+            gateway={
+                "enabled": True,
+                "username": "acctestusrgw",
+                "password": "Password123!",
+            },
+            storage_accounts=[{
+                "storage_container_id": example_container.id,
+                "storage_account_key": example_account.primary_access_key,
+                "isDefault": True,
+            }],
+            roles={
+                "headNode": {
+                    "vm_size": "Standard_D3_v2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+                "workerNode": {
+                    "vm_size": "Standard_D4_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                    "targetInstanceCount": 3,
+                },
+                "zookeeperNode": {
+                    "vm_size": "Standard_D3_v2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+                "edgeNode": {
+                    "vm_size": "Standard_D3_v2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+            })
         ```
 
         ## Import

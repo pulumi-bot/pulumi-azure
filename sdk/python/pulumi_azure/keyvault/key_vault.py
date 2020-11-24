@@ -62,25 +62,25 @@ class KeyVault(pulumi.CustomResource):
             soft_delete_retention_days=7,
             purge_protection_enabled=False,
             sku_name="standard",
-            access_policies=[azure.keyvault.KeyVaultAccessPolicyArgs(
-                tenant_id=current.tenant_id,
-                object_id=current.object_id,
-                key_permissions=[
+            access_policies=[{
+                "tenant_id": current.tenant_id,
+                "object_id": current.object_id,
+                "key_permissions": [
                     "get",
                     "ManageContacts",
                 ],
-                secret_permissions=["get"],
-                storage_permissions=["get"],
-            )],
-            network_acls=azure.keyvault.KeyVaultNetworkAclsArgs(
-                default_action="Deny",
-                bypass="AzureServices",
-            ),
-            contacts=[azure.keyvault.KeyVaultContactArgs(
-                email="example@example.com",
-                name="example",
-                phone="0123456789",
-            )],
+                "secret_permissions": ["get"],
+                "storage_permissions": ["get"],
+            }],
+            network_acls={
+                "default_action": "Deny",
+                "bypass": "AzureServices",
+            },
+            contacts=[{
+                "email": "example@example.com",
+                "name": "example",
+                "phone": "0123456789",
+            }],
             tags={
                 "environment": "Testing",
             })

@@ -46,10 +46,10 @@ class VpnSite(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             virtual_wan_id=example_virtual_wan.id,
-            links=[azure.network.VpnSiteLinkArgs(
-                name="link1",
-                ip_address="10.0.0.1",
-            )])
+            links=[{
+                "name": "link1",
+                "ip_address": "10.0.0.1",
+            }])
         ```
 
         ## Import

@@ -44,10 +44,10 @@ class ActionRuleActionGroup(pulumi.CustomResource):
         example_action_rule_action_group = azure.monitoring.ActionRuleActionGroup("exampleActionRuleActionGroup",
             resource_group_name=example_resource_group.name,
             action_group_id=example_action_group.id,
-            scope=azure.monitoring.ActionRuleActionGroupScopeArgs(
-                type="ResourceGroup",
-                resource_ids=[example_resource_group.id],
-            ),
+            scope={
+                "type": "ResourceGroup",
+                "resourceIds": [example_resource_group.id],
+            },
             tags={
                 "foo": "bar",
             })

@@ -97,25 +97,25 @@ class WindowsVirtualMachineScaleSet(pulumi.CustomResource):
             instances=1,
             admin_password="P@55w0rd1234!",
             admin_username="adminuser",
-            source_image_reference=azure.compute.WindowsVirtualMachineScaleSetSourceImageReferenceArgs(
-                publisher="MicrosoftWindowsServer",
-                offer="WindowsServer",
-                sku="2016-Datacenter-Server-Core",
-                version="latest",
-            ),
-            os_disk=azure.compute.WindowsVirtualMachineScaleSetOsDiskArgs(
-                storage_account_type="Standard_LRS",
-                caching="ReadWrite",
-            ),
-            network_interfaces=[azure.compute.WindowsVirtualMachineScaleSetNetworkInterfaceArgs(
-                name="example",
-                primary=True,
-                ip_configurations=[{
+            source_image_reference={
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-Datacenter-Server-Core",
+                "version": "latest",
+            },
+            os_disk={
+                "storage_account_type": "Standard_LRS",
+                "caching": "ReadWrite",
+            },
+            network_interfaces=[{
+                "name": "example",
+                "primary": True,
+                "ip_configurations": [{
                     "name": "internal",
                     "primary": True,
                     "subnet_id": internal.id,
                 }],
-            )])
+            }])
         ```
 
         ## Import

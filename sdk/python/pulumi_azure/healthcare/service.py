@@ -40,27 +40,27 @@ class Service(pulumi.CustomResource):
 
         example = azure.healthcare.Service("example",
             access_policy_object_ids=["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],
-            authentication_configuration=azure.healthcare.ServiceAuthenticationConfigurationArgs(
-                audience="https://azurehealthcareapis.com/",
-                authority="https://login.microsoftonline.com/$%7Bdata.azurerm_client_config.current.tenant_id%7D",
-                smart_proxy_enabled=True,
-            ),
-            cors_configuration=azure.healthcare.ServiceCorsConfigurationArgs(
-                allow_credentials=True,
-                allowed_headers=[
+            authentication_configuration={
+                "audience": "https://azurehealthcareapis.com/",
+                "authority": "https://login.microsoftonline.com/$%7Bdata.azurerm_client_config.current.tenant_id%7D",
+                "smartProxyEnabled": True,
+            },
+            cors_configuration={
+                "allowCredentials": True,
+                "allowedHeaders": [
                     "x-tempo-*",
                     "x-tempo2-*",
                 ],
-                allowed_methods=[
+                "allowedMethods": [
                     "GET",
                     "PUT",
                 ],
-                allowed_origins=[
+                "allowedOrigins": [
                     "http://www.example.com",
                     "http://www.example2.com",
                 ],
-                max_age_in_seconds=500,
-            ),
+                "maxAgeInSeconds": 500,
+            },
             cosmosdb_throughput=2000,
             kind="fhir-R4",
             location="westus2",

@@ -40,17 +40,17 @@ class Service(pulumi.CustomResource):
         example_service = azure.signalr.Service("exampleService",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            sku=azure.signalr.ServiceSkuArgs(
-                name="Free_F1",
-                capacity=1,
-            ),
-            cors=[azure.signalr.ServiceCorArgs(
-                allowed_origins=["http://www.example.com"],
-            )],
-            features=[azure.signalr.ServiceFeatureArgs(
-                flag="ServiceMode",
-                value="Default",
-            )])
+            sku={
+                "name": "Free_F1",
+                "capacity": 1,
+            },
+            cors=[{
+                "allowedOrigins": ["http://www.example.com"],
+            }],
+            features=[{
+                "flag": "ServiceMode",
+                "value": "Default",
+            }])
         ```
 
         ## Import

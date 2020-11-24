@@ -52,29 +52,29 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
         example_firewall = azure.network.Firewall("exampleFirewall",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configurations=[azure.network.FirewallIpConfigurationArgs(
-                name="configuration",
-                subnet_id=example_subnet.id,
-                public_ip_address_id=example_public_ip.id,
-            )])
+            ip_configurations=[{
+                "name": "configuration",
+                "subnet_id": example_subnet.id,
+                "public_ip_address_id": example_public_ip.id,
+            }])
         example_firewall_network_rule_collection = azure.network.FirewallNetworkRuleCollection("exampleFirewallNetworkRuleCollection",
             azure_firewall_name=example_firewall.name,
             resource_group_name=example_resource_group.name,
             priority=100,
             action="Allow",
-            rules=[azure.network.FirewallNetworkRuleCollectionRuleArgs(
-                name="testrule",
-                source_addresses=["10.0.0.0/16"],
-                destination_ports=["53"],
-                destination_addresses=[
+            rules=[{
+                "name": "testrule",
+                "sourceAddresses": ["10.0.0.0/16"],
+                "destinationPorts": ["53"],
+                "destinationAddresses": [
                     "8.8.8.8",
                     "8.8.4.4",
                 ],
-                protocols=[
+                "protocols": [
                     "TCP",
                     "UDP",
                 ],
-            )])
+            }])
         ```
 
         ## Import

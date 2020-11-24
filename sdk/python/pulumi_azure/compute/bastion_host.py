@@ -55,11 +55,11 @@ class BastionHost(pulumi.CustomResource):
         example_bastion_host = azure.compute.BastionHost("exampleBastionHost",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configuration=azure.compute.BastionHostIpConfigurationArgs(
-                name="configuration",
-                subnet_id=example_subnet.id,
-                public_ip_address_id=example_public_ip.id,
-            ))
+            ip_configuration={
+                "name": "configuration",
+                "subnet_id": example_subnet.id,
+                "public_ip_address_id": example_public_ip.id,
+            })
         ```
 
         ## Import

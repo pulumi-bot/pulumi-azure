@@ -74,12 +74,12 @@ class Database(pulumi.CustomResource):
             read_scale=True,
             sku_name="BC_Gen5_2",
             zone_redundant=True,
-            extended_auditing_policy=azure.mssql.DatabaseExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
+            extended_auditing_policy={
+                "storage_endpoint": example_account.primary_blob_endpoint,
+                "storage_account_access_key": example_account.primary_access_key,
+                "storage_account_access_key_is_secondary": True,
+                "retention_in_days": 6,
+            },
             tags={
                 "foo": "bar",
             })

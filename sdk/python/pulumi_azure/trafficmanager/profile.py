@@ -50,18 +50,18 @@ class Profile(pulumi.CustomResource):
         example_traffic_manager_profile = azure.network.TrafficManagerProfile("exampleTrafficManagerProfile",
             resource_group_name=example_resource_group.name,
             traffic_routing_method="Weighted",
-            dns_config=azure.network.TrafficManagerProfileDnsConfigArgs(
-                relative_name=server.hex,
-                ttl=100,
-            ),
-            monitor_config=azure.network.TrafficManagerProfileMonitorConfigArgs(
-                protocol="http",
-                port=80,
-                path="/",
-                interval_in_seconds=30,
-                timeout_in_seconds=9,
-                tolerated_number_of_failures=3,
-            ),
+            dns_config={
+                "relativeName": server.hex,
+                "ttl": 100,
+            },
+            monitor_config={
+                "protocol": "http",
+                "port": 80,
+                "path": "/",
+                "interval_in_seconds": 30,
+                "timeoutInSeconds": 9,
+                "toleratedNumberOfFailures": 3,
+            },
             tags={
                 "environment": "Production",
             })

@@ -87,11 +87,11 @@ class WindowsVirtualMachine(pulumi.CustomResource):
         example_network_interface = azure.network.NetworkInterface("exampleNetworkInterface",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            ip_configurations=[azure.network.NetworkInterfaceIpConfigurationArgs(
-                name="internal",
-                subnet_id=example_subnet.id,
-                private_ip_address_allocation="Dynamic",
-            )])
+            ip_configurations=[{
+                "name": "internal",
+                "subnet_id": example_subnet.id,
+                "privateIpAddressAllocation": "Dynamic",
+            }])
         example_windows_virtual_machine = azure.compute.WindowsVirtualMachine("exampleWindowsVirtualMachine",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
@@ -99,16 +99,16 @@ class WindowsVirtualMachine(pulumi.CustomResource):
             admin_username="adminuser",
             admin_password="P@$$w0rd1234!",
             network_interface_ids=[example_network_interface.id],
-            os_disk=azure.compute.WindowsVirtualMachineOsDiskArgs(
-                caching="ReadWrite",
-                storage_account_type="Standard_LRS",
-            ),
-            source_image_reference=azure.compute.WindowsVirtualMachineSourceImageReferenceArgs(
-                publisher="MicrosoftWindowsServer",
-                offer="WindowsServer",
-                sku="2016-Datacenter",
-                version="latest",
-            ))
+            os_disk={
+                "caching": "ReadWrite",
+                "storage_account_type": "Standard_LRS",
+            },
+            source_image_reference={
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-Datacenter",
+                "version": "latest",
+            })
         ```
 
         ## Import

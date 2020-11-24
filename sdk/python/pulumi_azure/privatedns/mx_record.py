@@ -42,14 +42,14 @@ class MxRecord(pulumi.CustomResource):
             zone_name=example_zone.name,
             ttl=300,
             records=[
-                azure.privatedns.MxRecordRecordArgs(
-                    preference=10,
-                    exchange="mx1.contoso.com",
-                ),
-                azure.privatedns.MxRecordRecordArgs(
-                    preference=20,
-                    exchange="backupmx.contoso.com",
-                ),
+                {
+                    "preference": 10,
+                    "exchange": "mx1.contoso.com",
+                },
+                {
+                    "preference": 20,
+                    "exchange": "backupmx.contoso.com",
+                },
             ],
             tags={
                 "Environment": "Production",

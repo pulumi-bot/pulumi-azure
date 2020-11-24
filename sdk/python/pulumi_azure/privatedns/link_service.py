@@ -59,31 +59,31 @@ class LinkService(pulumi.CustomResource):
             sku="Standard",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            frontend_ip_configurations=[azure.lb.LoadBalancerFrontendIpConfigurationArgs(
-                name=example_public_ip.name,
-                public_ip_address_id=example_public_ip.id,
-            )])
+            frontend_ip_configurations=[{
+                "name": example_public_ip.name,
+                "public_ip_address_id": example_public_ip.id,
+            }])
         example_link_service = azure.privatedns.LinkService("exampleLinkService",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             auto_approval_subscription_ids=["00000000-0000-0000-0000-000000000000"],
             visibility_subscription_ids=["00000000-0000-0000-0000-000000000000"],
-            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0].id],
+            load_balancer_frontend_ip_configuration_ids=[example_load_balancer.frontend_ip_configurations[0]["id"]],
             nat_ip_configurations=[
-                azure.privatedns.LinkServiceNatIpConfigurationArgs(
-                    name="primary",
-                    private_ip_address="10.5.1.17",
-                    private_ip_address_version="IPv4",
-                    subnet_id=example_subnet.id,
-                    primary=True,
-                ),
-                azure.privatedns.LinkServiceNatIpConfigurationArgs(
-                    name="secondary",
-                    private_ip_address="10.5.1.18",
-                    private_ip_address_version="IPv4",
-                    subnet_id=example_subnet.id,
-                    primary=False,
-                ),
+                {
+                    "name": "primary",
+                    "private_ip_address": "10.5.1.17",
+                    "privateIpAddressVersion": "IPv4",
+                    "subnet_id": example_subnet.id,
+                    "primary": True,
+                },
+                {
+                    "name": "secondary",
+                    "private_ip_address": "10.5.1.18",
+                    "privateIpAddressVersion": "IPv4",
+                    "subnet_id": example_subnet.id,
+                    "primary": False,
+                },
             ])
         ```
 

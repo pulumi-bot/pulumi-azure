@@ -71,10 +71,10 @@ class Assignment(pulumi.CustomResource):
             location=example_resource_group.location,
             lock_mode="AllResourcesDoNotDelete",
             lock_exclude_principals=[current.object_id],
-            identity=azure.blueprint.AssignmentIdentityArgs(
-                type="UserAssigned",
-                identity_ids=[example_user_assigned_identity.id],
-            ),
+            identity={
+                "type": "UserAssigned",
+                "identityIds": [example_user_assigned_identity.id],
+            },
             resource_groups=\"\"\"    {
               "ResourceGroup": {
                 "name": "exampleRG-bp"

@@ -53,22 +53,22 @@ class Group(pulumi.CustomResource):
             dns_name_label="aci-label",
             os_type="Linux",
             containers=[
-                azure.containerservice.GroupContainerArgs(
-                    name="hello-world",
-                    image="microsoft/aci-helloworld:latest",
-                    cpu=0.5,
-                    memory=1.5,
-                    ports=[azure.containerservice.GroupContainerPortArgs(
-                        port=443,
-                        protocol="TCP",
-                    )],
-                ),
-                azure.containerservice.GroupContainerArgs(
-                    name="sidecar",
-                    image="microsoft/aci-tutorial-sidecar",
-                    cpu=0.5,
-                    memory=1.5,
-                ),
+                {
+                    "name": "hello-world",
+                    "image": "microsoft/aci-helloworld:latest",
+                    "cpu": 0.5,
+                    "memory": 1.5,
+                    "ports": [{
+                        "port": 443,
+                        "protocol": "TCP",
+                    }],
+                },
+                {
+                    "name": "sidecar",
+                    "image": "microsoft/aci-tutorial-sidecar",
+                    "cpu": 0.5,
+                    "memory": 1.5,
+                },
             ],
             tags={
                 "environment": "testing",

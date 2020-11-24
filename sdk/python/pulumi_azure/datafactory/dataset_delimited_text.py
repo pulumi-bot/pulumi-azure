@@ -61,11 +61,11 @@ class DatasetDelimitedText(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             data_factory_name=example_factory.name,
             linked_service_name=example_linked_service_web.name,
-            http_server_location=azure.datafactory.DatasetDelimitedTextHttpServerLocationArgs(
-                relative_url="http://www.bing.com",
-                path="foo/bar/",
-                filename="fizz.txt",
-            ),
+            http_server_location={
+                "relative_url": "http://www.bing.com",
+                "path": "foo/bar/",
+                "filename": "fizz.txt",
+            },
             column_delimiter=",",
             row_delimiter="NEW",
             encoding="UTF-8",

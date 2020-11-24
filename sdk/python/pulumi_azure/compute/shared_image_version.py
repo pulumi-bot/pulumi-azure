@@ -50,11 +50,11 @@ class SharedImageVersion(pulumi.CustomResource):
             resource_group_name=existing_shared_image.resource_group_name,
             location=existing_shared_image.location,
             managed_image_id=existing_image.id,
-            target_regions=[azure.compute.SharedImageVersionTargetRegionArgs(
-                name=existing_shared_image.location,
-                regional_replica_count=5,
-                storage_account_type="Standard_LRS",
-            )])
+            target_regions=[{
+                "name": existing_shared_image.location,
+                "regionalReplicaCount": 5,
+                "storage_account_type": "Standard_LRS",
+            }])
         ```
 
         ## Import

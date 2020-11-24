@@ -45,10 +45,10 @@ class VirtualNetwork(pulumi.CustomResource):
         example_virtual_network = azure.devtest.VirtualNetwork("exampleVirtualNetwork",
             lab_name=example_lab.name,
             resource_group_name=example_resource_group.name,
-            subnet=azure.devtest.VirtualNetworkSubnetArgs(
-                use_public_ip_address="Allow",
-                use_in_virtual_machine_creation="Allow",
-            ))
+            subnet={
+                "usePublicIpAddress": "Allow",
+                "useInVirtualMachineCreation": "Allow",
+            })
         ```
 
         ## Import

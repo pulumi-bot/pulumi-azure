@@ -59,10 +59,10 @@ class StreamInputBlob(pulumi.CustomResource):
             path_pattern="some-random-pattern",
             date_format="yyyy/MM/dd",
             time_format="HH",
-            serialization=azure.streamanalytics.StreamInputBlobSerializationArgs(
-                type="Json",
-                encoding="UTF8",
-            ))
+            serialization={
+                "type": "Json",
+                "encoding": "UTF8",
+            })
         ```
 
         ## Import

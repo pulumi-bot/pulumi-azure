@@ -60,10 +60,10 @@ class LogProfile(pulumi.CustomResource):
             ],
             servicebus_rule_id=example_event_hub_namespace.id.apply(lambda id: f"{id}/authorizationrules/RootManageSharedAccessKey"),
             storage_account_id=example_account.id,
-            retention_policy=azure.monitoring.LogProfileRetentionPolicyArgs(
-                enabled=True,
-                days=7,
-            ))
+            retention_policy={
+                "enabled": True,
+                "days": 7,
+            })
         ```
 
         ## Import

@@ -66,17 +66,17 @@ class VirtualNetworkGateway(pulumi.CustomResource):
             active_active=False,
             enable_bgp=False,
             sku="Basic",
-            ip_configurations=[azure.network.VirtualNetworkGatewayIpConfigurationArgs(
-                name="vnetGatewayConfig",
-                public_ip_address_id=example_public_ip.id,
-                private_ip_address_allocation="Dynamic",
-                subnet_id=example_subnet.id,
-            )],
-            vpn_client_configuration=azure.network.VirtualNetworkGatewayVpnClientConfigurationArgs(
-                address_spaces=["10.2.0.0/24"],
-                root_certificates=[azure.network.VirtualNetworkGatewayVpnClientConfigurationRootCertificateArgs(
-                    name="DigiCert-Federated-ID-Root-CA",
-                    public_cert_data=\"\"\"MIIDuzCCAqOgAwIBAgIQCHTZWCM+IlfFIRXIvyKSrjANBgkqhkiG9w0BAQsFADBn
+            ip_configurations=[{
+                "name": "vnetGatewayConfig",
+                "public_ip_address_id": example_public_ip.id,
+                "privateIpAddressAllocation": "Dynamic",
+                "subnet_id": example_subnet.id,
+            }],
+            vpn_client_configuration={
+                "address_spaces": ["10.2.0.0/24"],
+                "rootCertificates": [{
+                    "name": "DigiCert-Federated-ID-Root-CA",
+                    "publicCertData": \"\"\"MIIDuzCCAqOgAwIBAgIQCHTZWCM+IlfFIRXIvyKSrjANBgkqhkiG9w0BAQsFADBn
         MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
         d3cuZGlnaWNlcnQuY29tMSYwJAYDVQQDEx1EaWdpQ2VydCBGZWRlcmF0ZWQgSUQg
         Um9vdCBDQTAeFw0xMzAxMTUxMjAwMDBaFw0zMzAxMTUxMjAwMDBaMGcxCzAJBgNV
@@ -97,12 +97,12 @@ class VirtualNetworkGateway(pulumi.CustomResource):
         WsfMLH4JCLa/tRYL+Rw/N3ybCkDp00s0WUZ+AoDywSl0Q/ZEnNY0MsFiw6LyIdbq
         M/s/1JRtO3bDSzD9TazRVzn2oBqzSa8VgIo5C1nOnoAKJTlsClJKvIhnRlaLQqk=
         \"\"\",
-                )],
-                revoked_certificates=[azure.network.VirtualNetworkGatewayVpnClientConfigurationRevokedCertificateArgs(
-                    name="Verizon-Global-Root-CA",
-                    thumbprint="912198EEF23DCAC40939312FEE97DD560BAE49B1",
-                )],
-            ))
+                }],
+                "revokedCertificates": [{
+                    "name": "Verizon-Global-Root-CA",
+                    "thumbprint": "912198EEF23DCAC40939312FEE97DD560BAE49B1",
+                }],
+            })
         ```
 
         ## Import

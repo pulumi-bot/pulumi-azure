@@ -122,7 +122,7 @@ def get_virtual_network(lab_name: Optional[str] = None,
     example = azure.devtest.get_virtual_network(name="example-network",
         lab_name="examplelab",
         resource_group_name="example-resource")
-    pulumi.export("labSubnetName", example.allowed_subnets[0].lab_subnet_name)
+    pulumi.export("labSubnetName", example.allowed_subnets[0]["lab_subnet_name"])
     ```
 
 

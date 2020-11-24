@@ -61,17 +61,17 @@ class NetworkWatcherFlowLog(pulumi.CustomResource):
             network_security_group_id=test_network_security_group.id,
             storage_account_id=test_account.id,
             enabled=True,
-            retention_policy=azure.network.NetworkWatcherFlowLogRetentionPolicyArgs(
-                enabled=True,
-                days=7,
-            ),
-            traffic_analytics=azure.network.NetworkWatcherFlowLogTrafficAnalyticsArgs(
-                enabled=True,
-                workspace_id=test_analytics_workspace.workspace_id,
-                workspace_region=test_analytics_workspace.location,
-                workspace_resource_id=test_analytics_workspace.id,
-                interval_in_minutes=10,
-            ))
+            retention_policy={
+                "enabled": True,
+                "days": 7,
+            },
+            traffic_analytics={
+                "enabled": True,
+                "workspace_id": test_analytics_workspace.workspace_id,
+                "workspaceRegion": test_analytics_workspace.location,
+                "workspace_resource_id": test_analytics_workspace.id,
+                "intervalInMinutes": 10,
+            })
         ```
 
         ## Import

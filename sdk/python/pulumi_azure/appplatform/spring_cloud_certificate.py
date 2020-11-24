@@ -41,55 +41,55 @@ class SpringCloudCertificate(pulumi.CustomResource):
             tenant_id=current.tenant_id,
             sku_name="standard",
             access_policies=[
-                azure.keyvault.KeyVaultAccessPolicyArgs(
-                    tenant_id=current.tenant_id,
-                    object_id=current.object_id,
-                    secret_permissions=["set"],
-                    certificate_permissions=[
+                {
+                    "tenant_id": current.tenant_id,
+                    "object_id": current.object_id,
+                    "secret_permissions": ["set"],
+                    "certificate_permissions": [
                         "create",
                         "delete",
                         "get",
                         "update",
                     ],
-                ),
-                azure.keyvault.KeyVaultAccessPolicyArgs(
-                    tenant_id=current.tenant_id,
-                    object_id=example_service_principal.object_id,
-                    secret_permissions=[
+                },
+                {
+                    "tenant_id": current.tenant_id,
+                    "object_id": example_service_principal.object_id,
+                    "secret_permissions": [
                         "get",
                         "list",
                     ],
-                    certificate_permissions=[
+                    "certificate_permissions": [
                         "get",
                         "list",
                     ],
-                ),
+                },
             ])
         example_certificate = azure.keyvault.Certificate("exampleCertificate",
             key_vault_id=example_key_vault.id,
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties={
+            certificate_policy={
+                "issuerParameters": {
+                    "name": "Self",
+                },
+                "key_properties": {
                     "exportable": True,
                     "key_size": 2048,
                     "key_type": "RSA",
                     "reuseKey": True,
                 },
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    key_usages=[
+                "lifetimeActions": [{
+                    "action": {
+                        "actionType": "AutoRenew",
+                    },
+                    "trigger": {
+                        "daysBeforeExpiry": 30,
+                    },
+                }],
+                "secretProperties": {
+                    "content_type": "application/x-pkcs12",
+                },
+                "x509CertificateProperties": {
+                    "keyUsages": [
                         "cRLSign",
                         "dataEncipherment",
                         "digitalSignature",
@@ -97,10 +97,10 @@ class SpringCloudCertificate(pulumi.CustomResource):
                         "keyCertSign",
                         "keyEncipherment",
                     ],
-                    subject="CN=contoso.com",
-                    validity_in_months=12,
-                ),
-            ))
+                    "subject": "CN=contoso.com",
+                    "validityInMonths": 12,
+                },
+            })
         example_spring_cloud_service = azure.appplatform.SpringCloudService("exampleSpringCloudService",
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location)

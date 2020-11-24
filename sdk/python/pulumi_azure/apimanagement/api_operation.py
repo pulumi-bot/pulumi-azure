@@ -53,9 +53,9 @@ class ApiOperation(pulumi.CustomResource):
             method="DELETE",
             url_template="/users/{id}/delete",
             description="This can only be done by the logged in user.",
-            responses=[azure.apimanagement.ApiOperationResponseArgs(
-                status_code=200,
-            )])
+            responses=[{
+                "statusCode": 200,
+            }])
         ```
 
         ## Import

@@ -57,38 +57,38 @@ class KafkaCluster(pulumi.CustomResource):
             location=example_resource_group.location,
             cluster_version="4.0",
             tier="Standard",
-            component_version=azure.hdinsight.KafkaClusterComponentVersionArgs(
-                kafka="2.1",
-            ),
-            gateway=azure.hdinsight.KafkaClusterGatewayArgs(
-                enabled=True,
-                username="acctestusrgw",
-                password="Password123!",
-            ),
-            storage_accounts=[azure.hdinsight.KafkaClusterStorageAccountArgs(
-                storage_container_id=example_container.id,
-                storage_account_key=example_account.primary_access_key,
-                is_default=True,
-            )],
-            roles=azure.hdinsight.KafkaClusterRolesArgs(
-                head_node=azure.hdinsight.KafkaClusterRolesHeadNodeArgs(
-                    vm_size="Standard_D3_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-                worker_node=azure.hdinsight.KafkaClusterRolesWorkerNodeArgs(
-                    vm_size="Standard_D3_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                    number_of_disks_per_node=3,
-                    target_instance_count=3,
-                ),
-                zookeeper_node=azure.hdinsight.KafkaClusterRolesZookeeperNodeArgs(
-                    vm_size="Standard_D3_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-            ))
+            component_version={
+                "kafka": "2.1",
+            },
+            gateway={
+                "enabled": True,
+                "username": "acctestusrgw",
+                "password": "Password123!",
+            },
+            storage_accounts=[{
+                "storage_container_id": example_container.id,
+                "storage_account_key": example_account.primary_access_key,
+                "isDefault": True,
+            }],
+            roles={
+                "headNode": {
+                    "vm_size": "Standard_D3_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+                "workerNode": {
+                    "vm_size": "Standard_D3_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                    "numberOfDisksPerNode": 3,
+                    "targetInstanceCount": 3,
+                },
+                "zookeeperNode": {
+                    "vm_size": "Standard_D3_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+            })
         ```
 
         ## Import

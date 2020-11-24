@@ -105,7 +105,7 @@ def get_firewall(name: Optional[str] = None,
 
     example = azure.network.get_firewall(name="firewall1",
         resource_group_name="firewall-RG")
-    pulumi.export("firewallPrivateIp", example.ip_configurations[0].private_ip_address)
+    pulumi.export("firewallPrivateIp", example.ip_configurations[0]["private_ip_address"])
     ```
 
 

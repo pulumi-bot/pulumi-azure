@@ -57,37 +57,37 @@ class InteractiveQueryCluster(pulumi.CustomResource):
             location=example_resource_group.location,
             cluster_version="3.6",
             tier="Standard",
-            component_version=azure.hdinsight.InteractiveQueryClusterComponentVersionArgs(
-                interactive_hive="2.1",
-            ),
-            gateway=azure.hdinsight.InteractiveQueryClusterGatewayArgs(
-                enabled=True,
-                username="acctestusrgw",
-                password="Password!",
-            ),
-            storage_accounts=[azure.hdinsight.InteractiveQueryClusterStorageAccountArgs(
-                storage_container_id=example_container.id,
-                storage_account_key=example_account.primary_access_key,
-                is_default=True,
-            )],
-            roles=azure.hdinsight.InteractiveQueryClusterRolesArgs(
-                head_node=azure.hdinsight.InteractiveQueryClusterRolesHeadNodeArgs(
-                    vm_size="Standard_D13_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-                worker_node=azure.hdinsight.InteractiveQueryClusterRolesWorkerNodeArgs(
-                    vm_size="Standard_D14_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                    target_instance_count=3,
-                ),
-                zookeeper_node=azure.hdinsight.InteractiveQueryClusterRolesZookeeperNodeArgs(
-                    vm_size="Standard_A4_V2",
-                    username="acctestusrvm",
-                    password="AccTestvdSC4daf986!",
-                ),
-            ))
+            component_version={
+                "interactiveHive": "2.1",
+            },
+            gateway={
+                "enabled": True,
+                "username": "acctestusrgw",
+                "password": "Password!",
+            },
+            storage_accounts=[{
+                "storage_container_id": example_container.id,
+                "storage_account_key": example_account.primary_access_key,
+                "isDefault": True,
+            }],
+            roles={
+                "headNode": {
+                    "vm_size": "Standard_D13_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+                "workerNode": {
+                    "vm_size": "Standard_D14_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                    "targetInstanceCount": 3,
+                },
+                "zookeeperNode": {
+                    "vm_size": "Standard_A4_V2",
+                    "username": "acctestusrvm",
+                    "password": "AccTestvdSC4daf986!",
+                },
+            })
         ```
 
         ## Import

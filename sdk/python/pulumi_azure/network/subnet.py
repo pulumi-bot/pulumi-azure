@@ -51,16 +51,16 @@ class Subnet(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             virtual_network_name=example_virtual_network.name,
             address_prefixes=["10.0.1.0/24"],
-            delegations=[azure.network.SubnetDelegationArgs(
-                name="acctestdelegation",
-                service_delegation=azure.network.SubnetDelegationServiceDelegationArgs(
-                    name="Microsoft.ContainerInstance/containerGroups",
-                    actions=[
+            delegations=[{
+                "name": "acctestdelegation",
+                "serviceDelegation": {
+                    "name": "Microsoft.ContainerInstance/containerGroups",
+                    "actions": [
                         "Microsoft.Network/virtualNetworks/subnets/join/action",
                         "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
                     ],
-                ),
-            )])
+                },
+            }])
         ```
 
         ## Import

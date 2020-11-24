@@ -71,12 +71,12 @@ class Database(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location="West US",
             server_name=example_sql_server.name,
-            extended_auditing_policy=azure.sql.DatabaseExtendedAuditingPolicyArgs(
-                storage_endpoint=example_account.primary_blob_endpoint,
-                storage_account_access_key=example_account.primary_access_key,
-                storage_account_access_key_is_secondary=True,
-                retention_in_days=6,
-            ),
+            extended_auditing_policy={
+                "storage_endpoint": example_account.primary_blob_endpoint,
+                "storage_account_access_key": example_account.primary_access_key,
+                "storage_account_access_key_is_secondary": True,
+                "retention_in_days": 6,
+            },
             tags={
                 "environment": "production",
             })

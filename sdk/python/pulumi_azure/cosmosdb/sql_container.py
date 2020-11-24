@@ -45,26 +45,26 @@ class SqlContainer(pulumi.CustomResource):
             database_name=azurerm_cosmosdb_sql_database["example"]["name"],
             partition_key_path="/definition/id",
             throughput=400,
-            indexing_policy=azure.cosmosdb.SqlContainerIndexingPolicyArgs(
-                indexing_mode="Consistent",
-                included_paths=[
-                    azure.cosmosdb.SqlContainerIndexingPolicyIncludedPathArgs(
-                        path="/*",
-                    ),
-                    azure.cosmosdb.SqlContainerIndexingPolicyIncludedPathArgs(
-                        path="/included/?",
-                    ),
+            indexing_policy={
+                "indexingMode": "Consistent",
+                "includedPaths": [
+                    {
+                        "path": "/*",
+                    },
+                    {
+                        "path": "/included/?",
+                    },
                 ],
-                excluded_paths=[azure.cosmosdb.SqlContainerIndexingPolicyExcludedPathArgs(
-                    path="/excluded/?",
-                )],
-            ),
-            unique_keys=[azure.cosmosdb.SqlContainerUniqueKeyArgs(
-                paths=[
+                "excludedPaths": [{
+                    "path": "/excluded/?",
+                }],
+            },
+            unique_keys=[{
+                "paths": [
                     "/definition/idlong",
                     "/definition/idshort",
                 ],
-            )])
+            }])
         ```
 
         ## Import

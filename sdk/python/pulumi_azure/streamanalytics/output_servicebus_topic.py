@@ -55,9 +55,9 @@ class OutputServicebusTopic(pulumi.CustomResource):
             servicebus_namespace=example_namespace.name,
             shared_access_policy_key=example_namespace.default_primary_key,
             shared_access_policy_name="RootManageSharedAccessKey",
-            serialization=azure.streamanalytics.OutputServicebusTopicSerializationArgs(
-                format="Avro",
-            ))
+            serialization={
+                "format": "Avro",
+            })
         ```
 
         ## Import

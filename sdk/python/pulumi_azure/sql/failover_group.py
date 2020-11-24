@@ -58,13 +58,13 @@ class FailoverGroup(pulumi.CustomResource):
             resource_group_name=primary.resource_group_name,
             server_name=primary.name,
             databases=[db1.id],
-            partner_servers=[azure.sql.FailoverGroupPartnerServerArgs(
-                id=secondary.id,
-            )],
-            read_write_endpoint_failover_policy=azure.sql.FailoverGroupReadWriteEndpointFailoverPolicyArgs(
-                mode="Automatic",
-                grace_minutes=60,
-            ))
+            partner_servers=[{
+                "id": secondary.id,
+            }],
+            read_write_endpoint_failover_policy={
+                "mode": "Automatic",
+                "graceMinutes": 60,
+            })
         ```
 
         ## Import

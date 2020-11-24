@@ -42,12 +42,12 @@ class TxtRecord(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             ttl=300,
             records=[
-                azure.dns.TxtRecordRecordArgs(
-                    value="google-site-authenticator",
-                ),
-                azure.dns.TxtRecordRecordArgs(
-                    value="more site information here",
-                ),
+                {
+                    "value": "google-site-authenticator",
+                },
+                {
+                    "value": "more site information here",
+                },
             ],
             tags={
                 "Environment": "Production",

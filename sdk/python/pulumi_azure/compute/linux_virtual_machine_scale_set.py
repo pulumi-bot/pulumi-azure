@@ -93,29 +93,29 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
             sku="Standard_F2",
             instances=1,
             admin_username="adminuser",
-            admin_ssh_keys=[azure.compute.LinuxVirtualMachineScaleSetAdminSshKeyArgs(
-                username="adminuser",
-                public_key=(lambda path: open(path).read())("~/.ssh/id_rsa.pub"),
-            )],
-            source_image_reference=azure.compute.LinuxVirtualMachineScaleSetSourceImageReferenceArgs(
-                publisher="Canonical",
-                offer="UbuntuServer",
-                sku="16.04-LTS",
-                version="latest",
-            ),
-            os_disk=azure.compute.LinuxVirtualMachineScaleSetOsDiskArgs(
-                storage_account_type="Standard_LRS",
-                caching="ReadWrite",
-            ),
-            network_interfaces=[azure.compute.LinuxVirtualMachineScaleSetNetworkInterfaceArgs(
-                name="example",
-                primary=True,
-                ip_configurations=[{
+            admin_ssh_keys=[{
+                "username": "adminuser",
+                "publicKey": (lambda path: open(path).read())("~/.ssh/id_rsa.pub"),
+            }],
+            source_image_reference={
+                "publisher": "Canonical",
+                "offer": "UbuntuServer",
+                "sku": "16.04-LTS",
+                "version": "latest",
+            },
+            os_disk={
+                "storage_account_type": "Standard_LRS",
+                "caching": "ReadWrite",
+            },
+            network_interfaces=[{
+                "name": "example",
+                "primary": True,
+                "ip_configurations": [{
                     "name": "internal",
                     "primary": True,
                     "subnet_id": internal.id,
                 }],
-            )])
+            }])
         ```
 
         ## Import

@@ -50,9 +50,9 @@ class Logger(pulumi.CustomResource):
         example_logger = azure.apimanagement.Logger("exampleLogger",
             api_management_name=example_service.name,
             resource_group_name=example_resource_group.name,
-            application_insights=azure.apimanagement.LoggerApplicationInsightsArgs(
-                instrumentation_key=example_insights.instrumentation_key,
-            ))
+            application_insights={
+                "instrumentation_key": example_insights.instrumentation_key,
+            })
         ```
 
         ## Import

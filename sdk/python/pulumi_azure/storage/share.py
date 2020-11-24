@@ -45,14 +45,14 @@ class Share(pulumi.CustomResource):
         example_share = azure.storage.Share("exampleShare",
             storage_account_name=example_account.name,
             quota=50,
-            acls=[azure.storage.ShareAclArgs(
-                id="MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
-                access_policies=[{
+            acls=[{
+                "id": "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
+                "access_policies": [{
                     "permissions": "rwdl",
                     "start": "2019-07-02T09:38:21.0000000Z",
                     "expiry": "2019-07-02T10:38:21.0000000Z",
                 }],
-            )])
+            }])
         ```
 
         ## Import

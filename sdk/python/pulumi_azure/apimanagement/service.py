@@ -59,15 +59,15 @@ class Service(pulumi.CustomResource):
             publisher_name="My Company",
             publisher_email="company@exmaple.com",
             sku_name="Developer_1",
-            policy=azure.apimanagement.ServicePolicyArgs(
-                xml_content=\"\"\"    <policies>
+            policy={
+                "xml_content": \"\"\"    <policies>
               <inbound />
               <backend />
               <outbound />
               <on-error />
             </policies>
         \"\"\",
-            ))
+            })
         ```
 
         ## Import

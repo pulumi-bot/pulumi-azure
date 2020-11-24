@@ -54,41 +54,41 @@ class Frontdoor(pulumi.CustomResource):
             location="EastUS2",
             resource_group_name=example_resource_group.name,
             enforce_backend_pools_certificate_name_check=False,
-            routing_rules=[azure.frontdoor.FrontdoorRoutingRuleArgs(
-                name="exampleRoutingRule1",
-                accepted_protocols=[
+            routing_rules=[{
+                "name": "exampleRoutingRule1",
+                "acceptedProtocols": [
                     "Http",
                     "Https",
                 ],
-                patterns_to_matches=["/*"],
-                frontend_endpoints=["exampleFrontendEndpoint1"],
-                forwarding_configuration=azure.frontdoor.FrontdoorRoutingRuleForwardingConfigurationArgs(
-                    forwarding_protocol="MatchRequest",
-                    backend_pool_name="exampleBackendBing",
-                ),
-            )],
-            backend_pool_load_balancings=[azure.frontdoor.FrontdoorBackendPoolLoadBalancingArgs(
-                name="exampleLoadBalancingSettings1",
-            )],
-            backend_pool_health_probes=[azure.frontdoor.FrontdoorBackendPoolHealthProbeArgs(
-                name="exampleHealthProbeSetting1",
-            )],
-            backend_pools=[azure.frontdoor.FrontdoorBackendPoolArgs(
-                name="exampleBackendBing",
-                backends=[azure.frontdoor.FrontdoorBackendPoolBackendArgs(
-                    host_header="www.bing.com",
-                    address="www.bing.com",
-                    http_port=80,
-                    https_port=443,
-                )],
-                load_balancing_name="exampleLoadBalancingSettings1",
-                health_probe_name="exampleHealthProbeSetting1",
-            )],
-            frontend_endpoints=[azure.frontdoor.FrontdoorFrontendEndpointArgs(
-                name="exampleFrontendEndpoint1",
-                host_name="example-FrontDoor.azurefd.net",
-                custom_https_provisioning_enabled=False,
-            )])
+                "patternsToMatches": ["/*"],
+                "frontend_endpoints": ["exampleFrontendEndpoint1"],
+                "forwardingConfiguration": {
+                    "forwardingProtocol": "MatchRequest",
+                    "backendPoolName": "exampleBackendBing",
+                },
+            }],
+            backend_pool_load_balancings=[{
+                "name": "exampleLoadBalancingSettings1",
+            }],
+            backend_pool_health_probes=[{
+                "name": "exampleHealthProbeSetting1",
+            }],
+            backend_pools=[{
+                "name": "exampleBackendBing",
+                "backends": [{
+                    "hostHeader": "www.bing.com",
+                    "address": "www.bing.com",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                }],
+                "loadBalancingName": "exampleLoadBalancingSettings1",
+                "healthProbeName": "exampleHealthProbeSetting1",
+            }],
+            frontend_endpoints=[{
+                "name": "exampleFrontendEndpoint1",
+                "host_name": "example-FrontDoor.azurefd.net",
+                "custom_https_provisioning_enabled": False,
+            }])
         ```
 
         ## Import

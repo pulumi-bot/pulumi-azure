@@ -57,11 +57,11 @@ class SharedImage(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             location=example_resource_group.location,
             os_type="Linux",
-            identifier=azure.compute.SharedImageIdentifierArgs(
-                publisher="PublisherName",
-                offer="OfferName",
-                sku="ExampleSku",
-            ))
+            identifier={
+                "publisher": "PublisherName",
+                "offer": "OfferName",
+                "sku": "ExampleSku",
+            })
         ```
 
         ## Import

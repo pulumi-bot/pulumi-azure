@@ -163,29 +163,29 @@ def get_account_sas(connection_string: Optional[str] = None,
     example_account_sas = example_account.primary_connection_string.apply(lambda primary_connection_string: azure.storage.get_account_sas(connection_string=primary_connection_string,
         https_only=True,
         signed_version="2017-07-29",
-        resource_types=azure.storage.GetAccountSASResourceTypesArgs(
-            service=True,
-            container=False,
-            object=False,
-        ),
-        services=azure.storage.GetAccountSASServicesArgs(
-            blob=True,
-            queue=False,
-            table=False,
-            file=False,
-        ),
+        resource_types={
+            "service": True,
+            "container": False,
+            "object": False,
+        },
+        services={
+            "blob": True,
+            "queue": False,
+            "table": False,
+            "file": False,
+        },
         start="2018-03-21",
         expiry="2020-03-21",
-        permissions=azure.storage.GetAccountSASPermissionsArgs(
-            read=True,
-            write=True,
-            delete=False,
-            list=False,
-            add=True,
-            create=True,
-            update=False,
-            process=False,
-        )))
+        permissions={
+            "read": True,
+            "write": True,
+            "delete": False,
+            "list": False,
+            "add": True,
+            "create": True,
+            "update": False,
+            "process": False,
+        }))
     pulumi.export("sasUrlQueryString", example_account_sas.sas)
     ```
 

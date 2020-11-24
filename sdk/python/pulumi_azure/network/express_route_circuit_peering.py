@@ -47,10 +47,10 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
             service_provider_name="Equinix",
             peering_location="Silicon Valley",
             bandwidth_in_mbps=50,
-            sku=azure.network.ExpressRouteCircuitSkuArgs(
-                tier="Standard",
-                family="MeteredData",
-            ),
+            sku={
+                "tier": "Standard",
+                "family": "MeteredData",
+            },
             allow_classic_operations=False,
             tags={
                 "environment": "Production",
@@ -63,9 +63,9 @@ class ExpressRouteCircuitPeering(pulumi.CustomResource):
             primary_peer_address_prefix="123.0.0.0/30",
             secondary_peer_address_prefix="123.0.0.4/30",
             vlan_id=300,
-            microsoft_peering_config=azure.network.ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs(
-                advertised_public_prefixes=["123.1.0.0/24"],
-            ))
+            microsoft_peering_config={
+                "advertisedPublicPrefixes": ["123.1.0.0/24"],
+            })
         ```
 
         ## Import

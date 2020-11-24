@@ -48,15 +48,15 @@ class ResourceGroupExport(pulumi.CustomResource):
             recurrence_type="Monthly",
             recurrence_period_start="2020-08-18T00:00:00Z",
             recurrence_period_end="2020-09-18T00:00:00Z",
-            delivery_info=azure.costmanagement.ResourceGroupExportDeliveryInfoArgs(
-                storage_account_id=example_account.id,
-                container_name="examplecontainer",
-                root_folder_path="/root/updated",
-            ),
-            query=azure.costmanagement.ResourceGroupExportQueryArgs(
-                type="Usage",
-                time_frame="WeekToDate",
-            ))
+            delivery_info={
+                "storage_account_id": example_account.id,
+                "container_name": "examplecontainer",
+                "rootFolderPath": "/root/updated",
+            },
+            query={
+                "type": "Usage",
+                "timeFrame": "WeekToDate",
+            })
         ```
 
         ## Import

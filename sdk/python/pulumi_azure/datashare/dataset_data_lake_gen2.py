@@ -38,9 +38,9 @@ class DatasetDataLakeGen2(pulumi.CustomResource):
         example_account = azure.datashare.Account("exampleAccount",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            identity=azure.datashare.AccountIdentityArgs(
-                type="SystemAssigned",
-            ))
+            identity={
+                "type": "SystemAssigned",
+            })
         example_share = azure.datashare.Share("exampleShare",
             account_id=example_account.id,
             kind="CopyBased")

@@ -60,10 +60,10 @@ class Api(pulumi.CustomResource):
             display_name="Example API",
             path="example",
             protocols=["https"],
-            import_=azure.apimanagement.ApiImportArgs(
-                content_format="swagger-link-json",
-                content_value="http://conferenceapi.azurewebsites.net/?format=json",
-            ))
+            import_={
+                "contentFormat": "swagger-link-json",
+                "contentValue": "http://conferenceapi.azurewebsites.net/?format=json",
+            })
         ```
 
         ## Import

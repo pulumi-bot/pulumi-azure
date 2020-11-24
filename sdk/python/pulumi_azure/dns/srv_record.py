@@ -41,12 +41,12 @@ class SrvRecord(pulumi.CustomResource):
             zone_name=example_zone.name,
             resource_group_name=example_resource_group.name,
             ttl=300,
-            records=[azure.dns.SrvRecordRecordArgs(
-                priority=1,
-                weight=5,
-                port=8080,
-                target="target1.contoso.com",
-            )],
+            records=[{
+                "priority": 1,
+                "weight": 5,
+                "port": 8080,
+                "target": "target1.contoso.com",
+            }],
             tags={
                 "Environment": "Production",
             })

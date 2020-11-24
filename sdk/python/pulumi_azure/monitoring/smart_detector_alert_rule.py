@@ -53,9 +53,9 @@ class SmartDetectorAlertRule(pulumi.CustomResource):
             scope_resource_ids=[example_insights.id],
             frequency="PT1M",
             detector_type="FailureAnomaliesDetector",
-            action_group=azure.monitoring.SmartDetectorAlertRuleActionGroupArgs(
-                ids=[azurerm_monitor_action_group["test"]["id"]],
-            ))
+            action_group={
+                "ids": [azurerm_monitor_action_group["test"]["id"]],
+            })
         ```
 
         ## Import

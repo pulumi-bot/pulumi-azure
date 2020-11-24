@@ -49,16 +49,16 @@ class Schedule(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             lab_name=example_lab.name,
-            weekly_recurrence=azure.devtest.ScheduleWeeklyRecurrenceArgs(
-                time="1100",
-                week_days=[
+            weekly_recurrence={
+                "time": "1100",
+                "week_days": [
                     "Monday",
                     "Tuesday",
                 ],
-            ),
+            },
             time_zone_id="Pacific Standard Time",
             task_type="LabVmsStartupTask",
-            notification_settings=azure.devtest.ScheduleNotificationSettingsArgs(),
+            notification_settings={},
             tags={
                 "environment": "Production",
             })

@@ -45,10 +45,10 @@ class Plan(pulumi.CustomResource):
         example_plan = azure.appservice.Plan("examplePlan",
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Standard",
-                size="S1",
-            ))
+            sku={
+                "tier": "Standard",
+                "size": "S1",
+            })
         ```
         ### Shared / Consumption Plan)
 
@@ -61,10 +61,10 @@ class Plan(pulumi.CustomResource):
             location=example_resource_group.location,
             resource_group_name=example_resource_group.name,
             kind="FunctionApp",
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Dynamic",
-                size="Y1",
-            ))
+            sku={
+                "tier": "Dynamic",
+                "size": "Y1",
+            })
         ```
         ### Linux)
 
@@ -78,10 +78,10 @@ class Plan(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             kind="Linux",
             reserved=True,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="Standard",
-                size="S1",
-            ))
+            sku={
+                "tier": "Standard",
+                "size": "S1",
+            })
         ```
         ### Windows Container)
 
@@ -95,10 +95,10 @@ class Plan(pulumi.CustomResource):
             resource_group_name=example_resource_group.name,
             kind="xenon",
             is_xenon=True,
-            sku=azure.appservice.PlanSkuArgs(
-                tier="PremiumContainer",
-                size="PC2",
-            ))
+            sku={
+                "tier": "PremiumContainer",
+                "size": "PC2",
+            })
         ```
 
         ## Import
