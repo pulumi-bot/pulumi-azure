@@ -11,3 +11,34 @@ from .server import *
 from .virtual_network_rule import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+
+    class Module(pulumi.runtime.ResourceModule):
+        def version(self):
+            return None
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "azure:mariadb/configuration:Configuration":
+                return Configuration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:mariadb/database:Database":
+                return Database(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:mariadb/firewallRule:FirewallRule":
+                return FirewallRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:mariadb/server:Server":
+                return Server(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:mariadb/virtualNetworkRule:VirtualNetworkRule":
+                return VirtualNetworkRule(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("azure", "mariadb/configuration", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "mariadb/database", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "mariadb/firewallRule", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "mariadb/server", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "mariadb/virtualNetworkRule", _module_instance)
+
+_register_module()
