@@ -117,11 +117,11 @@ class VpnServerConfiguration(pulumi.CustomResource):
             __props__['location'] = location
             __props__['name'] = name
             __props__['radius_server'] = radius_server
-            if resource_group_name is None:
+            if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
             __props__['tags'] = tags
-            if vpn_authentication_types is None:
+            if vpn_authentication_types is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_authentication_types'")
             __props__['vpn_authentication_types'] = vpn_authentication_types
             __props__['vpn_protocols'] = vpn_protocols
