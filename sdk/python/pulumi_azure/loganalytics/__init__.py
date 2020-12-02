@@ -14,3 +14,46 @@ from .saved_search import *
 from .storage_insights import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+
+    class Module(pulumi.runtime.ResourceModule):
+        def version(self):
+            return None
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "azure:loganalytics/cluster:Cluster":
+                return Cluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey":
+                return ClusterCustomerManagedKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/dataExportRule:DataExportRule":
+                return DataExportRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent":
+                return DataSourceWindowsEvent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter":
+                return DataSourceWindowsPerformanceCounter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/linkedService:LinkedService":
+                return LinkedService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/linkedStorageAccount:LinkedStorageAccount":
+                return LinkedStorageAccount(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/savedSearch:SavedSearch":
+                return SavedSearch(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:loganalytics/storageInsights:StorageInsights":
+                return StorageInsights(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("azure", "loganalytics/cluster", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/clusterCustomerManagedKey", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/dataExportRule", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/dataSourceWindowsEvent", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/dataSourceWindowsPerformanceCounter", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/linkedService", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/linkedStorageAccount", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/savedSearch", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "loganalytics/storageInsights", _module_instance)
+
+_register_module()

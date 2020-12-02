@@ -10,3 +10,28 @@ from .role_definition import *
 from .user_assigned_identity import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+
+    class Module(pulumi.runtime.ResourceModule):
+        def version(self):
+            return None
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "azure:authorization/assignment:Assignment":
+                return Assignment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:authorization/roleDefinition:RoleDefinition":
+                return RoleDefinition(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:authorization/userAssignedIdentity:UserAssignedIdentity":
+                return UserAssignedIdentity(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("azure", "authorization/assignment", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "authorization/roleDefinition", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "authorization/userAssignedIdentity", _module_instance)
+
+_register_module()
