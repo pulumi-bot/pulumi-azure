@@ -18,3 +18,40 @@ from .key_vault import *
 from .secret import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+
+    class Module(pulumi.runtime.ResourceModule):
+        def version(self):
+            return None
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "azure:keyvault/accessPolicy:AccessPolicy":
+                return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/certifiate:Certifiate":
+                return Certifiate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/certificate:Certificate":
+                return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/certificateIssuer:CertificateIssuer":
+                return CertificateIssuer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/key:Key":
+                return Key(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/keyVault:KeyVault":
+                return KeyVault(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azure:keyvault/secret:Secret":
+                return Secret(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("azure", "keyvault/accessPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/certifiate", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/certificate", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/certificateIssuer", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/key", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/keyVault", _module_instance)
+    pulumi.runtime.register_resource_module("azure", "keyvault/secret", _module_instance)
+
+_register_module()
