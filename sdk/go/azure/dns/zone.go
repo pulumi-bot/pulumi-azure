@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/dns"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/privatedns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -79,11 +79,12 @@ type Zone struct {
 // NewZone registers a new resource with the given unique name, arguments, and options.
 func NewZone(ctx *pulumi.Context,
 	name string, args *ZoneArgs, opts ...pulumi.ResourceOption) (*Zone, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ZoneArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Zone
 	err := ctx.RegisterResource("azure:dns/zone:Zone", name, args, &resource, opts...)

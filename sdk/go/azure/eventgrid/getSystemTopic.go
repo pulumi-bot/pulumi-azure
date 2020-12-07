@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/eventgrid"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -89,17 +89,18 @@ type GetSystemTopic struct {
 // NewGetSystemTopic registers a new resource with the given unique name, arguments, and options.
 func NewGetSystemTopic(ctx *pulumi.Context,
 	name string, args *GetSystemTopicArgs, opts ...pulumi.ResourceOption) (*GetSystemTopic, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SourceArmResourceId == nil {
-		return nil, errors.New("missing required argument 'SourceArmResourceId'")
-	}
-	if args == nil || args.TopicType == nil {
-		return nil, errors.New("missing required argument 'TopicType'")
-	}
 	if args == nil {
-		args = &GetSystemTopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SourceArmResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceArmResourceId'")
+	}
+	if args.TopicType == nil {
+		return nil, errors.New("invalid value for required argument 'TopicType'")
 	}
 	var resource GetSystemTopic
 	err := ctx.RegisterResource("azure:eventgrid/getSystemTopic:getSystemTopic", name, args, &resource, opts...)

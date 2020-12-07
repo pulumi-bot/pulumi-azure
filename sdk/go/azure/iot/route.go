@@ -24,7 +24,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/iot"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -125,23 +125,24 @@ type Route struct {
 // NewRoute registers a new resource with the given unique name, arguments, and options.
 func NewRoute(ctx *pulumi.Context,
 	name string, args *RouteArgs, opts ...pulumi.ResourceOption) (*Route, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.EndpointNames == nil {
-		return nil, errors.New("missing required argument 'EndpointNames'")
-	}
-	if args == nil || args.IothubName == nil {
-		return nil, errors.New("missing required argument 'IothubName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Source == nil {
-		return nil, errors.New("missing required argument 'Source'")
-	}
 	if args == nil {
-		args = &RouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.EndpointNames == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointNames'")
+	}
+	if args.IothubName == nil {
+		return nil, errors.New("invalid value for required argument 'IothubName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Source == nil {
+		return nil, errors.New("invalid value for required argument 'Source'")
 	}
 	var resource Route
 	err := ctx.RegisterResource("azure:iot/route:Route", name, args, &resource, opts...)

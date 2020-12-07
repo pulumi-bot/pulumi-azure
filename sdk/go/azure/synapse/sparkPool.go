@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/synapse"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -122,17 +122,18 @@ type SparkPool struct {
 // NewSparkPool registers a new resource with the given unique name, arguments, and options.
 func NewSparkPool(ctx *pulumi.Context,
 	name string, args *SparkPoolArgs, opts ...pulumi.ResourceOption) (*SparkPool, error) {
-	if args == nil || args.NodeSize == nil {
-		return nil, errors.New("missing required argument 'NodeSize'")
-	}
-	if args == nil || args.NodeSizeFamily == nil {
-		return nil, errors.New("missing required argument 'NodeSizeFamily'")
-	}
-	if args == nil || args.SynapseWorkspaceId == nil {
-		return nil, errors.New("missing required argument 'SynapseWorkspaceId'")
-	}
 	if args == nil {
-		args = &SparkPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodeSize == nil {
+		return nil, errors.New("invalid value for required argument 'NodeSize'")
+	}
+	if args.NodeSizeFamily == nil {
+		return nil, errors.New("invalid value for required argument 'NodeSizeFamily'")
+	}
+	if args.SynapseWorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'SynapseWorkspaceId'")
 	}
 	var resource SparkPool
 	err := ctx.RegisterResource("azure:synapse/sparkPool:SparkPool", name, args, &resource, opts...)

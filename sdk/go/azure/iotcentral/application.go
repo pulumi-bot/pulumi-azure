@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/iotcentral"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -82,14 +82,15 @@ type Application struct {
 // NewApplication registers a new resource with the given unique name, arguments, and options.
 func NewApplication(ctx *pulumi.Context,
 	name string, args *ApplicationArgs, opts ...pulumi.ResourceOption) (*Application, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubDomain == nil {
-		return nil, errors.New("missing required argument 'SubDomain'")
-	}
 	if args == nil {
-		args = &ApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubDomain == nil {
+		return nil, errors.New("invalid value for required argument 'SubDomain'")
 	}
 	var resource Application
 	err := ctx.RegisterResource("azure:iotcentral/application:Application", name, args, &resource, opts...)

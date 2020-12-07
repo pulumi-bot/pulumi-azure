@@ -22,7 +22,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/management"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -52,7 +52,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/management"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -84,7 +84,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/management"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -142,14 +142,15 @@ type ManangementLock struct {
 // NewManangementLock registers a new resource with the given unique name, arguments, and options.
 func NewManangementLock(ctx *pulumi.Context,
 	name string, args *ManangementLockArgs, opts ...pulumi.ResourceOption) (*ManangementLock, error) {
-	if args == nil || args.LockLevel == nil {
-		return nil, errors.New("missing required argument 'LockLevel'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
 	if args == nil {
-		args = &ManangementLockArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LockLevel == nil {
+		return nil, errors.New("invalid value for required argument 'LockLevel'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	var resource ManangementLock
 	err := ctx.RegisterResource("azure:managementresource/manangementLock:ManangementLock", name, args, &resource, opts...)

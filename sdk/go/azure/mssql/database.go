@@ -25,7 +25,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/mssql"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/sql"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -144,11 +144,12 @@ type Database struct {
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
 func NewDatabase(ctx *pulumi.Context,
 	name string, args *DatabaseArgs, opts ...pulumi.ResourceOption) (*Database, error) {
-	if args == nil || args.ServerId == nil {
-		return nil, errors.New("missing required argument 'ServerId'")
-	}
 	if args == nil {
-		args = &DatabaseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServerId == nil {
+		return nil, errors.New("invalid value for required argument 'ServerId'")
 	}
 	var resource Database
 	err := ctx.RegisterResource("azure:mssql/database:Database", name, args, &resource, opts...)

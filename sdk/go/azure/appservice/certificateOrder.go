@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -99,11 +99,12 @@ type CertificateOrder struct {
 // NewCertificateOrder registers a new resource with the given unique name, arguments, and options.
 func NewCertificateOrder(ctx *pulumi.Context,
 	name string, args *CertificateOrderArgs, opts ...pulumi.ResourceOption) (*CertificateOrder, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &CertificateOrderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource CertificateOrder
 	err := ctx.RegisterResource("azure:appservice/certificateOrder:CertificateOrder", name, args, &resource, opts...)

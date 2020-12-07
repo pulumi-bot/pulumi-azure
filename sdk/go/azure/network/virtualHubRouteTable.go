@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -137,11 +137,12 @@ type VirtualHubRouteTable struct {
 // NewVirtualHubRouteTable registers a new resource with the given unique name, arguments, and options.
 func NewVirtualHubRouteTable(ctx *pulumi.Context,
 	name string, args *VirtualHubRouteTableArgs, opts ...pulumi.ResourceOption) (*VirtualHubRouteTable, error) {
-	if args == nil || args.VirtualHubId == nil {
-		return nil, errors.New("missing required argument 'VirtualHubId'")
-	}
 	if args == nil {
-		args = &VirtualHubRouteTableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.VirtualHubId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualHubId'")
 	}
 	var resource VirtualHubRouteTable
 	err := ctx.RegisterResource("azure:network/virtualHubRouteTable:VirtualHubRouteTable", name, args, &resource, opts...)

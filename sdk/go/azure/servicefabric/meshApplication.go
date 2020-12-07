@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/servicefabric"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -87,14 +87,15 @@ type MeshApplication struct {
 // NewMeshApplication registers a new resource with the given unique name, arguments, and options.
 func NewMeshApplication(ctx *pulumi.Context,
 	name string, args *MeshApplicationArgs, opts ...pulumi.ResourceOption) (*MeshApplication, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Services == nil {
-		return nil, errors.New("missing required argument 'Services'")
-	}
 	if args == nil {
-		args = &MeshApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Services == nil {
+		return nil, errors.New("invalid value for required argument 'Services'")
 	}
 	var resource MeshApplication
 	err := ctx.RegisterResource("azure:servicefabric/meshApplication:MeshApplication", name, args, &resource, opts...)

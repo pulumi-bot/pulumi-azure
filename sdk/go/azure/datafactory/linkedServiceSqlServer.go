@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -85,17 +85,18 @@ type LinkedServiceSqlServer struct {
 // NewLinkedServiceSqlServer registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceSqlServer(ctx *pulumi.Context,
 	name string, args *LinkedServiceSqlServerArgs, opts ...pulumi.ResourceOption) (*LinkedServiceSqlServer, error) {
-	if args == nil || args.ConnectionString == nil {
-		return nil, errors.New("missing required argument 'ConnectionString'")
-	}
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceSqlServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionString == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionString'")
+	}
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceSqlServer
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer", name, args, &resource, opts...)

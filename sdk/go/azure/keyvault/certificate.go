@@ -22,7 +22,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/keyvault"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -188,14 +188,15 @@ type Certificate struct {
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
 func NewCertificate(ctx *pulumi.Context,
 	name string, args *CertificateArgs, opts ...pulumi.ResourceOption) (*Certificate, error) {
-	if args == nil || args.CertificatePolicy == nil {
-		return nil, errors.New("missing required argument 'CertificatePolicy'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
 	if args == nil {
-		args = &CertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CertificatePolicy == nil {
+		return nil, errors.New("invalid value for required argument 'CertificatePolicy'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

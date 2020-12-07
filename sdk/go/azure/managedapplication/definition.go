@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/managedapplication"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -97,17 +97,18 @@ type Definition struct {
 // NewDefinition registers a new resource with the given unique name, arguments, and options.
 func NewDefinition(ctx *pulumi.Context,
 	name string, args *DefinitionArgs, opts ...pulumi.ResourceOption) (*Definition, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.LockLevel == nil {
-		return nil, errors.New("missing required argument 'LockLevel'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.LockLevel == nil {
+		return nil, errors.New("invalid value for required argument 'LockLevel'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Definition
 	err := ctx.RegisterResource("azure:managedapplication/definition:Definition", name, args, &resource, opts...)

@@ -20,7 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/apimanagement"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -85,20 +85,21 @@ type ProductGroup struct {
 // NewProductGroup registers a new resource with the given unique name, arguments, and options.
 func NewProductGroup(ctx *pulumi.Context,
 	name string, args *ProductGroupArgs, opts ...pulumi.ResourceOption) (*ProductGroup, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.GroupName == nil {
-		return nil, errors.New("missing required argument 'GroupName'")
-	}
-	if args == nil || args.ProductId == nil {
-		return nil, errors.New("missing required argument 'ProductId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ProductGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.GroupName == nil {
+		return nil, errors.New("invalid value for required argument 'GroupName'")
+	}
+	if args.ProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource ProductGroup
 	err := ctx.RegisterResource("azure:apimanagement/productGroup:ProductGroup", name, args, &resource, opts...)

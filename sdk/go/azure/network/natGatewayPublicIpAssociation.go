@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -80,14 +80,15 @@ type NatGatewayPublicIpAssociation struct {
 // NewNatGatewayPublicIpAssociation registers a new resource with the given unique name, arguments, and options.
 func NewNatGatewayPublicIpAssociation(ctx *pulumi.Context,
 	name string, args *NatGatewayPublicIpAssociationArgs, opts ...pulumi.ResourceOption) (*NatGatewayPublicIpAssociation, error) {
-	if args == nil || args.NatGatewayId == nil {
-		return nil, errors.New("missing required argument 'NatGatewayId'")
-	}
-	if args == nil || args.PublicIpAddressId == nil {
-		return nil, errors.New("missing required argument 'PublicIpAddressId'")
-	}
 	if args == nil {
-		args = &NatGatewayPublicIpAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NatGatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'NatGatewayId'")
+	}
+	if args.PublicIpAddressId == nil {
+		return nil, errors.New("invalid value for required argument 'PublicIpAddressId'")
 	}
 	var resource NatGatewayPublicIpAssociation
 	err := ctx.RegisterResource("azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation", name, args, &resource, opts...)

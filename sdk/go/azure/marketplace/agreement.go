@@ -20,7 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/marketplace"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -61,17 +61,18 @@ type Agreement struct {
 // NewAgreement registers a new resource with the given unique name, arguments, and options.
 func NewAgreement(ctx *pulumi.Context,
 	name string, args *AgreementArgs, opts ...pulumi.ResourceOption) (*Agreement, error) {
-	if args == nil || args.Offer == nil {
-		return nil, errors.New("missing required argument 'Offer'")
-	}
-	if args == nil || args.Plan == nil {
-		return nil, errors.New("missing required argument 'Plan'")
-	}
-	if args == nil || args.Publisher == nil {
-		return nil, errors.New("missing required argument 'Publisher'")
-	}
 	if args == nil {
-		args = &AgreementArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Offer == nil {
+		return nil, errors.New("invalid value for required argument 'Offer'")
+	}
+	if args.Plan == nil {
+		return nil, errors.New("invalid value for required argument 'Plan'")
+	}
+	if args.Publisher == nil {
+		return nil, errors.New("invalid value for required argument 'Publisher'")
 	}
 	var resource Agreement
 	err := ctx.RegisterResource("azure:marketplace/agreement:Agreement", name, args, &resource, opts...)

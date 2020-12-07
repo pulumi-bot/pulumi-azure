@@ -25,7 +25,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/containerservice"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -130,14 +130,15 @@ type KubernetesClusterNodePool struct {
 // NewKubernetesClusterNodePool registers a new resource with the given unique name, arguments, and options.
 func NewKubernetesClusterNodePool(ctx *pulumi.Context,
 	name string, args *KubernetesClusterNodePoolArgs, opts ...pulumi.ResourceOption) (*KubernetesClusterNodePool, error) {
-	if args == nil || args.KubernetesClusterId == nil {
-		return nil, errors.New("missing required argument 'KubernetesClusterId'")
-	}
-	if args == nil || args.VmSize == nil {
-		return nil, errors.New("missing required argument 'VmSize'")
-	}
 	if args == nil {
-		args = &KubernetesClusterNodePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KubernetesClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'KubernetesClusterId'")
+	}
+	if args.VmSize == nil {
+		return nil, errors.New("invalid value for required argument 'VmSize'")
 	}
 	var resource KubernetesClusterNodePool
 	err := ctx.RegisterResource("azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool", name, args, &resource, opts...)

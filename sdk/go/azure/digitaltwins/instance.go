@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/digitaltwins"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -72,11 +72,12 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("azure:digitaltwins/instance:Instance", name, args, &resource, opts...)

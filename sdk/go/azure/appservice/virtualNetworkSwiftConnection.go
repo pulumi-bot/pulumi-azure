@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -114,14 +114,15 @@ type VirtualNetworkSwiftConnection struct {
 // NewVirtualNetworkSwiftConnection registers a new resource with the given unique name, arguments, and options.
 func NewVirtualNetworkSwiftConnection(ctx *pulumi.Context,
 	name string, args *VirtualNetworkSwiftConnectionArgs, opts ...pulumi.ResourceOption) (*VirtualNetworkSwiftConnection, error) {
-	if args == nil || args.AppServiceId == nil {
-		return nil, errors.New("missing required argument 'AppServiceId'")
-	}
-	if args == nil || args.SubnetId == nil {
-		return nil, errors.New("missing required argument 'SubnetId'")
-	}
 	if args == nil {
-		args = &VirtualNetworkSwiftConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceId'")
+	}
+	if args.SubnetId == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	var resource VirtualNetworkSwiftConnection
 	err := ctx.RegisterResource("azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection", name, args, &resource, opts...)

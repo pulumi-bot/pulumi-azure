@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/apimanagement"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -87,20 +87,21 @@ type ApiVersionSet struct {
 // NewApiVersionSet registers a new resource with the given unique name, arguments, and options.
 func NewApiVersionSet(ctx *pulumi.Context,
 	name string, args *ApiVersionSetArgs, opts ...pulumi.ResourceOption) (*ApiVersionSet, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VersioningScheme == nil {
-		return nil, errors.New("missing required argument 'VersioningScheme'")
-	}
 	if args == nil {
-		args = &ApiVersionSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VersioningScheme == nil {
+		return nil, errors.New("invalid value for required argument 'VersioningScheme'")
 	}
 	var resource ApiVersionSet
 	err := ctx.RegisterResource("azure:apimanagement/apiVersionSet:ApiVersionSet", name, args, &resource, opts...)

@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -160,14 +160,15 @@ type FirewallPolicyRuleCollectionGroup struct {
 // NewFirewallPolicyRuleCollectionGroup registers a new resource with the given unique name, arguments, and options.
 func NewFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context,
 	name string, args *FirewallPolicyRuleCollectionGroupArgs, opts ...pulumi.ResourceOption) (*FirewallPolicyRuleCollectionGroup, error) {
-	if args == nil || args.FirewallPolicyId == nil {
-		return nil, errors.New("missing required argument 'FirewallPolicyId'")
-	}
-	if args == nil || args.Priority == nil {
-		return nil, errors.New("missing required argument 'Priority'")
-	}
 	if args == nil {
-		args = &FirewallPolicyRuleCollectionGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FirewallPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'FirewallPolicyId'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
 	var resource FirewallPolicyRuleCollectionGroup
 	err := ctx.RegisterResource("azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup", name, args, &resource, opts...)

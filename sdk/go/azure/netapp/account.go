@@ -23,7 +23,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/netapp"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -81,11 +81,12 @@ type Account struct {
 // NewAccount registers a new resource with the given unique name, arguments, and options.
 func NewAccount(ctx *pulumi.Context,
 	name string, args *AccountArgs, opts ...pulumi.ResourceOption) (*Account, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &AccountArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Account
 	err := ctx.RegisterResource("azure:netapp/account:Account", name, args, &resource, opts...)

@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -86,14 +86,15 @@ type TimeSeriesInsightsReferenceDataSet struct {
 // NewTimeSeriesInsightsReferenceDataSet registers a new resource with the given unique name, arguments, and options.
 func NewTimeSeriesInsightsReferenceDataSet(ctx *pulumi.Context,
 	name string, args *TimeSeriesInsightsReferenceDataSetArgs, opts ...pulumi.ResourceOption) (*TimeSeriesInsightsReferenceDataSet, error) {
-	if args == nil || args.KeyProperties == nil {
-		return nil, errors.New("missing required argument 'KeyProperties'")
-	}
-	if args == nil || args.TimeSeriesInsightsEnvironmentId == nil {
-		return nil, errors.New("missing required argument 'TimeSeriesInsightsEnvironmentId'")
-	}
 	if args == nil {
-		args = &TimeSeriesInsightsReferenceDataSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyProperties == nil {
+		return nil, errors.New("invalid value for required argument 'KeyProperties'")
+	}
+	if args.TimeSeriesInsightsEnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'TimeSeriesInsightsEnvironmentId'")
 	}
 	var resource TimeSeriesInsightsReferenceDataSet
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsReferenceDataSet:TimeSeriesInsightsReferenceDataSet", name, args, &resource, opts...)

@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -77,17 +77,18 @@ type TimeSeriesInsightsStandardEnvironment struct {
 // NewTimeSeriesInsightsStandardEnvironment registers a new resource with the given unique name, arguments, and options.
 func NewTimeSeriesInsightsStandardEnvironment(ctx *pulumi.Context,
 	name string, args *TimeSeriesInsightsStandardEnvironmentArgs, opts ...pulumi.ResourceOption) (*TimeSeriesInsightsStandardEnvironment, error) {
-	if args == nil || args.DataRetentionTime == nil {
-		return nil, errors.New("missing required argument 'DataRetentionTime'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SkuName == nil {
-		return nil, errors.New("missing required argument 'SkuName'")
-	}
 	if args == nil {
-		args = &TimeSeriesInsightsStandardEnvironmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataRetentionTime == nil {
+		return nil, errors.New("invalid value for required argument 'DataRetentionTime'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SkuName == nil {
+		return nil, errors.New("invalid value for required argument 'SkuName'")
 	}
 	var resource TimeSeriesInsightsStandardEnvironment
 	err := ctx.RegisterResource("azure:iot/timeSeriesInsightsStandardEnvironment:TimeSeriesInsightsStandardEnvironment", name, args, &resource, opts...)

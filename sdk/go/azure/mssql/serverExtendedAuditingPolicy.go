@@ -24,7 +24,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/mssql"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -94,14 +94,15 @@ type ServerExtendedAuditingPolicy struct {
 // NewServerExtendedAuditingPolicy registers a new resource with the given unique name, arguments, and options.
 func NewServerExtendedAuditingPolicy(ctx *pulumi.Context,
 	name string, args *ServerExtendedAuditingPolicyArgs, opts ...pulumi.ResourceOption) (*ServerExtendedAuditingPolicy, error) {
-	if args == nil || args.ServerId == nil {
-		return nil, errors.New("missing required argument 'ServerId'")
-	}
-	if args == nil || args.StorageEndpoint == nil {
-		return nil, errors.New("missing required argument 'StorageEndpoint'")
-	}
 	if args == nil {
-		args = &ServerExtendedAuditingPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServerId == nil {
+		return nil, errors.New("invalid value for required argument 'ServerId'")
+	}
+	if args.StorageEndpoint == nil {
+		return nil, errors.New("invalid value for required argument 'StorageEndpoint'")
 	}
 	var resource ServerExtendedAuditingPolicy
 	err := ctx.RegisterResource("azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy", name, args, &resource, opts...)

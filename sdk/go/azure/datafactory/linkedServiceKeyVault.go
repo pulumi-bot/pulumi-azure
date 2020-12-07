@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/keyvault"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -99,17 +99,18 @@ type LinkedServiceKeyVault struct {
 // NewLinkedServiceKeyVault registers a new resource with the given unique name, arguments, and options.
 func NewLinkedServiceKeyVault(ctx *pulumi.Context,
 	name string, args *LinkedServiceKeyVaultArgs, opts ...pulumi.ResourceOption) (*LinkedServiceKeyVault, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.KeyVaultId == nil {
-		return nil, errors.New("missing required argument 'KeyVaultId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &LinkedServiceKeyVaultArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.KeyVaultId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyVaultId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource LinkedServiceKeyVault
 	err := ctx.RegisterResource("azure:datafactory/linkedServiceKeyVault:LinkedServiceKeyVault", name, args, &resource, opts...)

@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -91,14 +91,15 @@ type VpnSite struct {
 // NewVpnSite registers a new resource with the given unique name, arguments, and options.
 func NewVpnSite(ctx *pulumi.Context,
 	name string, args *VpnSiteArgs, opts ...pulumi.ResourceOption) (*VpnSite, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualWanId == nil {
-		return nil, errors.New("missing required argument 'VirtualWanId'")
-	}
 	if args == nil {
-		args = &VpnSiteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualWanId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualWanId'")
 	}
 	var resource VpnSite
 	err := ctx.RegisterResource("azure:network/vpnSite:VpnSite", name, args, &resource, opts...)

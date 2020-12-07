@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/privatedns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -80,20 +80,21 @@ type CnameRecord struct {
 // NewCnameRecord registers a new resource with the given unique name, arguments, and options.
 func NewCnameRecord(ctx *pulumi.Context,
 	name string, args *CnameRecordArgs, opts ...pulumi.ResourceOption) (*CnameRecord, error) {
-	if args == nil || args.Record == nil {
-		return nil, errors.New("missing required argument 'Record'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &CnameRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Record == nil {
+		return nil, errors.New("invalid value for required argument 'Record'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource CnameRecord
 	err := ctx.RegisterResource("azure:privatedns/cnameRecord:CnameRecord", name, args, &resource, opts...)

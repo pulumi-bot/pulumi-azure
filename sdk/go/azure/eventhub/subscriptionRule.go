@@ -22,7 +22,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/servicebus"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -84,7 +84,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/servicebus"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -180,23 +180,24 @@ type SubscriptionRule struct {
 // NewSubscriptionRule registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionRule(ctx *pulumi.Context,
 	name string, args *SubscriptionRuleArgs, opts ...pulumi.ResourceOption) (*SubscriptionRule, error) {
-	if args == nil || args.FilterType == nil {
-		return nil, errors.New("missing required argument 'FilterType'")
-	}
-	if args == nil || args.NamespaceName == nil {
-		return nil, errors.New("missing required argument 'NamespaceName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.SubscriptionName == nil {
-		return nil, errors.New("missing required argument 'SubscriptionName'")
-	}
-	if args == nil || args.TopicName == nil {
-		return nil, errors.New("missing required argument 'TopicName'")
-	}
 	if args == nil {
-		args = &SubscriptionRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FilterType == nil {
+		return nil, errors.New("invalid value for required argument 'FilterType'")
+	}
+	if args.NamespaceName == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SubscriptionName == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionName'")
+	}
+	if args.TopicName == nil {
+		return nil, errors.New("invalid value for required argument 'TopicName'")
 	}
 	var resource SubscriptionRule
 	err := ctx.RegisterResource("azure:eventhub/subscriptionRule:SubscriptionRule", name, args, &resource, opts...)

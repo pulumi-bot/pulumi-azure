@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
 // 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -145,17 +145,18 @@ type TrafficManagerEndpoint struct {
 // NewTrafficManagerEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewTrafficManagerEndpoint(ctx *pulumi.Context,
 	name string, args *TrafficManagerEndpointArgs, opts ...pulumi.ResourceOption) (*TrafficManagerEndpoint, error) {
-	if args == nil || args.ProfileName == nil {
-		return nil, errors.New("missing required argument 'ProfileName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &TrafficManagerEndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProfileName == nil {
+		return nil, errors.New("invalid value for required argument 'ProfileName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

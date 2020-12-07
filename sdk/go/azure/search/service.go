@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/search"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -86,14 +86,15 @@ type Service struct {
 // NewService registers a new resource with the given unique name, arguments, and options.
 func NewService(ctx *pulumi.Context,
 	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Sku == nil {
-		return nil, errors.New("missing required argument 'Sku'")
-	}
 	if args == nil {
-		args = &ServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Sku == nil {
+		return nil, errors.New("invalid value for required argument 'Sku'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("azure:search/service:Service", name, args, &resource, opts...)

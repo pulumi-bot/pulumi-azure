@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/privatedns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -82,20 +82,21 @@ type PTRRecord struct {
 // NewPTRRecord registers a new resource with the given unique name, arguments, and options.
 func NewPTRRecord(ctx *pulumi.Context,
 	name string, args *PTRRecordArgs, opts ...pulumi.ResourceOption) (*PTRRecord, error) {
-	if args == nil || args.Records == nil {
-		return nil, errors.New("missing required argument 'Records'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.ZoneName == nil {
-		return nil, errors.New("missing required argument 'ZoneName'")
-	}
 	if args == nil {
-		args = &PTRRecordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Records == nil {
+		return nil, errors.New("invalid value for required argument 'Records'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.ZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneName'")
 	}
 	var resource PTRRecord
 	err := ctx.RegisterResource("azure:privatedns/pTRRecord:PTRRecord", name, args, &resource, opts...)

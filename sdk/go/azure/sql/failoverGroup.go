@@ -23,7 +23,7 @@ import (
 //
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/sql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -121,20 +121,21 @@ type FailoverGroup struct {
 // NewFailoverGroup registers a new resource with the given unique name, arguments, and options.
 func NewFailoverGroup(ctx *pulumi.Context,
 	name string, args *FailoverGroupArgs, opts ...pulumi.ResourceOption) (*FailoverGroup, error) {
-	if args == nil || args.PartnerServers == nil {
-		return nil, errors.New("missing required argument 'PartnerServers'")
-	}
-	if args == nil || args.ReadWriteEndpointFailoverPolicy == nil {
-		return nil, errors.New("missing required argument 'ReadWriteEndpointFailoverPolicy'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
 	if args == nil {
-		args = &FailoverGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PartnerServers == nil {
+		return nil, errors.New("invalid value for required argument 'PartnerServers'")
+	}
+	if args.ReadWriteEndpointFailoverPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'ReadWriteEndpointFailoverPolicy'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	var resource FailoverGroup
 	err := ctx.RegisterResource("azure:sql/failoverGroup:FailoverGroup", name, args, &resource, opts...)

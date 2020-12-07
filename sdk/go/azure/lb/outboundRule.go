@@ -24,7 +24,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/lb"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -115,20 +115,21 @@ type OutboundRule struct {
 // NewOutboundRule registers a new resource with the given unique name, arguments, and options.
 func NewOutboundRule(ctx *pulumi.Context,
 	name string, args *OutboundRuleArgs, opts ...pulumi.ResourceOption) (*OutboundRule, error) {
-	if args == nil || args.BackendAddressPoolId == nil {
-		return nil, errors.New("missing required argument 'BackendAddressPoolId'")
-	}
-	if args == nil || args.LoadbalancerId == nil {
-		return nil, errors.New("missing required argument 'LoadbalancerId'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &OutboundRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendAddressPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'BackendAddressPoolId'")
+	}
+	if args.LoadbalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'LoadbalancerId'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource OutboundRule
 	err := ctx.RegisterResource("azure:lb/outboundRule:OutboundRule", name, args, &resource, opts...)

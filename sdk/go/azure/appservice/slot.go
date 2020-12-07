@@ -25,7 +25,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -112,7 +112,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -223,17 +223,18 @@ type Slot struct {
 // NewSlot registers a new resource with the given unique name, arguments, and options.
 func NewSlot(ctx *pulumi.Context,
 	name string, args *SlotArgs, opts ...pulumi.ResourceOption) (*Slot, error) {
-	if args == nil || args.AppServiceName == nil {
-		return nil, errors.New("missing required argument 'AppServiceName'")
-	}
-	if args == nil || args.AppServicePlanId == nil {
-		return nil, errors.New("missing required argument 'AppServicePlanId'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SlotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'AppServiceName'")
+	}
+	if args.AppServicePlanId == nil {
+		return nil, errors.New("invalid value for required argument 'AppServicePlanId'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Slot
 	err := ctx.RegisterResource("azure:appservice/slot:Slot", name, args, &resource, opts...)

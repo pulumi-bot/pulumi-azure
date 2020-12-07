@@ -22,7 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/appservice"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -60,14 +60,15 @@ type SourceCodeToken struct {
 // NewSourceCodeToken registers a new resource with the given unique name, arguments, and options.
 func NewSourceCodeToken(ctx *pulumi.Context,
 	name string, args *SourceCodeTokenArgs, opts ...pulumi.ResourceOption) (*SourceCodeToken, error) {
-	if args == nil || args.Token == nil {
-		return nil, errors.New("missing required argument 'Token'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &SourceCodeTokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Token == nil {
+		return nil, errors.New("invalid value for required argument 'Token'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource SourceCodeToken
 	err := ctx.RegisterResource("azure:appservice/sourceCodeToken:SourceCodeToken", name, args, &resource, opts...)

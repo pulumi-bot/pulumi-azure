@@ -23,7 +23,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/keyvault"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/monitoring"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -100,11 +100,12 @@ type DiagnosticSetting struct {
 // NewDiagnosticSetting registers a new resource with the given unique name, arguments, and options.
 func NewDiagnosticSetting(ctx *pulumi.Context,
 	name string, args *DiagnosticSettingArgs, opts ...pulumi.ResourceOption) (*DiagnosticSetting, error) {
-	if args == nil || args.TargetResourceId == nil {
-		return nil, errors.New("missing required argument 'TargetResourceId'")
-	}
 	if args == nil {
-		args = &DiagnosticSettingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TargetResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetResourceId'")
 	}
 	var resource DiagnosticSetting
 	err := ctx.RegisterResource("azure:monitoring/diagnosticSetting:DiagnosticSetting", name, args, &resource, opts...)

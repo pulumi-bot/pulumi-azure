@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/apimanagement"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -79,20 +79,21 @@ type IdentityProviderGoogle struct {
 // NewIdentityProviderGoogle registers a new resource with the given unique name, arguments, and options.
 func NewIdentityProviderGoogle(ctx *pulumi.Context,
 	name string, args *IdentityProviderGoogleArgs, opts ...pulumi.ResourceOption) (*IdentityProviderGoogle, error) {
-	if args == nil || args.ApiManagementName == nil {
-		return nil, errors.New("missing required argument 'ApiManagementName'")
-	}
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.ClientSecret == nil {
-		return nil, errors.New("missing required argument 'ClientSecret'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &IdentityProviderGoogleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiManagementName == nil {
+		return nil, errors.New("invalid value for required argument 'ApiManagementName'")
+	}
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.ClientSecret == nil {
+		return nil, errors.New("invalid value for required argument 'ClientSecret'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource IdentityProviderGoogle
 	err := ctx.RegisterResource("azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle", name, args, &resource, opts...)

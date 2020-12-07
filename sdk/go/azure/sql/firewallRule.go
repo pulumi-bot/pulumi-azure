@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/sql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -82,20 +82,21 @@ type FirewallRule struct {
 // NewFirewallRule registers a new resource with the given unique name, arguments, and options.
 func NewFirewallRule(ctx *pulumi.Context,
 	name string, args *FirewallRuleArgs, opts ...pulumi.ResourceOption) (*FirewallRule, error) {
-	if args == nil || args.EndIpAddress == nil {
-		return nil, errors.New("missing required argument 'EndIpAddress'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.ServerName == nil {
-		return nil, errors.New("missing required argument 'ServerName'")
-	}
-	if args == nil || args.StartIpAddress == nil {
-		return nil, errors.New("missing required argument 'StartIpAddress'")
-	}
 	if args == nil {
-		args = &FirewallRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EndIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'EndIpAddress'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerName'")
+	}
+	if args.StartIpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'StartIpAddress'")
 	}
 	var resource FirewallRule
 	err := ctx.RegisterResource("azure:sql/firewallRule:FirewallRule", name, args, &resource, opts...)

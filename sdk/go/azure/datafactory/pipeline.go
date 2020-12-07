@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -59,7 +59,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datafactory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -111,14 +111,15 @@ type Pipeline struct {
 // NewPipeline registers a new resource with the given unique name, arguments, and options.
 func NewPipeline(ctx *pulumi.Context,
 	name string, args *PipelineArgs, opts ...pulumi.ResourceOption) (*Pipeline, error) {
-	if args == nil || args.DataFactoryName == nil {
-		return nil, errors.New("missing required argument 'DataFactoryName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &PipelineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataFactoryName == nil {
+		return nil, errors.New("invalid value for required argument 'DataFactoryName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Pipeline
 	err := ctx.RegisterResource("azure:datafactory/pipeline:Pipeline", name, args, &resource, opts...)

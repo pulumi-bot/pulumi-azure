@@ -22,7 +22,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
 // 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -100,20 +100,21 @@ type TrafficManagerProfile struct {
 // NewTrafficManagerProfile registers a new resource with the given unique name, arguments, and options.
 func NewTrafficManagerProfile(ctx *pulumi.Context,
 	name string, args *TrafficManagerProfileArgs, opts ...pulumi.ResourceOption) (*TrafficManagerProfile, error) {
-	if args == nil || args.DnsConfig == nil {
-		return nil, errors.New("missing required argument 'DnsConfig'")
-	}
-	if args == nil || args.MonitorConfig == nil {
-		return nil, errors.New("missing required argument 'MonitorConfig'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.TrafficRoutingMethod == nil {
-		return nil, errors.New("missing required argument 'TrafficRoutingMethod'")
-	}
 	if args == nil {
-		args = &TrafficManagerProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DnsConfig == nil {
+		return nil, errors.New("invalid value for required argument 'DnsConfig'")
+	}
+	if args.MonitorConfig == nil {
+		return nil, errors.New("invalid value for required argument 'MonitorConfig'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.TrafficRoutingMethod == nil {
+		return nil, errors.New("invalid value for required argument 'TrafficRoutingMethod'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

@@ -25,7 +25,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -108,14 +108,15 @@ type Subnet struct {
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
 func NewSubnet(ctx *pulumi.Context,
 	name string, args *SubnetArgs, opts ...pulumi.ResourceOption) (*Subnet, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualNetworkName == nil {
-		return nil, errors.New("missing required argument 'VirtualNetworkName'")
-	}
 	if args == nil {
-		args = &SubnetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualNetworkName == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualNetworkName'")
 	}
 	var resource Subnet
 	err := ctx.RegisterResource("azure:network/subnet:Subnet", name, args, &resource, opts...)

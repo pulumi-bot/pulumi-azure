@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/logicapps"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -87,11 +87,12 @@ type Workflow struct {
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
 func NewWorkflow(ctx *pulumi.Context,
 	name string, args *WorkflowArgs, opts ...pulumi.ResourceOption) (*Workflow, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &WorkflowArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Workflow
 	err := ctx.RegisterResource("azure:logicapps/workflow:Workflow", name, args, &resource, opts...)

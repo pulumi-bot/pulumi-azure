@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -116,14 +116,15 @@ type NetworkInterface struct {
 // NewNetworkInterface registers a new resource with the given unique name, arguments, and options.
 func NewNetworkInterface(ctx *pulumi.Context,
 	name string, args *NetworkInterfaceArgs, opts ...pulumi.ResourceOption) (*NetworkInterface, error) {
-	if args == nil || args.IpConfigurations == nil {
-		return nil, errors.New("missing required argument 'IpConfigurations'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &NetworkInterfaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpConfigurations == nil {
+		return nil, errors.New("invalid value for required argument 'IpConfigurations'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource NetworkInterface
 	err := ctx.RegisterResource("azure:network/networkInterface:NetworkInterface", name, args, &resource, opts...)

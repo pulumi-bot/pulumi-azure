@@ -17,7 +17,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/operationalinsights"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/sentinel"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

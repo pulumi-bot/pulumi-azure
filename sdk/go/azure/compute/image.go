@@ -22,7 +22,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -58,7 +58,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -118,11 +118,12 @@ type Image struct {
 // NewImage registers a new resource with the given unique name, arguments, and options.
 func NewImage(ctx *pulumi.Context,
 	name string, args *ImageArgs, opts ...pulumi.ResourceOption) (*Image, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &ImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Image
 	err := ctx.RegisterResource("azure:compute/image:Image", name, args, &resource, opts...)

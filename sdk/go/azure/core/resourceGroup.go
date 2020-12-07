@@ -19,7 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -59,6 +59,7 @@ func NewResourceGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &ResourceGroupArgs{}
 	}
+
 	var resource ResourceGroup
 	err := ctx.RegisterResource("azure:core/resourceGroup:ResourceGroup", name, args, &resource, opts...)
 	if err != nil {

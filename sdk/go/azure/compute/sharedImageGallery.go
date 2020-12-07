@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -76,11 +76,12 @@ type SharedImageGallery struct {
 // NewSharedImageGallery registers a new resource with the given unique name, arguments, and options.
 func NewSharedImageGallery(ctx *pulumi.Context,
 	name string, args *SharedImageGalleryArgs, opts ...pulumi.ResourceOption) (*SharedImageGallery, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SharedImageGalleryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource SharedImageGallery
 	err := ctx.RegisterResource("azure:compute/sharedImageGallery:SharedImageGallery", name, args, &resource, opts...)

@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/privatedns"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -78,17 +78,18 @@ type ZoneVirtualNetworkLink struct {
 // NewZoneVirtualNetworkLink registers a new resource with the given unique name, arguments, and options.
 func NewZoneVirtualNetworkLink(ctx *pulumi.Context,
 	name string, args *ZoneVirtualNetworkLinkArgs, opts ...pulumi.ResourceOption) (*ZoneVirtualNetworkLink, error) {
-	if args == nil || args.PrivateDnsZoneName == nil {
-		return nil, errors.New("missing required argument 'PrivateDnsZoneName'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.VirtualNetworkId == nil {
-		return nil, errors.New("missing required argument 'VirtualNetworkId'")
-	}
 	if args == nil {
-		args = &ZoneVirtualNetworkLinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PrivateDnsZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateDnsZoneName'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.VirtualNetworkId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualNetworkId'")
 	}
 	var resource ZoneVirtualNetworkLink
 	err := ctx.RegisterResource("azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink", name, args, &resource, opts...)

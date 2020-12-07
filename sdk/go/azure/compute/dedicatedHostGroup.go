@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -72,14 +72,15 @@ type DedicatedHostGroup struct {
 // NewDedicatedHostGroup registers a new resource with the given unique name, arguments, and options.
 func NewDedicatedHostGroup(ctx *pulumi.Context,
 	name string, args *DedicatedHostGroupArgs, opts ...pulumi.ResourceOption) (*DedicatedHostGroup, error) {
-	if args == nil || args.PlatformFaultDomainCount == nil {
-		return nil, errors.New("missing required argument 'PlatformFaultDomainCount'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &DedicatedHostGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PlatformFaultDomainCount == nil {
+		return nil, errors.New("invalid value for required argument 'PlatformFaultDomainCount'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource DedicatedHostGroup
 	err := ctx.RegisterResource("azure:compute/dedicatedHostGroup:DedicatedHostGroup", name, args, &resource, opts...)

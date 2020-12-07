@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/compute"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -90,14 +90,15 @@ type Snapshot struct {
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewSnapshot(ctx *pulumi.Context,
 	name string, args *SnapshotArgs, opts ...pulumi.ResourceOption) (*Snapshot, error) {
-	if args == nil || args.CreateOption == nil {
-		return nil, errors.New("missing required argument 'CreateOption'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
 	if args == nil {
-		args = &SnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CreateOption == nil {
+		return nil, errors.New("invalid value for required argument 'CreateOption'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	var resource Snapshot
 	err := ctx.RegisterResource("azure:compute/snapshot:Snapshot", name, args, &resource, opts...)

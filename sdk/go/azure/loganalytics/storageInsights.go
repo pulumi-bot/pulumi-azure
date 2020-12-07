@@ -23,7 +23,7 @@ import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/loganalytics"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/operationalinsights"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -97,20 +97,21 @@ type StorageInsights struct {
 // NewStorageInsights registers a new resource with the given unique name, arguments, and options.
 func NewStorageInsights(ctx *pulumi.Context,
 	name string, args *StorageInsightsArgs, opts ...pulumi.ResourceOption) (*StorageInsights, error) {
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.StorageAccountId == nil {
-		return nil, errors.New("missing required argument 'StorageAccountId'")
-	}
-	if args == nil || args.StorageAccountKey == nil {
-		return nil, errors.New("missing required argument 'StorageAccountKey'")
-	}
-	if args == nil || args.WorkspaceId == nil {
-		return nil, errors.New("missing required argument 'WorkspaceId'")
-	}
 	if args == nil {
-		args = &StorageInsightsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.StorageAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountId'")
+	}
+	if args.StorageAccountKey == nil {
+		return nil, errors.New("invalid value for required argument 'StorageAccountKey'")
+	}
+	if args.WorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceId'")
 	}
 	var resource StorageInsights
 	err := ctx.RegisterResource("azure:loganalytics/storageInsights:StorageInsights", name, args, &resource, opts...)

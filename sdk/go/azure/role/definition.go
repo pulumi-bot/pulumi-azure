@@ -21,7 +21,7 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/authorization"
 // 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -84,14 +84,15 @@ type Definition struct {
 // NewDefinition registers a new resource with the given unique name, arguments, and options.
 func NewDefinition(ctx *pulumi.Context,
 	name string, args *DefinitionArgs, opts ...pulumi.ResourceOption) (*Definition, error) {
-	if args == nil || args.Permissions == nil {
-		return nil, errors.New("missing required argument 'Permissions'")
-	}
-	if args == nil || args.Scope == nil {
-		return nil, errors.New("missing required argument 'Scope'")
-	}
 	if args == nil {
-		args = &DefinitionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Permissions == nil {
+		return nil, errors.New("invalid value for required argument 'Permissions'")
+	}
+	if args.Scope == nil {
+		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	var resource Definition
 	err := ctx.RegisterResource("azure:role/definition:Definition", name, args, &resource, opts...)
