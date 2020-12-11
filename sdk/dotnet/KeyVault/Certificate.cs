@@ -167,6 +167,7 @@ namespace Pulumi.Azure.KeyVault
     ///  $ pulumi import azure:keyvault/certificate:Certificate net/certificates/example/fdf067c93bbb4b22bff4d8b7a9a56217
     /// ```
     /// </summary>
+    [AzureResourceType("azure:keyvault/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>
