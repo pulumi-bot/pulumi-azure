@@ -177,16 +177,31 @@ type ControllerInput interface {
 	ToControllerOutputWithContext(ctx context.Context) ControllerOutput
 }
 
-func (Controller) ElementType() reflect.Type {
-	return reflect.TypeOf((*Controller)(nil)).Elem()
+func (*Controller) ElementType() reflect.Type {
+	return reflect.TypeOf((*Controller)(nil))
 }
 
-func (i Controller) ToControllerOutput() ControllerOutput {
+func (i *Controller) ToControllerOutput() ControllerOutput {
 	return i.ToControllerOutputWithContext(context.Background())
 }
 
-func (i Controller) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
+func (i *Controller) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerOutput)
+}
+
+func (i *Controller) ToControllerPtrOutput() ControllerPtrOutput {
+	return i.ToControllerPtrOutputWithContext(context.Background())
+}
+
+func (i *Controller) ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControllerPtrOutput)
+}
+
+type ControllerPtrInput interface {
+	pulumi.Input
+
+	ToControllerPtrOutput() ControllerPtrOutput
+	ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput
 }
 
 type ControllerOutput struct {
@@ -194,7 +209,7 @@ type ControllerOutput struct {
 }
 
 func (ControllerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ControllerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Controller)(nil))
 }
 
 func (o ControllerOutput) ToControllerOutput() ControllerOutput {
@@ -205,6 +220,23 @@ func (o ControllerOutput) ToControllerOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+type ControllerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ControllerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Controller)(nil))
+}
+
+func (o ControllerPtrOutput) ToControllerPtrOutput() ControllerPtrOutput {
+	return o
+}
+
+func (o ControllerPtrOutput) ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ControllerOutput{})
+	pulumi.RegisterOutputType(ControllerPtrOutput{})
 }

@@ -267,16 +267,31 @@ type FirewallPolicyRuleCollectionGroupInput interface {
 	ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput
 }
 
-func (FirewallPolicyRuleCollectionGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil)).Elem()
+func (*FirewallPolicyRuleCollectionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil))
 }
 
-func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
 	return i.ToFirewallPolicyRuleCollectionGroupOutputWithContext(context.Background())
 }
 
-func (i FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleCollectionGroupOutput)
+}
+
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupPtrOutput() FirewallPolicyRuleCollectionGroupPtrOutput {
+	return i.ToFirewallPolicyRuleCollectionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *FirewallPolicyRuleCollectionGroup) ToFirewallPolicyRuleCollectionGroupPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleCollectionGroupPtrOutput)
+}
+
+type FirewallPolicyRuleCollectionGroupPtrInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleCollectionGroupPtrOutput() FirewallPolicyRuleCollectionGroupPtrOutput
+	ToFirewallPolicyRuleCollectionGroupPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupPtrOutput
 }
 
 type FirewallPolicyRuleCollectionGroupOutput struct {
@@ -284,7 +299,7 @@ type FirewallPolicyRuleCollectionGroupOutput struct {
 }
 
 func (FirewallPolicyRuleCollectionGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirewallPolicyRuleCollectionGroup)(nil))
 }
 
 func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionGroupOutput() FirewallPolicyRuleCollectionGroupOutput {
@@ -295,6 +310,23 @@ func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionG
 	return o
 }
 
+type FirewallPolicyRuleCollectionGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallPolicyRuleCollectionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicyRuleCollectionGroup)(nil))
+}
+
+func (o FirewallPolicyRuleCollectionGroupPtrOutput) ToFirewallPolicyRuleCollectionGroupPtrOutput() FirewallPolicyRuleCollectionGroupPtrOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleCollectionGroupPtrOutput) ToFirewallPolicyRuleCollectionGroupPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleCollectionGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallPolicyRuleCollectionGroupOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleCollectionGroupPtrOutput{})
 }

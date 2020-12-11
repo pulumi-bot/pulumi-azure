@@ -264,16 +264,31 @@ type GlobalVMShutdownScheduleInput interface {
 	ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput
 }
 
-func (GlobalVMShutdownSchedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalVMShutdownSchedule)(nil)).Elem()
+func (*GlobalVMShutdownSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalVMShutdownSchedule)(nil))
 }
 
-func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput {
+func (i *GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput {
 	return i.ToGlobalVMShutdownScheduleOutputWithContext(context.Background())
 }
 
-func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput {
+func (i *GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleOutput)
+}
+
+func (i *GlobalVMShutdownSchedule) ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput {
+	return i.ToGlobalVMShutdownSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalVMShutdownSchedule) ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownSchedulePtrOutput)
+}
+
+type GlobalVMShutdownSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput
+	ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput
 }
 
 type GlobalVMShutdownScheduleOutput struct {
@@ -281,7 +296,7 @@ type GlobalVMShutdownScheduleOutput struct {
 }
 
 func (GlobalVMShutdownScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalVMShutdownScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalVMShutdownSchedule)(nil))
 }
 
 func (o GlobalVMShutdownScheduleOutput) ToGlobalVMShutdownScheduleOutput() GlobalVMShutdownScheduleOutput {
@@ -292,6 +307,23 @@ func (o GlobalVMShutdownScheduleOutput) ToGlobalVMShutdownScheduleOutputWithCont
 	return o
 }
 
+type GlobalVMShutdownSchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalVMShutdownSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalVMShutdownSchedule)(nil))
+}
+
+func (o GlobalVMShutdownSchedulePtrOutput) ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput {
+	return o
+}
+
+func (o GlobalVMShutdownSchedulePtrOutput) ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalVMShutdownScheduleOutput{})
+	pulumi.RegisterOutputType(GlobalVMShutdownSchedulePtrOutput{})
 }

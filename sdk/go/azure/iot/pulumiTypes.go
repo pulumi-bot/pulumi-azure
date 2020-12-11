@@ -229,7 +229,7 @@ func (i IoTHubFallbackRouteArgs) ToIoTHubFallbackRoutePtrOutput() IoTHubFallback
 }
 
 func (i IoTHubFallbackRouteArgs) ToIoTHubFallbackRoutePtrOutputWithContext(ctx context.Context) IoTHubFallbackRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFallbackRouteOutput).ToIoTHubFallbackRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFallbackRouteOutput).ToIoTHubFallbackRoutePtrOutput()
 }
 
 // IoTHubFallbackRoutePtrInput is an input type that accepts IoTHubFallbackRouteArgs, IoTHubFallbackRoutePtr and IoTHubFallbackRoutePtrOutput values.
@@ -262,7 +262,7 @@ func (i *ioTHubFallbackRoutePtrType) ToIoTHubFallbackRoutePtrOutput() IoTHubFall
 }
 
 func (i *ioTHubFallbackRoutePtrType) ToIoTHubFallbackRoutePtrOutputWithContext(ctx context.Context) IoTHubFallbackRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFallbackRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFallbackRouteOutput).ToIoTHubFallbackRoutePtrOutput()
 }
 
 type IoTHubFallbackRouteOutput struct{ *pulumi.OutputState }
@@ -429,7 +429,7 @@ func (i IoTHubFileUploadArgs) ToIoTHubFileUploadPtrOutput() IoTHubFileUploadPtrO
 }
 
 func (i IoTHubFileUploadArgs) ToIoTHubFileUploadPtrOutputWithContext(ctx context.Context) IoTHubFileUploadPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFileUploadOutput).ToIoTHubFileUploadPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFileUploadOutput).ToIoTHubFileUploadPtrOutput()
 }
 
 // IoTHubFileUploadPtrInput is an input type that accepts IoTHubFileUploadArgs, IoTHubFileUploadPtr and IoTHubFileUploadPtrOutput values.
@@ -462,7 +462,7 @@ func (i *ioTHubFileUploadPtrType) ToIoTHubFileUploadPtrOutput() IoTHubFileUpload
 }
 
 func (i *ioTHubFileUploadPtrType) ToIoTHubFileUploadPtrOutputWithContext(ctx context.Context) IoTHubFileUploadPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFileUploadPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubFileUploadOutput).ToIoTHubFileUploadPtrOutput()
 }
 
 type IoTHubFileUploadOutput struct{ *pulumi.OutputState }
@@ -1026,7 +1026,7 @@ func (i IoTHubSkuArgs) ToIoTHubSkuPtrOutput() IoTHubSkuPtrOutput {
 }
 
 func (i IoTHubSkuArgs) ToIoTHubSkuPtrOutputWithContext(ctx context.Context) IoTHubSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubSkuOutput).ToIoTHubSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubSkuOutput).ToIoTHubSkuPtrOutput()
 }
 
 // IoTHubSkuPtrInput is an input type that accepts IoTHubSkuArgs, IoTHubSkuPtr and IoTHubSkuPtrOutput values.
@@ -1059,7 +1059,7 @@ func (i *ioTHubSkuPtrType) ToIoTHubSkuPtrOutput() IoTHubSkuPtrOutput {
 }
 
 func (i *ioTHubSkuPtrType) ToIoTHubSkuPtrOutputWithContext(ctx context.Context) IoTHubSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IoTHubSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IoTHubSkuOutput).ToIoTHubSkuPtrOutput()
 }
 
 type IoTHubSkuOutput struct{ *pulumi.OutputState }
@@ -1309,7 +1309,7 @@ func (i IotHubDpsSkuArgs) ToIotHubDpsSkuPtrOutput() IotHubDpsSkuPtrOutput {
 }
 
 func (i IotHubDpsSkuArgs) ToIotHubDpsSkuPtrOutputWithContext(ctx context.Context) IotHubDpsSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsSkuOutput).ToIotHubDpsSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsSkuOutput).ToIotHubDpsSkuPtrOutput()
 }
 
 // IotHubDpsSkuPtrInput is an input type that accepts IotHubDpsSkuArgs, IotHubDpsSkuPtr and IotHubDpsSkuPtrOutput values.
@@ -1342,7 +1342,7 @@ func (i *iotHubDpsSkuPtrType) ToIotHubDpsSkuPtrOutput() IotHubDpsSkuPtrOutput {
 }
 
 func (i *iotHubDpsSkuPtrType) ToIotHubDpsSkuPtrOutputWithContext(ctx context.Context) IotHubDpsSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsSkuOutput).ToIotHubDpsSkuPtrOutput()
 }
 
 type IotHubDpsSkuOutput struct{ *pulumi.OutputState }
@@ -1459,7 +1459,7 @@ func (i TimeSeriesInsightsGen2EnvironmentStorageArgs) ToTimeSeriesInsightsGen2En
 }
 
 func (i TimeSeriesInsightsGen2EnvironmentStorageArgs) ToTimeSeriesInsightsGen2EnvironmentStoragePtrOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentStorageOutput).ToTimeSeriesInsightsGen2EnvironmentStoragePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentStorageOutput).ToTimeSeriesInsightsGen2EnvironmentStoragePtrOutput()
 }
 
 // TimeSeriesInsightsGen2EnvironmentStoragePtrInput is an input type that accepts TimeSeriesInsightsGen2EnvironmentStorageArgs, TimeSeriesInsightsGen2EnvironmentStoragePtr and TimeSeriesInsightsGen2EnvironmentStoragePtrOutput values.
@@ -1492,7 +1492,7 @@ func (i *timeSeriesInsightsGen2EnvironmentStoragePtrType) ToTimeSeriesInsightsGe
 }
 
 func (i *timeSeriesInsightsGen2EnvironmentStoragePtrType) ToTimeSeriesInsightsGen2EnvironmentStoragePtrOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentStoragePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentStorageOutput).ToTimeSeriesInsightsGen2EnvironmentStoragePtrOutput()
 }
 
 type TimeSeriesInsightsGen2EnvironmentStorageOutput struct{ *pulumi.OutputState }

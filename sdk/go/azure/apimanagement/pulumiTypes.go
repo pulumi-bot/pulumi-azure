@@ -52,7 +52,7 @@ func (i ApiDiagnosticBackendRequestArgs) ToApiDiagnosticBackendRequestPtrOutput(
 }
 
 func (i ApiDiagnosticBackendRequestArgs) ToApiDiagnosticBackendRequestPtrOutputWithContext(ctx context.Context) ApiDiagnosticBackendRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendRequestOutput).ToApiDiagnosticBackendRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendRequestOutput).ToApiDiagnosticBackendRequestPtrOutput()
 }
 
 // ApiDiagnosticBackendRequestPtrInput is an input type that accepts ApiDiagnosticBackendRequestArgs, ApiDiagnosticBackendRequestPtr and ApiDiagnosticBackendRequestPtrOutput values.
@@ -85,7 +85,7 @@ func (i *apiDiagnosticBackendRequestPtrType) ToApiDiagnosticBackendRequestPtrOut
 }
 
 func (i *apiDiagnosticBackendRequestPtrType) ToApiDiagnosticBackendRequestPtrOutputWithContext(ctx context.Context) ApiDiagnosticBackendRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendRequestOutput).ToApiDiagnosticBackendRequestPtrOutput()
 }
 
 type ApiDiagnosticBackendRequestOutput struct{ *pulumi.OutputState }
@@ -202,7 +202,7 @@ func (i ApiDiagnosticBackendResponseArgs) ToApiDiagnosticBackendResponsePtrOutpu
 }
 
 func (i ApiDiagnosticBackendResponseArgs) ToApiDiagnosticBackendResponsePtrOutputWithContext(ctx context.Context) ApiDiagnosticBackendResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendResponseOutput).ToApiDiagnosticBackendResponsePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendResponseOutput).ToApiDiagnosticBackendResponsePtrOutput()
 }
 
 // ApiDiagnosticBackendResponsePtrInput is an input type that accepts ApiDiagnosticBackendResponseArgs, ApiDiagnosticBackendResponsePtr and ApiDiagnosticBackendResponsePtrOutput values.
@@ -235,7 +235,7 @@ func (i *apiDiagnosticBackendResponsePtrType) ToApiDiagnosticBackendResponsePtrO
 }
 
 func (i *apiDiagnosticBackendResponsePtrType) ToApiDiagnosticBackendResponsePtrOutputWithContext(ctx context.Context) ApiDiagnosticBackendResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendResponsePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticBackendResponseOutput).ToApiDiagnosticBackendResponsePtrOutput()
 }
 
 type ApiDiagnosticBackendResponseOutput struct{ *pulumi.OutputState }
@@ -352,7 +352,7 @@ func (i ApiDiagnosticFrontendRequestArgs) ToApiDiagnosticFrontendRequestPtrOutpu
 }
 
 func (i ApiDiagnosticFrontendRequestArgs) ToApiDiagnosticFrontendRequestPtrOutputWithContext(ctx context.Context) ApiDiagnosticFrontendRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendRequestOutput).ToApiDiagnosticFrontendRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendRequestOutput).ToApiDiagnosticFrontendRequestPtrOutput()
 }
 
 // ApiDiagnosticFrontendRequestPtrInput is an input type that accepts ApiDiagnosticFrontendRequestArgs, ApiDiagnosticFrontendRequestPtr and ApiDiagnosticFrontendRequestPtrOutput values.
@@ -385,7 +385,7 @@ func (i *apiDiagnosticFrontendRequestPtrType) ToApiDiagnosticFrontendRequestPtrO
 }
 
 func (i *apiDiagnosticFrontendRequestPtrType) ToApiDiagnosticFrontendRequestPtrOutputWithContext(ctx context.Context) ApiDiagnosticFrontendRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendRequestOutput).ToApiDiagnosticFrontendRequestPtrOutput()
 }
 
 type ApiDiagnosticFrontendRequestOutput struct{ *pulumi.OutputState }
@@ -502,7 +502,7 @@ func (i ApiDiagnosticFrontendResponseArgs) ToApiDiagnosticFrontendResponsePtrOut
 }
 
 func (i ApiDiagnosticFrontendResponseArgs) ToApiDiagnosticFrontendResponsePtrOutputWithContext(ctx context.Context) ApiDiagnosticFrontendResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendResponseOutput).ToApiDiagnosticFrontendResponsePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendResponseOutput).ToApiDiagnosticFrontendResponsePtrOutput()
 }
 
 // ApiDiagnosticFrontendResponsePtrInput is an input type that accepts ApiDiagnosticFrontendResponseArgs, ApiDiagnosticFrontendResponsePtr and ApiDiagnosticFrontendResponsePtrOutput values.
@@ -535,7 +535,7 @@ func (i *apiDiagnosticFrontendResponsePtrType) ToApiDiagnosticFrontendResponsePt
 }
 
 func (i *apiDiagnosticFrontendResponsePtrType) ToApiDiagnosticFrontendResponsePtrOutputWithContext(ctx context.Context) ApiDiagnosticFrontendResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendResponsePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticFrontendResponseOutput).ToApiDiagnosticFrontendResponsePtrOutput()
 }
 
 type ApiDiagnosticFrontendResponseOutput struct{ *pulumi.OutputState }
@@ -656,7 +656,7 @@ func (i ApiImportArgs) ToApiImportPtrOutput() ApiImportPtrOutput {
 }
 
 func (i ApiImportArgs) ToApiImportPtrOutputWithContext(ctx context.Context) ApiImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiImportOutput).ToApiImportPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiImportOutput).ToApiImportPtrOutput()
 }
 
 // ApiImportPtrInput is an input type that accepts ApiImportArgs, ApiImportPtr and ApiImportPtrOutput values.
@@ -689,7 +689,7 @@ func (i *apiImportPtrType) ToApiImportPtrOutput() ApiImportPtrOutput {
 }
 
 func (i *apiImportPtrType) ToApiImportPtrOutputWithContext(ctx context.Context) ApiImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiImportPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiImportOutput).ToApiImportPtrOutput()
 }
 
 type ApiImportOutput struct{ *pulumi.OutputState }
@@ -821,7 +821,7 @@ func (i ApiImportWsdlSelectorArgs) ToApiImportWsdlSelectorPtrOutput() ApiImportW
 }
 
 func (i ApiImportWsdlSelectorArgs) ToApiImportWsdlSelectorPtrOutputWithContext(ctx context.Context) ApiImportWsdlSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiImportWsdlSelectorOutput).ToApiImportWsdlSelectorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiImportWsdlSelectorOutput).ToApiImportWsdlSelectorPtrOutput()
 }
 
 // ApiImportWsdlSelectorPtrInput is an input type that accepts ApiImportWsdlSelectorArgs, ApiImportWsdlSelectorPtr and ApiImportWsdlSelectorPtrOutput values.
@@ -854,7 +854,7 @@ func (i *apiImportWsdlSelectorPtrType) ToApiImportWsdlSelectorPtrOutput() ApiImp
 }
 
 func (i *apiImportWsdlSelectorPtrType) ToApiImportWsdlSelectorPtrOutputWithContext(ctx context.Context) ApiImportWsdlSelectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiImportWsdlSelectorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiImportWsdlSelectorOutput).ToApiImportWsdlSelectorPtrOutput()
 }
 
 type ApiImportWsdlSelectorOutput struct{ *pulumi.OutputState }
@@ -971,7 +971,7 @@ func (i ApiOauth2AuthorizationArgs) ToApiOauth2AuthorizationPtrOutput() ApiOauth
 }
 
 func (i ApiOauth2AuthorizationArgs) ToApiOauth2AuthorizationPtrOutputWithContext(ctx context.Context) ApiOauth2AuthorizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOauth2AuthorizationOutput).ToApiOauth2AuthorizationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOauth2AuthorizationOutput).ToApiOauth2AuthorizationPtrOutput()
 }
 
 // ApiOauth2AuthorizationPtrInput is an input type that accepts ApiOauth2AuthorizationArgs, ApiOauth2AuthorizationPtr and ApiOauth2AuthorizationPtrOutput values.
@@ -1004,7 +1004,7 @@ func (i *apiOauth2AuthorizationPtrType) ToApiOauth2AuthorizationPtrOutput() ApiO
 }
 
 func (i *apiOauth2AuthorizationPtrType) ToApiOauth2AuthorizationPtrOutputWithContext(ctx context.Context) ApiOauth2AuthorizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOauth2AuthorizationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOauth2AuthorizationOutput).ToApiOauth2AuthorizationPtrOutput()
 }
 
 type ApiOauth2AuthorizationOutput struct{ *pulumi.OutputState }
@@ -1121,7 +1121,7 @@ func (i ApiOpenidAuthenticationArgs) ToApiOpenidAuthenticationPtrOutput() ApiOpe
 }
 
 func (i ApiOpenidAuthenticationArgs) ToApiOpenidAuthenticationPtrOutputWithContext(ctx context.Context) ApiOpenidAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOpenidAuthenticationOutput).ToApiOpenidAuthenticationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOpenidAuthenticationOutput).ToApiOpenidAuthenticationPtrOutput()
 }
 
 // ApiOpenidAuthenticationPtrInput is an input type that accepts ApiOpenidAuthenticationArgs, ApiOpenidAuthenticationPtr and ApiOpenidAuthenticationPtrOutput values.
@@ -1154,7 +1154,7 @@ func (i *apiOpenidAuthenticationPtrType) ToApiOpenidAuthenticationPtrOutput() Ap
 }
 
 func (i *apiOpenidAuthenticationPtrType) ToApiOpenidAuthenticationPtrOutputWithContext(ctx context.Context) ApiOpenidAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOpenidAuthenticationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOpenidAuthenticationOutput).ToApiOpenidAuthenticationPtrOutput()
 }
 
 type ApiOpenidAuthenticationOutput struct{ *pulumi.OutputState }
@@ -1279,7 +1279,7 @@ func (i ApiOperationRequestArgs) ToApiOperationRequestPtrOutput() ApiOperationRe
 }
 
 func (i ApiOperationRequestArgs) ToApiOperationRequestPtrOutputWithContext(ctx context.Context) ApiOperationRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationRequestOutput).ToApiOperationRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationRequestOutput).ToApiOperationRequestPtrOutput()
 }
 
 // ApiOperationRequestPtrInput is an input type that accepts ApiOperationRequestArgs, ApiOperationRequestPtr and ApiOperationRequestPtrOutput values.
@@ -1312,7 +1312,7 @@ func (i *apiOperationRequestPtrType) ToApiOperationRequestPtrOutput() ApiOperati
 }
 
 func (i *apiOperationRequestPtrType) ToApiOperationRequestPtrOutputWithContext(ctx context.Context) ApiOperationRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationRequestOutput).ToApiOperationRequestPtrOutput()
 }
 
 type ApiOperationRequestOutput struct{ *pulumi.OutputState }
@@ -2705,7 +2705,7 @@ func (i ApiSubscriptionKeyParameterNamesArgs) ToApiSubscriptionKeyParameterNames
 }
 
 func (i ApiSubscriptionKeyParameterNamesArgs) ToApiSubscriptionKeyParameterNamesPtrOutputWithContext(ctx context.Context) ApiSubscriptionKeyParameterNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiSubscriptionKeyParameterNamesOutput).ToApiSubscriptionKeyParameterNamesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiSubscriptionKeyParameterNamesOutput).ToApiSubscriptionKeyParameterNamesPtrOutput()
 }
 
 // ApiSubscriptionKeyParameterNamesPtrInput is an input type that accepts ApiSubscriptionKeyParameterNamesArgs, ApiSubscriptionKeyParameterNamesPtr and ApiSubscriptionKeyParameterNamesPtrOutput values.
@@ -2738,7 +2738,7 @@ func (i *apiSubscriptionKeyParameterNamesPtrType) ToApiSubscriptionKeyParameterN
 }
 
 func (i *apiSubscriptionKeyParameterNamesPtrType) ToApiSubscriptionKeyParameterNamesPtrOutputWithContext(ctx context.Context) ApiSubscriptionKeyParameterNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiSubscriptionKeyParameterNamesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiSubscriptionKeyParameterNamesOutput).ToApiSubscriptionKeyParameterNamesPtrOutput()
 }
 
 type ApiSubscriptionKeyParameterNamesOutput struct{ *pulumi.OutputState }
@@ -2969,7 +2969,7 @@ func (i BackendCredentialsArgs) ToBackendCredentialsPtrOutput() BackendCredentia
 }
 
 func (i BackendCredentialsArgs) ToBackendCredentialsPtrOutputWithContext(ctx context.Context) BackendCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsOutput).ToBackendCredentialsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsOutput).ToBackendCredentialsPtrOutput()
 }
 
 // BackendCredentialsPtrInput is an input type that accepts BackendCredentialsArgs, BackendCredentialsPtr and BackendCredentialsPtrOutput values.
@@ -3002,7 +3002,7 @@ func (i *backendCredentialsPtrType) ToBackendCredentialsPtrOutput() BackendCrede
 }
 
 func (i *backendCredentialsPtrType) ToBackendCredentialsPtrOutputWithContext(ctx context.Context) BackendCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsOutput).ToBackendCredentialsPtrOutput()
 }
 
 type BackendCredentialsOutput struct{ *pulumi.OutputState }
@@ -3149,7 +3149,7 @@ func (i BackendCredentialsAuthorizationArgs) ToBackendCredentialsAuthorizationPt
 }
 
 func (i BackendCredentialsAuthorizationArgs) ToBackendCredentialsAuthorizationPtrOutputWithContext(ctx context.Context) BackendCredentialsAuthorizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsAuthorizationOutput).ToBackendCredentialsAuthorizationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsAuthorizationOutput).ToBackendCredentialsAuthorizationPtrOutput()
 }
 
 // BackendCredentialsAuthorizationPtrInput is an input type that accepts BackendCredentialsAuthorizationArgs, BackendCredentialsAuthorizationPtr and BackendCredentialsAuthorizationPtrOutput values.
@@ -3182,7 +3182,7 @@ func (i *backendCredentialsAuthorizationPtrType) ToBackendCredentialsAuthorizati
 }
 
 func (i *backendCredentialsAuthorizationPtrType) ToBackendCredentialsAuthorizationPtrOutputWithContext(ctx context.Context) BackendCredentialsAuthorizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsAuthorizationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsAuthorizationOutput).ToBackendCredentialsAuthorizationPtrOutput()
 }
 
 type BackendCredentialsAuthorizationOutput struct{ *pulumi.OutputState }
@@ -3303,7 +3303,7 @@ func (i BackendProxyArgs) ToBackendProxyPtrOutput() BackendProxyPtrOutput {
 }
 
 func (i BackendProxyArgs) ToBackendProxyPtrOutputWithContext(ctx context.Context) BackendProxyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyOutput).ToBackendProxyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyOutput).ToBackendProxyPtrOutput()
 }
 
 // BackendProxyPtrInput is an input type that accepts BackendProxyArgs, BackendProxyPtr and BackendProxyPtrOutput values.
@@ -3336,7 +3336,7 @@ func (i *backendProxyPtrType) ToBackendProxyPtrOutput() BackendProxyPtrOutput {
 }
 
 func (i *backendProxyPtrType) ToBackendProxyPtrOutputWithContext(ctx context.Context) BackendProxyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyOutput).ToBackendProxyPtrOutput()
 }
 
 type BackendProxyOutput struct{ *pulumi.OutputState }
@@ -3480,7 +3480,7 @@ func (i BackendServiceFabricClusterArgs) ToBackendServiceFabricClusterPtrOutput(
 }
 
 func (i BackendServiceFabricClusterArgs) ToBackendServiceFabricClusterPtrOutputWithContext(ctx context.Context) BackendServiceFabricClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterOutput).ToBackendServiceFabricClusterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterOutput).ToBackendServiceFabricClusterPtrOutput()
 }
 
 // BackendServiceFabricClusterPtrInput is an input type that accepts BackendServiceFabricClusterArgs, BackendServiceFabricClusterPtr and BackendServiceFabricClusterPtrOutput values.
@@ -3513,7 +3513,7 @@ func (i *backendServiceFabricClusterPtrType) ToBackendServiceFabricClusterPtrOut
 }
 
 func (i *backendServiceFabricClusterPtrType) ToBackendServiceFabricClusterPtrOutputWithContext(ctx context.Context) BackendServiceFabricClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterOutput).ToBackendServiceFabricClusterPtrOutput()
 }
 
 type BackendServiceFabricClusterOutput struct{ *pulumi.OutputState }
@@ -3783,7 +3783,7 @@ func (i BackendTlsArgs) ToBackendTlsPtrOutput() BackendTlsPtrOutput {
 }
 
 func (i BackendTlsArgs) ToBackendTlsPtrOutputWithContext(ctx context.Context) BackendTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsOutput).ToBackendTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsOutput).ToBackendTlsPtrOutput()
 }
 
 // BackendTlsPtrInput is an input type that accepts BackendTlsArgs, BackendTlsPtr and BackendTlsPtrOutput values.
@@ -3816,7 +3816,7 @@ func (i *backendTlsPtrType) ToBackendTlsPtrOutput() BackendTlsPtrOutput {
 }
 
 func (i *backendTlsPtrType) ToBackendTlsPtrOutputWithContext(ctx context.Context) BackendTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsOutput).ToBackendTlsPtrOutput()
 }
 
 type BackendTlsOutput struct{ *pulumi.OutputState }
@@ -4603,7 +4603,7 @@ func (i LoggerApplicationInsightsArgs) ToLoggerApplicationInsightsPtrOutput() Lo
 }
 
 func (i LoggerApplicationInsightsArgs) ToLoggerApplicationInsightsPtrOutputWithContext(ctx context.Context) LoggerApplicationInsightsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggerApplicationInsightsOutput).ToLoggerApplicationInsightsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerApplicationInsightsOutput).ToLoggerApplicationInsightsPtrOutput()
 }
 
 // LoggerApplicationInsightsPtrInput is an input type that accepts LoggerApplicationInsightsArgs, LoggerApplicationInsightsPtr and LoggerApplicationInsightsPtrOutput values.
@@ -4636,7 +4636,7 @@ func (i *loggerApplicationInsightsPtrType) ToLoggerApplicationInsightsPtrOutput(
 }
 
 func (i *loggerApplicationInsightsPtrType) ToLoggerApplicationInsightsPtrOutputWithContext(ctx context.Context) LoggerApplicationInsightsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggerApplicationInsightsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerApplicationInsightsOutput).ToLoggerApplicationInsightsPtrOutput()
 }
 
 type LoggerApplicationInsightsOutput struct{ *pulumi.OutputState }
@@ -4738,7 +4738,7 @@ func (i LoggerEventhubArgs) ToLoggerEventhubPtrOutput() LoggerEventhubPtrOutput 
 }
 
 func (i LoggerEventhubArgs) ToLoggerEventhubPtrOutputWithContext(ctx context.Context) LoggerEventhubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggerEventhubOutput).ToLoggerEventhubPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerEventhubOutput).ToLoggerEventhubPtrOutput()
 }
 
 // LoggerEventhubPtrInput is an input type that accepts LoggerEventhubArgs, LoggerEventhubPtr and LoggerEventhubPtrOutput values.
@@ -4771,7 +4771,7 @@ func (i *loggerEventhubPtrType) ToLoggerEventhubPtrOutput() LoggerEventhubPtrOut
 }
 
 func (i *loggerEventhubPtrType) ToLoggerEventhubPtrOutputWithContext(ctx context.Context) LoggerEventhubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggerEventhubPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerEventhubOutput).ToLoggerEventhubPtrOutput()
 }
 
 type LoggerEventhubOutput struct{ *pulumi.OutputState }
@@ -5019,7 +5019,7 @@ func (i ServiceAdditionalLocationVirtualNetworkConfigurationArgs) ToServiceAddit
 }
 
 func (i ServiceAdditionalLocationVirtualNetworkConfigurationArgs) ToServiceAdditionalLocationVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAdditionalLocationVirtualNetworkConfigurationOutput).ToServiceAdditionalLocationVirtualNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAdditionalLocationVirtualNetworkConfigurationOutput).ToServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput()
 }
 
 // ServiceAdditionalLocationVirtualNetworkConfigurationPtrInput is an input type that accepts ServiceAdditionalLocationVirtualNetworkConfigurationArgs, ServiceAdditionalLocationVirtualNetworkConfigurationPtr and ServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput values.
@@ -5052,7 +5052,7 @@ func (i *serviceAdditionalLocationVirtualNetworkConfigurationPtrType) ToServiceA
 }
 
 func (i *serviceAdditionalLocationVirtualNetworkConfigurationPtrType) ToServiceAdditionalLocationVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAdditionalLocationVirtualNetworkConfigurationOutput).ToServiceAdditionalLocationVirtualNetworkConfigurationPtrOutput()
 }
 
 type ServiceAdditionalLocationVirtualNetworkConfigurationOutput struct{ *pulumi.OutputState }
@@ -5283,7 +5283,7 @@ func (i ServiceHostnameConfigurationArgs) ToServiceHostnameConfigurationPtrOutpu
 }
 
 func (i ServiceHostnameConfigurationArgs) ToServiceHostnameConfigurationPtrOutputWithContext(ctx context.Context) ServiceHostnameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHostnameConfigurationOutput).ToServiceHostnameConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHostnameConfigurationOutput).ToServiceHostnameConfigurationPtrOutput()
 }
 
 // ServiceHostnameConfigurationPtrInput is an input type that accepts ServiceHostnameConfigurationArgs, ServiceHostnameConfigurationPtr and ServiceHostnameConfigurationPtrOutput values.
@@ -5316,7 +5316,7 @@ func (i *serviceHostnameConfigurationPtrType) ToServiceHostnameConfigurationPtrO
 }
 
 func (i *serviceHostnameConfigurationPtrType) ToServiceHostnameConfigurationPtrOutputWithContext(ctx context.Context) ServiceHostnameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHostnameConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHostnameConfigurationOutput).ToServiceHostnameConfigurationPtrOutput()
 }
 
 type ServiceHostnameConfigurationOutput struct{ *pulumi.OutputState }
@@ -6162,7 +6162,7 @@ func (i ServiceIdentityArgs) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutp
 }
 
 func (i ServiceIdentityArgs) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutput()
 }
 
 // ServiceIdentityPtrInput is an input type that accepts ServiceIdentityArgs, ServiceIdentityPtr and ServiceIdentityPtrOutput values.
@@ -6195,7 +6195,7 @@ func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutput() ServiceIdentityPtr
 }
 
 func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutput()
 }
 
 type ServiceIdentityOutput struct{ *pulumi.OutputState }
@@ -6342,7 +6342,7 @@ func (i ServicePolicyArgs) ToServicePolicyPtrOutput() ServicePolicyPtrOutput {
 }
 
 func (i ServicePolicyArgs) ToServicePolicyPtrOutputWithContext(ctx context.Context) ServicePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePolicyOutput).ToServicePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePolicyOutput).ToServicePolicyPtrOutput()
 }
 
 // ServicePolicyPtrInput is an input type that accepts ServicePolicyArgs, ServicePolicyPtr and ServicePolicyPtrOutput values.
@@ -6375,7 +6375,7 @@ func (i *servicePolicyPtrType) ToServicePolicyPtrOutput() ServicePolicyPtrOutput
 }
 
 func (i *servicePolicyPtrType) ToServicePolicyPtrOutputWithContext(ctx context.Context) ServicePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePolicyOutput).ToServicePolicyPtrOutput()
 }
 
 type ServicePolicyOutput struct{ *pulumi.OutputState }
@@ -6488,7 +6488,7 @@ func (i ServiceProtocolsArgs) ToServiceProtocolsPtrOutput() ServiceProtocolsPtrO
 }
 
 func (i ServiceProtocolsArgs) ToServiceProtocolsPtrOutputWithContext(ctx context.Context) ServiceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProtocolsOutput).ToServiceProtocolsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProtocolsOutput).ToServiceProtocolsPtrOutput()
 }
 
 // ServiceProtocolsPtrInput is an input type that accepts ServiceProtocolsArgs, ServiceProtocolsPtr and ServiceProtocolsPtrOutput values.
@@ -6521,7 +6521,7 @@ func (i *serviceProtocolsPtrType) ToServiceProtocolsPtrOutput() ServiceProtocols
 }
 
 func (i *serviceProtocolsPtrType) ToServiceProtocolsPtrOutputWithContext(ctx context.Context) ServiceProtocolsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProtocolsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProtocolsOutput).ToServiceProtocolsPtrOutput()
 }
 
 type ServiceProtocolsOutput struct{ *pulumi.OutputState }
@@ -6643,7 +6643,7 @@ func (i ServiceSecurityArgs) ToServiceSecurityPtrOutput() ServiceSecurityPtrOutp
 }
 
 func (i ServiceSecurityArgs) ToServiceSecurityPtrOutputWithContext(ctx context.Context) ServiceSecurityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSecurityOutput).ToServiceSecurityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSecurityOutput).ToServiceSecurityPtrOutput()
 }
 
 // ServiceSecurityPtrInput is an input type that accepts ServiceSecurityArgs, ServiceSecurityPtr and ServiceSecurityPtrOutput values.
@@ -6676,7 +6676,7 @@ func (i *serviceSecurityPtrType) ToServiceSecurityPtrOutput() ServiceSecurityPtr
 }
 
 func (i *serviceSecurityPtrType) ToServiceSecurityPtrOutputWithContext(ctx context.Context) ServiceSecurityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSecurityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSecurityOutput).ToServiceSecurityPtrOutput()
 }
 
 type ServiceSecurityOutput struct{ *pulumi.OutputState }
@@ -6864,7 +6864,7 @@ func (i ServiceSignInArgs) ToServiceSignInPtrOutput() ServiceSignInPtrOutput {
 }
 
 func (i ServiceSignInArgs) ToServiceSignInPtrOutputWithContext(ctx context.Context) ServiceSignInPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignInOutput).ToServiceSignInPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignInOutput).ToServiceSignInPtrOutput()
 }
 
 // ServiceSignInPtrInput is an input type that accepts ServiceSignInArgs, ServiceSignInPtr and ServiceSignInPtrOutput values.
@@ -6897,7 +6897,7 @@ func (i *serviceSignInPtrType) ToServiceSignInPtrOutput() ServiceSignInPtrOutput
 }
 
 func (i *serviceSignInPtrType) ToServiceSignInPtrOutputWithContext(ctx context.Context) ServiceSignInPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignInPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignInOutput).ToServiceSignInPtrOutput()
 }
 
 type ServiceSignInOutput struct{ *pulumi.OutputState }
@@ -6999,7 +6999,7 @@ func (i ServiceSignUpArgs) ToServiceSignUpPtrOutput() ServiceSignUpPtrOutput {
 }
 
 func (i ServiceSignUpArgs) ToServiceSignUpPtrOutputWithContext(ctx context.Context) ServiceSignUpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpOutput).ToServiceSignUpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpOutput).ToServiceSignUpPtrOutput()
 }
 
 // ServiceSignUpPtrInput is an input type that accepts ServiceSignUpArgs, ServiceSignUpPtr and ServiceSignUpPtrOutput values.
@@ -7032,7 +7032,7 @@ func (i *serviceSignUpPtrType) ToServiceSignUpPtrOutput() ServiceSignUpPtrOutput
 }
 
 func (i *serviceSignUpPtrType) ToServiceSignUpPtrOutputWithContext(ctx context.Context) ServiceSignUpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpOutput).ToServiceSignUpPtrOutput()
 }
 
 type ServiceSignUpOutput struct{ *pulumi.OutputState }
@@ -7153,7 +7153,7 @@ func (i ServiceSignUpTermsOfServiceArgs) ToServiceSignUpTermsOfServicePtrOutput(
 }
 
 func (i ServiceSignUpTermsOfServiceArgs) ToServiceSignUpTermsOfServicePtrOutputWithContext(ctx context.Context) ServiceSignUpTermsOfServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpTermsOfServiceOutput).ToServiceSignUpTermsOfServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpTermsOfServiceOutput).ToServiceSignUpTermsOfServicePtrOutput()
 }
 
 // ServiceSignUpTermsOfServicePtrInput is an input type that accepts ServiceSignUpTermsOfServiceArgs, ServiceSignUpTermsOfServicePtr and ServiceSignUpTermsOfServicePtrOutput values.
@@ -7186,7 +7186,7 @@ func (i *serviceSignUpTermsOfServicePtrType) ToServiceSignUpTermsOfServicePtrOut
 }
 
 func (i *serviceSignUpTermsOfServicePtrType) ToServiceSignUpTermsOfServicePtrOutputWithContext(ctx context.Context) ServiceSignUpTermsOfServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpTermsOfServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSignUpTermsOfServiceOutput).ToServiceSignUpTermsOfServicePtrOutput()
 }
 
 type ServiceSignUpTermsOfServiceOutput struct{ *pulumi.OutputState }
@@ -7314,7 +7314,7 @@ func (i ServiceVirtualNetworkConfigurationArgs) ToServiceVirtualNetworkConfigura
 }
 
 func (i ServiceVirtualNetworkConfigurationArgs) ToServiceVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceVirtualNetworkConfigurationOutput).ToServiceVirtualNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceVirtualNetworkConfigurationOutput).ToServiceVirtualNetworkConfigurationPtrOutput()
 }
 
 // ServiceVirtualNetworkConfigurationPtrInput is an input type that accepts ServiceVirtualNetworkConfigurationArgs, ServiceVirtualNetworkConfigurationPtr and ServiceVirtualNetworkConfigurationPtrOutput values.
@@ -7347,7 +7347,7 @@ func (i *serviceVirtualNetworkConfigurationPtrType) ToServiceVirtualNetworkConfi
 }
 
 func (i *serviceVirtualNetworkConfigurationPtrType) ToServiceVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceVirtualNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceVirtualNetworkConfigurationOutput).ToServiceVirtualNetworkConfigurationPtrOutput()
 }
 
 type ServiceVirtualNetworkConfigurationOutput struct{ *pulumi.OutputState }

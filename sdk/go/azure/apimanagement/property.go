@@ -206,16 +206,31 @@ type PropertyInput interface {
 	ToPropertyOutputWithContext(ctx context.Context) PropertyOutput
 }
 
-func (Property) ElementType() reflect.Type {
-	return reflect.TypeOf((*Property)(nil)).Elem()
+func (*Property) ElementType() reflect.Type {
+	return reflect.TypeOf((*Property)(nil))
 }
 
-func (i Property) ToPropertyOutput() PropertyOutput {
+func (i *Property) ToPropertyOutput() PropertyOutput {
 	return i.ToPropertyOutputWithContext(context.Background())
 }
 
-func (i Property) ToPropertyOutputWithContext(ctx context.Context) PropertyOutput {
+func (i *Property) ToPropertyOutputWithContext(ctx context.Context) PropertyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PropertyOutput)
+}
+
+func (i *Property) ToPropertyPtrOutput() PropertyPtrOutput {
+	return i.ToPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i *Property) ToPropertyPtrOutputWithContext(ctx context.Context) PropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PropertyPtrOutput)
+}
+
+type PropertyPtrInput interface {
+	pulumi.Input
+
+	ToPropertyPtrOutput() PropertyPtrOutput
+	ToPropertyPtrOutputWithContext(ctx context.Context) PropertyPtrOutput
 }
 
 type PropertyOutput struct {
@@ -223,7 +238,7 @@ type PropertyOutput struct {
 }
 
 func (PropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PropertyOutput)(nil)).Elem()
+	return reflect.TypeOf((*Property)(nil))
 }
 
 func (o PropertyOutput) ToPropertyOutput() PropertyOutput {
@@ -234,6 +249,23 @@ func (o PropertyOutput) ToPropertyOutputWithContext(ctx context.Context) Propert
 	return o
 }
 
+type PropertyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PropertyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Property)(nil))
+}
+
+func (o PropertyPtrOutput) ToPropertyPtrOutput() PropertyPtrOutput {
+	return o
+}
+
+func (o PropertyPtrOutput) ToPropertyPtrOutputWithContext(ctx context.Context) PropertyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PropertyOutput{})
+	pulumi.RegisterOutputType(PropertyPtrOutput{})
 }

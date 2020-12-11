@@ -335,16 +335,31 @@ type AuthorizationServerInput interface {
 	ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput
 }
 
-func (AuthorizationServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationServer)(nil)).Elem()
+func (*AuthorizationServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationServer)(nil))
 }
 
-func (i AuthorizationServer) ToAuthorizationServerOutput() AuthorizationServerOutput {
+func (i *AuthorizationServer) ToAuthorizationServerOutput() AuthorizationServerOutput {
 	return i.ToAuthorizationServerOutputWithContext(context.Background())
 }
 
-func (i AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
+func (i *AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationServerOutput)
+}
+
+func (i *AuthorizationServer) ToAuthorizationServerPtrOutput() AuthorizationServerPtrOutput {
+	return i.ToAuthorizationServerPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthorizationServer) ToAuthorizationServerPtrOutputWithContext(ctx context.Context) AuthorizationServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationServerPtrOutput)
+}
+
+type AuthorizationServerPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationServerPtrOutput() AuthorizationServerPtrOutput
+	ToAuthorizationServerPtrOutputWithContext(ctx context.Context) AuthorizationServerPtrOutput
 }
 
 type AuthorizationServerOutput struct {
@@ -352,7 +367,7 @@ type AuthorizationServerOutput struct {
 }
 
 func (AuthorizationServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthorizationServer)(nil))
 }
 
 func (o AuthorizationServerOutput) ToAuthorizationServerOutput() AuthorizationServerOutput {
@@ -363,6 +378,23 @@ func (o AuthorizationServerOutput) ToAuthorizationServerOutputWithContext(ctx co
 	return o
 }
 
+type AuthorizationServerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizationServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationServer)(nil))
+}
+
+func (o AuthorizationServerPtrOutput) ToAuthorizationServerPtrOutput() AuthorizationServerPtrOutput {
+	return o
+}
+
+func (o AuthorizationServerPtrOutput) ToAuthorizationServerPtrOutputWithContext(ctx context.Context) AuthorizationServerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorizationServerOutput{})
+	pulumi.RegisterOutputType(AuthorizationServerPtrOutput{})
 }

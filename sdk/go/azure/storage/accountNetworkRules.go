@@ -156,16 +156,31 @@ type AccountNetworkRulesInput interface {
 	ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput
 }
 
-func (AccountNetworkRules) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountNetworkRules)(nil)).Elem()
+func (*AccountNetworkRules) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountNetworkRules)(nil))
 }
 
-func (i AccountNetworkRules) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
+func (i *AccountNetworkRules) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
 	return i.ToAccountNetworkRulesOutputWithContext(context.Background())
 }
 
-func (i AccountNetworkRules) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
+func (i *AccountNetworkRules) ToAccountNetworkRulesOutputWithContext(ctx context.Context) AccountNetworkRulesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesOutput)
+}
+
+func (i *AccountNetworkRules) ToAccountNetworkRulesPtrOutput() AccountNetworkRulesPtrOutput {
+	return i.ToAccountNetworkRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountNetworkRules) ToAccountNetworkRulesPtrOutputWithContext(ctx context.Context) AccountNetworkRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesPtrOutput)
+}
+
+type AccountNetworkRulesPtrInput interface {
+	pulumi.Input
+
+	ToAccountNetworkRulesPtrOutput() AccountNetworkRulesPtrOutput
+	ToAccountNetworkRulesPtrOutputWithContext(ctx context.Context) AccountNetworkRulesPtrOutput
 }
 
 type AccountNetworkRulesOutput struct {
@@ -173,7 +188,7 @@ type AccountNetworkRulesOutput struct {
 }
 
 func (AccountNetworkRulesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountNetworkRulesOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountNetworkRules)(nil))
 }
 
 func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutput() AccountNetworkRulesOutput {
@@ -184,6 +199,23 @@ func (o AccountNetworkRulesOutput) ToAccountNetworkRulesOutputWithContext(ctx co
 	return o
 }
 
+type AccountNetworkRulesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountNetworkRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountNetworkRules)(nil))
+}
+
+func (o AccountNetworkRulesPtrOutput) ToAccountNetworkRulesPtrOutput() AccountNetworkRulesPtrOutput {
+	return o
+}
+
+func (o AccountNetworkRulesPtrOutput) ToAccountNetworkRulesPtrOutputWithContext(ctx context.Context) AccountNetworkRulesPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountNetworkRulesOutput{})
+	pulumi.RegisterOutputType(AccountNetworkRulesPtrOutput{})
 }

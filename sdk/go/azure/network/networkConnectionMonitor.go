@@ -225,16 +225,31 @@ type NetworkConnectionMonitorInput interface {
 	ToNetworkConnectionMonitorOutputWithContext(ctx context.Context) NetworkConnectionMonitorOutput
 }
 
-func (NetworkConnectionMonitor) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConnectionMonitor)(nil)).Elem()
+func (*NetworkConnectionMonitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConnectionMonitor)(nil))
 }
 
-func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorOutput() NetworkConnectionMonitorOutput {
+func (i *NetworkConnectionMonitor) ToNetworkConnectionMonitorOutput() NetworkConnectionMonitorOutput {
 	return i.ToNetworkConnectionMonitorOutputWithContext(context.Background())
 }
 
-func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorOutputWithContext(ctx context.Context) NetworkConnectionMonitorOutput {
+func (i *NetworkConnectionMonitor) ToNetworkConnectionMonitorOutputWithContext(ctx context.Context) NetworkConnectionMonitorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorOutput)
+}
+
+func (i *NetworkConnectionMonitor) ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput {
+	return i.ToNetworkConnectionMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkConnectionMonitor) ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorPtrOutput)
+}
+
+type NetworkConnectionMonitorPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput
+	ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput
 }
 
 type NetworkConnectionMonitorOutput struct {
@@ -242,7 +257,7 @@ type NetworkConnectionMonitorOutput struct {
 }
 
 func (NetworkConnectionMonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConnectionMonitorOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkConnectionMonitor)(nil))
 }
 
 func (o NetworkConnectionMonitorOutput) ToNetworkConnectionMonitorOutput() NetworkConnectionMonitorOutput {
@@ -253,6 +268,23 @@ func (o NetworkConnectionMonitorOutput) ToNetworkConnectionMonitorOutputWithCont
 	return o
 }
 
+type NetworkConnectionMonitorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkConnectionMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConnectionMonitor)(nil))
+}
+
+func (o NetworkConnectionMonitorPtrOutput) ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput {
+	return o
+}
+
+func (o NetworkConnectionMonitorPtrOutput) ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkConnectionMonitorOutput{})
+	pulumi.RegisterOutputType(NetworkConnectionMonitorPtrOutput{})
 }

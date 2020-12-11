@@ -56,7 +56,7 @@ func (i AssignmentIdentityArgs) ToAssignmentIdentityPtrOutput() AssignmentIdenti
 }
 
 func (i AssignmentIdentityArgs) ToAssignmentIdentityPtrOutputWithContext(ctx context.Context) AssignmentIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssignmentIdentityOutput).ToAssignmentIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentIdentityOutput).ToAssignmentIdentityPtrOutput()
 }
 
 // AssignmentIdentityPtrInput is an input type that accepts AssignmentIdentityArgs, AssignmentIdentityPtr and AssignmentIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *assignmentIdentityPtrType) ToAssignmentIdentityPtrOutput() AssignmentId
 }
 
 func (i *assignmentIdentityPtrType) ToAssignmentIdentityPtrOutputWithContext(ctx context.Context) AssignmentIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssignmentIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentIdentityOutput).ToAssignmentIdentityPtrOutput()
 }
 
 type AssignmentIdentityOutput struct{ *pulumi.OutputState }

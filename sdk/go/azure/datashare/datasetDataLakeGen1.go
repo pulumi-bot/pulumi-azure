@@ -227,16 +227,31 @@ type DatasetDataLakeGen1Input interface {
 	ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output
 }
 
-func (DatasetDataLakeGen1) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDataLakeGen1)(nil)).Elem()
+func (*DatasetDataLakeGen1) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen1)(nil))
 }
 
-func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
+func (i *DatasetDataLakeGen1) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
 	return i.ToDatasetDataLakeGen1OutputWithContext(context.Background())
 }
 
-func (i DatasetDataLakeGen1) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
+func (i *DatasetDataLakeGen1) ToDatasetDataLakeGen1OutputWithContext(ctx context.Context) DatasetDataLakeGen1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDataLakeGen1Output)
+}
+
+func (i *DatasetDataLakeGen1) ToDatasetDataLakeGen1PtrOutput() DatasetDataLakeGen1PtrOutput {
+	return i.ToDatasetDataLakeGen1PtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetDataLakeGen1) ToDatasetDataLakeGen1PtrOutputWithContext(ctx context.Context) DatasetDataLakeGen1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDataLakeGen1PtrOutput)
+}
+
+type DatasetDataLakeGen1PtrInput interface {
+	pulumi.Input
+
+	ToDatasetDataLakeGen1PtrOutput() DatasetDataLakeGen1PtrOutput
+	ToDatasetDataLakeGen1PtrOutputWithContext(ctx context.Context) DatasetDataLakeGen1PtrOutput
 }
 
 type DatasetDataLakeGen1Output struct {
@@ -244,7 +259,7 @@ type DatasetDataLakeGen1Output struct {
 }
 
 func (DatasetDataLakeGen1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDataLakeGen1Output)(nil)).Elem()
+	return reflect.TypeOf((*DatasetDataLakeGen1)(nil))
 }
 
 func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1Output() DatasetDataLakeGen1Output {
@@ -255,6 +270,23 @@ func (o DatasetDataLakeGen1Output) ToDatasetDataLakeGen1OutputWithContext(ctx co
 	return o
 }
 
+type DatasetDataLakeGen1PtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDataLakeGen1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetDataLakeGen1)(nil))
+}
+
+func (o DatasetDataLakeGen1PtrOutput) ToDatasetDataLakeGen1PtrOutput() DatasetDataLakeGen1PtrOutput {
+	return o
+}
+
+func (o DatasetDataLakeGen1PtrOutput) ToDatasetDataLakeGen1PtrOutputWithContext(ctx context.Context) DatasetDataLakeGen1PtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetDataLakeGen1Output{})
+	pulumi.RegisterOutputType(DatasetDataLakeGen1PtrOutput{})
 }

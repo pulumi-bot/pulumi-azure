@@ -181,16 +181,31 @@ type HybridConnectionInput interface {
 	ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput
 }
 
-func (HybridConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridConnection)(nil)).Elem()
+func (*HybridConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridConnection)(nil))
 }
 
-func (i HybridConnection) ToHybridConnectionOutput() HybridConnectionOutput {
+func (i *HybridConnection) ToHybridConnectionOutput() HybridConnectionOutput {
 	return i.ToHybridConnectionOutputWithContext(context.Background())
 }
 
-func (i HybridConnection) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
+func (i *HybridConnection) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionOutput)
+}
+
+func (i *HybridConnection) ToHybridConnectionPtrOutput() HybridConnectionPtrOutput {
+	return i.ToHybridConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *HybridConnection) ToHybridConnectionPtrOutputWithContext(ctx context.Context) HybridConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionPtrOutput)
+}
+
+type HybridConnectionPtrInput interface {
+	pulumi.Input
+
+	ToHybridConnectionPtrOutput() HybridConnectionPtrOutput
+	ToHybridConnectionPtrOutputWithContext(ctx context.Context) HybridConnectionPtrOutput
 }
 
 type HybridConnectionOutput struct {
@@ -198,7 +213,7 @@ type HybridConnectionOutput struct {
 }
 
 func (HybridConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*HybridConnection)(nil))
 }
 
 func (o HybridConnectionOutput) ToHybridConnectionOutput() HybridConnectionOutput {
@@ -209,6 +224,23 @@ func (o HybridConnectionOutput) ToHybridConnectionOutputWithContext(ctx context.
 	return o
 }
 
+type HybridConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HybridConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridConnection)(nil))
+}
+
+func (o HybridConnectionPtrOutput) ToHybridConnectionPtrOutput() HybridConnectionPtrOutput {
+	return o
+}
+
+func (o HybridConnectionPtrOutput) ToHybridConnectionPtrOutputWithContext(ctx context.Context) HybridConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HybridConnectionOutput{})
+	pulumi.RegisterOutputType(HybridConnectionPtrOutput{})
 }

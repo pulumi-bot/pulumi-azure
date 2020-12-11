@@ -196,16 +196,31 @@ type EventHubConsumerGroupInput interface {
 	ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput
 }
 
-func (EventHubConsumerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubConsumerGroup)(nil)).Elem()
+func (*EventHubConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubConsumerGroup)(nil))
 }
 
-func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
+func (i *EventHubConsumerGroup) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
 	return i.ToEventHubConsumerGroupOutputWithContext(context.Background())
 }
 
-func (i EventHubConsumerGroup) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
+func (i *EventHubConsumerGroup) ToEventHubConsumerGroupOutputWithContext(ctx context.Context) EventHubConsumerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupOutput)
+}
+
+func (i *EventHubConsumerGroup) ToEventHubConsumerGroupPtrOutput() EventHubConsumerGroupPtrOutput {
+	return i.ToEventHubConsumerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *EventHubConsumerGroup) ToEventHubConsumerGroupPtrOutputWithContext(ctx context.Context) EventHubConsumerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupPtrOutput)
+}
+
+type EventHubConsumerGroupPtrInput interface {
+	pulumi.Input
+
+	ToEventHubConsumerGroupPtrOutput() EventHubConsumerGroupPtrOutput
+	ToEventHubConsumerGroupPtrOutputWithContext(ctx context.Context) EventHubConsumerGroupPtrOutput
 }
 
 type EventHubConsumerGroupOutput struct {
@@ -213,7 +228,7 @@ type EventHubConsumerGroupOutput struct {
 }
 
 func (EventHubConsumerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubConsumerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventHubConsumerGroup)(nil))
 }
 
 func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutput() EventHubConsumerGroupOutput {
@@ -224,6 +239,23 @@ func (o EventHubConsumerGroupOutput) ToEventHubConsumerGroupOutputWithContext(ct
 	return o
 }
 
+type EventHubConsumerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubConsumerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubConsumerGroup)(nil))
+}
+
+func (o EventHubConsumerGroupPtrOutput) ToEventHubConsumerGroupPtrOutput() EventHubConsumerGroupPtrOutput {
+	return o
+}
+
+func (o EventHubConsumerGroupPtrOutput) ToEventHubConsumerGroupPtrOutputWithContext(ctx context.Context) EventHubConsumerGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventHubConsumerGroupOutput{})
+	pulumi.RegisterOutputType(EventHubConsumerGroupPtrOutput{})
 }

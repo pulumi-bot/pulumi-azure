@@ -157,16 +157,31 @@ type ActionCustomInput interface {
 	ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput
 }
 
-func (ActionCustom) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionCustom)(nil)).Elem()
+func (*ActionCustom) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionCustom)(nil))
 }
 
-func (i ActionCustom) ToActionCustomOutput() ActionCustomOutput {
+func (i *ActionCustom) ToActionCustomOutput() ActionCustomOutput {
 	return i.ToActionCustomOutputWithContext(context.Background())
 }
 
-func (i ActionCustom) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
+func (i *ActionCustom) ToActionCustomOutputWithContext(ctx context.Context) ActionCustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionCustomOutput)
+}
+
+func (i *ActionCustom) ToActionCustomPtrOutput() ActionCustomPtrOutput {
+	return i.ToActionCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *ActionCustom) ToActionCustomPtrOutputWithContext(ctx context.Context) ActionCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionCustomPtrOutput)
+}
+
+type ActionCustomPtrInput interface {
+	pulumi.Input
+
+	ToActionCustomPtrOutput() ActionCustomPtrOutput
+	ToActionCustomPtrOutputWithContext(ctx context.Context) ActionCustomPtrOutput
 }
 
 type ActionCustomOutput struct {
@@ -174,7 +189,7 @@ type ActionCustomOutput struct {
 }
 
 func (ActionCustomOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionCustomOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActionCustom)(nil))
 }
 
 func (o ActionCustomOutput) ToActionCustomOutput() ActionCustomOutput {
@@ -185,6 +200,23 @@ func (o ActionCustomOutput) ToActionCustomOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ActionCustomPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionCustom)(nil))
+}
+
+func (o ActionCustomPtrOutput) ToActionCustomPtrOutput() ActionCustomPtrOutput {
+	return o
+}
+
+func (o ActionCustomPtrOutput) ToActionCustomPtrOutputWithContext(ctx context.Context) ActionCustomPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionCustomOutput{})
+	pulumi.RegisterOutputType(ActionCustomPtrOutput{})
 }

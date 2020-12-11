@@ -52,7 +52,7 @@ func (i ModuleNetworkProfileArgs) ToModuleNetworkProfilePtrOutput() ModuleNetwor
 }
 
 func (i ModuleNetworkProfileArgs) ToModuleNetworkProfilePtrOutputWithContext(ctx context.Context) ModuleNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleNetworkProfileOutput).ToModuleNetworkProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleNetworkProfileOutput).ToModuleNetworkProfilePtrOutput()
 }
 
 // ModuleNetworkProfilePtrInput is an input type that accepts ModuleNetworkProfileArgs, ModuleNetworkProfilePtr and ModuleNetworkProfilePtrOutput values.
@@ -85,7 +85,7 @@ func (i *moduleNetworkProfilePtrType) ToModuleNetworkProfilePtrOutput() ModuleNe
 }
 
 func (i *moduleNetworkProfilePtrType) ToModuleNetworkProfilePtrOutputWithContext(ctx context.Context) ModuleNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleNetworkProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleNetworkProfileOutput).ToModuleNetworkProfilePtrOutput()
 }
 
 type ModuleNetworkProfileOutput struct{ *pulumi.OutputState }

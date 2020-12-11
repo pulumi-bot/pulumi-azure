@@ -200,16 +200,31 @@ type PtrRecordInput interface {
 	ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput
 }
 
-func (PtrRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*PtrRecord)(nil)).Elem()
+func (*PtrRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*PtrRecord)(nil))
 }
 
-func (i PtrRecord) ToPtrRecordOutput() PtrRecordOutput {
+func (i *PtrRecord) ToPtrRecordOutput() PtrRecordOutput {
 	return i.ToPtrRecordOutputWithContext(context.Background())
 }
 
-func (i PtrRecord) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
+func (i *PtrRecord) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordOutput)
+}
+
+func (i *PtrRecord) ToPtrRecordPtrOutput() PtrRecordPtrOutput {
+	return i.ToPtrRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *PtrRecord) ToPtrRecordPtrOutputWithContext(ctx context.Context) PtrRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordPtrOutput)
+}
+
+type PtrRecordPtrInput interface {
+	pulumi.Input
+
+	ToPtrRecordPtrOutput() PtrRecordPtrOutput
+	ToPtrRecordPtrOutputWithContext(ctx context.Context) PtrRecordPtrOutput
 }
 
 type PtrRecordOutput struct {
@@ -217,7 +232,7 @@ type PtrRecordOutput struct {
 }
 
 func (PtrRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PtrRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*PtrRecord)(nil))
 }
 
 func (o PtrRecordOutput) ToPtrRecordOutput() PtrRecordOutput {
@@ -228,6 +243,23 @@ func (o PtrRecordOutput) ToPtrRecordOutputWithContext(ctx context.Context) PtrRe
 	return o
 }
 
+type PtrRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PtrRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PtrRecord)(nil))
+}
+
+func (o PtrRecordPtrOutput) ToPtrRecordPtrOutput() PtrRecordPtrOutput {
+	return o
+}
+
+func (o PtrRecordPtrOutput) ToPtrRecordPtrOutputWithContext(ctx context.Context) PtrRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PtrRecordOutput{})
+	pulumi.RegisterOutputType(PtrRecordPtrOutput{})
 }

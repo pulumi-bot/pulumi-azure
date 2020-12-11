@@ -271,16 +271,31 @@ type DatasetHttpInput interface {
 	ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput
 }
 
-func (DatasetHttp) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetHttp)(nil)).Elem()
+func (*DatasetHttp) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetHttp)(nil))
 }
 
-func (i DatasetHttp) ToDatasetHttpOutput() DatasetHttpOutput {
+func (i *DatasetHttp) ToDatasetHttpOutput() DatasetHttpOutput {
 	return i.ToDatasetHttpOutputWithContext(context.Background())
 }
 
-func (i DatasetHttp) ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput {
+func (i *DatasetHttp) ToDatasetHttpOutputWithContext(ctx context.Context) DatasetHttpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetHttpOutput)
+}
+
+func (i *DatasetHttp) ToDatasetHttpPtrOutput() DatasetHttpPtrOutput {
+	return i.ToDatasetHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetHttp) ToDatasetHttpPtrOutputWithContext(ctx context.Context) DatasetHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetHttpPtrOutput)
+}
+
+type DatasetHttpPtrInput interface {
+	pulumi.Input
+
+	ToDatasetHttpPtrOutput() DatasetHttpPtrOutput
+	ToDatasetHttpPtrOutputWithContext(ctx context.Context) DatasetHttpPtrOutput
 }
 
 type DatasetHttpOutput struct {
@@ -288,7 +303,7 @@ type DatasetHttpOutput struct {
 }
 
 func (DatasetHttpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetHttpOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetHttp)(nil))
 }
 
 func (o DatasetHttpOutput) ToDatasetHttpOutput() DatasetHttpOutput {
@@ -299,6 +314,23 @@ func (o DatasetHttpOutput) ToDatasetHttpOutputWithContext(ctx context.Context) D
 	return o
 }
 
+type DatasetHttpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetHttp)(nil))
+}
+
+func (o DatasetHttpPtrOutput) ToDatasetHttpPtrOutput() DatasetHttpPtrOutput {
+	return o
+}
+
+func (o DatasetHttpPtrOutput) ToDatasetHttpPtrOutputWithContext(ctx context.Context) DatasetHttpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetHttpOutput{})
+	pulumi.RegisterOutputType(DatasetHttpPtrOutput{})
 }

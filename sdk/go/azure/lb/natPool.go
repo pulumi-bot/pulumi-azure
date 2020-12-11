@@ -247,16 +247,31 @@ type NatPoolInput interface {
 	ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput
 }
 
-func (NatPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatPool)(nil)).Elem()
+func (*NatPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatPool)(nil))
 }
 
-func (i NatPool) ToNatPoolOutput() NatPoolOutput {
+func (i *NatPool) ToNatPoolOutput() NatPoolOutput {
 	return i.ToNatPoolOutputWithContext(context.Background())
 }
 
-func (i NatPool) ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput {
+func (i *NatPool) ToNatPoolOutputWithContext(ctx context.Context) NatPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatPoolOutput)
+}
+
+func (i *NatPool) ToNatPoolPtrOutput() NatPoolPtrOutput {
+	return i.ToNatPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *NatPool) ToNatPoolPtrOutputWithContext(ctx context.Context) NatPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatPoolPtrOutput)
+}
+
+type NatPoolPtrInput interface {
+	pulumi.Input
+
+	ToNatPoolPtrOutput() NatPoolPtrOutput
+	ToNatPoolPtrOutputWithContext(ctx context.Context) NatPoolPtrOutput
 }
 
 type NatPoolOutput struct {
@@ -264,7 +279,7 @@ type NatPoolOutput struct {
 }
 
 func (NatPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*NatPool)(nil))
 }
 
 func (o NatPoolOutput) ToNatPoolOutput() NatPoolOutput {
@@ -275,6 +290,23 @@ func (o NatPoolOutput) ToNatPoolOutputWithContext(ctx context.Context) NatPoolOu
 	return o
 }
 
+type NatPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatPool)(nil))
+}
+
+func (o NatPoolPtrOutput) ToNatPoolPtrOutput() NatPoolPtrOutput {
+	return o
+}
+
+func (o NatPoolPtrOutput) ToNatPoolPtrOutputWithContext(ctx context.Context) NatPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NatPoolOutput{})
+	pulumi.RegisterOutputType(NatPoolPtrOutput{})
 }

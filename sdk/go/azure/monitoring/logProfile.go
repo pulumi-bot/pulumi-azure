@@ -225,16 +225,31 @@ type LogProfileInput interface {
 	ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput
 }
 
-func (LogProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogProfile)(nil)).Elem()
+func (*LogProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogProfile)(nil))
 }
 
-func (i LogProfile) ToLogProfileOutput() LogProfileOutput {
+func (i *LogProfile) ToLogProfileOutput() LogProfileOutput {
 	return i.ToLogProfileOutputWithContext(context.Background())
 }
 
-func (i LogProfile) ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput {
+func (i *LogProfile) ToLogProfileOutputWithContext(ctx context.Context) LogProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogProfileOutput)
+}
+
+func (i *LogProfile) ToLogProfilePtrOutput() LogProfilePtrOutput {
+	return i.ToLogProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *LogProfile) ToLogProfilePtrOutputWithContext(ctx context.Context) LogProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogProfilePtrOutput)
+}
+
+type LogProfilePtrInput interface {
+	pulumi.Input
+
+	ToLogProfilePtrOutput() LogProfilePtrOutput
+	ToLogProfilePtrOutputWithContext(ctx context.Context) LogProfilePtrOutput
 }
 
 type LogProfileOutput struct {
@@ -242,7 +257,7 @@ type LogProfileOutput struct {
 }
 
 func (LogProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogProfile)(nil))
 }
 
 func (o LogProfileOutput) ToLogProfileOutput() LogProfileOutput {
@@ -253,6 +268,23 @@ func (o LogProfileOutput) ToLogProfileOutputWithContext(ctx context.Context) Log
 	return o
 }
 
+type LogProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogProfile)(nil))
+}
+
+func (o LogProfilePtrOutput) ToLogProfilePtrOutput() LogProfilePtrOutput {
+	return o
+}
+
+func (o LogProfilePtrOutput) ToLogProfilePtrOutputWithContext(ctx context.Context) LogProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogProfileOutput{})
+	pulumi.RegisterOutputType(LogProfilePtrOutput{})
 }

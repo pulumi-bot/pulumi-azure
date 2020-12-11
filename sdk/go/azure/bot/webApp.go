@@ -257,16 +257,31 @@ type WebAppInput interface {
 	ToWebAppOutputWithContext(ctx context.Context) WebAppOutput
 }
 
-func (WebApp) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebApp)(nil)).Elem()
+func (*WebApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebApp)(nil))
 }
 
-func (i WebApp) ToWebAppOutput() WebAppOutput {
+func (i *WebApp) ToWebAppOutput() WebAppOutput {
 	return i.ToWebAppOutputWithContext(context.Background())
 }
 
-func (i WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
+func (i *WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
+}
+
+func (i *WebApp) ToWebAppPtrOutput() WebAppPtrOutput {
+	return i.ToWebAppPtrOutputWithContext(context.Background())
+}
+
+func (i *WebApp) ToWebAppPtrOutputWithContext(ctx context.Context) WebAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppPtrOutput)
+}
+
+type WebAppPtrInput interface {
+	pulumi.Input
+
+	ToWebAppPtrOutput() WebAppPtrOutput
+	ToWebAppPtrOutputWithContext(ctx context.Context) WebAppPtrOutput
 }
 
 type WebAppOutput struct {
@@ -274,7 +289,7 @@ type WebAppOutput struct {
 }
 
 func (WebAppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAppOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebApp)(nil))
 }
 
 func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
@@ -285,6 +300,23 @@ func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutpu
 	return o
 }
 
+type WebAppPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebApp)(nil))
+}
+
+func (o WebAppPtrOutput) ToWebAppPtrOutput() WebAppPtrOutput {
+	return o
+}
+
+func (o WebAppPtrOutput) ToWebAppPtrOutputWithContext(ctx context.Context) WebAppPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebAppOutput{})
+	pulumi.RegisterOutputType(WebAppPtrOutput{})
 }

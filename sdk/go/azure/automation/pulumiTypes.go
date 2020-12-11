@@ -50,7 +50,7 @@ func (i ModuleModuleLinkArgs) ToModuleModuleLinkPtrOutput() ModuleModuleLinkPtrO
 }
 
 func (i ModuleModuleLinkArgs) ToModuleModuleLinkPtrOutputWithContext(ctx context.Context) ModuleModuleLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkOutput).ToModuleModuleLinkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkOutput).ToModuleModuleLinkPtrOutput()
 }
 
 // ModuleModuleLinkPtrInput is an input type that accepts ModuleModuleLinkArgs, ModuleModuleLinkPtr and ModuleModuleLinkPtrOutput values.
@@ -83,7 +83,7 @@ func (i *moduleModuleLinkPtrType) ToModuleModuleLinkPtrOutput() ModuleModuleLink
 }
 
 func (i *moduleModuleLinkPtrType) ToModuleModuleLinkPtrOutputWithContext(ctx context.Context) ModuleModuleLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkOutput).ToModuleModuleLinkPtrOutput()
 }
 
 type ModuleModuleLinkOutput struct{ *pulumi.OutputState }
@@ -193,7 +193,7 @@ func (i ModuleModuleLinkHashArgs) ToModuleModuleLinkHashPtrOutput() ModuleModule
 }
 
 func (i ModuleModuleLinkHashArgs) ToModuleModuleLinkHashPtrOutputWithContext(ctx context.Context) ModuleModuleLinkHashPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkHashOutput).ToModuleModuleLinkHashPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkHashOutput).ToModuleModuleLinkHashPtrOutput()
 }
 
 // ModuleModuleLinkHashPtrInput is an input type that accepts ModuleModuleLinkHashArgs, ModuleModuleLinkHashPtr and ModuleModuleLinkHashPtrOutput values.
@@ -226,7 +226,7 @@ func (i *moduleModuleLinkHashPtrType) ToModuleModuleLinkHashPtrOutput() ModuleMo
 }
 
 func (i *moduleModuleLinkHashPtrType) ToModuleModuleLinkHashPtrOutputWithContext(ctx context.Context) ModuleModuleLinkHashPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkHashPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModuleModuleLinkHashOutput).ToModuleModuleLinkHashPtrOutput()
 }
 
 type ModuleModuleLinkHashOutput struct{ *pulumi.OutputState }
@@ -450,7 +450,7 @@ func (i RunBookPublishContentLinkArgs) ToRunBookPublishContentLinkPtrOutput() Ru
 }
 
 func (i RunBookPublishContentLinkArgs) ToRunBookPublishContentLinkPtrOutputWithContext(ctx context.Context) RunBookPublishContentLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkOutput).ToRunBookPublishContentLinkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkOutput).ToRunBookPublishContentLinkPtrOutput()
 }
 
 // RunBookPublishContentLinkPtrInput is an input type that accepts RunBookPublishContentLinkArgs, RunBookPublishContentLinkPtr and RunBookPublishContentLinkPtrOutput values.
@@ -483,7 +483,7 @@ func (i *runBookPublishContentLinkPtrType) ToRunBookPublishContentLinkPtrOutput(
 }
 
 func (i *runBookPublishContentLinkPtrType) ToRunBookPublishContentLinkPtrOutputWithContext(ctx context.Context) RunBookPublishContentLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkOutput).ToRunBookPublishContentLinkPtrOutput()
 }
 
 type RunBookPublishContentLinkOutput struct{ *pulumi.OutputState }
@@ -606,7 +606,7 @@ func (i RunBookPublishContentLinkHashArgs) ToRunBookPublishContentLinkHashPtrOut
 }
 
 func (i RunBookPublishContentLinkHashArgs) ToRunBookPublishContentLinkHashPtrOutputWithContext(ctx context.Context) RunBookPublishContentLinkHashPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkHashOutput).ToRunBookPublishContentLinkHashPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkHashOutput).ToRunBookPublishContentLinkHashPtrOutput()
 }
 
 // RunBookPublishContentLinkHashPtrInput is an input type that accepts RunBookPublishContentLinkHashArgs, RunBookPublishContentLinkHashPtr and RunBookPublishContentLinkHashPtrOutput values.
@@ -639,7 +639,7 @@ func (i *runBookPublishContentLinkHashPtrType) ToRunBookPublishContentLinkHashPt
 }
 
 func (i *runBookPublishContentLinkHashPtrType) ToRunBookPublishContentLinkHashPtrOutputWithContext(ctx context.Context) RunBookPublishContentLinkHashPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkHashPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookPublishContentLinkHashOutput).ToRunBookPublishContentLinkHashPtrOutput()
 }
 
 type RunBookPublishContentLinkHashOutput struct{ *pulumi.OutputState }

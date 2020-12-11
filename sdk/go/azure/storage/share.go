@@ -205,16 +205,31 @@ type ShareInput interface {
 	ToShareOutputWithContext(ctx context.Context) ShareOutput
 }
 
-func (Share) ElementType() reflect.Type {
-	return reflect.TypeOf((*Share)(nil)).Elem()
+func (*Share) ElementType() reflect.Type {
+	return reflect.TypeOf((*Share)(nil))
 }
 
-func (i Share) ToShareOutput() ShareOutput {
+func (i *Share) ToShareOutput() ShareOutput {
 	return i.ToShareOutputWithContext(context.Background())
 }
 
-func (i Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
+func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
+}
+
+func (i *Share) ToSharePtrOutput() SharePtrOutput {
+	return i.ToSharePtrOutputWithContext(context.Background())
+}
+
+func (i *Share) ToSharePtrOutputWithContext(ctx context.Context) SharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharePtrOutput)
+}
+
+type SharePtrInput interface {
+	pulumi.Input
+
+	ToSharePtrOutput() SharePtrOutput
+	ToSharePtrOutputWithContext(ctx context.Context) SharePtrOutput
 }
 
 type ShareOutput struct {
@@ -222,7 +237,7 @@ type ShareOutput struct {
 }
 
 func (ShareOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareOutput)(nil)).Elem()
+	return reflect.TypeOf((*Share)(nil))
 }
 
 func (o ShareOutput) ToShareOutput() ShareOutput {
@@ -233,6 +248,23 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
 }
 
+type SharePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Share)(nil))
+}
+
+func (o SharePtrOutput) ToSharePtrOutput() SharePtrOutput {
+	return o
+}
+
+func (o SharePtrOutput) ToSharePtrOutputWithContext(ctx context.Context) SharePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ShareOutput{})
+	pulumi.RegisterOutputType(SharePtrOutput{})
 }

@@ -265,16 +265,31 @@ type GremlinGraphInput interface {
 	ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput
 }
 
-func (GremlinGraph) ElementType() reflect.Type {
-	return reflect.TypeOf((*GremlinGraph)(nil)).Elem()
+func (*GremlinGraph) ElementType() reflect.Type {
+	return reflect.TypeOf((*GremlinGraph)(nil))
 }
 
-func (i GremlinGraph) ToGremlinGraphOutput() GremlinGraphOutput {
+func (i *GremlinGraph) ToGremlinGraphOutput() GremlinGraphOutput {
 	return i.ToGremlinGraphOutputWithContext(context.Background())
 }
 
-func (i GremlinGraph) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
+func (i *GremlinGraph) ToGremlinGraphOutputWithContext(ctx context.Context) GremlinGraphOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphOutput)
+}
+
+func (i *GremlinGraph) ToGremlinGraphPtrOutput() GremlinGraphPtrOutput {
+	return i.ToGremlinGraphPtrOutputWithContext(context.Background())
+}
+
+func (i *GremlinGraph) ToGremlinGraphPtrOutputWithContext(ctx context.Context) GremlinGraphPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphPtrOutput)
+}
+
+type GremlinGraphPtrInput interface {
+	pulumi.Input
+
+	ToGremlinGraphPtrOutput() GremlinGraphPtrOutput
+	ToGremlinGraphPtrOutputWithContext(ctx context.Context) GremlinGraphPtrOutput
 }
 
 type GremlinGraphOutput struct {
@@ -282,7 +297,7 @@ type GremlinGraphOutput struct {
 }
 
 func (GremlinGraphOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GremlinGraphOutput)(nil)).Elem()
+	return reflect.TypeOf((*GremlinGraph)(nil))
 }
 
 func (o GremlinGraphOutput) ToGremlinGraphOutput() GremlinGraphOutput {
@@ -293,6 +308,23 @@ func (o GremlinGraphOutput) ToGremlinGraphOutputWithContext(ctx context.Context)
 	return o
 }
 
+type GremlinGraphPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GremlinGraphPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GremlinGraph)(nil))
+}
+
+func (o GremlinGraphPtrOutput) ToGremlinGraphPtrOutput() GremlinGraphPtrOutput {
+	return o
+}
+
+func (o GremlinGraphPtrOutput) ToGremlinGraphPtrOutputWithContext(ctx context.Context) GremlinGraphPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GremlinGraphOutput{})
+	pulumi.RegisterOutputType(GremlinGraphPtrOutput{})
 }

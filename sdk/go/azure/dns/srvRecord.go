@@ -208,16 +208,31 @@ type SrvRecordInput interface {
 	ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput
 }
 
-func (SrvRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*SrvRecord)(nil)).Elem()
+func (*SrvRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*SrvRecord)(nil))
 }
 
-func (i SrvRecord) ToSrvRecordOutput() SrvRecordOutput {
+func (i *SrvRecord) ToSrvRecordOutput() SrvRecordOutput {
 	return i.ToSrvRecordOutputWithContext(context.Background())
 }
 
-func (i SrvRecord) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
+func (i *SrvRecord) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordOutput)
+}
+
+func (i *SrvRecord) ToSrvRecordPtrOutput() SrvRecordPtrOutput {
+	return i.ToSrvRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *SrvRecord) ToSrvRecordPtrOutputWithContext(ctx context.Context) SrvRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordPtrOutput)
+}
+
+type SrvRecordPtrInput interface {
+	pulumi.Input
+
+	ToSrvRecordPtrOutput() SrvRecordPtrOutput
+	ToSrvRecordPtrOutputWithContext(ctx context.Context) SrvRecordPtrOutput
 }
 
 type SrvRecordOutput struct {
@@ -225,7 +240,7 @@ type SrvRecordOutput struct {
 }
 
 func (SrvRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SrvRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*SrvRecord)(nil))
 }
 
 func (o SrvRecordOutput) ToSrvRecordOutput() SrvRecordOutput {
@@ -236,6 +251,23 @@ func (o SrvRecordOutput) ToSrvRecordOutputWithContext(ctx context.Context) SrvRe
 	return o
 }
 
+type SrvRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SrvRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SrvRecord)(nil))
+}
+
+func (o SrvRecordPtrOutput) ToSrvRecordPtrOutput() SrvRecordPtrOutput {
+	return o
+}
+
+func (o SrvRecordPtrOutput) ToSrvRecordPtrOutputWithContext(ctx context.Context) SrvRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SrvRecordOutput{})
+	pulumi.RegisterOutputType(SrvRecordPtrOutput{})
 }

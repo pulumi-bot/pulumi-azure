@@ -50,7 +50,7 @@ func (i PolicyFileShareBackupArgs) ToPolicyFileShareBackupPtrOutput() PolicyFile
 }
 
 func (i PolicyFileShareBackupArgs) ToPolicyFileShareBackupPtrOutputWithContext(ctx context.Context) PolicyFileShareBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareBackupOutput).ToPolicyFileShareBackupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareBackupOutput).ToPolicyFileShareBackupPtrOutput()
 }
 
 // PolicyFileShareBackupPtrInput is an input type that accepts PolicyFileShareBackupArgs, PolicyFileShareBackupPtr and PolicyFileShareBackupPtrOutput values.
@@ -83,7 +83,7 @@ func (i *policyFileShareBackupPtrType) ToPolicyFileShareBackupPtrOutput() Policy
 }
 
 func (i *policyFileShareBackupPtrType) ToPolicyFileShareBackupPtrOutputWithContext(ctx context.Context) PolicyFileShareBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareBackupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareBackupOutput).ToPolicyFileShareBackupPtrOutput()
 }
 
 type PolicyFileShareBackupOutput struct{ *pulumi.OutputState }
@@ -194,7 +194,7 @@ func (i PolicyFileShareRetentionDailyArgs) ToPolicyFileShareRetentionDailyPtrOut
 }
 
 func (i PolicyFileShareRetentionDailyArgs) ToPolicyFileShareRetentionDailyPtrOutputWithContext(ctx context.Context) PolicyFileShareRetentionDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareRetentionDailyOutput).ToPolicyFileShareRetentionDailyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareRetentionDailyOutput).ToPolicyFileShareRetentionDailyPtrOutput()
 }
 
 // PolicyFileShareRetentionDailyPtrInput is an input type that accepts PolicyFileShareRetentionDailyArgs, PolicyFileShareRetentionDailyPtr and PolicyFileShareRetentionDailyPtrOutput values.
@@ -227,7 +227,7 @@ func (i *policyFileShareRetentionDailyPtrType) ToPolicyFileShareRetentionDailyPt
 }
 
 func (i *policyFileShareRetentionDailyPtrType) ToPolicyFileShareRetentionDailyPtrOutputWithContext(ctx context.Context) PolicyFileShareRetentionDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareRetentionDailyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareRetentionDailyOutput).ToPolicyFileShareRetentionDailyPtrOutput()
 }
 
 type PolicyFileShareRetentionDailyOutput struct{ *pulumi.OutputState }
@@ -333,7 +333,7 @@ func (i PolicyVMBackupArgs) ToPolicyVMBackupPtrOutput() PolicyVMBackupPtrOutput 
 }
 
 func (i PolicyVMBackupArgs) ToPolicyVMBackupPtrOutputWithContext(ctx context.Context) PolicyVMBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMBackupOutput).ToPolicyVMBackupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMBackupOutput).ToPolicyVMBackupPtrOutput()
 }
 
 // PolicyVMBackupPtrInput is an input type that accepts PolicyVMBackupArgs, PolicyVMBackupPtr and PolicyVMBackupPtrOutput values.
@@ -366,7 +366,7 @@ func (i *policyVMBackupPtrType) ToPolicyVMBackupPtrOutput() PolicyVMBackupPtrOut
 }
 
 func (i *policyVMBackupPtrType) ToPolicyVMBackupPtrOutputWithContext(ctx context.Context) PolicyVMBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMBackupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMBackupOutput).ToPolicyVMBackupPtrOutput()
 }
 
 type PolicyVMBackupOutput struct{ *pulumi.OutputState }
@@ -494,7 +494,7 @@ func (i PolicyVMRetentionDailyArgs) ToPolicyVMRetentionDailyPtrOutput() PolicyVM
 }
 
 func (i PolicyVMRetentionDailyArgs) ToPolicyVMRetentionDailyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionDailyOutput).ToPolicyVMRetentionDailyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionDailyOutput).ToPolicyVMRetentionDailyPtrOutput()
 }
 
 // PolicyVMRetentionDailyPtrInput is an input type that accepts PolicyVMRetentionDailyArgs, PolicyVMRetentionDailyPtr and PolicyVMRetentionDailyPtrOutput values.
@@ -527,7 +527,7 @@ func (i *policyVMRetentionDailyPtrType) ToPolicyVMRetentionDailyPtrOutput() Poli
 }
 
 func (i *policyVMRetentionDailyPtrType) ToPolicyVMRetentionDailyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionDailyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionDailyOutput).ToPolicyVMRetentionDailyPtrOutput()
 }
 
 type PolicyVMRetentionDailyOutput struct{ *pulumi.OutputState }
@@ -633,7 +633,7 @@ func (i PolicyVMRetentionMonthlyArgs) ToPolicyVMRetentionMonthlyPtrOutput() Poli
 }
 
 func (i PolicyVMRetentionMonthlyArgs) ToPolicyVMRetentionMonthlyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionMonthlyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionMonthlyOutput).ToPolicyVMRetentionMonthlyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionMonthlyOutput).ToPolicyVMRetentionMonthlyPtrOutput()
 }
 
 // PolicyVMRetentionMonthlyPtrInput is an input type that accepts PolicyVMRetentionMonthlyArgs, PolicyVMRetentionMonthlyPtr and PolicyVMRetentionMonthlyPtrOutput values.
@@ -666,7 +666,7 @@ func (i *policyVMRetentionMonthlyPtrType) ToPolicyVMRetentionMonthlyPtrOutput() 
 }
 
 func (i *policyVMRetentionMonthlyPtrType) ToPolicyVMRetentionMonthlyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionMonthlyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionMonthlyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionMonthlyOutput).ToPolicyVMRetentionMonthlyPtrOutput()
 }
 
 type PolicyVMRetentionMonthlyOutput struct{ *pulumi.OutputState }
@@ -798,7 +798,7 @@ func (i PolicyVMRetentionWeeklyArgs) ToPolicyVMRetentionWeeklyPtrOutput() Policy
 }
 
 func (i PolicyVMRetentionWeeklyArgs) ToPolicyVMRetentionWeeklyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionWeeklyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionWeeklyOutput).ToPolicyVMRetentionWeeklyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionWeeklyOutput).ToPolicyVMRetentionWeeklyPtrOutput()
 }
 
 // PolicyVMRetentionWeeklyPtrInput is an input type that accepts PolicyVMRetentionWeeklyArgs, PolicyVMRetentionWeeklyPtr and PolicyVMRetentionWeeklyPtrOutput values.
@@ -831,7 +831,7 @@ func (i *policyVMRetentionWeeklyPtrType) ToPolicyVMRetentionWeeklyPtrOutput() Po
 }
 
 func (i *policyVMRetentionWeeklyPtrType) ToPolicyVMRetentionWeeklyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionWeeklyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionWeeklyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionWeeklyOutput).ToPolicyVMRetentionWeeklyPtrOutput()
 }
 
 type PolicyVMRetentionWeeklyOutput struct{ *pulumi.OutputState }
@@ -956,7 +956,7 @@ func (i PolicyVMRetentionYearlyArgs) ToPolicyVMRetentionYearlyPtrOutput() Policy
 }
 
 func (i PolicyVMRetentionYearlyArgs) ToPolicyVMRetentionYearlyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionYearlyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionYearlyOutput).ToPolicyVMRetentionYearlyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionYearlyOutput).ToPolicyVMRetentionYearlyPtrOutput()
 }
 
 // PolicyVMRetentionYearlyPtrInput is an input type that accepts PolicyVMRetentionYearlyArgs, PolicyVMRetentionYearlyPtr and PolicyVMRetentionYearlyPtrOutput values.
@@ -989,7 +989,7 @@ func (i *policyVMRetentionYearlyPtrType) ToPolicyVMRetentionYearlyPtrOutput() Po
 }
 
 func (i *policyVMRetentionYearlyPtrType) ToPolicyVMRetentionYearlyPtrOutputWithContext(ctx context.Context) PolicyVMRetentionYearlyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionYearlyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyVMRetentionYearlyOutput).ToPolicyVMRetentionYearlyPtrOutput()
 }
 
 type PolicyVMRetentionYearlyOutput struct{ *pulumi.OutputState }

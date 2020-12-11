@@ -158,16 +158,31 @@ type PlacementGroupInput interface {
 	ToPlacementGroupOutputWithContext(ctx context.Context) PlacementGroupOutput
 }
 
-func (PlacementGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlacementGroup)(nil)).Elem()
+func (*PlacementGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementGroup)(nil))
 }
 
-func (i PlacementGroup) ToPlacementGroupOutput() PlacementGroupOutput {
+func (i *PlacementGroup) ToPlacementGroupOutput() PlacementGroupOutput {
 	return i.ToPlacementGroupOutputWithContext(context.Background())
 }
 
-func (i PlacementGroup) ToPlacementGroupOutputWithContext(ctx context.Context) PlacementGroupOutput {
+func (i *PlacementGroup) ToPlacementGroupOutputWithContext(ctx context.Context) PlacementGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlacementGroupOutput)
+}
+
+func (i *PlacementGroup) ToPlacementGroupPtrOutput() PlacementGroupPtrOutput {
+	return i.ToPlacementGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *PlacementGroup) ToPlacementGroupPtrOutputWithContext(ctx context.Context) PlacementGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementGroupPtrOutput)
+}
+
+type PlacementGroupPtrInput interface {
+	pulumi.Input
+
+	ToPlacementGroupPtrOutput() PlacementGroupPtrOutput
+	ToPlacementGroupPtrOutputWithContext(ctx context.Context) PlacementGroupPtrOutput
 }
 
 type PlacementGroupOutput struct {
@@ -175,7 +190,7 @@ type PlacementGroupOutput struct {
 }
 
 func (PlacementGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlacementGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*PlacementGroup)(nil))
 }
 
 func (o PlacementGroupOutput) ToPlacementGroupOutput() PlacementGroupOutput {
@@ -186,6 +201,23 @@ func (o PlacementGroupOutput) ToPlacementGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+type PlacementGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlacementGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementGroup)(nil))
+}
+
+func (o PlacementGroupPtrOutput) ToPlacementGroupPtrOutput() PlacementGroupPtrOutput {
+	return o
+}
+
+func (o PlacementGroupPtrOutput) ToPlacementGroupPtrOutputWithContext(ctx context.Context) PlacementGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PlacementGroupOutput{})
+	pulumi.RegisterOutputType(PlacementGroupPtrOutput{})
 }

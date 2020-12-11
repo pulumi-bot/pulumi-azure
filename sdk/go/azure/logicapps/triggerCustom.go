@@ -157,16 +157,31 @@ type TriggerCustomInput interface {
 	ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput
 }
 
-func (TriggerCustom) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerCustom)(nil)).Elem()
+func (*TriggerCustom) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerCustom)(nil))
 }
 
-func (i TriggerCustom) ToTriggerCustomOutput() TriggerCustomOutput {
+func (i *TriggerCustom) ToTriggerCustomOutput() TriggerCustomOutput {
 	return i.ToTriggerCustomOutputWithContext(context.Background())
 }
 
-func (i TriggerCustom) ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput {
+func (i *TriggerCustom) ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerCustomOutput)
+}
+
+func (i *TriggerCustom) ToTriggerCustomPtrOutput() TriggerCustomPtrOutput {
+	return i.ToTriggerCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *TriggerCustom) ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerCustomPtrOutput)
+}
+
+type TriggerCustomPtrInput interface {
+	pulumi.Input
+
+	ToTriggerCustomPtrOutput() TriggerCustomPtrOutput
+	ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput
 }
 
 type TriggerCustomOutput struct {
@@ -174,7 +189,7 @@ type TriggerCustomOutput struct {
 }
 
 func (TriggerCustomOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerCustomOutput)(nil)).Elem()
+	return reflect.TypeOf((*TriggerCustom)(nil))
 }
 
 func (o TriggerCustomOutput) ToTriggerCustomOutput() TriggerCustomOutput {
@@ -185,6 +200,23 @@ func (o TriggerCustomOutput) ToTriggerCustomOutputWithContext(ctx context.Contex
 	return o
 }
 
+type TriggerCustomPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerCustom)(nil))
+}
+
+func (o TriggerCustomPtrOutput) ToTriggerCustomPtrOutput() TriggerCustomPtrOutput {
+	return o
+}
+
+func (o TriggerCustomPtrOutput) ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerCustomOutput{})
+	pulumi.RegisterOutputType(TriggerCustomPtrOutput{})
 }

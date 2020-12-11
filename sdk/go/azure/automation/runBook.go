@@ -258,16 +258,31 @@ type RunBookInput interface {
 	ToRunBookOutputWithContext(ctx context.Context) RunBookOutput
 }
 
-func (RunBook) ElementType() reflect.Type {
-	return reflect.TypeOf((*RunBook)(nil)).Elem()
+func (*RunBook) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunBook)(nil))
 }
 
-func (i RunBook) ToRunBookOutput() RunBookOutput {
+func (i *RunBook) ToRunBookOutput() RunBookOutput {
 	return i.ToRunBookOutputWithContext(context.Background())
 }
 
-func (i RunBook) ToRunBookOutputWithContext(ctx context.Context) RunBookOutput {
+func (i *RunBook) ToRunBookOutputWithContext(ctx context.Context) RunBookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunBookOutput)
+}
+
+func (i *RunBook) ToRunBookPtrOutput() RunBookPtrOutput {
+	return i.ToRunBookPtrOutputWithContext(context.Background())
+}
+
+func (i *RunBook) ToRunBookPtrOutputWithContext(ctx context.Context) RunBookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunBookPtrOutput)
+}
+
+type RunBookPtrInput interface {
+	pulumi.Input
+
+	ToRunBookPtrOutput() RunBookPtrOutput
+	ToRunBookPtrOutputWithContext(ctx context.Context) RunBookPtrOutput
 }
 
 type RunBookOutput struct {
@@ -275,7 +290,7 @@ type RunBookOutput struct {
 }
 
 func (RunBookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RunBookOutput)(nil)).Elem()
+	return reflect.TypeOf((*RunBook)(nil))
 }
 
 func (o RunBookOutput) ToRunBookOutput() RunBookOutput {
@@ -286,6 +301,23 @@ func (o RunBookOutput) ToRunBookOutputWithContext(ctx context.Context) RunBookOu
 	return o
 }
 
+type RunBookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RunBookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunBook)(nil))
+}
+
+func (o RunBookPtrOutput) ToRunBookPtrOutput() RunBookPtrOutput {
+	return o
+}
+
+func (o RunBookPtrOutput) ToRunBookPtrOutputWithContext(ctx context.Context) RunBookPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RunBookOutput{})
+	pulumi.RegisterOutputType(RunBookPtrOutput{})
 }

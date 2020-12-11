@@ -222,16 +222,31 @@ type AnalyticsSolutionInput interface {
 	ToAnalyticsSolutionOutputWithContext(ctx context.Context) AnalyticsSolutionOutput
 }
 
-func (AnalyticsSolution) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsSolution)(nil)).Elem()
+func (*AnalyticsSolution) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsSolution)(nil))
 }
 
-func (i AnalyticsSolution) ToAnalyticsSolutionOutput() AnalyticsSolutionOutput {
+func (i *AnalyticsSolution) ToAnalyticsSolutionOutput() AnalyticsSolutionOutput {
 	return i.ToAnalyticsSolutionOutputWithContext(context.Background())
 }
 
-func (i AnalyticsSolution) ToAnalyticsSolutionOutputWithContext(ctx context.Context) AnalyticsSolutionOutput {
+func (i *AnalyticsSolution) ToAnalyticsSolutionOutputWithContext(ctx context.Context) AnalyticsSolutionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionOutput)
+}
+
+func (i *AnalyticsSolution) ToAnalyticsSolutionPtrOutput() AnalyticsSolutionPtrOutput {
+	return i.ToAnalyticsSolutionPtrOutputWithContext(context.Background())
+}
+
+func (i *AnalyticsSolution) ToAnalyticsSolutionPtrOutputWithContext(ctx context.Context) AnalyticsSolutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionPtrOutput)
+}
+
+type AnalyticsSolutionPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsSolutionPtrOutput() AnalyticsSolutionPtrOutput
+	ToAnalyticsSolutionPtrOutputWithContext(ctx context.Context) AnalyticsSolutionPtrOutput
 }
 
 type AnalyticsSolutionOutput struct {
@@ -239,7 +254,7 @@ type AnalyticsSolutionOutput struct {
 }
 
 func (AnalyticsSolutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsSolutionOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnalyticsSolution)(nil))
 }
 
 func (o AnalyticsSolutionOutput) ToAnalyticsSolutionOutput() AnalyticsSolutionOutput {
@@ -250,6 +265,23 @@ func (o AnalyticsSolutionOutput) ToAnalyticsSolutionOutputWithContext(ctx contex
 	return o
 }
 
+type AnalyticsSolutionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsSolutionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsSolution)(nil))
+}
+
+func (o AnalyticsSolutionPtrOutput) ToAnalyticsSolutionPtrOutput() AnalyticsSolutionPtrOutput {
+	return o
+}
+
+func (o AnalyticsSolutionPtrOutput) ToAnalyticsSolutionPtrOutputWithContext(ctx context.Context) AnalyticsSolutionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyticsSolutionOutput{})
+	pulumi.RegisterOutputType(AnalyticsSolutionPtrOutput{})
 }

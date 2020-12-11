@@ -364,7 +364,7 @@ func (i EndpointDeliveryRuleCacheExpirationActionArgs) ToEndpointDeliveryRuleCac
 }
 
 func (i EndpointDeliveryRuleCacheExpirationActionArgs) ToEndpointDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleCacheExpirationActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheExpirationActionOutput).ToEndpointDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheExpirationActionOutput).ToEndpointDeliveryRuleCacheExpirationActionPtrOutput()
 }
 
 // EndpointDeliveryRuleCacheExpirationActionPtrInput is an input type that accepts EndpointDeliveryRuleCacheExpirationActionArgs, EndpointDeliveryRuleCacheExpirationActionPtr and EndpointDeliveryRuleCacheExpirationActionPtrOutput values.
@@ -397,7 +397,7 @@ func (i *endpointDeliveryRuleCacheExpirationActionPtrType) ToEndpointDeliveryRul
 }
 
 func (i *endpointDeliveryRuleCacheExpirationActionPtrType) ToEndpointDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleCacheExpirationActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheExpirationActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheExpirationActionOutput).ToEndpointDeliveryRuleCacheExpirationActionPtrOutput()
 }
 
 type EndpointDeliveryRuleCacheExpirationActionOutput struct{ *pulumi.OutputState }
@@ -516,7 +516,7 @@ func (i EndpointDeliveryRuleCacheKeyQueryStringActionArgs) ToEndpointDeliveryRul
 }
 
 func (i EndpointDeliveryRuleCacheKeyQueryStringActionArgs) ToEndpointDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput()
 }
 
 // EndpointDeliveryRuleCacheKeyQueryStringActionPtrInput is an input type that accepts EndpointDeliveryRuleCacheKeyQueryStringActionArgs, EndpointDeliveryRuleCacheKeyQueryStringActionPtr and EndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput values.
@@ -549,7 +549,7 @@ func (i *endpointDeliveryRuleCacheKeyQueryStringActionPtrType) ToEndpointDeliver
 }
 
 func (i *endpointDeliveryRuleCacheKeyQueryStringActionPtrType) ToEndpointDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointDeliveryRuleCacheKeyQueryStringActionPtrOutput()
 }
 
 type EndpointDeliveryRuleCacheKeyQueryStringActionOutput struct{ *pulumi.OutputState }
@@ -805,7 +805,7 @@ func (i EndpointDeliveryRuleDeviceConditionArgs) ToEndpointDeliveryRuleDeviceCon
 }
 
 func (i EndpointDeliveryRuleDeviceConditionArgs) ToEndpointDeliveryRuleDeviceConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleDeviceConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleDeviceConditionOutput).ToEndpointDeliveryRuleDeviceConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleDeviceConditionOutput).ToEndpointDeliveryRuleDeviceConditionPtrOutput()
 }
 
 // EndpointDeliveryRuleDeviceConditionPtrInput is an input type that accepts EndpointDeliveryRuleDeviceConditionArgs, EndpointDeliveryRuleDeviceConditionPtr and EndpointDeliveryRuleDeviceConditionPtrOutput values.
@@ -838,7 +838,7 @@ func (i *endpointDeliveryRuleDeviceConditionPtrType) ToEndpointDeliveryRuleDevic
 }
 
 func (i *endpointDeliveryRuleDeviceConditionPtrType) ToEndpointDeliveryRuleDeviceConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleDeviceConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleDeviceConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleDeviceConditionOutput).ToEndpointDeliveryRuleDeviceConditionPtrOutput()
 }
 
 type EndpointDeliveryRuleDeviceConditionOutput struct{ *pulumi.OutputState }
@@ -1948,7 +1948,7 @@ func (i EndpointDeliveryRuleRequestMethodConditionArgs) ToEndpointDeliveryRuleRe
 }
 
 func (i EndpointDeliveryRuleRequestMethodConditionArgs) ToEndpointDeliveryRuleRequestMethodConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleRequestMethodConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestMethodConditionOutput).ToEndpointDeliveryRuleRequestMethodConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestMethodConditionOutput).ToEndpointDeliveryRuleRequestMethodConditionPtrOutput()
 }
 
 // EndpointDeliveryRuleRequestMethodConditionPtrInput is an input type that accepts EndpointDeliveryRuleRequestMethodConditionArgs, EndpointDeliveryRuleRequestMethodConditionPtr and EndpointDeliveryRuleRequestMethodConditionPtrOutput values.
@@ -1981,7 +1981,7 @@ func (i *endpointDeliveryRuleRequestMethodConditionPtrType) ToEndpointDeliveryRu
 }
 
 func (i *endpointDeliveryRuleRequestMethodConditionPtrType) ToEndpointDeliveryRuleRequestMethodConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleRequestMethodConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestMethodConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestMethodConditionOutput).ToEndpointDeliveryRuleRequestMethodConditionPtrOutput()
 }
 
 type EndpointDeliveryRuleRequestMethodConditionOutput struct{ *pulumi.OutputState }
@@ -2119,7 +2119,7 @@ func (i EndpointDeliveryRuleRequestSchemeConditionArgs) ToEndpointDeliveryRuleRe
 }
 
 func (i EndpointDeliveryRuleRequestSchemeConditionArgs) ToEndpointDeliveryRuleRequestSchemeConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleRequestSchemeConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestSchemeConditionOutput).ToEndpointDeliveryRuleRequestSchemeConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestSchemeConditionOutput).ToEndpointDeliveryRuleRequestSchemeConditionPtrOutput()
 }
 
 // EndpointDeliveryRuleRequestSchemeConditionPtrInput is an input type that accepts EndpointDeliveryRuleRequestSchemeConditionArgs, EndpointDeliveryRuleRequestSchemeConditionPtr and EndpointDeliveryRuleRequestSchemeConditionPtrOutput values.
@@ -2152,7 +2152,7 @@ func (i *endpointDeliveryRuleRequestSchemeConditionPtrType) ToEndpointDeliveryRu
 }
 
 func (i *endpointDeliveryRuleRequestSchemeConditionPtrType) ToEndpointDeliveryRuleRequestSchemeConditionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleRequestSchemeConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestSchemeConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleRequestSchemeConditionOutput).ToEndpointDeliveryRuleRequestSchemeConditionPtrOutput()
 }
 
 type EndpointDeliveryRuleRequestSchemeConditionOutput struct{ *pulumi.OutputState }
@@ -2798,7 +2798,7 @@ func (i EndpointDeliveryRuleUrlRedirectActionArgs) ToEndpointDeliveryRuleUrlRedi
 }
 
 func (i EndpointDeliveryRuleUrlRedirectActionArgs) ToEndpointDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleUrlRedirectActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRedirectActionOutput).ToEndpointDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRedirectActionOutput).ToEndpointDeliveryRuleUrlRedirectActionPtrOutput()
 }
 
 // EndpointDeliveryRuleUrlRedirectActionPtrInput is an input type that accepts EndpointDeliveryRuleUrlRedirectActionArgs, EndpointDeliveryRuleUrlRedirectActionPtr and EndpointDeliveryRuleUrlRedirectActionPtrOutput values.
@@ -2831,7 +2831,7 @@ func (i *endpointDeliveryRuleUrlRedirectActionPtrType) ToEndpointDeliveryRuleUrl
 }
 
 func (i *endpointDeliveryRuleUrlRedirectActionPtrType) ToEndpointDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleUrlRedirectActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRedirectActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRedirectActionOutput).ToEndpointDeliveryRuleUrlRedirectActionPtrOutput()
 }
 
 type EndpointDeliveryRuleUrlRedirectActionOutput struct{ *pulumi.OutputState }
@@ -3012,7 +3012,7 @@ func (i EndpointDeliveryRuleUrlRewriteActionArgs) ToEndpointDeliveryRuleUrlRewri
 }
 
 func (i EndpointDeliveryRuleUrlRewriteActionArgs) ToEndpointDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleUrlRewriteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRewriteActionOutput).ToEndpointDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRewriteActionOutput).ToEndpointDeliveryRuleUrlRewriteActionPtrOutput()
 }
 
 // EndpointDeliveryRuleUrlRewriteActionPtrInput is an input type that accepts EndpointDeliveryRuleUrlRewriteActionArgs, EndpointDeliveryRuleUrlRewriteActionPtr and EndpointDeliveryRuleUrlRewriteActionPtrOutput values.
@@ -3045,7 +3045,7 @@ func (i *endpointDeliveryRuleUrlRewriteActionPtrType) ToEndpointDeliveryRuleUrlR
 }
 
 func (i *endpointDeliveryRuleUrlRewriteActionPtrType) ToEndpointDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx context.Context) EndpointDeliveryRuleUrlRewriteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRewriteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeliveryRuleUrlRewriteActionOutput).ToEndpointDeliveryRuleUrlRewriteActionPtrOutput()
 }
 
 type EndpointDeliveryRuleUrlRewriteActionOutput struct{ *pulumi.OutputState }
@@ -3308,7 +3308,7 @@ func (i EndpointGlobalDeliveryRuleArgs) ToEndpointGlobalDeliveryRulePtrOutput() 
 }
 
 func (i EndpointGlobalDeliveryRuleArgs) ToEndpointGlobalDeliveryRulePtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleOutput).ToEndpointGlobalDeliveryRulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleOutput).ToEndpointGlobalDeliveryRulePtrOutput()
 }
 
 // EndpointGlobalDeliveryRulePtrInput is an input type that accepts EndpointGlobalDeliveryRuleArgs, EndpointGlobalDeliveryRulePtr and EndpointGlobalDeliveryRulePtrOutput values.
@@ -3341,7 +3341,7 @@ func (i *endpointGlobalDeliveryRulePtrType) ToEndpointGlobalDeliveryRulePtrOutpu
 }
 
 func (i *endpointGlobalDeliveryRulePtrType) ToEndpointGlobalDeliveryRulePtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleOutput).ToEndpointGlobalDeliveryRulePtrOutput()
 }
 
 type EndpointGlobalDeliveryRuleOutput struct{ *pulumi.OutputState }
@@ -3530,7 +3530,7 @@ func (i EndpointGlobalDeliveryRuleCacheExpirationActionArgs) ToEndpointGlobalDel
 }
 
 func (i EndpointGlobalDeliveryRuleCacheExpirationActionArgs) ToEndpointGlobalDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheExpirationActionOutput).ToEndpointGlobalDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheExpirationActionOutput).ToEndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput()
 }
 
 // EndpointGlobalDeliveryRuleCacheExpirationActionPtrInput is an input type that accepts EndpointGlobalDeliveryRuleCacheExpirationActionArgs, EndpointGlobalDeliveryRuleCacheExpirationActionPtr and EndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput values.
@@ -3563,7 +3563,7 @@ func (i *endpointGlobalDeliveryRuleCacheExpirationActionPtrType) ToEndpointGloba
 }
 
 func (i *endpointGlobalDeliveryRuleCacheExpirationActionPtrType) ToEndpointGlobalDeliveryRuleCacheExpirationActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheExpirationActionOutput).ToEndpointGlobalDeliveryRuleCacheExpirationActionPtrOutput()
 }
 
 type EndpointGlobalDeliveryRuleCacheExpirationActionOutput struct{ *pulumi.OutputState }
@@ -3682,7 +3682,7 @@ func (i EndpointGlobalDeliveryRuleCacheKeyQueryStringActionArgs) ToEndpointGloba
 }
 
 func (i EndpointGlobalDeliveryRuleCacheKeyQueryStringActionArgs) ToEndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput()
 }
 
 // EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrInput is an input type that accepts EndpointGlobalDeliveryRuleCacheKeyQueryStringActionArgs, EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtr and EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput values.
@@ -3715,7 +3715,7 @@ func (i *endpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrType) ToEndpointG
 }
 
 func (i *endpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrType) ToEndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleCacheKeyQueryStringActionOutput).ToEndpointGlobalDeliveryRuleCacheKeyQueryStringActionPtrOutput()
 }
 
 type EndpointGlobalDeliveryRuleCacheKeyQueryStringActionOutput struct{ *pulumi.OutputState }
@@ -4080,7 +4080,7 @@ func (i EndpointGlobalDeliveryRuleUrlRedirectActionArgs) ToEndpointGlobalDeliver
 }
 
 func (i EndpointGlobalDeliveryRuleUrlRedirectActionArgs) ToEndpointGlobalDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRedirectActionOutput).ToEndpointGlobalDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRedirectActionOutput).ToEndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput()
 }
 
 // EndpointGlobalDeliveryRuleUrlRedirectActionPtrInput is an input type that accepts EndpointGlobalDeliveryRuleUrlRedirectActionArgs, EndpointGlobalDeliveryRuleUrlRedirectActionPtr and EndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput values.
@@ -4113,7 +4113,7 @@ func (i *endpointGlobalDeliveryRuleUrlRedirectActionPtrType) ToEndpointGlobalDel
 }
 
 func (i *endpointGlobalDeliveryRuleUrlRedirectActionPtrType) ToEndpointGlobalDeliveryRuleUrlRedirectActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRedirectActionOutput).ToEndpointGlobalDeliveryRuleUrlRedirectActionPtrOutput()
 }
 
 type EndpointGlobalDeliveryRuleUrlRedirectActionOutput struct{ *pulumi.OutputState }
@@ -4296,7 +4296,7 @@ func (i EndpointGlobalDeliveryRuleUrlRewriteActionArgs) ToEndpointGlobalDelivery
 }
 
 func (i EndpointGlobalDeliveryRuleUrlRewriteActionArgs) ToEndpointGlobalDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRewriteActionOutput).ToEndpointGlobalDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRewriteActionOutput).ToEndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput()
 }
 
 // EndpointGlobalDeliveryRuleUrlRewriteActionPtrInput is an input type that accepts EndpointGlobalDeliveryRuleUrlRewriteActionArgs, EndpointGlobalDeliveryRuleUrlRewriteActionPtr and EndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput values.
@@ -4329,7 +4329,7 @@ func (i *endpointGlobalDeliveryRuleUrlRewriteActionPtrType) ToEndpointGlobalDeli
 }
 
 func (i *endpointGlobalDeliveryRuleUrlRewriteActionPtrType) ToEndpointGlobalDeliveryRuleUrlRewriteActionPtrOutputWithContext(ctx context.Context) EndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGlobalDeliveryRuleUrlRewriteActionOutput).ToEndpointGlobalDeliveryRuleUrlRewriteActionPtrOutput()
 }
 
 type EndpointGlobalDeliveryRuleUrlRewriteActionOutput struct{ *pulumi.OutputState }

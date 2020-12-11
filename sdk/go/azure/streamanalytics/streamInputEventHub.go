@@ -269,16 +269,31 @@ type StreamInputEventHubInput interface {
 	ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput
 }
 
-func (StreamInputEventHub) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamInputEventHub)(nil)).Elem()
+func (*StreamInputEventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputEventHub)(nil))
 }
 
-func (i StreamInputEventHub) ToStreamInputEventHubOutput() StreamInputEventHubOutput {
+func (i *StreamInputEventHub) ToStreamInputEventHubOutput() StreamInputEventHubOutput {
 	return i.ToStreamInputEventHubOutputWithContext(context.Background())
 }
 
-func (i StreamInputEventHub) ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput {
+func (i *StreamInputEventHub) ToStreamInputEventHubOutputWithContext(ctx context.Context) StreamInputEventHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubOutput)
+}
+
+func (i *StreamInputEventHub) ToStreamInputEventHubPtrOutput() StreamInputEventHubPtrOutput {
+	return i.ToStreamInputEventHubPtrOutputWithContext(context.Background())
+}
+
+func (i *StreamInputEventHub) ToStreamInputEventHubPtrOutputWithContext(ctx context.Context) StreamInputEventHubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubPtrOutput)
+}
+
+type StreamInputEventHubPtrInput interface {
+	pulumi.Input
+
+	ToStreamInputEventHubPtrOutput() StreamInputEventHubPtrOutput
+	ToStreamInputEventHubPtrOutputWithContext(ctx context.Context) StreamInputEventHubPtrOutput
 }
 
 type StreamInputEventHubOutput struct {
@@ -286,7 +301,7 @@ type StreamInputEventHubOutput struct {
 }
 
 func (StreamInputEventHubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamInputEventHubOutput)(nil)).Elem()
+	return reflect.TypeOf((*StreamInputEventHub)(nil))
 }
 
 func (o StreamInputEventHubOutput) ToStreamInputEventHubOutput() StreamInputEventHubOutput {
@@ -297,6 +312,23 @@ func (o StreamInputEventHubOutput) ToStreamInputEventHubOutputWithContext(ctx co
 	return o
 }
 
+type StreamInputEventHubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputEventHubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamInputEventHub)(nil))
+}
+
+func (o StreamInputEventHubPtrOutput) ToStreamInputEventHubPtrOutput() StreamInputEventHubPtrOutput {
+	return o
+}
+
+func (o StreamInputEventHubPtrOutput) ToStreamInputEventHubPtrOutputWithContext(ctx context.Context) StreamInputEventHubPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StreamInputEventHubOutput{})
+	pulumi.RegisterOutputType(StreamInputEventHubPtrOutput{})
 }

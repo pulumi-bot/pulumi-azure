@@ -183,16 +183,31 @@ type ProfileInput interface {
 	ToProfileOutputWithContext(ctx context.Context) ProfileOutput
 }
 
-func (Profile) ElementType() reflect.Type {
-	return reflect.TypeOf((*Profile)(nil)).Elem()
+func (*Profile) ElementType() reflect.Type {
+	return reflect.TypeOf((*Profile)(nil))
 }
 
-func (i Profile) ToProfileOutput() ProfileOutput {
+func (i *Profile) ToProfileOutput() ProfileOutput {
 	return i.ToProfileOutputWithContext(context.Background())
 }
 
-func (i Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
+func (i *Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
+}
+
+func (i *Profile) ToProfilePtrOutput() ProfilePtrOutput {
+	return i.ToProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *Profile) ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProfilePtrOutput)
+}
+
+type ProfilePtrInput interface {
+	pulumi.Input
+
+	ToProfilePtrOutput() ProfilePtrOutput
+	ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput
 }
 
 type ProfileOutput struct {
@@ -200,7 +215,7 @@ type ProfileOutput struct {
 }
 
 func (ProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*Profile)(nil))
 }
 
 func (o ProfileOutput) ToProfileOutput() ProfileOutput {
@@ -211,6 +226,23 @@ func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOu
 	return o
 }
 
+type ProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Profile)(nil))
+}
+
+func (o ProfilePtrOutput) ToProfilePtrOutput() ProfilePtrOutput {
+	return o
+}
+
+func (o ProfilePtrOutput) ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProfileOutput{})
+	pulumi.RegisterOutputType(ProfilePtrOutput{})
 }

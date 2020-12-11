@@ -221,16 +221,31 @@ type RemediationInput interface {
 	ToRemediationOutputWithContext(ctx context.Context) RemediationOutput
 }
 
-func (Remediation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Remediation)(nil)).Elem()
+func (*Remediation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Remediation)(nil))
 }
 
-func (i Remediation) ToRemediationOutput() RemediationOutput {
+func (i *Remediation) ToRemediationOutput() RemediationOutput {
 	return i.ToRemediationOutputWithContext(context.Background())
 }
 
-func (i Remediation) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
+func (i *Remediation) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationOutput)
+}
+
+func (i *Remediation) ToRemediationPtrOutput() RemediationPtrOutput {
+	return i.ToRemediationPtrOutputWithContext(context.Background())
+}
+
+func (i *Remediation) ToRemediationPtrOutputWithContext(ctx context.Context) RemediationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationPtrOutput)
+}
+
+type RemediationPtrInput interface {
+	pulumi.Input
+
+	ToRemediationPtrOutput() RemediationPtrOutput
+	ToRemediationPtrOutputWithContext(ctx context.Context) RemediationPtrOutput
 }
 
 type RemediationOutput struct {
@@ -238,7 +253,7 @@ type RemediationOutput struct {
 }
 
 func (RemediationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemediationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Remediation)(nil))
 }
 
 func (o RemediationOutput) ToRemediationOutput() RemediationOutput {
@@ -249,6 +264,23 @@ func (o RemediationOutput) ToRemediationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+type RemediationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RemediationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Remediation)(nil))
+}
+
+func (o RemediationPtrOutput) ToRemediationPtrOutput() RemediationPtrOutput {
+	return o
+}
+
+func (o RemediationPtrOutput) ToRemediationPtrOutputWithContext(ctx context.Context) RemediationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RemediationOutput{})
+	pulumi.RegisterOutputType(RemediationPtrOutput{})
 }

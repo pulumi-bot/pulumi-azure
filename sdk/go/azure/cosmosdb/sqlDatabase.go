@@ -164,16 +164,31 @@ type SqlDatabaseInput interface {
 	ToSqlDatabaseOutputWithContext(ctx context.Context) SqlDatabaseOutput
 }
 
-func (SqlDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlDatabase)(nil)).Elem()
+func (*SqlDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDatabase)(nil))
 }
 
-func (i SqlDatabase) ToSqlDatabaseOutput() SqlDatabaseOutput {
+func (i *SqlDatabase) ToSqlDatabaseOutput() SqlDatabaseOutput {
 	return i.ToSqlDatabaseOutputWithContext(context.Background())
 }
 
-func (i SqlDatabase) ToSqlDatabaseOutputWithContext(ctx context.Context) SqlDatabaseOutput {
+func (i *SqlDatabase) ToSqlDatabaseOutputWithContext(ctx context.Context) SqlDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseOutput)
+}
+
+func (i *SqlDatabase) ToSqlDatabasePtrOutput() SqlDatabasePtrOutput {
+	return i.ToSqlDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i *SqlDatabase) ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabasePtrOutput)
+}
+
+type SqlDatabasePtrInput interface {
+	pulumi.Input
+
+	ToSqlDatabasePtrOutput() SqlDatabasePtrOutput
+	ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput
 }
 
 type SqlDatabaseOutput struct {
@@ -181,7 +196,7 @@ type SqlDatabaseOutput struct {
 }
 
 func (SqlDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*SqlDatabase)(nil))
 }
 
 func (o SqlDatabaseOutput) ToSqlDatabaseOutput() SqlDatabaseOutput {
@@ -192,6 +207,23 @@ func (o SqlDatabaseOutput) ToSqlDatabaseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+type SqlDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDatabase)(nil))
+}
+
+func (o SqlDatabasePtrOutput) ToSqlDatabasePtrOutput() SqlDatabasePtrOutput {
+	return o
+}
+
+func (o SqlDatabasePtrOutput) ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SqlDatabaseOutput{})
+	pulumi.RegisterOutputType(SqlDatabasePtrOutput{})
 }

@@ -238,16 +238,31 @@ type TriggerScheduleInput interface {
 	ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput
 }
 
-func (TriggerSchedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerSchedule)(nil)).Elem()
+func (*TriggerSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerSchedule)(nil))
 }
 
-func (i TriggerSchedule) ToTriggerScheduleOutput() TriggerScheduleOutput {
+func (i *TriggerSchedule) ToTriggerScheduleOutput() TriggerScheduleOutput {
 	return i.ToTriggerScheduleOutputWithContext(context.Background())
 }
 
-func (i TriggerSchedule) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
+func (i *TriggerSchedule) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerScheduleOutput)
+}
+
+func (i *TriggerSchedule) ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput {
+	return i.ToTriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *TriggerSchedule) ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerSchedulePtrOutput)
+}
+
+type TriggerSchedulePtrInput interface {
+	pulumi.Input
+
+	ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput
+	ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput
 }
 
 type TriggerScheduleOutput struct {
@@ -255,7 +270,7 @@ type TriggerScheduleOutput struct {
 }
 
 func (TriggerScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*TriggerSchedule)(nil))
 }
 
 func (o TriggerScheduleOutput) ToTriggerScheduleOutput() TriggerScheduleOutput {
@@ -266,6 +281,23 @@ func (o TriggerScheduleOutput) ToTriggerScheduleOutputWithContext(ctx context.Co
 	return o
 }
 
+type TriggerSchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerSchedule)(nil))
+}
+
+func (o TriggerSchedulePtrOutput) ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput {
+	return o
+}
+
+func (o TriggerSchedulePtrOutput) ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerScheduleOutput{})
+	pulumi.RegisterOutputType(TriggerSchedulePtrOutput{})
 }

@@ -176,16 +176,31 @@ type MeshSecretValueInput interface {
 	ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput
 }
 
-func (MeshSecretValue) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecretValue)(nil)).Elem()
+func (*MeshSecretValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValue)(nil))
 }
 
-func (i MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
+func (i *MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
 	return i.ToMeshSecretValueOutputWithContext(context.Background())
 }
 
-func (i MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+func (i *MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretValueOutput)
+}
+
+func (i *MeshSecretValue) ToMeshSecretValuePtrOutput() MeshSecretValuePtrOutput {
+	return i.ToMeshSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *MeshSecretValue) ToMeshSecretValuePtrOutputWithContext(ctx context.Context) MeshSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretValuePtrOutput)
+}
+
+type MeshSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToMeshSecretValuePtrOutput() MeshSecretValuePtrOutput
+	ToMeshSecretValuePtrOutputWithContext(ctx context.Context) MeshSecretValuePtrOutput
 }
 
 type MeshSecretValueOutput struct {
@@ -193,7 +208,7 @@ type MeshSecretValueOutput struct {
 }
 
 func (MeshSecretValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecretValueOutput)(nil)).Elem()
+	return reflect.TypeOf((*MeshSecretValue)(nil))
 }
 
 func (o MeshSecretValueOutput) ToMeshSecretValueOutput() MeshSecretValueOutput {
@@ -204,6 +219,23 @@ func (o MeshSecretValueOutput) ToMeshSecretValueOutputWithContext(ctx context.Co
 	return o
 }
 
+type MeshSecretValuePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshSecretValue)(nil))
+}
+
+func (o MeshSecretValuePtrOutput) ToMeshSecretValuePtrOutput() MeshSecretValuePtrOutput {
+	return o
+}
+
+func (o MeshSecretValuePtrOutput) ToMeshSecretValuePtrOutputWithContext(ctx context.Context) MeshSecretValuePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MeshSecretValueOutput{})
+	pulumi.RegisterOutputType(MeshSecretValuePtrOutput{})
 }

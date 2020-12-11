@@ -48,7 +48,7 @@ func (i SparkPoolAutoPauseArgs) ToSparkPoolAutoPausePtrOutput() SparkPoolAutoPau
 }
 
 func (i SparkPoolAutoPauseArgs) ToSparkPoolAutoPausePtrOutputWithContext(ctx context.Context) SparkPoolAutoPausePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoPauseOutput).ToSparkPoolAutoPausePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoPauseOutput).ToSparkPoolAutoPausePtrOutput()
 }
 
 // SparkPoolAutoPausePtrInput is an input type that accepts SparkPoolAutoPauseArgs, SparkPoolAutoPausePtr and SparkPoolAutoPausePtrOutput values.
@@ -81,7 +81,7 @@ func (i *sparkPoolAutoPausePtrType) ToSparkPoolAutoPausePtrOutput() SparkPoolAut
 }
 
 func (i *sparkPoolAutoPausePtrType) ToSparkPoolAutoPausePtrOutputWithContext(ctx context.Context) SparkPoolAutoPausePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoPausePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoPauseOutput).ToSparkPoolAutoPausePtrOutput()
 }
 
 type SparkPoolAutoPauseOutput struct{ *pulumi.OutputState }
@@ -183,7 +183,7 @@ func (i SparkPoolAutoScaleArgs) ToSparkPoolAutoScalePtrOutput() SparkPoolAutoSca
 }
 
 func (i SparkPoolAutoScaleArgs) ToSparkPoolAutoScalePtrOutputWithContext(ctx context.Context) SparkPoolAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoScaleOutput).ToSparkPoolAutoScalePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoScaleOutput).ToSparkPoolAutoScalePtrOutput()
 }
 
 // SparkPoolAutoScalePtrInput is an input type that accepts SparkPoolAutoScaleArgs, SparkPoolAutoScalePtr and SparkPoolAutoScalePtrOutput values.
@@ -216,7 +216,7 @@ func (i *sparkPoolAutoScalePtrType) ToSparkPoolAutoScalePtrOutput() SparkPoolAut
 }
 
 func (i *sparkPoolAutoScalePtrType) ToSparkPoolAutoScalePtrOutputWithContext(ctx context.Context) SparkPoolAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoScalePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolAutoScaleOutput).ToSparkPoolAutoScalePtrOutput()
 }
 
 type SparkPoolAutoScaleOutput struct{ *pulumi.OutputState }
@@ -333,7 +333,7 @@ func (i SparkPoolLibraryRequirementArgs) ToSparkPoolLibraryRequirementPtrOutput(
 }
 
 func (i SparkPoolLibraryRequirementArgs) ToSparkPoolLibraryRequirementPtrOutputWithContext(ctx context.Context) SparkPoolLibraryRequirementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolLibraryRequirementOutput).ToSparkPoolLibraryRequirementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolLibraryRequirementOutput).ToSparkPoolLibraryRequirementPtrOutput()
 }
 
 // SparkPoolLibraryRequirementPtrInput is an input type that accepts SparkPoolLibraryRequirementArgs, SparkPoolLibraryRequirementPtr and SparkPoolLibraryRequirementPtrOutput values.
@@ -366,7 +366,7 @@ func (i *sparkPoolLibraryRequirementPtrType) ToSparkPoolLibraryRequirementPtrOut
 }
 
 func (i *sparkPoolLibraryRequirementPtrType) ToSparkPoolLibraryRequirementPtrOutputWithContext(ctx context.Context) SparkPoolLibraryRequirementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolLibraryRequirementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolLibraryRequirementOutput).ToSparkPoolLibraryRequirementPtrOutput()
 }
 
 type SparkPoolLibraryRequirementOutput struct{ *pulumi.OutputState }
@@ -483,7 +483,7 @@ func (i SqlPoolRestoreArgs) ToSqlPoolRestorePtrOutput() SqlPoolRestorePtrOutput 
 }
 
 func (i SqlPoolRestoreArgs) ToSqlPoolRestorePtrOutputWithContext(ctx context.Context) SqlPoolRestorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolRestoreOutput).ToSqlPoolRestorePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolRestoreOutput).ToSqlPoolRestorePtrOutput()
 }
 
 // SqlPoolRestorePtrInput is an input type that accepts SqlPoolRestoreArgs, SqlPoolRestorePtr and SqlPoolRestorePtrOutput values.
@@ -516,7 +516,7 @@ func (i *sqlPoolRestorePtrType) ToSqlPoolRestorePtrOutput() SqlPoolRestorePtrOut
 }
 
 func (i *sqlPoolRestorePtrType) ToSqlPoolRestorePtrOutputWithContext(ctx context.Context) SqlPoolRestorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolRestorePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolRestoreOutput).ToSqlPoolRestorePtrOutput()
 }
 
 type SqlPoolRestoreOutput struct{ *pulumi.OutputState }
@@ -637,7 +637,7 @@ func (i WorkspaceAadAdminArgs) ToWorkspaceAadAdminPtrOutput() WorkspaceAadAdminP
 }
 
 func (i WorkspaceAadAdminArgs) ToWorkspaceAadAdminPtrOutputWithContext(ctx context.Context) WorkspaceAadAdminPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAadAdminOutput).ToWorkspaceAadAdminPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAadAdminOutput).ToWorkspaceAadAdminPtrOutput()
 }
 
 // WorkspaceAadAdminPtrInput is an input type that accepts WorkspaceAadAdminArgs, WorkspaceAadAdminPtr and WorkspaceAadAdminPtrOutput values.
@@ -670,7 +670,7 @@ func (i *workspaceAadAdminPtrType) ToWorkspaceAadAdminPtrOutput() WorkspaceAadAd
 }
 
 func (i *workspaceAadAdminPtrType) ToWorkspaceAadAdminPtrOutputWithContext(ctx context.Context) WorkspaceAadAdminPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAadAdminPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAadAdminOutput).ToWorkspaceAadAdminPtrOutput()
 }
 
 type WorkspaceAadAdminOutput struct{ *pulumi.OutputState }

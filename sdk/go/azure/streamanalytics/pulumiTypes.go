@@ -145,7 +145,7 @@ func (i FunctionJavaScriptUDFOutputArgs) ToFunctionJavaScriptUDFOutputPtrOutput(
 }
 
 func (i FunctionJavaScriptUDFOutputArgs) ToFunctionJavaScriptUDFOutputPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutputPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutputOutput).ToFunctionJavaScriptUDFOutputPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutputOutput).ToFunctionJavaScriptUDFOutputPtrOutput()
 }
 
 // FunctionJavaScriptUDFOutputPtrInput is an input type that accepts FunctionJavaScriptUDFOutputArgs, FunctionJavaScriptUDFOutputPtr and FunctionJavaScriptUDFOutputPtrOutput values.
@@ -178,7 +178,7 @@ func (i *functionJavaScriptUDFOutputPtrType) ToFunctionJavaScriptUDFOutputPtrOut
 }
 
 func (i *functionJavaScriptUDFOutputPtrType) ToFunctionJavaScriptUDFOutputPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutputPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutputPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutputOutput).ToFunctionJavaScriptUDFOutputPtrOutput()
 }
 
 type FunctionJavaScriptUDFOutputOutput struct{ *pulumi.OutputState }
@@ -288,7 +288,7 @@ func (i OutputBlobSerializationArgs) ToOutputBlobSerializationPtrOutput() Output
 }
 
 func (i OutputBlobSerializationArgs) ToOutputBlobSerializationPtrOutputWithContext(ctx context.Context) OutputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobSerializationOutput).ToOutputBlobSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobSerializationOutput).ToOutputBlobSerializationPtrOutput()
 }
 
 // OutputBlobSerializationPtrInput is an input type that accepts OutputBlobSerializationArgs, OutputBlobSerializationPtr and OutputBlobSerializationPtrOutput values.
@@ -321,7 +321,7 @@ func (i *outputBlobSerializationPtrType) ToOutputBlobSerializationPtrOutput() Ou
 }
 
 func (i *outputBlobSerializationPtrType) ToOutputBlobSerializationPtrOutputWithContext(ctx context.Context) OutputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobSerializationOutput).ToOutputBlobSerializationPtrOutput()
 }
 
 type OutputBlobSerializationOutput struct{ *pulumi.OutputState }
@@ -476,7 +476,7 @@ func (i OutputEventHubSerializationArgs) ToOutputEventHubSerializationPtrOutput(
 }
 
 func (i OutputEventHubSerializationArgs) ToOutputEventHubSerializationPtrOutputWithContext(ctx context.Context) OutputEventHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubSerializationOutput).ToOutputEventHubSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubSerializationOutput).ToOutputEventHubSerializationPtrOutput()
 }
 
 // OutputEventHubSerializationPtrInput is an input type that accepts OutputEventHubSerializationArgs, OutputEventHubSerializationPtr and OutputEventHubSerializationPtrOutput values.
@@ -509,7 +509,7 @@ func (i *outputEventHubSerializationPtrType) ToOutputEventHubSerializationPtrOut
 }
 
 func (i *outputEventHubSerializationPtrType) ToOutputEventHubSerializationPtrOutputWithContext(ctx context.Context) OutputEventHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubSerializationOutput).ToOutputEventHubSerializationPtrOutput()
 }
 
 type OutputEventHubSerializationOutput struct{ *pulumi.OutputState }
@@ -664,7 +664,7 @@ func (i OutputServiceBusQueueSerializationArgs) ToOutputServiceBusQueueSerializa
 }
 
 func (i OutputServiceBusQueueSerializationArgs) ToOutputServiceBusQueueSerializationPtrOutputWithContext(ctx context.Context) OutputServiceBusQueueSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueSerializationOutput).ToOutputServiceBusQueueSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueSerializationOutput).ToOutputServiceBusQueueSerializationPtrOutput()
 }
 
 // OutputServiceBusQueueSerializationPtrInput is an input type that accepts OutputServiceBusQueueSerializationArgs, OutputServiceBusQueueSerializationPtr and OutputServiceBusQueueSerializationPtrOutput values.
@@ -697,7 +697,7 @@ func (i *outputServiceBusQueueSerializationPtrType) ToOutputServiceBusQueueSeria
 }
 
 func (i *outputServiceBusQueueSerializationPtrType) ToOutputServiceBusQueueSerializationPtrOutputWithContext(ctx context.Context) OutputServiceBusQueueSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServiceBusQueueSerializationOutput).ToOutputServiceBusQueueSerializationPtrOutput()
 }
 
 type OutputServiceBusQueueSerializationOutput struct{ *pulumi.OutputState }
@@ -852,7 +852,7 @@ func (i OutputServicebusTopicSerializationArgs) ToOutputServicebusTopicSerializa
 }
 
 func (i OutputServicebusTopicSerializationArgs) ToOutputServicebusTopicSerializationPtrOutputWithContext(ctx context.Context) OutputServicebusTopicSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputServicebusTopicSerializationOutput).ToOutputServicebusTopicSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServicebusTopicSerializationOutput).ToOutputServicebusTopicSerializationPtrOutput()
 }
 
 // OutputServicebusTopicSerializationPtrInput is an input type that accepts OutputServicebusTopicSerializationArgs, OutputServicebusTopicSerializationPtr and OutputServicebusTopicSerializationPtrOutput values.
@@ -885,7 +885,7 @@ func (i *outputServicebusTopicSerializationPtrType) ToOutputServicebusTopicSeria
 }
 
 func (i *outputServicebusTopicSerializationPtrType) ToOutputServicebusTopicSerializationPtrOutputWithContext(ctx context.Context) OutputServicebusTopicSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutputServicebusTopicSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(OutputServicebusTopicSerializationOutput).ToOutputServicebusTopicSerializationPtrOutput()
 }
 
 type OutputServicebusTopicSerializationOutput struct{ *pulumi.OutputState }
@@ -1036,7 +1036,7 @@ func (i ReferenceInputBlobSerializationArgs) ToReferenceInputBlobSerializationPt
 }
 
 func (i ReferenceInputBlobSerializationArgs) ToReferenceInputBlobSerializationPtrOutputWithContext(ctx context.Context) ReferenceInputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobSerializationOutput).ToReferenceInputBlobSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobSerializationOutput).ToReferenceInputBlobSerializationPtrOutput()
 }
 
 // ReferenceInputBlobSerializationPtrInput is an input type that accepts ReferenceInputBlobSerializationArgs, ReferenceInputBlobSerializationPtr and ReferenceInputBlobSerializationPtrOutput values.
@@ -1069,7 +1069,7 @@ func (i *referenceInputBlobSerializationPtrType) ToReferenceInputBlobSerializati
 }
 
 func (i *referenceInputBlobSerializationPtrType) ToReferenceInputBlobSerializationPtrOutputWithContext(ctx context.Context) ReferenceInputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobSerializationOutput).ToReferenceInputBlobSerializationPtrOutput()
 }
 
 type ReferenceInputBlobSerializationOutput struct{ *pulumi.OutputState }
@@ -1205,7 +1205,7 @@ func (i StreamInputBlobSerializationArgs) ToStreamInputBlobSerializationPtrOutpu
 }
 
 func (i StreamInputBlobSerializationArgs) ToStreamInputBlobSerializationPtrOutputWithContext(ctx context.Context) StreamInputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobSerializationOutput).ToStreamInputBlobSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobSerializationOutput).ToStreamInputBlobSerializationPtrOutput()
 }
 
 // StreamInputBlobSerializationPtrInput is an input type that accepts StreamInputBlobSerializationArgs, StreamInputBlobSerializationPtr and StreamInputBlobSerializationPtrOutput values.
@@ -1238,7 +1238,7 @@ func (i *streamInputBlobSerializationPtrType) ToStreamInputBlobSerializationPtrO
 }
 
 func (i *streamInputBlobSerializationPtrType) ToStreamInputBlobSerializationPtrOutputWithContext(ctx context.Context) StreamInputBlobSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobSerializationOutput).ToStreamInputBlobSerializationPtrOutput()
 }
 
 type StreamInputBlobSerializationOutput struct{ *pulumi.OutputState }
@@ -1374,7 +1374,7 @@ func (i StreamInputEventHubSerializationArgs) ToStreamInputEventHubSerialization
 }
 
 func (i StreamInputEventHubSerializationArgs) ToStreamInputEventHubSerializationPtrOutputWithContext(ctx context.Context) StreamInputEventHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubSerializationOutput).ToStreamInputEventHubSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubSerializationOutput).ToStreamInputEventHubSerializationPtrOutput()
 }
 
 // StreamInputEventHubSerializationPtrInput is an input type that accepts StreamInputEventHubSerializationArgs, StreamInputEventHubSerializationPtr and StreamInputEventHubSerializationPtrOutput values.
@@ -1407,7 +1407,7 @@ func (i *streamInputEventHubSerializationPtrType) ToStreamInputEventHubSerializa
 }
 
 func (i *streamInputEventHubSerializationPtrType) ToStreamInputEventHubSerializationPtrOutputWithContext(ctx context.Context) StreamInputEventHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputEventHubSerializationOutput).ToStreamInputEventHubSerializationPtrOutput()
 }
 
 type StreamInputEventHubSerializationOutput struct{ *pulumi.OutputState }
@@ -1543,7 +1543,7 @@ func (i StreamInputIotHubSerializationArgs) ToStreamInputIotHubSerializationPtrO
 }
 
 func (i StreamInputIotHubSerializationArgs) ToStreamInputIotHubSerializationPtrOutputWithContext(ctx context.Context) StreamInputIotHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubSerializationOutput).ToStreamInputIotHubSerializationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubSerializationOutput).ToStreamInputIotHubSerializationPtrOutput()
 }
 
 // StreamInputIotHubSerializationPtrInput is an input type that accepts StreamInputIotHubSerializationArgs, StreamInputIotHubSerializationPtr and StreamInputIotHubSerializationPtrOutput values.
@@ -1576,7 +1576,7 @@ func (i *streamInputIotHubSerializationPtrType) ToStreamInputIotHubSerialization
 }
 
 func (i *streamInputIotHubSerializationPtrType) ToStreamInputIotHubSerializationPtrOutputWithContext(ctx context.Context) StreamInputIotHubSerializationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubSerializationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubSerializationOutput).ToStreamInputIotHubSerializationPtrOutput()
 }
 
 type StreamInputIotHubSerializationOutput struct{ *pulumi.OutputState }

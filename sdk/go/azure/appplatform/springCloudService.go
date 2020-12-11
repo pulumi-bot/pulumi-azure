@@ -225,16 +225,31 @@ type SpringCloudServiceInput interface {
 	ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput
 }
 
-func (SpringCloudService) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpringCloudService)(nil)).Elem()
+func (*SpringCloudService) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudService)(nil))
 }
 
-func (i SpringCloudService) ToSpringCloudServiceOutput() SpringCloudServiceOutput {
+func (i *SpringCloudService) ToSpringCloudServiceOutput() SpringCloudServiceOutput {
 	return i.ToSpringCloudServiceOutputWithContext(context.Background())
 }
 
-func (i SpringCloudService) ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput {
+func (i *SpringCloudService) ToSpringCloudServiceOutputWithContext(ctx context.Context) SpringCloudServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceOutput)
+}
+
+func (i *SpringCloudService) ToSpringCloudServicePtrOutput() SpringCloudServicePtrOutput {
+	return i.ToSpringCloudServicePtrOutputWithContext(context.Background())
+}
+
+func (i *SpringCloudService) ToSpringCloudServicePtrOutputWithContext(ctx context.Context) SpringCloudServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServicePtrOutput)
+}
+
+type SpringCloudServicePtrInput interface {
+	pulumi.Input
+
+	ToSpringCloudServicePtrOutput() SpringCloudServicePtrOutput
+	ToSpringCloudServicePtrOutputWithContext(ctx context.Context) SpringCloudServicePtrOutput
 }
 
 type SpringCloudServiceOutput struct {
@@ -242,7 +257,7 @@ type SpringCloudServiceOutput struct {
 }
 
 func (SpringCloudServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpringCloudServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpringCloudService)(nil))
 }
 
 func (o SpringCloudServiceOutput) ToSpringCloudServiceOutput() SpringCloudServiceOutput {
@@ -253,6 +268,23 @@ func (o SpringCloudServiceOutput) ToSpringCloudServiceOutputWithContext(ctx cont
 	return o
 }
 
+type SpringCloudServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpringCloudServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudService)(nil))
+}
+
+func (o SpringCloudServicePtrOutput) ToSpringCloudServicePtrOutput() SpringCloudServicePtrOutput {
+	return o
+}
+
+func (o SpringCloudServicePtrOutput) ToSpringCloudServicePtrOutputWithContext(ctx context.Context) SpringCloudServicePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SpringCloudServiceOutput{})
+	pulumi.RegisterOutputType(SpringCloudServicePtrOutput{})
 }

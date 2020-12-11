@@ -277,16 +277,31 @@ type AlertRuleScheduledInput interface {
 	ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput
 }
 
-func (AlertRuleScheduled) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertRuleScheduled)(nil)).Elem()
+func (*AlertRuleScheduled) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleScheduled)(nil))
 }
 
-func (i AlertRuleScheduled) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
+func (i *AlertRuleScheduled) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
 	return i.ToAlertRuleScheduledOutputWithContext(context.Background())
 }
 
-func (i AlertRuleScheduled) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
+func (i *AlertRuleScheduled) ToAlertRuleScheduledOutputWithContext(ctx context.Context) AlertRuleScheduledOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledOutput)
+}
+
+func (i *AlertRuleScheduled) ToAlertRuleScheduledPtrOutput() AlertRuleScheduledPtrOutput {
+	return i.ToAlertRuleScheduledPtrOutputWithContext(context.Background())
+}
+
+func (i *AlertRuleScheduled) ToAlertRuleScheduledPtrOutputWithContext(ctx context.Context) AlertRuleScheduledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledPtrOutput)
+}
+
+type AlertRuleScheduledPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleScheduledPtrOutput() AlertRuleScheduledPtrOutput
+	ToAlertRuleScheduledPtrOutputWithContext(ctx context.Context) AlertRuleScheduledPtrOutput
 }
 
 type AlertRuleScheduledOutput struct {
@@ -294,7 +309,7 @@ type AlertRuleScheduledOutput struct {
 }
 
 func (AlertRuleScheduledOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlertRuleScheduledOutput)(nil)).Elem()
+	return reflect.TypeOf((*AlertRuleScheduled)(nil))
 }
 
 func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutput() AlertRuleScheduledOutput {
@@ -305,6 +320,23 @@ func (o AlertRuleScheduledOutput) ToAlertRuleScheduledOutputWithContext(ctx cont
 	return o
 }
 
+type AlertRuleScheduledPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleScheduledPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleScheduled)(nil))
+}
+
+func (o AlertRuleScheduledPtrOutput) ToAlertRuleScheduledPtrOutput() AlertRuleScheduledPtrOutput {
+	return o
+}
+
+func (o AlertRuleScheduledPtrOutput) ToAlertRuleScheduledPtrOutputWithContext(ctx context.Context) AlertRuleScheduledPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertRuleScheduledOutput{})
+	pulumi.RegisterOutputType(AlertRuleScheduledPtrOutput{})
 }

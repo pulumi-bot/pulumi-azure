@@ -186,16 +186,31 @@ type AnalyticsAccountInput interface {
 	ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput
 }
 
-func (AnalyticsAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsAccount)(nil)).Elem()
+func (*AnalyticsAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsAccount)(nil))
 }
 
-func (i AnalyticsAccount) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
+func (i *AnalyticsAccount) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
 	return i.ToAnalyticsAccountOutputWithContext(context.Background())
 }
 
-func (i AnalyticsAccount) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
+func (i *AnalyticsAccount) ToAnalyticsAccountOutputWithContext(ctx context.Context) AnalyticsAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsAccountOutput)
+}
+
+func (i *AnalyticsAccount) ToAnalyticsAccountPtrOutput() AnalyticsAccountPtrOutput {
+	return i.ToAnalyticsAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *AnalyticsAccount) ToAnalyticsAccountPtrOutputWithContext(ctx context.Context) AnalyticsAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsAccountPtrOutput)
+}
+
+type AnalyticsAccountPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsAccountPtrOutput() AnalyticsAccountPtrOutput
+	ToAnalyticsAccountPtrOutputWithContext(ctx context.Context) AnalyticsAccountPtrOutput
 }
 
 type AnalyticsAccountOutput struct {
@@ -203,7 +218,7 @@ type AnalyticsAccountOutput struct {
 }
 
 func (AnalyticsAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnalyticsAccount)(nil))
 }
 
 func (o AnalyticsAccountOutput) ToAnalyticsAccountOutput() AnalyticsAccountOutput {
@@ -214,6 +229,23 @@ func (o AnalyticsAccountOutput) ToAnalyticsAccountOutputWithContext(ctx context.
 	return o
 }
 
+type AnalyticsAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsAccount)(nil))
+}
+
+func (o AnalyticsAccountPtrOutput) ToAnalyticsAccountPtrOutput() AnalyticsAccountPtrOutput {
+	return o
+}
+
+func (o AnalyticsAccountPtrOutput) ToAnalyticsAccountPtrOutputWithContext(ctx context.Context) AnalyticsAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyticsAccountOutput{})
+	pulumi.RegisterOutputType(AnalyticsAccountPtrOutput{})
 }

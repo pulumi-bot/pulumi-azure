@@ -56,7 +56,7 @@ func (i DomainInputMappingDefaultValuesArgs) ToDomainInputMappingDefaultValuesPt
 }
 
 func (i DomainInputMappingDefaultValuesArgs) ToDomainInputMappingDefaultValuesPtrOutputWithContext(ctx context.Context) DomainInputMappingDefaultValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingDefaultValuesOutput).ToDomainInputMappingDefaultValuesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingDefaultValuesOutput).ToDomainInputMappingDefaultValuesPtrOutput()
 }
 
 // DomainInputMappingDefaultValuesPtrInput is an input type that accepts DomainInputMappingDefaultValuesArgs, DomainInputMappingDefaultValuesPtr and DomainInputMappingDefaultValuesPtrOutput values.
@@ -89,7 +89,7 @@ func (i *domainInputMappingDefaultValuesPtrType) ToDomainInputMappingDefaultValu
 }
 
 func (i *domainInputMappingDefaultValuesPtrType) ToDomainInputMappingDefaultValuesPtrOutputWithContext(ctx context.Context) DomainInputMappingDefaultValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingDefaultValuesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingDefaultValuesOutput).ToDomainInputMappingDefaultValuesPtrOutput()
 }
 
 type DomainInputMappingDefaultValuesOutput struct{ *pulumi.OutputState }
@@ -237,7 +237,7 @@ func (i DomainInputMappingFieldsArgs) ToDomainInputMappingFieldsPtrOutput() Doma
 }
 
 func (i DomainInputMappingFieldsArgs) ToDomainInputMappingFieldsPtrOutputWithContext(ctx context.Context) DomainInputMappingFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingFieldsOutput).ToDomainInputMappingFieldsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingFieldsOutput).ToDomainInputMappingFieldsPtrOutput()
 }
 
 // DomainInputMappingFieldsPtrInput is an input type that accepts DomainInputMappingFieldsArgs, DomainInputMappingFieldsPtr and DomainInputMappingFieldsPtrOutput values.
@@ -270,7 +270,7 @@ func (i *domainInputMappingFieldsPtrType) ToDomainInputMappingFieldsPtrOutput() 
 }
 
 func (i *domainInputMappingFieldsPtrType) ToDomainInputMappingFieldsPtrOutputWithContext(ctx context.Context) DomainInputMappingFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingFieldsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainInputMappingFieldsOutput).ToDomainInputMappingFieldsPtrOutput()
 }
 
 type DomainInputMappingFieldsOutput struct{ *pulumi.OutputState }
@@ -451,7 +451,7 @@ func (i EventGridTopicInputMappingDefaultValuesArgs) ToEventGridTopicInputMappin
 }
 
 func (i EventGridTopicInputMappingDefaultValuesArgs) ToEventGridTopicInputMappingDefaultValuesPtrOutputWithContext(ctx context.Context) EventGridTopicInputMappingDefaultValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingDefaultValuesOutput).ToEventGridTopicInputMappingDefaultValuesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingDefaultValuesOutput).ToEventGridTopicInputMappingDefaultValuesPtrOutput()
 }
 
 // EventGridTopicInputMappingDefaultValuesPtrInput is an input type that accepts EventGridTopicInputMappingDefaultValuesArgs, EventGridTopicInputMappingDefaultValuesPtr and EventGridTopicInputMappingDefaultValuesPtrOutput values.
@@ -484,7 +484,7 @@ func (i *eventGridTopicInputMappingDefaultValuesPtrType) ToEventGridTopicInputMa
 }
 
 func (i *eventGridTopicInputMappingDefaultValuesPtrType) ToEventGridTopicInputMappingDefaultValuesPtrOutputWithContext(ctx context.Context) EventGridTopicInputMappingDefaultValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingDefaultValuesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingDefaultValuesOutput).ToEventGridTopicInputMappingDefaultValuesPtrOutput()
 }
 
 type EventGridTopicInputMappingDefaultValuesOutput struct{ *pulumi.OutputState }
@@ -632,7 +632,7 @@ func (i EventGridTopicInputMappingFieldsArgs) ToEventGridTopicInputMappingFields
 }
 
 func (i EventGridTopicInputMappingFieldsArgs) ToEventGridTopicInputMappingFieldsPtrOutputWithContext(ctx context.Context) EventGridTopicInputMappingFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingFieldsOutput).ToEventGridTopicInputMappingFieldsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingFieldsOutput).ToEventGridTopicInputMappingFieldsPtrOutput()
 }
 
 // EventGridTopicInputMappingFieldsPtrInput is an input type that accepts EventGridTopicInputMappingFieldsArgs, EventGridTopicInputMappingFieldsPtr and EventGridTopicInputMappingFieldsPtrOutput values.
@@ -665,7 +665,7 @@ func (i *eventGridTopicInputMappingFieldsPtrType) ToEventGridTopicInputMappingFi
 }
 
 func (i *eventGridTopicInputMappingFieldsPtrType) ToEventGridTopicInputMappingFieldsPtrOutputWithContext(ctx context.Context) EventGridTopicInputMappingFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingFieldsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicInputMappingFieldsOutput).ToEventGridTopicInputMappingFieldsPtrOutput()
 }
 
 type EventGridTopicInputMappingFieldsOutput struct{ *pulumi.OutputState }
@@ -858,7 +858,7 @@ func (i EventHubCaptureDescriptionArgs) ToEventHubCaptureDescriptionPtrOutput() 
 }
 
 func (i EventHubCaptureDescriptionArgs) ToEventHubCaptureDescriptionPtrOutputWithContext(ctx context.Context) EventHubCaptureDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionOutput).ToEventHubCaptureDescriptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionOutput).ToEventHubCaptureDescriptionPtrOutput()
 }
 
 // EventHubCaptureDescriptionPtrInput is an input type that accepts EventHubCaptureDescriptionArgs, EventHubCaptureDescriptionPtr and EventHubCaptureDescriptionPtrOutput values.
@@ -891,7 +891,7 @@ func (i *eventHubCaptureDescriptionPtrType) ToEventHubCaptureDescriptionPtrOutpu
 }
 
 func (i *eventHubCaptureDescriptionPtrType) ToEventHubCaptureDescriptionPtrOutputWithContext(ctx context.Context) EventHubCaptureDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionOutput).ToEventHubCaptureDescriptionPtrOutput()
 }
 
 type EventHubCaptureDescriptionOutput struct{ *pulumi.OutputState }
@@ -1076,7 +1076,7 @@ func (i EventHubCaptureDescriptionDestinationArgs) ToEventHubCaptureDescriptionD
 }
 
 func (i EventHubCaptureDescriptionDestinationArgs) ToEventHubCaptureDescriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubCaptureDescriptionDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionDestinationOutput).ToEventHubCaptureDescriptionDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionDestinationOutput).ToEventHubCaptureDescriptionDestinationPtrOutput()
 }
 
 // EventHubCaptureDescriptionDestinationPtrInput is an input type that accepts EventHubCaptureDescriptionDestinationArgs, EventHubCaptureDescriptionDestinationPtr and EventHubCaptureDescriptionDestinationPtrOutput values.
@@ -1109,7 +1109,7 @@ func (i *eventHubCaptureDescriptionDestinationPtrType) ToEventHubCaptureDescript
 }
 
 func (i *eventHubCaptureDescriptionDestinationPtrType) ToEventHubCaptureDescriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubCaptureDescriptionDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubCaptureDescriptionDestinationOutput).ToEventHubCaptureDescriptionDestinationPtrOutput()
 }
 
 type EventHubCaptureDescriptionDestinationOutput struct{ *pulumi.OutputState }
@@ -1260,7 +1260,7 @@ func (i EventHubNamespaceIdentityArgs) ToEventHubNamespaceIdentityPtrOutput() Ev
 }
 
 func (i EventHubNamespaceIdentityArgs) ToEventHubNamespaceIdentityPtrOutputWithContext(ctx context.Context) EventHubNamespaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceIdentityOutput).ToEventHubNamespaceIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceIdentityOutput).ToEventHubNamespaceIdentityPtrOutput()
 }
 
 // EventHubNamespaceIdentityPtrInput is an input type that accepts EventHubNamespaceIdentityArgs, EventHubNamespaceIdentityPtr and EventHubNamespaceIdentityPtrOutput values.
@@ -1293,7 +1293,7 @@ func (i *eventHubNamespaceIdentityPtrType) ToEventHubNamespaceIdentityPtrOutput(
 }
 
 func (i *eventHubNamespaceIdentityPtrType) ToEventHubNamespaceIdentityPtrOutputWithContext(ctx context.Context) EventHubNamespaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceIdentityOutput).ToEventHubNamespaceIdentityPtrOutput()
 }
 
 type EventHubNamespaceIdentityOutput struct{ *pulumi.OutputState }
@@ -1429,7 +1429,7 @@ func (i EventHubNamespaceNetworkRulesetsArgs) ToEventHubNamespaceNetworkRulesets
 }
 
 func (i EventHubNamespaceNetworkRulesetsArgs) ToEventHubNamespaceNetworkRulesetsPtrOutputWithContext(ctx context.Context) EventHubNamespaceNetworkRulesetsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceNetworkRulesetsOutput).ToEventHubNamespaceNetworkRulesetsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceNetworkRulesetsOutput).ToEventHubNamespaceNetworkRulesetsPtrOutput()
 }
 
 // EventHubNamespaceNetworkRulesetsPtrInput is an input type that accepts EventHubNamespaceNetworkRulesetsArgs, EventHubNamespaceNetworkRulesetsPtr and EventHubNamespaceNetworkRulesetsPtrOutput values.
@@ -1462,7 +1462,7 @@ func (i *eventHubNamespaceNetworkRulesetsPtrType) ToEventHubNamespaceNetworkRule
 }
 
 func (i *eventHubNamespaceNetworkRulesetsPtrType) ToEventHubNamespaceNetworkRulesetsPtrOutputWithContext(ctx context.Context) EventHubNamespaceNetworkRulesetsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceNetworkRulesetsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceNetworkRulesetsOutput).ToEventHubNamespaceNetworkRulesetsPtrOutput()
 }
 
 type EventHubNamespaceNetworkRulesetsOutput struct{ *pulumi.OutputState }
@@ -1850,7 +1850,7 @@ func (i EventSubscriptionAdvancedFilterArgs) ToEventSubscriptionAdvancedFilterPt
 }
 
 func (i EventSubscriptionAdvancedFilterArgs) ToEventSubscriptionAdvancedFilterPtrOutputWithContext(ctx context.Context) EventSubscriptionAdvancedFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAdvancedFilterOutput).ToEventSubscriptionAdvancedFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAdvancedFilterOutput).ToEventSubscriptionAdvancedFilterPtrOutput()
 }
 
 // EventSubscriptionAdvancedFilterPtrInput is an input type that accepts EventSubscriptionAdvancedFilterArgs, EventSubscriptionAdvancedFilterPtr and EventSubscriptionAdvancedFilterPtrOutput values.
@@ -1883,7 +1883,7 @@ func (i *eventSubscriptionAdvancedFilterPtrType) ToEventSubscriptionAdvancedFilt
 }
 
 func (i *eventSubscriptionAdvancedFilterPtrType) ToEventSubscriptionAdvancedFilterPtrOutputWithContext(ctx context.Context) EventSubscriptionAdvancedFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAdvancedFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAdvancedFilterOutput).ToEventSubscriptionAdvancedFilterPtrOutput()
 }
 
 type EventSubscriptionAdvancedFilterOutput struct{ *pulumi.OutputState }
@@ -3446,7 +3446,7 @@ func (i EventSubscriptionAzureFunctionEndpointArgs) ToEventSubscriptionAzureFunc
 }
 
 func (i EventSubscriptionAzureFunctionEndpointArgs) ToEventSubscriptionAzureFunctionEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionAzureFunctionEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAzureFunctionEndpointOutput).ToEventSubscriptionAzureFunctionEndpointPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAzureFunctionEndpointOutput).ToEventSubscriptionAzureFunctionEndpointPtrOutput()
 }
 
 // EventSubscriptionAzureFunctionEndpointPtrInput is an input type that accepts EventSubscriptionAzureFunctionEndpointArgs, EventSubscriptionAzureFunctionEndpointPtr and EventSubscriptionAzureFunctionEndpointPtrOutput values.
@@ -3479,7 +3479,7 @@ func (i *eventSubscriptionAzureFunctionEndpointPtrType) ToEventSubscriptionAzure
 }
 
 func (i *eventSubscriptionAzureFunctionEndpointPtrType) ToEventSubscriptionAzureFunctionEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionAzureFunctionEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAzureFunctionEndpointPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionAzureFunctionEndpointOutput).ToEventSubscriptionAzureFunctionEndpointPtrOutput()
 }
 
 type EventSubscriptionAzureFunctionEndpointOutput struct{ *pulumi.OutputState }
@@ -3607,7 +3607,7 @@ func (i EventSubscriptionEventhubEndpointArgs) ToEventSubscriptionEventhubEndpoi
 }
 
 func (i EventSubscriptionEventhubEndpointArgs) ToEventSubscriptionEventhubEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionEventhubEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionEventhubEndpointOutput).ToEventSubscriptionEventhubEndpointPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionEventhubEndpointOutput).ToEventSubscriptionEventhubEndpointPtrOutput()
 }
 
 // EventSubscriptionEventhubEndpointPtrInput is an input type that accepts EventSubscriptionEventhubEndpointArgs, EventSubscriptionEventhubEndpointPtr and EventSubscriptionEventhubEndpointPtrOutput values.
@@ -3640,7 +3640,7 @@ func (i *eventSubscriptionEventhubEndpointPtrType) ToEventSubscriptionEventhubEn
 }
 
 func (i *eventSubscriptionEventhubEndpointPtrType) ToEventSubscriptionEventhubEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionEventhubEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionEventhubEndpointPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionEventhubEndpointOutput).ToEventSubscriptionEventhubEndpointPtrOutput()
 }
 
 type EventSubscriptionEventhubEndpointOutput struct{ *pulumi.OutputState }
@@ -3738,7 +3738,7 @@ func (i EventSubscriptionHybridConnectionEndpointArgs) ToEventSubscriptionHybrid
 }
 
 func (i EventSubscriptionHybridConnectionEndpointArgs) ToEventSubscriptionHybridConnectionEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionHybridConnectionEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionHybridConnectionEndpointOutput).ToEventSubscriptionHybridConnectionEndpointPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionHybridConnectionEndpointOutput).ToEventSubscriptionHybridConnectionEndpointPtrOutput()
 }
 
 // EventSubscriptionHybridConnectionEndpointPtrInput is an input type that accepts EventSubscriptionHybridConnectionEndpointArgs, EventSubscriptionHybridConnectionEndpointPtr and EventSubscriptionHybridConnectionEndpointPtrOutput values.
@@ -3771,7 +3771,7 @@ func (i *eventSubscriptionHybridConnectionEndpointPtrType) ToEventSubscriptionHy
 }
 
 func (i *eventSubscriptionHybridConnectionEndpointPtrType) ToEventSubscriptionHybridConnectionEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionHybridConnectionEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionHybridConnectionEndpointPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionHybridConnectionEndpointOutput).ToEventSubscriptionHybridConnectionEndpointPtrOutput()
 }
 
 type EventSubscriptionHybridConnectionEndpointOutput struct{ *pulumi.OutputState }
@@ -3875,7 +3875,7 @@ func (i EventSubscriptionRetryPolicyArgs) ToEventSubscriptionRetryPolicyPtrOutpu
 }
 
 func (i EventSubscriptionRetryPolicyArgs) ToEventSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) EventSubscriptionRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionRetryPolicyOutput).ToEventSubscriptionRetryPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionRetryPolicyOutput).ToEventSubscriptionRetryPolicyPtrOutput()
 }
 
 // EventSubscriptionRetryPolicyPtrInput is an input type that accepts EventSubscriptionRetryPolicyArgs, EventSubscriptionRetryPolicyPtr and EventSubscriptionRetryPolicyPtrOutput values.
@@ -3908,7 +3908,7 @@ func (i *eventSubscriptionRetryPolicyPtrType) ToEventSubscriptionRetryPolicyPtrO
 }
 
 func (i *eventSubscriptionRetryPolicyPtrType) ToEventSubscriptionRetryPolicyPtrOutputWithContext(ctx context.Context) EventSubscriptionRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionRetryPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionRetryPolicyOutput).ToEventSubscriptionRetryPolicyPtrOutput()
 }
 
 type EventSubscriptionRetryPolicyOutput struct{ *pulumi.OutputState }
@@ -4025,7 +4025,7 @@ func (i EventSubscriptionStorageBlobDeadLetterDestinationArgs) ToEventSubscripti
 }
 
 func (i EventSubscriptionStorageBlobDeadLetterDestinationArgs) ToEventSubscriptionStorageBlobDeadLetterDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionStorageBlobDeadLetterDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageBlobDeadLetterDestinationOutput).ToEventSubscriptionStorageBlobDeadLetterDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageBlobDeadLetterDestinationOutput).ToEventSubscriptionStorageBlobDeadLetterDestinationPtrOutput()
 }
 
 // EventSubscriptionStorageBlobDeadLetterDestinationPtrInput is an input type that accepts EventSubscriptionStorageBlobDeadLetterDestinationArgs, EventSubscriptionStorageBlobDeadLetterDestinationPtr and EventSubscriptionStorageBlobDeadLetterDestinationPtrOutput values.
@@ -4058,7 +4058,7 @@ func (i *eventSubscriptionStorageBlobDeadLetterDestinationPtrType) ToEventSubscr
 }
 
 func (i *eventSubscriptionStorageBlobDeadLetterDestinationPtrType) ToEventSubscriptionStorageBlobDeadLetterDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionStorageBlobDeadLetterDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageBlobDeadLetterDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageBlobDeadLetterDestinationOutput).ToEventSubscriptionStorageBlobDeadLetterDestinationPtrOutput()
 }
 
 type EventSubscriptionStorageBlobDeadLetterDestinationOutput struct{ *pulumi.OutputState }
@@ -4177,7 +4177,7 @@ func (i EventSubscriptionStorageQueueEndpointArgs) ToEventSubscriptionStorageQue
 }
 
 func (i EventSubscriptionStorageQueueEndpointArgs) ToEventSubscriptionStorageQueueEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionStorageQueueEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageQueueEndpointOutput).ToEventSubscriptionStorageQueueEndpointPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageQueueEndpointOutput).ToEventSubscriptionStorageQueueEndpointPtrOutput()
 }
 
 // EventSubscriptionStorageQueueEndpointPtrInput is an input type that accepts EventSubscriptionStorageQueueEndpointArgs, EventSubscriptionStorageQueueEndpointPtr and EventSubscriptionStorageQueueEndpointPtrOutput values.
@@ -4210,7 +4210,7 @@ func (i *eventSubscriptionStorageQueueEndpointPtrType) ToEventSubscriptionStorag
 }
 
 func (i *eventSubscriptionStorageQueueEndpointPtrType) ToEventSubscriptionStorageQueueEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionStorageQueueEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageQueueEndpointPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionStorageQueueEndpointOutput).ToEventSubscriptionStorageQueueEndpointPtrOutput()
 }
 
 type EventSubscriptionStorageQueueEndpointOutput struct{ *pulumi.OutputState }
@@ -4331,7 +4331,7 @@ func (i EventSubscriptionSubjectFilterArgs) ToEventSubscriptionSubjectFilterPtrO
 }
 
 func (i EventSubscriptionSubjectFilterArgs) ToEventSubscriptionSubjectFilterPtrOutputWithContext(ctx context.Context) EventSubscriptionSubjectFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionSubjectFilterOutput).ToEventSubscriptionSubjectFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionSubjectFilterOutput).ToEventSubscriptionSubjectFilterPtrOutput()
 }
 
 // EventSubscriptionSubjectFilterPtrInput is an input type that accepts EventSubscriptionSubjectFilterArgs, EventSubscriptionSubjectFilterPtr and EventSubscriptionSubjectFilterPtrOutput values.
@@ -4364,7 +4364,7 @@ func (i *eventSubscriptionSubjectFilterPtrType) ToEventSubscriptionSubjectFilter
 }
 
 func (i *eventSubscriptionSubjectFilterPtrType) ToEventSubscriptionSubjectFilterPtrOutputWithContext(ctx context.Context) EventSubscriptionSubjectFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionSubjectFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionSubjectFilterOutput).ToEventSubscriptionSubjectFilterPtrOutput()
 }
 
 type EventSubscriptionSubjectFilterOutput struct{ *pulumi.OutputState }
@@ -4512,7 +4512,7 @@ func (i EventSubscriptionWebhookEndpointArgs) ToEventSubscriptionWebhookEndpoint
 }
 
 func (i EventSubscriptionWebhookEndpointArgs) ToEventSubscriptionWebhookEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionWebhookEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionWebhookEndpointOutput).ToEventSubscriptionWebhookEndpointPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionWebhookEndpointOutput).ToEventSubscriptionWebhookEndpointPtrOutput()
 }
 
 // EventSubscriptionWebhookEndpointPtrInput is an input type that accepts EventSubscriptionWebhookEndpointArgs, EventSubscriptionWebhookEndpointPtr and EventSubscriptionWebhookEndpointPtrOutput values.
@@ -4545,7 +4545,7 @@ func (i *eventSubscriptionWebhookEndpointPtrType) ToEventSubscriptionWebhookEndp
 }
 
 func (i *eventSubscriptionWebhookEndpointPtrType) ToEventSubscriptionWebhookEndpointPtrOutputWithContext(ctx context.Context) EventSubscriptionWebhookEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionWebhookEndpointPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionWebhookEndpointOutput).ToEventSubscriptionWebhookEndpointPtrOutput()
 }
 
 type EventSubscriptionWebhookEndpointOutput struct{ *pulumi.OutputState }
@@ -4750,7 +4750,7 @@ func (i SubscriptionRuleCorrelationFilterArgs) ToSubscriptionRuleCorrelationFilt
 }
 
 func (i SubscriptionRuleCorrelationFilterArgs) ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx context.Context) SubscriptionRuleCorrelationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutput()
 }
 
 // SubscriptionRuleCorrelationFilterPtrInput is an input type that accepts SubscriptionRuleCorrelationFilterArgs, SubscriptionRuleCorrelationFilterPtr and SubscriptionRuleCorrelationFilterPtrOutput values.
@@ -4783,7 +4783,7 @@ func (i *subscriptionRuleCorrelationFilterPtrType) ToSubscriptionRuleCorrelation
 }
 
 func (i *subscriptionRuleCorrelationFilterPtrType) ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx context.Context) SubscriptionRuleCorrelationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutput()
 }
 
 type SubscriptionRuleCorrelationFilterOutput struct{ *pulumi.OutputState }

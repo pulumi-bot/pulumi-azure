@@ -254,16 +254,31 @@ type EventHubAuthorizationRuleInput interface {
 	ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput
 }
 
-func (EventHubAuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubAuthorizationRule)(nil)).Elem()
+func (*EventHubAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubAuthorizationRule)(nil))
 }
 
-func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput {
+func (i *EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput {
 	return i.ToEventHubAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
+func (i *EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRuleOutput)
+}
+
+func (i *EventHubAuthorizationRule) ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput {
+	return i.ToEventHubAuthorizationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *EventHubAuthorizationRule) ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRulePtrOutput)
+}
+
+type EventHubAuthorizationRulePtrInput interface {
+	pulumi.Input
+
+	ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput
+	ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput
 }
 
 type EventHubAuthorizationRuleOutput struct {
@@ -271,7 +286,7 @@ type EventHubAuthorizationRuleOutput struct {
 }
 
 func (EventHubAuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubAuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventHubAuthorizationRule)(nil))
 }
 
 func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutput() EventHubAuthorizationRuleOutput {
@@ -282,6 +297,23 @@ func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutputWithCo
 	return o
 }
 
+type EventHubAuthorizationRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubAuthorizationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubAuthorizationRule)(nil))
+}
+
+func (o EventHubAuthorizationRulePtrOutput) ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput {
+	return o
+}
+
+func (o EventHubAuthorizationRulePtrOutput) ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventHubAuthorizationRuleOutput{})
+	pulumi.RegisterOutputType(EventHubAuthorizationRulePtrOutput{})
 }

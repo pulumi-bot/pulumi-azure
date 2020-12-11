@@ -250,16 +250,31 @@ type CacheBlobTargetInput interface {
 	ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput
 }
 
-func (CacheBlobTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*CacheBlobTarget)(nil)).Elem()
+func (*CacheBlobTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheBlobTarget)(nil))
 }
 
-func (i CacheBlobTarget) ToCacheBlobTargetOutput() CacheBlobTargetOutput {
+func (i *CacheBlobTarget) ToCacheBlobTargetOutput() CacheBlobTargetOutput {
 	return i.ToCacheBlobTargetOutputWithContext(context.Background())
 }
 
-func (i CacheBlobTarget) ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput {
+func (i *CacheBlobTarget) ToCacheBlobTargetOutputWithContext(ctx context.Context) CacheBlobTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CacheBlobTargetOutput)
+}
+
+func (i *CacheBlobTarget) ToCacheBlobTargetPtrOutput() CacheBlobTargetPtrOutput {
+	return i.ToCacheBlobTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *CacheBlobTarget) ToCacheBlobTargetPtrOutputWithContext(ctx context.Context) CacheBlobTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheBlobTargetPtrOutput)
+}
+
+type CacheBlobTargetPtrInput interface {
+	pulumi.Input
+
+	ToCacheBlobTargetPtrOutput() CacheBlobTargetPtrOutput
+	ToCacheBlobTargetPtrOutputWithContext(ctx context.Context) CacheBlobTargetPtrOutput
 }
 
 type CacheBlobTargetOutput struct {
@@ -267,7 +282,7 @@ type CacheBlobTargetOutput struct {
 }
 
 func (CacheBlobTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CacheBlobTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*CacheBlobTarget)(nil))
 }
 
 func (o CacheBlobTargetOutput) ToCacheBlobTargetOutput() CacheBlobTargetOutput {
@@ -278,6 +293,23 @@ func (o CacheBlobTargetOutput) ToCacheBlobTargetOutputWithContext(ctx context.Co
 	return o
 }
 
+type CacheBlobTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CacheBlobTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheBlobTarget)(nil))
+}
+
+func (o CacheBlobTargetPtrOutput) ToCacheBlobTargetPtrOutput() CacheBlobTargetPtrOutput {
+	return o
+}
+
+func (o CacheBlobTargetPtrOutput) ToCacheBlobTargetPtrOutputWithContext(ctx context.Context) CacheBlobTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CacheBlobTargetOutput{})
+	pulumi.RegisterOutputType(CacheBlobTargetPtrOutput{})
 }

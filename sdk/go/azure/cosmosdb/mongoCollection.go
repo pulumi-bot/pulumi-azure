@@ -223,16 +223,31 @@ type MongoCollectionInput interface {
 	ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput
 }
 
-func (MongoCollection) ElementType() reflect.Type {
-	return reflect.TypeOf((*MongoCollection)(nil)).Elem()
+func (*MongoCollection) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoCollection)(nil))
 }
 
-func (i MongoCollection) ToMongoCollectionOutput() MongoCollectionOutput {
+func (i *MongoCollection) ToMongoCollectionOutput() MongoCollectionOutput {
 	return i.ToMongoCollectionOutputWithContext(context.Background())
 }
 
-func (i MongoCollection) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
+func (i *MongoCollection) ToMongoCollectionOutputWithContext(ctx context.Context) MongoCollectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionOutput)
+}
+
+func (i *MongoCollection) ToMongoCollectionPtrOutput() MongoCollectionPtrOutput {
+	return i.ToMongoCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i *MongoCollection) ToMongoCollectionPtrOutputWithContext(ctx context.Context) MongoCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionPtrOutput)
+}
+
+type MongoCollectionPtrInput interface {
+	pulumi.Input
+
+	ToMongoCollectionPtrOutput() MongoCollectionPtrOutput
+	ToMongoCollectionPtrOutputWithContext(ctx context.Context) MongoCollectionPtrOutput
 }
 
 type MongoCollectionOutput struct {
@@ -240,7 +255,7 @@ type MongoCollectionOutput struct {
 }
 
 func (MongoCollectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MongoCollectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*MongoCollection)(nil))
 }
 
 func (o MongoCollectionOutput) ToMongoCollectionOutput() MongoCollectionOutput {
@@ -251,6 +266,23 @@ func (o MongoCollectionOutput) ToMongoCollectionOutputWithContext(ctx context.Co
 	return o
 }
 
+type MongoCollectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoCollection)(nil))
+}
+
+func (o MongoCollectionPtrOutput) ToMongoCollectionPtrOutput() MongoCollectionPtrOutput {
+	return o
+}
+
+func (o MongoCollectionPtrOutput) ToMongoCollectionPtrOutputWithContext(ctx context.Context) MongoCollectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MongoCollectionOutput{})
+	pulumi.RegisterOutputType(MongoCollectionPtrOutput{})
 }

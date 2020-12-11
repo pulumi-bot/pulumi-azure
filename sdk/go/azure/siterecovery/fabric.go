@@ -174,16 +174,31 @@ type FabricInput interface {
 	ToFabricOutputWithContext(ctx context.Context) FabricOutput
 }
 
-func (Fabric) ElementType() reflect.Type {
-	return reflect.TypeOf((*Fabric)(nil)).Elem()
+func (*Fabric) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fabric)(nil))
 }
 
-func (i Fabric) ToFabricOutput() FabricOutput {
+func (i *Fabric) ToFabricOutput() FabricOutput {
 	return i.ToFabricOutputWithContext(context.Background())
 }
 
-func (i Fabric) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
+func (i *Fabric) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FabricOutput)
+}
+
+func (i *Fabric) ToFabricPtrOutput() FabricPtrOutput {
+	return i.ToFabricPtrOutputWithContext(context.Background())
+}
+
+func (i *Fabric) ToFabricPtrOutputWithContext(ctx context.Context) FabricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FabricPtrOutput)
+}
+
+type FabricPtrInput interface {
+	pulumi.Input
+
+	ToFabricPtrOutput() FabricPtrOutput
+	ToFabricPtrOutputWithContext(ctx context.Context) FabricPtrOutput
 }
 
 type FabricOutput struct {
@@ -191,7 +206,7 @@ type FabricOutput struct {
 }
 
 func (FabricOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FabricOutput)(nil)).Elem()
+	return reflect.TypeOf((*Fabric)(nil))
 }
 
 func (o FabricOutput) ToFabricOutput() FabricOutput {
@@ -202,6 +217,23 @@ func (o FabricOutput) ToFabricOutputWithContext(ctx context.Context) FabricOutpu
 	return o
 }
 
+type FabricPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FabricPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fabric)(nil))
+}
+
+func (o FabricPtrOutput) ToFabricPtrOutput() FabricPtrOutput {
+	return o
+}
+
+func (o FabricPtrOutput) ToFabricPtrOutputWithContext(ctx context.Context) FabricPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FabricOutput{})
+	pulumi.RegisterOutputType(FabricPtrOutput{})
 }

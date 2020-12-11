@@ -191,16 +191,31 @@ type CassandraKeyspaceInput interface {
 	ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput
 }
 
-func (CassandraKeyspace) ElementType() reflect.Type {
-	return reflect.TypeOf((*CassandraKeyspace)(nil)).Elem()
+func (*CassandraKeyspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraKeyspace)(nil))
 }
 
-func (i CassandraKeyspace) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
+func (i *CassandraKeyspace) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
 	return i.ToCassandraKeyspaceOutputWithContext(context.Background())
 }
 
-func (i CassandraKeyspace) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
+func (i *CassandraKeyspace) ToCassandraKeyspaceOutputWithContext(ctx context.Context) CassandraKeyspaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceOutput)
+}
+
+func (i *CassandraKeyspace) ToCassandraKeyspacePtrOutput() CassandraKeyspacePtrOutput {
+	return i.ToCassandraKeyspacePtrOutputWithContext(context.Background())
+}
+
+func (i *CassandraKeyspace) ToCassandraKeyspacePtrOutputWithContext(ctx context.Context) CassandraKeyspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspacePtrOutput)
+}
+
+type CassandraKeyspacePtrInput interface {
+	pulumi.Input
+
+	ToCassandraKeyspacePtrOutput() CassandraKeyspacePtrOutput
+	ToCassandraKeyspacePtrOutputWithContext(ctx context.Context) CassandraKeyspacePtrOutput
 }
 
 type CassandraKeyspaceOutput struct {
@@ -208,7 +223,7 @@ type CassandraKeyspaceOutput struct {
 }
 
 func (CassandraKeyspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CassandraKeyspaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*CassandraKeyspace)(nil))
 }
 
 func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutput() CassandraKeyspaceOutput {
@@ -219,6 +234,23 @@ func (o CassandraKeyspaceOutput) ToCassandraKeyspaceOutputWithContext(ctx contex
 	return o
 }
 
+type CassandraKeyspacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CassandraKeyspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CassandraKeyspace)(nil))
+}
+
+func (o CassandraKeyspacePtrOutput) ToCassandraKeyspacePtrOutput() CassandraKeyspacePtrOutput {
+	return o
+}
+
+func (o CassandraKeyspacePtrOutput) ToCassandraKeyspacePtrOutputWithContext(ctx context.Context) CassandraKeyspacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CassandraKeyspaceOutput{})
+	pulumi.RegisterOutputType(CassandraKeyspacePtrOutput{})
 }

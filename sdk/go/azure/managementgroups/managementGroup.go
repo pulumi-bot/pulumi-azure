@@ -183,16 +183,31 @@ type ManagementGroupInput interface {
 	ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput
 }
 
-func (ManagementGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementGroup)(nil)).Elem()
+func (*ManagementGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementGroup)(nil))
 }
 
-func (i ManagementGroup) ToManagementGroupOutput() ManagementGroupOutput {
+func (i *ManagementGroup) ToManagementGroupOutput() ManagementGroupOutput {
 	return i.ToManagementGroupOutputWithContext(context.Background())
 }
 
-func (i ManagementGroup) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
+func (i *ManagementGroup) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupOutput)
+}
+
+func (i *ManagementGroup) ToManagementGroupPtrOutput() ManagementGroupPtrOutput {
+	return i.ToManagementGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ManagementGroup) ToManagementGroupPtrOutputWithContext(ctx context.Context) ManagementGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupPtrOutput)
+}
+
+type ManagementGroupPtrInput interface {
+	pulumi.Input
+
+	ToManagementGroupPtrOutput() ManagementGroupPtrOutput
+	ToManagementGroupPtrOutputWithContext(ctx context.Context) ManagementGroupPtrOutput
 }
 
 type ManagementGroupOutput struct {
@@ -200,7 +215,7 @@ type ManagementGroupOutput struct {
 }
 
 func (ManagementGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagementGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagementGroup)(nil))
 }
 
 func (o ManagementGroupOutput) ToManagementGroupOutput() ManagementGroupOutput {
@@ -211,6 +226,23 @@ func (o ManagementGroupOutput) ToManagementGroupOutputWithContext(ctx context.Co
 	return o
 }
 
+type ManagementGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagementGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementGroup)(nil))
+}
+
+func (o ManagementGroupPtrOutput) ToManagementGroupPtrOutput() ManagementGroupPtrOutput {
+	return o
+}
+
+func (o ManagementGroupPtrOutput) ToManagementGroupPtrOutputWithContext(ctx context.Context) ManagementGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagementGroupOutput{})
+	pulumi.RegisterOutputType(ManagementGroupPtrOutput{})
 }

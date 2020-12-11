@@ -184,16 +184,31 @@ type ChannelTeamsInput interface {
 	ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput
 }
 
-func (ChannelTeams) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelTeams)(nil)).Elem()
+func (*ChannelTeams) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelTeams)(nil))
 }
 
-func (i ChannelTeams) ToChannelTeamsOutput() ChannelTeamsOutput {
+func (i *ChannelTeams) ToChannelTeamsOutput() ChannelTeamsOutput {
 	return i.ToChannelTeamsOutputWithContext(context.Background())
 }
 
-func (i ChannelTeams) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
+func (i *ChannelTeams) ToChannelTeamsOutputWithContext(ctx context.Context) ChannelTeamsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelTeamsOutput)
+}
+
+func (i *ChannelTeams) ToChannelTeamsPtrOutput() ChannelTeamsPtrOutput {
+	return i.ToChannelTeamsPtrOutputWithContext(context.Background())
+}
+
+func (i *ChannelTeams) ToChannelTeamsPtrOutputWithContext(ctx context.Context) ChannelTeamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelTeamsPtrOutput)
+}
+
+type ChannelTeamsPtrInput interface {
+	pulumi.Input
+
+	ToChannelTeamsPtrOutput() ChannelTeamsPtrOutput
+	ToChannelTeamsPtrOutputWithContext(ctx context.Context) ChannelTeamsPtrOutput
 }
 
 type ChannelTeamsOutput struct {
@@ -201,7 +216,7 @@ type ChannelTeamsOutput struct {
 }
 
 func (ChannelTeamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelTeamsOutput)(nil)).Elem()
+	return reflect.TypeOf((*ChannelTeams)(nil))
 }
 
 func (o ChannelTeamsOutput) ToChannelTeamsOutput() ChannelTeamsOutput {
@@ -212,6 +227,23 @@ func (o ChannelTeamsOutput) ToChannelTeamsOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ChannelTeamsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelTeamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelTeams)(nil))
+}
+
+func (o ChannelTeamsPtrOutput) ToChannelTeamsPtrOutput() ChannelTeamsPtrOutput {
+	return o
+}
+
+func (o ChannelTeamsPtrOutput) ToChannelTeamsPtrOutputWithContext(ctx context.Context) ChannelTeamsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChannelTeamsOutput{})
+	pulumi.RegisterOutputType(ChannelTeamsPtrOutput{})
 }

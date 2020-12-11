@@ -169,16 +169,31 @@ type MongoDatabaseInput interface {
 	ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput
 }
 
-func (MongoDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*MongoDatabase)(nil)).Elem()
+func (*MongoDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoDatabase)(nil))
 }
 
-func (i MongoDatabase) ToMongoDatabaseOutput() MongoDatabaseOutput {
+func (i *MongoDatabase) ToMongoDatabaseOutput() MongoDatabaseOutput {
 	return i.ToMongoDatabaseOutputWithContext(context.Background())
 }
 
-func (i MongoDatabase) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
+func (i *MongoDatabase) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseOutput)
+}
+
+func (i *MongoDatabase) ToMongoDatabasePtrOutput() MongoDatabasePtrOutput {
+	return i.ToMongoDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i *MongoDatabase) ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabasePtrOutput)
+}
+
+type MongoDatabasePtrInput interface {
+	pulumi.Input
+
+	ToMongoDatabasePtrOutput() MongoDatabasePtrOutput
+	ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput
 }
 
 type MongoDatabaseOutput struct {
@@ -186,7 +201,7 @@ type MongoDatabaseOutput struct {
 }
 
 func (MongoDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MongoDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*MongoDatabase)(nil))
 }
 
 func (o MongoDatabaseOutput) ToMongoDatabaseOutput() MongoDatabaseOutput {
@@ -197,6 +212,23 @@ func (o MongoDatabaseOutput) ToMongoDatabaseOutputWithContext(ctx context.Contex
 	return o
 }
 
+type MongoDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoDatabase)(nil))
+}
+
+func (o MongoDatabasePtrOutput) ToMongoDatabasePtrOutput() MongoDatabasePtrOutput {
+	return o
+}
+
+func (o MongoDatabasePtrOutput) ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MongoDatabaseOutput{})
+	pulumi.RegisterOutputType(MongoDatabasePtrOutput{})
 }
