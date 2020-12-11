@@ -207,15 +207,15 @@ type GetSystemTopicInput interface {
 	ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput
 }
 
-func (GetSystemTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSystemTopic)(nil)).Elem()
+func (*GetSystemTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemTopic)(nil))
 }
 
-func (i GetSystemTopic) ToGetSystemTopicOutput() GetSystemTopicOutput {
+func (i *GetSystemTopic) ToGetSystemTopicOutput() GetSystemTopicOutput {
 	return i.ToGetSystemTopicOutputWithContext(context.Background())
 }
 
-func (i GetSystemTopic) ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput {
+func (i *GetSystemTopic) ToGetSystemTopicOutputWithContext(ctx context.Context) GetSystemTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetSystemTopicOutput)
 }
 
@@ -224,7 +224,7 @@ type GetSystemTopicOutput struct {
 }
 
 func (GetSystemTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSystemTopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*GetSystemTopic)(nil))
 }
 
 func (o GetSystemTopicOutput) ToGetSystemTopicOutput() GetSystemTopicOutput {
