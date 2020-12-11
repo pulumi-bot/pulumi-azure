@@ -340,6 +340,13 @@ type DatasetDelimitedTextInput interface {
 	ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput
 }
 
+type DatasetDelimitedTextPtrInput interface {
+	pulumi.Input
+
+	ToDatasetDelimitedTextPtrOutput() DatasetDelimitedTextPtrOutput
+	ToDatasetDelimitedTextPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextPtrOutput
+}
+
 func (DatasetDelimitedText) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetDelimitedText)(nil)).Elem()
 }
@@ -350,6 +357,14 @@ func (i DatasetDelimitedText) ToDatasetDelimitedTextOutput() DatasetDelimitedTex
 
 func (i DatasetDelimitedText) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextOutput)
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextPtrOutput() DatasetDelimitedTextPtrOutput {
+	return i.ToDatasetDelimitedTextPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetDelimitedText) ToDatasetDelimitedTextPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextPtrOutput)
 }
 
 type DatasetDelimitedTextOutput struct {
@@ -368,6 +383,23 @@ func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutputWithContext(ctx 
 	return o
 }
 
+type DatasetDelimitedTextPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetDelimitedTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetDelimitedText)(nil)).Elem()
+}
+
+func (o DatasetDelimitedTextPtrOutput) ToDatasetDelimitedTextPtrOutput() DatasetDelimitedTextPtrOutput {
+	return o
+}
+
+func (o DatasetDelimitedTextPtrOutput) ToDatasetDelimitedTextPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetDelimitedTextOutput{})
+	pulumi.RegisterOutputType(DatasetDelimitedTextPtrOutput{})
 }

@@ -106,6 +106,13 @@ type ProviderInput interface {
 	ToProviderOutputWithContext(ctx context.Context) ProviderOutput
 }
 
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
 func (Provider) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil)).Elem()
 }
@@ -116,6 +123,14 @@ func (i Provider) ToProviderOutput() ProviderOutput {
 
 func (i Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
+}
+
+func (i Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
 type ProviderOutput struct {
@@ -134,6 +149,23 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil)).Elem()
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

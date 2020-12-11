@@ -272,6 +272,13 @@ type VirtualNetworkInput interface {
 	ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput
 }
 
+type VirtualNetworkPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkPtrOutput() VirtualNetworkPtrOutput
+	ToVirtualNetworkPtrOutputWithContext(ctx context.Context) VirtualNetworkPtrOutput
+}
+
 func (VirtualNetwork) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetwork)(nil)).Elem()
 }
@@ -282,6 +289,14 @@ func (i VirtualNetwork) ToVirtualNetworkOutput() VirtualNetworkOutput {
 
 func (i VirtualNetwork) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkOutput)
+}
+
+func (i VirtualNetwork) ToVirtualNetworkPtrOutput() VirtualNetworkPtrOutput {
+	return i.ToVirtualNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetwork) ToVirtualNetworkPtrOutputWithContext(ctx context.Context) VirtualNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPtrOutput)
 }
 
 type VirtualNetworkOutput struct {
@@ -300,6 +315,23 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
+type VirtualNetworkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetwork)(nil)).Elem()
+}
+
+func (o VirtualNetworkPtrOutput) ToVirtualNetworkPtrOutput() VirtualNetworkPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkPtrOutput) ToVirtualNetworkPtrOutputWithContext(ctx context.Context) VirtualNetworkPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualNetworkOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkPtrOutput{})
 }

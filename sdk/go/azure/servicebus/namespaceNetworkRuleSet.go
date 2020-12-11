@@ -215,6 +215,13 @@ type NamespaceNetworkRuleSetInput interface {
 	ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput
 }
 
+type NamespaceNetworkRuleSetPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceNetworkRuleSetPtrOutput() NamespaceNetworkRuleSetPtrOutput
+	ToNamespaceNetworkRuleSetPtrOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetPtrOutput
+}
+
 func (NamespaceNetworkRuleSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamespaceNetworkRuleSet)(nil)).Elem()
 }
@@ -225,6 +232,14 @@ func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutput() NamespaceNetw
 
 func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceNetworkRuleSetOutput)
+}
+
+func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetPtrOutput() NamespaceNetworkRuleSetPtrOutput {
+	return i.ToNamespaceNetworkRuleSetPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetPtrOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceNetworkRuleSetPtrOutput)
 }
 
 type NamespaceNetworkRuleSetOutput struct {
@@ -243,6 +258,23 @@ func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutputWithContex
 	return o
 }
 
+type NamespaceNetworkRuleSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceNetworkRuleSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceNetworkRuleSet)(nil)).Elem()
+}
+
+func (o NamespaceNetworkRuleSetPtrOutput) ToNamespaceNetworkRuleSetPtrOutput() NamespaceNetworkRuleSetPtrOutput {
+	return o
+}
+
+func (o NamespaceNetworkRuleSetPtrOutput) ToNamespaceNetworkRuleSetPtrOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamespaceNetworkRuleSetOutput{})
+	pulumi.RegisterOutputType(NamespaceNetworkRuleSetPtrOutput{})
 }

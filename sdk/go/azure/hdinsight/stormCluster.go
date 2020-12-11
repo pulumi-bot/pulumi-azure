@@ -321,6 +321,13 @@ type StormClusterInput interface {
 	ToStormClusterOutputWithContext(ctx context.Context) StormClusterOutput
 }
 
+type StormClusterPtrInput interface {
+	pulumi.Input
+
+	ToStormClusterPtrOutput() StormClusterPtrOutput
+	ToStormClusterPtrOutputWithContext(ctx context.Context) StormClusterPtrOutput
+}
+
 func (StormCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*StormCluster)(nil)).Elem()
 }
@@ -331,6 +338,14 @@ func (i StormCluster) ToStormClusterOutput() StormClusterOutput {
 
 func (i StormCluster) ToStormClusterOutputWithContext(ctx context.Context) StormClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StormClusterOutput)
+}
+
+func (i StormCluster) ToStormClusterPtrOutput() StormClusterPtrOutput {
+	return i.ToStormClusterPtrOutputWithContext(context.Background())
+}
+
+func (i StormCluster) ToStormClusterPtrOutputWithContext(ctx context.Context) StormClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterPtrOutput)
 }
 
 type StormClusterOutput struct {
@@ -349,6 +364,23 @@ func (o StormClusterOutput) ToStormClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+type StormClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StormClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StormCluster)(nil)).Elem()
+}
+
+func (o StormClusterPtrOutput) ToStormClusterPtrOutput() StormClusterPtrOutput {
+	return o
+}
+
+func (o StormClusterPtrOutput) ToStormClusterPtrOutputWithContext(ctx context.Context) StormClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StormClusterOutput{})
+	pulumi.RegisterOutputType(StormClusterPtrOutput{})
 }

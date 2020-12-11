@@ -258,6 +258,13 @@ type ElasticPoolInput interface {
 	ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput
 }
 
+type ElasticPoolPtrInput interface {
+	pulumi.Input
+
+	ToElasticPoolPtrOutput() ElasticPoolPtrOutput
+	ToElasticPoolPtrOutputWithContext(ctx context.Context) ElasticPoolPtrOutput
+}
+
 func (ElasticPool) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElasticPool)(nil)).Elem()
 }
@@ -268,6 +275,14 @@ func (i ElasticPool) ToElasticPoolOutput() ElasticPoolOutput {
 
 func (i ElasticPool) ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolOutput)
+}
+
+func (i ElasticPool) ToElasticPoolPtrOutput() ElasticPoolPtrOutput {
+	return i.ToElasticPoolPtrOutputWithContext(context.Background())
+}
+
+func (i ElasticPool) ToElasticPoolPtrOutputWithContext(ctx context.Context) ElasticPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolPtrOutput)
 }
 
 type ElasticPoolOutput struct {
@@ -286,6 +301,23 @@ func (o ElasticPoolOutput) ToElasticPoolOutputWithContext(ctx context.Context) E
 	return o
 }
 
+type ElasticPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElasticPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticPool)(nil)).Elem()
+}
+
+func (o ElasticPoolPtrOutput) ToElasticPoolPtrOutput() ElasticPoolPtrOutput {
+	return o
+}
+
+func (o ElasticPoolPtrOutput) ToElasticPoolPtrOutputWithContext(ctx context.Context) ElasticPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElasticPoolOutput{})
+	pulumi.RegisterOutputType(ElasticPoolPtrOutput{})
 }

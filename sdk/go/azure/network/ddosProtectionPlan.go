@@ -163,6 +163,13 @@ type DdosProtectionPlanInput interface {
 	ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput
 }
 
+type DdosProtectionPlanPtrInput interface {
+	pulumi.Input
+
+	ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput
+	ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput
+}
+
 func (DdosProtectionPlan) ElementType() reflect.Type {
 	return reflect.TypeOf((*DdosProtectionPlan)(nil)).Elem()
 }
@@ -173,6 +180,14 @@ func (i DdosProtectionPlan) ToDdosProtectionPlanOutput() DdosProtectionPlanOutpu
 
 func (i DdosProtectionPlan) ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosProtectionPlanOutput)
+}
+
+func (i DdosProtectionPlan) ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput {
+	return i.ToDdosProtectionPlanPtrOutputWithContext(context.Background())
+}
+
+func (i DdosProtectionPlan) ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosProtectionPlanPtrOutput)
 }
 
 type DdosProtectionPlanOutput struct {
@@ -191,6 +206,23 @@ func (o DdosProtectionPlanOutput) ToDdosProtectionPlanOutputWithContext(ctx cont
 	return o
 }
 
+type DdosProtectionPlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosProtectionPlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosProtectionPlan)(nil)).Elem()
+}
+
+func (o DdosProtectionPlanPtrOutput) ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput {
+	return o
+}
+
+func (o DdosProtectionPlanPtrOutput) ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DdosProtectionPlanOutput{})
+	pulumi.RegisterOutputType(DdosProtectionPlanPtrOutput{})
 }

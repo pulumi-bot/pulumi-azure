@@ -194,7 +194,7 @@ func (i CacheRedisConfigurationArgs) ToCacheRedisConfigurationPtrOutput() CacheR
 }
 
 func (i CacheRedisConfigurationArgs) ToCacheRedisConfigurationPtrOutputWithContext(ctx context.Context) CacheRedisConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CacheRedisConfigurationOutput).ToCacheRedisConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CacheRedisConfigurationOutput).ToCacheRedisConfigurationPtrOutput()
 }
 
 // CacheRedisConfigurationPtrInput is an input type that accepts CacheRedisConfigurationArgs, CacheRedisConfigurationPtr and CacheRedisConfigurationPtrOutput values.
@@ -227,7 +227,7 @@ func (i *cacheRedisConfigurationPtrType) ToCacheRedisConfigurationPtrOutput() Ca
 }
 
 func (i *cacheRedisConfigurationPtrType) ToCacheRedisConfigurationPtrOutputWithContext(ctx context.Context) CacheRedisConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CacheRedisConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CacheRedisConfigurationOutput).ToCacheRedisConfigurationPtrOutput()
 }
 
 type CacheRedisConfigurationOutput struct{ *pulumi.OutputState }

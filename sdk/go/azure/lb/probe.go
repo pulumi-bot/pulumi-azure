@@ -229,6 +229,13 @@ type ProbeInput interface {
 	ToProbeOutputWithContext(ctx context.Context) ProbeOutput
 }
 
+type ProbePtrInput interface {
+	pulumi.Input
+
+	ToProbePtrOutput() ProbePtrOutput
+	ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOutput
+}
+
 func (Probe) ElementType() reflect.Type {
 	return reflect.TypeOf((*Probe)(nil)).Elem()
 }
@@ -239,6 +246,14 @@ func (i Probe) ToProbeOutput() ProbeOutput {
 
 func (i Probe) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProbeOutput)
+}
+
+func (i Probe) ToProbePtrOutput() ProbePtrOutput {
+	return i.ToProbePtrOutputWithContext(context.Background())
+}
+
+func (i Probe) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbePtrOutput)
 }
 
 type ProbeOutput struct {
@@ -257,6 +272,23 @@ func (o ProbeOutput) ToProbeOutputWithContext(ctx context.Context) ProbeOutput {
 	return o
 }
 
+type ProbePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Probe)(nil)).Elem()
+}
+
+func (o ProbePtrOutput) ToProbePtrOutput() ProbePtrOutput {
+	return o
+}
+
+func (o ProbePtrOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProbeOutput{})
+	pulumi.RegisterOutputType(ProbePtrOutput{})
 }

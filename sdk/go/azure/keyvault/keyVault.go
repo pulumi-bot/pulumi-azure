@@ -333,6 +333,13 @@ type KeyVaultInput interface {
 	ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput
 }
 
+type KeyVaultPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultPtrOutput() KeyVaultPtrOutput
+	ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput
+}
+
 func (KeyVault) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyVault)(nil)).Elem()
 }
@@ -343,6 +350,14 @@ func (i KeyVault) ToKeyVaultOutput() KeyVaultOutput {
 
 func (i KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultOutput)
+}
+
+func (i KeyVault) ToKeyVaultPtrOutput() KeyVaultPtrOutput {
+	return i.ToKeyVaultPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVault) ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPtrOutput)
 }
 
 type KeyVaultOutput struct {
@@ -361,6 +376,23 @@ func (o KeyVaultOutput) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaul
 	return o
 }
 
+type KeyVaultPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyVaultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVault)(nil)).Elem()
+}
+
+func (o KeyVaultPtrOutput) ToKeyVaultPtrOutput() KeyVaultPtrOutput {
+	return o
+}
+
+func (o KeyVaultPtrOutput) ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyVaultOutput{})
+	pulumi.RegisterOutputType(KeyVaultPtrOutput{})
 }

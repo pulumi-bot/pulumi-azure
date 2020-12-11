@@ -246,6 +246,13 @@ type CustomHttpsConfigurationInput interface {
 	ToCustomHttpsConfigurationOutputWithContext(ctx context.Context) CustomHttpsConfigurationOutput
 }
 
+type CustomHttpsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCustomHttpsConfigurationPtrOutput() CustomHttpsConfigurationPtrOutput
+	ToCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) CustomHttpsConfigurationPtrOutput
+}
+
 func (CustomHttpsConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomHttpsConfiguration)(nil)).Elem()
 }
@@ -256,6 +263,14 @@ func (i CustomHttpsConfiguration) ToCustomHttpsConfigurationOutput() CustomHttps
 
 func (i CustomHttpsConfiguration) ToCustomHttpsConfigurationOutputWithContext(ctx context.Context) CustomHttpsConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationOutput)
+}
+
+func (i CustomHttpsConfiguration) ToCustomHttpsConfigurationPtrOutput() CustomHttpsConfigurationPtrOutput {
+	return i.ToCustomHttpsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CustomHttpsConfiguration) ToCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) CustomHttpsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationPtrOutput)
 }
 
 type CustomHttpsConfigurationOutput struct {
@@ -274,6 +289,23 @@ func (o CustomHttpsConfigurationOutput) ToCustomHttpsConfigurationOutputWithCont
 	return o
 }
 
+type CustomHttpsConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomHttpsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHttpsConfiguration)(nil)).Elem()
+}
+
+func (o CustomHttpsConfigurationPtrOutput) ToCustomHttpsConfigurationPtrOutput() CustomHttpsConfigurationPtrOutput {
+	return o
+}
+
+func (o CustomHttpsConfigurationPtrOutput) ToCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) CustomHttpsConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomHttpsConfigurationOutput{})
+	pulumi.RegisterOutputType(CustomHttpsConfigurationPtrOutput{})
 }

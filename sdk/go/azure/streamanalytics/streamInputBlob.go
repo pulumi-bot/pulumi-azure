@@ -273,6 +273,13 @@ type StreamInputBlobInput interface {
 	ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput
 }
 
+type StreamInputBlobPtrInput interface {
+	pulumi.Input
+
+	ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput
+	ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput
+}
+
 func (StreamInputBlob) ElementType() reflect.Type {
 	return reflect.TypeOf((*StreamInputBlob)(nil)).Elem()
 }
@@ -283,6 +290,14 @@ func (i StreamInputBlob) ToStreamInputBlobOutput() StreamInputBlobOutput {
 
 func (i StreamInputBlob) ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobOutput)
+}
+
+func (i StreamInputBlob) ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput {
+	return i.ToStreamInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i StreamInputBlob) ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobPtrOutput)
 }
 
 type StreamInputBlobOutput struct {
@@ -301,6 +316,23 @@ func (o StreamInputBlobOutput) ToStreamInputBlobOutputWithContext(ctx context.Co
 	return o
 }
 
+type StreamInputBlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamInputBlob)(nil)).Elem()
+}
+
+func (o StreamInputBlobPtrOutput) ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput {
+	return o
+}
+
+func (o StreamInputBlobPtrOutput) ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StreamInputBlobOutput{})
+	pulumi.RegisterOutputType(StreamInputBlobPtrOutput{})
 }

@@ -184,6 +184,13 @@ type BackendAddressPoolInput interface {
 	ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput
 }
 
+type BackendAddressPoolPtrInput interface {
+	pulumi.Input
+
+	ToBackendAddressPoolPtrOutput() BackendAddressPoolPtrOutput
+	ToBackendAddressPoolPtrOutputWithContext(ctx context.Context) BackendAddressPoolPtrOutput
+}
+
 func (BackendAddressPool) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendAddressPool)(nil)).Elem()
 }
@@ -194,6 +201,14 @@ func (i BackendAddressPool) ToBackendAddressPoolOutput() BackendAddressPoolOutpu
 
 func (i BackendAddressPool) ToBackendAddressPoolOutputWithContext(ctx context.Context) BackendAddressPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendAddressPoolOutput)
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolPtrOutput() BackendAddressPoolPtrOutput {
+	return i.ToBackendAddressPoolPtrOutputWithContext(context.Background())
+}
+
+func (i BackendAddressPool) ToBackendAddressPoolPtrOutputWithContext(ctx context.Context) BackendAddressPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendAddressPoolPtrOutput)
 }
 
 type BackendAddressPoolOutput struct {
@@ -212,6 +227,23 @@ func (o BackendAddressPoolOutput) ToBackendAddressPoolOutputWithContext(ctx cont
 	return o
 }
 
+type BackendAddressPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendAddressPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendAddressPool)(nil)).Elem()
+}
+
+func (o BackendAddressPoolPtrOutput) ToBackendAddressPoolPtrOutput() BackendAddressPoolPtrOutput {
+	return o
+}
+
+func (o BackendAddressPoolPtrOutput) ToBackendAddressPoolPtrOutputWithContext(ctx context.Context) BackendAddressPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BackendAddressPoolOutput{})
+	pulumi.RegisterOutputType(BackendAddressPoolPtrOutput{})
 }

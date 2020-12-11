@@ -153,6 +153,13 @@ type ConnectionCertificateInput interface {
 	ToConnectionCertificateOutputWithContext(ctx context.Context) ConnectionCertificateOutput
 }
 
+type ConnectionCertificatePtrInput interface {
+	pulumi.Input
+
+	ToConnectionCertificatePtrOutput() ConnectionCertificatePtrOutput
+	ToConnectionCertificatePtrOutputWithContext(ctx context.Context) ConnectionCertificatePtrOutput
+}
+
 func (ConnectionCertificate) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionCertificate)(nil)).Elem()
 }
@@ -163,6 +170,14 @@ func (i ConnectionCertificate) ToConnectionCertificateOutput() ConnectionCertifi
 
 func (i ConnectionCertificate) ToConnectionCertificateOutputWithContext(ctx context.Context) ConnectionCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCertificateOutput)
+}
+
+func (i ConnectionCertificate) ToConnectionCertificatePtrOutput() ConnectionCertificatePtrOutput {
+	return i.ToConnectionCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCertificate) ToConnectionCertificatePtrOutputWithContext(ctx context.Context) ConnectionCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCertificatePtrOutput)
 }
 
 type ConnectionCertificateOutput struct {
@@ -181,6 +196,23 @@ func (o ConnectionCertificateOutput) ToConnectionCertificateOutputWithContext(ct
 	return o
 }
 
+type ConnectionCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCertificate)(nil)).Elem()
+}
+
+func (o ConnectionCertificatePtrOutput) ToConnectionCertificatePtrOutput() ConnectionCertificatePtrOutput {
+	return o
+}
+
+func (o ConnectionCertificatePtrOutput) ToConnectionCertificatePtrOutputWithContext(ctx context.Context) ConnectionCertificatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectionCertificateOutput{})
+	pulumi.RegisterOutputType(ConnectionCertificatePtrOutput{})
 }

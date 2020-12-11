@@ -238,6 +238,13 @@ type LinkedServiceAzureFunctionInput interface {
 	ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput
 }
 
+type LinkedServiceAzureFunctionPtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFunctionPtrOutput() LinkedServiceAzureFunctionPtrOutput
+	ToLinkedServiceAzureFunctionPtrOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionPtrOutput
+}
+
 func (LinkedServiceAzureFunction) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil)).Elem()
 }
@@ -248,6 +255,14 @@ func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutput() LinkedS
 
 func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFunctionOutput)
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionPtrOutput() LinkedServiceAzureFunctionPtrOutput {
+	return i.ToLinkedServiceAzureFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionPtrOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFunctionPtrOutput)
 }
 
 type LinkedServiceAzureFunctionOutput struct {
@@ -266,6 +281,23 @@ func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutputWith
 	return o
 }
 
+type LinkedServiceAzureFunctionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceAzureFunction)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFunctionPtrOutput) ToLinkedServiceAzureFunctionPtrOutput() LinkedServiceAzureFunctionPtrOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFunctionPtrOutput) ToLinkedServiceAzureFunctionPtrOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceAzureFunctionOutput{})
+	pulumi.RegisterOutputType(LinkedServiceAzureFunctionPtrOutput{})
 }

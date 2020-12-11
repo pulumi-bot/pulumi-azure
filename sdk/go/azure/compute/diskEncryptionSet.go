@@ -152,6 +152,13 @@ type DiskEncryptionSetInput interface {
 	ToDiskEncryptionSetOutputWithContext(ctx context.Context) DiskEncryptionSetOutput
 }
 
+type DiskEncryptionSetPtrInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionSetPtrOutput() DiskEncryptionSetPtrOutput
+	ToDiskEncryptionSetPtrOutputWithContext(ctx context.Context) DiskEncryptionSetPtrOutput
+}
+
 func (DiskEncryptionSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskEncryptionSet)(nil)).Elem()
 }
@@ -162,6 +169,14 @@ func (i DiskEncryptionSet) ToDiskEncryptionSetOutput() DiskEncryptionSetOutput {
 
 func (i DiskEncryptionSet) ToDiskEncryptionSetOutputWithContext(ctx context.Context) DiskEncryptionSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetOutput)
+}
+
+func (i DiskEncryptionSet) ToDiskEncryptionSetPtrOutput() DiskEncryptionSetPtrOutput {
+	return i.ToDiskEncryptionSetPtrOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionSet) ToDiskEncryptionSetPtrOutputWithContext(ctx context.Context) DiskEncryptionSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetPtrOutput)
 }
 
 type DiskEncryptionSetOutput struct {
@@ -180,6 +195,23 @@ func (o DiskEncryptionSetOutput) ToDiskEncryptionSetOutputWithContext(ctx contex
 	return o
 }
 
+type DiskEncryptionSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskEncryptionSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionSet)(nil)).Elem()
+}
+
+func (o DiskEncryptionSetPtrOutput) ToDiskEncryptionSetPtrOutput() DiskEncryptionSetPtrOutput {
+	return o
+}
+
+func (o DiskEncryptionSetPtrOutput) ToDiskEncryptionSetPtrOutputWithContext(ctx context.Context) DiskEncryptionSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DiskEncryptionSetOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionSetPtrOutput{})
 }

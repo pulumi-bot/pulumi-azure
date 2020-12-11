@@ -167,6 +167,13 @@ type GroupUserInput interface {
 	ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput
 }
 
+type GroupUserPtrInput interface {
+	pulumi.Input
+
+	ToGroupUserPtrOutput() GroupUserPtrOutput
+	ToGroupUserPtrOutputWithContext(ctx context.Context) GroupUserPtrOutput
+}
+
 func (GroupUser) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupUser)(nil)).Elem()
 }
@@ -177,6 +184,14 @@ func (i GroupUser) ToGroupUserOutput() GroupUserOutput {
 
 func (i GroupUser) ToGroupUserOutputWithContext(ctx context.Context) GroupUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupUserOutput)
+}
+
+func (i GroupUser) ToGroupUserPtrOutput() GroupUserPtrOutput {
+	return i.ToGroupUserPtrOutputWithContext(context.Background())
+}
+
+func (i GroupUser) ToGroupUserPtrOutputWithContext(ctx context.Context) GroupUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUserPtrOutput)
 }
 
 type GroupUserOutput struct {
@@ -195,6 +210,23 @@ func (o GroupUserOutput) ToGroupUserOutputWithContext(ctx context.Context) Group
 	return o
 }
 
+type GroupUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupUser)(nil)).Elem()
+}
+
+func (o GroupUserPtrOutput) ToGroupUserPtrOutput() GroupUserPtrOutput {
+	return o
+}
+
+func (o GroupUserPtrOutput) ToGroupUserPtrOutputWithContext(ctx context.Context) GroupUserPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupUserOutput{})
+	pulumi.RegisterOutputType(GroupUserPtrOutput{})
 }

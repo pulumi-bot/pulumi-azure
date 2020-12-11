@@ -185,6 +185,13 @@ type ProtectionContainerInput interface {
 	ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput
 }
 
+type ProtectionContainerPtrInput interface {
+	pulumi.Input
+
+	ToProtectionContainerPtrOutput() ProtectionContainerPtrOutput
+	ToProtectionContainerPtrOutputWithContext(ctx context.Context) ProtectionContainerPtrOutput
+}
+
 func (ProtectionContainer) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProtectionContainer)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i ProtectionContainer) ToProtectionContainerOutput() ProtectionContainerOu
 
 func (i ProtectionContainer) ToProtectionContainerOutputWithContext(ctx context.Context) ProtectionContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionContainerOutput)
+}
+
+func (i ProtectionContainer) ToProtectionContainerPtrOutput() ProtectionContainerPtrOutput {
+	return i.ToProtectionContainerPtrOutputWithContext(context.Background())
+}
+
+func (i ProtectionContainer) ToProtectionContainerPtrOutputWithContext(ctx context.Context) ProtectionContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectionContainerPtrOutput)
 }
 
 type ProtectionContainerOutput struct {
@@ -213,6 +228,23 @@ func (o ProtectionContainerOutput) ToProtectionContainerOutputWithContext(ctx co
 	return o
 }
 
+type ProtectionContainerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectionContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectionContainer)(nil)).Elem()
+}
+
+func (o ProtectionContainerPtrOutput) ToProtectionContainerPtrOutput() ProtectionContainerPtrOutput {
+	return o
+}
+
+func (o ProtectionContainerPtrOutput) ToProtectionContainerPtrOutputWithContext(ctx context.Context) ProtectionContainerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProtectionContainerOutput{})
+	pulumi.RegisterOutputType(ProtectionContainerPtrOutput{})
 }

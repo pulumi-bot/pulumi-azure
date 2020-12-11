@@ -409,6 +409,13 @@ type SlotInput interface {
 	ToSlotOutputWithContext(ctx context.Context) SlotOutput
 }
 
+type SlotPtrInput interface {
+	pulumi.Input
+
+	ToSlotPtrOutput() SlotPtrOutput
+	ToSlotPtrOutputWithContext(ctx context.Context) SlotPtrOutput
+}
+
 func (Slot) ElementType() reflect.Type {
 	return reflect.TypeOf((*Slot)(nil)).Elem()
 }
@@ -419,6 +426,14 @@ func (i Slot) ToSlotOutput() SlotOutput {
 
 func (i Slot) ToSlotOutputWithContext(ctx context.Context) SlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlotOutput)
+}
+
+func (i Slot) ToSlotPtrOutput() SlotPtrOutput {
+	return i.ToSlotPtrOutputWithContext(context.Background())
+}
+
+func (i Slot) ToSlotPtrOutputWithContext(ctx context.Context) SlotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlotPtrOutput)
 }
 
 type SlotOutput struct {
@@ -437,6 +452,23 @@ func (o SlotOutput) ToSlotOutputWithContext(ctx context.Context) SlotOutput {
 	return o
 }
 
+type SlotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Slot)(nil)).Elem()
+}
+
+func (o SlotPtrOutput) ToSlotPtrOutput() SlotPtrOutput {
+	return o
+}
+
+func (o SlotPtrOutput) ToSlotPtrOutputWithContext(ctx context.Context) SlotPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SlotOutput{})
+	pulumi.RegisterOutputType(SlotPtrOutput{})
 }

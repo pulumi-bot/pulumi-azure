@@ -188,6 +188,13 @@ type UserAssignedIdentityInput interface {
 	ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput
 }
 
+type UserAssignedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToUserAssignedIdentityPtrOutput() UserAssignedIdentityPtrOutput
+	ToUserAssignedIdentityPtrOutputWithContext(ctx context.Context) UserAssignedIdentityPtrOutput
+}
+
 func (UserAssignedIdentity) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserAssignedIdentity)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i UserAssignedIdentity) ToUserAssignedIdentityOutput() UserAssignedIdentit
 
 func (i UserAssignedIdentity) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
+}
+
+func (i UserAssignedIdentity) ToUserAssignedIdentityPtrOutput() UserAssignedIdentityPtrOutput {
+	return i.ToUserAssignedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i UserAssignedIdentity) ToUserAssignedIdentityPtrOutputWithContext(ctx context.Context) UserAssignedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityPtrOutput)
 }
 
 type UserAssignedIdentityOutput struct {
@@ -216,6 +231,23 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx 
 	return o
 }
 
+type UserAssignedIdentityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserAssignedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAssignedIdentity)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityPtrOutput) ToUserAssignedIdentityPtrOutput() UserAssignedIdentityPtrOutput {
+	return o
+}
+
+func (o UserAssignedIdentityPtrOutput) ToUserAssignedIdentityPtrOutputWithContext(ctx context.Context) UserAssignedIdentityPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserAssignedIdentityOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityPtrOutput{})
 }

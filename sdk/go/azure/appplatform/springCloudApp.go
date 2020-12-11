@@ -168,6 +168,13 @@ type SpringCloudAppInput interface {
 	ToSpringCloudAppOutputWithContext(ctx context.Context) SpringCloudAppOutput
 }
 
+type SpringCloudAppPtrInput interface {
+	pulumi.Input
+
+	ToSpringCloudAppPtrOutput() SpringCloudAppPtrOutput
+	ToSpringCloudAppPtrOutputWithContext(ctx context.Context) SpringCloudAppPtrOutput
+}
+
 func (SpringCloudApp) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpringCloudApp)(nil)).Elem()
 }
@@ -178,6 +185,14 @@ func (i SpringCloudApp) ToSpringCloudAppOutput() SpringCloudAppOutput {
 
 func (i SpringCloudApp) ToSpringCloudAppOutputWithContext(ctx context.Context) SpringCloudAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppOutput)
+}
+
+func (i SpringCloudApp) ToSpringCloudAppPtrOutput() SpringCloudAppPtrOutput {
+	return i.ToSpringCloudAppPtrOutputWithContext(context.Background())
+}
+
+func (i SpringCloudApp) ToSpringCloudAppPtrOutputWithContext(ctx context.Context) SpringCloudAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppPtrOutput)
 }
 
 type SpringCloudAppOutput struct {
@@ -196,6 +211,23 @@ func (o SpringCloudAppOutput) ToSpringCloudAppOutputWithContext(ctx context.Cont
 	return o
 }
 
+type SpringCloudAppPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpringCloudAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpringCloudApp)(nil)).Elem()
+}
+
+func (o SpringCloudAppPtrOutput) ToSpringCloudAppPtrOutput() SpringCloudAppPtrOutput {
+	return o
+}
+
+func (o SpringCloudAppPtrOutput) ToSpringCloudAppPtrOutputWithContext(ctx context.Context) SpringCloudAppPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SpringCloudAppOutput{})
+	pulumi.RegisterOutputType(SpringCloudAppPtrOutput{})
 }

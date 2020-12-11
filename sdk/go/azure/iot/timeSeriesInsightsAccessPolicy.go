@@ -183,6 +183,13 @@ type TimeSeriesInsightsAccessPolicyInput interface {
 	ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput
 }
 
+type TimeSeriesInsightsAccessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput
+	ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput
+}
+
 func (TimeSeriesInsightsAccessPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicy)(nil)).Elem()
 }
@@ -193,6 +200,14 @@ func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutput()
 
 func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsAccessPolicyOutput)
+}
+
+func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput {
+	return i.ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsAccessPolicyPtrOutput)
 }
 
 type TimeSeriesInsightsAccessPolicyOutput struct {
@@ -211,6 +226,23 @@ func (o TimeSeriesInsightsAccessPolicyOutput) ToTimeSeriesInsightsAccessPolicyOu
 	return o
 }
 
+type TimeSeriesInsightsAccessPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsAccessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesInsightsAccessPolicy)(nil)).Elem()
+}
+
+func (o TimeSeriesInsightsAccessPolicyPtrOutput) ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsAccessPolicyPtrOutput) ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TimeSeriesInsightsAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TimeSeriesInsightsAccessPolicyPtrOutput{})
 }

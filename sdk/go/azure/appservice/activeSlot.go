@@ -161,6 +161,13 @@ type ActiveSlotInput interface {
 	ToActiveSlotOutputWithContext(ctx context.Context) ActiveSlotOutput
 }
 
+type ActiveSlotPtrInput interface {
+	pulumi.Input
+
+	ToActiveSlotPtrOutput() ActiveSlotPtrOutput
+	ToActiveSlotPtrOutputWithContext(ctx context.Context) ActiveSlotPtrOutput
+}
+
 func (ActiveSlot) ElementType() reflect.Type {
 	return reflect.TypeOf((*ActiveSlot)(nil)).Elem()
 }
@@ -171,6 +178,14 @@ func (i ActiveSlot) ToActiveSlotOutput() ActiveSlotOutput {
 
 func (i ActiveSlot) ToActiveSlotOutputWithContext(ctx context.Context) ActiveSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveSlotOutput)
+}
+
+func (i ActiveSlot) ToActiveSlotPtrOutput() ActiveSlotPtrOutput {
+	return i.ToActiveSlotPtrOutputWithContext(context.Background())
+}
+
+func (i ActiveSlot) ToActiveSlotPtrOutputWithContext(ctx context.Context) ActiveSlotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveSlotPtrOutput)
 }
 
 type ActiveSlotOutput struct {
@@ -189,6 +204,23 @@ func (o ActiveSlotOutput) ToActiveSlotOutputWithContext(ctx context.Context) Act
 	return o
 }
 
+type ActiveSlotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveSlotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveSlot)(nil)).Elem()
+}
+
+func (o ActiveSlotPtrOutput) ToActiveSlotPtrOutput() ActiveSlotPtrOutput {
+	return o
+}
+
+func (o ActiveSlotPtrOutput) ToActiveSlotPtrOutputWithContext(ctx context.Context) ActiveSlotPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActiveSlotOutput{})
+	pulumi.RegisterOutputType(ActiveSlotPtrOutput{})
 }

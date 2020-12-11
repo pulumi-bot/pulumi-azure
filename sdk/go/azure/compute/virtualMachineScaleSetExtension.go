@@ -236,6 +236,13 @@ type VirtualMachineScaleSetExtensionInput interface {
 	ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput
 }
 
+type VirtualMachineScaleSetExtensionPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetExtensionPtrOutput() VirtualMachineScaleSetExtensionPtrOutput
+	ToVirtualMachineScaleSetExtensionPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPtrOutput
+}
+
 func (VirtualMachineScaleSetExtension) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualMachineScaleSetExtension)(nil)).Elem()
 }
@@ -246,6 +253,14 @@ func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutput
 
 func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionOutput)
+}
+
+func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionPtrOutput() VirtualMachineScaleSetExtensionPtrOutput {
+	return i.ToVirtualMachineScaleSetExtensionPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetExtension) ToVirtualMachineScaleSetExtensionPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionPtrOutput)
 }
 
 type VirtualMachineScaleSetExtensionOutput struct {
@@ -264,6 +279,23 @@ func (o VirtualMachineScaleSetExtensionOutput) ToVirtualMachineScaleSetExtension
 	return o
 }
 
+type VirtualMachineScaleSetExtensionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineScaleSetExtensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetExtension)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionPtrOutput) ToVirtualMachineScaleSetExtensionPtrOutput() VirtualMachineScaleSetExtensionPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPtrOutput) ToVirtualMachineScaleSetExtensionPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionPtrOutput{})
 }

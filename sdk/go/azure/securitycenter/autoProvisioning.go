@@ -119,6 +119,13 @@ type AutoProvisioningInput interface {
 	ToAutoProvisioningOutputWithContext(ctx context.Context) AutoProvisioningOutput
 }
 
+type AutoProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningPtrOutput() AutoProvisioningPtrOutput
+	ToAutoProvisioningPtrOutputWithContext(ctx context.Context) AutoProvisioningPtrOutput
+}
+
 func (AutoProvisioning) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoProvisioning)(nil)).Elem()
 }
@@ -129,6 +136,14 @@ func (i AutoProvisioning) ToAutoProvisioningOutput() AutoProvisioningOutput {
 
 func (i AutoProvisioning) ToAutoProvisioningOutputWithContext(ctx context.Context) AutoProvisioningOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningOutput)
+}
+
+func (i AutoProvisioning) ToAutoProvisioningPtrOutput() AutoProvisioningPtrOutput {
+	return i.ToAutoProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioning) ToAutoProvisioningPtrOutputWithContext(ctx context.Context) AutoProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningPtrOutput)
 }
 
 type AutoProvisioningOutput struct {
@@ -147,6 +162,23 @@ func (o AutoProvisioningOutput) ToAutoProvisioningOutputWithContext(ctx context.
 	return o
 }
 
+type AutoProvisioningPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProvisioning)(nil)).Elem()
+}
+
+func (o AutoProvisioningPtrOutput) ToAutoProvisioningPtrOutput() AutoProvisioningPtrOutput {
+	return o
+}
+
+func (o AutoProvisioningPtrOutput) ToAutoProvisioningPtrOutputWithContext(ctx context.Context) AutoProvisioningPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutoProvisioningOutput{})
+	pulumi.RegisterOutputType(AutoProvisioningPtrOutput{})
 }

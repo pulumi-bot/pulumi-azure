@@ -239,6 +239,13 @@ type LinkedServiceAzureFileStorageInput interface {
 	ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput
 }
 
+type LinkedServiceAzureFileStoragePtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureFileStoragePtrOutput() LinkedServiceAzureFileStoragePtrOutput
+	ToLinkedServiceAzureFileStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureFileStoragePtrOutput
+}
+
 func (LinkedServiceAzureFileStorage) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServiceAzureFileStorage)(nil)).Elem()
 }
@@ -249,6 +256,14 @@ func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutput() L
 
 func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStorageOutputWithContext(ctx context.Context) LinkedServiceAzureFileStorageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFileStorageOutput)
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStoragePtrOutput() LinkedServiceAzureFileStoragePtrOutput {
+	return i.ToLinkedServiceAzureFileStoragePtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureFileStorage) ToLinkedServiceAzureFileStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureFileStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFileStoragePtrOutput)
 }
 
 type LinkedServiceAzureFileStorageOutput struct {
@@ -267,6 +282,23 @@ func (o LinkedServiceAzureFileStorageOutput) ToLinkedServiceAzureFileStorageOutp
 	return o
 }
 
+type LinkedServiceAzureFileStoragePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureFileStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceAzureFileStorage)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureFileStoragePtrOutput) ToLinkedServiceAzureFileStoragePtrOutput() LinkedServiceAzureFileStoragePtrOutput {
+	return o
+}
+
+func (o LinkedServiceAzureFileStoragePtrOutput) ToLinkedServiceAzureFileStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureFileStoragePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceAzureFileStorageOutput{})
+	pulumi.RegisterOutputType(LinkedServiceAzureFileStoragePtrOutput{})
 }

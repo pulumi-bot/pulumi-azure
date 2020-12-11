@@ -176,6 +176,13 @@ type IdentityProviderMicrosoftInput interface {
 	ToIdentityProviderMicrosoftOutputWithContext(ctx context.Context) IdentityProviderMicrosoftOutput
 }
 
+type IdentityProviderMicrosoftPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderMicrosoftPtrOutput() IdentityProviderMicrosoftPtrOutput
+	ToIdentityProviderMicrosoftPtrOutputWithContext(ctx context.Context) IdentityProviderMicrosoftPtrOutput
+}
+
 func (IdentityProviderMicrosoft) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityProviderMicrosoft)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftOutput() IdentityP
 
 func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftOutputWithContext(ctx context.Context) IdentityProviderMicrosoftOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderMicrosoftOutput)
+}
+
+func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftPtrOutput() IdentityProviderMicrosoftPtrOutput {
+	return i.ToIdentityProviderMicrosoftPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderMicrosoft) ToIdentityProviderMicrosoftPtrOutputWithContext(ctx context.Context) IdentityProviderMicrosoftPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderMicrosoftPtrOutput)
 }
 
 type IdentityProviderMicrosoftOutput struct {
@@ -204,6 +219,23 @@ func (o IdentityProviderMicrosoftOutput) ToIdentityProviderMicrosoftOutputWithCo
 	return o
 }
 
+type IdentityProviderMicrosoftPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderMicrosoftPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderMicrosoft)(nil)).Elem()
+}
+
+func (o IdentityProviderMicrosoftPtrOutput) ToIdentityProviderMicrosoftPtrOutput() IdentityProviderMicrosoftPtrOutput {
+	return o
+}
+
+func (o IdentityProviderMicrosoftPtrOutput) ToIdentityProviderMicrosoftPtrOutputWithContext(ctx context.Context) IdentityProviderMicrosoftPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderMicrosoftOutput{})
+	pulumi.RegisterOutputType(IdentityProviderMicrosoftPtrOutput{})
 }

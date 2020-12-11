@@ -210,6 +210,13 @@ type LoggerInput interface {
 	ToLoggerOutputWithContext(ctx context.Context) LoggerOutput
 }
 
+type LoggerPtrInput interface {
+	pulumi.Input
+
+	ToLoggerPtrOutput() LoggerPtrOutput
+	ToLoggerPtrOutputWithContext(ctx context.Context) LoggerPtrOutput
+}
+
 func (Logger) ElementType() reflect.Type {
 	return reflect.TypeOf((*Logger)(nil)).Elem()
 }
@@ -220,6 +227,14 @@ func (i Logger) ToLoggerOutput() LoggerOutput {
 
 func (i Logger) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoggerOutput)
+}
+
+func (i Logger) ToLoggerPtrOutput() LoggerPtrOutput {
+	return i.ToLoggerPtrOutputWithContext(context.Background())
+}
+
+func (i Logger) ToLoggerPtrOutputWithContext(ctx context.Context) LoggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggerPtrOutput)
 }
 
 type LoggerOutput struct {
@@ -238,6 +253,23 @@ func (o LoggerOutput) ToLoggerOutputWithContext(ctx context.Context) LoggerOutpu
 	return o
 }
 
+type LoggerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Logger)(nil)).Elem()
+}
+
+func (o LoggerPtrOutput) ToLoggerPtrOutput() LoggerPtrOutput {
+	return o
+}
+
+func (o LoggerPtrOutput) ToLoggerPtrOutputWithContext(ctx context.Context) LoggerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoggerOutput{})
+	pulumi.RegisterOutputType(LoggerPtrOutput{})
 }

@@ -48,7 +48,7 @@ func (i HBaseClusterComponentVersionArgs) ToHBaseClusterComponentVersionPtrOutpu
 }
 
 func (i HBaseClusterComponentVersionArgs) ToHBaseClusterComponentVersionPtrOutputWithContext(ctx context.Context) HBaseClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterComponentVersionOutput).ToHBaseClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterComponentVersionOutput).ToHBaseClusterComponentVersionPtrOutput()
 }
 
 // HBaseClusterComponentVersionPtrInput is an input type that accepts HBaseClusterComponentVersionArgs, HBaseClusterComponentVersionPtr and HBaseClusterComponentVersionPtrOutput values.
@@ -81,7 +81,7 @@ func (i *hbaseClusterComponentVersionPtrType) ToHBaseClusterComponentVersionPtrO
 }
 
 func (i *hbaseClusterComponentVersionPtrType) ToHBaseClusterComponentVersionPtrOutputWithContext(ctx context.Context) HBaseClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterComponentVersionOutput).ToHBaseClusterComponentVersionPtrOutput()
 }
 
 type HBaseClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -191,7 +191,7 @@ func (i HBaseClusterGatewayArgs) ToHBaseClusterGatewayPtrOutput() HBaseClusterGa
 }
 
 func (i HBaseClusterGatewayArgs) ToHBaseClusterGatewayPtrOutputWithContext(ctx context.Context) HBaseClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterGatewayOutput).ToHBaseClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterGatewayOutput).ToHBaseClusterGatewayPtrOutput()
 }
 
 // HBaseClusterGatewayPtrInput is an input type that accepts HBaseClusterGatewayArgs, HBaseClusterGatewayPtr and HBaseClusterGatewayPtrOutput values.
@@ -224,7 +224,7 @@ func (i *hbaseClusterGatewayPtrType) ToHBaseClusterGatewayPtrOutput() HBaseClust
 }
 
 func (i *hbaseClusterGatewayPtrType) ToHBaseClusterGatewayPtrOutputWithContext(ctx context.Context) HBaseClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterGatewayOutput).ToHBaseClusterGatewayPtrOutput()
 }
 
 type HBaseClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -364,7 +364,7 @@ func (i HBaseClusterMetastoresArgs) ToHBaseClusterMetastoresPtrOutput() HBaseClu
 }
 
 func (i HBaseClusterMetastoresArgs) ToHBaseClusterMetastoresPtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOutput).ToHBaseClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOutput).ToHBaseClusterMetastoresPtrOutput()
 }
 
 // HBaseClusterMetastoresPtrInput is an input type that accepts HBaseClusterMetastoresArgs, HBaseClusterMetastoresPtr and HBaseClusterMetastoresPtrOutput values.
@@ -397,7 +397,7 @@ func (i *hbaseClusterMetastoresPtrType) ToHBaseClusterMetastoresPtrOutput() HBas
 }
 
 func (i *hbaseClusterMetastoresPtrType) ToHBaseClusterMetastoresPtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOutput).ToHBaseClusterMetastoresPtrOutput()
 }
 
 type HBaseClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -537,7 +537,7 @@ func (i HBaseClusterMetastoresAmbariArgs) ToHBaseClusterMetastoresAmbariPtrOutpu
 }
 
 func (i HBaseClusterMetastoresAmbariArgs) ToHBaseClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresAmbariOutput).ToHBaseClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresAmbariOutput).ToHBaseClusterMetastoresAmbariPtrOutput()
 }
 
 // HBaseClusterMetastoresAmbariPtrInput is an input type that accepts HBaseClusterMetastoresAmbariArgs, HBaseClusterMetastoresAmbariPtr and HBaseClusterMetastoresAmbariPtrOutput values.
@@ -570,7 +570,7 @@ func (i *hbaseClusterMetastoresAmbariPtrType) ToHBaseClusterMetastoresAmbariPtrO
 }
 
 func (i *hbaseClusterMetastoresAmbariPtrType) ToHBaseClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresAmbariOutput).ToHBaseClusterMetastoresAmbariPtrOutput()
 }
 
 type HBaseClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -725,7 +725,7 @@ func (i HBaseClusterMetastoresHiveArgs) ToHBaseClusterMetastoresHivePtrOutput() 
 }
 
 func (i HBaseClusterMetastoresHiveArgs) ToHBaseClusterMetastoresHivePtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresHiveOutput).ToHBaseClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresHiveOutput).ToHBaseClusterMetastoresHivePtrOutput()
 }
 
 // HBaseClusterMetastoresHivePtrInput is an input type that accepts HBaseClusterMetastoresHiveArgs, HBaseClusterMetastoresHivePtr and HBaseClusterMetastoresHivePtrOutput values.
@@ -758,7 +758,7 @@ func (i *hbaseClusterMetastoresHivePtrType) ToHBaseClusterMetastoresHivePtrOutpu
 }
 
 func (i *hbaseClusterMetastoresHivePtrType) ToHBaseClusterMetastoresHivePtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresHiveOutput).ToHBaseClusterMetastoresHivePtrOutput()
 }
 
 type HBaseClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -913,7 +913,7 @@ func (i HBaseClusterMetastoresOozieArgs) ToHBaseClusterMetastoresOoziePtrOutput(
 }
 
 func (i HBaseClusterMetastoresOozieArgs) ToHBaseClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOozieOutput).ToHBaseClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOozieOutput).ToHBaseClusterMetastoresOoziePtrOutput()
 }
 
 // HBaseClusterMetastoresOoziePtrInput is an input type that accepts HBaseClusterMetastoresOozieArgs, HBaseClusterMetastoresOoziePtr and HBaseClusterMetastoresOoziePtrOutput values.
@@ -946,7 +946,7 @@ func (i *hbaseClusterMetastoresOoziePtrType) ToHBaseClusterMetastoresOoziePtrOut
 }
 
 func (i *hbaseClusterMetastoresOoziePtrType) ToHBaseClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) HBaseClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMetastoresOozieOutput).ToHBaseClusterMetastoresOoziePtrOutput()
 }
 
 type HBaseClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -1093,7 +1093,7 @@ func (i HBaseClusterMonitorArgs) ToHBaseClusterMonitorPtrOutput() HBaseClusterMo
 }
 
 func (i HBaseClusterMonitorArgs) ToHBaseClusterMonitorPtrOutputWithContext(ctx context.Context) HBaseClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMonitorOutput).ToHBaseClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMonitorOutput).ToHBaseClusterMonitorPtrOutput()
 }
 
 // HBaseClusterMonitorPtrInput is an input type that accepts HBaseClusterMonitorArgs, HBaseClusterMonitorPtr and HBaseClusterMonitorPtrOutput values.
@@ -1126,7 +1126,7 @@ func (i *hbaseClusterMonitorPtrType) ToHBaseClusterMonitorPtrOutput() HBaseClust
 }
 
 func (i *hbaseClusterMonitorPtrType) ToHBaseClusterMonitorPtrOutputWithContext(ctx context.Context) HBaseClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterMonitorOutput).ToHBaseClusterMonitorPtrOutput()
 }
 
 type HBaseClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -1247,7 +1247,7 @@ func (i HBaseClusterRolesArgs) ToHBaseClusterRolesPtrOutput() HBaseClusterRolesP
 }
 
 func (i HBaseClusterRolesArgs) ToHBaseClusterRolesPtrOutputWithContext(ctx context.Context) HBaseClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesOutput).ToHBaseClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesOutput).ToHBaseClusterRolesPtrOutput()
 }
 
 // HBaseClusterRolesPtrInput is an input type that accepts HBaseClusterRolesArgs, HBaseClusterRolesPtr and HBaseClusterRolesPtrOutput values.
@@ -1280,7 +1280,7 @@ func (i *hbaseClusterRolesPtrType) ToHBaseClusterRolesPtrOutput() HBaseClusterRo
 }
 
 func (i *hbaseClusterRolesPtrType) ToHBaseClusterRolesPtrOutputWithContext(ctx context.Context) HBaseClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesOutput).ToHBaseClusterRolesPtrOutput()
 }
 
 type HBaseClusterRolesOutput struct{ *pulumi.OutputState }
@@ -1428,7 +1428,7 @@ func (i HBaseClusterRolesHeadNodeArgs) ToHBaseClusterRolesHeadNodePtrOutput() HB
 }
 
 func (i HBaseClusterRolesHeadNodeArgs) ToHBaseClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesHeadNodeOutput).ToHBaseClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesHeadNodeOutput).ToHBaseClusterRolesHeadNodePtrOutput()
 }
 
 // HBaseClusterRolesHeadNodePtrInput is an input type that accepts HBaseClusterRolesHeadNodeArgs, HBaseClusterRolesHeadNodePtr and HBaseClusterRolesHeadNodePtrOutput values.
@@ -1461,7 +1461,7 @@ func (i *hbaseClusterRolesHeadNodePtrType) ToHBaseClusterRolesHeadNodePtrOutput(
 }
 
 func (i *hbaseClusterRolesHeadNodePtrType) ToHBaseClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesHeadNodeOutput).ToHBaseClusterRolesHeadNodePtrOutput()
 }
 
 type HBaseClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -1666,7 +1666,7 @@ func (i HBaseClusterRolesWorkerNodeArgs) ToHBaseClusterRolesWorkerNodePtrOutput(
 }
 
 func (i HBaseClusterRolesWorkerNodeArgs) ToHBaseClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesWorkerNodeOutput).ToHBaseClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesWorkerNodeOutput).ToHBaseClusterRolesWorkerNodePtrOutput()
 }
 
 // HBaseClusterRolesWorkerNodePtrInput is an input type that accepts HBaseClusterRolesWorkerNodeArgs, HBaseClusterRolesWorkerNodePtr and HBaseClusterRolesWorkerNodePtrOutput values.
@@ -1699,7 +1699,7 @@ func (i *hbaseClusterRolesWorkerNodePtrType) ToHBaseClusterRolesWorkerNodePtrOut
 }
 
 func (i *hbaseClusterRolesWorkerNodePtrType) ToHBaseClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesWorkerNodeOutput).ToHBaseClusterRolesWorkerNodePtrOutput()
 }
 
 type HBaseClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -1926,7 +1926,7 @@ func (i HBaseClusterRolesZookeeperNodeArgs) ToHBaseClusterRolesZookeeperNodePtrO
 }
 
 func (i HBaseClusterRolesZookeeperNodeArgs) ToHBaseClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesZookeeperNodeOutput).ToHBaseClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesZookeeperNodeOutput).ToHBaseClusterRolesZookeeperNodePtrOutput()
 }
 
 // HBaseClusterRolesZookeeperNodePtrInput is an input type that accepts HBaseClusterRolesZookeeperNodeArgs, HBaseClusterRolesZookeeperNodePtr and HBaseClusterRolesZookeeperNodePtrOutput values.
@@ -1959,7 +1959,7 @@ func (i *hbaseClusterRolesZookeeperNodePtrType) ToHBaseClusterRolesZookeeperNode
 }
 
 func (i *hbaseClusterRolesZookeeperNodePtrType) ToHBaseClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) HBaseClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterRolesZookeeperNodeOutput).ToHBaseClusterRolesZookeeperNodePtrOutput()
 }
 
 type HBaseClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -2259,7 +2259,7 @@ func (i HBaseClusterStorageAccountGen2Args) ToHBaseClusterStorageAccountGen2PtrO
 }
 
 func (i HBaseClusterStorageAccountGen2Args) ToHBaseClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) HBaseClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterStorageAccountGen2Output).ToHBaseClusterStorageAccountGen2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterStorageAccountGen2Output).ToHBaseClusterStorageAccountGen2PtrOutput()
 }
 
 // HBaseClusterStorageAccountGen2PtrInput is an input type that accepts HBaseClusterStorageAccountGen2Args, HBaseClusterStorageAccountGen2Ptr and HBaseClusterStorageAccountGen2PtrOutput values.
@@ -2292,7 +2292,7 @@ func (i *hbaseClusterStorageAccountGen2PtrType) ToHBaseClusterStorageAccountGen2
 }
 
 func (i *hbaseClusterStorageAccountGen2PtrType) ToHBaseClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) HBaseClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterStorageAccountGen2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterStorageAccountGen2Output).ToHBaseClusterStorageAccountGen2PtrOutput()
 }
 
 type HBaseClusterStorageAccountGen2Output struct{ *pulumi.OutputState }
@@ -2435,7 +2435,7 @@ func (i HadoopClusterComponentVersionArgs) ToHadoopClusterComponentVersionPtrOut
 }
 
 func (i HadoopClusterComponentVersionArgs) ToHadoopClusterComponentVersionPtrOutputWithContext(ctx context.Context) HadoopClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterComponentVersionOutput).ToHadoopClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterComponentVersionOutput).ToHadoopClusterComponentVersionPtrOutput()
 }
 
 // HadoopClusterComponentVersionPtrInput is an input type that accepts HadoopClusterComponentVersionArgs, HadoopClusterComponentVersionPtr and HadoopClusterComponentVersionPtrOutput values.
@@ -2468,7 +2468,7 @@ func (i *hadoopClusterComponentVersionPtrType) ToHadoopClusterComponentVersionPt
 }
 
 func (i *hadoopClusterComponentVersionPtrType) ToHadoopClusterComponentVersionPtrOutputWithContext(ctx context.Context) HadoopClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterComponentVersionOutput).ToHadoopClusterComponentVersionPtrOutput()
 }
 
 type HadoopClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -2578,7 +2578,7 @@ func (i HadoopClusterGatewayArgs) ToHadoopClusterGatewayPtrOutput() HadoopCluste
 }
 
 func (i HadoopClusterGatewayArgs) ToHadoopClusterGatewayPtrOutputWithContext(ctx context.Context) HadoopClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterGatewayOutput).ToHadoopClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterGatewayOutput).ToHadoopClusterGatewayPtrOutput()
 }
 
 // HadoopClusterGatewayPtrInput is an input type that accepts HadoopClusterGatewayArgs, HadoopClusterGatewayPtr and HadoopClusterGatewayPtrOutput values.
@@ -2611,7 +2611,7 @@ func (i *hadoopClusterGatewayPtrType) ToHadoopClusterGatewayPtrOutput() HadoopCl
 }
 
 func (i *hadoopClusterGatewayPtrType) ToHadoopClusterGatewayPtrOutputWithContext(ctx context.Context) HadoopClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterGatewayOutput).ToHadoopClusterGatewayPtrOutput()
 }
 
 type HadoopClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -2751,7 +2751,7 @@ func (i HadoopClusterMetastoresArgs) ToHadoopClusterMetastoresPtrOutput() Hadoop
 }
 
 func (i HadoopClusterMetastoresArgs) ToHadoopClusterMetastoresPtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOutput).ToHadoopClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOutput).ToHadoopClusterMetastoresPtrOutput()
 }
 
 // HadoopClusterMetastoresPtrInput is an input type that accepts HadoopClusterMetastoresArgs, HadoopClusterMetastoresPtr and HadoopClusterMetastoresPtrOutput values.
@@ -2784,7 +2784,7 @@ func (i *hadoopClusterMetastoresPtrType) ToHadoopClusterMetastoresPtrOutput() Ha
 }
 
 func (i *hadoopClusterMetastoresPtrType) ToHadoopClusterMetastoresPtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOutput).ToHadoopClusterMetastoresPtrOutput()
 }
 
 type HadoopClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -2924,7 +2924,7 @@ func (i HadoopClusterMetastoresAmbariArgs) ToHadoopClusterMetastoresAmbariPtrOut
 }
 
 func (i HadoopClusterMetastoresAmbariArgs) ToHadoopClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresAmbariOutput).ToHadoopClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresAmbariOutput).ToHadoopClusterMetastoresAmbariPtrOutput()
 }
 
 // HadoopClusterMetastoresAmbariPtrInput is an input type that accepts HadoopClusterMetastoresAmbariArgs, HadoopClusterMetastoresAmbariPtr and HadoopClusterMetastoresAmbariPtrOutput values.
@@ -2957,7 +2957,7 @@ func (i *hadoopClusterMetastoresAmbariPtrType) ToHadoopClusterMetastoresAmbariPt
 }
 
 func (i *hadoopClusterMetastoresAmbariPtrType) ToHadoopClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresAmbariOutput).ToHadoopClusterMetastoresAmbariPtrOutput()
 }
 
 type HadoopClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -3112,7 +3112,7 @@ func (i HadoopClusterMetastoresHiveArgs) ToHadoopClusterMetastoresHivePtrOutput(
 }
 
 func (i HadoopClusterMetastoresHiveArgs) ToHadoopClusterMetastoresHivePtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresHiveOutput).ToHadoopClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresHiveOutput).ToHadoopClusterMetastoresHivePtrOutput()
 }
 
 // HadoopClusterMetastoresHivePtrInput is an input type that accepts HadoopClusterMetastoresHiveArgs, HadoopClusterMetastoresHivePtr and HadoopClusterMetastoresHivePtrOutput values.
@@ -3145,7 +3145,7 @@ func (i *hadoopClusterMetastoresHivePtrType) ToHadoopClusterMetastoresHivePtrOut
 }
 
 func (i *hadoopClusterMetastoresHivePtrType) ToHadoopClusterMetastoresHivePtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresHiveOutput).ToHadoopClusterMetastoresHivePtrOutput()
 }
 
 type HadoopClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -3300,7 +3300,7 @@ func (i HadoopClusterMetastoresOozieArgs) ToHadoopClusterMetastoresOoziePtrOutpu
 }
 
 func (i HadoopClusterMetastoresOozieArgs) ToHadoopClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOozieOutput).ToHadoopClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOozieOutput).ToHadoopClusterMetastoresOoziePtrOutput()
 }
 
 // HadoopClusterMetastoresOoziePtrInput is an input type that accepts HadoopClusterMetastoresOozieArgs, HadoopClusterMetastoresOoziePtr and HadoopClusterMetastoresOoziePtrOutput values.
@@ -3333,7 +3333,7 @@ func (i *hadoopClusterMetastoresOoziePtrType) ToHadoopClusterMetastoresOoziePtrO
 }
 
 func (i *hadoopClusterMetastoresOoziePtrType) ToHadoopClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) HadoopClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMetastoresOozieOutput).ToHadoopClusterMetastoresOoziePtrOutput()
 }
 
 type HadoopClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -3480,7 +3480,7 @@ func (i HadoopClusterMonitorArgs) ToHadoopClusterMonitorPtrOutput() HadoopCluste
 }
 
 func (i HadoopClusterMonitorArgs) ToHadoopClusterMonitorPtrOutputWithContext(ctx context.Context) HadoopClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMonitorOutput).ToHadoopClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMonitorOutput).ToHadoopClusterMonitorPtrOutput()
 }
 
 // HadoopClusterMonitorPtrInput is an input type that accepts HadoopClusterMonitorArgs, HadoopClusterMonitorPtr and HadoopClusterMonitorPtrOutput values.
@@ -3513,7 +3513,7 @@ func (i *hadoopClusterMonitorPtrType) ToHadoopClusterMonitorPtrOutput() HadoopCl
 }
 
 func (i *hadoopClusterMonitorPtrType) ToHadoopClusterMonitorPtrOutputWithContext(ctx context.Context) HadoopClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterMonitorOutput).ToHadoopClusterMonitorPtrOutput()
 }
 
 type HadoopClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -3638,7 +3638,7 @@ func (i HadoopClusterRolesArgs) ToHadoopClusterRolesPtrOutput() HadoopClusterRol
 }
 
 func (i HadoopClusterRolesArgs) ToHadoopClusterRolesPtrOutputWithContext(ctx context.Context) HadoopClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesOutput).ToHadoopClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesOutput).ToHadoopClusterRolesPtrOutput()
 }
 
 // HadoopClusterRolesPtrInput is an input type that accepts HadoopClusterRolesArgs, HadoopClusterRolesPtr and HadoopClusterRolesPtrOutput values.
@@ -3671,7 +3671,7 @@ func (i *hadoopClusterRolesPtrType) ToHadoopClusterRolesPtrOutput() HadoopCluste
 }
 
 func (i *hadoopClusterRolesPtrType) ToHadoopClusterRolesPtrOutputWithContext(ctx context.Context) HadoopClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesOutput).ToHadoopClusterRolesPtrOutput()
 }
 
 type HadoopClusterRolesOutput struct{ *pulumi.OutputState }
@@ -3822,7 +3822,7 @@ func (i HadoopClusterRolesEdgeNodeArgs) ToHadoopClusterRolesEdgeNodePtrOutput() 
 }
 
 func (i HadoopClusterRolesEdgeNodeArgs) ToHadoopClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesEdgeNodeOutput).ToHadoopClusterRolesEdgeNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesEdgeNodeOutput).ToHadoopClusterRolesEdgeNodePtrOutput()
 }
 
 // HadoopClusterRolesEdgeNodePtrInput is an input type that accepts HadoopClusterRolesEdgeNodeArgs, HadoopClusterRolesEdgeNodePtr and HadoopClusterRolesEdgeNodePtrOutput values.
@@ -3855,7 +3855,7 @@ func (i *hadoopClusterRolesEdgeNodePtrType) ToHadoopClusterRolesEdgeNodePtrOutpu
 }
 
 func (i *hadoopClusterRolesEdgeNodePtrType) ToHadoopClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesEdgeNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesEdgeNodeOutput).ToHadoopClusterRolesEdgeNodePtrOutput()
 }
 
 type HadoopClusterRolesEdgeNodeOutput struct{ *pulumi.OutputState }
@@ -4111,7 +4111,7 @@ func (i HadoopClusterRolesHeadNodeArgs) ToHadoopClusterRolesHeadNodePtrOutput() 
 }
 
 func (i HadoopClusterRolesHeadNodeArgs) ToHadoopClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesHeadNodeOutput).ToHadoopClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesHeadNodeOutput).ToHadoopClusterRolesHeadNodePtrOutput()
 }
 
 // HadoopClusterRolesHeadNodePtrInput is an input type that accepts HadoopClusterRolesHeadNodeArgs, HadoopClusterRolesHeadNodePtr and HadoopClusterRolesHeadNodePtrOutput values.
@@ -4144,7 +4144,7 @@ func (i *hadoopClusterRolesHeadNodePtrType) ToHadoopClusterRolesHeadNodePtrOutpu
 }
 
 func (i *hadoopClusterRolesHeadNodePtrType) ToHadoopClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesHeadNodeOutput).ToHadoopClusterRolesHeadNodePtrOutput()
 }
 
 type HadoopClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -4349,7 +4349,7 @@ func (i HadoopClusterRolesWorkerNodeArgs) ToHadoopClusterRolesWorkerNodePtrOutpu
 }
 
 func (i HadoopClusterRolesWorkerNodeArgs) ToHadoopClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesWorkerNodeOutput).ToHadoopClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesWorkerNodeOutput).ToHadoopClusterRolesWorkerNodePtrOutput()
 }
 
 // HadoopClusterRolesWorkerNodePtrInput is an input type that accepts HadoopClusterRolesWorkerNodeArgs, HadoopClusterRolesWorkerNodePtr and HadoopClusterRolesWorkerNodePtrOutput values.
@@ -4382,7 +4382,7 @@ func (i *hadoopClusterRolesWorkerNodePtrType) ToHadoopClusterRolesWorkerNodePtrO
 }
 
 func (i *hadoopClusterRolesWorkerNodePtrType) ToHadoopClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesWorkerNodeOutput).ToHadoopClusterRolesWorkerNodePtrOutput()
 }
 
 type HadoopClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -4609,7 +4609,7 @@ func (i HadoopClusterRolesZookeeperNodeArgs) ToHadoopClusterRolesZookeeperNodePt
 }
 
 func (i HadoopClusterRolesZookeeperNodeArgs) ToHadoopClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesZookeeperNodeOutput).ToHadoopClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesZookeeperNodeOutput).ToHadoopClusterRolesZookeeperNodePtrOutput()
 }
 
 // HadoopClusterRolesZookeeperNodePtrInput is an input type that accepts HadoopClusterRolesZookeeperNodeArgs, HadoopClusterRolesZookeeperNodePtr and HadoopClusterRolesZookeeperNodePtrOutput values.
@@ -4642,7 +4642,7 @@ func (i *hadoopClusterRolesZookeeperNodePtrType) ToHadoopClusterRolesZookeeperNo
 }
 
 func (i *hadoopClusterRolesZookeeperNodePtrType) ToHadoopClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) HadoopClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterRolesZookeeperNodeOutput).ToHadoopClusterRolesZookeeperNodePtrOutput()
 }
 
 type HadoopClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -4942,7 +4942,7 @@ func (i HadoopClusterStorageAccountGen2Args) ToHadoopClusterStorageAccountGen2Pt
 }
 
 func (i HadoopClusterStorageAccountGen2Args) ToHadoopClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) HadoopClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterStorageAccountGen2Output).ToHadoopClusterStorageAccountGen2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterStorageAccountGen2Output).ToHadoopClusterStorageAccountGen2PtrOutput()
 }
 
 // HadoopClusterStorageAccountGen2PtrInput is an input type that accepts HadoopClusterStorageAccountGen2Args, HadoopClusterStorageAccountGen2Ptr and HadoopClusterStorageAccountGen2PtrOutput values.
@@ -4975,7 +4975,7 @@ func (i *hadoopClusterStorageAccountGen2PtrType) ToHadoopClusterStorageAccountGe
 }
 
 func (i *hadoopClusterStorageAccountGen2PtrType) ToHadoopClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) HadoopClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterStorageAccountGen2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterStorageAccountGen2Output).ToHadoopClusterStorageAccountGen2PtrOutput()
 }
 
 type HadoopClusterStorageAccountGen2Output struct{ *pulumi.OutputState }
@@ -5116,7 +5116,7 @@ func (i InteractiveQueryClusterComponentVersionArgs) ToInteractiveQueryClusterCo
 }
 
 func (i InteractiveQueryClusterComponentVersionArgs) ToInteractiveQueryClusterComponentVersionPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterComponentVersionOutput).ToInteractiveQueryClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterComponentVersionOutput).ToInteractiveQueryClusterComponentVersionPtrOutput()
 }
 
 // InteractiveQueryClusterComponentVersionPtrInput is an input type that accepts InteractiveQueryClusterComponentVersionArgs, InteractiveQueryClusterComponentVersionPtr and InteractiveQueryClusterComponentVersionPtrOutput values.
@@ -5149,7 +5149,7 @@ func (i *interactiveQueryClusterComponentVersionPtrType) ToInteractiveQueryClust
 }
 
 func (i *interactiveQueryClusterComponentVersionPtrType) ToInteractiveQueryClusterComponentVersionPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterComponentVersionOutput).ToInteractiveQueryClusterComponentVersionPtrOutput()
 }
 
 type InteractiveQueryClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -5256,7 +5256,7 @@ func (i InteractiveQueryClusterGatewayArgs) ToInteractiveQueryClusterGatewayPtrO
 }
 
 func (i InteractiveQueryClusterGatewayArgs) ToInteractiveQueryClusterGatewayPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterGatewayOutput).ToInteractiveQueryClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterGatewayOutput).ToInteractiveQueryClusterGatewayPtrOutput()
 }
 
 // InteractiveQueryClusterGatewayPtrInput is an input type that accepts InteractiveQueryClusterGatewayArgs, InteractiveQueryClusterGatewayPtr and InteractiveQueryClusterGatewayPtrOutput values.
@@ -5289,7 +5289,7 @@ func (i *interactiveQueryClusterGatewayPtrType) ToInteractiveQueryClusterGateway
 }
 
 func (i *interactiveQueryClusterGatewayPtrType) ToInteractiveQueryClusterGatewayPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterGatewayOutput).ToInteractiveQueryClusterGatewayPtrOutput()
 }
 
 type InteractiveQueryClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -5429,7 +5429,7 @@ func (i InteractiveQueryClusterMetastoresArgs) ToInteractiveQueryClusterMetastor
 }
 
 func (i InteractiveQueryClusterMetastoresArgs) ToInteractiveQueryClusterMetastoresPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOutput).ToInteractiveQueryClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOutput).ToInteractiveQueryClusterMetastoresPtrOutput()
 }
 
 // InteractiveQueryClusterMetastoresPtrInput is an input type that accepts InteractiveQueryClusterMetastoresArgs, InteractiveQueryClusterMetastoresPtr and InteractiveQueryClusterMetastoresPtrOutput values.
@@ -5462,7 +5462,7 @@ func (i *interactiveQueryClusterMetastoresPtrType) ToInteractiveQueryClusterMeta
 }
 
 func (i *interactiveQueryClusterMetastoresPtrType) ToInteractiveQueryClusterMetastoresPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOutput).ToInteractiveQueryClusterMetastoresPtrOutput()
 }
 
 type InteractiveQueryClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -5602,7 +5602,7 @@ func (i InteractiveQueryClusterMetastoresAmbariArgs) ToInteractiveQueryClusterMe
 }
 
 func (i InteractiveQueryClusterMetastoresAmbariArgs) ToInteractiveQueryClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresAmbariOutput).ToInteractiveQueryClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresAmbariOutput).ToInteractiveQueryClusterMetastoresAmbariPtrOutput()
 }
 
 // InteractiveQueryClusterMetastoresAmbariPtrInput is an input type that accepts InteractiveQueryClusterMetastoresAmbariArgs, InteractiveQueryClusterMetastoresAmbariPtr and InteractiveQueryClusterMetastoresAmbariPtrOutput values.
@@ -5635,7 +5635,7 @@ func (i *interactiveQueryClusterMetastoresAmbariPtrType) ToInteractiveQueryClust
 }
 
 func (i *interactiveQueryClusterMetastoresAmbariPtrType) ToInteractiveQueryClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresAmbariOutput).ToInteractiveQueryClusterMetastoresAmbariPtrOutput()
 }
 
 type InteractiveQueryClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -5790,7 +5790,7 @@ func (i InteractiveQueryClusterMetastoresHiveArgs) ToInteractiveQueryClusterMeta
 }
 
 func (i InteractiveQueryClusterMetastoresHiveArgs) ToInteractiveQueryClusterMetastoresHivePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresHiveOutput).ToInteractiveQueryClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresHiveOutput).ToInteractiveQueryClusterMetastoresHivePtrOutput()
 }
 
 // InteractiveQueryClusterMetastoresHivePtrInput is an input type that accepts InteractiveQueryClusterMetastoresHiveArgs, InteractiveQueryClusterMetastoresHivePtr and InteractiveQueryClusterMetastoresHivePtrOutput values.
@@ -5823,7 +5823,7 @@ func (i *interactiveQueryClusterMetastoresHivePtrType) ToInteractiveQueryCluster
 }
 
 func (i *interactiveQueryClusterMetastoresHivePtrType) ToInteractiveQueryClusterMetastoresHivePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresHiveOutput).ToInteractiveQueryClusterMetastoresHivePtrOutput()
 }
 
 type InteractiveQueryClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -5978,7 +5978,7 @@ func (i InteractiveQueryClusterMetastoresOozieArgs) ToInteractiveQueryClusterMet
 }
 
 func (i InteractiveQueryClusterMetastoresOozieArgs) ToInteractiveQueryClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOozieOutput).ToInteractiveQueryClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOozieOutput).ToInteractiveQueryClusterMetastoresOoziePtrOutput()
 }
 
 // InteractiveQueryClusterMetastoresOoziePtrInput is an input type that accepts InteractiveQueryClusterMetastoresOozieArgs, InteractiveQueryClusterMetastoresOoziePtr and InteractiveQueryClusterMetastoresOoziePtrOutput values.
@@ -6011,7 +6011,7 @@ func (i *interactiveQueryClusterMetastoresOoziePtrType) ToInteractiveQueryCluste
 }
 
 func (i *interactiveQueryClusterMetastoresOoziePtrType) ToInteractiveQueryClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMetastoresOozieOutput).ToInteractiveQueryClusterMetastoresOoziePtrOutput()
 }
 
 type InteractiveQueryClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -6158,7 +6158,7 @@ func (i InteractiveQueryClusterMonitorArgs) ToInteractiveQueryClusterMonitorPtrO
 }
 
 func (i InteractiveQueryClusterMonitorArgs) ToInteractiveQueryClusterMonitorPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMonitorOutput).ToInteractiveQueryClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMonitorOutput).ToInteractiveQueryClusterMonitorPtrOutput()
 }
 
 // InteractiveQueryClusterMonitorPtrInput is an input type that accepts InteractiveQueryClusterMonitorArgs, InteractiveQueryClusterMonitorPtr and InteractiveQueryClusterMonitorPtrOutput values.
@@ -6191,7 +6191,7 @@ func (i *interactiveQueryClusterMonitorPtrType) ToInteractiveQueryClusterMonitor
 }
 
 func (i *interactiveQueryClusterMonitorPtrType) ToInteractiveQueryClusterMonitorPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterMonitorOutput).ToInteractiveQueryClusterMonitorPtrOutput()
 }
 
 type InteractiveQueryClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -6312,7 +6312,7 @@ func (i InteractiveQueryClusterRolesArgs) ToInteractiveQueryClusterRolesPtrOutpu
 }
 
 func (i InteractiveQueryClusterRolesArgs) ToInteractiveQueryClusterRolesPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesOutput).ToInteractiveQueryClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesOutput).ToInteractiveQueryClusterRolesPtrOutput()
 }
 
 // InteractiveQueryClusterRolesPtrInput is an input type that accepts InteractiveQueryClusterRolesArgs, InteractiveQueryClusterRolesPtr and InteractiveQueryClusterRolesPtrOutput values.
@@ -6345,7 +6345,7 @@ func (i *interactiveQueryClusterRolesPtrType) ToInteractiveQueryClusterRolesPtrO
 }
 
 func (i *interactiveQueryClusterRolesPtrType) ToInteractiveQueryClusterRolesPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesOutput).ToInteractiveQueryClusterRolesPtrOutput()
 }
 
 type InteractiveQueryClusterRolesOutput struct{ *pulumi.OutputState }
@@ -6493,7 +6493,7 @@ func (i InteractiveQueryClusterRolesHeadNodeArgs) ToInteractiveQueryClusterRoles
 }
 
 func (i InteractiveQueryClusterRolesHeadNodeArgs) ToInteractiveQueryClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesHeadNodeOutput).ToInteractiveQueryClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesHeadNodeOutput).ToInteractiveQueryClusterRolesHeadNodePtrOutput()
 }
 
 // InteractiveQueryClusterRolesHeadNodePtrInput is an input type that accepts InteractiveQueryClusterRolesHeadNodeArgs, InteractiveQueryClusterRolesHeadNodePtr and InteractiveQueryClusterRolesHeadNodePtrOutput values.
@@ -6526,7 +6526,7 @@ func (i *interactiveQueryClusterRolesHeadNodePtrType) ToInteractiveQueryClusterR
 }
 
 func (i *interactiveQueryClusterRolesHeadNodePtrType) ToInteractiveQueryClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesHeadNodeOutput).ToInteractiveQueryClusterRolesHeadNodePtrOutput()
 }
 
 type InteractiveQueryClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -6731,7 +6731,7 @@ func (i InteractiveQueryClusterRolesWorkerNodeArgs) ToInteractiveQueryClusterRol
 }
 
 func (i InteractiveQueryClusterRolesWorkerNodeArgs) ToInteractiveQueryClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesWorkerNodeOutput).ToInteractiveQueryClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesWorkerNodeOutput).ToInteractiveQueryClusterRolesWorkerNodePtrOutput()
 }
 
 // InteractiveQueryClusterRolesWorkerNodePtrInput is an input type that accepts InteractiveQueryClusterRolesWorkerNodeArgs, InteractiveQueryClusterRolesWorkerNodePtr and InteractiveQueryClusterRolesWorkerNodePtrOutput values.
@@ -6764,7 +6764,7 @@ func (i *interactiveQueryClusterRolesWorkerNodePtrType) ToInteractiveQueryCluste
 }
 
 func (i *interactiveQueryClusterRolesWorkerNodePtrType) ToInteractiveQueryClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesWorkerNodeOutput).ToInteractiveQueryClusterRolesWorkerNodePtrOutput()
 }
 
 type InteractiveQueryClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -6991,7 +6991,7 @@ func (i InteractiveQueryClusterRolesZookeeperNodeArgs) ToInteractiveQueryCluster
 }
 
 func (i InteractiveQueryClusterRolesZookeeperNodeArgs) ToInteractiveQueryClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesZookeeperNodeOutput).ToInteractiveQueryClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesZookeeperNodeOutput).ToInteractiveQueryClusterRolesZookeeperNodePtrOutput()
 }
 
 // InteractiveQueryClusterRolesZookeeperNodePtrInput is an input type that accepts InteractiveQueryClusterRolesZookeeperNodeArgs, InteractiveQueryClusterRolesZookeeperNodePtr and InteractiveQueryClusterRolesZookeeperNodePtrOutput values.
@@ -7024,7 +7024,7 @@ func (i *interactiveQueryClusterRolesZookeeperNodePtrType) ToInteractiveQueryClu
 }
 
 func (i *interactiveQueryClusterRolesZookeeperNodePtrType) ToInteractiveQueryClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) InteractiveQueryClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterRolesZookeeperNodeOutput).ToInteractiveQueryClusterRolesZookeeperNodePtrOutput()
 }
 
 type InteractiveQueryClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -7326,7 +7326,7 @@ func (i InteractiveQueryClusterStorageAccountGen2Args) ToInteractiveQueryCluster
 }
 
 func (i InteractiveQueryClusterStorageAccountGen2Args) ToInteractiveQueryClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) InteractiveQueryClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterStorageAccountGen2Output).ToInteractiveQueryClusterStorageAccountGen2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterStorageAccountGen2Output).ToInteractiveQueryClusterStorageAccountGen2PtrOutput()
 }
 
 // InteractiveQueryClusterStorageAccountGen2PtrInput is an input type that accepts InteractiveQueryClusterStorageAccountGen2Args, InteractiveQueryClusterStorageAccountGen2Ptr and InteractiveQueryClusterStorageAccountGen2PtrOutput values.
@@ -7359,7 +7359,7 @@ func (i *interactiveQueryClusterStorageAccountGen2PtrType) ToInteractiveQueryClu
 }
 
 func (i *interactiveQueryClusterStorageAccountGen2PtrType) ToInteractiveQueryClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) InteractiveQueryClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterStorageAccountGen2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterStorageAccountGen2Output).ToInteractiveQueryClusterStorageAccountGen2PtrOutput()
 }
 
 type InteractiveQueryClusterStorageAccountGen2Output struct{ *pulumi.OutputState }
@@ -7504,7 +7504,7 @@ func (i KafkaClusterComponentVersionArgs) ToKafkaClusterComponentVersionPtrOutpu
 }
 
 func (i KafkaClusterComponentVersionArgs) ToKafkaClusterComponentVersionPtrOutputWithContext(ctx context.Context) KafkaClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterComponentVersionOutput).ToKafkaClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterComponentVersionOutput).ToKafkaClusterComponentVersionPtrOutput()
 }
 
 // KafkaClusterComponentVersionPtrInput is an input type that accepts KafkaClusterComponentVersionArgs, KafkaClusterComponentVersionPtr and KafkaClusterComponentVersionPtrOutput values.
@@ -7537,7 +7537,7 @@ func (i *kafkaClusterComponentVersionPtrType) ToKafkaClusterComponentVersionPtrO
 }
 
 func (i *kafkaClusterComponentVersionPtrType) ToKafkaClusterComponentVersionPtrOutputWithContext(ctx context.Context) KafkaClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterComponentVersionOutput).ToKafkaClusterComponentVersionPtrOutput()
 }
 
 type KafkaClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -7647,7 +7647,7 @@ func (i KafkaClusterGatewayArgs) ToKafkaClusterGatewayPtrOutput() KafkaClusterGa
 }
 
 func (i KafkaClusterGatewayArgs) ToKafkaClusterGatewayPtrOutputWithContext(ctx context.Context) KafkaClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterGatewayOutput).ToKafkaClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterGatewayOutput).ToKafkaClusterGatewayPtrOutput()
 }
 
 // KafkaClusterGatewayPtrInput is an input type that accepts KafkaClusterGatewayArgs, KafkaClusterGatewayPtr and KafkaClusterGatewayPtrOutput values.
@@ -7680,7 +7680,7 @@ func (i *kafkaClusterGatewayPtrType) ToKafkaClusterGatewayPtrOutput() KafkaClust
 }
 
 func (i *kafkaClusterGatewayPtrType) ToKafkaClusterGatewayPtrOutputWithContext(ctx context.Context) KafkaClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterGatewayOutput).ToKafkaClusterGatewayPtrOutput()
 }
 
 type KafkaClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -7820,7 +7820,7 @@ func (i KafkaClusterMetastoresArgs) ToKafkaClusterMetastoresPtrOutput() KafkaClu
 }
 
 func (i KafkaClusterMetastoresArgs) ToKafkaClusterMetastoresPtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOutput).ToKafkaClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOutput).ToKafkaClusterMetastoresPtrOutput()
 }
 
 // KafkaClusterMetastoresPtrInput is an input type that accepts KafkaClusterMetastoresArgs, KafkaClusterMetastoresPtr and KafkaClusterMetastoresPtrOutput values.
@@ -7853,7 +7853,7 @@ func (i *kafkaClusterMetastoresPtrType) ToKafkaClusterMetastoresPtrOutput() Kafk
 }
 
 func (i *kafkaClusterMetastoresPtrType) ToKafkaClusterMetastoresPtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOutput).ToKafkaClusterMetastoresPtrOutput()
 }
 
 type KafkaClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -7993,7 +7993,7 @@ func (i KafkaClusterMetastoresAmbariArgs) ToKafkaClusterMetastoresAmbariPtrOutpu
 }
 
 func (i KafkaClusterMetastoresAmbariArgs) ToKafkaClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresAmbariOutput).ToKafkaClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresAmbariOutput).ToKafkaClusterMetastoresAmbariPtrOutput()
 }
 
 // KafkaClusterMetastoresAmbariPtrInput is an input type that accepts KafkaClusterMetastoresAmbariArgs, KafkaClusterMetastoresAmbariPtr and KafkaClusterMetastoresAmbariPtrOutput values.
@@ -8026,7 +8026,7 @@ func (i *kafkaClusterMetastoresAmbariPtrType) ToKafkaClusterMetastoresAmbariPtrO
 }
 
 func (i *kafkaClusterMetastoresAmbariPtrType) ToKafkaClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresAmbariOutput).ToKafkaClusterMetastoresAmbariPtrOutput()
 }
 
 type KafkaClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -8181,7 +8181,7 @@ func (i KafkaClusterMetastoresHiveArgs) ToKafkaClusterMetastoresHivePtrOutput() 
 }
 
 func (i KafkaClusterMetastoresHiveArgs) ToKafkaClusterMetastoresHivePtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresHiveOutput).ToKafkaClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresHiveOutput).ToKafkaClusterMetastoresHivePtrOutput()
 }
 
 // KafkaClusterMetastoresHivePtrInput is an input type that accepts KafkaClusterMetastoresHiveArgs, KafkaClusterMetastoresHivePtr and KafkaClusterMetastoresHivePtrOutput values.
@@ -8214,7 +8214,7 @@ func (i *kafkaClusterMetastoresHivePtrType) ToKafkaClusterMetastoresHivePtrOutpu
 }
 
 func (i *kafkaClusterMetastoresHivePtrType) ToKafkaClusterMetastoresHivePtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresHiveOutput).ToKafkaClusterMetastoresHivePtrOutput()
 }
 
 type KafkaClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -8369,7 +8369,7 @@ func (i KafkaClusterMetastoresOozieArgs) ToKafkaClusterMetastoresOoziePtrOutput(
 }
 
 func (i KafkaClusterMetastoresOozieArgs) ToKafkaClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOozieOutput).ToKafkaClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOozieOutput).ToKafkaClusterMetastoresOoziePtrOutput()
 }
 
 // KafkaClusterMetastoresOoziePtrInput is an input type that accepts KafkaClusterMetastoresOozieArgs, KafkaClusterMetastoresOoziePtr and KafkaClusterMetastoresOoziePtrOutput values.
@@ -8402,7 +8402,7 @@ func (i *kafkaClusterMetastoresOoziePtrType) ToKafkaClusterMetastoresOoziePtrOut
 }
 
 func (i *kafkaClusterMetastoresOoziePtrType) ToKafkaClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) KafkaClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMetastoresOozieOutput).ToKafkaClusterMetastoresOoziePtrOutput()
 }
 
 type KafkaClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -8549,7 +8549,7 @@ func (i KafkaClusterMonitorArgs) ToKafkaClusterMonitorPtrOutput() KafkaClusterMo
 }
 
 func (i KafkaClusterMonitorArgs) ToKafkaClusterMonitorPtrOutputWithContext(ctx context.Context) KafkaClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMonitorOutput).ToKafkaClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMonitorOutput).ToKafkaClusterMonitorPtrOutput()
 }
 
 // KafkaClusterMonitorPtrInput is an input type that accepts KafkaClusterMonitorArgs, KafkaClusterMonitorPtr and KafkaClusterMonitorPtrOutput values.
@@ -8582,7 +8582,7 @@ func (i *kafkaClusterMonitorPtrType) ToKafkaClusterMonitorPtrOutput() KafkaClust
 }
 
 func (i *kafkaClusterMonitorPtrType) ToKafkaClusterMonitorPtrOutputWithContext(ctx context.Context) KafkaClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterMonitorOutput).ToKafkaClusterMonitorPtrOutput()
 }
 
 type KafkaClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -8703,7 +8703,7 @@ func (i KafkaClusterRolesArgs) ToKafkaClusterRolesPtrOutput() KafkaClusterRolesP
 }
 
 func (i KafkaClusterRolesArgs) ToKafkaClusterRolesPtrOutputWithContext(ctx context.Context) KafkaClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesOutput).ToKafkaClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesOutput).ToKafkaClusterRolesPtrOutput()
 }
 
 // KafkaClusterRolesPtrInput is an input type that accepts KafkaClusterRolesArgs, KafkaClusterRolesPtr and KafkaClusterRolesPtrOutput values.
@@ -8736,7 +8736,7 @@ func (i *kafkaClusterRolesPtrType) ToKafkaClusterRolesPtrOutput() KafkaClusterRo
 }
 
 func (i *kafkaClusterRolesPtrType) ToKafkaClusterRolesPtrOutputWithContext(ctx context.Context) KafkaClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesOutput).ToKafkaClusterRolesPtrOutput()
 }
 
 type KafkaClusterRolesOutput struct{ *pulumi.OutputState }
@@ -8884,7 +8884,7 @@ func (i KafkaClusterRolesHeadNodeArgs) ToKafkaClusterRolesHeadNodePtrOutput() Ka
 }
 
 func (i KafkaClusterRolesHeadNodeArgs) ToKafkaClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesHeadNodeOutput).ToKafkaClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesHeadNodeOutput).ToKafkaClusterRolesHeadNodePtrOutput()
 }
 
 // KafkaClusterRolesHeadNodePtrInput is an input type that accepts KafkaClusterRolesHeadNodeArgs, KafkaClusterRolesHeadNodePtr and KafkaClusterRolesHeadNodePtrOutput values.
@@ -8917,7 +8917,7 @@ func (i *kafkaClusterRolesHeadNodePtrType) ToKafkaClusterRolesHeadNodePtrOutput(
 }
 
 func (i *kafkaClusterRolesHeadNodePtrType) ToKafkaClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesHeadNodeOutput).ToKafkaClusterRolesHeadNodePtrOutput()
 }
 
 type KafkaClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -9126,7 +9126,7 @@ func (i KafkaClusterRolesWorkerNodeArgs) ToKafkaClusterRolesWorkerNodePtrOutput(
 }
 
 func (i KafkaClusterRolesWorkerNodeArgs) ToKafkaClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesWorkerNodeOutput).ToKafkaClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesWorkerNodeOutput).ToKafkaClusterRolesWorkerNodePtrOutput()
 }
 
 // KafkaClusterRolesWorkerNodePtrInput is an input type that accepts KafkaClusterRolesWorkerNodeArgs, KafkaClusterRolesWorkerNodePtr and KafkaClusterRolesWorkerNodePtrOutput values.
@@ -9159,7 +9159,7 @@ func (i *kafkaClusterRolesWorkerNodePtrType) ToKafkaClusterRolesWorkerNodePtrOut
 }
 
 func (i *kafkaClusterRolesWorkerNodePtrType) ToKafkaClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesWorkerNodeOutput).ToKafkaClusterRolesWorkerNodePtrOutput()
 }
 
 type KafkaClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -9401,7 +9401,7 @@ func (i KafkaClusterRolesZookeeperNodeArgs) ToKafkaClusterRolesZookeeperNodePtrO
 }
 
 func (i KafkaClusterRolesZookeeperNodeArgs) ToKafkaClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesZookeeperNodeOutput).ToKafkaClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesZookeeperNodeOutput).ToKafkaClusterRolesZookeeperNodePtrOutput()
 }
 
 // KafkaClusterRolesZookeeperNodePtrInput is an input type that accepts KafkaClusterRolesZookeeperNodeArgs, KafkaClusterRolesZookeeperNodePtr and KafkaClusterRolesZookeeperNodePtrOutput values.
@@ -9434,7 +9434,7 @@ func (i *kafkaClusterRolesZookeeperNodePtrType) ToKafkaClusterRolesZookeeperNode
 }
 
 func (i *kafkaClusterRolesZookeeperNodePtrType) ToKafkaClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) KafkaClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterRolesZookeeperNodeOutput).ToKafkaClusterRolesZookeeperNodePtrOutput()
 }
 
 type KafkaClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -9734,7 +9734,7 @@ func (i KafkaClusterStorageAccountGen2Args) ToKafkaClusterStorageAccountGen2PtrO
 }
 
 func (i KafkaClusterStorageAccountGen2Args) ToKafkaClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) KafkaClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterStorageAccountGen2Output).ToKafkaClusterStorageAccountGen2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterStorageAccountGen2Output).ToKafkaClusterStorageAccountGen2PtrOutput()
 }
 
 // KafkaClusterStorageAccountGen2PtrInput is an input type that accepts KafkaClusterStorageAccountGen2Args, KafkaClusterStorageAccountGen2Ptr and KafkaClusterStorageAccountGen2PtrOutput values.
@@ -9767,7 +9767,7 @@ func (i *kafkaClusterStorageAccountGen2PtrType) ToKafkaClusterStorageAccountGen2
 }
 
 func (i *kafkaClusterStorageAccountGen2PtrType) ToKafkaClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) KafkaClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterStorageAccountGen2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterStorageAccountGen2Output).ToKafkaClusterStorageAccountGen2PtrOutput()
 }
 
 type KafkaClusterStorageAccountGen2Output struct{ *pulumi.OutputState }
@@ -9922,7 +9922,7 @@ func (i MLServicesClusterGatewayArgs) ToMLServicesClusterGatewayPtrOutput() MLSe
 }
 
 func (i MLServicesClusterGatewayArgs) ToMLServicesClusterGatewayPtrOutputWithContext(ctx context.Context) MLServicesClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterGatewayOutput).ToMLServicesClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterGatewayOutput).ToMLServicesClusterGatewayPtrOutput()
 }
 
 // MLServicesClusterGatewayPtrInput is an input type that accepts MLServicesClusterGatewayArgs, MLServicesClusterGatewayPtr and MLServicesClusterGatewayPtrOutput values.
@@ -9955,7 +9955,7 @@ func (i *mlservicesClusterGatewayPtrType) ToMLServicesClusterGatewayPtrOutput() 
 }
 
 func (i *mlservicesClusterGatewayPtrType) ToMLServicesClusterGatewayPtrOutputWithContext(ctx context.Context) MLServicesClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterGatewayOutput).ToMLServicesClusterGatewayPtrOutput()
 }
 
 type MLServicesClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -10099,7 +10099,7 @@ func (i MLServicesClusterRolesArgs) ToMLServicesClusterRolesPtrOutput() MLServic
 }
 
 func (i MLServicesClusterRolesArgs) ToMLServicesClusterRolesPtrOutputWithContext(ctx context.Context) MLServicesClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesOutput).ToMLServicesClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesOutput).ToMLServicesClusterRolesPtrOutput()
 }
 
 // MLServicesClusterRolesPtrInput is an input type that accepts MLServicesClusterRolesArgs, MLServicesClusterRolesPtr and MLServicesClusterRolesPtrOutput values.
@@ -10132,7 +10132,7 @@ func (i *mlservicesClusterRolesPtrType) ToMLServicesClusterRolesPtrOutput() MLSe
 }
 
 func (i *mlservicesClusterRolesPtrType) ToMLServicesClusterRolesPtrOutputWithContext(ctx context.Context) MLServicesClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesOutput).ToMLServicesClusterRolesPtrOutput()
 }
 
 type MLServicesClusterRolesOutput struct{ *pulumi.OutputState }
@@ -10295,7 +10295,7 @@ func (i MLServicesClusterRolesEdgeNodeArgs) ToMLServicesClusterRolesEdgeNodePtrO
 }
 
 func (i MLServicesClusterRolesEdgeNodeArgs) ToMLServicesClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesEdgeNodeOutput).ToMLServicesClusterRolesEdgeNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesEdgeNodeOutput).ToMLServicesClusterRolesEdgeNodePtrOutput()
 }
 
 // MLServicesClusterRolesEdgeNodePtrInput is an input type that accepts MLServicesClusterRolesEdgeNodeArgs, MLServicesClusterRolesEdgeNodePtr and MLServicesClusterRolesEdgeNodePtrOutput values.
@@ -10328,7 +10328,7 @@ func (i *mlservicesClusterRolesEdgeNodePtrType) ToMLServicesClusterRolesEdgeNode
 }
 
 func (i *mlservicesClusterRolesEdgeNodePtrType) ToMLServicesClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesEdgeNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesEdgeNodeOutput).ToMLServicesClusterRolesEdgeNodePtrOutput()
 }
 
 type MLServicesClusterRolesEdgeNodeOutput struct{ *pulumi.OutputState }
@@ -10521,7 +10521,7 @@ func (i MLServicesClusterRolesHeadNodeArgs) ToMLServicesClusterRolesHeadNodePtrO
 }
 
 func (i MLServicesClusterRolesHeadNodeArgs) ToMLServicesClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesHeadNodeOutput).ToMLServicesClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesHeadNodeOutput).ToMLServicesClusterRolesHeadNodePtrOutput()
 }
 
 // MLServicesClusterRolesHeadNodePtrInput is an input type that accepts MLServicesClusterRolesHeadNodeArgs, MLServicesClusterRolesHeadNodePtr and MLServicesClusterRolesHeadNodePtrOutput values.
@@ -10554,7 +10554,7 @@ func (i *mlservicesClusterRolesHeadNodePtrType) ToMLServicesClusterRolesHeadNode
 }
 
 func (i *mlservicesClusterRolesHeadNodePtrType) ToMLServicesClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesHeadNodeOutput).ToMLServicesClusterRolesHeadNodePtrOutput()
 }
 
 type MLServicesClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -10759,7 +10759,7 @@ func (i MLServicesClusterRolesWorkerNodeArgs) ToMLServicesClusterRolesWorkerNode
 }
 
 func (i MLServicesClusterRolesWorkerNodeArgs) ToMLServicesClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesWorkerNodeOutput).ToMLServicesClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesWorkerNodeOutput).ToMLServicesClusterRolesWorkerNodePtrOutput()
 }
 
 // MLServicesClusterRolesWorkerNodePtrInput is an input type that accepts MLServicesClusterRolesWorkerNodeArgs, MLServicesClusterRolesWorkerNodePtr and MLServicesClusterRolesWorkerNodePtrOutput values.
@@ -10792,7 +10792,7 @@ func (i *mlservicesClusterRolesWorkerNodePtrType) ToMLServicesClusterRolesWorker
 }
 
 func (i *mlservicesClusterRolesWorkerNodePtrType) ToMLServicesClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesWorkerNodeOutput).ToMLServicesClusterRolesWorkerNodePtrOutput()
 }
 
 type MLServicesClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -11019,7 +11019,7 @@ func (i MLServicesClusterRolesZookeeperNodeArgs) ToMLServicesClusterRolesZookeep
 }
 
 func (i MLServicesClusterRolesZookeeperNodeArgs) ToMLServicesClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesZookeeperNodeOutput).ToMLServicesClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesZookeeperNodeOutput).ToMLServicesClusterRolesZookeeperNodePtrOutput()
 }
 
 // MLServicesClusterRolesZookeeperNodePtrInput is an input type that accepts MLServicesClusterRolesZookeeperNodeArgs, MLServicesClusterRolesZookeeperNodePtr and MLServicesClusterRolesZookeeperNodePtrOutput values.
@@ -11052,7 +11052,7 @@ func (i *mlservicesClusterRolesZookeeperNodePtrType) ToMLServicesClusterRolesZoo
 }
 
 func (i *mlservicesClusterRolesZookeeperNodePtrType) ToMLServicesClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) MLServicesClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterRolesZookeeperNodeOutput).ToMLServicesClusterRolesZookeeperNodePtrOutput()
 }
 
 type MLServicesClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -11352,7 +11352,7 @@ func (i RServerClusterGatewayArgs) ToRServerClusterGatewayPtrOutput() RServerClu
 }
 
 func (i RServerClusterGatewayArgs) ToRServerClusterGatewayPtrOutputWithContext(ctx context.Context) RServerClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterGatewayOutput).ToRServerClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterGatewayOutput).ToRServerClusterGatewayPtrOutput()
 }
 
 // RServerClusterGatewayPtrInput is an input type that accepts RServerClusterGatewayArgs, RServerClusterGatewayPtr and RServerClusterGatewayPtrOutput values.
@@ -11385,7 +11385,7 @@ func (i *rserverClusterGatewayPtrType) ToRServerClusterGatewayPtrOutput() RServe
 }
 
 func (i *rserverClusterGatewayPtrType) ToRServerClusterGatewayPtrOutputWithContext(ctx context.Context) RServerClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterGatewayOutput).ToRServerClusterGatewayPtrOutput()
 }
 
 type RServerClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -11529,7 +11529,7 @@ func (i RServerClusterRolesArgs) ToRServerClusterRolesPtrOutput() RServerCluster
 }
 
 func (i RServerClusterRolesArgs) ToRServerClusterRolesPtrOutputWithContext(ctx context.Context) RServerClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesOutput).ToRServerClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesOutput).ToRServerClusterRolesPtrOutput()
 }
 
 // RServerClusterRolesPtrInput is an input type that accepts RServerClusterRolesArgs, RServerClusterRolesPtr and RServerClusterRolesPtrOutput values.
@@ -11562,7 +11562,7 @@ func (i *rserverClusterRolesPtrType) ToRServerClusterRolesPtrOutput() RServerClu
 }
 
 func (i *rserverClusterRolesPtrType) ToRServerClusterRolesPtrOutputWithContext(ctx context.Context) RServerClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesOutput).ToRServerClusterRolesPtrOutput()
 }
 
 type RServerClusterRolesOutput struct{ *pulumi.OutputState }
@@ -11725,7 +11725,7 @@ func (i RServerClusterRolesEdgeNodeArgs) ToRServerClusterRolesEdgeNodePtrOutput(
 }
 
 func (i RServerClusterRolesEdgeNodeArgs) ToRServerClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesEdgeNodeOutput).ToRServerClusterRolesEdgeNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesEdgeNodeOutput).ToRServerClusterRolesEdgeNodePtrOutput()
 }
 
 // RServerClusterRolesEdgeNodePtrInput is an input type that accepts RServerClusterRolesEdgeNodeArgs, RServerClusterRolesEdgeNodePtr and RServerClusterRolesEdgeNodePtrOutput values.
@@ -11758,7 +11758,7 @@ func (i *rserverClusterRolesEdgeNodePtrType) ToRServerClusterRolesEdgeNodePtrOut
 }
 
 func (i *rserverClusterRolesEdgeNodePtrType) ToRServerClusterRolesEdgeNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesEdgeNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesEdgeNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesEdgeNodeOutput).ToRServerClusterRolesEdgeNodePtrOutput()
 }
 
 type RServerClusterRolesEdgeNodeOutput struct{ *pulumi.OutputState }
@@ -11951,7 +11951,7 @@ func (i RServerClusterRolesHeadNodeArgs) ToRServerClusterRolesHeadNodePtrOutput(
 }
 
 func (i RServerClusterRolesHeadNodeArgs) ToRServerClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesHeadNodeOutput).ToRServerClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesHeadNodeOutput).ToRServerClusterRolesHeadNodePtrOutput()
 }
 
 // RServerClusterRolesHeadNodePtrInput is an input type that accepts RServerClusterRolesHeadNodeArgs, RServerClusterRolesHeadNodePtr and RServerClusterRolesHeadNodePtrOutput values.
@@ -11984,7 +11984,7 @@ func (i *rserverClusterRolesHeadNodePtrType) ToRServerClusterRolesHeadNodePtrOut
 }
 
 func (i *rserverClusterRolesHeadNodePtrType) ToRServerClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesHeadNodeOutput).ToRServerClusterRolesHeadNodePtrOutput()
 }
 
 type RServerClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -12189,7 +12189,7 @@ func (i RServerClusterRolesWorkerNodeArgs) ToRServerClusterRolesWorkerNodePtrOut
 }
 
 func (i RServerClusterRolesWorkerNodeArgs) ToRServerClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesWorkerNodeOutput).ToRServerClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesWorkerNodeOutput).ToRServerClusterRolesWorkerNodePtrOutput()
 }
 
 // RServerClusterRolesWorkerNodePtrInput is an input type that accepts RServerClusterRolesWorkerNodeArgs, RServerClusterRolesWorkerNodePtr and RServerClusterRolesWorkerNodePtrOutput values.
@@ -12222,7 +12222,7 @@ func (i *rserverClusterRolesWorkerNodePtrType) ToRServerClusterRolesWorkerNodePt
 }
 
 func (i *rserverClusterRolesWorkerNodePtrType) ToRServerClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesWorkerNodeOutput).ToRServerClusterRolesWorkerNodePtrOutput()
 }
 
 type RServerClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -12449,7 +12449,7 @@ func (i RServerClusterRolesZookeeperNodeArgs) ToRServerClusterRolesZookeeperNode
 }
 
 func (i RServerClusterRolesZookeeperNodeArgs) ToRServerClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesZookeeperNodeOutput).ToRServerClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesZookeeperNodeOutput).ToRServerClusterRolesZookeeperNodePtrOutput()
 }
 
 // RServerClusterRolesZookeeperNodePtrInput is an input type that accepts RServerClusterRolesZookeeperNodeArgs, RServerClusterRolesZookeeperNodePtr and RServerClusterRolesZookeeperNodePtrOutput values.
@@ -12482,7 +12482,7 @@ func (i *rserverClusterRolesZookeeperNodePtrType) ToRServerClusterRolesZookeeper
 }
 
 func (i *rserverClusterRolesZookeeperNodePtrType) ToRServerClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) RServerClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RServerClusterRolesZookeeperNodeOutput).ToRServerClusterRolesZookeeperNodePtrOutput()
 }
 
 type RServerClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -12770,7 +12770,7 @@ func (i SparkClusterComponentVersionArgs) ToSparkClusterComponentVersionPtrOutpu
 }
 
 func (i SparkClusterComponentVersionArgs) ToSparkClusterComponentVersionPtrOutputWithContext(ctx context.Context) SparkClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterComponentVersionOutput).ToSparkClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterComponentVersionOutput).ToSparkClusterComponentVersionPtrOutput()
 }
 
 // SparkClusterComponentVersionPtrInput is an input type that accepts SparkClusterComponentVersionArgs, SparkClusterComponentVersionPtr and SparkClusterComponentVersionPtrOutput values.
@@ -12803,7 +12803,7 @@ func (i *sparkClusterComponentVersionPtrType) ToSparkClusterComponentVersionPtrO
 }
 
 func (i *sparkClusterComponentVersionPtrType) ToSparkClusterComponentVersionPtrOutputWithContext(ctx context.Context) SparkClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterComponentVersionOutput).ToSparkClusterComponentVersionPtrOutput()
 }
 
 type SparkClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -12913,7 +12913,7 @@ func (i SparkClusterGatewayArgs) ToSparkClusterGatewayPtrOutput() SparkClusterGa
 }
 
 func (i SparkClusterGatewayArgs) ToSparkClusterGatewayPtrOutputWithContext(ctx context.Context) SparkClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterGatewayOutput).ToSparkClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterGatewayOutput).ToSparkClusterGatewayPtrOutput()
 }
 
 // SparkClusterGatewayPtrInput is an input type that accepts SparkClusterGatewayArgs, SparkClusterGatewayPtr and SparkClusterGatewayPtrOutput values.
@@ -12946,7 +12946,7 @@ func (i *sparkClusterGatewayPtrType) ToSparkClusterGatewayPtrOutput() SparkClust
 }
 
 func (i *sparkClusterGatewayPtrType) ToSparkClusterGatewayPtrOutputWithContext(ctx context.Context) SparkClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterGatewayOutput).ToSparkClusterGatewayPtrOutput()
 }
 
 type SparkClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -13086,7 +13086,7 @@ func (i SparkClusterMetastoresArgs) ToSparkClusterMetastoresPtrOutput() SparkClu
 }
 
 func (i SparkClusterMetastoresArgs) ToSparkClusterMetastoresPtrOutputWithContext(ctx context.Context) SparkClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOutput).ToSparkClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOutput).ToSparkClusterMetastoresPtrOutput()
 }
 
 // SparkClusterMetastoresPtrInput is an input type that accepts SparkClusterMetastoresArgs, SparkClusterMetastoresPtr and SparkClusterMetastoresPtrOutput values.
@@ -13119,7 +13119,7 @@ func (i *sparkClusterMetastoresPtrType) ToSparkClusterMetastoresPtrOutput() Spar
 }
 
 func (i *sparkClusterMetastoresPtrType) ToSparkClusterMetastoresPtrOutputWithContext(ctx context.Context) SparkClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOutput).ToSparkClusterMetastoresPtrOutput()
 }
 
 type SparkClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -13259,7 +13259,7 @@ func (i SparkClusterMetastoresAmbariArgs) ToSparkClusterMetastoresAmbariPtrOutpu
 }
 
 func (i SparkClusterMetastoresAmbariArgs) ToSparkClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) SparkClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresAmbariOutput).ToSparkClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresAmbariOutput).ToSparkClusterMetastoresAmbariPtrOutput()
 }
 
 // SparkClusterMetastoresAmbariPtrInput is an input type that accepts SparkClusterMetastoresAmbariArgs, SparkClusterMetastoresAmbariPtr and SparkClusterMetastoresAmbariPtrOutput values.
@@ -13292,7 +13292,7 @@ func (i *sparkClusterMetastoresAmbariPtrType) ToSparkClusterMetastoresAmbariPtrO
 }
 
 func (i *sparkClusterMetastoresAmbariPtrType) ToSparkClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) SparkClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresAmbariOutput).ToSparkClusterMetastoresAmbariPtrOutput()
 }
 
 type SparkClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -13447,7 +13447,7 @@ func (i SparkClusterMetastoresHiveArgs) ToSparkClusterMetastoresHivePtrOutput() 
 }
 
 func (i SparkClusterMetastoresHiveArgs) ToSparkClusterMetastoresHivePtrOutputWithContext(ctx context.Context) SparkClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresHiveOutput).ToSparkClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresHiveOutput).ToSparkClusterMetastoresHivePtrOutput()
 }
 
 // SparkClusterMetastoresHivePtrInput is an input type that accepts SparkClusterMetastoresHiveArgs, SparkClusterMetastoresHivePtr and SparkClusterMetastoresHivePtrOutput values.
@@ -13480,7 +13480,7 @@ func (i *sparkClusterMetastoresHivePtrType) ToSparkClusterMetastoresHivePtrOutpu
 }
 
 func (i *sparkClusterMetastoresHivePtrType) ToSparkClusterMetastoresHivePtrOutputWithContext(ctx context.Context) SparkClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresHiveOutput).ToSparkClusterMetastoresHivePtrOutput()
 }
 
 type SparkClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -13635,7 +13635,7 @@ func (i SparkClusterMetastoresOozieArgs) ToSparkClusterMetastoresOoziePtrOutput(
 }
 
 func (i SparkClusterMetastoresOozieArgs) ToSparkClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) SparkClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOozieOutput).ToSparkClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOozieOutput).ToSparkClusterMetastoresOoziePtrOutput()
 }
 
 // SparkClusterMetastoresOoziePtrInput is an input type that accepts SparkClusterMetastoresOozieArgs, SparkClusterMetastoresOoziePtr and SparkClusterMetastoresOoziePtrOutput values.
@@ -13668,7 +13668,7 @@ func (i *sparkClusterMetastoresOoziePtrType) ToSparkClusterMetastoresOoziePtrOut
 }
 
 func (i *sparkClusterMetastoresOoziePtrType) ToSparkClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) SparkClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMetastoresOozieOutput).ToSparkClusterMetastoresOoziePtrOutput()
 }
 
 type SparkClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -13815,7 +13815,7 @@ func (i SparkClusterMonitorArgs) ToSparkClusterMonitorPtrOutput() SparkClusterMo
 }
 
 func (i SparkClusterMonitorArgs) ToSparkClusterMonitorPtrOutputWithContext(ctx context.Context) SparkClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMonitorOutput).ToSparkClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMonitorOutput).ToSparkClusterMonitorPtrOutput()
 }
 
 // SparkClusterMonitorPtrInput is an input type that accepts SparkClusterMonitorArgs, SparkClusterMonitorPtr and SparkClusterMonitorPtrOutput values.
@@ -13848,7 +13848,7 @@ func (i *sparkClusterMonitorPtrType) ToSparkClusterMonitorPtrOutput() SparkClust
 }
 
 func (i *sparkClusterMonitorPtrType) ToSparkClusterMonitorPtrOutputWithContext(ctx context.Context) SparkClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterMonitorOutput).ToSparkClusterMonitorPtrOutput()
 }
 
 type SparkClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -13969,7 +13969,7 @@ func (i SparkClusterRolesArgs) ToSparkClusterRolesPtrOutput() SparkClusterRolesP
 }
 
 func (i SparkClusterRolesArgs) ToSparkClusterRolesPtrOutputWithContext(ctx context.Context) SparkClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesOutput).ToSparkClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesOutput).ToSparkClusterRolesPtrOutput()
 }
 
 // SparkClusterRolesPtrInput is an input type that accepts SparkClusterRolesArgs, SparkClusterRolesPtr and SparkClusterRolesPtrOutput values.
@@ -14002,7 +14002,7 @@ func (i *sparkClusterRolesPtrType) ToSparkClusterRolesPtrOutput() SparkClusterRo
 }
 
 func (i *sparkClusterRolesPtrType) ToSparkClusterRolesPtrOutputWithContext(ctx context.Context) SparkClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesOutput).ToSparkClusterRolesPtrOutput()
 }
 
 type SparkClusterRolesOutput struct{ *pulumi.OutputState }
@@ -14150,7 +14150,7 @@ func (i SparkClusterRolesHeadNodeArgs) ToSparkClusterRolesHeadNodePtrOutput() Sp
 }
 
 func (i SparkClusterRolesHeadNodeArgs) ToSparkClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesHeadNodeOutput).ToSparkClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesHeadNodeOutput).ToSparkClusterRolesHeadNodePtrOutput()
 }
 
 // SparkClusterRolesHeadNodePtrInput is an input type that accepts SparkClusterRolesHeadNodeArgs, SparkClusterRolesHeadNodePtr and SparkClusterRolesHeadNodePtrOutput values.
@@ -14183,7 +14183,7 @@ func (i *sparkClusterRolesHeadNodePtrType) ToSparkClusterRolesHeadNodePtrOutput(
 }
 
 func (i *sparkClusterRolesHeadNodePtrType) ToSparkClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesHeadNodeOutput).ToSparkClusterRolesHeadNodePtrOutput()
 }
 
 type SparkClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -14388,7 +14388,7 @@ func (i SparkClusterRolesWorkerNodeArgs) ToSparkClusterRolesWorkerNodePtrOutput(
 }
 
 func (i SparkClusterRolesWorkerNodeArgs) ToSparkClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesWorkerNodeOutput).ToSparkClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesWorkerNodeOutput).ToSparkClusterRolesWorkerNodePtrOutput()
 }
 
 // SparkClusterRolesWorkerNodePtrInput is an input type that accepts SparkClusterRolesWorkerNodeArgs, SparkClusterRolesWorkerNodePtr and SparkClusterRolesWorkerNodePtrOutput values.
@@ -14421,7 +14421,7 @@ func (i *sparkClusterRolesWorkerNodePtrType) ToSparkClusterRolesWorkerNodePtrOut
 }
 
 func (i *sparkClusterRolesWorkerNodePtrType) ToSparkClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesWorkerNodeOutput).ToSparkClusterRolesWorkerNodePtrOutput()
 }
 
 type SparkClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -14648,7 +14648,7 @@ func (i SparkClusterRolesZookeeperNodeArgs) ToSparkClusterRolesZookeeperNodePtrO
 }
 
 func (i SparkClusterRolesZookeeperNodeArgs) ToSparkClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesZookeeperNodeOutput).ToSparkClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesZookeeperNodeOutput).ToSparkClusterRolesZookeeperNodePtrOutput()
 }
 
 // SparkClusterRolesZookeeperNodePtrInput is an input type that accepts SparkClusterRolesZookeeperNodeArgs, SparkClusterRolesZookeeperNodePtr and SparkClusterRolesZookeeperNodePtrOutput values.
@@ -14681,7 +14681,7 @@ func (i *sparkClusterRolesZookeeperNodePtrType) ToSparkClusterRolesZookeeperNode
 }
 
 func (i *sparkClusterRolesZookeeperNodePtrType) ToSparkClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) SparkClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterRolesZookeeperNodeOutput).ToSparkClusterRolesZookeeperNodePtrOutput()
 }
 
 type SparkClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }
@@ -14981,7 +14981,7 @@ func (i SparkClusterStorageAccountGen2Args) ToSparkClusterStorageAccountGen2PtrO
 }
 
 func (i SparkClusterStorageAccountGen2Args) ToSparkClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) SparkClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterStorageAccountGen2Output).ToSparkClusterStorageAccountGen2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterStorageAccountGen2Output).ToSparkClusterStorageAccountGen2PtrOutput()
 }
 
 // SparkClusterStorageAccountGen2PtrInput is an input type that accepts SparkClusterStorageAccountGen2Args, SparkClusterStorageAccountGen2Ptr and SparkClusterStorageAccountGen2PtrOutput values.
@@ -15014,7 +15014,7 @@ func (i *sparkClusterStorageAccountGen2PtrType) ToSparkClusterStorageAccountGen2
 }
 
 func (i *sparkClusterStorageAccountGen2PtrType) ToSparkClusterStorageAccountGen2PtrOutputWithContext(ctx context.Context) SparkClusterStorageAccountGen2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterStorageAccountGen2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterStorageAccountGen2Output).ToSparkClusterStorageAccountGen2PtrOutput()
 }
 
 type SparkClusterStorageAccountGen2Output struct{ *pulumi.OutputState }
@@ -15157,7 +15157,7 @@ func (i StormClusterComponentVersionArgs) ToStormClusterComponentVersionPtrOutpu
 }
 
 func (i StormClusterComponentVersionArgs) ToStormClusterComponentVersionPtrOutputWithContext(ctx context.Context) StormClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterComponentVersionOutput).ToStormClusterComponentVersionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterComponentVersionOutput).ToStormClusterComponentVersionPtrOutput()
 }
 
 // StormClusterComponentVersionPtrInput is an input type that accepts StormClusterComponentVersionArgs, StormClusterComponentVersionPtr and StormClusterComponentVersionPtrOutput values.
@@ -15190,7 +15190,7 @@ func (i *stormClusterComponentVersionPtrType) ToStormClusterComponentVersionPtrO
 }
 
 func (i *stormClusterComponentVersionPtrType) ToStormClusterComponentVersionPtrOutputWithContext(ctx context.Context) StormClusterComponentVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterComponentVersionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterComponentVersionOutput).ToStormClusterComponentVersionPtrOutput()
 }
 
 type StormClusterComponentVersionOutput struct{ *pulumi.OutputState }
@@ -15300,7 +15300,7 @@ func (i StormClusterGatewayArgs) ToStormClusterGatewayPtrOutput() StormClusterGa
 }
 
 func (i StormClusterGatewayArgs) ToStormClusterGatewayPtrOutputWithContext(ctx context.Context) StormClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterGatewayOutput).ToStormClusterGatewayPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterGatewayOutput).ToStormClusterGatewayPtrOutput()
 }
 
 // StormClusterGatewayPtrInput is an input type that accepts StormClusterGatewayArgs, StormClusterGatewayPtr and StormClusterGatewayPtrOutput values.
@@ -15333,7 +15333,7 @@ func (i *stormClusterGatewayPtrType) ToStormClusterGatewayPtrOutput() StormClust
 }
 
 func (i *stormClusterGatewayPtrType) ToStormClusterGatewayPtrOutputWithContext(ctx context.Context) StormClusterGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterGatewayPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterGatewayOutput).ToStormClusterGatewayPtrOutput()
 }
 
 type StormClusterGatewayOutput struct{ *pulumi.OutputState }
@@ -15473,7 +15473,7 @@ func (i StormClusterMetastoresArgs) ToStormClusterMetastoresPtrOutput() StormClu
 }
 
 func (i StormClusterMetastoresArgs) ToStormClusterMetastoresPtrOutputWithContext(ctx context.Context) StormClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOutput).ToStormClusterMetastoresPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOutput).ToStormClusterMetastoresPtrOutput()
 }
 
 // StormClusterMetastoresPtrInput is an input type that accepts StormClusterMetastoresArgs, StormClusterMetastoresPtr and StormClusterMetastoresPtrOutput values.
@@ -15506,7 +15506,7 @@ func (i *stormClusterMetastoresPtrType) ToStormClusterMetastoresPtrOutput() Stor
 }
 
 func (i *stormClusterMetastoresPtrType) ToStormClusterMetastoresPtrOutputWithContext(ctx context.Context) StormClusterMetastoresPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOutput).ToStormClusterMetastoresPtrOutput()
 }
 
 type StormClusterMetastoresOutput struct{ *pulumi.OutputState }
@@ -15646,7 +15646,7 @@ func (i StormClusterMetastoresAmbariArgs) ToStormClusterMetastoresAmbariPtrOutpu
 }
 
 func (i StormClusterMetastoresAmbariArgs) ToStormClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) StormClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresAmbariOutput).ToStormClusterMetastoresAmbariPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresAmbariOutput).ToStormClusterMetastoresAmbariPtrOutput()
 }
 
 // StormClusterMetastoresAmbariPtrInput is an input type that accepts StormClusterMetastoresAmbariArgs, StormClusterMetastoresAmbariPtr and StormClusterMetastoresAmbariPtrOutput values.
@@ -15679,7 +15679,7 @@ func (i *stormClusterMetastoresAmbariPtrType) ToStormClusterMetastoresAmbariPtrO
 }
 
 func (i *stormClusterMetastoresAmbariPtrType) ToStormClusterMetastoresAmbariPtrOutputWithContext(ctx context.Context) StormClusterMetastoresAmbariPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresAmbariPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresAmbariOutput).ToStormClusterMetastoresAmbariPtrOutput()
 }
 
 type StormClusterMetastoresAmbariOutput struct{ *pulumi.OutputState }
@@ -15834,7 +15834,7 @@ func (i StormClusterMetastoresHiveArgs) ToStormClusterMetastoresHivePtrOutput() 
 }
 
 func (i StormClusterMetastoresHiveArgs) ToStormClusterMetastoresHivePtrOutputWithContext(ctx context.Context) StormClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresHiveOutput).ToStormClusterMetastoresHivePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresHiveOutput).ToStormClusterMetastoresHivePtrOutput()
 }
 
 // StormClusterMetastoresHivePtrInput is an input type that accepts StormClusterMetastoresHiveArgs, StormClusterMetastoresHivePtr and StormClusterMetastoresHivePtrOutput values.
@@ -15867,7 +15867,7 @@ func (i *stormClusterMetastoresHivePtrType) ToStormClusterMetastoresHivePtrOutpu
 }
 
 func (i *stormClusterMetastoresHivePtrType) ToStormClusterMetastoresHivePtrOutputWithContext(ctx context.Context) StormClusterMetastoresHivePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresHivePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresHiveOutput).ToStormClusterMetastoresHivePtrOutput()
 }
 
 type StormClusterMetastoresHiveOutput struct{ *pulumi.OutputState }
@@ -16022,7 +16022,7 @@ func (i StormClusterMetastoresOozieArgs) ToStormClusterMetastoresOoziePtrOutput(
 }
 
 func (i StormClusterMetastoresOozieArgs) ToStormClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) StormClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOozieOutput).ToStormClusterMetastoresOoziePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOozieOutput).ToStormClusterMetastoresOoziePtrOutput()
 }
 
 // StormClusterMetastoresOoziePtrInput is an input type that accepts StormClusterMetastoresOozieArgs, StormClusterMetastoresOoziePtr and StormClusterMetastoresOoziePtrOutput values.
@@ -16055,7 +16055,7 @@ func (i *stormClusterMetastoresOoziePtrType) ToStormClusterMetastoresOoziePtrOut
 }
 
 func (i *stormClusterMetastoresOoziePtrType) ToStormClusterMetastoresOoziePtrOutputWithContext(ctx context.Context) StormClusterMetastoresOoziePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOoziePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMetastoresOozieOutput).ToStormClusterMetastoresOoziePtrOutput()
 }
 
 type StormClusterMetastoresOozieOutput struct{ *pulumi.OutputState }
@@ -16202,7 +16202,7 @@ func (i StormClusterMonitorArgs) ToStormClusterMonitorPtrOutput() StormClusterMo
 }
 
 func (i StormClusterMonitorArgs) ToStormClusterMonitorPtrOutputWithContext(ctx context.Context) StormClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMonitorOutput).ToStormClusterMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMonitorOutput).ToStormClusterMonitorPtrOutput()
 }
 
 // StormClusterMonitorPtrInput is an input type that accepts StormClusterMonitorArgs, StormClusterMonitorPtr and StormClusterMonitorPtrOutput values.
@@ -16235,7 +16235,7 @@ func (i *stormClusterMonitorPtrType) ToStormClusterMonitorPtrOutput() StormClust
 }
 
 func (i *stormClusterMonitorPtrType) ToStormClusterMonitorPtrOutputWithContext(ctx context.Context) StormClusterMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterMonitorOutput).ToStormClusterMonitorPtrOutput()
 }
 
 type StormClusterMonitorOutput struct{ *pulumi.OutputState }
@@ -16356,7 +16356,7 @@ func (i StormClusterRolesArgs) ToStormClusterRolesPtrOutput() StormClusterRolesP
 }
 
 func (i StormClusterRolesArgs) ToStormClusterRolesPtrOutputWithContext(ctx context.Context) StormClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesOutput).ToStormClusterRolesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesOutput).ToStormClusterRolesPtrOutput()
 }
 
 // StormClusterRolesPtrInput is an input type that accepts StormClusterRolesArgs, StormClusterRolesPtr and StormClusterRolesPtrOutput values.
@@ -16389,7 +16389,7 @@ func (i *stormClusterRolesPtrType) ToStormClusterRolesPtrOutput() StormClusterRo
 }
 
 func (i *stormClusterRolesPtrType) ToStormClusterRolesPtrOutputWithContext(ctx context.Context) StormClusterRolesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesOutput).ToStormClusterRolesPtrOutput()
 }
 
 type StormClusterRolesOutput struct{ *pulumi.OutputState }
@@ -16537,7 +16537,7 @@ func (i StormClusterRolesHeadNodeArgs) ToStormClusterRolesHeadNodePtrOutput() St
 }
 
 func (i StormClusterRolesHeadNodeArgs) ToStormClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) StormClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesHeadNodeOutput).ToStormClusterRolesHeadNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesHeadNodeOutput).ToStormClusterRolesHeadNodePtrOutput()
 }
 
 // StormClusterRolesHeadNodePtrInput is an input type that accepts StormClusterRolesHeadNodeArgs, StormClusterRolesHeadNodePtr and StormClusterRolesHeadNodePtrOutput values.
@@ -16570,7 +16570,7 @@ func (i *stormClusterRolesHeadNodePtrType) ToStormClusterRolesHeadNodePtrOutput(
 }
 
 func (i *stormClusterRolesHeadNodePtrType) ToStormClusterRolesHeadNodePtrOutputWithContext(ctx context.Context) StormClusterRolesHeadNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesHeadNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesHeadNodeOutput).ToStormClusterRolesHeadNodePtrOutput()
 }
 
 type StormClusterRolesHeadNodeOutput struct{ *pulumi.OutputState }
@@ -16775,7 +16775,7 @@ func (i StormClusterRolesWorkerNodeArgs) ToStormClusterRolesWorkerNodePtrOutput(
 }
 
 func (i StormClusterRolesWorkerNodeArgs) ToStormClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) StormClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesWorkerNodeOutput).ToStormClusterRolesWorkerNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesWorkerNodeOutput).ToStormClusterRolesWorkerNodePtrOutput()
 }
 
 // StormClusterRolesWorkerNodePtrInput is an input type that accepts StormClusterRolesWorkerNodeArgs, StormClusterRolesWorkerNodePtr and StormClusterRolesWorkerNodePtrOutput values.
@@ -16808,7 +16808,7 @@ func (i *stormClusterRolesWorkerNodePtrType) ToStormClusterRolesWorkerNodePtrOut
 }
 
 func (i *stormClusterRolesWorkerNodePtrType) ToStormClusterRolesWorkerNodePtrOutputWithContext(ctx context.Context) StormClusterRolesWorkerNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesWorkerNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesWorkerNodeOutput).ToStormClusterRolesWorkerNodePtrOutput()
 }
 
 type StormClusterRolesWorkerNodeOutput struct{ *pulumi.OutputState }
@@ -17035,7 +17035,7 @@ func (i StormClusterRolesZookeeperNodeArgs) ToStormClusterRolesZookeeperNodePtrO
 }
 
 func (i StormClusterRolesZookeeperNodeArgs) ToStormClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) StormClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesZookeeperNodeOutput).ToStormClusterRolesZookeeperNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesZookeeperNodeOutput).ToStormClusterRolesZookeeperNodePtrOutput()
 }
 
 // StormClusterRolesZookeeperNodePtrInput is an input type that accepts StormClusterRolesZookeeperNodeArgs, StormClusterRolesZookeeperNodePtr and StormClusterRolesZookeeperNodePtrOutput values.
@@ -17068,7 +17068,7 @@ func (i *stormClusterRolesZookeeperNodePtrType) ToStormClusterRolesZookeeperNode
 }
 
 func (i *stormClusterRolesZookeeperNodePtrType) ToStormClusterRolesZookeeperNodePtrOutputWithContext(ctx context.Context) StormClusterRolesZookeeperNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesZookeeperNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StormClusterRolesZookeeperNodeOutput).ToStormClusterRolesZookeeperNodePtrOutput()
 }
 
 type StormClusterRolesZookeeperNodeOutput struct{ *pulumi.OutputState }

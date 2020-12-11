@@ -238,6 +238,13 @@ type TriggerScheduleInput interface {
 	ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput
 }
 
+type TriggerSchedulePtrInput interface {
+	pulumi.Input
+
+	ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput
+	ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput
+}
+
 func (TriggerSchedule) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerSchedule)(nil)).Elem()
 }
@@ -248,6 +255,14 @@ func (i TriggerSchedule) ToTriggerScheduleOutput() TriggerScheduleOutput {
 
 func (i TriggerSchedule) ToTriggerScheduleOutputWithContext(ctx context.Context) TriggerScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerScheduleOutput)
+}
+
+func (i TriggerSchedule) ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput {
+	return i.ToTriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerSchedule) ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerSchedulePtrOutput)
 }
 
 type TriggerScheduleOutput struct {
@@ -266,6 +281,23 @@ func (o TriggerScheduleOutput) ToTriggerScheduleOutputWithContext(ctx context.Co
 	return o
 }
 
+type TriggerSchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerSchedule)(nil)).Elem()
+}
+
+func (o TriggerSchedulePtrOutput) ToTriggerSchedulePtrOutput() TriggerSchedulePtrOutput {
+	return o
+}
+
+func (o TriggerSchedulePtrOutput) ToTriggerSchedulePtrOutputWithContext(ctx context.Context) TriggerSchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerScheduleOutput{})
+	pulumi.RegisterOutputType(TriggerSchedulePtrOutput{})
 }

@@ -168,6 +168,13 @@ type TimeSeriesInsightsGen2EnvironmentInput interface {
 	ToTimeSeriesInsightsGen2EnvironmentOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentOutput
 }
 
+type TimeSeriesInsightsGen2EnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsGen2EnvironmentPtrOutput() TimeSeriesInsightsGen2EnvironmentPtrOutput
+	ToTimeSeriesInsightsGen2EnvironmentPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentPtrOutput
+}
+
 func (TimeSeriesInsightsGen2Environment) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeSeriesInsightsGen2Environment)(nil)).Elem()
 }
@@ -178,6 +185,14 @@ func (i TimeSeriesInsightsGen2Environment) ToTimeSeriesInsightsGen2EnvironmentOu
 
 func (i TimeSeriesInsightsGen2Environment) ToTimeSeriesInsightsGen2EnvironmentOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentOutput)
+}
+
+func (i TimeSeriesInsightsGen2Environment) ToTimeSeriesInsightsGen2EnvironmentPtrOutput() TimeSeriesInsightsGen2EnvironmentPtrOutput {
+	return i.ToTimeSeriesInsightsGen2EnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesInsightsGen2Environment) ToTimeSeriesInsightsGen2EnvironmentPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsGen2EnvironmentPtrOutput)
 }
 
 type TimeSeriesInsightsGen2EnvironmentOutput struct {
@@ -196,6 +211,23 @@ func (o TimeSeriesInsightsGen2EnvironmentOutput) ToTimeSeriesInsightsGen2Environ
 	return o
 }
 
+type TimeSeriesInsightsGen2EnvironmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsGen2EnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesInsightsGen2Environment)(nil)).Elem()
+}
+
+func (o TimeSeriesInsightsGen2EnvironmentPtrOutput) ToTimeSeriesInsightsGen2EnvironmentPtrOutput() TimeSeriesInsightsGen2EnvironmentPtrOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsGen2EnvironmentPtrOutput) ToTimeSeriesInsightsGen2EnvironmentPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsGen2EnvironmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TimeSeriesInsightsGen2EnvironmentOutput{})
+	pulumi.RegisterOutputType(TimeSeriesInsightsGen2EnvironmentPtrOutput{})
 }

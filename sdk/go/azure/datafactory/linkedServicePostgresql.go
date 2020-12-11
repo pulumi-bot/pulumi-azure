@@ -219,6 +219,13 @@ type LinkedServicePostgresqlInput interface {
 	ToLinkedServicePostgresqlOutputWithContext(ctx context.Context) LinkedServicePostgresqlOutput
 }
 
+type LinkedServicePostgresqlPtrInput interface {
+	pulumi.Input
+
+	ToLinkedServicePostgresqlPtrOutput() LinkedServicePostgresqlPtrOutput
+	ToLinkedServicePostgresqlPtrOutputWithContext(ctx context.Context) LinkedServicePostgresqlPtrOutput
+}
+
 func (LinkedServicePostgresql) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServicePostgresql)(nil)).Elem()
 }
@@ -229,6 +236,14 @@ func (i LinkedServicePostgresql) ToLinkedServicePostgresqlOutput() LinkedService
 
 func (i LinkedServicePostgresql) ToLinkedServicePostgresqlOutputWithContext(ctx context.Context) LinkedServicePostgresqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServicePostgresqlOutput)
+}
+
+func (i LinkedServicePostgresql) ToLinkedServicePostgresqlPtrOutput() LinkedServicePostgresqlPtrOutput {
+	return i.ToLinkedServicePostgresqlPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServicePostgresql) ToLinkedServicePostgresqlPtrOutputWithContext(ctx context.Context) LinkedServicePostgresqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServicePostgresqlPtrOutput)
 }
 
 type LinkedServicePostgresqlOutput struct {
@@ -247,6 +262,23 @@ func (o LinkedServicePostgresqlOutput) ToLinkedServicePostgresqlOutputWithContex
 	return o
 }
 
+type LinkedServicePostgresqlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServicePostgresqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServicePostgresql)(nil)).Elem()
+}
+
+func (o LinkedServicePostgresqlPtrOutput) ToLinkedServicePostgresqlPtrOutput() LinkedServicePostgresqlPtrOutput {
+	return o
+}
+
+func (o LinkedServicePostgresqlPtrOutput) ToLinkedServicePostgresqlPtrOutputWithContext(ctx context.Context) LinkedServicePostgresqlPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServicePostgresqlOutput{})
+	pulumi.RegisterOutputType(LinkedServicePostgresqlPtrOutput{})
 }

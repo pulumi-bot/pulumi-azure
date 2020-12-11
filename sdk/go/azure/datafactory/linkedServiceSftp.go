@@ -277,6 +277,13 @@ type LinkedServiceSftpInput interface {
 	ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput
 }
 
+type LinkedServiceSftpPtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceSftpPtrOutput() LinkedServiceSftpPtrOutput
+	ToLinkedServiceSftpPtrOutputWithContext(ctx context.Context) LinkedServiceSftpPtrOutput
+}
+
 func (LinkedServiceSftp) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServiceSftp)(nil)).Elem()
 }
@@ -287,6 +294,14 @@ func (i LinkedServiceSftp) ToLinkedServiceSftpOutput() LinkedServiceSftpOutput {
 
 func (i LinkedServiceSftp) ToLinkedServiceSftpOutputWithContext(ctx context.Context) LinkedServiceSftpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSftpOutput)
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpPtrOutput() LinkedServiceSftpPtrOutput {
+	return i.ToLinkedServiceSftpPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceSftp) ToLinkedServiceSftpPtrOutputWithContext(ctx context.Context) LinkedServiceSftpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSftpPtrOutput)
 }
 
 type LinkedServiceSftpOutput struct {
@@ -305,6 +320,23 @@ func (o LinkedServiceSftpOutput) ToLinkedServiceSftpOutputWithContext(ctx contex
 	return o
 }
 
+type LinkedServiceSftpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceSftpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceSftp)(nil)).Elem()
+}
+
+func (o LinkedServiceSftpPtrOutput) ToLinkedServiceSftpPtrOutput() LinkedServiceSftpPtrOutput {
+	return o
+}
+
+func (o LinkedServiceSftpPtrOutput) ToLinkedServiceSftpPtrOutputWithContext(ctx context.Context) LinkedServiceSftpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceSftpOutput{})
+	pulumi.RegisterOutputType(LinkedServiceSftpPtrOutput{})
 }

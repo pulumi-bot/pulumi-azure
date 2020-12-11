@@ -188,6 +188,13 @@ type ZoneVirtualNetworkLinkInput interface {
 	ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput
 }
 
+type ZoneVirtualNetworkLinkPtrInput interface {
+	pulumi.Input
+
+	ToZoneVirtualNetworkLinkPtrOutput() ZoneVirtualNetworkLinkPtrOutput
+	ToZoneVirtualNetworkLinkPtrOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkPtrOutput
+}
+
 func (ZoneVirtualNetworkLink) ElementType() reflect.Type {
 	return reflect.TypeOf((*ZoneVirtualNetworkLink)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutput() ZoneVirtualNetw
 
 func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneVirtualNetworkLinkOutput)
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkPtrOutput() ZoneVirtualNetworkLinkPtrOutput {
+	return i.ToZoneVirtualNetworkLinkPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneVirtualNetworkLink) ToZoneVirtualNetworkLinkPtrOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVirtualNetworkLinkPtrOutput)
 }
 
 type ZoneVirtualNetworkLinkOutput struct {
@@ -216,6 +231,23 @@ func (o ZoneVirtualNetworkLinkOutput) ToZoneVirtualNetworkLinkOutputWithContext(
 	return o
 }
 
+type ZoneVirtualNetworkLinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneVirtualNetworkLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneVirtualNetworkLink)(nil)).Elem()
+}
+
+func (o ZoneVirtualNetworkLinkPtrOutput) ToZoneVirtualNetworkLinkPtrOutput() ZoneVirtualNetworkLinkPtrOutput {
+	return o
+}
+
+func (o ZoneVirtualNetworkLinkPtrOutput) ToZoneVirtualNetworkLinkPtrOutputWithContext(ctx context.Context) ZoneVirtualNetworkLinkPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneVirtualNetworkLinkOutput{})
+	pulumi.RegisterOutputType(ZoneVirtualNetworkLinkPtrOutput{})
 }

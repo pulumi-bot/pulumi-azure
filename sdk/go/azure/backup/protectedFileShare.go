@@ -233,6 +233,13 @@ type ProtectedFileShareInput interface {
 	ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput
 }
 
+type ProtectedFileSharePtrInput interface {
+	pulumi.Input
+
+	ToProtectedFileSharePtrOutput() ProtectedFileSharePtrOutput
+	ToProtectedFileSharePtrOutputWithContext(ctx context.Context) ProtectedFileSharePtrOutput
+}
+
 func (ProtectedFileShare) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProtectedFileShare)(nil)).Elem()
 }
@@ -243,6 +250,14 @@ func (i ProtectedFileShare) ToProtectedFileShareOutput() ProtectedFileShareOutpu
 
 func (i ProtectedFileShare) ToProtectedFileShareOutputWithContext(ctx context.Context) ProtectedFileShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectedFileShareOutput)
+}
+
+func (i ProtectedFileShare) ToProtectedFileSharePtrOutput() ProtectedFileSharePtrOutput {
+	return i.ToProtectedFileSharePtrOutputWithContext(context.Background())
+}
+
+func (i ProtectedFileShare) ToProtectedFileSharePtrOutputWithContext(ctx context.Context) ProtectedFileSharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedFileSharePtrOutput)
 }
 
 type ProtectedFileShareOutput struct {
@@ -261,6 +276,23 @@ func (o ProtectedFileShareOutput) ToProtectedFileShareOutputWithContext(ctx cont
 	return o
 }
 
+type ProtectedFileSharePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedFileSharePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectedFileShare)(nil)).Elem()
+}
+
+func (o ProtectedFileSharePtrOutput) ToProtectedFileSharePtrOutput() ProtectedFileSharePtrOutput {
+	return o
+}
+
+func (o ProtectedFileSharePtrOutput) ToProtectedFileSharePtrOutputWithContext(ctx context.Context) ProtectedFileSharePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProtectedFileShareOutput{})
+	pulumi.RegisterOutputType(ProtectedFileSharePtrOutput{})
 }

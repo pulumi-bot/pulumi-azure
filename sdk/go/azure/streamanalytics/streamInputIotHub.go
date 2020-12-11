@@ -258,6 +258,13 @@ type StreamInputIotHubInput interface {
 	ToStreamInputIotHubOutputWithContext(ctx context.Context) StreamInputIotHubOutput
 }
 
+type StreamInputIotHubPtrInput interface {
+	pulumi.Input
+
+	ToStreamInputIotHubPtrOutput() StreamInputIotHubPtrOutput
+	ToStreamInputIotHubPtrOutputWithContext(ctx context.Context) StreamInputIotHubPtrOutput
+}
+
 func (StreamInputIotHub) ElementType() reflect.Type {
 	return reflect.TypeOf((*StreamInputIotHub)(nil)).Elem()
 }
@@ -268,6 +275,14 @@ func (i StreamInputIotHub) ToStreamInputIotHubOutput() StreamInputIotHubOutput {
 
 func (i StreamInputIotHub) ToStreamInputIotHubOutputWithContext(ctx context.Context) StreamInputIotHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubOutput)
+}
+
+func (i StreamInputIotHub) ToStreamInputIotHubPtrOutput() StreamInputIotHubPtrOutput {
+	return i.ToStreamInputIotHubPtrOutputWithContext(context.Background())
+}
+
+func (i StreamInputIotHub) ToStreamInputIotHubPtrOutputWithContext(ctx context.Context) StreamInputIotHubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputIotHubPtrOutput)
 }
 
 type StreamInputIotHubOutput struct {
@@ -286,6 +301,23 @@ func (o StreamInputIotHubOutput) ToStreamInputIotHubOutputWithContext(ctx contex
 	return o
 }
 
+type StreamInputIotHubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputIotHubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamInputIotHub)(nil)).Elem()
+}
+
+func (o StreamInputIotHubPtrOutput) ToStreamInputIotHubPtrOutput() StreamInputIotHubPtrOutput {
+	return o
+}
+
+func (o StreamInputIotHubPtrOutput) ToStreamInputIotHubPtrOutputWithContext(ctx context.Context) StreamInputIotHubPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StreamInputIotHubOutput{})
+	pulumi.RegisterOutputType(StreamInputIotHubPtrOutput{})
 }

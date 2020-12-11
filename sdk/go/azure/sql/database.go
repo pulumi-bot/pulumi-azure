@@ -388,6 +388,13 @@ type DatabaseInput interface {
 	ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput
 }
 
+type DatabasePtrInput interface {
+	pulumi.Input
+
+	ToDatabasePtrOutput() DatabasePtrOutput
+	ToDatabasePtrOutputWithContext(ctx context.Context) DatabasePtrOutput
+}
+
 func (Database) ElementType() reflect.Type {
 	return reflect.TypeOf((*Database)(nil)).Elem()
 }
@@ -398,6 +405,14 @@ func (i Database) ToDatabaseOutput() DatabaseOutput {
 
 func (i Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
+}
+
+func (i Database) ToDatabasePtrOutput() DatabasePtrOutput {
+	return i.ToDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i Database) ToDatabasePtrOutputWithContext(ctx context.Context) DatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePtrOutput)
 }
 
 type DatabaseOutput struct {
@@ -416,6 +431,23 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+type DatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Database)(nil)).Elem()
+}
+
+func (o DatabasePtrOutput) ToDatabasePtrOutput() DatabasePtrOutput {
+	return o
+}
+
+func (o DatabasePtrOutput) ToDatabasePtrOutputWithContext(ctx context.Context) DatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseOutput{})
+	pulumi.RegisterOutputType(DatabasePtrOutput{})
 }

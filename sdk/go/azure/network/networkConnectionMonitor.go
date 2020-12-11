@@ -225,6 +225,13 @@ type NetworkConnectionMonitorInput interface {
 	ToNetworkConnectionMonitorOutputWithContext(ctx context.Context) NetworkConnectionMonitorOutput
 }
 
+type NetworkConnectionMonitorPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput
+	ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput
+}
+
 func (NetworkConnectionMonitor) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkConnectionMonitor)(nil)).Elem()
 }
@@ -235,6 +242,14 @@ func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorOutput() NetworkConn
 
 func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorOutputWithContext(ctx context.Context) NetworkConnectionMonitorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorOutput)
+}
+
+func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput {
+	return i.ToNetworkConnectionMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkConnectionMonitor) ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorPtrOutput)
 }
 
 type NetworkConnectionMonitorOutput struct {
@@ -253,6 +268,23 @@ func (o NetworkConnectionMonitorOutput) ToNetworkConnectionMonitorOutputWithCont
 	return o
 }
 
+type NetworkConnectionMonitorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkConnectionMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConnectionMonitor)(nil)).Elem()
+}
+
+func (o NetworkConnectionMonitorPtrOutput) ToNetworkConnectionMonitorPtrOutput() NetworkConnectionMonitorPtrOutput {
+	return o
+}
+
+func (o NetworkConnectionMonitorPtrOutput) ToNetworkConnectionMonitorPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkConnectionMonitorOutput{})
+	pulumi.RegisterOutputType(NetworkConnectionMonitorPtrOutput{})
 }

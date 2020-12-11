@@ -169,6 +169,13 @@ type AttachedDatabaseConfigurationInput interface {
 	ToAttachedDatabaseConfigurationOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationOutput
 }
 
+type AttachedDatabaseConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAttachedDatabaseConfigurationPtrOutput() AttachedDatabaseConfigurationPtrOutput
+	ToAttachedDatabaseConfigurationPtrOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationPtrOutput
+}
+
 func (AttachedDatabaseConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttachedDatabaseConfiguration)(nil)).Elem()
 }
@@ -179,6 +186,14 @@ func (i AttachedDatabaseConfiguration) ToAttachedDatabaseConfigurationOutput() A
 
 func (i AttachedDatabaseConfiguration) ToAttachedDatabaseConfigurationOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDatabaseConfigurationOutput)
+}
+
+func (i AttachedDatabaseConfiguration) ToAttachedDatabaseConfigurationPtrOutput() AttachedDatabaseConfigurationPtrOutput {
+	return i.ToAttachedDatabaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedDatabaseConfiguration) ToAttachedDatabaseConfigurationPtrOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedDatabaseConfigurationPtrOutput)
 }
 
 type AttachedDatabaseConfigurationOutput struct {
@@ -197,6 +212,23 @@ func (o AttachedDatabaseConfigurationOutput) ToAttachedDatabaseConfigurationOutp
 	return o
 }
 
+type AttachedDatabaseConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachedDatabaseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedDatabaseConfiguration)(nil)).Elem()
+}
+
+func (o AttachedDatabaseConfigurationPtrOutput) ToAttachedDatabaseConfigurationPtrOutput() AttachedDatabaseConfigurationPtrOutput {
+	return o
+}
+
+func (o AttachedDatabaseConfigurationPtrOutput) ToAttachedDatabaseConfigurationPtrOutputWithContext(ctx context.Context) AttachedDatabaseConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttachedDatabaseConfigurationOutput{})
+	pulumi.RegisterOutputType(AttachedDatabaseConfigurationPtrOutput{})
 }

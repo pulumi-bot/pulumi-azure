@@ -329,6 +329,13 @@ type HadoopClusterInput interface {
 	ToHadoopClusterOutputWithContext(ctx context.Context) HadoopClusterOutput
 }
 
+type HadoopClusterPtrInput interface {
+	pulumi.Input
+
+	ToHadoopClusterPtrOutput() HadoopClusterPtrOutput
+	ToHadoopClusterPtrOutputWithContext(ctx context.Context) HadoopClusterPtrOutput
+}
+
 func (HadoopCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*HadoopCluster)(nil)).Elem()
 }
@@ -339,6 +346,14 @@ func (i HadoopCluster) ToHadoopClusterOutput() HadoopClusterOutput {
 
 func (i HadoopCluster) ToHadoopClusterOutputWithContext(ctx context.Context) HadoopClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterOutput)
+}
+
+func (i HadoopCluster) ToHadoopClusterPtrOutput() HadoopClusterPtrOutput {
+	return i.ToHadoopClusterPtrOutputWithContext(context.Background())
+}
+
+func (i HadoopCluster) ToHadoopClusterPtrOutputWithContext(ctx context.Context) HadoopClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopClusterPtrOutput)
 }
 
 type HadoopClusterOutput struct {
@@ -357,6 +372,23 @@ func (o HadoopClusterOutput) ToHadoopClusterOutputWithContext(ctx context.Contex
 	return o
 }
 
+type HadoopClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HadoopClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HadoopCluster)(nil)).Elem()
+}
+
+func (o HadoopClusterPtrOutput) ToHadoopClusterPtrOutput() HadoopClusterPtrOutput {
+	return o
+}
+
+func (o HadoopClusterPtrOutput) ToHadoopClusterPtrOutputWithContext(ctx context.Context) HadoopClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HadoopClusterOutput{})
+	pulumi.RegisterOutputType(HadoopClusterPtrOutput{})
 }

@@ -355,6 +355,13 @@ type ExtensionInput interface {
 	ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput
 }
 
+type ExtensionPtrInput interface {
+	pulumi.Input
+
+	ToExtensionPtrOutput() ExtensionPtrOutput
+	ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput
+}
+
 func (Extension) ElementType() reflect.Type {
 	return reflect.TypeOf((*Extension)(nil)).Elem()
 }
@@ -365,6 +372,14 @@ func (i Extension) ToExtensionOutput() ExtensionOutput {
 
 func (i Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionOutput)
+}
+
+func (i Extension) ToExtensionPtrOutput() ExtensionPtrOutput {
+	return i.ToExtensionPtrOutputWithContext(context.Background())
+}
+
+func (i Extension) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionPtrOutput)
 }
 
 type ExtensionOutput struct {
@@ -383,6 +398,23 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 	return o
 }
 
+type ExtensionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExtensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Extension)(nil)).Elem()
+}
+
+func (o ExtensionPtrOutput) ToExtensionPtrOutput() ExtensionPtrOutput {
+	return o
+}
+
+func (o ExtensionPtrOutput) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExtensionOutput{})
+	pulumi.RegisterOutputType(ExtensionPtrOutput{})
 }

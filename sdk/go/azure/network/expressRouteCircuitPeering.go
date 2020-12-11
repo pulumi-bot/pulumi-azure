@@ -296,6 +296,13 @@ type ExpressRouteCircuitPeeringInput interface {
 	ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput
 }
 
+type ExpressRouteCircuitPeeringPtrInput interface {
+	pulumi.Input
+
+	ToExpressRouteCircuitPeeringPtrOutput() ExpressRouteCircuitPeeringPtrOutput
+	ToExpressRouteCircuitPeeringPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringPtrOutput
+}
+
 func (ExpressRouteCircuitPeering) ElementType() reflect.Type {
 	return reflect.TypeOf((*ExpressRouteCircuitPeering)(nil)).Elem()
 }
@@ -306,6 +313,14 @@ func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutput() Express
 
 func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringOutput)
+}
+
+func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringPtrOutput() ExpressRouteCircuitPeeringPtrOutput {
+	return i.ToExpressRouteCircuitPeeringPtrOutputWithContext(context.Background())
+}
+
+func (i ExpressRouteCircuitPeering) ToExpressRouteCircuitPeeringPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringPtrOutput)
 }
 
 type ExpressRouteCircuitPeeringOutput struct {
@@ -324,6 +339,23 @@ func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutputWith
 	return o
 }
 
+type ExpressRouteCircuitPeeringPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteCircuitPeeringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressRouteCircuitPeering)(nil)).Elem()
+}
+
+func (o ExpressRouteCircuitPeeringPtrOutput) ToExpressRouteCircuitPeeringPtrOutput() ExpressRouteCircuitPeeringPtrOutput {
+	return o
+}
+
+func (o ExpressRouteCircuitPeeringPtrOutput) ToExpressRouteCircuitPeeringPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitPeeringPtrOutput{})
 }

@@ -504,6 +504,13 @@ type ApplicationGatewayInput interface {
 	ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput
 }
 
+type ApplicationGatewayPtrInput interface {
+	pulumi.Input
+
+	ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput
+	ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput
+}
+
 func (ApplicationGateway) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationGateway)(nil)).Elem()
 }
@@ -514,6 +521,14 @@ func (i ApplicationGateway) ToApplicationGatewayOutput() ApplicationGatewayOutpu
 
 func (i ApplicationGateway) ToApplicationGatewayOutputWithContext(ctx context.Context) ApplicationGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayOutput)
+}
+
+func (i ApplicationGateway) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return i.ToApplicationGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationGateway) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayPtrOutput)
 }
 
 type ApplicationGatewayOutput struct {
@@ -532,6 +547,23 @@ func (o ApplicationGatewayOutput) ToApplicationGatewayOutputWithContext(ctx cont
 	return o
 }
 
+type ApplicationGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationGateway)(nil)).Elem()
+}
+
+func (o ApplicationGatewayPtrOutput) ToApplicationGatewayPtrOutput() ApplicationGatewayPtrOutput {
+	return o
+}
+
+func (o ApplicationGatewayPtrOutput) ToApplicationGatewayPtrOutputWithContext(ctx context.Context) ApplicationGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationGatewayOutput{})
+	pulumi.RegisterOutputType(ApplicationGatewayPtrOutput{})
 }

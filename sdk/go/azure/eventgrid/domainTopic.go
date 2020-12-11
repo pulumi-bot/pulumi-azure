@@ -158,6 +158,13 @@ type DomainTopicInput interface {
 	ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput
 }
 
+type DomainTopicPtrInput interface {
+	pulumi.Input
+
+	ToDomainTopicPtrOutput() DomainTopicPtrOutput
+	ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput
+}
+
 func (DomainTopic) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainTopic)(nil)).Elem()
 }
@@ -168,6 +175,14 @@ func (i DomainTopic) ToDomainTopicOutput() DomainTopicOutput {
 
 func (i DomainTopic) ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicOutput)
+}
+
+func (i DomainTopic) ToDomainTopicPtrOutput() DomainTopicPtrOutput {
+	return i.ToDomainTopicPtrOutputWithContext(context.Background())
+}
+
+func (i DomainTopic) ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicPtrOutput)
 }
 
 type DomainTopicOutput struct {
@@ -186,6 +201,23 @@ func (o DomainTopicOutput) ToDomainTopicOutputWithContext(ctx context.Context) D
 	return o
 }
 
+type DomainTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainTopic)(nil)).Elem()
+}
+
+func (o DomainTopicPtrOutput) ToDomainTopicPtrOutput() DomainTopicPtrOutput {
+	return o
+}
+
+func (o DomainTopicPtrOutput) ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainTopicOutput{})
+	pulumi.RegisterOutputType(DomainTopicPtrOutput{})
 }

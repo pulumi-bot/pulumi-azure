@@ -195,6 +195,13 @@ type DefinitionInput interface {
 	ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput
 }
 
+type DefinitionPtrInput interface {
+	pulumi.Input
+
+	ToDefinitionPtrOutput() DefinitionPtrOutput
+	ToDefinitionPtrOutputWithContext(ctx context.Context) DefinitionPtrOutput
+}
+
 func (Definition) ElementType() reflect.Type {
 	return reflect.TypeOf((*Definition)(nil)).Elem()
 }
@@ -205,6 +212,14 @@ func (i Definition) ToDefinitionOutput() DefinitionOutput {
 
 func (i Definition) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefinitionOutput)
+}
+
+func (i Definition) ToDefinitionPtrOutput() DefinitionPtrOutput {
+	return i.ToDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i Definition) ToDefinitionPtrOutputWithContext(ctx context.Context) DefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefinitionPtrOutput)
 }
 
 type DefinitionOutput struct {
@@ -223,6 +238,23 @@ func (o DefinitionOutput) ToDefinitionOutputWithContext(ctx context.Context) Def
 	return o
 }
 
+type DefinitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Definition)(nil)).Elem()
+}
+
+func (o DefinitionPtrOutput) ToDefinitionPtrOutput() DefinitionPtrOutput {
+	return o
+}
+
+func (o DefinitionPtrOutput) ToDefinitionPtrOutputWithContext(ctx context.Context) DefinitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefinitionOutput{})
+	pulumi.RegisterOutputType(DefinitionPtrOutput{})
 }

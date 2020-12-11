@@ -255,6 +255,13 @@ type IntegrationRuntimeManagedInput interface {
 	ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput
 }
 
+type IntegrationRuntimeManagedPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeManagedPtrOutput() IntegrationRuntimeManagedPtrOutput
+	ToIntegrationRuntimeManagedPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedPtrOutput
+}
+
 func (IntegrationRuntimeManaged) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntegrationRuntimeManaged)(nil)).Elem()
 }
@@ -265,6 +272,14 @@ func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutput() Integrati
 
 func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedOutput)
+}
+
+func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedPtrOutput() IntegrationRuntimeManagedPtrOutput {
+	return i.ToIntegrationRuntimeManagedPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedPtrOutput)
 }
 
 type IntegrationRuntimeManagedOutput struct {
@@ -283,6 +298,23 @@ func (o IntegrationRuntimeManagedOutput) ToIntegrationRuntimeManagedOutputWithCo
 	return o
 }
 
+type IntegrationRuntimeManagedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationRuntimeManagedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeManaged)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeManagedPtrOutput) ToIntegrationRuntimeManagedPtrOutput() IntegrationRuntimeManagedPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeManagedPtrOutput) ToIntegrationRuntimeManagedPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IntegrationRuntimeManagedOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeManagedPtrOutput{})
 }

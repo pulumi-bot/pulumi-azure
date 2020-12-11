@@ -181,6 +181,13 @@ type ApiOperationPolicyInput interface {
 	ToApiOperationPolicyOutputWithContext(ctx context.Context) ApiOperationPolicyOutput
 }
 
+type ApiOperationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToApiOperationPolicyPtrOutput() ApiOperationPolicyPtrOutput
+	ToApiOperationPolicyPtrOutputWithContext(ctx context.Context) ApiOperationPolicyPtrOutput
+}
+
 func (ApiOperationPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiOperationPolicy)(nil)).Elem()
 }
@@ -191,6 +198,14 @@ func (i ApiOperationPolicy) ToApiOperationPolicyOutput() ApiOperationPolicyOutpu
 
 func (i ApiOperationPolicy) ToApiOperationPolicyOutputWithContext(ctx context.Context) ApiOperationPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationPolicyOutput)
+}
+
+func (i ApiOperationPolicy) ToApiOperationPolicyPtrOutput() ApiOperationPolicyPtrOutput {
+	return i.ToApiOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ApiOperationPolicy) ToApiOperationPolicyPtrOutputWithContext(ctx context.Context) ApiOperationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationPolicyPtrOutput)
 }
 
 type ApiOperationPolicyOutput struct {
@@ -209,6 +224,23 @@ func (o ApiOperationPolicyOutput) ToApiOperationPolicyOutputWithContext(ctx cont
 	return o
 }
 
+type ApiOperationPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiOperationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiOperationPolicy)(nil)).Elem()
+}
+
+func (o ApiOperationPolicyPtrOutput) ToApiOperationPolicyPtrOutput() ApiOperationPolicyPtrOutput {
+	return o
+}
+
+func (o ApiOperationPolicyPtrOutput) ToApiOperationPolicyPtrOutputWithContext(ctx context.Context) ApiOperationPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiOperationPolicyOutput{})
+	pulumi.RegisterOutputType(ApiOperationPolicyPtrOutput{})
 }

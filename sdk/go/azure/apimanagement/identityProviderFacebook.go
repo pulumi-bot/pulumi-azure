@@ -176,6 +176,13 @@ type IdentityProviderFacebookInput interface {
 	ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput
 }
 
+type IdentityProviderFacebookPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderFacebookPtrOutput() IdentityProviderFacebookPtrOutput
+	ToIdentityProviderFacebookPtrOutputWithContext(ctx context.Context) IdentityProviderFacebookPtrOutput
+}
+
 func (IdentityProviderFacebook) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityProviderFacebook)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutput() IdentityPro
 
 func (i IdentityProviderFacebook) ToIdentityProviderFacebookOutputWithContext(ctx context.Context) IdentityProviderFacebookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderFacebookOutput)
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookPtrOutput() IdentityProviderFacebookPtrOutput {
+	return i.ToIdentityProviderFacebookPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderFacebook) ToIdentityProviderFacebookPtrOutputWithContext(ctx context.Context) IdentityProviderFacebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderFacebookPtrOutput)
 }
 
 type IdentityProviderFacebookOutput struct {
@@ -204,6 +219,23 @@ func (o IdentityProviderFacebookOutput) ToIdentityProviderFacebookOutputWithCont
 	return o
 }
 
+type IdentityProviderFacebookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderFacebookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderFacebook)(nil)).Elem()
+}
+
+func (o IdentityProviderFacebookPtrOutput) ToIdentityProviderFacebookPtrOutput() IdentityProviderFacebookPtrOutput {
+	return o
+}
+
+func (o IdentityProviderFacebookPtrOutput) ToIdentityProviderFacebookPtrOutputWithContext(ctx context.Context) IdentityProviderFacebookPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderFacebookOutput{})
+	pulumi.RegisterOutputType(IdentityProviderFacebookPtrOutput{})
 }

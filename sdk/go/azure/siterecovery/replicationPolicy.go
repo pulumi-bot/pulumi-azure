@@ -185,6 +185,13 @@ type ReplicationPolicyInput interface {
 	ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput
 }
 
+type ReplicationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToReplicationPolicyPtrOutput() ReplicationPolicyPtrOutput
+	ToReplicationPolicyPtrOutputWithContext(ctx context.Context) ReplicationPolicyPtrOutput
+}
+
 func (ReplicationPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReplicationPolicy)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i ReplicationPolicy) ToReplicationPolicyOutput() ReplicationPolicyOutput {
 
 func (i ReplicationPolicy) ToReplicationPolicyOutputWithContext(ctx context.Context) ReplicationPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationPolicyOutput)
+}
+
+func (i ReplicationPolicy) ToReplicationPolicyPtrOutput() ReplicationPolicyPtrOutput {
+	return i.ToReplicationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationPolicy) ToReplicationPolicyPtrOutputWithContext(ctx context.Context) ReplicationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationPolicyPtrOutput)
 }
 
 type ReplicationPolicyOutput struct {
@@ -213,6 +228,23 @@ func (o ReplicationPolicyOutput) ToReplicationPolicyOutputWithContext(ctx contex
 	return o
 }
 
+type ReplicationPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationPolicy)(nil)).Elem()
+}
+
+func (o ReplicationPolicyPtrOutput) ToReplicationPolicyPtrOutput() ReplicationPolicyPtrOutput {
+	return o
+}
+
+func (o ReplicationPolicyPtrOutput) ToReplicationPolicyPtrOutputWithContext(ctx context.Context) ReplicationPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicationPolicyOutput{})
+	pulumi.RegisterOutputType(ReplicationPolicyPtrOutput{})
 }

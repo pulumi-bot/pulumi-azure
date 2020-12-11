@@ -59,6 +59,7 @@ namespace Pulumi.Azure.MediaServices
     ///  $ pulumi import azure:mediaservices/account:Account account /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Media/mediaservices/account1
     /// ```
     /// </summary>
+    [AzureResourceType("azure:mediaservices/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

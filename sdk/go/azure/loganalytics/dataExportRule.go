@@ -214,6 +214,13 @@ type DataExportRuleInput interface {
 	ToDataExportRuleOutputWithContext(ctx context.Context) DataExportRuleOutput
 }
 
+type DataExportRulePtrInput interface {
+	pulumi.Input
+
+	ToDataExportRulePtrOutput() DataExportRulePtrOutput
+	ToDataExportRulePtrOutputWithContext(ctx context.Context) DataExportRulePtrOutput
+}
+
 func (DataExportRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataExportRule)(nil)).Elem()
 }
@@ -224,6 +231,14 @@ func (i DataExportRule) ToDataExportRuleOutput() DataExportRuleOutput {
 
 func (i DataExportRule) ToDataExportRuleOutputWithContext(ctx context.Context) DataExportRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExportRuleOutput)
+}
+
+func (i DataExportRule) ToDataExportRulePtrOutput() DataExportRulePtrOutput {
+	return i.ToDataExportRulePtrOutputWithContext(context.Background())
+}
+
+func (i DataExportRule) ToDataExportRulePtrOutputWithContext(ctx context.Context) DataExportRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportRulePtrOutput)
 }
 
 type DataExportRuleOutput struct {
@@ -242,6 +257,23 @@ func (o DataExportRuleOutput) ToDataExportRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+type DataExportRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataExportRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExportRule)(nil)).Elem()
+}
+
+func (o DataExportRulePtrOutput) ToDataExportRulePtrOutput() DataExportRulePtrOutput {
+	return o
+}
+
+func (o DataExportRulePtrOutput) ToDataExportRulePtrOutputWithContext(ctx context.Context) DataExportRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataExportRuleOutput{})
+	pulumi.RegisterOutputType(DataExportRulePtrOutput{})
 }

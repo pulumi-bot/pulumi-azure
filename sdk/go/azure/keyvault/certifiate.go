@@ -309,6 +309,13 @@ type CertifiateInput interface {
 	ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput
 }
 
+type CertifiatePtrInput interface {
+	pulumi.Input
+
+	ToCertifiatePtrOutput() CertifiatePtrOutput
+	ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput
+}
+
 func (Certifiate) ElementType() reflect.Type {
 	return reflect.TypeOf((*Certifiate)(nil)).Elem()
 }
@@ -319,6 +326,14 @@ func (i Certifiate) ToCertifiateOutput() CertifiateOutput {
 
 func (i Certifiate) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertifiateOutput)
+}
+
+func (i Certifiate) ToCertifiatePtrOutput() CertifiatePtrOutput {
+	return i.ToCertifiatePtrOutputWithContext(context.Background())
+}
+
+func (i Certifiate) ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiatePtrOutput)
 }
 
 type CertifiateOutput struct {
@@ -337,6 +352,23 @@ func (o CertifiateOutput) ToCertifiateOutputWithContext(ctx context.Context) Cer
 	return o
 }
 
+type CertifiatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertifiatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Certifiate)(nil)).Elem()
+}
+
+func (o CertifiatePtrOutput) ToCertifiatePtrOutput() CertifiatePtrOutput {
+	return o
+}
+
+func (o CertifiatePtrOutput) ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertifiateOutput{})
+	pulumi.RegisterOutputType(CertifiatePtrOutput{})
 }

@@ -219,6 +219,13 @@ type NetworkInterfaceNatRuleAssociationInput interface {
 	ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput
 }
 
+type NetworkInterfaceNatRuleAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceNatRuleAssociationPtrOutput() NetworkInterfaceNatRuleAssociationPtrOutput
+	ToNetworkInterfaceNatRuleAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationPtrOutput
+}
+
 func (NetworkInterfaceNatRuleAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkInterfaceNatRuleAssociation)(nil)).Elem()
 }
@@ -229,6 +236,14 @@ func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociation
 
 func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceNatRuleAssociationOutput)
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationPtrOutput() NetworkInterfaceNatRuleAssociationPtrOutput {
+	return i.ToNetworkInterfaceNatRuleAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceNatRuleAssociation) ToNetworkInterfaceNatRuleAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceNatRuleAssociationPtrOutput)
 }
 
 type NetworkInterfaceNatRuleAssociationOutput struct {
@@ -247,6 +262,23 @@ func (o NetworkInterfaceNatRuleAssociationOutput) ToNetworkInterfaceNatRuleAssoc
 	return o
 }
 
+type NetworkInterfaceNatRuleAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceNatRuleAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceNatRuleAssociation)(nil)).Elem()
+}
+
+func (o NetworkInterfaceNatRuleAssociationPtrOutput) ToNetworkInterfaceNatRuleAssociationPtrOutput() NetworkInterfaceNatRuleAssociationPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceNatRuleAssociationPtrOutput) ToNetworkInterfaceNatRuleAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceNatRuleAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceNatRuleAssociationOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceNatRuleAssociationPtrOutput{})
 }

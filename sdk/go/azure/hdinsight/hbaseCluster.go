@@ -329,6 +329,13 @@ type HBaseClusterInput interface {
 	ToHBaseClusterOutputWithContext(ctx context.Context) HBaseClusterOutput
 }
 
+type HBaseClusterPtrInput interface {
+	pulumi.Input
+
+	ToHBaseClusterPtrOutput() HBaseClusterPtrOutput
+	ToHBaseClusterPtrOutputWithContext(ctx context.Context) HBaseClusterPtrOutput
+}
+
 func (HBaseCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*HBaseCluster)(nil)).Elem()
 }
@@ -339,6 +346,14 @@ func (i HBaseCluster) ToHBaseClusterOutput() HBaseClusterOutput {
 
 func (i HBaseCluster) ToHBaseClusterOutputWithContext(ctx context.Context) HBaseClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterOutput)
+}
+
+func (i HBaseCluster) ToHBaseClusterPtrOutput() HBaseClusterPtrOutput {
+	return i.ToHBaseClusterPtrOutputWithContext(context.Background())
+}
+
+func (i HBaseCluster) ToHBaseClusterPtrOutputWithContext(ctx context.Context) HBaseClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseClusterPtrOutput)
 }
 
 type HBaseClusterOutput struct {
@@ -357,6 +372,23 @@ func (o HBaseClusterOutput) ToHBaseClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+type HBaseClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HBaseClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HBaseCluster)(nil)).Elem()
+}
+
+func (o HBaseClusterPtrOutput) ToHBaseClusterPtrOutput() HBaseClusterPtrOutput {
+	return o
+}
+
+func (o HBaseClusterPtrOutput) ToHBaseClusterPtrOutputWithContext(ctx context.Context) HBaseClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HBaseClusterOutput{})
+	pulumi.RegisterOutputType(HBaseClusterPtrOutput{})
 }

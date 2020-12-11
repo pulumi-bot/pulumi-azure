@@ -147,6 +147,13 @@ type BoolVariableInput interface {
 	ToBoolVariableOutputWithContext(ctx context.Context) BoolVariableOutput
 }
 
+type BoolVariablePtrInput interface {
+	pulumi.Input
+
+	ToBoolVariablePtrOutput() BoolVariablePtrOutput
+	ToBoolVariablePtrOutputWithContext(ctx context.Context) BoolVariablePtrOutput
+}
+
 func (BoolVariable) ElementType() reflect.Type {
 	return reflect.TypeOf((*BoolVariable)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i BoolVariable) ToBoolVariableOutput() BoolVariableOutput {
 
 func (i BoolVariable) ToBoolVariableOutputWithContext(ctx context.Context) BoolVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BoolVariableOutput)
+}
+
+func (i BoolVariable) ToBoolVariablePtrOutput() BoolVariablePtrOutput {
+	return i.ToBoolVariablePtrOutputWithContext(context.Background())
+}
+
+func (i BoolVariable) ToBoolVariablePtrOutputWithContext(ctx context.Context) BoolVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoolVariablePtrOutput)
 }
 
 type BoolVariableOutput struct {
@@ -175,6 +190,23 @@ func (o BoolVariableOutput) ToBoolVariableOutputWithContext(ctx context.Context)
 	return o
 }
 
+type BoolVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BoolVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BoolVariable)(nil)).Elem()
+}
+
+func (o BoolVariablePtrOutput) ToBoolVariablePtrOutput() BoolVariablePtrOutput {
+	return o
+}
+
+func (o BoolVariablePtrOutput) ToBoolVariablePtrOutputWithContext(ctx context.Context) BoolVariablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BoolVariableOutput{})
+	pulumi.RegisterOutputType(BoolVariablePtrOutput{})
 }

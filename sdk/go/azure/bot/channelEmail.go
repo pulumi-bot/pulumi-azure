@@ -145,6 +145,13 @@ type ChannelEmailInput interface {
 	ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput
 }
 
+type ChannelEmailPtrInput interface {
+	pulumi.Input
+
+	ToChannelEmailPtrOutput() ChannelEmailPtrOutput
+	ToChannelEmailPtrOutputWithContext(ctx context.Context) ChannelEmailPtrOutput
+}
+
 func (ChannelEmail) ElementType() reflect.Type {
 	return reflect.TypeOf((*ChannelEmail)(nil)).Elem()
 }
@@ -155,6 +162,14 @@ func (i ChannelEmail) ToChannelEmailOutput() ChannelEmailOutput {
 
 func (i ChannelEmail) ToChannelEmailOutputWithContext(ctx context.Context) ChannelEmailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelEmailOutput)
+}
+
+func (i ChannelEmail) ToChannelEmailPtrOutput() ChannelEmailPtrOutput {
+	return i.ToChannelEmailPtrOutputWithContext(context.Background())
+}
+
+func (i ChannelEmail) ToChannelEmailPtrOutputWithContext(ctx context.Context) ChannelEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelEmailPtrOutput)
 }
 
 type ChannelEmailOutput struct {
@@ -173,6 +188,23 @@ func (o ChannelEmailOutput) ToChannelEmailOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ChannelEmailPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelEmailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelEmail)(nil)).Elem()
+}
+
+func (o ChannelEmailPtrOutput) ToChannelEmailPtrOutput() ChannelEmailPtrOutput {
+	return o
+}
+
+func (o ChannelEmailPtrOutput) ToChannelEmailPtrOutputWithContext(ctx context.Context) ChannelEmailPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChannelEmailOutput{})
+	pulumi.RegisterOutputType(ChannelEmailPtrOutput{})
 }

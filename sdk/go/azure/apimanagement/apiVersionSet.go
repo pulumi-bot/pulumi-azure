@@ -216,6 +216,13 @@ type ApiVersionSetInput interface {
 	ToApiVersionSetOutputWithContext(ctx context.Context) ApiVersionSetOutput
 }
 
+type ApiVersionSetPtrInput interface {
+	pulumi.Input
+
+	ToApiVersionSetPtrOutput() ApiVersionSetPtrOutput
+	ToApiVersionSetPtrOutputWithContext(ctx context.Context) ApiVersionSetPtrOutput
+}
+
 func (ApiVersionSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiVersionSet)(nil)).Elem()
 }
@@ -226,6 +233,14 @@ func (i ApiVersionSet) ToApiVersionSetOutput() ApiVersionSetOutput {
 
 func (i ApiVersionSet) ToApiVersionSetOutputWithContext(ctx context.Context) ApiVersionSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionSetOutput)
+}
+
+func (i ApiVersionSet) ToApiVersionSetPtrOutput() ApiVersionSetPtrOutput {
+	return i.ToApiVersionSetPtrOutputWithContext(context.Background())
+}
+
+func (i ApiVersionSet) ToApiVersionSetPtrOutputWithContext(ctx context.Context) ApiVersionSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionSetPtrOutput)
 }
 
 type ApiVersionSetOutput struct {
@@ -244,6 +259,23 @@ func (o ApiVersionSetOutput) ToApiVersionSetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ApiVersionSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiVersionSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiVersionSet)(nil)).Elem()
+}
+
+func (o ApiVersionSetPtrOutput) ToApiVersionSetPtrOutput() ApiVersionSetPtrOutput {
+	return o
+}
+
+func (o ApiVersionSetPtrOutput) ToApiVersionSetPtrOutputWithContext(ctx context.Context) ApiVersionSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiVersionSetOutput{})
+	pulumi.RegisterOutputType(ApiVersionSetPtrOutput{})
 }

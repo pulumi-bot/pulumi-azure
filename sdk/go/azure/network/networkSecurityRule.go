@@ -329,6 +329,13 @@ type NetworkSecurityRuleInput interface {
 	ToNetworkSecurityRuleOutputWithContext(ctx context.Context) NetworkSecurityRuleOutput
 }
 
+type NetworkSecurityRulePtrInput interface {
+	pulumi.Input
+
+	ToNetworkSecurityRulePtrOutput() NetworkSecurityRulePtrOutput
+	ToNetworkSecurityRulePtrOutputWithContext(ctx context.Context) NetworkSecurityRulePtrOutput
+}
+
 func (NetworkSecurityRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkSecurityRule)(nil)).Elem()
 }
@@ -339,6 +346,14 @@ func (i NetworkSecurityRule) ToNetworkSecurityRuleOutput() NetworkSecurityRuleOu
 
 func (i NetworkSecurityRule) ToNetworkSecurityRuleOutputWithContext(ctx context.Context) NetworkSecurityRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityRuleOutput)
+}
+
+func (i NetworkSecurityRule) ToNetworkSecurityRulePtrOutput() NetworkSecurityRulePtrOutput {
+	return i.ToNetworkSecurityRulePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkSecurityRule) ToNetworkSecurityRulePtrOutputWithContext(ctx context.Context) NetworkSecurityRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityRulePtrOutput)
 }
 
 type NetworkSecurityRuleOutput struct {
@@ -357,6 +372,23 @@ func (o NetworkSecurityRuleOutput) ToNetworkSecurityRuleOutputWithContext(ctx co
 	return o
 }
 
+type NetworkSecurityRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkSecurityRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityRule)(nil)).Elem()
+}
+
+func (o NetworkSecurityRulePtrOutput) ToNetworkSecurityRulePtrOutput() NetworkSecurityRulePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityRulePtrOutput) ToNetworkSecurityRulePtrOutputWithContext(ctx context.Context) NetworkSecurityRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkSecurityRuleOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityRulePtrOutput{})
 }

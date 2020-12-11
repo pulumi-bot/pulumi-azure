@@ -222,6 +222,13 @@ type CaaRecordInput interface {
 	ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput
 }
 
+type CaaRecordPtrInput interface {
+	pulumi.Input
+
+	ToCaaRecordPtrOutput() CaaRecordPtrOutput
+	ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput
+}
+
 func (CaaRecord) ElementType() reflect.Type {
 	return reflect.TypeOf((*CaaRecord)(nil)).Elem()
 }
@@ -232,6 +239,14 @@ func (i CaaRecord) ToCaaRecordOutput() CaaRecordOutput {
 
 func (i CaaRecord) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordOutput)
+}
+
+func (i CaaRecord) ToCaaRecordPtrOutput() CaaRecordPtrOutput {
+	return i.ToCaaRecordPtrOutputWithContext(context.Background())
+}
+
+func (i CaaRecord) ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordPtrOutput)
 }
 
 type CaaRecordOutput struct {
@@ -250,6 +265,23 @@ func (o CaaRecordOutput) ToCaaRecordOutputWithContext(ctx context.Context) CaaRe
 	return o
 }
 
+type CaaRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CaaRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaaRecord)(nil)).Elem()
+}
+
+func (o CaaRecordPtrOutput) ToCaaRecordPtrOutput() CaaRecordPtrOutput {
+	return o
+}
+
+func (o CaaRecordPtrOutput) ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CaaRecordOutput{})
+	pulumi.RegisterOutputType(CaaRecordPtrOutput{})
 }

@@ -159,6 +159,13 @@ type ApiSchemaInput interface {
 	ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaOutput
 }
 
+type ApiSchemaPtrInput interface {
+	pulumi.Input
+
+	ToApiSchemaPtrOutput() ApiSchemaPtrOutput
+	ToApiSchemaPtrOutputWithContext(ctx context.Context) ApiSchemaPtrOutput
+}
+
 func (ApiSchema) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiSchema)(nil)).Elem()
 }
@@ -169,6 +176,14 @@ func (i ApiSchema) ToApiSchemaOutput() ApiSchemaOutput {
 
 func (i ApiSchema) ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiSchemaOutput)
+}
+
+func (i ApiSchema) ToApiSchemaPtrOutput() ApiSchemaPtrOutput {
+	return i.ToApiSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i ApiSchema) ToApiSchemaPtrOutputWithContext(ctx context.Context) ApiSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiSchemaPtrOutput)
 }
 
 type ApiSchemaOutput struct {
@@ -187,6 +202,23 @@ func (o ApiSchemaOutput) ToApiSchemaOutputWithContext(ctx context.Context) ApiSc
 	return o
 }
 
+type ApiSchemaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiSchema)(nil)).Elem()
+}
+
+func (o ApiSchemaPtrOutput) ToApiSchemaPtrOutput() ApiSchemaPtrOutput {
+	return o
+}
+
+func (o ApiSchemaPtrOutput) ToApiSchemaPtrOutputWithContext(ctx context.Context) ApiSchemaPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiSchemaOutput{})
+	pulumi.RegisterOutputType(ApiSchemaPtrOutput{})
 }

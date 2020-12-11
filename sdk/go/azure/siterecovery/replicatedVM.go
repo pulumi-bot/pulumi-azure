@@ -243,6 +243,13 @@ type ReplicatedVMInput interface {
 	ToReplicatedVMOutputWithContext(ctx context.Context) ReplicatedVMOutput
 }
 
+type ReplicatedVMPtrInput interface {
+	pulumi.Input
+
+	ToReplicatedVMPtrOutput() ReplicatedVMPtrOutput
+	ToReplicatedVMPtrOutputWithContext(ctx context.Context) ReplicatedVMPtrOutput
+}
+
 func (ReplicatedVM) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReplicatedVM)(nil)).Elem()
 }
@@ -253,6 +260,14 @@ func (i ReplicatedVM) ToReplicatedVMOutput() ReplicatedVMOutput {
 
 func (i ReplicatedVM) ToReplicatedVMOutputWithContext(ctx context.Context) ReplicatedVMOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicatedVMOutput)
+}
+
+func (i ReplicatedVM) ToReplicatedVMPtrOutput() ReplicatedVMPtrOutput {
+	return i.ToReplicatedVMPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicatedVM) ToReplicatedVMPtrOutputWithContext(ctx context.Context) ReplicatedVMPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicatedVMPtrOutput)
 }
 
 type ReplicatedVMOutput struct {
@@ -271,6 +286,23 @@ func (o ReplicatedVMOutput) ToReplicatedVMOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ReplicatedVMPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicatedVMPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicatedVM)(nil)).Elem()
+}
+
+func (o ReplicatedVMPtrOutput) ToReplicatedVMPtrOutput() ReplicatedVMPtrOutput {
+	return o
+}
+
+func (o ReplicatedVMPtrOutput) ToReplicatedVMPtrOutputWithContext(ctx context.Context) ReplicatedVMPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicatedVMOutput{})
+	pulumi.RegisterOutputType(ReplicatedVMPtrOutput{})
 }

@@ -151,6 +151,13 @@ type AdvancedThreatProtectionInput interface {
 	ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput
 }
 
+type AdvancedThreatProtectionPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedThreatProtectionPtrOutput() AdvancedThreatProtectionPtrOutput
+	ToAdvancedThreatProtectionPtrOutputWithContext(ctx context.Context) AdvancedThreatProtectionPtrOutput
+}
+
 func (AdvancedThreatProtection) ElementType() reflect.Type {
 	return reflect.TypeOf((*AdvancedThreatProtection)(nil)).Elem()
 }
@@ -161,6 +168,14 @@ func (i AdvancedThreatProtection) ToAdvancedThreatProtectionOutput() AdvancedThr
 
 func (i AdvancedThreatProtection) ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdvancedThreatProtectionOutput)
+}
+
+func (i AdvancedThreatProtection) ToAdvancedThreatProtectionPtrOutput() AdvancedThreatProtectionPtrOutput {
+	return i.ToAdvancedThreatProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedThreatProtection) ToAdvancedThreatProtectionPtrOutputWithContext(ctx context.Context) AdvancedThreatProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedThreatProtectionPtrOutput)
 }
 
 type AdvancedThreatProtectionOutput struct {
@@ -179,6 +194,23 @@ func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutputWithCont
 	return o
 }
 
+type AdvancedThreatProtectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AdvancedThreatProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedThreatProtection)(nil)).Elem()
+}
+
+func (o AdvancedThreatProtectionPtrOutput) ToAdvancedThreatProtectionPtrOutput() AdvancedThreatProtectionPtrOutput {
+	return o
+}
+
+func (o AdvancedThreatProtectionPtrOutput) ToAdvancedThreatProtectionPtrOutputWithContext(ctx context.Context) AdvancedThreatProtectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AdvancedThreatProtectionOutput{})
+	pulumi.RegisterOutputType(AdvancedThreatProtectionPtrOutput{})
 }

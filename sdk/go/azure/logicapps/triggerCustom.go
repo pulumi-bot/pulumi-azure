@@ -157,6 +157,13 @@ type TriggerCustomInput interface {
 	ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput
 }
 
+type TriggerCustomPtrInput interface {
+	pulumi.Input
+
+	ToTriggerCustomPtrOutput() TriggerCustomPtrOutput
+	ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput
+}
+
 func (TriggerCustom) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerCustom)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i TriggerCustom) ToTriggerCustomOutput() TriggerCustomOutput {
 
 func (i TriggerCustom) ToTriggerCustomOutputWithContext(ctx context.Context) TriggerCustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerCustomOutput)
+}
+
+func (i TriggerCustom) ToTriggerCustomPtrOutput() TriggerCustomPtrOutput {
+	return i.ToTriggerCustomPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerCustom) ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerCustomPtrOutput)
 }
 
 type TriggerCustomOutput struct {
@@ -185,6 +200,23 @@ func (o TriggerCustomOutput) ToTriggerCustomOutputWithContext(ctx context.Contex
 	return o
 }
 
+type TriggerCustomPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerCustom)(nil)).Elem()
+}
+
+func (o TriggerCustomPtrOutput) ToTriggerCustomPtrOutput() TriggerCustomPtrOutput {
+	return o
+}
+
+func (o TriggerCustomPtrOutput) ToTriggerCustomPtrOutputWithContext(ctx context.Context) TriggerCustomPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerCustomOutput{})
+	pulumi.RegisterOutputType(TriggerCustomPtrOutput{})
 }

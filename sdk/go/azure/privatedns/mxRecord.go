@@ -205,6 +205,13 @@ type MxRecordInput interface {
 	ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput
 }
 
+type MxRecordPtrInput interface {
+	pulumi.Input
+
+	ToMxRecordPtrOutput() MxRecordPtrOutput
+	ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput
+}
+
 func (MxRecord) ElementType() reflect.Type {
 	return reflect.TypeOf((*MxRecord)(nil)).Elem()
 }
@@ -215,6 +222,14 @@ func (i MxRecord) ToMxRecordOutput() MxRecordOutput {
 
 func (i MxRecord) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MxRecordOutput)
+}
+
+func (i MxRecord) ToMxRecordPtrOutput() MxRecordPtrOutput {
+	return i.ToMxRecordPtrOutputWithContext(context.Background())
+}
+
+func (i MxRecord) ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxRecordPtrOutput)
 }
 
 type MxRecordOutput struct {
@@ -233,6 +248,23 @@ func (o MxRecordOutput) ToMxRecordOutputWithContext(ctx context.Context) MxRecor
 	return o
 }
 
+type MxRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MxRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxRecord)(nil)).Elem()
+}
+
+func (o MxRecordPtrOutput) ToMxRecordPtrOutput() MxRecordPtrOutput {
+	return o
+}
+
+func (o MxRecordPtrOutput) ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MxRecordOutput{})
+	pulumi.RegisterOutputType(MxRecordPtrOutput{})
 }

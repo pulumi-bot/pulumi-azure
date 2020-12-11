@@ -470,6 +470,13 @@ type AutoscaleSettingInput interface {
 	ToAutoscaleSettingOutputWithContext(ctx context.Context) AutoscaleSettingOutput
 }
 
+type AutoscaleSettingPtrInput interface {
+	pulumi.Input
+
+	ToAutoscaleSettingPtrOutput() AutoscaleSettingPtrOutput
+	ToAutoscaleSettingPtrOutputWithContext(ctx context.Context) AutoscaleSettingPtrOutput
+}
+
 func (AutoscaleSetting) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoscaleSetting)(nil)).Elem()
 }
@@ -480,6 +487,14 @@ func (i AutoscaleSetting) ToAutoscaleSettingOutput() AutoscaleSettingOutput {
 
 func (i AutoscaleSetting) ToAutoscaleSettingOutputWithContext(ctx context.Context) AutoscaleSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingOutput)
+}
+
+func (i AutoscaleSetting) ToAutoscaleSettingPtrOutput() AutoscaleSettingPtrOutput {
+	return i.ToAutoscaleSettingPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscaleSetting) ToAutoscaleSettingPtrOutputWithContext(ctx context.Context) AutoscaleSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingPtrOutput)
 }
 
 type AutoscaleSettingOutput struct {
@@ -498,6 +513,23 @@ func (o AutoscaleSettingOutput) ToAutoscaleSettingOutputWithContext(ctx context.
 	return o
 }
 
+type AutoscaleSettingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoscaleSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscaleSetting)(nil)).Elem()
+}
+
+func (o AutoscaleSettingPtrOutput) ToAutoscaleSettingPtrOutput() AutoscaleSettingPtrOutput {
+	return o
+}
+
+func (o AutoscaleSettingPtrOutput) ToAutoscaleSettingPtrOutputWithContext(ctx context.Context) AutoscaleSettingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutoscaleSettingOutput{})
+	pulumi.RegisterOutputType(AutoscaleSettingPtrOutput{})
 }

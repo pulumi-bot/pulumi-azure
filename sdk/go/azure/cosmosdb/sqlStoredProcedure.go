@@ -207,6 +207,13 @@ type SqlStoredProcedureInput interface {
 	ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput
 }
 
+type SqlStoredProcedurePtrInput interface {
+	pulumi.Input
+
+	ToSqlStoredProcedurePtrOutput() SqlStoredProcedurePtrOutput
+	ToSqlStoredProcedurePtrOutputWithContext(ctx context.Context) SqlStoredProcedurePtrOutput
+}
+
 func (SqlStoredProcedure) ElementType() reflect.Type {
 	return reflect.TypeOf((*SqlStoredProcedure)(nil)).Elem()
 }
@@ -217,6 +224,14 @@ func (i SqlStoredProcedure) ToSqlStoredProcedureOutput() SqlStoredProcedureOutpu
 
 func (i SqlStoredProcedure) ToSqlStoredProcedureOutputWithContext(ctx context.Context) SqlStoredProcedureOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlStoredProcedureOutput)
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedurePtrOutput() SqlStoredProcedurePtrOutput {
+	return i.ToSqlStoredProcedurePtrOutputWithContext(context.Background())
+}
+
+func (i SqlStoredProcedure) ToSqlStoredProcedurePtrOutputWithContext(ctx context.Context) SqlStoredProcedurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlStoredProcedurePtrOutput)
 }
 
 type SqlStoredProcedureOutput struct {
@@ -235,6 +250,23 @@ func (o SqlStoredProcedureOutput) ToSqlStoredProcedureOutputWithContext(ctx cont
 	return o
 }
 
+type SqlStoredProcedurePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlStoredProcedurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlStoredProcedure)(nil)).Elem()
+}
+
+func (o SqlStoredProcedurePtrOutput) ToSqlStoredProcedurePtrOutput() SqlStoredProcedurePtrOutput {
+	return o
+}
+
+func (o SqlStoredProcedurePtrOutput) ToSqlStoredProcedurePtrOutputWithContext(ctx context.Context) SqlStoredProcedurePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SqlStoredProcedureOutput{})
+	pulumi.RegisterOutputType(SqlStoredProcedurePtrOutput{})
 }

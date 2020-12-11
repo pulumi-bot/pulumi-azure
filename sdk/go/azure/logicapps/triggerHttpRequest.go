@@ -177,6 +177,13 @@ type TriggerHttpRequestInput interface {
 	ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput
 }
 
+type TriggerHttpRequestPtrInput interface {
+	pulumi.Input
+
+	ToTriggerHttpRequestPtrOutput() TriggerHttpRequestPtrOutput
+	ToTriggerHttpRequestPtrOutputWithContext(ctx context.Context) TriggerHttpRequestPtrOutput
+}
+
 func (TriggerHttpRequest) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerHttpRequest)(nil)).Elem()
 }
@@ -187,6 +194,14 @@ func (i TriggerHttpRequest) ToTriggerHttpRequestOutput() TriggerHttpRequestOutpu
 
 func (i TriggerHttpRequest) ToTriggerHttpRequestOutputWithContext(ctx context.Context) TriggerHttpRequestOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerHttpRequestOutput)
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestPtrOutput() TriggerHttpRequestPtrOutput {
+	return i.ToTriggerHttpRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerHttpRequest) ToTriggerHttpRequestPtrOutputWithContext(ctx context.Context) TriggerHttpRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerHttpRequestPtrOutput)
 }
 
 type TriggerHttpRequestOutput struct {
@@ -205,6 +220,23 @@ func (o TriggerHttpRequestOutput) ToTriggerHttpRequestOutputWithContext(ctx cont
 	return o
 }
 
+type TriggerHttpRequestPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerHttpRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerHttpRequest)(nil)).Elem()
+}
+
+func (o TriggerHttpRequestPtrOutput) ToTriggerHttpRequestPtrOutput() TriggerHttpRequestPtrOutput {
+	return o
+}
+
+func (o TriggerHttpRequestPtrOutput) ToTriggerHttpRequestPtrOutputWithContext(ctx context.Context) TriggerHttpRequestPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerHttpRequestOutput{})
+	pulumi.RegisterOutputType(TriggerHttpRequestPtrOutput{})
 }

@@ -164,6 +164,13 @@ type SqlDatabaseInput interface {
 	ToSqlDatabaseOutputWithContext(ctx context.Context) SqlDatabaseOutput
 }
 
+type SqlDatabasePtrInput interface {
+	pulumi.Input
+
+	ToSqlDatabasePtrOutput() SqlDatabasePtrOutput
+	ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput
+}
+
 func (SqlDatabase) ElementType() reflect.Type {
 	return reflect.TypeOf((*SqlDatabase)(nil)).Elem()
 }
@@ -174,6 +181,14 @@ func (i SqlDatabase) ToSqlDatabaseOutput() SqlDatabaseOutput {
 
 func (i SqlDatabase) ToSqlDatabaseOutputWithContext(ctx context.Context) SqlDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseOutput)
+}
+
+func (i SqlDatabase) ToSqlDatabasePtrOutput() SqlDatabasePtrOutput {
+	return i.ToSqlDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i SqlDatabase) ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabasePtrOutput)
 }
 
 type SqlDatabaseOutput struct {
@@ -192,6 +207,23 @@ func (o SqlDatabaseOutput) ToSqlDatabaseOutputWithContext(ctx context.Context) S
 	return o
 }
 
+type SqlDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDatabase)(nil)).Elem()
+}
+
+func (o SqlDatabasePtrOutput) ToSqlDatabasePtrOutput() SqlDatabasePtrOutput {
+	return o
+}
+
+func (o SqlDatabasePtrOutput) ToSqlDatabasePtrOutputWithContext(ctx context.Context) SqlDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SqlDatabaseOutput{})
+	pulumi.RegisterOutputType(SqlDatabasePtrOutput{})
 }

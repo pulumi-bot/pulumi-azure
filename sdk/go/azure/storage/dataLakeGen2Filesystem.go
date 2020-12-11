@@ -160,6 +160,13 @@ type DataLakeGen2FilesystemInput interface {
 	ToDataLakeGen2FilesystemOutputWithContext(ctx context.Context) DataLakeGen2FilesystemOutput
 }
 
+type DataLakeGen2FilesystemPtrInput interface {
+	pulumi.Input
+
+	ToDataLakeGen2FilesystemPtrOutput() DataLakeGen2FilesystemPtrOutput
+	ToDataLakeGen2FilesystemPtrOutputWithContext(ctx context.Context) DataLakeGen2FilesystemPtrOutput
+}
+
 func (DataLakeGen2Filesystem) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataLakeGen2Filesystem)(nil)).Elem()
 }
@@ -170,6 +177,14 @@ func (i DataLakeGen2Filesystem) ToDataLakeGen2FilesystemOutput() DataLakeGen2Fil
 
 func (i DataLakeGen2Filesystem) ToDataLakeGen2FilesystemOutputWithContext(ctx context.Context) DataLakeGen2FilesystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeGen2FilesystemOutput)
+}
+
+func (i DataLakeGen2Filesystem) ToDataLakeGen2FilesystemPtrOutput() DataLakeGen2FilesystemPtrOutput {
+	return i.ToDataLakeGen2FilesystemPtrOutputWithContext(context.Background())
+}
+
+func (i DataLakeGen2Filesystem) ToDataLakeGen2FilesystemPtrOutputWithContext(ctx context.Context) DataLakeGen2FilesystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLakeGen2FilesystemPtrOutput)
 }
 
 type DataLakeGen2FilesystemOutput struct {
@@ -188,6 +203,23 @@ func (o DataLakeGen2FilesystemOutput) ToDataLakeGen2FilesystemOutputWithContext(
 	return o
 }
 
+type DataLakeGen2FilesystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataLakeGen2FilesystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataLakeGen2Filesystem)(nil)).Elem()
+}
+
+func (o DataLakeGen2FilesystemPtrOutput) ToDataLakeGen2FilesystemPtrOutput() DataLakeGen2FilesystemPtrOutput {
+	return o
+}
+
+func (o DataLakeGen2FilesystemPtrOutput) ToDataLakeGen2FilesystemPtrOutputWithContext(ctx context.Context) DataLakeGen2FilesystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataLakeGen2FilesystemOutput{})
+	pulumi.RegisterOutputType(DataLakeGen2FilesystemPtrOutput{})
 }

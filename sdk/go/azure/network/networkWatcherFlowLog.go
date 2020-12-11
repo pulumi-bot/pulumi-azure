@@ -259,6 +259,13 @@ type NetworkWatcherFlowLogInput interface {
 	ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput
 }
 
+type NetworkWatcherFlowLogPtrInput interface {
+	pulumi.Input
+
+	ToNetworkWatcherFlowLogPtrOutput() NetworkWatcherFlowLogPtrOutput
+	ToNetworkWatcherFlowLogPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogPtrOutput
+}
+
 func (NetworkWatcherFlowLog) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkWatcherFlowLog)(nil)).Elem()
 }
@@ -269,6 +276,14 @@ func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutput() NetworkWatcherFlo
 
 func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogOutputWithContext(ctx context.Context) NetworkWatcherFlowLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogOutput)
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogPtrOutput() NetworkWatcherFlowLogPtrOutput {
+	return i.ToNetworkWatcherFlowLogPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkWatcherFlowLog) ToNetworkWatcherFlowLogPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogPtrOutput)
 }
 
 type NetworkWatcherFlowLogOutput struct {
@@ -287,6 +302,23 @@ func (o NetworkWatcherFlowLogOutput) ToNetworkWatcherFlowLogOutputWithContext(ct
 	return o
 }
 
+type NetworkWatcherFlowLogPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkWatcherFlowLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkWatcherFlowLog)(nil)).Elem()
+}
+
+func (o NetworkWatcherFlowLogPtrOutput) ToNetworkWatcherFlowLogPtrOutput() NetworkWatcherFlowLogPtrOutput {
+	return o
+}
+
+func (o NetworkWatcherFlowLogPtrOutput) ToNetworkWatcherFlowLogPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkWatcherFlowLogOutput{})
+	pulumi.RegisterOutputType(NetworkWatcherFlowLogPtrOutput{})
 }

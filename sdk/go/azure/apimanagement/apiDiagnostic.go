@@ -341,6 +341,13 @@ type ApiDiagnosticInput interface {
 	ToApiDiagnosticOutputWithContext(ctx context.Context) ApiDiagnosticOutput
 }
 
+type ApiDiagnosticPtrInput interface {
+	pulumi.Input
+
+	ToApiDiagnosticPtrOutput() ApiDiagnosticPtrOutput
+	ToApiDiagnosticPtrOutputWithContext(ctx context.Context) ApiDiagnosticPtrOutput
+}
+
 func (ApiDiagnostic) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiDiagnostic)(nil)).Elem()
 }
@@ -351,6 +358,14 @@ func (i ApiDiagnostic) ToApiDiagnosticOutput() ApiDiagnosticOutput {
 
 func (i ApiDiagnostic) ToApiDiagnosticOutputWithContext(ctx context.Context) ApiDiagnosticOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticOutput)
+}
+
+func (i ApiDiagnostic) ToApiDiagnosticPtrOutput() ApiDiagnosticPtrOutput {
+	return i.ToApiDiagnosticPtrOutputWithContext(context.Background())
+}
+
+func (i ApiDiagnostic) ToApiDiagnosticPtrOutputWithContext(ctx context.Context) ApiDiagnosticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiDiagnosticPtrOutput)
 }
 
 type ApiDiagnosticOutput struct {
@@ -369,6 +384,23 @@ func (o ApiDiagnosticOutput) ToApiDiagnosticOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ApiDiagnosticPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiDiagnosticPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiDiagnostic)(nil)).Elem()
+}
+
+func (o ApiDiagnosticPtrOutput) ToApiDiagnosticPtrOutput() ApiDiagnosticPtrOutput {
+	return o
+}
+
+func (o ApiDiagnosticPtrOutput) ToApiDiagnosticPtrOutputWithContext(ctx context.Context) ApiDiagnosticPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiDiagnosticOutput{})
+	pulumi.RegisterOutputType(ApiDiagnosticPtrOutput{})
 }

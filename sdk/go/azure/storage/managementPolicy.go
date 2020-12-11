@@ -191,6 +191,13 @@ type ManagementPolicyInput interface {
 	ToManagementPolicyOutputWithContext(ctx context.Context) ManagementPolicyOutput
 }
 
+type ManagementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToManagementPolicyPtrOutput() ManagementPolicyPtrOutput
+	ToManagementPolicyPtrOutputWithContext(ctx context.Context) ManagementPolicyPtrOutput
+}
+
 func (ManagementPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagementPolicy)(nil)).Elem()
 }
@@ -201,6 +208,14 @@ func (i ManagementPolicy) ToManagementPolicyOutput() ManagementPolicyOutput {
 
 func (i ManagementPolicy) ToManagementPolicyOutputWithContext(ctx context.Context) ManagementPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyOutput)
+}
+
+func (i ManagementPolicy) ToManagementPolicyPtrOutput() ManagementPolicyPtrOutput {
+	return i.ToManagementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ManagementPolicy) ToManagementPolicyPtrOutputWithContext(ctx context.Context) ManagementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyPtrOutput)
 }
 
 type ManagementPolicyOutput struct {
@@ -219,6 +234,23 @@ func (o ManagementPolicyOutput) ToManagementPolicyOutputWithContext(ctx context.
 	return o
 }
 
+type ManagementPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementPolicy)(nil)).Elem()
+}
+
+func (o ManagementPolicyPtrOutput) ToManagementPolicyPtrOutput() ManagementPolicyPtrOutput {
+	return o
+}
+
+func (o ManagementPolicyPtrOutput) ToManagementPolicyPtrOutputWithContext(ctx context.Context) ManagementPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagementPolicyOutput{})
+	pulumi.RegisterOutputType(ManagementPolicyPtrOutput{})
 }

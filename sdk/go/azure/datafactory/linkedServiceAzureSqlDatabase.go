@@ -221,6 +221,13 @@ type LinkedServiceAzureSqlDatabaseInput interface {
 	ToLinkedServiceAzureSqlDatabaseOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabaseOutput
 }
 
+type LinkedServiceAzureSqlDatabasePtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureSqlDatabasePtrOutput() LinkedServiceAzureSqlDatabasePtrOutput
+	ToLinkedServiceAzureSqlDatabasePtrOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabasePtrOutput
+}
+
 func (LinkedServiceAzureSqlDatabase) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServiceAzureSqlDatabase)(nil)).Elem()
 }
@@ -231,6 +238,14 @@ func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabaseOutput() L
 
 func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabaseOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureSqlDatabaseOutput)
+}
+
+func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabasePtrOutput() LinkedServiceAzureSqlDatabasePtrOutput {
+	return i.ToLinkedServiceAzureSqlDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureSqlDatabase) ToLinkedServiceAzureSqlDatabasePtrOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureSqlDatabasePtrOutput)
 }
 
 type LinkedServiceAzureSqlDatabaseOutput struct {
@@ -249,6 +264,23 @@ func (o LinkedServiceAzureSqlDatabaseOutput) ToLinkedServiceAzureSqlDatabaseOutp
 	return o
 }
 
+type LinkedServiceAzureSqlDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureSqlDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceAzureSqlDatabase)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureSqlDatabasePtrOutput) ToLinkedServiceAzureSqlDatabasePtrOutput() LinkedServiceAzureSqlDatabasePtrOutput {
+	return o
+}
+
+func (o LinkedServiceAzureSqlDatabasePtrOutput) ToLinkedServiceAzureSqlDatabasePtrOutputWithContext(ctx context.Context) LinkedServiceAzureSqlDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceAzureSqlDatabaseOutput{})
+	pulumi.RegisterOutputType(LinkedServiceAzureSqlDatabasePtrOutput{})
 }

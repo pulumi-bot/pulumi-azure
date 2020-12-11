@@ -206,6 +206,13 @@ type VirtualNetworkRuleInput interface {
 	ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput
 }
 
+type VirtualNetworkRulePtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkRulePtrOutput() VirtualNetworkRulePtrOutput
+	ToVirtualNetworkRulePtrOutputWithContext(ctx context.Context) VirtualNetworkRulePtrOutput
+}
+
 func (VirtualNetworkRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetworkRule)(nil)).Elem()
 }
@@ -216,6 +223,14 @@ func (i VirtualNetworkRule) ToVirtualNetworkRuleOutput() VirtualNetworkRuleOutpu
 
 func (i VirtualNetworkRule) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
+}
+
+func (i VirtualNetworkRule) ToVirtualNetworkRulePtrOutput() VirtualNetworkRulePtrOutput {
+	return i.ToVirtualNetworkRulePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkRule) ToVirtualNetworkRulePtrOutputWithContext(ctx context.Context) VirtualNetworkRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRulePtrOutput)
 }
 
 type VirtualNetworkRuleOutput struct {
@@ -234,6 +249,23 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx cont
 	return o
 }
 
+type VirtualNetworkRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkRule)(nil)).Elem()
+}
+
+func (o VirtualNetworkRulePtrOutput) ToVirtualNetworkRulePtrOutput() VirtualNetworkRulePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkRulePtrOutput) ToVirtualNetworkRulePtrOutputWithContext(ctx context.Context) VirtualNetworkRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualNetworkRuleOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkRulePtrOutput{})
 }

@@ -205,6 +205,13 @@ type VirtualWanInput interface {
 	ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput
 }
 
+type VirtualWanPtrInput interface {
+	pulumi.Input
+
+	ToVirtualWanPtrOutput() VirtualWanPtrOutput
+	ToVirtualWanPtrOutputWithContext(ctx context.Context) VirtualWanPtrOutput
+}
+
 func (VirtualWan) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualWan)(nil)).Elem()
 }
@@ -215,6 +222,14 @@ func (i VirtualWan) ToVirtualWanOutput() VirtualWanOutput {
 
 func (i VirtualWan) ToVirtualWanOutputWithContext(ctx context.Context) VirtualWanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualWanOutput)
+}
+
+func (i VirtualWan) ToVirtualWanPtrOutput() VirtualWanPtrOutput {
+	return i.ToVirtualWanPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualWan) ToVirtualWanPtrOutputWithContext(ctx context.Context) VirtualWanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualWanPtrOutput)
 }
 
 type VirtualWanOutput struct {
@@ -233,6 +248,23 @@ func (o VirtualWanOutput) ToVirtualWanOutputWithContext(ctx context.Context) Vir
 	return o
 }
 
+type VirtualWanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualWanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualWan)(nil)).Elem()
+}
+
+func (o VirtualWanPtrOutput) ToVirtualWanPtrOutput() VirtualWanPtrOutput {
+	return o
+}
+
+func (o VirtualWanPtrOutput) ToVirtualWanPtrOutputWithContext(ctx context.Context) VirtualWanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualWanOutput{})
+	pulumi.RegisterOutputType(VirtualWanPtrOutput{})
 }

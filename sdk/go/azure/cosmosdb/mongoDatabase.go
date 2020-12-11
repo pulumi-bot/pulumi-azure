@@ -169,6 +169,13 @@ type MongoDatabaseInput interface {
 	ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput
 }
 
+type MongoDatabasePtrInput interface {
+	pulumi.Input
+
+	ToMongoDatabasePtrOutput() MongoDatabasePtrOutput
+	ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput
+}
+
 func (MongoDatabase) ElementType() reflect.Type {
 	return reflect.TypeOf((*MongoDatabase)(nil)).Elem()
 }
@@ -179,6 +186,14 @@ func (i MongoDatabase) ToMongoDatabaseOutput() MongoDatabaseOutput {
 
 func (i MongoDatabase) ToMongoDatabaseOutputWithContext(ctx context.Context) MongoDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseOutput)
+}
+
+func (i MongoDatabase) ToMongoDatabasePtrOutput() MongoDatabasePtrOutput {
+	return i.ToMongoDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i MongoDatabase) ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabasePtrOutput)
 }
 
 type MongoDatabaseOutput struct {
@@ -197,6 +212,23 @@ func (o MongoDatabaseOutput) ToMongoDatabaseOutputWithContext(ctx context.Contex
 	return o
 }
 
+type MongoDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MongoDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoDatabase)(nil)).Elem()
+}
+
+func (o MongoDatabasePtrOutput) ToMongoDatabasePtrOutput() MongoDatabasePtrOutput {
+	return o
+}
+
+func (o MongoDatabasePtrOutput) ToMongoDatabasePtrOutputWithContext(ctx context.Context) MongoDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MongoDatabaseOutput{})
+	pulumi.RegisterOutputType(MongoDatabasePtrOutput{})
 }

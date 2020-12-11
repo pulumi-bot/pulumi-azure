@@ -68,7 +68,7 @@ func (i ServerStorageProfileArgs) ToServerStorageProfilePtrOutput() ServerStorag
 }
 
 func (i ServerStorageProfileArgs) ToServerStorageProfilePtrOutputWithContext(ctx context.Context) ServerStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutput()
 }
 
 // ServerStorageProfilePtrInput is an input type that accepts ServerStorageProfileArgs, ServerStorageProfilePtr and ServerStorageProfilePtrOutput values.
@@ -101,7 +101,7 @@ func (i *serverStorageProfilePtrType) ToServerStorageProfilePtrOutput() ServerSt
 }
 
 func (i *serverStorageProfilePtrType) ToServerStorageProfilePtrOutputWithContext(ctx context.Context) ServerStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutput()
 }
 
 type ServerStorageProfileOutput struct{ *pulumi.OutputState }

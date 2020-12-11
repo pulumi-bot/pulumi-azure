@@ -176,6 +176,13 @@ type ProductPolicyInput interface {
 	ToProductPolicyOutputWithContext(ctx context.Context) ProductPolicyOutput
 }
 
+type ProductPolicyPtrInput interface {
+	pulumi.Input
+
+	ToProductPolicyPtrOutput() ProductPolicyPtrOutput
+	ToProductPolicyPtrOutputWithContext(ctx context.Context) ProductPolicyPtrOutput
+}
+
 func (ProductPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProductPolicy)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i ProductPolicy) ToProductPolicyOutput() ProductPolicyOutput {
 
 func (i ProductPolicy) ToProductPolicyOutputWithContext(ctx context.Context) ProductPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductPolicyOutput)
+}
+
+func (i ProductPolicy) ToProductPolicyPtrOutput() ProductPolicyPtrOutput {
+	return i.ToProductPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ProductPolicy) ToProductPolicyPtrOutputWithContext(ctx context.Context) ProductPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductPolicyPtrOutput)
 }
 
 type ProductPolicyOutput struct {
@@ -204,6 +219,23 @@ func (o ProductPolicyOutput) ToProductPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ProductPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProductPolicy)(nil)).Elem()
+}
+
+func (o ProductPolicyPtrOutput) ToProductPolicyPtrOutput() ProductPolicyPtrOutput {
+	return o
+}
+
+func (o ProductPolicyPtrOutput) ToProductPolicyPtrOutputWithContext(ctx context.Context) ProductPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProductPolicyOutput{})
+	pulumi.RegisterOutputType(ProductPolicyPtrOutput{})
 }

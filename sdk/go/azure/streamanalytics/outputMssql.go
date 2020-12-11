@@ -243,6 +243,13 @@ type OutputMssqlInput interface {
 	ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput
 }
 
+type OutputMssqlPtrInput interface {
+	pulumi.Input
+
+	ToOutputMssqlPtrOutput() OutputMssqlPtrOutput
+	ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput
+}
+
 func (OutputMssql) ElementType() reflect.Type {
 	return reflect.TypeOf((*OutputMssql)(nil)).Elem()
 }
@@ -253,6 +260,14 @@ func (i OutputMssql) ToOutputMssqlOutput() OutputMssqlOutput {
 
 func (i OutputMssql) ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutputMssqlOutput)
+}
+
+func (i OutputMssql) ToOutputMssqlPtrOutput() OutputMssqlPtrOutput {
+	return i.ToOutputMssqlPtrOutputWithContext(context.Background())
+}
+
+func (i OutputMssql) ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputMssqlPtrOutput)
 }
 
 type OutputMssqlOutput struct {
@@ -271,6 +286,23 @@ func (o OutputMssqlOutput) ToOutputMssqlOutputWithContext(ctx context.Context) O
 	return o
 }
 
+type OutputMssqlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputMssqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutputMssql)(nil)).Elem()
+}
+
+func (o OutputMssqlPtrOutput) ToOutputMssqlPtrOutput() OutputMssqlPtrOutput {
+	return o
+}
+
+func (o OutputMssqlPtrOutput) ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OutputMssqlOutput{})
+	pulumi.RegisterOutputType(OutputMssqlPtrOutput{})
 }

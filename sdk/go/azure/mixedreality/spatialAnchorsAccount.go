@@ -155,6 +155,13 @@ type SpatialAnchorsAccountInput interface {
 	ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput
 }
 
+type SpatialAnchorsAccountPtrInput interface {
+	pulumi.Input
+
+	ToSpatialAnchorsAccountPtrOutput() SpatialAnchorsAccountPtrOutput
+	ToSpatialAnchorsAccountPtrOutputWithContext(ctx context.Context) SpatialAnchorsAccountPtrOutput
+}
+
 func (SpatialAnchorsAccount) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpatialAnchorsAccount)(nil)).Elem()
 }
@@ -165,6 +172,14 @@ func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountOutput() SpatialAnchorsAcc
 
 func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountOutputWithContext(ctx context.Context) SpatialAnchorsAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpatialAnchorsAccountOutput)
+}
+
+func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountPtrOutput() SpatialAnchorsAccountPtrOutput {
+	return i.ToSpatialAnchorsAccountPtrOutputWithContext(context.Background())
+}
+
+func (i SpatialAnchorsAccount) ToSpatialAnchorsAccountPtrOutputWithContext(ctx context.Context) SpatialAnchorsAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpatialAnchorsAccountPtrOutput)
 }
 
 type SpatialAnchorsAccountOutput struct {
@@ -183,6 +198,23 @@ func (o SpatialAnchorsAccountOutput) ToSpatialAnchorsAccountOutputWithContext(ct
 	return o
 }
 
+type SpatialAnchorsAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpatialAnchorsAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpatialAnchorsAccount)(nil)).Elem()
+}
+
+func (o SpatialAnchorsAccountPtrOutput) ToSpatialAnchorsAccountPtrOutput() SpatialAnchorsAccountPtrOutput {
+	return o
+}
+
+func (o SpatialAnchorsAccountPtrOutput) ToSpatialAnchorsAccountPtrOutputWithContext(ctx context.Context) SpatialAnchorsAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SpatialAnchorsAccountOutput{})
+	pulumi.RegisterOutputType(SpatialAnchorsAccountPtrOutput{})
 }

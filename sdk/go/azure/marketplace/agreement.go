@@ -151,6 +151,13 @@ type AgreementInput interface {
 	ToAgreementOutputWithContext(ctx context.Context) AgreementOutput
 }
 
+type AgreementPtrInput interface {
+	pulumi.Input
+
+	ToAgreementPtrOutput() AgreementPtrOutput
+	ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput
+}
+
 func (Agreement) ElementType() reflect.Type {
 	return reflect.TypeOf((*Agreement)(nil)).Elem()
 }
@@ -161,6 +168,14 @@ func (i Agreement) ToAgreementOutput() AgreementOutput {
 
 func (i Agreement) ToAgreementOutputWithContext(ctx context.Context) AgreementOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgreementOutput)
+}
+
+func (i Agreement) ToAgreementPtrOutput() AgreementPtrOutput {
+	return i.ToAgreementPtrOutputWithContext(context.Background())
+}
+
+func (i Agreement) ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgreementPtrOutput)
 }
 
 type AgreementOutput struct {
@@ -179,6 +194,23 @@ func (o AgreementOutput) ToAgreementOutputWithContext(ctx context.Context) Agree
 	return o
 }
 
+type AgreementPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgreementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Agreement)(nil)).Elem()
+}
+
+func (o AgreementPtrOutput) ToAgreementPtrOutput() AgreementPtrOutput {
+	return o
+}
+
+func (o AgreementPtrOutput) ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AgreementOutput{})
+	pulumi.RegisterOutputType(AgreementPtrOutput{})
 }

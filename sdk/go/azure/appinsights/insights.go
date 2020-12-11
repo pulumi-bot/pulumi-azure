@@ -249,6 +249,13 @@ type InsightsInput interface {
 	ToInsightsOutputWithContext(ctx context.Context) InsightsOutput
 }
 
+type InsightsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsPtrOutput() InsightsPtrOutput
+	ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput
+}
+
 func (Insights) ElementType() reflect.Type {
 	return reflect.TypeOf((*Insights)(nil)).Elem()
 }
@@ -259,6 +266,14 @@ func (i Insights) ToInsightsOutput() InsightsOutput {
 
 func (i Insights) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InsightsOutput)
+}
+
+func (i Insights) ToInsightsPtrOutput() InsightsPtrOutput {
+	return i.ToInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i Insights) ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsPtrOutput)
 }
 
 type InsightsOutput struct {
@@ -277,6 +292,23 @@ func (o InsightsOutput) ToInsightsOutputWithContext(ctx context.Context) Insight
 	return o
 }
 
+type InsightsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InsightsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Insights)(nil)).Elem()
+}
+
+func (o InsightsPtrOutput) ToInsightsPtrOutput() InsightsPtrOutput {
+	return o
+}
+
+func (o InsightsPtrOutput) ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InsightsOutput{})
+	pulumi.RegisterOutputType(InsightsPtrOutput{})
 }

@@ -117,6 +117,13 @@ type AssignmentVirtualMachineInput interface {
 	ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput
 }
 
+type AssignmentVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput
+	ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput
+}
+
 func (AssignmentVirtualMachine) ElementType() reflect.Type {
 	return reflect.TypeOf((*AssignmentVirtualMachine)(nil)).Elem()
 }
@@ -127,6 +134,14 @@ func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutput() AssignmentV
 
 func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachineOutput)
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput {
+	return i.ToAssignmentVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i AssignmentVirtualMachine) ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachinePtrOutput)
 }
 
 type AssignmentVirtualMachineOutput struct {
@@ -145,6 +160,23 @@ func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutputWithCont
 	return o
 }
 
+type AssignmentVirtualMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentVirtualMachine)(nil)).Elem()
+}
+
+func (o AssignmentVirtualMachinePtrOutput) ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput {
+	return o
+}
+
+func (o AssignmentVirtualMachinePtrOutput) ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssignmentVirtualMachineOutput{})
+	pulumi.RegisterOutputType(AssignmentVirtualMachinePtrOutput{})
 }

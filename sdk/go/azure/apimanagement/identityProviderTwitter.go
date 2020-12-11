@@ -176,6 +176,13 @@ type IdentityProviderTwitterInput interface {
 	ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput
 }
 
+type IdentityProviderTwitterPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput
+	ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput
+}
+
 func (IdentityProviderTwitter) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityProviderTwitter)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutput() IdentityProvi
 
 func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterOutput)
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput {
+	return i.ToIdentityProviderTwitterPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderTwitter) ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterPtrOutput)
 }
 
 type IdentityProviderTwitterOutput struct {
@@ -204,6 +219,23 @@ func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutputWithContex
 	return o
 }
 
+type IdentityProviderTwitterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderTwitterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderTwitter)(nil)).Elem()
+}
+
+func (o IdentityProviderTwitterPtrOutput) ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput {
+	return o
+}
+
+func (o IdentityProviderTwitterPtrOutput) ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderTwitterOutput{})
+	pulumi.RegisterOutputType(IdentityProviderTwitterPtrOutput{})
 }

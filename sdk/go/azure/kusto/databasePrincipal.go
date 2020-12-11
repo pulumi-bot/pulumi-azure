@@ -259,6 +259,13 @@ type DatabasePrincipalInput interface {
 	ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput
 }
 
+type DatabasePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToDatabasePrincipalPtrOutput() DatabasePrincipalPtrOutput
+	ToDatabasePrincipalPtrOutputWithContext(ctx context.Context) DatabasePrincipalPtrOutput
+}
+
 func (DatabasePrincipal) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabasePrincipal)(nil)).Elem()
 }
@@ -269,6 +276,14 @@ func (i DatabasePrincipal) ToDatabasePrincipalOutput() DatabasePrincipalOutput {
 
 func (i DatabasePrincipal) ToDatabasePrincipalOutputWithContext(ctx context.Context) DatabasePrincipalOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabasePrincipalOutput)
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalPtrOutput() DatabasePrincipalPtrOutput {
+	return i.ToDatabasePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i DatabasePrincipal) ToDatabasePrincipalPtrOutputWithContext(ctx context.Context) DatabasePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabasePrincipalPtrOutput)
 }
 
 type DatabasePrincipalOutput struct {
@@ -287,6 +302,23 @@ func (o DatabasePrincipalOutput) ToDatabasePrincipalOutputWithContext(ctx contex
 	return o
 }
 
+type DatabasePrincipalPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabasePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasePrincipal)(nil)).Elem()
+}
+
+func (o DatabasePrincipalPtrOutput) ToDatabasePrincipalPtrOutput() DatabasePrincipalPtrOutput {
+	return o
+}
+
+func (o DatabasePrincipalPtrOutput) ToDatabasePrincipalPtrOutputWithContext(ctx context.Context) DatabasePrincipalPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabasePrincipalOutput{})
+	pulumi.RegisterOutputType(DatabasePrincipalPtrOutput{})
 }

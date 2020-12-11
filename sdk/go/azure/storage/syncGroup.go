@@ -141,6 +141,13 @@ type SyncGroupInput interface {
 	ToSyncGroupOutputWithContext(ctx context.Context) SyncGroupOutput
 }
 
+type SyncGroupPtrInput interface {
+	pulumi.Input
+
+	ToSyncGroupPtrOutput() SyncGroupPtrOutput
+	ToSyncGroupPtrOutputWithContext(ctx context.Context) SyncGroupPtrOutput
+}
+
 func (SyncGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*SyncGroup)(nil)).Elem()
 }
@@ -151,6 +158,14 @@ func (i SyncGroup) ToSyncGroupOutput() SyncGroupOutput {
 
 func (i SyncGroup) ToSyncGroupOutputWithContext(ctx context.Context) SyncGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SyncGroupOutput)
+}
+
+func (i SyncGroup) ToSyncGroupPtrOutput() SyncGroupPtrOutput {
+	return i.ToSyncGroupPtrOutputWithContext(context.Background())
+}
+
+func (i SyncGroup) ToSyncGroupPtrOutputWithContext(ctx context.Context) SyncGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyncGroupPtrOutput)
 }
 
 type SyncGroupOutput struct {
@@ -169,6 +184,23 @@ func (o SyncGroupOutput) ToSyncGroupOutputWithContext(ctx context.Context) SyncG
 	return o
 }
 
+type SyncGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SyncGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SyncGroup)(nil)).Elem()
+}
+
+func (o SyncGroupPtrOutput) ToSyncGroupPtrOutput() SyncGroupPtrOutput {
+	return o
+}
+
+func (o SyncGroupPtrOutput) ToSyncGroupPtrOutputWithContext(ctx context.Context) SyncGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SyncGroupOutput{})
+	pulumi.RegisterOutputType(SyncGroupPtrOutput{})
 }

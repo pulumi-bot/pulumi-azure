@@ -135,6 +135,13 @@ type SettingInput interface {
 	ToSettingOutputWithContext(ctx context.Context) SettingOutput
 }
 
+type SettingPtrInput interface {
+	pulumi.Input
+
+	ToSettingPtrOutput() SettingPtrOutput
+	ToSettingPtrOutputWithContext(ctx context.Context) SettingPtrOutput
+}
+
 func (Setting) ElementType() reflect.Type {
 	return reflect.TypeOf((*Setting)(nil)).Elem()
 }
@@ -145,6 +152,14 @@ func (i Setting) ToSettingOutput() SettingOutput {
 
 func (i Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
+}
+
+func (i Setting) ToSettingPtrOutput() SettingPtrOutput {
+	return i.ToSettingPtrOutputWithContext(context.Background())
+}
+
+func (i Setting) ToSettingPtrOutputWithContext(ctx context.Context) SettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingPtrOutput)
 }
 
 type SettingOutput struct {
@@ -163,6 +178,23 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
+type SettingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Setting)(nil)).Elem()
+}
+
+func (o SettingPtrOutput) ToSettingPtrOutput() SettingPtrOutput {
+	return o
+}
+
+func (o SettingPtrOutput) ToSettingPtrOutputWithContext(ctx context.Context) SettingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SettingOutput{})
+	pulumi.RegisterOutputType(SettingPtrOutput{})
 }

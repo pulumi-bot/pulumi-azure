@@ -408,6 +408,13 @@ type ScaleSetInput interface {
 	ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput
 }
 
+type ScaleSetPtrInput interface {
+	pulumi.Input
+
+	ToScaleSetPtrOutput() ScaleSetPtrOutput
+	ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput
+}
+
 func (ScaleSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScaleSet)(nil)).Elem()
 }
@@ -418,6 +425,14 @@ func (i ScaleSet) ToScaleSetOutput() ScaleSetOutput {
 
 func (i ScaleSet) ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOutput)
+}
+
+func (i ScaleSet) ToScaleSetPtrOutput() ScaleSetPtrOutput {
+	return i.ToScaleSetPtrOutputWithContext(context.Background())
+}
+
+func (i ScaleSet) ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPtrOutput)
 }
 
 type ScaleSetOutput struct {
@@ -436,6 +451,23 @@ func (o ScaleSetOutput) ToScaleSetOutputWithContext(ctx context.Context) ScaleSe
 	return o
 }
 
+type ScaleSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScaleSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleSet)(nil)).Elem()
+}
+
+func (o ScaleSetPtrOutput) ToScaleSetPtrOutput() ScaleSetPtrOutput {
+	return o
+}
+
+func (o ScaleSetPtrOutput) ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScaleSetOutput{})
+	pulumi.RegisterOutputType(ScaleSetPtrOutput{})
 }

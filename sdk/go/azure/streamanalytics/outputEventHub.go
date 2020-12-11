@@ -246,6 +246,13 @@ type OutputEventHubInput interface {
 	ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput
 }
 
+type OutputEventHubPtrInput interface {
+	pulumi.Input
+
+	ToOutputEventHubPtrOutput() OutputEventHubPtrOutput
+	ToOutputEventHubPtrOutputWithContext(ctx context.Context) OutputEventHubPtrOutput
+}
+
 func (OutputEventHub) ElementType() reflect.Type {
 	return reflect.TypeOf((*OutputEventHub)(nil)).Elem()
 }
@@ -256,6 +263,14 @@ func (i OutputEventHub) ToOutputEventHubOutput() OutputEventHubOutput {
 
 func (i OutputEventHub) ToOutputEventHubOutputWithContext(ctx context.Context) OutputEventHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubOutput)
+}
+
+func (i OutputEventHub) ToOutputEventHubPtrOutput() OutputEventHubPtrOutput {
+	return i.ToOutputEventHubPtrOutputWithContext(context.Background())
+}
+
+func (i OutputEventHub) ToOutputEventHubPtrOutputWithContext(ctx context.Context) OutputEventHubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputEventHubPtrOutput)
 }
 
 type OutputEventHubOutput struct {
@@ -274,6 +289,23 @@ func (o OutputEventHubOutput) ToOutputEventHubOutputWithContext(ctx context.Cont
 	return o
 }
 
+type OutputEventHubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputEventHubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutputEventHub)(nil)).Elem()
+}
+
+func (o OutputEventHubPtrOutput) ToOutputEventHubPtrOutput() OutputEventHubPtrOutput {
+	return o
+}
+
+func (o OutputEventHubPtrOutput) ToOutputEventHubPtrOutputWithContext(ctx context.Context) OutputEventHubPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OutputEventHubOutput{})
+	pulumi.RegisterOutputType(OutputEventHubPtrOutput{})
 }

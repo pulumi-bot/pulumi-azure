@@ -280,6 +280,13 @@ type WindowsVirtualMachineInput interface {
 	ToWindowsVirtualMachineOutputWithContext(ctx context.Context) WindowsVirtualMachineOutput
 }
 
+type WindowsVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToWindowsVirtualMachinePtrOutput() WindowsVirtualMachinePtrOutput
+	ToWindowsVirtualMachinePtrOutputWithContext(ctx context.Context) WindowsVirtualMachinePtrOutput
+}
+
 func (WindowsVirtualMachine) ElementType() reflect.Type {
 	return reflect.TypeOf((*WindowsVirtualMachine)(nil)).Elem()
 }
@@ -290,6 +297,14 @@ func (i WindowsVirtualMachine) ToWindowsVirtualMachineOutput() WindowsVirtualMac
 
 func (i WindowsVirtualMachine) ToWindowsVirtualMachineOutputWithContext(ctx context.Context) WindowsVirtualMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOutput)
+}
+
+func (i WindowsVirtualMachine) ToWindowsVirtualMachinePtrOutput() WindowsVirtualMachinePtrOutput {
+	return i.ToWindowsVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i WindowsVirtualMachine) ToWindowsVirtualMachinePtrOutputWithContext(ctx context.Context) WindowsVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachinePtrOutput)
 }
 
 type WindowsVirtualMachineOutput struct {
@@ -308,6 +323,23 @@ func (o WindowsVirtualMachineOutput) ToWindowsVirtualMachineOutputWithContext(ct
 	return o
 }
 
+type WindowsVirtualMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsVirtualMachine)(nil)).Elem()
+}
+
+func (o WindowsVirtualMachinePtrOutput) ToWindowsVirtualMachinePtrOutput() WindowsVirtualMachinePtrOutput {
+	return o
+}
+
+func (o WindowsVirtualMachinePtrOutput) ToWindowsVirtualMachinePtrOutputWithContext(ctx context.Context) WindowsVirtualMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WindowsVirtualMachineOutput{})
+	pulumi.RegisterOutputType(WindowsVirtualMachinePtrOutput{})
 }

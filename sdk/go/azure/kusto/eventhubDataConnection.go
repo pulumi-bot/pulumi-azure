@@ -281,6 +281,13 @@ type EventhubDataConnectionInput interface {
 	ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput
 }
 
+type EventhubDataConnectionPtrInput interface {
+	pulumi.Input
+
+	ToEventhubDataConnectionPtrOutput() EventhubDataConnectionPtrOutput
+	ToEventhubDataConnectionPtrOutputWithContext(ctx context.Context) EventhubDataConnectionPtrOutput
+}
+
 func (EventhubDataConnection) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventhubDataConnection)(nil)).Elem()
 }
@@ -291,6 +298,14 @@ func (i EventhubDataConnection) ToEventhubDataConnectionOutput() EventhubDataCon
 
 func (i EventhubDataConnection) ToEventhubDataConnectionOutputWithContext(ctx context.Context) EventhubDataConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventhubDataConnectionOutput)
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionPtrOutput() EventhubDataConnectionPtrOutput {
+	return i.ToEventhubDataConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i EventhubDataConnection) ToEventhubDataConnectionPtrOutputWithContext(ctx context.Context) EventhubDataConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventhubDataConnectionPtrOutput)
 }
 
 type EventhubDataConnectionOutput struct {
@@ -309,6 +324,23 @@ func (o EventhubDataConnectionOutput) ToEventhubDataConnectionOutputWithContext(
 	return o
 }
 
+type EventhubDataConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventhubDataConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventhubDataConnection)(nil)).Elem()
+}
+
+func (o EventhubDataConnectionPtrOutput) ToEventhubDataConnectionPtrOutput() EventhubDataConnectionPtrOutput {
+	return o
+}
+
+func (o EventhubDataConnectionPtrOutput) ToEventhubDataConnectionPtrOutputWithContext(ctx context.Context) EventhubDataConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventhubDataConnectionOutput{})
+	pulumi.RegisterOutputType(EventhubDataConnectionPtrOutput{})
 }

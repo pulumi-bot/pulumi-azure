@@ -187,6 +187,13 @@ type LinkedStorageAccountInput interface {
 	ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput
 }
 
+type LinkedStorageAccountPtrInput interface {
+	pulumi.Input
+
+	ToLinkedStorageAccountPtrOutput() LinkedStorageAccountPtrOutput
+	ToLinkedStorageAccountPtrOutputWithContext(ctx context.Context) LinkedStorageAccountPtrOutput
+}
+
 func (LinkedStorageAccount) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedStorageAccount)(nil)).Elem()
 }
@@ -197,6 +204,14 @@ func (i LinkedStorageAccount) ToLinkedStorageAccountOutput() LinkedStorageAccoun
 
 func (i LinkedStorageAccount) ToLinkedStorageAccountOutputWithContext(ctx context.Context) LinkedStorageAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedStorageAccountOutput)
+}
+
+func (i LinkedStorageAccount) ToLinkedStorageAccountPtrOutput() LinkedStorageAccountPtrOutput {
+	return i.ToLinkedStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedStorageAccount) ToLinkedStorageAccountPtrOutputWithContext(ctx context.Context) LinkedStorageAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedStorageAccountPtrOutput)
 }
 
 type LinkedStorageAccountOutput struct {
@@ -215,6 +230,23 @@ func (o LinkedStorageAccountOutput) ToLinkedStorageAccountOutputWithContext(ctx 
 	return o
 }
 
+type LinkedStorageAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedStorageAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedStorageAccount)(nil)).Elem()
+}
+
+func (o LinkedStorageAccountPtrOutput) ToLinkedStorageAccountPtrOutput() LinkedStorageAccountPtrOutput {
+	return o
+}
+
+func (o LinkedStorageAccountPtrOutput) ToLinkedStorageAccountPtrOutputWithContext(ctx context.Context) LinkedStorageAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedStorageAccountOutput{})
+	pulumi.RegisterOutputType(LinkedStorageAccountPtrOutput{})
 }

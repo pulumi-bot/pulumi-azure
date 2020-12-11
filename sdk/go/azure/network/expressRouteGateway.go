@@ -202,6 +202,13 @@ type ExpressRouteGatewayInput interface {
 	ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput
 }
 
+type ExpressRouteGatewayPtrInput interface {
+	pulumi.Input
+
+	ToExpressRouteGatewayPtrOutput() ExpressRouteGatewayPtrOutput
+	ToExpressRouteGatewayPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPtrOutput
+}
+
 func (ExpressRouteGateway) ElementType() reflect.Type {
 	return reflect.TypeOf((*ExpressRouteGateway)(nil)).Elem()
 }
@@ -212,6 +219,14 @@ func (i ExpressRouteGateway) ToExpressRouteGatewayOutput() ExpressRouteGatewayOu
 
 func (i ExpressRouteGateway) ToExpressRouteGatewayOutputWithContext(ctx context.Context) ExpressRouteGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayOutput)
+}
+
+func (i ExpressRouteGateway) ToExpressRouteGatewayPtrOutput() ExpressRouteGatewayPtrOutput {
+	return i.ToExpressRouteGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i ExpressRouteGateway) ToExpressRouteGatewayPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayPtrOutput)
 }
 
 type ExpressRouteGatewayOutput struct {
@@ -230,6 +245,23 @@ func (o ExpressRouteGatewayOutput) ToExpressRouteGatewayOutputWithContext(ctx co
 	return o
 }
 
+type ExpressRouteGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressRouteGateway)(nil)).Elem()
+}
+
+func (o ExpressRouteGatewayPtrOutput) ToExpressRouteGatewayPtrOutput() ExpressRouteGatewayPtrOutput {
+	return o
+}
+
+func (o ExpressRouteGatewayPtrOutput) ToExpressRouteGatewayPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExpressRouteGatewayOutput{})
+	pulumi.RegisterOutputType(ExpressRouteGatewayPtrOutput{})
 }

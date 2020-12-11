@@ -176,6 +176,13 @@ type SubscriptionTemplateDeploymentInput interface {
 	ToSubscriptionTemplateDeploymentOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentOutput
 }
 
+type SubscriptionTemplateDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionTemplateDeploymentPtrOutput() SubscriptionTemplateDeploymentPtrOutput
+	ToSubscriptionTemplateDeploymentPtrOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentPtrOutput
+}
+
 func (SubscriptionTemplateDeployment) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionTemplateDeployment)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentOutput()
 
 func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionTemplateDeploymentOutput)
+}
+
+func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentPtrOutput() SubscriptionTemplateDeploymentPtrOutput {
+	return i.ToSubscriptionTemplateDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionTemplateDeployment) ToSubscriptionTemplateDeploymentPtrOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionTemplateDeploymentPtrOutput)
 }
 
 type SubscriptionTemplateDeploymentOutput struct {
@@ -204,6 +219,23 @@ func (o SubscriptionTemplateDeploymentOutput) ToSubscriptionTemplateDeploymentOu
 	return o
 }
 
+type SubscriptionTemplateDeploymentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionTemplateDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionTemplateDeployment)(nil)).Elem()
+}
+
+func (o SubscriptionTemplateDeploymentPtrOutput) ToSubscriptionTemplateDeploymentPtrOutput() SubscriptionTemplateDeploymentPtrOutput {
+	return o
+}
+
+func (o SubscriptionTemplateDeploymentPtrOutput) ToSubscriptionTemplateDeploymentPtrOutputWithContext(ctx context.Context) SubscriptionTemplateDeploymentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionTemplateDeploymentOutput{})
+	pulumi.RegisterOutputType(SubscriptionTemplateDeploymentPtrOutput{})
 }

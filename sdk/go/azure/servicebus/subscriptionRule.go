@@ -324,6 +324,13 @@ type SubscriptionRuleInput interface {
 	ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput
 }
 
+type SubscriptionRulePtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionRulePtrOutput() SubscriptionRulePtrOutput
+	ToSubscriptionRulePtrOutputWithContext(ctx context.Context) SubscriptionRulePtrOutput
+}
+
 func (SubscriptionRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionRule)(nil)).Elem()
 }
@@ -334,6 +341,14 @@ func (i SubscriptionRule) ToSubscriptionRuleOutput() SubscriptionRuleOutput {
 
 func (i SubscriptionRule) ToSubscriptionRuleOutputWithContext(ctx context.Context) SubscriptionRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleOutput)
+}
+
+func (i SubscriptionRule) ToSubscriptionRulePtrOutput() SubscriptionRulePtrOutput {
+	return i.ToSubscriptionRulePtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionRule) ToSubscriptionRulePtrOutputWithContext(ctx context.Context) SubscriptionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRulePtrOutput)
 }
 
 type SubscriptionRuleOutput struct {
@@ -352,6 +367,23 @@ func (o SubscriptionRuleOutput) ToSubscriptionRuleOutputWithContext(ctx context.
 	return o
 }
 
+type SubscriptionRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionRule)(nil)).Elem()
+}
+
+func (o SubscriptionRulePtrOutput) ToSubscriptionRulePtrOutput() SubscriptionRulePtrOutput {
+	return o
+}
+
+func (o SubscriptionRulePtrOutput) ToSubscriptionRulePtrOutputWithContext(ctx context.Context) SubscriptionRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionRuleOutput{})
+	pulumi.RegisterOutputType(SubscriptionRulePtrOutput{})
 }

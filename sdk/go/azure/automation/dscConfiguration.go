@@ -173,6 +173,13 @@ type DscConfigurationInput interface {
 	ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput
 }
 
+type DscConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDscConfigurationPtrOutput() DscConfigurationPtrOutput
+	ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput
+}
+
 func (DscConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*DscConfiguration)(nil)).Elem()
 }
@@ -183,6 +190,14 @@ func (i DscConfiguration) ToDscConfigurationOutput() DscConfigurationOutput {
 
 func (i DscConfiguration) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationOutput)
+}
+
+func (i DscConfiguration) ToDscConfigurationPtrOutput() DscConfigurationPtrOutput {
+	return i.ToDscConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DscConfiguration) ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationPtrOutput)
 }
 
 type DscConfigurationOutput struct {
@@ -201,6 +216,23 @@ func (o DscConfigurationOutput) ToDscConfigurationOutputWithContext(ctx context.
 	return o
 }
 
+type DscConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DscConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DscConfiguration)(nil)).Elem()
+}
+
+func (o DscConfigurationPtrOutput) ToDscConfigurationPtrOutput() DscConfigurationPtrOutput {
+	return o
+}
+
+func (o DscConfigurationPtrOutput) ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DscConfigurationOutput{})
+	pulumi.RegisterOutputType(DscConfigurationPtrOutput{})
 }

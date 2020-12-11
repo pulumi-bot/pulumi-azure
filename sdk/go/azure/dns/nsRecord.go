@@ -204,6 +204,13 @@ type NsRecordInput interface {
 	ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput
 }
 
+type NsRecordPtrInput interface {
+	pulumi.Input
+
+	ToNsRecordPtrOutput() NsRecordPtrOutput
+	ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput
+}
+
 func (NsRecord) ElementType() reflect.Type {
 	return reflect.TypeOf((*NsRecord)(nil)).Elem()
 }
@@ -214,6 +221,14 @@ func (i NsRecord) ToNsRecordOutput() NsRecordOutput {
 
 func (i NsRecord) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NsRecordOutput)
+}
+
+func (i NsRecord) ToNsRecordPtrOutput() NsRecordPtrOutput {
+	return i.ToNsRecordPtrOutputWithContext(context.Background())
+}
+
+func (i NsRecord) ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsRecordPtrOutput)
 }
 
 type NsRecordOutput struct {
@@ -232,6 +247,23 @@ func (o NsRecordOutput) ToNsRecordOutputWithContext(ctx context.Context) NsRecor
 	return o
 }
 
+type NsRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NsRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NsRecord)(nil)).Elem()
+}
+
+func (o NsRecordPtrOutput) ToNsRecordPtrOutput() NsRecordPtrOutput {
+	return o
+}
+
+func (o NsRecordPtrOutput) ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NsRecordOutput{})
+	pulumi.RegisterOutputType(NsRecordPtrOutput{})
 }

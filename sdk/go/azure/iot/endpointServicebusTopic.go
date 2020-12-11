@@ -196,6 +196,13 @@ type EndpointServicebusTopicInput interface {
 	ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput
 }
 
+type EndpointServicebusTopicPtrInput interface {
+	pulumi.Input
+
+	ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput
+	ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput
+}
+
 func (EndpointServicebusTopic) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointServicebusTopic)(nil)).Elem()
 }
@@ -206,6 +213,14 @@ func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutput() EndpointServi
 
 func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusTopicOutput)
+}
+
+func (i EndpointServicebusTopic) ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput {
+	return i.ToEndpointServicebusTopicPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointServicebusTopic) ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusTopicPtrOutput)
 }
 
 type EndpointServicebusTopicOutput struct {
@@ -224,6 +239,23 @@ func (o EndpointServicebusTopicOutput) ToEndpointServicebusTopicOutputWithContex
 	return o
 }
 
+type EndpointServicebusTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointServicebusTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointServicebusTopic)(nil)).Elem()
+}
+
+func (o EndpointServicebusTopicPtrOutput) ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput {
+	return o
+}
+
+func (o EndpointServicebusTopicPtrOutput) ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointServicebusTopicOutput{})
+	pulumi.RegisterOutputType(EndpointServicebusTopicPtrOutput{})
 }

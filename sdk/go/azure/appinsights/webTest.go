@@ -229,6 +229,13 @@ type WebTestInput interface {
 	ToWebTestOutputWithContext(ctx context.Context) WebTestOutput
 }
 
+type WebTestPtrInput interface {
+	pulumi.Input
+
+	ToWebTestPtrOutput() WebTestPtrOutput
+	ToWebTestPtrOutputWithContext(ctx context.Context) WebTestPtrOutput
+}
+
 func (WebTest) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebTest)(nil)).Elem()
 }
@@ -239,6 +246,14 @@ func (i WebTest) ToWebTestOutput() WebTestOutput {
 
 func (i WebTest) ToWebTestOutputWithContext(ctx context.Context) WebTestOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestOutput)
+}
+
+func (i WebTest) ToWebTestPtrOutput() WebTestPtrOutput {
+	return i.ToWebTestPtrOutputWithContext(context.Background())
+}
+
+func (i WebTest) ToWebTestPtrOutputWithContext(ctx context.Context) WebTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebTestPtrOutput)
 }
 
 type WebTestOutput struct {
@@ -257,6 +272,23 @@ func (o WebTestOutput) ToWebTestOutputWithContext(ctx context.Context) WebTestOu
 	return o
 }
 
+type WebTestPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebTest)(nil)).Elem()
+}
+
+func (o WebTestPtrOutput) ToWebTestPtrOutput() WebTestPtrOutput {
+	return o
+}
+
+func (o WebTestPtrOutput) ToWebTestPtrOutputWithContext(ctx context.Context) WebTestPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebTestOutput{})
+	pulumi.RegisterOutputType(WebTestPtrOutput{})
 }

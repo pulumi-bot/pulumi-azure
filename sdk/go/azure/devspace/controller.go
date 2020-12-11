@@ -177,6 +177,13 @@ type ControllerInput interface {
 	ToControllerOutputWithContext(ctx context.Context) ControllerOutput
 }
 
+type ControllerPtrInput interface {
+	pulumi.Input
+
+	ToControllerPtrOutput() ControllerPtrOutput
+	ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput
+}
+
 func (Controller) ElementType() reflect.Type {
 	return reflect.TypeOf((*Controller)(nil)).Elem()
 }
@@ -187,6 +194,14 @@ func (i Controller) ToControllerOutput() ControllerOutput {
 
 func (i Controller) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerOutput)
+}
+
+func (i Controller) ToControllerPtrOutput() ControllerPtrOutput {
+	return i.ToControllerPtrOutputWithContext(context.Background())
+}
+
+func (i Controller) ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControllerPtrOutput)
 }
 
 type ControllerOutput struct {
@@ -205,6 +220,23 @@ func (o ControllerOutput) ToControllerOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+type ControllerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ControllerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Controller)(nil)).Elem()
+}
+
+func (o ControllerPtrOutput) ToControllerPtrOutput() ControllerPtrOutput {
+	return o
+}
+
+func (o ControllerPtrOutput) ToControllerPtrOutputWithContext(ctx context.Context) ControllerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ControllerOutput{})
+	pulumi.RegisterOutputType(ControllerPtrOutput{})
 }

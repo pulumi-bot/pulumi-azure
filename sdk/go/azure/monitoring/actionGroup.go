@@ -350,6 +350,13 @@ type ActionGroupInput interface {
 	ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput
 }
 
+type ActionGroupPtrInput interface {
+	pulumi.Input
+
+	ToActionGroupPtrOutput() ActionGroupPtrOutput
+	ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput
+}
+
 func (ActionGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ActionGroup)(nil)).Elem()
 }
@@ -360,6 +367,14 @@ func (i ActionGroup) ToActionGroupOutput() ActionGroupOutput {
 
 func (i ActionGroup) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupOutput)
+}
+
+func (i ActionGroup) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return i.ToActionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGroup) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupPtrOutput)
 }
 
 type ActionGroupOutput struct {
@@ -378,6 +393,23 @@ func (o ActionGroupOutput) ToActionGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
+type ActionGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGroup)(nil)).Elem()
+}
+
+func (o ActionGroupPtrOutput) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return o
+}
+
+func (o ActionGroupPtrOutput) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionGroupOutput{})
+	pulumi.RegisterOutputType(ActionGroupPtrOutput{})
 }

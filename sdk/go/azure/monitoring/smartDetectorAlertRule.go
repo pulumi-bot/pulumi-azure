@@ -256,6 +256,13 @@ type SmartDetectorAlertRuleInput interface {
 	ToSmartDetectorAlertRuleOutputWithContext(ctx context.Context) SmartDetectorAlertRuleOutput
 }
 
+type SmartDetectorAlertRulePtrInput interface {
+	pulumi.Input
+
+	ToSmartDetectorAlertRulePtrOutput() SmartDetectorAlertRulePtrOutput
+	ToSmartDetectorAlertRulePtrOutputWithContext(ctx context.Context) SmartDetectorAlertRulePtrOutput
+}
+
 func (SmartDetectorAlertRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*SmartDetectorAlertRule)(nil)).Elem()
 }
@@ -266,6 +273,14 @@ func (i SmartDetectorAlertRule) ToSmartDetectorAlertRuleOutput() SmartDetectorAl
 
 func (i SmartDetectorAlertRule) ToSmartDetectorAlertRuleOutputWithContext(ctx context.Context) SmartDetectorAlertRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleOutput)
+}
+
+func (i SmartDetectorAlertRule) ToSmartDetectorAlertRulePtrOutput() SmartDetectorAlertRulePtrOutput {
+	return i.ToSmartDetectorAlertRulePtrOutputWithContext(context.Background())
+}
+
+func (i SmartDetectorAlertRule) ToSmartDetectorAlertRulePtrOutputWithContext(ctx context.Context) SmartDetectorAlertRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRulePtrOutput)
 }
 
 type SmartDetectorAlertRuleOutput struct {
@@ -284,6 +299,23 @@ func (o SmartDetectorAlertRuleOutput) ToSmartDetectorAlertRuleOutputWithContext(
 	return o
 }
 
+type SmartDetectorAlertRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SmartDetectorAlertRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartDetectorAlertRule)(nil)).Elem()
+}
+
+func (o SmartDetectorAlertRulePtrOutput) ToSmartDetectorAlertRulePtrOutput() SmartDetectorAlertRulePtrOutput {
+	return o
+}
+
+func (o SmartDetectorAlertRulePtrOutput) ToSmartDetectorAlertRulePtrOutputWithContext(ctx context.Context) SmartDetectorAlertRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SmartDetectorAlertRuleOutput{})
+	pulumi.RegisterOutputType(SmartDetectorAlertRulePtrOutput{})
 }

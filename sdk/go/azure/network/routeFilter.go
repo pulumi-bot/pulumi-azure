@@ -166,6 +166,13 @@ type RouteFilterInput interface {
 	ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput
 }
 
+type RouteFilterPtrInput interface {
+	pulumi.Input
+
+	ToRouteFilterPtrOutput() RouteFilterPtrOutput
+	ToRouteFilterPtrOutputWithContext(ctx context.Context) RouteFilterPtrOutput
+}
+
 func (RouteFilter) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouteFilter)(nil)).Elem()
 }
@@ -176,6 +183,14 @@ func (i RouteFilter) ToRouteFilterOutput() RouteFilterOutput {
 
 func (i RouteFilter) ToRouteFilterOutputWithContext(ctx context.Context) RouteFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterOutput)
+}
+
+func (i RouteFilter) ToRouteFilterPtrOutput() RouteFilterPtrOutput {
+	return i.ToRouteFilterPtrOutputWithContext(context.Background())
+}
+
+func (i RouteFilter) ToRouteFilterPtrOutputWithContext(ctx context.Context) RouteFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterPtrOutput)
 }
 
 type RouteFilterOutput struct {
@@ -194,6 +209,23 @@ func (o RouteFilterOutput) ToRouteFilterOutputWithContext(ctx context.Context) R
 	return o
 }
 
+type RouteFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteFilter)(nil)).Elem()
+}
+
+func (o RouteFilterPtrOutput) ToRouteFilterPtrOutput() RouteFilterPtrOutput {
+	return o
+}
+
+func (o RouteFilterPtrOutput) ToRouteFilterPtrOutputWithContext(ctx context.Context) RouteFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteFilterOutput{})
+	pulumi.RegisterOutputType(RouteFilterPtrOutput{})
 }

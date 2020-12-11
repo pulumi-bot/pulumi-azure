@@ -167,7 +167,7 @@ func (i ApplicationGatewayAutoscaleConfigurationArgs) ToApplicationGatewayAutosc
 }
 
 func (i ApplicationGatewayAutoscaleConfigurationArgs) ToApplicationGatewayAutoscaleConfigurationPtrOutputWithContext(ctx context.Context) ApplicationGatewayAutoscaleConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayAutoscaleConfigurationOutput).ToApplicationGatewayAutoscaleConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayAutoscaleConfigurationOutput).ToApplicationGatewayAutoscaleConfigurationPtrOutput()
 }
 
 // ApplicationGatewayAutoscaleConfigurationPtrInput is an input type that accepts ApplicationGatewayAutoscaleConfigurationArgs, ApplicationGatewayAutoscaleConfigurationPtr and ApplicationGatewayAutoscaleConfigurationPtrOutput values.
@@ -200,7 +200,7 @@ func (i *applicationGatewayAutoscaleConfigurationPtrType) ToApplicationGatewayAu
 }
 
 func (i *applicationGatewayAutoscaleConfigurationPtrType) ToApplicationGatewayAutoscaleConfigurationPtrOutputWithContext(ctx context.Context) ApplicationGatewayAutoscaleConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayAutoscaleConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayAutoscaleConfigurationOutput).ToApplicationGatewayAutoscaleConfigurationPtrOutput()
 }
 
 type ApplicationGatewayAutoscaleConfigurationOutput struct{ *pulumi.OutputState }
@@ -774,7 +774,7 @@ func (i ApplicationGatewayBackendHttpSettingConnectionDrainingArgs) ToApplicatio
 }
 
 func (i ApplicationGatewayBackendHttpSettingConnectionDrainingArgs) ToApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutputWithContext(ctx context.Context) ApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendHttpSettingConnectionDrainingOutput).ToApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendHttpSettingConnectionDrainingOutput).ToApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput()
 }
 
 // ApplicationGatewayBackendHttpSettingConnectionDrainingPtrInput is an input type that accepts ApplicationGatewayBackendHttpSettingConnectionDrainingArgs, ApplicationGatewayBackendHttpSettingConnectionDrainingPtr and ApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput values.
@@ -807,7 +807,7 @@ func (i *applicationGatewayBackendHttpSettingConnectionDrainingPtrType) ToApplic
 }
 
 func (i *applicationGatewayBackendHttpSettingConnectionDrainingPtrType) ToApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutputWithContext(ctx context.Context) ApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayBackendHttpSettingConnectionDrainingOutput).ToApplicationGatewayBackendHttpSettingConnectionDrainingPtrOutput()
 }
 
 type ApplicationGatewayBackendHttpSettingConnectionDrainingOutput struct{ *pulumi.OutputState }
@@ -1744,7 +1744,7 @@ func (i ApplicationGatewayIdentityArgs) ToApplicationGatewayIdentityPtrOutput() 
 }
 
 func (i ApplicationGatewayIdentityArgs) ToApplicationGatewayIdentityPtrOutputWithContext(ctx context.Context) ApplicationGatewayIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayIdentityOutput).ToApplicationGatewayIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayIdentityOutput).ToApplicationGatewayIdentityPtrOutput()
 }
 
 // ApplicationGatewayIdentityPtrInput is an input type that accepts ApplicationGatewayIdentityArgs, ApplicationGatewayIdentityPtr and ApplicationGatewayIdentityPtrOutput values.
@@ -1777,7 +1777,7 @@ func (i *applicationGatewayIdentityPtrType) ToApplicationGatewayIdentityPtrOutpu
 }
 
 func (i *applicationGatewayIdentityPtrType) ToApplicationGatewayIdentityPtrOutputWithContext(ctx context.Context) ApplicationGatewayIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayIdentityOutput).ToApplicationGatewayIdentityPtrOutput()
 }
 
 type ApplicationGatewayIdentityOutput struct{ *pulumi.OutputState }
@@ -2090,7 +2090,7 @@ func (i ApplicationGatewayProbeMatchArgs) ToApplicationGatewayProbeMatchPtrOutpu
 }
 
 func (i ApplicationGatewayProbeMatchArgs) ToApplicationGatewayProbeMatchPtrOutputWithContext(ctx context.Context) ApplicationGatewayProbeMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayProbeMatchOutput).ToApplicationGatewayProbeMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayProbeMatchOutput).ToApplicationGatewayProbeMatchPtrOutput()
 }
 
 // ApplicationGatewayProbeMatchPtrInput is an input type that accepts ApplicationGatewayProbeMatchArgs, ApplicationGatewayProbeMatchPtr and ApplicationGatewayProbeMatchPtrOutput values.
@@ -2123,7 +2123,7 @@ func (i *applicationGatewayProbeMatchPtrType) ToApplicationGatewayProbeMatchPtrO
 }
 
 func (i *applicationGatewayProbeMatchPtrType) ToApplicationGatewayProbeMatchPtrOutputWithContext(ctx context.Context) ApplicationGatewayProbeMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayProbeMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayProbeMatchOutput).ToApplicationGatewayProbeMatchPtrOutput()
 }
 
 type ApplicationGatewayProbeMatchOutput struct{ *pulumi.OutputState }
@@ -3224,7 +3224,7 @@ func (i ApplicationGatewaySkuArgs) ToApplicationGatewaySkuPtrOutput() Applicatio
 }
 
 func (i ApplicationGatewaySkuArgs) ToApplicationGatewaySkuPtrOutputWithContext(ctx context.Context) ApplicationGatewaySkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewaySkuOutput).ToApplicationGatewaySkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewaySkuOutput).ToApplicationGatewaySkuPtrOutput()
 }
 
 // ApplicationGatewaySkuPtrInput is an input type that accepts ApplicationGatewaySkuArgs, ApplicationGatewaySkuPtr and ApplicationGatewaySkuPtrOutput values.
@@ -3257,7 +3257,7 @@ func (i *applicationGatewaySkuPtrType) ToApplicationGatewaySkuPtrOutput() Applic
 }
 
 func (i *applicationGatewaySkuPtrType) ToApplicationGatewaySkuPtrOutputWithContext(ctx context.Context) ApplicationGatewaySkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewaySkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewaySkuOutput).ToApplicationGatewaySkuPtrOutput()
 }
 
 type ApplicationGatewaySkuOutput struct{ *pulumi.OutputState }
@@ -4181,7 +4181,7 @@ func (i ApplicationGatewayWafConfigurationArgs) ToApplicationGatewayWafConfigura
 }
 
 func (i ApplicationGatewayWafConfigurationArgs) ToApplicationGatewayWafConfigurationPtrOutputWithContext(ctx context.Context) ApplicationGatewayWafConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayWafConfigurationOutput).ToApplicationGatewayWafConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayWafConfigurationOutput).ToApplicationGatewayWafConfigurationPtrOutput()
 }
 
 // ApplicationGatewayWafConfigurationPtrInput is an input type that accepts ApplicationGatewayWafConfigurationArgs, ApplicationGatewayWafConfigurationPtr and ApplicationGatewayWafConfigurationPtrOutput values.
@@ -4214,7 +4214,7 @@ func (i *applicationGatewayWafConfigurationPtrType) ToApplicationGatewayWafConfi
 }
 
 func (i *applicationGatewayWafConfigurationPtrType) ToApplicationGatewayWafConfigurationPtrOutputWithContext(ctx context.Context) ApplicationGatewayWafConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayWafConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGatewayWafConfigurationOutput).ToApplicationGatewayWafConfigurationPtrOutput()
 }
 
 type ApplicationGatewayWafConfigurationOutput struct{ *pulumi.OutputState }
@@ -4669,7 +4669,7 @@ func (i ExpressRouteCircuitPeeringIpv6Args) ToExpressRouteCircuitPeeringIpv6PtrO
 }
 
 func (i ExpressRouteCircuitPeeringIpv6Args) ToExpressRouteCircuitPeeringIpv6PtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringIpv6PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6Output).ToExpressRouteCircuitPeeringIpv6PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6Output).ToExpressRouteCircuitPeeringIpv6PtrOutput()
 }
 
 // ExpressRouteCircuitPeeringIpv6PtrInput is an input type that accepts ExpressRouteCircuitPeeringIpv6Args, ExpressRouteCircuitPeeringIpv6Ptr and ExpressRouteCircuitPeeringIpv6PtrOutput values.
@@ -4702,7 +4702,7 @@ func (i *expressRouteCircuitPeeringIpv6PtrType) ToExpressRouteCircuitPeeringIpv6
 }
 
 func (i *expressRouteCircuitPeeringIpv6PtrType) ToExpressRouteCircuitPeeringIpv6PtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringIpv6PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6Output).ToExpressRouteCircuitPeeringIpv6PtrOutput()
 }
 
 type ExpressRouteCircuitPeeringIpv6Output struct{ *pulumi.OutputState }
@@ -4855,7 +4855,7 @@ func (i ExpressRouteCircuitPeeringIpv6MicrosoftPeeringArgs) ToExpressRouteCircui
 }
 
 func (i ExpressRouteCircuitPeeringIpv6MicrosoftPeeringArgs) ToExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6MicrosoftPeeringOutput).ToExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6MicrosoftPeeringOutput).ToExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput()
 }
 
 // ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrInput is an input type that accepts ExpressRouteCircuitPeeringIpv6MicrosoftPeeringArgs, ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtr and ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput values.
@@ -4888,7 +4888,7 @@ func (i *expressRouteCircuitPeeringIpv6MicrosoftPeeringPtrType) ToExpressRouteCi
 }
 
 func (i *expressRouteCircuitPeeringIpv6MicrosoftPeeringPtrType) ToExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringIpv6MicrosoftPeeringOutput).ToExpressRouteCircuitPeeringIpv6MicrosoftPeeringPtrOutput()
 }
 
 type ExpressRouteCircuitPeeringIpv6MicrosoftPeeringOutput struct{ *pulumi.OutputState }
@@ -5026,7 +5026,7 @@ func (i ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs) ToExpressRouteCirc
 }
 
 func (i ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs) ToExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringMicrosoftPeeringConfigOutput).ToExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringMicrosoftPeeringConfigOutput).ToExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput()
 }
 
 // ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrInput is an input type that accepts ExpressRouteCircuitPeeringMicrosoftPeeringConfigArgs, ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtr and ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput values.
@@ -5059,7 +5059,7 @@ func (i *expressRouteCircuitPeeringMicrosoftPeeringConfigPtrType) ToExpressRoute
 }
 
 func (i *expressRouteCircuitPeeringMicrosoftPeeringConfigPtrType) ToExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringMicrosoftPeeringConfigOutput).ToExpressRouteCircuitPeeringMicrosoftPeeringConfigPtrOutput()
 }
 
 type ExpressRouteCircuitPeeringMicrosoftPeeringConfigOutput struct{ *pulumi.OutputState }
@@ -5193,7 +5193,7 @@ func (i ExpressRouteCircuitSkuArgs) ToExpressRouteCircuitSkuPtrOutput() ExpressR
 }
 
 func (i ExpressRouteCircuitSkuArgs) ToExpressRouteCircuitSkuPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuOutput).ToExpressRouteCircuitSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuOutput).ToExpressRouteCircuitSkuPtrOutput()
 }
 
 // ExpressRouteCircuitSkuPtrInput is an input type that accepts ExpressRouteCircuitSkuArgs, ExpressRouteCircuitSkuPtr and ExpressRouteCircuitSkuPtrOutput values.
@@ -5226,7 +5226,7 @@ func (i *expressRouteCircuitSkuPtrType) ToExpressRouteCircuitSkuPtrOutput() Expr
 }
 
 func (i *expressRouteCircuitSkuPtrType) ToExpressRouteCircuitSkuPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuOutput).ToExpressRouteCircuitSkuPtrOutput()
 }
 
 type ExpressRouteCircuitSkuOutput struct{ *pulumi.OutputState }
@@ -5734,7 +5734,7 @@ func (i FirewallManagementIpConfigurationArgs) ToFirewallManagementIpConfigurati
 }
 
 func (i FirewallManagementIpConfigurationArgs) ToFirewallManagementIpConfigurationPtrOutputWithContext(ctx context.Context) FirewallManagementIpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallManagementIpConfigurationOutput).ToFirewallManagementIpConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallManagementIpConfigurationOutput).ToFirewallManagementIpConfigurationPtrOutput()
 }
 
 // FirewallManagementIpConfigurationPtrInput is an input type that accepts FirewallManagementIpConfigurationArgs, FirewallManagementIpConfigurationPtr and FirewallManagementIpConfigurationPtrOutput values.
@@ -5767,7 +5767,7 @@ func (i *firewallManagementIpConfigurationPtrType) ToFirewallManagementIpConfigu
 }
 
 func (i *firewallManagementIpConfigurationPtrType) ToFirewallManagementIpConfigurationPtrOutputWithContext(ctx context.Context) FirewallManagementIpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallManagementIpConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallManagementIpConfigurationOutput).ToFirewallManagementIpConfigurationPtrOutput()
 }
 
 type FirewallManagementIpConfigurationOutput struct{ *pulumi.OutputState }
@@ -6256,7 +6256,7 @@ func (i FirewallPolicyDnsArgs) ToFirewallPolicyDnsPtrOutput() FirewallPolicyDnsP
 }
 
 func (i FirewallPolicyDnsArgs) ToFirewallPolicyDnsPtrOutputWithContext(ctx context.Context) FirewallPolicyDnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyDnsOutput).ToFirewallPolicyDnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyDnsOutput).ToFirewallPolicyDnsPtrOutput()
 }
 
 // FirewallPolicyDnsPtrInput is an input type that accepts FirewallPolicyDnsArgs, FirewallPolicyDnsPtr and FirewallPolicyDnsPtrOutput values.
@@ -6289,7 +6289,7 @@ func (i *firewallPolicyDnsPtrType) ToFirewallPolicyDnsPtrOutput() FirewallPolicy
 }
 
 func (i *firewallPolicyDnsPtrType) ToFirewallPolicyDnsPtrOutputWithContext(ctx context.Context) FirewallPolicyDnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyDnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyDnsOutput).ToFirewallPolicyDnsPtrOutput()
 }
 
 type FirewallPolicyDnsOutput struct{ *pulumi.OutputState }
@@ -7381,7 +7381,7 @@ func (i FirewallPolicyThreatIntelligenceAllowlistArgs) ToFirewallPolicyThreatInt
 }
 
 func (i FirewallPolicyThreatIntelligenceAllowlistArgs) ToFirewallPolicyThreatIntelligenceAllowlistPtrOutputWithContext(ctx context.Context) FirewallPolicyThreatIntelligenceAllowlistPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelligenceAllowlistOutput).ToFirewallPolicyThreatIntelligenceAllowlistPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelligenceAllowlistOutput).ToFirewallPolicyThreatIntelligenceAllowlistPtrOutput()
 }
 
 // FirewallPolicyThreatIntelligenceAllowlistPtrInput is an input type that accepts FirewallPolicyThreatIntelligenceAllowlistArgs, FirewallPolicyThreatIntelligenceAllowlistPtr and FirewallPolicyThreatIntelligenceAllowlistPtrOutput values.
@@ -7414,7 +7414,7 @@ func (i *firewallPolicyThreatIntelligenceAllowlistPtrType) ToFirewallPolicyThrea
 }
 
 func (i *firewallPolicyThreatIntelligenceAllowlistPtrType) ToFirewallPolicyThreatIntelligenceAllowlistPtrOutputWithContext(ctx context.Context) FirewallPolicyThreatIntelligenceAllowlistPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelligenceAllowlistPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelligenceAllowlistOutput).ToFirewallPolicyThreatIntelligenceAllowlistPtrOutput()
 }
 
 type FirewallPolicyThreatIntelligenceAllowlistOutput struct{ *pulumi.OutputState }
@@ -7541,7 +7541,7 @@ func (i FirewallVirtualHubArgs) ToFirewallVirtualHubPtrOutput() FirewallVirtualH
 }
 
 func (i FirewallVirtualHubArgs) ToFirewallVirtualHubPtrOutputWithContext(ctx context.Context) FirewallVirtualHubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallVirtualHubOutput).ToFirewallVirtualHubPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVirtualHubOutput).ToFirewallVirtualHubPtrOutput()
 }
 
 // FirewallVirtualHubPtrInput is an input type that accepts FirewallVirtualHubArgs, FirewallVirtualHubPtr and FirewallVirtualHubPtrOutput values.
@@ -7574,7 +7574,7 @@ func (i *firewallVirtualHubPtrType) ToFirewallVirtualHubPtrOutput() FirewallVirt
 }
 
 func (i *firewallVirtualHubPtrType) ToFirewallVirtualHubPtrOutputWithContext(ctx context.Context) FirewallVirtualHubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallVirtualHubPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVirtualHubOutput).ToFirewallVirtualHubPtrOutput()
 }
 
 type FirewallVirtualHubOutput struct{ *pulumi.OutputState }
@@ -7729,7 +7729,7 @@ func (i LocalNetworkGatewayBgpSettingsArgs) ToLocalNetworkGatewayBgpSettingsPtrO
 }
 
 func (i LocalNetworkGatewayBgpSettingsArgs) ToLocalNetworkGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) LocalNetworkGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalNetworkGatewayBgpSettingsOutput).ToLocalNetworkGatewayBgpSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNetworkGatewayBgpSettingsOutput).ToLocalNetworkGatewayBgpSettingsPtrOutput()
 }
 
 // LocalNetworkGatewayBgpSettingsPtrInput is an input type that accepts LocalNetworkGatewayBgpSettingsArgs, LocalNetworkGatewayBgpSettingsPtr and LocalNetworkGatewayBgpSettingsPtrOutput values.
@@ -7762,7 +7762,7 @@ func (i *localNetworkGatewayBgpSettingsPtrType) ToLocalNetworkGatewayBgpSettings
 }
 
 func (i *localNetworkGatewayBgpSettingsPtrType) ToLocalNetworkGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) LocalNetworkGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocalNetworkGatewayBgpSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNetworkGatewayBgpSettingsOutput).ToLocalNetworkGatewayBgpSettingsPtrOutput()
 }
 
 type LocalNetworkGatewayBgpSettingsOutput struct{ *pulumi.OutputState }
@@ -7914,7 +7914,7 @@ func (i NetworkConnectionMonitorDestinationArgs) ToNetworkConnectionMonitorDesti
 }
 
 func (i NetworkConnectionMonitorDestinationArgs) ToNetworkConnectionMonitorDestinationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorDestinationOutput).ToNetworkConnectionMonitorDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorDestinationOutput).ToNetworkConnectionMonitorDestinationPtrOutput()
 }
 
 // NetworkConnectionMonitorDestinationPtrInput is an input type that accepts NetworkConnectionMonitorDestinationArgs, NetworkConnectionMonitorDestinationPtr and NetworkConnectionMonitorDestinationPtrOutput values.
@@ -7947,7 +7947,7 @@ func (i *networkConnectionMonitorDestinationPtrType) ToNetworkConnectionMonitorD
 }
 
 func (i *networkConnectionMonitorDestinationPtrType) ToNetworkConnectionMonitorDestinationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorDestinationOutput).ToNetworkConnectionMonitorDestinationPtrOutput()
 }
 
 type NetworkConnectionMonitorDestinationOutput struct{ *pulumi.OutputState }
@@ -8215,7 +8215,7 @@ func (i NetworkConnectionMonitorEndpointFilterArgs) ToNetworkConnectionMonitorEn
 }
 
 func (i NetworkConnectionMonitorEndpointFilterArgs) ToNetworkConnectionMonitorEndpointFilterPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorEndpointFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorEndpointFilterOutput).ToNetworkConnectionMonitorEndpointFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorEndpointFilterOutput).ToNetworkConnectionMonitorEndpointFilterPtrOutput()
 }
 
 // NetworkConnectionMonitorEndpointFilterPtrInput is an input type that accepts NetworkConnectionMonitorEndpointFilterArgs, NetworkConnectionMonitorEndpointFilterPtr and NetworkConnectionMonitorEndpointFilterPtrOutput values.
@@ -8248,7 +8248,7 @@ func (i *networkConnectionMonitorEndpointFilterPtrType) ToNetworkConnectionMonit
 }
 
 func (i *networkConnectionMonitorEndpointFilterPtrType) ToNetworkConnectionMonitorEndpointFilterPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorEndpointFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorEndpointFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorEndpointFilterOutput).ToNetworkConnectionMonitorEndpointFilterPtrOutput()
 }
 
 type NetworkConnectionMonitorEndpointFilterOutput struct{ *pulumi.OutputState }
@@ -8481,7 +8481,7 @@ func (i NetworkConnectionMonitorSourceArgs) ToNetworkConnectionMonitorSourcePtrO
 }
 
 func (i NetworkConnectionMonitorSourceArgs) ToNetworkConnectionMonitorSourcePtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorSourceOutput).ToNetworkConnectionMonitorSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorSourceOutput).ToNetworkConnectionMonitorSourcePtrOutput()
 }
 
 // NetworkConnectionMonitorSourcePtrInput is an input type that accepts NetworkConnectionMonitorSourceArgs, NetworkConnectionMonitorSourcePtr and NetworkConnectionMonitorSourcePtrOutput values.
@@ -8514,7 +8514,7 @@ func (i *networkConnectionMonitorSourcePtrType) ToNetworkConnectionMonitorSource
 }
 
 func (i *networkConnectionMonitorSourcePtrType) ToNetworkConnectionMonitorSourcePtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorSourceOutput).ToNetworkConnectionMonitorSourcePtrOutput()
 }
 
 type NetworkConnectionMonitorSourceOutput struct{ *pulumi.OutputState }
@@ -8823,7 +8823,7 @@ func (i NetworkConnectionMonitorTestConfigurationHttpConfigurationArgs) ToNetwor
 }
 
 func (i NetworkConnectionMonitorTestConfigurationHttpConfigurationArgs) ToNetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationHttpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationHttpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput()
 }
 
 // NetworkConnectionMonitorTestConfigurationHttpConfigurationPtrInput is an input type that accepts NetworkConnectionMonitorTestConfigurationHttpConfigurationArgs, NetworkConnectionMonitorTestConfigurationHttpConfigurationPtr and NetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput values.
@@ -8856,7 +8856,7 @@ func (i *networkConnectionMonitorTestConfigurationHttpConfigurationPtrType) ToNe
 }
 
 func (i *networkConnectionMonitorTestConfigurationHttpConfigurationPtrType) ToNetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationHttpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationHttpConfigurationPtrOutput()
 }
 
 type NetworkConnectionMonitorTestConfigurationHttpConfigurationOutput struct{ *pulumi.OutputState }
@@ -9141,7 +9141,7 @@ func (i NetworkConnectionMonitorTestConfigurationIcmpConfigurationArgs) ToNetwor
 }
 
 func (i NetworkConnectionMonitorTestConfigurationIcmpConfigurationArgs) ToNetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationIcmpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationIcmpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput()
 }
 
 // NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrInput is an input type that accepts NetworkConnectionMonitorTestConfigurationIcmpConfigurationArgs, NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtr and NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput values.
@@ -9174,7 +9174,7 @@ func (i *networkConnectionMonitorTestConfigurationIcmpConfigurationPtrType) ToNe
 }
 
 func (i *networkConnectionMonitorTestConfigurationIcmpConfigurationPtrType) ToNetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationIcmpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationIcmpConfigurationPtrOutput()
 }
 
 type NetworkConnectionMonitorTestConfigurationIcmpConfigurationOutput struct{ *pulumi.OutputState }
@@ -9278,7 +9278,7 @@ func (i NetworkConnectionMonitorTestConfigurationSuccessThresholdArgs) ToNetwork
 }
 
 func (i NetworkConnectionMonitorTestConfigurationSuccessThresholdArgs) ToNetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationSuccessThresholdOutput).ToNetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationSuccessThresholdOutput).ToNetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput()
 }
 
 // NetworkConnectionMonitorTestConfigurationSuccessThresholdPtrInput is an input type that accepts NetworkConnectionMonitorTestConfigurationSuccessThresholdArgs, NetworkConnectionMonitorTestConfigurationSuccessThresholdPtr and NetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput values.
@@ -9311,7 +9311,7 @@ func (i *networkConnectionMonitorTestConfigurationSuccessThresholdPtrType) ToNet
 }
 
 func (i *networkConnectionMonitorTestConfigurationSuccessThresholdPtrType) ToNetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationSuccessThresholdOutput).ToNetworkConnectionMonitorTestConfigurationSuccessThresholdPtrOutput()
 }
 
 type NetworkConnectionMonitorTestConfigurationSuccessThresholdOutput struct{ *pulumi.OutputState }
@@ -9430,7 +9430,7 @@ func (i NetworkConnectionMonitorTestConfigurationTcpConfigurationArgs) ToNetwork
 }
 
 func (i NetworkConnectionMonitorTestConfigurationTcpConfigurationArgs) ToNetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationTcpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationTcpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput()
 }
 
 // NetworkConnectionMonitorTestConfigurationTcpConfigurationPtrInput is an input type that accepts NetworkConnectionMonitorTestConfigurationTcpConfigurationArgs, NetworkConnectionMonitorTestConfigurationTcpConfigurationPtr and NetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput values.
@@ -9463,7 +9463,7 @@ func (i *networkConnectionMonitorTestConfigurationTcpConfigurationPtrType) ToNet
 }
 
 func (i *networkConnectionMonitorTestConfigurationTcpConfigurationPtrType) ToNetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutputWithContext(ctx context.Context) NetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConnectionMonitorTestConfigurationTcpConfigurationOutput).ToNetworkConnectionMonitorTestConfigurationTcpConfigurationPtrOutput()
 }
 
 type NetworkConnectionMonitorTestConfigurationTcpConfigurationOutput struct{ *pulumi.OutputState }
@@ -10003,7 +10003,7 @@ func (i NetworkPacketCaptureStorageLocationArgs) ToNetworkPacketCaptureStorageLo
 }
 
 func (i NetworkPacketCaptureStorageLocationArgs) ToNetworkPacketCaptureStorageLocationPtrOutputWithContext(ctx context.Context) NetworkPacketCaptureStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketCaptureStorageLocationOutput).ToNetworkPacketCaptureStorageLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketCaptureStorageLocationOutput).ToNetworkPacketCaptureStorageLocationPtrOutput()
 }
 
 // NetworkPacketCaptureStorageLocationPtrInput is an input type that accepts NetworkPacketCaptureStorageLocationArgs, NetworkPacketCaptureStorageLocationPtr and NetworkPacketCaptureStorageLocationPtrOutput values.
@@ -10036,7 +10036,7 @@ func (i *networkPacketCaptureStorageLocationPtrType) ToNetworkPacketCaptureStora
 }
 
 func (i *networkPacketCaptureStorageLocationPtrType) ToNetworkPacketCaptureStorageLocationPtrOutputWithContext(ctx context.Context) NetworkPacketCaptureStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketCaptureStorageLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketCaptureStorageLocationOutput).ToNetworkPacketCaptureStorageLocationPtrOutput()
 }
 
 type NetworkPacketCaptureStorageLocationOutput struct{ *pulumi.OutputState }
@@ -10400,7 +10400,7 @@ func (i NetworkWatcherFlowLogRetentionPolicyArgs) ToNetworkWatcherFlowLogRetenti
 }
 
 func (i NetworkWatcherFlowLogRetentionPolicyArgs) ToNetworkWatcherFlowLogRetentionPolicyPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogRetentionPolicyOutput).ToNetworkWatcherFlowLogRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogRetentionPolicyOutput).ToNetworkWatcherFlowLogRetentionPolicyPtrOutput()
 }
 
 // NetworkWatcherFlowLogRetentionPolicyPtrInput is an input type that accepts NetworkWatcherFlowLogRetentionPolicyArgs, NetworkWatcherFlowLogRetentionPolicyPtr and NetworkWatcherFlowLogRetentionPolicyPtrOutput values.
@@ -10433,7 +10433,7 @@ func (i *networkWatcherFlowLogRetentionPolicyPtrType) ToNetworkWatcherFlowLogRet
 }
 
 func (i *networkWatcherFlowLogRetentionPolicyPtrType) ToNetworkWatcherFlowLogRetentionPolicyPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogRetentionPolicyOutput).ToNetworkWatcherFlowLogRetentionPolicyPtrOutput()
 }
 
 type NetworkWatcherFlowLogRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -10562,7 +10562,7 @@ func (i NetworkWatcherFlowLogTrafficAnalyticsArgs) ToNetworkWatcherFlowLogTraffi
 }
 
 func (i NetworkWatcherFlowLogTrafficAnalyticsArgs) ToNetworkWatcherFlowLogTrafficAnalyticsPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogTrafficAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogTrafficAnalyticsOutput).ToNetworkWatcherFlowLogTrafficAnalyticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogTrafficAnalyticsOutput).ToNetworkWatcherFlowLogTrafficAnalyticsPtrOutput()
 }
 
 // NetworkWatcherFlowLogTrafficAnalyticsPtrInput is an input type that accepts NetworkWatcherFlowLogTrafficAnalyticsArgs, NetworkWatcherFlowLogTrafficAnalyticsPtr and NetworkWatcherFlowLogTrafficAnalyticsPtrOutput values.
@@ -10595,7 +10595,7 @@ func (i *networkWatcherFlowLogTrafficAnalyticsPtrType) ToNetworkWatcherFlowLogTr
 }
 
 func (i *networkWatcherFlowLogTrafficAnalyticsPtrType) ToNetworkWatcherFlowLogTrafficAnalyticsPtrOutputWithContext(ctx context.Context) NetworkWatcherFlowLogTrafficAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogTrafficAnalyticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkWatcherFlowLogTrafficAnalyticsOutput).ToNetworkWatcherFlowLogTrafficAnalyticsPtrOutput()
 }
 
 type NetworkWatcherFlowLogTrafficAnalyticsOutput struct{ *pulumi.OutputState }
@@ -10894,7 +10894,7 @@ func (i PacketCaptureStorageLocationArgs) ToPacketCaptureStorageLocationPtrOutpu
 }
 
 func (i PacketCaptureStorageLocationArgs) ToPacketCaptureStorageLocationPtrOutputWithContext(ctx context.Context) PacketCaptureStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureStorageLocationOutput).ToPacketCaptureStorageLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureStorageLocationOutput).ToPacketCaptureStorageLocationPtrOutput()
 }
 
 // PacketCaptureStorageLocationPtrInput is an input type that accepts PacketCaptureStorageLocationArgs, PacketCaptureStorageLocationPtr and PacketCaptureStorageLocationPtrOutput values.
@@ -10927,7 +10927,7 @@ func (i *packetCaptureStorageLocationPtrType) ToPacketCaptureStorageLocationPtrO
 }
 
 func (i *packetCaptureStorageLocationPtrType) ToPacketCaptureStorageLocationPtrOutputWithContext(ctx context.Context) PacketCaptureStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureStorageLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureStorageLocationOutput).ToPacketCaptureStorageLocationPtrOutput()
 }
 
 type PacketCaptureStorageLocationOutput struct{ *pulumi.OutputState }
@@ -11063,7 +11063,7 @@ func (i PointToPointVpnGatewayConnectionConfigurationArgs) ToPointToPointVpnGate
 }
 
 func (i PointToPointVpnGatewayConnectionConfigurationArgs) ToPointToPointVpnGatewayConnectionConfigurationPtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationOutput).ToPointToPointVpnGatewayConnectionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationOutput).ToPointToPointVpnGatewayConnectionConfigurationPtrOutput()
 }
 
 // PointToPointVpnGatewayConnectionConfigurationPtrInput is an input type that accepts PointToPointVpnGatewayConnectionConfigurationArgs, PointToPointVpnGatewayConnectionConfigurationPtr and PointToPointVpnGatewayConnectionConfigurationPtrOutput values.
@@ -11096,7 +11096,7 @@ func (i *pointToPointVpnGatewayConnectionConfigurationPtrType) ToPointToPointVpn
 }
 
 func (i *pointToPointVpnGatewayConnectionConfigurationPtrType) ToPointToPointVpnGatewayConnectionConfigurationPtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationOutput).ToPointToPointVpnGatewayConnectionConfigurationPtrOutput()
 }
 
 type PointToPointVpnGatewayConnectionConfigurationOutput struct{ *pulumi.OutputState }
@@ -11234,7 +11234,7 @@ func (i PointToPointVpnGatewayConnectionConfigurationRouteArgs) ToPointToPointVp
 }
 
 func (i PointToPointVpnGatewayConnectionConfigurationRouteArgs) ToPointToPointVpnGatewayConnectionConfigurationRoutePtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRouteOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRouteOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePtrOutput()
 }
 
 // PointToPointVpnGatewayConnectionConfigurationRoutePtrInput is an input type that accepts PointToPointVpnGatewayConnectionConfigurationRouteArgs, PointToPointVpnGatewayConnectionConfigurationRoutePtr and PointToPointVpnGatewayConnectionConfigurationRoutePtrOutput values.
@@ -11267,7 +11267,7 @@ func (i *pointToPointVpnGatewayConnectionConfigurationRoutePtrType) ToPointToPoi
 }
 
 func (i *pointToPointVpnGatewayConnectionConfigurationRoutePtrType) ToPointToPointVpnGatewayConnectionConfigurationRoutePtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRouteOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePtrOutput()
 }
 
 type PointToPointVpnGatewayConnectionConfigurationRouteOutput struct{ *pulumi.OutputState }
@@ -11388,7 +11388,7 @@ func (i PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableAr
 }
 
 func (i PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableArgs) ToPointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput()
 }
 
 // PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrInput is an input type that accepts PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableArgs, PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtr and PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput values.
@@ -11421,7 +11421,7 @@ func (i *pointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableP
 }
 
 func (i *pointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrType) ToPointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableOutput).ToPointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTablePtrOutput()
 }
 
 type PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTableOutput struct{ *pulumi.OutputState }
@@ -11538,7 +11538,7 @@ func (i PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolArgs) T
 }
 
 func (i PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolArgs) ToPointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolOutput).ToPointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolOutput).ToPointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput()
 }
 
 // PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrInput is an input type that accepts PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolArgs, PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtr and PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput values.
@@ -11571,7 +11571,7 @@ func (i *pointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrTyp
 }
 
 func (i *pointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrType) ToPointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutputWithContext(ctx context.Context) PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolOutput).ToPointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolPtrOutput()
 }
 
 type PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPoolOutput struct{ *pulumi.OutputState }
@@ -11677,7 +11677,7 @@ func (i ProfileContainerNetworkInterfaceArgs) ToProfileContainerNetworkInterface
 }
 
 func (i ProfileContainerNetworkInterfaceArgs) ToProfileContainerNetworkInterfacePtrOutputWithContext(ctx context.Context) ProfileContainerNetworkInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileContainerNetworkInterfaceOutput).ToProfileContainerNetworkInterfacePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileContainerNetworkInterfaceOutput).ToProfileContainerNetworkInterfacePtrOutput()
 }
 
 // ProfileContainerNetworkInterfacePtrInput is an input type that accepts ProfileContainerNetworkInterfaceArgs, ProfileContainerNetworkInterfacePtr and ProfileContainerNetworkInterfacePtrOutput values.
@@ -11710,7 +11710,7 @@ func (i *profileContainerNetworkInterfacePtrType) ToProfileContainerNetworkInter
 }
 
 func (i *profileContainerNetworkInterfacePtrType) ToProfileContainerNetworkInterfacePtrOutputWithContext(ctx context.Context) ProfileContainerNetworkInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileContainerNetworkInterfacePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileContainerNetworkInterfaceOutput).ToProfileContainerNetworkInterfacePtrOutput()
 }
 
 type ProfileContainerNetworkInterfaceOutput struct{ *pulumi.OutputState }
@@ -11943,7 +11943,7 @@ func (i RouteFilterRuleArgs) ToRouteFilterRulePtrOutput() RouteFilterRulePtrOutp
 }
 
 func (i RouteFilterRuleArgs) ToRouteFilterRulePtrOutputWithContext(ctx context.Context) RouteFilterRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleOutput).ToRouteFilterRulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleOutput).ToRouteFilterRulePtrOutput()
 }
 
 // RouteFilterRulePtrInput is an input type that accepts RouteFilterRuleArgs, RouteFilterRulePtr and RouteFilterRulePtrOutput values.
@@ -11976,7 +11976,7 @@ func (i *routeFilterRulePtrType) ToRouteFilterRulePtrOutput() RouteFilterRulePtr
 }
 
 func (i *routeFilterRulePtrType) ToRouteFilterRulePtrOutputWithContext(ctx context.Context) RouteFilterRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleOutput).ToRouteFilterRulePtrOutput()
 }
 
 type RouteFilterRuleOutput struct{ *pulumi.OutputState }
@@ -12635,7 +12635,7 @@ func (i TrafficManagerProfileDnsConfigArgs) ToTrafficManagerProfileDnsConfigPtrO
 }
 
 func (i TrafficManagerProfileDnsConfigArgs) ToTrafficManagerProfileDnsConfigPtrOutputWithContext(ctx context.Context) TrafficManagerProfileDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileDnsConfigOutput).ToTrafficManagerProfileDnsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileDnsConfigOutput).ToTrafficManagerProfileDnsConfigPtrOutput()
 }
 
 // TrafficManagerProfileDnsConfigPtrInput is an input type that accepts TrafficManagerProfileDnsConfigArgs, TrafficManagerProfileDnsConfigPtr and TrafficManagerProfileDnsConfigPtrOutput values.
@@ -12668,7 +12668,7 @@ func (i *trafficManagerProfileDnsConfigPtrType) ToTrafficManagerProfileDnsConfig
 }
 
 func (i *trafficManagerProfileDnsConfigPtrType) ToTrafficManagerProfileDnsConfigPtrOutputWithContext(ctx context.Context) TrafficManagerProfileDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileDnsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileDnsConfigOutput).ToTrafficManagerProfileDnsConfigPtrOutput()
 }
 
 type TrafficManagerProfileDnsConfigOutput struct{ *pulumi.OutputState }
@@ -12809,7 +12809,7 @@ func (i TrafficManagerProfileMonitorConfigArgs) ToTrafficManagerProfileMonitorCo
 }
 
 func (i TrafficManagerProfileMonitorConfigArgs) ToTrafficManagerProfileMonitorConfigPtrOutputWithContext(ctx context.Context) TrafficManagerProfileMonitorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileMonitorConfigOutput).ToTrafficManagerProfileMonitorConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileMonitorConfigOutput).ToTrafficManagerProfileMonitorConfigPtrOutput()
 }
 
 // TrafficManagerProfileMonitorConfigPtrInput is an input type that accepts TrafficManagerProfileMonitorConfigArgs, TrafficManagerProfileMonitorConfigPtr and TrafficManagerProfileMonitorConfigPtrOutput values.
@@ -12842,7 +12842,7 @@ func (i *trafficManagerProfileMonitorConfigPtrType) ToTrafficManagerProfileMonit
 }
 
 func (i *trafficManagerProfileMonitorConfigPtrType) ToTrafficManagerProfileMonitorConfigPtrOutputWithContext(ctx context.Context) TrafficManagerProfileMonitorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileMonitorConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileMonitorConfigOutput).ToTrafficManagerProfileMonitorConfigPtrOutput()
 }
 
 type TrafficManagerProfileMonitorConfigOutput struct{ *pulumi.OutputState }
@@ -13161,7 +13161,7 @@ func (i VirtualHubConnectionRoutingArgs) ToVirtualHubConnectionRoutingPtrOutput(
 }
 
 func (i VirtualHubConnectionRoutingArgs) ToVirtualHubConnectionRoutingPtrOutputWithContext(ctx context.Context) VirtualHubConnectionRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingOutput).ToVirtualHubConnectionRoutingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingOutput).ToVirtualHubConnectionRoutingPtrOutput()
 }
 
 // VirtualHubConnectionRoutingPtrInput is an input type that accepts VirtualHubConnectionRoutingArgs, VirtualHubConnectionRoutingPtr and VirtualHubConnectionRoutingPtrOutput values.
@@ -13194,7 +13194,7 @@ func (i *virtualHubConnectionRoutingPtrType) ToVirtualHubConnectionRoutingPtrOut
 }
 
 func (i *virtualHubConnectionRoutingPtrType) ToVirtualHubConnectionRoutingPtrOutputWithContext(ctx context.Context) VirtualHubConnectionRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingOutput).ToVirtualHubConnectionRoutingPtrOutput()
 }
 
 type VirtualHubConnectionRoutingOutput struct{ *pulumi.OutputState }
@@ -13330,7 +13330,7 @@ func (i VirtualHubConnectionRoutingPropagatedRouteTableArgs) ToVirtualHubConnect
 }
 
 func (i VirtualHubConnectionRoutingPropagatedRouteTableArgs) ToVirtualHubConnectionRoutingPropagatedRouteTablePtrOutputWithContext(ctx context.Context) VirtualHubConnectionRoutingPropagatedRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingPropagatedRouteTableOutput).ToVirtualHubConnectionRoutingPropagatedRouteTablePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingPropagatedRouteTableOutput).ToVirtualHubConnectionRoutingPropagatedRouteTablePtrOutput()
 }
 
 // VirtualHubConnectionRoutingPropagatedRouteTablePtrInput is an input type that accepts VirtualHubConnectionRoutingPropagatedRouteTableArgs, VirtualHubConnectionRoutingPropagatedRouteTablePtr and VirtualHubConnectionRoutingPropagatedRouteTablePtrOutput values.
@@ -13363,7 +13363,7 @@ func (i *virtualHubConnectionRoutingPropagatedRouteTablePtrType) ToVirtualHubCon
 }
 
 func (i *virtualHubConnectionRoutingPropagatedRouteTablePtrType) ToVirtualHubConnectionRoutingPropagatedRouteTablePtrOutputWithContext(ctx context.Context) VirtualHubConnectionRoutingPropagatedRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingPropagatedRouteTablePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubConnectionRoutingPropagatedRouteTableOutput).ToVirtualHubConnectionRoutingPropagatedRouteTablePtrOutput()
 }
 
 type VirtualHubConnectionRoutingPropagatedRouteTableOutput struct{ *pulumi.OutputState }
@@ -13836,7 +13836,7 @@ func (i VirtualNetworkDdosProtectionPlanArgs) ToVirtualNetworkDdosProtectionPlan
 }
 
 func (i VirtualNetworkDdosProtectionPlanArgs) ToVirtualNetworkDdosProtectionPlanPtrOutputWithContext(ctx context.Context) VirtualNetworkDdosProtectionPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkDdosProtectionPlanOutput).ToVirtualNetworkDdosProtectionPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkDdosProtectionPlanOutput).ToVirtualNetworkDdosProtectionPlanPtrOutput()
 }
 
 // VirtualNetworkDdosProtectionPlanPtrInput is an input type that accepts VirtualNetworkDdosProtectionPlanArgs, VirtualNetworkDdosProtectionPlanPtr and VirtualNetworkDdosProtectionPlanPtrOutput values.
@@ -13869,7 +13869,7 @@ func (i *virtualNetworkDdosProtectionPlanPtrType) ToVirtualNetworkDdosProtection
 }
 
 func (i *virtualNetworkDdosProtectionPlanPtrType) ToVirtualNetworkDdosProtectionPlanPtrOutputWithContext(ctx context.Context) VirtualNetworkDdosProtectionPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkDdosProtectionPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkDdosProtectionPlanOutput).ToVirtualNetworkDdosProtectionPlanPtrOutput()
 }
 
 type VirtualNetworkDdosProtectionPlanOutput struct{ *pulumi.OutputState }
@@ -13998,7 +13998,7 @@ func (i VirtualNetworkGatewayBgpSettingsArgs) ToVirtualNetworkGatewayBgpSettings
 }
 
 func (i VirtualNetworkGatewayBgpSettingsArgs) ToVirtualNetworkGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayBgpSettingsOutput).ToVirtualNetworkGatewayBgpSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayBgpSettingsOutput).ToVirtualNetworkGatewayBgpSettingsPtrOutput()
 }
 
 // VirtualNetworkGatewayBgpSettingsPtrInput is an input type that accepts VirtualNetworkGatewayBgpSettingsArgs, VirtualNetworkGatewayBgpSettingsPtr and VirtualNetworkGatewayBgpSettingsPtrOutput values.
@@ -14031,7 +14031,7 @@ func (i *virtualNetworkGatewayBgpSettingsPtrType) ToVirtualNetworkGatewayBgpSett
 }
 
 func (i *virtualNetworkGatewayBgpSettingsPtrType) ToVirtualNetworkGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayBgpSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayBgpSettingsOutput).ToVirtualNetworkGatewayBgpSettingsPtrOutput()
 }
 
 type VirtualNetworkGatewayBgpSettingsOutput struct{ *pulumi.OutputState }
@@ -14215,7 +14215,7 @@ func (i VirtualNetworkGatewayConnectionIpsecPolicyArgs) ToVirtualNetworkGatewayC
 }
 
 func (i VirtualNetworkGatewayConnectionIpsecPolicyArgs) ToVirtualNetworkGatewayConnectionIpsecPolicyPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionIpsecPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionIpsecPolicyOutput).ToVirtualNetworkGatewayConnectionIpsecPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionIpsecPolicyOutput).ToVirtualNetworkGatewayConnectionIpsecPolicyPtrOutput()
 }
 
 // VirtualNetworkGatewayConnectionIpsecPolicyPtrInput is an input type that accepts VirtualNetworkGatewayConnectionIpsecPolicyArgs, VirtualNetworkGatewayConnectionIpsecPolicyPtr and VirtualNetworkGatewayConnectionIpsecPolicyPtrOutput values.
@@ -14248,7 +14248,7 @@ func (i *virtualNetworkGatewayConnectionIpsecPolicyPtrType) ToVirtualNetworkGate
 }
 
 func (i *virtualNetworkGatewayConnectionIpsecPolicyPtrType) ToVirtualNetworkGatewayConnectionIpsecPolicyPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionIpsecPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionIpsecPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionIpsecPolicyOutput).ToVirtualNetworkGatewayConnectionIpsecPolicyPtrOutput()
 }
 
 type VirtualNetworkGatewayConnectionIpsecPolicyOutput struct{ *pulumi.OutputState }
@@ -14473,7 +14473,7 @@ func (i VirtualNetworkGatewayConnectionTrafficSelectorPolicyArgs) ToVirtualNetwo
 }
 
 func (i VirtualNetworkGatewayConnectionTrafficSelectorPolicyArgs) ToVirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionTrafficSelectorPolicyOutput).ToVirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionTrafficSelectorPolicyOutput).ToVirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput()
 }
 
 // VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrInput is an input type that accepts VirtualNetworkGatewayConnectionTrafficSelectorPolicyArgs, VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtr and VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput values.
@@ -14506,7 +14506,7 @@ func (i *virtualNetworkGatewayConnectionTrafficSelectorPolicyPtrType) ToVirtualN
 }
 
 func (i *virtualNetworkGatewayConnectionTrafficSelectorPolicyPtrType) ToVirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionTrafficSelectorPolicyOutput).ToVirtualNetworkGatewayConnectionTrafficSelectorPolicyPtrOutput()
 }
 
 type VirtualNetworkGatewayConnectionTrafficSelectorPolicyOutput struct{ *pulumi.OutputState }
@@ -14616,7 +14616,7 @@ func (i VirtualNetworkGatewayCustomRouteArgs) ToVirtualNetworkGatewayCustomRoute
 }
 
 func (i VirtualNetworkGatewayCustomRouteArgs) ToVirtualNetworkGatewayCustomRoutePtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayCustomRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayCustomRouteOutput).ToVirtualNetworkGatewayCustomRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayCustomRouteOutput).ToVirtualNetworkGatewayCustomRoutePtrOutput()
 }
 
 // VirtualNetworkGatewayCustomRoutePtrInput is an input type that accepts VirtualNetworkGatewayCustomRouteArgs, VirtualNetworkGatewayCustomRoutePtr and VirtualNetworkGatewayCustomRoutePtrOutput values.
@@ -14649,7 +14649,7 @@ func (i *virtualNetworkGatewayCustomRoutePtrType) ToVirtualNetworkGatewayCustomR
 }
 
 func (i *virtualNetworkGatewayCustomRoutePtrType) ToVirtualNetworkGatewayCustomRoutePtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayCustomRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayCustomRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayCustomRouteOutput).ToVirtualNetworkGatewayCustomRoutePtrOutput()
 }
 
 type VirtualNetworkGatewayCustomRouteOutput struct{ *pulumi.OutputState }
@@ -14970,7 +14970,7 @@ func (i VirtualNetworkGatewayVpnClientConfigurationArgs) ToVirtualNetworkGateway
 }
 
 func (i VirtualNetworkGatewayVpnClientConfigurationArgs) ToVirtualNetworkGatewayVpnClientConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayVpnClientConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayVpnClientConfigurationOutput).ToVirtualNetworkGatewayVpnClientConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayVpnClientConfigurationOutput).ToVirtualNetworkGatewayVpnClientConfigurationPtrOutput()
 }
 
 // VirtualNetworkGatewayVpnClientConfigurationPtrInput is an input type that accepts VirtualNetworkGatewayVpnClientConfigurationArgs, VirtualNetworkGatewayVpnClientConfigurationPtr and VirtualNetworkGatewayVpnClientConfigurationPtrOutput values.
@@ -15003,7 +15003,7 @@ func (i *virtualNetworkGatewayVpnClientConfigurationPtrType) ToVirtualNetworkGat
 }
 
 func (i *virtualNetworkGatewayVpnClientConfigurationPtrType) ToVirtualNetworkGatewayVpnClientConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayVpnClientConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayVpnClientConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayVpnClientConfigurationOutput).ToVirtualNetworkGatewayVpnClientConfigurationPtrOutput()
 }
 
 type VirtualNetworkGatewayVpnClientConfigurationOutput struct{ *pulumi.OutputState }
@@ -15640,7 +15640,7 @@ func (i VpnGatewayBgpSettingsArgs) ToVpnGatewayBgpSettingsPtrOutput() VpnGateway
 }
 
 func (i VpnGatewayBgpSettingsArgs) ToVpnGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsOutput).ToVpnGatewayBgpSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsOutput).ToVpnGatewayBgpSettingsPtrOutput()
 }
 
 // VpnGatewayBgpSettingsPtrInput is an input type that accepts VpnGatewayBgpSettingsArgs, VpnGatewayBgpSettingsPtr and VpnGatewayBgpSettingsPtrOutput values.
@@ -15673,7 +15673,7 @@ func (i *vpnGatewayBgpSettingsPtrType) ToVpnGatewayBgpSettingsPtrOutput() VpnGat
 }
 
 func (i *vpnGatewayBgpSettingsPtrType) ToVpnGatewayBgpSettingsPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsOutput).ToVpnGatewayBgpSettingsPtrOutput()
 }
 
 type VpnGatewayBgpSettingsOutput struct{ *pulumi.OutputState }
@@ -15847,7 +15847,7 @@ func (i VpnGatewayBgpSettingsInstance0BgpPeeringAddressArgs) ToVpnGatewayBgpSett
 }
 
 func (i VpnGatewayBgpSettingsInstance0BgpPeeringAddressArgs) ToVpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance0BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance0BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput()
 }
 
 // VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrInput is an input type that accepts VpnGatewayBgpSettingsInstance0BgpPeeringAddressArgs, VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtr and VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput values.
@@ -15880,7 +15880,7 @@ func (i *vpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrType) ToVpnGatewayBgp
 }
 
 func (i *vpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrType) ToVpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance0BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance0BgpPeeringAddressPtrOutput()
 }
 
 type VpnGatewayBgpSettingsInstance0BgpPeeringAddressOutput struct{ *pulumi.OutputState }
@@ -16037,7 +16037,7 @@ func (i VpnGatewayBgpSettingsInstance1BgpPeeringAddressArgs) ToVpnGatewayBgpSett
 }
 
 func (i VpnGatewayBgpSettingsInstance1BgpPeeringAddressArgs) ToVpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance1BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance1BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput()
 }
 
 // VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrInput is an input type that accepts VpnGatewayBgpSettingsInstance1BgpPeeringAddressArgs, VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtr and VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput values.
@@ -16070,7 +16070,7 @@ func (i *vpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrType) ToVpnGatewayBgp
 }
 
 func (i *vpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrType) ToVpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutputWithContext(ctx context.Context) VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpSettingsInstance1BgpPeeringAddressOutput).ToVpnGatewayBgpSettingsInstance1BgpPeeringAddressPtrOutput()
 }
 
 type VpnGatewayBgpSettingsInstance1BgpPeeringAddressOutput struct{ *pulumi.OutputState }
@@ -17023,7 +17023,7 @@ func (i VpnServerConfigurationIpsecPolicyArgs) ToVpnServerConfigurationIpsecPoli
 }
 
 func (i VpnServerConfigurationIpsecPolicyArgs) ToVpnServerConfigurationIpsecPolicyPtrOutputWithContext(ctx context.Context) VpnServerConfigurationIpsecPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationIpsecPolicyOutput).ToVpnServerConfigurationIpsecPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationIpsecPolicyOutput).ToVpnServerConfigurationIpsecPolicyPtrOutput()
 }
 
 // VpnServerConfigurationIpsecPolicyPtrInput is an input type that accepts VpnServerConfigurationIpsecPolicyArgs, VpnServerConfigurationIpsecPolicyPtr and VpnServerConfigurationIpsecPolicyPtrOutput values.
@@ -17056,7 +17056,7 @@ func (i *vpnServerConfigurationIpsecPolicyPtrType) ToVpnServerConfigurationIpsec
 }
 
 func (i *vpnServerConfigurationIpsecPolicyPtrType) ToVpnServerConfigurationIpsecPolicyPtrOutputWithContext(ctx context.Context) VpnServerConfigurationIpsecPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationIpsecPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationIpsecPolicyOutput).ToVpnServerConfigurationIpsecPolicyPtrOutput()
 }
 
 type VpnServerConfigurationIpsecPolicyOutput struct{ *pulumi.OutputState }
@@ -17267,7 +17267,7 @@ func (i VpnServerConfigurationRadiusArgs) ToVpnServerConfigurationRadiusPtrOutpu
 }
 
 func (i VpnServerConfigurationRadiusArgs) ToVpnServerConfigurationRadiusPtrOutputWithContext(ctx context.Context) VpnServerConfigurationRadiusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusOutput).ToVpnServerConfigurationRadiusPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusOutput).ToVpnServerConfigurationRadiusPtrOutput()
 }
 
 // VpnServerConfigurationRadiusPtrInput is an input type that accepts VpnServerConfigurationRadiusArgs, VpnServerConfigurationRadiusPtr and VpnServerConfigurationRadiusPtrOutput values.
@@ -17300,7 +17300,7 @@ func (i *vpnServerConfigurationRadiusPtrType) ToVpnServerConfigurationRadiusPtrO
 }
 
 func (i *vpnServerConfigurationRadiusPtrType) ToVpnServerConfigurationRadiusPtrOutputWithContext(ctx context.Context) VpnServerConfigurationRadiusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusOutput).ToVpnServerConfigurationRadiusPtrOutput()
 }
 
 type VpnServerConfigurationRadiusOutput struct{ *pulumi.OutputState }
@@ -17550,7 +17550,7 @@ func (i VpnServerConfigurationRadiusServerArgs) ToVpnServerConfigurationRadiusSe
 }
 
 func (i VpnServerConfigurationRadiusServerArgs) ToVpnServerConfigurationRadiusServerPtrOutputWithContext(ctx context.Context) VpnServerConfigurationRadiusServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusServerOutput).ToVpnServerConfigurationRadiusServerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusServerOutput).ToVpnServerConfigurationRadiusServerPtrOutput()
 }
 
 // VpnServerConfigurationRadiusServerPtrInput is an input type that accepts VpnServerConfigurationRadiusServerArgs, VpnServerConfigurationRadiusServerPtr and VpnServerConfigurationRadiusServerPtrOutput values.
@@ -17583,7 +17583,7 @@ func (i *vpnServerConfigurationRadiusServerPtrType) ToVpnServerConfigurationRadi
 }
 
 func (i *vpnServerConfigurationRadiusServerPtrType) ToVpnServerConfigurationRadiusServerPtrOutputWithContext(ctx context.Context) VpnServerConfigurationRadiusServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusServerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationRadiusServerOutput).ToVpnServerConfigurationRadiusServerPtrOutput()
 }
 
 // VpnServerConfigurationRadiusServerArrayInput is an input type that accepts VpnServerConfigurationRadiusServerArray and VpnServerConfigurationRadiusServerArrayOutput values.
@@ -18248,7 +18248,7 @@ func (i VpnSiteLinkBgpArgs) ToVpnSiteLinkBgpPtrOutput() VpnSiteLinkBgpPtrOutput 
 }
 
 func (i VpnSiteLinkBgpArgs) ToVpnSiteLinkBgpPtrOutputWithContext(ctx context.Context) VpnSiteLinkBgpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteLinkBgpOutput).ToVpnSiteLinkBgpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteLinkBgpOutput).ToVpnSiteLinkBgpPtrOutput()
 }
 
 // VpnSiteLinkBgpPtrInput is an input type that accepts VpnSiteLinkBgpArgs, VpnSiteLinkBgpPtr and VpnSiteLinkBgpPtrOutput values.
@@ -18281,7 +18281,7 @@ func (i *vpnSiteLinkBgpPtrType) ToVpnSiteLinkBgpPtrOutput() VpnSiteLinkBgpPtrOut
 }
 
 func (i *vpnSiteLinkBgpPtrType) ToVpnSiteLinkBgpPtrOutputWithContext(ctx context.Context) VpnSiteLinkBgpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteLinkBgpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteLinkBgpOutput).ToVpnSiteLinkBgpPtrOutput()
 }
 
 type VpnSiteLinkBgpOutput struct{ *pulumi.OutputState }

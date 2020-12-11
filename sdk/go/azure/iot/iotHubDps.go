@@ -206,6 +206,13 @@ type IotHubDpsInput interface {
 	ToIotHubDpsOutputWithContext(ctx context.Context) IotHubDpsOutput
 }
 
+type IotHubDpsPtrInput interface {
+	pulumi.Input
+
+	ToIotHubDpsPtrOutput() IotHubDpsPtrOutput
+	ToIotHubDpsPtrOutputWithContext(ctx context.Context) IotHubDpsPtrOutput
+}
+
 func (IotHubDps) ElementType() reflect.Type {
 	return reflect.TypeOf((*IotHubDps)(nil)).Elem()
 }
@@ -216,6 +223,14 @@ func (i IotHubDps) ToIotHubDpsOutput() IotHubDpsOutput {
 
 func (i IotHubDps) ToIotHubDpsOutputWithContext(ctx context.Context) IotHubDpsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsOutput)
+}
+
+func (i IotHubDps) ToIotHubDpsPtrOutput() IotHubDpsPtrOutput {
+	return i.ToIotHubDpsPtrOutputWithContext(context.Background())
+}
+
+func (i IotHubDps) ToIotHubDpsPtrOutputWithContext(ctx context.Context) IotHubDpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IotHubDpsPtrOutput)
 }
 
 type IotHubDpsOutput struct {
@@ -234,6 +249,23 @@ func (o IotHubDpsOutput) ToIotHubDpsOutputWithContext(ctx context.Context) IotHu
 	return o
 }
 
+type IotHubDpsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IotHubDpsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IotHubDps)(nil)).Elem()
+}
+
+func (o IotHubDpsPtrOutput) ToIotHubDpsPtrOutput() IotHubDpsPtrOutput {
+	return o
+}
+
+func (o IotHubDpsPtrOutput) ToIotHubDpsPtrOutputWithContext(ctx context.Context) IotHubDpsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IotHubDpsOutput{})
+	pulumi.RegisterOutputType(IotHubDpsPtrOutput{})
 }

@@ -123,6 +123,13 @@ type StoreFileInput interface {
 	ToStoreFileOutputWithContext(ctx context.Context) StoreFileOutput
 }
 
+type StoreFilePtrInput interface {
+	pulumi.Input
+
+	ToStoreFilePtrOutput() StoreFilePtrOutput
+	ToStoreFilePtrOutputWithContext(ctx context.Context) StoreFilePtrOutput
+}
+
 func (StoreFile) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreFile)(nil)).Elem()
 }
@@ -133,6 +140,14 @@ func (i StoreFile) ToStoreFileOutput() StoreFileOutput {
 
 func (i StoreFile) ToStoreFileOutputWithContext(ctx context.Context) StoreFileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreFileOutput)
+}
+
+func (i StoreFile) ToStoreFilePtrOutput() StoreFilePtrOutput {
+	return i.ToStoreFilePtrOutputWithContext(context.Background())
+}
+
+func (i StoreFile) ToStoreFilePtrOutputWithContext(ctx context.Context) StoreFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreFilePtrOutput)
 }
 
 type StoreFileOutput struct {
@@ -151,6 +166,23 @@ func (o StoreFileOutput) ToStoreFileOutputWithContext(ctx context.Context) Store
 	return o
 }
 
+type StoreFilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StoreFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoreFile)(nil)).Elem()
+}
+
+func (o StoreFilePtrOutput) ToStoreFilePtrOutput() StoreFilePtrOutput {
+	return o
+}
+
+func (o StoreFilePtrOutput) ToStoreFilePtrOutputWithContext(ctx context.Context) StoreFilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StoreFileOutput{})
+	pulumi.RegisterOutputType(StoreFilePtrOutput{})
 }

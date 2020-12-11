@@ -264,6 +264,13 @@ type PublicIpInput interface {
 	ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput
 }
 
+type PublicIpPtrInput interface {
+	pulumi.Input
+
+	ToPublicIpPtrOutput() PublicIpPtrOutput
+	ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput
+}
+
 func (PublicIp) ElementType() reflect.Type {
 	return reflect.TypeOf((*PublicIp)(nil)).Elem()
 }
@@ -274,6 +281,14 @@ func (i PublicIp) ToPublicIpOutput() PublicIpOutput {
 
 func (i PublicIp) ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpOutput)
+}
+
+func (i PublicIp) ToPublicIpPtrOutput() PublicIpPtrOutput {
+	return i.ToPublicIpPtrOutputWithContext(context.Background())
+}
+
+func (i PublicIp) ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpPtrOutput)
 }
 
 type PublicIpOutput struct {
@@ -292,6 +307,23 @@ func (o PublicIpOutput) ToPublicIpOutputWithContext(ctx context.Context) PublicI
 	return o
 }
 
+type PublicIpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIp)(nil)).Elem()
+}
+
+func (o PublicIpPtrOutput) ToPublicIpPtrOutput() PublicIpPtrOutput {
+	return o
+}
+
+func (o PublicIpPtrOutput) ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicIpOutput{})
+	pulumi.RegisterOutputType(PublicIpPtrOutput{})
 }

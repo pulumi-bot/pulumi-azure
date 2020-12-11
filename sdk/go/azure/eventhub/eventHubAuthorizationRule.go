@@ -254,6 +254,13 @@ type EventHubAuthorizationRuleInput interface {
 	ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput
 }
 
+type EventHubAuthorizationRulePtrInput interface {
+	pulumi.Input
+
+	ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput
+	ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput
+}
+
 func (EventHubAuthorizationRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventHubAuthorizationRule)(nil)).Elem()
 }
@@ -264,6 +271,14 @@ func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutput() EventHubA
 
 func (i EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRuleOutput)
+}
+
+func (i EventHubAuthorizationRule) ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput {
+	return i.ToEventHubAuthorizationRulePtrOutputWithContext(context.Background())
+}
+
+func (i EventHubAuthorizationRule) ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRulePtrOutput)
 }
 
 type EventHubAuthorizationRuleOutput struct {
@@ -282,6 +297,23 @@ func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutputWithCo
 	return o
 }
 
+type EventHubAuthorizationRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubAuthorizationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubAuthorizationRule)(nil)).Elem()
+}
+
+func (o EventHubAuthorizationRulePtrOutput) ToEventHubAuthorizationRulePtrOutput() EventHubAuthorizationRulePtrOutput {
+	return o
+}
+
+func (o EventHubAuthorizationRulePtrOutput) ToEventHubAuthorizationRulePtrOutputWithContext(ctx context.Context) EventHubAuthorizationRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventHubAuthorizationRuleOutput{})
+	pulumi.RegisterOutputType(EventHubAuthorizationRulePtrOutput{})
 }

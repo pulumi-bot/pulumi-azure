@@ -344,6 +344,13 @@ type FrontdoorInput interface {
 	ToFrontdoorOutputWithContext(ctx context.Context) FrontdoorOutput
 }
 
+type FrontdoorPtrInput interface {
+	pulumi.Input
+
+	ToFrontdoorPtrOutput() FrontdoorPtrOutput
+	ToFrontdoorPtrOutputWithContext(ctx context.Context) FrontdoorPtrOutput
+}
+
 func (Frontdoor) ElementType() reflect.Type {
 	return reflect.TypeOf((*Frontdoor)(nil)).Elem()
 }
@@ -354,6 +361,14 @@ func (i Frontdoor) ToFrontdoorOutput() FrontdoorOutput {
 
 func (i Frontdoor) ToFrontdoorOutputWithContext(ctx context.Context) FrontdoorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorOutput)
+}
+
+func (i Frontdoor) ToFrontdoorPtrOutput() FrontdoorPtrOutput {
+	return i.ToFrontdoorPtrOutputWithContext(context.Background())
+}
+
+func (i Frontdoor) ToFrontdoorPtrOutputWithContext(ctx context.Context) FrontdoorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorPtrOutput)
 }
 
 type FrontdoorOutput struct {
@@ -372,6 +387,23 @@ func (o FrontdoorOutput) ToFrontdoorOutputWithContext(ctx context.Context) Front
 	return o
 }
 
+type FrontdoorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FrontdoorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Frontdoor)(nil)).Elem()
+}
+
+func (o FrontdoorPtrOutput) ToFrontdoorPtrOutput() FrontdoorPtrOutput {
+	return o
+}
+
+func (o FrontdoorPtrOutput) ToFrontdoorPtrOutputWithContext(ctx context.Context) FrontdoorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FrontdoorOutput{})
+	pulumi.RegisterOutputType(FrontdoorPtrOutput{})
 }

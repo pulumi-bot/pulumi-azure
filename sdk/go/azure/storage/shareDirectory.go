@@ -174,6 +174,13 @@ type ShareDirectoryInput interface {
 	ToShareDirectoryOutputWithContext(ctx context.Context) ShareDirectoryOutput
 }
 
+type ShareDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToShareDirectoryPtrOutput() ShareDirectoryPtrOutput
+	ToShareDirectoryPtrOutputWithContext(ctx context.Context) ShareDirectoryPtrOutput
+}
+
 func (ShareDirectory) ElementType() reflect.Type {
 	return reflect.TypeOf((*ShareDirectory)(nil)).Elem()
 }
@@ -184,6 +191,14 @@ func (i ShareDirectory) ToShareDirectoryOutput() ShareDirectoryOutput {
 
 func (i ShareDirectory) ToShareDirectoryOutputWithContext(ctx context.Context) ShareDirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareDirectoryOutput)
+}
+
+func (i ShareDirectory) ToShareDirectoryPtrOutput() ShareDirectoryPtrOutput {
+	return i.ToShareDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i ShareDirectory) ToShareDirectoryPtrOutputWithContext(ctx context.Context) ShareDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareDirectoryPtrOutput)
 }
 
 type ShareDirectoryOutput struct {
@@ -202,6 +217,23 @@ func (o ShareDirectoryOutput) ToShareDirectoryOutputWithContext(ctx context.Cont
 	return o
 }
 
+type ShareDirectoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ShareDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareDirectory)(nil)).Elem()
+}
+
+func (o ShareDirectoryPtrOutput) ToShareDirectoryPtrOutput() ShareDirectoryPtrOutput {
+	return o
+}
+
+func (o ShareDirectoryPtrOutput) ToShareDirectoryPtrOutputWithContext(ctx context.Context) ShareDirectoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ShareDirectoryOutput{})
+	pulumi.RegisterOutputType(ShareDirectoryPtrOutput{})
 }

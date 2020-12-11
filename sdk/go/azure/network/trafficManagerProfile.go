@@ -231,6 +231,13 @@ type TrafficManagerProfileInput interface {
 	ToTrafficManagerProfileOutputWithContext(ctx context.Context) TrafficManagerProfileOutput
 }
 
+type TrafficManagerProfilePtrInput interface {
+	pulumi.Input
+
+	ToTrafficManagerProfilePtrOutput() TrafficManagerProfilePtrOutput
+	ToTrafficManagerProfilePtrOutputWithContext(ctx context.Context) TrafficManagerProfilePtrOutput
+}
+
 func (TrafficManagerProfile) ElementType() reflect.Type {
 	return reflect.TypeOf((*TrafficManagerProfile)(nil)).Elem()
 }
@@ -241,6 +248,14 @@ func (i TrafficManagerProfile) ToTrafficManagerProfileOutput() TrafficManagerPro
 
 func (i TrafficManagerProfile) ToTrafficManagerProfileOutputWithContext(ctx context.Context) TrafficManagerProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfileOutput)
+}
+
+func (i TrafficManagerProfile) ToTrafficManagerProfilePtrOutput() TrafficManagerProfilePtrOutput {
+	return i.ToTrafficManagerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i TrafficManagerProfile) ToTrafficManagerProfilePtrOutputWithContext(ctx context.Context) TrafficManagerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficManagerProfilePtrOutput)
 }
 
 type TrafficManagerProfileOutput struct {
@@ -259,6 +274,23 @@ func (o TrafficManagerProfileOutput) ToTrafficManagerProfileOutputWithContext(ct
 	return o
 }
 
+type TrafficManagerProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficManagerProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficManagerProfile)(nil)).Elem()
+}
+
+func (o TrafficManagerProfilePtrOutput) ToTrafficManagerProfilePtrOutput() TrafficManagerProfilePtrOutput {
+	return o
+}
+
+func (o TrafficManagerProfilePtrOutput) ToTrafficManagerProfilePtrOutputWithContext(ctx context.Context) TrafficManagerProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrafficManagerProfileOutput{})
+	pulumi.RegisterOutputType(TrafficManagerProfilePtrOutput{})
 }

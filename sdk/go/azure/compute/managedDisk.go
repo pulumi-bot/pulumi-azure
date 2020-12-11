@@ -348,6 +348,13 @@ type ManagedDiskInput interface {
 	ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput
 }
 
+type ManagedDiskPtrInput interface {
+	pulumi.Input
+
+	ToManagedDiskPtrOutput() ManagedDiskPtrOutput
+	ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput
+}
+
 func (ManagedDisk) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedDisk)(nil)).Elem()
 }
@@ -358,6 +365,14 @@ func (i ManagedDisk) ToManagedDiskOutput() ManagedDiskOutput {
 
 func (i ManagedDisk) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskOutput)
+}
+
+func (i ManagedDisk) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return i.ToManagedDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedDisk) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskPtrOutput)
 }
 
 type ManagedDiskOutput struct {
@@ -376,6 +391,23 @@ func (o ManagedDiskOutput) ToManagedDiskOutputWithContext(ctx context.Context) M
 	return o
 }
 
+type ManagedDiskPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDisk)(nil)).Elem()
+}
+
+func (o ManagedDiskPtrOutput) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return o
+}
+
+func (o ManagedDiskPtrOutput) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedDiskOutput{})
+	pulumi.RegisterOutputType(ManagedDiskPtrOutput{})
 }

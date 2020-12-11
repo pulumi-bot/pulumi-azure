@@ -183,6 +183,13 @@ type ProfileInput interface {
 	ToProfileOutputWithContext(ctx context.Context) ProfileOutput
 }
 
+type ProfilePtrInput interface {
+	pulumi.Input
+
+	ToProfilePtrOutput() ProfilePtrOutput
+	ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput
+}
+
 func (Profile) ElementType() reflect.Type {
 	return reflect.TypeOf((*Profile)(nil)).Elem()
 }
@@ -193,6 +200,14 @@ func (i Profile) ToProfileOutput() ProfileOutput {
 
 func (i Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
+}
+
+func (i Profile) ToProfilePtrOutput() ProfilePtrOutput {
+	return i.ToProfilePtrOutputWithContext(context.Background())
+}
+
+func (i Profile) ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProfilePtrOutput)
 }
 
 type ProfileOutput struct {
@@ -211,6 +226,23 @@ func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOu
 	return o
 }
 
+type ProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Profile)(nil)).Elem()
+}
+
+func (o ProfilePtrOutput) ToProfilePtrOutput() ProfilePtrOutput {
+	return o
+}
+
+func (o ProfilePtrOutput) ToProfilePtrOutputWithContext(ctx context.Context) ProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProfileOutput{})
+	pulumi.RegisterOutputType(ProfilePtrOutput{})
 }

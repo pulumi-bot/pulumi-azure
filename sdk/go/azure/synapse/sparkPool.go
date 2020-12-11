@@ -280,6 +280,13 @@ type SparkPoolInput interface {
 	ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput
 }
 
+type SparkPoolPtrInput interface {
+	pulumi.Input
+
+	ToSparkPoolPtrOutput() SparkPoolPtrOutput
+	ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput
+}
+
 func (SparkPool) ElementType() reflect.Type {
 	return reflect.TypeOf((*SparkPool)(nil)).Elem()
 }
@@ -290,6 +297,14 @@ func (i SparkPool) ToSparkPoolOutput() SparkPoolOutput {
 
 func (i SparkPool) ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolOutput)
+}
+
+func (i SparkPool) ToSparkPoolPtrOutput() SparkPoolPtrOutput {
+	return i.ToSparkPoolPtrOutputWithContext(context.Background())
+}
+
+func (i SparkPool) ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolPtrOutput)
 }
 
 type SparkPoolOutput struct {
@@ -308,6 +323,23 @@ func (o SparkPoolOutput) ToSparkPoolOutputWithContext(ctx context.Context) Spark
 	return o
 }
 
+type SparkPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SparkPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkPool)(nil)).Elem()
+}
+
+func (o SparkPoolPtrOutput) ToSparkPoolPtrOutput() SparkPoolPtrOutput {
+	return o
+}
+
+func (o SparkPoolPtrOutput) ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SparkPoolOutput{})
+	pulumi.RegisterOutputType(SparkPoolPtrOutput{})
 }

@@ -671,6 +671,13 @@ type VirtualNetworkGatewayConnectionInput interface {
 	ToVirtualNetworkGatewayConnectionOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionOutput
 }
 
+type VirtualNetworkGatewayConnectionPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayConnectionPtrOutput() VirtualNetworkGatewayConnectionPtrOutput
+	ToVirtualNetworkGatewayConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionPtrOutput
+}
+
 func (VirtualNetworkGatewayConnection) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetworkGatewayConnection)(nil)).Elem()
 }
@@ -681,6 +688,14 @@ func (i VirtualNetworkGatewayConnection) ToVirtualNetworkGatewayConnectionOutput
 
 func (i VirtualNetworkGatewayConnection) ToVirtualNetworkGatewayConnectionOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionOutput)
+}
+
+func (i VirtualNetworkGatewayConnection) ToVirtualNetworkGatewayConnectionPtrOutput() VirtualNetworkGatewayConnectionPtrOutput {
+	return i.ToVirtualNetworkGatewayConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayConnection) ToVirtualNetworkGatewayConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayConnectionPtrOutput)
 }
 
 type VirtualNetworkGatewayConnectionOutput struct {
@@ -699,6 +714,23 @@ func (o VirtualNetworkGatewayConnectionOutput) ToVirtualNetworkGatewayConnection
 	return o
 }
 
+type VirtualNetworkGatewayConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkGatewayConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayConnection)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayConnectionPtrOutput) ToVirtualNetworkGatewayConnectionPtrOutput() VirtualNetworkGatewayConnectionPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayConnectionPtrOutput) ToVirtualNetworkGatewayConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualNetworkGatewayConnectionOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayConnectionPtrOutput{})
 }

@@ -255,6 +255,13 @@ type EndpointStorageContainerInput interface {
 	ToEndpointStorageContainerOutputWithContext(ctx context.Context) EndpointStorageContainerOutput
 }
 
+type EndpointStorageContainerPtrInput interface {
+	pulumi.Input
+
+	ToEndpointStorageContainerPtrOutput() EndpointStorageContainerPtrOutput
+	ToEndpointStorageContainerPtrOutputWithContext(ctx context.Context) EndpointStorageContainerPtrOutput
+}
+
 func (EndpointStorageContainer) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointStorageContainer)(nil)).Elem()
 }
@@ -265,6 +272,14 @@ func (i EndpointStorageContainer) ToEndpointStorageContainerOutput() EndpointSto
 
 func (i EndpointStorageContainer) ToEndpointStorageContainerOutputWithContext(ctx context.Context) EndpointStorageContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointStorageContainerOutput)
+}
+
+func (i EndpointStorageContainer) ToEndpointStorageContainerPtrOutput() EndpointStorageContainerPtrOutput {
+	return i.ToEndpointStorageContainerPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointStorageContainer) ToEndpointStorageContainerPtrOutputWithContext(ctx context.Context) EndpointStorageContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointStorageContainerPtrOutput)
 }
 
 type EndpointStorageContainerOutput struct {
@@ -283,6 +298,23 @@ func (o EndpointStorageContainerOutput) ToEndpointStorageContainerOutputWithCont
 	return o
 }
 
+type EndpointStorageContainerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointStorageContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointStorageContainer)(nil)).Elem()
+}
+
+func (o EndpointStorageContainerPtrOutput) ToEndpointStorageContainerPtrOutput() EndpointStorageContainerPtrOutput {
+	return o
+}
+
+func (o EndpointStorageContainerPtrOutput) ToEndpointStorageContainerPtrOutputWithContext(ctx context.Context) EndpointStorageContainerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointStorageContainerOutput{})
+	pulumi.RegisterOutputType(EndpointStorageContainerPtrOutput{})
 }

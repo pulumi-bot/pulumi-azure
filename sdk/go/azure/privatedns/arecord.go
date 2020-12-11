@@ -195,6 +195,13 @@ type ARecordInput interface {
 	ToARecordOutputWithContext(ctx context.Context) ARecordOutput
 }
 
+type ARecordPtrInput interface {
+	pulumi.Input
+
+	ToARecordPtrOutput() ARecordPtrOutput
+	ToARecordPtrOutputWithContext(ctx context.Context) ARecordPtrOutput
+}
+
 func (ARecord) ElementType() reflect.Type {
 	return reflect.TypeOf((*ARecord)(nil)).Elem()
 }
@@ -205,6 +212,14 @@ func (i ARecord) ToARecordOutput() ARecordOutput {
 
 func (i ARecord) ToARecordOutputWithContext(ctx context.Context) ARecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ARecordOutput)
+}
+
+func (i ARecord) ToARecordPtrOutput() ARecordPtrOutput {
+	return i.ToARecordPtrOutputWithContext(context.Background())
+}
+
+func (i ARecord) ToARecordPtrOutputWithContext(ctx context.Context) ARecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ARecordPtrOutput)
 }
 
 type ARecordOutput struct {
@@ -223,6 +238,23 @@ func (o ARecordOutput) ToARecordOutputWithContext(ctx context.Context) ARecordOu
 	return o
 }
 
+type ARecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ARecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ARecord)(nil)).Elem()
+}
+
+func (o ARecordPtrOutput) ToARecordPtrOutput() ARecordPtrOutput {
+	return o
+}
+
+func (o ARecordPtrOutput) ToARecordPtrOutputWithContext(ctx context.Context) ARecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ARecordOutput{})
+	pulumi.RegisterOutputType(ARecordPtrOutput{})
 }

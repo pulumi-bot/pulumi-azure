@@ -396,6 +396,13 @@ type KubernetesClusterInput interface {
 	ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput
 }
 
+type KubernetesClusterPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterPtrOutput() KubernetesClusterPtrOutput
+	ToKubernetesClusterPtrOutputWithContext(ctx context.Context) KubernetesClusterPtrOutput
+}
+
 func (KubernetesCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesCluster)(nil)).Elem()
 }
@@ -406,6 +413,14 @@ func (i KubernetesCluster) ToKubernetesClusterOutput() KubernetesClusterOutput {
 
 func (i KubernetesCluster) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterOutput)
+}
+
+func (i KubernetesCluster) ToKubernetesClusterPtrOutput() KubernetesClusterPtrOutput {
+	return i.ToKubernetesClusterPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesCluster) ToKubernetesClusterPtrOutputWithContext(ctx context.Context) KubernetesClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterPtrOutput)
 }
 
 type KubernetesClusterOutput struct {
@@ -424,6 +439,23 @@ func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx contex
 	return o
 }
 
+type KubernetesClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesCluster)(nil)).Elem()
+}
+
+func (o KubernetesClusterPtrOutput) ToKubernetesClusterPtrOutput() KubernetesClusterPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterPtrOutput) ToKubernetesClusterPtrOutputWithContext(ctx context.Context) KubernetesClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KubernetesClusterOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterPtrOutput{})
 }

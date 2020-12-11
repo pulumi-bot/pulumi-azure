@@ -373,6 +373,13 @@ type KubernetesClusterNodePoolInput interface {
 	ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput
 }
 
+type KubernetesClusterNodePoolPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNodePoolPtrOutput() KubernetesClusterNodePoolPtrOutput
+	ToKubernetesClusterNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterNodePoolPtrOutput
+}
+
 func (KubernetesClusterNodePool) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesClusterNodePool)(nil)).Elem()
 }
@@ -383,6 +390,14 @@ func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutput() Kubernete
 
 func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolOutputWithContext(ctx context.Context) KubernetesClusterNodePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolOutput)
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolPtrOutput() KubernetesClusterNodePoolPtrOutput {
+	return i.ToKubernetesClusterNodePoolPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNodePool) ToKubernetesClusterNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterNodePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNodePoolPtrOutput)
 }
 
 type KubernetesClusterNodePoolOutput struct {
@@ -401,6 +416,23 @@ func (o KubernetesClusterNodePoolOutput) ToKubernetesClusterNodePoolOutputWithCo
 	return o
 }
 
+type KubernetesClusterNodePoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesClusterNodePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNodePool)(nil)).Elem()
+}
+
+func (o KubernetesClusterNodePoolPtrOutput) ToKubernetesClusterNodePoolPtrOutput() KubernetesClusterNodePoolPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNodePoolPtrOutput) ToKubernetesClusterNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterNodePoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNodePoolPtrOutput{})
 }

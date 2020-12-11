@@ -231,6 +231,13 @@ type SqlPoolInput interface {
 	ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput
 }
 
+type SqlPoolPtrInput interface {
+	pulumi.Input
+
+	ToSqlPoolPtrOutput() SqlPoolPtrOutput
+	ToSqlPoolPtrOutputWithContext(ctx context.Context) SqlPoolPtrOutput
+}
+
 func (SqlPool) ElementType() reflect.Type {
 	return reflect.TypeOf((*SqlPool)(nil)).Elem()
 }
@@ -241,6 +248,14 @@ func (i SqlPool) ToSqlPoolOutput() SqlPoolOutput {
 
 func (i SqlPool) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolOutput)
+}
+
+func (i SqlPool) ToSqlPoolPtrOutput() SqlPoolPtrOutput {
+	return i.ToSqlPoolPtrOutputWithContext(context.Background())
+}
+
+func (i SqlPool) ToSqlPoolPtrOutputWithContext(ctx context.Context) SqlPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolPtrOutput)
 }
 
 type SqlPoolOutput struct {
@@ -259,6 +274,23 @@ func (o SqlPoolOutput) ToSqlPoolOutputWithContext(ctx context.Context) SqlPoolOu
 	return o
 }
 
+type SqlPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlPool)(nil)).Elem()
+}
+
+func (o SqlPoolPtrOutput) ToSqlPoolPtrOutput() SqlPoolPtrOutput {
+	return o
+}
+
+func (o SqlPoolPtrOutput) ToSqlPoolPtrOutputWithContext(ctx context.Context) SqlPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SqlPoolOutput{})
+	pulumi.RegisterOutputType(SqlPoolPtrOutput{})
 }

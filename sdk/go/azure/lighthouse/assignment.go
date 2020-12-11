@@ -141,6 +141,13 @@ type AssignmentInput interface {
 	ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput
 }
 
+type AssignmentPtrInput interface {
+	pulumi.Input
+
+	ToAssignmentPtrOutput() AssignmentPtrOutput
+	ToAssignmentPtrOutputWithContext(ctx context.Context) AssignmentPtrOutput
+}
+
 func (Assignment) ElementType() reflect.Type {
 	return reflect.TypeOf((*Assignment)(nil)).Elem()
 }
@@ -151,6 +158,14 @@ func (i Assignment) ToAssignmentOutput() AssignmentOutput {
 
 func (i Assignment) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOutput)
+}
+
+func (i Assignment) ToAssignmentPtrOutput() AssignmentPtrOutput {
+	return i.ToAssignmentPtrOutputWithContext(context.Background())
+}
+
+func (i Assignment) ToAssignmentPtrOutputWithContext(ctx context.Context) AssignmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentPtrOutput)
 }
 
 type AssignmentOutput struct {
@@ -169,6 +184,23 @@ func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) Ass
 	return o
 }
 
+type AssignmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Assignment)(nil)).Elem()
+}
+
+func (o AssignmentPtrOutput) ToAssignmentPtrOutput() AssignmentPtrOutput {
+	return o
+}
+
+func (o AssignmentPtrOutput) ToAssignmentPtrOutputWithContext(ctx context.Context) AssignmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssignmentOutput{})
+	pulumi.RegisterOutputType(AssignmentPtrOutput{})
 }

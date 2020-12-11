@@ -252,6 +252,13 @@ type FirewallNatRuleCollectionInput interface {
 	ToFirewallNatRuleCollectionOutputWithContext(ctx context.Context) FirewallNatRuleCollectionOutput
 }
 
+type FirewallNatRuleCollectionPtrInput interface {
+	pulumi.Input
+
+	ToFirewallNatRuleCollectionPtrOutput() FirewallNatRuleCollectionPtrOutput
+	ToFirewallNatRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallNatRuleCollectionPtrOutput
+}
+
 func (FirewallNatRuleCollection) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallNatRuleCollection)(nil)).Elem()
 }
@@ -262,6 +269,14 @@ func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionOutput() FirewallN
 
 func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionOutputWithContext(ctx context.Context) FirewallNatRuleCollectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallNatRuleCollectionOutput)
+}
+
+func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionPtrOutput() FirewallNatRuleCollectionPtrOutput {
+	return i.ToFirewallNatRuleCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallNatRuleCollection) ToFirewallNatRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallNatRuleCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallNatRuleCollectionPtrOutput)
 }
 
 type FirewallNatRuleCollectionOutput struct {
@@ -280,6 +295,23 @@ func (o FirewallNatRuleCollectionOutput) ToFirewallNatRuleCollectionOutputWithCo
 	return o
 }
 
+type FirewallNatRuleCollectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallNatRuleCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallNatRuleCollection)(nil)).Elem()
+}
+
+func (o FirewallNatRuleCollectionPtrOutput) ToFirewallNatRuleCollectionPtrOutput() FirewallNatRuleCollectionPtrOutput {
+	return o
+}
+
+func (o FirewallNatRuleCollectionPtrOutput) ToFirewallNatRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallNatRuleCollectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallNatRuleCollectionOutput{})
+	pulumi.RegisterOutputType(FirewallNatRuleCollectionPtrOutput{})
 }

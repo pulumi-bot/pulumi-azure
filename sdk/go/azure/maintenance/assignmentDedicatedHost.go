@@ -175,6 +175,13 @@ type AssignmentDedicatedHostInput interface {
 	ToAssignmentDedicatedHostOutputWithContext(ctx context.Context) AssignmentDedicatedHostOutput
 }
 
+type AssignmentDedicatedHostPtrInput interface {
+	pulumi.Input
+
+	ToAssignmentDedicatedHostPtrOutput() AssignmentDedicatedHostPtrOutput
+	ToAssignmentDedicatedHostPtrOutputWithContext(ctx context.Context) AssignmentDedicatedHostPtrOutput
+}
+
 func (AssignmentDedicatedHost) ElementType() reflect.Type {
 	return reflect.TypeOf((*AssignmentDedicatedHost)(nil)).Elem()
 }
@@ -185,6 +192,14 @@ func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostOutput() AssignmentDed
 
 func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostOutputWithContext(ctx context.Context) AssignmentDedicatedHostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentDedicatedHostOutput)
+}
+
+func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostPtrOutput() AssignmentDedicatedHostPtrOutput {
+	return i.ToAssignmentDedicatedHostPtrOutputWithContext(context.Background())
+}
+
+func (i AssignmentDedicatedHost) ToAssignmentDedicatedHostPtrOutputWithContext(ctx context.Context) AssignmentDedicatedHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentDedicatedHostPtrOutput)
 }
 
 type AssignmentDedicatedHostOutput struct {
@@ -203,6 +218,23 @@ func (o AssignmentDedicatedHostOutput) ToAssignmentDedicatedHostOutputWithContex
 	return o
 }
 
+type AssignmentDedicatedHostPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentDedicatedHostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentDedicatedHost)(nil)).Elem()
+}
+
+func (o AssignmentDedicatedHostPtrOutput) ToAssignmentDedicatedHostPtrOutput() AssignmentDedicatedHostPtrOutput {
+	return o
+}
+
+func (o AssignmentDedicatedHostPtrOutput) ToAssignmentDedicatedHostPtrOutputWithContext(ctx context.Context) AssignmentDedicatedHostPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssignmentDedicatedHostOutput{})
+	pulumi.RegisterOutputType(AssignmentDedicatedHostPtrOutput{})
 }

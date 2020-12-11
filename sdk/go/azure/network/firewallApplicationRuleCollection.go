@@ -249,6 +249,13 @@ type FirewallApplicationRuleCollectionInput interface {
 	ToFirewallApplicationRuleCollectionOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionOutput
 }
 
+type FirewallApplicationRuleCollectionPtrInput interface {
+	pulumi.Input
+
+	ToFirewallApplicationRuleCollectionPtrOutput() FirewallApplicationRuleCollectionPtrOutput
+	ToFirewallApplicationRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionPtrOutput
+}
+
 func (FirewallApplicationRuleCollection) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallApplicationRuleCollection)(nil)).Elem()
 }
@@ -259,6 +266,14 @@ func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionOu
 
 func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallApplicationRuleCollectionOutput)
+}
+
+func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionPtrOutput() FirewallApplicationRuleCollectionPtrOutput {
+	return i.ToFirewallApplicationRuleCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallApplicationRuleCollection) ToFirewallApplicationRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallApplicationRuleCollectionPtrOutput)
 }
 
 type FirewallApplicationRuleCollectionOutput struct {
@@ -277,6 +292,23 @@ func (o FirewallApplicationRuleCollectionOutput) ToFirewallApplicationRuleCollec
 	return o
 }
 
+type FirewallApplicationRuleCollectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallApplicationRuleCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallApplicationRuleCollection)(nil)).Elem()
+}
+
+func (o FirewallApplicationRuleCollectionPtrOutput) ToFirewallApplicationRuleCollectionPtrOutput() FirewallApplicationRuleCollectionPtrOutput {
+	return o
+}
+
+func (o FirewallApplicationRuleCollectionPtrOutput) ToFirewallApplicationRuleCollectionPtrOutputWithContext(ctx context.Context) FirewallApplicationRuleCollectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallApplicationRuleCollectionOutput{})
+	pulumi.RegisterOutputType(FirewallApplicationRuleCollectionPtrOutput{})
 }

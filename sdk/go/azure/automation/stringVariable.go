@@ -147,6 +147,13 @@ type StringVariableInput interface {
 	ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput
 }
 
+type StringVariablePtrInput interface {
+	pulumi.Input
+
+	ToStringVariablePtrOutput() StringVariablePtrOutput
+	ToStringVariablePtrOutputWithContext(ctx context.Context) StringVariablePtrOutput
+}
+
 func (StringVariable) ElementType() reflect.Type {
 	return reflect.TypeOf((*StringVariable)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i StringVariable) ToStringVariableOutput() StringVariableOutput {
 
 func (i StringVariable) ToStringVariableOutputWithContext(ctx context.Context) StringVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StringVariableOutput)
+}
+
+func (i StringVariable) ToStringVariablePtrOutput() StringVariablePtrOutput {
+	return i.ToStringVariablePtrOutputWithContext(context.Background())
+}
+
+func (i StringVariable) ToStringVariablePtrOutputWithContext(ctx context.Context) StringVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringVariablePtrOutput)
 }
 
 type StringVariableOutput struct {
@@ -175,6 +190,23 @@ func (o StringVariableOutput) ToStringVariableOutputWithContext(ctx context.Cont
 	return o
 }
 
+type StringVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StringVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StringVariable)(nil)).Elem()
+}
+
+func (o StringVariablePtrOutput) ToStringVariablePtrOutput() StringVariablePtrOutput {
+	return o
+}
+
+func (o StringVariablePtrOutput) ToStringVariablePtrOutputWithContext(ctx context.Context) StringVariablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StringVariableOutput{})
+	pulumi.RegisterOutputType(StringVariablePtrOutput{})
 }

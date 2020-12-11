@@ -147,6 +147,13 @@ type IntVariableInput interface {
 	ToIntVariableOutputWithContext(ctx context.Context) IntVariableOutput
 }
 
+type IntVariablePtrInput interface {
+	pulumi.Input
+
+	ToIntVariablePtrOutput() IntVariablePtrOutput
+	ToIntVariablePtrOutputWithContext(ctx context.Context) IntVariablePtrOutput
+}
+
 func (IntVariable) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntVariable)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i IntVariable) ToIntVariableOutput() IntVariableOutput {
 
 func (i IntVariable) ToIntVariableOutputWithContext(ctx context.Context) IntVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntVariableOutput)
+}
+
+func (i IntVariable) ToIntVariablePtrOutput() IntVariablePtrOutput {
+	return i.ToIntVariablePtrOutputWithContext(context.Background())
+}
+
+func (i IntVariable) ToIntVariablePtrOutputWithContext(ctx context.Context) IntVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntVariablePtrOutput)
 }
 
 type IntVariableOutput struct {
@@ -175,6 +190,23 @@ func (o IntVariableOutput) ToIntVariableOutputWithContext(ctx context.Context) I
 	return o
 }
 
+type IntVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntVariable)(nil)).Elem()
+}
+
+func (o IntVariablePtrOutput) ToIntVariablePtrOutput() IntVariablePtrOutput {
+	return o
+}
+
+func (o IntVariablePtrOutput) ToIntVariablePtrOutputWithContext(ctx context.Context) IntVariablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IntVariableOutput{})
+	pulumi.RegisterOutputType(IntVariablePtrOutput{})
 }

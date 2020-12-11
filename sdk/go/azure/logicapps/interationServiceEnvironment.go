@@ -285,6 +285,13 @@ type InterationServiceEnvironmentInput interface {
 	ToInterationServiceEnvironmentOutputWithContext(ctx context.Context) InterationServiceEnvironmentOutput
 }
 
+type InterationServiceEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToInterationServiceEnvironmentPtrOutput() InterationServiceEnvironmentPtrOutput
+	ToInterationServiceEnvironmentPtrOutputWithContext(ctx context.Context) InterationServiceEnvironmentPtrOutput
+}
+
 func (InterationServiceEnvironment) ElementType() reflect.Type {
 	return reflect.TypeOf((*InterationServiceEnvironment)(nil)).Elem()
 }
@@ -295,6 +302,14 @@ func (i InterationServiceEnvironment) ToInterationServiceEnvironmentOutput() Int
 
 func (i InterationServiceEnvironment) ToInterationServiceEnvironmentOutputWithContext(ctx context.Context) InterationServiceEnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterationServiceEnvironmentOutput)
+}
+
+func (i InterationServiceEnvironment) ToInterationServiceEnvironmentPtrOutput() InterationServiceEnvironmentPtrOutput {
+	return i.ToInterationServiceEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i InterationServiceEnvironment) ToInterationServiceEnvironmentPtrOutputWithContext(ctx context.Context) InterationServiceEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterationServiceEnvironmentPtrOutput)
 }
 
 type InterationServiceEnvironmentOutput struct {
@@ -313,6 +328,23 @@ func (o InterationServiceEnvironmentOutput) ToInterationServiceEnvironmentOutput
 	return o
 }
 
+type InterationServiceEnvironmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InterationServiceEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterationServiceEnvironment)(nil)).Elem()
+}
+
+func (o InterationServiceEnvironmentPtrOutput) ToInterationServiceEnvironmentPtrOutput() InterationServiceEnvironmentPtrOutput {
+	return o
+}
+
+func (o InterationServiceEnvironmentPtrOutput) ToInterationServiceEnvironmentPtrOutputWithContext(ctx context.Context) InterationServiceEnvironmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InterationServiceEnvironmentOutput{})
+	pulumi.RegisterOutputType(InterationServiceEnvironmentPtrOutput{})
 }

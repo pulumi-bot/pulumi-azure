@@ -242,6 +242,13 @@ type ServerSecurityAlertPolicyInput interface {
 	ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput
 }
 
+type ServerSecurityAlertPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput
+	ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput
+}
+
 func (ServerSecurityAlertPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil)).Elem()
 }
@@ -252,6 +259,14 @@ func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutput() ServerSec
 
 func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyOutput)
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput {
+	return i.ToServerSecurityAlertPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyPtrOutput)
 }
 
 type ServerSecurityAlertPolicyOutput struct {
@@ -270,6 +285,23 @@ func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutputWithCo
 	return o
 }
 
+type ServerSecurityAlertPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerSecurityAlertPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerSecurityAlertPolicy)(nil)).Elem()
+}
+
+func (o ServerSecurityAlertPolicyPtrOutput) ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput {
+	return o
+}
+
+func (o ServerSecurityAlertPolicyPtrOutput) ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerSecurityAlertPolicyOutput{})
+	pulumi.RegisterOutputType(ServerSecurityAlertPolicyPtrOutput{})
 }

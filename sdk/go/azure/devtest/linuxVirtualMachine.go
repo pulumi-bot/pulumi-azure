@@ -287,6 +287,13 @@ type LinuxVirtualMachineInput interface {
 	ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput
 }
 
+type LinuxVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToLinuxVirtualMachinePtrOutput() LinuxVirtualMachinePtrOutput
+	ToLinuxVirtualMachinePtrOutputWithContext(ctx context.Context) LinuxVirtualMachinePtrOutput
+}
+
 func (LinuxVirtualMachine) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinuxVirtualMachine)(nil)).Elem()
 }
@@ -297,6 +304,14 @@ func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutput() LinuxVirtualMachineOu
 
 func (i LinuxVirtualMachine) ToLinuxVirtualMachineOutputWithContext(ctx context.Context) LinuxVirtualMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOutput)
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachinePtrOutput() LinuxVirtualMachinePtrOutput {
+	return i.ToLinuxVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i LinuxVirtualMachine) ToLinuxVirtualMachinePtrOutputWithContext(ctx context.Context) LinuxVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachinePtrOutput)
 }
 
 type LinuxVirtualMachineOutput struct {
@@ -315,6 +330,23 @@ func (o LinuxVirtualMachineOutput) ToLinuxVirtualMachineOutputWithContext(ctx co
 	return o
 }
 
+type LinuxVirtualMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinuxVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxVirtualMachine)(nil)).Elem()
+}
+
+func (o LinuxVirtualMachinePtrOutput) ToLinuxVirtualMachinePtrOutput() LinuxVirtualMachinePtrOutput {
+	return o
+}
+
+func (o LinuxVirtualMachinePtrOutput) ToLinuxVirtualMachinePtrOutputWithContext(ctx context.Context) LinuxVirtualMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinuxVirtualMachineOutput{})
+	pulumi.RegisterOutputType(LinuxVirtualMachinePtrOutput{})
 }

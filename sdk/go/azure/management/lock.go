@@ -237,6 +237,13 @@ type LockInput interface {
 	ToLockOutputWithContext(ctx context.Context) LockOutput
 }
 
+type LockPtrInput interface {
+	pulumi.Input
+
+	ToLockPtrOutput() LockPtrOutput
+	ToLockPtrOutputWithContext(ctx context.Context) LockPtrOutput
+}
+
 func (Lock) ElementType() reflect.Type {
 	return reflect.TypeOf((*Lock)(nil)).Elem()
 }
@@ -247,6 +254,14 @@ func (i Lock) ToLockOutput() LockOutput {
 
 func (i Lock) ToLockOutputWithContext(ctx context.Context) LockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LockOutput)
+}
+
+func (i Lock) ToLockPtrOutput() LockPtrOutput {
+	return i.ToLockPtrOutputWithContext(context.Background())
+}
+
+func (i Lock) ToLockPtrOutputWithContext(ctx context.Context) LockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LockPtrOutput)
 }
 
 type LockOutput struct {
@@ -265,6 +280,23 @@ func (o LockOutput) ToLockOutputWithContext(ctx context.Context) LockOutput {
 	return o
 }
 
+type LockPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lock)(nil)).Elem()
+}
+
+func (o LockPtrOutput) ToLockPtrOutput() LockPtrOutput {
+	return o
+}
+
+func (o LockPtrOutput) ToLockPtrOutputWithContext(ctx context.Context) LockPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LockOutput{})
+	pulumi.RegisterOutputType(LockPtrOutput{})
 }

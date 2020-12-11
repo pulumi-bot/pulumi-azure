@@ -244,6 +244,13 @@ type QueueAuthorizationRuleInput interface {
 	ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput
 }
 
+type QueueAuthorizationRulePtrInput interface {
+	pulumi.Input
+
+	ToQueueAuthorizationRulePtrOutput() QueueAuthorizationRulePtrOutput
+	ToQueueAuthorizationRulePtrOutputWithContext(ctx context.Context) QueueAuthorizationRulePtrOutput
+}
+
 func (QueueAuthorizationRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueueAuthorizationRule)(nil)).Elem()
 }
@@ -254,6 +261,14 @@ func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutput() QueueAuthorizat
 
 func (i QueueAuthorizationRule) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueAuthorizationRuleOutput)
+}
+
+func (i QueueAuthorizationRule) ToQueueAuthorizationRulePtrOutput() QueueAuthorizationRulePtrOutput {
+	return i.ToQueueAuthorizationRulePtrOutputWithContext(context.Background())
+}
+
+func (i QueueAuthorizationRule) ToQueueAuthorizationRulePtrOutputWithContext(ctx context.Context) QueueAuthorizationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueAuthorizationRulePtrOutput)
 }
 
 type QueueAuthorizationRuleOutput struct {
@@ -272,6 +287,23 @@ func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutputWithContext(
 	return o
 }
 
+type QueueAuthorizationRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueueAuthorizationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueAuthorizationRule)(nil)).Elem()
+}
+
+func (o QueueAuthorizationRulePtrOutput) ToQueueAuthorizationRulePtrOutput() QueueAuthorizationRulePtrOutput {
+	return o
+}
+
+func (o QueueAuthorizationRulePtrOutput) ToQueueAuthorizationRulePtrOutputWithContext(ctx context.Context) QueueAuthorizationRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(QueueAuthorizationRuleOutput{})
+	pulumi.RegisterOutputType(QueueAuthorizationRulePtrOutput{})
 }

@@ -247,6 +247,13 @@ type ScheduledQueryRulesAlertInput interface {
 	ToScheduledQueryRulesAlertOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertOutput
 }
 
+type ScheduledQueryRulesAlertPtrInput interface {
+	pulumi.Input
+
+	ToScheduledQueryRulesAlertPtrOutput() ScheduledQueryRulesAlertPtrOutput
+	ToScheduledQueryRulesAlertPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertPtrOutput
+}
+
 func (ScheduledQueryRulesAlert) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScheduledQueryRulesAlert)(nil)).Elem()
 }
@@ -257,6 +264,14 @@ func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertOutput() ScheduledQu
 
 func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertOutput)
+}
+
+func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertPtrOutput() ScheduledQueryRulesAlertPtrOutput {
+	return i.ToScheduledQueryRulesAlertPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledQueryRulesAlert) ToScheduledQueryRulesAlertPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertPtrOutput)
 }
 
 type ScheduledQueryRulesAlertOutput struct {
@@ -275,6 +290,23 @@ func (o ScheduledQueryRulesAlertOutput) ToScheduledQueryRulesAlertOutputWithCont
 	return o
 }
 
+type ScheduledQueryRulesAlertPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScheduledQueryRulesAlertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledQueryRulesAlert)(nil)).Elem()
+}
+
+func (o ScheduledQueryRulesAlertPtrOutput) ToScheduledQueryRulesAlertPtrOutput() ScheduledQueryRulesAlertPtrOutput {
+	return o
+}
+
+func (o ScheduledQueryRulesAlertPtrOutput) ToScheduledQueryRulesAlertPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScheduledQueryRulesAlertOutput{})
+	pulumi.RegisterOutputType(ScheduledQueryRulesAlertPtrOutput{})
 }

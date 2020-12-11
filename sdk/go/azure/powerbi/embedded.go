@@ -185,6 +185,13 @@ type EmbeddedInput interface {
 	ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput
 }
 
+type EmbeddedPtrInput interface {
+	pulumi.Input
+
+	ToEmbeddedPtrOutput() EmbeddedPtrOutput
+	ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput
+}
+
 func (Embedded) ElementType() reflect.Type {
 	return reflect.TypeOf((*Embedded)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i Embedded) ToEmbeddedOutput() EmbeddedOutput {
 
 func (i Embedded) ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmbeddedOutput)
+}
+
+func (i Embedded) ToEmbeddedPtrOutput() EmbeddedPtrOutput {
+	return i.ToEmbeddedPtrOutputWithContext(context.Background())
+}
+
+func (i Embedded) ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmbeddedPtrOutput)
 }
 
 type EmbeddedOutput struct {
@@ -213,6 +228,23 @@ func (o EmbeddedOutput) ToEmbeddedOutputWithContext(ctx context.Context) Embedde
 	return o
 }
 
+type EmbeddedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmbeddedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Embedded)(nil)).Elem()
+}
+
+func (o EmbeddedPtrOutput) ToEmbeddedPtrOutput() EmbeddedPtrOutput {
+	return o
+}
+
+func (o EmbeddedPtrOutput) ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmbeddedOutput{})
+	pulumi.RegisterOutputType(EmbeddedPtrOutput{})
 }

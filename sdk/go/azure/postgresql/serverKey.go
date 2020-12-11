@@ -107,6 +107,13 @@ type ServerKeyInput interface {
 	ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput
 }
 
+type ServerKeyPtrInput interface {
+	pulumi.Input
+
+	ToServerKeyPtrOutput() ServerKeyPtrOutput
+	ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput
+}
+
 func (ServerKey) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServerKey)(nil)).Elem()
 }
@@ -117,6 +124,14 @@ func (i ServerKey) ToServerKeyOutput() ServerKeyOutput {
 
 func (i ServerKey) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyOutput)
+}
+
+func (i ServerKey) ToServerKeyPtrOutput() ServerKeyPtrOutput {
+	return i.ToServerKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ServerKey) ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyPtrOutput)
 }
 
 type ServerKeyOutput struct {
@@ -135,6 +150,23 @@ func (o ServerKeyOutput) ToServerKeyOutputWithContext(ctx context.Context) Serve
 	return o
 }
 
+type ServerKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerKey)(nil)).Elem()
+}
+
+func (o ServerKeyPtrOutput) ToServerKeyPtrOutput() ServerKeyPtrOutput {
+	return o
+}
+
+func (o ServerKeyPtrOutput) ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerKeyOutput{})
+	pulumi.RegisterOutputType(ServerKeyPtrOutput{})
 }

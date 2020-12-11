@@ -224,6 +224,13 @@ type LinkedServerInput interface {
 	ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput
 }
 
+type LinkedServerPtrInput interface {
+	pulumi.Input
+
+	ToLinkedServerPtrOutput() LinkedServerPtrOutput
+	ToLinkedServerPtrOutputWithContext(ctx context.Context) LinkedServerPtrOutput
+}
+
 func (LinkedServer) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServer)(nil)).Elem()
 }
@@ -234,6 +241,14 @@ func (i LinkedServer) ToLinkedServerOutput() LinkedServerOutput {
 
 func (i LinkedServer) ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServerOutput)
+}
+
+func (i LinkedServer) ToLinkedServerPtrOutput() LinkedServerPtrOutput {
+	return i.ToLinkedServerPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServer) ToLinkedServerPtrOutputWithContext(ctx context.Context) LinkedServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServerPtrOutput)
 }
 
 type LinkedServerOutput struct {
@@ -252,6 +267,23 @@ func (o LinkedServerOutput) ToLinkedServerOutputWithContext(ctx context.Context)
 	return o
 }
 
+type LinkedServerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServer)(nil)).Elem()
+}
+
+func (o LinkedServerPtrOutput) ToLinkedServerPtrOutput() LinkedServerPtrOutput {
+	return o
+}
+
+func (o LinkedServerPtrOutput) ToLinkedServerPtrOutputWithContext(ctx context.Context) LinkedServerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServerOutput{})
+	pulumi.RegisterOutputType(LinkedServerPtrOutput{})
 }

@@ -227,6 +227,13 @@ type AlertRuleMsSecurityIncidentInput interface {
 	ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput
 }
 
+type AlertRuleMsSecurityIncidentPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleMsSecurityIncidentPtrOutput() AlertRuleMsSecurityIncidentPtrOutput
+	ToAlertRuleMsSecurityIncidentPtrOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentPtrOutput
+}
+
 func (AlertRuleMsSecurityIncident) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertRuleMsSecurityIncident)(nil)).Elem()
 }
@@ -237,6 +244,14 @@ func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutput() Alert
 
 func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleMsSecurityIncidentOutput)
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentPtrOutput() AlertRuleMsSecurityIncidentPtrOutput {
+	return i.ToAlertRuleMsSecurityIncidentPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleMsSecurityIncident) ToAlertRuleMsSecurityIncidentPtrOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleMsSecurityIncidentPtrOutput)
 }
 
 type AlertRuleMsSecurityIncidentOutput struct {
@@ -255,6 +270,23 @@ func (o AlertRuleMsSecurityIncidentOutput) ToAlertRuleMsSecurityIncidentOutputWi
 	return o
 }
 
+type AlertRuleMsSecurityIncidentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertRuleMsSecurityIncidentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleMsSecurityIncident)(nil)).Elem()
+}
+
+func (o AlertRuleMsSecurityIncidentPtrOutput) ToAlertRuleMsSecurityIncidentPtrOutput() AlertRuleMsSecurityIncidentPtrOutput {
+	return o
+}
+
+func (o AlertRuleMsSecurityIncidentPtrOutput) ToAlertRuleMsSecurityIncidentPtrOutputWithContext(ctx context.Context) AlertRuleMsSecurityIncidentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertRuleMsSecurityIncidentOutput{})
+	pulumi.RegisterOutputType(AlertRuleMsSecurityIncidentPtrOutput{})
 }

@@ -222,6 +222,13 @@ type VpnSiteInput interface {
 	ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput
 }
 
+type VpnSitePtrInput interface {
+	pulumi.Input
+
+	ToVpnSitePtrOutput() VpnSitePtrOutput
+	ToVpnSitePtrOutputWithContext(ctx context.Context) VpnSitePtrOutput
+}
+
 func (VpnSite) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpnSite)(nil)).Elem()
 }
@@ -232,6 +239,14 @@ func (i VpnSite) ToVpnSiteOutput() VpnSiteOutput {
 
 func (i VpnSite) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpnSiteOutput)
+}
+
+func (i VpnSite) ToVpnSitePtrOutput() VpnSitePtrOutput {
+	return i.ToVpnSitePtrOutputWithContext(context.Background())
+}
+
+func (i VpnSite) ToVpnSitePtrOutputWithContext(ctx context.Context) VpnSitePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnSitePtrOutput)
 }
 
 type VpnSiteOutput struct {
@@ -250,6 +265,23 @@ func (o VpnSiteOutput) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOu
 	return o
 }
 
+type VpnSitePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnSitePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnSite)(nil)).Elem()
+}
+
+func (o VpnSitePtrOutput) ToVpnSitePtrOutput() VpnSitePtrOutput {
+	return o
+}
+
+func (o VpnSitePtrOutput) ToVpnSitePtrOutputWithContext(ctx context.Context) VpnSitePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpnSiteOutput{})
+	pulumi.RegisterOutputType(VpnSitePtrOutput{})
 }

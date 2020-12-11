@@ -193,6 +193,13 @@ type ServerExtendedAuditingPolicyInput interface {
 	ToServerExtendedAuditingPolicyOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyOutput
 }
 
+type ServerExtendedAuditingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServerExtendedAuditingPolicyPtrOutput() ServerExtendedAuditingPolicyPtrOutput
+	ToServerExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyPtrOutput
+}
+
 func (ServerExtendedAuditingPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServerExtendedAuditingPolicy)(nil)).Elem()
 }
@@ -203,6 +210,14 @@ func (i ServerExtendedAuditingPolicy) ToServerExtendedAuditingPolicyOutput() Ser
 
 func (i ServerExtendedAuditingPolicy) ToServerExtendedAuditingPolicyOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyOutput)
+}
+
+func (i ServerExtendedAuditingPolicy) ToServerExtendedAuditingPolicyPtrOutput() ServerExtendedAuditingPolicyPtrOutput {
+	return i.ToServerExtendedAuditingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServerExtendedAuditingPolicy) ToServerExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyPtrOutput)
 }
 
 type ServerExtendedAuditingPolicyOutput struct {
@@ -221,6 +236,23 @@ func (o ServerExtendedAuditingPolicyOutput) ToServerExtendedAuditingPolicyOutput
 	return o
 }
 
+type ServerExtendedAuditingPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerExtendedAuditingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerExtendedAuditingPolicy)(nil)).Elem()
+}
+
+func (o ServerExtendedAuditingPolicyPtrOutput) ToServerExtendedAuditingPolicyPtrOutput() ServerExtendedAuditingPolicyPtrOutput {
+	return o
+}
+
+func (o ServerExtendedAuditingPolicyPtrOutput) ToServerExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerExtendedAuditingPolicyOutput{})
+	pulumi.RegisterOutputType(ServerExtendedAuditingPolicyPtrOutput{})
 }

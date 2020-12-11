@@ -132,6 +132,13 @@ type SubscriptionPricingInput interface {
 	ToSubscriptionPricingOutputWithContext(ctx context.Context) SubscriptionPricingOutput
 }
 
+type SubscriptionPricingPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionPricingPtrOutput() SubscriptionPricingPtrOutput
+	ToSubscriptionPricingPtrOutputWithContext(ctx context.Context) SubscriptionPricingPtrOutput
+}
+
 func (SubscriptionPricing) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionPricing)(nil)).Elem()
 }
@@ -142,6 +149,14 @@ func (i SubscriptionPricing) ToSubscriptionPricingOutput() SubscriptionPricingOu
 
 func (i SubscriptionPricing) ToSubscriptionPricingOutputWithContext(ctx context.Context) SubscriptionPricingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPricingOutput)
+}
+
+func (i SubscriptionPricing) ToSubscriptionPricingPtrOutput() SubscriptionPricingPtrOutput {
+	return i.ToSubscriptionPricingPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionPricing) ToSubscriptionPricingPtrOutputWithContext(ctx context.Context) SubscriptionPricingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPricingPtrOutput)
 }
 
 type SubscriptionPricingOutput struct {
@@ -160,6 +175,23 @@ func (o SubscriptionPricingOutput) ToSubscriptionPricingOutputWithContext(ctx co
 	return o
 }
 
+type SubscriptionPricingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionPricingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionPricing)(nil)).Elem()
+}
+
+func (o SubscriptionPricingPtrOutput) ToSubscriptionPricingPtrOutput() SubscriptionPricingPtrOutput {
+	return o
+}
+
+func (o SubscriptionPricingPtrOutput) ToSubscriptionPricingPtrOutputWithContext(ctx context.Context) SubscriptionPricingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionPricingOutput{})
+	pulumi.RegisterOutputType(SubscriptionPricingPtrOutput{})
 }

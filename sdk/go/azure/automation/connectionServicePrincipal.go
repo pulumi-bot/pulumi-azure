@@ -179,6 +179,13 @@ type ConnectionServicePrincipalInput interface {
 	ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput
 }
 
+type ConnectionServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput
+	ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput
+}
+
 func (ConnectionServicePrincipal) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
 }
@@ -189,6 +196,14 @@ func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutput() Connect
 
 func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput)
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return i.ToConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionServicePrincipal) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalPtrOutput)
 }
 
 type ConnectionServicePrincipalOutput struct {
@@ -207,6 +222,23 @@ func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutputWith
 	return o
 }
 
+type ConnectionServicePrincipalPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectionServicePrincipalOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalPtrOutput{})
 }

@@ -330,6 +330,13 @@ type KafkaClusterInput interface {
 	ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput
 }
 
+type KafkaClusterPtrInput interface {
+	pulumi.Input
+
+	ToKafkaClusterPtrOutput() KafkaClusterPtrOutput
+	ToKafkaClusterPtrOutputWithContext(ctx context.Context) KafkaClusterPtrOutput
+}
+
 func (KafkaCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaCluster)(nil)).Elem()
 }
@@ -340,6 +347,14 @@ func (i KafkaCluster) ToKafkaClusterOutput() KafkaClusterOutput {
 
 func (i KafkaCluster) ToKafkaClusterOutputWithContext(ctx context.Context) KafkaClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterOutput)
+}
+
+func (i KafkaCluster) ToKafkaClusterPtrOutput() KafkaClusterPtrOutput {
+	return i.ToKafkaClusterPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaCluster) ToKafkaClusterPtrOutputWithContext(ctx context.Context) KafkaClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaClusterPtrOutput)
 }
 
 type KafkaClusterOutput struct {
@@ -358,6 +373,23 @@ func (o KafkaClusterOutput) ToKafkaClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+type KafkaClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KafkaClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaCluster)(nil)).Elem()
+}
+
+func (o KafkaClusterPtrOutput) ToKafkaClusterPtrOutput() KafkaClusterPtrOutput {
+	return o
+}
+
+func (o KafkaClusterPtrOutput) ToKafkaClusterPtrOutputWithContext(ctx context.Context) KafkaClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KafkaClusterOutput{})
+	pulumi.RegisterOutputType(KafkaClusterPtrOutput{})
 }

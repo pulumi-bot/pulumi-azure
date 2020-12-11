@@ -175,6 +175,13 @@ type ContainerStorageAccountInput interface {
 	ToContainerStorageAccountOutputWithContext(ctx context.Context) ContainerStorageAccountOutput
 }
 
+type ContainerStorageAccountPtrInput interface {
+	pulumi.Input
+
+	ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput
+	ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput
+}
+
 func (ContainerStorageAccount) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerStorageAccount)(nil)).Elem()
 }
@@ -185,6 +192,14 @@ func (i ContainerStorageAccount) ToContainerStorageAccountOutput() ContainerStor
 
 func (i ContainerStorageAccount) ToContainerStorageAccountOutputWithContext(ctx context.Context) ContainerStorageAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerStorageAccountOutput)
+}
+
+func (i ContainerStorageAccount) ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput {
+	return i.ToContainerStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerStorageAccount) ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerStorageAccountPtrOutput)
 }
 
 type ContainerStorageAccountOutput struct {
@@ -203,6 +218,23 @@ func (o ContainerStorageAccountOutput) ToContainerStorageAccountOutputWithContex
 	return o
 }
 
+type ContainerStorageAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerStorageAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerStorageAccount)(nil)).Elem()
+}
+
+func (o ContainerStorageAccountPtrOutput) ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput {
+	return o
+}
+
+func (o ContainerStorageAccountPtrOutput) ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerStorageAccountOutput{})
+	pulumi.RegisterOutputType(ContainerStorageAccountPtrOutput{})
 }

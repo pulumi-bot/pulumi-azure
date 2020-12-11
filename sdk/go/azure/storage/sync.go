@@ -168,6 +168,13 @@ type SyncInput interface {
 	ToSyncOutputWithContext(ctx context.Context) SyncOutput
 }
 
+type SyncPtrInput interface {
+	pulumi.Input
+
+	ToSyncPtrOutput() SyncPtrOutput
+	ToSyncPtrOutputWithContext(ctx context.Context) SyncPtrOutput
+}
+
 func (Sync) ElementType() reflect.Type {
 	return reflect.TypeOf((*Sync)(nil)).Elem()
 }
@@ -178,6 +185,14 @@ func (i Sync) ToSyncOutput() SyncOutput {
 
 func (i Sync) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SyncOutput)
+}
+
+func (i Sync) ToSyncPtrOutput() SyncPtrOutput {
+	return i.ToSyncPtrOutputWithContext(context.Background())
+}
+
+func (i Sync) ToSyncPtrOutputWithContext(ctx context.Context) SyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyncPtrOutput)
 }
 
 type SyncOutput struct {
@@ -196,6 +211,23 @@ func (o SyncOutput) ToSyncOutputWithContext(ctx context.Context) SyncOutput {
 	return o
 }
 
+type SyncPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sync)(nil)).Elem()
+}
+
+func (o SyncPtrOutput) ToSyncPtrOutput() SyncPtrOutput {
+	return o
+}
+
+func (o SyncPtrOutput) ToSyncPtrOutputWithContext(ctx context.Context) SyncPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SyncOutput{})
+	pulumi.RegisterOutputType(SyncPtrOutput{})
 }

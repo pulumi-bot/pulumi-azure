@@ -189,6 +189,13 @@ type VirtualNetworkSwiftConnectionInput interface {
 	ToVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionOutput
 }
 
+type VirtualNetworkSwiftConnectionPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkSwiftConnectionPtrOutput() VirtualNetworkSwiftConnectionPtrOutput
+	ToVirtualNetworkSwiftConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionPtrOutput
+}
+
 func (VirtualNetworkSwiftConnection) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetworkSwiftConnection)(nil)).Elem()
 }
@@ -199,6 +206,14 @@ func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionOutput() V
 
 func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSwiftConnectionOutput)
+}
+
+func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionPtrOutput() VirtualNetworkSwiftConnectionPtrOutput {
+	return i.ToVirtualNetworkSwiftConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkSwiftConnection) ToVirtualNetworkSwiftConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSwiftConnectionPtrOutput)
 }
 
 type VirtualNetworkSwiftConnectionOutput struct {
@@ -217,6 +232,23 @@ func (o VirtualNetworkSwiftConnectionOutput) ToVirtualNetworkSwiftConnectionOutp
 	return o
 }
 
+type VirtualNetworkSwiftConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNetworkSwiftConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkSwiftConnection)(nil)).Elem()
+}
+
+func (o VirtualNetworkSwiftConnectionPtrOutput) ToVirtualNetworkSwiftConnectionPtrOutput() VirtualNetworkSwiftConnectionPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkSwiftConnectionPtrOutput) ToVirtualNetworkSwiftConnectionPtrOutputWithContext(ctx context.Context) VirtualNetworkSwiftConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualNetworkSwiftConnectionOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkSwiftConnectionPtrOutput{})
 }

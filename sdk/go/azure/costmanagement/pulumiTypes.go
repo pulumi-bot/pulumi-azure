@@ -56,7 +56,7 @@ func (i ResourceGroupExportDeliveryInfoArgs) ToResourceGroupExportDeliveryInfoPt
 }
 
 func (i ResourceGroupExportDeliveryInfoArgs) ToResourceGroupExportDeliveryInfoPtrOutputWithContext(ctx context.Context) ResourceGroupExportDeliveryInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportDeliveryInfoOutput).ToResourceGroupExportDeliveryInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportDeliveryInfoOutput).ToResourceGroupExportDeliveryInfoPtrOutput()
 }
 
 // ResourceGroupExportDeliveryInfoPtrInput is an input type that accepts ResourceGroupExportDeliveryInfoArgs, ResourceGroupExportDeliveryInfoPtr and ResourceGroupExportDeliveryInfoPtrOutput values.
@@ -89,7 +89,7 @@ func (i *resourceGroupExportDeliveryInfoPtrType) ToResourceGroupExportDeliveryIn
 }
 
 func (i *resourceGroupExportDeliveryInfoPtrType) ToResourceGroupExportDeliveryInfoPtrOutputWithContext(ctx context.Context) ResourceGroupExportDeliveryInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportDeliveryInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportDeliveryInfoOutput).ToResourceGroupExportDeliveryInfoPtrOutput()
 }
 
 type ResourceGroupExportDeliveryInfoOutput struct{ *pulumi.OutputState }
@@ -221,7 +221,7 @@ func (i ResourceGroupExportQueryArgs) ToResourceGroupExportQueryPtrOutput() Reso
 }
 
 func (i ResourceGroupExportQueryArgs) ToResourceGroupExportQueryPtrOutputWithContext(ctx context.Context) ResourceGroupExportQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportQueryOutput).ToResourceGroupExportQueryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportQueryOutput).ToResourceGroupExportQueryPtrOutput()
 }
 
 // ResourceGroupExportQueryPtrInput is an input type that accepts ResourceGroupExportQueryArgs, ResourceGroupExportQueryPtr and ResourceGroupExportQueryPtrOutput values.
@@ -254,7 +254,7 @@ func (i *resourceGroupExportQueryPtrType) ToResourceGroupExportQueryPtrOutput() 
 }
 
 func (i *resourceGroupExportQueryPtrType) ToResourceGroupExportQueryPtrOutputWithContext(ctx context.Context) ResourceGroupExportQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportQueryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportQueryOutput).ToResourceGroupExportQueryPtrOutput()
 }
 
 type ResourceGroupExportQueryOutput struct{ *pulumi.OutputState }

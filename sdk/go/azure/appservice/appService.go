@@ -358,6 +358,13 @@ type AppServiceInput interface {
 	ToAppServiceOutputWithContext(ctx context.Context) AppServiceOutput
 }
 
+type AppServicePtrInput interface {
+	pulumi.Input
+
+	ToAppServicePtrOutput() AppServicePtrOutput
+	ToAppServicePtrOutputWithContext(ctx context.Context) AppServicePtrOutput
+}
+
 func (AppService) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppService)(nil)).Elem()
 }
@@ -368,6 +375,14 @@ func (i AppService) ToAppServiceOutput() AppServiceOutput {
 
 func (i AppService) ToAppServiceOutputWithContext(ctx context.Context) AppServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceOutput)
+}
+
+func (i AppService) ToAppServicePtrOutput() AppServicePtrOutput {
+	return i.ToAppServicePtrOutputWithContext(context.Background())
+}
+
+func (i AppService) ToAppServicePtrOutputWithContext(ctx context.Context) AppServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppServicePtrOutput)
 }
 
 type AppServiceOutput struct {
@@ -386,6 +401,23 @@ func (o AppServiceOutput) ToAppServiceOutputWithContext(ctx context.Context) App
 	return o
 }
 
+type AppServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppService)(nil)).Elem()
+}
+
+func (o AppServicePtrOutput) ToAppServicePtrOutput() AppServicePtrOutput {
+	return o
+}
+
+func (o AppServicePtrOutput) ToAppServicePtrOutputWithContext(ctx context.Context) AppServicePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppServiceOutput{})
+	pulumi.RegisterOutputType(AppServicePtrOutput{})
 }

@@ -130,6 +130,13 @@ type ModuleInput interface {
 	ToModuleOutputWithContext(ctx context.Context) ModuleOutput
 }
 
+type ModulePtrInput interface {
+	pulumi.Input
+
+	ToModulePtrOutput() ModulePtrOutput
+	ToModulePtrOutputWithContext(ctx context.Context) ModulePtrOutput
+}
+
 func (Module) ElementType() reflect.Type {
 	return reflect.TypeOf((*Module)(nil)).Elem()
 }
@@ -140,6 +147,14 @@ func (i Module) ToModuleOutput() ModuleOutput {
 
 func (i Module) ToModuleOutputWithContext(ctx context.Context) ModuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModuleOutput)
+}
+
+func (i Module) ToModulePtrOutput() ModulePtrOutput {
+	return i.ToModulePtrOutputWithContext(context.Background())
+}
+
+func (i Module) ToModulePtrOutputWithContext(ctx context.Context) ModulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModulePtrOutput)
 }
 
 type ModuleOutput struct {
@@ -158,6 +173,23 @@ func (o ModuleOutput) ToModuleOutputWithContext(ctx context.Context) ModuleOutpu
 	return o
 }
 
+type ModulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ModulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Module)(nil)).Elem()
+}
+
+func (o ModulePtrOutput) ToModulePtrOutput() ModulePtrOutput {
+	return o
+}
+
+func (o ModulePtrOutput) ToModulePtrOutputWithContext(ctx context.Context) ModulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ModuleOutput{})
+	pulumi.RegisterOutputType(ModulePtrOutput{})
 }

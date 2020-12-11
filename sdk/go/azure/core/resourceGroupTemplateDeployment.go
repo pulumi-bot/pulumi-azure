@@ -195,6 +195,13 @@ type ResourceGroupTemplateDeploymentInput interface {
 	ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput
 }
 
+type ResourceGroupTemplateDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupTemplateDeploymentPtrOutput() ResourceGroupTemplateDeploymentPtrOutput
+	ToResourceGroupTemplateDeploymentPtrOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentPtrOutput
+}
+
 func (ResourceGroupTemplateDeployment) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceGroupTemplateDeployment)(nil)).Elem()
 }
@@ -205,6 +212,14 @@ func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutput
 
 func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupTemplateDeploymentOutput)
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentPtrOutput() ResourceGroupTemplateDeploymentPtrOutput {
+	return i.ToResourceGroupTemplateDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupTemplateDeployment) ToResourceGroupTemplateDeploymentPtrOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupTemplateDeploymentPtrOutput)
 }
 
 type ResourceGroupTemplateDeploymentOutput struct {
@@ -223,6 +238,23 @@ func (o ResourceGroupTemplateDeploymentOutput) ToResourceGroupTemplateDeployment
 	return o
 }
 
+type ResourceGroupTemplateDeploymentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupTemplateDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupTemplateDeployment)(nil)).Elem()
+}
+
+func (o ResourceGroupTemplateDeploymentPtrOutput) ToResourceGroupTemplateDeploymentPtrOutput() ResourceGroupTemplateDeploymentPtrOutput {
+	return o
+}
+
+func (o ResourceGroupTemplateDeploymentPtrOutput) ToResourceGroupTemplateDeploymentPtrOutputWithContext(ctx context.Context) ResourceGroupTemplateDeploymentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupTemplateDeploymentOutput{})
+	pulumi.RegisterOutputType(ResourceGroupTemplateDeploymentPtrOutput{})
 }

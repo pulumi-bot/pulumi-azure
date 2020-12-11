@@ -186,6 +186,13 @@ type MeshApplicationInput interface {
 	ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput
 }
 
+type MeshApplicationPtrInput interface {
+	pulumi.Input
+
+	ToMeshApplicationPtrOutput() MeshApplicationPtrOutput
+	ToMeshApplicationPtrOutputWithContext(ctx context.Context) MeshApplicationPtrOutput
+}
+
 func (MeshApplication) ElementType() reflect.Type {
 	return reflect.TypeOf((*MeshApplication)(nil)).Elem()
 }
@@ -196,6 +203,14 @@ func (i MeshApplication) ToMeshApplicationOutput() MeshApplicationOutput {
 
 func (i MeshApplication) ToMeshApplicationOutputWithContext(ctx context.Context) MeshApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationOutput)
+}
+
+func (i MeshApplication) ToMeshApplicationPtrOutput() MeshApplicationPtrOutput {
+	return i.ToMeshApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i MeshApplication) ToMeshApplicationPtrOutputWithContext(ctx context.Context) MeshApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationPtrOutput)
 }
 
 type MeshApplicationOutput struct {
@@ -214,6 +229,23 @@ func (o MeshApplicationOutput) ToMeshApplicationOutputWithContext(ctx context.Co
 	return o
 }
 
+type MeshApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshApplication)(nil)).Elem()
+}
+
+func (o MeshApplicationPtrOutput) ToMeshApplicationPtrOutput() MeshApplicationPtrOutput {
+	return o
+}
+
+func (o MeshApplicationPtrOutput) ToMeshApplicationPtrOutputWithContext(ctx context.Context) MeshApplicationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MeshApplicationOutput{})
+	pulumi.RegisterOutputType(MeshApplicationPtrOutput{})
 }

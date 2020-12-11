@@ -205,6 +205,13 @@ type ConfigurationStoreInput interface {
 	ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput
 }
 
+type ConfigurationStorePtrInput interface {
+	pulumi.Input
+
+	ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput
+	ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput
+}
+
 func (ConfigurationStore) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationStore)(nil)).Elem()
 }
@@ -215,6 +222,14 @@ func (i ConfigurationStore) ToConfigurationStoreOutput() ConfigurationStoreOutpu
 
 func (i ConfigurationStore) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreOutput)
+}
+
+func (i ConfigurationStore) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return i.ToConfigurationStorePtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationStore) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStorePtrOutput)
 }
 
 type ConfigurationStoreOutput struct {
@@ -233,6 +248,23 @@ func (o ConfigurationStoreOutput) ToConfigurationStoreOutputWithContext(ctx cont
 	return o
 }
 
+type ConfigurationStorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationStore)(nil)).Elem()
+}
+
+func (o ConfigurationStorePtrOutput) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return o
+}
+
+func (o ConfigurationStorePtrOutput) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfigurationStoreOutput{})
+	pulumi.RegisterOutputType(ConfigurationStorePtrOutput{})
 }

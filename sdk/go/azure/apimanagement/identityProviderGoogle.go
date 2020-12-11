@@ -176,6 +176,13 @@ type IdentityProviderGoogleInput interface {
 	ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput
 }
 
+type IdentityProviderGooglePtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderGooglePtrOutput() IdentityProviderGooglePtrOutput
+	ToIdentityProviderGooglePtrOutputWithContext(ctx context.Context) IdentityProviderGooglePtrOutput
+}
+
 func (IdentityProviderGoogle) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityProviderGoogle)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutput() IdentityProvide
 
 func (i IdentityProviderGoogle) ToIdentityProviderGoogleOutputWithContext(ctx context.Context) IdentityProviderGoogleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderGoogleOutput)
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGooglePtrOutput() IdentityProviderGooglePtrOutput {
+	return i.ToIdentityProviderGooglePtrOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderGoogle) ToIdentityProviderGooglePtrOutputWithContext(ctx context.Context) IdentityProviderGooglePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderGooglePtrOutput)
 }
 
 type IdentityProviderGoogleOutput struct {
@@ -204,6 +219,23 @@ func (o IdentityProviderGoogleOutput) ToIdentityProviderGoogleOutputWithContext(
 	return o
 }
 
+type IdentityProviderGooglePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderGooglePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderGoogle)(nil)).Elem()
+}
+
+func (o IdentityProviderGooglePtrOutput) ToIdentityProviderGooglePtrOutput() IdentityProviderGooglePtrOutput {
+	return o
+}
+
+func (o IdentityProviderGooglePtrOutput) ToIdentityProviderGooglePtrOutputWithContext(ctx context.Context) IdentityProviderGooglePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderGoogleOutput{})
+	pulumi.RegisterOutputType(IdentityProviderGooglePtrOutput{})
 }

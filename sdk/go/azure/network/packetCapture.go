@@ -185,6 +185,13 @@ type PacketCaptureInput interface {
 	ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput
 }
 
+type PacketCapturePtrInput interface {
+	pulumi.Input
+
+	ToPacketCapturePtrOutput() PacketCapturePtrOutput
+	ToPacketCapturePtrOutputWithContext(ctx context.Context) PacketCapturePtrOutput
+}
+
 func (PacketCapture) ElementType() reflect.Type {
 	return reflect.TypeOf((*PacketCapture)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i PacketCapture) ToPacketCaptureOutput() PacketCaptureOutput {
 
 func (i PacketCapture) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureOutput)
+}
+
+func (i PacketCapture) ToPacketCapturePtrOutput() PacketCapturePtrOutput {
+	return i.ToPacketCapturePtrOutputWithContext(context.Background())
+}
+
+func (i PacketCapture) ToPacketCapturePtrOutputWithContext(ctx context.Context) PacketCapturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketCapturePtrOutput)
 }
 
 type PacketCaptureOutput struct {
@@ -213,6 +228,23 @@ func (o PacketCaptureOutput) ToPacketCaptureOutputWithContext(ctx context.Contex
 	return o
 }
 
+type PacketCapturePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PacketCapturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketCapture)(nil)).Elem()
+}
+
+func (o PacketCapturePtrOutput) ToPacketCapturePtrOutput() PacketCapturePtrOutput {
+	return o
+}
+
+func (o PacketCapturePtrOutput) ToPacketCapturePtrOutputWithContext(ctx context.Context) PacketCapturePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PacketCaptureOutput{})
+	pulumi.RegisterOutputType(PacketCapturePtrOutput{})
 }

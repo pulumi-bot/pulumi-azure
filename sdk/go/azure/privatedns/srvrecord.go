@@ -209,6 +209,13 @@ type SRVRecordInput interface {
 	ToSRVRecordOutputWithContext(ctx context.Context) SRVRecordOutput
 }
 
+type SRVRecordPtrInput interface {
+	pulumi.Input
+
+	ToSRVRecordPtrOutput() SRVRecordPtrOutput
+	ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput
+}
+
 func (SRVRecord) ElementType() reflect.Type {
 	return reflect.TypeOf((*SRVRecord)(nil)).Elem()
 }
@@ -219,6 +226,14 @@ func (i SRVRecord) ToSRVRecordOutput() SRVRecordOutput {
 
 func (i SRVRecord) ToSRVRecordOutputWithContext(ctx context.Context) SRVRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SRVRecordOutput)
+}
+
+func (i SRVRecord) ToSRVRecordPtrOutput() SRVRecordPtrOutput {
+	return i.ToSRVRecordPtrOutputWithContext(context.Background())
+}
+
+func (i SRVRecord) ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SRVRecordPtrOutput)
 }
 
 type SRVRecordOutput struct {
@@ -237,6 +252,23 @@ func (o SRVRecordOutput) ToSRVRecordOutputWithContext(ctx context.Context) SRVRe
 	return o
 }
 
+type SRVRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SRVRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SRVRecord)(nil)).Elem()
+}
+
+func (o SRVRecordPtrOutput) ToSRVRecordPtrOutput() SRVRecordPtrOutput {
+	return o
+}
+
+func (o SRVRecordPtrOutput) ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SRVRecordOutput{})
+	pulumi.RegisterOutputType(SRVRecordPtrOutput{})
 }

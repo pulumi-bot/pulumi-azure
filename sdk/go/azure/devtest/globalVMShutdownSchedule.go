@@ -264,6 +264,13 @@ type GlobalVMShutdownScheduleInput interface {
 	ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput
 }
 
+type GlobalVMShutdownSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput
+	ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput
+}
+
 func (GlobalVMShutdownSchedule) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalVMShutdownSchedule)(nil)).Elem()
 }
@@ -274,6 +281,14 @@ func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutput() GlobalVMShu
 
 func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownScheduleOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleOutput)
+}
+
+func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput {
+	return i.ToGlobalVMShutdownSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GlobalVMShutdownSchedule) ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownSchedulePtrOutput)
 }
 
 type GlobalVMShutdownScheduleOutput struct {
@@ -292,6 +307,23 @@ func (o GlobalVMShutdownScheduleOutput) ToGlobalVMShutdownScheduleOutputWithCont
 	return o
 }
 
+type GlobalVMShutdownSchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalVMShutdownSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalVMShutdownSchedule)(nil)).Elem()
+}
+
+func (o GlobalVMShutdownSchedulePtrOutput) ToGlobalVMShutdownSchedulePtrOutput() GlobalVMShutdownSchedulePtrOutput {
+	return o
+}
+
+func (o GlobalVMShutdownSchedulePtrOutput) ToGlobalVMShutdownSchedulePtrOutputWithContext(ctx context.Context) GlobalVMShutdownSchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalVMShutdownScheduleOutput{})
+	pulumi.RegisterOutputType(GlobalVMShutdownSchedulePtrOutput{})
 }

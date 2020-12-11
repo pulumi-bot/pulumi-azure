@@ -329,6 +329,13 @@ type InteractiveQueryClusterInput interface {
 	ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput
 }
 
+type InteractiveQueryClusterPtrInput interface {
+	pulumi.Input
+
+	ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput
+	ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput
+}
+
 func (InteractiveQueryCluster) ElementType() reflect.Type {
 	return reflect.TypeOf((*InteractiveQueryCluster)(nil)).Elem()
 }
@@ -339,6 +346,14 @@ func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutput() InteractiveQu
 
 func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterOutput)
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput {
+	return i.ToInteractiveQueryClusterPtrOutputWithContext(context.Background())
+}
+
+func (i InteractiveQueryCluster) ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterPtrOutput)
 }
 
 type InteractiveQueryClusterOutput struct {
@@ -357,6 +372,23 @@ func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutputWithContex
 	return o
 }
 
+type InteractiveQueryClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InteractiveQueryClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InteractiveQueryCluster)(nil)).Elem()
+}
+
+func (o InteractiveQueryClusterPtrOutput) ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput {
+	return o
+}
+
+func (o InteractiveQueryClusterPtrOutput) ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InteractiveQueryClusterOutput{})
+	pulumi.RegisterOutputType(InteractiveQueryClusterPtrOutput{})
 }

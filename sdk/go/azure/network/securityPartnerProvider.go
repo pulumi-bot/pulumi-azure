@@ -209,6 +209,13 @@ type SecurityPartnerProviderInput interface {
 	ToSecurityPartnerProviderOutputWithContext(ctx context.Context) SecurityPartnerProviderOutput
 }
 
+type SecurityPartnerProviderPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPartnerProviderPtrOutput() SecurityPartnerProviderPtrOutput
+	ToSecurityPartnerProviderPtrOutputWithContext(ctx context.Context) SecurityPartnerProviderPtrOutput
+}
+
 func (SecurityPartnerProvider) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityPartnerProvider)(nil)).Elem()
 }
@@ -219,6 +226,14 @@ func (i SecurityPartnerProvider) ToSecurityPartnerProviderOutput() SecurityPartn
 
 func (i SecurityPartnerProvider) ToSecurityPartnerProviderOutputWithContext(ctx context.Context) SecurityPartnerProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPartnerProviderOutput)
+}
+
+func (i SecurityPartnerProvider) ToSecurityPartnerProviderPtrOutput() SecurityPartnerProviderPtrOutput {
+	return i.ToSecurityPartnerProviderPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPartnerProvider) ToSecurityPartnerProviderPtrOutputWithContext(ctx context.Context) SecurityPartnerProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPartnerProviderPtrOutput)
 }
 
 type SecurityPartnerProviderOutput struct {
@@ -237,6 +252,23 @@ func (o SecurityPartnerProviderOutput) ToSecurityPartnerProviderOutputWithContex
 	return o
 }
 
+type SecurityPartnerProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityPartnerProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPartnerProvider)(nil)).Elem()
+}
+
+func (o SecurityPartnerProviderPtrOutput) ToSecurityPartnerProviderPtrOutput() SecurityPartnerProviderPtrOutput {
+	return o
+}
+
+func (o SecurityPartnerProviderPtrOutput) ToSecurityPartnerProviderPtrOutputWithContext(ctx context.Context) SecurityPartnerProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityPartnerProviderOutput{})
+	pulumi.RegisterOutputType(SecurityPartnerProviderPtrOutput{})
 }

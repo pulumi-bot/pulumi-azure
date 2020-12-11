@@ -158,6 +158,13 @@ type TableInput interface {
 	ToTableOutputWithContext(ctx context.Context) TableOutput
 }
 
+type TablePtrInput interface {
+	pulumi.Input
+
+	ToTablePtrOutput() TablePtrOutput
+	ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput
+}
+
 func (Table) ElementType() reflect.Type {
 	return reflect.TypeOf((*Table)(nil)).Elem()
 }
@@ -168,6 +175,14 @@ func (i Table) ToTableOutput() TableOutput {
 
 func (i Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
+}
+
+func (i Table) ToTablePtrOutput() TablePtrOutput {
+	return i.ToTablePtrOutputWithContext(context.Background())
+}
+
+func (i Table) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePtrOutput)
 }
 
 type TableOutput struct {
@@ -186,6 +201,23 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
+type TablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Table)(nil)).Elem()
+}
+
+func (o TablePtrOutput) ToTablePtrOutput() TablePtrOutput {
+	return o
+}
+
+func (o TablePtrOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TableOutput{})
+	pulumi.RegisterOutputType(TablePtrOutput{})
 }

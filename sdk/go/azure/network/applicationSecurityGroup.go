@@ -158,6 +158,13 @@ type ApplicationSecurityGroupInput interface {
 	ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput
 }
 
+type ApplicationSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput
+	ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput
+}
+
 func (ApplicationSecurityGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationSecurityGroup)(nil)).Elem()
 }
@@ -168,6 +175,14 @@ func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutput() Application
 
 func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupOutput)
+}
+
+func (i ApplicationSecurityGroup) ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput {
+	return i.ToApplicationSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationSecurityGroup) ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupPtrOutput)
 }
 
 type ApplicationSecurityGroupOutput struct {
@@ -186,6 +201,23 @@ func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutputWithCont
 	return o
 }
 
+type ApplicationSecurityGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (o ApplicationSecurityGroupPtrOutput) ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationSecurityGroupPtrOutput) ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ApplicationSecurityGroupPtrOutput{})
 }

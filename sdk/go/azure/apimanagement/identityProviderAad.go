@@ -202,6 +202,13 @@ type IdentityProviderAadInput interface {
 	ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput
 }
 
+type IdentityProviderAadPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderAadPtrOutput() IdentityProviderAadPtrOutput
+	ToIdentityProviderAadPtrOutputWithContext(ctx context.Context) IdentityProviderAadPtrOutput
+}
+
 func (IdentityProviderAad) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityProviderAad)(nil)).Elem()
 }
@@ -212,6 +219,14 @@ func (i IdentityProviderAad) ToIdentityProviderAadOutput() IdentityProviderAadOu
 
 func (i IdentityProviderAad) ToIdentityProviderAadOutputWithContext(ctx context.Context) IdentityProviderAadOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderAadOutput)
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadPtrOutput() IdentityProviderAadPtrOutput {
+	return i.ToIdentityProviderAadPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityProviderAad) ToIdentityProviderAadPtrOutputWithContext(ctx context.Context) IdentityProviderAadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderAadPtrOutput)
 }
 
 type IdentityProviderAadOutput struct {
@@ -230,6 +245,23 @@ func (o IdentityProviderAadOutput) ToIdentityProviderAadOutputWithContext(ctx co
 	return o
 }
 
+type IdentityProviderAadPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderAadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderAad)(nil)).Elem()
+}
+
+func (o IdentityProviderAadPtrOutput) ToIdentityProviderAadPtrOutput() IdentityProviderAadPtrOutput {
+	return o
+}
+
+func (o IdentityProviderAadPtrOutput) ToIdentityProviderAadPtrOutputWithContext(ctx context.Context) IdentityProviderAadPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderAadOutput{})
+	pulumi.RegisterOutputType(IdentityProviderAadPtrOutput{})
 }

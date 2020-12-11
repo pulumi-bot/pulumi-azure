@@ -194,6 +194,13 @@ type ActiveDirectoryAdministratorInput interface {
 	ToActiveDirectoryAdministratorOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorOutput
 }
 
+type ActiveDirectoryAdministratorPtrInput interface {
+	pulumi.Input
+
+	ToActiveDirectoryAdministratorPtrOutput() ActiveDirectoryAdministratorPtrOutput
+	ToActiveDirectoryAdministratorPtrOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorPtrOutput
+}
+
 func (ActiveDirectoryAdministrator) ElementType() reflect.Type {
 	return reflect.TypeOf((*ActiveDirectoryAdministrator)(nil)).Elem()
 }
@@ -204,6 +211,14 @@ func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorOutput() Act
 
 func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryAdministratorOutput)
+}
+
+func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorPtrOutput() ActiveDirectoryAdministratorPtrOutput {
+	return i.ToActiveDirectoryAdministratorPtrOutputWithContext(context.Background())
+}
+
+func (i ActiveDirectoryAdministrator) ToActiveDirectoryAdministratorPtrOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryAdministratorPtrOutput)
 }
 
 type ActiveDirectoryAdministratorOutput struct {
@@ -222,6 +237,23 @@ func (o ActiveDirectoryAdministratorOutput) ToActiveDirectoryAdministratorOutput
 	return o
 }
 
+type ActiveDirectoryAdministratorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActiveDirectoryAdministratorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActiveDirectoryAdministrator)(nil)).Elem()
+}
+
+func (o ActiveDirectoryAdministratorPtrOutput) ToActiveDirectoryAdministratorPtrOutput() ActiveDirectoryAdministratorPtrOutput {
+	return o
+}
+
+func (o ActiveDirectoryAdministratorPtrOutput) ToActiveDirectoryAdministratorPtrOutputWithContext(ctx context.Context) ActiveDirectoryAdministratorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryAdministratorOutput{})
+	pulumi.RegisterOutputType(ActiveDirectoryAdministratorPtrOutput{})
 }

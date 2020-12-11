@@ -155,6 +155,13 @@ type NatGatewayPublicIpAssociationInput interface {
 	ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput
 }
 
+type NatGatewayPublicIpAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput
+	ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput
+}
+
 func (NatGatewayPublicIpAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil)).Elem()
 }
@@ -165,6 +172,14 @@ func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutput() N
 
 func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationOutput)
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput {
+	return i.ToNatGatewayPublicIpAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationPtrOutput)
 }
 
 type NatGatewayPublicIpAssociationOutput struct {
@@ -183,6 +198,23 @@ func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutp
 	return o
 }
 
+type NatGatewayPublicIpAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayPublicIpAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatGatewayPublicIpAssociation)(nil)).Elem()
+}
+
+func (o NatGatewayPublicIpAssociationPtrOutput) ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput {
+	return o
+}
+
+func (o NatGatewayPublicIpAssociationPtrOutput) ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationOutput{})
+	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationPtrOutput{})
 }

@@ -273,6 +273,13 @@ type ReferenceInputBlobInput interface {
 	ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput
 }
 
+type ReferenceInputBlobPtrInput interface {
+	pulumi.Input
+
+	ToReferenceInputBlobPtrOutput() ReferenceInputBlobPtrOutput
+	ToReferenceInputBlobPtrOutputWithContext(ctx context.Context) ReferenceInputBlobPtrOutput
+}
+
 func (ReferenceInputBlob) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReferenceInputBlob)(nil)).Elem()
 }
@@ -283,6 +290,14 @@ func (i ReferenceInputBlob) ToReferenceInputBlobOutput() ReferenceInputBlobOutpu
 
 func (i ReferenceInputBlob) ToReferenceInputBlobOutputWithContext(ctx context.Context) ReferenceInputBlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobOutput)
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobPtrOutput() ReferenceInputBlobPtrOutput {
+	return i.ToReferenceInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i ReferenceInputBlob) ToReferenceInputBlobPtrOutputWithContext(ctx context.Context) ReferenceInputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceInputBlobPtrOutput)
 }
 
 type ReferenceInputBlobOutput struct {
@@ -301,6 +316,23 @@ func (o ReferenceInputBlobOutput) ToReferenceInputBlobOutputWithContext(ctx cont
 	return o
 }
 
+type ReferenceInputBlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReferenceInputBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReferenceInputBlob)(nil)).Elem()
+}
+
+func (o ReferenceInputBlobPtrOutput) ToReferenceInputBlobPtrOutput() ReferenceInputBlobPtrOutput {
+	return o
+}
+
+func (o ReferenceInputBlobPtrOutput) ToReferenceInputBlobPtrOutputWithContext(ctx context.Context) ReferenceInputBlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReferenceInputBlobOutput{})
+	pulumi.RegisterOutputType(ReferenceInputBlobPtrOutput{})
 }

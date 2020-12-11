@@ -213,6 +213,13 @@ type BackendInput interface {
 	ToBackendOutputWithContext(ctx context.Context) BackendOutput
 }
 
+type BackendPtrInput interface {
+	pulumi.Input
+
+	ToBackendPtrOutput() BackendPtrOutput
+	ToBackendPtrOutputWithContext(ctx context.Context) BackendPtrOutput
+}
+
 func (Backend) ElementType() reflect.Type {
 	return reflect.TypeOf((*Backend)(nil)).Elem()
 }
@@ -223,6 +230,14 @@ func (i Backend) ToBackendOutput() BackendOutput {
 
 func (i Backend) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendOutput)
+}
+
+func (i Backend) ToBackendPtrOutput() BackendPtrOutput {
+	return i.ToBackendPtrOutputWithContext(context.Background())
+}
+
+func (i Backend) ToBackendPtrOutputWithContext(ctx context.Context) BackendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendPtrOutput)
 }
 
 type BackendOutput struct {
@@ -241,6 +256,23 @@ func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOu
 	return o
 }
 
+type BackendPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Backend)(nil)).Elem()
+}
+
+func (o BackendPtrOutput) ToBackendPtrOutput() BackendPtrOutput {
+	return o
+}
+
+func (o BackendPtrOutput) ToBackendPtrOutputWithContext(ctx context.Context) BackendPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BackendOutput{})
+	pulumi.RegisterOutputType(BackendPtrOutput{})
 }

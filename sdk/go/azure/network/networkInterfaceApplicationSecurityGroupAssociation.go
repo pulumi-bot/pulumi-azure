@@ -179,6 +179,13 @@ type NetworkInterfaceApplicationSecurityGroupAssociationInput interface {
 	ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput
 }
 
+type NetworkInterfaceApplicationSecurityGroupAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutput() NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput
+	ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput
+}
+
 func (NetworkInterfaceApplicationSecurityGroupAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkInterfaceApplicationSecurityGroupAssociation)(nil)).Elem()
 }
@@ -189,6 +196,14 @@ func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceA
 
 func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceApplicationSecurityGroupAssociationOutput)
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutput() NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput {
+	return i.ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceApplicationSecurityGroupAssociation) ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput)
 }
 
 type NetworkInterfaceApplicationSecurityGroupAssociationOutput struct {
@@ -207,6 +222,23 @@ func (o NetworkInterfaceApplicationSecurityGroupAssociationOutput) ToNetworkInte
 	return o
 }
 
+type NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceApplicationSecurityGroupAssociation)(nil)).Elem()
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutput() NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput) ToNetworkInterfaceApplicationSecurityGroupAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceApplicationSecurityGroupAssociationOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceApplicationSecurityGroupAssociationPtrOutput{})
 }

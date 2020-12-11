@@ -56,7 +56,7 @@ func (i ConfigurationStoreIdentityArgs) ToConfigurationStoreIdentityPtrOutput() 
 }
 
 func (i ConfigurationStoreIdentityArgs) ToConfigurationStoreIdentityPtrOutputWithContext(ctx context.Context) ConfigurationStoreIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreIdentityOutput).ToConfigurationStoreIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreIdentityOutput).ToConfigurationStoreIdentityPtrOutput()
 }
 
 // ConfigurationStoreIdentityPtrInput is an input type that accepts ConfigurationStoreIdentityArgs, ConfigurationStoreIdentityPtr and ConfigurationStoreIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *configurationStoreIdentityPtrType) ToConfigurationStoreIdentityPtrOutpu
 }
 
 func (i *configurationStoreIdentityPtrType) ToConfigurationStoreIdentityPtrOutputWithContext(ctx context.Context) ConfigurationStoreIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreIdentityOutput).ToConfigurationStoreIdentityPtrOutput()
 }
 
 type ConfigurationStoreIdentityOutput struct{ *pulumi.OutputState }

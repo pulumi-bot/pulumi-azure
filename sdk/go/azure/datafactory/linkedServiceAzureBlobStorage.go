@@ -224,6 +224,13 @@ type LinkedServiceAzureBlobStorageInput interface {
 	ToLinkedServiceAzureBlobStorageOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStorageOutput
 }
 
+type LinkedServiceAzureBlobStoragePtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceAzureBlobStoragePtrOutput() LinkedServiceAzureBlobStoragePtrOutput
+	ToLinkedServiceAzureBlobStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStoragePtrOutput
+}
+
 func (LinkedServiceAzureBlobStorage) ElementType() reflect.Type {
 	return reflect.TypeOf((*LinkedServiceAzureBlobStorage)(nil)).Elem()
 }
@@ -234,6 +241,14 @@ func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStorageOutput() L
 
 func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStorageOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStorageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureBlobStorageOutput)
+}
+
+func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStoragePtrOutput() LinkedServiceAzureBlobStoragePtrOutput {
+	return i.ToLinkedServiceAzureBlobStoragePtrOutputWithContext(context.Background())
+}
+
+func (i LinkedServiceAzureBlobStorage) ToLinkedServiceAzureBlobStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureBlobStoragePtrOutput)
 }
 
 type LinkedServiceAzureBlobStorageOutput struct {
@@ -252,6 +267,23 @@ func (o LinkedServiceAzureBlobStorageOutput) ToLinkedServiceAzureBlobStorageOutp
 	return o
 }
 
+type LinkedServiceAzureBlobStoragePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceAzureBlobStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceAzureBlobStorage)(nil)).Elem()
+}
+
+func (o LinkedServiceAzureBlobStoragePtrOutput) ToLinkedServiceAzureBlobStoragePtrOutput() LinkedServiceAzureBlobStoragePtrOutput {
+	return o
+}
+
+func (o LinkedServiceAzureBlobStoragePtrOutput) ToLinkedServiceAzureBlobStoragePtrOutputWithContext(ctx context.Context) LinkedServiceAzureBlobStoragePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceAzureBlobStorageOutput{})
+	pulumi.RegisterOutputType(LinkedServiceAzureBlobStoragePtrOutput{})
 }
