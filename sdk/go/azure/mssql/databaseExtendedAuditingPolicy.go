@@ -199,16 +199,31 @@ type DatabaseExtendedAuditingPolicyInput interface {
 	ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput
 }
 
-func (DatabaseExtendedAuditingPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseExtendedAuditingPolicy)(nil)).Elem()
+func (*DatabaseExtendedAuditingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicy)(nil))
 }
 
-func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
+func (i *DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
 	return i.ToDatabaseExtendedAuditingPolicyOutputWithContext(context.Background())
 }
 
-func (i DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
+func (i *DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput)
+}
+
+func (i *DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyPtrOutput() DatabaseExtendedAuditingPolicyPtrOutput {
+	return i.ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseExtendedAuditingPolicy) ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyPtrOutput)
+}
+
+type DatabaseExtendedAuditingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseExtendedAuditingPolicyPtrOutput() DatabaseExtendedAuditingPolicyPtrOutput
+	ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyPtrOutput
 }
 
 type DatabaseExtendedAuditingPolicyOutput struct {
@@ -216,7 +231,7 @@ type DatabaseExtendedAuditingPolicyOutput struct {
 }
 
 func (DatabaseExtendedAuditingPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseExtendedAuditingPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseExtendedAuditingPolicy)(nil))
 }
 
 func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOutput() DatabaseExtendedAuditingPolicyOutput {
@@ -227,6 +242,23 @@ func (o DatabaseExtendedAuditingPolicyOutput) ToDatabaseExtendedAuditingPolicyOu
 	return o
 }
 
+type DatabaseExtendedAuditingPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseExtendedAuditingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseExtendedAuditingPolicy)(nil))
+}
+
+func (o DatabaseExtendedAuditingPolicyPtrOutput) ToDatabaseExtendedAuditingPolicyPtrOutput() DatabaseExtendedAuditingPolicyPtrOutput {
+	return o
+}
+
+func (o DatabaseExtendedAuditingPolicyPtrOutput) ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseExtendedAuditingPolicyOutput{})
+	pulumi.RegisterOutputType(DatabaseExtendedAuditingPolicyPtrOutput{})
 }

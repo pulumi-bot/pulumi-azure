@@ -175,16 +175,31 @@ type MeshSecretInput interface {
 	ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput
 }
 
-func (MeshSecret) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecret)(nil)).Elem()
+func (*MeshSecret) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecret)(nil))
 }
 
-func (i MeshSecret) ToMeshSecretOutput() MeshSecretOutput {
+func (i *MeshSecret) ToMeshSecretOutput() MeshSecretOutput {
 	return i.ToMeshSecretOutputWithContext(context.Background())
 }
 
-func (i MeshSecret) ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput {
+func (i *MeshSecret) ToMeshSecretOutputWithContext(ctx context.Context) MeshSecretOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretOutput)
+}
+
+func (i *MeshSecret) ToMeshSecretPtrOutput() MeshSecretPtrOutput {
+	return i.ToMeshSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *MeshSecret) ToMeshSecretPtrOutputWithContext(ctx context.Context) MeshSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretPtrOutput)
+}
+
+type MeshSecretPtrInput interface {
+	pulumi.Input
+
+	ToMeshSecretPtrOutput() MeshSecretPtrOutput
+	ToMeshSecretPtrOutputWithContext(ctx context.Context) MeshSecretPtrOutput
 }
 
 type MeshSecretOutput struct {
@@ -192,7 +207,7 @@ type MeshSecretOutput struct {
 }
 
 func (MeshSecretOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecretOutput)(nil)).Elem()
+	return reflect.TypeOf((*MeshSecret)(nil))
 }
 
 func (o MeshSecretOutput) ToMeshSecretOutput() MeshSecretOutput {
@@ -203,6 +218,23 @@ func (o MeshSecretOutput) ToMeshSecretOutputWithContext(ctx context.Context) Mes
 	return o
 }
 
+type MeshSecretPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshSecret)(nil))
+}
+
+func (o MeshSecretPtrOutput) ToMeshSecretPtrOutput() MeshSecretPtrOutput {
+	return o
+}
+
+func (o MeshSecretPtrOutput) ToMeshSecretPtrOutputWithContext(ctx context.Context) MeshSecretPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MeshSecretOutput{})
+	pulumi.RegisterOutputType(MeshSecretPtrOutput{})
 }

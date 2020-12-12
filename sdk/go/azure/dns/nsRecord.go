@@ -204,16 +204,31 @@ type NsRecordInput interface {
 	ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput
 }
 
-func (NsRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*NsRecord)(nil)).Elem()
+func (*NsRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsRecord)(nil))
 }
 
-func (i NsRecord) ToNsRecordOutput() NsRecordOutput {
+func (i *NsRecord) ToNsRecordOutput() NsRecordOutput {
 	return i.ToNsRecordOutputWithContext(context.Background())
 }
 
-func (i NsRecord) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
+func (i *NsRecord) ToNsRecordOutputWithContext(ctx context.Context) NsRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NsRecordOutput)
+}
+
+func (i *NsRecord) ToNsRecordPtrOutput() NsRecordPtrOutput {
+	return i.ToNsRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *NsRecord) ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsRecordPtrOutput)
+}
+
+type NsRecordPtrInput interface {
+	pulumi.Input
+
+	ToNsRecordPtrOutput() NsRecordPtrOutput
+	ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput
 }
 
 type NsRecordOutput struct {
@@ -221,7 +236,7 @@ type NsRecordOutput struct {
 }
 
 func (NsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NsRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*NsRecord)(nil))
 }
 
 func (o NsRecordOutput) ToNsRecordOutput() NsRecordOutput {
@@ -232,6 +247,23 @@ func (o NsRecordOutput) ToNsRecordOutputWithContext(ctx context.Context) NsRecor
 	return o
 }
 
+type NsRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NsRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NsRecord)(nil))
+}
+
+func (o NsRecordPtrOutput) ToNsRecordPtrOutput() NsRecordPtrOutput {
+	return o
+}
+
+func (o NsRecordPtrOutput) ToNsRecordPtrOutputWithContext(ctx context.Context) NsRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NsRecordOutput{})
+	pulumi.RegisterOutputType(NsRecordPtrOutput{})
 }

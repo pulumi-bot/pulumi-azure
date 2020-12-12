@@ -172,16 +172,31 @@ type IntegrationAccountInput interface {
 	ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput
 }
 
-func (IntegrationAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccount)(nil)).Elem()
+func (*IntegrationAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationAccount)(nil))
 }
 
-func (i IntegrationAccount) ToIntegrationAccountOutput() IntegrationAccountOutput {
+func (i *IntegrationAccount) ToIntegrationAccountOutput() IntegrationAccountOutput {
 	return i.ToIntegrationAccountOutputWithContext(context.Background())
 }
 
-func (i IntegrationAccount) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
+func (i *IntegrationAccount) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountOutput)
+}
+
+func (i *IntegrationAccount) ToIntegrationAccountPtrOutput() IntegrationAccountPtrOutput {
+	return i.ToIntegrationAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *IntegrationAccount) ToIntegrationAccountPtrOutputWithContext(ctx context.Context) IntegrationAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountPtrOutput)
+}
+
+type IntegrationAccountPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationAccountPtrOutput() IntegrationAccountPtrOutput
+	ToIntegrationAccountPtrOutputWithContext(ctx context.Context) IntegrationAccountPtrOutput
 }
 
 type IntegrationAccountOutput struct {
@@ -189,7 +204,7 @@ type IntegrationAccountOutput struct {
 }
 
 func (IntegrationAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationAccount)(nil))
 }
 
 func (o IntegrationAccountOutput) ToIntegrationAccountOutput() IntegrationAccountOutput {
@@ -200,6 +215,23 @@ func (o IntegrationAccountOutput) ToIntegrationAccountOutputWithContext(ctx cont
 	return o
 }
 
+type IntegrationAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationAccount)(nil))
+}
+
+func (o IntegrationAccountPtrOutput) ToIntegrationAccountPtrOutput() IntegrationAccountPtrOutput {
+	return o
+}
+
+func (o IntegrationAccountPtrOutput) ToIntegrationAccountPtrOutputWithContext(ctx context.Context) IntegrationAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IntegrationAccountOutput{})
+	pulumi.RegisterOutputType(IntegrationAccountPtrOutput{})
 }

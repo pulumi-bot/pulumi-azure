@@ -264,16 +264,31 @@ type PublicIpInput interface {
 	ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput
 }
 
-func (PublicIp) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicIp)(nil)).Elem()
+func (*PublicIp) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIp)(nil))
 }
 
-func (i PublicIp) ToPublicIpOutput() PublicIpOutput {
+func (i *PublicIp) ToPublicIpOutput() PublicIpOutput {
 	return i.ToPublicIpOutputWithContext(context.Background())
 }
 
-func (i PublicIp) ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput {
+func (i *PublicIp) ToPublicIpOutputWithContext(ctx context.Context) PublicIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpOutput)
+}
+
+func (i *PublicIp) ToPublicIpPtrOutput() PublicIpPtrOutput {
+	return i.ToPublicIpPtrOutputWithContext(context.Background())
+}
+
+func (i *PublicIp) ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpPtrOutput)
+}
+
+type PublicIpPtrInput interface {
+	pulumi.Input
+
+	ToPublicIpPtrOutput() PublicIpPtrOutput
+	ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput
 }
 
 type PublicIpOutput struct {
@@ -281,7 +296,7 @@ type PublicIpOutput struct {
 }
 
 func (PublicIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicIpOutput)(nil)).Elem()
+	return reflect.TypeOf((*PublicIp)(nil))
 }
 
 func (o PublicIpOutput) ToPublicIpOutput() PublicIpOutput {
@@ -292,6 +307,23 @@ func (o PublicIpOutput) ToPublicIpOutputWithContext(ctx context.Context) PublicI
 	return o
 }
 
+type PublicIpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIp)(nil))
+}
+
+func (o PublicIpPtrOutput) ToPublicIpPtrOutput() PublicIpPtrOutput {
+	return o
+}
+
+func (o PublicIpPtrOutput) ToPublicIpPtrOutputWithContext(ctx context.Context) PublicIpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicIpOutput{})
+	pulumi.RegisterOutputType(PublicIpPtrOutput{})
 }

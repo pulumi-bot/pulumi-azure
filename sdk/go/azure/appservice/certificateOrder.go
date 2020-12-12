@@ -271,16 +271,31 @@ type CertificateOrderInput interface {
 	ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput
 }
 
-func (CertificateOrder) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateOrder)(nil)).Elem()
+func (*CertificateOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOrder)(nil))
 }
 
-func (i CertificateOrder) ToCertificateOrderOutput() CertificateOrderOutput {
+func (i *CertificateOrder) ToCertificateOrderOutput() CertificateOrderOutput {
 	return i.ToCertificateOrderOutputWithContext(context.Background())
 }
 
-func (i CertificateOrder) ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput {
+func (i *CertificateOrder) ToCertificateOrderOutputWithContext(ctx context.Context) CertificateOrderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateOrderOutput)
+}
+
+func (i *CertificateOrder) ToCertificateOrderPtrOutput() CertificateOrderPtrOutput {
+	return i.ToCertificateOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *CertificateOrder) ToCertificateOrderPtrOutputWithContext(ctx context.Context) CertificateOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOrderPtrOutput)
+}
+
+type CertificateOrderPtrInput interface {
+	pulumi.Input
+
+	ToCertificateOrderPtrOutput() CertificateOrderPtrOutput
+	ToCertificateOrderPtrOutputWithContext(ctx context.Context) CertificateOrderPtrOutput
 }
 
 type CertificateOrderOutput struct {
@@ -288,7 +303,7 @@ type CertificateOrderOutput struct {
 }
 
 func (CertificateOrderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateOrderOutput)(nil)).Elem()
+	return reflect.TypeOf((*CertificateOrder)(nil))
 }
 
 func (o CertificateOrderOutput) ToCertificateOrderOutput() CertificateOrderOutput {
@@ -299,6 +314,23 @@ func (o CertificateOrderOutput) ToCertificateOrderOutputWithContext(ctx context.
 	return o
 }
 
+type CertificateOrderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateOrder)(nil))
+}
+
+func (o CertificateOrderPtrOutput) ToCertificateOrderPtrOutput() CertificateOrderPtrOutput {
+	return o
+}
+
+func (o CertificateOrderPtrOutput) ToCertificateOrderPtrOutputWithContext(ctx context.Context) CertificateOrderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertificateOrderOutput{})
+	pulumi.RegisterOutputType(CertificateOrderPtrOutput{})
 }

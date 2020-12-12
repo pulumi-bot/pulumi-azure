@@ -182,16 +182,31 @@ type ProductGroupInput interface {
 	ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput
 }
 
-func (ProductGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductGroup)(nil)).Elem()
+func (*ProductGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductGroup)(nil))
 }
 
-func (i ProductGroup) ToProductGroupOutput() ProductGroupOutput {
+func (i *ProductGroup) ToProductGroupOutput() ProductGroupOutput {
 	return i.ToProductGroupOutputWithContext(context.Background())
 }
 
-func (i ProductGroup) ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput {
+func (i *ProductGroup) ToProductGroupOutputWithContext(ctx context.Context) ProductGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductGroupOutput)
+}
+
+func (i *ProductGroup) ToProductGroupPtrOutput() ProductGroupPtrOutput {
+	return i.ToProductGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ProductGroup) ToProductGroupPtrOutputWithContext(ctx context.Context) ProductGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductGroupPtrOutput)
+}
+
+type ProductGroupPtrInput interface {
+	pulumi.Input
+
+	ToProductGroupPtrOutput() ProductGroupPtrOutput
+	ToProductGroupPtrOutputWithContext(ctx context.Context) ProductGroupPtrOutput
 }
 
 type ProductGroupOutput struct {
@@ -199,7 +214,7 @@ type ProductGroupOutput struct {
 }
 
 func (ProductGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProductGroup)(nil))
 }
 
 func (o ProductGroupOutput) ToProductGroupOutput() ProductGroupOutput {
@@ -210,6 +225,23 @@ func (o ProductGroupOutput) ToProductGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ProductGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProductGroup)(nil))
+}
+
+func (o ProductGroupPtrOutput) ToProductGroupPtrOutput() ProductGroupPtrOutput {
+	return o
+}
+
+func (o ProductGroupPtrOutput) ToProductGroupPtrOutputWithContext(ctx context.Context) ProductGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProductGroupOutput{})
+	pulumi.RegisterOutputType(ProductGroupPtrOutput{})
 }

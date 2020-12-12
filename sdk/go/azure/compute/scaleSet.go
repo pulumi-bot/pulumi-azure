@@ -408,16 +408,31 @@ type ScaleSetInput interface {
 	ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput
 }
 
-func (ScaleSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleSet)(nil)).Elem()
+func (*ScaleSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSet)(nil))
 }
 
-func (i ScaleSet) ToScaleSetOutput() ScaleSetOutput {
+func (i *ScaleSet) ToScaleSetOutput() ScaleSetOutput {
 	return i.ToScaleSetOutputWithContext(context.Background())
 }
 
-func (i ScaleSet) ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput {
+func (i *ScaleSet) ToScaleSetOutputWithContext(ctx context.Context) ScaleSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOutput)
+}
+
+func (i *ScaleSet) ToScaleSetPtrOutput() ScaleSetPtrOutput {
+	return i.ToScaleSetPtrOutputWithContext(context.Background())
+}
+
+func (i *ScaleSet) ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPtrOutput)
+}
+
+type ScaleSetPtrInput interface {
+	pulumi.Input
+
+	ToScaleSetPtrOutput() ScaleSetPtrOutput
+	ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput
 }
 
 type ScaleSetOutput struct {
@@ -425,7 +440,7 @@ type ScaleSetOutput struct {
 }
 
 func (ScaleSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScaleSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScaleSet)(nil))
 }
 
 func (o ScaleSetOutput) ToScaleSetOutput() ScaleSetOutput {
@@ -436,6 +451,23 @@ func (o ScaleSetOutput) ToScaleSetOutputWithContext(ctx context.Context) ScaleSe
 	return o
 }
 
+type ScaleSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScaleSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleSet)(nil))
+}
+
+func (o ScaleSetPtrOutput) ToScaleSetPtrOutput() ScaleSetPtrOutput {
+	return o
+}
+
+func (o ScaleSetPtrOutput) ToScaleSetPtrOutputWithContext(ctx context.Context) ScaleSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScaleSetOutput{})
+	pulumi.RegisterOutputType(ScaleSetPtrOutput{})
 }

@@ -310,16 +310,31 @@ type MLServicesClusterInput interface {
 	ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput
 }
 
-func (MLServicesCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MLServicesCluster)(nil)).Elem()
+func (*MLServicesCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLServicesCluster)(nil))
 }
 
-func (i MLServicesCluster) ToMLServicesClusterOutput() MLServicesClusterOutput {
+func (i *MLServicesCluster) ToMLServicesClusterOutput() MLServicesClusterOutput {
 	return i.ToMLServicesClusterOutputWithContext(context.Background())
 }
 
-func (i MLServicesCluster) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
+func (i *MLServicesCluster) ToMLServicesClusterOutputWithContext(ctx context.Context) MLServicesClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterOutput)
+}
+
+func (i *MLServicesCluster) ToMLServicesClusterPtrOutput() MLServicesClusterPtrOutput {
+	return i.ToMLServicesClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *MLServicesCluster) ToMLServicesClusterPtrOutputWithContext(ctx context.Context) MLServicesClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MLServicesClusterPtrOutput)
+}
+
+type MLServicesClusterPtrInput interface {
+	pulumi.Input
+
+	ToMLServicesClusterPtrOutput() MLServicesClusterPtrOutput
+	ToMLServicesClusterPtrOutputWithContext(ctx context.Context) MLServicesClusterPtrOutput
 }
 
 type MLServicesClusterOutput struct {
@@ -327,7 +342,7 @@ type MLServicesClusterOutput struct {
 }
 
 func (MLServicesClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MLServicesClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*MLServicesCluster)(nil))
 }
 
 func (o MLServicesClusterOutput) ToMLServicesClusterOutput() MLServicesClusterOutput {
@@ -338,6 +353,23 @@ func (o MLServicesClusterOutput) ToMLServicesClusterOutputWithContext(ctx contex
 	return o
 }
 
+type MLServicesClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MLServicesClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MLServicesCluster)(nil))
+}
+
+func (o MLServicesClusterPtrOutput) ToMLServicesClusterPtrOutput() MLServicesClusterPtrOutput {
+	return o
+}
+
+func (o MLServicesClusterPtrOutput) ToMLServicesClusterPtrOutputWithContext(ctx context.Context) MLServicesClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MLServicesClusterOutput{})
+	pulumi.RegisterOutputType(MLServicesClusterPtrOutput{})
 }

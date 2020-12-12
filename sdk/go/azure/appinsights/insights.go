@@ -249,16 +249,31 @@ type InsightsInput interface {
 	ToInsightsOutputWithContext(ctx context.Context) InsightsOutput
 }
 
-func (Insights) ElementType() reflect.Type {
-	return reflect.TypeOf((*Insights)(nil)).Elem()
+func (*Insights) ElementType() reflect.Type {
+	return reflect.TypeOf((*Insights)(nil))
 }
 
-func (i Insights) ToInsightsOutput() InsightsOutput {
+func (i *Insights) ToInsightsOutput() InsightsOutput {
 	return i.ToInsightsOutputWithContext(context.Background())
 }
 
-func (i Insights) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
+func (i *Insights) ToInsightsOutputWithContext(ctx context.Context) InsightsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InsightsOutput)
+}
+
+func (i *Insights) ToInsightsPtrOutput() InsightsPtrOutput {
+	return i.ToInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i *Insights) ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsPtrOutput)
+}
+
+type InsightsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsPtrOutput() InsightsPtrOutput
+	ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput
 }
 
 type InsightsOutput struct {
@@ -266,7 +281,7 @@ type InsightsOutput struct {
 }
 
 func (InsightsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InsightsOutput)(nil)).Elem()
+	return reflect.TypeOf((*Insights)(nil))
 }
 
 func (o InsightsOutput) ToInsightsOutput() InsightsOutput {
@@ -277,6 +292,23 @@ func (o InsightsOutput) ToInsightsOutputWithContext(ctx context.Context) Insight
 	return o
 }
 
+type InsightsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InsightsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Insights)(nil))
+}
+
+func (o InsightsPtrOutput) ToInsightsPtrOutput() InsightsPtrOutput {
+	return o
+}
+
+func (o InsightsPtrOutput) ToInsightsPtrOutputWithContext(ctx context.Context) InsightsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InsightsOutput{})
+	pulumi.RegisterOutputType(InsightsPtrOutput{})
 }

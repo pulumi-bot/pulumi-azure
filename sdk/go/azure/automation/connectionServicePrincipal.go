@@ -179,16 +179,31 @@ type ConnectionServicePrincipalInput interface {
 	ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput
 }
 
-func (ConnectionServicePrincipal) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionServicePrincipal)(nil)).Elem()
+func (*ConnectionServicePrincipal) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil))
 }
 
-func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
+func (i *ConnectionServicePrincipal) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
 	return i.ToConnectionServicePrincipalOutputWithContext(context.Background())
 }
 
-func (i ConnectionServicePrincipal) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
+func (i *ConnectionServicePrincipal) ToConnectionServicePrincipalOutputWithContext(ctx context.Context) ConnectionServicePrincipalOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalOutput)
+}
+
+func (i *ConnectionServicePrincipal) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return i.ToConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *ConnectionServicePrincipal) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServicePrincipalPtrOutput)
+}
+
+type ConnectionServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput
+	ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput
 }
 
 type ConnectionServicePrincipalOutput struct {
@@ -196,7 +211,7 @@ type ConnectionServicePrincipalOutput struct {
 }
 
 func (ConnectionServicePrincipalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionServicePrincipalOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConnectionServicePrincipal)(nil))
 }
 
 func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutput() ConnectionServicePrincipalOutput {
@@ -207,6 +222,23 @@ func (o ConnectionServicePrincipalOutput) ToConnectionServicePrincipalOutputWith
 	return o
 }
 
+type ConnectionServicePrincipalPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionServicePrincipal)(nil))
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutput() ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ConnectionServicePrincipalPtrOutput) ToConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) ConnectionServicePrincipalPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectionServicePrincipalOutput{})
+	pulumi.RegisterOutputType(ConnectionServicePrincipalPtrOutput{})
 }

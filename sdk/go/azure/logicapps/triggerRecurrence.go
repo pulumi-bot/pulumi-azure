@@ -189,16 +189,31 @@ type TriggerRecurrenceInput interface {
 	ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput
 }
 
-func (TriggerRecurrence) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerRecurrence)(nil)).Elem()
+func (*TriggerRecurrence) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRecurrence)(nil))
 }
 
-func (i TriggerRecurrence) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
+func (i *TriggerRecurrence) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
 	return i.ToTriggerRecurrenceOutputWithContext(context.Background())
 }
 
-func (i TriggerRecurrence) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
+func (i *TriggerRecurrence) ToTriggerRecurrenceOutputWithContext(ctx context.Context) TriggerRecurrenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRecurrenceOutput)
+}
+
+func (i *TriggerRecurrence) ToTriggerRecurrencePtrOutput() TriggerRecurrencePtrOutput {
+	return i.ToTriggerRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *TriggerRecurrence) ToTriggerRecurrencePtrOutputWithContext(ctx context.Context) TriggerRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRecurrencePtrOutput)
+}
+
+type TriggerRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToTriggerRecurrencePtrOutput() TriggerRecurrencePtrOutput
+	ToTriggerRecurrencePtrOutputWithContext(ctx context.Context) TriggerRecurrencePtrOutput
 }
 
 type TriggerRecurrenceOutput struct {
@@ -206,7 +221,7 @@ type TriggerRecurrenceOutput struct {
 }
 
 func (TriggerRecurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerRecurrenceOutput)(nil)).Elem()
+	return reflect.TypeOf((*TriggerRecurrence)(nil))
 }
 
 func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutput() TriggerRecurrenceOutput {
@@ -217,6 +232,23 @@ func (o TriggerRecurrenceOutput) ToTriggerRecurrenceOutputWithContext(ctx contex
 	return o
 }
 
+type TriggerRecurrencePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRecurrence)(nil))
+}
+
+func (o TriggerRecurrencePtrOutput) ToTriggerRecurrencePtrOutput() TriggerRecurrencePtrOutput {
+	return o
+}
+
+func (o TriggerRecurrencePtrOutput) ToTriggerRecurrencePtrOutputWithContext(ctx context.Context) TriggerRecurrencePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TriggerRecurrenceOutput{})
+	pulumi.RegisterOutputType(TriggerRecurrencePtrOutput{})
 }

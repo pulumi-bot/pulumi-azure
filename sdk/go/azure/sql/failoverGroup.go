@@ -258,16 +258,31 @@ type FailoverGroupInput interface {
 	ToFailoverGroupOutputWithContext(ctx context.Context) FailoverGroupOutput
 }
 
-func (FailoverGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*FailoverGroup)(nil)).Elem()
+func (*FailoverGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverGroup)(nil))
 }
 
-func (i FailoverGroup) ToFailoverGroupOutput() FailoverGroupOutput {
+func (i *FailoverGroup) ToFailoverGroupOutput() FailoverGroupOutput {
 	return i.ToFailoverGroupOutputWithContext(context.Background())
 }
 
-func (i FailoverGroup) ToFailoverGroupOutputWithContext(ctx context.Context) FailoverGroupOutput {
+func (i *FailoverGroup) ToFailoverGroupOutputWithContext(ctx context.Context) FailoverGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupOutput)
+}
+
+func (i *FailoverGroup) ToFailoverGroupPtrOutput() FailoverGroupPtrOutput {
+	return i.ToFailoverGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *FailoverGroup) ToFailoverGroupPtrOutputWithContext(ctx context.Context) FailoverGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupPtrOutput)
+}
+
+type FailoverGroupPtrInput interface {
+	pulumi.Input
+
+	ToFailoverGroupPtrOutput() FailoverGroupPtrOutput
+	ToFailoverGroupPtrOutputWithContext(ctx context.Context) FailoverGroupPtrOutput
 }
 
 type FailoverGroupOutput struct {
@@ -275,7 +290,7 @@ type FailoverGroupOutput struct {
 }
 
 func (FailoverGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FailoverGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*FailoverGroup)(nil))
 }
 
 func (o FailoverGroupOutput) ToFailoverGroupOutput() FailoverGroupOutput {
@@ -286,6 +301,23 @@ func (o FailoverGroupOutput) ToFailoverGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type FailoverGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FailoverGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailoverGroup)(nil))
+}
+
+func (o FailoverGroupPtrOutput) ToFailoverGroupPtrOutput() FailoverGroupPtrOutput {
+	return o
+}
+
+func (o FailoverGroupPtrOutput) ToFailoverGroupPtrOutputWithContext(ctx context.Context) FailoverGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FailoverGroupOutput{})
+	pulumi.RegisterOutputType(FailoverGroupPtrOutput{})
 }

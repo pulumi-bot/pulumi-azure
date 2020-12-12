@@ -204,16 +204,31 @@ type VirtualHubInput interface {
 	ToVirtualHubOutputWithContext(ctx context.Context) VirtualHubOutput
 }
 
-func (VirtualHub) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHub)(nil)).Elem()
+func (*VirtualHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHub)(nil))
 }
 
-func (i VirtualHub) ToVirtualHubOutput() VirtualHubOutput {
+func (i *VirtualHub) ToVirtualHubOutput() VirtualHubOutput {
 	return i.ToVirtualHubOutputWithContext(context.Background())
 }
 
-func (i VirtualHub) ToVirtualHubOutputWithContext(ctx context.Context) VirtualHubOutput {
+func (i *VirtualHub) ToVirtualHubOutputWithContext(ctx context.Context) VirtualHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubOutput)
+}
+
+func (i *VirtualHub) ToVirtualHubPtrOutput() VirtualHubPtrOutput {
+	return i.ToVirtualHubPtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualHub) ToVirtualHubPtrOutputWithContext(ctx context.Context) VirtualHubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubPtrOutput)
+}
+
+type VirtualHubPtrInput interface {
+	pulumi.Input
+
+	ToVirtualHubPtrOutput() VirtualHubPtrOutput
+	ToVirtualHubPtrOutputWithContext(ctx context.Context) VirtualHubPtrOutput
 }
 
 type VirtualHubOutput struct {
@@ -221,7 +236,7 @@ type VirtualHubOutput struct {
 }
 
 func (VirtualHubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHubOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualHub)(nil))
 }
 
 func (o VirtualHubOutput) ToVirtualHubOutput() VirtualHubOutput {
@@ -232,6 +247,23 @@ func (o VirtualHubOutput) ToVirtualHubOutputWithContext(ctx context.Context) Vir
 	return o
 }
 
+type VirtualHubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualHub)(nil))
+}
+
+func (o VirtualHubPtrOutput) ToVirtualHubPtrOutput() VirtualHubPtrOutput {
+	return o
+}
+
+func (o VirtualHubPtrOutput) ToVirtualHubPtrOutputWithContext(ctx context.Context) VirtualHubPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualHubOutput{})
+	pulumi.RegisterOutputType(VirtualHubPtrOutput{})
 }

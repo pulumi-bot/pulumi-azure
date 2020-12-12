@@ -107,16 +107,31 @@ type ClusterCustomerManagedKeyInput interface {
 	ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput
 }
 
-func (ClusterCustomerManagedKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterCustomerManagedKey)(nil)).Elem()
+func (*ClusterCustomerManagedKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCustomerManagedKey)(nil))
 }
 
-func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
+func (i *ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
 	return i.ToClusterCustomerManagedKeyOutputWithContext(context.Background())
 }
 
-func (i ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
+func (i *ClusterCustomerManagedKey) ToClusterCustomerManagedKeyOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterCustomerManagedKeyOutput)
+}
+
+func (i *ClusterCustomerManagedKey) ToClusterCustomerManagedKeyPtrOutput() ClusterCustomerManagedKeyPtrOutput {
+	return i.ToClusterCustomerManagedKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterCustomerManagedKey) ToClusterCustomerManagedKeyPtrOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCustomerManagedKeyPtrOutput)
+}
+
+type ClusterCustomerManagedKeyPtrInput interface {
+	pulumi.Input
+
+	ToClusterCustomerManagedKeyPtrOutput() ClusterCustomerManagedKeyPtrOutput
+	ToClusterCustomerManagedKeyPtrOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyPtrOutput
 }
 
 type ClusterCustomerManagedKeyOutput struct {
@@ -124,7 +139,7 @@ type ClusterCustomerManagedKeyOutput struct {
 }
 
 func (ClusterCustomerManagedKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterCustomerManagedKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterCustomerManagedKey)(nil))
 }
 
 func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutput() ClusterCustomerManagedKeyOutput {
@@ -135,6 +150,23 @@ func (o ClusterCustomerManagedKeyOutput) ToClusterCustomerManagedKeyOutputWithCo
 	return o
 }
 
+type ClusterCustomerManagedKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterCustomerManagedKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCustomerManagedKey)(nil))
+}
+
+func (o ClusterCustomerManagedKeyPtrOutput) ToClusterCustomerManagedKeyPtrOutput() ClusterCustomerManagedKeyPtrOutput {
+	return o
+}
+
+func (o ClusterCustomerManagedKeyPtrOutput) ToClusterCustomerManagedKeyPtrOutputWithContext(ctx context.Context) ClusterCustomerManagedKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterCustomerManagedKeyOutput{})
+	pulumi.RegisterOutputType(ClusterCustomerManagedKeyPtrOutput{})
 }

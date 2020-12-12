@@ -176,16 +176,31 @@ type ConsumerGroupInput interface {
 	ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput
 }
 
-func (ConsumerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerGroup)(nil)).Elem()
+func (*ConsumerGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerGroup)(nil))
 }
 
-func (i ConsumerGroup) ToConsumerGroupOutput() ConsumerGroupOutput {
+func (i *ConsumerGroup) ToConsumerGroupOutput() ConsumerGroupOutput {
 	return i.ToConsumerGroupOutputWithContext(context.Background())
 }
 
-func (i ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
+func (i *ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupOutput)
+}
+
+func (i *ConsumerGroup) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return i.ToConsumerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ConsumerGroup) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupPtrOutput)
+}
+
+type ConsumerGroupPtrInput interface {
+	pulumi.Input
+
+	ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput
+	ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput
 }
 
 type ConsumerGroupOutput struct {
@@ -193,7 +208,7 @@ type ConsumerGroupOutput struct {
 }
 
 func (ConsumerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsumerGroup)(nil))
 }
 
 func (o ConsumerGroupOutput) ToConsumerGroupOutput() ConsumerGroupOutput {
@@ -204,6 +219,23 @@ func (o ConsumerGroupOutput) ToConsumerGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ConsumerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsumerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerGroup)(nil))
+}
+
+func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return o
+}
+
+func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsumerGroupOutput{})
+	pulumi.RegisterOutputType(ConsumerGroupPtrOutput{})
 }

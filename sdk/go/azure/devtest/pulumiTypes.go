@@ -56,7 +56,7 @@ func (i GlobalVMShutdownScheduleNotificationSettingsArgs) ToGlobalVMShutdownSche
 }
 
 func (i GlobalVMShutdownScheduleNotificationSettingsArgs) ToGlobalVMShutdownScheduleNotificationSettingsPtrOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleNotificationSettingsOutput).ToGlobalVMShutdownScheduleNotificationSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleNotificationSettingsOutput).ToGlobalVMShutdownScheduleNotificationSettingsPtrOutput()
 }
 
 // GlobalVMShutdownScheduleNotificationSettingsPtrInput is an input type that accepts GlobalVMShutdownScheduleNotificationSettingsArgs, GlobalVMShutdownScheduleNotificationSettingsPtr and GlobalVMShutdownScheduleNotificationSettingsPtrOutput values.
@@ -89,7 +89,7 @@ func (i *globalVMShutdownScheduleNotificationSettingsPtrType) ToGlobalVMShutdown
 }
 
 func (i *globalVMShutdownScheduleNotificationSettingsPtrType) ToGlobalVMShutdownScheduleNotificationSettingsPtrOutputWithContext(ctx context.Context) GlobalVMShutdownScheduleNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleNotificationSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalVMShutdownScheduleNotificationSettingsOutput).ToGlobalVMShutdownScheduleNotificationSettingsPtrOutput()
 }
 
 type GlobalVMShutdownScheduleNotificationSettingsOutput struct{ *pulumi.OutputState }
@@ -231,7 +231,7 @@ func (i LinuxVirtualMachineGalleryImageReferenceArgs) ToLinuxVirtualMachineGalle
 }
 
 func (i LinuxVirtualMachineGalleryImageReferenceArgs) ToLinuxVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineGalleryImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineGalleryImageReferenceOutput).ToLinuxVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineGalleryImageReferenceOutput).ToLinuxVirtualMachineGalleryImageReferencePtrOutput()
 }
 
 // LinuxVirtualMachineGalleryImageReferencePtrInput is an input type that accepts LinuxVirtualMachineGalleryImageReferenceArgs, LinuxVirtualMachineGalleryImageReferencePtr and LinuxVirtualMachineGalleryImageReferencePtrOutput values.
@@ -264,7 +264,7 @@ func (i *linuxVirtualMachineGalleryImageReferencePtrType) ToLinuxVirtualMachineG
 }
 
 func (i *linuxVirtualMachineGalleryImageReferencePtrType) ToLinuxVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineGalleryImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineGalleryImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineGalleryImageReferenceOutput).ToLinuxVirtualMachineGalleryImageReferencePtrOutput()
 }
 
 type LinuxVirtualMachineGalleryImageReferenceOutput struct{ *pulumi.OutputState }
@@ -522,7 +522,7 @@ func (i ScheduleDailyRecurrenceArgs) ToScheduleDailyRecurrencePtrOutput() Schedu
 }
 
 func (i ScheduleDailyRecurrenceArgs) ToScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleDailyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleDailyRecurrenceOutput).ToScheduleDailyRecurrencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleDailyRecurrenceOutput).ToScheduleDailyRecurrencePtrOutput()
 }
 
 // ScheduleDailyRecurrencePtrInput is an input type that accepts ScheduleDailyRecurrenceArgs, ScheduleDailyRecurrencePtr and ScheduleDailyRecurrencePtrOutput values.
@@ -555,7 +555,7 @@ func (i *scheduleDailyRecurrencePtrType) ToScheduleDailyRecurrencePtrOutput() Sc
 }
 
 func (i *scheduleDailyRecurrencePtrType) ToScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleDailyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleDailyRecurrencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleDailyRecurrenceOutput).ToScheduleDailyRecurrencePtrOutput()
 }
 
 type ScheduleDailyRecurrenceOutput struct{ *pulumi.OutputState }
@@ -651,7 +651,7 @@ func (i ScheduleHourlyRecurrenceArgs) ToScheduleHourlyRecurrencePtrOutput() Sche
 }
 
 func (i ScheduleHourlyRecurrenceArgs) ToScheduleHourlyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleHourlyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleHourlyRecurrenceOutput).ToScheduleHourlyRecurrencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleHourlyRecurrenceOutput).ToScheduleHourlyRecurrencePtrOutput()
 }
 
 // ScheduleHourlyRecurrencePtrInput is an input type that accepts ScheduleHourlyRecurrenceArgs, ScheduleHourlyRecurrencePtr and ScheduleHourlyRecurrencePtrOutput values.
@@ -684,7 +684,7 @@ func (i *scheduleHourlyRecurrencePtrType) ToScheduleHourlyRecurrencePtrOutput() 
 }
 
 func (i *scheduleHourlyRecurrencePtrType) ToScheduleHourlyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleHourlyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleHourlyRecurrencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleHourlyRecurrenceOutput).ToScheduleHourlyRecurrencePtrOutput()
 }
 
 type ScheduleHourlyRecurrenceOutput struct{ *pulumi.OutputState }
@@ -787,7 +787,7 @@ func (i ScheduleNotificationSettingsArgs) ToScheduleNotificationSettingsPtrOutpu
 }
 
 func (i ScheduleNotificationSettingsArgs) ToScheduleNotificationSettingsPtrOutputWithContext(ctx context.Context) ScheduleNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleNotificationSettingsOutput).ToScheduleNotificationSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleNotificationSettingsOutput).ToScheduleNotificationSettingsPtrOutput()
 }
 
 // ScheduleNotificationSettingsPtrInput is an input type that accepts ScheduleNotificationSettingsArgs, ScheduleNotificationSettingsPtr and ScheduleNotificationSettingsPtrOutput values.
@@ -820,7 +820,7 @@ func (i *scheduleNotificationSettingsPtrType) ToScheduleNotificationSettingsPtrO
 }
 
 func (i *scheduleNotificationSettingsPtrType) ToScheduleNotificationSettingsPtrOutputWithContext(ctx context.Context) ScheduleNotificationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleNotificationSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleNotificationSettingsOutput).ToScheduleNotificationSettingsPtrOutput()
 }
 
 type ScheduleNotificationSettingsOutput struct{ *pulumi.OutputState }
@@ -952,7 +952,7 @@ func (i ScheduleWeeklyRecurrenceArgs) ToScheduleWeeklyRecurrencePtrOutput() Sche
 }
 
 func (i ScheduleWeeklyRecurrenceArgs) ToScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleWeeklyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleWeeklyRecurrenceOutput).ToScheduleWeeklyRecurrencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleWeeklyRecurrenceOutput).ToScheduleWeeklyRecurrencePtrOutput()
 }
 
 // ScheduleWeeklyRecurrencePtrInput is an input type that accepts ScheduleWeeklyRecurrenceArgs, ScheduleWeeklyRecurrencePtr and ScheduleWeeklyRecurrencePtrOutput values.
@@ -985,7 +985,7 @@ func (i *scheduleWeeklyRecurrencePtrType) ToScheduleWeeklyRecurrencePtrOutput() 
 }
 
 func (i *scheduleWeeklyRecurrencePtrType) ToScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) ScheduleWeeklyRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleWeeklyRecurrencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleWeeklyRecurrenceOutput).ToScheduleWeeklyRecurrencePtrOutput()
 }
 
 type ScheduleWeeklyRecurrenceOutput struct{ *pulumi.OutputState }
@@ -1106,7 +1106,7 @@ func (i VirtualNetworkSubnetArgs) ToVirtualNetworkSubnetPtrOutput() VirtualNetwo
 }
 
 func (i VirtualNetworkSubnetArgs) ToVirtualNetworkSubnetPtrOutputWithContext(ctx context.Context) VirtualNetworkSubnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSubnetOutput).ToVirtualNetworkSubnetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSubnetOutput).ToVirtualNetworkSubnetPtrOutput()
 }
 
 // VirtualNetworkSubnetPtrInput is an input type that accepts VirtualNetworkSubnetArgs, VirtualNetworkSubnetPtr and VirtualNetworkSubnetPtrOutput values.
@@ -1139,7 +1139,7 @@ func (i *virtualNetworkSubnetPtrType) ToVirtualNetworkSubnetPtrOutput() VirtualN
 }
 
 func (i *virtualNetworkSubnetPtrType) ToVirtualNetworkSubnetPtrOutputWithContext(ctx context.Context) VirtualNetworkSubnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSubnetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkSubnetOutput).ToVirtualNetworkSubnetPtrOutput()
 }
 
 type VirtualNetworkSubnetOutput struct{ *pulumi.OutputState }
@@ -1279,7 +1279,7 @@ func (i WindowsVirtualMachineGalleryImageReferenceArgs) ToWindowsVirtualMachineG
 }
 
 func (i WindowsVirtualMachineGalleryImageReferenceArgs) ToWindowsVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineGalleryImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineGalleryImageReferenceOutput).ToWindowsVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineGalleryImageReferenceOutput).ToWindowsVirtualMachineGalleryImageReferencePtrOutput()
 }
 
 // WindowsVirtualMachineGalleryImageReferencePtrInput is an input type that accepts WindowsVirtualMachineGalleryImageReferenceArgs, WindowsVirtualMachineGalleryImageReferencePtr and WindowsVirtualMachineGalleryImageReferencePtrOutput values.
@@ -1312,7 +1312,7 @@ func (i *windowsVirtualMachineGalleryImageReferencePtrType) ToWindowsVirtualMach
 }
 
 func (i *windowsVirtualMachineGalleryImageReferencePtrType) ToWindowsVirtualMachineGalleryImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineGalleryImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineGalleryImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineGalleryImageReferenceOutput).ToWindowsVirtualMachineGalleryImageReferencePtrOutput()
 }
 
 type WindowsVirtualMachineGalleryImageReferenceOutput struct{ *pulumi.OutputState }

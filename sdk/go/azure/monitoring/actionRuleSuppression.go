@@ -219,16 +219,31 @@ type ActionRuleSuppressionInput interface {
 	ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput
 }
 
-func (ActionRuleSuppression) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionRuleSuppression)(nil)).Elem()
+func (*ActionRuleSuppression) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleSuppression)(nil))
 }
 
-func (i ActionRuleSuppression) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
+func (i *ActionRuleSuppression) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
 	return i.ToActionRuleSuppressionOutputWithContext(context.Background())
 }
 
-func (i ActionRuleSuppression) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
+func (i *ActionRuleSuppression) ToActionRuleSuppressionOutputWithContext(ctx context.Context) ActionRuleSuppressionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionOutput)
+}
+
+func (i *ActionRuleSuppression) ToActionRuleSuppressionPtrOutput() ActionRuleSuppressionPtrOutput {
+	return i.ToActionRuleSuppressionPtrOutputWithContext(context.Background())
+}
+
+func (i *ActionRuleSuppression) ToActionRuleSuppressionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionPtrOutput)
+}
+
+type ActionRuleSuppressionPtrInput interface {
+	pulumi.Input
+
+	ToActionRuleSuppressionPtrOutput() ActionRuleSuppressionPtrOutput
+	ToActionRuleSuppressionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionPtrOutput
 }
 
 type ActionRuleSuppressionOutput struct {
@@ -236,7 +251,7 @@ type ActionRuleSuppressionOutput struct {
 }
 
 func (ActionRuleSuppressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionRuleSuppressionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActionRuleSuppression)(nil))
 }
 
 func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutput() ActionRuleSuppressionOutput {
@@ -247,6 +262,23 @@ func (o ActionRuleSuppressionOutput) ToActionRuleSuppressionOutputWithContext(ct
 	return o
 }
 
+type ActionRuleSuppressionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleSuppressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionRuleSuppression)(nil))
+}
+
+func (o ActionRuleSuppressionPtrOutput) ToActionRuleSuppressionPtrOutput() ActionRuleSuppressionPtrOutput {
+	return o
+}
+
+func (o ActionRuleSuppressionPtrOutput) ToActionRuleSuppressionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionRuleSuppressionOutput{})
+	pulumi.RegisterOutputType(ActionRuleSuppressionPtrOutput{})
 }

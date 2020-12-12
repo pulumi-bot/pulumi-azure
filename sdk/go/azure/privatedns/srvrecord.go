@@ -209,16 +209,31 @@ type SRVRecordInput interface {
 	ToSRVRecordOutputWithContext(ctx context.Context) SRVRecordOutput
 }
 
-func (SRVRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*SRVRecord)(nil)).Elem()
+func (*SRVRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*SRVRecord)(nil))
 }
 
-func (i SRVRecord) ToSRVRecordOutput() SRVRecordOutput {
+func (i *SRVRecord) ToSRVRecordOutput() SRVRecordOutput {
 	return i.ToSRVRecordOutputWithContext(context.Background())
 }
 
-func (i SRVRecord) ToSRVRecordOutputWithContext(ctx context.Context) SRVRecordOutput {
+func (i *SRVRecord) ToSRVRecordOutputWithContext(ctx context.Context) SRVRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SRVRecordOutput)
+}
+
+func (i *SRVRecord) ToSRVRecordPtrOutput() SRVRecordPtrOutput {
+	return i.ToSRVRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *SRVRecord) ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SRVRecordPtrOutput)
+}
+
+type SRVRecordPtrInput interface {
+	pulumi.Input
+
+	ToSRVRecordPtrOutput() SRVRecordPtrOutput
+	ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput
 }
 
 type SRVRecordOutput struct {
@@ -226,7 +241,7 @@ type SRVRecordOutput struct {
 }
 
 func (SRVRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SRVRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*SRVRecord)(nil))
 }
 
 func (o SRVRecordOutput) ToSRVRecordOutput() SRVRecordOutput {
@@ -237,6 +252,23 @@ func (o SRVRecordOutput) ToSRVRecordOutputWithContext(ctx context.Context) SRVRe
 	return o
 }
 
+type SRVRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SRVRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SRVRecord)(nil))
+}
+
+func (o SRVRecordPtrOutput) ToSRVRecordPtrOutput() SRVRecordPtrOutput {
+	return o
+}
+
+func (o SRVRecordPtrOutput) ToSRVRecordPtrOutputWithContext(ctx context.Context) SRVRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SRVRecordOutput{})
+	pulumi.RegisterOutputType(SRVRecordPtrOutput{})
 }

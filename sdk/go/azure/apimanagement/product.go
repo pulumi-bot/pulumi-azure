@@ -245,16 +245,31 @@ type ProductInput interface {
 	ToProductOutputWithContext(ctx context.Context) ProductOutput
 }
 
-func (Product) ElementType() reflect.Type {
-	return reflect.TypeOf((*Product)(nil)).Elem()
+func (*Product) ElementType() reflect.Type {
+	return reflect.TypeOf((*Product)(nil))
 }
 
-func (i Product) ToProductOutput() ProductOutput {
+func (i *Product) ToProductOutput() ProductOutput {
 	return i.ToProductOutputWithContext(context.Background())
 }
 
-func (i Product) ToProductOutputWithContext(ctx context.Context) ProductOutput {
+func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
+}
+
+func (i *Product) ToProductPtrOutput() ProductPtrOutput {
+	return i.ToProductPtrOutputWithContext(context.Background())
+}
+
+func (i *Product) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductPtrOutput)
+}
+
+type ProductPtrInput interface {
+	pulumi.Input
+
+	ToProductPtrOutput() ProductPtrOutput
+	ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput
 }
 
 type ProductOutput struct {
@@ -262,7 +277,7 @@ type ProductOutput struct {
 }
 
 func (ProductOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductOutput)(nil)).Elem()
+	return reflect.TypeOf((*Product)(nil))
 }
 
 func (o ProductOutput) ToProductOutput() ProductOutput {
@@ -273,6 +288,23 @@ func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOu
 	return o
 }
 
+type ProductPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Product)(nil))
+}
+
+func (o ProductPtrOutput) ToProductPtrOutput() ProductPtrOutput {
+	return o
+}
+
+func (o ProductPtrOutput) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProductOutput{})
+	pulumi.RegisterOutputType(ProductPtrOutput{})
 }

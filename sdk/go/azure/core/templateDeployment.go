@@ -213,16 +213,31 @@ type TemplateDeploymentInput interface {
 	ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput
 }
 
-func (TemplateDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateDeployment)(nil)).Elem()
+func (*TemplateDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateDeployment)(nil))
 }
 
-func (i TemplateDeployment) ToTemplateDeploymentOutput() TemplateDeploymentOutput {
+func (i *TemplateDeployment) ToTemplateDeploymentOutput() TemplateDeploymentOutput {
 	return i.ToTemplateDeploymentOutputWithContext(context.Background())
 }
 
-func (i TemplateDeployment) ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput {
+func (i *TemplateDeployment) ToTemplateDeploymentOutputWithContext(ctx context.Context) TemplateDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateDeploymentOutput)
+}
+
+func (i *TemplateDeployment) ToTemplateDeploymentPtrOutput() TemplateDeploymentPtrOutput {
+	return i.ToTemplateDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *TemplateDeployment) ToTemplateDeploymentPtrOutputWithContext(ctx context.Context) TemplateDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateDeploymentPtrOutput)
+}
+
+type TemplateDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToTemplateDeploymentPtrOutput() TemplateDeploymentPtrOutput
+	ToTemplateDeploymentPtrOutputWithContext(ctx context.Context) TemplateDeploymentPtrOutput
 }
 
 type TemplateDeploymentOutput struct {
@@ -230,7 +245,7 @@ type TemplateDeploymentOutput struct {
 }
 
 func (TemplateDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateDeploymentOutput)(nil)).Elem()
+	return reflect.TypeOf((*TemplateDeployment)(nil))
 }
 
 func (o TemplateDeploymentOutput) ToTemplateDeploymentOutput() TemplateDeploymentOutput {
@@ -241,6 +256,23 @@ func (o TemplateDeploymentOutput) ToTemplateDeploymentOutputWithContext(ctx cont
 	return o
 }
 
+type TemplateDeploymentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TemplateDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateDeployment)(nil))
+}
+
+func (o TemplateDeploymentPtrOutput) ToTemplateDeploymentPtrOutput() TemplateDeploymentPtrOutput {
+	return o
+}
+
+func (o TemplateDeploymentPtrOutput) ToTemplateDeploymentPtrOutputWithContext(ctx context.Context) TemplateDeploymentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TemplateDeploymentOutput{})
+	pulumi.RegisterOutputType(TemplateDeploymentPtrOutput{})
 }

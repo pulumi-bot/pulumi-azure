@@ -249,16 +249,31 @@ type CustomDomainInput interface {
 	ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput
 }
 
-func (CustomDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomain)(nil)).Elem()
+func (*CustomDomain) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomain)(nil))
 }
 
-func (i CustomDomain) ToCustomDomainOutput() CustomDomainOutput {
+func (i *CustomDomain) ToCustomDomainOutput() CustomDomainOutput {
 	return i.ToCustomDomainOutputWithContext(context.Background())
 }
 
-func (i CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
+func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
+}
+
+func (i *CustomDomain) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return i.ToCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *CustomDomain) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainPtrOutput)
+}
+
+type CustomDomainPtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainPtrOutput() CustomDomainPtrOutput
+	ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput
 }
 
 type CustomDomainOutput struct {
@@ -266,7 +281,7 @@ type CustomDomainOutput struct {
 }
 
 func (CustomDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomDomain)(nil))
 }
 
 func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {
@@ -277,6 +292,23 @@ func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
+type CustomDomainPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomain)(nil))
+}
+
+func (o CustomDomainPtrOutput) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return o
+}
+
+func (o CustomDomainPtrOutput) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomDomainOutput{})
+	pulumi.RegisterOutputType(CustomDomainPtrOutput{})
 }

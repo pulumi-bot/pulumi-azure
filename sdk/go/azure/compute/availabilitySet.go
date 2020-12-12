@@ -198,16 +198,31 @@ type AvailabilitySetInput interface {
 	ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput
 }
 
-func (AvailabilitySet) ElementType() reflect.Type {
-	return reflect.TypeOf((*AvailabilitySet)(nil)).Elem()
+func (*AvailabilitySet) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySet)(nil))
 }
 
-func (i AvailabilitySet) ToAvailabilitySetOutput() AvailabilitySetOutput {
+func (i *AvailabilitySet) ToAvailabilitySetOutput() AvailabilitySetOutput {
 	return i.ToAvailabilitySetOutputWithContext(context.Background())
 }
 
-func (i AvailabilitySet) ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput {
+func (i *AvailabilitySet) ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetOutput)
+}
+
+func (i *AvailabilitySet) ToAvailabilitySetPtrOutput() AvailabilitySetPtrOutput {
+	return i.ToAvailabilitySetPtrOutputWithContext(context.Background())
+}
+
+func (i *AvailabilitySet) ToAvailabilitySetPtrOutputWithContext(ctx context.Context) AvailabilitySetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetPtrOutput)
+}
+
+type AvailabilitySetPtrInput interface {
+	pulumi.Input
+
+	ToAvailabilitySetPtrOutput() AvailabilitySetPtrOutput
+	ToAvailabilitySetPtrOutputWithContext(ctx context.Context) AvailabilitySetPtrOutput
 }
 
 type AvailabilitySetOutput struct {
@@ -215,7 +230,7 @@ type AvailabilitySetOutput struct {
 }
 
 func (AvailabilitySetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AvailabilitySetOutput)(nil)).Elem()
+	return reflect.TypeOf((*AvailabilitySet)(nil))
 }
 
 func (o AvailabilitySetOutput) ToAvailabilitySetOutput() AvailabilitySetOutput {
@@ -226,6 +241,23 @@ func (o AvailabilitySetOutput) ToAvailabilitySetOutputWithContext(ctx context.Co
 	return o
 }
 
+type AvailabilitySetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AvailabilitySetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilitySet)(nil))
+}
+
+func (o AvailabilitySetPtrOutput) ToAvailabilitySetPtrOutput() AvailabilitySetPtrOutput {
+	return o
+}
+
+func (o AvailabilitySetPtrOutput) ToAvailabilitySetPtrOutputWithContext(ctx context.Context) AvailabilitySetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AvailabilitySetOutput{})
+	pulumi.RegisterOutputType(AvailabilitySetPtrOutput{})
 }

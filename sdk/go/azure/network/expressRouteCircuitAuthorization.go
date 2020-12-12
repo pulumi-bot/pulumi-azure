@@ -188,16 +188,31 @@ type ExpressRouteCircuitAuthorizationInput interface {
 	ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput
 }
 
-func (ExpressRouteCircuitAuthorization) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil)).Elem()
+func (*ExpressRouteCircuitAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil))
 }
 
-func (i ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
+func (i *ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
 	return i.ToExpressRouteCircuitAuthorizationOutputWithContext(context.Background())
 }
 
-func (i ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
+func (i *ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationOutput)
+}
+
+func (i *ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationPtrOutput() ExpressRouteCircuitAuthorizationPtrOutput {
+	return i.ToExpressRouteCircuitAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *ExpressRouteCircuitAuthorization) ToExpressRouteCircuitAuthorizationPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationPtrOutput)
+}
+
+type ExpressRouteCircuitAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToExpressRouteCircuitAuthorizationPtrOutput() ExpressRouteCircuitAuthorizationPtrOutput
+	ToExpressRouteCircuitAuthorizationPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationPtrOutput
 }
 
 type ExpressRouteCircuitAuthorizationOutput struct {
@@ -205,7 +220,7 @@ type ExpressRouteCircuitAuthorizationOutput struct {
 }
 
 func (ExpressRouteCircuitAuthorizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressRouteCircuitAuthorizationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExpressRouteCircuitAuthorization)(nil))
 }
 
 func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutput() ExpressRouteCircuitAuthorizationOutput {
@@ -216,6 +231,23 @@ func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizati
 	return o
 }
 
+type ExpressRouteCircuitAuthorizationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExpressRouteCircuitAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressRouteCircuitAuthorization)(nil))
+}
+
+func (o ExpressRouteCircuitAuthorizationPtrOutput) ToExpressRouteCircuitAuthorizationPtrOutput() ExpressRouteCircuitAuthorizationPtrOutput {
+	return o
+}
+
+func (o ExpressRouteCircuitAuthorizationPtrOutput) ToExpressRouteCircuitAuthorizationPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationOutput{})
+	pulumi.RegisterOutputType(ExpressRouteCircuitAuthorizationPtrOutput{})
 }

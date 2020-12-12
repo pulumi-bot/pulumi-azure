@@ -333,16 +333,31 @@ type KeyVaultInput interface {
 	ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput
 }
 
-func (KeyVault) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVault)(nil)).Elem()
+func (*KeyVault) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVault)(nil))
 }
 
-func (i KeyVault) ToKeyVaultOutput() KeyVaultOutput {
+func (i *KeyVault) ToKeyVaultOutput() KeyVaultOutput {
 	return i.ToKeyVaultOutputWithContext(context.Background())
 }
 
-func (i KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
+func (i *KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultOutput)
+}
+
+func (i *KeyVault) ToKeyVaultPtrOutput() KeyVaultPtrOutput {
+	return i.ToKeyVaultPtrOutputWithContext(context.Background())
+}
+
+func (i *KeyVault) ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPtrOutput)
+}
+
+type KeyVaultPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultPtrOutput() KeyVaultPtrOutput
+	ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput
 }
 
 type KeyVaultOutput struct {
@@ -350,7 +365,7 @@ type KeyVaultOutput struct {
 }
 
 func (KeyVaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyVault)(nil))
 }
 
 func (o KeyVaultOutput) ToKeyVaultOutput() KeyVaultOutput {
@@ -361,6 +376,23 @@ func (o KeyVaultOutput) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaul
 	return o
 }
 
+type KeyVaultPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyVaultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVault)(nil))
+}
+
+func (o KeyVaultPtrOutput) ToKeyVaultPtrOutput() KeyVaultPtrOutput {
+	return o
+}
+
+func (o KeyVaultPtrOutput) ToKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyVaultOutput{})
+	pulumi.RegisterOutputType(KeyVaultPtrOutput{})
 }

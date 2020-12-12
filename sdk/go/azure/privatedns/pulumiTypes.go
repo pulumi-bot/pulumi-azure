@@ -544,7 +544,7 @@ func (i ZoneSoaRecordArgs) ToZoneSoaRecordPtrOutput() ZoneSoaRecordPtrOutput {
 }
 
 func (i ZoneSoaRecordArgs) ToZoneSoaRecordPtrOutputWithContext(ctx context.Context) ZoneSoaRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSoaRecordOutput).ToZoneSoaRecordPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSoaRecordOutput).ToZoneSoaRecordPtrOutput()
 }
 
 // ZoneSoaRecordPtrInput is an input type that accepts ZoneSoaRecordArgs, ZoneSoaRecordPtr and ZoneSoaRecordPtrOutput values.
@@ -577,7 +577,7 @@ func (i *zoneSoaRecordPtrType) ToZoneSoaRecordPtrOutput() ZoneSoaRecordPtrOutput
 }
 
 func (i *zoneSoaRecordPtrType) ToZoneSoaRecordPtrOutputWithContext(ctx context.Context) ZoneSoaRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSoaRecordPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSoaRecordOutput).ToZoneSoaRecordPtrOutput()
 }
 
 type ZoneSoaRecordOutput struct{ *pulumi.OutputState }

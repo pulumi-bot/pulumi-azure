@@ -199,16 +199,31 @@ type ActionHttpInput interface {
 	ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput
 }
 
-func (ActionHttp) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionHttp)(nil)).Elem()
+func (*ActionHttp) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionHttp)(nil))
 }
 
-func (i ActionHttp) ToActionHttpOutput() ActionHttpOutput {
+func (i *ActionHttp) ToActionHttpOutput() ActionHttpOutput {
 	return i.ToActionHttpOutputWithContext(context.Background())
 }
 
-func (i ActionHttp) ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput {
+func (i *ActionHttp) ToActionHttpOutputWithContext(ctx context.Context) ActionHttpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionHttpOutput)
+}
+
+func (i *ActionHttp) ToActionHttpPtrOutput() ActionHttpPtrOutput {
+	return i.ToActionHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *ActionHttp) ToActionHttpPtrOutputWithContext(ctx context.Context) ActionHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionHttpPtrOutput)
+}
+
+type ActionHttpPtrInput interface {
+	pulumi.Input
+
+	ToActionHttpPtrOutput() ActionHttpPtrOutput
+	ToActionHttpPtrOutputWithContext(ctx context.Context) ActionHttpPtrOutput
 }
 
 type ActionHttpOutput struct {
@@ -216,7 +231,7 @@ type ActionHttpOutput struct {
 }
 
 func (ActionHttpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionHttpOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActionHttp)(nil))
 }
 
 func (o ActionHttpOutput) ToActionHttpOutput() ActionHttpOutput {
@@ -227,6 +242,23 @@ func (o ActionHttpOutput) ToActionHttpOutputWithContext(ctx context.Context) Act
 	return o
 }
 
+type ActionHttpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionHttp)(nil))
+}
+
+func (o ActionHttpPtrOutput) ToActionHttpPtrOutput() ActionHttpPtrOutput {
+	return o
+}
+
+func (o ActionHttpPtrOutput) ToActionHttpPtrOutputWithContext(ctx context.Context) ActionHttpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionHttpOutput{})
+	pulumi.RegisterOutputType(ActionHttpPtrOutput{})
 }

@@ -175,16 +175,31 @@ type ContainerStorageAccountInput interface {
 	ToContainerStorageAccountOutputWithContext(ctx context.Context) ContainerStorageAccountOutput
 }
 
-func (ContainerStorageAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerStorageAccount)(nil)).Elem()
+func (*ContainerStorageAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerStorageAccount)(nil))
 }
 
-func (i ContainerStorageAccount) ToContainerStorageAccountOutput() ContainerStorageAccountOutput {
+func (i *ContainerStorageAccount) ToContainerStorageAccountOutput() ContainerStorageAccountOutput {
 	return i.ToContainerStorageAccountOutputWithContext(context.Background())
 }
 
-func (i ContainerStorageAccount) ToContainerStorageAccountOutputWithContext(ctx context.Context) ContainerStorageAccountOutput {
+func (i *ContainerStorageAccount) ToContainerStorageAccountOutputWithContext(ctx context.Context) ContainerStorageAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerStorageAccountOutput)
+}
+
+func (i *ContainerStorageAccount) ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput {
+	return i.ToContainerStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerStorageAccount) ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerStorageAccountPtrOutput)
+}
+
+type ContainerStorageAccountPtrInput interface {
+	pulumi.Input
+
+	ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput
+	ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput
 }
 
 type ContainerStorageAccountOutput struct {
@@ -192,7 +207,7 @@ type ContainerStorageAccountOutput struct {
 }
 
 func (ContainerStorageAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerStorageAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContainerStorageAccount)(nil))
 }
 
 func (o ContainerStorageAccountOutput) ToContainerStorageAccountOutput() ContainerStorageAccountOutput {
@@ -203,6 +218,23 @@ func (o ContainerStorageAccountOutput) ToContainerStorageAccountOutputWithContex
 	return o
 }
 
+type ContainerStorageAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerStorageAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerStorageAccount)(nil))
+}
+
+func (o ContainerStorageAccountPtrOutput) ToContainerStorageAccountPtrOutput() ContainerStorageAccountPtrOutput {
+	return o
+}
+
+func (o ContainerStorageAccountPtrOutput) ToContainerStorageAccountPtrOutputWithContext(ctx context.Context) ContainerStorageAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerStorageAccountOutput{})
+	pulumi.RegisterOutputType(ContainerStorageAccountPtrOutput{})
 }

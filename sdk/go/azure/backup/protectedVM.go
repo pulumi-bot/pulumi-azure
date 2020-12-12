@@ -198,16 +198,31 @@ type ProtectedVMInput interface {
 	ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput
 }
 
-func (ProtectedVM) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProtectedVM)(nil)).Elem()
+func (*ProtectedVM) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedVM)(nil))
 }
 
-func (i ProtectedVM) ToProtectedVMOutput() ProtectedVMOutput {
+func (i *ProtectedVM) ToProtectedVMOutput() ProtectedVMOutput {
 	return i.ToProtectedVMOutputWithContext(context.Background())
 }
 
-func (i ProtectedVM) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
+func (i *ProtectedVM) ToProtectedVMOutputWithContext(ctx context.Context) ProtectedVMOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectedVMOutput)
+}
+
+func (i *ProtectedVM) ToProtectedVMPtrOutput() ProtectedVMPtrOutput {
+	return i.ToProtectedVMPtrOutputWithContext(context.Background())
+}
+
+func (i *ProtectedVM) ToProtectedVMPtrOutputWithContext(ctx context.Context) ProtectedVMPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedVMPtrOutput)
+}
+
+type ProtectedVMPtrInput interface {
+	pulumi.Input
+
+	ToProtectedVMPtrOutput() ProtectedVMPtrOutput
+	ToProtectedVMPtrOutputWithContext(ctx context.Context) ProtectedVMPtrOutput
 }
 
 type ProtectedVMOutput struct {
@@ -215,7 +230,7 @@ type ProtectedVMOutput struct {
 }
 
 func (ProtectedVMOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProtectedVMOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProtectedVM)(nil))
 }
 
 func (o ProtectedVMOutput) ToProtectedVMOutput() ProtectedVMOutput {
@@ -226,6 +241,23 @@ func (o ProtectedVMOutput) ToProtectedVMOutputWithContext(ctx context.Context) P
 	return o
 }
 
+type ProtectedVMPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProtectedVMPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectedVM)(nil))
+}
+
+func (o ProtectedVMPtrOutput) ToProtectedVMPtrOutput() ProtectedVMPtrOutput {
+	return o
+}
+
+func (o ProtectedVMPtrOutput) ToProtectedVMPtrOutputWithContext(ctx context.Context) ProtectedVMPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProtectedVMOutput{})
+	pulumi.RegisterOutputType(ProtectedVMPtrOutput{})
 }

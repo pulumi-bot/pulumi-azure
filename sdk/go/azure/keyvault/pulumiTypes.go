@@ -52,7 +52,7 @@ func (i CertifiateCertificateArgs) ToCertifiateCertificatePtrOutput() Certifiate
 }
 
 func (i CertifiateCertificateArgs) ToCertifiateCertificatePtrOutputWithContext(ctx context.Context) CertifiateCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificateOutput).ToCertifiateCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificateOutput).ToCertifiateCertificatePtrOutput()
 }
 
 // CertifiateCertificatePtrInput is an input type that accepts CertifiateCertificateArgs, CertifiateCertificatePtr and CertifiateCertificatePtrOutput values.
@@ -85,7 +85,7 @@ func (i *certifiateCertificatePtrType) ToCertifiateCertificatePtrOutput() Certif
 }
 
 func (i *certifiateCertificatePtrType) ToCertifiateCertificatePtrOutputWithContext(ctx context.Context) CertifiateCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificateOutput).ToCertifiateCertificatePtrOutput()
 }
 
 type CertifiateCertificateOutput struct{ *pulumi.OutputState }
@@ -356,7 +356,7 @@ func (i CertifiateCertificatePolicyArgs) ToCertifiateCertificatePolicyPtrOutput(
 }
 
 func (i CertifiateCertificatePolicyArgs) ToCertifiateCertificatePolicyPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyOutput).ToCertifiateCertificatePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyOutput).ToCertifiateCertificatePolicyPtrOutput()
 }
 
 // CertifiateCertificatePolicyPtrInput is an input type that accepts CertifiateCertificatePolicyArgs, CertifiateCertificatePolicyPtr and CertifiateCertificatePolicyPtrOutput values.
@@ -389,7 +389,7 @@ func (i *certifiateCertificatePolicyPtrType) ToCertifiateCertificatePolicyPtrOut
 }
 
 func (i *certifiateCertificatePolicyPtrType) ToCertifiateCertificatePolicyPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyOutput).ToCertifiateCertificatePolicyPtrOutput()
 }
 
 type CertifiateCertificatePolicyOutput struct{ *pulumi.OutputState }
@@ -555,7 +555,7 @@ func (i CertifiateCertificatePolicyIssuerParametersArgs) ToCertifiateCertificate
 }
 
 func (i CertifiateCertificatePolicyIssuerParametersArgs) ToCertifiateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyIssuerParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyIssuerParametersOutput).ToCertifiateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyIssuerParametersOutput).ToCertifiateCertificatePolicyIssuerParametersPtrOutput()
 }
 
 // CertifiateCertificatePolicyIssuerParametersPtrInput is an input type that accepts CertifiateCertificatePolicyIssuerParametersArgs, CertifiateCertificatePolicyIssuerParametersPtr and CertifiateCertificatePolicyIssuerParametersPtrOutput values.
@@ -588,7 +588,7 @@ func (i *certifiateCertificatePolicyIssuerParametersPtrType) ToCertifiateCertifi
 }
 
 func (i *certifiateCertificatePolicyIssuerParametersPtrType) ToCertifiateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyIssuerParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyIssuerParametersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyIssuerParametersOutput).ToCertifiateCertificatePolicyIssuerParametersPtrOutput()
 }
 
 type CertifiateCertificatePolicyIssuerParametersOutput struct{ *pulumi.OutputState }
@@ -700,7 +700,7 @@ func (i CertifiateCertificatePolicyKeyPropertiesArgs) ToCertifiateCertificatePol
 }
 
 func (i CertifiateCertificatePolicyKeyPropertiesArgs) ToCertifiateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyKeyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyKeyPropertiesOutput).ToCertifiateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyKeyPropertiesOutput).ToCertifiateCertificatePolicyKeyPropertiesPtrOutput()
 }
 
 // CertifiateCertificatePolicyKeyPropertiesPtrInput is an input type that accepts CertifiateCertificatePolicyKeyPropertiesArgs, CertifiateCertificatePolicyKeyPropertiesPtr and CertifiateCertificatePolicyKeyPropertiesPtrOutput values.
@@ -733,7 +733,7 @@ func (i *certifiateCertificatePolicyKeyPropertiesPtrType) ToCertifiateCertificat
 }
 
 func (i *certifiateCertificatePolicyKeyPropertiesPtrType) ToCertifiateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyKeyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyKeyPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyKeyPropertiesOutput).ToCertifiateCertificatePolicyKeyPropertiesPtrOutput()
 }
 
 type CertifiateCertificatePolicyKeyPropertiesOutput struct{ *pulumi.OutputState }
@@ -1099,7 +1099,7 @@ func (i CertifiateCertificatePolicySecretPropertiesArgs) ToCertifiateCertificate
 }
 
 func (i CertifiateCertificatePolicySecretPropertiesArgs) ToCertifiateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicySecretPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicySecretPropertiesOutput).ToCertifiateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicySecretPropertiesOutput).ToCertifiateCertificatePolicySecretPropertiesPtrOutput()
 }
 
 // CertifiateCertificatePolicySecretPropertiesPtrInput is an input type that accepts CertifiateCertificatePolicySecretPropertiesArgs, CertifiateCertificatePolicySecretPropertiesPtr and CertifiateCertificatePolicySecretPropertiesPtrOutput values.
@@ -1132,7 +1132,7 @@ func (i *certifiateCertificatePolicySecretPropertiesPtrType) ToCertifiateCertifi
 }
 
 func (i *certifiateCertificatePolicySecretPropertiesPtrType) ToCertifiateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicySecretPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicySecretPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicySecretPropertiesOutput).ToCertifiateCertificatePolicySecretPropertiesPtrOutput()
 }
 
 type CertifiateCertificatePolicySecretPropertiesOutput struct{ *pulumi.OutputState }
@@ -1248,7 +1248,7 @@ func (i CertifiateCertificatePolicyX509CertificatePropertiesArgs) ToCertifiateCe
 }
 
 func (i CertifiateCertificatePolicyX509CertificatePropertiesArgs) ToCertifiateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyX509CertificatePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesPtrOutput()
 }
 
 // CertifiateCertificatePolicyX509CertificatePropertiesPtrInput is an input type that accepts CertifiateCertificatePolicyX509CertificatePropertiesArgs, CertifiateCertificatePolicyX509CertificatePropertiesPtr and CertifiateCertificatePolicyX509CertificatePropertiesPtrOutput values.
@@ -1281,7 +1281,7 @@ func (i *certifiateCertificatePolicyX509CertificatePropertiesPtrType) ToCertifia
 }
 
 func (i *certifiateCertificatePolicyX509CertificatePropertiesPtrType) ToCertifiateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyX509CertificatePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesPtrOutput()
 }
 
 type CertifiateCertificatePolicyX509CertificatePropertiesOutput struct{ *pulumi.OutputState }
@@ -1451,7 +1451,7 @@ func (i CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNa
 }
 
 func (i CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs) ToCertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput()
 }
 
 // CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrInput is an input type that accepts CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs, CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtr and CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput values.
@@ -1484,7 +1484,7 @@ func (i *certifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeN
 }
 
 func (i *certifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrType) ToCertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx context.Context) CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput()
 }
 
 type CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput struct{ *pulumi.OutputState }
@@ -1624,7 +1624,7 @@ func (i CertificateCertificateArgs) ToCertificateCertificatePtrOutput() Certific
 }
 
 func (i CertificateCertificateArgs) ToCertificateCertificatePtrOutputWithContext(ctx context.Context) CertificateCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateOutput).ToCertificateCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateOutput).ToCertificateCertificatePtrOutput()
 }
 
 // CertificateCertificatePtrInput is an input type that accepts CertificateCertificateArgs, CertificateCertificatePtr and CertificateCertificatePtrOutput values.
@@ -1657,7 +1657,7 @@ func (i *certificateCertificatePtrType) ToCertificateCertificatePtrOutput() Cert
 }
 
 func (i *certificateCertificatePtrType) ToCertificateCertificatePtrOutputWithContext(ctx context.Context) CertificateCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateOutput).ToCertificateCertificatePtrOutput()
 }
 
 type CertificateCertificateOutput struct{ *pulumi.OutputState }
@@ -1928,7 +1928,7 @@ func (i CertificateCertificatePolicyArgs) ToCertificateCertificatePolicyPtrOutpu
 }
 
 func (i CertificateCertificatePolicyArgs) ToCertificateCertificatePolicyPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyOutput).ToCertificateCertificatePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyOutput).ToCertificateCertificatePolicyPtrOutput()
 }
 
 // CertificateCertificatePolicyPtrInput is an input type that accepts CertificateCertificatePolicyArgs, CertificateCertificatePolicyPtr and CertificateCertificatePolicyPtrOutput values.
@@ -1961,7 +1961,7 @@ func (i *certificateCertificatePolicyPtrType) ToCertificateCertificatePolicyPtrO
 }
 
 func (i *certificateCertificatePolicyPtrType) ToCertificateCertificatePolicyPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyOutput).ToCertificateCertificatePolicyPtrOutput()
 }
 
 type CertificateCertificatePolicyOutput struct{ *pulumi.OutputState }
@@ -2127,7 +2127,7 @@ func (i CertificateCertificatePolicyIssuerParametersArgs) ToCertificateCertifica
 }
 
 func (i CertificateCertificatePolicyIssuerParametersArgs) ToCertificateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyIssuerParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyIssuerParametersOutput).ToCertificateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyIssuerParametersOutput).ToCertificateCertificatePolicyIssuerParametersPtrOutput()
 }
 
 // CertificateCertificatePolicyIssuerParametersPtrInput is an input type that accepts CertificateCertificatePolicyIssuerParametersArgs, CertificateCertificatePolicyIssuerParametersPtr and CertificateCertificatePolicyIssuerParametersPtrOutput values.
@@ -2160,7 +2160,7 @@ func (i *certificateCertificatePolicyIssuerParametersPtrType) ToCertificateCerti
 }
 
 func (i *certificateCertificatePolicyIssuerParametersPtrType) ToCertificateCertificatePolicyIssuerParametersPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyIssuerParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyIssuerParametersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyIssuerParametersOutput).ToCertificateCertificatePolicyIssuerParametersPtrOutput()
 }
 
 type CertificateCertificatePolicyIssuerParametersOutput struct{ *pulumi.OutputState }
@@ -2272,7 +2272,7 @@ func (i CertificateCertificatePolicyKeyPropertiesArgs) ToCertificateCertificateP
 }
 
 func (i CertificateCertificatePolicyKeyPropertiesArgs) ToCertificateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyKeyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyKeyPropertiesOutput).ToCertificateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyKeyPropertiesOutput).ToCertificateCertificatePolicyKeyPropertiesPtrOutput()
 }
 
 // CertificateCertificatePolicyKeyPropertiesPtrInput is an input type that accepts CertificateCertificatePolicyKeyPropertiesArgs, CertificateCertificatePolicyKeyPropertiesPtr and CertificateCertificatePolicyKeyPropertiesPtrOutput values.
@@ -2305,7 +2305,7 @@ func (i *certificateCertificatePolicyKeyPropertiesPtrType) ToCertificateCertific
 }
 
 func (i *certificateCertificatePolicyKeyPropertiesPtrType) ToCertificateCertificatePolicyKeyPropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyKeyPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyKeyPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyKeyPropertiesOutput).ToCertificateCertificatePolicyKeyPropertiesPtrOutput()
 }
 
 type CertificateCertificatePolicyKeyPropertiesOutput struct{ *pulumi.OutputState }
@@ -2673,7 +2673,7 @@ func (i CertificateCertificatePolicySecretPropertiesArgs) ToCertificateCertifica
 }
 
 func (i CertificateCertificatePolicySecretPropertiesArgs) ToCertificateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicySecretPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicySecretPropertiesOutput).ToCertificateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicySecretPropertiesOutput).ToCertificateCertificatePolicySecretPropertiesPtrOutput()
 }
 
 // CertificateCertificatePolicySecretPropertiesPtrInput is an input type that accepts CertificateCertificatePolicySecretPropertiesArgs, CertificateCertificatePolicySecretPropertiesPtr and CertificateCertificatePolicySecretPropertiesPtrOutput values.
@@ -2706,7 +2706,7 @@ func (i *certificateCertificatePolicySecretPropertiesPtrType) ToCertificateCerti
 }
 
 func (i *certificateCertificatePolicySecretPropertiesPtrType) ToCertificateCertificatePolicySecretPropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicySecretPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicySecretPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicySecretPropertiesOutput).ToCertificateCertificatePolicySecretPropertiesPtrOutput()
 }
 
 type CertificateCertificatePolicySecretPropertiesOutput struct{ *pulumi.OutputState }
@@ -2822,7 +2822,7 @@ func (i CertificateCertificatePolicyX509CertificatePropertiesArgs) ToCertificate
 }
 
 func (i CertificateCertificatePolicyX509CertificatePropertiesArgs) ToCertificateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyX509CertificatePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesPtrOutput()
 }
 
 // CertificateCertificatePolicyX509CertificatePropertiesPtrInput is an input type that accepts CertificateCertificatePolicyX509CertificatePropertiesArgs, CertificateCertificatePolicyX509CertificatePropertiesPtr and CertificateCertificatePolicyX509CertificatePropertiesPtrOutput values.
@@ -2855,7 +2855,7 @@ func (i *certificateCertificatePolicyX509CertificatePropertiesPtrType) ToCertifi
 }
 
 func (i *certificateCertificatePolicyX509CertificatePropertiesPtrType) ToCertificateCertificatePolicyX509CertificatePropertiesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyX509CertificatePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesPtrOutput()
 }
 
 type CertificateCertificatePolicyX509CertificatePropertiesOutput struct{ *pulumi.OutputState }
@@ -3025,7 +3025,7 @@ func (i CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeN
 }
 
 func (i CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs) ToCertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput()
 }
 
 // CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrInput is an input type that accepts CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs, CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtr and CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput values.
@@ -3058,7 +3058,7 @@ func (i *certificateCertificatePolicyX509CertificatePropertiesSubjectAlternative
 }
 
 func (i *certificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrType) ToCertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutputWithContext(ctx context.Context) CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput).ToCertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesPtrOutput()
 }
 
 type CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesOutput struct{ *pulumi.OutputState }
@@ -3596,7 +3596,7 @@ func (i KeyVaultNetworkAclsArgs) ToKeyVaultNetworkAclsPtrOutput() KeyVaultNetwor
 }
 
 func (i KeyVaultNetworkAclsArgs) ToKeyVaultNetworkAclsPtrOutputWithContext(ctx context.Context) KeyVaultNetworkAclsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultNetworkAclsOutput).ToKeyVaultNetworkAclsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultNetworkAclsOutput).ToKeyVaultNetworkAclsPtrOutput()
 }
 
 // KeyVaultNetworkAclsPtrInput is an input type that accepts KeyVaultNetworkAclsArgs, KeyVaultNetworkAclsPtr and KeyVaultNetworkAclsPtrOutput values.
@@ -3629,7 +3629,7 @@ func (i *keyVaultNetworkAclsPtrType) ToKeyVaultNetworkAclsPtrOutput() KeyVaultNe
 }
 
 func (i *keyVaultNetworkAclsPtrType) ToKeyVaultNetworkAclsPtrOutputWithContext(ctx context.Context) KeyVaultNetworkAclsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultNetworkAclsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultNetworkAclsOutput).ToKeyVaultNetworkAclsPtrOutput()
 }
 
 type KeyVaultNetworkAclsOutput struct{ *pulumi.OutputState }

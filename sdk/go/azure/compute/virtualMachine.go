@@ -441,16 +441,31 @@ type VirtualMachineInput interface {
 	ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput
 }
 
-func (VirtualMachine) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+func (*VirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil))
 }
 
-func (i VirtualMachine) ToVirtualMachineOutput() VirtualMachineOutput {
+func (i *VirtualMachine) ToVirtualMachineOutput() VirtualMachineOutput {
 	return i.ToVirtualMachineOutputWithContext(context.Background())
 }
 
-func (i VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+func (i *VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput)
+}
+
+func (i *VirtualMachine) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return i.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualMachine) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePtrOutput)
+}
+
+type VirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePtrOutput() VirtualMachinePtrOutput
+	ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput
 }
 
 type VirtualMachineOutput struct {
@@ -458,7 +473,7 @@ type VirtualMachineOutput struct {
 }
 
 func (VirtualMachineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualMachine)(nil))
 }
 
 func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
@@ -469,6 +484,23 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 	return o
 }
 
+type VirtualMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine)(nil))
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return o
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualMachineOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePtrOutput{})
 }

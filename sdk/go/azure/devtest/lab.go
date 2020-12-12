@@ -204,16 +204,31 @@ type LabInput interface {
 	ToLabOutputWithContext(ctx context.Context) LabOutput
 }
 
-func (Lab) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lab)(nil)).Elem()
+func (*Lab) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lab)(nil))
 }
 
-func (i Lab) ToLabOutput() LabOutput {
+func (i *Lab) ToLabOutput() LabOutput {
 	return i.ToLabOutputWithContext(context.Background())
 }
 
-func (i Lab) ToLabOutputWithContext(ctx context.Context) LabOutput {
+func (i *Lab) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabOutput)
+}
+
+func (i *Lab) ToLabPtrOutput() LabPtrOutput {
+	return i.ToLabPtrOutputWithContext(context.Background())
+}
+
+func (i *Lab) ToLabPtrOutputWithContext(ctx context.Context) LabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabPtrOutput)
+}
+
+type LabPtrInput interface {
+	pulumi.Input
+
+	ToLabPtrOutput() LabPtrOutput
+	ToLabPtrOutputWithContext(ctx context.Context) LabPtrOutput
 }
 
 type LabOutput struct {
@@ -221,7 +236,7 @@ type LabOutput struct {
 }
 
 func (LabOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LabOutput)(nil)).Elem()
+	return reflect.TypeOf((*Lab)(nil))
 }
 
 func (o LabOutput) ToLabOutput() LabOutput {
@@ -232,6 +247,23 @@ func (o LabOutput) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return o
 }
 
+type LabPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lab)(nil))
+}
+
+func (o LabPtrOutput) ToLabPtrOutput() LabPtrOutput {
+	return o
+}
+
+func (o LabPtrOutput) ToLabPtrOutputWithContext(ctx context.Context) LabPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LabOutput{})
+	pulumi.RegisterOutputType(LabPtrOutput{})
 }

@@ -117,16 +117,31 @@ type AssignmentVirtualMachineInput interface {
 	ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput
 }
 
-func (AssignmentVirtualMachine) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssignmentVirtualMachine)(nil)).Elem()
+func (*AssignmentVirtualMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentVirtualMachine)(nil))
 }
 
-func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
+func (i *AssignmentVirtualMachine) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
 	return i.ToAssignmentVirtualMachineOutputWithContext(context.Background())
 }
 
-func (i AssignmentVirtualMachine) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
+func (i *AssignmentVirtualMachine) ToAssignmentVirtualMachineOutputWithContext(ctx context.Context) AssignmentVirtualMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachineOutput)
+}
+
+func (i *AssignmentVirtualMachine) ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput {
+	return i.ToAssignmentVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *AssignmentVirtualMachine) ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentVirtualMachinePtrOutput)
+}
+
+type AssignmentVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput
+	ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput
 }
 
 type AssignmentVirtualMachineOutput struct {
@@ -134,7 +149,7 @@ type AssignmentVirtualMachineOutput struct {
 }
 
 func (AssignmentVirtualMachineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssignmentVirtualMachineOutput)(nil)).Elem()
+	return reflect.TypeOf((*AssignmentVirtualMachine)(nil))
 }
 
 func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutput() AssignmentVirtualMachineOutput {
@@ -145,6 +160,23 @@ func (o AssignmentVirtualMachineOutput) ToAssignmentVirtualMachineOutputWithCont
 	return o
 }
 
+type AssignmentVirtualMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssignmentVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentVirtualMachine)(nil))
+}
+
+func (o AssignmentVirtualMachinePtrOutput) ToAssignmentVirtualMachinePtrOutput() AssignmentVirtualMachinePtrOutput {
+	return o
+}
+
+func (o AssignmentVirtualMachinePtrOutput) ToAssignmentVirtualMachinePtrOutputWithContext(ctx context.Context) AssignmentVirtualMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssignmentVirtualMachineOutput{})
+	pulumi.RegisterOutputType(AssignmentVirtualMachinePtrOutput{})
 }

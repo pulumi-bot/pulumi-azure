@@ -133,16 +133,31 @@ type DscNodeConfigurationInput interface {
 	ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput
 }
 
-func (DscNodeConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscNodeConfiguration)(nil)).Elem()
+func (*DscNodeConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*DscNodeConfiguration)(nil))
 }
 
-func (i DscNodeConfiguration) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {
+func (i *DscNodeConfiguration) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {
 	return i.ToDscNodeConfigurationOutputWithContext(context.Background())
 }
 
-func (i DscNodeConfiguration) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
+func (i *DscNodeConfiguration) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DscNodeConfigurationOutput)
+}
+
+func (i *DscNodeConfiguration) ToDscNodeConfigurationPtrOutput() DscNodeConfigurationPtrOutput {
+	return i.ToDscNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *DscNodeConfiguration) ToDscNodeConfigurationPtrOutputWithContext(ctx context.Context) DscNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DscNodeConfigurationPtrOutput)
+}
+
+type DscNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDscNodeConfigurationPtrOutput() DscNodeConfigurationPtrOutput
+	ToDscNodeConfigurationPtrOutputWithContext(ctx context.Context) DscNodeConfigurationPtrOutput
 }
 
 type DscNodeConfigurationOutput struct {
@@ -150,7 +165,7 @@ type DscNodeConfigurationOutput struct {
 }
 
 func (DscNodeConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscNodeConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*DscNodeConfiguration)(nil))
 }
 
 func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutput() DscNodeConfigurationOutput {
@@ -161,6 +176,23 @@ func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutputWithContext(ctx 
 	return o
 }
 
+type DscNodeConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DscNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DscNodeConfiguration)(nil))
+}
+
+func (o DscNodeConfigurationPtrOutput) ToDscNodeConfigurationPtrOutput() DscNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o DscNodeConfigurationPtrOutput) ToDscNodeConfigurationPtrOutputWithContext(ctx context.Context) DscNodeConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DscNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(DscNodeConfigurationPtrOutput{})
 }

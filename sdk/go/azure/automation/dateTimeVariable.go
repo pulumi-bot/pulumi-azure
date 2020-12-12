@@ -147,16 +147,31 @@ type DateTimeVariableInput interface {
 	ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput
 }
 
-func (DateTimeVariable) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateTimeVariable)(nil)).Elem()
+func (*DateTimeVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateTimeVariable)(nil))
 }
 
-func (i DateTimeVariable) ToDateTimeVariableOutput() DateTimeVariableOutput {
+func (i *DateTimeVariable) ToDateTimeVariableOutput() DateTimeVariableOutput {
 	return i.ToDateTimeVariableOutputWithContext(context.Background())
 }
 
-func (i DateTimeVariable) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
+func (i *DateTimeVariable) ToDateTimeVariableOutputWithContext(ctx context.Context) DateTimeVariableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DateTimeVariableOutput)
+}
+
+func (i *DateTimeVariable) ToDateTimeVariablePtrOutput() DateTimeVariablePtrOutput {
+	return i.ToDateTimeVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *DateTimeVariable) ToDateTimeVariablePtrOutputWithContext(ctx context.Context) DateTimeVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateTimeVariablePtrOutput)
+}
+
+type DateTimeVariablePtrInput interface {
+	pulumi.Input
+
+	ToDateTimeVariablePtrOutput() DateTimeVariablePtrOutput
+	ToDateTimeVariablePtrOutputWithContext(ctx context.Context) DateTimeVariablePtrOutput
 }
 
 type DateTimeVariableOutput struct {
@@ -164,7 +179,7 @@ type DateTimeVariableOutput struct {
 }
 
 func (DateTimeVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DateTimeVariableOutput)(nil)).Elem()
+	return reflect.TypeOf((*DateTimeVariable)(nil))
 }
 
 func (o DateTimeVariableOutput) ToDateTimeVariableOutput() DateTimeVariableOutput {
@@ -175,6 +190,23 @@ func (o DateTimeVariableOutput) ToDateTimeVariableOutputWithContext(ctx context.
 	return o
 }
 
+type DateTimeVariablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DateTimeVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateTimeVariable)(nil))
+}
+
+func (o DateTimeVariablePtrOutput) ToDateTimeVariablePtrOutput() DateTimeVariablePtrOutput {
+	return o
+}
+
+func (o DateTimeVariablePtrOutput) ToDateTimeVariablePtrOutputWithContext(ctx context.Context) DateTimeVariablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DateTimeVariableOutput{})
+	pulumi.RegisterOutputType(DateTimeVariablePtrOutput{})
 }

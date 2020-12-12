@@ -291,16 +291,31 @@ type EventHubNamespaceInput interface {
 	ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput
 }
 
-func (EventHubNamespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubNamespace)(nil)).Elem()
+func (*EventHubNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubNamespace)(nil))
 }
 
-func (i EventHubNamespace) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
+func (i *EventHubNamespace) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
 	return i.ToEventHubNamespaceOutputWithContext(context.Background())
 }
 
-func (i EventHubNamespace) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
+func (i *EventHubNamespace) ToEventHubNamespaceOutputWithContext(ctx context.Context) EventHubNamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespaceOutput)
+}
+
+func (i *EventHubNamespace) ToEventHubNamespacePtrOutput() EventHubNamespacePtrOutput {
+	return i.ToEventHubNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *EventHubNamespace) ToEventHubNamespacePtrOutputWithContext(ctx context.Context) EventHubNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubNamespacePtrOutput)
+}
+
+type EventHubNamespacePtrInput interface {
+	pulumi.Input
+
+	ToEventHubNamespacePtrOutput() EventHubNamespacePtrOutput
+	ToEventHubNamespacePtrOutputWithContext(ctx context.Context) EventHubNamespacePtrOutput
 }
 
 type EventHubNamespaceOutput struct {
@@ -308,7 +323,7 @@ type EventHubNamespaceOutput struct {
 }
 
 func (EventHubNamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubNamespaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventHubNamespace)(nil))
 }
 
 func (o EventHubNamespaceOutput) ToEventHubNamespaceOutput() EventHubNamespaceOutput {
@@ -319,6 +334,23 @@ func (o EventHubNamespaceOutput) ToEventHubNamespaceOutputWithContext(ctx contex
 	return o
 }
 
+type EventHubNamespacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubNamespace)(nil))
+}
+
+func (o EventHubNamespacePtrOutput) ToEventHubNamespacePtrOutput() EventHubNamespacePtrOutput {
+	return o
+}
+
+func (o EventHubNamespacePtrOutput) ToEventHubNamespacePtrOutputWithContext(ctx context.Context) EventHubNamespacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventHubNamespaceOutput{})
+	pulumi.RegisterOutputType(EventHubNamespacePtrOutput{})
 }

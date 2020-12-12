@@ -199,16 +199,31 @@ type RoleDefinitionInput interface {
 	ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput
 }
 
-func (RoleDefinition) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleDefinition)(nil)).Elem()
+func (*RoleDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleDefinition)(nil))
 }
 
-func (i RoleDefinition) ToRoleDefinitionOutput() RoleDefinitionOutput {
+func (i *RoleDefinition) ToRoleDefinitionOutput() RoleDefinitionOutput {
 	return i.ToRoleDefinitionOutputWithContext(context.Background())
 }
 
-func (i RoleDefinition) ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput {
+func (i *RoleDefinition) ToRoleDefinitionOutputWithContext(ctx context.Context) RoleDefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleDefinitionOutput)
+}
+
+func (i *RoleDefinition) ToRoleDefinitionPtrOutput() RoleDefinitionPtrOutput {
+	return i.ToRoleDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *RoleDefinition) ToRoleDefinitionPtrOutputWithContext(ctx context.Context) RoleDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleDefinitionPtrOutput)
+}
+
+type RoleDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToRoleDefinitionPtrOutput() RoleDefinitionPtrOutput
+	ToRoleDefinitionPtrOutputWithContext(ctx context.Context) RoleDefinitionPtrOutput
 }
 
 type RoleDefinitionOutput struct {
@@ -216,7 +231,7 @@ type RoleDefinitionOutput struct {
 }
 
 func (RoleDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleDefinitionOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleDefinition)(nil))
 }
 
 func (o RoleDefinitionOutput) ToRoleDefinitionOutput() RoleDefinitionOutput {
@@ -227,6 +242,23 @@ func (o RoleDefinitionOutput) ToRoleDefinitionOutputWithContext(ctx context.Cont
 	return o
 }
 
+type RoleDefinitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleDefinition)(nil))
+}
+
+func (o RoleDefinitionPtrOutput) ToRoleDefinitionPtrOutput() RoleDefinitionPtrOutput {
+	return o
+}
+
+func (o RoleDefinitionPtrOutput) ToRoleDefinitionPtrOutputWithContext(ctx context.Context) RoleDefinitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleDefinitionOutput{})
+	pulumi.RegisterOutputType(RoleDefinitionPtrOutput{})
 }

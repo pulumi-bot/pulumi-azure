@@ -245,16 +245,31 @@ type LinkedServiceWebInput interface {
 	ToLinkedServiceWebOutputWithContext(ctx context.Context) LinkedServiceWebOutput
 }
 
-func (LinkedServiceWeb) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceWeb)(nil)).Elem()
+func (*LinkedServiceWeb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceWeb)(nil))
 }
 
-func (i LinkedServiceWeb) ToLinkedServiceWebOutput() LinkedServiceWebOutput {
+func (i *LinkedServiceWeb) ToLinkedServiceWebOutput() LinkedServiceWebOutput {
 	return i.ToLinkedServiceWebOutputWithContext(context.Background())
 }
 
-func (i LinkedServiceWeb) ToLinkedServiceWebOutputWithContext(ctx context.Context) LinkedServiceWebOutput {
+func (i *LinkedServiceWeb) ToLinkedServiceWebOutputWithContext(ctx context.Context) LinkedServiceWebOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceWebOutput)
+}
+
+func (i *LinkedServiceWeb) ToLinkedServiceWebPtrOutput() LinkedServiceWebPtrOutput {
+	return i.ToLinkedServiceWebPtrOutputWithContext(context.Background())
+}
+
+func (i *LinkedServiceWeb) ToLinkedServiceWebPtrOutputWithContext(ctx context.Context) LinkedServiceWebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceWebPtrOutput)
+}
+
+type LinkedServiceWebPtrInput interface {
+	pulumi.Input
+
+	ToLinkedServiceWebPtrOutput() LinkedServiceWebPtrOutput
+	ToLinkedServiceWebPtrOutputWithContext(ctx context.Context) LinkedServiceWebPtrOutput
 }
 
 type LinkedServiceWebOutput struct {
@@ -262,7 +277,7 @@ type LinkedServiceWebOutput struct {
 }
 
 func (LinkedServiceWebOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceWebOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkedServiceWeb)(nil))
 }
 
 func (o LinkedServiceWebOutput) ToLinkedServiceWebOutput() LinkedServiceWebOutput {
@@ -273,6 +288,23 @@ func (o LinkedServiceWebOutput) ToLinkedServiceWebOutputWithContext(ctx context.
 	return o
 }
 
+type LinkedServiceWebPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkedServiceWebPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedServiceWeb)(nil))
+}
+
+func (o LinkedServiceWebPtrOutput) ToLinkedServiceWebPtrOutput() LinkedServiceWebPtrOutput {
+	return o
+}
+
+func (o LinkedServiceWebPtrOutput) ToLinkedServiceWebPtrOutputWithContext(ctx context.Context) LinkedServiceWebPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkedServiceWebOutput{})
+	pulumi.RegisterOutputType(LinkedServiceWebPtrOutput{})
 }

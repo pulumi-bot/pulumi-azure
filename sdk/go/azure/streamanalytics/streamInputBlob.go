@@ -273,16 +273,31 @@ type StreamInputBlobInput interface {
 	ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput
 }
 
-func (StreamInputBlob) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamInputBlob)(nil)).Elem()
+func (*StreamInputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamInputBlob)(nil))
 }
 
-func (i StreamInputBlob) ToStreamInputBlobOutput() StreamInputBlobOutput {
+func (i *StreamInputBlob) ToStreamInputBlobOutput() StreamInputBlobOutput {
 	return i.ToStreamInputBlobOutputWithContext(context.Background())
 }
 
-func (i StreamInputBlob) ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput {
+func (i *StreamInputBlob) ToStreamInputBlobOutputWithContext(ctx context.Context) StreamInputBlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobOutput)
+}
+
+func (i *StreamInputBlob) ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput {
+	return i.ToStreamInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *StreamInputBlob) ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamInputBlobPtrOutput)
+}
+
+type StreamInputBlobPtrInput interface {
+	pulumi.Input
+
+	ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput
+	ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput
 }
 
 type StreamInputBlobOutput struct {
@@ -290,7 +305,7 @@ type StreamInputBlobOutput struct {
 }
 
 func (StreamInputBlobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamInputBlobOutput)(nil)).Elem()
+	return reflect.TypeOf((*StreamInputBlob)(nil))
 }
 
 func (o StreamInputBlobOutput) ToStreamInputBlobOutput() StreamInputBlobOutput {
@@ -301,6 +316,23 @@ func (o StreamInputBlobOutput) ToStreamInputBlobOutputWithContext(ctx context.Co
 	return o
 }
 
+type StreamInputBlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamInputBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamInputBlob)(nil))
+}
+
+func (o StreamInputBlobPtrOutput) ToStreamInputBlobPtrOutput() StreamInputBlobPtrOutput {
+	return o
+}
+
+func (o StreamInputBlobPtrOutput) ToStreamInputBlobPtrOutputWithContext(ctx context.Context) StreamInputBlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StreamInputBlobOutput{})
+	pulumi.RegisterOutputType(StreamInputBlobPtrOutput{})
 }

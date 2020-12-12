@@ -242,16 +242,31 @@ type ServerSecurityAlertPolicyInput interface {
 	ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput
 }
 
-func (ServerSecurityAlertPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil)).Elem()
+func (*ServerSecurityAlertPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil))
 }
 
-func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
+func (i *ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
 	return i.ToServerSecurityAlertPolicyOutputWithContext(context.Background())
 }
 
-func (i ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
+func (i *ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyOutput)
+}
+
+func (i *ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput {
+	return i.ToServerSecurityAlertPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyPtrOutput)
+}
+
+type ServerSecurityAlertPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput
+	ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput
 }
 
 type ServerSecurityAlertPolicyOutput struct {
@@ -259,7 +274,7 @@ type ServerSecurityAlertPolicyOutput struct {
 }
 
 func (ServerSecurityAlertPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerSecurityAlertPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerSecurityAlertPolicy)(nil))
 }
 
 func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutput() ServerSecurityAlertPolicyOutput {
@@ -270,6 +285,23 @@ func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutputWithCo
 	return o
 }
 
+type ServerSecurityAlertPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerSecurityAlertPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerSecurityAlertPolicy)(nil))
+}
+
+func (o ServerSecurityAlertPolicyPtrOutput) ToServerSecurityAlertPolicyPtrOutput() ServerSecurityAlertPolicyPtrOutput {
+	return o
+}
+
+func (o ServerSecurityAlertPolicyPtrOutput) ToServerSecurityAlertPolicyPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerSecurityAlertPolicyOutput{})
+	pulumi.RegisterOutputType(ServerSecurityAlertPolicyPtrOutput{})
 }

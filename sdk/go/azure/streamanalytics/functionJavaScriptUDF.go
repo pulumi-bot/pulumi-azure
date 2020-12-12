@@ -205,16 +205,31 @@ type FunctionJavaScriptUDFInput interface {
 	ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput
 }
 
-func (FunctionJavaScriptUDF) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil)).Elem()
+func (*FunctionJavaScriptUDF) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
 	return i.ToFunctionJavaScriptUDFOutputWithContext(context.Background())
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutput)
+}
+
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return i.ToFunctionJavaScriptUDFPtrOutputWithContext(context.Background())
+}
+
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFPtrOutput)
+}
+
+type FunctionJavaScriptUDFPtrInput interface {
+	pulumi.Input
+
+	ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput
+	ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput
 }
 
 type FunctionJavaScriptUDFOutput struct {
@@ -222,7 +237,7 @@ type FunctionJavaScriptUDFOutput struct {
 }
 
 func (FunctionJavaScriptUDFOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDFOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
 func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
@@ -233,6 +248,23 @@ func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutputWithContext(ct
 	return o
 }
 
+type FunctionJavaScriptUDFPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionJavaScriptUDFPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionJavaScriptUDF)(nil))
+}
+
+func (o FunctionJavaScriptUDFPtrOutput) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFPtrOutput) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionJavaScriptUDFOutput{})
+	pulumi.RegisterOutputType(FunctionJavaScriptUDFPtrOutput{})
 }

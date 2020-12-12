@@ -151,16 +151,31 @@ type AgreementInput interface {
 	ToAgreementOutputWithContext(ctx context.Context) AgreementOutput
 }
 
-func (Agreement) ElementType() reflect.Type {
-	return reflect.TypeOf((*Agreement)(nil)).Elem()
+func (*Agreement) ElementType() reflect.Type {
+	return reflect.TypeOf((*Agreement)(nil))
 }
 
-func (i Agreement) ToAgreementOutput() AgreementOutput {
+func (i *Agreement) ToAgreementOutput() AgreementOutput {
 	return i.ToAgreementOutputWithContext(context.Background())
 }
 
-func (i Agreement) ToAgreementOutputWithContext(ctx context.Context) AgreementOutput {
+func (i *Agreement) ToAgreementOutputWithContext(ctx context.Context) AgreementOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgreementOutput)
+}
+
+func (i *Agreement) ToAgreementPtrOutput() AgreementPtrOutput {
+	return i.ToAgreementPtrOutputWithContext(context.Background())
+}
+
+func (i *Agreement) ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgreementPtrOutput)
+}
+
+type AgreementPtrInput interface {
+	pulumi.Input
+
+	ToAgreementPtrOutput() AgreementPtrOutput
+	ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput
 }
 
 type AgreementOutput struct {
@@ -168,7 +183,7 @@ type AgreementOutput struct {
 }
 
 func (AgreementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgreementOutput)(nil)).Elem()
+	return reflect.TypeOf((*Agreement)(nil))
 }
 
 func (o AgreementOutput) ToAgreementOutput() AgreementOutput {
@@ -179,6 +194,23 @@ func (o AgreementOutput) ToAgreementOutputWithContext(ctx context.Context) Agree
 	return o
 }
 
+type AgreementPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgreementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Agreement)(nil))
+}
+
+func (o AgreementPtrOutput) ToAgreementPtrOutput() AgreementPtrOutput {
+	return o
+}
+
+func (o AgreementPtrOutput) ToAgreementPtrOutputWithContext(ctx context.Context) AgreementPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AgreementOutput{})
+	pulumi.RegisterOutputType(AgreementPtrOutput{})
 }

@@ -153,7 +153,7 @@ func (i AccountConsistencyPolicyArgs) ToAccountConsistencyPolicyPtrOutput() Acco
 }
 
 func (i AccountConsistencyPolicyArgs) ToAccountConsistencyPolicyPtrOutputWithContext(ctx context.Context) AccountConsistencyPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountConsistencyPolicyOutput).ToAccountConsistencyPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConsistencyPolicyOutput).ToAccountConsistencyPolicyPtrOutput()
 }
 
 // AccountConsistencyPolicyPtrInput is an input type that accepts AccountConsistencyPolicyArgs, AccountConsistencyPolicyPtr and AccountConsistencyPolicyPtrOutput values.
@@ -186,7 +186,7 @@ func (i *accountConsistencyPolicyPtrType) ToAccountConsistencyPolicyPtrOutput() 
 }
 
 func (i *accountConsistencyPolicyPtrType) ToAccountConsistencyPolicyPtrOutputWithContext(ctx context.Context) AccountConsistencyPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountConsistencyPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConsistencyPolicyOutput).ToAccountConsistencyPolicyPtrOutput()
 }
 
 type AccountConsistencyPolicyOutput struct{ *pulumi.OutputState }
@@ -559,7 +559,7 @@ func (i CassandraKeyspaceAutoscaleSettingsArgs) ToCassandraKeyspaceAutoscaleSett
 }
 
 func (i CassandraKeyspaceAutoscaleSettingsArgs) ToCassandraKeyspaceAutoscaleSettingsPtrOutputWithContext(ctx context.Context) CassandraKeyspaceAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceAutoscaleSettingsOutput).ToCassandraKeyspaceAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceAutoscaleSettingsOutput).ToCassandraKeyspaceAutoscaleSettingsPtrOutput()
 }
 
 // CassandraKeyspaceAutoscaleSettingsPtrInput is an input type that accepts CassandraKeyspaceAutoscaleSettingsArgs, CassandraKeyspaceAutoscaleSettingsPtr and CassandraKeyspaceAutoscaleSettingsPtrOutput values.
@@ -592,7 +592,7 @@ func (i *cassandraKeyspaceAutoscaleSettingsPtrType) ToCassandraKeyspaceAutoscale
 }
 
 func (i *cassandraKeyspaceAutoscaleSettingsPtrType) ToCassandraKeyspaceAutoscaleSettingsPtrOutputWithContext(ctx context.Context) CassandraKeyspaceAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CassandraKeyspaceAutoscaleSettingsOutput).ToCassandraKeyspaceAutoscaleSettingsPtrOutput()
 }
 
 type CassandraKeyspaceAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -690,7 +690,7 @@ func (i GremlinDatabaseAutoscaleSettingsArgs) ToGremlinDatabaseAutoscaleSettings
 }
 
 func (i GremlinDatabaseAutoscaleSettingsArgs) ToGremlinDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) GremlinDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseAutoscaleSettingsOutput).ToGremlinDatabaseAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseAutoscaleSettingsOutput).ToGremlinDatabaseAutoscaleSettingsPtrOutput()
 }
 
 // GremlinDatabaseAutoscaleSettingsPtrInput is an input type that accepts GremlinDatabaseAutoscaleSettingsArgs, GremlinDatabaseAutoscaleSettingsPtr and GremlinDatabaseAutoscaleSettingsPtrOutput values.
@@ -723,7 +723,7 @@ func (i *gremlinDatabaseAutoscaleSettingsPtrType) ToGremlinDatabaseAutoscaleSett
 }
 
 func (i *gremlinDatabaseAutoscaleSettingsPtrType) ToGremlinDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) GremlinDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinDatabaseAutoscaleSettingsOutput).ToGremlinDatabaseAutoscaleSettingsPtrOutput()
 }
 
 type GremlinDatabaseAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -821,7 +821,7 @@ func (i GremlinGraphAutoscaleSettingsArgs) ToGremlinGraphAutoscaleSettingsPtrOut
 }
 
 func (i GremlinGraphAutoscaleSettingsArgs) ToGremlinGraphAutoscaleSettingsPtrOutputWithContext(ctx context.Context) GremlinGraphAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphAutoscaleSettingsOutput).ToGremlinGraphAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphAutoscaleSettingsOutput).ToGremlinGraphAutoscaleSettingsPtrOutput()
 }
 
 // GremlinGraphAutoscaleSettingsPtrInput is an input type that accepts GremlinGraphAutoscaleSettingsArgs, GremlinGraphAutoscaleSettingsPtr and GremlinGraphAutoscaleSettingsPtrOutput values.
@@ -854,7 +854,7 @@ func (i *gremlinGraphAutoscaleSettingsPtrType) ToGremlinGraphAutoscaleSettingsPt
 }
 
 func (i *gremlinGraphAutoscaleSettingsPtrType) ToGremlinGraphAutoscaleSettingsPtrOutputWithContext(ctx context.Context) GremlinGraphAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GremlinGraphAutoscaleSettingsOutput).ToGremlinGraphAutoscaleSettingsPtrOutput()
 }
 
 type GremlinGraphAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -1288,7 +1288,7 @@ func (i MongoCollectionAutoscaleSettingsArgs) ToMongoCollectionAutoscaleSettings
 }
 
 func (i MongoCollectionAutoscaleSettingsArgs) ToMongoCollectionAutoscaleSettingsPtrOutputWithContext(ctx context.Context) MongoCollectionAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionAutoscaleSettingsOutput).ToMongoCollectionAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionAutoscaleSettingsOutput).ToMongoCollectionAutoscaleSettingsPtrOutput()
 }
 
 // MongoCollectionAutoscaleSettingsPtrInput is an input type that accepts MongoCollectionAutoscaleSettingsArgs, MongoCollectionAutoscaleSettingsPtr and MongoCollectionAutoscaleSettingsPtrOutput values.
@@ -1321,7 +1321,7 @@ func (i *mongoCollectionAutoscaleSettingsPtrType) ToMongoCollectionAutoscaleSett
 }
 
 func (i *mongoCollectionAutoscaleSettingsPtrType) ToMongoCollectionAutoscaleSettingsPtrOutputWithContext(ctx context.Context) MongoCollectionAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MongoCollectionAutoscaleSettingsOutput).ToMongoCollectionAutoscaleSettingsPtrOutput()
 }
 
 type MongoCollectionAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -1631,7 +1631,7 @@ func (i MongoDatabaseAutoscaleSettingsArgs) ToMongoDatabaseAutoscaleSettingsPtrO
 }
 
 func (i MongoDatabaseAutoscaleSettingsArgs) ToMongoDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) MongoDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseAutoscaleSettingsOutput).ToMongoDatabaseAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseAutoscaleSettingsOutput).ToMongoDatabaseAutoscaleSettingsPtrOutput()
 }
 
 // MongoDatabaseAutoscaleSettingsPtrInput is an input type that accepts MongoDatabaseAutoscaleSettingsArgs, MongoDatabaseAutoscaleSettingsPtr and MongoDatabaseAutoscaleSettingsPtrOutput values.
@@ -1664,7 +1664,7 @@ func (i *mongoDatabaseAutoscaleSettingsPtrType) ToMongoDatabaseAutoscaleSettings
 }
 
 func (i *mongoDatabaseAutoscaleSettingsPtrType) ToMongoDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) MongoDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MongoDatabaseAutoscaleSettingsOutput).ToMongoDatabaseAutoscaleSettingsPtrOutput()
 }
 
 type MongoDatabaseAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -1762,7 +1762,7 @@ func (i SqlContainerAutoscaleSettingsArgs) ToSqlContainerAutoscaleSettingsPtrOut
 }
 
 func (i SqlContainerAutoscaleSettingsArgs) ToSqlContainerAutoscaleSettingsPtrOutputWithContext(ctx context.Context) SqlContainerAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerAutoscaleSettingsOutput).ToSqlContainerAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerAutoscaleSettingsOutput).ToSqlContainerAutoscaleSettingsPtrOutput()
 }
 
 // SqlContainerAutoscaleSettingsPtrInput is an input type that accepts SqlContainerAutoscaleSettingsArgs, SqlContainerAutoscaleSettingsPtr and SqlContainerAutoscaleSettingsPtrOutput values.
@@ -1795,7 +1795,7 @@ func (i *sqlContainerAutoscaleSettingsPtrType) ToSqlContainerAutoscaleSettingsPt
 }
 
 func (i *sqlContainerAutoscaleSettingsPtrType) ToSqlContainerAutoscaleSettingsPtrOutputWithContext(ctx context.Context) SqlContainerAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerAutoscaleSettingsOutput).ToSqlContainerAutoscaleSettingsPtrOutput()
 }
 
 type SqlContainerAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -1905,7 +1905,7 @@ func (i SqlContainerIndexingPolicyArgs) ToSqlContainerIndexingPolicyPtrOutput() 
 }
 
 func (i SqlContainerIndexingPolicyArgs) ToSqlContainerIndexingPolicyPtrOutputWithContext(ctx context.Context) SqlContainerIndexingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerIndexingPolicyOutput).ToSqlContainerIndexingPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerIndexingPolicyOutput).ToSqlContainerIndexingPolicyPtrOutput()
 }
 
 // SqlContainerIndexingPolicyPtrInput is an input type that accepts SqlContainerIndexingPolicyArgs, SqlContainerIndexingPolicyPtr and SqlContainerIndexingPolicyPtrOutput values.
@@ -1938,7 +1938,7 @@ func (i *sqlContainerIndexingPolicyPtrType) ToSqlContainerIndexingPolicyPtrOutpu
 }
 
 func (i *sqlContainerIndexingPolicyPtrType) ToSqlContainerIndexingPolicyPtrOutputWithContext(ctx context.Context) SqlContainerIndexingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerIndexingPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlContainerIndexingPolicyOutput).ToSqlContainerIndexingPolicyPtrOutput()
 }
 
 type SqlContainerIndexingPolicyOutput struct{ *pulumi.OutputState }
@@ -2579,7 +2579,7 @@ func (i SqlDatabaseAutoscaleSettingsArgs) ToSqlDatabaseAutoscaleSettingsPtrOutpu
 }
 
 func (i SqlDatabaseAutoscaleSettingsArgs) ToSqlDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseAutoscaleSettingsOutput).ToSqlDatabaseAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseAutoscaleSettingsOutput).ToSqlDatabaseAutoscaleSettingsPtrOutput()
 }
 
 // SqlDatabaseAutoscaleSettingsPtrInput is an input type that accepts SqlDatabaseAutoscaleSettingsArgs, SqlDatabaseAutoscaleSettingsPtr and SqlDatabaseAutoscaleSettingsPtrOutput values.
@@ -2612,7 +2612,7 @@ func (i *sqlDatabaseAutoscaleSettingsPtrType) ToSqlDatabaseAutoscaleSettingsPtrO
 }
 
 func (i *sqlDatabaseAutoscaleSettingsPtrType) ToSqlDatabaseAutoscaleSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseAutoscaleSettingsOutput).ToSqlDatabaseAutoscaleSettingsPtrOutput()
 }
 
 type SqlDatabaseAutoscaleSettingsOutput struct{ *pulumi.OutputState }
@@ -2710,7 +2710,7 @@ func (i TableAutoscaleSettingsArgs) ToTableAutoscaleSettingsPtrOutput() TableAut
 }
 
 func (i TableAutoscaleSettingsArgs) ToTableAutoscaleSettingsPtrOutputWithContext(ctx context.Context) TableAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableAutoscaleSettingsOutput).ToTableAutoscaleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TableAutoscaleSettingsOutput).ToTableAutoscaleSettingsPtrOutput()
 }
 
 // TableAutoscaleSettingsPtrInput is an input type that accepts TableAutoscaleSettingsArgs, TableAutoscaleSettingsPtr and TableAutoscaleSettingsPtrOutput values.
@@ -2743,7 +2743,7 @@ func (i *tableAutoscaleSettingsPtrType) ToTableAutoscaleSettingsPtrOutput() Tabl
 }
 
 func (i *tableAutoscaleSettingsPtrType) ToTableAutoscaleSettingsPtrOutputWithContext(ctx context.Context) TableAutoscaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableAutoscaleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TableAutoscaleSettingsOutput).ToTableAutoscaleSettingsPtrOutput()
 }
 
 type TableAutoscaleSettingsOutput struct{ *pulumi.OutputState }

@@ -259,16 +259,31 @@ type ApplicationGroupInput interface {
 	ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput
 }
 
-func (ApplicationGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationGroup)(nil)).Elem()
+func (*ApplicationGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationGroup)(nil))
 }
 
-func (i ApplicationGroup) ToApplicationGroupOutput() ApplicationGroupOutput {
+func (i *ApplicationGroup) ToApplicationGroupOutput() ApplicationGroupOutput {
 	return i.ToApplicationGroupOutputWithContext(context.Background())
 }
 
-func (i ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
+func (i *ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGroupOutput)
+}
+
+func (i *ApplicationGroup) ToApplicationGroupPtrOutput() ApplicationGroupPtrOutput {
+	return i.ToApplicationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationGroup) ToApplicationGroupPtrOutputWithContext(ctx context.Context) ApplicationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGroupPtrOutput)
+}
+
+type ApplicationGroupPtrInput interface {
+	pulumi.Input
+
+	ToApplicationGroupPtrOutput() ApplicationGroupPtrOutput
+	ToApplicationGroupPtrOutputWithContext(ctx context.Context) ApplicationGroupPtrOutput
 }
 
 type ApplicationGroupOutput struct {
@@ -276,7 +291,7 @@ type ApplicationGroupOutput struct {
 }
 
 func (ApplicationGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationGroup)(nil))
 }
 
 func (o ApplicationGroupOutput) ToApplicationGroupOutput() ApplicationGroupOutput {
@@ -287,6 +302,23 @@ func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.
 	return o
 }
 
+type ApplicationGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationGroup)(nil))
+}
+
+func (o ApplicationGroupPtrOutput) ToApplicationGroupPtrOutput() ApplicationGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationGroupPtrOutput) ToApplicationGroupPtrOutputWithContext(ctx context.Context) ApplicationGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationGroupOutput{})
+	pulumi.RegisterOutputType(ApplicationGroupPtrOutput{})
 }

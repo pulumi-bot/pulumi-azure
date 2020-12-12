@@ -280,16 +280,31 @@ type SparkPoolInput interface {
 	ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput
 }
 
-func (SparkPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkPool)(nil)).Elem()
+func (*SparkPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkPool)(nil))
 }
 
-func (i SparkPool) ToSparkPoolOutput() SparkPoolOutput {
+func (i *SparkPool) ToSparkPoolOutput() SparkPoolOutput {
 	return i.ToSparkPoolOutputWithContext(context.Background())
 }
 
-func (i SparkPool) ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput {
+func (i *SparkPool) ToSparkPoolOutputWithContext(ctx context.Context) SparkPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolOutput)
+}
+
+func (i *SparkPool) ToSparkPoolPtrOutput() SparkPoolPtrOutput {
+	return i.ToSparkPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *SparkPool) ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkPoolPtrOutput)
+}
+
+type SparkPoolPtrInput interface {
+	pulumi.Input
+
+	ToSparkPoolPtrOutput() SparkPoolPtrOutput
+	ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput
 }
 
 type SparkPoolOutput struct {
@@ -297,7 +312,7 @@ type SparkPoolOutput struct {
 }
 
 func (SparkPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*SparkPool)(nil))
 }
 
 func (o SparkPoolOutput) ToSparkPoolOutput() SparkPoolOutput {
@@ -308,6 +323,23 @@ func (o SparkPoolOutput) ToSparkPoolOutputWithContext(ctx context.Context) Spark
 	return o
 }
 
+type SparkPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SparkPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkPool)(nil))
+}
+
+func (o SparkPoolPtrOutput) ToSparkPoolPtrOutput() SparkPoolPtrOutput {
+	return o
+}
+
+func (o SparkPoolPtrOutput) ToSparkPoolPtrOutputWithContext(ctx context.Context) SparkPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SparkPoolOutput{})
+	pulumi.RegisterOutputType(SparkPoolPtrOutput{})
 }

@@ -262,16 +262,31 @@ type SqlServerInput interface {
 	ToSqlServerOutputWithContext(ctx context.Context) SqlServerOutput
 }
 
-func (SqlServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlServer)(nil)).Elem()
+func (*SqlServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServer)(nil))
 }
 
-func (i SqlServer) ToSqlServerOutput() SqlServerOutput {
+func (i *SqlServer) ToSqlServerOutput() SqlServerOutput {
 	return i.ToSqlServerOutputWithContext(context.Background())
 }
 
-func (i SqlServer) ToSqlServerOutputWithContext(ctx context.Context) SqlServerOutput {
+func (i *SqlServer) ToSqlServerOutputWithContext(ctx context.Context) SqlServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlServerOutput)
+}
+
+func (i *SqlServer) ToSqlServerPtrOutput() SqlServerPtrOutput {
+	return i.ToSqlServerPtrOutputWithContext(context.Background())
+}
+
+func (i *SqlServer) ToSqlServerPtrOutputWithContext(ctx context.Context) SqlServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerPtrOutput)
+}
+
+type SqlServerPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerPtrOutput() SqlServerPtrOutput
+	ToSqlServerPtrOutputWithContext(ctx context.Context) SqlServerPtrOutput
 }
 
 type SqlServerOutput struct {
@@ -279,7 +294,7 @@ type SqlServerOutput struct {
 }
 
 func (SqlServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*SqlServer)(nil))
 }
 
 func (o SqlServerOutput) ToSqlServerOutput() SqlServerOutput {
@@ -290,6 +305,23 @@ func (o SqlServerOutput) ToSqlServerOutputWithContext(ctx context.Context) SqlSe
 	return o
 }
 
+type SqlServerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SqlServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServer)(nil))
+}
+
+func (o SqlServerPtrOutput) ToSqlServerPtrOutput() SqlServerPtrOutput {
+	return o
+}
+
+func (o SqlServerPtrOutput) ToSqlServerPtrOutputWithContext(ctx context.Context) SqlServerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SqlServerOutput{})
+	pulumi.RegisterOutputType(SqlServerPtrOutput{})
 }

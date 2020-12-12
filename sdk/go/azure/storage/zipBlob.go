@@ -150,16 +150,31 @@ type ZipBlobInput interface {
 	ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput
 }
 
-func (ZipBlob) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZipBlob)(nil)).Elem()
+func (*ZipBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZipBlob)(nil))
 }
 
-func (i ZipBlob) ToZipBlobOutput() ZipBlobOutput {
+func (i *ZipBlob) ToZipBlobOutput() ZipBlobOutput {
 	return i.ToZipBlobOutputWithContext(context.Background())
 }
 
-func (i ZipBlob) ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput {
+func (i *ZipBlob) ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZipBlobOutput)
+}
+
+func (i *ZipBlob) ToZipBlobPtrOutput() ZipBlobPtrOutput {
+	return i.ToZipBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *ZipBlob) ToZipBlobPtrOutputWithContext(ctx context.Context) ZipBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZipBlobPtrOutput)
+}
+
+type ZipBlobPtrInput interface {
+	pulumi.Input
+
+	ToZipBlobPtrOutput() ZipBlobPtrOutput
+	ToZipBlobPtrOutputWithContext(ctx context.Context) ZipBlobPtrOutput
 }
 
 type ZipBlobOutput struct {
@@ -167,7 +182,7 @@ type ZipBlobOutput struct {
 }
 
 func (ZipBlobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZipBlobOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZipBlob)(nil))
 }
 
 func (o ZipBlobOutput) ToZipBlobOutput() ZipBlobOutput {
@@ -178,6 +193,23 @@ func (o ZipBlobOutput) ToZipBlobOutputWithContext(ctx context.Context) ZipBlobOu
 	return o
 }
 
+type ZipBlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZipBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZipBlob)(nil))
+}
+
+func (o ZipBlobPtrOutput) ToZipBlobPtrOutput() ZipBlobPtrOutput {
+	return o
+}
+
+func (o ZipBlobPtrOutput) ToZipBlobPtrOutputWithContext(ctx context.Context) ZipBlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZipBlobOutput{})
+	pulumi.RegisterOutputType(ZipBlobPtrOutput{})
 }

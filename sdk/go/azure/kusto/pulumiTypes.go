@@ -60,7 +60,7 @@ func (i ClusterIdentityArgs) ToClusterIdentityPtrOutput() ClusterIdentityPtrOutp
 }
 
 func (i ClusterIdentityArgs) ToClusterIdentityPtrOutputWithContext(ctx context.Context) ClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutput()
 }
 
 // ClusterIdentityPtrInput is an input type that accepts ClusterIdentityArgs, ClusterIdentityPtr and ClusterIdentityPtrOutput values.
@@ -93,7 +93,7 @@ func (i *clusterIdentityPtrType) ToClusterIdentityPtrOutput() ClusterIdentityPtr
 }
 
 func (i *clusterIdentityPtrType) ToClusterIdentityPtrOutputWithContext(ctx context.Context) ClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutput()
 }
 
 type ClusterIdentityOutput struct{ *pulumi.OutputState }
@@ -240,7 +240,7 @@ func (i ClusterOptimizedAutoScaleArgs) ToClusterOptimizedAutoScalePtrOutput() Cl
 }
 
 func (i ClusterOptimizedAutoScaleArgs) ToClusterOptimizedAutoScalePtrOutputWithContext(ctx context.Context) ClusterOptimizedAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOptimizedAutoScaleOutput).ToClusterOptimizedAutoScalePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOptimizedAutoScaleOutput).ToClusterOptimizedAutoScalePtrOutput()
 }
 
 // ClusterOptimizedAutoScalePtrInput is an input type that accepts ClusterOptimizedAutoScaleArgs, ClusterOptimizedAutoScalePtr and ClusterOptimizedAutoScalePtrOutput values.
@@ -273,7 +273,7 @@ func (i *clusterOptimizedAutoScalePtrType) ToClusterOptimizedAutoScalePtrOutput(
 }
 
 func (i *clusterOptimizedAutoScalePtrType) ToClusterOptimizedAutoScalePtrOutputWithContext(ctx context.Context) ClusterOptimizedAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOptimizedAutoScalePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOptimizedAutoScaleOutput).ToClusterOptimizedAutoScalePtrOutput()
 }
 
 type ClusterOptimizedAutoScaleOutput struct{ *pulumi.OutputState }
@@ -390,7 +390,7 @@ func (i ClusterSkuArgs) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 }
 
 func (i ClusterSkuArgs) ToClusterSkuPtrOutputWithContext(ctx context.Context) ClusterSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuOutput).ToClusterSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuOutput).ToClusterSkuPtrOutput()
 }
 
 // ClusterSkuPtrInput is an input type that accepts ClusterSkuArgs, ClusterSkuPtr and ClusterSkuPtrOutput values.
@@ -423,7 +423,7 @@ func (i *clusterSkuPtrType) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 }
 
 func (i *clusterSkuPtrType) ToClusterSkuPtrOutputWithContext(ctx context.Context) ClusterSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuOutput).ToClusterSkuPtrOutput()
 }
 
 type ClusterSkuOutput struct{ *pulumi.OutputState }
@@ -544,7 +544,7 @@ func (i ClusterVirtualNetworkConfigurationArgs) ToClusterVirtualNetworkConfigura
 }
 
 func (i ClusterVirtualNetworkConfigurationArgs) ToClusterVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ClusterVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualNetworkConfigurationOutput).ToClusterVirtualNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualNetworkConfigurationOutput).ToClusterVirtualNetworkConfigurationPtrOutput()
 }
 
 // ClusterVirtualNetworkConfigurationPtrInput is an input type that accepts ClusterVirtualNetworkConfigurationArgs, ClusterVirtualNetworkConfigurationPtr and ClusterVirtualNetworkConfigurationPtrOutput values.
@@ -577,7 +577,7 @@ func (i *clusterVirtualNetworkConfigurationPtrType) ToClusterVirtualNetworkConfi
 }
 
 func (i *clusterVirtualNetworkConfigurationPtrType) ToClusterVirtualNetworkConfigurationPtrOutputWithContext(ctx context.Context) ClusterVirtualNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualNetworkConfigurationOutput).ToClusterVirtualNetworkConfigurationPtrOutput()
 }
 
 type ClusterVirtualNetworkConfigurationOutput struct{ *pulumi.OutputState }

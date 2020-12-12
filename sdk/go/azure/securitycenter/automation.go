@@ -237,16 +237,31 @@ type AutomationInput interface {
 	ToAutomationOutputWithContext(ctx context.Context) AutomationOutput
 }
 
-func (Automation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Automation)(nil)).Elem()
+func (*Automation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Automation)(nil))
 }
 
-func (i Automation) ToAutomationOutput() AutomationOutput {
+func (i *Automation) ToAutomationOutput() AutomationOutput {
 	return i.ToAutomationOutputWithContext(context.Background())
 }
 
-func (i Automation) ToAutomationOutputWithContext(ctx context.Context) AutomationOutput {
+func (i *Automation) ToAutomationOutputWithContext(ctx context.Context) AutomationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationOutput)
+}
+
+func (i *Automation) ToAutomationPtrOutput() AutomationPtrOutput {
+	return i.ToAutomationPtrOutputWithContext(context.Background())
+}
+
+func (i *Automation) ToAutomationPtrOutputWithContext(ctx context.Context) AutomationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationPtrOutput)
+}
+
+type AutomationPtrInput interface {
+	pulumi.Input
+
+	ToAutomationPtrOutput() AutomationPtrOutput
+	ToAutomationPtrOutputWithContext(ctx context.Context) AutomationPtrOutput
 }
 
 type AutomationOutput struct {
@@ -254,7 +269,7 @@ type AutomationOutput struct {
 }
 
 func (AutomationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Automation)(nil))
 }
 
 func (o AutomationOutput) ToAutomationOutput() AutomationOutput {
@@ -265,6 +280,23 @@ func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) Aut
 	return o
 }
 
+type AutomationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutomationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Automation)(nil))
+}
+
+func (o AutomationPtrOutput) ToAutomationPtrOutput() AutomationPtrOutput {
+	return o
+}
+
+func (o AutomationPtrOutput) ToAutomationPtrOutputWithContext(ctx context.Context) AutomationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutomationOutput{})
+	pulumi.RegisterOutputType(AutomationPtrOutput{})
 }

@@ -327,16 +327,31 @@ type MetricAlertInput interface {
 	ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput
 }
 
-func (MetricAlert) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricAlert)(nil)).Elem()
+func (*MetricAlert) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlert)(nil))
 }
 
-func (i MetricAlert) ToMetricAlertOutput() MetricAlertOutput {
+func (i *MetricAlert) ToMetricAlertOutput() MetricAlertOutput {
 	return i.ToMetricAlertOutputWithContext(context.Background())
 }
 
-func (i MetricAlert) ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput {
+func (i *MetricAlert) ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertOutput)
+}
+
+func (i *MetricAlert) ToMetricAlertPtrOutput() MetricAlertPtrOutput {
+	return i.ToMetricAlertPtrOutputWithContext(context.Background())
+}
+
+func (i *MetricAlert) ToMetricAlertPtrOutputWithContext(ctx context.Context) MetricAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertPtrOutput)
+}
+
+type MetricAlertPtrInput interface {
+	pulumi.Input
+
+	ToMetricAlertPtrOutput() MetricAlertPtrOutput
+	ToMetricAlertPtrOutputWithContext(ctx context.Context) MetricAlertPtrOutput
 }
 
 type MetricAlertOutput struct {
@@ -344,7 +359,7 @@ type MetricAlertOutput struct {
 }
 
 func (MetricAlertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricAlertOutput)(nil)).Elem()
+	return reflect.TypeOf((*MetricAlert)(nil))
 }
 
 func (o MetricAlertOutput) ToMetricAlertOutput() MetricAlertOutput {
@@ -355,6 +370,23 @@ func (o MetricAlertOutput) ToMetricAlertOutputWithContext(ctx context.Context) M
 	return o
 }
 
+type MetricAlertPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MetricAlertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricAlert)(nil))
+}
+
+func (o MetricAlertPtrOutput) ToMetricAlertPtrOutput() MetricAlertPtrOutput {
+	return o
+}
+
+func (o MetricAlertPtrOutput) ToMetricAlertPtrOutputWithContext(ctx context.Context) MetricAlertPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MetricAlertOutput{})
+	pulumi.RegisterOutputType(MetricAlertPtrOutput{})
 }

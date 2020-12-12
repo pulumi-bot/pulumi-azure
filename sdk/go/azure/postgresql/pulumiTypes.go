@@ -56,7 +56,7 @@ func (i ServerIdentityArgs) ToServerIdentityPtrOutput() ServerIdentityPtrOutput 
 }
 
 func (i ServerIdentityArgs) ToServerIdentityPtrOutputWithContext(ctx context.Context) ServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutput()
 }
 
 // ServerIdentityPtrInput is an input type that accepts ServerIdentityArgs, ServerIdentityPtr and ServerIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *serverIdentityPtrType) ToServerIdentityPtrOutput() ServerIdentityPtrOut
 }
 
 func (i *serverIdentityPtrType) ToServerIdentityPtrOutputWithContext(ctx context.Context) ServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutput()
 }
 
 type ServerIdentityOutput struct{ *pulumi.OutputState }
@@ -237,7 +237,7 @@ func (i ServerStorageProfileArgs) ToServerStorageProfilePtrOutput() ServerStorag
 }
 
 func (i ServerStorageProfileArgs) ToServerStorageProfilePtrOutputWithContext(ctx context.Context) ServerStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutput()
 }
 
 // ServerStorageProfilePtrInput is an input type that accepts ServerStorageProfileArgs, ServerStorageProfilePtr and ServerStorageProfilePtrOutput values.
@@ -270,7 +270,7 @@ func (i *serverStorageProfilePtrType) ToServerStorageProfilePtrOutput() ServerSt
 }
 
 func (i *serverStorageProfilePtrType) ToServerStorageProfilePtrOutputWithContext(ctx context.Context) ServerStorageProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageProfileOutput).ToServerStorageProfilePtrOutput()
 }
 
 type ServerStorageProfileOutput struct{ *pulumi.OutputState }
@@ -445,7 +445,7 @@ func (i ServerThreatDetectionPolicyArgs) ToServerThreatDetectionPolicyPtrOutput(
 }
 
 func (i ServerThreatDetectionPolicyArgs) ToServerThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) ServerThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerThreatDetectionPolicyOutput).ToServerThreatDetectionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerThreatDetectionPolicyOutput).ToServerThreatDetectionPolicyPtrOutput()
 }
 
 // ServerThreatDetectionPolicyPtrInput is an input type that accepts ServerThreatDetectionPolicyArgs, ServerThreatDetectionPolicyPtr and ServerThreatDetectionPolicyPtrOutput values.
@@ -478,7 +478,7 @@ func (i *serverThreatDetectionPolicyPtrType) ToServerThreatDetectionPolicyPtrOut
 }
 
 func (i *serverThreatDetectionPolicyPtrType) ToServerThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) ServerThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerThreatDetectionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerThreatDetectionPolicyOutput).ToServerThreatDetectionPolicyPtrOutput()
 }
 
 type ServerThreatDetectionPolicyOutput struct{ *pulumi.OutputState }

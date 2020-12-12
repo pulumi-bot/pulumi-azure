@@ -233,16 +233,31 @@ type ManangementLockInput interface {
 	ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput
 }
 
-func (ManangementLock) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManangementLock)(nil)).Elem()
+func (*ManangementLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLock)(nil))
 }
 
-func (i ManangementLock) ToManangementLockOutput() ManangementLockOutput {
+func (i *ManangementLock) ToManangementLockOutput() ManangementLockOutput {
 	return i.ToManangementLockOutputWithContext(context.Background())
 }
 
-func (i ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+func (i *ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManangementLockOutput)
+}
+
+func (i *ManangementLock) ToManangementLockPtrOutput() ManangementLockPtrOutput {
+	return i.ToManangementLockPtrOutputWithContext(context.Background())
+}
+
+func (i *ManangementLock) ToManangementLockPtrOutputWithContext(ctx context.Context) ManangementLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManangementLockPtrOutput)
+}
+
+type ManangementLockPtrInput interface {
+	pulumi.Input
+
+	ToManangementLockPtrOutput() ManangementLockPtrOutput
+	ToManangementLockPtrOutputWithContext(ctx context.Context) ManangementLockPtrOutput
 }
 
 type ManangementLockOutput struct {
@@ -250,7 +265,7 @@ type ManangementLockOutput struct {
 }
 
 func (ManangementLockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManangementLockOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManangementLock)(nil))
 }
 
 func (o ManangementLockOutput) ToManangementLockOutput() ManangementLockOutput {
@@ -261,6 +276,23 @@ func (o ManangementLockOutput) ToManangementLockOutputWithContext(ctx context.Co
 	return o
 }
 
+type ManangementLockPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManangementLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManangementLock)(nil))
+}
+
+func (o ManangementLockPtrOutput) ToManangementLockPtrOutput() ManangementLockPtrOutput {
+	return o
+}
+
+func (o ManangementLockPtrOutput) ToManangementLockPtrOutputWithContext(ctx context.Context) ManangementLockPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManangementLockOutput{})
+	pulumi.RegisterOutputType(ManangementLockPtrOutput{})
 }

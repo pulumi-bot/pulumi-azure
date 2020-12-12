@@ -107,16 +107,31 @@ type ServerKeyInput interface {
 	ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput
 }
 
-func (ServerKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerKey)(nil)).Elem()
+func (*ServerKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerKey)(nil))
 }
 
-func (i ServerKey) ToServerKeyOutput() ServerKeyOutput {
+func (i *ServerKey) ToServerKeyOutput() ServerKeyOutput {
 	return i.ToServerKeyOutputWithContext(context.Background())
 }
 
-func (i ServerKey) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
+func (i *ServerKey) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyOutput)
+}
+
+func (i *ServerKey) ToServerKeyPtrOutput() ServerKeyPtrOutput {
+	return i.ToServerKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *ServerKey) ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyPtrOutput)
+}
+
+type ServerKeyPtrInput interface {
+	pulumi.Input
+
+	ToServerKeyPtrOutput() ServerKeyPtrOutput
+	ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput
 }
 
 type ServerKeyOutput struct {
@@ -124,7 +139,7 @@ type ServerKeyOutput struct {
 }
 
 func (ServerKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServerKey)(nil))
 }
 
 func (o ServerKeyOutput) ToServerKeyOutput() ServerKeyOutput {
@@ -135,6 +150,23 @@ func (o ServerKeyOutput) ToServerKeyOutputWithContext(ctx context.Context) Serve
 	return o
 }
 
+type ServerKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerKey)(nil))
+}
+
+func (o ServerKeyPtrOutput) ToServerKeyPtrOutput() ServerKeyPtrOutput {
+	return o
+}
+
+func (o ServerKeyPtrOutput) ToServerKeyPtrOutputWithContext(ctx context.Context) ServerKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerKeyOutput{})
+	pulumi.RegisterOutputType(ServerKeyPtrOutput{})
 }
