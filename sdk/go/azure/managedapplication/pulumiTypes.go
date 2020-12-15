@@ -64,7 +64,7 @@ func (i ApplicationPlanArgs) ToApplicationPlanPtrOutput() ApplicationPlanPtrOutp
 }
 
 func (i ApplicationPlanArgs) ToApplicationPlanPtrOutputWithContext(ctx context.Context) ApplicationPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPlanOutput).ToApplicationPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPlanOutput).ToApplicationPlanPtrOutput()
 }
 
 // ApplicationPlanPtrInput is an input type that accepts ApplicationPlanArgs, ApplicationPlanPtr and ApplicationPlanPtrOutput values.
@@ -97,7 +97,7 @@ func (i *applicationPlanPtrType) ToApplicationPlanPtrOutput() ApplicationPlanPtr
 }
 
 func (i *applicationPlanPtrType) ToApplicationPlanPtrOutputWithContext(ctx context.Context) ApplicationPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPlanOutput).ToApplicationPlanPtrOutput()
 }
 
 type ApplicationPlanOutput struct{ *pulumi.OutputState }

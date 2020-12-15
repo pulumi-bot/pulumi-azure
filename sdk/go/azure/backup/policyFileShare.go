@@ -203,16 +203,31 @@ type PolicyFileShareInput interface {
 	ToPolicyFileShareOutputWithContext(ctx context.Context) PolicyFileShareOutput
 }
 
-func (PolicyFileShare) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyFileShare)(nil)).Elem()
+func (*PolicyFileShare) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyFileShare)(nil))
 }
 
-func (i PolicyFileShare) ToPolicyFileShareOutput() PolicyFileShareOutput {
+func (i *PolicyFileShare) ToPolicyFileShareOutput() PolicyFileShareOutput {
 	return i.ToPolicyFileShareOutputWithContext(context.Background())
 }
 
-func (i PolicyFileShare) ToPolicyFileShareOutputWithContext(ctx context.Context) PolicyFileShareOutput {
+func (i *PolicyFileShare) ToPolicyFileShareOutputWithContext(ctx context.Context) PolicyFileShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileShareOutput)
+}
+
+func (i *PolicyFileShare) ToPolicyFileSharePtrOutput() PolicyFileSharePtrOutput {
+	return i.ToPolicyFileSharePtrOutputWithContext(context.Background())
+}
+
+func (i *PolicyFileShare) ToPolicyFileSharePtrOutputWithContext(ctx context.Context) PolicyFileSharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyFileSharePtrOutput)
+}
+
+type PolicyFileSharePtrInput interface {
+	pulumi.Input
+
+	ToPolicyFileSharePtrOutput() PolicyFileSharePtrOutput
+	ToPolicyFileSharePtrOutputWithContext(ctx context.Context) PolicyFileSharePtrOutput
 }
 
 type PolicyFileShareOutput struct {
@@ -220,7 +235,7 @@ type PolicyFileShareOutput struct {
 }
 
 func (PolicyFileShareOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyFileShareOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicyFileShare)(nil))
 }
 
 func (o PolicyFileShareOutput) ToPolicyFileShareOutput() PolicyFileShareOutput {
@@ -231,6 +246,23 @@ func (o PolicyFileShareOutput) ToPolicyFileShareOutputWithContext(ctx context.Co
 	return o
 }
 
+type PolicyFileSharePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyFileSharePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyFileShare)(nil))
+}
+
+func (o PolicyFileSharePtrOutput) ToPolicyFileSharePtrOutput() PolicyFileSharePtrOutput {
+	return o
+}
+
+func (o PolicyFileSharePtrOutput) ToPolicyFileSharePtrOutputWithContext(ctx context.Context) PolicyFileSharePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PolicyFileShareOutput{})
+	pulumi.RegisterOutputType(PolicyFileSharePtrOutput{})
 }

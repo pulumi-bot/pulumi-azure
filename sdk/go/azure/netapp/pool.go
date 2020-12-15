@@ -204,16 +204,31 @@ type PoolInput interface {
 	ToPoolOutputWithContext(ctx context.Context) PoolOutput
 }
 
-func (Pool) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pool)(nil)).Elem()
+func (*Pool) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pool)(nil))
 }
 
-func (i Pool) ToPoolOutput() PoolOutput {
+func (i *Pool) ToPoolOutput() PoolOutput {
 	return i.ToPoolOutputWithContext(context.Background())
 }
 
-func (i Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
+func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
+}
+
+func (i *Pool) ToPoolPtrOutput() PoolPtrOutput {
+	return i.ToPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *Pool) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolPtrOutput)
+}
+
+type PoolPtrInput interface {
+	pulumi.Input
+
+	ToPoolPtrOutput() PoolPtrOutput
+	ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput
 }
 
 type PoolOutput struct {
@@ -221,7 +236,7 @@ type PoolOutput struct {
 }
 
 func (PoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*Pool)(nil))
 }
 
 func (o PoolOutput) ToPoolOutput() PoolOutput {
@@ -232,6 +247,23 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
+type PoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pool)(nil))
+}
+
+func (o PoolPtrOutput) ToPoolPtrOutput() PoolPtrOutput {
+	return o
+}
+
+func (o PoolPtrOutput) ToPoolPtrOutputWithContext(ctx context.Context) PoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PoolOutput{})
+	pulumi.RegisterOutputType(PoolPtrOutput{})
 }

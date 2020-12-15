@@ -163,16 +163,31 @@ type DdosProtectionPlanInput interface {
 	ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput
 }
 
-func (DdosProtectionPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosProtectionPlan)(nil)).Elem()
+func (*DdosProtectionPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdosProtectionPlan)(nil))
 }
 
-func (i DdosProtectionPlan) ToDdosProtectionPlanOutput() DdosProtectionPlanOutput {
+func (i *DdosProtectionPlan) ToDdosProtectionPlanOutput() DdosProtectionPlanOutput {
 	return i.ToDdosProtectionPlanOutputWithContext(context.Background())
 }
 
-func (i DdosProtectionPlan) ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput {
+func (i *DdosProtectionPlan) ToDdosProtectionPlanOutputWithContext(ctx context.Context) DdosProtectionPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosProtectionPlanOutput)
+}
+
+func (i *DdosProtectionPlan) ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput {
+	return i.ToDdosProtectionPlanPtrOutputWithContext(context.Background())
+}
+
+func (i *DdosProtectionPlan) ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosProtectionPlanPtrOutput)
+}
+
+type DdosProtectionPlanPtrInput interface {
+	pulumi.Input
+
+	ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput
+	ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput
 }
 
 type DdosProtectionPlanOutput struct {
@@ -180,7 +195,7 @@ type DdosProtectionPlanOutput struct {
 }
 
 func (DdosProtectionPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DdosProtectionPlanOutput)(nil)).Elem()
+	return reflect.TypeOf((*DdosProtectionPlan)(nil))
 }
 
 func (o DdosProtectionPlanOutput) ToDdosProtectionPlanOutput() DdosProtectionPlanOutput {
@@ -191,6 +206,23 @@ func (o DdosProtectionPlanOutput) ToDdosProtectionPlanOutputWithContext(ctx cont
 	return o
 }
 
+type DdosProtectionPlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosProtectionPlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosProtectionPlan)(nil))
+}
+
+func (o DdosProtectionPlanPtrOutput) ToDdosProtectionPlanPtrOutput() DdosProtectionPlanPtrOutput {
+	return o
+}
+
+func (o DdosProtectionPlanPtrOutput) ToDdosProtectionPlanPtrOutputWithContext(ctx context.Context) DdosProtectionPlanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DdosProtectionPlanOutput{})
+	pulumi.RegisterOutputType(DdosProtectionPlanPtrOutput{})
 }

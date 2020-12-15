@@ -176,16 +176,31 @@ type IdentityProviderTwitterInput interface {
 	ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput
 }
 
-func (IdentityProviderTwitter) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProviderTwitter)(nil)).Elem()
+func (*IdentityProviderTwitter) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderTwitter)(nil))
 }
 
-func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
+func (i *IdentityProviderTwitter) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
 	return i.ToIdentityProviderTwitterOutputWithContext(context.Background())
 }
 
-func (i IdentityProviderTwitter) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
+func (i *IdentityProviderTwitter) ToIdentityProviderTwitterOutputWithContext(ctx context.Context) IdentityProviderTwitterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterOutput)
+}
+
+func (i *IdentityProviderTwitter) ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput {
+	return i.ToIdentityProviderTwitterPtrOutputWithContext(context.Background())
+}
+
+func (i *IdentityProviderTwitter) ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderTwitterPtrOutput)
+}
+
+type IdentityProviderTwitterPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput
+	ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput
 }
 
 type IdentityProviderTwitterOutput struct {
@@ -193,7 +208,7 @@ type IdentityProviderTwitterOutput struct {
 }
 
 func (IdentityProviderTwitterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProviderTwitterOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityProviderTwitter)(nil))
 }
 
 func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutput() IdentityProviderTwitterOutput {
@@ -204,6 +219,23 @@ func (o IdentityProviderTwitterOutput) ToIdentityProviderTwitterOutputWithContex
 	return o
 }
 
+type IdentityProviderTwitterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderTwitterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProviderTwitter)(nil))
+}
+
+func (o IdentityProviderTwitterPtrOutput) ToIdentityProviderTwitterPtrOutput() IdentityProviderTwitterPtrOutput {
+	return o
+}
+
+func (o IdentityProviderTwitterPtrOutput) ToIdentityProviderTwitterPtrOutputWithContext(ctx context.Context) IdentityProviderTwitterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderTwitterOutput{})
+	pulumi.RegisterOutputType(IdentityProviderTwitterPtrOutput{})
 }

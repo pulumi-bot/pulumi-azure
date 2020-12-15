@@ -355,16 +355,31 @@ type ExtensionInput interface {
 	ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput
 }
 
-func (Extension) ElementType() reflect.Type {
-	return reflect.TypeOf((*Extension)(nil)).Elem()
+func (*Extension) ElementType() reflect.Type {
+	return reflect.TypeOf((*Extension)(nil))
 }
 
-func (i Extension) ToExtensionOutput() ExtensionOutput {
+func (i *Extension) ToExtensionOutput() ExtensionOutput {
 	return i.ToExtensionOutputWithContext(context.Background())
 }
 
-func (i Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
+func (i *Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionOutput)
+}
+
+func (i *Extension) ToExtensionPtrOutput() ExtensionPtrOutput {
+	return i.ToExtensionPtrOutputWithContext(context.Background())
+}
+
+func (i *Extension) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionPtrOutput)
+}
+
+type ExtensionPtrInput interface {
+	pulumi.Input
+
+	ToExtensionPtrOutput() ExtensionPtrOutput
+	ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput
 }
 
 type ExtensionOutput struct {
@@ -372,7 +387,7 @@ type ExtensionOutput struct {
 }
 
 func (ExtensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExtensionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Extension)(nil))
 }
 
 func (o ExtensionOutput) ToExtensionOutput() ExtensionOutput {
@@ -383,6 +398,23 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 	return o
 }
 
+type ExtensionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExtensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Extension)(nil))
+}
+
+func (o ExtensionPtrOutput) ToExtensionPtrOutput() ExtensionPtrOutput {
+	return o
+}
+
+func (o ExtensionPtrOutput) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExtensionOutput{})
+	pulumi.RegisterOutputType(ExtensionPtrOutput{})
 }

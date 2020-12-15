@@ -255,7 +255,7 @@ func (i ServiceSkuArgs) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 }
 
 func (i ServiceSkuArgs) ToServiceSkuPtrOutputWithContext(ctx context.Context) ServiceSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuOutput).ToServiceSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuOutput).ToServiceSkuPtrOutput()
 }
 
 // ServiceSkuPtrInput is an input type that accepts ServiceSkuArgs, ServiceSkuPtr and ServiceSkuPtrOutput values.
@@ -288,7 +288,7 @@ func (i *serviceSkuPtrType) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 }
 
 func (i *serviceSkuPtrType) ToServiceSkuPtrOutputWithContext(ctx context.Context) ServiceSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuOutput).ToServiceSkuPtrOutput()
 }
 
 type ServiceSkuOutput struct{ *pulumi.OutputState }

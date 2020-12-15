@@ -179,16 +179,31 @@ type DedicatedHostGroupInput interface {
 	ToDedicatedHostGroupOutputWithContext(ctx context.Context) DedicatedHostGroupOutput
 }
 
-func (DedicatedHostGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostGroup)(nil)).Elem()
+func (*DedicatedHostGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHostGroup)(nil))
 }
 
-func (i DedicatedHostGroup) ToDedicatedHostGroupOutput() DedicatedHostGroupOutput {
+func (i *DedicatedHostGroup) ToDedicatedHostGroupOutput() DedicatedHostGroupOutput {
 	return i.ToDedicatedHostGroupOutputWithContext(context.Background())
 }
 
-func (i DedicatedHostGroup) ToDedicatedHostGroupOutputWithContext(ctx context.Context) DedicatedHostGroupOutput {
+func (i *DedicatedHostGroup) ToDedicatedHostGroupOutputWithContext(ctx context.Context) DedicatedHostGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostGroupOutput)
+}
+
+func (i *DedicatedHostGroup) ToDedicatedHostGroupPtrOutput() DedicatedHostGroupPtrOutput {
+	return i.ToDedicatedHostGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *DedicatedHostGroup) ToDedicatedHostGroupPtrOutputWithContext(ctx context.Context) DedicatedHostGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostGroupPtrOutput)
+}
+
+type DedicatedHostGroupPtrInput interface {
+	pulumi.Input
+
+	ToDedicatedHostGroupPtrOutput() DedicatedHostGroupPtrOutput
+	ToDedicatedHostGroupPtrOutputWithContext(ctx context.Context) DedicatedHostGroupPtrOutput
 }
 
 type DedicatedHostGroupOutput struct {
@@ -196,7 +211,7 @@ type DedicatedHostGroupOutput struct {
 }
 
 func (DedicatedHostGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*DedicatedHostGroup)(nil))
 }
 
 func (o DedicatedHostGroupOutput) ToDedicatedHostGroupOutput() DedicatedHostGroupOutput {
@@ -207,6 +222,23 @@ func (o DedicatedHostGroupOutput) ToDedicatedHostGroupOutputWithContext(ctx cont
 	return o
 }
 
+type DedicatedHostGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DedicatedHostGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DedicatedHostGroup)(nil))
+}
+
+func (o DedicatedHostGroupPtrOutput) ToDedicatedHostGroupPtrOutput() DedicatedHostGroupPtrOutput {
+	return o
+}
+
+func (o DedicatedHostGroupPtrOutput) ToDedicatedHostGroupPtrOutputWithContext(ctx context.Context) DedicatedHostGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DedicatedHostGroupOutput{})
+	pulumi.RegisterOutputType(DedicatedHostGroupPtrOutput{})
 }

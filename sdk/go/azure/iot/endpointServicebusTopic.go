@@ -196,16 +196,31 @@ type EndpointServicebusTopicInput interface {
 	ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput
 }
 
-func (EndpointServicebusTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointServicebusTopic)(nil)).Elem()
+func (*EndpointServicebusTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointServicebusTopic)(nil))
 }
 
-func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput {
+func (i *EndpointServicebusTopic) ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput {
 	return i.ToEndpointServicebusTopicOutputWithContext(context.Background())
 }
 
-func (i EndpointServicebusTopic) ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput {
+func (i *EndpointServicebusTopic) ToEndpointServicebusTopicOutputWithContext(ctx context.Context) EndpointServicebusTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusTopicOutput)
+}
+
+func (i *EndpointServicebusTopic) ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput {
+	return i.ToEndpointServicebusTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *EndpointServicebusTopic) ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointServicebusTopicPtrOutput)
+}
+
+type EndpointServicebusTopicPtrInput interface {
+	pulumi.Input
+
+	ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput
+	ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput
 }
 
 type EndpointServicebusTopicOutput struct {
@@ -213,7 +228,7 @@ type EndpointServicebusTopicOutput struct {
 }
 
 func (EndpointServicebusTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointServicebusTopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*EndpointServicebusTopic)(nil))
 }
 
 func (o EndpointServicebusTopicOutput) ToEndpointServicebusTopicOutput() EndpointServicebusTopicOutput {
@@ -224,6 +239,23 @@ func (o EndpointServicebusTopicOutput) ToEndpointServicebusTopicOutputWithContex
 	return o
 }
 
+type EndpointServicebusTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointServicebusTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointServicebusTopic)(nil))
+}
+
+func (o EndpointServicebusTopicPtrOutput) ToEndpointServicebusTopicPtrOutput() EndpointServicebusTopicPtrOutput {
+	return o
+}
+
+func (o EndpointServicebusTopicPtrOutput) ToEndpointServicebusTopicPtrOutputWithContext(ctx context.Context) EndpointServicebusTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointServicebusTopicOutput{})
+	pulumi.RegisterOutputType(EndpointServicebusTopicPtrOutput{})
 }

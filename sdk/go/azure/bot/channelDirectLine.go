@@ -130,16 +130,31 @@ type ChannelDirectLineInput interface {
 	ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput
 }
 
-func (ChannelDirectLine) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelDirectLine)(nil)).Elem()
+func (*ChannelDirectLine) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelDirectLine)(nil))
 }
 
-func (i ChannelDirectLine) ToChannelDirectLineOutput() ChannelDirectLineOutput {
+func (i *ChannelDirectLine) ToChannelDirectLineOutput() ChannelDirectLineOutput {
 	return i.ToChannelDirectLineOutputWithContext(context.Background())
 }
 
-func (i ChannelDirectLine) ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput {
+func (i *ChannelDirectLine) ToChannelDirectLineOutputWithContext(ctx context.Context) ChannelDirectLineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelDirectLineOutput)
+}
+
+func (i *ChannelDirectLine) ToChannelDirectLinePtrOutput() ChannelDirectLinePtrOutput {
+	return i.ToChannelDirectLinePtrOutputWithContext(context.Background())
+}
+
+func (i *ChannelDirectLine) ToChannelDirectLinePtrOutputWithContext(ctx context.Context) ChannelDirectLinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelDirectLinePtrOutput)
+}
+
+type ChannelDirectLinePtrInput interface {
+	pulumi.Input
+
+	ToChannelDirectLinePtrOutput() ChannelDirectLinePtrOutput
+	ToChannelDirectLinePtrOutputWithContext(ctx context.Context) ChannelDirectLinePtrOutput
 }
 
 type ChannelDirectLineOutput struct {
@@ -147,7 +162,7 @@ type ChannelDirectLineOutput struct {
 }
 
 func (ChannelDirectLineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelDirectLineOutput)(nil)).Elem()
+	return reflect.TypeOf((*ChannelDirectLine)(nil))
 }
 
 func (o ChannelDirectLineOutput) ToChannelDirectLineOutput() ChannelDirectLineOutput {
@@ -158,6 +173,23 @@ func (o ChannelDirectLineOutput) ToChannelDirectLineOutputWithContext(ctx contex
 	return o
 }
 
+type ChannelDirectLinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChannelDirectLinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChannelDirectLine)(nil))
+}
+
+func (o ChannelDirectLinePtrOutput) ToChannelDirectLinePtrOutput() ChannelDirectLinePtrOutput {
+	return o
+}
+
+func (o ChannelDirectLinePtrOutput) ToChannelDirectLinePtrOutputWithContext(ctx context.Context) ChannelDirectLinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChannelDirectLineOutput{})
+	pulumi.RegisterOutputType(ChannelDirectLinePtrOutput{})
 }

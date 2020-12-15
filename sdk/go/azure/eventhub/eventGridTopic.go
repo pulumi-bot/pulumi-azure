@@ -210,16 +210,31 @@ type EventGridTopicInput interface {
 	ToEventGridTopicOutputWithContext(ctx context.Context) EventGridTopicOutput
 }
 
-func (EventGridTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventGridTopic)(nil)).Elem()
+func (*EventGridTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventGridTopic)(nil))
 }
 
-func (i EventGridTopic) ToEventGridTopicOutput() EventGridTopicOutput {
+func (i *EventGridTopic) ToEventGridTopicOutput() EventGridTopicOutput {
 	return i.ToEventGridTopicOutputWithContext(context.Background())
 }
 
-func (i EventGridTopic) ToEventGridTopicOutputWithContext(ctx context.Context) EventGridTopicOutput {
+func (i *EventGridTopic) ToEventGridTopicOutputWithContext(ctx context.Context) EventGridTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicOutput)
+}
+
+func (i *EventGridTopic) ToEventGridTopicPtrOutput() EventGridTopicPtrOutput {
+	return i.ToEventGridTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *EventGridTopic) ToEventGridTopicPtrOutputWithContext(ctx context.Context) EventGridTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventGridTopicPtrOutput)
+}
+
+type EventGridTopicPtrInput interface {
+	pulumi.Input
+
+	ToEventGridTopicPtrOutput() EventGridTopicPtrOutput
+	ToEventGridTopicPtrOutputWithContext(ctx context.Context) EventGridTopicPtrOutput
 }
 
 type EventGridTopicOutput struct {
@@ -227,7 +242,7 @@ type EventGridTopicOutput struct {
 }
 
 func (EventGridTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventGridTopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventGridTopic)(nil))
 }
 
 func (o EventGridTopicOutput) ToEventGridTopicOutput() EventGridTopicOutput {
@@ -238,6 +253,23 @@ func (o EventGridTopicOutput) ToEventGridTopicOutputWithContext(ctx context.Cont
 	return o
 }
 
+type EventGridTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventGridTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventGridTopic)(nil))
+}
+
+func (o EventGridTopicPtrOutput) ToEventGridTopicPtrOutput() EventGridTopicPtrOutput {
+	return o
+}
+
+func (o EventGridTopicPtrOutput) ToEventGridTopicPtrOutputWithContext(ctx context.Context) EventGridTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventGridTopicOutput{})
+	pulumi.RegisterOutputType(EventGridTopicPtrOutput{})
 }

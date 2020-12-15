@@ -208,16 +208,31 @@ type TxtRecordInput interface {
 	ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput
 }
 
-func (TxtRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*TxtRecord)(nil)).Elem()
+func (*TxtRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*TxtRecord)(nil))
 }
 
-func (i TxtRecord) ToTxtRecordOutput() TxtRecordOutput {
+func (i *TxtRecord) ToTxtRecordOutput() TxtRecordOutput {
 	return i.ToTxtRecordOutputWithContext(context.Background())
 }
 
-func (i TxtRecord) ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput {
+func (i *TxtRecord) ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordOutput)
+}
+
+func (i *TxtRecord) ToTxtRecordPtrOutput() TxtRecordPtrOutput {
+	return i.ToTxtRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *TxtRecord) ToTxtRecordPtrOutputWithContext(ctx context.Context) TxtRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordPtrOutput)
+}
+
+type TxtRecordPtrInput interface {
+	pulumi.Input
+
+	ToTxtRecordPtrOutput() TxtRecordPtrOutput
+	ToTxtRecordPtrOutputWithContext(ctx context.Context) TxtRecordPtrOutput
 }
 
 type TxtRecordOutput struct {
@@ -225,7 +240,7 @@ type TxtRecordOutput struct {
 }
 
 func (TxtRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TxtRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*TxtRecord)(nil))
 }
 
 func (o TxtRecordOutput) ToTxtRecordOutput() TxtRecordOutput {
@@ -236,6 +251,23 @@ func (o TxtRecordOutput) ToTxtRecordOutputWithContext(ctx context.Context) TxtRe
 	return o
 }
 
+type TxtRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TxtRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TxtRecord)(nil))
+}
+
+func (o TxtRecordPtrOutput) ToTxtRecordPtrOutput() TxtRecordPtrOutput {
+	return o
+}
+
+func (o TxtRecordPtrOutput) ToTxtRecordPtrOutputWithContext(ctx context.Context) TxtRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TxtRecordOutput{})
+	pulumi.RegisterOutputType(TxtRecordPtrOutput{})
 }

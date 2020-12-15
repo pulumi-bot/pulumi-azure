@@ -247,16 +247,31 @@ type DatasetMysqlInput interface {
 	ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput
 }
 
-func (DatasetMysql) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetMysql)(nil)).Elem()
+func (*DatasetMysql) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetMysql)(nil))
 }
 
-func (i DatasetMysql) ToDatasetMysqlOutput() DatasetMysqlOutput {
+func (i *DatasetMysql) ToDatasetMysqlOutput() DatasetMysqlOutput {
 	return i.ToDatasetMysqlOutputWithContext(context.Background())
 }
 
-func (i DatasetMysql) ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput {
+func (i *DatasetMysql) ToDatasetMysqlOutputWithContext(ctx context.Context) DatasetMysqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetMysqlOutput)
+}
+
+func (i *DatasetMysql) ToDatasetMysqlPtrOutput() DatasetMysqlPtrOutput {
+	return i.ToDatasetMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetMysql) ToDatasetMysqlPtrOutputWithContext(ctx context.Context) DatasetMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetMysqlPtrOutput)
+}
+
+type DatasetMysqlPtrInput interface {
+	pulumi.Input
+
+	ToDatasetMysqlPtrOutput() DatasetMysqlPtrOutput
+	ToDatasetMysqlPtrOutputWithContext(ctx context.Context) DatasetMysqlPtrOutput
 }
 
 type DatasetMysqlOutput struct {
@@ -264,7 +279,7 @@ type DatasetMysqlOutput struct {
 }
 
 func (DatasetMysqlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetMysqlOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetMysql)(nil))
 }
 
 func (o DatasetMysqlOutput) ToDatasetMysqlOutput() DatasetMysqlOutput {
@@ -275,6 +290,23 @@ func (o DatasetMysqlOutput) ToDatasetMysqlOutputWithContext(ctx context.Context)
 	return o
 }
 
+type DatasetMysqlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetMysql)(nil))
+}
+
+func (o DatasetMysqlPtrOutput) ToDatasetMysqlPtrOutput() DatasetMysqlPtrOutput {
+	return o
+}
+
+func (o DatasetMysqlPtrOutput) ToDatasetMysqlPtrOutputWithContext(ctx context.Context) DatasetMysqlPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetMysqlOutput{})
+	pulumi.RegisterOutputType(DatasetMysqlPtrOutput{})
 }

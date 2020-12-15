@@ -206,16 +206,31 @@ type NamedValueInput interface {
 	ToNamedValueOutputWithContext(ctx context.Context) NamedValueOutput
 }
 
-func (NamedValue) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedValue)(nil)).Elem()
+func (*NamedValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedValue)(nil))
 }
 
-func (i NamedValue) ToNamedValueOutput() NamedValueOutput {
+func (i *NamedValue) ToNamedValueOutput() NamedValueOutput {
 	return i.ToNamedValueOutputWithContext(context.Background())
 }
 
-func (i NamedValue) ToNamedValueOutputWithContext(ctx context.Context) NamedValueOutput {
+func (i *NamedValue) ToNamedValueOutputWithContext(ctx context.Context) NamedValueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamedValueOutput)
+}
+
+func (i *NamedValue) ToNamedValuePtrOutput() NamedValuePtrOutput {
+	return i.ToNamedValuePtrOutputWithContext(context.Background())
+}
+
+func (i *NamedValue) ToNamedValuePtrOutputWithContext(ctx context.Context) NamedValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedValuePtrOutput)
+}
+
+type NamedValuePtrInput interface {
+	pulumi.Input
+
+	ToNamedValuePtrOutput() NamedValuePtrOutput
+	ToNamedValuePtrOutputWithContext(ctx context.Context) NamedValuePtrOutput
 }
 
 type NamedValueOutput struct {
@@ -223,7 +238,7 @@ type NamedValueOutput struct {
 }
 
 func (NamedValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedValueOutput)(nil)).Elem()
+	return reflect.TypeOf((*NamedValue)(nil))
 }
 
 func (o NamedValueOutput) ToNamedValueOutput() NamedValueOutput {
@@ -234,6 +249,23 @@ func (o NamedValueOutput) ToNamedValueOutputWithContext(ctx context.Context) Nam
 	return o
 }
 
+type NamedValuePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamedValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedValue)(nil))
+}
+
+func (o NamedValuePtrOutput) ToNamedValuePtrOutput() NamedValuePtrOutput {
+	return o
+}
+
+func (o NamedValuePtrOutput) ToNamedValuePtrOutputWithContext(ctx context.Context) NamedValuePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamedValueOutput{})
+	pulumi.RegisterOutputType(NamedValuePtrOutput{})
 }

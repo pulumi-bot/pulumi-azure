@@ -247,16 +247,31 @@ type CNameRecordInput interface {
 	ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput
 }
 
-func (CNameRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*CNameRecord)(nil)).Elem()
+func (*CNameRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*CNameRecord)(nil))
 }
 
-func (i CNameRecord) ToCNameRecordOutput() CNameRecordOutput {
+func (i *CNameRecord) ToCNameRecordOutput() CNameRecordOutput {
 	return i.ToCNameRecordOutputWithContext(context.Background())
 }
 
-func (i CNameRecord) ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput {
+func (i *CNameRecord) ToCNameRecordOutputWithContext(ctx context.Context) CNameRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CNameRecordOutput)
+}
+
+func (i *CNameRecord) ToCNameRecordPtrOutput() CNameRecordPtrOutput {
+	return i.ToCNameRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *CNameRecord) ToCNameRecordPtrOutputWithContext(ctx context.Context) CNameRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CNameRecordPtrOutput)
+}
+
+type CNameRecordPtrInput interface {
+	pulumi.Input
+
+	ToCNameRecordPtrOutput() CNameRecordPtrOutput
+	ToCNameRecordPtrOutputWithContext(ctx context.Context) CNameRecordPtrOutput
 }
 
 type CNameRecordOutput struct {
@@ -264,7 +279,7 @@ type CNameRecordOutput struct {
 }
 
 func (CNameRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CNameRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*CNameRecord)(nil))
 }
 
 func (o CNameRecordOutput) ToCNameRecordOutput() CNameRecordOutput {
@@ -275,6 +290,23 @@ func (o CNameRecordOutput) ToCNameRecordOutputWithContext(ctx context.Context) C
 	return o
 }
 
+type CNameRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CNameRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CNameRecord)(nil))
+}
+
+func (o CNameRecordPtrOutput) ToCNameRecordPtrOutput() CNameRecordPtrOutput {
+	return o
+}
+
+func (o CNameRecordPtrOutput) ToCNameRecordPtrOutputWithContext(ctx context.Context) CNameRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CNameRecordOutput{})
+	pulumi.RegisterOutputType(CNameRecordPtrOutput{})
 }

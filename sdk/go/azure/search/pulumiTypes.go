@@ -56,7 +56,7 @@ func (i ServiceIdentityArgs) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutp
 }
 
 func (i ServiceIdentityArgs) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutput()
 }
 
 // ServiceIdentityPtrInput is an input type that accepts ServiceIdentityArgs, ServiceIdentityPtr and ServiceIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutput() ServiceIdentityPtr
 }
 
 func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput).ToServiceIdentityPtrOutput()
 }
 
 type ServiceIdentityOutput struct{ *pulumi.OutputState }

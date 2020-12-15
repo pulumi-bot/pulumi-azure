@@ -54,7 +54,7 @@ func (i ProviderFeaturesArgs) ToProviderFeaturesPtrOutput() ProviderFeaturesPtrO
 }
 
 func (i ProviderFeaturesArgs) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesOutput).ToProviderFeaturesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesOutput).ToProviderFeaturesPtrOutput()
 }
 
 // ProviderFeaturesPtrInput is an input type that accepts ProviderFeaturesArgs, ProviderFeaturesPtr and ProviderFeaturesPtrOutput values.
@@ -87,7 +87,7 @@ func (i *providerFeaturesPtrType) ToProviderFeaturesPtrOutput() ProviderFeatures
 }
 
 func (i *providerFeaturesPtrType) ToProviderFeaturesPtrOutputWithContext(ctx context.Context) ProviderFeaturesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesOutput).ToProviderFeaturesPtrOutput()
 }
 
 type ProviderFeaturesOutput struct{ *pulumi.OutputState }
@@ -234,7 +234,7 @@ func (i ProviderFeaturesKeyVaultArgs) ToProviderFeaturesKeyVaultPtrOutput() Prov
 }
 
 func (i ProviderFeaturesKeyVaultArgs) ToProviderFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) ProviderFeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesKeyVaultOutput).ToProviderFeaturesKeyVaultPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesKeyVaultOutput).ToProviderFeaturesKeyVaultPtrOutput()
 }
 
 // ProviderFeaturesKeyVaultPtrInput is an input type that accepts ProviderFeaturesKeyVaultArgs, ProviderFeaturesKeyVaultPtr and ProviderFeaturesKeyVaultPtrOutput values.
@@ -267,7 +267,7 @@ func (i *providerFeaturesKeyVaultPtrType) ToProviderFeaturesKeyVaultPtrOutput() 
 }
 
 func (i *providerFeaturesKeyVaultPtrType) ToProviderFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) ProviderFeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesKeyVaultPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesKeyVaultOutput).ToProviderFeaturesKeyVaultPtrOutput()
 }
 
 type ProviderFeaturesKeyVaultOutput struct{ *pulumi.OutputState }
@@ -373,7 +373,7 @@ func (i ProviderFeaturesNetworkArgs) ToProviderFeaturesNetworkPtrOutput() Provid
 }
 
 func (i ProviderFeaturesNetworkArgs) ToProviderFeaturesNetworkPtrOutputWithContext(ctx context.Context) ProviderFeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesNetworkOutput).ToProviderFeaturesNetworkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesNetworkOutput).ToProviderFeaturesNetworkPtrOutput()
 }
 
 // ProviderFeaturesNetworkPtrInput is an input type that accepts ProviderFeaturesNetworkArgs, ProviderFeaturesNetworkPtr and ProviderFeaturesNetworkPtrOutput values.
@@ -406,7 +406,7 @@ func (i *providerFeaturesNetworkPtrType) ToProviderFeaturesNetworkPtrOutput() Pr
 }
 
 func (i *providerFeaturesNetworkPtrType) ToProviderFeaturesNetworkPtrOutputWithContext(ctx context.Context) ProviderFeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesNetworkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesNetworkOutput).ToProviderFeaturesNetworkPtrOutput()
 }
 
 type ProviderFeaturesNetworkOutput struct{ *pulumi.OutputState }
@@ -499,7 +499,7 @@ func (i ProviderFeaturesTemplateDeploymentArgs) ToProviderFeaturesTemplateDeploy
 }
 
 func (i ProviderFeaturesTemplateDeploymentArgs) ToProviderFeaturesTemplateDeploymentPtrOutputWithContext(ctx context.Context) ProviderFeaturesTemplateDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesTemplateDeploymentOutput).ToProviderFeaturesTemplateDeploymentPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesTemplateDeploymentOutput).ToProviderFeaturesTemplateDeploymentPtrOutput()
 }
 
 // ProviderFeaturesTemplateDeploymentPtrInput is an input type that accepts ProviderFeaturesTemplateDeploymentArgs, ProviderFeaturesTemplateDeploymentPtr and ProviderFeaturesTemplateDeploymentPtrOutput values.
@@ -532,7 +532,7 @@ func (i *providerFeaturesTemplateDeploymentPtrType) ToProviderFeaturesTemplateDe
 }
 
 func (i *providerFeaturesTemplateDeploymentPtrType) ToProviderFeaturesTemplateDeploymentPtrOutputWithContext(ctx context.Context) ProviderFeaturesTemplateDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesTemplateDeploymentPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesTemplateDeploymentOutput).ToProviderFeaturesTemplateDeploymentPtrOutput()
 }
 
 type ProviderFeaturesTemplateDeploymentOutput struct{ *pulumi.OutputState }
@@ -627,7 +627,7 @@ func (i ProviderFeaturesVirtualMachineArgs) ToProviderFeaturesVirtualMachinePtrO
 }
 
 func (i ProviderFeaturesVirtualMachineArgs) ToProviderFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) ProviderFeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineOutput).ToProviderFeaturesVirtualMachinePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineOutput).ToProviderFeaturesVirtualMachinePtrOutput()
 }
 
 // ProviderFeaturesVirtualMachinePtrInput is an input type that accepts ProviderFeaturesVirtualMachineArgs, ProviderFeaturesVirtualMachinePtr and ProviderFeaturesVirtualMachinePtrOutput values.
@@ -660,7 +660,7 @@ func (i *providerFeaturesVirtualMachinePtrType) ToProviderFeaturesVirtualMachine
 }
 
 func (i *providerFeaturesVirtualMachinePtrType) ToProviderFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) ProviderFeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachinePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineOutput).ToProviderFeaturesVirtualMachinePtrOutput()
 }
 
 type ProviderFeaturesVirtualMachineOutput struct{ *pulumi.OutputState }
@@ -766,7 +766,7 @@ func (i ProviderFeaturesVirtualMachineScaleSetArgs) ToProviderFeaturesVirtualMac
 }
 
 func (i ProviderFeaturesVirtualMachineScaleSetArgs) ToProviderFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) ProviderFeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineScaleSetOutput).ToProviderFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineScaleSetOutput).ToProviderFeaturesVirtualMachineScaleSetPtrOutput()
 }
 
 // ProviderFeaturesVirtualMachineScaleSetPtrInput is an input type that accepts ProviderFeaturesVirtualMachineScaleSetArgs, ProviderFeaturesVirtualMachineScaleSetPtr and ProviderFeaturesVirtualMachineScaleSetPtrOutput values.
@@ -799,7 +799,7 @@ func (i *providerFeaturesVirtualMachineScaleSetPtrType) ToProviderFeaturesVirtua
 }
 
 func (i *providerFeaturesVirtualMachineScaleSetPtrType) ToProviderFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) ProviderFeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineScaleSetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderFeaturesVirtualMachineScaleSetOutput).ToProviderFeaturesVirtualMachineScaleSetPtrOutput()
 }
 
 type ProviderFeaturesVirtualMachineScaleSetOutput struct{ *pulumi.OutputState }

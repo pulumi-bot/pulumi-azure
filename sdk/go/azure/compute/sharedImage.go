@@ -283,16 +283,31 @@ type SharedImageInput interface {
 	ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput
 }
 
-func (SharedImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedImage)(nil)).Elem()
+func (*SharedImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImage)(nil))
 }
 
-func (i SharedImage) ToSharedImageOutput() SharedImageOutput {
+func (i *SharedImage) ToSharedImageOutput() SharedImageOutput {
 	return i.ToSharedImageOutputWithContext(context.Background())
 }
 
-func (i SharedImage) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
+func (i *SharedImage) ToSharedImageOutputWithContext(ctx context.Context) SharedImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedImageOutput)
+}
+
+func (i *SharedImage) ToSharedImagePtrOutput() SharedImagePtrOutput {
+	return i.ToSharedImagePtrOutputWithContext(context.Background())
+}
+
+func (i *SharedImage) ToSharedImagePtrOutputWithContext(ctx context.Context) SharedImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImagePtrOutput)
+}
+
+type SharedImagePtrInput interface {
+	pulumi.Input
+
+	ToSharedImagePtrOutput() SharedImagePtrOutput
+	ToSharedImagePtrOutputWithContext(ctx context.Context) SharedImagePtrOutput
 }
 
 type SharedImageOutput struct {
@@ -300,7 +315,7 @@ type SharedImageOutput struct {
 }
 
 func (SharedImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedImageOutput)(nil)).Elem()
+	return reflect.TypeOf((*SharedImage)(nil))
 }
 
 func (o SharedImageOutput) ToSharedImageOutput() SharedImageOutput {
@@ -311,6 +326,23 @@ func (o SharedImageOutput) ToSharedImageOutputWithContext(ctx context.Context) S
 	return o
 }
 
+type SharedImagePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedImage)(nil))
+}
+
+func (o SharedImagePtrOutput) ToSharedImagePtrOutput() SharedImagePtrOutput {
+	return o
+}
+
+func (o SharedImagePtrOutput) ToSharedImagePtrOutputWithContext(ctx context.Context) SharedImagePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SharedImageOutput{})
+	pulumi.RegisterOutputType(SharedImagePtrOutput{})
 }

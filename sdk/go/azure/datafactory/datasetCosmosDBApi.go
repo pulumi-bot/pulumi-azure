@@ -200,16 +200,31 @@ type DatasetCosmosDBApiInput interface {
 	ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput
 }
 
-func (DatasetCosmosDBApi) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetCosmosDBApi)(nil)).Elem()
+func (*DatasetCosmosDBApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetCosmosDBApi)(nil))
 }
 
-func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
+func (i *DatasetCosmosDBApi) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
 	return i.ToDatasetCosmosDBApiOutputWithContext(context.Background())
 }
 
-func (i DatasetCosmosDBApi) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
+func (i *DatasetCosmosDBApi) ToDatasetCosmosDBApiOutputWithContext(ctx context.Context) DatasetCosmosDBApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCosmosDBApiOutput)
+}
+
+func (i *DatasetCosmosDBApi) ToDatasetCosmosDBApiPtrOutput() DatasetCosmosDBApiPtrOutput {
+	return i.ToDatasetCosmosDBApiPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetCosmosDBApi) ToDatasetCosmosDBApiPtrOutputWithContext(ctx context.Context) DatasetCosmosDBApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetCosmosDBApiPtrOutput)
+}
+
+type DatasetCosmosDBApiPtrInput interface {
+	pulumi.Input
+
+	ToDatasetCosmosDBApiPtrOutput() DatasetCosmosDBApiPtrOutput
+	ToDatasetCosmosDBApiPtrOutputWithContext(ctx context.Context) DatasetCosmosDBApiPtrOutput
 }
 
 type DatasetCosmosDBApiOutput struct {
@@ -217,7 +232,7 @@ type DatasetCosmosDBApiOutput struct {
 }
 
 func (DatasetCosmosDBApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetCosmosDBApiOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetCosmosDBApi)(nil))
 }
 
 func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutput() DatasetCosmosDBApiOutput {
@@ -228,6 +243,23 @@ func (o DatasetCosmosDBApiOutput) ToDatasetCosmosDBApiOutputWithContext(ctx cont
 	return o
 }
 
+type DatasetCosmosDBApiPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetCosmosDBApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetCosmosDBApi)(nil))
+}
+
+func (o DatasetCosmosDBApiPtrOutput) ToDatasetCosmosDBApiPtrOutput() DatasetCosmosDBApiPtrOutput {
+	return o
+}
+
+func (o DatasetCosmosDBApiPtrOutput) ToDatasetCosmosDBApiPtrOutputWithContext(ctx context.Context) DatasetCosmosDBApiPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetCosmosDBApiOutput{})
+	pulumi.RegisterOutputType(DatasetCosmosDBApiPtrOutput{})
 }

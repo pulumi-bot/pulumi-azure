@@ -243,16 +243,31 @@ type OutputMssqlInput interface {
 	ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput
 }
 
-func (OutputMssql) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputMssql)(nil)).Elem()
+func (*OutputMssql) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputMssql)(nil))
 }
 
-func (i OutputMssql) ToOutputMssqlOutput() OutputMssqlOutput {
+func (i *OutputMssql) ToOutputMssqlOutput() OutputMssqlOutput {
 	return i.ToOutputMssqlOutputWithContext(context.Background())
 }
 
-func (i OutputMssql) ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput {
+func (i *OutputMssql) ToOutputMssqlOutputWithContext(ctx context.Context) OutputMssqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutputMssqlOutput)
+}
+
+func (i *OutputMssql) ToOutputMssqlPtrOutput() OutputMssqlPtrOutput {
+	return i.ToOutputMssqlPtrOutputWithContext(context.Background())
+}
+
+func (i *OutputMssql) ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputMssqlPtrOutput)
+}
+
+type OutputMssqlPtrInput interface {
+	pulumi.Input
+
+	ToOutputMssqlPtrOutput() OutputMssqlPtrOutput
+	ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput
 }
 
 type OutputMssqlOutput struct {
@@ -260,7 +275,7 @@ type OutputMssqlOutput struct {
 }
 
 func (OutputMssqlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputMssqlOutput)(nil)).Elem()
+	return reflect.TypeOf((*OutputMssql)(nil))
 }
 
 func (o OutputMssqlOutput) ToOutputMssqlOutput() OutputMssqlOutput {
@@ -271,6 +286,23 @@ func (o OutputMssqlOutput) ToOutputMssqlOutputWithContext(ctx context.Context) O
 	return o
 }
 
+type OutputMssqlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputMssqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutputMssql)(nil))
+}
+
+func (o OutputMssqlPtrOutput) ToOutputMssqlPtrOutput() OutputMssqlPtrOutput {
+	return o
+}
+
+func (o OutputMssqlPtrOutput) ToOutputMssqlPtrOutputWithContext(ctx context.Context) OutputMssqlPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OutputMssqlOutput{})
+	pulumi.RegisterOutputType(OutputMssqlPtrOutput{})
 }

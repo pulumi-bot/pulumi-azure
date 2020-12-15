@@ -247,16 +247,31 @@ type AaaaRecordInput interface {
 	ToAaaaRecordOutputWithContext(ctx context.Context) AaaaRecordOutput
 }
 
-func (AaaaRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*AaaaRecord)(nil)).Elem()
+func (*AaaaRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*AaaaRecord)(nil))
 }
 
-func (i AaaaRecord) ToAaaaRecordOutput() AaaaRecordOutput {
+func (i *AaaaRecord) ToAaaaRecordOutput() AaaaRecordOutput {
 	return i.ToAaaaRecordOutputWithContext(context.Background())
 }
 
-func (i AaaaRecord) ToAaaaRecordOutputWithContext(ctx context.Context) AaaaRecordOutput {
+func (i *AaaaRecord) ToAaaaRecordOutputWithContext(ctx context.Context) AaaaRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AaaaRecordOutput)
+}
+
+func (i *AaaaRecord) ToAaaaRecordPtrOutput() AaaaRecordPtrOutput {
+	return i.ToAaaaRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *AaaaRecord) ToAaaaRecordPtrOutputWithContext(ctx context.Context) AaaaRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AaaaRecordPtrOutput)
+}
+
+type AaaaRecordPtrInput interface {
+	pulumi.Input
+
+	ToAaaaRecordPtrOutput() AaaaRecordPtrOutput
+	ToAaaaRecordPtrOutputWithContext(ctx context.Context) AaaaRecordPtrOutput
 }
 
 type AaaaRecordOutput struct {
@@ -264,7 +279,7 @@ type AaaaRecordOutput struct {
 }
 
 func (AaaaRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AaaaRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*AaaaRecord)(nil))
 }
 
 func (o AaaaRecordOutput) ToAaaaRecordOutput() AaaaRecordOutput {
@@ -275,6 +290,23 @@ func (o AaaaRecordOutput) ToAaaaRecordOutputWithContext(ctx context.Context) Aaa
 	return o
 }
 
+type AaaaRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AaaaRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AaaaRecord)(nil))
+}
+
+func (o AaaaRecordPtrOutput) ToAaaaRecordPtrOutput() AaaaRecordPtrOutput {
+	return o
+}
+
+func (o AaaaRecordPtrOutput) ToAaaaRecordPtrOutputWithContext(ctx context.Context) AaaaRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AaaaRecordOutput{})
+	pulumi.RegisterOutputType(AaaaRecordPtrOutput{})
 }

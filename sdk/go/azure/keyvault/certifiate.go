@@ -309,16 +309,31 @@ type CertifiateInput interface {
 	ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput
 }
 
-func (Certifiate) ElementType() reflect.Type {
-	return reflect.TypeOf((*Certifiate)(nil)).Elem()
+func (*Certifiate) ElementType() reflect.Type {
+	return reflect.TypeOf((*Certifiate)(nil))
 }
 
-func (i Certifiate) ToCertifiateOutput() CertifiateOutput {
+func (i *Certifiate) ToCertifiateOutput() CertifiateOutput {
 	return i.ToCertifiateOutputWithContext(context.Background())
 }
 
-func (i Certifiate) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
+func (i *Certifiate) ToCertifiateOutputWithContext(ctx context.Context) CertifiateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertifiateOutput)
+}
+
+func (i *Certifiate) ToCertifiatePtrOutput() CertifiatePtrOutput {
+	return i.ToCertifiatePtrOutputWithContext(context.Background())
+}
+
+func (i *Certifiate) ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertifiatePtrOutput)
+}
+
+type CertifiatePtrInput interface {
+	pulumi.Input
+
+	ToCertifiatePtrOutput() CertifiatePtrOutput
+	ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput
 }
 
 type CertifiateOutput struct {
@@ -326,7 +341,7 @@ type CertifiateOutput struct {
 }
 
 func (CertifiateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertifiateOutput)(nil)).Elem()
+	return reflect.TypeOf((*Certifiate)(nil))
 }
 
 func (o CertifiateOutput) ToCertifiateOutput() CertifiateOutput {
@@ -337,6 +352,23 @@ func (o CertifiateOutput) ToCertifiateOutputWithContext(ctx context.Context) Cer
 	return o
 }
 
+type CertifiatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertifiatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Certifiate)(nil))
+}
+
+func (o CertifiatePtrOutput) ToCertifiatePtrOutput() CertifiatePtrOutput {
+	return o
+}
+
+func (o CertifiatePtrOutput) ToCertifiatePtrOutputWithContext(ctx context.Context) CertifiatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertifiateOutput{})
+	pulumi.RegisterOutputType(CertifiatePtrOutput{})
 }

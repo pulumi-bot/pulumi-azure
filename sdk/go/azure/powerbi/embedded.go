@@ -185,16 +185,31 @@ type EmbeddedInput interface {
 	ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput
 }
 
-func (Embedded) ElementType() reflect.Type {
-	return reflect.TypeOf((*Embedded)(nil)).Elem()
+func (*Embedded) ElementType() reflect.Type {
+	return reflect.TypeOf((*Embedded)(nil))
 }
 
-func (i Embedded) ToEmbeddedOutput() EmbeddedOutput {
+func (i *Embedded) ToEmbeddedOutput() EmbeddedOutput {
 	return i.ToEmbeddedOutputWithContext(context.Background())
 }
 
-func (i Embedded) ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput {
+func (i *Embedded) ToEmbeddedOutputWithContext(ctx context.Context) EmbeddedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmbeddedOutput)
+}
+
+func (i *Embedded) ToEmbeddedPtrOutput() EmbeddedPtrOutput {
+	return i.ToEmbeddedPtrOutputWithContext(context.Background())
+}
+
+func (i *Embedded) ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmbeddedPtrOutput)
+}
+
+type EmbeddedPtrInput interface {
+	pulumi.Input
+
+	ToEmbeddedPtrOutput() EmbeddedPtrOutput
+	ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput
 }
 
 type EmbeddedOutput struct {
@@ -202,7 +217,7 @@ type EmbeddedOutput struct {
 }
 
 func (EmbeddedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmbeddedOutput)(nil)).Elem()
+	return reflect.TypeOf((*Embedded)(nil))
 }
 
 func (o EmbeddedOutput) ToEmbeddedOutput() EmbeddedOutput {
@@ -213,6 +228,23 @@ func (o EmbeddedOutput) ToEmbeddedOutputWithContext(ctx context.Context) Embedde
 	return o
 }
 
+type EmbeddedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmbeddedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Embedded)(nil))
+}
+
+func (o EmbeddedPtrOutput) ToEmbeddedPtrOutput() EmbeddedPtrOutput {
+	return o
+}
+
+func (o EmbeddedPtrOutput) ToEmbeddedPtrOutputWithContext(ctx context.Context) EmbeddedPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmbeddedOutput{})
+	pulumi.RegisterOutputType(EmbeddedPtrOutput{})
 }

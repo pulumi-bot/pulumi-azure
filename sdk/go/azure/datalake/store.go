@@ -213,16 +213,31 @@ type StoreInput interface {
 	ToStoreOutputWithContext(ctx context.Context) StoreOutput
 }
 
-func (Store) ElementType() reflect.Type {
-	return reflect.TypeOf((*Store)(nil)).Elem()
+func (*Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Store)(nil))
 }
 
-func (i Store) ToStoreOutput() StoreOutput {
+func (i *Store) ToStoreOutput() StoreOutput {
 	return i.ToStoreOutputWithContext(context.Background())
 }
 
-func (i Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
+func (i *Store) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreOutput)
+}
+
+func (i *Store) ToStorePtrOutput() StorePtrOutput {
+	return i.ToStorePtrOutputWithContext(context.Background())
+}
+
+func (i *Store) ToStorePtrOutputWithContext(ctx context.Context) StorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorePtrOutput)
+}
+
+type StorePtrInput interface {
+	pulumi.Input
+
+	ToStorePtrOutput() StorePtrOutput
+	ToStorePtrOutputWithContext(ctx context.Context) StorePtrOutput
 }
 
 type StoreOutput struct {
@@ -230,7 +245,7 @@ type StoreOutput struct {
 }
 
 func (StoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoreOutput)(nil)).Elem()
+	return reflect.TypeOf((*Store)(nil))
 }
 
 func (o StoreOutput) ToStoreOutput() StoreOutput {
@@ -241,6 +256,23 @@ func (o StoreOutput) ToStoreOutputWithContext(ctx context.Context) StoreOutput {
 	return o
 }
 
+type StorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Store)(nil))
+}
+
+func (o StorePtrOutput) ToStorePtrOutput() StorePtrOutput {
+	return o
+}
+
+func (o StorePtrOutput) ToStorePtrOutputWithContext(ctx context.Context) StorePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StoreOutput{})
+	pulumi.RegisterOutputType(StorePtrOutput{})
 }

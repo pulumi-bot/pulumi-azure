@@ -217,16 +217,31 @@ type VirtualHubIpInput interface {
 	ToVirtualHubIpOutputWithContext(ctx context.Context) VirtualHubIpOutput
 }
 
-func (VirtualHubIp) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHubIp)(nil)).Elem()
+func (*VirtualHubIp) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualHubIp)(nil))
 }
 
-func (i VirtualHubIp) ToVirtualHubIpOutput() VirtualHubIpOutput {
+func (i *VirtualHubIp) ToVirtualHubIpOutput() VirtualHubIpOutput {
 	return i.ToVirtualHubIpOutputWithContext(context.Background())
 }
 
-func (i VirtualHubIp) ToVirtualHubIpOutputWithContext(ctx context.Context) VirtualHubIpOutput {
+func (i *VirtualHubIp) ToVirtualHubIpOutputWithContext(ctx context.Context) VirtualHubIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubIpOutput)
+}
+
+func (i *VirtualHubIp) ToVirtualHubIpPtrOutput() VirtualHubIpPtrOutput {
+	return i.ToVirtualHubIpPtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualHubIp) ToVirtualHubIpPtrOutputWithContext(ctx context.Context) VirtualHubIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubIpPtrOutput)
+}
+
+type VirtualHubIpPtrInput interface {
+	pulumi.Input
+
+	ToVirtualHubIpPtrOutput() VirtualHubIpPtrOutput
+	ToVirtualHubIpPtrOutputWithContext(ctx context.Context) VirtualHubIpPtrOutput
 }
 
 type VirtualHubIpOutput struct {
@@ -234,7 +249,7 @@ type VirtualHubIpOutput struct {
 }
 
 func (VirtualHubIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHubIpOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualHubIp)(nil))
 }
 
 func (o VirtualHubIpOutput) ToVirtualHubIpOutput() VirtualHubIpOutput {
@@ -245,6 +260,23 @@ func (o VirtualHubIpOutput) ToVirtualHubIpOutputWithContext(ctx context.Context)
 	return o
 }
 
+type VirtualHubIpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualHubIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualHubIp)(nil))
+}
+
+func (o VirtualHubIpPtrOutput) ToVirtualHubIpPtrOutput() VirtualHubIpPtrOutput {
+	return o
+}
+
+func (o VirtualHubIpPtrOutput) ToVirtualHubIpPtrOutputWithContext(ctx context.Context) VirtualHubIpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualHubIpOutput{})
+	pulumi.RegisterOutputType(VirtualHubIpPtrOutput{})
 }

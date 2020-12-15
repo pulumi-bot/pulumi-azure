@@ -329,16 +329,31 @@ type InteractiveQueryClusterInput interface {
 	ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput
 }
 
-func (InteractiveQueryCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*InteractiveQueryCluster)(nil)).Elem()
+func (*InteractiveQueryCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractiveQueryCluster)(nil))
 }
 
-func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
+func (i *InteractiveQueryCluster) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
 	return i.ToInteractiveQueryClusterOutputWithContext(context.Background())
 }
 
-func (i InteractiveQueryCluster) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
+func (i *InteractiveQueryCluster) ToInteractiveQueryClusterOutputWithContext(ctx context.Context) InteractiveQueryClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterOutput)
+}
+
+func (i *InteractiveQueryCluster) ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput {
+	return i.ToInteractiveQueryClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *InteractiveQueryCluster) ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InteractiveQueryClusterPtrOutput)
+}
+
+type InteractiveQueryClusterPtrInput interface {
+	pulumi.Input
+
+	ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput
+	ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput
 }
 
 type InteractiveQueryClusterOutput struct {
@@ -346,7 +361,7 @@ type InteractiveQueryClusterOutput struct {
 }
 
 func (InteractiveQueryClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InteractiveQueryClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*InteractiveQueryCluster)(nil))
 }
 
 func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutput() InteractiveQueryClusterOutput {
@@ -357,6 +372,23 @@ func (o InteractiveQueryClusterOutput) ToInteractiveQueryClusterOutputWithContex
 	return o
 }
 
+type InteractiveQueryClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InteractiveQueryClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InteractiveQueryCluster)(nil))
+}
+
+func (o InteractiveQueryClusterPtrOutput) ToInteractiveQueryClusterPtrOutput() InteractiveQueryClusterPtrOutput {
+	return o
+}
+
+func (o InteractiveQueryClusterPtrOutput) ToInteractiveQueryClusterPtrOutputWithContext(ctx context.Context) InteractiveQueryClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InteractiveQueryClusterOutput{})
+	pulumi.RegisterOutputType(InteractiveQueryClusterPtrOutput{})
 }

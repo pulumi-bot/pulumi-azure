@@ -155,16 +155,31 @@ type NatGatewayPublicIpAssociationInput interface {
 	ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput
 }
 
-func (NatGatewayPublicIpAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil)).Elem()
+func (*NatGatewayPublicIpAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil))
 }
 
-func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
+func (i *NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
 	return i.ToNatGatewayPublicIpAssociationOutputWithContext(context.Background())
 }
 
-func (i NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
+func (i *NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationOutput)
+}
+
+func (i *NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput {
+	return i.ToNatGatewayPublicIpAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *NatGatewayPublicIpAssociation) ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPublicIpAssociationPtrOutput)
+}
+
+type NatGatewayPublicIpAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput
+	ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput
 }
 
 type NatGatewayPublicIpAssociationOutput struct {
@@ -172,7 +187,7 @@ type NatGatewayPublicIpAssociationOutput struct {
 }
 
 func (NatGatewayPublicIpAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGatewayPublicIpAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*NatGatewayPublicIpAssociation)(nil))
 }
 
 func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutput() NatGatewayPublicIpAssociationOutput {
@@ -183,6 +198,23 @@ func (o NatGatewayPublicIpAssociationOutput) ToNatGatewayPublicIpAssociationOutp
 	return o
 }
 
+type NatGatewayPublicIpAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayPublicIpAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatGatewayPublicIpAssociation)(nil))
+}
+
+func (o NatGatewayPublicIpAssociationPtrOutput) ToNatGatewayPublicIpAssociationPtrOutput() NatGatewayPublicIpAssociationPtrOutput {
+	return o
+}
+
+func (o NatGatewayPublicIpAssociationPtrOutput) ToNatGatewayPublicIpAssociationPtrOutputWithContext(ctx context.Context) NatGatewayPublicIpAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationOutput{})
+	pulumi.RegisterOutputType(NatGatewayPublicIpAssociationPtrOutput{})
 }

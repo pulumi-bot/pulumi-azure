@@ -190,16 +190,31 @@ type JobScheduleInput interface {
 	ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput
 }
 
-func (JobSchedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobSchedule)(nil)).Elem()
+func (*JobSchedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSchedule)(nil))
 }
 
-func (i JobSchedule) ToJobScheduleOutput() JobScheduleOutput {
+func (i *JobSchedule) ToJobScheduleOutput() JobScheduleOutput {
 	return i.ToJobScheduleOutputWithContext(context.Background())
 }
 
-func (i JobSchedule) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
+func (i *JobSchedule) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobScheduleOutput)
+}
+
+func (i *JobSchedule) ToJobSchedulePtrOutput() JobSchedulePtrOutput {
+	return i.ToJobSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *JobSchedule) ToJobSchedulePtrOutputWithContext(ctx context.Context) JobSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulePtrOutput)
+}
+
+type JobSchedulePtrInput interface {
+	pulumi.Input
+
+	ToJobSchedulePtrOutput() JobSchedulePtrOutput
+	ToJobSchedulePtrOutputWithContext(ctx context.Context) JobSchedulePtrOutput
 }
 
 type JobScheduleOutput struct {
@@ -207,7 +222,7 @@ type JobScheduleOutput struct {
 }
 
 func (JobScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobSchedule)(nil))
 }
 
 func (o JobScheduleOutput) ToJobScheduleOutput() JobScheduleOutput {
@@ -218,6 +233,23 @@ func (o JobScheduleOutput) ToJobScheduleOutputWithContext(ctx context.Context) J
 	return o
 }
 
+type JobSchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSchedule)(nil))
+}
+
+func (o JobSchedulePtrOutput) ToJobSchedulePtrOutput() JobSchedulePtrOutput {
+	return o
+}
+
+func (o JobSchedulePtrOutput) ToJobSchedulePtrOutputWithContext(ctx context.Context) JobSchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(JobScheduleOutput{})
+	pulumi.RegisterOutputType(JobSchedulePtrOutput{})
 }

@@ -130,16 +130,31 @@ type CustomerManagedKeyInput interface {
 	ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput
 }
 
-func (CustomerManagedKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomerManagedKey)(nil)).Elem()
+func (*CustomerManagedKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKey)(nil))
 }
 
-func (i CustomerManagedKey) ToCustomerManagedKeyOutput() CustomerManagedKeyOutput {
+func (i *CustomerManagedKey) ToCustomerManagedKeyOutput() CustomerManagedKeyOutput {
 	return i.ToCustomerManagedKeyOutputWithContext(context.Background())
 }
 
-func (i CustomerManagedKey) ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput {
+func (i *CustomerManagedKey) ToCustomerManagedKeyOutputWithContext(ctx context.Context) CustomerManagedKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyOutput)
+}
+
+func (i *CustomerManagedKey) ToCustomerManagedKeyPtrOutput() CustomerManagedKeyPtrOutput {
+	return i.ToCustomerManagedKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *CustomerManagedKey) ToCustomerManagedKeyPtrOutputWithContext(ctx context.Context) CustomerManagedKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyPtrOutput)
+}
+
+type CustomerManagedKeyPtrInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyPtrOutput() CustomerManagedKeyPtrOutput
+	ToCustomerManagedKeyPtrOutputWithContext(ctx context.Context) CustomerManagedKeyPtrOutput
 }
 
 type CustomerManagedKeyOutput struct {
@@ -147,7 +162,7 @@ type CustomerManagedKeyOutput struct {
 }
 
 func (CustomerManagedKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomerManagedKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomerManagedKey)(nil))
 }
 
 func (o CustomerManagedKeyOutput) ToCustomerManagedKeyOutput() CustomerManagedKeyOutput {
@@ -158,6 +173,23 @@ func (o CustomerManagedKeyOutput) ToCustomerManagedKeyOutputWithContext(ctx cont
 	return o
 }
 
+type CustomerManagedKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomerManagedKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKey)(nil))
+}
+
+func (o CustomerManagedKeyPtrOutput) ToCustomerManagedKeyPtrOutput() CustomerManagedKeyPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyPtrOutput) ToCustomerManagedKeyPtrOutputWithContext(ctx context.Context) CustomerManagedKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomerManagedKeyOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyPtrOutput{})
 }

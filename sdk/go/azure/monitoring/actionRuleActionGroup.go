@@ -214,16 +214,31 @@ type ActionRuleActionGroupInput interface {
 	ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput
 }
 
-func (ActionRuleActionGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionRuleActionGroup)(nil)).Elem()
+func (*ActionRuleActionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionRuleActionGroup)(nil))
 }
 
-func (i ActionRuleActionGroup) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
+func (i *ActionRuleActionGroup) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
 	return i.ToActionRuleActionGroupOutputWithContext(context.Background())
 }
 
-func (i ActionRuleActionGroup) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
+func (i *ActionRuleActionGroup) ToActionRuleActionGroupOutputWithContext(ctx context.Context) ActionRuleActionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupOutput)
+}
+
+func (i *ActionRuleActionGroup) ToActionRuleActionGroupPtrOutput() ActionRuleActionGroupPtrOutput {
+	return i.ToActionRuleActionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ActionRuleActionGroup) ToActionRuleActionGroupPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupPtrOutput)
+}
+
+type ActionRuleActionGroupPtrInput interface {
+	pulumi.Input
+
+	ToActionRuleActionGroupPtrOutput() ActionRuleActionGroupPtrOutput
+	ToActionRuleActionGroupPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupPtrOutput
 }
 
 type ActionRuleActionGroupOutput struct {
@@ -231,7 +246,7 @@ type ActionRuleActionGroupOutput struct {
 }
 
 func (ActionRuleActionGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionRuleActionGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActionRuleActionGroup)(nil))
 }
 
 func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutput() ActionRuleActionGroupOutput {
@@ -242,6 +257,23 @@ func (o ActionRuleActionGroupOutput) ToActionRuleActionGroupOutputWithContext(ct
 	return o
 }
 
+type ActionRuleActionGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionRuleActionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionRuleActionGroup)(nil))
+}
+
+func (o ActionRuleActionGroupPtrOutput) ToActionRuleActionGroupPtrOutput() ActionRuleActionGroupPtrOutput {
+	return o
+}
+
+func (o ActionRuleActionGroupPtrOutput) ToActionRuleActionGroupPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionRuleActionGroupOutput{})
+	pulumi.RegisterOutputType(ActionRuleActionGroupPtrOutput{})
 }

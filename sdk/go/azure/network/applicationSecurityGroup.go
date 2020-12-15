@@ -158,16 +158,31 @@ type ApplicationSecurityGroupInput interface {
 	ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput
 }
 
-func (ApplicationSecurityGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationSecurityGroup)(nil)).Elem()
+func (*ApplicationSecurityGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSecurityGroup)(nil))
 }
 
-func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput {
+func (i *ApplicationSecurityGroup) ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput {
 	return i.ToApplicationSecurityGroupOutputWithContext(context.Background())
 }
 
-func (i ApplicationSecurityGroup) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
+func (i *ApplicationSecurityGroup) ToApplicationSecurityGroupOutputWithContext(ctx context.Context) ApplicationSecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupOutput)
+}
+
+func (i *ApplicationSecurityGroup) ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput {
+	return i.ToApplicationSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationSecurityGroup) ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSecurityGroupPtrOutput)
+}
+
+type ApplicationSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput
+	ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput
 }
 
 type ApplicationSecurityGroupOutput struct {
@@ -175,7 +190,7 @@ type ApplicationSecurityGroupOutput struct {
 }
 
 func (ApplicationSecurityGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationSecurityGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationSecurityGroup)(nil))
 }
 
 func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutput() ApplicationSecurityGroupOutput {
@@ -186,6 +201,23 @@ func (o ApplicationSecurityGroupOutput) ToApplicationSecurityGroupOutputWithCont
 	return o
 }
 
+type ApplicationSecurityGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSecurityGroup)(nil))
+}
+
+func (o ApplicationSecurityGroupPtrOutput) ToApplicationSecurityGroupPtrOutput() ApplicationSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationSecurityGroupPtrOutput) ToApplicationSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationSecurityGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ApplicationSecurityGroupPtrOutput{})
 }

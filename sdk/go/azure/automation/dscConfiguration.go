@@ -173,16 +173,31 @@ type DscConfigurationInput interface {
 	ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput
 }
 
-func (DscConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscConfiguration)(nil)).Elem()
+func (*DscConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*DscConfiguration)(nil))
 }
 
-func (i DscConfiguration) ToDscConfigurationOutput() DscConfigurationOutput {
+func (i *DscConfiguration) ToDscConfigurationOutput() DscConfigurationOutput {
 	return i.ToDscConfigurationOutputWithContext(context.Background())
 }
 
-func (i DscConfiguration) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
+func (i *DscConfiguration) ToDscConfigurationOutputWithContext(ctx context.Context) DscConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationOutput)
+}
+
+func (i *DscConfiguration) ToDscConfigurationPtrOutput() DscConfigurationPtrOutput {
+	return i.ToDscConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *DscConfiguration) ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DscConfigurationPtrOutput)
+}
+
+type DscConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDscConfigurationPtrOutput() DscConfigurationPtrOutput
+	ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput
 }
 
 type DscConfigurationOutput struct {
@@ -190,7 +205,7 @@ type DscConfigurationOutput struct {
 }
 
 func (DscConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DscConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*DscConfiguration)(nil))
 }
 
 func (o DscConfigurationOutput) ToDscConfigurationOutput() DscConfigurationOutput {
@@ -201,6 +216,23 @@ func (o DscConfigurationOutput) ToDscConfigurationOutputWithContext(ctx context.
 	return o
 }
 
+type DscConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DscConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DscConfiguration)(nil))
+}
+
+func (o DscConfigurationPtrOutput) ToDscConfigurationPtrOutput() DscConfigurationPtrOutput {
+	return o
+}
+
+func (o DscConfigurationPtrOutput) ToDscConfigurationPtrOutputWithContext(ctx context.Context) DscConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DscConfigurationOutput{})
+	pulumi.RegisterOutputType(DscConfigurationPtrOutput{})
 }

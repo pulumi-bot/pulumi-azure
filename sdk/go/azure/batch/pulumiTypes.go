@@ -52,7 +52,7 @@ func (i AccountKeyVaultReferenceArgs) ToAccountKeyVaultReferencePtrOutput() Acco
 }
 
 func (i AccountKeyVaultReferenceArgs) ToAccountKeyVaultReferencePtrOutputWithContext(ctx context.Context) AccountKeyVaultReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountKeyVaultReferenceOutput).ToAccountKeyVaultReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountKeyVaultReferenceOutput).ToAccountKeyVaultReferencePtrOutput()
 }
 
 // AccountKeyVaultReferencePtrInput is an input type that accepts AccountKeyVaultReferenceArgs, AccountKeyVaultReferencePtr and AccountKeyVaultReferencePtrOutput values.
@@ -85,7 +85,7 @@ func (i *accountKeyVaultReferencePtrType) ToAccountKeyVaultReferencePtrOutput() 
 }
 
 func (i *accountKeyVaultReferencePtrType) ToAccountKeyVaultReferencePtrOutputWithContext(ctx context.Context) AccountKeyVaultReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountKeyVaultReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountKeyVaultReferenceOutput).ToAccountKeyVaultReferencePtrOutput()
 }
 
 type AccountKeyVaultReferenceOutput struct{ *pulumi.OutputState }
@@ -202,7 +202,7 @@ func (i PoolAutoScaleArgs) ToPoolAutoScalePtrOutput() PoolAutoScalePtrOutput {
 }
 
 func (i PoolAutoScaleArgs) ToPoolAutoScalePtrOutputWithContext(ctx context.Context) PoolAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolAutoScaleOutput).ToPoolAutoScalePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolAutoScaleOutput).ToPoolAutoScalePtrOutput()
 }
 
 // PoolAutoScalePtrInput is an input type that accepts PoolAutoScaleArgs, PoolAutoScalePtr and PoolAutoScalePtrOutput values.
@@ -235,7 +235,7 @@ func (i *poolAutoScalePtrType) ToPoolAutoScalePtrOutput() PoolAutoScalePtrOutput
 }
 
 func (i *poolAutoScalePtrType) ToPoolAutoScalePtrOutputWithContext(ctx context.Context) PoolAutoScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolAutoScalePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolAutoScaleOutput).ToPoolAutoScalePtrOutput()
 }
 
 type PoolAutoScaleOutput struct{ *pulumi.OutputState }
@@ -480,7 +480,7 @@ func (i PoolContainerConfigurationArgs) ToPoolContainerConfigurationPtrOutput() 
 }
 
 func (i PoolContainerConfigurationArgs) ToPoolContainerConfigurationPtrOutputWithContext(ctx context.Context) PoolContainerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolContainerConfigurationOutput).ToPoolContainerConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolContainerConfigurationOutput).ToPoolContainerConfigurationPtrOutput()
 }
 
 // PoolContainerConfigurationPtrInput is an input type that accepts PoolContainerConfigurationArgs, PoolContainerConfigurationPtr and PoolContainerConfigurationPtrOutput values.
@@ -513,7 +513,7 @@ func (i *poolContainerConfigurationPtrType) ToPoolContainerConfigurationPtrOutpu
 }
 
 func (i *poolContainerConfigurationPtrType) ToPoolContainerConfigurationPtrOutputWithContext(ctx context.Context) PoolContainerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolContainerConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolContainerConfigurationOutput).ToPoolContainerConfigurationPtrOutput()
 }
 
 type PoolContainerConfigurationOutput struct{ *pulumi.OutputState }
@@ -766,7 +766,7 @@ func (i PoolFixedScaleArgs) ToPoolFixedScalePtrOutput() PoolFixedScalePtrOutput 
 }
 
 func (i PoolFixedScaleArgs) ToPoolFixedScalePtrOutputWithContext(ctx context.Context) PoolFixedScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolFixedScaleOutput).ToPoolFixedScalePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolFixedScaleOutput).ToPoolFixedScalePtrOutput()
 }
 
 // PoolFixedScalePtrInput is an input type that accepts PoolFixedScaleArgs, PoolFixedScalePtr and PoolFixedScalePtrOutput values.
@@ -799,7 +799,7 @@ func (i *poolFixedScalePtrType) ToPoolFixedScalePtrOutput() PoolFixedScalePtrOut
 }
 
 func (i *poolFixedScalePtrType) ToPoolFixedScalePtrOutputWithContext(ctx context.Context) PoolFixedScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolFixedScalePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolFixedScaleOutput).ToPoolFixedScalePtrOutput()
 }
 
 type PoolFixedScaleOutput struct{ *pulumi.OutputState }
@@ -935,7 +935,7 @@ func (i PoolNetworkConfigurationArgs) ToPoolNetworkConfigurationPtrOutput() Pool
 }
 
 func (i PoolNetworkConfigurationArgs) ToPoolNetworkConfigurationPtrOutputWithContext(ctx context.Context) PoolNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolNetworkConfigurationOutput).ToPoolNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolNetworkConfigurationOutput).ToPoolNetworkConfigurationPtrOutput()
 }
 
 // PoolNetworkConfigurationPtrInput is an input type that accepts PoolNetworkConfigurationArgs, PoolNetworkConfigurationPtr and PoolNetworkConfigurationPtrOutput values.
@@ -968,7 +968,7 @@ func (i *poolNetworkConfigurationPtrType) ToPoolNetworkConfigurationPtrOutput() 
 }
 
 func (i *poolNetworkConfigurationPtrType) ToPoolNetworkConfigurationPtrOutputWithContext(ctx context.Context) PoolNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolNetworkConfigurationOutput).ToPoolNetworkConfigurationPtrOutput()
 }
 
 type PoolNetworkConfigurationOutput struct{ *pulumi.OutputState }
@@ -1370,7 +1370,7 @@ func (i PoolStartTaskArgs) ToPoolStartTaskPtrOutput() PoolStartTaskPtrOutput {
 }
 
 func (i PoolStartTaskArgs) ToPoolStartTaskPtrOutputWithContext(ctx context.Context) PoolStartTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskOutput).ToPoolStartTaskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskOutput).ToPoolStartTaskPtrOutput()
 }
 
 // PoolStartTaskPtrInput is an input type that accepts PoolStartTaskArgs, PoolStartTaskPtr and PoolStartTaskPtrOutput values.
@@ -1403,7 +1403,7 @@ func (i *poolStartTaskPtrType) ToPoolStartTaskPtrOutput() PoolStartTaskPtrOutput
 }
 
 func (i *poolStartTaskPtrType) ToPoolStartTaskPtrOutputWithContext(ctx context.Context) PoolStartTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskOutput).ToPoolStartTaskPtrOutput()
 }
 
 type PoolStartTaskOutput struct{ *pulumi.OutputState }
@@ -1722,7 +1722,7 @@ func (i PoolStartTaskUserIdentityArgs) ToPoolStartTaskUserIdentityPtrOutput() Po
 }
 
 func (i PoolStartTaskUserIdentityArgs) ToPoolStartTaskUserIdentityPtrOutputWithContext(ctx context.Context) PoolStartTaskUserIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityOutput).ToPoolStartTaskUserIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityOutput).ToPoolStartTaskUserIdentityPtrOutput()
 }
 
 // PoolStartTaskUserIdentityPtrInput is an input type that accepts PoolStartTaskUserIdentityArgs, PoolStartTaskUserIdentityPtr and PoolStartTaskUserIdentityPtrOutput values.
@@ -1755,7 +1755,7 @@ func (i *poolStartTaskUserIdentityPtrType) ToPoolStartTaskUserIdentityPtrOutput(
 }
 
 func (i *poolStartTaskUserIdentityPtrType) ToPoolStartTaskUserIdentityPtrOutputWithContext(ctx context.Context) PoolStartTaskUserIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityOutput).ToPoolStartTaskUserIdentityPtrOutput()
 }
 
 type PoolStartTaskUserIdentityOutput struct{ *pulumi.OutputState }
@@ -1872,7 +1872,7 @@ func (i PoolStartTaskUserIdentityAutoUserArgs) ToPoolStartTaskUserIdentityAutoUs
 }
 
 func (i PoolStartTaskUserIdentityAutoUserArgs) ToPoolStartTaskUserIdentityAutoUserPtrOutputWithContext(ctx context.Context) PoolStartTaskUserIdentityAutoUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityAutoUserOutput).ToPoolStartTaskUserIdentityAutoUserPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityAutoUserOutput).ToPoolStartTaskUserIdentityAutoUserPtrOutput()
 }
 
 // PoolStartTaskUserIdentityAutoUserPtrInput is an input type that accepts PoolStartTaskUserIdentityAutoUserArgs, PoolStartTaskUserIdentityAutoUserPtr and PoolStartTaskUserIdentityAutoUserPtrOutput values.
@@ -1905,7 +1905,7 @@ func (i *poolStartTaskUserIdentityAutoUserPtrType) ToPoolStartTaskUserIdentityAu
 }
 
 func (i *poolStartTaskUserIdentityAutoUserPtrType) ToPoolStartTaskUserIdentityAutoUserPtrOutputWithContext(ctx context.Context) PoolStartTaskUserIdentityAutoUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityAutoUserPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStartTaskUserIdentityAutoUserOutput).ToPoolStartTaskUserIdentityAutoUserPtrOutput()
 }
 
 type PoolStartTaskUserIdentityAutoUserOutput struct{ *pulumi.OutputState }
@@ -2036,7 +2036,7 @@ func (i PoolStorageImageReferenceArgs) ToPoolStorageImageReferencePtrOutput() Po
 }
 
 func (i PoolStorageImageReferenceArgs) ToPoolStorageImageReferencePtrOutputWithContext(ctx context.Context) PoolStorageImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStorageImageReferenceOutput).ToPoolStorageImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStorageImageReferenceOutput).ToPoolStorageImageReferencePtrOutput()
 }
 
 // PoolStorageImageReferencePtrInput is an input type that accepts PoolStorageImageReferenceArgs, PoolStorageImageReferencePtr and PoolStorageImageReferencePtrOutput values.
@@ -2069,7 +2069,7 @@ func (i *poolStorageImageReferencePtrType) ToPoolStorageImageReferencePtrOutput(
 }
 
 func (i *poolStorageImageReferencePtrType) ToPoolStorageImageReferencePtrOutputWithContext(ctx context.Context) PoolStorageImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolStorageImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PoolStorageImageReferenceOutput).ToPoolStorageImageReferencePtrOutput()
 }
 
 type PoolStorageImageReferenceOutput struct{ *pulumi.OutputState }

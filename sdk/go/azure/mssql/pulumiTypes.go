@@ -60,7 +60,7 @@ func (i DatabaseExtendedAuditingPolicyTypeArgs) ToDatabaseExtendedAuditingPolicy
 }
 
 func (i DatabaseExtendedAuditingPolicyTypeArgs) ToDatabaseExtendedAuditingPolicyTypePtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyTypeOutput).ToDatabaseExtendedAuditingPolicyTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyTypeOutput).ToDatabaseExtendedAuditingPolicyTypePtrOutput()
 }
 
 // DatabaseExtendedAuditingPolicyTypePtrInput is an input type that accepts DatabaseExtendedAuditingPolicyTypeArgs, DatabaseExtendedAuditingPolicyTypePtr and DatabaseExtendedAuditingPolicyTypePtrOutput values.
@@ -93,7 +93,7 @@ func (i *databaseExtendedAuditingPolicyTypePtrType) ToDatabaseExtendedAuditingPo
 }
 
 func (i *databaseExtendedAuditingPolicyTypePtrType) ToDatabaseExtendedAuditingPolicyTypePtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyTypeOutput).ToDatabaseExtendedAuditingPolicyTypePtrOutput()
 }
 
 type DatabaseExtendedAuditingPolicyTypeOutput struct{ *pulumi.OutputState }
@@ -248,7 +248,7 @@ func (i DatabaseLongTermRetentionPolicyArgs) ToDatabaseLongTermRetentionPolicyPt
 }
 
 func (i DatabaseLongTermRetentionPolicyArgs) ToDatabaseLongTermRetentionPolicyPtrOutputWithContext(ctx context.Context) DatabaseLongTermRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseLongTermRetentionPolicyOutput).ToDatabaseLongTermRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseLongTermRetentionPolicyOutput).ToDatabaseLongTermRetentionPolicyPtrOutput()
 }
 
 // DatabaseLongTermRetentionPolicyPtrInput is an input type that accepts DatabaseLongTermRetentionPolicyArgs, DatabaseLongTermRetentionPolicyPtr and DatabaseLongTermRetentionPolicyPtrOutput values.
@@ -281,7 +281,7 @@ func (i *databaseLongTermRetentionPolicyPtrType) ToDatabaseLongTermRetentionPoli
 }
 
 func (i *databaseLongTermRetentionPolicyPtrType) ToDatabaseLongTermRetentionPolicyPtrOutputWithContext(ctx context.Context) DatabaseLongTermRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseLongTermRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseLongTermRetentionPolicyOutput).ToDatabaseLongTermRetentionPolicyPtrOutput()
 }
 
 type DatabaseLongTermRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -424,7 +424,7 @@ func (i DatabaseShortTermRetentionPolicyArgs) ToDatabaseShortTermRetentionPolicy
 }
 
 func (i DatabaseShortTermRetentionPolicyArgs) ToDatabaseShortTermRetentionPolicyPtrOutputWithContext(ctx context.Context) DatabaseShortTermRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseShortTermRetentionPolicyOutput).ToDatabaseShortTermRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseShortTermRetentionPolicyOutput).ToDatabaseShortTermRetentionPolicyPtrOutput()
 }
 
 // DatabaseShortTermRetentionPolicyPtrInput is an input type that accepts DatabaseShortTermRetentionPolicyArgs, DatabaseShortTermRetentionPolicyPtr and DatabaseShortTermRetentionPolicyPtrOutput values.
@@ -457,7 +457,7 @@ func (i *databaseShortTermRetentionPolicyPtrType) ToDatabaseShortTermRetentionPo
 }
 
 func (i *databaseShortTermRetentionPolicyPtrType) ToDatabaseShortTermRetentionPolicyPtrOutputWithContext(ctx context.Context) DatabaseShortTermRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseShortTermRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseShortTermRetentionPolicyOutput).ToDatabaseShortTermRetentionPolicyPtrOutput()
 }
 
 type DatabaseShortTermRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -583,7 +583,7 @@ func (i DatabaseThreatDetectionPolicyArgs) ToDatabaseThreatDetectionPolicyPtrOut
 }
 
 func (i DatabaseThreatDetectionPolicyArgs) ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutput()
 }
 
 // DatabaseThreatDetectionPolicyPtrInput is an input type that accepts DatabaseThreatDetectionPolicyArgs, DatabaseThreatDetectionPolicyPtr and DatabaseThreatDetectionPolicyPtrOutput values.
@@ -616,7 +616,7 @@ func (i *databaseThreatDetectionPolicyPtrType) ToDatabaseThreatDetectionPolicyPt
 }
 
 func (i *databaseThreatDetectionPolicyPtrType) ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutput()
 }
 
 type DatabaseThreatDetectionPolicyOutput struct{ *pulumi.OutputState }
@@ -920,7 +920,7 @@ func (i ElasticPoolPerDatabaseSettingsArgs) ToElasticPoolPerDatabaseSettingsPtrO
 }
 
 func (i ElasticPoolPerDatabaseSettingsArgs) ToElasticPoolPerDatabaseSettingsPtrOutputWithContext(ctx context.Context) ElasticPoolPerDatabaseSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolPerDatabaseSettingsOutput).ToElasticPoolPerDatabaseSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolPerDatabaseSettingsOutput).ToElasticPoolPerDatabaseSettingsPtrOutput()
 }
 
 // ElasticPoolPerDatabaseSettingsPtrInput is an input type that accepts ElasticPoolPerDatabaseSettingsArgs, ElasticPoolPerDatabaseSettingsPtr and ElasticPoolPerDatabaseSettingsPtrOutput values.
@@ -953,7 +953,7 @@ func (i *elasticPoolPerDatabaseSettingsPtrType) ToElasticPoolPerDatabaseSettings
 }
 
 func (i *elasticPoolPerDatabaseSettingsPtrType) ToElasticPoolPerDatabaseSettingsPtrOutputWithContext(ctx context.Context) ElasticPoolPerDatabaseSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolPerDatabaseSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolPerDatabaseSettingsOutput).ToElasticPoolPerDatabaseSettingsPtrOutput()
 }
 
 type ElasticPoolPerDatabaseSettingsOutput struct{ *pulumi.OutputState }
@@ -1078,7 +1078,7 @@ func (i ElasticPoolSkuArgs) ToElasticPoolSkuPtrOutput() ElasticPoolSkuPtrOutput 
 }
 
 func (i ElasticPoolSkuArgs) ToElasticPoolSkuPtrOutputWithContext(ctx context.Context) ElasticPoolSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolSkuOutput).ToElasticPoolSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolSkuOutput).ToElasticPoolSkuPtrOutput()
 }
 
 // ElasticPoolSkuPtrInput is an input type that accepts ElasticPoolSkuArgs, ElasticPoolSkuPtr and ElasticPoolSkuPtrOutput values.
@@ -1111,7 +1111,7 @@ func (i *elasticPoolSkuPtrType) ToElasticPoolSkuPtrOutput() ElasticPoolSkuPtrOut
 }
 
 func (i *elasticPoolSkuPtrType) ToElasticPoolSkuPtrOutputWithContext(ctx context.Context) ElasticPoolSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticPoolSkuOutput).ToElasticPoolSkuPtrOutput()
 }
 
 type ElasticPoolSkuOutput struct{ *pulumi.OutputState }
@@ -1262,7 +1262,7 @@ func (i ServerAzureadAdministratorArgs) ToServerAzureadAdministratorPtrOutput() 
 }
 
 func (i ServerAzureadAdministratorArgs) ToServerAzureadAdministratorPtrOutputWithContext(ctx context.Context) ServerAzureadAdministratorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureadAdministratorOutput).ToServerAzureadAdministratorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureadAdministratorOutput).ToServerAzureadAdministratorPtrOutput()
 }
 
 // ServerAzureadAdministratorPtrInput is an input type that accepts ServerAzureadAdministratorArgs, ServerAzureadAdministratorPtr and ServerAzureadAdministratorPtrOutput values.
@@ -1295,7 +1295,7 @@ func (i *serverAzureadAdministratorPtrType) ToServerAzureadAdministratorPtrOutpu
 }
 
 func (i *serverAzureadAdministratorPtrType) ToServerAzureadAdministratorPtrOutputWithContext(ctx context.Context) ServerAzureadAdministratorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureadAdministratorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureadAdministratorOutput).ToServerAzureadAdministratorPtrOutput()
 }
 
 type ServerAzureadAdministratorOutput struct{ *pulumi.OutputState }
@@ -1435,7 +1435,7 @@ func (i ServerExtendedAuditingPolicyTypeArgs) ToServerExtendedAuditingPolicyType
 }
 
 func (i ServerExtendedAuditingPolicyTypeArgs) ToServerExtendedAuditingPolicyTypePtrOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyTypeOutput).ToServerExtendedAuditingPolicyTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyTypeOutput).ToServerExtendedAuditingPolicyTypePtrOutput()
 }
 
 // ServerExtendedAuditingPolicyTypePtrInput is an input type that accepts ServerExtendedAuditingPolicyTypeArgs, ServerExtendedAuditingPolicyTypePtr and ServerExtendedAuditingPolicyTypePtrOutput values.
@@ -1468,7 +1468,7 @@ func (i *serverExtendedAuditingPolicyTypePtrType) ToServerExtendedAuditingPolicy
 }
 
 func (i *serverExtendedAuditingPolicyTypePtrType) ToServerExtendedAuditingPolicyTypePtrOutputWithContext(ctx context.Context) ServerExtendedAuditingPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerExtendedAuditingPolicyTypeOutput).ToServerExtendedAuditingPolicyTypePtrOutput()
 }
 
 type ServerExtendedAuditingPolicyTypeOutput struct{ *pulumi.OutputState }
@@ -1619,7 +1619,7 @@ func (i ServerIdentityArgs) ToServerIdentityPtrOutput() ServerIdentityPtrOutput 
 }
 
 func (i ServerIdentityArgs) ToServerIdentityPtrOutputWithContext(ctx context.Context) ServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutput()
 }
 
 // ServerIdentityPtrInput is an input type that accepts ServerIdentityArgs, ServerIdentityPtr and ServerIdentityPtrOutput values.
@@ -1652,7 +1652,7 @@ func (i *serverIdentityPtrType) ToServerIdentityPtrOutput() ServerIdentityPtrOut
 }
 
 func (i *serverIdentityPtrType) ToServerIdentityPtrOutputWithContext(ctx context.Context) ServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerIdentityOutput).ToServerIdentityPtrOutput()
 }
 
 type ServerIdentityOutput struct{ *pulumi.OutputState }
@@ -1788,7 +1788,7 @@ func (i ServerVulnerabilityAssessmentRecurringScansArgs) ToServerVulnerabilityAs
 }
 
 func (i ServerVulnerabilityAssessmentRecurringScansArgs) ToServerVulnerabilityAssessmentRecurringScansPtrOutputWithContext(ctx context.Context) ServerVulnerabilityAssessmentRecurringScansPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerVulnerabilityAssessmentRecurringScansOutput).ToServerVulnerabilityAssessmentRecurringScansPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerVulnerabilityAssessmentRecurringScansOutput).ToServerVulnerabilityAssessmentRecurringScansPtrOutput()
 }
 
 // ServerVulnerabilityAssessmentRecurringScansPtrInput is an input type that accepts ServerVulnerabilityAssessmentRecurringScansArgs, ServerVulnerabilityAssessmentRecurringScansPtr and ServerVulnerabilityAssessmentRecurringScansPtrOutput values.
@@ -1821,7 +1821,7 @@ func (i *serverVulnerabilityAssessmentRecurringScansPtrType) ToServerVulnerabili
 }
 
 func (i *serverVulnerabilityAssessmentRecurringScansPtrType) ToServerVulnerabilityAssessmentRecurringScansPtrOutputWithContext(ctx context.Context) ServerVulnerabilityAssessmentRecurringScansPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerVulnerabilityAssessmentRecurringScansPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerVulnerabilityAssessmentRecurringScansOutput).ToServerVulnerabilityAssessmentRecurringScansPtrOutput()
 }
 
 type ServerVulnerabilityAssessmentRecurringScansOutput struct{ *pulumi.OutputState }
@@ -1959,7 +1959,7 @@ func (i VirtualMachineAutoPatchingArgs) ToVirtualMachineAutoPatchingPtrOutput() 
 }
 
 func (i VirtualMachineAutoPatchingArgs) ToVirtualMachineAutoPatchingPtrOutputWithContext(ctx context.Context) VirtualMachineAutoPatchingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAutoPatchingOutput).ToVirtualMachineAutoPatchingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAutoPatchingOutput).ToVirtualMachineAutoPatchingPtrOutput()
 }
 
 // VirtualMachineAutoPatchingPtrInput is an input type that accepts VirtualMachineAutoPatchingArgs, VirtualMachineAutoPatchingPtr and VirtualMachineAutoPatchingPtrOutput values.
@@ -1992,7 +1992,7 @@ func (i *virtualMachineAutoPatchingPtrType) ToVirtualMachineAutoPatchingPtrOutpu
 }
 
 func (i *virtualMachineAutoPatchingPtrType) ToVirtualMachineAutoPatchingPtrOutputWithContext(ctx context.Context) VirtualMachineAutoPatchingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAutoPatchingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAutoPatchingOutput).ToVirtualMachineAutoPatchingPtrOutput()
 }
 
 type VirtualMachineAutoPatchingOutput struct{ *pulumi.OutputState }
@@ -2132,7 +2132,7 @@ func (i VirtualMachineKeyVaultCredentialArgs) ToVirtualMachineKeyVaultCredential
 }
 
 func (i VirtualMachineKeyVaultCredentialArgs) ToVirtualMachineKeyVaultCredentialPtrOutputWithContext(ctx context.Context) VirtualMachineKeyVaultCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineKeyVaultCredentialOutput).ToVirtualMachineKeyVaultCredentialPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineKeyVaultCredentialOutput).ToVirtualMachineKeyVaultCredentialPtrOutput()
 }
 
 // VirtualMachineKeyVaultCredentialPtrInput is an input type that accepts VirtualMachineKeyVaultCredentialArgs, VirtualMachineKeyVaultCredentialPtr and VirtualMachineKeyVaultCredentialPtrOutput values.
@@ -2165,7 +2165,7 @@ func (i *virtualMachineKeyVaultCredentialPtrType) ToVirtualMachineKeyVaultCreden
 }
 
 func (i *virtualMachineKeyVaultCredentialPtrType) ToVirtualMachineKeyVaultCredentialPtrOutputWithContext(ctx context.Context) VirtualMachineKeyVaultCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineKeyVaultCredentialPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineKeyVaultCredentialOutput).ToVirtualMachineKeyVaultCredentialPtrOutput()
 }
 
 type VirtualMachineKeyVaultCredentialOutput struct{ *pulumi.OutputState }
@@ -2324,7 +2324,7 @@ func (i VirtualMachineStorageConfigurationArgs) ToVirtualMachineStorageConfigura
 }
 
 func (i VirtualMachineStorageConfigurationArgs) ToVirtualMachineStorageConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationOutput).ToVirtualMachineStorageConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationOutput).ToVirtualMachineStorageConfigurationPtrOutput()
 }
 
 // VirtualMachineStorageConfigurationPtrInput is an input type that accepts VirtualMachineStorageConfigurationArgs, VirtualMachineStorageConfigurationPtr and VirtualMachineStorageConfigurationPtrOutput values.
@@ -2357,7 +2357,7 @@ func (i *virtualMachineStorageConfigurationPtrType) ToVirtualMachineStorageConfi
 }
 
 func (i *virtualMachineStorageConfigurationPtrType) ToVirtualMachineStorageConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationOutput).ToVirtualMachineStorageConfigurationPtrOutput()
 }
 
 type VirtualMachineStorageConfigurationOutput struct{ *pulumi.OutputState }
@@ -2525,7 +2525,7 @@ func (i VirtualMachineStorageConfigurationDataSettingsArgs) ToVirtualMachineStor
 }
 
 func (i VirtualMachineStorageConfigurationDataSettingsArgs) ToVirtualMachineStorageConfigurationDataSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationDataSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationDataSettingsOutput).ToVirtualMachineStorageConfigurationDataSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationDataSettingsOutput).ToVirtualMachineStorageConfigurationDataSettingsPtrOutput()
 }
 
 // VirtualMachineStorageConfigurationDataSettingsPtrInput is an input type that accepts VirtualMachineStorageConfigurationDataSettingsArgs, VirtualMachineStorageConfigurationDataSettingsPtr and VirtualMachineStorageConfigurationDataSettingsPtrOutput values.
@@ -2558,7 +2558,7 @@ func (i *virtualMachineStorageConfigurationDataSettingsPtrType) ToVirtualMachine
 }
 
 func (i *virtualMachineStorageConfigurationDataSettingsPtrType) ToVirtualMachineStorageConfigurationDataSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationDataSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationDataSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationDataSettingsOutput).ToVirtualMachineStorageConfigurationDataSettingsPtrOutput()
 }
 
 type VirtualMachineStorageConfigurationDataSettingsOutput struct{ *pulumi.OutputState }
@@ -2677,7 +2677,7 @@ func (i VirtualMachineStorageConfigurationLogSettingsArgs) ToVirtualMachineStora
 }
 
 func (i VirtualMachineStorageConfigurationLogSettingsArgs) ToVirtualMachineStorageConfigurationLogSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationLogSettingsOutput).ToVirtualMachineStorageConfigurationLogSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationLogSettingsOutput).ToVirtualMachineStorageConfigurationLogSettingsPtrOutput()
 }
 
 // VirtualMachineStorageConfigurationLogSettingsPtrInput is an input type that accepts VirtualMachineStorageConfigurationLogSettingsArgs, VirtualMachineStorageConfigurationLogSettingsPtr and VirtualMachineStorageConfigurationLogSettingsPtrOutput values.
@@ -2710,7 +2710,7 @@ func (i *virtualMachineStorageConfigurationLogSettingsPtrType) ToVirtualMachineS
 }
 
 func (i *virtualMachineStorageConfigurationLogSettingsPtrType) ToVirtualMachineStorageConfigurationLogSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationLogSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationLogSettingsOutput).ToVirtualMachineStorageConfigurationLogSettingsPtrOutput()
 }
 
 type VirtualMachineStorageConfigurationLogSettingsOutput struct{ *pulumi.OutputState }
@@ -2829,7 +2829,7 @@ func (i VirtualMachineStorageConfigurationTempDbSettingsArgs) ToVirtualMachineSt
 }
 
 func (i VirtualMachineStorageConfigurationTempDbSettingsArgs) ToVirtualMachineStorageConfigurationTempDbSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationTempDbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationTempDbSettingsOutput).ToVirtualMachineStorageConfigurationTempDbSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationTempDbSettingsOutput).ToVirtualMachineStorageConfigurationTempDbSettingsPtrOutput()
 }
 
 // VirtualMachineStorageConfigurationTempDbSettingsPtrInput is an input type that accepts VirtualMachineStorageConfigurationTempDbSettingsArgs, VirtualMachineStorageConfigurationTempDbSettingsPtr and VirtualMachineStorageConfigurationTempDbSettingsPtrOutput values.
@@ -2862,7 +2862,7 @@ func (i *virtualMachineStorageConfigurationTempDbSettingsPtrType) ToVirtualMachi
 }
 
 func (i *virtualMachineStorageConfigurationTempDbSettingsPtrType) ToVirtualMachineStorageConfigurationTempDbSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineStorageConfigurationTempDbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationTempDbSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageConfigurationTempDbSettingsOutput).ToVirtualMachineStorageConfigurationTempDbSettingsPtrOutput()
 }
 
 type VirtualMachineStorageConfigurationTempDbSettingsOutput struct{ *pulumi.OutputState }

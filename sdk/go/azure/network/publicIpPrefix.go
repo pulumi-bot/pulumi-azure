@@ -195,16 +195,31 @@ type PublicIpPrefixInput interface {
 	ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput
 }
 
-func (PublicIpPrefix) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicIpPrefix)(nil)).Elem()
+func (*PublicIpPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpPrefix)(nil))
 }
 
-func (i PublicIpPrefix) ToPublicIpPrefixOutput() PublicIpPrefixOutput {
+func (i *PublicIpPrefix) ToPublicIpPrefixOutput() PublicIpPrefixOutput {
 	return i.ToPublicIpPrefixOutputWithContext(context.Background())
 }
 
-func (i PublicIpPrefix) ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput {
+func (i *PublicIpPrefix) ToPublicIpPrefixOutputWithContext(ctx context.Context) PublicIpPrefixOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpPrefixOutput)
+}
+
+func (i *PublicIpPrefix) ToPublicIpPrefixPtrOutput() PublicIpPrefixPtrOutput {
+	return i.ToPublicIpPrefixPtrOutputWithContext(context.Background())
+}
+
+func (i *PublicIpPrefix) ToPublicIpPrefixPtrOutputWithContext(ctx context.Context) PublicIpPrefixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpPrefixPtrOutput)
+}
+
+type PublicIpPrefixPtrInput interface {
+	pulumi.Input
+
+	ToPublicIpPrefixPtrOutput() PublicIpPrefixPtrOutput
+	ToPublicIpPrefixPtrOutputWithContext(ctx context.Context) PublicIpPrefixPtrOutput
 }
 
 type PublicIpPrefixOutput struct {
@@ -212,7 +227,7 @@ type PublicIpPrefixOutput struct {
 }
 
 func (PublicIpPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicIpPrefixOutput)(nil)).Elem()
+	return reflect.TypeOf((*PublicIpPrefix)(nil))
 }
 
 func (o PublicIpPrefixOutput) ToPublicIpPrefixOutput() PublicIpPrefixOutput {
@@ -223,6 +238,23 @@ func (o PublicIpPrefixOutput) ToPublicIpPrefixOutputWithContext(ctx context.Cont
 	return o
 }
 
+type PublicIpPrefixPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicIpPrefixPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpPrefix)(nil))
+}
+
+func (o PublicIpPrefixPtrOutput) ToPublicIpPrefixPtrOutput() PublicIpPrefixPtrOutput {
+	return o
+}
+
+func (o PublicIpPrefixPtrOutput) ToPublicIpPrefixPtrOutputWithContext(ctx context.Context) PublicIpPrefixPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicIpPrefixOutput{})
+	pulumi.RegisterOutputType(PublicIpPrefixPtrOutput{})
 }

@@ -158,16 +158,31 @@ type DomainTopicInput interface {
 	ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput
 }
 
-func (DomainTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainTopic)(nil)).Elem()
+func (*DomainTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTopic)(nil))
 }
 
-func (i DomainTopic) ToDomainTopicOutput() DomainTopicOutput {
+func (i *DomainTopic) ToDomainTopicOutput() DomainTopicOutput {
 	return i.ToDomainTopicOutputWithContext(context.Background())
 }
 
-func (i DomainTopic) ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput {
+func (i *DomainTopic) ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicOutput)
+}
+
+func (i *DomainTopic) ToDomainTopicPtrOutput() DomainTopicPtrOutput {
+	return i.ToDomainTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainTopic) ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicPtrOutput)
+}
+
+type DomainTopicPtrInput interface {
+	pulumi.Input
+
+	ToDomainTopicPtrOutput() DomainTopicPtrOutput
+	ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput
 }
 
 type DomainTopicOutput struct {
@@ -175,7 +190,7 @@ type DomainTopicOutput struct {
 }
 
 func (DomainTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainTopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainTopic)(nil))
 }
 
 func (o DomainTopicOutput) ToDomainTopicOutput() DomainTopicOutput {
@@ -186,6 +201,23 @@ func (o DomainTopicOutput) ToDomainTopicOutputWithContext(ctx context.Context) D
 	return o
 }
 
+type DomainTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainTopic)(nil))
+}
+
+func (o DomainTopicPtrOutput) ToDomainTopicPtrOutput() DomainTopicPtrOutput {
+	return o
+}
+
+func (o DomainTopicPtrOutput) ToDomainTopicPtrOutputWithContext(ctx context.Context) DomainTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainTopicOutput{})
+	pulumi.RegisterOutputType(DomainTopicPtrOutput{})
 }

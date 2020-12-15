@@ -393,16 +393,31 @@ type FunctionAppSlotInput interface {
 	ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput
 }
 
-func (FunctionAppSlot) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAppSlot)(nil)).Elem()
+func (*FunctionAppSlot) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAppSlot)(nil))
 }
 
-func (i FunctionAppSlot) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
+func (i *FunctionAppSlot) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
 	return i.ToFunctionAppSlotOutputWithContext(context.Background())
 }
 
-func (i FunctionAppSlot) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
+func (i *FunctionAppSlot) ToFunctionAppSlotOutputWithContext(ctx context.Context) FunctionAppSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotOutput)
+}
+
+func (i *FunctionAppSlot) ToFunctionAppSlotPtrOutput() FunctionAppSlotPtrOutput {
+	return i.ToFunctionAppSlotPtrOutputWithContext(context.Background())
+}
+
+func (i *FunctionAppSlot) ToFunctionAppSlotPtrOutputWithContext(ctx context.Context) FunctionAppSlotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotPtrOutput)
+}
+
+type FunctionAppSlotPtrInput interface {
+	pulumi.Input
+
+	ToFunctionAppSlotPtrOutput() FunctionAppSlotPtrOutput
+	ToFunctionAppSlotPtrOutputWithContext(ctx context.Context) FunctionAppSlotPtrOutput
 }
 
 type FunctionAppSlotOutput struct {
@@ -410,7 +425,7 @@ type FunctionAppSlotOutput struct {
 }
 
 func (FunctionAppSlotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAppSlotOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionAppSlot)(nil))
 }
 
 func (o FunctionAppSlotOutput) ToFunctionAppSlotOutput() FunctionAppSlotOutput {
@@ -421,6 +436,23 @@ func (o FunctionAppSlotOutput) ToFunctionAppSlotOutputWithContext(ctx context.Co
 	return o
 }
 
+type FunctionAppSlotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionAppSlotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAppSlot)(nil))
+}
+
+func (o FunctionAppSlotPtrOutput) ToFunctionAppSlotPtrOutput() FunctionAppSlotPtrOutput {
+	return o
+}
+
+func (o FunctionAppSlotPtrOutput) ToFunctionAppSlotPtrOutputWithContext(ctx context.Context) FunctionAppSlotPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionAppSlotOutput{})
+	pulumi.RegisterOutputType(FunctionAppSlotPtrOutput{})
 }

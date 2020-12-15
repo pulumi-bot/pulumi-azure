@@ -285,16 +285,31 @@ type BlobInput interface {
 	ToBlobOutputWithContext(ctx context.Context) BlobOutput
 }
 
-func (Blob) ElementType() reflect.Type {
-	return reflect.TypeOf((*Blob)(nil)).Elem()
+func (*Blob) ElementType() reflect.Type {
+	return reflect.TypeOf((*Blob)(nil))
 }
 
-func (i Blob) ToBlobOutput() BlobOutput {
+func (i *Blob) ToBlobOutput() BlobOutput {
 	return i.ToBlobOutputWithContext(context.Background())
 }
 
-func (i Blob) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
+func (i *Blob) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlobOutput)
+}
+
+func (i *Blob) ToBlobPtrOutput() BlobPtrOutput {
+	return i.ToBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *Blob) ToBlobPtrOutputWithContext(ctx context.Context) BlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlobPtrOutput)
+}
+
+type BlobPtrInput interface {
+	pulumi.Input
+
+	ToBlobPtrOutput() BlobPtrOutput
+	ToBlobPtrOutputWithContext(ctx context.Context) BlobPtrOutput
 }
 
 type BlobOutput struct {
@@ -302,7 +317,7 @@ type BlobOutput struct {
 }
 
 func (BlobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlobOutput)(nil)).Elem()
+	return reflect.TypeOf((*Blob)(nil))
 }
 
 func (o BlobOutput) ToBlobOutput() BlobOutput {
@@ -313,6 +328,23 @@ func (o BlobOutput) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
 	return o
 }
 
+type BlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Blob)(nil))
+}
+
+func (o BlobPtrOutput) ToBlobPtrOutput() BlobPtrOutput {
+	return o
+}
+
+func (o BlobPtrOutput) ToBlobPtrOutputWithContext(ctx context.Context) BlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BlobOutput{})
+	pulumi.RegisterOutputType(BlobPtrOutput{})
 }

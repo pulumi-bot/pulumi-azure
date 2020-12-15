@@ -226,16 +226,31 @@ type StorageInsightsInput interface {
 	ToStorageInsightsOutputWithContext(ctx context.Context) StorageInsightsOutput
 }
 
-func (StorageInsights) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageInsights)(nil)).Elem()
+func (*StorageInsights) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInsights)(nil))
 }
 
-func (i StorageInsights) ToStorageInsightsOutput() StorageInsightsOutput {
+func (i *StorageInsights) ToStorageInsightsOutput() StorageInsightsOutput {
 	return i.ToStorageInsightsOutputWithContext(context.Background())
 }
 
-func (i StorageInsights) ToStorageInsightsOutputWithContext(ctx context.Context) StorageInsightsOutput {
+func (i *StorageInsights) ToStorageInsightsOutputWithContext(ctx context.Context) StorageInsightsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageInsightsOutput)
+}
+
+func (i *StorageInsights) ToStorageInsightsPtrOutput() StorageInsightsPtrOutput {
+	return i.ToStorageInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i *StorageInsights) ToStorageInsightsPtrOutputWithContext(ctx context.Context) StorageInsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageInsightsPtrOutput)
+}
+
+type StorageInsightsPtrInput interface {
+	pulumi.Input
+
+	ToStorageInsightsPtrOutput() StorageInsightsPtrOutput
+	ToStorageInsightsPtrOutputWithContext(ctx context.Context) StorageInsightsPtrOutput
 }
 
 type StorageInsightsOutput struct {
@@ -243,7 +258,7 @@ type StorageInsightsOutput struct {
 }
 
 func (StorageInsightsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageInsightsOutput)(nil)).Elem()
+	return reflect.TypeOf((*StorageInsights)(nil))
 }
 
 func (o StorageInsightsOutput) ToStorageInsightsOutput() StorageInsightsOutput {
@@ -254,6 +269,23 @@ func (o StorageInsightsOutput) ToStorageInsightsOutputWithContext(ctx context.Co
 	return o
 }
 
+type StorageInsightsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StorageInsightsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageInsights)(nil))
+}
+
+func (o StorageInsightsPtrOutput) ToStorageInsightsPtrOutput() StorageInsightsPtrOutput {
+	return o
+}
+
+func (o StorageInsightsPtrOutput) ToStorageInsightsPtrOutputWithContext(ctx context.Context) StorageInsightsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StorageInsightsOutput{})
+	pulumi.RegisterOutputType(StorageInsightsPtrOutput{})
 }

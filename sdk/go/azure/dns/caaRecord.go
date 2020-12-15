@@ -222,16 +222,31 @@ type CaaRecordInput interface {
 	ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput
 }
 
-func (CaaRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaaRecord)(nil)).Elem()
+func (*CaaRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaaRecord)(nil))
 }
 
-func (i CaaRecord) ToCaaRecordOutput() CaaRecordOutput {
+func (i *CaaRecord) ToCaaRecordOutput() CaaRecordOutput {
 	return i.ToCaaRecordOutputWithContext(context.Background())
 }
 
-func (i CaaRecord) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
+func (i *CaaRecord) ToCaaRecordOutputWithContext(ctx context.Context) CaaRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordOutput)
+}
+
+func (i *CaaRecord) ToCaaRecordPtrOutput() CaaRecordPtrOutput {
+	return i.ToCaaRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *CaaRecord) ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaaRecordPtrOutput)
+}
+
+type CaaRecordPtrInput interface {
+	pulumi.Input
+
+	ToCaaRecordPtrOutput() CaaRecordPtrOutput
+	ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput
 }
 
 type CaaRecordOutput struct {
@@ -239,7 +254,7 @@ type CaaRecordOutput struct {
 }
 
 func (CaaRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaaRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*CaaRecord)(nil))
 }
 
 func (o CaaRecordOutput) ToCaaRecordOutput() CaaRecordOutput {
@@ -250,6 +265,23 @@ func (o CaaRecordOutput) ToCaaRecordOutputWithContext(ctx context.Context) CaaRe
 	return o
 }
 
+type CaaRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CaaRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaaRecord)(nil))
+}
+
+func (o CaaRecordPtrOutput) ToCaaRecordPtrOutput() CaaRecordPtrOutput {
+	return o
+}
+
+func (o CaaRecordPtrOutput) ToCaaRecordPtrOutputWithContext(ctx context.Context) CaaRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CaaRecordOutput{})
+	pulumi.RegisterOutputType(CaaRecordPtrOutput{})
 }

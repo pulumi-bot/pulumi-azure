@@ -329,16 +329,31 @@ type SparkClusterInput interface {
 	ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput
 }
 
-func (SparkCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkCluster)(nil)).Elem()
+func (*SparkCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkCluster)(nil))
 }
 
-func (i SparkCluster) ToSparkClusterOutput() SparkClusterOutput {
+func (i *SparkCluster) ToSparkClusterOutput() SparkClusterOutput {
 	return i.ToSparkClusterOutputWithContext(context.Background())
 }
 
-func (i SparkCluster) ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput {
+func (i *SparkCluster) ToSparkClusterOutputWithContext(ctx context.Context) SparkClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterOutput)
+}
+
+func (i *SparkCluster) ToSparkClusterPtrOutput() SparkClusterPtrOutput {
+	return i.ToSparkClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *SparkCluster) ToSparkClusterPtrOutputWithContext(ctx context.Context) SparkClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkClusterPtrOutput)
+}
+
+type SparkClusterPtrInput interface {
+	pulumi.Input
+
+	ToSparkClusterPtrOutput() SparkClusterPtrOutput
+	ToSparkClusterPtrOutputWithContext(ctx context.Context) SparkClusterPtrOutput
 }
 
 type SparkClusterOutput struct {
@@ -346,7 +361,7 @@ type SparkClusterOutput struct {
 }
 
 func (SparkClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SparkClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*SparkCluster)(nil))
 }
 
 func (o SparkClusterOutput) ToSparkClusterOutput() SparkClusterOutput {
@@ -357,6 +372,23 @@ func (o SparkClusterOutput) ToSparkClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
+type SparkClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SparkClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkCluster)(nil))
+}
+
+func (o SparkClusterPtrOutput) ToSparkClusterPtrOutput() SparkClusterPtrOutput {
+	return o
+}
+
+func (o SparkClusterPtrOutput) ToSparkClusterPtrOutputWithContext(ctx context.Context) SparkClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SparkClusterOutput{})
+	pulumi.RegisterOutputType(SparkClusterPtrOutput{})
 }

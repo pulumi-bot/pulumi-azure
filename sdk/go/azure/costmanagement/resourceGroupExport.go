@@ -231,16 +231,31 @@ type ResourceGroupExportInput interface {
 	ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput
 }
 
-func (ResourceGroupExport) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceGroupExport)(nil)).Elem()
+func (*ResourceGroupExport) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupExport)(nil))
 }
 
-func (i ResourceGroupExport) ToResourceGroupExportOutput() ResourceGroupExportOutput {
+func (i *ResourceGroupExport) ToResourceGroupExportOutput() ResourceGroupExportOutput {
 	return i.ToResourceGroupExportOutputWithContext(context.Background())
 }
 
-func (i ResourceGroupExport) ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput {
+func (i *ResourceGroupExport) ToResourceGroupExportOutputWithContext(ctx context.Context) ResourceGroupExportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportOutput)
+}
+
+func (i *ResourceGroupExport) ToResourceGroupExportPtrOutput() ResourceGroupExportPtrOutput {
+	return i.ToResourceGroupExportPtrOutputWithContext(context.Background())
+}
+
+func (i *ResourceGroupExport) ToResourceGroupExportPtrOutputWithContext(ctx context.Context) ResourceGroupExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupExportPtrOutput)
+}
+
+type ResourceGroupExportPtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupExportPtrOutput() ResourceGroupExportPtrOutput
+	ToResourceGroupExportPtrOutputWithContext(ctx context.Context) ResourceGroupExportPtrOutput
 }
 
 type ResourceGroupExportOutput struct {
@@ -248,7 +263,7 @@ type ResourceGroupExportOutput struct {
 }
 
 func (ResourceGroupExportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceGroupExportOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResourceGroupExport)(nil))
 }
 
 func (o ResourceGroupExportOutput) ToResourceGroupExportOutput() ResourceGroupExportOutput {
@@ -259,6 +274,23 @@ func (o ResourceGroupExportOutput) ToResourceGroupExportOutputWithContext(ctx co
 	return o
 }
 
+type ResourceGroupExportPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupExport)(nil))
+}
+
+func (o ResourceGroupExportPtrOutput) ToResourceGroupExportPtrOutput() ResourceGroupExportPtrOutput {
+	return o
+}
+
+func (o ResourceGroupExportPtrOutput) ToResourceGroupExportPtrOutputWithContext(ctx context.Context) ResourceGroupExportPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupExportOutput{})
+	pulumi.RegisterOutputType(ResourceGroupExportPtrOutput{})
 }

@@ -252,16 +252,31 @@ type OutboundRuleInput interface {
 	ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput
 }
 
-func (OutboundRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRule)(nil)).Elem()
+func (*OutboundRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundRule)(nil))
 }
 
-func (i OutboundRule) ToOutboundRuleOutput() OutboundRuleOutput {
+func (i *OutboundRule) ToOutboundRuleOutput() OutboundRuleOutput {
 	return i.ToOutboundRuleOutputWithContext(context.Background())
 }
 
-func (i OutboundRule) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
+func (i *OutboundRule) ToOutboundRuleOutputWithContext(ctx context.Context) OutboundRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleOutput)
+}
+
+func (i *OutboundRule) ToOutboundRulePtrOutput() OutboundRulePtrOutput {
+	return i.ToOutboundRulePtrOutputWithContext(context.Background())
+}
+
+func (i *OutboundRule) ToOutboundRulePtrOutputWithContext(ctx context.Context) OutboundRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutboundRulePtrOutput)
+}
+
+type OutboundRulePtrInput interface {
+	pulumi.Input
+
+	ToOutboundRulePtrOutput() OutboundRulePtrOutput
+	ToOutboundRulePtrOutputWithContext(ctx context.Context) OutboundRulePtrOutput
 }
 
 type OutboundRuleOutput struct {
@@ -269,7 +284,7 @@ type OutboundRuleOutput struct {
 }
 
 func (OutboundRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*OutboundRule)(nil))
 }
 
 func (o OutboundRuleOutput) ToOutboundRuleOutput() OutboundRuleOutput {
@@ -280,6 +295,23 @@ func (o OutboundRuleOutput) ToOutboundRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+type OutboundRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutboundRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundRule)(nil))
+}
+
+func (o OutboundRulePtrOutput) ToOutboundRulePtrOutput() OutboundRulePtrOutput {
+	return o
+}
+
+func (o OutboundRulePtrOutput) ToOutboundRulePtrOutputWithContext(ctx context.Context) OutboundRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OutboundRuleOutput{})
+	pulumi.RegisterOutputType(OutboundRulePtrOutput{})
 }

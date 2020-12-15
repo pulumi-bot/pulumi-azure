@@ -173,16 +173,31 @@ type IPGroupInput interface {
 	ToIPGroupOutputWithContext(ctx context.Context) IPGroupOutput
 }
 
-func (IPGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPGroup)(nil)).Elem()
+func (*IPGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPGroup)(nil))
 }
 
-func (i IPGroup) ToIPGroupOutput() IPGroupOutput {
+func (i *IPGroup) ToIPGroupOutput() IPGroupOutput {
 	return i.ToIPGroupOutputWithContext(context.Background())
 }
 
-func (i IPGroup) ToIPGroupOutputWithContext(ctx context.Context) IPGroupOutput {
+func (i *IPGroup) ToIPGroupOutputWithContext(ctx context.Context) IPGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IPGroupOutput)
+}
+
+func (i *IPGroup) ToIPGroupPtrOutput() IPGroupPtrOutput {
+	return i.ToIPGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *IPGroup) ToIPGroupPtrOutputWithContext(ctx context.Context) IPGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IPGroupPtrOutput)
+}
+
+type IPGroupPtrInput interface {
+	pulumi.Input
+
+	ToIPGroupPtrOutput() IPGroupPtrOutput
+	ToIPGroupPtrOutputWithContext(ctx context.Context) IPGroupPtrOutput
 }
 
 type IPGroupOutput struct {
@@ -190,7 +205,7 @@ type IPGroupOutput struct {
 }
 
 func (IPGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*IPGroup)(nil))
 }
 
 func (o IPGroupOutput) ToIPGroupOutput() IPGroupOutput {
@@ -201,6 +216,23 @@ func (o IPGroupOutput) ToIPGroupOutputWithContext(ctx context.Context) IPGroupOu
 	return o
 }
 
+type IPGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IPGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IPGroup)(nil))
+}
+
+func (o IPGroupPtrOutput) ToIPGroupPtrOutput() IPGroupPtrOutput {
+	return o
+}
+
+func (o IPGroupPtrOutput) ToIPGroupPtrOutputWithContext(ctx context.Context) IPGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IPGroupOutput{})
+	pulumi.RegisterOutputType(IPGroupPtrOutput{})
 }

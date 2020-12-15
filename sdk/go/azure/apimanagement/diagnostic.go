@@ -205,16 +205,31 @@ type DiagnosticInput interface {
 	ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput
 }
 
-func (Diagnostic) ElementType() reflect.Type {
-	return reflect.TypeOf((*Diagnostic)(nil)).Elem()
+func (*Diagnostic) ElementType() reflect.Type {
+	return reflect.TypeOf((*Diagnostic)(nil))
 }
 
-func (i Diagnostic) ToDiagnosticOutput() DiagnosticOutput {
+func (i *Diagnostic) ToDiagnosticOutput() DiagnosticOutput {
 	return i.ToDiagnosticOutputWithContext(context.Background())
 }
 
-func (i Diagnostic) ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput {
+func (i *Diagnostic) ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticOutput)
+}
+
+func (i *Diagnostic) ToDiagnosticPtrOutput() DiagnosticPtrOutput {
+	return i.ToDiagnosticPtrOutputWithContext(context.Background())
+}
+
+func (i *Diagnostic) ToDiagnosticPtrOutputWithContext(ctx context.Context) DiagnosticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticPtrOutput)
+}
+
+type DiagnosticPtrInput interface {
+	pulumi.Input
+
+	ToDiagnosticPtrOutput() DiagnosticPtrOutput
+	ToDiagnosticPtrOutputWithContext(ctx context.Context) DiagnosticPtrOutput
 }
 
 type DiagnosticOutput struct {
@@ -222,7 +237,7 @@ type DiagnosticOutput struct {
 }
 
 func (DiagnosticOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiagnosticOutput)(nil)).Elem()
+	return reflect.TypeOf((*Diagnostic)(nil))
 }
 
 func (o DiagnosticOutput) ToDiagnosticOutput() DiagnosticOutput {
@@ -233,6 +248,23 @@ func (o DiagnosticOutput) ToDiagnosticOutputWithContext(ctx context.Context) Dia
 	return o
 }
 
+type DiagnosticPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiagnosticPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Diagnostic)(nil))
+}
+
+func (o DiagnosticPtrOutput) ToDiagnosticPtrOutput() DiagnosticPtrOutput {
+	return o
+}
+
+func (o DiagnosticPtrOutput) ToDiagnosticPtrOutputWithContext(ctx context.Context) DiagnosticPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DiagnosticOutput{})
+	pulumi.RegisterOutputType(DiagnosticPtrOutput{})
 }

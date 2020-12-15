@@ -292,16 +292,31 @@ type LinkServiceInput interface {
 	ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput
 }
 
-func (LinkService) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkService)(nil)).Elem()
+func (*LinkService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkService)(nil))
 }
 
-func (i LinkService) ToLinkServiceOutput() LinkServiceOutput {
+func (i *LinkService) ToLinkServiceOutput() LinkServiceOutput {
 	return i.ToLinkServiceOutputWithContext(context.Background())
 }
 
-func (i LinkService) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
+func (i *LinkService) ToLinkServiceOutputWithContext(ctx context.Context) LinkServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkServiceOutput)
+}
+
+func (i *LinkService) ToLinkServicePtrOutput() LinkServicePtrOutput {
+	return i.ToLinkServicePtrOutputWithContext(context.Background())
+}
+
+func (i *LinkService) ToLinkServicePtrOutputWithContext(ctx context.Context) LinkServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkServicePtrOutput)
+}
+
+type LinkServicePtrInput interface {
+	pulumi.Input
+
+	ToLinkServicePtrOutput() LinkServicePtrOutput
+	ToLinkServicePtrOutputWithContext(ctx context.Context) LinkServicePtrOutput
 }
 
 type LinkServiceOutput struct {
@@ -309,7 +324,7 @@ type LinkServiceOutput struct {
 }
 
 func (LinkServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkService)(nil))
 }
 
 func (o LinkServiceOutput) ToLinkServiceOutput() LinkServiceOutput {
@@ -320,6 +335,23 @@ func (o LinkServiceOutput) ToLinkServiceOutputWithContext(ctx context.Context) L
 	return o
 }
 
+type LinkServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkService)(nil))
+}
+
+func (o LinkServicePtrOutput) ToLinkServicePtrOutput() LinkServicePtrOutput {
+	return o
+}
+
+func (o LinkServicePtrOutput) ToLinkServicePtrOutputWithContext(ctx context.Context) LinkServicePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkServiceOutput{})
+	pulumi.RegisterOutputType(LinkServicePtrOutput{})
 }

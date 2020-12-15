@@ -204,16 +204,31 @@ type EventHubInput interface {
 	ToEventHubOutputWithContext(ctx context.Context) EventHubOutput
 }
 
-func (EventHub) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHub)(nil)).Elem()
+func (*EventHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHub)(nil))
 }
 
-func (i EventHub) ToEventHubOutput() EventHubOutput {
+func (i *EventHub) ToEventHubOutput() EventHubOutput {
 	return i.ToEventHubOutputWithContext(context.Background())
 }
 
-func (i EventHub) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
+func (i *EventHub) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubOutput)
+}
+
+func (i *EventHub) ToEventHubPtrOutput() EventHubPtrOutput {
+	return i.ToEventHubPtrOutputWithContext(context.Background())
+}
+
+func (i *EventHub) ToEventHubPtrOutputWithContext(ctx context.Context) EventHubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubPtrOutput)
+}
+
+type EventHubPtrInput interface {
+	pulumi.Input
+
+	ToEventHubPtrOutput() EventHubPtrOutput
+	ToEventHubPtrOutputWithContext(ctx context.Context) EventHubPtrOutput
 }
 
 type EventHubOutput struct {
@@ -221,7 +236,7 @@ type EventHubOutput struct {
 }
 
 func (EventHubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventHubOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventHub)(nil))
 }
 
 func (o EventHubOutput) ToEventHubOutput() EventHubOutput {
@@ -232,6 +247,23 @@ func (o EventHubOutput) ToEventHubOutputWithContext(ctx context.Context) EventHu
 	return o
 }
 
+type EventHubPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventHubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHub)(nil))
+}
+
+func (o EventHubPtrOutput) ToEventHubPtrOutput() EventHubPtrOutput {
+	return o
+}
+
+func (o EventHubPtrOutput) ToEventHubPtrOutputWithContext(ctx context.Context) EventHubPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventHubOutput{})
+	pulumi.RegisterOutputType(EventHubPtrOutput{})
 }

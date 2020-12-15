@@ -214,16 +214,31 @@ type AnalyticsItemInput interface {
 	ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput
 }
 
-func (AnalyticsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsItem)(nil)).Elem()
+func (*AnalyticsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsItem)(nil))
 }
 
-func (i AnalyticsItem) ToAnalyticsItemOutput() AnalyticsItemOutput {
+func (i *AnalyticsItem) ToAnalyticsItemOutput() AnalyticsItemOutput {
 	return i.ToAnalyticsItemOutputWithContext(context.Background())
 }
 
-func (i AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
+func (i *AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsItemOutput)
+}
+
+func (i *AnalyticsItem) ToAnalyticsItemPtrOutput() AnalyticsItemPtrOutput {
+	return i.ToAnalyticsItemPtrOutputWithContext(context.Background())
+}
+
+func (i *AnalyticsItem) ToAnalyticsItemPtrOutputWithContext(ctx context.Context) AnalyticsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsItemPtrOutput)
+}
+
+type AnalyticsItemPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsItemPtrOutput() AnalyticsItemPtrOutput
+	ToAnalyticsItemPtrOutputWithContext(ctx context.Context) AnalyticsItemPtrOutput
 }
 
 type AnalyticsItemOutput struct {
@@ -231,7 +246,7 @@ type AnalyticsItemOutput struct {
 }
 
 func (AnalyticsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsItemOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnalyticsItem)(nil))
 }
 
 func (o AnalyticsItemOutput) ToAnalyticsItemOutput() AnalyticsItemOutput {
@@ -242,6 +257,23 @@ func (o AnalyticsItemOutput) ToAnalyticsItemOutputWithContext(ctx context.Contex
 	return o
 }
 
+type AnalyticsItemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsItem)(nil))
+}
+
+func (o AnalyticsItemPtrOutput) ToAnalyticsItemPtrOutput() AnalyticsItemPtrOutput {
+	return o
+}
+
+func (o AnalyticsItemPtrOutput) ToAnalyticsItemPtrOutputWithContext(ctx context.Context) AnalyticsItemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyticsItemOutput{})
+	pulumi.RegisterOutputType(AnalyticsItemPtrOutput{})
 }

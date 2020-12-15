@@ -215,16 +215,31 @@ type NetworkInterfaceBackendAddressPoolAssociationInput interface {
 	ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput
 }
 
-func (NetworkInterfaceBackendAddressPoolAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociation)(nil)).Elem()
+func (*NetworkInterfaceBackendAddressPoolAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociation)(nil))
 }
 
-func (i NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput {
+func (i *NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput {
 	return i.ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(context.Background())
 }
 
-func (i NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput {
+func (i *NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceBackendAddressPoolAssociationOutput)
+}
+
+func (i *NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationPtrOutput() NetworkInterfaceBackendAddressPoolAssociationPtrOutput {
+	return i.ToNetworkInterfaceBackendAddressPoolAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkInterfaceBackendAddressPoolAssociation) ToNetworkInterfaceBackendAddressPoolAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceBackendAddressPoolAssociationPtrOutput)
+}
+
+type NetworkInterfaceBackendAddressPoolAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceBackendAddressPoolAssociationPtrOutput() NetworkInterfaceBackendAddressPoolAssociationPtrOutput
+	ToNetworkInterfaceBackendAddressPoolAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationPtrOutput
 }
 
 type NetworkInterfaceBackendAddressPoolAssociationOutput struct {
@@ -232,7 +247,7 @@ type NetworkInterfaceBackendAddressPoolAssociationOutput struct {
 }
 
 func (NetworkInterfaceBackendAddressPoolAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkInterfaceBackendAddressPoolAssociation)(nil))
 }
 
 func (o NetworkInterfaceBackendAddressPoolAssociationOutput) ToNetworkInterfaceBackendAddressPoolAssociationOutput() NetworkInterfaceBackendAddressPoolAssociationOutput {
@@ -243,6 +258,23 @@ func (o NetworkInterfaceBackendAddressPoolAssociationOutput) ToNetworkInterfaceB
 	return o
 }
 
+type NetworkInterfaceBackendAddressPoolAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceBackendAddressPoolAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceBackendAddressPoolAssociation)(nil))
+}
+
+func (o NetworkInterfaceBackendAddressPoolAssociationPtrOutput) ToNetworkInterfaceBackendAddressPoolAssociationPtrOutput() NetworkInterfaceBackendAddressPoolAssociationPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceBackendAddressPoolAssociationPtrOutput) ToNetworkInterfaceBackendAddressPoolAssociationPtrOutputWithContext(ctx context.Context) NetworkInterfaceBackendAddressPoolAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceBackendAddressPoolAssociationOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceBackendAddressPoolAssociationPtrOutput{})
 }

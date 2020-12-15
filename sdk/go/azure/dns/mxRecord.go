@@ -210,16 +210,31 @@ type MxRecordInput interface {
 	ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput
 }
 
-func (MxRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*MxRecord)(nil)).Elem()
+func (*MxRecord) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxRecord)(nil))
 }
 
-func (i MxRecord) ToMxRecordOutput() MxRecordOutput {
+func (i *MxRecord) ToMxRecordOutput() MxRecordOutput {
 	return i.ToMxRecordOutputWithContext(context.Background())
 }
 
-func (i MxRecord) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
+func (i *MxRecord) ToMxRecordOutputWithContext(ctx context.Context) MxRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MxRecordOutput)
+}
+
+func (i *MxRecord) ToMxRecordPtrOutput() MxRecordPtrOutput {
+	return i.ToMxRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *MxRecord) ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxRecordPtrOutput)
+}
+
+type MxRecordPtrInput interface {
+	pulumi.Input
+
+	ToMxRecordPtrOutput() MxRecordPtrOutput
+	ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput
 }
 
 type MxRecordOutput struct {
@@ -227,7 +242,7 @@ type MxRecordOutput struct {
 }
 
 func (MxRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MxRecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*MxRecord)(nil))
 }
 
 func (o MxRecordOutput) ToMxRecordOutput() MxRecordOutput {
@@ -238,6 +253,23 @@ func (o MxRecordOutput) ToMxRecordOutputWithContext(ctx context.Context) MxRecor
 	return o
 }
 
+type MxRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MxRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxRecord)(nil))
+}
+
+func (o MxRecordPtrOutput) ToMxRecordPtrOutput() MxRecordPtrOutput {
+	return o
+}
+
+func (o MxRecordPtrOutput) ToMxRecordPtrOutputWithContext(ctx context.Context) MxRecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MxRecordOutput{})
+	pulumi.RegisterOutputType(MxRecordPtrOutput{})
 }

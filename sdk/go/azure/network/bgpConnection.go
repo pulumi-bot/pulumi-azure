@@ -208,16 +208,31 @@ type BgpConnectionInput interface {
 	ToBgpConnectionOutputWithContext(ctx context.Context) BgpConnectionOutput
 }
 
-func (BgpConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*BgpConnection)(nil)).Elem()
+func (*BgpConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpConnection)(nil))
 }
 
-func (i BgpConnection) ToBgpConnectionOutput() BgpConnectionOutput {
+func (i *BgpConnection) ToBgpConnectionOutput() BgpConnectionOutput {
 	return i.ToBgpConnectionOutputWithContext(context.Background())
 }
 
-func (i BgpConnection) ToBgpConnectionOutputWithContext(ctx context.Context) BgpConnectionOutput {
+func (i *BgpConnection) ToBgpConnectionOutputWithContext(ctx context.Context) BgpConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpConnectionOutput)
+}
+
+func (i *BgpConnection) ToBgpConnectionPtrOutput() BgpConnectionPtrOutput {
+	return i.ToBgpConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *BgpConnection) ToBgpConnectionPtrOutputWithContext(ctx context.Context) BgpConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpConnectionPtrOutput)
+}
+
+type BgpConnectionPtrInput interface {
+	pulumi.Input
+
+	ToBgpConnectionPtrOutput() BgpConnectionPtrOutput
+	ToBgpConnectionPtrOutputWithContext(ctx context.Context) BgpConnectionPtrOutput
 }
 
 type BgpConnectionOutput struct {
@@ -225,7 +240,7 @@ type BgpConnectionOutput struct {
 }
 
 func (BgpConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BgpConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*BgpConnection)(nil))
 }
 
 func (o BgpConnectionOutput) ToBgpConnectionOutput() BgpConnectionOutput {
@@ -236,6 +251,23 @@ func (o BgpConnectionOutput) ToBgpConnectionOutputWithContext(ctx context.Contex
 	return o
 }
 
+type BgpConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BgpConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpConnection)(nil))
+}
+
+func (o BgpConnectionPtrOutput) ToBgpConnectionPtrOutput() BgpConnectionPtrOutput {
+	return o
+}
+
+func (o BgpConnectionPtrOutput) ToBgpConnectionPtrOutputWithContext(ctx context.Context) BgpConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BgpConnectionOutput{})
+	pulumi.RegisterOutputType(BgpConnectionPtrOutput{})
 }

@@ -183,16 +183,31 @@ type TimeSeriesInsightsAccessPolicyInput interface {
 	ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput
 }
 
-func (TimeSeriesInsightsAccessPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicy)(nil)).Elem()
+func (*TimeSeriesInsightsAccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicy)(nil))
 }
 
-func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput {
+func (i *TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput {
 	return i.ToTimeSeriesInsightsAccessPolicyOutputWithContext(context.Background())
 }
 
-func (i TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput {
+func (i *TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsAccessPolicyOutput)
+}
+
+func (i *TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput {
+	return i.ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TimeSeriesInsightsAccessPolicy) ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesInsightsAccessPolicyPtrOutput)
+}
+
+type TimeSeriesInsightsAccessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput
+	ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput
 }
 
 type TimeSeriesInsightsAccessPolicyOutput struct {
@@ -200,7 +215,7 @@ type TimeSeriesInsightsAccessPolicyOutput struct {
 }
 
 func (TimeSeriesInsightsAccessPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TimeSeriesInsightsAccessPolicy)(nil))
 }
 
 func (o TimeSeriesInsightsAccessPolicyOutput) ToTimeSeriesInsightsAccessPolicyOutput() TimeSeriesInsightsAccessPolicyOutput {
@@ -211,6 +226,23 @@ func (o TimeSeriesInsightsAccessPolicyOutput) ToTimeSeriesInsightsAccessPolicyOu
 	return o
 }
 
+type TimeSeriesInsightsAccessPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeSeriesInsightsAccessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesInsightsAccessPolicy)(nil))
+}
+
+func (o TimeSeriesInsightsAccessPolicyPtrOutput) ToTimeSeriesInsightsAccessPolicyPtrOutput() TimeSeriesInsightsAccessPolicyPtrOutput {
+	return o
+}
+
+func (o TimeSeriesInsightsAccessPolicyPtrOutput) ToTimeSeriesInsightsAccessPolicyPtrOutputWithContext(ctx context.Context) TimeSeriesInsightsAccessPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TimeSeriesInsightsAccessPolicyOutput{})
+	pulumi.RegisterOutputType(TimeSeriesInsightsAccessPolicyPtrOutput{})
 }

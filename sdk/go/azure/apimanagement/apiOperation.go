@@ -256,16 +256,31 @@ type ApiOperationInput interface {
 	ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput
 }
 
-func (ApiOperation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiOperation)(nil)).Elem()
+func (*ApiOperation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiOperation)(nil))
 }
 
-func (i ApiOperation) ToApiOperationOutput() ApiOperationOutput {
+func (i *ApiOperation) ToApiOperationOutput() ApiOperationOutput {
 	return i.ToApiOperationOutputWithContext(context.Background())
 }
 
-func (i ApiOperation) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
+func (i *ApiOperation) ToApiOperationOutputWithContext(ctx context.Context) ApiOperationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationOutput)
+}
+
+func (i *ApiOperation) ToApiOperationPtrOutput() ApiOperationPtrOutput {
+	return i.ToApiOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiOperation) ToApiOperationPtrOutputWithContext(ctx context.Context) ApiOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationPtrOutput)
+}
+
+type ApiOperationPtrInput interface {
+	pulumi.Input
+
+	ToApiOperationPtrOutput() ApiOperationPtrOutput
+	ToApiOperationPtrOutputWithContext(ctx context.Context) ApiOperationPtrOutput
 }
 
 type ApiOperationOutput struct {
@@ -273,7 +288,7 @@ type ApiOperationOutput struct {
 }
 
 func (ApiOperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiOperationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiOperation)(nil))
 }
 
 func (o ApiOperationOutput) ToApiOperationOutput() ApiOperationOutput {
@@ -284,6 +299,23 @@ func (o ApiOperationOutput) ToApiOperationOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ApiOperationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiOperation)(nil))
+}
+
+func (o ApiOperationPtrOutput) ToApiOperationPtrOutput() ApiOperationPtrOutput {
+	return o
+}
+
+func (o ApiOperationPtrOutput) ToApiOperationPtrOutputWithContext(ctx context.Context) ApiOperationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiOperationOutput{})
+	pulumi.RegisterOutputType(ApiOperationPtrOutput{})
 }

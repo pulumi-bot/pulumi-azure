@@ -248,16 +248,31 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput
 }
 
-func (Schedule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
+func (*Schedule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Schedule)(nil))
 }
 
-func (i Schedule) ToScheduleOutput() ScheduleOutput {
+func (i *Schedule) ToScheduleOutput() ScheduleOutput {
 	return i.ToScheduleOutputWithContext(context.Background())
 }
 
-func (i Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
+func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
+}
+
+func (i *Schedule) ToSchedulePtrOutput() SchedulePtrOutput {
+	return i.ToSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *Schedule) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
+}
+
+type SchedulePtrInput interface {
+	pulumi.Input
+
+	ToSchedulePtrOutput() SchedulePtrOutput
+	ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput
 }
 
 type ScheduleOutput struct {
@@ -265,7 +280,7 @@ type ScheduleOutput struct {
 }
 
 func (ScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleOutput)(nil)).Elem()
+	return reflect.TypeOf((*Schedule)(nil))
 }
 
 func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
@@ -276,6 +291,23 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 	return o
 }
 
+type SchedulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Schedule)(nil))
+}
+
+func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
+	return o
+}
+
+func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScheduleOutput{})
+	pulumi.RegisterOutputType(SchedulePtrOutput{})
 }

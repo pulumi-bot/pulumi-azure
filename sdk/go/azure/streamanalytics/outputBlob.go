@@ -274,16 +274,31 @@ type OutputBlobInput interface {
 	ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput
 }
 
-func (OutputBlob) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputBlob)(nil)).Elem()
+func (*OutputBlob) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutputBlob)(nil))
 }
 
-func (i OutputBlob) ToOutputBlobOutput() OutputBlobOutput {
+func (i *OutputBlob) ToOutputBlobOutput() OutputBlobOutput {
 	return i.ToOutputBlobOutputWithContext(context.Background())
 }
 
-func (i OutputBlob) ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput {
+func (i *OutputBlob) ToOutputBlobOutputWithContext(ctx context.Context) OutputBlobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobOutput)
+}
+
+func (i *OutputBlob) ToOutputBlobPtrOutput() OutputBlobPtrOutput {
+	return i.ToOutputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *OutputBlob) ToOutputBlobPtrOutputWithContext(ctx context.Context) OutputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutputBlobPtrOutput)
+}
+
+type OutputBlobPtrInput interface {
+	pulumi.Input
+
+	ToOutputBlobPtrOutput() OutputBlobPtrOutput
+	ToOutputBlobPtrOutputWithContext(ctx context.Context) OutputBlobPtrOutput
 }
 
 type OutputBlobOutput struct {
@@ -291,7 +306,7 @@ type OutputBlobOutput struct {
 }
 
 func (OutputBlobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutputBlobOutput)(nil)).Elem()
+	return reflect.TypeOf((*OutputBlob)(nil))
 }
 
 func (o OutputBlobOutput) ToOutputBlobOutput() OutputBlobOutput {
@@ -302,6 +317,23 @@ func (o OutputBlobOutput) ToOutputBlobOutputWithContext(ctx context.Context) Out
 	return o
 }
 
+type OutputBlobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OutputBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutputBlob)(nil))
+}
+
+func (o OutputBlobPtrOutput) ToOutputBlobPtrOutput() OutputBlobPtrOutput {
+	return o
+}
+
+func (o OutputBlobPtrOutput) ToOutputBlobPtrOutputWithContext(ctx context.Context) OutputBlobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OutputBlobOutput{})
+	pulumi.RegisterOutputType(OutputBlobPtrOutput{})
 }

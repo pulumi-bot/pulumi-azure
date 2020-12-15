@@ -239,16 +239,31 @@ type TopicAuthorizationRuleInput interface {
 	ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput
 }
 
-func (TopicAuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicAuthorizationRule)(nil)).Elem()
+func (*TopicAuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicAuthorizationRule)(nil))
 }
 
-func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
 	return i.ToTopicAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicAuthorizationRuleOutput)
+}
+
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRulePtrOutput() TopicAuthorizationRulePtrOutput {
+	return i.ToTopicAuthorizationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *TopicAuthorizationRule) ToTopicAuthorizationRulePtrOutputWithContext(ctx context.Context) TopicAuthorizationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicAuthorizationRulePtrOutput)
+}
+
+type TopicAuthorizationRulePtrInput interface {
+	pulumi.Input
+
+	ToTopicAuthorizationRulePtrOutput() TopicAuthorizationRulePtrOutput
+	ToTopicAuthorizationRulePtrOutputWithContext(ctx context.Context) TopicAuthorizationRulePtrOutput
 }
 
 type TopicAuthorizationRuleOutput struct {
@@ -256,7 +271,7 @@ type TopicAuthorizationRuleOutput struct {
 }
 
 func (TopicAuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicAuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicAuthorizationRule)(nil))
 }
 
 func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutput() TopicAuthorizationRuleOutput {
@@ -267,6 +282,23 @@ func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutputWithContext(
 	return o
 }
 
+type TopicAuthorizationRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicAuthorizationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicAuthorizationRule)(nil))
+}
+
+func (o TopicAuthorizationRulePtrOutput) ToTopicAuthorizationRulePtrOutput() TopicAuthorizationRulePtrOutput {
+	return o
+}
+
+func (o TopicAuthorizationRulePtrOutput) ToTopicAuthorizationRulePtrOutputWithContext(ctx context.Context) TopicAuthorizationRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicAuthorizationRuleOutput{})
+	pulumi.RegisterOutputType(TopicAuthorizationRulePtrOutput{})
 }

@@ -419,7 +419,7 @@ func (i EndpointPrivateDnsZoneGroupArgs) ToEndpointPrivateDnsZoneGroupPtrOutput(
 }
 
 func (i EndpointPrivateDnsZoneGroupArgs) ToEndpointPrivateDnsZoneGroupPtrOutputWithContext(ctx context.Context) EndpointPrivateDnsZoneGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateDnsZoneGroupOutput).ToEndpointPrivateDnsZoneGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateDnsZoneGroupOutput).ToEndpointPrivateDnsZoneGroupPtrOutput()
 }
 
 // EndpointPrivateDnsZoneGroupPtrInput is an input type that accepts EndpointPrivateDnsZoneGroupArgs, EndpointPrivateDnsZoneGroupPtr and EndpointPrivateDnsZoneGroupPtrOutput values.
@@ -452,7 +452,7 @@ func (i *endpointPrivateDnsZoneGroupPtrType) ToEndpointPrivateDnsZoneGroupPtrOut
 }
 
 func (i *endpointPrivateDnsZoneGroupPtrType) ToEndpointPrivateDnsZoneGroupPtrOutputWithContext(ctx context.Context) EndpointPrivateDnsZoneGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateDnsZoneGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateDnsZoneGroupOutput).ToEndpointPrivateDnsZoneGroupPtrOutput()
 }
 
 type EndpointPrivateDnsZoneGroupOutput struct{ *pulumi.OutputState }
@@ -600,7 +600,7 @@ func (i EndpointPrivateServiceConnectionArgs) ToEndpointPrivateServiceConnection
 }
 
 func (i EndpointPrivateServiceConnectionArgs) ToEndpointPrivateServiceConnectionPtrOutputWithContext(ctx context.Context) EndpointPrivateServiceConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateServiceConnectionOutput).ToEndpointPrivateServiceConnectionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateServiceConnectionOutput).ToEndpointPrivateServiceConnectionPtrOutput()
 }
 
 // EndpointPrivateServiceConnectionPtrInput is an input type that accepts EndpointPrivateServiceConnectionArgs, EndpointPrivateServiceConnectionPtr and EndpointPrivateServiceConnectionPtrOutput values.
@@ -633,7 +633,7 @@ func (i *endpointPrivateServiceConnectionPtrType) ToEndpointPrivateServiceConnec
 }
 
 func (i *endpointPrivateServiceConnectionPtrType) ToEndpointPrivateServiceConnectionPtrOutputWithContext(ctx context.Context) EndpointPrivateServiceConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateServiceConnectionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPrivateServiceConnectionOutput).ToEndpointPrivateServiceConnectionPtrOutput()
 }
 
 type EndpointPrivateServiceConnectionOutput struct{ *pulumi.OutputState }
