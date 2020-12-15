@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "Allowed resource types"
 // 		example, err := policy.GetPolicyDefintion(ctx, &policy.GetPolicyDefintionArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -24,7 +24,7 @@ import (
 // 		opt0 := "packer-storage"
 // 		example, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
 // 			Name:              "packerimages",
-// 			ResourceGroupName: &opt0,
+// 			ResourceGroupName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

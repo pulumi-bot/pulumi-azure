@@ -28,7 +28,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "b24988ac-6180-42a0-ab88-20f7382dd24c"
 // 		contributor, err := authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
-// 			RoleDefinitionId: &opt0,
+// 			RoleDefinitionId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -183,15 +183,15 @@ type DefinitionInput interface {
 	ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput
 }
 
-func (Definition) ElementType() reflect.Type {
-	return reflect.TypeOf((*Definition)(nil)).Elem()
+func (*Definition) ElementType() reflect.Type {
+	return reflect.TypeOf((*Definition)(nil))
 }
 
-func (i Definition) ToDefinitionOutput() DefinitionOutput {
+func (i *Definition) ToDefinitionOutput() DefinitionOutput {
 	return i.ToDefinitionOutputWithContext(context.Background())
 }
 
-func (i Definition) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
+func (i *Definition) ToDefinitionOutputWithContext(ctx context.Context) DefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefinitionOutput)
 }
 
@@ -200,7 +200,7 @@ type DefinitionOutput struct {
 }
 
 func (DefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefinitionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Definition)(nil))
 }
 
 func (o DefinitionOutput) ToDefinitionOutput() DefinitionOutput {

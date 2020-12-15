@@ -31,7 +31,7 @@ import (
 // 		}
 // 		opt0 := current.TenantId
 // 		root, err := management.LookupGroup(ctx, &management.LookupGroupArgs{
-// 			Name: &opt0,
+// 			Name: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

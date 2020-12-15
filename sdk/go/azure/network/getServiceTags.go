@@ -25,7 +25,7 @@ import (
 // 		_, err := network.GetServiceTags(ctx, &network.GetServiceTagsArgs{
 // 			Location:       "westcentralus",
 // 			Service:        "AzureKeyVault",
-// 			LocationFilter: &opt0,
+// 			LocationFilter: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

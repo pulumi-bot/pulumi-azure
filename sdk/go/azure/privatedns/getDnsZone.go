@@ -24,7 +24,7 @@ import (
 // 		opt0 := "contoso-dns"
 // 		example, err := privatedns.GetDnsZone(ctx, &privatedns.GetDnsZoneArgs{
 // 			Name:              "contoso.internal",
-// 			ResourceGroupName: &opt0,
+// 			ResourceGroupName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

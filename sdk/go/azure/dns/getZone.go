@@ -24,7 +24,7 @@ import (
 // 		opt0 := "search-service"
 // 		example, err := dns.LookupZone(ctx, &dns.LookupZoneArgs{
 // 			Name:              "search-eventhubns",
-// 			ResourceGroupName: &opt0,
+// 			ResourceGroupName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

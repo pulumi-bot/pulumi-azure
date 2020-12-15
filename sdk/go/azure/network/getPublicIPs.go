@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := false
 // 		_, err := network.GetPublicIPs(ctx, &network.GetPublicIPsArgs{
-// 			Attached:          &opt0,
+// 			Attached:          _opt0,
 // 			ResourceGroupName: "pip-test",
 // 		}, nil)
 // 		if err != nil {

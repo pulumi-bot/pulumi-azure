@@ -24,7 +24,7 @@ import (
 // 		opt0 := "resourcegroupname"
 // 		_, err := storage.LookupAccount(ctx, &storage.LookupAccountArgs{
 // 			Name:              "storageaccountname",
-// 			ResourceGroupName: &opt0,
+// 			ResourceGroupName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

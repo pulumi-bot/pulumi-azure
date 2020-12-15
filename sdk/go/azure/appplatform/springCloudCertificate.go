@@ -40,7 +40,7 @@ import (
 // 		}
 // 		opt0 := "Azure Spring Cloud Domain-Management"
 // 		exampleServicePrincipal, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -260,15 +260,15 @@ type SpringCloudCertificateInput interface {
 	ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput
 }
 
-func (SpringCloudCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpringCloudCertificate)(nil)).Elem()
+func (*SpringCloudCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpringCloudCertificate)(nil))
 }
 
-func (i SpringCloudCertificate) ToSpringCloudCertificateOutput() SpringCloudCertificateOutput {
+func (i *SpringCloudCertificate) ToSpringCloudCertificateOutput() SpringCloudCertificateOutput {
 	return i.ToSpringCloudCertificateOutputWithContext(context.Background())
 }
 
-func (i SpringCloudCertificate) ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput {
+func (i *SpringCloudCertificate) ToSpringCloudCertificateOutputWithContext(ctx context.Context) SpringCloudCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudCertificateOutput)
 }
 
@@ -277,7 +277,7 @@ type SpringCloudCertificateOutput struct {
 }
 
 func (SpringCloudCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpringCloudCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpringCloudCertificate)(nil))
 }
 
 func (o SpringCloudCertificateOutput) ToSpringCloudCertificateOutput() SpringCloudCertificateOutput {
