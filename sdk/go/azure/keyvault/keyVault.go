@@ -333,15 +333,15 @@ type KeyVaultInput interface {
 	ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput
 }
 
-func (KeyVault) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVault)(nil)).Elem()
+func (*KeyVault) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVault)(nil))
 }
 
-func (i KeyVault) ToKeyVaultOutput() KeyVaultOutput {
+func (i *KeyVault) ToKeyVaultOutput() KeyVaultOutput {
 	return i.ToKeyVaultOutputWithContext(context.Background())
 }
 
-func (i KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
+func (i *KeyVault) ToKeyVaultOutputWithContext(ctx context.Context) KeyVaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultOutput)
 }
 
@@ -350,7 +350,7 @@ type KeyVaultOutput struct {
 }
 
 func (KeyVaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVaultOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyVault)(nil))
 }
 
 func (o KeyVaultOutput) ToKeyVaultOutput() KeyVaultOutput {
