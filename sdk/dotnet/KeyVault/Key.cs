@@ -92,6 +92,7 @@ namespace Pulumi.Azure.KeyVault
     ///  $ pulumi import azure:keyvault/key:Key net/keys/example/fdf067c93bbb4b22bff4d8b7a9a56217
     /// ```
     /// </summary>
+    [AzureResourceType("azure:keyvault/key:Key")]
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>
