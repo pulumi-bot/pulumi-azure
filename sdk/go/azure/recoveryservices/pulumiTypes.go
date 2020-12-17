@@ -52,7 +52,7 @@ func (i VaultIdentityArgs) ToVaultIdentityPtrOutput() VaultIdentityPtrOutput {
 }
 
 func (i VaultIdentityArgs) ToVaultIdentityPtrOutputWithContext(ctx context.Context) VaultIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VaultIdentityOutput).ToVaultIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VaultIdentityOutput).ToVaultIdentityPtrOutput()
 }
 
 // VaultIdentityPtrInput is an input type that accepts VaultIdentityArgs, VaultIdentityPtr and VaultIdentityPtrOutput values.
@@ -85,7 +85,7 @@ func (i *vaultIdentityPtrType) ToVaultIdentityPtrOutput() VaultIdentityPtrOutput
 }
 
 func (i *vaultIdentityPtrType) ToVaultIdentityPtrOutputWithContext(ctx context.Context) VaultIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VaultIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VaultIdentityOutput).ToVaultIdentityPtrOutput()
 }
 
 type VaultIdentityOutput struct{ *pulumi.OutputState }

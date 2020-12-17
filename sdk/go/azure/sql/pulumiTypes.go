@@ -60,7 +60,7 @@ func (i DatabaseExtendedAuditingPolicyArgs) ToDatabaseExtendedAuditingPolicyPtrO
 }
 
 func (i DatabaseExtendedAuditingPolicyArgs) ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput).ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput).ToDatabaseExtendedAuditingPolicyPtrOutput()
 }
 
 // DatabaseExtendedAuditingPolicyPtrInput is an input type that accepts DatabaseExtendedAuditingPolicyArgs, DatabaseExtendedAuditingPolicyPtr and DatabaseExtendedAuditingPolicyPtrOutput values.
@@ -93,7 +93,7 @@ func (i *databaseExtendedAuditingPolicyPtrType) ToDatabaseExtendedAuditingPolicy
 }
 
 func (i *databaseExtendedAuditingPolicyPtrType) ToDatabaseExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) DatabaseExtendedAuditingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseExtendedAuditingPolicyOutput).ToDatabaseExtendedAuditingPolicyPtrOutput()
 }
 
 type DatabaseExtendedAuditingPolicyOutput struct{ *pulumi.OutputState }
@@ -260,7 +260,7 @@ func (i DatabaseImportArgs) ToDatabaseImportPtrOutput() DatabaseImportPtrOutput 
 }
 
 func (i DatabaseImportArgs) ToDatabaseImportPtrOutputWithContext(ctx context.Context) DatabaseImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseImportOutput).ToDatabaseImportPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseImportOutput).ToDatabaseImportPtrOutput()
 }
 
 // DatabaseImportPtrInput is an input type that accepts DatabaseImportArgs, DatabaseImportPtr and DatabaseImportPtrOutput values.
@@ -293,7 +293,7 @@ func (i *databaseImportPtrType) ToDatabaseImportPtrOutput() DatabaseImportPtrOut
 }
 
 func (i *databaseImportPtrType) ToDatabaseImportPtrOutputWithContext(ctx context.Context) DatabaseImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseImportPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseImportOutput).ToDatabaseImportPtrOutput()
 }
 
 type DatabaseImportOutput struct{ *pulumi.OutputState }
@@ -509,7 +509,7 @@ func (i DatabaseThreatDetectionPolicyArgs) ToDatabaseThreatDetectionPolicyPtrOut
 }
 
 func (i DatabaseThreatDetectionPolicyArgs) ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutput()
 }
 
 // DatabaseThreatDetectionPolicyPtrInput is an input type that accepts DatabaseThreatDetectionPolicyArgs, DatabaseThreatDetectionPolicyPtr and DatabaseThreatDetectionPolicyPtrOutput values.
@@ -542,7 +542,7 @@ func (i *databaseThreatDetectionPolicyPtrType) ToDatabaseThreatDetectionPolicyPt
 }
 
 func (i *databaseThreatDetectionPolicyPtrType) ToDatabaseThreatDetectionPolicyPtrOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseThreatDetectionPolicyOutput).ToDatabaseThreatDetectionPolicyPtrOutput()
 }
 
 type DatabaseThreatDetectionPolicyOutput struct{ *pulumi.OutputState }
@@ -864,7 +864,7 @@ func (i FailoverGroupReadWriteEndpointFailoverPolicyArgs) ToFailoverGroupReadWri
 }
 
 func (i FailoverGroupReadWriteEndpointFailoverPolicyArgs) ToFailoverGroupReadWriteEndpointFailoverPolicyPtrOutputWithContext(ctx context.Context) FailoverGroupReadWriteEndpointFailoverPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadWriteEndpointFailoverPolicyOutput).ToFailoverGroupReadWriteEndpointFailoverPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadWriteEndpointFailoverPolicyOutput).ToFailoverGroupReadWriteEndpointFailoverPolicyPtrOutput()
 }
 
 // FailoverGroupReadWriteEndpointFailoverPolicyPtrInput is an input type that accepts FailoverGroupReadWriteEndpointFailoverPolicyArgs, FailoverGroupReadWriteEndpointFailoverPolicyPtr and FailoverGroupReadWriteEndpointFailoverPolicyPtrOutput values.
@@ -897,7 +897,7 @@ func (i *failoverGroupReadWriteEndpointFailoverPolicyPtrType) ToFailoverGroupRea
 }
 
 func (i *failoverGroupReadWriteEndpointFailoverPolicyPtrType) ToFailoverGroupReadWriteEndpointFailoverPolicyPtrOutputWithContext(ctx context.Context) FailoverGroupReadWriteEndpointFailoverPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadWriteEndpointFailoverPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadWriteEndpointFailoverPolicyOutput).ToFailoverGroupReadWriteEndpointFailoverPolicyPtrOutput()
 }
 
 type FailoverGroupReadWriteEndpointFailoverPolicyOutput struct{ *pulumi.OutputState }
@@ -1012,7 +1012,7 @@ func (i FailoverGroupReadonlyEndpointFailoverPolicyArgs) ToFailoverGroupReadonly
 }
 
 func (i FailoverGroupReadonlyEndpointFailoverPolicyArgs) ToFailoverGroupReadonlyEndpointFailoverPolicyPtrOutputWithContext(ctx context.Context) FailoverGroupReadonlyEndpointFailoverPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadonlyEndpointFailoverPolicyOutput).ToFailoverGroupReadonlyEndpointFailoverPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadonlyEndpointFailoverPolicyOutput).ToFailoverGroupReadonlyEndpointFailoverPolicyPtrOutput()
 }
 
 // FailoverGroupReadonlyEndpointFailoverPolicyPtrInput is an input type that accepts FailoverGroupReadonlyEndpointFailoverPolicyArgs, FailoverGroupReadonlyEndpointFailoverPolicyPtr and FailoverGroupReadonlyEndpointFailoverPolicyPtrOutput values.
@@ -1045,7 +1045,7 @@ func (i *failoverGroupReadonlyEndpointFailoverPolicyPtrType) ToFailoverGroupRead
 }
 
 func (i *failoverGroupReadonlyEndpointFailoverPolicyPtrType) ToFailoverGroupReadonlyEndpointFailoverPolicyPtrOutputWithContext(ctx context.Context) FailoverGroupReadonlyEndpointFailoverPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadonlyEndpointFailoverPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FailoverGroupReadonlyEndpointFailoverPolicyOutput).ToFailoverGroupReadonlyEndpointFailoverPolicyPtrOutput()
 }
 
 type FailoverGroupReadonlyEndpointFailoverPolicyOutput struct{ *pulumi.OutputState }
@@ -1157,7 +1157,7 @@ func (i SqlServerExtendedAuditingPolicyArgs) ToSqlServerExtendedAuditingPolicyPt
 }
 
 func (i SqlServerExtendedAuditingPolicyArgs) ToSqlServerExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) SqlServerExtendedAuditingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlServerExtendedAuditingPolicyOutput).ToSqlServerExtendedAuditingPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerExtendedAuditingPolicyOutput).ToSqlServerExtendedAuditingPolicyPtrOutput()
 }
 
 // SqlServerExtendedAuditingPolicyPtrInput is an input type that accepts SqlServerExtendedAuditingPolicyArgs, SqlServerExtendedAuditingPolicyPtr and SqlServerExtendedAuditingPolicyPtrOutput values.
@@ -1190,7 +1190,7 @@ func (i *sqlServerExtendedAuditingPolicyPtrType) ToSqlServerExtendedAuditingPoli
 }
 
 func (i *sqlServerExtendedAuditingPolicyPtrType) ToSqlServerExtendedAuditingPolicyPtrOutputWithContext(ctx context.Context) SqlServerExtendedAuditingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlServerExtendedAuditingPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerExtendedAuditingPolicyOutput).ToSqlServerExtendedAuditingPolicyPtrOutput()
 }
 
 type SqlServerExtendedAuditingPolicyOutput struct{ *pulumi.OutputState }
@@ -1341,7 +1341,7 @@ func (i SqlServerIdentityArgs) ToSqlServerIdentityPtrOutput() SqlServerIdentityP
 }
 
 func (i SqlServerIdentityArgs) ToSqlServerIdentityPtrOutputWithContext(ctx context.Context) SqlServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlServerIdentityOutput).ToSqlServerIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerIdentityOutput).ToSqlServerIdentityPtrOutput()
 }
 
 // SqlServerIdentityPtrInput is an input type that accepts SqlServerIdentityArgs, SqlServerIdentityPtr and SqlServerIdentityPtrOutput values.
@@ -1374,7 +1374,7 @@ func (i *sqlServerIdentityPtrType) ToSqlServerIdentityPtrOutput() SqlServerIdent
 }
 
 func (i *sqlServerIdentityPtrType) ToSqlServerIdentityPtrOutputWithContext(ctx context.Context) SqlServerIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlServerIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerIdentityOutput).ToSqlServerIdentityPtrOutput()
 }
 
 type SqlServerIdentityOutput struct{ *pulumi.OutputState }

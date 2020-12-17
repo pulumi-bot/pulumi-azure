@@ -60,7 +60,7 @@ func (i WorkspaceCustomParametersArgs) ToWorkspaceCustomParametersPtrOutput() Wo
 }
 
 func (i WorkspaceCustomParametersArgs) ToWorkspaceCustomParametersPtrOutputWithContext(ctx context.Context) WorkspaceCustomParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCustomParametersOutput).ToWorkspaceCustomParametersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCustomParametersOutput).ToWorkspaceCustomParametersPtrOutput()
 }
 
 // WorkspaceCustomParametersPtrInput is an input type that accepts WorkspaceCustomParametersArgs, WorkspaceCustomParametersPtr and WorkspaceCustomParametersPtrOutput values.
@@ -93,7 +93,7 @@ func (i *workspaceCustomParametersPtrType) ToWorkspaceCustomParametersPtrOutput(
 }
 
 func (i *workspaceCustomParametersPtrType) ToWorkspaceCustomParametersPtrOutputWithContext(ctx context.Context) WorkspaceCustomParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCustomParametersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCustomParametersOutput).ToWorkspaceCustomParametersPtrOutput()
 }
 
 type WorkspaceCustomParametersOutput struct{ *pulumi.OutputState }

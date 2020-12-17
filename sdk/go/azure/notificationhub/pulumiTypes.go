@@ -64,7 +64,7 @@ func (i HubApnsCredentialArgs) ToHubApnsCredentialPtrOutput() HubApnsCredentialP
 }
 
 func (i HubApnsCredentialArgs) ToHubApnsCredentialPtrOutputWithContext(ctx context.Context) HubApnsCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubApnsCredentialOutput).ToHubApnsCredentialPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HubApnsCredentialOutput).ToHubApnsCredentialPtrOutput()
 }
 
 // HubApnsCredentialPtrInput is an input type that accepts HubApnsCredentialArgs, HubApnsCredentialPtr and HubApnsCredentialPtrOutput values.
@@ -97,7 +97,7 @@ func (i *hubApnsCredentialPtrType) ToHubApnsCredentialPtrOutput() HubApnsCredent
 }
 
 func (i *hubApnsCredentialPtrType) ToHubApnsCredentialPtrOutputWithContext(ctx context.Context) HubApnsCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubApnsCredentialPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HubApnsCredentialOutput).ToHubApnsCredentialPtrOutput()
 }
 
 type HubApnsCredentialOutput struct{ *pulumi.OutputState }
@@ -255,7 +255,7 @@ func (i HubGcmCredentialArgs) ToHubGcmCredentialPtrOutput() HubGcmCredentialPtrO
 }
 
 func (i HubGcmCredentialArgs) ToHubGcmCredentialPtrOutputWithContext(ctx context.Context) HubGcmCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubGcmCredentialOutput).ToHubGcmCredentialPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HubGcmCredentialOutput).ToHubGcmCredentialPtrOutput()
 }
 
 // HubGcmCredentialPtrInput is an input type that accepts HubGcmCredentialArgs, HubGcmCredentialPtr and HubGcmCredentialPtrOutput values.
@@ -288,7 +288,7 @@ func (i *hubGcmCredentialPtrType) ToHubGcmCredentialPtrOutput() HubGcmCredential
 }
 
 func (i *hubGcmCredentialPtrType) ToHubGcmCredentialPtrOutputWithContext(ctx context.Context) HubGcmCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubGcmCredentialPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HubGcmCredentialOutput).ToHubGcmCredentialPtrOutput()
 }
 
 type HubGcmCredentialOutput struct{ *pulumi.OutputState }

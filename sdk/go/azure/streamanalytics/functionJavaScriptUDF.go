@@ -205,16 +205,95 @@ type FunctionJavaScriptUDFInput interface {
 	ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput
 }
 
-func (FunctionJavaScriptUDF) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil)).Elem()
+func (*FunctionJavaScriptUDF) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
 	return i.ToFunctionJavaScriptUDFOutputWithContext(context.Background())
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutput)
+}
+
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return i.ToFunctionJavaScriptUDFPtrOutputWithContext(context.Background())
+}
+
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFPtrOutput)
+}
+
+type FunctionJavaScriptUDFPtrInput interface {
+	pulumi.Input
+
+	ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput
+	ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput
+}
+
+type functionJavaScriptUDFPtrType FunctionJavaScriptUDFArgs
+
+func (*functionJavaScriptUDFPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionJavaScriptUDF)(nil))
+}
+
+func (i *functionJavaScriptUDFPtrType) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return i.ToFunctionJavaScriptUDFPtrOutputWithContext(context.Background())
+}
+
+func (i *functionJavaScriptUDFPtrType) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutput).ToFunctionJavaScriptUDFPtrOutput()
+}
+
+// FunctionJavaScriptUDFArrayInput is an input type that accepts FunctionJavaScriptUDFArray and FunctionJavaScriptUDFArrayOutput values.
+// You can construct a concrete instance of `FunctionJavaScriptUDFArrayInput` via:
+//
+//          FunctionJavaScriptUDFArray{ FunctionJavaScriptUDFArgs{...} }
+type FunctionJavaScriptUDFArrayInput interface {
+	pulumi.Input
+
+	ToFunctionJavaScriptUDFArrayOutput() FunctionJavaScriptUDFArrayOutput
+	ToFunctionJavaScriptUDFArrayOutputWithContext(context.Context) FunctionJavaScriptUDFArrayOutput
+}
+
+type FunctionJavaScriptUDFArray []FunctionJavaScriptUDFInput
+
+func (FunctionJavaScriptUDFArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionJavaScriptUDF)(nil))
+}
+
+func (i FunctionJavaScriptUDFArray) ToFunctionJavaScriptUDFArrayOutput() FunctionJavaScriptUDFArrayOutput {
+	return i.ToFunctionJavaScriptUDFArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionJavaScriptUDFArray) ToFunctionJavaScriptUDFArrayOutputWithContext(ctx context.Context) FunctionJavaScriptUDFArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFArrayOutput)
+}
+
+// FunctionJavaScriptUDFMapInput is an input type that accepts FunctionJavaScriptUDFMap and FunctionJavaScriptUDFMapOutput values.
+// You can construct a concrete instance of `FunctionJavaScriptUDFMapInput` via:
+//
+//          FunctionJavaScriptUDFMap{ "key": FunctionJavaScriptUDFArgs{...} }
+type FunctionJavaScriptUDFMapInput interface {
+	pulumi.Input
+
+	ToFunctionJavaScriptUDFMapOutput() FunctionJavaScriptUDFMapOutput
+	ToFunctionJavaScriptUDFMapOutputWithContext(context.Context) FunctionJavaScriptUDFMapOutput
+}
+
+type FunctionJavaScriptUDFMap map[string]FunctionJavaScriptUDFInput
+
+func (FunctionJavaScriptUDFMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FunctionJavaScriptUDF)(nil))
+}
+
+func (i FunctionJavaScriptUDFMap) ToFunctionJavaScriptUDFMapOutput() FunctionJavaScriptUDFMapOutput {
+	return i.ToFunctionJavaScriptUDFMapOutputWithContext(context.Background())
+}
+
+func (i FunctionJavaScriptUDFMap) ToFunctionJavaScriptUDFMapOutputWithContext(ctx context.Context) FunctionJavaScriptUDFMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFMapOutput)
 }
 
 type FunctionJavaScriptUDFOutput struct {
@@ -222,7 +301,7 @@ type FunctionJavaScriptUDFOutput struct {
 }
 
 func (FunctionJavaScriptUDFOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDFOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
 func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
@@ -233,6 +312,75 @@ func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutputWithContext(ct
 	return o
 }
 
+func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return o.ToFunctionJavaScriptUDFPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return o.ApplyT(func(v FunctionJavaScriptUDF) *FunctionJavaScriptUDF {
+		return &v
+	}).(FunctionJavaScriptUDFPtrOutput)
+}
+
+type FunctionJavaScriptUDFPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionJavaScriptUDFPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionJavaScriptUDF)(nil))
+}
+
+func (o FunctionJavaScriptUDFPtrOutput) ToFunctionJavaScriptUDFPtrOutput() FunctionJavaScriptUDFPtrOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFPtrOutput) ToFunctionJavaScriptUDFPtrOutputWithContext(ctx context.Context) FunctionJavaScriptUDFPtrOutput {
+	return o
+}
+
+type FunctionJavaScriptUDFArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionJavaScriptUDFArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionJavaScriptUDF)(nil))
+}
+
+func (o FunctionJavaScriptUDFArrayOutput) ToFunctionJavaScriptUDFArrayOutput() FunctionJavaScriptUDFArrayOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFArrayOutput) ToFunctionJavaScriptUDFArrayOutputWithContext(ctx context.Context) FunctionJavaScriptUDFArrayOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFArrayOutput) Index(i pulumi.IntInput) FunctionJavaScriptUDFOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionJavaScriptUDF {
+		return vs[0].([]FunctionJavaScriptUDF)[vs[1].(int)]
+	}).(FunctionJavaScriptUDFOutput)
+}
+
+type FunctionJavaScriptUDFMapOutput struct{ *pulumi.OutputState }
+
+func (FunctionJavaScriptUDFMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FunctionJavaScriptUDF)(nil))
+}
+
+func (o FunctionJavaScriptUDFMapOutput) ToFunctionJavaScriptUDFMapOutput() FunctionJavaScriptUDFMapOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFMapOutput) ToFunctionJavaScriptUDFMapOutputWithContext(ctx context.Context) FunctionJavaScriptUDFMapOutput {
+	return o
+}
+
+func (o FunctionJavaScriptUDFMapOutput) MapIndex(k pulumi.StringInput) FunctionJavaScriptUDFOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FunctionJavaScriptUDF {
+		return vs[0].(map[string]FunctionJavaScriptUDF)[vs[1].(string)]
+	}).(FunctionJavaScriptUDFOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionJavaScriptUDFOutput{})
+	pulumi.RegisterOutputType(FunctionJavaScriptUDFPtrOutput{})
+	pulumi.RegisterOutputType(FunctionJavaScriptUDFArrayOutput{})
+	pulumi.RegisterOutputType(FunctionJavaScriptUDFMapOutput{})
 }

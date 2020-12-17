@@ -68,7 +68,7 @@ func (i AccountActiveDirectoryArgs) ToAccountActiveDirectoryPtrOutput() AccountA
 }
 
 func (i AccountActiveDirectoryArgs) ToAccountActiveDirectoryPtrOutputWithContext(ctx context.Context) AccountActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountActiveDirectoryOutput).ToAccountActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountActiveDirectoryOutput).ToAccountActiveDirectoryPtrOutput()
 }
 
 // AccountActiveDirectoryPtrInput is an input type that accepts AccountActiveDirectoryArgs, AccountActiveDirectoryPtr and AccountActiveDirectoryPtrOutput values.
@@ -101,7 +101,7 @@ func (i *accountActiveDirectoryPtrType) ToAccountActiveDirectoryPtrOutput() Acco
 }
 
 func (i *accountActiveDirectoryPtrType) ToAccountActiveDirectoryPtrOutputWithContext(ctx context.Context) AccountActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountActiveDirectoryOutput).ToAccountActiveDirectoryPtrOutput()
 }
 
 type AccountActiveDirectoryOutput struct{ *pulumi.OutputState }

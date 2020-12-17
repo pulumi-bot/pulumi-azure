@@ -273,7 +273,7 @@ func (i ProfileDnsConfigArgs) ToProfileDnsConfigPtrOutput() ProfileDnsConfigPtrO
 }
 
 func (i ProfileDnsConfigArgs) ToProfileDnsConfigPtrOutputWithContext(ctx context.Context) ProfileDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileDnsConfigOutput).ToProfileDnsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileDnsConfigOutput).ToProfileDnsConfigPtrOutput()
 }
 
 // ProfileDnsConfigPtrInput is an input type that accepts ProfileDnsConfigArgs, ProfileDnsConfigPtr and ProfileDnsConfigPtrOutput values.
@@ -306,7 +306,7 @@ func (i *profileDnsConfigPtrType) ToProfileDnsConfigPtrOutput() ProfileDnsConfig
 }
 
 func (i *profileDnsConfigPtrType) ToProfileDnsConfigPtrOutputWithContext(ctx context.Context) ProfileDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileDnsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileDnsConfigOutput).ToProfileDnsConfigPtrOutput()
 }
 
 type ProfileDnsConfigOutput struct{ *pulumi.OutputState }
@@ -447,7 +447,7 @@ func (i ProfileMonitorConfigArgs) ToProfileMonitorConfigPtrOutput() ProfileMonit
 }
 
 func (i ProfileMonitorConfigArgs) ToProfileMonitorConfigPtrOutputWithContext(ctx context.Context) ProfileMonitorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileMonitorConfigOutput).ToProfileMonitorConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileMonitorConfigOutput).ToProfileMonitorConfigPtrOutput()
 }
 
 // ProfileMonitorConfigPtrInput is an input type that accepts ProfileMonitorConfigArgs, ProfileMonitorConfigPtr and ProfileMonitorConfigPtrOutput values.
@@ -480,7 +480,7 @@ func (i *profileMonitorConfigPtrType) ToProfileMonitorConfigPtrOutput() ProfileM
 }
 
 func (i *profileMonitorConfigPtrType) ToProfileMonitorConfigPtrOutputWithContext(ctx context.Context) ProfileMonitorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProfileMonitorConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProfileMonitorConfigOutput).ToProfileMonitorConfigPtrOutput()
 }
 
 type ProfileMonitorConfigOutput struct{ *pulumi.OutputState }
