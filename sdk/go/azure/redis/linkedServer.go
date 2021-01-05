@@ -26,13 +26,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := core.NewResourceGroup(ctx, "example_primaryResourceGroup", &core.ResourceGroupArgs{
+// 		_, err := core.NewResourceGroup(ctx, "example-primaryResourceGroup", &core.ResourceGroupArgs{
 // 			Location: pulumi.String("East US"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = redis.NewCache(ctx, "example_primaryCache", &redis.CacheArgs{
+// 		_, err = redis.NewCache(ctx, "example-primaryCache", &redis.CacheArgs{
 // 			Location:          example_primaryResourceGroup.Location,
 // 			ResourceGroupName: example_primaryResourceGroup.Name,
 // 			Capacity:          pulumi.Int(1),
@@ -48,13 +48,13 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = core.NewResourceGroup(ctx, "example_secondaryResourceGroup", &core.ResourceGroupArgs{
+// 		_, err = core.NewResourceGroup(ctx, "example-secondaryResourceGroup", &core.ResourceGroupArgs{
 // 			Location: pulumi.String("West US"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = redis.NewCache(ctx, "example_secondaryCache", &redis.CacheArgs{
+// 		_, err = redis.NewCache(ctx, "example-secondaryCache", &redis.CacheArgs{
 // 			Location:          example_secondaryResourceGroup.Location,
 // 			ResourceGroupName: example_secondaryResourceGroup.Name,
 // 			Capacity:          pulumi.Int(1),
@@ -70,7 +70,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = redis.NewLinkedServer(ctx, "example_link", &redis.LinkedServerArgs{
+// 		_, err = redis.NewLinkedServer(ctx, "example-link", &redis.LinkedServerArgs{
 // 			TargetRedisCacheName:     example_primaryCache.Name,
 // 			ResourceGroupName:        example_primaryCache.ResourceGroupName,
 // 			LinkedRedisCacheId:       example_secondaryCache.ID(),
@@ -224,15 +224,15 @@ type LinkedServerInput interface {
 	ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput
 }
 
-func (LinkedServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServer)(nil)).Elem()
+func (*LinkedServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServer)(nil))
 }
 
-func (i LinkedServer) ToLinkedServerOutput() LinkedServerOutput {
+func (i *LinkedServer) ToLinkedServerOutput() LinkedServerOutput {
 	return i.ToLinkedServerOutputWithContext(context.Background())
 }
 
-func (i LinkedServer) ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput {
+func (i *LinkedServer) ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServerOutput)
 }
 
@@ -241,7 +241,7 @@ type LinkedServerOutput struct {
 }
 
 func (LinkedServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkedServer)(nil))
 }
 
 func (o LinkedServerOutput) ToLinkedServerOutput() LinkedServerOutput {

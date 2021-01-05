@@ -33,13 +33,13 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewZone(ctx, "example_public", &dns.ZoneArgs{
+// 		_, err = dns.NewZone(ctx, "example-public", &dns.ZoneArgs{
 // 			ResourceGroupName: example.Name,
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = privatedns.NewZone(ctx, "example_private", &privatedns.ZoneArgs{
+// 		_, err = privatedns.NewZone(ctx, "example-private", &privatedns.ZoneArgs{
 // 			ResourceGroupName: example.Name,
 // 		})
 // 		if err != nil {
@@ -179,15 +179,15 @@ type ZoneInput interface {
 	ToZoneOutputWithContext(ctx context.Context) ZoneOutput
 }
 
-func (Zone) ElementType() reflect.Type {
-	return reflect.TypeOf((*Zone)(nil)).Elem()
+func (*Zone) ElementType() reflect.Type {
+	return reflect.TypeOf((*Zone)(nil))
 }
 
-func (i Zone) ToZoneOutput() ZoneOutput {
+func (i *Zone) ToZoneOutput() ZoneOutput {
 	return i.ToZoneOutputWithContext(context.Background())
 }
 
-func (i Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+func (i *Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
 }
 
@@ -196,7 +196,7 @@ type ZoneOutput struct {
 }
 
 func (ZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneOutput)(nil)).Elem()
+	return reflect.TypeOf((*Zone)(nil))
 }
 
 func (o ZoneOutput) ToZoneOutput() ZoneOutput {

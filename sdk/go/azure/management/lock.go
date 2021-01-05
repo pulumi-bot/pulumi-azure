@@ -31,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "subscription_level", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "subscription-level", &management.LockArgs{
 // 			Scope:     pulumi.String(current.Id),
 // 			LockLevel: pulumi.String("CanNotDelete"),
 // 			Notes:     pulumi.String("Items can't be deleted in this subscription!"),
@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "resource_group_level", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "resource-group-level", &management.LockArgs{
 // 			Scope:     example.ID(),
 // 			LockLevel: pulumi.String("ReadOnly"),
 // 			Notes:     pulumi.String("This Resource Group is Read-Only"),
@@ -104,7 +104,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "public_ip", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "public-ip", &management.LockArgs{
 // 			Scope:     examplePublicIp.ID(),
 // 			LockLevel: pulumi.String("CanNotDelete"),
 // 			Notes:     pulumi.String("Locked because it's needed by a third-party"),
@@ -237,15 +237,15 @@ type LockInput interface {
 	ToLockOutputWithContext(ctx context.Context) LockOutput
 }
 
-func (Lock) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lock)(nil)).Elem()
+func (*Lock) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lock)(nil))
 }
 
-func (i Lock) ToLockOutput() LockOutput {
+func (i *Lock) ToLockOutput() LockOutput {
 	return i.ToLockOutputWithContext(context.Background())
 }
 
-func (i Lock) ToLockOutputWithContext(ctx context.Context) LockOutput {
+func (i *Lock) ToLockOutputWithContext(ctx context.Context) LockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LockOutput)
 }
 
@@ -254,7 +254,7 @@ type LockOutput struct {
 }
 
 func (LockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LockOutput)(nil)).Elem()
+	return reflect.TypeOf((*Lock)(nil))
 }
 
 func (o LockOutput) ToLockOutput() LockOutput {

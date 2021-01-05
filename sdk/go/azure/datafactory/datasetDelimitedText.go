@@ -340,15 +340,15 @@ type DatasetDelimitedTextInput interface {
 	ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput
 }
 
-func (DatasetDelimitedText) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDelimitedText)(nil)).Elem()
+func (*DatasetDelimitedText) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDelimitedText)(nil))
 }
 
-func (i DatasetDelimitedText) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
+func (i *DatasetDelimitedText) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {
 	return i.ToDatasetDelimitedTextOutputWithContext(context.Background())
 }
 
-func (i DatasetDelimitedText) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
+func (i *DatasetDelimitedText) ToDatasetDelimitedTextOutputWithContext(ctx context.Context) DatasetDelimitedTextOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextOutput)
 }
 
@@ -357,7 +357,7 @@ type DatasetDelimitedTextOutput struct {
 }
 
 func (DatasetDelimitedTextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDelimitedTextOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetDelimitedText)(nil))
 }
 
 func (o DatasetDelimitedTextOutput) ToDatasetDelimitedTextOutput() DatasetDelimitedTextOutput {

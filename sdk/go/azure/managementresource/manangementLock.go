@@ -31,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "subscription_level", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "subscription-level", &management.LockArgs{
 // 			Scope:     pulumi.String(current.Id),
 // 			LockLevel: pulumi.String("CanNotDelete"),
 // 			Notes:     pulumi.String("Items can't be deleted in this subscription!"),
@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "resource_group_level", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "resource-group-level", &management.LockArgs{
 // 			Scope:     example.ID(),
 // 			LockLevel: pulumi.String("ReadOnly"),
 // 			Notes:     pulumi.String("This Resource Group is Read-Only"),
@@ -104,7 +104,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = management.NewLock(ctx, "public_ip", &management.LockArgs{
+// 		_, err = management.NewLock(ctx, "public-ip", &management.LockArgs{
 // 			Scope:     examplePublicIp.ID(),
 // 			LockLevel: pulumi.String("CanNotDelete"),
 // 			Notes:     pulumi.String("Locked because it's needed by a third-party"),
@@ -233,15 +233,15 @@ type ManangementLockInput interface {
 	ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput
 }
 
-func (ManangementLock) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManangementLock)(nil)).Elem()
+func (*ManangementLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManangementLock)(nil))
 }
 
-func (i ManangementLock) ToManangementLockOutput() ManangementLockOutput {
+func (i *ManangementLock) ToManangementLockOutput() ManangementLockOutput {
 	return i.ToManangementLockOutputWithContext(context.Background())
 }
 
-func (i ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
+func (i *ManangementLock) ToManangementLockOutputWithContext(ctx context.Context) ManangementLockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManangementLockOutput)
 }
 
@@ -250,7 +250,7 @@ type ManangementLockOutput struct {
 }
 
 func (ManangementLockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManangementLockOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManangementLock)(nil))
 }
 
 func (o ManangementLockOutput) ToManangementLockOutput() ManangementLockOutput {

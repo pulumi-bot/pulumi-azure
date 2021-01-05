@@ -52,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewAccount(ctx, "exampleStorage_accountAccount", &storage.AccountArgs{
+// 		_, err = storage.NewAccount(ctx, "exampleStorage/accountAccount", &storage.AccountArgs{
 // 			ResourceGroupName:      exampleResourceGroup.Name,
 // 			Location:               exampleResourceGroup.Location,
 // 			AccountKind:            pulumi.String("BlobStorage"),
@@ -237,15 +237,15 @@ type DatasetDataLakeGen2Input interface {
 	ToDatasetDataLakeGen2OutputWithContext(ctx context.Context) DatasetDataLakeGen2Output
 }
 
-func (DatasetDataLakeGen2) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDataLakeGen2)(nil)).Elem()
+func (*DatasetDataLakeGen2) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDataLakeGen2)(nil))
 }
 
-func (i DatasetDataLakeGen2) ToDatasetDataLakeGen2Output() DatasetDataLakeGen2Output {
+func (i *DatasetDataLakeGen2) ToDatasetDataLakeGen2Output() DatasetDataLakeGen2Output {
 	return i.ToDatasetDataLakeGen2OutputWithContext(context.Background())
 }
 
-func (i DatasetDataLakeGen2) ToDatasetDataLakeGen2OutputWithContext(ctx context.Context) DatasetDataLakeGen2Output {
+func (i *DatasetDataLakeGen2) ToDatasetDataLakeGen2OutputWithContext(ctx context.Context) DatasetDataLakeGen2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDataLakeGen2Output)
 }
 
@@ -254,7 +254,7 @@ type DatasetDataLakeGen2Output struct {
 }
 
 func (DatasetDataLakeGen2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetDataLakeGen2Output)(nil)).Elem()
+	return reflect.TypeOf((*DatasetDataLakeGen2)(nil))
 }
 
 func (o DatasetDataLakeGen2Output) ToDatasetDataLakeGen2Output() DatasetDataLakeGen2Output {

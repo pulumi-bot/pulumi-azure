@@ -70,7 +70,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = appservice.NewHybridConnection(ctx, "exampleAppservice_hybridConnectionHybridConnection", &appservice.HybridConnectionArgs{
+// 		_, err = appservice.NewHybridConnection(ctx, "exampleAppservice/hybridConnectionHybridConnection", &appservice.HybridConnectionArgs{
 // 			AppServiceName:    exampleAppService.Name,
 // 			ResourceGroupName: exampleResourceGroup.Name,
 // 			RelayId:           exampleHybridConnection.ID(),
@@ -256,15 +256,15 @@ type HybridConnectionInput interface {
 	ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput
 }
 
-func (HybridConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridConnection)(nil)).Elem()
+func (*HybridConnection) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridConnection)(nil))
 }
 
-func (i HybridConnection) ToHybridConnectionOutput() HybridConnectionOutput {
+func (i *HybridConnection) ToHybridConnectionOutput() HybridConnectionOutput {
 	return i.ToHybridConnectionOutputWithContext(context.Background())
 }
 
-func (i HybridConnection) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
+func (i *HybridConnection) ToHybridConnectionOutputWithContext(ctx context.Context) HybridConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionOutput)
 }
 
@@ -273,7 +273,7 @@ type HybridConnectionOutput struct {
 }
 
 func (HybridConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HybridConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*HybridConnection)(nil))
 }
 
 func (o HybridConnectionOutput) ToHybridConnectionOutput() HybridConnectionOutput {
