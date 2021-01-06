@@ -1294,7 +1294,7 @@ func (i ActionRuleActionGroupConditionArgs) ToActionRuleActionGroupConditionPtrO
 }
 
 func (i ActionRuleActionGroupConditionArgs) ToActionRuleActionGroupConditionPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionOutput).ToActionRuleActionGroupConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionOutput).ToActionRuleActionGroupConditionPtrOutput()
 }
 
 // ActionRuleActionGroupConditionPtrInput is an input type that accepts ActionRuleActionGroupConditionArgs, ActionRuleActionGroupConditionPtr and ActionRuleActionGroupConditionPtrOutput values.
@@ -1327,7 +1327,7 @@ func (i *actionRuleActionGroupConditionPtrType) ToActionRuleActionGroupCondition
 }
 
 func (i *actionRuleActionGroupConditionPtrType) ToActionRuleActionGroupConditionPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionOutput).ToActionRuleActionGroupConditionPtrOutput()
 }
 
 type ActionRuleActionGroupConditionOutput struct{ *pulumi.OutputState }
@@ -1529,7 +1529,7 @@ func (i ActionRuleActionGroupConditionAlertContextArgs) ToActionRuleActionGroupC
 }
 
 func (i ActionRuleActionGroupConditionAlertContextArgs) ToActionRuleActionGroupConditionAlertContextPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionAlertContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertContextOutput).ToActionRuleActionGroupConditionAlertContextPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertContextOutput).ToActionRuleActionGroupConditionAlertContextPtrOutput()
 }
 
 // ActionRuleActionGroupConditionAlertContextPtrInput is an input type that accepts ActionRuleActionGroupConditionAlertContextArgs, ActionRuleActionGroupConditionAlertContextPtr and ActionRuleActionGroupConditionAlertContextPtrOutput values.
@@ -1562,7 +1562,7 @@ func (i *actionRuleActionGroupConditionAlertContextPtrType) ToActionRuleActionGr
 }
 
 func (i *actionRuleActionGroupConditionAlertContextPtrType) ToActionRuleActionGroupConditionAlertContextPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionAlertContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertContextPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertContextOutput).ToActionRuleActionGroupConditionAlertContextPtrOutput()
 }
 
 type ActionRuleActionGroupConditionAlertContextOutput struct{ *pulumi.OutputState }
@@ -1681,7 +1681,7 @@ func (i ActionRuleActionGroupConditionAlertRuleIdArgs) ToActionRuleActionGroupCo
 }
 
 func (i ActionRuleActionGroupConditionAlertRuleIdArgs) ToActionRuleActionGroupConditionAlertRuleIdPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionAlertRuleIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertRuleIdOutput).ToActionRuleActionGroupConditionAlertRuleIdPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertRuleIdOutput).ToActionRuleActionGroupConditionAlertRuleIdPtrOutput()
 }
 
 // ActionRuleActionGroupConditionAlertRuleIdPtrInput is an input type that accepts ActionRuleActionGroupConditionAlertRuleIdArgs, ActionRuleActionGroupConditionAlertRuleIdPtr and ActionRuleActionGroupConditionAlertRuleIdPtrOutput values.
@@ -1714,7 +1714,7 @@ func (i *actionRuleActionGroupConditionAlertRuleIdPtrType) ToActionRuleActionGro
 }
 
 func (i *actionRuleActionGroupConditionAlertRuleIdPtrType) ToActionRuleActionGroupConditionAlertRuleIdPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionAlertRuleIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertRuleIdPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionAlertRuleIdOutput).ToActionRuleActionGroupConditionAlertRuleIdPtrOutput()
 }
 
 type ActionRuleActionGroupConditionAlertRuleIdOutput struct{ *pulumi.OutputState }
@@ -1833,7 +1833,7 @@ func (i ActionRuleActionGroupConditionDescriptionArgs) ToActionRuleActionGroupCo
 }
 
 func (i ActionRuleActionGroupConditionDescriptionArgs) ToActionRuleActionGroupConditionDescriptionPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionDescriptionOutput).ToActionRuleActionGroupConditionDescriptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionDescriptionOutput).ToActionRuleActionGroupConditionDescriptionPtrOutput()
 }
 
 // ActionRuleActionGroupConditionDescriptionPtrInput is an input type that accepts ActionRuleActionGroupConditionDescriptionArgs, ActionRuleActionGroupConditionDescriptionPtr and ActionRuleActionGroupConditionDescriptionPtrOutput values.
@@ -1866,7 +1866,7 @@ func (i *actionRuleActionGroupConditionDescriptionPtrType) ToActionRuleActionGro
 }
 
 func (i *actionRuleActionGroupConditionDescriptionPtrType) ToActionRuleActionGroupConditionDescriptionPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionDescriptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionDescriptionOutput).ToActionRuleActionGroupConditionDescriptionPtrOutput()
 }
 
 type ActionRuleActionGroupConditionDescriptionOutput struct{ *pulumi.OutputState }
@@ -1985,7 +1985,7 @@ func (i ActionRuleActionGroupConditionMonitorArgs) ToActionRuleActionGroupCondit
 }
 
 func (i ActionRuleActionGroupConditionMonitorArgs) ToActionRuleActionGroupConditionMonitorPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorOutput).ToActionRuleActionGroupConditionMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorOutput).ToActionRuleActionGroupConditionMonitorPtrOutput()
 }
 
 // ActionRuleActionGroupConditionMonitorPtrInput is an input type that accepts ActionRuleActionGroupConditionMonitorArgs, ActionRuleActionGroupConditionMonitorPtr and ActionRuleActionGroupConditionMonitorPtrOutput values.
@@ -2018,7 +2018,7 @@ func (i *actionRuleActionGroupConditionMonitorPtrType) ToActionRuleActionGroupCo
 }
 
 func (i *actionRuleActionGroupConditionMonitorPtrType) ToActionRuleActionGroupConditionMonitorPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorOutput).ToActionRuleActionGroupConditionMonitorPtrOutput()
 }
 
 type ActionRuleActionGroupConditionMonitorOutput struct{ *pulumi.OutputState }
@@ -2135,7 +2135,7 @@ func (i ActionRuleActionGroupConditionMonitorServiceArgs) ToActionRuleActionGrou
 }
 
 func (i ActionRuleActionGroupConditionMonitorServiceArgs) ToActionRuleActionGroupConditionMonitorServicePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionMonitorServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorServiceOutput).ToActionRuleActionGroupConditionMonitorServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorServiceOutput).ToActionRuleActionGroupConditionMonitorServicePtrOutput()
 }
 
 // ActionRuleActionGroupConditionMonitorServicePtrInput is an input type that accepts ActionRuleActionGroupConditionMonitorServiceArgs, ActionRuleActionGroupConditionMonitorServicePtr and ActionRuleActionGroupConditionMonitorServicePtrOutput values.
@@ -2168,7 +2168,7 @@ func (i *actionRuleActionGroupConditionMonitorServicePtrType) ToActionRuleAction
 }
 
 func (i *actionRuleActionGroupConditionMonitorServicePtrType) ToActionRuleActionGroupConditionMonitorServicePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionMonitorServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionMonitorServiceOutput).ToActionRuleActionGroupConditionMonitorServicePtrOutput()
 }
 
 type ActionRuleActionGroupConditionMonitorServiceOutput struct{ *pulumi.OutputState }
@@ -2287,7 +2287,7 @@ func (i ActionRuleActionGroupConditionSeverityArgs) ToActionRuleActionGroupCondi
 }
 
 func (i ActionRuleActionGroupConditionSeverityArgs) ToActionRuleActionGroupConditionSeverityPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionSeverityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionSeverityOutput).ToActionRuleActionGroupConditionSeverityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionSeverityOutput).ToActionRuleActionGroupConditionSeverityPtrOutput()
 }
 
 // ActionRuleActionGroupConditionSeverityPtrInput is an input type that accepts ActionRuleActionGroupConditionSeverityArgs, ActionRuleActionGroupConditionSeverityPtr and ActionRuleActionGroupConditionSeverityPtrOutput values.
@@ -2320,7 +2320,7 @@ func (i *actionRuleActionGroupConditionSeverityPtrType) ToActionRuleActionGroupC
 }
 
 func (i *actionRuleActionGroupConditionSeverityPtrType) ToActionRuleActionGroupConditionSeverityPtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionSeverityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionSeverityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionSeverityOutput).ToActionRuleActionGroupConditionSeverityPtrOutput()
 }
 
 type ActionRuleActionGroupConditionSeverityOutput struct{ *pulumi.OutputState }
@@ -2437,7 +2437,7 @@ func (i ActionRuleActionGroupConditionTargetResourceTypeArgs) ToActionRuleAction
 }
 
 func (i ActionRuleActionGroupConditionTargetResourceTypeArgs) ToActionRuleActionGroupConditionTargetResourceTypePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionTargetResourceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionTargetResourceTypeOutput).ToActionRuleActionGroupConditionTargetResourceTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionTargetResourceTypeOutput).ToActionRuleActionGroupConditionTargetResourceTypePtrOutput()
 }
 
 // ActionRuleActionGroupConditionTargetResourceTypePtrInput is an input type that accepts ActionRuleActionGroupConditionTargetResourceTypeArgs, ActionRuleActionGroupConditionTargetResourceTypePtr and ActionRuleActionGroupConditionTargetResourceTypePtrOutput values.
@@ -2470,7 +2470,7 @@ func (i *actionRuleActionGroupConditionTargetResourceTypePtrType) ToActionRuleAc
 }
 
 func (i *actionRuleActionGroupConditionTargetResourceTypePtrType) ToActionRuleActionGroupConditionTargetResourceTypePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupConditionTargetResourceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionTargetResourceTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupConditionTargetResourceTypeOutput).ToActionRuleActionGroupConditionTargetResourceTypePtrOutput()
 }
 
 type ActionRuleActionGroupConditionTargetResourceTypeOutput struct{ *pulumi.OutputState }
@@ -2589,7 +2589,7 @@ func (i ActionRuleActionGroupScopeArgs) ToActionRuleActionGroupScopePtrOutput() 
 }
 
 func (i ActionRuleActionGroupScopeArgs) ToActionRuleActionGroupScopePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupScopeOutput).ToActionRuleActionGroupScopePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupScopeOutput).ToActionRuleActionGroupScopePtrOutput()
 }
 
 // ActionRuleActionGroupScopePtrInput is an input type that accepts ActionRuleActionGroupScopeArgs, ActionRuleActionGroupScopePtr and ActionRuleActionGroupScopePtrOutput values.
@@ -2622,7 +2622,7 @@ func (i *actionRuleActionGroupScopePtrType) ToActionRuleActionGroupScopePtrOutpu
 }
 
 func (i *actionRuleActionGroupScopePtrType) ToActionRuleActionGroupScopePtrOutputWithContext(ctx context.Context) ActionRuleActionGroupScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupScopePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleActionGroupScopeOutput).ToActionRuleActionGroupScopePtrOutput()
 }
 
 type ActionRuleActionGroupScopeOutput struct{ *pulumi.OutputState }
@@ -2759,7 +2759,7 @@ func (i ActionRuleSuppressionConditionArgs) ToActionRuleSuppressionConditionPtrO
 }
 
 func (i ActionRuleSuppressionConditionArgs) ToActionRuleSuppressionConditionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionOutput).ToActionRuleSuppressionConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionOutput).ToActionRuleSuppressionConditionPtrOutput()
 }
 
 // ActionRuleSuppressionConditionPtrInput is an input type that accepts ActionRuleSuppressionConditionArgs, ActionRuleSuppressionConditionPtr and ActionRuleSuppressionConditionPtrOutput values.
@@ -2792,7 +2792,7 @@ func (i *actionRuleSuppressionConditionPtrType) ToActionRuleSuppressionCondition
 }
 
 func (i *actionRuleSuppressionConditionPtrType) ToActionRuleSuppressionConditionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionOutput).ToActionRuleSuppressionConditionPtrOutput()
 }
 
 type ActionRuleSuppressionConditionOutput struct{ *pulumi.OutputState }
@@ -2994,7 +2994,7 @@ func (i ActionRuleSuppressionConditionAlertContextArgs) ToActionRuleSuppressionC
 }
 
 func (i ActionRuleSuppressionConditionAlertContextArgs) ToActionRuleSuppressionConditionAlertContextPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionAlertContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertContextOutput).ToActionRuleSuppressionConditionAlertContextPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertContextOutput).ToActionRuleSuppressionConditionAlertContextPtrOutput()
 }
 
 // ActionRuleSuppressionConditionAlertContextPtrInput is an input type that accepts ActionRuleSuppressionConditionAlertContextArgs, ActionRuleSuppressionConditionAlertContextPtr and ActionRuleSuppressionConditionAlertContextPtrOutput values.
@@ -3027,7 +3027,7 @@ func (i *actionRuleSuppressionConditionAlertContextPtrType) ToActionRuleSuppress
 }
 
 func (i *actionRuleSuppressionConditionAlertContextPtrType) ToActionRuleSuppressionConditionAlertContextPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionAlertContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertContextPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertContextOutput).ToActionRuleSuppressionConditionAlertContextPtrOutput()
 }
 
 type ActionRuleSuppressionConditionAlertContextOutput struct{ *pulumi.OutputState }
@@ -3146,7 +3146,7 @@ func (i ActionRuleSuppressionConditionAlertRuleIdArgs) ToActionRuleSuppressionCo
 }
 
 func (i ActionRuleSuppressionConditionAlertRuleIdArgs) ToActionRuleSuppressionConditionAlertRuleIdPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionAlertRuleIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertRuleIdOutput).ToActionRuleSuppressionConditionAlertRuleIdPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertRuleIdOutput).ToActionRuleSuppressionConditionAlertRuleIdPtrOutput()
 }
 
 // ActionRuleSuppressionConditionAlertRuleIdPtrInput is an input type that accepts ActionRuleSuppressionConditionAlertRuleIdArgs, ActionRuleSuppressionConditionAlertRuleIdPtr and ActionRuleSuppressionConditionAlertRuleIdPtrOutput values.
@@ -3179,7 +3179,7 @@ func (i *actionRuleSuppressionConditionAlertRuleIdPtrType) ToActionRuleSuppressi
 }
 
 func (i *actionRuleSuppressionConditionAlertRuleIdPtrType) ToActionRuleSuppressionConditionAlertRuleIdPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionAlertRuleIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertRuleIdPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionAlertRuleIdOutput).ToActionRuleSuppressionConditionAlertRuleIdPtrOutput()
 }
 
 type ActionRuleSuppressionConditionAlertRuleIdOutput struct{ *pulumi.OutputState }
@@ -3298,7 +3298,7 @@ func (i ActionRuleSuppressionConditionDescriptionArgs) ToActionRuleSuppressionCo
 }
 
 func (i ActionRuleSuppressionConditionDescriptionArgs) ToActionRuleSuppressionConditionDescriptionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionDescriptionOutput).ToActionRuleSuppressionConditionDescriptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionDescriptionOutput).ToActionRuleSuppressionConditionDescriptionPtrOutput()
 }
 
 // ActionRuleSuppressionConditionDescriptionPtrInput is an input type that accepts ActionRuleSuppressionConditionDescriptionArgs, ActionRuleSuppressionConditionDescriptionPtr and ActionRuleSuppressionConditionDescriptionPtrOutput values.
@@ -3331,7 +3331,7 @@ func (i *actionRuleSuppressionConditionDescriptionPtrType) ToActionRuleSuppressi
 }
 
 func (i *actionRuleSuppressionConditionDescriptionPtrType) ToActionRuleSuppressionConditionDescriptionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionDescriptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionDescriptionOutput).ToActionRuleSuppressionConditionDescriptionPtrOutput()
 }
 
 type ActionRuleSuppressionConditionDescriptionOutput struct{ *pulumi.OutputState }
@@ -3450,7 +3450,7 @@ func (i ActionRuleSuppressionConditionMonitorArgs) ToActionRuleSuppressionCondit
 }
 
 func (i ActionRuleSuppressionConditionMonitorArgs) ToActionRuleSuppressionConditionMonitorPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorOutput).ToActionRuleSuppressionConditionMonitorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorOutput).ToActionRuleSuppressionConditionMonitorPtrOutput()
 }
 
 // ActionRuleSuppressionConditionMonitorPtrInput is an input type that accepts ActionRuleSuppressionConditionMonitorArgs, ActionRuleSuppressionConditionMonitorPtr and ActionRuleSuppressionConditionMonitorPtrOutput values.
@@ -3483,7 +3483,7 @@ func (i *actionRuleSuppressionConditionMonitorPtrType) ToActionRuleSuppressionCo
 }
 
 func (i *actionRuleSuppressionConditionMonitorPtrType) ToActionRuleSuppressionConditionMonitorPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorOutput).ToActionRuleSuppressionConditionMonitorPtrOutput()
 }
 
 type ActionRuleSuppressionConditionMonitorOutput struct{ *pulumi.OutputState }
@@ -3600,7 +3600,7 @@ func (i ActionRuleSuppressionConditionMonitorServiceArgs) ToActionRuleSuppressio
 }
 
 func (i ActionRuleSuppressionConditionMonitorServiceArgs) ToActionRuleSuppressionConditionMonitorServicePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionMonitorServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorServiceOutput).ToActionRuleSuppressionConditionMonitorServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorServiceOutput).ToActionRuleSuppressionConditionMonitorServicePtrOutput()
 }
 
 // ActionRuleSuppressionConditionMonitorServicePtrInput is an input type that accepts ActionRuleSuppressionConditionMonitorServiceArgs, ActionRuleSuppressionConditionMonitorServicePtr and ActionRuleSuppressionConditionMonitorServicePtrOutput values.
@@ -3633,7 +3633,7 @@ func (i *actionRuleSuppressionConditionMonitorServicePtrType) ToActionRuleSuppre
 }
 
 func (i *actionRuleSuppressionConditionMonitorServicePtrType) ToActionRuleSuppressionConditionMonitorServicePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionMonitorServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionMonitorServiceOutput).ToActionRuleSuppressionConditionMonitorServicePtrOutput()
 }
 
 type ActionRuleSuppressionConditionMonitorServiceOutput struct{ *pulumi.OutputState }
@@ -3752,7 +3752,7 @@ func (i ActionRuleSuppressionConditionSeverityArgs) ToActionRuleSuppressionCondi
 }
 
 func (i ActionRuleSuppressionConditionSeverityArgs) ToActionRuleSuppressionConditionSeverityPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionSeverityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionSeverityOutput).ToActionRuleSuppressionConditionSeverityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionSeverityOutput).ToActionRuleSuppressionConditionSeverityPtrOutput()
 }
 
 // ActionRuleSuppressionConditionSeverityPtrInput is an input type that accepts ActionRuleSuppressionConditionSeverityArgs, ActionRuleSuppressionConditionSeverityPtr and ActionRuleSuppressionConditionSeverityPtrOutput values.
@@ -3785,7 +3785,7 @@ func (i *actionRuleSuppressionConditionSeverityPtrType) ToActionRuleSuppressionC
 }
 
 func (i *actionRuleSuppressionConditionSeverityPtrType) ToActionRuleSuppressionConditionSeverityPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionSeverityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionSeverityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionSeverityOutput).ToActionRuleSuppressionConditionSeverityPtrOutput()
 }
 
 type ActionRuleSuppressionConditionSeverityOutput struct{ *pulumi.OutputState }
@@ -3902,7 +3902,7 @@ func (i ActionRuleSuppressionConditionTargetResourceTypeArgs) ToActionRuleSuppre
 }
 
 func (i ActionRuleSuppressionConditionTargetResourceTypeArgs) ToActionRuleSuppressionConditionTargetResourceTypePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionTargetResourceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionTargetResourceTypeOutput).ToActionRuleSuppressionConditionTargetResourceTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionTargetResourceTypeOutput).ToActionRuleSuppressionConditionTargetResourceTypePtrOutput()
 }
 
 // ActionRuleSuppressionConditionTargetResourceTypePtrInput is an input type that accepts ActionRuleSuppressionConditionTargetResourceTypeArgs, ActionRuleSuppressionConditionTargetResourceTypePtr and ActionRuleSuppressionConditionTargetResourceTypePtrOutput values.
@@ -3935,7 +3935,7 @@ func (i *actionRuleSuppressionConditionTargetResourceTypePtrType) ToActionRuleSu
 }
 
 func (i *actionRuleSuppressionConditionTargetResourceTypePtrType) ToActionRuleSuppressionConditionTargetResourceTypePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionConditionTargetResourceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionTargetResourceTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionConditionTargetResourceTypeOutput).ToActionRuleSuppressionConditionTargetResourceTypePtrOutput()
 }
 
 type ActionRuleSuppressionConditionTargetResourceTypeOutput struct{ *pulumi.OutputState }
@@ -4054,7 +4054,7 @@ func (i ActionRuleSuppressionScopeArgs) ToActionRuleSuppressionScopePtrOutput() 
 }
 
 func (i ActionRuleSuppressionScopeArgs) ToActionRuleSuppressionScopePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionScopeOutput).ToActionRuleSuppressionScopePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionScopeOutput).ToActionRuleSuppressionScopePtrOutput()
 }
 
 // ActionRuleSuppressionScopePtrInput is an input type that accepts ActionRuleSuppressionScopeArgs, ActionRuleSuppressionScopePtr and ActionRuleSuppressionScopePtrOutput values.
@@ -4087,7 +4087,7 @@ func (i *actionRuleSuppressionScopePtrType) ToActionRuleSuppressionScopePtrOutpu
 }
 
 func (i *actionRuleSuppressionScopePtrType) ToActionRuleSuppressionScopePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionScopePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionScopeOutput).ToActionRuleSuppressionScopePtrOutput()
 }
 
 type ActionRuleSuppressionScopeOutput struct{ *pulumi.OutputState }
@@ -4204,7 +4204,7 @@ func (i ActionRuleSuppressionSuppressionArgs) ToActionRuleSuppressionSuppression
 }
 
 func (i ActionRuleSuppressionSuppressionArgs) ToActionRuleSuppressionSuppressionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionSuppressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionOutput).ToActionRuleSuppressionSuppressionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionOutput).ToActionRuleSuppressionSuppressionPtrOutput()
 }
 
 // ActionRuleSuppressionSuppressionPtrInput is an input type that accepts ActionRuleSuppressionSuppressionArgs, ActionRuleSuppressionSuppressionPtr and ActionRuleSuppressionSuppressionPtrOutput values.
@@ -4237,7 +4237,7 @@ func (i *actionRuleSuppressionSuppressionPtrType) ToActionRuleSuppressionSuppres
 }
 
 func (i *actionRuleSuppressionSuppressionPtrType) ToActionRuleSuppressionSuppressionPtrOutputWithContext(ctx context.Context) ActionRuleSuppressionSuppressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionOutput).ToActionRuleSuppressionSuppressionPtrOutput()
 }
 
 type ActionRuleSuppressionSuppressionOutput struct{ *pulumi.OutputState }
@@ -4362,7 +4362,7 @@ func (i ActionRuleSuppressionSuppressionScheduleArgs) ToActionRuleSuppressionSup
 }
 
 func (i ActionRuleSuppressionSuppressionScheduleArgs) ToActionRuleSuppressionSuppressionSchedulePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionSuppressionSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionScheduleOutput).ToActionRuleSuppressionSuppressionSchedulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionScheduleOutput).ToActionRuleSuppressionSuppressionSchedulePtrOutput()
 }
 
 // ActionRuleSuppressionSuppressionSchedulePtrInput is an input type that accepts ActionRuleSuppressionSuppressionScheduleArgs, ActionRuleSuppressionSuppressionSchedulePtr and ActionRuleSuppressionSuppressionSchedulePtrOutput values.
@@ -4395,7 +4395,7 @@ func (i *actionRuleSuppressionSuppressionSchedulePtrType) ToActionRuleSuppressio
 }
 
 func (i *actionRuleSuppressionSuppressionSchedulePtrType) ToActionRuleSuppressionSuppressionSchedulePtrOutputWithContext(ctx context.Context) ActionRuleSuppressionSuppressionSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionSchedulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleSuppressionSuppressionScheduleOutput).ToActionRuleSuppressionSuppressionSchedulePtrOutput()
 }
 
 type ActionRuleSuppressionSuppressionScheduleOutput struct{ *pulumi.OutputState }
@@ -4692,7 +4692,7 @@ func (i ActivityLogAlertCriteriaArgs) ToActivityLogAlertCriteriaPtrOutput() Acti
 }
 
 func (i ActivityLogAlertCriteriaArgs) ToActivityLogAlertCriteriaPtrOutputWithContext(ctx context.Context) ActivityLogAlertCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertCriteriaOutput).ToActivityLogAlertCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertCriteriaOutput).ToActivityLogAlertCriteriaPtrOutput()
 }
 
 // ActivityLogAlertCriteriaPtrInput is an input type that accepts ActivityLogAlertCriteriaArgs, ActivityLogAlertCriteriaPtr and ActivityLogAlertCriteriaPtrOutput values.
@@ -4725,7 +4725,7 @@ func (i *activityLogAlertCriteriaPtrType) ToActivityLogAlertCriteriaPtrOutput() 
 }
 
 func (i *activityLogAlertCriteriaPtrType) ToActivityLogAlertCriteriaPtrOutputWithContext(ctx context.Context) ActivityLogAlertCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertCriteriaOutput).ToActivityLogAlertCriteriaPtrOutput()
 }
 
 type ActivityLogAlertCriteriaOutput struct{ *pulumi.OutputState }
@@ -5007,7 +5007,7 @@ func (i AutoscaleSettingNotificationArgs) ToAutoscaleSettingNotificationPtrOutpu
 }
 
 func (i AutoscaleSettingNotificationArgs) ToAutoscaleSettingNotificationPtrOutputWithContext(ctx context.Context) AutoscaleSettingNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationOutput).ToAutoscaleSettingNotificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationOutput).ToAutoscaleSettingNotificationPtrOutput()
 }
 
 // AutoscaleSettingNotificationPtrInput is an input type that accepts AutoscaleSettingNotificationArgs, AutoscaleSettingNotificationPtr and AutoscaleSettingNotificationPtrOutput values.
@@ -5040,7 +5040,7 @@ func (i *autoscaleSettingNotificationPtrType) ToAutoscaleSettingNotificationPtrO
 }
 
 func (i *autoscaleSettingNotificationPtrType) ToAutoscaleSettingNotificationPtrOutputWithContext(ctx context.Context) AutoscaleSettingNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationOutput).ToAutoscaleSettingNotificationPtrOutput()
 }
 
 type AutoscaleSettingNotificationOutput struct{ *pulumi.OutputState }
@@ -5161,7 +5161,7 @@ func (i AutoscaleSettingNotificationEmailArgs) ToAutoscaleSettingNotificationEma
 }
 
 func (i AutoscaleSettingNotificationEmailArgs) ToAutoscaleSettingNotificationEmailPtrOutputWithContext(ctx context.Context) AutoscaleSettingNotificationEmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationEmailOutput).ToAutoscaleSettingNotificationEmailPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationEmailOutput).ToAutoscaleSettingNotificationEmailPtrOutput()
 }
 
 // AutoscaleSettingNotificationEmailPtrInput is an input type that accepts AutoscaleSettingNotificationEmailArgs, AutoscaleSettingNotificationEmailPtr and AutoscaleSettingNotificationEmailPtrOutput values.
@@ -5194,7 +5194,7 @@ func (i *autoscaleSettingNotificationEmailPtrType) ToAutoscaleSettingNotificatio
 }
 
 func (i *autoscaleSettingNotificationEmailPtrType) ToAutoscaleSettingNotificationEmailPtrOutputWithContext(ctx context.Context) AutoscaleSettingNotificationEmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationEmailPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingNotificationEmailOutput).ToAutoscaleSettingNotificationEmailPtrOutput()
 }
 
 type AutoscaleSettingNotificationEmailOutput struct{ *pulumi.OutputState }
@@ -5639,7 +5639,7 @@ func (i AutoscaleSettingProfileFixedDateArgs) ToAutoscaleSettingProfileFixedDate
 }
 
 func (i AutoscaleSettingProfileFixedDateArgs) ToAutoscaleSettingProfileFixedDatePtrOutputWithContext(ctx context.Context) AutoscaleSettingProfileFixedDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileFixedDateOutput).ToAutoscaleSettingProfileFixedDatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileFixedDateOutput).ToAutoscaleSettingProfileFixedDatePtrOutput()
 }
 
 // AutoscaleSettingProfileFixedDatePtrInput is an input type that accepts AutoscaleSettingProfileFixedDateArgs, AutoscaleSettingProfileFixedDatePtr and AutoscaleSettingProfileFixedDatePtrOutput values.
@@ -5672,7 +5672,7 @@ func (i *autoscaleSettingProfileFixedDatePtrType) ToAutoscaleSettingProfileFixed
 }
 
 func (i *autoscaleSettingProfileFixedDatePtrType) ToAutoscaleSettingProfileFixedDatePtrOutputWithContext(ctx context.Context) AutoscaleSettingProfileFixedDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileFixedDatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileFixedDateOutput).ToAutoscaleSettingProfileFixedDatePtrOutput()
 }
 
 type AutoscaleSettingProfileFixedDateOutput struct{ *pulumi.OutputState }
@@ -5812,7 +5812,7 @@ func (i AutoscaleSettingProfileRecurrenceArgs) ToAutoscaleSettingProfileRecurren
 }
 
 func (i AutoscaleSettingProfileRecurrenceArgs) ToAutoscaleSettingProfileRecurrencePtrOutputWithContext(ctx context.Context) AutoscaleSettingProfileRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileRecurrenceOutput).ToAutoscaleSettingProfileRecurrencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileRecurrenceOutput).ToAutoscaleSettingProfileRecurrencePtrOutput()
 }
 
 // AutoscaleSettingProfileRecurrencePtrInput is an input type that accepts AutoscaleSettingProfileRecurrenceArgs, AutoscaleSettingProfileRecurrencePtr and AutoscaleSettingProfileRecurrencePtrOutput values.
@@ -5845,7 +5845,7 @@ func (i *autoscaleSettingProfileRecurrencePtrType) ToAutoscaleSettingProfileRecu
 }
 
 func (i *autoscaleSettingProfileRecurrencePtrType) ToAutoscaleSettingProfileRecurrencePtrOutputWithContext(ctx context.Context) AutoscaleSettingProfileRecurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileRecurrencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingProfileRecurrenceOutput).ToAutoscaleSettingProfileRecurrencePtrOutput()
 }
 
 type AutoscaleSettingProfileRecurrenceOutput struct{ *pulumi.OutputState }
@@ -6407,7 +6407,7 @@ func (i DiagnosticSettingLogRetentionPolicyArgs) ToDiagnosticSettingLogRetention
 }
 
 func (i DiagnosticSettingLogRetentionPolicyArgs) ToDiagnosticSettingLogRetentionPolicyPtrOutputWithContext(ctx context.Context) DiagnosticSettingLogRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingLogRetentionPolicyOutput).ToDiagnosticSettingLogRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingLogRetentionPolicyOutput).ToDiagnosticSettingLogRetentionPolicyPtrOutput()
 }
 
 // DiagnosticSettingLogRetentionPolicyPtrInput is an input type that accepts DiagnosticSettingLogRetentionPolicyArgs, DiagnosticSettingLogRetentionPolicyPtr and DiagnosticSettingLogRetentionPolicyPtrOutput values.
@@ -6440,7 +6440,7 @@ func (i *diagnosticSettingLogRetentionPolicyPtrType) ToDiagnosticSettingLogReten
 }
 
 func (i *diagnosticSettingLogRetentionPolicyPtrType) ToDiagnosticSettingLogRetentionPolicyPtrOutputWithContext(ctx context.Context) DiagnosticSettingLogRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingLogRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingLogRetentionPolicyOutput).ToDiagnosticSettingLogRetentionPolicyPtrOutput()
 }
 
 type DiagnosticSettingLogRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -6672,7 +6672,7 @@ func (i DiagnosticSettingMetricRetentionPolicyArgs) ToDiagnosticSettingMetricRet
 }
 
 func (i DiagnosticSettingMetricRetentionPolicyArgs) ToDiagnosticSettingMetricRetentionPolicyPtrOutputWithContext(ctx context.Context) DiagnosticSettingMetricRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingMetricRetentionPolicyOutput).ToDiagnosticSettingMetricRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingMetricRetentionPolicyOutput).ToDiagnosticSettingMetricRetentionPolicyPtrOutput()
 }
 
 // DiagnosticSettingMetricRetentionPolicyPtrInput is an input type that accepts DiagnosticSettingMetricRetentionPolicyArgs, DiagnosticSettingMetricRetentionPolicyPtr and DiagnosticSettingMetricRetentionPolicyPtrOutput values.
@@ -6705,7 +6705,7 @@ func (i *diagnosticSettingMetricRetentionPolicyPtrType) ToDiagnosticSettingMetri
 }
 
 func (i *diagnosticSettingMetricRetentionPolicyPtrType) ToDiagnosticSettingMetricRetentionPolicyPtrOutputWithContext(ctx context.Context) DiagnosticSettingMetricRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingMetricRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticSettingMetricRetentionPolicyOutput).ToDiagnosticSettingMetricRetentionPolicyPtrOutput()
 }
 
 type DiagnosticSettingMetricRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -6822,7 +6822,7 @@ func (i LogProfileRetentionPolicyArgs) ToLogProfileRetentionPolicyPtrOutput() Lo
 }
 
 func (i LogProfileRetentionPolicyArgs) ToLogProfileRetentionPolicyPtrOutputWithContext(ctx context.Context) LogProfileRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogProfileRetentionPolicyOutput).ToLogProfileRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LogProfileRetentionPolicyOutput).ToLogProfileRetentionPolicyPtrOutput()
 }
 
 // LogProfileRetentionPolicyPtrInput is an input type that accepts LogProfileRetentionPolicyArgs, LogProfileRetentionPolicyPtr and LogProfileRetentionPolicyPtrOutput values.
@@ -6855,7 +6855,7 @@ func (i *logProfileRetentionPolicyPtrType) ToLogProfileRetentionPolicyPtrOutput(
 }
 
 func (i *logProfileRetentionPolicyPtrType) ToLogProfileRetentionPolicyPtrOutputWithContext(ctx context.Context) LogProfileRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogProfileRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LogProfileRetentionPolicyOutput).ToLogProfileRetentionPolicyPtrOutput()
 }
 
 type LogProfileRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -7082,7 +7082,7 @@ func (i MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs) T
 }
 
 func (i MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs) ToMetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutputWithContext(ctx context.Context) MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaOutput).ToMetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaOutput).ToMetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput()
 }
 
 // MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrInput is an input type that accepts MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaArgs, MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtr and MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput values.
@@ -7115,7 +7115,7 @@ func (i *metricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrTyp
 }
 
 func (i *metricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrType) ToMetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutputWithContext(ctx context.Context) MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaOutput).ToMetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaPtrOutput()
 }
 
 type MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteriaOutput struct{ *pulumi.OutputState }
@@ -7536,7 +7536,7 @@ func (i MetricAlertDynamicCriteriaArgs) ToMetricAlertDynamicCriteriaPtrOutput() 
 }
 
 func (i MetricAlertDynamicCriteriaArgs) ToMetricAlertDynamicCriteriaPtrOutputWithContext(ctx context.Context) MetricAlertDynamicCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertDynamicCriteriaOutput).ToMetricAlertDynamicCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertDynamicCriteriaOutput).ToMetricAlertDynamicCriteriaPtrOutput()
 }
 
 // MetricAlertDynamicCriteriaPtrInput is an input type that accepts MetricAlertDynamicCriteriaArgs, MetricAlertDynamicCriteriaPtr and MetricAlertDynamicCriteriaPtrOutput values.
@@ -7569,7 +7569,7 @@ func (i *metricAlertDynamicCriteriaPtrType) ToMetricAlertDynamicCriteriaPtrOutpu
 }
 
 func (i *metricAlertDynamicCriteriaPtrType) ToMetricAlertDynamicCriteriaPtrOutputWithContext(ctx context.Context) MetricAlertDynamicCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertDynamicCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertDynamicCriteriaOutput).ToMetricAlertDynamicCriteriaPtrOutput()
 }
 
 type MetricAlertDynamicCriteriaOutput struct{ *pulumi.OutputState }
@@ -7910,7 +7910,7 @@ func (i ScheduledQueryRulesAlertActionArgs) ToScheduledQueryRulesAlertActionPtrO
 }
 
 func (i ScheduledQueryRulesAlertActionArgs) ToScheduledQueryRulesAlertActionPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertActionOutput).ToScheduledQueryRulesAlertActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertActionOutput).ToScheduledQueryRulesAlertActionPtrOutput()
 }
 
 // ScheduledQueryRulesAlertActionPtrInput is an input type that accepts ScheduledQueryRulesAlertActionArgs, ScheduledQueryRulesAlertActionPtr and ScheduledQueryRulesAlertActionPtrOutput values.
@@ -7943,7 +7943,7 @@ func (i *scheduledQueryRulesAlertActionPtrType) ToScheduledQueryRulesAlertAction
 }
 
 func (i *scheduledQueryRulesAlertActionPtrType) ToScheduledQueryRulesAlertActionPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertActionOutput).ToScheduledQueryRulesAlertActionPtrOutput()
 }
 
 type ScheduledQueryRulesAlertActionOutput struct{ *pulumi.OutputState }
@@ -8077,7 +8077,7 @@ func (i ScheduledQueryRulesAlertTriggerArgs) ToScheduledQueryRulesAlertTriggerPt
 }
 
 func (i ScheduledQueryRulesAlertTriggerArgs) ToScheduledQueryRulesAlertTriggerPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerOutput).ToScheduledQueryRulesAlertTriggerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerOutput).ToScheduledQueryRulesAlertTriggerPtrOutput()
 }
 
 // ScheduledQueryRulesAlertTriggerPtrInput is an input type that accepts ScheduledQueryRulesAlertTriggerArgs, ScheduledQueryRulesAlertTriggerPtr and ScheduledQueryRulesAlertTriggerPtrOutput values.
@@ -8110,7 +8110,7 @@ func (i *scheduledQueryRulesAlertTriggerPtrType) ToScheduledQueryRulesAlertTrigg
 }
 
 func (i *scheduledQueryRulesAlertTriggerPtrType) ToScheduledQueryRulesAlertTriggerPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerOutput).ToScheduledQueryRulesAlertTriggerPtrOutput()
 }
 
 type ScheduledQueryRulesAlertTriggerOutput struct{ *pulumi.OutputState }
@@ -8245,7 +8245,7 @@ func (i ScheduledQueryRulesAlertTriggerMetricTriggerArgs) ToScheduledQueryRulesA
 }
 
 func (i ScheduledQueryRulesAlertTriggerMetricTriggerArgs) ToScheduledQueryRulesAlertTriggerMetricTriggerPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerMetricTriggerOutput).ToScheduledQueryRulesAlertTriggerMetricTriggerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerMetricTriggerOutput).ToScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput()
 }
 
 // ScheduledQueryRulesAlertTriggerMetricTriggerPtrInput is an input type that accepts ScheduledQueryRulesAlertTriggerMetricTriggerArgs, ScheduledQueryRulesAlertTriggerMetricTriggerPtr and ScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput values.
@@ -8278,7 +8278,7 @@ func (i *scheduledQueryRulesAlertTriggerMetricTriggerPtrType) ToScheduledQueryRu
 }
 
 func (i *scheduledQueryRulesAlertTriggerMetricTriggerPtrType) ToScheduledQueryRulesAlertTriggerMetricTriggerPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesAlertTriggerMetricTriggerOutput).ToScheduledQueryRulesAlertTriggerMetricTriggerPtrOutput()
 }
 
 type ScheduledQueryRulesAlertTriggerMetricTriggerOutput struct{ *pulumi.OutputState }
@@ -8422,7 +8422,7 @@ func (i ScheduledQueryRulesLogCriteriaArgs) ToScheduledQueryRulesLogCriteriaPtrO
 }
 
 func (i ScheduledQueryRulesLogCriteriaArgs) ToScheduledQueryRulesLogCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesLogCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesLogCriteriaOutput).ToScheduledQueryRulesLogCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesLogCriteriaOutput).ToScheduledQueryRulesLogCriteriaPtrOutput()
 }
 
 // ScheduledQueryRulesLogCriteriaPtrInput is an input type that accepts ScheduledQueryRulesLogCriteriaArgs, ScheduledQueryRulesLogCriteriaPtr and ScheduledQueryRulesLogCriteriaPtrOutput values.
@@ -8455,7 +8455,7 @@ func (i *scheduledQueryRulesLogCriteriaPtrType) ToScheduledQueryRulesLogCriteria
 }
 
 func (i *scheduledQueryRulesLogCriteriaPtrType) ToScheduledQueryRulesLogCriteriaPtrOutputWithContext(ctx context.Context) ScheduledQueryRulesLogCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesLogCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRulesLogCriteriaOutput).ToScheduledQueryRulesLogCriteriaPtrOutput()
 }
 
 type ScheduledQueryRulesLogCriteriaOutput struct{ *pulumi.OutputState }
@@ -8691,7 +8691,7 @@ func (i SmartDetectorAlertRuleActionGroupArgs) ToSmartDetectorAlertRuleActionGro
 }
 
 func (i SmartDetectorAlertRuleActionGroupArgs) ToSmartDetectorAlertRuleActionGroupPtrOutputWithContext(ctx context.Context) SmartDetectorAlertRuleActionGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleActionGroupOutput).ToSmartDetectorAlertRuleActionGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleActionGroupOutput).ToSmartDetectorAlertRuleActionGroupPtrOutput()
 }
 
 // SmartDetectorAlertRuleActionGroupPtrInput is an input type that accepts SmartDetectorAlertRuleActionGroupArgs, SmartDetectorAlertRuleActionGroupPtr and SmartDetectorAlertRuleActionGroupPtrOutput values.
@@ -8724,7 +8724,7 @@ func (i *smartDetectorAlertRuleActionGroupPtrType) ToSmartDetectorAlertRuleActio
 }
 
 func (i *smartDetectorAlertRuleActionGroupPtrType) ToSmartDetectorAlertRuleActionGroupPtrOutputWithContext(ctx context.Context) SmartDetectorAlertRuleActionGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleActionGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectorAlertRuleActionGroupOutput).ToSmartDetectorAlertRuleActionGroupPtrOutput()
 }
 
 type SmartDetectorAlertRuleActionGroupOutput struct{ *pulumi.OutputState }

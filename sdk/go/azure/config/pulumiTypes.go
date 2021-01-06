@@ -121,7 +121,7 @@ func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultPtrOutput() FeaturesKeyVaultPtrO
 }
 
 func (i FeaturesKeyVaultArgs) ToFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) FeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultOutput).ToFeaturesKeyVaultPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultOutput).ToFeaturesKeyVaultPtrOutput()
 }
 
 // FeaturesKeyVaultPtrInput is an input type that accepts FeaturesKeyVaultArgs, FeaturesKeyVaultPtr and FeaturesKeyVaultPtrOutput values.
@@ -154,7 +154,7 @@ func (i *featuresKeyVaultPtrType) ToFeaturesKeyVaultPtrOutput() FeaturesKeyVault
 }
 
 func (i *featuresKeyVaultPtrType) ToFeaturesKeyVaultPtrOutputWithContext(ctx context.Context) FeaturesKeyVaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesKeyVaultOutput).ToFeaturesKeyVaultPtrOutput()
 }
 
 type FeaturesKeyVaultOutput struct{ *pulumi.OutputState }
@@ -260,7 +260,7 @@ func (i FeaturesNetworkArgs) ToFeaturesNetworkPtrOutput() FeaturesNetworkPtrOutp
 }
 
 func (i FeaturesNetworkArgs) ToFeaturesNetworkPtrOutputWithContext(ctx context.Context) FeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkOutput).ToFeaturesNetworkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkOutput).ToFeaturesNetworkPtrOutput()
 }
 
 // FeaturesNetworkPtrInput is an input type that accepts FeaturesNetworkArgs, FeaturesNetworkPtr and FeaturesNetworkPtrOutput values.
@@ -293,7 +293,7 @@ func (i *featuresNetworkPtrType) ToFeaturesNetworkPtrOutput() FeaturesNetworkPtr
 }
 
 func (i *featuresNetworkPtrType) ToFeaturesNetworkPtrOutputWithContext(ctx context.Context) FeaturesNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesNetworkOutput).ToFeaturesNetworkPtrOutput()
 }
 
 type FeaturesNetworkOutput struct{ *pulumi.OutputState }
@@ -386,7 +386,7 @@ func (i FeaturesTemplateDeploymentArgs) ToFeaturesTemplateDeploymentPtrOutput() 
 }
 
 func (i FeaturesTemplateDeploymentArgs) ToFeaturesTemplateDeploymentPtrOutputWithContext(ctx context.Context) FeaturesTemplateDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesTemplateDeploymentOutput).ToFeaturesTemplateDeploymentPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesTemplateDeploymentOutput).ToFeaturesTemplateDeploymentPtrOutput()
 }
 
 // FeaturesTemplateDeploymentPtrInput is an input type that accepts FeaturesTemplateDeploymentArgs, FeaturesTemplateDeploymentPtr and FeaturesTemplateDeploymentPtrOutput values.
@@ -419,7 +419,7 @@ func (i *featuresTemplateDeploymentPtrType) ToFeaturesTemplateDeploymentPtrOutpu
 }
 
 func (i *featuresTemplateDeploymentPtrType) ToFeaturesTemplateDeploymentPtrOutputWithContext(ctx context.Context) FeaturesTemplateDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesTemplateDeploymentPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesTemplateDeploymentOutput).ToFeaturesTemplateDeploymentPtrOutput()
 }
 
 type FeaturesTemplateDeploymentOutput struct{ *pulumi.OutputState }
@@ -514,7 +514,7 @@ func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachinePtrOutput() Features
 }
 
 func (i FeaturesVirtualMachineArgs) ToFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) FeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineOutput).ToFeaturesVirtualMachinePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineOutput).ToFeaturesVirtualMachinePtrOutput()
 }
 
 // FeaturesVirtualMachinePtrInput is an input type that accepts FeaturesVirtualMachineArgs, FeaturesVirtualMachinePtr and FeaturesVirtualMachinePtrOutput values.
@@ -547,7 +547,7 @@ func (i *featuresVirtualMachinePtrType) ToFeaturesVirtualMachinePtrOutput() Feat
 }
 
 func (i *featuresVirtualMachinePtrType) ToFeaturesVirtualMachinePtrOutputWithContext(ctx context.Context) FeaturesVirtualMachinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachinePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineOutput).ToFeaturesVirtualMachinePtrOutput()
 }
 
 type FeaturesVirtualMachineOutput struct{ *pulumi.OutputState }
@@ -653,7 +653,7 @@ func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetPtrO
 }
 
 func (i FeaturesVirtualMachineScaleSetArgs) ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) FeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetOutput).ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetOutput).ToFeaturesVirtualMachineScaleSetPtrOutput()
 }
 
 // FeaturesVirtualMachineScaleSetPtrInput is an input type that accepts FeaturesVirtualMachineScaleSetArgs, FeaturesVirtualMachineScaleSetPtr and FeaturesVirtualMachineScaleSetPtrOutput values.
@@ -686,7 +686,7 @@ func (i *featuresVirtualMachineScaleSetPtrType) ToFeaturesVirtualMachineScaleSet
 }
 
 func (i *featuresVirtualMachineScaleSetPtrType) ToFeaturesVirtualMachineScaleSetPtrOutputWithContext(ctx context.Context) FeaturesVirtualMachineScaleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FeaturesVirtualMachineScaleSetOutput).ToFeaturesVirtualMachineScaleSetPtrOutput()
 }
 
 type FeaturesVirtualMachineScaleSetOutput struct{ *pulumi.OutputState }

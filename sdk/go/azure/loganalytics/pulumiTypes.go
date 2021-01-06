@@ -56,7 +56,7 @@ func (i ClusterIdentityArgs) ToClusterIdentityPtrOutput() ClusterIdentityPtrOutp
 }
 
 func (i ClusterIdentityArgs) ToClusterIdentityPtrOutputWithContext(ctx context.Context) ClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutput()
 }
 
 // ClusterIdentityPtrInput is an input type that accepts ClusterIdentityArgs, ClusterIdentityPtr and ClusterIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *clusterIdentityPtrType) ToClusterIdentityPtrOutput() ClusterIdentityPtr
 }
 
 func (i *clusterIdentityPtrType) ToClusterIdentityPtrOutputWithContext(ctx context.Context) ClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityOutput).ToClusterIdentityPtrOutput()
 }
 
 type ClusterIdentityOutput struct{ *pulumi.OutputState }

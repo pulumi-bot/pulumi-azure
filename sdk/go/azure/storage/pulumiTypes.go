@@ -52,7 +52,7 @@ func (i AccountBlobPropertiesArgs) ToAccountBlobPropertiesPtrOutput() AccountBlo
 }
 
 func (i AccountBlobPropertiesArgs) ToAccountBlobPropertiesPtrOutputWithContext(ctx context.Context) AccountBlobPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesOutput).ToAccountBlobPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesOutput).ToAccountBlobPropertiesPtrOutput()
 }
 
 // AccountBlobPropertiesPtrInput is an input type that accepts AccountBlobPropertiesArgs, AccountBlobPropertiesPtr and AccountBlobPropertiesPtrOutput values.
@@ -85,7 +85,7 @@ func (i *accountBlobPropertiesPtrType) ToAccountBlobPropertiesPtrOutput() Accoun
 }
 
 func (i *accountBlobPropertiesPtrType) ToAccountBlobPropertiesPtrOutputWithContext(ctx context.Context) AccountBlobPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesOutput).ToAccountBlobPropertiesPtrOutput()
 }
 
 type AccountBlobPropertiesOutput struct{ *pulumi.OutputState }
@@ -336,7 +336,7 @@ func (i AccountBlobPropertiesDeleteRetentionPolicyArgs) ToAccountBlobPropertiesD
 }
 
 func (i AccountBlobPropertiesDeleteRetentionPolicyArgs) ToAccountBlobPropertiesDeleteRetentionPolicyPtrOutputWithContext(ctx context.Context) AccountBlobPropertiesDeleteRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesDeleteRetentionPolicyOutput).ToAccountBlobPropertiesDeleteRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesDeleteRetentionPolicyOutput).ToAccountBlobPropertiesDeleteRetentionPolicyPtrOutput()
 }
 
 // AccountBlobPropertiesDeleteRetentionPolicyPtrInput is an input type that accepts AccountBlobPropertiesDeleteRetentionPolicyArgs, AccountBlobPropertiesDeleteRetentionPolicyPtr and AccountBlobPropertiesDeleteRetentionPolicyPtrOutput values.
@@ -369,7 +369,7 @@ func (i *accountBlobPropertiesDeleteRetentionPolicyPtrType) ToAccountBlobPropert
 }
 
 func (i *accountBlobPropertiesDeleteRetentionPolicyPtrType) ToAccountBlobPropertiesDeleteRetentionPolicyPtrOutputWithContext(ctx context.Context) AccountBlobPropertiesDeleteRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesDeleteRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountBlobPropertiesDeleteRetentionPolicyOutput).ToAccountBlobPropertiesDeleteRetentionPolicyPtrOutput()
 }
 
 type AccountBlobPropertiesDeleteRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -473,7 +473,7 @@ func (i AccountCustomDomainArgs) ToAccountCustomDomainPtrOutput() AccountCustomD
 }
 
 func (i AccountCustomDomainArgs) ToAccountCustomDomainPtrOutputWithContext(ctx context.Context) AccountCustomDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountCustomDomainOutput).ToAccountCustomDomainPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountCustomDomainOutput).ToAccountCustomDomainPtrOutput()
 }
 
 // AccountCustomDomainPtrInput is an input type that accepts AccountCustomDomainArgs, AccountCustomDomainPtr and AccountCustomDomainPtrOutput values.
@@ -506,7 +506,7 @@ func (i *accountCustomDomainPtrType) ToAccountCustomDomainPtrOutput() AccountCus
 }
 
 func (i *accountCustomDomainPtrType) ToAccountCustomDomainPtrOutputWithContext(ctx context.Context) AccountCustomDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountCustomDomainPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountCustomDomainOutput).ToAccountCustomDomainPtrOutput()
 }
 
 type AccountCustomDomainOutput struct{ *pulumi.OutputState }
@@ -627,7 +627,7 @@ func (i AccountIdentityArgs) ToAccountIdentityPtrOutput() AccountIdentityPtrOutp
 }
 
 func (i AccountIdentityArgs) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 // AccountIdentityPtrInput is an input type that accepts AccountIdentityArgs, AccountIdentityPtr and AccountIdentityPtrOutput values.
@@ -660,7 +660,7 @@ func (i *accountIdentityPtrType) ToAccountIdentityPtrOutput() AccountIdentityPtr
 }
 
 func (i *accountIdentityPtrType) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 type AccountIdentityOutput struct{ *pulumi.OutputState }
@@ -802,7 +802,7 @@ func (i AccountNetworkRulesTypeArgs) ToAccountNetworkRulesTypePtrOutput() Accoun
 }
 
 func (i AccountNetworkRulesTypeArgs) ToAccountNetworkRulesTypePtrOutputWithContext(ctx context.Context) AccountNetworkRulesTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesTypeOutput).ToAccountNetworkRulesTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesTypeOutput).ToAccountNetworkRulesTypePtrOutput()
 }
 
 // AccountNetworkRulesTypePtrInput is an input type that accepts AccountNetworkRulesTypeArgs, AccountNetworkRulesTypePtr and AccountNetworkRulesTypePtrOutput values.
@@ -835,7 +835,7 @@ func (i *accountNetworkRulesTypePtrType) ToAccountNetworkRulesTypePtrOutput() Ac
 }
 
 func (i *accountNetworkRulesTypePtrType) ToAccountNetworkRulesTypePtrOutputWithContext(ctx context.Context) AccountNetworkRulesTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountNetworkRulesTypeOutput).ToAccountNetworkRulesTypePtrOutput()
 }
 
 type AccountNetworkRulesTypeOutput struct{ *pulumi.OutputState }
@@ -992,7 +992,7 @@ func (i AccountQueuePropertiesArgs) ToAccountQueuePropertiesPtrOutput() AccountQ
 }
 
 func (i AccountQueuePropertiesArgs) ToAccountQueuePropertiesPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesOutput).ToAccountQueuePropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesOutput).ToAccountQueuePropertiesPtrOutput()
 }
 
 // AccountQueuePropertiesPtrInput is an input type that accepts AccountQueuePropertiesArgs, AccountQueuePropertiesPtr and AccountQueuePropertiesPtrOutput values.
@@ -1025,7 +1025,7 @@ func (i *accountQueuePropertiesPtrType) ToAccountQueuePropertiesPtrOutput() Acco
 }
 
 func (i *accountQueuePropertiesPtrType) ToAccountQueuePropertiesPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesOutput).ToAccountQueuePropertiesPtrOutput()
 }
 
 type AccountQueuePropertiesOutput struct{ *pulumi.OutputState }
@@ -1316,7 +1316,7 @@ func (i AccountQueuePropertiesHourMetricsArgs) ToAccountQueuePropertiesHourMetri
 }
 
 func (i AccountQueuePropertiesHourMetricsArgs) ToAccountQueuePropertiesHourMetricsPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesHourMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesHourMetricsOutput).ToAccountQueuePropertiesHourMetricsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesHourMetricsOutput).ToAccountQueuePropertiesHourMetricsPtrOutput()
 }
 
 // AccountQueuePropertiesHourMetricsPtrInput is an input type that accepts AccountQueuePropertiesHourMetricsArgs, AccountQueuePropertiesHourMetricsPtr and AccountQueuePropertiesHourMetricsPtrOutput values.
@@ -1349,7 +1349,7 @@ func (i *accountQueuePropertiesHourMetricsPtrType) ToAccountQueuePropertiesHourM
 }
 
 func (i *accountQueuePropertiesHourMetricsPtrType) ToAccountQueuePropertiesHourMetricsPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesHourMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesHourMetricsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesHourMetricsOutput).ToAccountQueuePropertiesHourMetricsPtrOutput()
 }
 
 type AccountQueuePropertiesHourMetricsOutput struct{ *pulumi.OutputState }
@@ -1508,7 +1508,7 @@ func (i AccountQueuePropertiesLoggingArgs) ToAccountQueuePropertiesLoggingPtrOut
 }
 
 func (i AccountQueuePropertiesLoggingArgs) ToAccountQueuePropertiesLoggingPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesLoggingOutput).ToAccountQueuePropertiesLoggingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesLoggingOutput).ToAccountQueuePropertiesLoggingPtrOutput()
 }
 
 // AccountQueuePropertiesLoggingPtrInput is an input type that accepts AccountQueuePropertiesLoggingArgs, AccountQueuePropertiesLoggingPtr and AccountQueuePropertiesLoggingPtrOutput values.
@@ -1541,7 +1541,7 @@ func (i *accountQueuePropertiesLoggingPtrType) ToAccountQueuePropertiesLoggingPt
 }
 
 func (i *accountQueuePropertiesLoggingPtrType) ToAccountQueuePropertiesLoggingPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesLoggingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesLoggingOutput).ToAccountQueuePropertiesLoggingPtrOutput()
 }
 
 type AccountQueuePropertiesLoggingOutput struct{ *pulumi.OutputState }
@@ -1711,7 +1711,7 @@ func (i AccountQueuePropertiesMinuteMetricsArgs) ToAccountQueuePropertiesMinuteM
 }
 
 func (i AccountQueuePropertiesMinuteMetricsArgs) ToAccountQueuePropertiesMinuteMetricsPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesMinuteMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesMinuteMetricsOutput).ToAccountQueuePropertiesMinuteMetricsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesMinuteMetricsOutput).ToAccountQueuePropertiesMinuteMetricsPtrOutput()
 }
 
 // AccountQueuePropertiesMinuteMetricsPtrInput is an input type that accepts AccountQueuePropertiesMinuteMetricsArgs, AccountQueuePropertiesMinuteMetricsPtr and AccountQueuePropertiesMinuteMetricsPtrOutput values.
@@ -1744,7 +1744,7 @@ func (i *accountQueuePropertiesMinuteMetricsPtrType) ToAccountQueuePropertiesMin
 }
 
 func (i *accountQueuePropertiesMinuteMetricsPtrType) ToAccountQueuePropertiesMinuteMetricsPtrOutputWithContext(ctx context.Context) AccountQueuePropertiesMinuteMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesMinuteMetricsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountQueuePropertiesMinuteMetricsOutput).ToAccountQueuePropertiesMinuteMetricsPtrOutput()
 }
 
 type AccountQueuePropertiesMinuteMetricsOutput struct{ *pulumi.OutputState }
@@ -1891,7 +1891,7 @@ func (i AccountStaticWebsiteArgs) ToAccountStaticWebsitePtrOutput() AccountStati
 }
 
 func (i AccountStaticWebsiteArgs) ToAccountStaticWebsitePtrOutputWithContext(ctx context.Context) AccountStaticWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountStaticWebsiteOutput).ToAccountStaticWebsitePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountStaticWebsiteOutput).ToAccountStaticWebsitePtrOutput()
 }
 
 // AccountStaticWebsitePtrInput is an input type that accepts AccountStaticWebsiteArgs, AccountStaticWebsitePtr and AccountStaticWebsitePtrOutput values.
@@ -1924,7 +1924,7 @@ func (i *accountStaticWebsitePtrType) ToAccountStaticWebsitePtrOutput() AccountS
 }
 
 func (i *accountStaticWebsitePtrType) ToAccountStaticWebsitePtrOutputWithContext(ctx context.Context) AccountStaticWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountStaticWebsitePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountStaticWebsiteOutput).ToAccountStaticWebsitePtrOutput()
 }
 
 type AccountStaticWebsiteOutput struct{ *pulumi.OutputState }
@@ -2354,7 +2354,7 @@ func (i ManagementPolicyRuleActionsBaseBlobArgs) ToManagementPolicyRuleActionsBa
 }
 
 func (i ManagementPolicyRuleActionsBaseBlobArgs) ToManagementPolicyRuleActionsBaseBlobPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleActionsBaseBlobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsBaseBlobOutput).ToManagementPolicyRuleActionsBaseBlobPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsBaseBlobOutput).ToManagementPolicyRuleActionsBaseBlobPtrOutput()
 }
 
 // ManagementPolicyRuleActionsBaseBlobPtrInput is an input type that accepts ManagementPolicyRuleActionsBaseBlobArgs, ManagementPolicyRuleActionsBaseBlobPtr and ManagementPolicyRuleActionsBaseBlobPtrOutput values.
@@ -2387,7 +2387,7 @@ func (i *managementPolicyRuleActionsBaseBlobPtrType) ToManagementPolicyRuleActio
 }
 
 func (i *managementPolicyRuleActionsBaseBlobPtrType) ToManagementPolicyRuleActionsBaseBlobPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleActionsBaseBlobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsBaseBlobPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsBaseBlobOutput).ToManagementPolicyRuleActionsBaseBlobPtrOutput()
 }
 
 type ManagementPolicyRuleActionsBaseBlobOutput struct{ *pulumi.OutputState }
@@ -2519,7 +2519,7 @@ func (i ManagementPolicyRuleActionsSnapshotArgs) ToManagementPolicyRuleActionsSn
 }
 
 func (i ManagementPolicyRuleActionsSnapshotArgs) ToManagementPolicyRuleActionsSnapshotPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleActionsSnapshotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsSnapshotOutput).ToManagementPolicyRuleActionsSnapshotPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsSnapshotOutput).ToManagementPolicyRuleActionsSnapshotPtrOutput()
 }
 
 // ManagementPolicyRuleActionsSnapshotPtrInput is an input type that accepts ManagementPolicyRuleActionsSnapshotArgs, ManagementPolicyRuleActionsSnapshotPtr and ManagementPolicyRuleActionsSnapshotPtrOutput values.
@@ -2552,7 +2552,7 @@ func (i *managementPolicyRuleActionsSnapshotPtrType) ToManagementPolicyRuleActio
 }
 
 func (i *managementPolicyRuleActionsSnapshotPtrType) ToManagementPolicyRuleActionsSnapshotPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleActionsSnapshotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsSnapshotPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleActionsSnapshotOutput).ToManagementPolicyRuleActionsSnapshotPtrOutput()
 }
 
 type ManagementPolicyRuleActionsSnapshotOutput struct{ *pulumi.OutputState }
@@ -2654,7 +2654,7 @@ func (i ManagementPolicyRuleFiltersArgs) ToManagementPolicyRuleFiltersPtrOutput(
 }
 
 func (i ManagementPolicyRuleFiltersArgs) ToManagementPolicyRuleFiltersPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleFiltersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleFiltersOutput).ToManagementPolicyRuleFiltersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleFiltersOutput).ToManagementPolicyRuleFiltersPtrOutput()
 }
 
 // ManagementPolicyRuleFiltersPtrInput is an input type that accepts ManagementPolicyRuleFiltersArgs, ManagementPolicyRuleFiltersPtr and ManagementPolicyRuleFiltersPtrOutput values.
@@ -2687,7 +2687,7 @@ func (i *managementPolicyRuleFiltersPtrType) ToManagementPolicyRuleFiltersPtrOut
 }
 
 func (i *managementPolicyRuleFiltersPtrType) ToManagementPolicyRuleFiltersPtrOutputWithContext(ctx context.Context) ManagementPolicyRuleFiltersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleFiltersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementPolicyRuleFiltersOutput).ToManagementPolicyRuleFiltersPtrOutput()
 }
 
 type ManagementPolicyRuleFiltersOutput struct{ *pulumi.OutputState }

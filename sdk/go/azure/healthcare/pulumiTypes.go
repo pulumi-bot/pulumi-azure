@@ -58,7 +58,7 @@ func (i ServiceAuthenticationConfigurationArgs) ToServiceAuthenticationConfigura
 }
 
 func (i ServiceAuthenticationConfigurationArgs) ToServiceAuthenticationConfigurationPtrOutputWithContext(ctx context.Context) ServiceAuthenticationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationOutput).ToServiceAuthenticationConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationOutput).ToServiceAuthenticationConfigurationPtrOutput()
 }
 
 // ServiceAuthenticationConfigurationPtrInput is an input type that accepts ServiceAuthenticationConfigurationArgs, ServiceAuthenticationConfigurationPtr and ServiceAuthenticationConfigurationPtrOutput values.
@@ -91,7 +91,7 @@ func (i *serviceAuthenticationConfigurationPtrType) ToServiceAuthenticationConfi
 }
 
 func (i *serviceAuthenticationConfigurationPtrType) ToServiceAuthenticationConfigurationPtrOutputWithContext(ctx context.Context) ServiceAuthenticationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationOutput).ToServiceAuthenticationConfigurationPtrOutput()
 }
 
 type ServiceAuthenticationConfigurationOutput struct{ *pulumi.OutputState }
@@ -237,7 +237,7 @@ func (i ServiceCorsConfigurationArgs) ToServiceCorsConfigurationPtrOutput() Serv
 }
 
 func (i ServiceCorsConfigurationArgs) ToServiceCorsConfigurationPtrOutputWithContext(ctx context.Context) ServiceCorsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationOutput).ToServiceCorsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationOutput).ToServiceCorsConfigurationPtrOutput()
 }
 
 // ServiceCorsConfigurationPtrInput is an input type that accepts ServiceCorsConfigurationArgs, ServiceCorsConfigurationPtr and ServiceCorsConfigurationPtrOutput values.
@@ -270,7 +270,7 @@ func (i *serviceCorsConfigurationPtrType) ToServiceCorsConfigurationPtrOutput() 
 }
 
 func (i *serviceCorsConfigurationPtrType) ToServiceCorsConfigurationPtrOutputWithContext(ctx context.Context) ServiceCorsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationOutput).ToServiceCorsConfigurationPtrOutput()
 }
 
 type ServiceCorsConfigurationOutput struct{ *pulumi.OutputState }

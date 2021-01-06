@@ -56,7 +56,7 @@ func (i WorkspaceIdentityArgs) ToWorkspaceIdentityPtrOutput() WorkspaceIdentityP
 }
 
 func (i WorkspaceIdentityArgs) ToWorkspaceIdentityPtrOutputWithContext(ctx context.Context) WorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceIdentityOutput).ToWorkspaceIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceIdentityOutput).ToWorkspaceIdentityPtrOutput()
 }
 
 // WorkspaceIdentityPtrInput is an input type that accepts WorkspaceIdentityArgs, WorkspaceIdentityPtr and WorkspaceIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *workspaceIdentityPtrType) ToWorkspaceIdentityPtrOutput() WorkspaceIdent
 }
 
 func (i *workspaceIdentityPtrType) ToWorkspaceIdentityPtrOutputWithContext(ctx context.Context) WorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceIdentityOutput).ToWorkspaceIdentityPtrOutput()
 }
 
 type WorkspaceIdentityOutput struct{ *pulumi.OutputState }

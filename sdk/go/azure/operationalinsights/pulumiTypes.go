@@ -58,7 +58,7 @@ func (i AnalyticsSolutionPlanArgs) ToAnalyticsSolutionPlanPtrOutput() AnalyticsS
 }
 
 func (i AnalyticsSolutionPlanArgs) ToAnalyticsSolutionPlanPtrOutputWithContext(ctx context.Context) AnalyticsSolutionPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionPlanOutput).ToAnalyticsSolutionPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionPlanOutput).ToAnalyticsSolutionPlanPtrOutput()
 }
 
 // AnalyticsSolutionPlanPtrInput is an input type that accepts AnalyticsSolutionPlanArgs, AnalyticsSolutionPlanPtr and AnalyticsSolutionPlanPtrOutput values.
@@ -91,7 +91,7 @@ func (i *analyticsSolutionPlanPtrType) ToAnalyticsSolutionPlanPtrOutput() Analyt
 }
 
 func (i *analyticsSolutionPlanPtrType) ToAnalyticsSolutionPlanPtrOutputWithContext(ctx context.Context) AnalyticsSolutionPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsSolutionPlanOutput).ToAnalyticsSolutionPlanPtrOutput()
 }
 
 type AnalyticsSolutionPlanOutput struct{ *pulumi.OutputState }

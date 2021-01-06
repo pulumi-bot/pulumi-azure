@@ -56,7 +56,7 @@ func (i BastionHostIpConfigurationArgs) ToBastionHostIpConfigurationPtrOutput() 
 }
 
 func (i BastionHostIpConfigurationArgs) ToBastionHostIpConfigurationPtrOutputWithContext(ctx context.Context) BastionHostIpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BastionHostIpConfigurationOutput).ToBastionHostIpConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostIpConfigurationOutput).ToBastionHostIpConfigurationPtrOutput()
 }
 
 // BastionHostIpConfigurationPtrInput is an input type that accepts BastionHostIpConfigurationArgs, BastionHostIpConfigurationPtr and BastionHostIpConfigurationPtrOutput values.
@@ -89,7 +89,7 @@ func (i *bastionHostIpConfigurationPtrType) ToBastionHostIpConfigurationPtrOutpu
 }
 
 func (i *bastionHostIpConfigurationPtrType) ToBastionHostIpConfigurationPtrOutputWithContext(ctx context.Context) BastionHostIpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BastionHostIpConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostIpConfigurationOutput).ToBastionHostIpConfigurationPtrOutput()
 }
 
 type BastionHostIpConfigurationOutput struct{ *pulumi.OutputState }
@@ -225,7 +225,7 @@ func (i DiskEncryptionSetIdentityArgs) ToDiskEncryptionSetIdentityPtrOutput() Di
 }
 
 func (i DiskEncryptionSetIdentityArgs) ToDiskEncryptionSetIdentityPtrOutputWithContext(ctx context.Context) DiskEncryptionSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetIdentityOutput).ToDiskEncryptionSetIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetIdentityOutput).ToDiskEncryptionSetIdentityPtrOutput()
 }
 
 // DiskEncryptionSetIdentityPtrInput is an input type that accepts DiskEncryptionSetIdentityArgs, DiskEncryptionSetIdentityPtr and DiskEncryptionSetIdentityPtrOutput values.
@@ -258,7 +258,7 @@ func (i *diskEncryptionSetIdentityPtrType) ToDiskEncryptionSetIdentityPtrOutput(
 }
 
 func (i *diskEncryptionSetIdentityPtrType) ToDiskEncryptionSetIdentityPtrOutputWithContext(ctx context.Context) DiskEncryptionSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetIdentityOutput).ToDiskEncryptionSetIdentityPtrOutput()
 }
 
 type DiskEncryptionSetIdentityOutput struct{ *pulumi.OutputState }
@@ -539,7 +539,7 @@ func (i ImageOsDiskArgs) ToImageOsDiskPtrOutput() ImageOsDiskPtrOutput {
 }
 
 func (i ImageOsDiskArgs) ToImageOsDiskPtrOutputWithContext(ctx context.Context) ImageOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOsDiskOutput).ToImageOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ImageOsDiskOutput).ToImageOsDiskPtrOutput()
 }
 
 // ImageOsDiskPtrInput is an input type that accepts ImageOsDiskArgs, ImageOsDiskPtr and ImageOsDiskPtrOutput values.
@@ -572,7 +572,7 @@ func (i *imageOsDiskPtrType) ToImageOsDiskPtrOutput() ImageOsDiskPtrOutput {
 }
 
 func (i *imageOsDiskPtrType) ToImageOsDiskPtrOutputWithContext(ctx context.Context) ImageOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ImageOsDiskOutput).ToImageOsDiskPtrOutput()
 }
 
 type ImageOsDiskOutput struct{ *pulumi.OutputState }
@@ -745,7 +745,7 @@ func (i LinuxVirtualMachineAdditionalCapabilitiesArgs) ToLinuxVirtualMachineAddi
 }
 
 func (i LinuxVirtualMachineAdditionalCapabilitiesArgs) ToLinuxVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineAdditionalCapabilitiesOutput).ToLinuxVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineAdditionalCapabilitiesOutput).ToLinuxVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 // LinuxVirtualMachineAdditionalCapabilitiesPtrInput is an input type that accepts LinuxVirtualMachineAdditionalCapabilitiesArgs, LinuxVirtualMachineAdditionalCapabilitiesPtr and LinuxVirtualMachineAdditionalCapabilitiesPtrOutput values.
@@ -778,7 +778,7 @@ func (i *linuxVirtualMachineAdditionalCapabilitiesPtrType) ToLinuxVirtualMachine
 }
 
 func (i *linuxVirtualMachineAdditionalCapabilitiesPtrType) ToLinuxVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineAdditionalCapabilitiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineAdditionalCapabilitiesOutput).ToLinuxVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 type LinuxVirtualMachineAdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
@@ -984,7 +984,7 @@ func (i LinuxVirtualMachineBootDiagnosticsArgs) ToLinuxVirtualMachineBootDiagnos
 }
 
 func (i LinuxVirtualMachineBootDiagnosticsArgs) ToLinuxVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineBootDiagnosticsOutput).ToLinuxVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineBootDiagnosticsOutput).ToLinuxVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 // LinuxVirtualMachineBootDiagnosticsPtrInput is an input type that accepts LinuxVirtualMachineBootDiagnosticsArgs, LinuxVirtualMachineBootDiagnosticsPtr and LinuxVirtualMachineBootDiagnosticsPtrOutput values.
@@ -1017,7 +1017,7 @@ func (i *linuxVirtualMachineBootDiagnosticsPtrType) ToLinuxVirtualMachineBootDia
 }
 
 func (i *linuxVirtualMachineBootDiagnosticsPtrType) ToLinuxVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineBootDiagnosticsOutput).ToLinuxVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 type LinuxVirtualMachineBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -1127,7 +1127,7 @@ func (i LinuxVirtualMachineIdentityArgs) ToLinuxVirtualMachineIdentityPtrOutput(
 }
 
 func (i LinuxVirtualMachineIdentityArgs) ToLinuxVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineIdentityOutput).ToLinuxVirtualMachineIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineIdentityOutput).ToLinuxVirtualMachineIdentityPtrOutput()
 }
 
 // LinuxVirtualMachineIdentityPtrInput is an input type that accepts LinuxVirtualMachineIdentityArgs, LinuxVirtualMachineIdentityPtr and LinuxVirtualMachineIdentityPtrOutput values.
@@ -1160,7 +1160,7 @@ func (i *linuxVirtualMachineIdentityPtrType) ToLinuxVirtualMachineIdentityPtrOut
 }
 
 func (i *linuxVirtualMachineIdentityPtrType) ToLinuxVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineIdentityOutput).ToLinuxVirtualMachineIdentityPtrOutput()
 }
 
 type LinuxVirtualMachineIdentityOutput struct{ *pulumi.OutputState }
@@ -1327,7 +1327,7 @@ func (i LinuxVirtualMachineOsDiskArgs) ToLinuxVirtualMachineOsDiskPtrOutput() Li
 }
 
 func (i LinuxVirtualMachineOsDiskArgs) ToLinuxVirtualMachineOsDiskPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskOutput).ToLinuxVirtualMachineOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskOutput).ToLinuxVirtualMachineOsDiskPtrOutput()
 }
 
 // LinuxVirtualMachineOsDiskPtrInput is an input type that accepts LinuxVirtualMachineOsDiskArgs, LinuxVirtualMachineOsDiskPtr and LinuxVirtualMachineOsDiskPtrOutput values.
@@ -1360,7 +1360,7 @@ func (i *linuxVirtualMachineOsDiskPtrType) ToLinuxVirtualMachineOsDiskPtrOutput(
 }
 
 func (i *linuxVirtualMachineOsDiskPtrType) ToLinuxVirtualMachineOsDiskPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskOutput).ToLinuxVirtualMachineOsDiskPtrOutput()
 }
 
 type LinuxVirtualMachineOsDiskOutput struct{ *pulumi.OutputState }
@@ -1550,7 +1550,7 @@ func (i LinuxVirtualMachineOsDiskDiffDiskSettingsArgs) ToLinuxVirtualMachineOsDi
 }
 
 func (i LinuxVirtualMachineOsDiskDiffDiskSettingsArgs) ToLinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput()
 }
 
 // LinuxVirtualMachineOsDiskDiffDiskSettingsPtrInput is an input type that accepts LinuxVirtualMachineOsDiskDiffDiskSettingsArgs, LinuxVirtualMachineOsDiskDiffDiskSettingsPtr and LinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput values.
@@ -1583,7 +1583,7 @@ func (i *linuxVirtualMachineOsDiskDiffDiskSettingsPtrType) ToLinuxVirtualMachine
 }
 
 func (i *linuxVirtualMachineOsDiskDiffDiskSettingsPtrType) ToLinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineOsDiskDiffDiskSettingsPtrOutput()
 }
 
 type LinuxVirtualMachineOsDiskDiffDiskSettingsOutput struct{ *pulumi.OutputState }
@@ -1691,7 +1691,7 @@ func (i LinuxVirtualMachinePlanArgs) ToLinuxVirtualMachinePlanPtrOutput() LinuxV
 }
 
 func (i LinuxVirtualMachinePlanArgs) ToLinuxVirtualMachinePlanPtrOutputWithContext(ctx context.Context) LinuxVirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachinePlanOutput).ToLinuxVirtualMachinePlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachinePlanOutput).ToLinuxVirtualMachinePlanPtrOutput()
 }
 
 // LinuxVirtualMachinePlanPtrInput is an input type that accepts LinuxVirtualMachinePlanArgs, LinuxVirtualMachinePlanPtr and LinuxVirtualMachinePlanPtrOutput values.
@@ -1724,7 +1724,7 @@ func (i *linuxVirtualMachinePlanPtrType) ToLinuxVirtualMachinePlanPtrOutput() Li
 }
 
 func (i *linuxVirtualMachinePlanPtrType) ToLinuxVirtualMachinePlanPtrOutputWithContext(ctx context.Context) LinuxVirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachinePlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachinePlanOutput).ToLinuxVirtualMachinePlanPtrOutput()
 }
 
 type LinuxVirtualMachinePlanOutput struct{ *pulumi.OutputState }
@@ -1852,7 +1852,7 @@ func (i LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs) ToLinuxVirtualMac
 }
 
 func (i LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs) ToLinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToLinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToLinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrInput is an input type that accepts LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs, LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtr and LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput values.
@@ -1885,7 +1885,7 @@ func (i *linuxVirtualMachineScaleSetAdditionalCapabilitiesPtrType) ToLinuxVirtua
 }
 
 func (i *linuxVirtualMachineScaleSetAdditionalCapabilitiesPtrType) ToLinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToLinuxVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetAdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
@@ -2095,7 +2095,7 @@ func (i LinuxVirtualMachineScaleSetAutomaticInstanceRepairArgs) ToLinuxVirtualMa
 }
 
 func (i LinuxVirtualMachineScaleSetAutomaticInstanceRepairArgs) ToLinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToLinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToLinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrInput is an input type that accepts LinuxVirtualMachineScaleSetAutomaticInstanceRepairArgs, LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtr and LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput values.
@@ -2128,7 +2128,7 @@ func (i *linuxVirtualMachineScaleSetAutomaticInstanceRepairPtrType) ToLinuxVirtu
 }
 
 func (i *linuxVirtualMachineScaleSetAutomaticInstanceRepairPtrType) ToLinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToLinuxVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetAutomaticInstanceRepairOutput struct{ *pulumi.OutputState }
@@ -2247,7 +2247,7 @@ func (i LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs) ToLinuxVirtualM
 }
 
 func (i LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs) ToLinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrInput is an input type that accepts LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs, LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtr and LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput values.
@@ -2280,7 +2280,7 @@ func (i *linuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrType) ToLinuxVirt
 }
 
 func (i *linuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrType) ToLinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput struct{ *pulumi.OutputState }
@@ -2395,7 +2395,7 @@ func (i LinuxVirtualMachineScaleSetBootDiagnosticsArgs) ToLinuxVirtualMachineSca
 }
 
 func (i LinuxVirtualMachineScaleSetBootDiagnosticsArgs) ToLinuxVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetBootDiagnosticsOutput).ToLinuxVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetBootDiagnosticsOutput).ToLinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetBootDiagnosticsPtrInput is an input type that accepts LinuxVirtualMachineScaleSetBootDiagnosticsArgs, LinuxVirtualMachineScaleSetBootDiagnosticsPtr and LinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput values.
@@ -2428,7 +2428,7 @@ func (i *linuxVirtualMachineScaleSetBootDiagnosticsPtrType) ToLinuxVirtualMachin
 }
 
 func (i *linuxVirtualMachineScaleSetBootDiagnosticsPtrType) ToLinuxVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetBootDiagnosticsOutput).ToLinuxVirtualMachineScaleSetBootDiagnosticsPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -2874,7 +2874,7 @@ func (i LinuxVirtualMachineScaleSetIdentityArgs) ToLinuxVirtualMachineScaleSetId
 }
 
 func (i LinuxVirtualMachineScaleSetIdentityArgs) ToLinuxVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetIdentityOutput).ToLinuxVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetIdentityOutput).ToLinuxVirtualMachineScaleSetIdentityPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetIdentityPtrInput is an input type that accepts LinuxVirtualMachineScaleSetIdentityArgs, LinuxVirtualMachineScaleSetIdentityPtr and LinuxVirtualMachineScaleSetIdentityPtrOutput values.
@@ -2907,7 +2907,7 @@ func (i *linuxVirtualMachineScaleSetIdentityPtrType) ToLinuxVirtualMachineScaleS
 }
 
 func (i *linuxVirtualMachineScaleSetIdentityPtrType) ToLinuxVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetIdentityOutput).ToLinuxVirtualMachineScaleSetIdentityPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetIdentityOutput struct{ *pulumi.OutputState }
@@ -3640,7 +3640,7 @@ func (i LinuxVirtualMachineScaleSetOsDiskArgs) ToLinuxVirtualMachineScaleSetOsDi
 }
 
 func (i LinuxVirtualMachineScaleSetOsDiskArgs) ToLinuxVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskOutput).ToLinuxVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskOutput).ToLinuxVirtualMachineScaleSetOsDiskPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetOsDiskPtrInput is an input type that accepts LinuxVirtualMachineScaleSetOsDiskArgs, LinuxVirtualMachineScaleSetOsDiskPtr and LinuxVirtualMachineScaleSetOsDiskPtrOutput values.
@@ -3673,7 +3673,7 @@ func (i *linuxVirtualMachineScaleSetOsDiskPtrType) ToLinuxVirtualMachineScaleSet
 }
 
 func (i *linuxVirtualMachineScaleSetOsDiskPtrType) ToLinuxVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskOutput).ToLinuxVirtualMachineScaleSetOsDiskPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetOsDiskOutput struct{ *pulumi.OutputState }
@@ -3846,7 +3846,7 @@ func (i LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs) ToLinuxVirtualMac
 }
 
 func (i LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs) ToLinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrInput is an input type that accepts LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs, LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtr and LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput values.
@@ -3879,7 +3879,7 @@ func (i *linuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrType) ToLinuxVirtua
 }
 
 func (i *linuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrType) ToLinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToLinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput struct{ *pulumi.OutputState }
@@ -3984,7 +3984,7 @@ func (i LinuxVirtualMachineScaleSetPlanArgs) ToLinuxVirtualMachineScaleSetPlanPt
 }
 
 func (i LinuxVirtualMachineScaleSetPlanArgs) ToLinuxVirtualMachineScaleSetPlanPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetPlanOutput).ToLinuxVirtualMachineScaleSetPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetPlanOutput).ToLinuxVirtualMachineScaleSetPlanPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetPlanPtrInput is an input type that accepts LinuxVirtualMachineScaleSetPlanArgs, LinuxVirtualMachineScaleSetPlanPtr and LinuxVirtualMachineScaleSetPlanPtrOutput values.
@@ -4017,7 +4017,7 @@ func (i *linuxVirtualMachineScaleSetPlanPtrType) ToLinuxVirtualMachineScaleSetPl
 }
 
 func (i *linuxVirtualMachineScaleSetPlanPtrType) ToLinuxVirtualMachineScaleSetPlanPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetPlanOutput).ToLinuxVirtualMachineScaleSetPlanPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetPlanOutput struct{ *pulumi.OutputState }
@@ -4157,7 +4157,7 @@ func (i LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs) ToLinuxVirtualMachi
 }
 
 func (i LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs) ToLinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetRollingUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetRollingUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetRollingUpgradePolicyPtrInput is an input type that accepts LinuxVirtualMachineScaleSetRollingUpgradePolicyArgs, LinuxVirtualMachineScaleSetRollingUpgradePolicyPtr and LinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput values.
@@ -4190,7 +4190,7 @@ func (i *linuxVirtualMachineScaleSetRollingUpgradePolicyPtrType) ToLinuxVirtualM
 }
 
 func (i *linuxVirtualMachineScaleSetRollingUpgradePolicyPtrType) ToLinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetRollingUpgradePolicyOutput).ToLinuxVirtualMachineScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetRollingUpgradePolicyOutput struct{ *pulumi.OutputState }
@@ -4554,7 +4554,7 @@ func (i LinuxVirtualMachineScaleSetSourceImageReferenceArgs) ToLinuxVirtualMachi
 }
 
 func (i LinuxVirtualMachineScaleSetSourceImageReferenceArgs) ToLinuxVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetSourceImageReferenceOutput).ToLinuxVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetSourceImageReferenceOutput).ToLinuxVirtualMachineScaleSetSourceImageReferencePtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetSourceImageReferencePtrInput is an input type that accepts LinuxVirtualMachineScaleSetSourceImageReferenceArgs, LinuxVirtualMachineScaleSetSourceImageReferencePtr and LinuxVirtualMachineScaleSetSourceImageReferencePtrOutput values.
@@ -4587,7 +4587,7 @@ func (i *linuxVirtualMachineScaleSetSourceImageReferencePtrType) ToLinuxVirtualM
 }
 
 func (i *linuxVirtualMachineScaleSetSourceImageReferencePtrType) ToLinuxVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetSourceImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetSourceImageReferenceOutput).ToLinuxVirtualMachineScaleSetSourceImageReferencePtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetSourceImageReferenceOutput struct{ *pulumi.OutputState }
@@ -4736,7 +4736,7 @@ func (i LinuxVirtualMachineScaleSetTerminateNotificationArgs) ToLinuxVirtualMach
 }
 
 func (i LinuxVirtualMachineScaleSetTerminateNotificationArgs) ToLinuxVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetTerminateNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetTerminateNotificationOutput).ToLinuxVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetTerminateNotificationOutput).ToLinuxVirtualMachineScaleSetTerminateNotificationPtrOutput()
 }
 
 // LinuxVirtualMachineScaleSetTerminateNotificationPtrInput is an input type that accepts LinuxVirtualMachineScaleSetTerminateNotificationArgs, LinuxVirtualMachineScaleSetTerminateNotificationPtr and LinuxVirtualMachineScaleSetTerminateNotificationPtrOutput values.
@@ -4769,7 +4769,7 @@ func (i *linuxVirtualMachineScaleSetTerminateNotificationPtrType) ToLinuxVirtual
 }
 
 func (i *linuxVirtualMachineScaleSetTerminateNotificationPtrType) ToLinuxVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx context.Context) LinuxVirtualMachineScaleSetTerminateNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetTerminateNotificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineScaleSetTerminateNotificationOutput).ToLinuxVirtualMachineScaleSetTerminateNotificationPtrOutput()
 }
 
 type LinuxVirtualMachineScaleSetTerminateNotificationOutput struct{ *pulumi.OutputState }
@@ -5099,7 +5099,7 @@ func (i LinuxVirtualMachineSourceImageReferenceArgs) ToLinuxVirtualMachineSource
 }
 
 func (i LinuxVirtualMachineSourceImageReferenceArgs) ToLinuxVirtualMachineSourceImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineSourceImageReferenceOutput).ToLinuxVirtualMachineSourceImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineSourceImageReferenceOutput).ToLinuxVirtualMachineSourceImageReferencePtrOutput()
 }
 
 // LinuxVirtualMachineSourceImageReferencePtrInput is an input type that accepts LinuxVirtualMachineSourceImageReferenceArgs, LinuxVirtualMachineSourceImageReferencePtr and LinuxVirtualMachineSourceImageReferencePtrOutput values.
@@ -5132,7 +5132,7 @@ func (i *linuxVirtualMachineSourceImageReferencePtrType) ToLinuxVirtualMachineSo
 }
 
 func (i *linuxVirtualMachineSourceImageReferencePtrType) ToLinuxVirtualMachineSourceImageReferencePtrOutputWithContext(ctx context.Context) LinuxVirtualMachineSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineSourceImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxVirtualMachineSourceImageReferenceOutput).ToLinuxVirtualMachineSourceImageReferencePtrOutput()
 }
 
 type LinuxVirtualMachineSourceImageReferenceOutput struct{ *pulumi.OutputState }
@@ -5283,7 +5283,7 @@ func (i ManagedDiskEncryptionSettingsArgs) ToManagedDiskEncryptionSettingsPtrOut
 }
 
 func (i ManagedDiskEncryptionSettingsArgs) ToManagedDiskEncryptionSettingsPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsOutput).ToManagedDiskEncryptionSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsOutput).ToManagedDiskEncryptionSettingsPtrOutput()
 }
 
 // ManagedDiskEncryptionSettingsPtrInput is an input type that accepts ManagedDiskEncryptionSettingsArgs, ManagedDiskEncryptionSettingsPtr and ManagedDiskEncryptionSettingsPtrOutput values.
@@ -5316,7 +5316,7 @@ func (i *managedDiskEncryptionSettingsPtrType) ToManagedDiskEncryptionSettingsPt
 }
 
 func (i *managedDiskEncryptionSettingsPtrType) ToManagedDiskEncryptionSettingsPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsOutput).ToManagedDiskEncryptionSettingsPtrOutput()
 }
 
 type ManagedDiskEncryptionSettingsOutput struct{ *pulumi.OutputState }
@@ -5452,7 +5452,7 @@ func (i ManagedDiskEncryptionSettingsDiskEncryptionKeyArgs) ToManagedDiskEncrypt
 }
 
 func (i ManagedDiskEncryptionSettingsDiskEncryptionKeyArgs) ToManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsDiskEncryptionKeyOutput).ToManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsDiskEncryptionKeyOutput).ToManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput()
 }
 
 // ManagedDiskEncryptionSettingsDiskEncryptionKeyPtrInput is an input type that accepts ManagedDiskEncryptionSettingsDiskEncryptionKeyArgs, ManagedDiskEncryptionSettingsDiskEncryptionKeyPtr and ManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput values.
@@ -5485,7 +5485,7 @@ func (i *managedDiskEncryptionSettingsDiskEncryptionKeyPtrType) ToManagedDiskEnc
 }
 
 func (i *managedDiskEncryptionSettingsDiskEncryptionKeyPtrType) ToManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsDiskEncryptionKeyOutput).ToManagedDiskEncryptionSettingsDiskEncryptionKeyPtrOutput()
 }
 
 type ManagedDiskEncryptionSettingsDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
@@ -5604,7 +5604,7 @@ func (i ManagedDiskEncryptionSettingsKeyEncryptionKeyArgs) ToManagedDiskEncrypti
 }
 
 func (i ManagedDiskEncryptionSettingsKeyEncryptionKeyArgs) ToManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsKeyEncryptionKeyOutput).ToManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsKeyEncryptionKeyOutput).ToManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput()
 }
 
 // ManagedDiskEncryptionSettingsKeyEncryptionKeyPtrInput is an input type that accepts ManagedDiskEncryptionSettingsKeyEncryptionKeyArgs, ManagedDiskEncryptionSettingsKeyEncryptionKeyPtr and ManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput values.
@@ -5637,7 +5637,7 @@ func (i *managedDiskEncryptionSettingsKeyEncryptionKeyPtrType) ToManagedDiskEncr
 }
 
 func (i *managedDiskEncryptionSettingsKeyEncryptionKeyPtrType) ToManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskEncryptionSettingsKeyEncryptionKeyOutput).ToManagedDiskEncryptionSettingsKeyEncryptionKeyPtrOutput()
 }
 
 type ManagedDiskEncryptionSettingsKeyEncryptionKeyOutput struct{ *pulumi.OutputState }
@@ -5752,7 +5752,7 @@ func (i ScaleSetBootDiagnosticsArgs) ToScaleSetBootDiagnosticsPtrOutput() ScaleS
 }
 
 func (i ScaleSetBootDiagnosticsArgs) ToScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) ScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetBootDiagnosticsOutput).ToScaleSetBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetBootDiagnosticsOutput).ToScaleSetBootDiagnosticsPtrOutput()
 }
 
 // ScaleSetBootDiagnosticsPtrInput is an input type that accepts ScaleSetBootDiagnosticsArgs, ScaleSetBootDiagnosticsPtr and ScaleSetBootDiagnosticsPtrOutput values.
@@ -5785,7 +5785,7 @@ func (i *scaleSetBootDiagnosticsPtrType) ToScaleSetBootDiagnosticsPtrOutput() Sc
 }
 
 func (i *scaleSetBootDiagnosticsPtrType) ToScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) ScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetBootDiagnosticsOutput).ToScaleSetBootDiagnosticsPtrOutput()
 }
 
 type ScaleSetBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -6059,7 +6059,7 @@ func (i ScaleSetIdentityArgs) ToScaleSetIdentityPtrOutput() ScaleSetIdentityPtrO
 }
 
 func (i ScaleSetIdentityArgs) ToScaleSetIdentityPtrOutputWithContext(ctx context.Context) ScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetIdentityOutput).ToScaleSetIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetIdentityOutput).ToScaleSetIdentityPtrOutput()
 }
 
 // ScaleSetIdentityPtrInput is an input type that accepts ScaleSetIdentityArgs, ScaleSetIdentityPtr and ScaleSetIdentityPtrOutput values.
@@ -6092,7 +6092,7 @@ func (i *scaleSetIdentityPtrType) ToScaleSetIdentityPtrOutput() ScaleSetIdentity
 }
 
 func (i *scaleSetIdentityPtrType) ToScaleSetIdentityPtrOutputWithContext(ctx context.Context) ScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetIdentityOutput).ToScaleSetIdentityPtrOutput()
 }
 
 type ScaleSetIdentityOutput struct{ *pulumi.OutputState }
@@ -6369,7 +6369,7 @@ func (i ScaleSetNetworkProfileDnsSettingsArgs) ToScaleSetNetworkProfileDnsSettin
 }
 
 func (i ScaleSetNetworkProfileDnsSettingsArgs) ToScaleSetNetworkProfileDnsSettingsPtrOutputWithContext(ctx context.Context) ScaleSetNetworkProfileDnsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileDnsSettingsOutput).ToScaleSetNetworkProfileDnsSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileDnsSettingsOutput).ToScaleSetNetworkProfileDnsSettingsPtrOutput()
 }
 
 // ScaleSetNetworkProfileDnsSettingsPtrInput is an input type that accepts ScaleSetNetworkProfileDnsSettingsArgs, ScaleSetNetworkProfileDnsSettingsPtr and ScaleSetNetworkProfileDnsSettingsPtrOutput values.
@@ -6402,7 +6402,7 @@ func (i *scaleSetNetworkProfileDnsSettingsPtrType) ToScaleSetNetworkProfileDnsSe
 }
 
 func (i *scaleSetNetworkProfileDnsSettingsPtrType) ToScaleSetNetworkProfileDnsSettingsPtrOutputWithContext(ctx context.Context) ScaleSetNetworkProfileDnsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileDnsSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileDnsSettingsOutput).ToScaleSetNetworkProfileDnsSettingsPtrOutput()
 }
 
 type ScaleSetNetworkProfileDnsSettingsOutput struct{ *pulumi.OutputState }
@@ -6672,7 +6672,7 @@ func (i ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs) T
 }
 
 func (i ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs) ToScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutputWithContext(ctx context.Context) ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationOutput).ToScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationOutput).ToScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput()
 }
 
 // ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrInput is an input type that accepts ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationArgs, ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtr and ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput values.
@@ -6705,7 +6705,7 @@ func (i *scaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrTyp
 }
 
 func (i *scaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrType) ToScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutputWithContext(ctx context.Context) ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationOutput).ToScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationPtrOutput()
 }
 
 type ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfigurationOutput struct{ *pulumi.OutputState }
@@ -6849,7 +6849,7 @@ func (i ScaleSetOsProfileArgs) ToScaleSetOsProfilePtrOutput() ScaleSetOsProfileP
 }
 
 func (i ScaleSetOsProfileArgs) ToScaleSetOsProfilePtrOutputWithContext(ctx context.Context) ScaleSetOsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileOutput).ToScaleSetOsProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileOutput).ToScaleSetOsProfilePtrOutput()
 }
 
 // ScaleSetOsProfilePtrInput is an input type that accepts ScaleSetOsProfileArgs, ScaleSetOsProfilePtr and ScaleSetOsProfilePtrOutput values.
@@ -6882,7 +6882,7 @@ func (i *scaleSetOsProfilePtrType) ToScaleSetOsProfilePtrOutput() ScaleSetOsProf
 }
 
 func (i *scaleSetOsProfilePtrType) ToScaleSetOsProfilePtrOutputWithContext(ctx context.Context) ScaleSetOsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileOutput).ToScaleSetOsProfilePtrOutput()
 }
 
 type ScaleSetOsProfileOutput struct{ *pulumi.OutputState }
@@ -7029,7 +7029,7 @@ func (i ScaleSetOsProfileLinuxConfigArgs) ToScaleSetOsProfileLinuxConfigPtrOutpu
 }
 
 func (i ScaleSetOsProfileLinuxConfigArgs) ToScaleSetOsProfileLinuxConfigPtrOutputWithContext(ctx context.Context) ScaleSetOsProfileLinuxConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileLinuxConfigOutput).ToScaleSetOsProfileLinuxConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileLinuxConfigOutput).ToScaleSetOsProfileLinuxConfigPtrOutput()
 }
 
 // ScaleSetOsProfileLinuxConfigPtrInput is an input type that accepts ScaleSetOsProfileLinuxConfigArgs, ScaleSetOsProfileLinuxConfigPtr and ScaleSetOsProfileLinuxConfigPtrOutput values.
@@ -7062,7 +7062,7 @@ func (i *scaleSetOsProfileLinuxConfigPtrType) ToScaleSetOsProfileLinuxConfigPtrO
 }
 
 func (i *scaleSetOsProfileLinuxConfigPtrType) ToScaleSetOsProfileLinuxConfigPtrOutputWithContext(ctx context.Context) ScaleSetOsProfileLinuxConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileLinuxConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileLinuxConfigOutput).ToScaleSetOsProfileLinuxConfigPtrOutput()
 }
 
 type ScaleSetOsProfileLinuxConfigOutput struct{ *pulumi.OutputState }
@@ -7499,7 +7499,7 @@ func (i ScaleSetOsProfileWindowsConfigArgs) ToScaleSetOsProfileWindowsConfigPtrO
 }
 
 func (i ScaleSetOsProfileWindowsConfigArgs) ToScaleSetOsProfileWindowsConfigPtrOutputWithContext(ctx context.Context) ScaleSetOsProfileWindowsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileWindowsConfigOutput).ToScaleSetOsProfileWindowsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileWindowsConfigOutput).ToScaleSetOsProfileWindowsConfigPtrOutput()
 }
 
 // ScaleSetOsProfileWindowsConfigPtrInput is an input type that accepts ScaleSetOsProfileWindowsConfigArgs, ScaleSetOsProfileWindowsConfigPtr and ScaleSetOsProfileWindowsConfigPtrOutput values.
@@ -7532,7 +7532,7 @@ func (i *scaleSetOsProfileWindowsConfigPtrType) ToScaleSetOsProfileWindowsConfig
 }
 
 func (i *scaleSetOsProfileWindowsConfigPtrType) ToScaleSetOsProfileWindowsConfigPtrOutputWithContext(ctx context.Context) ScaleSetOsProfileWindowsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileWindowsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetOsProfileWindowsConfigOutput).ToScaleSetOsProfileWindowsConfigPtrOutput()
 }
 
 type ScaleSetOsProfileWindowsConfigOutput struct{ *pulumi.OutputState }
@@ -7915,7 +7915,7 @@ func (i ScaleSetPlanArgs) ToScaleSetPlanPtrOutput() ScaleSetPlanPtrOutput {
 }
 
 func (i ScaleSetPlanArgs) ToScaleSetPlanPtrOutputWithContext(ctx context.Context) ScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPlanOutput).ToScaleSetPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPlanOutput).ToScaleSetPlanPtrOutput()
 }
 
 // ScaleSetPlanPtrInput is an input type that accepts ScaleSetPlanArgs, ScaleSetPlanPtr and ScaleSetPlanPtrOutput values.
@@ -7948,7 +7948,7 @@ func (i *scaleSetPlanPtrType) ToScaleSetPlanPtrOutput() ScaleSetPlanPtrOutput {
 }
 
 func (i *scaleSetPlanPtrType) ToScaleSetPlanPtrOutputWithContext(ctx context.Context) ScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetPlanOutput).ToScaleSetPlanPtrOutput()
 }
 
 type ScaleSetPlanOutput struct{ *pulumi.OutputState }
@@ -8088,7 +8088,7 @@ func (i ScaleSetRollingUpgradePolicyArgs) ToScaleSetRollingUpgradePolicyPtrOutpu
 }
 
 func (i ScaleSetRollingUpgradePolicyArgs) ToScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) ScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetRollingUpgradePolicyOutput).ToScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetRollingUpgradePolicyOutput).ToScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 // ScaleSetRollingUpgradePolicyPtrInput is an input type that accepts ScaleSetRollingUpgradePolicyArgs, ScaleSetRollingUpgradePolicyPtr and ScaleSetRollingUpgradePolicyPtrOutput values.
@@ -8121,7 +8121,7 @@ func (i *scaleSetRollingUpgradePolicyPtrType) ToScaleSetRollingUpgradePolicyPtrO
 }
 
 func (i *scaleSetRollingUpgradePolicyPtrType) ToScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) ScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetRollingUpgradePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetRollingUpgradePolicyOutput).ToScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 type ScaleSetRollingUpgradePolicyOutput struct{ *pulumi.OutputState }
@@ -8272,7 +8272,7 @@ func (i ScaleSetSkuArgs) ToScaleSetSkuPtrOutput() ScaleSetSkuPtrOutput {
 }
 
 func (i ScaleSetSkuArgs) ToScaleSetSkuPtrOutputWithContext(ctx context.Context) ScaleSetSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetSkuOutput).ToScaleSetSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetSkuOutput).ToScaleSetSkuPtrOutput()
 }
 
 // ScaleSetSkuPtrInput is an input type that accepts ScaleSetSkuArgs, ScaleSetSkuPtr and ScaleSetSkuPtrOutput values.
@@ -8305,7 +8305,7 @@ func (i *scaleSetSkuPtrType) ToScaleSetSkuPtrOutput() ScaleSetSkuPtrOutput {
 }
 
 func (i *scaleSetSkuPtrType) ToScaleSetSkuPtrOutputWithContext(ctx context.Context) ScaleSetSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetSkuOutput).ToScaleSetSkuPtrOutput()
 }
 
 type ScaleSetSkuOutput struct{ *pulumi.OutputState }
@@ -8584,7 +8584,7 @@ func (i ScaleSetStorageProfileImageReferenceArgs) ToScaleSetStorageProfileImageR
 }
 
 func (i ScaleSetStorageProfileImageReferenceArgs) ToScaleSetStorageProfileImageReferencePtrOutputWithContext(ctx context.Context) ScaleSetStorageProfileImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileImageReferenceOutput).ToScaleSetStorageProfileImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileImageReferenceOutput).ToScaleSetStorageProfileImageReferencePtrOutput()
 }
 
 // ScaleSetStorageProfileImageReferencePtrInput is an input type that accepts ScaleSetStorageProfileImageReferenceArgs, ScaleSetStorageProfileImageReferencePtr and ScaleSetStorageProfileImageReferencePtrOutput values.
@@ -8617,7 +8617,7 @@ func (i *scaleSetStorageProfileImageReferencePtrType) ToScaleSetStorageProfileIm
 }
 
 func (i *scaleSetStorageProfileImageReferencePtrType) ToScaleSetStorageProfileImageReferencePtrOutputWithContext(ctx context.Context) ScaleSetStorageProfileImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileImageReferenceOutput).ToScaleSetStorageProfileImageReferencePtrOutput()
 }
 
 type ScaleSetStorageProfileImageReferenceOutput struct{ *pulumi.OutputState }
@@ -8805,7 +8805,7 @@ func (i ScaleSetStorageProfileOsDiskArgs) ToScaleSetStorageProfileOsDiskPtrOutpu
 }
 
 func (i ScaleSetStorageProfileOsDiskArgs) ToScaleSetStorageProfileOsDiskPtrOutputWithContext(ctx context.Context) ScaleSetStorageProfileOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileOsDiskOutput).ToScaleSetStorageProfileOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileOsDiskOutput).ToScaleSetStorageProfileOsDiskPtrOutput()
 }
 
 // ScaleSetStorageProfileOsDiskPtrInput is an input type that accepts ScaleSetStorageProfileOsDiskArgs, ScaleSetStorageProfileOsDiskPtr and ScaleSetStorageProfileOsDiskPtrOutput values.
@@ -8838,7 +8838,7 @@ func (i *scaleSetStorageProfileOsDiskPtrType) ToScaleSetStorageProfileOsDiskPtrO
 }
 
 func (i *scaleSetStorageProfileOsDiskPtrType) ToScaleSetStorageProfileOsDiskPtrOutputWithContext(ctx context.Context) ScaleSetStorageProfileOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSetStorageProfileOsDiskOutput).ToScaleSetStorageProfileOsDiskPtrOutput()
 }
 
 type ScaleSetStorageProfileOsDiskOutput struct{ *pulumi.OutputState }
@@ -9038,7 +9038,7 @@ func (i SharedImageIdentifierArgs) ToSharedImageIdentifierPtrOutput() SharedImag
 }
 
 func (i SharedImageIdentifierArgs) ToSharedImageIdentifierPtrOutputWithContext(ctx context.Context) SharedImageIdentifierPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedImageIdentifierOutput).ToSharedImageIdentifierPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageIdentifierOutput).ToSharedImageIdentifierPtrOutput()
 }
 
 // SharedImageIdentifierPtrInput is an input type that accepts SharedImageIdentifierArgs, SharedImageIdentifierPtr and SharedImageIdentifierPtrOutput values.
@@ -9071,7 +9071,7 @@ func (i *sharedImageIdentifierPtrType) ToSharedImageIdentifierPtrOutput() Shared
 }
 
 func (i *sharedImageIdentifierPtrType) ToSharedImageIdentifierPtrOutputWithContext(ctx context.Context) SharedImageIdentifierPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedImageIdentifierPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImageIdentifierOutput).ToSharedImageIdentifierPtrOutput()
 }
 
 type SharedImageIdentifierOutput struct{ *pulumi.OutputState }
@@ -9207,7 +9207,7 @@ func (i SharedImagePurchasePlanArgs) ToSharedImagePurchasePlanPtrOutput() Shared
 }
 
 func (i SharedImagePurchasePlanArgs) ToSharedImagePurchasePlanPtrOutputWithContext(ctx context.Context) SharedImagePurchasePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedImagePurchasePlanOutput).ToSharedImagePurchasePlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImagePurchasePlanOutput).ToSharedImagePurchasePlanPtrOutput()
 }
 
 // SharedImagePurchasePlanPtrInput is an input type that accepts SharedImagePurchasePlanArgs, SharedImagePurchasePlanPtr and SharedImagePurchasePlanPtrOutput values.
@@ -9240,7 +9240,7 @@ func (i *sharedImagePurchasePlanPtrType) ToSharedImagePurchasePlanPtrOutput() Sh
 }
 
 func (i *sharedImagePurchasePlanPtrType) ToSharedImagePurchasePlanPtrOutputWithContext(ctx context.Context) SharedImagePurchasePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedImagePurchasePlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SharedImagePurchasePlanOutput).ToSharedImagePurchasePlanPtrOutput()
 }
 
 type SharedImagePurchasePlanOutput struct{ *pulumi.OutputState }
@@ -9485,7 +9485,7 @@ func (i SnapshotEncryptionSettingsArgs) ToSnapshotEncryptionSettingsPtrOutput() 
 }
 
 func (i SnapshotEncryptionSettingsArgs) ToSnapshotEncryptionSettingsPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsOutput).ToSnapshotEncryptionSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsOutput).ToSnapshotEncryptionSettingsPtrOutput()
 }
 
 // SnapshotEncryptionSettingsPtrInput is an input type that accepts SnapshotEncryptionSettingsArgs, SnapshotEncryptionSettingsPtr and SnapshotEncryptionSettingsPtrOutput values.
@@ -9518,7 +9518,7 @@ func (i *snapshotEncryptionSettingsPtrType) ToSnapshotEncryptionSettingsPtrOutpu
 }
 
 func (i *snapshotEncryptionSettingsPtrType) ToSnapshotEncryptionSettingsPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsOutput).ToSnapshotEncryptionSettingsPtrOutput()
 }
 
 type SnapshotEncryptionSettingsOutput struct{ *pulumi.OutputState }
@@ -9643,7 +9643,7 @@ func (i SnapshotEncryptionSettingsDiskEncryptionKeyArgs) ToSnapshotEncryptionSet
 }
 
 func (i SnapshotEncryptionSettingsDiskEncryptionKeyArgs) ToSnapshotEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsDiskEncryptionKeyOutput).ToSnapshotEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsDiskEncryptionKeyOutput).ToSnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput()
 }
 
 // SnapshotEncryptionSettingsDiskEncryptionKeyPtrInput is an input type that accepts SnapshotEncryptionSettingsDiskEncryptionKeyArgs, SnapshotEncryptionSettingsDiskEncryptionKeyPtr and SnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput values.
@@ -9676,7 +9676,7 @@ func (i *snapshotEncryptionSettingsDiskEncryptionKeyPtrType) ToSnapshotEncryptio
 }
 
 func (i *snapshotEncryptionSettingsDiskEncryptionKeyPtrType) ToSnapshotEncryptionSettingsDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsDiskEncryptionKeyOutput).ToSnapshotEncryptionSettingsDiskEncryptionKeyPtrOutput()
 }
 
 type SnapshotEncryptionSettingsDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
@@ -9786,7 +9786,7 @@ func (i SnapshotEncryptionSettingsKeyEncryptionKeyArgs) ToSnapshotEncryptionSett
 }
 
 func (i SnapshotEncryptionSettingsKeyEncryptionKeyArgs) ToSnapshotEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsKeyEncryptionKeyOutput).ToSnapshotEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsKeyEncryptionKeyOutput).ToSnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput()
 }
 
 // SnapshotEncryptionSettingsKeyEncryptionKeyPtrInput is an input type that accepts SnapshotEncryptionSettingsKeyEncryptionKeyArgs, SnapshotEncryptionSettingsKeyEncryptionKeyPtr and SnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput values.
@@ -9819,7 +9819,7 @@ func (i *snapshotEncryptionSettingsKeyEncryptionKeyPtrType) ToSnapshotEncryption
 }
 
 func (i *snapshotEncryptionSettingsKeyEncryptionKeyPtrType) ToSnapshotEncryptionSettingsKeyEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotEncryptionSettingsKeyEncryptionKeyOutput).ToSnapshotEncryptionSettingsKeyEncryptionKeyPtrOutput()
 }
 
 type SnapshotEncryptionSettingsKeyEncryptionKeyOutput struct{ *pulumi.OutputState }
@@ -9929,7 +9929,7 @@ func (i VirtualMachineAdditionalCapabilitiesArgs) ToVirtualMachineAdditionalCapa
 }
 
 func (i VirtualMachineAdditionalCapabilitiesArgs) ToVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) VirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAdditionalCapabilitiesOutput).ToVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAdditionalCapabilitiesOutput).ToVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 // VirtualMachineAdditionalCapabilitiesPtrInput is an input type that accepts VirtualMachineAdditionalCapabilitiesArgs, VirtualMachineAdditionalCapabilitiesPtr and VirtualMachineAdditionalCapabilitiesPtrOutput values.
@@ -9962,7 +9962,7 @@ func (i *virtualMachineAdditionalCapabilitiesPtrType) ToVirtualMachineAdditional
 }
 
 func (i *virtualMachineAdditionalCapabilitiesPtrType) ToVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) VirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAdditionalCapabilitiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAdditionalCapabilitiesOutput).ToVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 type VirtualMachineAdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
@@ -10064,7 +10064,7 @@ func (i VirtualMachineBootDiagnosticsArgs) ToVirtualMachineBootDiagnosticsPtrOut
 }
 
 func (i VirtualMachineBootDiagnosticsArgs) ToVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) VirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineBootDiagnosticsOutput).ToVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineBootDiagnosticsOutput).ToVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 // VirtualMachineBootDiagnosticsPtrInput is an input type that accepts VirtualMachineBootDiagnosticsArgs, VirtualMachineBootDiagnosticsPtr and VirtualMachineBootDiagnosticsPtrOutput values.
@@ -10097,7 +10097,7 @@ func (i *virtualMachineBootDiagnosticsPtrType) ToVirtualMachineBootDiagnosticsPt
 }
 
 func (i *virtualMachineBootDiagnosticsPtrType) ToVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) VirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineBootDiagnosticsOutput).ToVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 type VirtualMachineBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -10218,7 +10218,7 @@ func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityPtrOutput() VirtualM
 }
 
 func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityOutput).ToVirtualMachineIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityOutput).ToVirtualMachineIdentityPtrOutput()
 }
 
 // VirtualMachineIdentityPtrInput is an input type that accepts VirtualMachineIdentityArgs, VirtualMachineIdentityPtr and VirtualMachineIdentityPtrOutput values.
@@ -10251,7 +10251,7 @@ func (i *virtualMachineIdentityPtrType) ToVirtualMachineIdentityPtrOutput() Virt
 }
 
 func (i *virtualMachineIdentityPtrType) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityOutput).ToVirtualMachineIdentityPtrOutput()
 }
 
 type VirtualMachineIdentityOutput struct{ *pulumi.OutputState }
@@ -10391,7 +10391,7 @@ func (i VirtualMachineOsProfileArgs) ToVirtualMachineOsProfilePtrOutput() Virtua
 }
 
 func (i VirtualMachineOsProfileArgs) ToVirtualMachineOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineOsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileOutput).ToVirtualMachineOsProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileOutput).ToVirtualMachineOsProfilePtrOutput()
 }
 
 // VirtualMachineOsProfilePtrInput is an input type that accepts VirtualMachineOsProfileArgs, VirtualMachineOsProfilePtr and VirtualMachineOsProfilePtrOutput values.
@@ -10424,7 +10424,7 @@ func (i *virtualMachineOsProfilePtrType) ToVirtualMachineOsProfilePtrOutput() Vi
 }
 
 func (i *virtualMachineOsProfilePtrType) ToVirtualMachineOsProfilePtrOutputWithContext(ctx context.Context) VirtualMachineOsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileOutput).ToVirtualMachineOsProfilePtrOutput()
 }
 
 type VirtualMachineOsProfileOutput struct{ *pulumi.OutputState }
@@ -10571,7 +10571,7 @@ func (i VirtualMachineOsProfileLinuxConfigArgs) ToVirtualMachineOsProfileLinuxCo
 }
 
 func (i VirtualMachineOsProfileLinuxConfigArgs) ToVirtualMachineOsProfileLinuxConfigPtrOutputWithContext(ctx context.Context) VirtualMachineOsProfileLinuxConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileLinuxConfigOutput).ToVirtualMachineOsProfileLinuxConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileLinuxConfigOutput).ToVirtualMachineOsProfileLinuxConfigPtrOutput()
 }
 
 // VirtualMachineOsProfileLinuxConfigPtrInput is an input type that accepts VirtualMachineOsProfileLinuxConfigArgs, VirtualMachineOsProfileLinuxConfigPtr and VirtualMachineOsProfileLinuxConfigPtrOutput values.
@@ -10604,7 +10604,7 @@ func (i *virtualMachineOsProfileLinuxConfigPtrType) ToVirtualMachineOsProfileLin
 }
 
 func (i *virtualMachineOsProfileLinuxConfigPtrType) ToVirtualMachineOsProfileLinuxConfigPtrOutputWithContext(ctx context.Context) VirtualMachineOsProfileLinuxConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileLinuxConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileLinuxConfigOutput).ToVirtualMachineOsProfileLinuxConfigPtrOutput()
 }
 
 type VirtualMachineOsProfileLinuxConfigOutput struct{ *pulumi.OutputState }
@@ -11055,7 +11055,7 @@ func (i VirtualMachineOsProfileWindowsConfigArgs) ToVirtualMachineOsProfileWindo
 }
 
 func (i VirtualMachineOsProfileWindowsConfigArgs) ToVirtualMachineOsProfileWindowsConfigPtrOutputWithContext(ctx context.Context) VirtualMachineOsProfileWindowsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileWindowsConfigOutput).ToVirtualMachineOsProfileWindowsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileWindowsConfigOutput).ToVirtualMachineOsProfileWindowsConfigPtrOutput()
 }
 
 // VirtualMachineOsProfileWindowsConfigPtrInput is an input type that accepts VirtualMachineOsProfileWindowsConfigArgs, VirtualMachineOsProfileWindowsConfigPtr and VirtualMachineOsProfileWindowsConfigPtrOutput values.
@@ -11088,7 +11088,7 @@ func (i *virtualMachineOsProfileWindowsConfigPtrType) ToVirtualMachineOsProfileW
 }
 
 func (i *virtualMachineOsProfileWindowsConfigPtrType) ToVirtualMachineOsProfileWindowsConfigPtrOutputWithContext(ctx context.Context) VirtualMachineOsProfileWindowsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileWindowsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOsProfileWindowsConfigOutput).ToVirtualMachineOsProfileWindowsConfigPtrOutput()
 }
 
 type VirtualMachineOsProfileWindowsConfigOutput struct{ *pulumi.OutputState }
@@ -11488,7 +11488,7 @@ func (i VirtualMachinePlanArgs) ToVirtualMachinePlanPtrOutput() VirtualMachinePl
 }
 
 func (i VirtualMachinePlanArgs) ToVirtualMachinePlanPtrOutputWithContext(ctx context.Context) VirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePlanOutput).ToVirtualMachinePlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePlanOutput).ToVirtualMachinePlanPtrOutput()
 }
 
 // VirtualMachinePlanPtrInput is an input type that accepts VirtualMachinePlanArgs, VirtualMachinePlanPtr and VirtualMachinePlanPtrOutput values.
@@ -11521,7 +11521,7 @@ func (i *virtualMachinePlanPtrType) ToVirtualMachinePlanPtrOutput() VirtualMachi
 }
 
 func (i *virtualMachinePlanPtrType) ToVirtualMachinePlanPtrOutputWithContext(ctx context.Context) VirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePlanOutput).ToVirtualMachinePlanPtrOutput()
 }
 
 type VirtualMachinePlanOutput struct{ *pulumi.OutputState }
@@ -11834,7 +11834,7 @@ func (i VirtualMachineStorageImageReferenceArgs) ToVirtualMachineStorageImageRef
 }
 
 func (i VirtualMachineStorageImageReferenceArgs) ToVirtualMachineStorageImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineStorageImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageImageReferenceOutput).ToVirtualMachineStorageImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageImageReferenceOutput).ToVirtualMachineStorageImageReferencePtrOutput()
 }
 
 // VirtualMachineStorageImageReferencePtrInput is an input type that accepts VirtualMachineStorageImageReferenceArgs, VirtualMachineStorageImageReferencePtr and VirtualMachineStorageImageReferencePtrOutput values.
@@ -11867,7 +11867,7 @@ func (i *virtualMachineStorageImageReferencePtrType) ToVirtualMachineStorageImag
 }
 
 func (i *virtualMachineStorageImageReferencePtrType) ToVirtualMachineStorageImageReferencePtrOutputWithContext(ctx context.Context) VirtualMachineStorageImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageImageReferenceOutput).ToVirtualMachineStorageImageReferencePtrOutput()
 }
 
 type VirtualMachineStorageImageReferenceOutput struct{ *pulumi.OutputState }
@@ -12061,7 +12061,7 @@ func (i VirtualMachineStorageOsDiskArgs) ToVirtualMachineStorageOsDiskPtrOutput(
 }
 
 func (i VirtualMachineStorageOsDiskArgs) ToVirtualMachineStorageOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineStorageOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageOsDiskOutput).ToVirtualMachineStorageOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageOsDiskOutput).ToVirtualMachineStorageOsDiskPtrOutput()
 }
 
 // VirtualMachineStorageOsDiskPtrInput is an input type that accepts VirtualMachineStorageOsDiskArgs, VirtualMachineStorageOsDiskPtr and VirtualMachineStorageOsDiskPtrOutput values.
@@ -12094,7 +12094,7 @@ func (i *virtualMachineStorageOsDiskPtrType) ToVirtualMachineStorageOsDiskPtrOut
 }
 
 func (i *virtualMachineStorageOsDiskPtrType) ToVirtualMachineStorageOsDiskPtrOutputWithContext(ctx context.Context) VirtualMachineStorageOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineStorageOsDiskOutput).ToVirtualMachineStorageOsDiskPtrOutput()
 }
 
 type VirtualMachineStorageOsDiskOutput struct{ *pulumi.OutputState }
@@ -12327,7 +12327,7 @@ func (i WindowsVirtualMachineAdditionalCapabilitiesArgs) ToWindowsVirtualMachine
 }
 
 func (i WindowsVirtualMachineAdditionalCapabilitiesArgs) ToWindowsVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineAdditionalCapabilitiesOutput).ToWindowsVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineAdditionalCapabilitiesOutput).ToWindowsVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 // WindowsVirtualMachineAdditionalCapabilitiesPtrInput is an input type that accepts WindowsVirtualMachineAdditionalCapabilitiesArgs, WindowsVirtualMachineAdditionalCapabilitiesPtr and WindowsVirtualMachineAdditionalCapabilitiesPtrOutput values.
@@ -12360,7 +12360,7 @@ func (i *windowsVirtualMachineAdditionalCapabilitiesPtrType) ToWindowsVirtualMac
 }
 
 func (i *windowsVirtualMachineAdditionalCapabilitiesPtrType) ToWindowsVirtualMachineAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineAdditionalCapabilitiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineAdditionalCapabilitiesOutput).ToWindowsVirtualMachineAdditionalCapabilitiesPtrOutput()
 }
 
 type WindowsVirtualMachineAdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
@@ -12566,7 +12566,7 @@ func (i WindowsVirtualMachineBootDiagnosticsArgs) ToWindowsVirtualMachineBootDia
 }
 
 func (i WindowsVirtualMachineBootDiagnosticsArgs) ToWindowsVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineBootDiagnosticsOutput).ToWindowsVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineBootDiagnosticsOutput).ToWindowsVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 // WindowsVirtualMachineBootDiagnosticsPtrInput is an input type that accepts WindowsVirtualMachineBootDiagnosticsArgs, WindowsVirtualMachineBootDiagnosticsPtr and WindowsVirtualMachineBootDiagnosticsPtrOutput values.
@@ -12599,7 +12599,7 @@ func (i *windowsVirtualMachineBootDiagnosticsPtrType) ToWindowsVirtualMachineBoo
 }
 
 func (i *windowsVirtualMachineBootDiagnosticsPtrType) ToWindowsVirtualMachineBootDiagnosticsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineBootDiagnosticsOutput).ToWindowsVirtualMachineBootDiagnosticsPtrOutput()
 }
 
 type WindowsVirtualMachineBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -12709,7 +12709,7 @@ func (i WindowsVirtualMachineIdentityArgs) ToWindowsVirtualMachineIdentityPtrOut
 }
 
 func (i WindowsVirtualMachineIdentityArgs) ToWindowsVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineIdentityOutput).ToWindowsVirtualMachineIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineIdentityOutput).ToWindowsVirtualMachineIdentityPtrOutput()
 }
 
 // WindowsVirtualMachineIdentityPtrInput is an input type that accepts WindowsVirtualMachineIdentityArgs, WindowsVirtualMachineIdentityPtr and WindowsVirtualMachineIdentityPtrOutput values.
@@ -12742,7 +12742,7 @@ func (i *windowsVirtualMachineIdentityPtrType) ToWindowsVirtualMachineIdentityPt
 }
 
 func (i *windowsVirtualMachineIdentityPtrType) ToWindowsVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineIdentityOutput).ToWindowsVirtualMachineIdentityPtrOutput()
 }
 
 type WindowsVirtualMachineIdentityOutput struct{ *pulumi.OutputState }
@@ -12909,7 +12909,7 @@ func (i WindowsVirtualMachineOsDiskArgs) ToWindowsVirtualMachineOsDiskPtrOutput(
 }
 
 func (i WindowsVirtualMachineOsDiskArgs) ToWindowsVirtualMachineOsDiskPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskOutput).ToWindowsVirtualMachineOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskOutput).ToWindowsVirtualMachineOsDiskPtrOutput()
 }
 
 // WindowsVirtualMachineOsDiskPtrInput is an input type that accepts WindowsVirtualMachineOsDiskArgs, WindowsVirtualMachineOsDiskPtr and WindowsVirtualMachineOsDiskPtrOutput values.
@@ -12942,7 +12942,7 @@ func (i *windowsVirtualMachineOsDiskPtrType) ToWindowsVirtualMachineOsDiskPtrOut
 }
 
 func (i *windowsVirtualMachineOsDiskPtrType) ToWindowsVirtualMachineOsDiskPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskOutput).ToWindowsVirtualMachineOsDiskPtrOutput()
 }
 
 type WindowsVirtualMachineOsDiskOutput struct{ *pulumi.OutputState }
@@ -13132,7 +13132,7 @@ func (i WindowsVirtualMachineOsDiskDiffDiskSettingsArgs) ToWindowsVirtualMachine
 }
 
 func (i WindowsVirtualMachineOsDiskDiffDiskSettingsArgs) ToWindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput()
 }
 
 // WindowsVirtualMachineOsDiskDiffDiskSettingsPtrInput is an input type that accepts WindowsVirtualMachineOsDiskDiffDiskSettingsArgs, WindowsVirtualMachineOsDiskDiffDiskSettingsPtr and WindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput values.
@@ -13165,7 +13165,7 @@ func (i *windowsVirtualMachineOsDiskDiffDiskSettingsPtrType) ToWindowsVirtualMac
 }
 
 func (i *windowsVirtualMachineOsDiskDiffDiskSettingsPtrType) ToWindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineOsDiskDiffDiskSettingsPtrOutput()
 }
 
 type WindowsVirtualMachineOsDiskDiffDiskSettingsOutput struct{ *pulumi.OutputState }
@@ -13273,7 +13273,7 @@ func (i WindowsVirtualMachinePlanArgs) ToWindowsVirtualMachinePlanPtrOutput() Wi
 }
 
 func (i WindowsVirtualMachinePlanArgs) ToWindowsVirtualMachinePlanPtrOutputWithContext(ctx context.Context) WindowsVirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachinePlanOutput).ToWindowsVirtualMachinePlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachinePlanOutput).ToWindowsVirtualMachinePlanPtrOutput()
 }
 
 // WindowsVirtualMachinePlanPtrInput is an input type that accepts WindowsVirtualMachinePlanArgs, WindowsVirtualMachinePlanPtr and WindowsVirtualMachinePlanPtrOutput values.
@@ -13306,7 +13306,7 @@ func (i *windowsVirtualMachinePlanPtrType) ToWindowsVirtualMachinePlanPtrOutput(
 }
 
 func (i *windowsVirtualMachinePlanPtrType) ToWindowsVirtualMachinePlanPtrOutputWithContext(ctx context.Context) WindowsVirtualMachinePlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachinePlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachinePlanOutput).ToWindowsVirtualMachinePlanPtrOutput()
 }
 
 type WindowsVirtualMachinePlanOutput struct{ *pulumi.OutputState }
@@ -13434,7 +13434,7 @@ func (i WindowsVirtualMachineScaleSetAdditionalCapabilitiesArgs) ToWindowsVirtua
 }
 
 func (i WindowsVirtualMachineScaleSetAdditionalCapabilitiesArgs) ToWindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToWindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToWindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrInput is an input type that accepts WindowsVirtualMachineScaleSetAdditionalCapabilitiesArgs, WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtr and WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput values.
@@ -13467,7 +13467,7 @@ func (i *windowsVirtualMachineScaleSetAdditionalCapabilitiesPtrType) ToWindowsVi
 }
 
 func (i *windowsVirtualMachineScaleSetAdditionalCapabilitiesPtrType) ToWindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAdditionalCapabilitiesOutput).ToWindowsVirtualMachineScaleSetAdditionalCapabilitiesPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetAdditionalCapabilitiesOutput struct{ *pulumi.OutputState }
@@ -13677,7 +13677,7 @@ func (i WindowsVirtualMachineScaleSetAutomaticInstanceRepairArgs) ToWindowsVirtu
 }
 
 func (i WindowsVirtualMachineScaleSetAutomaticInstanceRepairArgs) ToWindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToWindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToWindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrInput is an input type that accepts WindowsVirtualMachineScaleSetAutomaticInstanceRepairArgs, WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtr and WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput values.
@@ -13710,7 +13710,7 @@ func (i *windowsVirtualMachineScaleSetAutomaticInstanceRepairPtrType) ToWindowsV
 }
 
 func (i *windowsVirtualMachineScaleSetAutomaticInstanceRepairPtrType) ToWindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticInstanceRepairOutput).ToWindowsVirtualMachineScaleSetAutomaticInstanceRepairPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetAutomaticInstanceRepairOutput struct{ *pulumi.OutputState }
@@ -13829,7 +13829,7 @@ func (i WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs) ToWindowsVirt
 }
 
 func (i WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs) ToWindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrInput is an input type that accepts WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyArgs, WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtr and WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput values.
@@ -13862,7 +13862,7 @@ func (i *windowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrType) ToWindows
 }
 
 func (i *windowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrType) ToWindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicyOutput struct{ *pulumi.OutputState }
@@ -13977,7 +13977,7 @@ func (i WindowsVirtualMachineScaleSetBootDiagnosticsArgs) ToWindowsVirtualMachin
 }
 
 func (i WindowsVirtualMachineScaleSetBootDiagnosticsArgs) ToWindowsVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetBootDiagnosticsOutput).ToWindowsVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetBootDiagnosticsOutput).ToWindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetBootDiagnosticsPtrInput is an input type that accepts WindowsVirtualMachineScaleSetBootDiagnosticsArgs, WindowsVirtualMachineScaleSetBootDiagnosticsPtr and WindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput values.
@@ -14010,7 +14010,7 @@ func (i *windowsVirtualMachineScaleSetBootDiagnosticsPtrType) ToWindowsVirtualMa
 }
 
 func (i *windowsVirtualMachineScaleSetBootDiagnosticsPtrType) ToWindowsVirtualMachineScaleSetBootDiagnosticsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetBootDiagnosticsOutput).ToWindowsVirtualMachineScaleSetBootDiagnosticsPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetBootDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -14456,7 +14456,7 @@ func (i WindowsVirtualMachineScaleSetIdentityArgs) ToWindowsVirtualMachineScaleS
 }
 
 func (i WindowsVirtualMachineScaleSetIdentityArgs) ToWindowsVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetIdentityOutput).ToWindowsVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetIdentityOutput).ToWindowsVirtualMachineScaleSetIdentityPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetIdentityPtrInput is an input type that accepts WindowsVirtualMachineScaleSetIdentityArgs, WindowsVirtualMachineScaleSetIdentityPtr and WindowsVirtualMachineScaleSetIdentityPtrOutput values.
@@ -14489,7 +14489,7 @@ func (i *windowsVirtualMachineScaleSetIdentityPtrType) ToWindowsVirtualMachineSc
 }
 
 func (i *windowsVirtualMachineScaleSetIdentityPtrType) ToWindowsVirtualMachineScaleSetIdentityPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetIdentityOutput).ToWindowsVirtualMachineScaleSetIdentityPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetIdentityOutput struct{ *pulumi.OutputState }
@@ -15222,7 +15222,7 @@ func (i WindowsVirtualMachineScaleSetOsDiskArgs) ToWindowsVirtualMachineScaleSet
 }
 
 func (i WindowsVirtualMachineScaleSetOsDiskArgs) ToWindowsVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskOutput).ToWindowsVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskOutput).ToWindowsVirtualMachineScaleSetOsDiskPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetOsDiskPtrInput is an input type that accepts WindowsVirtualMachineScaleSetOsDiskArgs, WindowsVirtualMachineScaleSetOsDiskPtr and WindowsVirtualMachineScaleSetOsDiskPtrOutput values.
@@ -15255,7 +15255,7 @@ func (i *windowsVirtualMachineScaleSetOsDiskPtrType) ToWindowsVirtualMachineScal
 }
 
 func (i *windowsVirtualMachineScaleSetOsDiskPtrType) ToWindowsVirtualMachineScaleSetOsDiskPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOsDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskOutput).ToWindowsVirtualMachineScaleSetOsDiskPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetOsDiskOutput struct{ *pulumi.OutputState }
@@ -15428,7 +15428,7 @@ func (i WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs) ToWindowsVirtua
 }
 
 func (i WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs) ToWindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrInput is an input type that accepts WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsArgs, WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtr and WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput values.
@@ -15461,7 +15461,7 @@ func (i *windowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrType) ToWindowsVi
 }
 
 func (i *windowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrType) ToWindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput).ToWindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetOsDiskDiffDiskSettingsOutput struct{ *pulumi.OutputState }
@@ -15566,7 +15566,7 @@ func (i WindowsVirtualMachineScaleSetPlanArgs) ToWindowsVirtualMachineScaleSetPl
 }
 
 func (i WindowsVirtualMachineScaleSetPlanArgs) ToWindowsVirtualMachineScaleSetPlanPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetPlanOutput).ToWindowsVirtualMachineScaleSetPlanPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetPlanOutput).ToWindowsVirtualMachineScaleSetPlanPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetPlanPtrInput is an input type that accepts WindowsVirtualMachineScaleSetPlanArgs, WindowsVirtualMachineScaleSetPlanPtr and WindowsVirtualMachineScaleSetPlanPtrOutput values.
@@ -15599,7 +15599,7 @@ func (i *windowsVirtualMachineScaleSetPlanPtrType) ToWindowsVirtualMachineScaleS
 }
 
 func (i *windowsVirtualMachineScaleSetPlanPtrType) ToWindowsVirtualMachineScaleSetPlanPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetPlanPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetPlanOutput).ToWindowsVirtualMachineScaleSetPlanPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetPlanOutput struct{ *pulumi.OutputState }
@@ -15739,7 +15739,7 @@ func (i WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs) ToWindowsVirtualM
 }
 
 func (i WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs) ToWindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetRollingUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetRollingUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetRollingUpgradePolicyPtrInput is an input type that accepts WindowsVirtualMachineScaleSetRollingUpgradePolicyArgs, WindowsVirtualMachineScaleSetRollingUpgradePolicyPtr and WindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput values.
@@ -15772,7 +15772,7 @@ func (i *windowsVirtualMachineScaleSetRollingUpgradePolicyPtrType) ToWindowsVirt
 }
 
 func (i *windowsVirtualMachineScaleSetRollingUpgradePolicyPtrType) ToWindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetRollingUpgradePolicyOutput).ToWindowsVirtualMachineScaleSetRollingUpgradePolicyPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetRollingUpgradePolicyOutput struct{ *pulumi.OutputState }
@@ -16145,7 +16145,7 @@ func (i WindowsVirtualMachineScaleSetSourceImageReferenceArgs) ToWindowsVirtualM
 }
 
 func (i WindowsVirtualMachineScaleSetSourceImageReferenceArgs) ToWindowsVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetSourceImageReferenceOutput).ToWindowsVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetSourceImageReferenceOutput).ToWindowsVirtualMachineScaleSetSourceImageReferencePtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetSourceImageReferencePtrInput is an input type that accepts WindowsVirtualMachineScaleSetSourceImageReferenceArgs, WindowsVirtualMachineScaleSetSourceImageReferencePtr and WindowsVirtualMachineScaleSetSourceImageReferencePtrOutput values.
@@ -16178,7 +16178,7 @@ func (i *windowsVirtualMachineScaleSetSourceImageReferencePtrType) ToWindowsVirt
 }
 
 func (i *windowsVirtualMachineScaleSetSourceImageReferencePtrType) ToWindowsVirtualMachineScaleSetSourceImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetSourceImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetSourceImageReferenceOutput).ToWindowsVirtualMachineScaleSetSourceImageReferencePtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetSourceImageReferenceOutput struct{ *pulumi.OutputState }
@@ -16327,7 +16327,7 @@ func (i WindowsVirtualMachineScaleSetTerminateNotificationArgs) ToWindowsVirtual
 }
 
 func (i WindowsVirtualMachineScaleSetTerminateNotificationArgs) ToWindowsVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetTerminateNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetTerminateNotificationOutput).ToWindowsVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetTerminateNotificationOutput).ToWindowsVirtualMachineScaleSetTerminateNotificationPtrOutput()
 }
 
 // WindowsVirtualMachineScaleSetTerminateNotificationPtrInput is an input type that accepts WindowsVirtualMachineScaleSetTerminateNotificationArgs, WindowsVirtualMachineScaleSetTerminateNotificationPtr and WindowsVirtualMachineScaleSetTerminateNotificationPtrOutput values.
@@ -16360,7 +16360,7 @@ func (i *windowsVirtualMachineScaleSetTerminateNotificationPtrType) ToWindowsVir
 }
 
 func (i *windowsVirtualMachineScaleSetTerminateNotificationPtrType) ToWindowsVirtualMachineScaleSetTerminateNotificationPtrOutputWithContext(ctx context.Context) WindowsVirtualMachineScaleSetTerminateNotificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetTerminateNotificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineScaleSetTerminateNotificationOutput).ToWindowsVirtualMachineScaleSetTerminateNotificationPtrOutput()
 }
 
 type WindowsVirtualMachineScaleSetTerminateNotificationOutput struct{ *pulumi.OutputState }
@@ -16805,7 +16805,7 @@ func (i WindowsVirtualMachineSourceImageReferenceArgs) ToWindowsVirtualMachineSo
 }
 
 func (i WindowsVirtualMachineSourceImageReferenceArgs) ToWindowsVirtualMachineSourceImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineSourceImageReferenceOutput).ToWindowsVirtualMachineSourceImageReferencePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineSourceImageReferenceOutput).ToWindowsVirtualMachineSourceImageReferencePtrOutput()
 }
 
 // WindowsVirtualMachineSourceImageReferencePtrInput is an input type that accepts WindowsVirtualMachineSourceImageReferenceArgs, WindowsVirtualMachineSourceImageReferencePtr and WindowsVirtualMachineSourceImageReferencePtrOutput values.
@@ -16838,7 +16838,7 @@ func (i *windowsVirtualMachineSourceImageReferencePtrType) ToWindowsVirtualMachi
 }
 
 func (i *windowsVirtualMachineSourceImageReferencePtrType) ToWindowsVirtualMachineSourceImageReferencePtrOutputWithContext(ctx context.Context) WindowsVirtualMachineSourceImageReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineSourceImageReferencePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsVirtualMachineSourceImageReferenceOutput).ToWindowsVirtualMachineSourceImageReferencePtrOutput()
 }
 
 type WindowsVirtualMachineSourceImageReferenceOutput struct{ *pulumi.OutputState }

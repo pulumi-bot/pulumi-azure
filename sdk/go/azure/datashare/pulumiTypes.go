@@ -56,7 +56,7 @@ func (i AccountIdentityArgs) ToAccountIdentityPtrOutput() AccountIdentityPtrOutp
 }
 
 func (i AccountIdentityArgs) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 // AccountIdentityPtrInput is an input type that accepts AccountIdentityArgs, AccountIdentityPtr and AccountIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *accountIdentityPtrType) ToAccountIdentityPtrOutput() AccountIdentityPtr
 }
 
 func (i *accountIdentityPtrType) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 type AccountIdentityOutput struct{ *pulumi.OutputState }
@@ -225,7 +225,7 @@ func (i DatasetBlobStorageStorageAccountArgs) ToDatasetBlobStorageStorageAccount
 }
 
 func (i DatasetBlobStorageStorageAccountArgs) ToDatasetBlobStorageStorageAccountPtrOutputWithContext(ctx context.Context) DatasetBlobStorageStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetBlobStorageStorageAccountOutput).ToDatasetBlobStorageStorageAccountPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetBlobStorageStorageAccountOutput).ToDatasetBlobStorageStorageAccountPtrOutput()
 }
 
 // DatasetBlobStorageStorageAccountPtrInput is an input type that accepts DatasetBlobStorageStorageAccountArgs, DatasetBlobStorageStorageAccountPtr and DatasetBlobStorageStorageAccountPtrOutput values.
@@ -258,7 +258,7 @@ func (i *datasetBlobStorageStorageAccountPtrType) ToDatasetBlobStorageStorageAcc
 }
 
 func (i *datasetBlobStorageStorageAccountPtrType) ToDatasetBlobStorageStorageAccountPtrOutputWithContext(ctx context.Context) DatasetBlobStorageStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetBlobStorageStorageAccountPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetBlobStorageStorageAccountOutput).ToDatasetBlobStorageStorageAccountPtrOutput()
 }
 
 type DatasetBlobStorageStorageAccountOutput struct{ *pulumi.OutputState }
@@ -394,7 +394,7 @@ func (i ShareSnapshotScheduleArgs) ToShareSnapshotSchedulePtrOutput() ShareSnaps
 }
 
 func (i ShareSnapshotScheduleArgs) ToShareSnapshotSchedulePtrOutputWithContext(ctx context.Context) ShareSnapshotSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSnapshotScheduleOutput).ToShareSnapshotSchedulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSnapshotScheduleOutput).ToShareSnapshotSchedulePtrOutput()
 }
 
 // ShareSnapshotSchedulePtrInput is an input type that accepts ShareSnapshotScheduleArgs, ShareSnapshotSchedulePtr and ShareSnapshotSchedulePtrOutput values.
@@ -427,7 +427,7 @@ func (i *shareSnapshotSchedulePtrType) ToShareSnapshotSchedulePtrOutput() ShareS
 }
 
 func (i *shareSnapshotSchedulePtrType) ToShareSnapshotSchedulePtrOutputWithContext(ctx context.Context) ShareSnapshotSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSnapshotSchedulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSnapshotScheduleOutput).ToShareSnapshotSchedulePtrOutput()
 }
 
 type ShareSnapshotScheduleOutput struct{ *pulumi.OutputState }

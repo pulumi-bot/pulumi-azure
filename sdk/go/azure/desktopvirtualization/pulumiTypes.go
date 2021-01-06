@@ -54,7 +54,7 @@ func (i HostPoolRegistrationInfoArgs) ToHostPoolRegistrationInfoPtrOutput() Host
 }
 
 func (i HostPoolRegistrationInfoArgs) ToHostPoolRegistrationInfoPtrOutputWithContext(ctx context.Context) HostPoolRegistrationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPoolRegistrationInfoOutput).ToHostPoolRegistrationInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(HostPoolRegistrationInfoOutput).ToHostPoolRegistrationInfoPtrOutput()
 }
 
 // HostPoolRegistrationInfoPtrInput is an input type that accepts HostPoolRegistrationInfoArgs, HostPoolRegistrationInfoPtr and HostPoolRegistrationInfoPtrOutput values.
@@ -87,7 +87,7 @@ func (i *hostPoolRegistrationInfoPtrType) ToHostPoolRegistrationInfoPtrOutput() 
 }
 
 func (i *hostPoolRegistrationInfoPtrType) ToHostPoolRegistrationInfoPtrOutputWithContext(ctx context.Context) HostPoolRegistrationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPoolRegistrationInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(HostPoolRegistrationInfoOutput).ToHostPoolRegistrationInfoPtrOutput()
 }
 
 type HostPoolRegistrationInfoOutput struct{ *pulumi.OutputState }

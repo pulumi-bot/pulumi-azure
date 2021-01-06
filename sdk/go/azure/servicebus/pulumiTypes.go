@@ -186,7 +186,7 @@ func (i SubscriptionRuleCorrelationFilterArgs) ToSubscriptionRuleCorrelationFilt
 }
 
 func (i SubscriptionRuleCorrelationFilterArgs) ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx context.Context) SubscriptionRuleCorrelationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutput()
 }
 
 // SubscriptionRuleCorrelationFilterPtrInput is an input type that accepts SubscriptionRuleCorrelationFilterArgs, SubscriptionRuleCorrelationFilterPtr and SubscriptionRuleCorrelationFilterPtrOutput values.
@@ -219,7 +219,7 @@ func (i *subscriptionRuleCorrelationFilterPtrType) ToSubscriptionRuleCorrelation
 }
 
 func (i *subscriptionRuleCorrelationFilterPtrType) ToSubscriptionRuleCorrelationFilterPtrOutputWithContext(ctx context.Context) SubscriptionRuleCorrelationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionRuleCorrelationFilterOutput).ToSubscriptionRuleCorrelationFilterPtrOutput()
 }
 
 type SubscriptionRuleCorrelationFilterOutput struct{ *pulumi.OutputState }
