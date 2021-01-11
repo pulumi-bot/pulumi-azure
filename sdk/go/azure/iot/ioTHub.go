@@ -394,15 +394,15 @@ type IoTHubInput interface {
 	ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput
 }
 
-func (IoTHub) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTHub)(nil)).Elem()
+func (*IoTHub) ElementType() reflect.Type {
+	return reflect.TypeOf((*IoTHub)(nil))
 }
 
-func (i IoTHub) ToIoTHubOutput() IoTHubOutput {
+func (i *IoTHub) ToIoTHubOutput() IoTHubOutput {
 	return i.ToIoTHubOutputWithContext(context.Background())
 }
 
-func (i IoTHub) ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput {
+func (i *IoTHub) ToIoTHubOutputWithContext(ctx context.Context) IoTHubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IoTHubOutput)
 }
 
@@ -411,7 +411,7 @@ type IoTHubOutput struct {
 }
 
 func (IoTHubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IoTHubOutput)(nil)).Elem()
+	return reflect.TypeOf((*IoTHub)(nil))
 }
 
 func (o IoTHubOutput) ToIoTHubOutput() IoTHubOutput {
