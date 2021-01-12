@@ -56,7 +56,7 @@ func (i AccountIdentityArgs) ToAccountIdentityPtrOutput() AccountIdentityPtrOutp
 }
 
 func (i AccountIdentityArgs) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 // AccountIdentityPtrInput is an input type that accepts AccountIdentityArgs, AccountIdentityPtr and AccountIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *accountIdentityPtrType) ToAccountIdentityPtrOutput() AccountIdentityPtr
 }
 
 func (i *accountIdentityPtrType) ToAccountIdentityPtrOutputWithContext(ctx context.Context) AccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIdentityOutput).ToAccountIdentityPtrOutput()
 }
 
 type AccountIdentityOutput struct{ *pulumi.OutputState }

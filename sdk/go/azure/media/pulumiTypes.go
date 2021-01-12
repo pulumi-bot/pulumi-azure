@@ -52,7 +52,7 @@ func (i JobInputAssetArgs) ToJobInputAssetPtrOutput() JobInputAssetPtrOutput {
 }
 
 func (i JobInputAssetArgs) ToJobInputAssetPtrOutputWithContext(ctx context.Context) JobInputAssetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobInputAssetOutput).ToJobInputAssetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(JobInputAssetOutput).ToJobInputAssetPtrOutput()
 }
 
 // JobInputAssetPtrInput is an input type that accepts JobInputAssetArgs, JobInputAssetPtr and JobInputAssetPtrOutput values.
@@ -85,7 +85,7 @@ func (i *jobInputAssetPtrType) ToJobInputAssetPtrOutput() JobInputAssetPtrOutput
 }
 
 func (i *jobInputAssetPtrType) ToJobInputAssetPtrOutputWithContext(ctx context.Context) JobInputAssetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobInputAssetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(JobInputAssetOutput).ToJobInputAssetPtrOutput()
 }
 
 type JobInputAssetOutput struct{ *pulumi.OutputState }
@@ -312,7 +312,7 @@ func (i ServiceAccountIdentityArgs) ToServiceAccountIdentityPtrOutput() ServiceA
 }
 
 func (i ServiceAccountIdentityArgs) ToServiceAccountIdentityPtrOutputWithContext(ctx context.Context) ServiceAccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountIdentityOutput).ToServiceAccountIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountIdentityOutput).ToServiceAccountIdentityPtrOutput()
 }
 
 // ServiceAccountIdentityPtrInput is an input type that accepts ServiceAccountIdentityArgs, ServiceAccountIdentityPtr and ServiceAccountIdentityPtrOutput values.
@@ -345,7 +345,7 @@ func (i *serviceAccountIdentityPtrType) ToServiceAccountIdentityPtrOutput() Serv
 }
 
 func (i *serviceAccountIdentityPtrType) ToServiceAccountIdentityPtrOutputWithContext(ctx context.Context) ServiceAccountIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountIdentityOutput).ToServiceAccountIdentityPtrOutput()
 }
 
 type ServiceAccountIdentityOutput struct{ *pulumi.OutputState }
@@ -583,7 +583,7 @@ func (i StreamingEndpointAccessControlArgs) ToStreamingEndpointAccessControlPtrO
 }
 
 func (i StreamingEndpointAccessControlArgs) ToStreamingEndpointAccessControlPtrOutputWithContext(ctx context.Context) StreamingEndpointAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlOutput).ToStreamingEndpointAccessControlPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlOutput).ToStreamingEndpointAccessControlPtrOutput()
 }
 
 // StreamingEndpointAccessControlPtrInput is an input type that accepts StreamingEndpointAccessControlArgs, StreamingEndpointAccessControlPtr and StreamingEndpointAccessControlPtrOutput values.
@@ -616,7 +616,7 @@ func (i *streamingEndpointAccessControlPtrType) ToStreamingEndpointAccessControl
 }
 
 func (i *streamingEndpointAccessControlPtrType) ToStreamingEndpointAccessControlPtrOutputWithContext(ctx context.Context) StreamingEndpointAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointAccessControlOutput).ToStreamingEndpointAccessControlPtrOutput()
 }
 
 type StreamingEndpointAccessControlOutput struct{ *pulumi.OutputState }
@@ -971,7 +971,7 @@ func (i StreamingEndpointCrossSiteAccessPolicyArgs) ToStreamingEndpointCrossSite
 }
 
 func (i StreamingEndpointCrossSiteAccessPolicyArgs) ToStreamingEndpointCrossSiteAccessPolicyPtrOutputWithContext(ctx context.Context) StreamingEndpointCrossSiteAccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointCrossSiteAccessPolicyOutput).ToStreamingEndpointCrossSiteAccessPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointCrossSiteAccessPolicyOutput).ToStreamingEndpointCrossSiteAccessPolicyPtrOutput()
 }
 
 // StreamingEndpointCrossSiteAccessPolicyPtrInput is an input type that accepts StreamingEndpointCrossSiteAccessPolicyArgs, StreamingEndpointCrossSiteAccessPolicyPtr and StreamingEndpointCrossSiteAccessPolicyPtrOutput values.
@@ -1004,7 +1004,7 @@ func (i *streamingEndpointCrossSiteAccessPolicyPtrType) ToStreamingEndpointCross
 }
 
 func (i *streamingEndpointCrossSiteAccessPolicyPtrType) ToStreamingEndpointCrossSiteAccessPolicyPtrOutputWithContext(ctx context.Context) StreamingEndpointCrossSiteAccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointCrossSiteAccessPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StreamingEndpointCrossSiteAccessPolicyOutput).ToStreamingEndpointCrossSiteAccessPolicyPtrOutput()
 }
 
 type StreamingEndpointCrossSiteAccessPolicyOutput struct{ *pulumi.OutputState }
@@ -1396,7 +1396,7 @@ func (i TransformOutputAudioAnalyzerPresetArgs) ToTransformOutputAudioAnalyzerPr
 }
 
 func (i TransformOutputAudioAnalyzerPresetArgs) ToTransformOutputAudioAnalyzerPresetPtrOutputWithContext(ctx context.Context) TransformOutputAudioAnalyzerPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputAudioAnalyzerPresetOutput).ToTransformOutputAudioAnalyzerPresetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputAudioAnalyzerPresetOutput).ToTransformOutputAudioAnalyzerPresetPtrOutput()
 }
 
 // TransformOutputAudioAnalyzerPresetPtrInput is an input type that accepts TransformOutputAudioAnalyzerPresetArgs, TransformOutputAudioAnalyzerPresetPtr and TransformOutputAudioAnalyzerPresetPtrOutput values.
@@ -1429,7 +1429,7 @@ func (i *transformOutputAudioAnalyzerPresetPtrType) ToTransformOutputAudioAnalyz
 }
 
 func (i *transformOutputAudioAnalyzerPresetPtrType) ToTransformOutputAudioAnalyzerPresetPtrOutputWithContext(ctx context.Context) TransformOutputAudioAnalyzerPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputAudioAnalyzerPresetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputAudioAnalyzerPresetOutput).ToTransformOutputAudioAnalyzerPresetPtrOutput()
 }
 
 type TransformOutputAudioAnalyzerPresetOutput struct{ *pulumi.OutputState }
@@ -1542,7 +1542,7 @@ func (i TransformOutputBuiltinPresetArgs) ToTransformOutputBuiltinPresetPtrOutpu
 }
 
 func (i TransformOutputBuiltinPresetArgs) ToTransformOutputBuiltinPresetPtrOutputWithContext(ctx context.Context) TransformOutputBuiltinPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputBuiltinPresetOutput).ToTransformOutputBuiltinPresetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputBuiltinPresetOutput).ToTransformOutputBuiltinPresetPtrOutput()
 }
 
 // TransformOutputBuiltinPresetPtrInput is an input type that accepts TransformOutputBuiltinPresetArgs, TransformOutputBuiltinPresetPtr and TransformOutputBuiltinPresetPtrOutput values.
@@ -1575,7 +1575,7 @@ func (i *transformOutputBuiltinPresetPtrType) ToTransformOutputBuiltinPresetPtrO
 }
 
 func (i *transformOutputBuiltinPresetPtrType) ToTransformOutputBuiltinPresetPtrOutputWithContext(ctx context.Context) TransformOutputBuiltinPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputBuiltinPresetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputBuiltinPresetOutput).ToTransformOutputBuiltinPresetPtrOutput()
 }
 
 type TransformOutputBuiltinPresetOutput struct{ *pulumi.OutputState }
@@ -1673,7 +1673,7 @@ func (i TransformOutputFaceDetectorPresetArgs) ToTransformOutputFaceDetectorPres
 }
 
 func (i TransformOutputFaceDetectorPresetArgs) ToTransformOutputFaceDetectorPresetPtrOutputWithContext(ctx context.Context) TransformOutputFaceDetectorPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputFaceDetectorPresetOutput).ToTransformOutputFaceDetectorPresetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputFaceDetectorPresetOutput).ToTransformOutputFaceDetectorPresetPtrOutput()
 }
 
 // TransformOutputFaceDetectorPresetPtrInput is an input type that accepts TransformOutputFaceDetectorPresetArgs, TransformOutputFaceDetectorPresetPtr and TransformOutputFaceDetectorPresetPtrOutput values.
@@ -1706,7 +1706,7 @@ func (i *transformOutputFaceDetectorPresetPtrType) ToTransformOutputFaceDetector
 }
 
 func (i *transformOutputFaceDetectorPresetPtrType) ToTransformOutputFaceDetectorPresetPtrOutputWithContext(ctx context.Context) TransformOutputFaceDetectorPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputFaceDetectorPresetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputFaceDetectorPresetOutput).ToTransformOutputFaceDetectorPresetPtrOutput()
 }
 
 type TransformOutputFaceDetectorPresetOutput struct{ *pulumi.OutputState }
@@ -1812,7 +1812,7 @@ func (i TransformOutputVideoAnalyzerPresetArgs) ToTransformOutputVideoAnalyzerPr
 }
 
 func (i TransformOutputVideoAnalyzerPresetArgs) ToTransformOutputVideoAnalyzerPresetPtrOutputWithContext(ctx context.Context) TransformOutputVideoAnalyzerPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputVideoAnalyzerPresetOutput).ToTransformOutputVideoAnalyzerPresetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputVideoAnalyzerPresetOutput).ToTransformOutputVideoAnalyzerPresetPtrOutput()
 }
 
 // TransformOutputVideoAnalyzerPresetPtrInput is an input type that accepts TransformOutputVideoAnalyzerPresetArgs, TransformOutputVideoAnalyzerPresetPtr and TransformOutputVideoAnalyzerPresetPtrOutput values.
@@ -1845,7 +1845,7 @@ func (i *transformOutputVideoAnalyzerPresetPtrType) ToTransformOutputVideoAnalyz
 }
 
 func (i *transformOutputVideoAnalyzerPresetPtrType) ToTransformOutputVideoAnalyzerPresetPtrOutputWithContext(ctx context.Context) TransformOutputVideoAnalyzerPresetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputVideoAnalyzerPresetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputVideoAnalyzerPresetOutput).ToTransformOutputVideoAnalyzerPresetPtrOutput()
 }
 
 type TransformOutputVideoAnalyzerPresetOutput struct{ *pulumi.OutputState }

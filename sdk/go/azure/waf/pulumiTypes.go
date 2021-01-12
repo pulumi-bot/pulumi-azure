@@ -426,7 +426,7 @@ func (i PolicyManagedRulesArgs) ToPolicyManagedRulesPtrOutput() PolicyManagedRul
 }
 
 func (i PolicyManagedRulesArgs) ToPolicyManagedRulesPtrOutputWithContext(ctx context.Context) PolicyManagedRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyManagedRulesOutput).ToPolicyManagedRulesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyManagedRulesOutput).ToPolicyManagedRulesPtrOutput()
 }
 
 // PolicyManagedRulesPtrInput is an input type that accepts PolicyManagedRulesArgs, PolicyManagedRulesPtr and PolicyManagedRulesPtrOutput values.
@@ -459,7 +459,7 @@ func (i *policyManagedRulesPtrType) ToPolicyManagedRulesPtrOutput() PolicyManage
 }
 
 func (i *policyManagedRulesPtrType) ToPolicyManagedRulesPtrOutputWithContext(ctx context.Context) PolicyManagedRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyManagedRulesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyManagedRulesOutput).ToPolicyManagedRulesPtrOutput()
 }
 
 type PolicyManagedRulesOutput struct{ *pulumi.OutputState }
@@ -922,7 +922,7 @@ func (i PolicyPolicySettingsArgs) ToPolicyPolicySettingsPtrOutput() PolicyPolicy
 }
 
 func (i PolicyPolicySettingsArgs) ToPolicyPolicySettingsPtrOutputWithContext(ctx context.Context) PolicyPolicySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicySettingsOutput).ToPolicyPolicySettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicySettingsOutput).ToPolicyPolicySettingsPtrOutput()
 }
 
 // PolicyPolicySettingsPtrInput is an input type that accepts PolicyPolicySettingsArgs, PolicyPolicySettingsPtr and PolicyPolicySettingsPtrOutput values.
@@ -955,7 +955,7 @@ func (i *policyPolicySettingsPtrType) ToPolicyPolicySettingsPtrOutput() PolicyPo
 }
 
 func (i *policyPolicySettingsPtrType) ToPolicyPolicySettingsPtrOutputWithContext(ctx context.Context) PolicyPolicySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicySettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicySettingsOutput).ToPolicyPolicySettingsPtrOutput()
 }
 
 type PolicyPolicySettingsOutput struct{ *pulumi.OutputState }

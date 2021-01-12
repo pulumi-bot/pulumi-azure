@@ -286,7 +286,7 @@ func (i DatasetDelimitedTextAzureBlobStorageLocationArgs) ToDatasetDelimitedText
 }
 
 func (i DatasetDelimitedTextAzureBlobStorageLocationArgs) ToDatasetDelimitedTextAzureBlobStorageLocationPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextAzureBlobStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextAzureBlobStorageLocationOutput).ToDatasetDelimitedTextAzureBlobStorageLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextAzureBlobStorageLocationOutput).ToDatasetDelimitedTextAzureBlobStorageLocationPtrOutput()
 }
 
 // DatasetDelimitedTextAzureBlobStorageLocationPtrInput is an input type that accepts DatasetDelimitedTextAzureBlobStorageLocationArgs, DatasetDelimitedTextAzureBlobStorageLocationPtr and DatasetDelimitedTextAzureBlobStorageLocationPtrOutput values.
@@ -319,7 +319,7 @@ func (i *datasetDelimitedTextAzureBlobStorageLocationPtrType) ToDatasetDelimited
 }
 
 func (i *datasetDelimitedTextAzureBlobStorageLocationPtrType) ToDatasetDelimitedTextAzureBlobStorageLocationPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextAzureBlobStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextAzureBlobStorageLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextAzureBlobStorageLocationOutput).ToDatasetDelimitedTextAzureBlobStorageLocationPtrOutput()
 }
 
 type DatasetDelimitedTextAzureBlobStorageLocationOutput struct{ *pulumi.OutputState }
@@ -457,7 +457,7 @@ func (i DatasetDelimitedTextHttpServerLocationArgs) ToDatasetDelimitedTextHttpSe
 }
 
 func (i DatasetDelimitedTextHttpServerLocationArgs) ToDatasetDelimitedTextHttpServerLocationPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextHttpServerLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextHttpServerLocationOutput).ToDatasetDelimitedTextHttpServerLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextHttpServerLocationOutput).ToDatasetDelimitedTextHttpServerLocationPtrOutput()
 }
 
 // DatasetDelimitedTextHttpServerLocationPtrInput is an input type that accepts DatasetDelimitedTextHttpServerLocationArgs, DatasetDelimitedTextHttpServerLocationPtr and DatasetDelimitedTextHttpServerLocationPtrOutput values.
@@ -490,7 +490,7 @@ func (i *datasetDelimitedTextHttpServerLocationPtrType) ToDatasetDelimitedTextHt
 }
 
 func (i *datasetDelimitedTextHttpServerLocationPtrType) ToDatasetDelimitedTextHttpServerLocationPtrOutputWithContext(ctx context.Context) DatasetDelimitedTextHttpServerLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextHttpServerLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetDelimitedTextHttpServerLocationOutput).ToDatasetDelimitedTextHttpServerLocationPtrOutput()
 }
 
 type DatasetDelimitedTextHttpServerLocationOutput struct{ *pulumi.OutputState }
@@ -856,7 +856,7 @@ func (i DatasetJsonAzureBlobStorageLocationArgs) ToDatasetJsonAzureBlobStorageLo
 }
 
 func (i DatasetJsonAzureBlobStorageLocationArgs) ToDatasetJsonAzureBlobStorageLocationPtrOutputWithContext(ctx context.Context) DatasetJsonAzureBlobStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonAzureBlobStorageLocationOutput).ToDatasetJsonAzureBlobStorageLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonAzureBlobStorageLocationOutput).ToDatasetJsonAzureBlobStorageLocationPtrOutput()
 }
 
 // DatasetJsonAzureBlobStorageLocationPtrInput is an input type that accepts DatasetJsonAzureBlobStorageLocationArgs, DatasetJsonAzureBlobStorageLocationPtr and DatasetJsonAzureBlobStorageLocationPtrOutput values.
@@ -889,7 +889,7 @@ func (i *datasetJsonAzureBlobStorageLocationPtrType) ToDatasetJsonAzureBlobStora
 }
 
 func (i *datasetJsonAzureBlobStorageLocationPtrType) ToDatasetJsonAzureBlobStorageLocationPtrOutputWithContext(ctx context.Context) DatasetJsonAzureBlobStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonAzureBlobStorageLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonAzureBlobStorageLocationOutput).ToDatasetJsonAzureBlobStorageLocationPtrOutput()
 }
 
 type DatasetJsonAzureBlobStorageLocationOutput struct{ *pulumi.OutputState }
@@ -1025,7 +1025,7 @@ func (i DatasetJsonHttpServerLocationArgs) ToDatasetJsonHttpServerLocationPtrOut
 }
 
 func (i DatasetJsonHttpServerLocationArgs) ToDatasetJsonHttpServerLocationPtrOutputWithContext(ctx context.Context) DatasetJsonHttpServerLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonHttpServerLocationOutput).ToDatasetJsonHttpServerLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonHttpServerLocationOutput).ToDatasetJsonHttpServerLocationPtrOutput()
 }
 
 // DatasetJsonHttpServerLocationPtrInput is an input type that accepts DatasetJsonHttpServerLocationArgs, DatasetJsonHttpServerLocationPtr and DatasetJsonHttpServerLocationPtrOutput values.
@@ -1058,7 +1058,7 @@ func (i *datasetJsonHttpServerLocationPtrType) ToDatasetJsonHttpServerLocationPt
 }
 
 func (i *datasetJsonHttpServerLocationPtrType) ToDatasetJsonHttpServerLocationPtrOutputWithContext(ctx context.Context) DatasetJsonHttpServerLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonHttpServerLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetJsonHttpServerLocationOutput).ToDatasetJsonHttpServerLocationPtrOutput()
 }
 
 type DatasetJsonHttpServerLocationOutput struct{ *pulumi.OutputState }
@@ -1662,7 +1662,7 @@ func (i FactoryGithubConfigurationArgs) ToFactoryGithubConfigurationPtrOutput() 
 }
 
 func (i FactoryGithubConfigurationArgs) ToFactoryGithubConfigurationPtrOutputWithContext(ctx context.Context) FactoryGithubConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryGithubConfigurationOutput).ToFactoryGithubConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryGithubConfigurationOutput).ToFactoryGithubConfigurationPtrOutput()
 }
 
 // FactoryGithubConfigurationPtrInput is an input type that accepts FactoryGithubConfigurationArgs, FactoryGithubConfigurationPtr and FactoryGithubConfigurationPtrOutput values.
@@ -1695,7 +1695,7 @@ func (i *factoryGithubConfigurationPtrType) ToFactoryGithubConfigurationPtrOutpu
 }
 
 func (i *factoryGithubConfigurationPtrType) ToFactoryGithubConfigurationPtrOutputWithContext(ctx context.Context) FactoryGithubConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryGithubConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryGithubConfigurationOutput).ToFactoryGithubConfigurationPtrOutput()
 }
 
 type FactoryGithubConfigurationOutput struct{ *pulumi.OutputState }
@@ -1861,7 +1861,7 @@ func (i FactoryIdentityArgs) ToFactoryIdentityPtrOutput() FactoryIdentityPtrOutp
 }
 
 func (i FactoryIdentityArgs) ToFactoryIdentityPtrOutputWithContext(ctx context.Context) FactoryIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryIdentityOutput).ToFactoryIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryIdentityOutput).ToFactoryIdentityPtrOutput()
 }
 
 // FactoryIdentityPtrInput is an input type that accepts FactoryIdentityArgs, FactoryIdentityPtr and FactoryIdentityPtrOutput values.
@@ -1894,7 +1894,7 @@ func (i *factoryIdentityPtrType) ToFactoryIdentityPtrOutput() FactoryIdentityPtr
 }
 
 func (i *factoryIdentityPtrType) ToFactoryIdentityPtrOutputWithContext(ctx context.Context) FactoryIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryIdentityOutput).ToFactoryIdentityPtrOutput()
 }
 
 type FactoryIdentityOutput struct{ *pulumi.OutputState }
@@ -2042,7 +2042,7 @@ func (i FactoryVstsConfigurationArgs) ToFactoryVstsConfigurationPtrOutput() Fact
 }
 
 func (i FactoryVstsConfigurationArgs) ToFactoryVstsConfigurationPtrOutputWithContext(ctx context.Context) FactoryVstsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryVstsConfigurationOutput).ToFactoryVstsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryVstsConfigurationOutput).ToFactoryVstsConfigurationPtrOutput()
 }
 
 // FactoryVstsConfigurationPtrInput is an input type that accepts FactoryVstsConfigurationArgs, FactoryVstsConfigurationPtr and FactoryVstsConfigurationPtrOutput values.
@@ -2075,7 +2075,7 @@ func (i *factoryVstsConfigurationPtrType) ToFactoryVstsConfigurationPtrOutput() 
 }
 
 func (i *factoryVstsConfigurationPtrType) ToFactoryVstsConfigurationPtrOutputWithContext(ctx context.Context) FactoryVstsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FactoryVstsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FactoryVstsConfigurationOutput).ToFactoryVstsConfigurationPtrOutput()
 }
 
 type FactoryVstsConfigurationOutput struct{ *pulumi.OutputState }
@@ -2260,7 +2260,7 @@ func (i IntegrationRuntimeManagedCatalogInfoArgs) ToIntegrationRuntimeManagedCat
 }
 
 func (i IntegrationRuntimeManagedCatalogInfoArgs) ToIntegrationRuntimeManagedCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedCatalogInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCatalogInfoOutput).ToIntegrationRuntimeManagedCatalogInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCatalogInfoOutput).ToIntegrationRuntimeManagedCatalogInfoPtrOutput()
 }
 
 // IntegrationRuntimeManagedCatalogInfoPtrInput is an input type that accepts IntegrationRuntimeManagedCatalogInfoArgs, IntegrationRuntimeManagedCatalogInfoPtr and IntegrationRuntimeManagedCatalogInfoPtrOutput values.
@@ -2293,7 +2293,7 @@ func (i *integrationRuntimeManagedCatalogInfoPtrType) ToIntegrationRuntimeManage
 }
 
 func (i *integrationRuntimeManagedCatalogInfoPtrType) ToIntegrationRuntimeManagedCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedCatalogInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCatalogInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCatalogInfoOutput).ToIntegrationRuntimeManagedCatalogInfoPtrOutput()
 }
 
 type IntegrationRuntimeManagedCatalogInfoOutput struct{ *pulumi.OutputState }
@@ -2440,7 +2440,7 @@ func (i IntegrationRuntimeManagedCustomSetupScriptArgs) ToIntegrationRuntimeMana
 }
 
 func (i IntegrationRuntimeManagedCustomSetupScriptArgs) ToIntegrationRuntimeManagedCustomSetupScriptPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedCustomSetupScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCustomSetupScriptOutput).ToIntegrationRuntimeManagedCustomSetupScriptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCustomSetupScriptOutput).ToIntegrationRuntimeManagedCustomSetupScriptPtrOutput()
 }
 
 // IntegrationRuntimeManagedCustomSetupScriptPtrInput is an input type that accepts IntegrationRuntimeManagedCustomSetupScriptArgs, IntegrationRuntimeManagedCustomSetupScriptPtr and IntegrationRuntimeManagedCustomSetupScriptPtrOutput values.
@@ -2473,7 +2473,7 @@ func (i *integrationRuntimeManagedCustomSetupScriptPtrType) ToIntegrationRuntime
 }
 
 func (i *integrationRuntimeManagedCustomSetupScriptPtrType) ToIntegrationRuntimeManagedCustomSetupScriptPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedCustomSetupScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCustomSetupScriptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedCustomSetupScriptOutput).ToIntegrationRuntimeManagedCustomSetupScriptPtrOutput()
 }
 
 type IntegrationRuntimeManagedCustomSetupScriptOutput struct{ *pulumi.OutputState }
@@ -2592,7 +2592,7 @@ func (i IntegrationRuntimeManagedVnetIntegrationArgs) ToIntegrationRuntimeManage
 }
 
 func (i IntegrationRuntimeManagedVnetIntegrationArgs) ToIntegrationRuntimeManagedVnetIntegrationPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedVnetIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedVnetIntegrationOutput).ToIntegrationRuntimeManagedVnetIntegrationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedVnetIntegrationOutput).ToIntegrationRuntimeManagedVnetIntegrationPtrOutput()
 }
 
 // IntegrationRuntimeManagedVnetIntegrationPtrInput is an input type that accepts IntegrationRuntimeManagedVnetIntegrationArgs, IntegrationRuntimeManagedVnetIntegrationPtr and IntegrationRuntimeManagedVnetIntegrationPtrOutput values.
@@ -2625,7 +2625,7 @@ func (i *integrationRuntimeManagedVnetIntegrationPtrType) ToIntegrationRuntimeMa
 }
 
 func (i *integrationRuntimeManagedVnetIntegrationPtrType) ToIntegrationRuntimeManagedVnetIntegrationPtrOutputWithContext(ctx context.Context) IntegrationRuntimeManagedVnetIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedVnetIntegrationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedVnetIntegrationOutput).ToIntegrationRuntimeManagedVnetIntegrationPtrOutput()
 }
 
 type IntegrationRuntimeManagedVnetIntegrationOutput struct{ *pulumi.OutputState }
@@ -2839,7 +2839,7 @@ func (i LinkedServiceSynapseKeyVaultPasswordArgs) ToLinkedServiceSynapseKeyVault
 }
 
 func (i LinkedServiceSynapseKeyVaultPasswordArgs) ToLinkedServiceSynapseKeyVaultPasswordPtrOutputWithContext(ctx context.Context) LinkedServiceSynapseKeyVaultPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSynapseKeyVaultPasswordOutput).ToLinkedServiceSynapseKeyVaultPasswordPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSynapseKeyVaultPasswordOutput).ToLinkedServiceSynapseKeyVaultPasswordPtrOutput()
 }
 
 // LinkedServiceSynapseKeyVaultPasswordPtrInput is an input type that accepts LinkedServiceSynapseKeyVaultPasswordArgs, LinkedServiceSynapseKeyVaultPasswordPtr and LinkedServiceSynapseKeyVaultPasswordPtrOutput values.
@@ -2872,7 +2872,7 @@ func (i *linkedServiceSynapseKeyVaultPasswordPtrType) ToLinkedServiceSynapseKeyV
 }
 
 func (i *linkedServiceSynapseKeyVaultPasswordPtrType) ToLinkedServiceSynapseKeyVaultPasswordPtrOutputWithContext(ctx context.Context) LinkedServiceSynapseKeyVaultPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSynapseKeyVaultPasswordPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSynapseKeyVaultPasswordOutput).ToLinkedServiceSynapseKeyVaultPasswordPtrOutput()
 }
 
 type LinkedServiceSynapseKeyVaultPasswordOutput struct{ *pulumi.OutputState }

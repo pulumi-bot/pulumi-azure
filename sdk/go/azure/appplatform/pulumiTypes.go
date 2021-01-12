@@ -56,7 +56,7 @@ func (i SpringCloudAppIdentityArgs) ToSpringCloudAppIdentityPtrOutput() SpringCl
 }
 
 func (i SpringCloudAppIdentityArgs) ToSpringCloudAppIdentityPtrOutputWithContext(ctx context.Context) SpringCloudAppIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppIdentityOutput).ToSpringCloudAppIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppIdentityOutput).ToSpringCloudAppIdentityPtrOutput()
 }
 
 // SpringCloudAppIdentityPtrInput is an input type that accepts SpringCloudAppIdentityArgs, SpringCloudAppIdentityPtr and SpringCloudAppIdentityPtrOutput values.
@@ -89,7 +89,7 @@ func (i *springCloudAppIdentityPtrType) ToSpringCloudAppIdentityPtrOutput() Spri
 }
 
 func (i *springCloudAppIdentityPtrType) ToSpringCloudAppIdentityPtrOutputWithContext(ctx context.Context) SpringCloudAppIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppIdentityOutput).ToSpringCloudAppIdentityPtrOutput()
 }
 
 type SpringCloudAppIdentityOutput struct{ *pulumi.OutputState }
@@ -221,7 +221,7 @@ func (i SpringCloudAppPersistentDiskArgs) ToSpringCloudAppPersistentDiskPtrOutpu
 }
 
 func (i SpringCloudAppPersistentDiskArgs) ToSpringCloudAppPersistentDiskPtrOutputWithContext(ctx context.Context) SpringCloudAppPersistentDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppPersistentDiskOutput).ToSpringCloudAppPersistentDiskPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppPersistentDiskOutput).ToSpringCloudAppPersistentDiskPtrOutput()
 }
 
 // SpringCloudAppPersistentDiskPtrInput is an input type that accepts SpringCloudAppPersistentDiskArgs, SpringCloudAppPersistentDiskPtr and SpringCloudAppPersistentDiskPtrOutput values.
@@ -254,7 +254,7 @@ func (i *springCloudAppPersistentDiskPtrType) ToSpringCloudAppPersistentDiskPtrO
 }
 
 func (i *springCloudAppPersistentDiskPtrType) ToSpringCloudAppPersistentDiskPtrOutputWithContext(ctx context.Context) SpringCloudAppPersistentDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppPersistentDiskPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudAppPersistentDiskOutput).ToSpringCloudAppPersistentDiskPtrOutput()
 }
 
 type SpringCloudAppPersistentDiskOutput struct{ *pulumi.OutputState }
@@ -387,7 +387,7 @@ func (i SpringCloudServiceConfigServerGitSettingArgs) ToSpringCloudServiceConfig
 }
 
 func (i SpringCloudServiceConfigServerGitSettingArgs) ToSpringCloudServiceConfigServerGitSettingPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingOutput).ToSpringCloudServiceConfigServerGitSettingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingOutput).ToSpringCloudServiceConfigServerGitSettingPtrOutput()
 }
 
 // SpringCloudServiceConfigServerGitSettingPtrInput is an input type that accepts SpringCloudServiceConfigServerGitSettingArgs, SpringCloudServiceConfigServerGitSettingPtr and SpringCloudServiceConfigServerGitSettingPtrOutput values.
@@ -420,7 +420,7 @@ func (i *springCloudServiceConfigServerGitSettingPtrType) ToSpringCloudServiceCo
 }
 
 func (i *springCloudServiceConfigServerGitSettingPtrType) ToSpringCloudServiceConfigServerGitSettingPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingOutput).ToSpringCloudServiceConfigServerGitSettingPtrOutput()
 }
 
 type SpringCloudServiceConfigServerGitSettingOutput struct{ *pulumi.OutputState }
@@ -603,7 +603,7 @@ func (i SpringCloudServiceConfigServerGitSettingHttpBasicAuthArgs) ToSpringCloud
 }
 
 func (i SpringCloudServiceConfigServerGitSettingHttpBasicAuthArgs) ToSpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput()
 }
 
 // SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrInput is an input type that accepts SpringCloudServiceConfigServerGitSettingHttpBasicAuthArgs, SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtr and SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput values.
@@ -636,7 +636,7 @@ func (i *springCloudServiceConfigServerGitSettingHttpBasicAuthPtrType) ToSpringC
 }
 
 func (i *springCloudServiceConfigServerGitSettingHttpBasicAuthPtrType) ToSpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingHttpBasicAuthPtrOutput()
 }
 
 type SpringCloudServiceConfigServerGitSettingHttpBasicAuthOutput struct{ *pulumi.OutputState }
@@ -910,7 +910,7 @@ func (i SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthArgs) ToS
 }
 
 func (i SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthArgs) ToSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput()
 }
 
 // SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrInput is an input type that accepts SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthArgs, SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtr and SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput values.
@@ -943,7 +943,7 @@ func (i *springCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrType)
 }
 
 func (i *springCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrType) ToSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthPtrOutput()
 }
 
 type SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuthOutput struct{ *pulumi.OutputState }
@@ -1070,7 +1070,7 @@ func (i SpringCloudServiceConfigServerGitSettingRepositorySshAuthArgs) ToSpringC
 }
 
 func (i SpringCloudServiceConfigServerGitSettingRepositorySshAuthArgs) ToSpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositorySshAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositorySshAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput()
 }
 
 // SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrInput is an input type that accepts SpringCloudServiceConfigServerGitSettingRepositorySshAuthArgs, SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtr and SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput values.
@@ -1103,7 +1103,7 @@ func (i *springCloudServiceConfigServerGitSettingRepositorySshAuthPtrType) ToSpr
 }
 
 func (i *springCloudServiceConfigServerGitSettingRepositorySshAuthPtrType) ToSpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingRepositorySshAuthOutput).ToSpringCloudServiceConfigServerGitSettingRepositorySshAuthPtrOutput()
 }
 
 type SpringCloudServiceConfigServerGitSettingRepositorySshAuthOutput struct{ *pulumi.OutputState }
@@ -1262,7 +1262,7 @@ func (i SpringCloudServiceConfigServerGitSettingSshAuthArgs) ToSpringCloudServic
 }
 
 func (i SpringCloudServiceConfigServerGitSettingSshAuthArgs) ToSpringCloudServiceConfigServerGitSettingSshAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingSshAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingSshAuthOutput).ToSpringCloudServiceConfigServerGitSettingSshAuthPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingSshAuthOutput).ToSpringCloudServiceConfigServerGitSettingSshAuthPtrOutput()
 }
 
 // SpringCloudServiceConfigServerGitSettingSshAuthPtrInput is an input type that accepts SpringCloudServiceConfigServerGitSettingSshAuthArgs, SpringCloudServiceConfigServerGitSettingSshAuthPtr and SpringCloudServiceConfigServerGitSettingSshAuthPtrOutput values.
@@ -1295,7 +1295,7 @@ func (i *springCloudServiceConfigServerGitSettingSshAuthPtrType) ToSpringCloudSe
 }
 
 func (i *springCloudServiceConfigServerGitSettingSshAuthPtrType) ToSpringCloudServiceConfigServerGitSettingSshAuthPtrOutputWithContext(ctx context.Context) SpringCloudServiceConfigServerGitSettingSshAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingSshAuthPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceConfigServerGitSettingSshAuthOutput).ToSpringCloudServiceConfigServerGitSettingSshAuthPtrOutput()
 }
 
 type SpringCloudServiceConfigServerGitSettingSshAuthOutput struct{ *pulumi.OutputState }
@@ -1456,7 +1456,7 @@ func (i SpringCloudServiceNetworkArgs) ToSpringCloudServiceNetworkPtrOutput() Sp
 }
 
 func (i SpringCloudServiceNetworkArgs) ToSpringCloudServiceNetworkPtrOutputWithContext(ctx context.Context) SpringCloudServiceNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceNetworkOutput).ToSpringCloudServiceNetworkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceNetworkOutput).ToSpringCloudServiceNetworkPtrOutput()
 }
 
 // SpringCloudServiceNetworkPtrInput is an input type that accepts SpringCloudServiceNetworkArgs, SpringCloudServiceNetworkPtr and SpringCloudServiceNetworkPtrOutput values.
@@ -1489,7 +1489,7 @@ func (i *springCloudServiceNetworkPtrType) ToSpringCloudServiceNetworkPtrOutput(
 }
 
 func (i *springCloudServiceNetworkPtrType) ToSpringCloudServiceNetworkPtrOutputWithContext(ctx context.Context) SpringCloudServiceNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceNetworkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceNetworkOutput).ToSpringCloudServiceNetworkPtrOutput()
 }
 
 type SpringCloudServiceNetworkOutput struct{ *pulumi.OutputState }
@@ -1647,7 +1647,7 @@ func (i SpringCloudServiceTraceArgs) ToSpringCloudServiceTracePtrOutput() Spring
 }
 
 func (i SpringCloudServiceTraceArgs) ToSpringCloudServiceTracePtrOutputWithContext(ctx context.Context) SpringCloudServiceTracePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceTraceOutput).ToSpringCloudServiceTracePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceTraceOutput).ToSpringCloudServiceTracePtrOutput()
 }
 
 // SpringCloudServiceTracePtrInput is an input type that accepts SpringCloudServiceTraceArgs, SpringCloudServiceTracePtr and SpringCloudServiceTracePtrOutput values.
@@ -1680,7 +1680,7 @@ func (i *springCloudServiceTracePtrType) ToSpringCloudServiceTracePtrOutput() Sp
 }
 
 func (i *springCloudServiceTracePtrType) ToSpringCloudServiceTracePtrOutputWithContext(ctx context.Context) SpringCloudServiceTracePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceTracePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpringCloudServiceTraceOutput).ToSpringCloudServiceTracePtrOutput()
 }
 
 type SpringCloudServiceTraceOutput struct{ *pulumi.OutputState }

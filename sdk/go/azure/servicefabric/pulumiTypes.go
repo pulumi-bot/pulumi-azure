@@ -56,7 +56,7 @@ func (i ClusterAzureActiveDirectoryArgs) ToClusterAzureActiveDirectoryPtrOutput(
 }
 
 func (i ClusterAzureActiveDirectoryArgs) ToClusterAzureActiveDirectoryPtrOutputWithContext(ctx context.Context) ClusterAzureActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureActiveDirectoryOutput).ToClusterAzureActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureActiveDirectoryOutput).ToClusterAzureActiveDirectoryPtrOutput()
 }
 
 // ClusterAzureActiveDirectoryPtrInput is an input type that accepts ClusterAzureActiveDirectoryArgs, ClusterAzureActiveDirectoryPtr and ClusterAzureActiveDirectoryPtrOutput values.
@@ -89,7 +89,7 @@ func (i *clusterAzureActiveDirectoryPtrType) ToClusterAzureActiveDirectoryPtrOut
 }
 
 func (i *clusterAzureActiveDirectoryPtrType) ToClusterAzureActiveDirectoryPtrOutputWithContext(ctx context.Context) ClusterAzureActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureActiveDirectoryOutput).ToClusterAzureActiveDirectoryPtrOutput()
 }
 
 type ClusterAzureActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -225,7 +225,7 @@ func (i ClusterCertificateArgs) ToClusterCertificatePtrOutput() ClusterCertifica
 }
 
 func (i ClusterCertificateArgs) ToClusterCertificatePtrOutputWithContext(ctx context.Context) ClusterCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateOutput).ToClusterCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateOutput).ToClusterCertificatePtrOutput()
 }
 
 // ClusterCertificatePtrInput is an input type that accepts ClusterCertificateArgs, ClusterCertificatePtr and ClusterCertificatePtrOutput values.
@@ -258,7 +258,7 @@ func (i *clusterCertificatePtrType) ToClusterCertificatePtrOutput() ClusterCerti
 }
 
 func (i *clusterCertificatePtrType) ToClusterCertificatePtrOutputWithContext(ctx context.Context) ClusterCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateOutput).ToClusterCertificatePtrOutput()
 }
 
 type ClusterCertificateOutput struct{ *pulumi.OutputState }
@@ -390,7 +390,7 @@ func (i ClusterCertificateCommonNamesArgs) ToClusterCertificateCommonNamesPtrOut
 }
 
 func (i ClusterCertificateCommonNamesArgs) ToClusterCertificateCommonNamesPtrOutputWithContext(ctx context.Context) ClusterCertificateCommonNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateCommonNamesOutput).ToClusterCertificateCommonNamesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateCommonNamesOutput).ToClusterCertificateCommonNamesPtrOutput()
 }
 
 // ClusterCertificateCommonNamesPtrInput is an input type that accepts ClusterCertificateCommonNamesArgs, ClusterCertificateCommonNamesPtr and ClusterCertificateCommonNamesPtrOutput values.
@@ -423,7 +423,7 @@ func (i *clusterCertificateCommonNamesPtrType) ToClusterCertificateCommonNamesPt
 }
 
 func (i *clusterCertificateCommonNamesPtrType) ToClusterCertificateCommonNamesPtrOutputWithContext(ctx context.Context) ClusterCertificateCommonNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateCommonNamesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateCommonNamesOutput).ToClusterCertificateCommonNamesPtrOutput()
 }
 
 type ClusterCertificateCommonNamesOutput struct{ *pulumi.OutputState }
@@ -876,7 +876,7 @@ func (i ClusterDiagnosticsConfigArgs) ToClusterDiagnosticsConfigPtrOutput() Clus
 }
 
 func (i ClusterDiagnosticsConfigArgs) ToClusterDiagnosticsConfigPtrOutputWithContext(ctx context.Context) ClusterDiagnosticsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiagnosticsConfigOutput).ToClusterDiagnosticsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiagnosticsConfigOutput).ToClusterDiagnosticsConfigPtrOutput()
 }
 
 // ClusterDiagnosticsConfigPtrInput is an input type that accepts ClusterDiagnosticsConfigArgs, ClusterDiagnosticsConfigPtr and ClusterDiagnosticsConfigPtrOutput values.
@@ -909,7 +909,7 @@ func (i *clusterDiagnosticsConfigPtrType) ToClusterDiagnosticsConfigPtrOutput() 
 }
 
 func (i *clusterDiagnosticsConfigPtrType) ToClusterDiagnosticsConfigPtrOutputWithContext(ctx context.Context) ClusterDiagnosticsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiagnosticsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiagnosticsConfigOutput).ToClusterDiagnosticsConfigPtrOutput()
 }
 
 type ClusterDiagnosticsConfigOutput struct{ *pulumi.OutputState }
@@ -1364,7 +1364,7 @@ func (i ClusterNodeTypeApplicationPortsArgs) ToClusterNodeTypeApplicationPortsPt
 }
 
 func (i ClusterNodeTypeApplicationPortsArgs) ToClusterNodeTypeApplicationPortsPtrOutputWithContext(ctx context.Context) ClusterNodeTypeApplicationPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeApplicationPortsOutput).ToClusterNodeTypeApplicationPortsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeApplicationPortsOutput).ToClusterNodeTypeApplicationPortsPtrOutput()
 }
 
 // ClusterNodeTypeApplicationPortsPtrInput is an input type that accepts ClusterNodeTypeApplicationPortsArgs, ClusterNodeTypeApplicationPortsPtr and ClusterNodeTypeApplicationPortsPtrOutput values.
@@ -1397,7 +1397,7 @@ func (i *clusterNodeTypeApplicationPortsPtrType) ToClusterNodeTypeApplicationPor
 }
 
 func (i *clusterNodeTypeApplicationPortsPtrType) ToClusterNodeTypeApplicationPortsPtrOutputWithContext(ctx context.Context) ClusterNodeTypeApplicationPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeApplicationPortsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeApplicationPortsOutput).ToClusterNodeTypeApplicationPortsPtrOutput()
 }
 
 type ClusterNodeTypeApplicationPortsOutput struct{ *pulumi.OutputState }
@@ -1514,7 +1514,7 @@ func (i ClusterNodeTypeEphemeralPortsArgs) ToClusterNodeTypeEphemeralPortsPtrOut
 }
 
 func (i ClusterNodeTypeEphemeralPortsArgs) ToClusterNodeTypeEphemeralPortsPtrOutputWithContext(ctx context.Context) ClusterNodeTypeEphemeralPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeEphemeralPortsOutput).ToClusterNodeTypeEphemeralPortsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeEphemeralPortsOutput).ToClusterNodeTypeEphemeralPortsPtrOutput()
 }
 
 // ClusterNodeTypeEphemeralPortsPtrInput is an input type that accepts ClusterNodeTypeEphemeralPortsArgs, ClusterNodeTypeEphemeralPortsPtr and ClusterNodeTypeEphemeralPortsPtrOutput values.
@@ -1547,7 +1547,7 @@ func (i *clusterNodeTypeEphemeralPortsPtrType) ToClusterNodeTypeEphemeralPortsPt
 }
 
 func (i *clusterNodeTypeEphemeralPortsPtrType) ToClusterNodeTypeEphemeralPortsPtrOutputWithContext(ctx context.Context) ClusterNodeTypeEphemeralPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeEphemeralPortsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeEphemeralPortsOutput).ToClusterNodeTypeEphemeralPortsPtrOutput()
 }
 
 type ClusterNodeTypeEphemeralPortsOutput struct{ *pulumi.OutputState }
@@ -1668,7 +1668,7 @@ func (i ClusterReverseProxyCertificateArgs) ToClusterReverseProxyCertificatePtrO
 }
 
 func (i ClusterReverseProxyCertificateArgs) ToClusterReverseProxyCertificatePtrOutputWithContext(ctx context.Context) ClusterReverseProxyCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterReverseProxyCertificateOutput).ToClusterReverseProxyCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterReverseProxyCertificateOutput).ToClusterReverseProxyCertificatePtrOutput()
 }
 
 // ClusterReverseProxyCertificatePtrInput is an input type that accepts ClusterReverseProxyCertificateArgs, ClusterReverseProxyCertificatePtr and ClusterReverseProxyCertificatePtrOutput values.
@@ -1701,7 +1701,7 @@ func (i *clusterReverseProxyCertificatePtrType) ToClusterReverseProxyCertificate
 }
 
 func (i *clusterReverseProxyCertificatePtrType) ToClusterReverseProxyCertificatePtrOutputWithContext(ctx context.Context) ClusterReverseProxyCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterReverseProxyCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterReverseProxyCertificateOutput).ToClusterReverseProxyCertificatePtrOutput()
 }
 
 type ClusterReverseProxyCertificateOutput struct{ *pulumi.OutputState }
@@ -2130,7 +2130,7 @@ func (i MeshApplicationServiceCodePackageResourcesLimitsArgs) ToMeshApplicationS
 }
 
 func (i MeshApplicationServiceCodePackageResourcesLimitsArgs) ToMeshApplicationServiceCodePackageResourcesLimitsPtrOutputWithContext(ctx context.Context) MeshApplicationServiceCodePackageResourcesLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationServiceCodePackageResourcesLimitsOutput).ToMeshApplicationServiceCodePackageResourcesLimitsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationServiceCodePackageResourcesLimitsOutput).ToMeshApplicationServiceCodePackageResourcesLimitsPtrOutput()
 }
 
 // MeshApplicationServiceCodePackageResourcesLimitsPtrInput is an input type that accepts MeshApplicationServiceCodePackageResourcesLimitsArgs, MeshApplicationServiceCodePackageResourcesLimitsPtr and MeshApplicationServiceCodePackageResourcesLimitsPtrOutput values.
@@ -2163,7 +2163,7 @@ func (i *meshApplicationServiceCodePackageResourcesLimitsPtrType) ToMeshApplicat
 }
 
 func (i *meshApplicationServiceCodePackageResourcesLimitsPtrType) ToMeshApplicationServiceCodePackageResourcesLimitsPtrOutputWithContext(ctx context.Context) MeshApplicationServiceCodePackageResourcesLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationServiceCodePackageResourcesLimitsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshApplicationServiceCodePackageResourcesLimitsOutput).ToMeshApplicationServiceCodePackageResourcesLimitsPtrOutput()
 }
 
 type MeshApplicationServiceCodePackageResourcesLimitsOutput struct{ *pulumi.OutputState }

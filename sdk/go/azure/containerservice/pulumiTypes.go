@@ -248,7 +248,7 @@ func (i GroupContainerGpuArgs) ToGroupContainerGpuPtrOutput() GroupContainerGpuP
 }
 
 func (i GroupContainerGpuArgs) ToGroupContainerGpuPtrOutputWithContext(ctx context.Context) GroupContainerGpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerGpuOutput).ToGroupContainerGpuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerGpuOutput).ToGroupContainerGpuPtrOutput()
 }
 
 // GroupContainerGpuPtrInput is an input type that accepts GroupContainerGpuArgs, GroupContainerGpuPtr and GroupContainerGpuPtrOutput values.
@@ -281,7 +281,7 @@ func (i *groupContainerGpuPtrType) ToGroupContainerGpuPtrOutput() GroupContainer
 }
 
 func (i *groupContainerGpuPtrType) ToGroupContainerGpuPtrOutputWithContext(ctx context.Context) GroupContainerGpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerGpuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerGpuOutput).ToGroupContainerGpuPtrOutput()
 }
 
 type GroupContainerGpuOutput struct{ *pulumi.OutputState }
@@ -418,7 +418,7 @@ func (i GroupContainerLivenessProbeArgs) ToGroupContainerLivenessProbePtrOutput(
 }
 
 func (i GroupContainerLivenessProbeArgs) ToGroupContainerLivenessProbePtrOutputWithContext(ctx context.Context) GroupContainerLivenessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerLivenessProbeOutput).ToGroupContainerLivenessProbePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerLivenessProbeOutput).ToGroupContainerLivenessProbePtrOutput()
 }
 
 // GroupContainerLivenessProbePtrInput is an input type that accepts GroupContainerLivenessProbeArgs, GroupContainerLivenessProbePtr and GroupContainerLivenessProbePtrOutput values.
@@ -451,7 +451,7 @@ func (i *groupContainerLivenessProbePtrType) ToGroupContainerLivenessProbePtrOut
 }
 
 func (i *groupContainerLivenessProbePtrType) ToGroupContainerLivenessProbePtrOutputWithContext(ctx context.Context) GroupContainerLivenessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerLivenessProbePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerLivenessProbeOutput).ToGroupContainerLivenessProbePtrOutput()
 }
 
 type GroupContainerLivenessProbeOutput struct{ *pulumi.OutputState }
@@ -884,7 +884,7 @@ func (i GroupContainerReadinessProbeArgs) ToGroupContainerReadinessProbePtrOutpu
 }
 
 func (i GroupContainerReadinessProbeArgs) ToGroupContainerReadinessProbePtrOutputWithContext(ctx context.Context) GroupContainerReadinessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerReadinessProbeOutput).ToGroupContainerReadinessProbePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerReadinessProbeOutput).ToGroupContainerReadinessProbePtrOutput()
 }
 
 // GroupContainerReadinessProbePtrInput is an input type that accepts GroupContainerReadinessProbeArgs, GroupContainerReadinessProbePtr and GroupContainerReadinessProbePtrOutput values.
@@ -917,7 +917,7 @@ func (i *groupContainerReadinessProbePtrType) ToGroupContainerReadinessProbePtrO
 }
 
 func (i *groupContainerReadinessProbePtrType) ToGroupContainerReadinessProbePtrOutputWithContext(ctx context.Context) GroupContainerReadinessProbePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerReadinessProbePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerReadinessProbeOutput).ToGroupContainerReadinessProbePtrOutput()
 }
 
 type GroupContainerReadinessProbeOutput struct{ *pulumi.OutputState }
@@ -1397,7 +1397,7 @@ func (i GroupContainerVolumeGitRepoArgs) ToGroupContainerVolumeGitRepoPtrOutput(
 }
 
 func (i GroupContainerVolumeGitRepoArgs) ToGroupContainerVolumeGitRepoPtrOutputWithContext(ctx context.Context) GroupContainerVolumeGitRepoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerVolumeGitRepoOutput).ToGroupContainerVolumeGitRepoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerVolumeGitRepoOutput).ToGroupContainerVolumeGitRepoPtrOutput()
 }
 
 // GroupContainerVolumeGitRepoPtrInput is an input type that accepts GroupContainerVolumeGitRepoArgs, GroupContainerVolumeGitRepoPtr and GroupContainerVolumeGitRepoPtrOutput values.
@@ -1430,7 +1430,7 @@ func (i *groupContainerVolumeGitRepoPtrType) ToGroupContainerVolumeGitRepoPtrOut
 }
 
 func (i *groupContainerVolumeGitRepoPtrType) ToGroupContainerVolumeGitRepoPtrOutputWithContext(ctx context.Context) GroupContainerVolumeGitRepoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerVolumeGitRepoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupContainerVolumeGitRepoOutput).ToGroupContainerVolumeGitRepoPtrOutput()
 }
 
 type GroupContainerVolumeGitRepoOutput struct{ *pulumi.OutputState }
@@ -1558,7 +1558,7 @@ func (i GroupDiagnosticsArgs) ToGroupDiagnosticsPtrOutput() GroupDiagnosticsPtrO
 }
 
 func (i GroupDiagnosticsArgs) ToGroupDiagnosticsPtrOutputWithContext(ctx context.Context) GroupDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsOutput).ToGroupDiagnosticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsOutput).ToGroupDiagnosticsPtrOutput()
 }
 
 // GroupDiagnosticsPtrInput is an input type that accepts GroupDiagnosticsArgs, GroupDiagnosticsPtr and GroupDiagnosticsPtrOutput values.
@@ -1591,7 +1591,7 @@ func (i *groupDiagnosticsPtrType) ToGroupDiagnosticsPtrOutput() GroupDiagnostics
 }
 
 func (i *groupDiagnosticsPtrType) ToGroupDiagnosticsPtrOutputWithContext(ctx context.Context) GroupDiagnosticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsOutput).ToGroupDiagnosticsPtrOutput()
 }
 
 type GroupDiagnosticsOutput struct{ *pulumi.OutputState }
@@ -1701,7 +1701,7 @@ func (i GroupDiagnosticsLogAnalyticsArgs) ToGroupDiagnosticsLogAnalyticsPtrOutpu
 }
 
 func (i GroupDiagnosticsLogAnalyticsArgs) ToGroupDiagnosticsLogAnalyticsPtrOutputWithContext(ctx context.Context) GroupDiagnosticsLogAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsLogAnalyticsOutput).ToGroupDiagnosticsLogAnalyticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsLogAnalyticsOutput).ToGroupDiagnosticsLogAnalyticsPtrOutput()
 }
 
 // GroupDiagnosticsLogAnalyticsPtrInput is an input type that accepts GroupDiagnosticsLogAnalyticsArgs, GroupDiagnosticsLogAnalyticsPtr and GroupDiagnosticsLogAnalyticsPtrOutput values.
@@ -1734,7 +1734,7 @@ func (i *groupDiagnosticsLogAnalyticsPtrType) ToGroupDiagnosticsLogAnalyticsPtrO
 }
 
 func (i *groupDiagnosticsLogAnalyticsPtrType) ToGroupDiagnosticsLogAnalyticsPtrOutputWithContext(ctx context.Context) GroupDiagnosticsLogAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsLogAnalyticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDiagnosticsLogAnalyticsOutput).ToGroupDiagnosticsLogAnalyticsPtrOutput()
 }
 
 type GroupDiagnosticsLogAnalyticsOutput struct{ *pulumi.OutputState }
@@ -1885,7 +1885,7 @@ func (i GroupDnsConfigArgs) ToGroupDnsConfigPtrOutput() GroupDnsConfigPtrOutput 
 }
 
 func (i GroupDnsConfigArgs) ToGroupDnsConfigPtrOutputWithContext(ctx context.Context) GroupDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDnsConfigOutput).ToGroupDnsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDnsConfigOutput).ToGroupDnsConfigPtrOutput()
 }
 
 // GroupDnsConfigPtrInput is an input type that accepts GroupDnsConfigArgs, GroupDnsConfigPtr and GroupDnsConfigPtrOutput values.
@@ -1918,7 +1918,7 @@ func (i *groupDnsConfigPtrType) ToGroupDnsConfigPtrOutput() GroupDnsConfigPtrOut
 }
 
 func (i *groupDnsConfigPtrType) ToGroupDnsConfigPtrOutputWithContext(ctx context.Context) GroupDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupDnsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDnsConfigOutput).ToGroupDnsConfigPtrOutput()
 }
 
 type GroupDnsConfigOutput struct{ *pulumi.OutputState }
@@ -2052,7 +2052,7 @@ func (i GroupIdentityArgs) ToGroupIdentityPtrOutput() GroupIdentityPtrOutput {
 }
 
 func (i GroupIdentityArgs) ToGroupIdentityPtrOutputWithContext(ctx context.Context) GroupIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupIdentityOutput).ToGroupIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupIdentityOutput).ToGroupIdentityPtrOutput()
 }
 
 // GroupIdentityPtrInput is an input type that accepts GroupIdentityArgs, GroupIdentityPtr and GroupIdentityPtrOutput values.
@@ -2085,7 +2085,7 @@ func (i *groupIdentityPtrType) ToGroupIdentityPtrOutput() GroupIdentityPtrOutput
 }
 
 func (i *groupIdentityPtrType) ToGroupIdentityPtrOutputWithContext(ctx context.Context) GroupIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupIdentityOutput).ToGroupIdentityPtrOutput()
 }
 
 type GroupIdentityOutput struct{ *pulumi.OutputState }
@@ -2342,7 +2342,7 @@ func (i KubernetesClusterAddonProfileArgs) ToKubernetesClusterAddonProfilePtrOut
 }
 
 func (i KubernetesClusterAddonProfileArgs) ToKubernetesClusterAddonProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOutput).ToKubernetesClusterAddonProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOutput).ToKubernetesClusterAddonProfilePtrOutput()
 }
 
 // KubernetesClusterAddonProfilePtrInput is an input type that accepts KubernetesClusterAddonProfileArgs, KubernetesClusterAddonProfilePtr and KubernetesClusterAddonProfilePtrOutput values.
@@ -2375,7 +2375,7 @@ func (i *kubernetesClusterAddonProfilePtrType) ToKubernetesClusterAddonProfilePt
 }
 
 func (i *kubernetesClusterAddonProfilePtrType) ToKubernetesClusterAddonProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOutput).ToKubernetesClusterAddonProfilePtrOutput()
 }
 
 type KubernetesClusterAddonProfileOutput struct{ *pulumi.OutputState }
@@ -2543,7 +2543,7 @@ func (i KubernetesClusterAddonProfileAciConnectorLinuxArgs) ToKubernetesClusterA
 }
 
 func (i KubernetesClusterAddonProfileAciConnectorLinuxArgs) ToKubernetesClusterAddonProfileAciConnectorLinuxPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileAciConnectorLinuxPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAciConnectorLinuxOutput).ToKubernetesClusterAddonProfileAciConnectorLinuxPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAciConnectorLinuxOutput).ToKubernetesClusterAddonProfileAciConnectorLinuxPtrOutput()
 }
 
 // KubernetesClusterAddonProfileAciConnectorLinuxPtrInput is an input type that accepts KubernetesClusterAddonProfileAciConnectorLinuxArgs, KubernetesClusterAddonProfileAciConnectorLinuxPtr and KubernetesClusterAddonProfileAciConnectorLinuxPtrOutput values.
@@ -2576,7 +2576,7 @@ func (i *kubernetesClusterAddonProfileAciConnectorLinuxPtrType) ToKubernetesClus
 }
 
 func (i *kubernetesClusterAddonProfileAciConnectorLinuxPtrType) ToKubernetesClusterAddonProfileAciConnectorLinuxPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileAciConnectorLinuxPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAciConnectorLinuxPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAciConnectorLinuxOutput).ToKubernetesClusterAddonProfileAciConnectorLinuxPtrOutput()
 }
 
 type KubernetesClusterAddonProfileAciConnectorLinuxOutput struct{ *pulumi.OutputState }
@@ -2691,7 +2691,7 @@ func (i KubernetesClusterAddonProfileAzurePolicyArgs) ToKubernetesClusterAddonPr
 }
 
 func (i KubernetesClusterAddonProfileAzurePolicyArgs) ToKubernetesClusterAddonProfileAzurePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileAzurePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAzurePolicyOutput).ToKubernetesClusterAddonProfileAzurePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAzurePolicyOutput).ToKubernetesClusterAddonProfileAzurePolicyPtrOutput()
 }
 
 // KubernetesClusterAddonProfileAzurePolicyPtrInput is an input type that accepts KubernetesClusterAddonProfileAzurePolicyArgs, KubernetesClusterAddonProfileAzurePolicyPtr and KubernetesClusterAddonProfileAzurePolicyPtrOutput values.
@@ -2724,7 +2724,7 @@ func (i *kubernetesClusterAddonProfileAzurePolicyPtrType) ToKubernetesClusterAdd
 }
 
 func (i *kubernetesClusterAddonProfileAzurePolicyPtrType) ToKubernetesClusterAddonProfileAzurePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileAzurePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAzurePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileAzurePolicyOutput).ToKubernetesClusterAddonProfileAzurePolicyPtrOutput()
 }
 
 type KubernetesClusterAddonProfileAzurePolicyOutput struct{ *pulumi.OutputState }
@@ -2826,7 +2826,7 @@ func (i KubernetesClusterAddonProfileHttpApplicationRoutingArgs) ToKubernetesClu
 }
 
 func (i KubernetesClusterAddonProfileHttpApplicationRoutingArgs) ToKubernetesClusterAddonProfileHttpApplicationRoutingPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileHttpApplicationRoutingOutput).ToKubernetesClusterAddonProfileHttpApplicationRoutingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileHttpApplicationRoutingOutput).ToKubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput()
 }
 
 // KubernetesClusterAddonProfileHttpApplicationRoutingPtrInput is an input type that accepts KubernetesClusterAddonProfileHttpApplicationRoutingArgs, KubernetesClusterAddonProfileHttpApplicationRoutingPtr and KubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput values.
@@ -2859,7 +2859,7 @@ func (i *kubernetesClusterAddonProfileHttpApplicationRoutingPtrType) ToKubernete
 }
 
 func (i *kubernetesClusterAddonProfileHttpApplicationRoutingPtrType) ToKubernetesClusterAddonProfileHttpApplicationRoutingPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileHttpApplicationRoutingOutput).ToKubernetesClusterAddonProfileHttpApplicationRoutingPtrOutput()
 }
 
 type KubernetesClusterAddonProfileHttpApplicationRoutingOutput struct{ *pulumi.OutputState }
@@ -2976,7 +2976,7 @@ func (i KubernetesClusterAddonProfileKubeDashboardArgs) ToKubernetesClusterAddon
 }
 
 func (i KubernetesClusterAddonProfileKubeDashboardArgs) ToKubernetesClusterAddonProfileKubeDashboardPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileKubeDashboardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileKubeDashboardOutput).ToKubernetesClusterAddonProfileKubeDashboardPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileKubeDashboardOutput).ToKubernetesClusterAddonProfileKubeDashboardPtrOutput()
 }
 
 // KubernetesClusterAddonProfileKubeDashboardPtrInput is an input type that accepts KubernetesClusterAddonProfileKubeDashboardArgs, KubernetesClusterAddonProfileKubeDashboardPtr and KubernetesClusterAddonProfileKubeDashboardPtrOutput values.
@@ -3009,7 +3009,7 @@ func (i *kubernetesClusterAddonProfileKubeDashboardPtrType) ToKubernetesClusterA
 }
 
 func (i *kubernetesClusterAddonProfileKubeDashboardPtrType) ToKubernetesClusterAddonProfileKubeDashboardPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileKubeDashboardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileKubeDashboardPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileKubeDashboardOutput).ToKubernetesClusterAddonProfileKubeDashboardPtrOutput()
 }
 
 type KubernetesClusterAddonProfileKubeDashboardOutput struct{ *pulumi.OutputState }
@@ -3117,7 +3117,7 @@ func (i KubernetesClusterAddonProfileOmsAgentArgs) ToKubernetesClusterAddonProfi
 }
 
 func (i KubernetesClusterAddonProfileOmsAgentArgs) ToKubernetesClusterAddonProfileOmsAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileOmsAgentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOmsAgentOutput).ToKubernetesClusterAddonProfileOmsAgentPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOmsAgentOutput).ToKubernetesClusterAddonProfileOmsAgentPtrOutput()
 }
 
 // KubernetesClusterAddonProfileOmsAgentPtrInput is an input type that accepts KubernetesClusterAddonProfileOmsAgentArgs, KubernetesClusterAddonProfileOmsAgentPtr and KubernetesClusterAddonProfileOmsAgentPtrOutput values.
@@ -3150,7 +3150,7 @@ func (i *kubernetesClusterAddonProfileOmsAgentPtrType) ToKubernetesClusterAddonP
 }
 
 func (i *kubernetesClusterAddonProfileOmsAgentPtrType) ToKubernetesClusterAddonProfileOmsAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterAddonProfileOmsAgentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOmsAgentPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAddonProfileOmsAgentOutput).ToKubernetesClusterAddonProfileOmsAgentPtrOutput()
 }
 
 type KubernetesClusterAddonProfileOmsAgentOutput struct{ *pulumi.OutputState }
@@ -3427,7 +3427,7 @@ func (i KubernetesClusterAutoScalerProfileArgs) ToKubernetesClusterAutoScalerPro
 }
 
 func (i KubernetesClusterAutoScalerProfileArgs) ToKubernetesClusterAutoScalerProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterAutoScalerProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAutoScalerProfileOutput).ToKubernetesClusterAutoScalerProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAutoScalerProfileOutput).ToKubernetesClusterAutoScalerProfilePtrOutput()
 }
 
 // KubernetesClusterAutoScalerProfilePtrInput is an input type that accepts KubernetesClusterAutoScalerProfileArgs, KubernetesClusterAutoScalerProfilePtr and KubernetesClusterAutoScalerProfilePtrOutput values.
@@ -3460,7 +3460,7 @@ func (i *kubernetesClusterAutoScalerProfilePtrType) ToKubernetesClusterAutoScale
 }
 
 func (i *kubernetesClusterAutoScalerProfilePtrType) ToKubernetesClusterAutoScalerProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterAutoScalerProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAutoScalerProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAutoScalerProfileOutput).ToKubernetesClusterAutoScalerProfilePtrOutput()
 }
 
 type KubernetesClusterAutoScalerProfileOutput struct{ *pulumi.OutputState }
@@ -3740,7 +3740,7 @@ func (i KubernetesClusterDefaultNodePoolArgs) ToKubernetesClusterDefaultNodePool
 }
 
 func (i KubernetesClusterDefaultNodePoolArgs) ToKubernetesClusterDefaultNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterDefaultNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterDefaultNodePoolOutput).ToKubernetesClusterDefaultNodePoolPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterDefaultNodePoolOutput).ToKubernetesClusterDefaultNodePoolPtrOutput()
 }
 
 // KubernetesClusterDefaultNodePoolPtrInput is an input type that accepts KubernetesClusterDefaultNodePoolArgs, KubernetesClusterDefaultNodePoolPtr and KubernetesClusterDefaultNodePoolPtrOutput values.
@@ -3773,7 +3773,7 @@ func (i *kubernetesClusterDefaultNodePoolPtrType) ToKubernetesClusterDefaultNode
 }
 
 func (i *kubernetesClusterDefaultNodePoolPtrType) ToKubernetesClusterDefaultNodePoolPtrOutputWithContext(ctx context.Context) KubernetesClusterDefaultNodePoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterDefaultNodePoolPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterDefaultNodePoolOutput).ToKubernetesClusterDefaultNodePoolPtrOutput()
 }
 
 type KubernetesClusterDefaultNodePoolOutput struct{ *pulumi.OutputState }
@@ -4128,7 +4128,7 @@ func (i KubernetesClusterIdentityArgs) ToKubernetesClusterIdentityPtrOutput() Ku
 }
 
 func (i KubernetesClusterIdentityArgs) ToKubernetesClusterIdentityPtrOutputWithContext(ctx context.Context) KubernetesClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterIdentityOutput).ToKubernetesClusterIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterIdentityOutput).ToKubernetesClusterIdentityPtrOutput()
 }
 
 // KubernetesClusterIdentityPtrInput is an input type that accepts KubernetesClusterIdentityArgs, KubernetesClusterIdentityPtr and KubernetesClusterIdentityPtrOutput values.
@@ -4161,7 +4161,7 @@ func (i *kubernetesClusterIdentityPtrType) ToKubernetesClusterIdentityPtrOutput(
 }
 
 func (i *kubernetesClusterIdentityPtrType) ToKubernetesClusterIdentityPtrOutputWithContext(ctx context.Context) KubernetesClusterIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterIdentityOutput).ToKubernetesClusterIdentityPtrOutput()
 }
 
 type KubernetesClusterIdentityOutput struct{ *pulumi.OutputState }
@@ -4692,7 +4692,7 @@ func (i KubernetesClusterLinuxProfileArgs) ToKubernetesClusterLinuxProfilePtrOut
 }
 
 func (i KubernetesClusterLinuxProfileArgs) ToKubernetesClusterLinuxProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterLinuxProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileOutput).ToKubernetesClusterLinuxProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileOutput).ToKubernetesClusterLinuxProfilePtrOutput()
 }
 
 // KubernetesClusterLinuxProfilePtrInput is an input type that accepts KubernetesClusterLinuxProfileArgs, KubernetesClusterLinuxProfilePtr and KubernetesClusterLinuxProfilePtrOutput values.
@@ -4725,7 +4725,7 @@ func (i *kubernetesClusterLinuxProfilePtrType) ToKubernetesClusterLinuxProfilePt
 }
 
 func (i *kubernetesClusterLinuxProfilePtrType) ToKubernetesClusterLinuxProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterLinuxProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileOutput).ToKubernetesClusterLinuxProfilePtrOutput()
 }
 
 type KubernetesClusterLinuxProfileOutput struct{ *pulumi.OutputState }
@@ -4838,7 +4838,7 @@ func (i KubernetesClusterLinuxProfileSshKeyArgs) ToKubernetesClusterLinuxProfile
 }
 
 func (i KubernetesClusterLinuxProfileSshKeyArgs) ToKubernetesClusterLinuxProfileSshKeyPtrOutputWithContext(ctx context.Context) KubernetesClusterLinuxProfileSshKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileSshKeyOutput).ToKubernetesClusterLinuxProfileSshKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileSshKeyOutput).ToKubernetesClusterLinuxProfileSshKeyPtrOutput()
 }
 
 // KubernetesClusterLinuxProfileSshKeyPtrInput is an input type that accepts KubernetesClusterLinuxProfileSshKeyArgs, KubernetesClusterLinuxProfileSshKeyPtr and KubernetesClusterLinuxProfileSshKeyPtrOutput values.
@@ -4871,7 +4871,7 @@ func (i *kubernetesClusterLinuxProfileSshKeyPtrType) ToKubernetesClusterLinuxPro
 }
 
 func (i *kubernetesClusterLinuxProfileSshKeyPtrType) ToKubernetesClusterLinuxProfileSshKeyPtrOutputWithContext(ctx context.Context) KubernetesClusterLinuxProfileSshKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileSshKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterLinuxProfileSshKeyOutput).ToKubernetesClusterLinuxProfileSshKeyPtrOutput()
 }
 
 type KubernetesClusterLinuxProfileSshKeyOutput struct{ *pulumi.OutputState }
@@ -5005,7 +5005,7 @@ func (i KubernetesClusterNetworkProfileArgs) ToKubernetesClusterNetworkProfilePt
 }
 
 func (i KubernetesClusterNetworkProfileArgs) ToKubernetesClusterNetworkProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileOutput).ToKubernetesClusterNetworkProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileOutput).ToKubernetesClusterNetworkProfilePtrOutput()
 }
 
 // KubernetesClusterNetworkProfilePtrInput is an input type that accepts KubernetesClusterNetworkProfileArgs, KubernetesClusterNetworkProfilePtr and KubernetesClusterNetworkProfilePtrOutput values.
@@ -5038,7 +5038,7 @@ func (i *kubernetesClusterNetworkProfilePtrType) ToKubernetesClusterNetworkProfi
 }
 
 func (i *kubernetesClusterNetworkProfilePtrType) ToKubernetesClusterNetworkProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileOutput).ToKubernetesClusterNetworkProfilePtrOutput()
 }
 
 type KubernetesClusterNetworkProfileOutput struct{ *pulumi.OutputState }
@@ -5293,7 +5293,7 @@ func (i KubernetesClusterNetworkProfileLoadBalancerProfileArgs) ToKubernetesClus
 }
 
 func (i KubernetesClusterNetworkProfileLoadBalancerProfileArgs) ToKubernetesClusterNetworkProfileLoadBalancerProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileLoadBalancerProfileOutput).ToKubernetesClusterNetworkProfileLoadBalancerProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileLoadBalancerProfileOutput).ToKubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput()
 }
 
 // KubernetesClusterNetworkProfileLoadBalancerProfilePtrInput is an input type that accepts KubernetesClusterNetworkProfileLoadBalancerProfileArgs, KubernetesClusterNetworkProfileLoadBalancerProfilePtr and KubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput values.
@@ -5326,7 +5326,7 @@ func (i *kubernetesClusterNetworkProfileLoadBalancerProfilePtrType) ToKubernetes
 }
 
 func (i *kubernetesClusterNetworkProfileLoadBalancerProfilePtrType) ToKubernetesClusterNetworkProfileLoadBalancerProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkProfileLoadBalancerProfileOutput).ToKubernetesClusterNetworkProfileLoadBalancerProfilePtrOutput()
 }
 
 type KubernetesClusterNetworkProfileLoadBalancerProfileOutput struct{ *pulumi.OutputState }
@@ -5505,7 +5505,7 @@ func (i KubernetesClusterRoleBasedAccessControlArgs) ToKubernetesClusterRoleBase
 }
 
 func (i KubernetesClusterRoleBasedAccessControlArgs) ToKubernetesClusterRoleBasedAccessControlPtrOutputWithContext(ctx context.Context) KubernetesClusterRoleBasedAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlOutput).ToKubernetesClusterRoleBasedAccessControlPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlOutput).ToKubernetesClusterRoleBasedAccessControlPtrOutput()
 }
 
 // KubernetesClusterRoleBasedAccessControlPtrInput is an input type that accepts KubernetesClusterRoleBasedAccessControlArgs, KubernetesClusterRoleBasedAccessControlPtr and KubernetesClusterRoleBasedAccessControlPtrOutput values.
@@ -5538,7 +5538,7 @@ func (i *kubernetesClusterRoleBasedAccessControlPtrType) ToKubernetesClusterRole
 }
 
 func (i *kubernetesClusterRoleBasedAccessControlPtrType) ToKubernetesClusterRoleBasedAccessControlPtrOutputWithContext(ctx context.Context) KubernetesClusterRoleBasedAccessControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlOutput).ToKubernetesClusterRoleBasedAccessControlPtrOutput()
 }
 
 type KubernetesClusterRoleBasedAccessControlOutput struct{ *pulumi.OutputState }
@@ -5673,7 +5673,7 @@ func (i KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryArgs) ToKuber
 }
 
 func (i KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryArgs) ToKubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutputWithContext(ctx context.Context) KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryOutput).ToKubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryOutput).ToKubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput()
 }
 
 // KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrInput is an input type that accepts KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryArgs, KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtr and KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput values.
@@ -5706,7 +5706,7 @@ func (i *kubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrType) ToK
 }
 
 func (i *kubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrType) ToKubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutputWithContext(ctx context.Context) KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryOutput).ToKubernetesClusterRoleBasedAccessControlAzureActiveDirectoryPtrOutput()
 }
 
 type KubernetesClusterRoleBasedAccessControlAzureActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -5887,7 +5887,7 @@ func (i KubernetesClusterServicePrincipalArgs) ToKubernetesClusterServicePrincip
 }
 
 func (i KubernetesClusterServicePrincipalArgs) ToKubernetesClusterServicePrincipalPtrOutputWithContext(ctx context.Context) KubernetesClusterServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterServicePrincipalOutput).ToKubernetesClusterServicePrincipalPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterServicePrincipalOutput).ToKubernetesClusterServicePrincipalPtrOutput()
 }
 
 // KubernetesClusterServicePrincipalPtrInput is an input type that accepts KubernetesClusterServicePrincipalArgs, KubernetesClusterServicePrincipalPtr and KubernetesClusterServicePrincipalPtrOutput values.
@@ -5920,7 +5920,7 @@ func (i *kubernetesClusterServicePrincipalPtrType) ToKubernetesClusterServicePri
 }
 
 func (i *kubernetesClusterServicePrincipalPtrType) ToKubernetesClusterServicePrincipalPtrOutputWithContext(ctx context.Context) KubernetesClusterServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterServicePrincipalPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterServicePrincipalOutput).ToKubernetesClusterServicePrincipalPtrOutput()
 }
 
 type KubernetesClusterServicePrincipalOutput struct{ *pulumi.OutputState }
@@ -6037,7 +6037,7 @@ func (i KubernetesClusterWindowsProfileArgs) ToKubernetesClusterWindowsProfilePt
 }
 
 func (i KubernetesClusterWindowsProfileArgs) ToKubernetesClusterWindowsProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterWindowsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterWindowsProfileOutput).ToKubernetesClusterWindowsProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterWindowsProfileOutput).ToKubernetesClusterWindowsProfilePtrOutput()
 }
 
 // KubernetesClusterWindowsProfilePtrInput is an input type that accepts KubernetesClusterWindowsProfileArgs, KubernetesClusterWindowsProfilePtr and KubernetesClusterWindowsProfilePtrOutput values.
@@ -6070,7 +6070,7 @@ func (i *kubernetesClusterWindowsProfilePtrType) ToKubernetesClusterWindowsProfi
 }
 
 func (i *kubernetesClusterWindowsProfilePtrType) ToKubernetesClusterWindowsProfilePtrOutputWithContext(ctx context.Context) KubernetesClusterWindowsProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterWindowsProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterWindowsProfileOutput).ToKubernetesClusterWindowsProfilePtrOutput()
 }
 
 type KubernetesClusterWindowsProfileOutput struct{ *pulumi.OutputState }
@@ -6191,7 +6191,7 @@ func (i RegistryNetworkRuleSetArgs) ToRegistryNetworkRuleSetPtrOutput() Registry
 }
 
 func (i RegistryNetworkRuleSetArgs) ToRegistryNetworkRuleSetPtrOutputWithContext(ctx context.Context) RegistryNetworkRuleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryNetworkRuleSetOutput).ToRegistryNetworkRuleSetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryNetworkRuleSetOutput).ToRegistryNetworkRuleSetPtrOutput()
 }
 
 // RegistryNetworkRuleSetPtrInput is an input type that accepts RegistryNetworkRuleSetArgs, RegistryNetworkRuleSetPtr and RegistryNetworkRuleSetPtrOutput values.
@@ -6224,7 +6224,7 @@ func (i *registryNetworkRuleSetPtrType) ToRegistryNetworkRuleSetPtrOutput() Regi
 }
 
 func (i *registryNetworkRuleSetPtrType) ToRegistryNetworkRuleSetPtrOutputWithContext(ctx context.Context) RegistryNetworkRuleSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryNetworkRuleSetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryNetworkRuleSetOutput).ToRegistryNetworkRuleSetPtrOutput()
 }
 
 type RegistryNetworkRuleSetOutput struct{ *pulumi.OutputState }
@@ -6568,7 +6568,7 @@ func (i RegistryRetentionPolicyArgs) ToRegistryRetentionPolicyPtrOutput() Regist
 }
 
 func (i RegistryRetentionPolicyArgs) ToRegistryRetentionPolicyPtrOutputWithContext(ctx context.Context) RegistryRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryRetentionPolicyOutput).ToRegistryRetentionPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryRetentionPolicyOutput).ToRegistryRetentionPolicyPtrOutput()
 }
 
 // RegistryRetentionPolicyPtrInput is an input type that accepts RegistryRetentionPolicyArgs, RegistryRetentionPolicyPtr and RegistryRetentionPolicyPtrOutput values.
@@ -6601,7 +6601,7 @@ func (i *registryRetentionPolicyPtrType) ToRegistryRetentionPolicyPtrOutput() Re
 }
 
 func (i *registryRetentionPolicyPtrType) ToRegistryRetentionPolicyPtrOutputWithContext(ctx context.Context) RegistryRetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryRetentionPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryRetentionPolicyOutput).ToRegistryRetentionPolicyPtrOutput()
 }
 
 type RegistryRetentionPolicyOutput struct{ *pulumi.OutputState }
@@ -6714,7 +6714,7 @@ func (i RegistryTrustPolicyArgs) ToRegistryTrustPolicyPtrOutput() RegistryTrustP
 }
 
 func (i RegistryTrustPolicyArgs) ToRegistryTrustPolicyPtrOutputWithContext(ctx context.Context) RegistryTrustPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryTrustPolicyOutput).ToRegistryTrustPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryTrustPolicyOutput).ToRegistryTrustPolicyPtrOutput()
 }
 
 // RegistryTrustPolicyPtrInput is an input type that accepts RegistryTrustPolicyArgs, RegistryTrustPolicyPtr and RegistryTrustPolicyPtrOutput values.
@@ -6747,7 +6747,7 @@ func (i *registryTrustPolicyPtrType) ToRegistryTrustPolicyPtrOutput() RegistryTr
 }
 
 func (i *registryTrustPolicyPtrType) ToRegistryTrustPolicyPtrOutputWithContext(ctx context.Context) RegistryTrustPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegistryTrustPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryTrustPolicyOutput).ToRegistryTrustPolicyPtrOutput()
 }
 
 type RegistryTrustPolicyOutput struct{ *pulumi.OutputState }

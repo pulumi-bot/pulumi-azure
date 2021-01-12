@@ -100,7 +100,7 @@ func (i AppServiceAuthSettingsArgs) ToAppServiceAuthSettingsPtrOutput() AppServi
 }
 
 func (i AppServiceAuthSettingsArgs) ToAppServiceAuthSettingsPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsOutput).ToAppServiceAuthSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsOutput).ToAppServiceAuthSettingsPtrOutput()
 }
 
 // AppServiceAuthSettingsPtrInput is an input type that accepts AppServiceAuthSettingsArgs, AppServiceAuthSettingsPtr and AppServiceAuthSettingsPtrOutput values.
@@ -133,7 +133,7 @@ func (i *appServiceAuthSettingsPtrType) ToAppServiceAuthSettingsPtrOutput() AppS
 }
 
 func (i *appServiceAuthSettingsPtrType) ToAppServiceAuthSettingsPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsOutput).ToAppServiceAuthSettingsPtrOutput()
 }
 
 type AppServiceAuthSettingsOutput struct{ *pulumi.OutputState }
@@ -434,7 +434,7 @@ func (i AppServiceAuthSettingsActiveDirectoryArgs) ToAppServiceAuthSettingsActiv
 }
 
 func (i AppServiceAuthSettingsActiveDirectoryArgs) ToAppServiceAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsActiveDirectoryOutput).ToAppServiceAuthSettingsActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsActiveDirectoryOutput).ToAppServiceAuthSettingsActiveDirectoryPtrOutput()
 }
 
 // AppServiceAuthSettingsActiveDirectoryPtrInput is an input type that accepts AppServiceAuthSettingsActiveDirectoryArgs, AppServiceAuthSettingsActiveDirectoryPtr and AppServiceAuthSettingsActiveDirectoryPtrOutput values.
@@ -467,7 +467,7 @@ func (i *appServiceAuthSettingsActiveDirectoryPtrType) ToAppServiceAuthSettingsA
 }
 
 func (i *appServiceAuthSettingsActiveDirectoryPtrType) ToAppServiceAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsActiveDirectoryOutput).ToAppServiceAuthSettingsActiveDirectoryPtrOutput()
 }
 
 type AppServiceAuthSettingsActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -603,7 +603,7 @@ func (i AppServiceAuthSettingsFacebookArgs) ToAppServiceAuthSettingsFacebookPtrO
 }
 
 func (i AppServiceAuthSettingsFacebookArgs) ToAppServiceAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsFacebookOutput).ToAppServiceAuthSettingsFacebookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsFacebookOutput).ToAppServiceAuthSettingsFacebookPtrOutput()
 }
 
 // AppServiceAuthSettingsFacebookPtrInput is an input type that accepts AppServiceAuthSettingsFacebookArgs, AppServiceAuthSettingsFacebookPtr and AppServiceAuthSettingsFacebookPtrOutput values.
@@ -636,7 +636,7 @@ func (i *appServiceAuthSettingsFacebookPtrType) ToAppServiceAuthSettingsFacebook
 }
 
 func (i *appServiceAuthSettingsFacebookPtrType) ToAppServiceAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsFacebookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsFacebookOutput).ToAppServiceAuthSettingsFacebookPtrOutput()
 }
 
 type AppServiceAuthSettingsFacebookOutput struct{ *pulumi.OutputState }
@@ -772,7 +772,7 @@ func (i AppServiceAuthSettingsGoogleArgs) ToAppServiceAuthSettingsGooglePtrOutpu
 }
 
 func (i AppServiceAuthSettingsGoogleArgs) ToAppServiceAuthSettingsGooglePtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsGoogleOutput).ToAppServiceAuthSettingsGooglePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsGoogleOutput).ToAppServiceAuthSettingsGooglePtrOutput()
 }
 
 // AppServiceAuthSettingsGooglePtrInput is an input type that accepts AppServiceAuthSettingsGoogleArgs, AppServiceAuthSettingsGooglePtr and AppServiceAuthSettingsGooglePtrOutput values.
@@ -805,7 +805,7 @@ func (i *appServiceAuthSettingsGooglePtrType) ToAppServiceAuthSettingsGooglePtrO
 }
 
 func (i *appServiceAuthSettingsGooglePtrType) ToAppServiceAuthSettingsGooglePtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsGooglePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsGoogleOutput).ToAppServiceAuthSettingsGooglePtrOutput()
 }
 
 type AppServiceAuthSettingsGoogleOutput struct{ *pulumi.OutputState }
@@ -941,7 +941,7 @@ func (i AppServiceAuthSettingsMicrosoftArgs) ToAppServiceAuthSettingsMicrosoftPt
 }
 
 func (i AppServiceAuthSettingsMicrosoftArgs) ToAppServiceAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsMicrosoftOutput).ToAppServiceAuthSettingsMicrosoftPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsMicrosoftOutput).ToAppServiceAuthSettingsMicrosoftPtrOutput()
 }
 
 // AppServiceAuthSettingsMicrosoftPtrInput is an input type that accepts AppServiceAuthSettingsMicrosoftArgs, AppServiceAuthSettingsMicrosoftPtr and AppServiceAuthSettingsMicrosoftPtrOutput values.
@@ -974,7 +974,7 @@ func (i *appServiceAuthSettingsMicrosoftPtrType) ToAppServiceAuthSettingsMicroso
 }
 
 func (i *appServiceAuthSettingsMicrosoftPtrType) ToAppServiceAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsMicrosoftPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsMicrosoftOutput).ToAppServiceAuthSettingsMicrosoftPtrOutput()
 }
 
 type AppServiceAuthSettingsMicrosoftOutput struct{ *pulumi.OutputState }
@@ -1102,7 +1102,7 @@ func (i AppServiceAuthSettingsTwitterArgs) ToAppServiceAuthSettingsTwitterPtrOut
 }
 
 func (i AppServiceAuthSettingsTwitterArgs) ToAppServiceAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsTwitterOutput).ToAppServiceAuthSettingsTwitterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsTwitterOutput).ToAppServiceAuthSettingsTwitterPtrOutput()
 }
 
 // AppServiceAuthSettingsTwitterPtrInput is an input type that accepts AppServiceAuthSettingsTwitterArgs, AppServiceAuthSettingsTwitterPtr and AppServiceAuthSettingsTwitterPtrOutput values.
@@ -1135,7 +1135,7 @@ func (i *appServiceAuthSettingsTwitterPtrType) ToAppServiceAuthSettingsTwitterPt
 }
 
 func (i *appServiceAuthSettingsTwitterPtrType) ToAppServiceAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) AppServiceAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsTwitterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceAuthSettingsTwitterOutput).ToAppServiceAuthSettingsTwitterPtrOutput()
 }
 
 type AppServiceAuthSettingsTwitterOutput struct{ *pulumi.OutputState }
@@ -1255,7 +1255,7 @@ func (i AppServiceBackupArgs) ToAppServiceBackupPtrOutput() AppServiceBackupPtrO
 }
 
 func (i AppServiceBackupArgs) ToAppServiceBackupPtrOutputWithContext(ctx context.Context) AppServiceBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupOutput).ToAppServiceBackupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupOutput).ToAppServiceBackupPtrOutput()
 }
 
 // AppServiceBackupPtrInput is an input type that accepts AppServiceBackupArgs, AppServiceBackupPtr and AppServiceBackupPtrOutput values.
@@ -1288,7 +1288,7 @@ func (i *appServiceBackupPtrType) ToAppServiceBackupPtrOutput() AppServiceBackup
 }
 
 func (i *appServiceBackupPtrType) ToAppServiceBackupPtrOutputWithContext(ctx context.Context) AppServiceBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupOutput).ToAppServiceBackupPtrOutput()
 }
 
 type AppServiceBackupOutput struct{ *pulumi.OutputState }
@@ -1447,7 +1447,7 @@ func (i AppServiceBackupScheduleArgs) ToAppServiceBackupSchedulePtrOutput() AppS
 }
 
 func (i AppServiceBackupScheduleArgs) ToAppServiceBackupSchedulePtrOutputWithContext(ctx context.Context) AppServiceBackupSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupScheduleOutput).ToAppServiceBackupSchedulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupScheduleOutput).ToAppServiceBackupSchedulePtrOutput()
 }
 
 // AppServiceBackupSchedulePtrInput is an input type that accepts AppServiceBackupScheduleArgs, AppServiceBackupSchedulePtr and AppServiceBackupSchedulePtrOutput values.
@@ -1480,7 +1480,7 @@ func (i *appServiceBackupSchedulePtrType) ToAppServiceBackupSchedulePtrOutput() 
 }
 
 func (i *appServiceBackupSchedulePtrType) ToAppServiceBackupSchedulePtrOutputWithContext(ctx context.Context) AppServiceBackupSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupSchedulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceBackupScheduleOutput).ToAppServiceBackupSchedulePtrOutput()
 }
 
 type AppServiceBackupScheduleOutput struct{ *pulumi.OutputState }
@@ -1765,7 +1765,7 @@ func (i AppServiceIdentityArgs) ToAppServiceIdentityPtrOutput() AppServiceIdenti
 }
 
 func (i AppServiceIdentityArgs) ToAppServiceIdentityPtrOutputWithContext(ctx context.Context) AppServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceIdentityOutput).ToAppServiceIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceIdentityOutput).ToAppServiceIdentityPtrOutput()
 }
 
 // AppServiceIdentityPtrInput is an input type that accepts AppServiceIdentityArgs, AppServiceIdentityPtr and AppServiceIdentityPtrOutput values.
@@ -1798,7 +1798,7 @@ func (i *appServiceIdentityPtrType) ToAppServiceIdentityPtrOutput() AppServiceId
 }
 
 func (i *appServiceIdentityPtrType) ToAppServiceIdentityPtrOutputWithContext(ctx context.Context) AppServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceIdentityOutput).ToAppServiceIdentityPtrOutput()
 }
 
 type AppServiceIdentityOutput struct{ *pulumi.OutputState }
@@ -1953,7 +1953,7 @@ func (i AppServiceLogsArgs) ToAppServiceLogsPtrOutput() AppServiceLogsPtrOutput 
 }
 
 func (i AppServiceLogsArgs) ToAppServiceLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsOutput).ToAppServiceLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsOutput).ToAppServiceLogsPtrOutput()
 }
 
 // AppServiceLogsPtrInput is an input type that accepts AppServiceLogsArgs, AppServiceLogsPtr and AppServiceLogsPtrOutput values.
@@ -1986,7 +1986,7 @@ func (i *appServiceLogsPtrType) ToAppServiceLogsPtrOutput() AppServiceLogsPtrOut
 }
 
 func (i *appServiceLogsPtrType) ToAppServiceLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsOutput).ToAppServiceLogsPtrOutput()
 }
 
 type AppServiceLogsOutput struct{ *pulumi.OutputState }
@@ -2131,7 +2131,7 @@ func (i AppServiceLogsApplicationLogsArgs) ToAppServiceLogsApplicationLogsPtrOut
 }
 
 func (i AppServiceLogsApplicationLogsArgs) ToAppServiceLogsApplicationLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsApplicationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsOutput).ToAppServiceLogsApplicationLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsOutput).ToAppServiceLogsApplicationLogsPtrOutput()
 }
 
 // AppServiceLogsApplicationLogsPtrInput is an input type that accepts AppServiceLogsApplicationLogsArgs, AppServiceLogsApplicationLogsPtr and AppServiceLogsApplicationLogsPtrOutput values.
@@ -2164,7 +2164,7 @@ func (i *appServiceLogsApplicationLogsPtrType) ToAppServiceLogsApplicationLogsPt
 }
 
 func (i *appServiceLogsApplicationLogsPtrType) ToAppServiceLogsApplicationLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsApplicationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsOutput).ToAppServiceLogsApplicationLogsPtrOutput()
 }
 
 type AppServiceLogsApplicationLogsOutput struct{ *pulumi.OutputState }
@@ -2285,7 +2285,7 @@ func (i AppServiceLogsApplicationLogsAzureBlobStorageArgs) ToAppServiceLogsAppli
 }
 
 func (i AppServiceLogsApplicationLogsAzureBlobStorageArgs) ToAppServiceLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) AppServiceLogsApplicationLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsAzureBlobStorageOutput).ToAppServiceLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsAzureBlobStorageOutput).ToAppServiceLogsApplicationLogsAzureBlobStoragePtrOutput()
 }
 
 // AppServiceLogsApplicationLogsAzureBlobStoragePtrInput is an input type that accepts AppServiceLogsApplicationLogsAzureBlobStorageArgs, AppServiceLogsApplicationLogsAzureBlobStoragePtr and AppServiceLogsApplicationLogsAzureBlobStoragePtrOutput values.
@@ -2318,7 +2318,7 @@ func (i *appServiceLogsApplicationLogsAzureBlobStoragePtrType) ToAppServiceLogsA
 }
 
 func (i *appServiceLogsApplicationLogsAzureBlobStoragePtrType) ToAppServiceLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) AppServiceLogsApplicationLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsAzureBlobStoragePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsApplicationLogsAzureBlobStorageOutput).ToAppServiceLogsApplicationLogsAzureBlobStoragePtrOutput()
 }
 
 type AppServiceLogsApplicationLogsAzureBlobStorageOutput struct{ *pulumi.OutputState }
@@ -2452,7 +2452,7 @@ func (i AppServiceLogsHttpLogsArgs) ToAppServiceLogsHttpLogsPtrOutput() AppServi
 }
 
 func (i AppServiceLogsHttpLogsArgs) ToAppServiceLogsHttpLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsOutput).ToAppServiceLogsHttpLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsOutput).ToAppServiceLogsHttpLogsPtrOutput()
 }
 
 // AppServiceLogsHttpLogsPtrInput is an input type that accepts AppServiceLogsHttpLogsArgs, AppServiceLogsHttpLogsPtr and AppServiceLogsHttpLogsPtrOutput values.
@@ -2485,7 +2485,7 @@ func (i *appServiceLogsHttpLogsPtrType) ToAppServiceLogsHttpLogsPtrOutput() AppS
 }
 
 func (i *appServiceLogsHttpLogsPtrType) ToAppServiceLogsHttpLogsPtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsOutput).ToAppServiceLogsHttpLogsPtrOutput()
 }
 
 type AppServiceLogsHttpLogsOutput struct{ *pulumi.OutputState }
@@ -2602,7 +2602,7 @@ func (i AppServiceLogsHttpLogsAzureBlobStorageArgs) ToAppServiceLogsHttpLogsAzur
 }
 
 func (i AppServiceLogsHttpLogsAzureBlobStorageArgs) ToAppServiceLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsAzureBlobStorageOutput).ToAppServiceLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsAzureBlobStorageOutput).ToAppServiceLogsHttpLogsAzureBlobStoragePtrOutput()
 }
 
 // AppServiceLogsHttpLogsAzureBlobStoragePtrInput is an input type that accepts AppServiceLogsHttpLogsAzureBlobStorageArgs, AppServiceLogsHttpLogsAzureBlobStoragePtr and AppServiceLogsHttpLogsAzureBlobStoragePtrOutput values.
@@ -2635,7 +2635,7 @@ func (i *appServiceLogsHttpLogsAzureBlobStoragePtrType) ToAppServiceLogsHttpLogs
 }
 
 func (i *appServiceLogsHttpLogsAzureBlobStoragePtrType) ToAppServiceLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsAzureBlobStoragePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsAzureBlobStorageOutput).ToAppServiceLogsHttpLogsAzureBlobStoragePtrOutput()
 }
 
 type AppServiceLogsHttpLogsAzureBlobStorageOutput struct{ *pulumi.OutputState }
@@ -2752,7 +2752,7 @@ func (i AppServiceLogsHttpLogsFileSystemArgs) ToAppServiceLogsHttpLogsFileSystem
 }
 
 func (i AppServiceLogsHttpLogsFileSystemArgs) ToAppServiceLogsHttpLogsFileSystemPtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsFileSystemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsFileSystemOutput).ToAppServiceLogsHttpLogsFileSystemPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsFileSystemOutput).ToAppServiceLogsHttpLogsFileSystemPtrOutput()
 }
 
 // AppServiceLogsHttpLogsFileSystemPtrInput is an input type that accepts AppServiceLogsHttpLogsFileSystemArgs, AppServiceLogsHttpLogsFileSystemPtr and AppServiceLogsHttpLogsFileSystemPtrOutput values.
@@ -2785,7 +2785,7 @@ func (i *appServiceLogsHttpLogsFileSystemPtrType) ToAppServiceLogsHttpLogsFileSy
 }
 
 func (i *appServiceLogsHttpLogsFileSystemPtrType) ToAppServiceLogsHttpLogsFileSystemPtrOutputWithContext(ctx context.Context) AppServiceLogsHttpLogsFileSystemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsFileSystemPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceLogsHttpLogsFileSystemOutput).ToAppServiceLogsHttpLogsFileSystemPtrOutput()
 }
 
 type AppServiceLogsHttpLogsFileSystemOutput struct{ *pulumi.OutputState }
@@ -3000,7 +3000,7 @@ func (i AppServiceSiteConfigArgs) ToAppServiceSiteConfigPtrOutput() AppServiceSi
 }
 
 func (i AppServiceSiteConfigArgs) ToAppServiceSiteConfigPtrOutputWithContext(ctx context.Context) AppServiceSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigOutput).ToAppServiceSiteConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigOutput).ToAppServiceSiteConfigPtrOutput()
 }
 
 // AppServiceSiteConfigPtrInput is an input type that accepts AppServiceSiteConfigArgs, AppServiceSiteConfigPtr and AppServiceSiteConfigPtrOutput values.
@@ -3033,7 +3033,7 @@ func (i *appServiceSiteConfigPtrType) ToAppServiceSiteConfigPtrOutput() AppServi
 }
 
 func (i *appServiceSiteConfigPtrType) ToAppServiceSiteConfigPtrOutputWithContext(ctx context.Context) AppServiceSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigOutput).ToAppServiceSiteConfigPtrOutput()
 }
 
 type AppServiceSiteConfigOutput struct{ *pulumi.OutputState }
@@ -3523,7 +3523,7 @@ func (i AppServiceSiteConfigCorsArgs) ToAppServiceSiteConfigCorsPtrOutput() AppS
 }
 
 func (i AppServiceSiteConfigCorsArgs) ToAppServiceSiteConfigCorsPtrOutputWithContext(ctx context.Context) AppServiceSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigCorsOutput).ToAppServiceSiteConfigCorsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigCorsOutput).ToAppServiceSiteConfigCorsPtrOutput()
 }
 
 // AppServiceSiteConfigCorsPtrInput is an input type that accepts AppServiceSiteConfigCorsArgs, AppServiceSiteConfigCorsPtr and AppServiceSiteConfigCorsPtrOutput values.
@@ -3556,7 +3556,7 @@ func (i *appServiceSiteConfigCorsPtrType) ToAppServiceSiteConfigCorsPtrOutput() 
 }
 
 func (i *appServiceSiteConfigCorsPtrType) ToAppServiceSiteConfigCorsPtrOutputWithContext(ctx context.Context) AppServiceSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigCorsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSiteConfigCorsOutput).ToAppServiceSiteConfigCorsPtrOutput()
 }
 
 type AppServiceSiteConfigCorsOutput struct{ *pulumi.OutputState }
@@ -4093,7 +4093,7 @@ func (i AppServiceSourceControlArgs) ToAppServiceSourceControlPtrOutput() AppSer
 }
 
 func (i AppServiceSourceControlArgs) ToAppServiceSourceControlPtrOutputWithContext(ctx context.Context) AppServiceSourceControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSourceControlOutput).ToAppServiceSourceControlPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSourceControlOutput).ToAppServiceSourceControlPtrOutput()
 }
 
 // AppServiceSourceControlPtrInput is an input type that accepts AppServiceSourceControlArgs, AppServiceSourceControlPtr and AppServiceSourceControlPtrOutput values.
@@ -4126,7 +4126,7 @@ func (i *appServiceSourceControlPtrType) ToAppServiceSourceControlPtrOutput() Ap
 }
 
 func (i *appServiceSourceControlPtrType) ToAppServiceSourceControlPtrOutputWithContext(ctx context.Context) AppServiceSourceControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSourceControlPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppServiceSourceControlOutput).ToAppServiceSourceControlPtrOutput()
 }
 
 type AppServiceSourceControlOutput struct{ *pulumi.OutputState }
@@ -4602,7 +4602,7 @@ func (i FunctionAppAuthSettingsArgs) ToFunctionAppAuthSettingsPtrOutput() Functi
 }
 
 func (i FunctionAppAuthSettingsArgs) ToFunctionAppAuthSettingsPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsOutput).ToFunctionAppAuthSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsOutput).ToFunctionAppAuthSettingsPtrOutput()
 }
 
 // FunctionAppAuthSettingsPtrInput is an input type that accepts FunctionAppAuthSettingsArgs, FunctionAppAuthSettingsPtr and FunctionAppAuthSettingsPtrOutput values.
@@ -4635,7 +4635,7 @@ func (i *functionAppAuthSettingsPtrType) ToFunctionAppAuthSettingsPtrOutput() Fu
 }
 
 func (i *functionAppAuthSettingsPtrType) ToFunctionAppAuthSettingsPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsOutput).ToFunctionAppAuthSettingsPtrOutput()
 }
 
 type FunctionAppAuthSettingsOutput struct{ *pulumi.OutputState }
@@ -4936,7 +4936,7 @@ func (i FunctionAppAuthSettingsActiveDirectoryArgs) ToFunctionAppAuthSettingsAct
 }
 
 func (i FunctionAppAuthSettingsActiveDirectoryArgs) ToFunctionAppAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsActiveDirectoryOutput).ToFunctionAppAuthSettingsActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsActiveDirectoryOutput).ToFunctionAppAuthSettingsActiveDirectoryPtrOutput()
 }
 
 // FunctionAppAuthSettingsActiveDirectoryPtrInput is an input type that accepts FunctionAppAuthSettingsActiveDirectoryArgs, FunctionAppAuthSettingsActiveDirectoryPtr and FunctionAppAuthSettingsActiveDirectoryPtrOutput values.
@@ -4969,7 +4969,7 @@ func (i *functionAppAuthSettingsActiveDirectoryPtrType) ToFunctionAppAuthSetting
 }
 
 func (i *functionAppAuthSettingsActiveDirectoryPtrType) ToFunctionAppAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsActiveDirectoryOutput).ToFunctionAppAuthSettingsActiveDirectoryPtrOutput()
 }
 
 type FunctionAppAuthSettingsActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -5105,7 +5105,7 @@ func (i FunctionAppAuthSettingsFacebookArgs) ToFunctionAppAuthSettingsFacebookPt
 }
 
 func (i FunctionAppAuthSettingsFacebookArgs) ToFunctionAppAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsFacebookOutput).ToFunctionAppAuthSettingsFacebookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsFacebookOutput).ToFunctionAppAuthSettingsFacebookPtrOutput()
 }
 
 // FunctionAppAuthSettingsFacebookPtrInput is an input type that accepts FunctionAppAuthSettingsFacebookArgs, FunctionAppAuthSettingsFacebookPtr and FunctionAppAuthSettingsFacebookPtrOutput values.
@@ -5138,7 +5138,7 @@ func (i *functionAppAuthSettingsFacebookPtrType) ToFunctionAppAuthSettingsFacebo
 }
 
 func (i *functionAppAuthSettingsFacebookPtrType) ToFunctionAppAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsFacebookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsFacebookOutput).ToFunctionAppAuthSettingsFacebookPtrOutput()
 }
 
 type FunctionAppAuthSettingsFacebookOutput struct{ *pulumi.OutputState }
@@ -5274,7 +5274,7 @@ func (i FunctionAppAuthSettingsGoogleArgs) ToFunctionAppAuthSettingsGooglePtrOut
 }
 
 func (i FunctionAppAuthSettingsGoogleArgs) ToFunctionAppAuthSettingsGooglePtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsGoogleOutput).ToFunctionAppAuthSettingsGooglePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsGoogleOutput).ToFunctionAppAuthSettingsGooglePtrOutput()
 }
 
 // FunctionAppAuthSettingsGooglePtrInput is an input type that accepts FunctionAppAuthSettingsGoogleArgs, FunctionAppAuthSettingsGooglePtr and FunctionAppAuthSettingsGooglePtrOutput values.
@@ -5307,7 +5307,7 @@ func (i *functionAppAuthSettingsGooglePtrType) ToFunctionAppAuthSettingsGooglePt
 }
 
 func (i *functionAppAuthSettingsGooglePtrType) ToFunctionAppAuthSettingsGooglePtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsGooglePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsGoogleOutput).ToFunctionAppAuthSettingsGooglePtrOutput()
 }
 
 type FunctionAppAuthSettingsGoogleOutput struct{ *pulumi.OutputState }
@@ -5443,7 +5443,7 @@ func (i FunctionAppAuthSettingsMicrosoftArgs) ToFunctionAppAuthSettingsMicrosoft
 }
 
 func (i FunctionAppAuthSettingsMicrosoftArgs) ToFunctionAppAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsMicrosoftOutput).ToFunctionAppAuthSettingsMicrosoftPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsMicrosoftOutput).ToFunctionAppAuthSettingsMicrosoftPtrOutput()
 }
 
 // FunctionAppAuthSettingsMicrosoftPtrInput is an input type that accepts FunctionAppAuthSettingsMicrosoftArgs, FunctionAppAuthSettingsMicrosoftPtr and FunctionAppAuthSettingsMicrosoftPtrOutput values.
@@ -5476,7 +5476,7 @@ func (i *functionAppAuthSettingsMicrosoftPtrType) ToFunctionAppAuthSettingsMicro
 }
 
 func (i *functionAppAuthSettingsMicrosoftPtrType) ToFunctionAppAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsMicrosoftPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsMicrosoftOutput).ToFunctionAppAuthSettingsMicrosoftPtrOutput()
 }
 
 type FunctionAppAuthSettingsMicrosoftOutput struct{ *pulumi.OutputState }
@@ -5604,7 +5604,7 @@ func (i FunctionAppAuthSettingsTwitterArgs) ToFunctionAppAuthSettingsTwitterPtrO
 }
 
 func (i FunctionAppAuthSettingsTwitterArgs) ToFunctionAppAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsTwitterOutput).ToFunctionAppAuthSettingsTwitterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsTwitterOutput).ToFunctionAppAuthSettingsTwitterPtrOutput()
 }
 
 // FunctionAppAuthSettingsTwitterPtrInput is an input type that accepts FunctionAppAuthSettingsTwitterArgs, FunctionAppAuthSettingsTwitterPtr and FunctionAppAuthSettingsTwitterPtrOutput values.
@@ -5637,7 +5637,7 @@ func (i *functionAppAuthSettingsTwitterPtrType) ToFunctionAppAuthSettingsTwitter
 }
 
 func (i *functionAppAuthSettingsTwitterPtrType) ToFunctionAppAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) FunctionAppAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsTwitterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppAuthSettingsTwitterOutput).ToFunctionAppAuthSettingsTwitterPtrOutput()
 }
 
 type FunctionAppAuthSettingsTwitterOutput struct{ *pulumi.OutputState }
@@ -5872,7 +5872,7 @@ func (i FunctionAppIdentityArgs) ToFunctionAppIdentityPtrOutput() FunctionAppIde
 }
 
 func (i FunctionAppIdentityArgs) ToFunctionAppIdentityPtrOutputWithContext(ctx context.Context) FunctionAppIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppIdentityOutput).ToFunctionAppIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppIdentityOutput).ToFunctionAppIdentityPtrOutput()
 }
 
 // FunctionAppIdentityPtrInput is an input type that accepts FunctionAppIdentityArgs, FunctionAppIdentityPtr and FunctionAppIdentityPtrOutput values.
@@ -5905,7 +5905,7 @@ func (i *functionAppIdentityPtrType) ToFunctionAppIdentityPtrOutput() FunctionAp
 }
 
 func (i *functionAppIdentityPtrType) ToFunctionAppIdentityPtrOutputWithContext(ctx context.Context) FunctionAppIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppIdentityOutput).ToFunctionAppIdentityPtrOutput()
 }
 
 type FunctionAppIdentityOutput struct{ *pulumi.OutputState }
@@ -6102,7 +6102,7 @@ func (i FunctionAppSiteConfigArgs) ToFunctionAppSiteConfigPtrOutput() FunctionAp
 }
 
 func (i FunctionAppSiteConfigArgs) ToFunctionAppSiteConfigPtrOutputWithContext(ctx context.Context) FunctionAppSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigOutput).ToFunctionAppSiteConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigOutput).ToFunctionAppSiteConfigPtrOutput()
 }
 
 // FunctionAppSiteConfigPtrInput is an input type that accepts FunctionAppSiteConfigArgs, FunctionAppSiteConfigPtr and FunctionAppSiteConfigPtrOutput values.
@@ -6135,7 +6135,7 @@ func (i *functionAppSiteConfigPtrType) ToFunctionAppSiteConfigPtrOutput() Functi
 }
 
 func (i *functionAppSiteConfigPtrType) ToFunctionAppSiteConfigPtrOutputWithContext(ctx context.Context) FunctionAppSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigOutput).ToFunctionAppSiteConfigPtrOutput()
 }
 
 type FunctionAppSiteConfigOutput struct{ *pulumi.OutputState }
@@ -6445,7 +6445,7 @@ func (i FunctionAppSiteConfigCorsArgs) ToFunctionAppSiteConfigCorsPtrOutput() Fu
 }
 
 func (i FunctionAppSiteConfigCorsArgs) ToFunctionAppSiteConfigCorsPtrOutputWithContext(ctx context.Context) FunctionAppSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigCorsOutput).ToFunctionAppSiteConfigCorsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigCorsOutput).ToFunctionAppSiteConfigCorsPtrOutput()
 }
 
 // FunctionAppSiteConfigCorsPtrInput is an input type that accepts FunctionAppSiteConfigCorsArgs, FunctionAppSiteConfigCorsPtr and FunctionAppSiteConfigCorsPtrOutput values.
@@ -6478,7 +6478,7 @@ func (i *functionAppSiteConfigCorsPtrType) ToFunctionAppSiteConfigCorsPtrOutput(
 }
 
 func (i *functionAppSiteConfigCorsPtrType) ToFunctionAppSiteConfigCorsPtrOutputWithContext(ctx context.Context) FunctionAppSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigCorsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSiteConfigCorsOutput).ToFunctionAppSiteConfigCorsPtrOutput()
 }
 
 type FunctionAppSiteConfigCorsOutput struct{ *pulumi.OutputState }
@@ -7051,7 +7051,7 @@ func (i FunctionAppSlotAuthSettingsArgs) ToFunctionAppSlotAuthSettingsPtrOutput(
 }
 
 func (i FunctionAppSlotAuthSettingsArgs) ToFunctionAppSlotAuthSettingsPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsOutput).ToFunctionAppSlotAuthSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsOutput).ToFunctionAppSlotAuthSettingsPtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsPtrInput is an input type that accepts FunctionAppSlotAuthSettingsArgs, FunctionAppSlotAuthSettingsPtr and FunctionAppSlotAuthSettingsPtrOutput values.
@@ -7084,7 +7084,7 @@ func (i *functionAppSlotAuthSettingsPtrType) ToFunctionAppSlotAuthSettingsPtrOut
 }
 
 func (i *functionAppSlotAuthSettingsPtrType) ToFunctionAppSlotAuthSettingsPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsOutput).ToFunctionAppSlotAuthSettingsPtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsOutput struct{ *pulumi.OutputState }
@@ -7387,7 +7387,7 @@ func (i FunctionAppSlotAuthSettingsActiveDirectoryArgs) ToFunctionAppSlotAuthSet
 }
 
 func (i FunctionAppSlotAuthSettingsActiveDirectoryArgs) ToFunctionAppSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsActiveDirectoryOutput).ToFunctionAppSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsActiveDirectoryOutput).ToFunctionAppSlotAuthSettingsActiveDirectoryPtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsActiveDirectoryPtrInput is an input type that accepts FunctionAppSlotAuthSettingsActiveDirectoryArgs, FunctionAppSlotAuthSettingsActiveDirectoryPtr and FunctionAppSlotAuthSettingsActiveDirectoryPtrOutput values.
@@ -7420,7 +7420,7 @@ func (i *functionAppSlotAuthSettingsActiveDirectoryPtrType) ToFunctionAppSlotAut
 }
 
 func (i *functionAppSlotAuthSettingsActiveDirectoryPtrType) ToFunctionAppSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsActiveDirectoryOutput).ToFunctionAppSlotAuthSettingsActiveDirectoryPtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -7558,7 +7558,7 @@ func (i FunctionAppSlotAuthSettingsFacebookArgs) ToFunctionAppSlotAuthSettingsFa
 }
 
 func (i FunctionAppSlotAuthSettingsFacebookArgs) ToFunctionAppSlotAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsFacebookOutput).ToFunctionAppSlotAuthSettingsFacebookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsFacebookOutput).ToFunctionAppSlotAuthSettingsFacebookPtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsFacebookPtrInput is an input type that accepts FunctionAppSlotAuthSettingsFacebookArgs, FunctionAppSlotAuthSettingsFacebookPtr and FunctionAppSlotAuthSettingsFacebookPtrOutput values.
@@ -7591,7 +7591,7 @@ func (i *functionAppSlotAuthSettingsFacebookPtrType) ToFunctionAppSlotAuthSettin
 }
 
 func (i *functionAppSlotAuthSettingsFacebookPtrType) ToFunctionAppSlotAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsFacebookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsFacebookOutput).ToFunctionAppSlotAuthSettingsFacebookPtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsFacebookOutput struct{ *pulumi.OutputState }
@@ -7727,7 +7727,7 @@ func (i FunctionAppSlotAuthSettingsGoogleArgs) ToFunctionAppSlotAuthSettingsGoog
 }
 
 func (i FunctionAppSlotAuthSettingsGoogleArgs) ToFunctionAppSlotAuthSettingsGooglePtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsGoogleOutput).ToFunctionAppSlotAuthSettingsGooglePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsGoogleOutput).ToFunctionAppSlotAuthSettingsGooglePtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsGooglePtrInput is an input type that accepts FunctionAppSlotAuthSettingsGoogleArgs, FunctionAppSlotAuthSettingsGooglePtr and FunctionAppSlotAuthSettingsGooglePtrOutput values.
@@ -7760,7 +7760,7 @@ func (i *functionAppSlotAuthSettingsGooglePtrType) ToFunctionAppSlotAuthSettings
 }
 
 func (i *functionAppSlotAuthSettingsGooglePtrType) ToFunctionAppSlotAuthSettingsGooglePtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsGooglePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsGoogleOutput).ToFunctionAppSlotAuthSettingsGooglePtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsGoogleOutput struct{ *pulumi.OutputState }
@@ -7896,7 +7896,7 @@ func (i FunctionAppSlotAuthSettingsMicrosoftArgs) ToFunctionAppSlotAuthSettingsM
 }
 
 func (i FunctionAppSlotAuthSettingsMicrosoftArgs) ToFunctionAppSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsMicrosoftOutput).ToFunctionAppSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsMicrosoftOutput).ToFunctionAppSlotAuthSettingsMicrosoftPtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsMicrosoftPtrInput is an input type that accepts FunctionAppSlotAuthSettingsMicrosoftArgs, FunctionAppSlotAuthSettingsMicrosoftPtr and FunctionAppSlotAuthSettingsMicrosoftPtrOutput values.
@@ -7929,7 +7929,7 @@ func (i *functionAppSlotAuthSettingsMicrosoftPtrType) ToFunctionAppSlotAuthSetti
 }
 
 func (i *functionAppSlotAuthSettingsMicrosoftPtrType) ToFunctionAppSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsMicrosoftPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsMicrosoftOutput).ToFunctionAppSlotAuthSettingsMicrosoftPtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsMicrosoftOutput struct{ *pulumi.OutputState }
@@ -8057,7 +8057,7 @@ func (i FunctionAppSlotAuthSettingsTwitterArgs) ToFunctionAppSlotAuthSettingsTwi
 }
 
 func (i FunctionAppSlotAuthSettingsTwitterArgs) ToFunctionAppSlotAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsTwitterOutput).ToFunctionAppSlotAuthSettingsTwitterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsTwitterOutput).ToFunctionAppSlotAuthSettingsTwitterPtrOutput()
 }
 
 // FunctionAppSlotAuthSettingsTwitterPtrInput is an input type that accepts FunctionAppSlotAuthSettingsTwitterArgs, FunctionAppSlotAuthSettingsTwitterPtr and FunctionAppSlotAuthSettingsTwitterPtrOutput values.
@@ -8090,7 +8090,7 @@ func (i *functionAppSlotAuthSettingsTwitterPtrType) ToFunctionAppSlotAuthSetting
 }
 
 func (i *functionAppSlotAuthSettingsTwitterPtrType) ToFunctionAppSlotAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) FunctionAppSlotAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsTwitterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotAuthSettingsTwitterOutput).ToFunctionAppSlotAuthSettingsTwitterPtrOutput()
 }
 
 type FunctionAppSlotAuthSettingsTwitterOutput struct{ *pulumi.OutputState }
@@ -8325,7 +8325,7 @@ func (i FunctionAppSlotIdentityArgs) ToFunctionAppSlotIdentityPtrOutput() Functi
 }
 
 func (i FunctionAppSlotIdentityArgs) ToFunctionAppSlotIdentityPtrOutputWithContext(ctx context.Context) FunctionAppSlotIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotIdentityOutput).ToFunctionAppSlotIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotIdentityOutput).ToFunctionAppSlotIdentityPtrOutput()
 }
 
 // FunctionAppSlotIdentityPtrInput is an input type that accepts FunctionAppSlotIdentityArgs, FunctionAppSlotIdentityPtr and FunctionAppSlotIdentityPtrOutput values.
@@ -8358,7 +8358,7 @@ func (i *functionAppSlotIdentityPtrType) ToFunctionAppSlotIdentityPtrOutput() Fu
 }
 
 func (i *functionAppSlotIdentityPtrType) ToFunctionAppSlotIdentityPtrOutputWithContext(ctx context.Context) FunctionAppSlotIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotIdentityOutput).ToFunctionAppSlotIdentityPtrOutput()
 }
 
 type FunctionAppSlotIdentityOutput struct{ *pulumi.OutputState }
@@ -8549,7 +8549,7 @@ func (i FunctionAppSlotSiteConfigArgs) ToFunctionAppSlotSiteConfigPtrOutput() Fu
 }
 
 func (i FunctionAppSlotSiteConfigArgs) ToFunctionAppSlotSiteConfigPtrOutputWithContext(ctx context.Context) FunctionAppSlotSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigOutput).ToFunctionAppSlotSiteConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigOutput).ToFunctionAppSlotSiteConfigPtrOutput()
 }
 
 // FunctionAppSlotSiteConfigPtrInput is an input type that accepts FunctionAppSlotSiteConfigArgs, FunctionAppSlotSiteConfigPtr and FunctionAppSlotSiteConfigPtrOutput values.
@@ -8582,7 +8582,7 @@ func (i *functionAppSlotSiteConfigPtrType) ToFunctionAppSlotSiteConfigPtrOutput(
 }
 
 func (i *functionAppSlotSiteConfigPtrType) ToFunctionAppSlotSiteConfigPtrOutputWithContext(ctx context.Context) FunctionAppSlotSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigOutput).ToFunctionAppSlotSiteConfigPtrOutput()
 }
 
 type FunctionAppSlotSiteConfigOutput struct{ *pulumi.OutputState }
@@ -8888,7 +8888,7 @@ func (i FunctionAppSlotSiteConfigCorsArgs) ToFunctionAppSlotSiteConfigCorsPtrOut
 }
 
 func (i FunctionAppSlotSiteConfigCorsArgs) ToFunctionAppSlotSiteConfigCorsPtrOutputWithContext(ctx context.Context) FunctionAppSlotSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigCorsOutput).ToFunctionAppSlotSiteConfigCorsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigCorsOutput).ToFunctionAppSlotSiteConfigCorsPtrOutput()
 }
 
 // FunctionAppSlotSiteConfigCorsPtrInput is an input type that accepts FunctionAppSlotSiteConfigCorsArgs, FunctionAppSlotSiteConfigCorsPtr and FunctionAppSlotSiteConfigCorsPtrOutput values.
@@ -8921,7 +8921,7 @@ func (i *functionAppSlotSiteConfigCorsPtrType) ToFunctionAppSlotSiteConfigCorsPt
 }
 
 func (i *functionAppSlotSiteConfigCorsPtrType) ToFunctionAppSlotSiteConfigCorsPtrOutputWithContext(ctx context.Context) FunctionAppSlotSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigCorsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSlotSiteConfigCorsOutput).ToFunctionAppSlotSiteConfigCorsPtrOutput()
 }
 
 type FunctionAppSlotSiteConfigCorsOutput struct{ *pulumi.OutputState }
@@ -9458,7 +9458,7 @@ func (i FunctionAppSourceControlArgs) ToFunctionAppSourceControlPtrOutput() Func
 }
 
 func (i FunctionAppSourceControlArgs) ToFunctionAppSourceControlPtrOutputWithContext(ctx context.Context) FunctionAppSourceControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSourceControlOutput).ToFunctionAppSourceControlPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSourceControlOutput).ToFunctionAppSourceControlPtrOutput()
 }
 
 // FunctionAppSourceControlPtrInput is an input type that accepts FunctionAppSourceControlArgs, FunctionAppSourceControlPtr and FunctionAppSourceControlPtrOutput values.
@@ -9491,7 +9491,7 @@ func (i *functionAppSourceControlPtrType) ToFunctionAppSourceControlPtrOutput() 
 }
 
 func (i *functionAppSourceControlPtrType) ToFunctionAppSourceControlPtrOutputWithContext(ctx context.Context) FunctionAppSourceControlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSourceControlPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAppSourceControlOutput).ToFunctionAppSourceControlPtrOutput()
 }
 
 type FunctionAppSourceControlOutput struct{ *pulumi.OutputState }
@@ -9657,7 +9657,7 @@ func (i PlanSkuArgs) ToPlanSkuPtrOutput() PlanSkuPtrOutput {
 }
 
 func (i PlanSkuArgs) ToPlanSkuPtrOutputWithContext(ctx context.Context) PlanSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanSkuOutput).ToPlanSkuPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanSkuOutput).ToPlanSkuPtrOutput()
 }
 
 // PlanSkuPtrInput is an input type that accepts PlanSkuArgs, PlanSkuPtr and PlanSkuPtrOutput values.
@@ -9690,7 +9690,7 @@ func (i *planSkuPtrType) ToPlanSkuPtrOutput() PlanSkuPtrOutput {
 }
 
 func (i *planSkuPtrType) ToPlanSkuPtrOutputWithContext(ctx context.Context) PlanSkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanSkuPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanSkuOutput).ToPlanSkuPtrOutput()
 }
 
 type PlanSkuOutput struct{ *pulumi.OutputState }
@@ -9870,7 +9870,7 @@ func (i SlotAuthSettingsArgs) ToSlotAuthSettingsPtrOutput() SlotAuthSettingsPtrO
 }
 
 func (i SlotAuthSettingsArgs) ToSlotAuthSettingsPtrOutputWithContext(ctx context.Context) SlotAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsOutput).ToSlotAuthSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsOutput).ToSlotAuthSettingsPtrOutput()
 }
 
 // SlotAuthSettingsPtrInput is an input type that accepts SlotAuthSettingsArgs, SlotAuthSettingsPtr and SlotAuthSettingsPtrOutput values.
@@ -9903,7 +9903,7 @@ func (i *slotAuthSettingsPtrType) ToSlotAuthSettingsPtrOutput() SlotAuthSettings
 }
 
 func (i *slotAuthSettingsPtrType) ToSlotAuthSettingsPtrOutputWithContext(ctx context.Context) SlotAuthSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsOutput).ToSlotAuthSettingsPtrOutput()
 }
 
 type SlotAuthSettingsOutput struct{ *pulumi.OutputState }
@@ -10204,7 +10204,7 @@ func (i SlotAuthSettingsActiveDirectoryArgs) ToSlotAuthSettingsActiveDirectoryPt
 }
 
 func (i SlotAuthSettingsActiveDirectoryArgs) ToSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) SlotAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsActiveDirectoryOutput).ToSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsActiveDirectoryOutput).ToSlotAuthSettingsActiveDirectoryPtrOutput()
 }
 
 // SlotAuthSettingsActiveDirectoryPtrInput is an input type that accepts SlotAuthSettingsActiveDirectoryArgs, SlotAuthSettingsActiveDirectoryPtr and SlotAuthSettingsActiveDirectoryPtrOutput values.
@@ -10237,7 +10237,7 @@ func (i *slotAuthSettingsActiveDirectoryPtrType) ToSlotAuthSettingsActiveDirecto
 }
 
 func (i *slotAuthSettingsActiveDirectoryPtrType) ToSlotAuthSettingsActiveDirectoryPtrOutputWithContext(ctx context.Context) SlotAuthSettingsActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsActiveDirectoryOutput).ToSlotAuthSettingsActiveDirectoryPtrOutput()
 }
 
 type SlotAuthSettingsActiveDirectoryOutput struct{ *pulumi.OutputState }
@@ -10373,7 +10373,7 @@ func (i SlotAuthSettingsFacebookArgs) ToSlotAuthSettingsFacebookPtrOutput() Slot
 }
 
 func (i SlotAuthSettingsFacebookArgs) ToSlotAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) SlotAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsFacebookOutput).ToSlotAuthSettingsFacebookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsFacebookOutput).ToSlotAuthSettingsFacebookPtrOutput()
 }
 
 // SlotAuthSettingsFacebookPtrInput is an input type that accepts SlotAuthSettingsFacebookArgs, SlotAuthSettingsFacebookPtr and SlotAuthSettingsFacebookPtrOutput values.
@@ -10406,7 +10406,7 @@ func (i *slotAuthSettingsFacebookPtrType) ToSlotAuthSettingsFacebookPtrOutput() 
 }
 
 func (i *slotAuthSettingsFacebookPtrType) ToSlotAuthSettingsFacebookPtrOutputWithContext(ctx context.Context) SlotAuthSettingsFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsFacebookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsFacebookOutput).ToSlotAuthSettingsFacebookPtrOutput()
 }
 
 type SlotAuthSettingsFacebookOutput struct{ *pulumi.OutputState }
@@ -10542,7 +10542,7 @@ func (i SlotAuthSettingsGoogleArgs) ToSlotAuthSettingsGooglePtrOutput() SlotAuth
 }
 
 func (i SlotAuthSettingsGoogleArgs) ToSlotAuthSettingsGooglePtrOutputWithContext(ctx context.Context) SlotAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsGoogleOutput).ToSlotAuthSettingsGooglePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsGoogleOutput).ToSlotAuthSettingsGooglePtrOutput()
 }
 
 // SlotAuthSettingsGooglePtrInput is an input type that accepts SlotAuthSettingsGoogleArgs, SlotAuthSettingsGooglePtr and SlotAuthSettingsGooglePtrOutput values.
@@ -10575,7 +10575,7 @@ func (i *slotAuthSettingsGooglePtrType) ToSlotAuthSettingsGooglePtrOutput() Slot
 }
 
 func (i *slotAuthSettingsGooglePtrType) ToSlotAuthSettingsGooglePtrOutputWithContext(ctx context.Context) SlotAuthSettingsGooglePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsGooglePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsGoogleOutput).ToSlotAuthSettingsGooglePtrOutput()
 }
 
 type SlotAuthSettingsGoogleOutput struct{ *pulumi.OutputState }
@@ -10711,7 +10711,7 @@ func (i SlotAuthSettingsMicrosoftArgs) ToSlotAuthSettingsMicrosoftPtrOutput() Sl
 }
 
 func (i SlotAuthSettingsMicrosoftArgs) ToSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) SlotAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsMicrosoftOutput).ToSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsMicrosoftOutput).ToSlotAuthSettingsMicrosoftPtrOutput()
 }
 
 // SlotAuthSettingsMicrosoftPtrInput is an input type that accepts SlotAuthSettingsMicrosoftArgs, SlotAuthSettingsMicrosoftPtr and SlotAuthSettingsMicrosoftPtrOutput values.
@@ -10744,7 +10744,7 @@ func (i *slotAuthSettingsMicrosoftPtrType) ToSlotAuthSettingsMicrosoftPtrOutput(
 }
 
 func (i *slotAuthSettingsMicrosoftPtrType) ToSlotAuthSettingsMicrosoftPtrOutputWithContext(ctx context.Context) SlotAuthSettingsMicrosoftPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsMicrosoftPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsMicrosoftOutput).ToSlotAuthSettingsMicrosoftPtrOutput()
 }
 
 type SlotAuthSettingsMicrosoftOutput struct{ *pulumi.OutputState }
@@ -10872,7 +10872,7 @@ func (i SlotAuthSettingsTwitterArgs) ToSlotAuthSettingsTwitterPtrOutput() SlotAu
 }
 
 func (i SlotAuthSettingsTwitterArgs) ToSlotAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) SlotAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsTwitterOutput).ToSlotAuthSettingsTwitterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsTwitterOutput).ToSlotAuthSettingsTwitterPtrOutput()
 }
 
 // SlotAuthSettingsTwitterPtrInput is an input type that accepts SlotAuthSettingsTwitterArgs, SlotAuthSettingsTwitterPtr and SlotAuthSettingsTwitterPtrOutput values.
@@ -10905,7 +10905,7 @@ func (i *slotAuthSettingsTwitterPtrType) ToSlotAuthSettingsTwitterPtrOutput() Sl
 }
 
 func (i *slotAuthSettingsTwitterPtrType) ToSlotAuthSettingsTwitterPtrOutputWithContext(ctx context.Context) SlotAuthSettingsTwitterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsTwitterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotAuthSettingsTwitterOutput).ToSlotAuthSettingsTwitterPtrOutput()
 }
 
 type SlotAuthSettingsTwitterOutput struct{ *pulumi.OutputState }
@@ -11136,7 +11136,7 @@ func (i SlotIdentityArgs) ToSlotIdentityPtrOutput() SlotIdentityPtrOutput {
 }
 
 func (i SlotIdentityArgs) ToSlotIdentityPtrOutputWithContext(ctx context.Context) SlotIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotIdentityOutput).ToSlotIdentityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotIdentityOutput).ToSlotIdentityPtrOutput()
 }
 
 // SlotIdentityPtrInput is an input type that accepts SlotIdentityArgs, SlotIdentityPtr and SlotIdentityPtrOutput values.
@@ -11169,7 +11169,7 @@ func (i *slotIdentityPtrType) ToSlotIdentityPtrOutput() SlotIdentityPtrOutput {
 }
 
 func (i *slotIdentityPtrType) ToSlotIdentityPtrOutputWithContext(ctx context.Context) SlotIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotIdentityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotIdentityOutput).ToSlotIdentityPtrOutput()
 }
 
 type SlotIdentityOutput struct{ *pulumi.OutputState }
@@ -11320,7 +11320,7 @@ func (i SlotLogsArgs) ToSlotLogsPtrOutput() SlotLogsPtrOutput {
 }
 
 func (i SlotLogsArgs) ToSlotLogsPtrOutputWithContext(ctx context.Context) SlotLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsOutput).ToSlotLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsOutput).ToSlotLogsPtrOutput()
 }
 
 // SlotLogsPtrInput is an input type that accepts SlotLogsArgs, SlotLogsPtr and SlotLogsPtrOutput values.
@@ -11353,7 +11353,7 @@ func (i *slotLogsPtrType) ToSlotLogsPtrOutput() SlotLogsPtrOutput {
 }
 
 func (i *slotLogsPtrType) ToSlotLogsPtrOutputWithContext(ctx context.Context) SlotLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsOutput).ToSlotLogsPtrOutput()
 }
 
 type SlotLogsOutput struct{ *pulumi.OutputState }
@@ -11500,7 +11500,7 @@ func (i SlotLogsApplicationLogsArgs) ToSlotLogsApplicationLogsPtrOutput() SlotLo
 }
 
 func (i SlotLogsApplicationLogsArgs) ToSlotLogsApplicationLogsPtrOutputWithContext(ctx context.Context) SlotLogsApplicationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsOutput).ToSlotLogsApplicationLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsOutput).ToSlotLogsApplicationLogsPtrOutput()
 }
 
 // SlotLogsApplicationLogsPtrInput is an input type that accepts SlotLogsApplicationLogsArgs, SlotLogsApplicationLogsPtr and SlotLogsApplicationLogsPtrOutput values.
@@ -11533,7 +11533,7 @@ func (i *slotLogsApplicationLogsPtrType) ToSlotLogsApplicationLogsPtrOutput() Sl
 }
 
 func (i *slotLogsApplicationLogsPtrType) ToSlotLogsApplicationLogsPtrOutputWithContext(ctx context.Context) SlotLogsApplicationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsOutput).ToSlotLogsApplicationLogsPtrOutput()
 }
 
 type SlotLogsApplicationLogsOutput struct{ *pulumi.OutputState }
@@ -11654,7 +11654,7 @@ func (i SlotLogsApplicationLogsAzureBlobStorageArgs) ToSlotLogsApplicationLogsAz
 }
 
 func (i SlotLogsApplicationLogsAzureBlobStorageArgs) ToSlotLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) SlotLogsApplicationLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsAzureBlobStorageOutput).ToSlotLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsAzureBlobStorageOutput).ToSlotLogsApplicationLogsAzureBlobStoragePtrOutput()
 }
 
 // SlotLogsApplicationLogsAzureBlobStoragePtrInput is an input type that accepts SlotLogsApplicationLogsAzureBlobStorageArgs, SlotLogsApplicationLogsAzureBlobStoragePtr and SlotLogsApplicationLogsAzureBlobStoragePtrOutput values.
@@ -11687,7 +11687,7 @@ func (i *slotLogsApplicationLogsAzureBlobStoragePtrType) ToSlotLogsApplicationLo
 }
 
 func (i *slotLogsApplicationLogsAzureBlobStoragePtrType) ToSlotLogsApplicationLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) SlotLogsApplicationLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsAzureBlobStoragePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsApplicationLogsAzureBlobStorageOutput).ToSlotLogsApplicationLogsAzureBlobStoragePtrOutput()
 }
 
 type SlotLogsApplicationLogsAzureBlobStorageOutput struct{ *pulumi.OutputState }
@@ -11819,7 +11819,7 @@ func (i SlotLogsHttpLogsArgs) ToSlotLogsHttpLogsPtrOutput() SlotLogsHttpLogsPtrO
 }
 
 func (i SlotLogsHttpLogsArgs) ToSlotLogsHttpLogsPtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsOutput).ToSlotLogsHttpLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsOutput).ToSlotLogsHttpLogsPtrOutput()
 }
 
 // SlotLogsHttpLogsPtrInput is an input type that accepts SlotLogsHttpLogsArgs, SlotLogsHttpLogsPtr and SlotLogsHttpLogsPtrOutput values.
@@ -11852,7 +11852,7 @@ func (i *slotLogsHttpLogsPtrType) ToSlotLogsHttpLogsPtrOutput() SlotLogsHttpLogs
 }
 
 func (i *slotLogsHttpLogsPtrType) ToSlotLogsHttpLogsPtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsOutput).ToSlotLogsHttpLogsPtrOutput()
 }
 
 type SlotLogsHttpLogsOutput struct{ *pulumi.OutputState }
@@ -11969,7 +11969,7 @@ func (i SlotLogsHttpLogsAzureBlobStorageArgs) ToSlotLogsHttpLogsAzureBlobStorage
 }
 
 func (i SlotLogsHttpLogsAzureBlobStorageArgs) ToSlotLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsAzureBlobStorageOutput).ToSlotLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsAzureBlobStorageOutput).ToSlotLogsHttpLogsAzureBlobStoragePtrOutput()
 }
 
 // SlotLogsHttpLogsAzureBlobStoragePtrInput is an input type that accepts SlotLogsHttpLogsAzureBlobStorageArgs, SlotLogsHttpLogsAzureBlobStoragePtr and SlotLogsHttpLogsAzureBlobStoragePtrOutput values.
@@ -12002,7 +12002,7 @@ func (i *slotLogsHttpLogsAzureBlobStoragePtrType) ToSlotLogsHttpLogsAzureBlobSto
 }
 
 func (i *slotLogsHttpLogsAzureBlobStoragePtrType) ToSlotLogsHttpLogsAzureBlobStoragePtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsAzureBlobStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsAzureBlobStoragePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsAzureBlobStorageOutput).ToSlotLogsHttpLogsAzureBlobStoragePtrOutput()
 }
 
 type SlotLogsHttpLogsAzureBlobStorageOutput struct{ *pulumi.OutputState }
@@ -12119,7 +12119,7 @@ func (i SlotLogsHttpLogsFileSystemArgs) ToSlotLogsHttpLogsFileSystemPtrOutput() 
 }
 
 func (i SlotLogsHttpLogsFileSystemArgs) ToSlotLogsHttpLogsFileSystemPtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsFileSystemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsFileSystemOutput).ToSlotLogsHttpLogsFileSystemPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsFileSystemOutput).ToSlotLogsHttpLogsFileSystemPtrOutput()
 }
 
 // SlotLogsHttpLogsFileSystemPtrInput is an input type that accepts SlotLogsHttpLogsFileSystemArgs, SlotLogsHttpLogsFileSystemPtr and SlotLogsHttpLogsFileSystemPtrOutput values.
@@ -12152,7 +12152,7 @@ func (i *slotLogsHttpLogsFileSystemPtrType) ToSlotLogsHttpLogsFileSystemPtrOutpu
 }
 
 func (i *slotLogsHttpLogsFileSystemPtrType) ToSlotLogsHttpLogsFileSystemPtrOutputWithContext(ctx context.Context) SlotLogsHttpLogsFileSystemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsFileSystemPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotLogsHttpLogsFileSystemOutput).ToSlotLogsHttpLogsFileSystemPtrOutput()
 }
 
 type SlotLogsHttpLogsFileSystemOutput struct{ *pulumi.OutputState }
@@ -12357,7 +12357,7 @@ func (i SlotSiteConfigArgs) ToSlotSiteConfigPtrOutput() SlotSiteConfigPtrOutput 
 }
 
 func (i SlotSiteConfigArgs) ToSlotSiteConfigPtrOutputWithContext(ctx context.Context) SlotSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigOutput).ToSlotSiteConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigOutput).ToSlotSiteConfigPtrOutput()
 }
 
 // SlotSiteConfigPtrInput is an input type that accepts SlotSiteConfigArgs, SlotSiteConfigPtr and SlotSiteConfigPtrOutput values.
@@ -12390,7 +12390,7 @@ func (i *slotSiteConfigPtrType) ToSlotSiteConfigPtrOutput() SlotSiteConfigPtrOut
 }
 
 func (i *slotSiteConfigPtrType) ToSlotSiteConfigPtrOutputWithContext(ctx context.Context) SlotSiteConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigOutput).ToSlotSiteConfigPtrOutput()
 }
 
 type SlotSiteConfigOutput struct{ *pulumi.OutputState }
@@ -12870,7 +12870,7 @@ func (i SlotSiteConfigCorsArgs) ToSlotSiteConfigCorsPtrOutput() SlotSiteConfigCo
 }
 
 func (i SlotSiteConfigCorsArgs) ToSlotSiteConfigCorsPtrOutputWithContext(ctx context.Context) SlotSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigCorsOutput).ToSlotSiteConfigCorsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigCorsOutput).ToSlotSiteConfigCorsPtrOutput()
 }
 
 // SlotSiteConfigCorsPtrInput is an input type that accepts SlotSiteConfigCorsArgs, SlotSiteConfigCorsPtr and SlotSiteConfigCorsPtrOutput values.
@@ -12903,7 +12903,7 @@ func (i *slotSiteConfigCorsPtrType) ToSlotSiteConfigCorsPtrOutput() SlotSiteConf
 }
 
 func (i *slotSiteConfigCorsPtrType) ToSlotSiteConfigCorsPtrOutputWithContext(ctx context.Context) SlotSiteConfigCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigCorsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SlotSiteConfigCorsOutput).ToSlotSiteConfigCorsPtrOutput()
 }
 
 type SlotSiteConfigCorsOutput struct{ *pulumi.OutputState }

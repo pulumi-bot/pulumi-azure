@@ -52,7 +52,7 @@ func (i AlertRuleScheduledIncidentConfigurationArgs) ToAlertRuleScheduledInciden
 }
 
 func (i AlertRuleScheduledIncidentConfigurationArgs) ToAlertRuleScheduledIncidentConfigurationPtrOutputWithContext(ctx context.Context) AlertRuleScheduledIncidentConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationOutput).ToAlertRuleScheduledIncidentConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationOutput).ToAlertRuleScheduledIncidentConfigurationPtrOutput()
 }
 
 // AlertRuleScheduledIncidentConfigurationPtrInput is an input type that accepts AlertRuleScheduledIncidentConfigurationArgs, AlertRuleScheduledIncidentConfigurationPtr and AlertRuleScheduledIncidentConfigurationPtrOutput values.
@@ -85,7 +85,7 @@ func (i *alertRuleScheduledIncidentConfigurationPtrType) ToAlertRuleScheduledInc
 }
 
 func (i *alertRuleScheduledIncidentConfigurationPtrType) ToAlertRuleScheduledIncidentConfigurationPtrOutputWithContext(ctx context.Context) AlertRuleScheduledIncidentConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationOutput).ToAlertRuleScheduledIncidentConfigurationPtrOutput()
 }
 
 type AlertRuleScheduledIncidentConfigurationOutput struct{ *pulumi.OutputState }
@@ -216,7 +216,7 @@ func (i AlertRuleScheduledIncidentConfigurationGroupingArgs) ToAlertRuleSchedule
 }
 
 func (i AlertRuleScheduledIncidentConfigurationGroupingArgs) ToAlertRuleScheduledIncidentConfigurationGroupingPtrOutputWithContext(ctx context.Context) AlertRuleScheduledIncidentConfigurationGroupingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationGroupingOutput).ToAlertRuleScheduledIncidentConfigurationGroupingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationGroupingOutput).ToAlertRuleScheduledIncidentConfigurationGroupingPtrOutput()
 }
 
 // AlertRuleScheduledIncidentConfigurationGroupingPtrInput is an input type that accepts AlertRuleScheduledIncidentConfigurationGroupingArgs, AlertRuleScheduledIncidentConfigurationGroupingPtr and AlertRuleScheduledIncidentConfigurationGroupingPtrOutput values.
@@ -249,7 +249,7 @@ func (i *alertRuleScheduledIncidentConfigurationGroupingPtrType) ToAlertRuleSche
 }
 
 func (i *alertRuleScheduledIncidentConfigurationGroupingPtrType) ToAlertRuleScheduledIncidentConfigurationGroupingPtrOutputWithContext(ctx context.Context) AlertRuleScheduledIncidentConfigurationGroupingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationGroupingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleScheduledIncidentConfigurationGroupingOutput).ToAlertRuleScheduledIncidentConfigurationGroupingPtrOutput()
 }
 
 type AlertRuleScheduledIncidentConfigurationGroupingOutput struct{ *pulumi.OutputState }

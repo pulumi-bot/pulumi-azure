@@ -68,7 +68,7 @@ func (i CustomHttpsConfigurationCustomHttpsConfigurationArgs) ToCustomHttpsConfi
 }
 
 func (i CustomHttpsConfigurationCustomHttpsConfigurationArgs) ToCustomHttpsConfigurationCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) CustomHttpsConfigurationCustomHttpsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationCustomHttpsConfigurationOutput).ToCustomHttpsConfigurationCustomHttpsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationCustomHttpsConfigurationOutput).ToCustomHttpsConfigurationCustomHttpsConfigurationPtrOutput()
 }
 
 // CustomHttpsConfigurationCustomHttpsConfigurationPtrInput is an input type that accepts CustomHttpsConfigurationCustomHttpsConfigurationArgs, CustomHttpsConfigurationCustomHttpsConfigurationPtr and CustomHttpsConfigurationCustomHttpsConfigurationPtrOutput values.
@@ -101,7 +101,7 @@ func (i *customHttpsConfigurationCustomHttpsConfigurationPtrType) ToCustomHttpsC
 }
 
 func (i *customHttpsConfigurationCustomHttpsConfigurationPtrType) ToCustomHttpsConfigurationCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) CustomHttpsConfigurationCustomHttpsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationCustomHttpsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpsConfigurationCustomHttpsConfigurationOutput).ToCustomHttpsConfigurationCustomHttpsConfigurationPtrOutput()
 }
 
 type CustomHttpsConfigurationCustomHttpsConfigurationOutput struct{ *pulumi.OutputState }
@@ -2073,7 +2073,7 @@ func (i FrontdoorFrontendEndpointCustomHttpsConfigurationArgs) ToFrontdoorFronte
 }
 
 func (i FrontdoorFrontendEndpointCustomHttpsConfigurationArgs) ToFrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorFrontendEndpointCustomHttpsConfigurationOutput).ToFrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorFrontendEndpointCustomHttpsConfigurationOutput).ToFrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput()
 }
 
 // FrontdoorFrontendEndpointCustomHttpsConfigurationPtrInput is an input type that accepts FrontdoorFrontendEndpointCustomHttpsConfigurationArgs, FrontdoorFrontendEndpointCustomHttpsConfigurationPtr and FrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput values.
@@ -2106,7 +2106,7 @@ func (i *frontdoorFrontendEndpointCustomHttpsConfigurationPtrType) ToFrontdoorFr
 }
 
 func (i *frontdoorFrontendEndpointCustomHttpsConfigurationPtrType) ToFrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorFrontendEndpointCustomHttpsConfigurationOutput).ToFrontdoorFrontendEndpointCustomHttpsConfigurationPtrOutput()
 }
 
 type FrontdoorFrontendEndpointCustomHttpsConfigurationOutput struct{ *pulumi.OutputState }
@@ -2486,7 +2486,7 @@ func (i FrontdoorRoutingRuleForwardingConfigurationArgs) ToFrontdoorRoutingRuleF
 }
 
 func (i FrontdoorRoutingRuleForwardingConfigurationArgs) ToFrontdoorRoutingRuleForwardingConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorRoutingRuleForwardingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleForwardingConfigurationOutput).ToFrontdoorRoutingRuleForwardingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleForwardingConfigurationOutput).ToFrontdoorRoutingRuleForwardingConfigurationPtrOutput()
 }
 
 // FrontdoorRoutingRuleForwardingConfigurationPtrInput is an input type that accepts FrontdoorRoutingRuleForwardingConfigurationArgs, FrontdoorRoutingRuleForwardingConfigurationPtr and FrontdoorRoutingRuleForwardingConfigurationPtrOutput values.
@@ -2519,7 +2519,7 @@ func (i *frontdoorRoutingRuleForwardingConfigurationPtrType) ToFrontdoorRoutingR
 }
 
 func (i *frontdoorRoutingRuleForwardingConfigurationPtrType) ToFrontdoorRoutingRuleForwardingConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorRoutingRuleForwardingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleForwardingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleForwardingConfigurationOutput).ToFrontdoorRoutingRuleForwardingConfigurationPtrOutput()
 }
 
 type FrontdoorRoutingRuleForwardingConfigurationOutput struct{ *pulumi.OutputState }
@@ -2716,7 +2716,7 @@ func (i FrontdoorRoutingRuleRedirectConfigurationArgs) ToFrontdoorRoutingRuleRed
 }
 
 func (i FrontdoorRoutingRuleRedirectConfigurationArgs) ToFrontdoorRoutingRuleRedirectConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorRoutingRuleRedirectConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleRedirectConfigurationOutput).ToFrontdoorRoutingRuleRedirectConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleRedirectConfigurationOutput).ToFrontdoorRoutingRuleRedirectConfigurationPtrOutput()
 }
 
 // FrontdoorRoutingRuleRedirectConfigurationPtrInput is an input type that accepts FrontdoorRoutingRuleRedirectConfigurationArgs, FrontdoorRoutingRuleRedirectConfigurationPtr and FrontdoorRoutingRuleRedirectConfigurationPtrOutput values.
@@ -2749,7 +2749,7 @@ func (i *frontdoorRoutingRuleRedirectConfigurationPtrType) ToFrontdoorRoutingRul
 }
 
 func (i *frontdoorRoutingRuleRedirectConfigurationPtrType) ToFrontdoorRoutingRuleRedirectConfigurationPtrOutputWithContext(ctx context.Context) FrontdoorRoutingRuleRedirectConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleRedirectConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FrontdoorRoutingRuleRedirectConfigurationOutput).ToFrontdoorRoutingRuleRedirectConfigurationPtrOutput()
 }
 
 type FrontdoorRoutingRuleRedirectConfigurationOutput struct{ *pulumi.OutputState }
