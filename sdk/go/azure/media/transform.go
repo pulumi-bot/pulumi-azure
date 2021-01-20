@@ -172,7 +172,7 @@ type Transform struct {
 	// The name which should be used for this Transform. Changing this forces a new Transform to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// One or more `output` blocks as defined below. At least one `output` must be defined.
-	Outputs TransformOutputArrayOutput `pulumi:"outputs"`
+	Outputs TransformOutputTypeArrayOutput `pulumi:"outputs"`
 	// The name of the Resource Group where the Transform should exist. Changing this forces a new Transform to be created.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 }
@@ -219,7 +219,7 @@ type transformState struct {
 	// The name which should be used for this Transform. Changing this forces a new Transform to be created.
 	Name *string `pulumi:"name"`
 	// One or more `output` blocks as defined below. At least one `output` must be defined.
-	Outputs []TransformOutput `pulumi:"outputs"`
+	Outputs []TransformOutputType `pulumi:"outputs"`
 	// The name of the Resource Group where the Transform should exist. Changing this forces a new Transform to be created.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 }
@@ -232,7 +232,7 @@ type TransformState struct {
 	// The name which should be used for this Transform. Changing this forces a new Transform to be created.
 	Name pulumi.StringPtrInput
 	// One or more `output` blocks as defined below. At least one `output` must be defined.
-	Outputs TransformOutputArrayInput
+	Outputs TransformOutputTypeArrayInput
 	// The name of the Resource Group where the Transform should exist. Changing this forces a new Transform to be created.
 	ResourceGroupName pulumi.StringPtrInput
 }
@@ -249,7 +249,7 @@ type transformArgs struct {
 	// The name which should be used for this Transform. Changing this forces a new Transform to be created.
 	Name *string `pulumi:"name"`
 	// One or more `output` blocks as defined below. At least one `output` must be defined.
-	Outputs []TransformOutput `pulumi:"outputs"`
+	Outputs []TransformOutputType `pulumi:"outputs"`
 	// The name of the Resource Group where the Transform should exist. Changing this forces a new Transform to be created.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -263,7 +263,7 @@ type TransformArgs struct {
 	// The name which should be used for this Transform. Changing this forces a new Transform to be created.
 	Name pulumi.StringPtrInput
 	// One or more `output` blocks as defined below. At least one `output` must be defined.
-	Outputs TransformOutputArrayInput
+	Outputs TransformOutputTypeArrayInput
 	// The name of the Resource Group where the Transform should exist. Changing this forces a new Transform to be created.
 	ResourceGroupName pulumi.StringInput
 }
@@ -279,15 +279,15 @@ type TransformInput interface {
 	ToTransformOutputWithContext(ctx context.Context) TransformOutput
 }
 
-func (Transform) ElementType() reflect.Type {
-	return reflect.TypeOf((*Transform)(nil)).Elem()
+func (*Transform) ElementType() reflect.Type {
+	return reflect.TypeOf((*Transform)(nil))
 }
 
-func (i Transform) ToTransformOutput() TransformOutput {
+func (i *Transform) ToTransformOutput() TransformOutput {
 	return i.ToTransformOutputWithContext(context.Background())
 }
 
-func (i Transform) ToTransformOutputWithContext(ctx context.Context) TransformOutput {
+func (i *Transform) ToTransformOutputWithContext(ctx context.Context) TransformOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutput)
 }
 
@@ -296,7 +296,7 @@ type TransformOutput struct {
 }
 
 func (TransformOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransformOutput)(nil)).Elem()
+	return reflect.TypeOf((*Transform)(nil))
 }
 
 func (o TransformOutput) ToTransformOutput() TransformOutput {
