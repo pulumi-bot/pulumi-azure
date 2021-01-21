@@ -90,6 +90,7 @@ namespace Pulumi.Azure.Backup
     /// 
     ///  Note the ID requires quoting as there are semicolons
     /// </summary>
+    [AzureResourceType("azure:backup/protectedFileShare:ProtectedFileShare")]
     public partial class ProtectedFileShare : Pulumi.CustomResource
     {
         /// <summary>
