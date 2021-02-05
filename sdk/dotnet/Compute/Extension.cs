@@ -102,7 +102,7 @@ namespace Pulumi.Azure.Compute
     ///                 {
     ///                     var primaryBlobEndpoint = values.Item1;
     ///                     var name = values.Item2;
-    ///                     return $"{primaryBlobEndpoint}{name}/myosdisk1.vhd";
+    ///                     return Output.Format($"{primaryBlobEndpoint}{name}/myosdisk1.vhd");
     ///                 }),
     ///                 Caching = "ReadWrite",
     ///                 CreateOption = "FromImage",
@@ -150,6 +150,7 @@ namespace Pulumi.Azure.Compute
     ///  $ pulumi import azure:compute/extension:Extension example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/myVM/extensions/hostname
     /// ```
     /// </summary>
+    [AzureResourceType("azure:compute/extension:Extension")]
     public partial class Extension : Pulumi.CustomResource
     {
         /// <summary>

@@ -42,7 +42,7 @@ namespace Pulumi.Azure.DataFactory
     ///         {
     ///             ResourceGroupName = exampleResourceGroup.Name,
     ///             DataFactoryName = exampleFactory.Name,
-    ///             Url = exampleFunctionApp.Apply(exampleFunctionApp =&gt; $"https://{exampleFunctionApp.DefaultHostname}"),
+    ///             Url = exampleFunctionApp.Apply(exampleFunctionApp =&gt; Output.Format($"https://{exampleFunctionApp.DefaultHostname}")),
     ///             Key = "foo",
     ///         });
     ///     }
@@ -58,6 +58,7 @@ namespace Pulumi.Azure.DataFactory
     ///  $ pulumi import azure:datafactory/linkedServiceAzureFunction:LinkedServiceAzureFunction example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/linkedservices/example
     /// ```
     /// </summary>
+    [AzureResourceType("azure:datafactory/linkedServiceAzureFunction:LinkedServiceAzureFunction")]
     public partial class LinkedServiceAzureFunction : Pulumi.CustomResource
     {
         /// <summary>

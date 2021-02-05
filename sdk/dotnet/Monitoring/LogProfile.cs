@@ -55,7 +55,7 @@ namespace Pulumi.Azure.Monitoring
     ///                 "westus",
     ///                 "global",
     ///             },
-    ///             ServicebusRuleId = exampleEventHubNamespace.Id.Apply(id =&gt; $"{id}/authorizationrules/RootManageSharedAccessKey"),
+    ///             ServicebusRuleId = exampleEventHubNamespace.Id.Apply(id =&gt; Output.Format($"{id}/authorizationrules/RootManageSharedAccessKey")),
     ///             StorageAccountId = exampleAccount.Id,
     ///             RetentionPolicy = new Azure.Monitoring.Inputs.LogProfileRetentionPolicyArgs
     ///             {
@@ -76,6 +76,7 @@ namespace Pulumi.Azure.Monitoring
     ///  $ pulumi import azure:monitoring/logProfile:LogProfile example /subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.insights/logprofiles/test
     /// ```
     /// </summary>
+    [AzureResourceType("azure:monitoring/logProfile:LogProfile")]
     public partial class LogProfile : Pulumi.CustomResource
     {
         /// <summary>

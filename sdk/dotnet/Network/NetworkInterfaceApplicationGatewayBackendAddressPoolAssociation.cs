@@ -59,12 +59,12 @@ namespace Pulumi.Azure.Network
     ///             ResourceGroupName = exampleResourceGroup.Name,
     ///             AllocationMethod = "Dynamic",
     ///         });
-    ///         var backendAddressPoolName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-beap");
-    ///         var frontendPortName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-feport");
-    ///         var frontendIpConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-feip");
-    ///         var httpSettingName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-be-htst");
-    ///         var listenerName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-httplstn");
-    ///         var requestRoutingRuleName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-rqrt");
+    ///         var backendAddressPoolName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-beap"));
+    ///         var frontendPortName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-feport"));
+    ///         var frontendIpConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-feip"));
+    ///         var httpSettingName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-be-htst"));
+    ///         var listenerName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-httplstn"));
+    ///         var requestRoutingRuleName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-rqrt"));
     ///         var network = new Azure.Network.ApplicationGateway("network", new Azure.Network.ApplicationGatewayArgs
     ///         {
     ///             ResourceGroupName = exampleResourceGroup.Name,
@@ -172,6 +172,7 @@ namespace Pulumi.Azure.Network
     ///  $ pulumi import azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation association1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.network/networkInterfaces/nic1/ipConfigurations/example|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/applicationGateways/gateway1/backendAddressPools/pool1
     /// ```
     /// </summary>
+    [AzureResourceType("azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation")]
     public partial class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation : Pulumi.CustomResource
     {
         /// <summary>

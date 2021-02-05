@@ -59,13 +59,13 @@ namespace Pulumi.Azure.Network
     ///             Location = exampleResourceGroup.Location,
     ///             AllocationMethod = "Dynamic",
     ///         });
-    ///         var backendAddressPoolName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-beap");
-    ///         var frontendPortName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-feport");
-    ///         var frontendIpConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-feip");
-    ///         var httpSettingName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-be-htst");
-    ///         var listenerName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-httplstn");
-    ///         var requestRoutingRuleName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-rqrt");
-    ///         var redirectConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; $"{name}-rdrcfg");
+    ///         var backendAddressPoolName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-beap"));
+    ///         var frontendPortName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-feport"));
+    ///         var frontendIpConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-feip"));
+    ///         var httpSettingName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-be-htst"));
+    ///         var listenerName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-httplstn"));
+    ///         var requestRoutingRuleName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-rqrt"));
+    ///         var redirectConfigurationName = exampleVirtualNetwork.Name.Apply(name =&gt; Output.Format($"{name}-rdrcfg"));
     ///         var network = new Azure.Network.ApplicationGateway("network", new Azure.Network.ApplicationGatewayArgs
     ///         {
     ///             ResourceGroupName = exampleResourceGroup.Name,
@@ -154,6 +154,7 @@ namespace Pulumi.Azure.Network
     ///  $ pulumi import azure:network/applicationGateway:ApplicationGateway example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/applicationGateways/myGateway1
     /// ```
     /// </summary>
+    [AzureResourceType("azure:network/applicationGateway:ApplicationGateway")]
     public partial class ApplicationGateway : Pulumi.CustomResource
     {
         /// <summary>

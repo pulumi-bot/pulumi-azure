@@ -88,7 +88,7 @@ namespace Pulumi.Azure.SecurityCenter
     ///             },
     ///             Scopes = 
     ///             {
-    ///                 current.Apply(current =&gt; $"/subscriptions/{current.SubscriptionId}"),
+    ///                 current.Apply(current =&gt; Output.Format($"/subscriptions/{current.SubscriptionId}")),
     ///             },
     ///         });
     ///     }
@@ -104,6 +104,7 @@ namespace Pulumi.Azure.SecurityCenter
     ///  $ pulumi import azure:securitycenter/automation:Automation example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Security/automations/automation1
     /// ```
     /// </summary>
+    [AzureResourceType("azure:securitycenter/automation:Automation")]
     public partial class Automation : Pulumi.CustomResource
     {
         /// <summary>

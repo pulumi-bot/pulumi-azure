@@ -28,7 +28,7 @@ namespace Pulumi.Azure.Compute
     ///     {
     ///         var config = new Config();
     ///         var prefix = config.Get("prefix") ?? "example";
-    ///         var vmName = $"{prefix}-vm";
+    ///         var vmName = Output.Format($"{prefix}-vm");
     ///         var mainResourceGroup = new Azure.Core.ResourceGroup("mainResourceGroup", new Azure.Core.ResourceGroupArgs
     ///         {
     ///             Location = "West Europe",
@@ -127,6 +127,7 @@ namespace Pulumi.Azure.Compute
     ///  $ pulumi import azure:compute/dataDiskAttachment:DataDiskAttachment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.compute/virtualMachines/machine1/dataDisks/disk1
     /// ```
     /// </summary>
+    [AzureResourceType("azure:compute/dataDiskAttachment:DataDiskAttachment")]
     public partial class DataDiskAttachment : Pulumi.CustomResource
     {
         /// <summary>
