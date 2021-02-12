@@ -209,15 +209,15 @@ type CassandraTableInput interface {
 	ToCassandraTableOutputWithContext(ctx context.Context) CassandraTableOutput
 }
 
-func (CassandraTable) ElementType() reflect.Type {
-	return reflect.TypeOf((*CassandraTable)(nil)).Elem()
+func (*CassandraTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*CassandraTable)(nil))
 }
 
-func (i CassandraTable) ToCassandraTableOutput() CassandraTableOutput {
+func (i *CassandraTable) ToCassandraTableOutput() CassandraTableOutput {
 	return i.ToCassandraTableOutputWithContext(context.Background())
 }
 
-func (i CassandraTable) ToCassandraTableOutputWithContext(ctx context.Context) CassandraTableOutput {
+func (i *CassandraTable) ToCassandraTableOutputWithContext(ctx context.Context) CassandraTableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraTableOutput)
 }
 
@@ -226,7 +226,7 @@ type CassandraTableOutput struct {
 }
 
 func (CassandraTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CassandraTableOutput)(nil)).Elem()
+	return reflect.TypeOf((*CassandraTable)(nil))
 }
 
 func (o CassandraTableOutput) ToCassandraTableOutput() CassandraTableOutput {

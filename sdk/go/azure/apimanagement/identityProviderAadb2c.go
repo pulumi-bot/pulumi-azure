@@ -218,15 +218,15 @@ type IdentityProviderAadb2cInput interface {
 	ToIdentityProviderAadb2cOutputWithContext(ctx context.Context) IdentityProviderAadb2cOutput
 }
 
-func (IdentityProviderAadb2c) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProviderAadb2c)(nil)).Elem()
+func (*IdentityProviderAadb2c) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProviderAadb2c)(nil))
 }
 
-func (i IdentityProviderAadb2c) ToIdentityProviderAadb2cOutput() IdentityProviderAadb2cOutput {
+func (i *IdentityProviderAadb2c) ToIdentityProviderAadb2cOutput() IdentityProviderAadb2cOutput {
 	return i.ToIdentityProviderAadb2cOutputWithContext(context.Background())
 }
 
-func (i IdentityProviderAadb2c) ToIdentityProviderAadb2cOutputWithContext(ctx context.Context) IdentityProviderAadb2cOutput {
+func (i *IdentityProviderAadb2c) ToIdentityProviderAadb2cOutputWithContext(ctx context.Context) IdentityProviderAadb2cOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderAadb2cOutput)
 }
 
@@ -235,7 +235,7 @@ type IdentityProviderAadb2cOutput struct {
 }
 
 func (IdentityProviderAadb2cOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProviderAadb2cOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityProviderAadb2c)(nil))
 }
 
 func (o IdentityProviderAadb2cOutput) ToIdentityProviderAadb2cOutput() IdentityProviderAadb2cOutput {
