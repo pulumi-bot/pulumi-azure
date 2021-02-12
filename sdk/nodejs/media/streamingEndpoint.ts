@@ -196,7 +196,8 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     constructor(name: string, args: StreamingEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamingEndpointArgs | StreamingEndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StreamingEndpointState | undefined;
             inputs["accessControl"] = state ? state.accessControl : undefined;
             inputs["autoStartEnabled"] = state ? state.autoStartEnabled : undefined;
@@ -215,13 +216,13 @@ export class StreamingEndpoint extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as StreamingEndpointArgs | undefined;
-            if ((!args || args.mediaServicesAccountName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.mediaServicesAccountName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mediaServicesAccountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.scaleUnits === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scaleUnits === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scaleUnits'");
             }
             inputs["accessControl"] = args ? args.accessControl : undefined;
@@ -240,12 +241,8 @@ export class StreamingEndpoint extends pulumi.CustomResource {
             inputs["scaleUnits"] = args ? args.scaleUnits : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StreamingEndpoint.__pulumiType, name, inputs, opts);
     }
