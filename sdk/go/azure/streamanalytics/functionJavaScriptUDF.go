@@ -73,11 +73,11 @@ type FunctionJavaScriptUDF struct {
 	pulumi.CustomResourceState
 
 	// One or more `input` blocks as defined below.
-	Inputs FunctionJavaScriptUDFInputArrayOutput `pulumi:"inputs"`
+	Inputs FunctionJavaScriptUDFInputTypeArrayOutput `pulumi:"inputs"`
 	// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An `output` blocks as defined below.
-	Output FunctionJavaScriptUDFOutputOutput `pulumi:"output"`
+	Output FunctionJavaScriptUDFOutputTypeOutput `pulumi:"output"`
 	// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// The JavaScript of this UDF Function.
@@ -131,11 +131,11 @@ func GetFunctionJavaScriptUDF(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FunctionJavaScriptUDF resources.
 type functionJavaScriptUDFState struct {
 	// One or more `input` blocks as defined below.
-	Inputs []FunctionJavaScriptUDFInput `pulumi:"inputs"`
+	Inputs []FunctionJavaScriptUDFInputType `pulumi:"inputs"`
 	// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
 	// An `output` blocks as defined below.
-	Output *FunctionJavaScriptUDFOutput `pulumi:"output"`
+	Output *FunctionJavaScriptUDFOutputType `pulumi:"output"`
 	// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// The JavaScript of this UDF Function.
@@ -146,11 +146,11 @@ type functionJavaScriptUDFState struct {
 
 type FunctionJavaScriptUDFState struct {
 	// One or more `input` blocks as defined below.
-	Inputs FunctionJavaScriptUDFInputArrayInput
+	Inputs FunctionJavaScriptUDFInputTypeArrayInput
 	// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
 	// An `output` blocks as defined below.
-	Output FunctionJavaScriptUDFOutputPtrInput
+	Output FunctionJavaScriptUDFOutputTypePtrInput
 	// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
 	ResourceGroupName pulumi.StringPtrInput
 	// The JavaScript of this UDF Function.
@@ -165,11 +165,11 @@ func (FunctionJavaScriptUDFState) ElementType() reflect.Type {
 
 type functionJavaScriptUDFArgs struct {
 	// One or more `input` blocks as defined below.
-	Inputs []FunctionJavaScriptUDFInput `pulumi:"inputs"`
+	Inputs []FunctionJavaScriptUDFInputType `pulumi:"inputs"`
 	// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
 	Name *string `pulumi:"name"`
 	// An `output` blocks as defined below.
-	Output FunctionJavaScriptUDFOutput `pulumi:"output"`
+	Output FunctionJavaScriptUDFOutputType `pulumi:"output"`
 	// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The JavaScript of this UDF Function.
@@ -181,11 +181,11 @@ type functionJavaScriptUDFArgs struct {
 // The set of arguments for constructing a FunctionJavaScriptUDF resource.
 type FunctionJavaScriptUDFArgs struct {
 	// One or more `input` blocks as defined below.
-	Inputs FunctionJavaScriptUDFInputArrayInput
+	Inputs FunctionJavaScriptUDFInputTypeArrayInput
 	// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
 	Name pulumi.StringPtrInput
 	// An `output` blocks as defined below.
-	Output FunctionJavaScriptUDFOutputInput
+	Output FunctionJavaScriptUDFOutputTypeInput
 	// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
 	ResourceGroupName pulumi.StringInput
 	// The JavaScript of this UDF Function.
@@ -205,15 +205,15 @@ type FunctionJavaScriptUDFInput interface {
 	ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput
 }
 
-func (FunctionJavaScriptUDF) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil)).Elem()
+func (*FunctionJavaScriptUDF) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
 	return i.ToFunctionJavaScriptUDFOutputWithContext(context.Background())
 }
 
-func (i FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
+func (i *FunctionJavaScriptUDF) ToFunctionJavaScriptUDFOutputWithContext(ctx context.Context) FunctionJavaScriptUDFOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionJavaScriptUDFOutput)
 }
 
@@ -222,7 +222,7 @@ type FunctionJavaScriptUDFOutput struct {
 }
 
 func (FunctionJavaScriptUDFOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionJavaScriptUDFOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionJavaScriptUDF)(nil))
 }
 
 func (o FunctionJavaScriptUDFOutput) ToFunctionJavaScriptUDFOutput() FunctionJavaScriptUDFOutput {
