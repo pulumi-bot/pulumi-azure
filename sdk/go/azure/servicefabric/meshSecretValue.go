@@ -135,15 +135,15 @@ type MeshSecretValueInput interface {
 	ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput
 }
 
-func (MeshSecretValue) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecretValue)(nil)).Elem()
+func (*MeshSecretValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshSecretValue)(nil))
 }
 
-func (i MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
+func (i *MeshSecretValue) ToMeshSecretValueOutput() MeshSecretValueOutput {
 	return i.ToMeshSecretValueOutputWithContext(context.Background())
 }
 
-func (i MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
+func (i *MeshSecretValue) ToMeshSecretValueOutputWithContext(ctx context.Context) MeshSecretValueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MeshSecretValueOutput)
 }
 
@@ -152,7 +152,7 @@ type MeshSecretValueOutput struct {
 }
 
 func (MeshSecretValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshSecretValueOutput)(nil)).Elem()
+	return reflect.TypeOf((*MeshSecretValue)(nil))
 }
 
 func (o MeshSecretValueOutput) ToMeshSecretValueOutput() MeshSecretValueOutput {
