@@ -15,3 +15,7 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-azurerm => github.com/pulumi/terraform-provider-azurerm v1.41.1-0.20210205135826-8235b602da18
 )
+
+replace github.com/pulumi/pulumi/pkg/v2 => ../../pulumi/pkg
+
+replace github.com/pulumi/pulumi/sdk/v2 => ../../pulumi/sdk
