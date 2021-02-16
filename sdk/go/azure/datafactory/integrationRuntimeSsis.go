@@ -260,15 +260,15 @@ type IntegrationRuntimeSsisInput interface {
 	ToIntegrationRuntimeSsisOutputWithContext(ctx context.Context) IntegrationRuntimeSsisOutput
 }
 
-func (IntegrationRuntimeSsis) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeSsis)(nil)).Elem()
+func (*IntegrationRuntimeSsis) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsis)(nil))
 }
 
-func (i IntegrationRuntimeSsis) ToIntegrationRuntimeSsisOutput() IntegrationRuntimeSsisOutput {
+func (i *IntegrationRuntimeSsis) ToIntegrationRuntimeSsisOutput() IntegrationRuntimeSsisOutput {
 	return i.ToIntegrationRuntimeSsisOutputWithContext(context.Background())
 }
 
-func (i IntegrationRuntimeSsis) ToIntegrationRuntimeSsisOutputWithContext(ctx context.Context) IntegrationRuntimeSsisOutput {
+func (i *IntegrationRuntimeSsis) ToIntegrationRuntimeSsisOutputWithContext(ctx context.Context) IntegrationRuntimeSsisOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisOutput)
 }
 
@@ -277,7 +277,7 @@ type IntegrationRuntimeSsisOutput struct {
 }
 
 func (IntegrationRuntimeSsisOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeSsisOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationRuntimeSsis)(nil))
 }
 
 func (o IntegrationRuntimeSsisOutput) ToIntegrationRuntimeSsisOutput() IntegrationRuntimeSsisOutput {

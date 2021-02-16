@@ -179,15 +179,15 @@ type BackendAddressPoolAddressInput interface {
 	ToBackendAddressPoolAddressOutputWithContext(ctx context.Context) BackendAddressPoolAddressOutput
 }
 
-func (BackendAddressPoolAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendAddressPoolAddress)(nil)).Elem()
+func (*BackendAddressPoolAddress) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendAddressPoolAddress)(nil))
 }
 
-func (i BackendAddressPoolAddress) ToBackendAddressPoolAddressOutput() BackendAddressPoolAddressOutput {
+func (i *BackendAddressPoolAddress) ToBackendAddressPoolAddressOutput() BackendAddressPoolAddressOutput {
 	return i.ToBackendAddressPoolAddressOutputWithContext(context.Background())
 }
 
-func (i BackendAddressPoolAddress) ToBackendAddressPoolAddressOutputWithContext(ctx context.Context) BackendAddressPoolAddressOutput {
+func (i *BackendAddressPoolAddress) ToBackendAddressPoolAddressOutputWithContext(ctx context.Context) BackendAddressPoolAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendAddressPoolAddressOutput)
 }
 
@@ -196,7 +196,7 @@ type BackendAddressPoolAddressOutput struct {
 }
 
 func (BackendAddressPoolAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendAddressPoolAddressOutput)(nil)).Elem()
+	return reflect.TypeOf((*BackendAddressPoolAddress)(nil))
 }
 
 func (o BackendAddressPoolAddressOutput) ToBackendAddressPoolAddressOutput() BackendAddressPoolAddressOutput {

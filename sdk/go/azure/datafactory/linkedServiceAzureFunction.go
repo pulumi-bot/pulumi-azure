@@ -245,15 +245,15 @@ type LinkedServiceAzureFunctionInput interface {
 	ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput
 }
 
-func (LinkedServiceAzureFunction) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil)).Elem()
+func (*LinkedServiceAzureFunction) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil))
 }
 
-func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
+func (i *LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {
 	return i.ToLinkedServiceAzureFunctionOutputWithContext(context.Background())
 }
 
-func (i LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
+func (i *LinkedServiceAzureFunction) ToLinkedServiceAzureFunctionOutputWithContext(ctx context.Context) LinkedServiceAzureFunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureFunctionOutput)
 }
 
@@ -262,7 +262,7 @@ type LinkedServiceAzureFunctionOutput struct {
 }
 
 func (LinkedServiceAzureFunctionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceAzureFunctionOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkedServiceAzureFunction)(nil))
 }
 
 func (o LinkedServiceAzureFunctionOutput) ToLinkedServiceAzureFunctionOutput() LinkedServiceAzureFunctionOutput {

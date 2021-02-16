@@ -170,15 +170,15 @@ type SmartDetectionRuleInput interface {
 	ToSmartDetectionRuleOutputWithContext(ctx context.Context) SmartDetectionRuleOutput
 }
 
-func (SmartDetectionRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartDetectionRule)(nil)).Elem()
+func (*SmartDetectionRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartDetectionRule)(nil))
 }
 
-func (i SmartDetectionRule) ToSmartDetectionRuleOutput() SmartDetectionRuleOutput {
+func (i *SmartDetectionRule) ToSmartDetectionRuleOutput() SmartDetectionRuleOutput {
 	return i.ToSmartDetectionRuleOutputWithContext(context.Background())
 }
 
-func (i SmartDetectionRule) ToSmartDetectionRuleOutputWithContext(ctx context.Context) SmartDetectionRuleOutput {
+func (i *SmartDetectionRule) ToSmartDetectionRuleOutputWithContext(ctx context.Context) SmartDetectionRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SmartDetectionRuleOutput)
 }
 
@@ -187,7 +187,7 @@ type SmartDetectionRuleOutput struct {
 }
 
 func (SmartDetectionRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartDetectionRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*SmartDetectionRule)(nil))
 }
 
 func (o SmartDetectionRuleOutput) ToSmartDetectionRuleOutput() SmartDetectionRuleOutput {

@@ -229,15 +229,15 @@ type LinkedServiceAzureTableStorageInput interface {
 	ToLinkedServiceAzureTableStorageOutputWithContext(ctx context.Context) LinkedServiceAzureTableStorageOutput
 }
 
-func (LinkedServiceAzureTableStorage) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceAzureTableStorage)(nil)).Elem()
+func (*LinkedServiceAzureTableStorage) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceAzureTableStorage)(nil))
 }
 
-func (i LinkedServiceAzureTableStorage) ToLinkedServiceAzureTableStorageOutput() LinkedServiceAzureTableStorageOutput {
+func (i *LinkedServiceAzureTableStorage) ToLinkedServiceAzureTableStorageOutput() LinkedServiceAzureTableStorageOutput {
 	return i.ToLinkedServiceAzureTableStorageOutputWithContext(context.Background())
 }
 
-func (i LinkedServiceAzureTableStorage) ToLinkedServiceAzureTableStorageOutputWithContext(ctx context.Context) LinkedServiceAzureTableStorageOutput {
+func (i *LinkedServiceAzureTableStorage) ToLinkedServiceAzureTableStorageOutputWithContext(ctx context.Context) LinkedServiceAzureTableStorageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceAzureTableStorageOutput)
 }
 
@@ -246,7 +246,7 @@ type LinkedServiceAzureTableStorageOutput struct {
 }
 
 func (LinkedServiceAzureTableStorageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceAzureTableStorageOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkedServiceAzureTableStorage)(nil))
 }
 
 func (o LinkedServiceAzureTableStorageOutput) ToLinkedServiceAzureTableStorageOutput() LinkedServiceAzureTableStorageOutput {

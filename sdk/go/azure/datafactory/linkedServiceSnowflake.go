@@ -300,15 +300,15 @@ type LinkedServiceSnowflakeInput interface {
 	ToLinkedServiceSnowflakeOutputWithContext(ctx context.Context) LinkedServiceSnowflakeOutput
 }
 
-func (LinkedServiceSnowflake) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceSnowflake)(nil)).Elem()
+func (*LinkedServiceSnowflake) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedServiceSnowflake)(nil))
 }
 
-func (i LinkedServiceSnowflake) ToLinkedServiceSnowflakeOutput() LinkedServiceSnowflakeOutput {
+func (i *LinkedServiceSnowflake) ToLinkedServiceSnowflakeOutput() LinkedServiceSnowflakeOutput {
 	return i.ToLinkedServiceSnowflakeOutputWithContext(context.Background())
 }
 
-func (i LinkedServiceSnowflake) ToLinkedServiceSnowflakeOutputWithContext(ctx context.Context) LinkedServiceSnowflakeOutput {
+func (i *LinkedServiceSnowflake) ToLinkedServiceSnowflakeOutputWithContext(ctx context.Context) LinkedServiceSnowflakeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceSnowflakeOutput)
 }
 
@@ -317,7 +317,7 @@ type LinkedServiceSnowflakeOutput struct {
 }
 
 func (LinkedServiceSnowflakeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkedServiceSnowflakeOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkedServiceSnowflake)(nil))
 }
 
 func (o LinkedServiceSnowflakeOutput) ToLinkedServiceSnowflakeOutput() LinkedServiceSnowflakeOutput {

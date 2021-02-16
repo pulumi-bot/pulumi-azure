@@ -206,15 +206,15 @@ type IntegrationRuntimeRuleInput interface {
 	ToIntegrationRuntimeRuleOutputWithContext(ctx context.Context) IntegrationRuntimeRuleOutput
 }
 
-func (IntegrationRuntimeRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeRule)(nil)).Elem()
+func (*IntegrationRuntimeRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeRule)(nil))
 }
 
-func (i IntegrationRuntimeRule) ToIntegrationRuntimeRuleOutput() IntegrationRuntimeRuleOutput {
+func (i *IntegrationRuntimeRule) ToIntegrationRuntimeRuleOutput() IntegrationRuntimeRuleOutput {
 	return i.ToIntegrationRuntimeRuleOutputWithContext(context.Background())
 }
 
-func (i IntegrationRuntimeRule) ToIntegrationRuntimeRuleOutputWithContext(ctx context.Context) IntegrationRuntimeRuleOutput {
+func (i *IntegrationRuntimeRule) ToIntegrationRuntimeRuleOutputWithContext(ctx context.Context) IntegrationRuntimeRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeRuleOutput)
 }
 
@@ -223,7 +223,7 @@ type IntegrationRuntimeRuleOutput struct {
 }
 
 func (IntegrationRuntimeRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationRuntimeRule)(nil))
 }
 
 func (o IntegrationRuntimeRuleOutput) ToIntegrationRuntimeRuleOutput() IntegrationRuntimeRuleOutput {

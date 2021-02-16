@@ -218,15 +218,15 @@ type IntegrationRuntimeManagedInput interface {
 	ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput
 }
 
-func (IntegrationRuntimeManaged) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeManaged)(nil)).Elem()
+func (*IntegrationRuntimeManaged) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeManaged)(nil))
 }
 
-func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput {
+func (i *IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput {
 	return i.ToIntegrationRuntimeManagedOutputWithContext(context.Background())
 }
 
-func (i IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput {
+func (i *IntegrationRuntimeManaged) ToIntegrationRuntimeManagedOutputWithContext(ctx context.Context) IntegrationRuntimeManagedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeManagedOutput)
 }
 
@@ -235,7 +235,7 @@ type IntegrationRuntimeManagedOutput struct {
 }
 
 func (IntegrationRuntimeManagedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationRuntimeManagedOutput)(nil)).Elem()
+	return reflect.TypeOf((*IntegrationRuntimeManaged)(nil))
 }
 
 func (o IntegrationRuntimeManagedOutput) ToIntegrationRuntimeManagedOutput() IntegrationRuntimeManagedOutput {

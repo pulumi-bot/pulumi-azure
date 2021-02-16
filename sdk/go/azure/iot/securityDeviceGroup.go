@@ -191,15 +191,15 @@ type SecurityDeviceGroupInput interface {
 	ToSecurityDeviceGroupOutputWithContext(ctx context.Context) SecurityDeviceGroupOutput
 }
 
-func (SecurityDeviceGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityDeviceGroup)(nil)).Elem()
+func (*SecurityDeviceGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityDeviceGroup)(nil))
 }
 
-func (i SecurityDeviceGroup) ToSecurityDeviceGroupOutput() SecurityDeviceGroupOutput {
+func (i *SecurityDeviceGroup) ToSecurityDeviceGroupOutput() SecurityDeviceGroupOutput {
 	return i.ToSecurityDeviceGroupOutputWithContext(context.Background())
 }
 
-func (i SecurityDeviceGroup) ToSecurityDeviceGroupOutputWithContext(ctx context.Context) SecurityDeviceGroupOutput {
+func (i *SecurityDeviceGroup) ToSecurityDeviceGroupOutputWithContext(ctx context.Context) SecurityDeviceGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityDeviceGroupOutput)
 }
 
@@ -208,7 +208,7 @@ type SecurityDeviceGroupOutput struct {
 }
 
 func (SecurityDeviceGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityDeviceGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityDeviceGroup)(nil))
 }
 
 func (o SecurityDeviceGroupOutput) ToSecurityDeviceGroupOutput() SecurityDeviceGroupOutput {
