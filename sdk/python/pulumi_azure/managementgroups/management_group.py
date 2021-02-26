@@ -63,7 +63,7 @@ class ManagementGroup(pulumi.CustomResource):
         :param pulumi.Input[str] parent_management_group_id: The ID of the Parent Management Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscription_ids: A list of Subscription GUIDs which should be assigned to the Management Group.
         """
-        pulumi.log.warn("ManagementGroup is deprecated: azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group")
+        pulumi.log.warn("""ManagementGroup is deprecated: azure.managementgroups.ManagementGroup has been deprecated in favor of azure.management.Group""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

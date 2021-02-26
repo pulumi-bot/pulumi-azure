@@ -104,7 +104,7 @@ class EventSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] topic_name: (Optional/ **Deprecated) Specifies the name of the topic to associate with the event subscription.
         :param pulumi.Input[pulumi.InputType['EventSubscriptionWebhookEndpointArgs']] webhook_endpoint: A `webhook_endpoint` block as defined below.
         """
-        pulumi.log.warn("EventSubscription is deprecated: azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription")
+        pulumi.log.warn("""EventSubscription is deprecated: azure.eventhub.EventSubscription has been deprecated in favor of azure.eventgrid.EventSubscription""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
