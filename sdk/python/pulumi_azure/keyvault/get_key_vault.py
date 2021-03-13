@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 
@@ -58,7 +58,7 @@ class GetKeyVaultResult:
             raise TypeError("Expected argument 'soft_delete_enabled' to be a bool")
         if soft_delete_enabled is not None:
             warnings.warn("""Azure has removed support for disabling Soft Delete as of 2020-12-15, as such this field will always return 'true' and will be removed in version 3.0 of the Azure Provider.""", DeprecationWarning)
-            pulumi.log.warn("soft_delete_enabled is deprecated: Azure has removed support for disabling Soft Delete as of 2020-12-15, as such this field will always return 'true' and will be removed in version 3.0 of the Azure Provider.")
+            pulumi.log.warn("""soft_delete_enabled is deprecated: Azure has removed support for disabling Soft Delete as of 2020-12-15, as such this field will always return 'true' and will be removed in version 3.0 of the Azure Provider.""")
 
         pulumi.set(__self__, "soft_delete_enabled", soft_delete_enabled)
         if tags and not isinstance(tags, dict):

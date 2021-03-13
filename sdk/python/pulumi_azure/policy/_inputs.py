@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -170,7 +170,7 @@ class PolicySetDefinitionPolicyDefinitionReferenceArgs:
             pulumi.set(__self__, "parameter_values", parameter_values)
         if parameters is not None:
             warnings.warn("""Deprecated in favour of `parameter_values`""", DeprecationWarning)
-            pulumi.log.warn("parameters is deprecated: Deprecated in favour of `parameter_values`")
+            pulumi.log.warn("""parameters is deprecated: Deprecated in favour of `parameter_values`""")
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if policy_group_names is not None:
