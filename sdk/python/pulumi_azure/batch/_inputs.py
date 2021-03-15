@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -918,15 +918,15 @@ class PoolStorageImageReferenceArgs:
 @pulumi.input_type
 class GetPoolCertificateArgs:
     def __init__(__self__, *,
-                 id: str,
-                 store_location: str,
-                 store_name: Optional[str] = None,
-                 visibilities: Optional[Sequence[str]] = None):
+                 id: pulumi.Input[str],
+                 store_location: pulumi.Input[str],
+                 store_name: Optional[pulumi.Input[str]] = None,
+                 visibilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param str id: The fully qualified ID of the certificate installed on the pool.
-        :param str store_location: The location of the certificate store on the compute node into which the certificate is installed, either `CurrentUser` or `LocalMachine`.
-        :param str store_name: The name of the certificate store on the compute node into which the certificate is installed.
-        :param Sequence[str] visibilities: Which user accounts on the compute node have access to the private data of the certificate.
+        :param pulumi.Input[str] id: The fully qualified ID of the certificate installed on the pool.
+        :param pulumi.Input[str] store_location: The location of the certificate store on the compute node into which the certificate is installed, either `CurrentUser` or `LocalMachine`.
+        :param pulumi.Input[str] store_name: The name of the certificate store on the compute node into which the certificate is installed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] visibilities: Which user accounts on the compute node have access to the private data of the certificate.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "store_location", store_location)
@@ -937,104 +937,104 @@ class GetPoolCertificateArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> pulumi.Input[str]:
         """
         The fully qualified ID of the certificate installed on the pool.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: str):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="storeLocation")
-    def store_location(self) -> str:
+    def store_location(self) -> pulumi.Input[str]:
         """
         The location of the certificate store on the compute node into which the certificate is installed, either `CurrentUser` or `LocalMachine`.
         """
         return pulumi.get(self, "store_location")
 
     @store_location.setter
-    def store_location(self, value: str):
+    def store_location(self, value: pulumi.Input[str]):
         pulumi.set(self, "store_location", value)
 
     @property
     @pulumi.getter(name="storeName")
-    def store_name(self) -> Optional[str]:
+    def store_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the certificate store on the compute node into which the certificate is installed.
         """
         return pulumi.get(self, "store_name")
 
     @store_name.setter
-    def store_name(self, value: Optional[str]):
+    def store_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "store_name", value)
 
     @property
     @pulumi.getter
-    def visibilities(self) -> Optional[Sequence[str]]:
+    def visibilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Which user accounts on the compute node have access to the private data of the certificate.
         """
         return pulumi.get(self, "visibilities")
 
     @visibilities.setter
-    def visibilities(self, value: Optional[Sequence[str]]):
+    def visibilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "visibilities", value)
 
 
 @pulumi.input_type
 class GetPoolNetworkConfigurationArgs:
     def __init__(__self__, *,
-                 endpoint_configuration: 'GetPoolNetworkConfigurationEndpointConfigurationArgs',
-                 subnet_id: str):
+                 endpoint_configuration: pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationArgs'],
+                 subnet_id: pulumi.Input[str]):
         """
-        :param 'GetPoolNetworkConfigurationEndpointConfigurationArgs' endpoint_configuration: The inbound NAT pools that are used to address specific ports on the individual compute node externally.
-        :param str subnet_id: The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
+        :param pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationArgs'] endpoint_configuration: The inbound NAT pools that are used to address specific ports on the individual compute node externally.
+        :param pulumi.Input[str] subnet_id: The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
         """
         pulumi.set(__self__, "endpoint_configuration", endpoint_configuration)
         pulumi.set(__self__, "subnet_id", subnet_id)
 
     @property
     @pulumi.getter(name="endpointConfiguration")
-    def endpoint_configuration(self) -> 'GetPoolNetworkConfigurationEndpointConfigurationArgs':
+    def endpoint_configuration(self) -> pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationArgs']:
         """
         The inbound NAT pools that are used to address specific ports on the individual compute node externally.
         """
         return pulumi.get(self, "endpoint_configuration")
 
     @endpoint_configuration.setter
-    def endpoint_configuration(self, value: 'GetPoolNetworkConfigurationEndpointConfigurationArgs'):
+    def endpoint_configuration(self, value: pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationArgs']):
         pulumi.set(self, "endpoint_configuration", value)
 
     @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
+    def subnet_id(self) -> pulumi.Input[str]:
         """
         The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: str):
+    def subnet_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "subnet_id", value)
 
 
 @pulumi.input_type
 class GetPoolNetworkConfigurationEndpointConfigurationArgs:
     def __init__(__self__, *,
-                 backend_port: int,
-                 frontend_port_range: str,
-                 name: str,
-                 network_security_group_rules: Sequence['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs'],
-                 protocol: str):
+                 backend_port: pulumi.Input[int],
+                 frontend_port_range: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 network_security_group_rules: pulumi.Input[Sequence[pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']]],
+                 protocol: pulumi.Input[str]):
         """
-        :param int backend_port: The port number on the compute node.
-        :param str frontend_port_range: The range of external ports that are used to provide inbound access to the backendPort on the individual compute nodes in the format of `1000-1100`.
-        :param str name: The name of the endpoint.
-        :param Sequence['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs'] network_security_group_rules: The list of network security group rules that are applied to the endpoint.
-        :param str protocol: The protocol of the endpoint.
+        :param pulumi.Input[int] backend_port: The port number on the compute node.
+        :param pulumi.Input[str] frontend_port_range: The range of external ports that are used to provide inbound access to the backendPort on the individual compute nodes in the format of `1000-1100`.
+        :param pulumi.Input[str] name: The name of the endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']]] network_security_group_rules: The list of network security group rules that are applied to the endpoint.
+        :param pulumi.Input[str] protocol: The protocol of the endpoint.
         """
         pulumi.set(__self__, "backend_port", backend_port)
         pulumi.set(__self__, "frontend_port_range", frontend_port_range)
@@ -1044,75 +1044,75 @@ class GetPoolNetworkConfigurationEndpointConfigurationArgs:
 
     @property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> int:
+    def backend_port(self) -> pulumi.Input[int]:
         """
         The port number on the compute node.
         """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
-    def backend_port(self, value: int):
+    def backend_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "backend_port", value)
 
     @property
     @pulumi.getter(name="frontendPortRange")
-    def frontend_port_range(self) -> str:
+    def frontend_port_range(self) -> pulumi.Input[str]:
         """
         The range of external ports that are used to provide inbound access to the backendPort on the individual compute nodes in the format of `1000-1100`.
         """
         return pulumi.get(self, "frontend_port_range")
 
     @frontend_port_range.setter
-    def frontend_port_range(self, value: str):
+    def frontend_port_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "frontend_port_range", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="networkSecurityGroupRules")
-    def network_security_group_rules(self) -> Sequence['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']:
+    def network_security_group_rules(self) -> pulumi.Input[Sequence[pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']]]:
         """
         The list of network security group rules that are applied to the endpoint.
         """
         return pulumi.get(self, "network_security_group_rules")
 
     @network_security_group_rules.setter
-    def network_security_group_rules(self, value: Sequence['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']):
+    def network_security_group_rules(self, value: pulumi.Input[Sequence[pulumi.Input['GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs']]]):
         pulumi.set(self, "network_security_group_rules", value)
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Input[str]:
         """
         The protocol of the endpoint.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: str):
+    def protocol(self, value: pulumi.Input[str]):
         pulumi.set(self, "protocol", value)
 
 
 @pulumi.input_type
 class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArgs:
     def __init__(__self__, *,
-                 access: str,
-                 priority: int,
-                 source_address_prefix: str):
+                 access: pulumi.Input[str],
+                 priority: pulumi.Input[int],
+                 source_address_prefix: pulumi.Input[str]):
         """
-        :param str access: The action that should be taken for a specified IP address, subnet range or tag.
-        :param int priority: The priority for this rule.
-        :param str source_address_prefix: The source address prefix or tag to match for the rule.
+        :param pulumi.Input[str] access: The action that should be taken for a specified IP address, subnet range or tag.
+        :param pulumi.Input[int] priority: The priority for this rule.
+        :param pulumi.Input[str] source_address_prefix: The source address prefix or tag to match for the rule.
         """
         pulumi.set(__self__, "access", access)
         pulumi.set(__self__, "priority", priority)
@@ -1120,57 +1120,57 @@ class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleAr
 
     @property
     @pulumi.getter
-    def access(self) -> str:
+    def access(self) -> pulumi.Input[str]:
         """
         The action that should be taken for a specified IP address, subnet range or tag.
         """
         return pulumi.get(self, "access")
 
     @access.setter
-    def access(self, value: str):
+    def access(self, value: pulumi.Input[str]):
         pulumi.set(self, "access", value)
 
     @property
     @pulumi.getter
-    def priority(self) -> int:
+    def priority(self) -> pulumi.Input[int]:
         """
         The priority for this rule.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: int):
+    def priority(self, value: pulumi.Input[int]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter(name="sourceAddressPrefix")
-    def source_address_prefix(self) -> str:
+    def source_address_prefix(self) -> pulumi.Input[str]:
         """
         The source address prefix or tag to match for the rule.
         """
         return pulumi.get(self, "source_address_prefix")
 
     @source_address_prefix.setter
-    def source_address_prefix(self, value: str):
+    def source_address_prefix(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_address_prefix", value)
 
 
 @pulumi.input_type
 class GetPoolStartTaskArgs:
     def __init__(__self__, *,
-                 command_line: str,
-                 resource_files: Sequence['GetPoolStartTaskResourceFileArgs'],
-                 user_identities: Sequence['GetPoolStartTaskUserIdentityArgs'],
-                 environment: Optional[Mapping[str, str]] = None,
-                 max_task_retry_count: Optional[int] = None,
-                 wait_for_success: Optional[bool] = None):
+                 command_line: pulumi.Input[str],
+                 resource_files: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskResourceFileArgs']]],
+                 user_identities: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityArgs']]],
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 max_task_retry_count: Optional[pulumi.Input[int]] = None,
+                 wait_for_success: Optional[pulumi.Input[bool]] = None):
         """
-        :param str command_line: The command line executed by the start task.
-        :param Sequence['GetPoolStartTaskResourceFileArgs'] resource_files: One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
-        :param Sequence['GetPoolStartTaskUserIdentityArgs'] user_identities: A `user_identity` block that describes the user identity under which the start task runs.
-        :param Mapping[str, str] environment: A map of strings (key,value) that represents the environment variables to set in the start task.
-        :param int max_task_retry_count: The number of retry count.
-        :param bool wait_for_success: A flag that indicates if the Batch pool should wait for the start task to be completed.
+        :param pulumi.Input[str] command_line: The command line executed by the start task.
+        :param pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskResourceFileArgs']]] resource_files: One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
+        :param pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityArgs']]] user_identities: A `user_identity` block that describes the user identity under which the start task runs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: A map of strings (key,value) that represents the environment variables to set in the start task.
+        :param pulumi.Input[int] max_task_retry_count: The number of retry count.
+        :param pulumi.Input[bool] wait_for_success: A flag that indicates if the Batch pool should wait for the start task to be completed.
         """
         pulumi.set(__self__, "command_line", command_line)
         pulumi.set(__self__, "resource_files", resource_files)
@@ -1184,93 +1184,93 @@ class GetPoolStartTaskArgs:
 
     @property
     @pulumi.getter(name="commandLine")
-    def command_line(self) -> str:
+    def command_line(self) -> pulumi.Input[str]:
         """
         The command line executed by the start task.
         """
         return pulumi.get(self, "command_line")
 
     @command_line.setter
-    def command_line(self, value: str):
+    def command_line(self, value: pulumi.Input[str]):
         pulumi.set(self, "command_line", value)
 
     @property
     @pulumi.getter(name="resourceFiles")
-    def resource_files(self) -> Sequence['GetPoolStartTaskResourceFileArgs']:
+    def resource_files(self) -> pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskResourceFileArgs']]]:
         """
         One or more `resource_file` blocks that describe the files to be downloaded to a compute node.
         """
         return pulumi.get(self, "resource_files")
 
     @resource_files.setter
-    def resource_files(self, value: Sequence['GetPoolStartTaskResourceFileArgs']):
+    def resource_files(self, value: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskResourceFileArgs']]]):
         pulumi.set(self, "resource_files", value)
 
     @property
     @pulumi.getter(name="userIdentities")
-    def user_identities(self) -> Sequence['GetPoolStartTaskUserIdentityArgs']:
+    def user_identities(self) -> pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityArgs']]]:
         """
         A `user_identity` block that describes the user identity under which the start task runs.
         """
         return pulumi.get(self, "user_identities")
 
     @user_identities.setter
-    def user_identities(self, value: Sequence['GetPoolStartTaskUserIdentityArgs']):
+    def user_identities(self, value: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityArgs']]]):
         pulumi.set(self, "user_identities", value)
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[Mapping[str, str]]:
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of strings (key,value) that represents the environment variables to set in the start task.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[Mapping[str, str]]):
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="maxTaskRetryCount")
-    def max_task_retry_count(self) -> Optional[int]:
+    def max_task_retry_count(self) -> Optional[pulumi.Input[int]]:
         """
         The number of retry count.
         """
         return pulumi.get(self, "max_task_retry_count")
 
     @max_task_retry_count.setter
-    def max_task_retry_count(self, value: Optional[int]):
+    def max_task_retry_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_task_retry_count", value)
 
     @property
     @pulumi.getter(name="waitForSuccess")
-    def wait_for_success(self) -> Optional[bool]:
+    def wait_for_success(self) -> Optional[pulumi.Input[bool]]:
         """
         A flag that indicates if the Batch pool should wait for the start task to be completed.
         """
         return pulumi.get(self, "wait_for_success")
 
     @wait_for_success.setter
-    def wait_for_success(self, value: Optional[bool]):
+    def wait_for_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "wait_for_success", value)
 
 
 @pulumi.input_type
 class GetPoolStartTaskResourceFileArgs:
     def __init__(__self__, *,
-                 auto_storage_container_name: str,
-                 blob_prefix: str,
-                 file_mode: str,
-                 file_path: str,
-                 http_url: str,
-                 storage_container_url: str):
+                 auto_storage_container_name: pulumi.Input[str],
+                 blob_prefix: pulumi.Input[str],
+                 file_mode: pulumi.Input[str],
+                 file_path: pulumi.Input[str],
+                 http_url: pulumi.Input[str],
+                 storage_container_url: pulumi.Input[str]):
         """
-        :param str auto_storage_container_name: The storage container name in the auto storage account.
-        :param str blob_prefix: The blob prefix used when downloading blobs from an Azure Storage container.
-        :param str file_mode: The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
-        :param str file_path: The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
-        :param str http_url: The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
-        :param str storage_container_url: The URL of the blob container within Azure Blob Storage.
+        :param pulumi.Input[str] auto_storage_container_name: The storage container name in the auto storage account.
+        :param pulumi.Input[str] blob_prefix: The blob prefix used when downloading blobs from an Azure Storage container.
+        :param pulumi.Input[str] file_mode: The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
+        :param pulumi.Input[str] file_path: The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
+        :param pulumi.Input[str] http_url: The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
+        :param pulumi.Input[str] storage_container_url: The URL of the blob container within Azure Blob Storage.
         """
         pulumi.set(__self__, "auto_storage_container_name", auto_storage_container_name)
         pulumi.set(__self__, "blob_prefix", blob_prefix)
@@ -1281,148 +1281,148 @@ class GetPoolStartTaskResourceFileArgs:
 
     @property
     @pulumi.getter(name="autoStorageContainerName")
-    def auto_storage_container_name(self) -> str:
+    def auto_storage_container_name(self) -> pulumi.Input[str]:
         """
         The storage container name in the auto storage account.
         """
         return pulumi.get(self, "auto_storage_container_name")
 
     @auto_storage_container_name.setter
-    def auto_storage_container_name(self, value: str):
+    def auto_storage_container_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "auto_storage_container_name", value)
 
     @property
     @pulumi.getter(name="blobPrefix")
-    def blob_prefix(self) -> str:
+    def blob_prefix(self) -> pulumi.Input[str]:
         """
         The blob prefix used when downloading blobs from an Azure Storage container.
         """
         return pulumi.get(self, "blob_prefix")
 
     @blob_prefix.setter
-    def blob_prefix(self, value: str):
+    def blob_prefix(self, value: pulumi.Input[str]):
         pulumi.set(self, "blob_prefix", value)
 
     @property
     @pulumi.getter(name="fileMode")
-    def file_mode(self) -> str:
+    def file_mode(self) -> pulumi.Input[str]:
         """
         The file permission mode attribute represented as a string in octal format (e.g. `"0644"`).
         """
         return pulumi.get(self, "file_mode")
 
     @file_mode.setter
-    def file_mode(self, value: str):
+    def file_mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "file_mode", value)
 
     @property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> str:
+    def file_path(self) -> pulumi.Input[str]:
         """
         The location on the compute node to which to download the file, relative to the task's working directory. If the `http_url` property is specified, the `file_path` is required and describes the path which the file will be downloaded to, including the filename. Otherwise, if the `auto_storage_container_name` or `storage_container_url` property is specified.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: str):
+    def file_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "file_path", value)
 
     @property
     @pulumi.getter(name="httpUrl")
-    def http_url(self) -> str:
+    def http_url(self) -> pulumi.Input[str]:
         """
         The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
         """
         return pulumi.get(self, "http_url")
 
     @http_url.setter
-    def http_url(self, value: str):
+    def http_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "http_url", value)
 
     @property
     @pulumi.getter(name="storageContainerUrl")
-    def storage_container_url(self) -> str:
+    def storage_container_url(self) -> pulumi.Input[str]:
         """
         The URL of the blob container within Azure Blob Storage.
         """
         return pulumi.get(self, "storage_container_url")
 
     @storage_container_url.setter
-    def storage_container_url(self, value: str):
+    def storage_container_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_container_url", value)
 
 
 @pulumi.input_type
 class GetPoolStartTaskUserIdentityArgs:
     def __init__(__self__, *,
-                 auto_users: Sequence['GetPoolStartTaskUserIdentityAutoUserArgs'],
-                 user_name: str):
+                 auto_users: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityAutoUserArgs']]],
+                 user_name: pulumi.Input[str]):
         """
-        :param Sequence['GetPoolStartTaskUserIdentityAutoUserArgs'] auto_users: A `auto_user` block that describes the user identity under which the start task runs.
-        :param str user_name: The user name to log into the registry server.
+        :param pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityAutoUserArgs']]] auto_users: A `auto_user` block that describes the user identity under which the start task runs.
+        :param pulumi.Input[str] user_name: The user name to log into the registry server.
         """
         pulumi.set(__self__, "auto_users", auto_users)
         pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="autoUsers")
-    def auto_users(self) -> Sequence['GetPoolStartTaskUserIdentityAutoUserArgs']:
+    def auto_users(self) -> pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityAutoUserArgs']]]:
         """
         A `auto_user` block that describes the user identity under which the start task runs.
         """
         return pulumi.get(self, "auto_users")
 
     @auto_users.setter
-    def auto_users(self, value: Sequence['GetPoolStartTaskUserIdentityAutoUserArgs']):
+    def auto_users(self, value: pulumi.Input[Sequence[pulumi.Input['GetPoolStartTaskUserIdentityAutoUserArgs']]]):
         pulumi.set(self, "auto_users", value)
 
     @property
     @pulumi.getter(name="userName")
-    def user_name(self) -> str:
+    def user_name(self) -> pulumi.Input[str]:
         """
         The user name to log into the registry server.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: str):
+    def user_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class GetPoolStartTaskUserIdentityAutoUserArgs:
     def __init__(__self__, *,
-                 elevation_level: str,
-                 scope: str):
+                 elevation_level: pulumi.Input[str],
+                 scope: pulumi.Input[str]):
         """
-        :param str elevation_level: The elevation level of the user identity under which the start task runs.
-        :param str scope: The scope of the user identity under which the start task runs.
+        :param pulumi.Input[str] elevation_level: The elevation level of the user identity under which the start task runs.
+        :param pulumi.Input[str] scope: The scope of the user identity under which the start task runs.
         """
         pulumi.set(__self__, "elevation_level", elevation_level)
         pulumi.set(__self__, "scope", scope)
 
     @property
     @pulumi.getter(name="elevationLevel")
-    def elevation_level(self) -> str:
+    def elevation_level(self) -> pulumi.Input[str]:
         """
         The elevation level of the user identity under which the start task runs.
         """
         return pulumi.get(self, "elevation_level")
 
     @elevation_level.setter
-    def elevation_level(self, value: str):
+    def elevation_level(self, value: pulumi.Input[str]):
         pulumi.set(self, "elevation_level", value)
 
     @property
     @pulumi.getter
-    def scope(self) -> str:
+    def scope(self) -> pulumi.Input[str]:
         """
         The scope of the user identity under which the start task runs.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: str):
+    def scope(self, value: pulumi.Input[str]):
         pulumi.set(self, "scope", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 
@@ -115,7 +115,7 @@ def get_role_definition(name: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("get_role_definition is deprecated: azure.role.getRoleDefinition has been deprecated in favor of azure.authorization.getRoleDefinition")
+    pulumi.log.warn("""get_role_definition is deprecated: azure.role.getRoleDefinition has been deprecated in favor of azure.authorization.getRoleDefinition""")
     __args__ = dict()
     __args__['name'] = name
     __args__['roleDefinitionId'] = role_definition_id

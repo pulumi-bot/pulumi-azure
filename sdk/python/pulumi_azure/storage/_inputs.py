@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -1310,19 +1310,19 @@ class TableAclAccessPolicyArgs:
 @pulumi.input_type
 class GetAccountBlobContainerSASPermissionsArgs:
     def __init__(__self__, *,
-                 add: bool,
-                 create: bool,
-                 delete: bool,
-                 list: bool,
-                 read: bool,
-                 write: bool):
+                 add: pulumi.Input[bool],
+                 create: pulumi.Input[bool],
+                 delete: pulumi.Input[bool],
+                 list: pulumi.Input[bool],
+                 read: pulumi.Input[bool],
+                 write: pulumi.Input[bool]):
         """
-        :param bool add: Should Add permissions be enabled for this SAS?
-        :param bool create: Should Create permissions be enabled for this SAS?
-        :param bool delete: Should Delete permissions be enabled for this SAS?
-        :param bool list: Should List permissions be enabled for this SAS?
-        :param bool read: Should Read permissions be enabled for this SAS?
-        :param bool write: Should Write permissions be enabled for this SAS?
+        :param pulumi.Input[bool] add: Should Add permissions be enabled for this SAS?
+        :param pulumi.Input[bool] create: Should Create permissions be enabled for this SAS?
+        :param pulumi.Input[bool] delete: Should Delete permissions be enabled for this SAS?
+        :param pulumi.Input[bool] list: Should List permissions be enabled for this SAS?
+        :param pulumi.Input[bool] read: Should Read permissions be enabled for this SAS?
+        :param pulumi.Input[bool] write: Should Write permissions be enabled for this SAS?
         """
         pulumi.set(__self__, "add", add)
         pulumi.set(__self__, "create", create)
@@ -1333,97 +1333,97 @@ class GetAccountBlobContainerSASPermissionsArgs:
 
     @property
     @pulumi.getter
-    def add(self) -> bool:
+    def add(self) -> pulumi.Input[bool]:
         """
         Should Add permissions be enabled for this SAS?
         """
         return pulumi.get(self, "add")
 
     @add.setter
-    def add(self, value: bool):
+    def add(self, value: pulumi.Input[bool]):
         pulumi.set(self, "add", value)
 
     @property
     @pulumi.getter
-    def create(self) -> bool:
+    def create(self) -> pulumi.Input[bool]:
         """
         Should Create permissions be enabled for this SAS?
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: bool):
+    def create(self, value: pulumi.Input[bool]):
         pulumi.set(self, "create", value)
 
     @property
     @pulumi.getter
-    def delete(self) -> bool:
+    def delete(self) -> pulumi.Input[bool]:
         """
         Should Delete permissions be enabled for this SAS?
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: bool):
+    def delete(self, value: pulumi.Input[bool]):
         pulumi.set(self, "delete", value)
 
     @property
     @pulumi.getter
-    def list(self) -> bool:
+    def list(self) -> pulumi.Input[bool]:
         """
         Should List permissions be enabled for this SAS?
         """
         return pulumi.get(self, "list")
 
     @list.setter
-    def list(self, value: bool):
+    def list(self, value: pulumi.Input[bool]):
         pulumi.set(self, "list", value)
 
     @property
     @pulumi.getter
-    def read(self) -> bool:
+    def read(self) -> pulumi.Input[bool]:
         """
         Should Read permissions be enabled for this SAS?
         """
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: bool):
+    def read(self, value: pulumi.Input[bool]):
         pulumi.set(self, "read", value)
 
     @property
     @pulumi.getter
-    def write(self) -> bool:
+    def write(self) -> pulumi.Input[bool]:
         """
         Should Write permissions be enabled for this SAS?
         """
         return pulumi.get(self, "write")
 
     @write.setter
-    def write(self, value: bool):
+    def write(self, value: pulumi.Input[bool]):
         pulumi.set(self, "write", value)
 
 
 @pulumi.input_type
 class GetAccountSASPermissionsArgs:
     def __init__(__self__, *,
-                 add: bool,
-                 create: bool,
-                 delete: bool,
-                 list: bool,
-                 process: bool,
-                 read: bool,
-                 update: bool,
-                 write: bool):
+                 add: pulumi.Input[bool],
+                 create: pulumi.Input[bool],
+                 delete: pulumi.Input[bool],
+                 list: pulumi.Input[bool],
+                 process: pulumi.Input[bool],
+                 read: pulumi.Input[bool],
+                 update: pulumi.Input[bool],
+                 write: pulumi.Input[bool]):
         """
-        :param bool add: Should Add permissions be enabled for this SAS?
-        :param bool create: Should Create permissions be enabled for this SAS?
-        :param bool delete: Should Delete permissions be enabled for this SAS?
-        :param bool list: Should List permissions be enabled for this SAS?
-        :param bool process: Should Process permissions be enabled for this SAS?
-        :param bool read: Should Read permissions be enabled for this SAS?
-        :param bool update: Should Update permissions be enabled for this SAS?
-        :param bool write: Should Write permissions be enabled for this SAS?
+        :param pulumi.Input[bool] add: Should Add permissions be enabled for this SAS?
+        :param pulumi.Input[bool] create: Should Create permissions be enabled for this SAS?
+        :param pulumi.Input[bool] delete: Should Delete permissions be enabled for this SAS?
+        :param pulumi.Input[bool] list: Should List permissions be enabled for this SAS?
+        :param pulumi.Input[bool] process: Should Process permissions be enabled for this SAS?
+        :param pulumi.Input[bool] read: Should Read permissions be enabled for this SAS?
+        :param pulumi.Input[bool] update: Should Update permissions be enabled for this SAS?
+        :param pulumi.Input[bool] write: Should Write permissions be enabled for this SAS?
         """
         pulumi.set(__self__, "add", add)
         pulumi.set(__self__, "create", create)
@@ -1436,111 +1436,111 @@ class GetAccountSASPermissionsArgs:
 
     @property
     @pulumi.getter
-    def add(self) -> bool:
+    def add(self) -> pulumi.Input[bool]:
         """
         Should Add permissions be enabled for this SAS?
         """
         return pulumi.get(self, "add")
 
     @add.setter
-    def add(self, value: bool):
+    def add(self, value: pulumi.Input[bool]):
         pulumi.set(self, "add", value)
 
     @property
     @pulumi.getter
-    def create(self) -> bool:
+    def create(self) -> pulumi.Input[bool]:
         """
         Should Create permissions be enabled for this SAS?
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: bool):
+    def create(self, value: pulumi.Input[bool]):
         pulumi.set(self, "create", value)
 
     @property
     @pulumi.getter
-    def delete(self) -> bool:
+    def delete(self) -> pulumi.Input[bool]:
         """
         Should Delete permissions be enabled for this SAS?
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: bool):
+    def delete(self, value: pulumi.Input[bool]):
         pulumi.set(self, "delete", value)
 
     @property
     @pulumi.getter
-    def list(self) -> bool:
+    def list(self) -> pulumi.Input[bool]:
         """
         Should List permissions be enabled for this SAS?
         """
         return pulumi.get(self, "list")
 
     @list.setter
-    def list(self, value: bool):
+    def list(self, value: pulumi.Input[bool]):
         pulumi.set(self, "list", value)
 
     @property
     @pulumi.getter
-    def process(self) -> bool:
+    def process(self) -> pulumi.Input[bool]:
         """
         Should Process permissions be enabled for this SAS?
         """
         return pulumi.get(self, "process")
 
     @process.setter
-    def process(self, value: bool):
+    def process(self, value: pulumi.Input[bool]):
         pulumi.set(self, "process", value)
 
     @property
     @pulumi.getter
-    def read(self) -> bool:
+    def read(self) -> pulumi.Input[bool]:
         """
         Should Read permissions be enabled for this SAS?
         """
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: bool):
+    def read(self, value: pulumi.Input[bool]):
         pulumi.set(self, "read", value)
 
     @property
     @pulumi.getter
-    def update(self) -> bool:
+    def update(self) -> pulumi.Input[bool]:
         """
         Should Update permissions be enabled for this SAS?
         """
         return pulumi.get(self, "update")
 
     @update.setter
-    def update(self, value: bool):
+    def update(self, value: pulumi.Input[bool]):
         pulumi.set(self, "update", value)
 
     @property
     @pulumi.getter
-    def write(self) -> bool:
+    def write(self) -> pulumi.Input[bool]:
         """
         Should Write permissions be enabled for this SAS?
         """
         return pulumi.get(self, "write")
 
     @write.setter
-    def write(self, value: bool):
+    def write(self, value: pulumi.Input[bool]):
         pulumi.set(self, "write", value)
 
 
 @pulumi.input_type
 class GetAccountSASResourceTypesArgs:
     def __init__(__self__, *,
-                 container: bool,
-                 object: bool,
-                 service: bool):
+                 container: pulumi.Input[bool],
+                 object: pulumi.Input[bool],
+                 service: pulumi.Input[bool]):
         """
-        :param bool container: Should permission be granted to the container?
-        :param bool object: Should permission be granted only to a specific object?
-        :param bool service: Should permission be granted to the entire service?
+        :param pulumi.Input[bool] container: Should permission be granted to the container?
+        :param pulumi.Input[bool] object: Should permission be granted only to a specific object?
+        :param pulumi.Input[bool] service: Should permission be granted to the entire service?
         """
         pulumi.set(__self__, "container", container)
         pulumi.set(__self__, "object", object)
@@ -1548,53 +1548,53 @@ class GetAccountSASResourceTypesArgs:
 
     @property
     @pulumi.getter
-    def container(self) -> bool:
+    def container(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to the container?
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: bool):
+    def container(self, value: pulumi.Input[bool]):
         pulumi.set(self, "container", value)
 
     @property
     @pulumi.getter
-    def object(self) -> bool:
+    def object(self) -> pulumi.Input[bool]:
         """
         Should permission be granted only to a specific object?
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: bool):
+    def object(self, value: pulumi.Input[bool]):
         pulumi.set(self, "object", value)
 
     @property
     @pulumi.getter
-    def service(self) -> bool:
+    def service(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to the entire service?
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: bool):
+    def service(self, value: pulumi.Input[bool]):
         pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
 class GetAccountSASServicesArgs:
     def __init__(__self__, *,
-                 blob: bool,
-                 file: bool,
-                 queue: bool,
-                 table: bool):
+                 blob: pulumi.Input[bool],
+                 file: pulumi.Input[bool],
+                 queue: pulumi.Input[bool],
+                 table: pulumi.Input[bool]):
         """
-        :param bool blob: Should permission be granted to `blob` services within this storage account?
-        :param bool file: Should permission be granted to `file` services within this storage account?
-        :param bool queue: Should permission be granted to `queue` services within this storage account?
-        :param bool table: Should permission be granted to `table` services within this storage account?
+        :param pulumi.Input[bool] blob: Should permission be granted to `blob` services within this storage account?
+        :param pulumi.Input[bool] file: Should permission be granted to `file` services within this storage account?
+        :param pulumi.Input[bool] queue: Should permission be granted to `queue` services within this storage account?
+        :param pulumi.Input[bool] table: Should permission be granted to `table` services within this storage account?
         """
         pulumi.set(__self__, "blob", blob)
         pulumi.set(__self__, "file", file)
@@ -1603,50 +1603,50 @@ class GetAccountSASServicesArgs:
 
     @property
     @pulumi.getter
-    def blob(self) -> bool:
+    def blob(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to `blob` services within this storage account?
         """
         return pulumi.get(self, "blob")
 
     @blob.setter
-    def blob(self, value: bool):
+    def blob(self, value: pulumi.Input[bool]):
         pulumi.set(self, "blob", value)
 
     @property
     @pulumi.getter
-    def file(self) -> bool:
+    def file(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to `file` services within this storage account?
         """
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: bool):
+    def file(self, value: pulumi.Input[bool]):
         pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
-    def queue(self) -> bool:
+    def queue(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to `queue` services within this storage account?
         """
         return pulumi.get(self, "queue")
 
     @queue.setter
-    def queue(self, value: bool):
+    def queue(self, value: pulumi.Input[bool]):
         pulumi.set(self, "queue", value)
 
     @property
     @pulumi.getter
-    def table(self) -> bool:
+    def table(self) -> pulumi.Input[bool]:
         """
         Should permission be granted to `table` services within this storage account?
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: bool):
+    def table(self, value: pulumi.Input[bool]):
         pulumi.set(self, "table", value)
 
 

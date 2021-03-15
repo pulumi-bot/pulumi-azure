@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -136,7 +136,7 @@ class AccountGeoLocationArgs:
             pulumi.set(__self__, "id", id)
         if prefix is not None:
             warnings.warn("""This is deprecated because the service no longer accepts this as an input since Apr 25, 2019""", DeprecationWarning)
-            pulumi.log.warn("prefix is deprecated: This is deprecated because the service no longer accepts this as an input since Apr 25, 2019")
+            pulumi.log.warn("""prefix is deprecated: This is deprecated because the service no longer accepts this as an input since Apr 25, 2019""")
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if zone_redundant is not None:
