@@ -3767,7 +3767,7 @@ type ApplicationGatewayUrlPathMap struct {
 // ApplicationGatewayUrlPathMapInput is an input type that accepts ApplicationGatewayUrlPathMap and ApplicationGatewayUrlPathMapOutput values.
 // You can construct a concrete instance of `ApplicationGatewayUrlPathMapInput` via:
 //
-//          ApplicationGatewayUrlPathMap{ "key": ApplicationGatewayUrlPathArgs{...} }
+//          ApplicationGatewayUrlPathMap{ "key": ApplicationGatewayUrlPathMapArgs{...} }
 type ApplicationGatewayUrlPathMapInput interface {
 	pulumi.Input
 
