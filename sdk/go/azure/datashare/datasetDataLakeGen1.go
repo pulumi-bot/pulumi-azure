@@ -19,10 +19,10 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/authorization"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/datalake"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/datashare"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/authorization"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/core"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datalake"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/datashare"
 // 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )

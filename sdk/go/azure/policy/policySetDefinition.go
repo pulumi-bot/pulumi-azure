@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/policy"
+// 	"github.com/pulumi/pulumi-azure/sdk/v3/go/azure/policy"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
