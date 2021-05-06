@@ -229,33 +229,33 @@ export interface DpsSharedAccessPolicyArgs {
     /**
      * Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.
      */
-    readonly enrollmentRead?: pulumi.Input<boolean>;
+    enrollmentRead?: pulumi.Input<boolean>;
     /**
      * Adds `EnrollmentWrite` permission to this Shared Access Account. It allows write access to enrollment data.
      */
-    readonly enrollmentWrite?: pulumi.Input<boolean>;
+    enrollmentWrite?: pulumi.Input<boolean>;
     /**
      * The name of the IoT Hub Device Provisioning service to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
      */
-    readonly iothubDpsName: pulumi.Input<string>;
+    iothubDpsName: pulumi.Input<string>;
     /**
      * Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Adds `RegistrationStatusRead` permission to this Shared Access Account. It allows read access to device registrations.
      */
-    readonly registrationRead?: pulumi.Input<boolean>;
+    registrationRead?: pulumi.Input<boolean>;
     /**
      * Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
      */
-    readonly registrationWrite?: pulumi.Input<boolean>;
+    registrationWrite?: pulumi.Input<boolean>;
     /**
      * The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
      */
-    readonly serviceConfig?: pulumi.Input<boolean>;
+    serviceConfig?: pulumi.Input<boolean>;
 }

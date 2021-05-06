@@ -239,41 +239,41 @@ export interface ExpressRoutePortArgs {
     /**
      * Bandwidth of the Express Route Port in Gbps. Changing this forces a new Express Route Port to be created.
      */
-    readonly bandwidthInGbps: pulumi.Input<number>;
+    bandwidthInGbps: pulumi.Input<number>;
     /**
      * The encapsulation method used for the Express Route Port. Changing this forces a new Express Route Port to be created. Possible values are: `Dot1Q`, `QinQ`.
      */
-    readonly encapsulation: pulumi.Input<string>;
+    encapsulation: pulumi.Input<string>;
     /**
      * A `identity` block as defined below.
      */
-    readonly identity?: pulumi.Input<inputs.network.ExpressRoutePortIdentity>;
+    identity?: pulumi.Input<inputs.network.ExpressRoutePortIdentity>;
     /**
      * A list of `link` blocks as defined below.
      */
-    readonly link1?: pulumi.Input<inputs.network.ExpressRoutePortLink1>;
+    link1?: pulumi.Input<inputs.network.ExpressRoutePortLink1>;
     /**
      * A list of `link` blocks as defined below.
      */
-    readonly link2?: pulumi.Input<inputs.network.ExpressRoutePortLink2>;
+    link2?: pulumi.Input<inputs.network.ExpressRoutePortLink2>;
     /**
      * The Azure Region where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name which should be used for this Express Route Port. Changing this forces a new Express Route Port to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the peering location that this Express Route Port is physically mapped to. Changing this forces a new Express Route Port to be created.
      */
-    readonly peeringLocation: pulumi.Input<string>;
+    peeringLocation: pulumi.Input<string>;
     /**
      * The name of the Resource Group where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A mapping of tags which should be assigned to the Express Route Port.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

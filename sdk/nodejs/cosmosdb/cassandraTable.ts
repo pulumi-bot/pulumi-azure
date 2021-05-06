@@ -175,19 +175,19 @@ export interface CassandraTableState {
  * The set of arguments for constructing a CassandraTable resource.
  */
 export interface CassandraTableArgs {
-    readonly autoscaleSettings?: pulumi.Input<inputs.cosmosdb.CassandraTableAutoscaleSettings>;
+    autoscaleSettings?: pulumi.Input<inputs.cosmosdb.CassandraTableAutoscaleSettings>;
     /**
      * The ID of the Cosmos DB Cassandra Keyspace to create the table within. Changing this forces a new resource to be created.
      */
-    readonly cassandraKeyspaceId: pulumi.Input<string>;
-    readonly defaultTtl?: pulumi.Input<number>;
+    cassandraKeyspaceId: pulumi.Input<string>;
+    defaultTtl?: pulumi.Input<number>;
     /**
      * Specifies the name of the Cosmos DB Cassandra Table. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A `schema` block as defined below. Changing this forces a new resource to be created.
      */
-    readonly schema: pulumi.Input<inputs.cosmosdb.CassandraTableSchema>;
-    readonly throughput?: pulumi.Input<number>;
+    schema: pulumi.Input<inputs.cosmosdb.CassandraTableSchema>;
+    throughput?: pulumi.Input<number>;
 }

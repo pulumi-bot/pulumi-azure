@@ -308,21 +308,21 @@ export interface CertificateArgs {
     /**
      * A `certificate` block as defined below, used to Import an existing certificate.
      */
-    readonly certificate?: pulumi.Input<inputs.keyvault.CertificateCertificate>;
+    certificate?: pulumi.Input<inputs.keyvault.CertificateCertificate>;
     /**
      * A `certificatePolicy` block as defined below.
      */
-    readonly certificatePolicy: pulumi.Input<inputs.keyvault.CertificateCertificatePolicy>;
+    certificatePolicy: pulumi.Input<inputs.keyvault.CertificateCertificatePolicy>;
     /**
      * The ID of the Key Vault where the Certificate should be created.
      */
-    readonly keyVaultId: pulumi.Input<string>;
+    keyVaultId: pulumi.Input<string>;
     /**
      * Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

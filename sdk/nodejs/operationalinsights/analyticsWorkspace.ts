@@ -232,38 +232,38 @@ export interface AnalyticsWorkspaceArgs {
     /**
      * The workspace daily quota for ingestion in GB.  Defaults to -1 (unlimited) if omitted.
      */
-    readonly dailyQuotaGb?: pulumi.Input<number>;
-    readonly internetIngestionEnabled?: pulumi.Input<boolean>;
+    dailyQuotaGb?: pulumi.Input<number>;
+    internetIngestionEnabled?: pulumi.Input<boolean>;
     /**
      * Should the Log Analytics Workflow support querying over the Public Internet? Defaults to `true`.
      */
-    readonly internetQueryEnabled?: pulumi.Input<boolean>;
+    internetQueryEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Specifies the name of the Log Analytics Workspace. Workspace name should include 4-63 letters, digits or '-'. The '-' shouldn't be the first or the last symbol. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The capacity reservation level in GB for this workspace.  Must be in increments of 100  between 100 and 5000.
      */
-    readonly reservationCapcityInGbPerDay?: pulumi.Input<number>;
+    reservationCapcityInGbPerDay?: pulumi.Input<number>;
     /**
      * The name of the resource group in which the Log Analytics workspace is created. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730.
      */
-    readonly retentionInDays?: pulumi.Input<number>;
+    retentionInDays?: pulumi.Input<number>;
     /**
      * Specifies the Sku of the Log Analytics Workspace. Possible values are `Free`, `PerNode`, `Premium`, `Standard`, `Standalone`, `Unlimited`, `CapacityReservation`, and `PerGB2018` (new Sku as of `2018-04-03`). Defaults to `PerGB2018`.
      */
-    readonly sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -185,9 +185,9 @@ export interface ManagedCertificateArgs {
     /**
      * The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
      */
-    readonly customHostnameBindingId: pulumi.Input<string>;
+    customHostnameBindingId: pulumi.Input<string>;
     /**
      * A mapping of tags which should be assigned to the App Service Managed Certificate.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

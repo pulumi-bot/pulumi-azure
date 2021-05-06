@@ -280,37 +280,37 @@ export interface KeyArgs {
     /**
      * Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
      */
-    readonly curve?: pulumi.Input<string>;
+    curve?: pulumi.Input<string>;
     /**
      * Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
      */
-    readonly expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string>;
     /**
      * A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case sensitive.
      */
-    readonly keyOpts: pulumi.Input<pulumi.Input<string>[]>;
+    keyOpts: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
      */
-    readonly keySize?: pulumi.Input<number>;
+    keySize?: pulumi.Input<number>;
     /**
      * Specifies the Key Type to use for this Key Vault Key. Possible values are `EC` (Elliptic Curve), `EC-HSM`, `Oct` (Octet), `RSA` and `RSA-HSM`. Changing this forces a new resource to be created.
      */
-    readonly keyType: pulumi.Input<string>;
+    keyType: pulumi.Input<string>;
     /**
      * The ID of the Key Vault where the Key should be created. Changing this forces a new resource to be created.
      */
-    readonly keyVaultId: pulumi.Input<string>;
+    keyVaultId: pulumi.Input<string>;
     /**
      * Specifies the name of the Key Vault Key. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
      */
-    readonly notBeforeDate?: pulumi.Input<string>;
+    notBeforeDate?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

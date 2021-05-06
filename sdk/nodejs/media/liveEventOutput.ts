@@ -107,12 +107,12 @@ export interface LiveEventOutputState {
  * The set of arguments for constructing a LiveEventOutput resource.
  */
 export interface LiveEventOutputArgs {
-    readonly archiveWindowDuration: pulumi.Input<string>;
-    readonly assetName: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly hlsFragmentsPerTsSegment?: pulumi.Input<number>;
-    readonly liveEventId: pulumi.Input<string>;
-    readonly manifestName?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly outputSnapTimeInSeconds?: pulumi.Input<number>;
+    archiveWindowDuration: pulumi.Input<string>;
+    assetName: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    hlsFragmentsPerTsSegment?: pulumi.Input<number>;
+    liveEventId: pulumi.Input<string>;
+    manifestName?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    outputSnapTimeInSeconds?: pulumi.Input<number>;
 }

@@ -149,13 +149,13 @@ export interface CertificateBindingArgs {
     /**
      * The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
      */
-    readonly certificateId: pulumi.Input<string>;
+    certificateId: pulumi.Input<string>;
     /**
      * The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
      */
-    readonly hostnameBindingId: pulumi.Input<string>;
+    hostnameBindingId: pulumi.Input<string>;
     /**
      * The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
      */
-    readonly sslState: pulumi.Input<string>;
+    sslState: pulumi.Input<string>;
 }

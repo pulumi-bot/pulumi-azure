@@ -175,17 +175,17 @@ export interface ClusterArgs {
     /**
      * The count of the Vmware Cluster nodes.
      */
-    readonly clusterNodeCount: pulumi.Input<number>;
+    clusterNodeCount: pulumi.Input<number>;
     /**
      * The name which should be used for this Vmware Cluster. Changing this forces a new Vmware Cluster to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The cluster sku to use. Possible values are `av20`, `av36`, and `av36t`. Changing this forces a new Vmware Cluster to be created.
      */
-    readonly skuName: pulumi.Input<string>;
+    skuName: pulumi.Input<string>;
     /**
      * The ID of the Vmware Private Cloud in which to create this Vmware Cluster. Changing this forces a new Vmware Cluster to be created.
      */
-    readonly vmwareCloudId: pulumi.Input<string>;
+    vmwareCloudId: pulumi.Input<string>;
 }

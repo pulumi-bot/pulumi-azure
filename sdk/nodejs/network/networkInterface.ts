@@ -265,37 +265,37 @@ export interface NetworkInterfaceArgs {
     /**
      * A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
      */
-    readonly dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Should Accelerated Networking be enabled? Defaults to `false`.
      */
-    readonly enableAcceleratedNetworking?: pulumi.Input<boolean>;
+    enableAcceleratedNetworking?: pulumi.Input<boolean>;
     /**
      * Should IP Forwarding be enabled? Defaults to `false`.
      */
-    readonly enableIpForwarding?: pulumi.Input<boolean>;
+    enableIpForwarding?: pulumi.Input<boolean>;
     /**
      * The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
      */
-    readonly internalDnsNameLabel?: pulumi.Input<string>;
+    internalDnsNameLabel?: pulumi.Input<string>;
     /**
      * One or more `ipConfiguration` blocks as defined below.
      */
-    readonly ipConfigurations: pulumi.Input<pulumi.Input<inputs.network.NetworkInterfaceIpConfiguration>[]>;
+    ipConfigurations: pulumi.Input<pulumi.Input<inputs.network.NetworkInterfaceIpConfiguration>[]>;
     /**
      * The location where the Network Interface should exist. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the Network Interface. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

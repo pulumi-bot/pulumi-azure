@@ -204,25 +204,25 @@ export interface AnalyticsItemArgs {
     /**
      * The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
      */
-    readonly applicationInsightsId: pulumi.Input<string>;
+    applicationInsightsId: pulumi.Input<string>;
     /**
      * The content for the Analytics Item, for example the query text if `type` is `query`.
      */
-    readonly content: pulumi.Input<string>;
+    content: pulumi.Input<string>;
     /**
      * The alias to use for the function. Required when `type` is `function`.
      */
-    readonly functionAlias?: pulumi.Input<string>;
+    functionAlias?: pulumi.Input<string>;
     /**
      * Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
      */
-    readonly scope: pulumi.Input<string>;
+    scope: pulumi.Input<string>;
     /**
      * The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

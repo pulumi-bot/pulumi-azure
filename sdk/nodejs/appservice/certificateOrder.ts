@@ -289,41 +289,41 @@ export interface CertificateOrderArgs {
     /**
      * true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to true.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * Last CSR that was created for this order.
      */
-    readonly csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string>;
     /**
      * The Distinguished Name for the App Service Certificate Order.
      */
-    readonly distinguishedName?: pulumi.Input<string>;
+    distinguishedName?: pulumi.Input<string>;
     /**
      * Certificate key size.  Defaults to 2048.
      */
-    readonly keySize?: pulumi.Input<number>;
+    keySize?: pulumi.Input<number>;
     /**
      * Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Currently the only valid value is `global`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Specifies the name of the certificate. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Certificate product type, such as `Standard` or `WildCard`.
      */
-    readonly productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
     /**
      * The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration in years (must be between `1` and `3`).  Defaults to `1`.
      */
-    readonly validityInYears?: pulumi.Input<number>;
+    validityInYears?: pulumi.Input<number>;
 }

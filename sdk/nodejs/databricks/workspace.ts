@@ -204,29 +204,29 @@ export interface WorkspaceArgs {
     /**
      * A `customParameters` block as documented below.
      */
-    readonly customParameters?: pulumi.Input<inputs.databricks.WorkspaceCustomParameters>;
+    customParameters?: pulumi.Input<inputs.databricks.WorkspaceCustomParameters>;
     /**
      * Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the resource group where Azure should place the managed Databricks resources. Changing this forces a new resource to be created.
      */
-    readonly managedResourceGroupName?: pulumi.Input<string>;
+    managedResourceGroupName?: pulumi.Input<string>;
     /**
      * Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the Resource Group in which the Databricks Workspace should exist. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * The `sku` to use for the Databricks Workspace. Possible values are `standard`, `premium`, or `trial`. Changing this can force a new resource to be created in some circumstances.
      */
-    readonly sku: pulumi.Input<string>;
+    sku: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

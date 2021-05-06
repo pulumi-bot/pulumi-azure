@@ -440,73 +440,73 @@ export interface AccountArgs {
     /**
      * Enable Analytical Storage option for this Cosmos DB account. Defaults to `false`. Changing this forces a new resource to be created.
      */
-    readonly analyticalStorageEnabled?: pulumi.Input<boolean>;
+    analyticalStorageEnabled?: pulumi.Input<boolean>;
     /**
      * The capabilities which should be enabled for this Cosmos DB account. Value is a `capabilities` block as defined below.
      */
-    readonly capabilities?: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountCapability>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountCapability>[]>;
     /**
      * Specifies a `consistencyPolicy` resource, used to define the consistency policy for this CosmosDB account.
      */
-    readonly consistencyPolicy: pulumi.Input<inputs.cosmosdb.AccountConsistencyPolicy>;
+    consistencyPolicy: pulumi.Input<inputs.cosmosdb.AccountConsistencyPolicy>;
     /**
      * Enable automatic fail over for this Cosmos DB account.
      */
-    readonly enableAutomaticFailover?: pulumi.Input<boolean>;
+    enableAutomaticFailover?: pulumi.Input<boolean>;
     /**
      * Enable Free Tier pricing option for this Cosmos DB account. Defaults to `false`. Changing this forces a new resource to be created.
      */
-    readonly enableFreeTier?: pulumi.Input<boolean>;
+    enableFreeTier?: pulumi.Input<boolean>;
     /**
      * Enable multi-master support for this Cosmos DB account.
      */
-    readonly enableMultipleWriteLocations?: pulumi.Input<boolean>;
+    enableMultipleWriteLocations?: pulumi.Input<boolean>;
     /**
      * Specifies a `geoLocation` resource, used to define where data should be replicated with the `failoverPriority` 0 specifying the primary location. Value is a `geoLocation` block as defined below.
      */
-    readonly geoLocations: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountGeoLocation>[]>;
+    geoLocations: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountGeoLocation>[]>;
     /**
      * CosmosDB Firewall Support: This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IP's for a given database account. IP addresses/ranges must be comma separated and must not contain any spaces.
      */
-    readonly ipRangeFilter?: pulumi.Input<string>;
+    ipRangeFilter?: pulumi.Input<string>;
     /**
      * Enables virtual network filtering for this Cosmos DB account.
      */
-    readonly isVirtualNetworkFilterEnabled?: pulumi.Input<boolean>;
+    isVirtualNetworkFilterEnabled?: pulumi.Input<boolean>;
     /**
      * A versionless Key Vault Key ID for CMK encryption. Changing this forces a new resource to be created.
      */
-    readonly keyVaultKeyId?: pulumi.Input<string>;
+    keyVaultKeyId?: pulumi.Input<string>;
     /**
      * Specifies the Kind of CosmosDB to create - possible values are `GlobalDocumentDB` and `MongoDB`. Defaults to `GlobalDocumentDB`. Changing this forces a new resource to be created.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the Offer Type to use for this CosmosDB Account - currently this can only be set to `Standard`.
      */
-    readonly offerType: pulumi.Input<string>;
+    offerType: pulumi.Input<string>;
     /**
      * Whether or not public network access is allowed for this CosmosDB account.
      */
-    readonly publicNetworkAccessEnabled?: pulumi.Input<boolean>;
+    publicNetworkAccessEnabled?: pulumi.Input<boolean>;
     /**
      * The name of the resource group in which the CosmosDB Account is created. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies a `virtualNetworkRules` resource, used to define which subnets are allowed to access this CosmosDB account.
      */
-    readonly virtualNetworkRules?: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountVirtualNetworkRule>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<inputs.cosmosdb.AccountVirtualNetworkRule>[]>;
 }

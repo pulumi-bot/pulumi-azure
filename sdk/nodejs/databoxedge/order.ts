@@ -224,17 +224,17 @@ export interface OrderArgs {
     /**
      * A `contact` block as defined below.
      */
-    readonly contact: pulumi.Input<inputs.databoxedge.OrderContact>;
+    contact: pulumi.Input<inputs.databoxedge.OrderContact>;
     /**
      * The name of the Databox Edge Device this order is for. Changing this forces a new Databox Edge Order to be created.
      */
-    readonly deviceName: pulumi.Input<string>;
+    deviceName: pulumi.Input<string>;
     /**
      * The name of the Resource Group where the Databox Edge Order should exist. Changing this forces a new Databox Edge Order to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A `shipmentAddress block as defined below.
      */
-    readonly shipmentAddress: pulumi.Input<inputs.databoxedge.OrderShipmentAddress>;
+    shipmentAddress: pulumi.Input<inputs.databoxedge.OrderShipmentAddress>;
 }

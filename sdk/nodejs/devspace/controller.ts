@@ -186,29 +186,29 @@ export interface ControllerArgs {
     /**
      * Specifies the supported location where the DevSpace Controller should exist. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Specifies the name of the DevSpace Controller. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the resource group under which the DevSpace Controller resource has to be created. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * Specifies the SKU Name for this DevSpace Controller. Possible values are `S1`.
      */
-    readonly skuName: pulumi.Input<string>;
+    skuName: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoding of `kubeConfigRaw` of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
      */
-    readonly targetContainerHostCredentialsBase64: pulumi.Input<string>;
+    targetContainerHostCredentialsBase64: pulumi.Input<string>;
     /**
      * The resource id of Azure Kubernetes Service cluster. Changing this forces a new resource to be created.
      */
-    readonly targetContainerHostResourceId: pulumi.Input<string>;
+    targetContainerHostResourceId: pulumi.Input<string>;
 }

@@ -97,9 +97,9 @@ export interface ProviderState {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly location?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly policySigningCertificateData?: pulumi.Input<string>;
-    readonly resourceGroupName: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    policySigningCertificateData?: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

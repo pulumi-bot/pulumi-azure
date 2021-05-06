@@ -375,73 +375,73 @@ export interface AppServiceArgs {
     /**
      * The ID of the App Service Plan within which to create this App Service.
      */
-    readonly appServicePlanId: pulumi.Input<string>;
+    appServicePlanId: pulumi.Input<string>;
     /**
      * A key-value pair of App Settings.
      */
-    readonly appSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    appSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A `authSettings` block as defined below.
      */
-    readonly authSettings?: pulumi.Input<inputs.appservice.AppServiceAuthSettings>;
+    authSettings?: pulumi.Input<inputs.appservice.AppServiceAuthSettings>;
     /**
      * A `backup` block as defined below.
      */
-    readonly backup?: pulumi.Input<inputs.appservice.AppServiceBackup>;
+    backup?: pulumi.Input<inputs.appservice.AppServiceBackup>;
     /**
      * Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
      */
-    readonly clientAffinityEnabled?: pulumi.Input<boolean>;
+    clientAffinityEnabled?: pulumi.Input<boolean>;
     /**
      * Does the App Service require client certificates for incoming requests? Defaults to `false`.
      */
-    readonly clientCertEnabled?: pulumi.Input<boolean>;
+    clientCertEnabled?: pulumi.Input<boolean>;
     /**
      * One or more `connectionString` blocks as defined below.
      */
-    readonly connectionStrings?: pulumi.Input<pulumi.Input<inputs.appservice.AppServiceConnectionString>[]>;
+    connectionStrings?: pulumi.Input<pulumi.Input<inputs.appservice.AppServiceConnectionString>[]>;
     /**
      * Is the App Service Enabled?
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Can the App Service only be accessed via HTTPS? Defaults to `false`.
      */
-    readonly httpsOnly?: pulumi.Input<boolean>;
+    httpsOnly?: pulumi.Input<boolean>;
     /**
      * A Managed Service Identity block as defined below.
      */
-    readonly identity?: pulumi.Input<inputs.appservice.AppServiceIdentity>;
+    identity?: pulumi.Input<inputs.appservice.AppServiceIdentity>;
     /**
      * Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * A `logs` block as defined below.
      */
-    readonly logs?: pulumi.Input<inputs.appservice.AppServiceLogs>;
+    logs?: pulumi.Input<inputs.appservice.AppServiceLogs>;
     /**
      * Specifies the name of the App Service. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the resource group in which to create the App Service.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * A `siteConfig` block as defined below.
      */
-    readonly siteConfig?: pulumi.Input<inputs.appservice.AppServiceSiteConfig>;
+    siteConfig?: pulumi.Input<inputs.appservice.AppServiceSiteConfig>;
     /**
      * A Source Control block as defined below
      */
-    readonly sourceControl?: pulumi.Input<inputs.appservice.AppServiceSourceControl>;
+    sourceControl?: pulumi.Input<inputs.appservice.AppServiceSourceControl>;
     /**
      * One or more `storageAccount` blocks as defined below.
      */
-    readonly storageAccounts?: pulumi.Input<pulumi.Input<inputs.appservice.AppServiceStorageAccount>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<inputs.appservice.AppServiceStorageAccount>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

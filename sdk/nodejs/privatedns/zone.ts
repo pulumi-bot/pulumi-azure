@@ -174,17 +174,17 @@ export interface ZoneArgs {
     /**
      * The name of the Private DNS Zone. Must be a valid domain name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * An `soaRecord` block as defined below. Changing this forces a new resource to be created.
      */
-    readonly soaRecord?: pulumi.Input<inputs.privatedns.ZoneSoaRecord>;
+    soaRecord?: pulumi.Input<inputs.privatedns.ZoneSoaRecord>;
     /**
      * A mapping of tags to assign to the Record Set.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

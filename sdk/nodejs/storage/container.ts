@@ -175,17 +175,17 @@ export interface ContainerArgs {
     /**
      * The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
      */
-    readonly containerAccessType?: pulumi.Input<string>;
+    containerAccessType?: pulumi.Input<string>;
     /**
      * A mapping of MetaData for this Container. All metadata keys should be lowercase.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Container which should be created within the Storage Account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the Storage Account where the Container should be created.
      */
-    readonly storageAccountName: pulumi.Input<string>;
+    storageAccountName: pulumi.Input<string>;
 }

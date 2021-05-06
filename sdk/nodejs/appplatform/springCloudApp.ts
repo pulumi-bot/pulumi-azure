@@ -207,33 +207,33 @@ export interface SpringCloudAppArgs {
     /**
      * Is only https allowed? Defaults to `false`.
      */
-    readonly httpsOnly?: pulumi.Input<boolean>;
+    httpsOnly?: pulumi.Input<boolean>;
     /**
      * An `identity` block as defined below.
      */
-    readonly identity?: pulumi.Input<inputs.appplatform.SpringCloudAppIdentity>;
+    identity?: pulumi.Input<inputs.appplatform.SpringCloudAppIdentity>;
     /**
      * Does the Spring Cloud Application have public endpoint? Defaults to `false`.
      */
-    readonly isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean>;
     /**
      * Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An `persistentDisk` block as defined below.
      */
-    readonly persistentDisk?: pulumi.Input<inputs.appplatform.SpringCloudAppPersistentDisk>;
+    persistentDisk?: pulumi.Input<inputs.appplatform.SpringCloudAppPersistentDisk>;
     /**
      * Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * Is End to End TLS Enabled? Defaults to `false`.
      */
-    readonly tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean>;
 }
