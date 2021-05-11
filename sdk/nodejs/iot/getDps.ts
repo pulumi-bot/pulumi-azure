@@ -42,12 +42,12 @@ export interface GetDpsArgs {
     /**
      * Specifies the name of the Iot Device Provisioning Service resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group under which the Iot Device Provisioning Service is located in.
      */
-    readonly resourceGroupName: string;
-    readonly tags?: {[key: string]: string};
+    resourceGroupName: string;
+    tags?: {[key: string]: string};
 }
 
 /**

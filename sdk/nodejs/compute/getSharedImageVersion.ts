@@ -45,19 +45,19 @@ export interface GetSharedImageVersionArgs {
     /**
      * The name of the Shared Image Gallery in which the Shared Image exists.
      */
-    readonly galleryName: string;
+    galleryName: string;
     /**
      * The name of the Shared Image in which this Version exists.
      */
-    readonly imageName: string;
+    imageName: string;
     /**
      * The name of the Image Version.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Shared Image Gallery exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
