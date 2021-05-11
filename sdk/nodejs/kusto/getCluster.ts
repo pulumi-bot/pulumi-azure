@@ -41,11 +41,11 @@ export interface GetClusterArgs {
     /**
      * Specifies the name of the Kusto Cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Kusto Cluster exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

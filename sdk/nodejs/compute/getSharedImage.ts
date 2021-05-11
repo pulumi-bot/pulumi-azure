@@ -43,15 +43,15 @@ export interface GetSharedImageArgs {
     /**
      * The name of the Shared Image Gallery in which the Shared Image exists.
      */
-    readonly galleryName: string;
+    galleryName: string;
     /**
      * The name of the Shared Image.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Shared Image Gallery exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

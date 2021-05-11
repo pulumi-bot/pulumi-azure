@@ -103,19 +103,19 @@ export interface CustomHttpsConfigurationState {
     /**
      * A `customHttpsConfiguration` block as defined below.
      */
-    readonly customHttpsConfiguration?: pulumi.Input<inputs.frontdoor.CustomHttpsConfigurationCustomHttpsConfiguration>;
+    customHttpsConfiguration?: pulumi.Input<inputs.frontdoor.CustomHttpsConfigurationCustomHttpsConfiguration>;
     /**
      * Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
      */
-    readonly customHttpsProvisioningEnabled?: pulumi.Input<boolean>;
+    customHttpsProvisioningEnabled?: pulumi.Input<boolean>;
     /**
      * The ID of the FrontDoor Frontend Endpoint which this configuration refers to.
      */
-    readonly frontendEndpointId?: pulumi.Input<string>;
+    frontendEndpointId?: pulumi.Input<string>;
     /**
      * @deprecated This field is no longer used and will be removed in the next major version of the Azure Provider
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
 }
 
 /**
@@ -125,17 +125,17 @@ export interface CustomHttpsConfigurationArgs {
     /**
      * A `customHttpsConfiguration` block as defined below.
      */
-    readonly customHttpsConfiguration?: pulumi.Input<inputs.frontdoor.CustomHttpsConfigurationCustomHttpsConfiguration>;
+    customHttpsConfiguration?: pulumi.Input<inputs.frontdoor.CustomHttpsConfigurationCustomHttpsConfiguration>;
     /**
      * Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
      */
-    readonly customHttpsProvisioningEnabled: pulumi.Input<boolean>;
+    customHttpsProvisioningEnabled: pulumi.Input<boolean>;
     /**
      * The ID of the FrontDoor Frontend Endpoint which this configuration refers to.
      */
-    readonly frontendEndpointId: pulumi.Input<string>;
+    frontendEndpointId: pulumi.Input<string>;
     /**
      * @deprecated This field is no longer used and will be removed in the next major version of the Azure Provider
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
 }
