@@ -48,22 +48,22 @@ export interface GetAuthorizationRuleArgs {
     /**
      * Specifies the name of the EventHub.
      */
-    readonly eventhubName: string;
-    readonly listen?: boolean;
-    readonly manage?: boolean;
+    eventhubName: string;
+    listen?: boolean;
+    manage?: boolean;
     /**
      * Specifies the name of the EventHub Authorization Rule resource. be created.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the grandparent EventHub Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
      */
-    readonly resourceGroupName: string;
-    readonly send?: boolean;
+    resourceGroupName: string;
+    send?: boolean;
 }
 
 /**

@@ -47,19 +47,19 @@ export interface GetTopicAuthorizationRuleArgs {
     /**
      * The name of the ServiceBus Topic Authorization Rule resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the ServiceBus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the resource group in which the ServiceBus Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The name of the ServiceBus Topic.
      */
-    readonly topicName: string;
+    topicName: string;
 }
 
 /**
