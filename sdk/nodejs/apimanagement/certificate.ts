@@ -131,35 +131,35 @@ export interface CertificateState {
     /**
      * The Name of the API Management Service where this Service should be created. Changing this forces a new resource to be created.
      */
-    readonly apiManagementName?: pulumi.Input<string>;
+    apiManagementName?: pulumi.Input<string>;
     /**
      * The base-64 encoded certificate data, which must be a PFX file. Changing this forces a new resource to be created.
      */
-    readonly data?: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
     /**
      * The Expiration Date of this Certificate, formatted as an RFC3339 string.
      */
-    readonly expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string>;
     /**
      * The name of the API Management Certificate. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password used for this certificate. Changing this forces a new resource to be created.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
     /**
      * The Subject of this Certificate.
      */
-    readonly subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string>;
     /**
      * The Thumbprint of this Certificate.
      */
-    readonly thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string>;
 }
 
 /**
@@ -169,21 +169,21 @@ export interface CertificateArgs {
     /**
      * The Name of the API Management Service where this Service should be created. Changing this forces a new resource to be created.
      */
-    readonly apiManagementName: pulumi.Input<string>;
+    apiManagementName: pulumi.Input<string>;
     /**
      * The base-64 encoded certificate data, which must be a PFX file. Changing this forces a new resource to be created.
      */
-    readonly data: pulumi.Input<string>;
+    data: pulumi.Input<string>;
     /**
      * The name of the API Management Certificate. Changing this forces a new resource to be created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The password used for this certificate. Changing this forces a new resource to be created.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
 }

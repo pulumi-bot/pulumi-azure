@@ -41,11 +41,11 @@ export interface GetKubernetesClusterArgs {
     /**
      * The name of the managed Kubernetes Cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the managed Kubernetes Cluster exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
