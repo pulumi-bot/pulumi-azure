@@ -186,3 +186,10 @@ def get_snapshot(name: Optional[str] = None,
         source_uri=__ret__.source_uri,
         storage_account_id=__ret__.storage_account_id,
         time_created=__ret__.time_created)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_output(name: Optional[pulumi.Input[str]] = None,
+                        resource_group_name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    ...

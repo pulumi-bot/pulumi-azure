@@ -198,3 +198,10 @@ def get_managed_hardware_security_module(name: Optional[str] = None,
         soft_delete_retention_days=__ret__.soft_delete_retention_days,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_managed_hardware_security_module)
+def get_managed_hardware_security_module_output(name: Optional[pulumi.Input[str]] = None,
+                                                resource_group_name: Optional[pulumi.Input[str]] = None,
+                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedHardwareSecurityModuleResult]:
+    ...

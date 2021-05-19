@@ -43,11 +43,11 @@ export interface GetScheduledQueryRulesLogArgs {
     /**
      * Specifies the name of the scheduled query rule.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group where the scheduled query rule is located.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,22 @@ export interface GetScheduledQueryRulesLogResult {
     readonly name: string;
     readonly resourceGroupName: string;
     readonly tags: {[key: string]: string};
+}
+
+export function getScheduledQueryRulesLogOutput(args: GetScheduledQueryRulesLogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledQueryRulesLogResult> {
+    return pulumi.output(args).apply(a => getScheduledQueryRulesLog(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScheduledQueryRulesLog.
+ */
+export interface GetScheduledQueryRulesLogOutputArgs {
+    /**
+     * Specifies the name of the scheduled query rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group where the scheduled query rule is located.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

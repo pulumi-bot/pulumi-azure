@@ -134,3 +134,10 @@ def get_virtual_machine_scale_set(name: Optional[str] = None,
         name=__ret__.name,
         network_interfaces=__ret__.network_interfaces,
         resource_group_name=__ret__.resource_group_name)
+
+
+@_utilities.lift_output_func(get_virtual_machine_scale_set)
+def get_virtual_machine_scale_set_output(name: Optional[pulumi.Input[str]] = None,
+                                         resource_group_name: Optional[pulumi.Input[str]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineScaleSetResult]:
+    ...

@@ -42,11 +42,11 @@ export interface GetAccountArgs {
     /**
      * The name of this Data Share Account.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Data Share Account exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -67,4 +67,22 @@ export interface GetAccountResult {
      * A mapping of tags assigned to the Data Share Account.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(args).apply(a => getAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccount.
+ */
+export interface GetAccountOutputArgs {
+    /**
+     * The name of this Data Share Account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Data Share Account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

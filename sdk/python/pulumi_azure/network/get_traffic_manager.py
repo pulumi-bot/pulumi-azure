@@ -81,3 +81,9 @@ def get_traffic_manager(name: Optional[str] = None,
     return AwaitableGetTrafficManagerResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_traffic_manager)
+def get_traffic_manager_output(name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficManagerResult]:
+    ...

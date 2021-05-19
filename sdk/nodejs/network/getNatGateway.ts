@@ -31,19 +31,19 @@ export interface GetNatGatewayArgs {
     /**
      * Specifies the Name of the NAT Gateway.
      */
-    readonly name: string;
+    name: string;
     /**
      * A list of existing Public IP Address resource IDs which the NAT Gateway is using.
      */
-    readonly publicIpAddressIds?: string[];
+    publicIpAddressIds?: string[];
     /**
      * A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
      */
-    readonly publicIpPrefixIds?: string[];
+    publicIpPrefixIds?: string[];
     /**
      * Specifies the name of the Resource Group where the NAT Gateway exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -88,4 +88,30 @@ export interface GetNatGatewayResult {
      * A list of Availability Zones which the NAT Gateway exists in.
      */
     readonly zones: string[];
+}
+
+export function getNatGatewayOutput(args: GetNatGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatGatewayResult> {
+    return pulumi.output(args).apply(a => getNatGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNatGateway.
+ */
+export interface GetNatGatewayOutputArgs {
+    /**
+     * Specifies the Name of the NAT Gateway.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of existing Public IP Address resource IDs which the NAT Gateway is using.
+     */
+    publicIpAddressIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
+     */
+    publicIpPrefixIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the name of the Resource Group where the NAT Gateway exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

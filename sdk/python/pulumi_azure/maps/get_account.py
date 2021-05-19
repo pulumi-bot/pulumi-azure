@@ -158,3 +158,11 @@ def get_account(name: Optional[str] = None,
         sku_name=__ret__.sku_name,
         tags=__ret__.tags,
         x_ms_client_id=__ret__.x_ms_client_id)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    ...

@@ -206,3 +206,10 @@ def get_virtual_wan(name: Optional[str] = None,
         tags=__ret__.tags,
         virtual_hub_ids=__ret__.virtual_hub_ids,
         vpn_site_ids=__ret__.vpn_site_ids)
+
+
+@_utilities.lift_output_func(get_virtual_wan)
+def get_virtual_wan_output(name: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualWanResult]:
+    ...

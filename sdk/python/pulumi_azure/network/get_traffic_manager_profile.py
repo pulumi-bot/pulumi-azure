@@ -195,3 +195,12 @@ def get_traffic_manager_profile(name: Optional[str] = None,
         tags=__ret__.tags,
         traffic_routing_method=__ret__.traffic_routing_method,
         traffic_view_enabled=__ret__.traffic_view_enabled)
+
+
+@_utilities.lift_output_func(get_traffic_manager_profile)
+def get_traffic_manager_profile_output(name: Optional[pulumi.Input[str]] = None,
+                                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                       traffic_view_enabled: Optional[pulumi.Input[bool]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficManagerProfileResult]:
+    ...

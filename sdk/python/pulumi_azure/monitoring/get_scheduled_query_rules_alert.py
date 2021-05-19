@@ -268,3 +268,10 @@ def get_scheduled_query_rules_alert(name: Optional[str] = None,
         throttling=__ret__.throttling,
         time_window=__ret__.time_window,
         triggers=__ret__.triggers)
+
+
+@_utilities.lift_output_func(get_scheduled_query_rules_alert)
+def get_scheduled_query_rules_alert_output(name: Optional[pulumi.Input[str]] = None,
+                                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScheduledQueryRulesAlertResult]:
+    ...

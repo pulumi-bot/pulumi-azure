@@ -174,3 +174,9 @@ def get_subscription(subscription_id: Optional[str] = None,
         subscription_id=__ret__.subscription_id,
         tags=__ret__.tags,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_subscription)
+def get_subscription_output(subscription_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionResult]:
+    ...

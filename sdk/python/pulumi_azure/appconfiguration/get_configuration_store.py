@@ -199,3 +199,10 @@ def get_configuration_store(name: Optional[str] = None,
         secondary_write_keys=__ret__.secondary_write_keys,
         sku=__ret__.sku,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_configuration_store)
+def get_configuration_store_output(name: Optional[pulumi.Input[str]] = None,
+                                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigurationStoreResult]:
+    ...

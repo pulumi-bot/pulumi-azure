@@ -224,3 +224,10 @@ def get_database(name: Optional[str] = None,
         storage_account_type=__ret__.storage_account_type,
         tags=__ret__.tags,
         zone_redundant=__ret__.zone_redundant)
+
+
+@_utilities.lift_output_func(get_database)
+def get_database_output(name: Optional[pulumi.Input[str]] = None,
+                        server_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
+    ...

@@ -42,11 +42,11 @@ export interface GetWorkspaceArgs {
     /**
      * The name of the Machine Learning Workspace exists.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Machine Learning Workspace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -68,4 +68,22 @@ export interface GetWorkspaceResult {
      * A mapping of tags assigned to the Machine Learning Workspace.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceResult> {
+    return pulumi.output(args).apply(a => getWorkspace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWorkspace.
+ */
+export interface GetWorkspaceOutputArgs {
+    /**
+     * The name of the Machine Learning Workspace exists.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Machine Learning Workspace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

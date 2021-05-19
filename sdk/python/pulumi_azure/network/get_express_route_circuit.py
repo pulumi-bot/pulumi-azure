@@ -174,3 +174,10 @@ def get_express_route_circuit(name: Optional[str] = None,
         service_provider_properties=__ret__.service_provider_properties,
         service_provider_provisioning_state=__ret__.service_provider_provisioning_state,
         sku=__ret__.sku)
+
+
+@_utilities.lift_output_func(get_express_route_circuit)
+def get_express_route_circuit_output(name: Optional[pulumi.Input[str]] = None,
+                                     resource_group_name: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExpressRouteCircuitResult]:
+    ...

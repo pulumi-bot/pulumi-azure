@@ -42,11 +42,11 @@ export interface GetDatasetKustoDatabaseArgs {
     /**
      * The name of this Data Share Kusto Database Dataset.
      */
-    readonly name: string;
+    name: string;
     /**
      * The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
      */
-    readonly shareId: string;
+    shareId: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetDatasetKustoDatabaseResult {
     readonly kustoDatabaseId: string;
     readonly name: string;
     readonly shareId: string;
+}
+
+export function getDatasetKustoDatabaseOutput(args: GetDatasetKustoDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetKustoDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatasetKustoDatabase(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatasetKustoDatabase.
+ */
+export interface GetDatasetKustoDatabaseOutputArgs {
+    /**
+     * The name of this Data Share Kusto Database Dataset.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
+     */
+    shareId: pulumi.Input<string>;
 }

@@ -266,3 +266,12 @@ def get_managed_disk(name: Optional[str] = None,
         storage_account_type=__ret__.storage_account_type,
         tags=__ret__.tags,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_managed_disk)
+def get_managed_disk_output(name: Optional[pulumi.Input[str]] = None,
+                            resource_group_name: Optional[pulumi.Input[str]] = None,
+                            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                            zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedDiskResult]:
+    ...

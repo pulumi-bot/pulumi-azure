@@ -42,11 +42,11 @@ export interface GetKeyVaultArgs {
     /**
      * Specifies the name of the Key Vault.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Key Vault exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -104,4 +104,22 @@ export interface GetKeyVaultResult {
      * The URI of the vault for performing operations on keys and secrets.
      */
     readonly vaultUri: string;
+}
+
+export function getKeyVaultOutput(args: GetKeyVaultOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyVaultResult> {
+    return pulumi.output(args).apply(a => getKeyVault(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyVault.
+ */
+export interface GetKeyVaultOutputArgs {
+    /**
+     * Specifies the name of the Key Vault.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Key Vault exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

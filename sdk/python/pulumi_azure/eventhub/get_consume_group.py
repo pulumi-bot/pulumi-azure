@@ -144,3 +144,12 @@ def get_consume_group(eventhub_name: Optional[str] = None,
         namespace_name=__ret__.namespace_name,
         resource_group_name=__ret__.resource_group_name,
         user_metadata=__ret__.user_metadata)
+
+
+@_utilities.lift_output_func(get_consume_group)
+def get_consume_group_output(eventhub_name: Optional[pulumi.Input[str]] = None,
+                             name: Optional[pulumi.Input[str]] = None,
+                             namespace_name: Optional[pulumi.Input[str]] = None,
+                             resource_group_name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsumeGroupResult]:
+    ...

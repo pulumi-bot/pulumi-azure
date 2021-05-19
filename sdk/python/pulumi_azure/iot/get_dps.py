@@ -170,3 +170,11 @@ def get_dps(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         service_operations_host_name=__ret__.service_operations_host_name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_dps)
+def get_dps_output(name: Optional[pulumi.Input[str]] = None,
+                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDpsResult]:
+    ...

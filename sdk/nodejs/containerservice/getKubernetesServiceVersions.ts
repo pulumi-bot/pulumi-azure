@@ -43,15 +43,15 @@ export interface GetKubernetesServiceVersionsArgs {
     /**
      * Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
      */
-    readonly includePreview?: boolean;
+    includePreview?: boolean;
     /**
      * Specifies the location in which to query for versions.
      */
-    readonly location: string;
+    location: string;
     /**
      * A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
      */
-    readonly versionPrefix?: string;
+    versionPrefix?: string;
 }
 
 /**
@@ -73,4 +73,26 @@ export interface GetKubernetesServiceVersionsResult {
      * The list of all supported versions.
      */
     readonly versions: string[];
+}
+
+export function getKubernetesServiceVersionsOutput(args: GetKubernetesServiceVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesServiceVersionsResult> {
+    return pulumi.output(args).apply(a => getKubernetesServiceVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesServiceVersions.
+ */
+export interface GetKubernetesServiceVersionsOutputArgs {
+    /**
+     * Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
+     */
+    includePreview?: pulumi.Input<boolean>;
+    /**
+     * Specifies the location in which to query for versions.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
+     */
+    versionPrefix?: pulumi.Input<string>;
 }

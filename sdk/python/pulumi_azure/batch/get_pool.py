@@ -267,3 +267,13 @@ def get_pool(account_name: Optional[str] = None,
         start_task=__ret__.start_task,
         storage_image_references=__ret__.storage_image_references,
         vm_size=__ret__.vm_size)
+
+
+@_utilities.lift_output_func(get_pool)
+def get_pool_output(account_name: Optional[pulumi.Input[str]] = None,
+                    certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetPoolCertificateArgs']]]]] = None,
+                    name: Optional[pulumi.Input[str]] = None,
+                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                    start_task: Optional[pulumi.Input[pulumi.InputType['GetPoolStartTaskArgs']]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoolResult]:
+    ...

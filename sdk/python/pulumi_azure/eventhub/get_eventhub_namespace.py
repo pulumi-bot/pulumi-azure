@@ -293,3 +293,10 @@ def get_eventhub_namespace(name: Optional[str] = None,
         sku=__ret__.sku,
         tags=__ret__.tags,
         zone_redundant=__ret__.zone_redundant)
+
+
+@_utilities.lift_output_func(get_eventhub_namespace)
+def get_eventhub_namespace_output(name: Optional[pulumi.Input[str]] = None,
+                                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventhubNamespaceResult]:
+    ...

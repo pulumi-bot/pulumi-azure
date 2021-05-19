@@ -224,3 +224,10 @@ def get_job(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         streaming_units=__ret__.streaming_units,
         transformation_query=__ret__.transformation_query)
+
+
+@_utilities.lift_output_func(get_job)
+def get_job_output(name: Optional[pulumi.Input[str]] = None,
+                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+    ...

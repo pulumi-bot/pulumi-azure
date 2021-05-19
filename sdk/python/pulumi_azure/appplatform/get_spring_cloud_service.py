@@ -150,3 +150,10 @@ def get_spring_cloud_service(name: Optional[str] = None,
         outbound_public_ip_addresses=__ret__.outbound_public_ip_addresses,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_spring_cloud_service)
+def get_spring_cloud_service_output(name: Optional[pulumi.Input[str]] = None,
+                                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpringCloudServiceResult]:
+    ...

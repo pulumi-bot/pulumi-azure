@@ -42,11 +42,11 @@ export interface GetApplicationSecurityGroupArgs {
     /**
      * The name of the Application Security Group.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the Application Security Group exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -67,4 +67,22 @@ export interface GetApplicationSecurityGroupResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getApplicationSecurityGroupOutput(args: GetApplicationSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationSecurityGroupResult> {
+    return pulumi.output(args).apply(a => getApplicationSecurityGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplicationSecurityGroup.
+ */
+export interface GetApplicationSecurityGroupOutputArgs {
+    /**
+     * The name of the Application Security Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the Application Security Group exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -207,3 +207,11 @@ def get_certificate(name: Optional[str] = None,
         subject_name=__ret__.subject_name,
         tags=__ret__.tags,
         thumbprint=__ret__.thumbprint)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

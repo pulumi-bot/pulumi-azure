@@ -175,3 +175,10 @@ def get_definition(name: Optional[str] = None,
         target_scope=__ret__.target_scope,
         time_created=__ret__.time_created,
         versions=__ret__.versions)
+
+
+@_utilities.lift_output_func(get_definition)
+def get_definition_output(name: Optional[pulumi.Input[str]] = None,
+                          scope_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefinitionResult]:
+    ...

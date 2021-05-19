@@ -44,15 +44,15 @@ export interface GetElasticPoolArgs {
     /**
      * The name of the elastic pool.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group which contains the elastic pool.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The name of the SQL Server which contains the elastic pool.
      */
-    readonly serverName: string;
+    serverName: string;
 }
 
 /**
@@ -98,4 +98,26 @@ export interface GetElasticPoolResult {
      * Whether or not this elastic pool is zone redundant.
      */
     readonly zoneRedundant: boolean;
+}
+
+export function getElasticPoolOutput(args: GetElasticPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticPoolResult> {
+    return pulumi.output(args).apply(a => getElasticPool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getElasticPool.
+ */
+export interface GetElasticPoolOutputArgs {
+    /**
+     * The name of the elastic pool.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group which contains the elastic pool.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the SQL Server which contains the elastic pool.
+     */
+    serverName: pulumi.Input<string>;
 }

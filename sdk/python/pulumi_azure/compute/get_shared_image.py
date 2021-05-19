@@ -238,3 +238,11 @@ def get_shared_image(gallery_name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         specialized=__ret__.specialized,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_shared_image)
+def get_shared_image_output(gallery_name: Optional[pulumi.Input[str]] = None,
+                            name: Optional[pulumi.Input[str]] = None,
+                            resource_group_name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharedImageResult]:
+    ...

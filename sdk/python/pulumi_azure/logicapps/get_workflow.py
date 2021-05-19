@@ -237,3 +237,10 @@ def get_workflow(name: Optional[str] = None,
         workflow_outbound_ip_addresses=__ret__.workflow_outbound_ip_addresses,
         workflow_schema=__ret__.workflow_schema,
         workflow_version=__ret__.workflow_version)
+
+
+@_utilities.lift_output_func(get_workflow)
+def get_workflow_output(name: Optional[pulumi.Input[str]] = None,
+                        resource_group_name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowResult]:
+    ...

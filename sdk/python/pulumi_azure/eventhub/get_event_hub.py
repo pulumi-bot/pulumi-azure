@@ -134,3 +134,11 @@ def get_event_hub(name: Optional[str] = None,
         partition_count=__ret__.partition_count,
         partition_ids=__ret__.partition_ids,
         resource_group_name=__ret__.resource_group_name)
+
+
+@_utilities.lift_output_func(get_event_hub)
+def get_event_hub_output(name: Optional[pulumi.Input[str]] = None,
+                         namespace_name: Optional[pulumi.Input[str]] = None,
+                         resource_group_name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventHubResult]:
+    ...

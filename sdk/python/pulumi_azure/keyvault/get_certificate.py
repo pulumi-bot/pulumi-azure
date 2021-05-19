@@ -194,3 +194,11 @@ def get_certificate(key_vault_id: Optional[str] = None,
         tags=__ret__.tags,
         thumbprint=__ret__.thumbprint,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_output(key_vault_id: Optional[pulumi.Input[str]] = None,
+                           name: Optional[pulumi.Input[str]] = None,
+                           version: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

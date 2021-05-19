@@ -406,3 +406,10 @@ def get_kubernetes_cluster(name: Optional[str] = None,
         service_principals=__ret__.service_principals,
         tags=__ret__.tags,
         windows_profiles=__ret__.windows_profiles)
+
+
+@_utilities.lift_output_func(get_kubernetes_cluster)
+def get_kubernetes_cluster_output(name: Optional[pulumi.Input[str]] = None,
+                                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClusterResult]:
+    ...

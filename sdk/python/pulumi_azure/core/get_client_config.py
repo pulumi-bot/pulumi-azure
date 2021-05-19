@@ -105,3 +105,8 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         object_id=__ret__.object_id,
         subscription_id=__ret__.subscription_id,
         tenant_id=__ret__.tenant_id)
+
+
+@_utilities.lift_output_func(get_client_config)
+def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientConfigResult]:
+    ...

@@ -96,3 +96,10 @@ def get_alert_rule(log_analytics_workspace_id: Optional[str] = None,
         id=__ret__.id,
         log_analytics_workspace_id=__ret__.log_analytics_workspace_id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_alert_rule)
+def get_alert_rule_output(log_analytics_workspace_id: Optional[pulumi.Input[str]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertRuleResult]:
+    ...

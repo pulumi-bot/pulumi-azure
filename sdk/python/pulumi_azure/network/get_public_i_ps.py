@@ -133,3 +133,12 @@ def get_public_i_ps(allocation_type: Optional[str] = None,
         name_prefix=__ret__.name_prefix,
         public_ips=__ret__.public_ips,
         resource_group_name=__ret__.resource_group_name)
+
+
+@_utilities.lift_output_func(get_public_i_ps)
+def get_public_i_ps_output(allocation_type: Optional[pulumi.Input[str]] = None,
+                           attached: Optional[pulumi.Input[bool]] = None,
+                           name_prefix: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIPsResult]:
+    ...

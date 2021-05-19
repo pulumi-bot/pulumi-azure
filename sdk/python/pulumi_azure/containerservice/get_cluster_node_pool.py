@@ -395,3 +395,11 @@ def get_cluster_node_pool(kubernetes_cluster_name: Optional[str] = None,
         upgrade_settings=__ret__.upgrade_settings,
         vm_size=__ret__.vm_size,
         vnet_subnet_id=__ret__.vnet_subnet_id)
+
+
+@_utilities.lift_output_func(get_cluster_node_pool)
+def get_cluster_node_pool_output(kubernetes_cluster_name: Optional[pulumi.Input[str]] = None,
+                                 name: Optional[pulumi.Input[str]] = None,
+                                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterNodePoolResult]:
+    ...

@@ -200,3 +200,11 @@ def get_spring_cloud_app(name: Optional[str] = None,
         service_name=__ret__.service_name,
         tls_enabled=__ret__.tls_enabled,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_spring_cloud_app)
+def get_spring_cloud_app_output(name: Optional[pulumi.Input[str]] = None,
+                                resource_group_name: Optional[pulumi.Input[str]] = None,
+                                service_name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpringCloudAppResult]:
+    ...
