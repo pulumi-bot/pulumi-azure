@@ -44,19 +44,19 @@ export interface GetManagedDiskArgs {
     /**
      * Specifies the name of the Managed Disk.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Resource Group where this Managed Disk exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * A list of Availability Zones where the Managed Disk exists.
      */
-    readonly zones?: string[];
+    zones?: string[];
 }
 
 /**
@@ -118,4 +118,30 @@ export interface GetManagedDiskResult {
      * A list of Availability Zones where the Managed Disk exists.
      */
     readonly zones: string[];
+}
+
+export function getManagedDiskOutput(args: GetManagedDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedDiskResult> {
+    return pulumi.output(args).apply(a => getManagedDisk(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getManagedDisk.
+ */
+export interface GetManagedDiskOutputArgs {
+    /**
+     * Specifies the name of the Managed Disk.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where this Managed Disk exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags assigned to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of Availability Zones where the Managed Disk exists.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -42,7 +42,7 @@ export interface GetAccessPolicyArgs {
      * `Secret Management`, `Certificate Management`, `Key & Secret Management`, `Key & Certificate Management`,
      * `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -66,4 +66,20 @@ export interface GetAccessPolicyResult {
      * the secret permissions for the access policy
      */
     readonly secretPermissions: string[];
+}
+
+export function getAccessPolicyOutput(args: GetAccessPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyResult> {
+    return pulumi.output(args).apply(a => getAccessPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessPolicy.
+ */
+export interface GetAccessPolicyOutputArgs {
+    /**
+     * Specifies the name of the Management Template. Possible values are: `Key Management`,
+     * `Secret Management`, `Certificate Management`, `Key & Secret Management`, `Key & Certificate Management`,
+     * `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
+     */
+    name: pulumi.Input<string>;
 }

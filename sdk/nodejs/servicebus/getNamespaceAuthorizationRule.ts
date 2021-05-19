@@ -44,15 +44,15 @@ export interface GetNamespaceAuthorizationRuleArgs {
     /**
      * Specifies the name of the ServiceBus Namespace Authorization Rule.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the ServiceBus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,26 @@ export interface GetNamespaceAuthorizationRuleResult {
      * The secondary access key for the authorization rule.
      */
     readonly secondaryKey: string;
+}
+
+export function getNamespaceAuthorizationRuleOutput(args: GetNamespaceAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceAuthorizationRuleResult> {
+    return pulumi.output(args).apply(a => getNamespaceAuthorizationRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespaceAuthorizationRule.
+ */
+export interface GetNamespaceAuthorizationRuleOutputArgs {
+    /**
+     * Specifies the name of the ServiceBus Namespace Authorization Rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the ServiceBus Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -44,15 +44,15 @@ export interface GetCertificateArgs {
     /**
      * The name of the Batch account.
      */
-    readonly accountName: string;
+    accountName: string;
     /**
      * The name of the Batch certificate.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where this Batch account exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,26 @@ export interface GetCertificateResult {
      * The algorithm of the certificate thumbprint.
      */
     readonly thumbprintAlgorithm: string;
+}
+
+export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
+    return pulumi.output(args).apply(a => getCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificate.
+ */
+export interface GetCertificateOutputArgs {
+    /**
+     * The name of the Batch account.
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the Batch certificate.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where this Batch account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

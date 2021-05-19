@@ -42,11 +42,11 @@ export interface GetEnrollmentAccountScopeArgs {
     /**
      * The Billing Account Name of the Enterprise Account.
      */
-    readonly billingAccountName: string;
+    billingAccountName: string;
     /**
      * The Enrollment Account Name in the above Enterprise Account.
      */
-    readonly enrollmentAccountName: string;
+    enrollmentAccountName: string;
 }
 
 /**
@@ -59,4 +59,22 @@ export interface GetEnrollmentAccountScopeResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+}
+
+export function getEnrollmentAccountScopeOutput(args: GetEnrollmentAccountScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnrollmentAccountScopeResult> {
+    return pulumi.output(args).apply(a => getEnrollmentAccountScope(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnrollmentAccountScope.
+ */
+export interface GetEnrollmentAccountScopeOutputArgs {
+    /**
+     * The Billing Account Name of the Enterprise Account.
+     */
+    billingAccountName: pulumi.Input<string>;
+    /**
+     * The Enrollment Account Name in the above Enterprise Account.
+     */
+    enrollmentAccountName: pulumi.Input<string>;
 }
