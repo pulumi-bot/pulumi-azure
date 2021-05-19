@@ -46,19 +46,19 @@ export interface GetSubscriptionArgs {
     /**
      * Specifies the name of the ServiceBus Subscription.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the ServiceBus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The name of the ServiceBus Topic.
      */
-    readonly topicName: string;
+    topicName: string;
 }
 
 /**
@@ -113,4 +113,30 @@ export interface GetSubscriptionResult {
     readonly requiresSession: boolean;
     readonly resourceGroupName: string;
     readonly topicName: string;
+}
+
+export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
+    return pulumi.output(args).apply(a => getSubscription(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubscription.
+ */
+export interface GetSubscriptionOutputArgs {
+    /**
+     * Specifies the name of the ServiceBus Subscription.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the ServiceBus Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the ServiceBus Topic.
+     */
+    topicName: pulumi.Input<string>;
 }

@@ -42,15 +42,15 @@ export interface GetStorageContainerArgs {
     /**
      * A mapping of MetaData for this Container.
      */
-    readonly metadata?: {[key: string]: string};
+    metadata?: {[key: string]: string};
     /**
      * The name of the Container.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Storage Account where the Container exists.
      */
-    readonly storageAccountName: string;
+    storageAccountName: string;
 }
 
 /**
@@ -83,4 +83,26 @@ export interface GetStorageContainerResult {
      */
     readonly resourceManagerId: string;
     readonly storageAccountName: string;
+}
+
+export function getStorageContainerOutput(args: GetStorageContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageContainerResult> {
+    return pulumi.output(args).apply(a => getStorageContainer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStorageContainer.
+ */
+export interface GetStorageContainerOutputArgs {
+    /**
+     * A mapping of MetaData for this Container.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the Container.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Storage Account where the Container exists.
+     */
+    storageAccountName: pulumi.Input<string>;
 }

@@ -42,11 +42,11 @@ export interface GetServerArgs {
     /**
      * The name of this Microsoft SQL Server.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Microsoft SQL Server exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -87,4 +87,22 @@ export interface GetServerResult {
      * This servers MS SQL version.
      */
     readonly version: string;
+}
+
+export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
+    return pulumi.output(args).apply(a => getServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServer.
+ */
+export interface GetServerOutputArgs {
+    /**
+     * The name of this Microsoft SQL Server.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Microsoft SQL Server exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

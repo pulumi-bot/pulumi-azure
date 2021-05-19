@@ -43,15 +43,15 @@ export interface GetSharedAccessPolicyArgs {
     /**
      * The name of the IoTHub to which this Shared Access Policy belongs.
      */
-    readonly iothubName: string;
+    iothubName: string;
     /**
      * Specifies the name of the IotHub Shared Access Policy resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -81,4 +81,26 @@ export interface GetSharedAccessPolicyResult {
      * The secondary key used to create the authentication token.
      */
     readonly secondaryKey: string;
+}
+
+export function getSharedAccessPolicyOutput(args: GetSharedAccessPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedAccessPolicyResult> {
+    return pulumi.output(args).apply(a => getSharedAccessPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedAccessPolicy.
+ */
+export interface GetSharedAccessPolicyOutputArgs {
+    /**
+     * The name of the IoTHub to which this Shared Access Policy belongs.
+     */
+    iothubName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the IotHub Shared Access Policy resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

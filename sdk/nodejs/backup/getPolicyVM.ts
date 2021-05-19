@@ -43,15 +43,15 @@ export interface GetPolicyVMArgs {
     /**
      * Specifies the name of the VM Backup Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Recovery Services Vault.
      */
-    readonly recoveryVaultName: string;
+    recoveryVaultName: string;
     /**
      * The name of the resource group in which the VM Backup Policy resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -69,4 +69,26 @@ export interface GetPolicyVMResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getPolicyVMOutput(args: GetPolicyVMOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVMResult> {
+    return pulumi.output(args).apply(a => getPolicyVM(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicyVM.
+ */
+export interface GetPolicyVMOutputArgs {
+    /**
+     * Specifies the name of the VM Backup Policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Recovery Services Vault.
+     */
+    recoveryVaultName: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the VM Backup Policy resides.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

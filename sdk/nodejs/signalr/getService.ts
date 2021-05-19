@@ -41,11 +41,11 @@ export interface GetServiceArgs {
     /**
      * Specifies the name of the SignalR service.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the SignalR service is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -95,4 +95,22 @@ export interface GetServiceResult {
      */
     readonly serverPort: number;
     readonly tags: {[key: string]: string};
+}
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * Specifies the name of the SignalR service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the SignalR service is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

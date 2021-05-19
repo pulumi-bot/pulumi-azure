@@ -44,19 +44,19 @@ export interface GetBlobArgs {
     /**
      * A map of custom blob metadata.
      */
-    readonly metadata?: {[key: string]: string};
+    metadata?: {[key: string]: string};
     /**
      * The name of the Blob.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Storage Account where the Container exists.
      */
-    readonly storageAccountName: string;
+    storageAccountName: string;
     /**
      * The name of the Storage Container where the Blob exists.
      */
-    readonly storageContainerName: string;
+    storageContainerName: string;
 }
 
 /**
@@ -94,4 +94,30 @@ export interface GetBlobResult {
      * The URL of the storage blob.
      */
     readonly url: string;
+}
+
+export function getBlobOutput(args: GetBlobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlobResult> {
+    return pulumi.output(args).apply(a => getBlob(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBlob.
+ */
+export interface GetBlobOutputArgs {
+    /**
+     * A map of custom blob metadata.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the Blob.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Storage Account where the Container exists.
+     */
+    storageAccountName: pulumi.Input<string>;
+    /**
+     * The name of the Storage Container where the Blob exists.
+     */
+    storageContainerName: pulumi.Input<string>;
 }

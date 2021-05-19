@@ -44,15 +44,15 @@ export interface GetStringVariableArgs {
     /**
      * The name of the automation account in which the Automation Variable exists.
      */
-    readonly automationAccountName: string;
+    automationAccountName: string;
     /**
      * The name of the Automation Variable.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the automation account exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -78,4 +78,26 @@ export interface GetStringVariableResult {
      * The value of the Automation Variable as a `string`.
      */
     readonly value: string;
+}
+
+export function getStringVariableOutput(args: GetStringVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStringVariableResult> {
+    return pulumi.output(args).apply(a => getStringVariable(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStringVariable.
+ */
+export interface GetStringVariableOutputArgs {
+    /**
+     * The name of the automation account in which the Automation Variable exists.
+     */
+    automationAccountName: pulumi.Input<string>;
+    /**
+     * The name of the Automation Variable.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the automation account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

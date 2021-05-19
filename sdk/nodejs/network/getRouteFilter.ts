@@ -42,11 +42,11 @@ export interface GetRouteFilterArgs {
     /**
      * The Name of this Route Filter.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Route Filter exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -74,4 +74,22 @@ export interface GetRouteFilterResult {
      * A mapping of tags assigned to the Route Filter.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getRouteFilterOutput(args: GetRouteFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteFilterResult> {
+    return pulumi.output(args).apply(a => getRouteFilter(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteFilter.
+ */
+export interface GetRouteFilterOutputArgs {
+    /**
+     * The Name of this Route Filter.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Route Filter exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

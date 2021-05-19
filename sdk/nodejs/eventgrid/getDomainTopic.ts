@@ -42,15 +42,15 @@ export interface GetDomainTopicArgs {
     /**
      * The name of the EventGrid Domain Topic domain.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * The name of the EventGrid Domain Topic resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the EventGrid Domain Topic exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -67,4 +67,26 @@ export interface GetDomainTopicResult {
     readonly id: string;
     readonly name: string;
     readonly resourceGroupName: string;
+}
+
+export function getDomainTopicOutput(args: GetDomainTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTopicResult> {
+    return pulumi.output(args).apply(a => getDomainTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainTopic.
+ */
+export interface GetDomainTopicOutputArgs {
+    /**
+     * The name of the EventGrid Domain Topic domain.
+     */
+    domainName: pulumi.Input<string>;
+    /**
+     * The name of the EventGrid Domain Topic resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the EventGrid Domain Topic exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

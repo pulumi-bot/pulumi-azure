@@ -42,11 +42,11 @@ export interface GetAnalyticsWorkspaceArgs {
     /**
      * Specifies the name of the Log Analytics Workspace.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the Log Analytics workspace is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -92,4 +92,22 @@ export interface GetAnalyticsWorkspaceResult {
      * The Workspace (or Customer) ID for the Log Analytics Workspace.
      */
     readonly workspaceId: string;
+}
+
+export function getAnalyticsWorkspaceOutput(args: GetAnalyticsWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnalyticsWorkspaceResult> {
+    return pulumi.output(args).apply(a => getAnalyticsWorkspace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAnalyticsWorkspace.
+ */
+export interface GetAnalyticsWorkspaceOutputArgs {
+    /**
+     * Specifies the name of the Log Analytics Workspace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the Log Analytics workspace is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }
