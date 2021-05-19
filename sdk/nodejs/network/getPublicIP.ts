@@ -95,16 +95,16 @@ export interface GetPublicIPArgs {
     /**
      * Specifies the name of the public IP address.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags to assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
-    readonly zones?: string[];
+    tags?: {[key: string]: string};
+    zones?: string[];
 }
 
 /**
@@ -153,4 +153,27 @@ export interface GetPublicIPResult {
      */
     readonly tags?: {[key: string]: string};
     readonly zones: string[];
+}
+
+export function getPublicIPOutput(args: GetPublicIPOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIPResult> {
+    return pulumi.output(args).apply(a => getPublicIP(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPublicIP.
+ */
+export interface GetPublicIPOutputArgs {
+    /**
+     * Specifies the name of the public IP address.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assigned to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

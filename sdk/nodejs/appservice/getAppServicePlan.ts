@@ -42,11 +42,11 @@ export interface GetAppServicePlanArgs {
     /**
      * The name of the App Service Plan.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the App Service Plan exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetAppServicePlanResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getAppServicePlanOutput(args: GetAppServicePlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppServicePlanResult> {
+    return pulumi.output(args).apply(a => getAppServicePlan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppServicePlan.
+ */
+export interface GetAppServicePlanOutputArgs {
+    /**
+     * The name of the App Service Plan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the App Service Plan exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

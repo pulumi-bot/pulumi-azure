@@ -44,15 +44,15 @@ export interface GetPoolArgs {
     /**
      * The name of the NetApp account where the NetApp pool exists.
      */
-    readonly accountName: string;
+    accountName: string;
     /**
      * The name of the NetApp Pool.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the NetApp Pool exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -78,4 +78,26 @@ export interface GetPoolResult {
      * Provisioned size of the pool in TB.
      */
     readonly sizeInTb: number;
+}
+
+export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolResult> {
+    return pulumi.output(args).apply(a => getPool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPool.
+ */
+export interface GetPoolOutputArgs {
+    /**
+     * The name of the NetApp account where the NetApp pool exists.
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the NetApp Pool.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the NetApp Pool exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }
