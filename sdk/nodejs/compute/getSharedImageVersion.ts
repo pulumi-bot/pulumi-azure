@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     imageName: "my-image",
  *     name: "1.0.0",
  *     resourceGroupName: "example-resources",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSharedImageVersion(args: GetSharedImageVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedImageVersionResult> {

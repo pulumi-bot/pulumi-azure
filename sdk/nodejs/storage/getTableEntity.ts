@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     rowKey: "example-row-key",
  *     storageAccountName: "example-storage-account-name",
  *     tableName: "example-table-name",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTableEntity(args: GetTableEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetTableEntityResult> {

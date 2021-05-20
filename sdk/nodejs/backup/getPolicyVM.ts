@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     name: "policy",
  *     recoveryVaultName: "recovery_vault",
  *     resourceGroupName: "resource_group",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPolicyVM(args: GetPolicyVMArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyVMResult> {

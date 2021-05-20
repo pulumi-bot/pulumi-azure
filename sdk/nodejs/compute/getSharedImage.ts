@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     galleryName: "my-image-gallery",
  *     name: "my-image",
  *     resourceGroupName: "example-resources",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSharedImage(args: GetSharedImageArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedImageResult> {

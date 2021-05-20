@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     accountName: "testbatchaccount",
  *     name: "testbatchpool",
  *     resourceGroupName: "test",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {

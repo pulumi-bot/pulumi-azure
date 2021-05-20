@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(azure.storage.getStorageContainer({
  *     name: "example-container-name",
  *     storageAccountName: "example-storage-account-name",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getStorageContainer(args: GetStorageContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageContainerResult> {

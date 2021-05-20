@@ -26,6 +26,85 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly auxiliaryTenantIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
+     * Certificate
+     */
+    public readonly clientCertificatePassword!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+     * Principal using a Client Certificate.
+     */
+    public readonly clientCertificatePath!: pulumi.Output<string | undefined>;
+    /**
+     * The Client ID which should be used.
+     */
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
+     */
+    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * This will disable the x-ms-correlation-request-id header.
+     */
+    public readonly disableCorrelationRequestId!: pulumi.Output<boolean | undefined>;
+    /**
+     * This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+     */
+    public readonly disableTerraformPartnerId!: pulumi.Output<boolean | undefined>;
+    /**
+     * The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
+     * public.
+     */
+    public readonly environment!: pulumi.Output<string | undefined>;
+    public readonly features!: pulumi.Output<outputs.ProviderFeatures | undefined>;
+    /**
+     * The Hostname which should be used for the Azure Metadata Service.
+     */
+    public readonly metadataHost!: pulumi.Output<string | undefined>;
+    /**
+     * Deprecated - replaced by `metadata_host`.
+     *
+     * @deprecated use `metadata_host` instead
+     */
+    public readonly metadataUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+     * automatically.
+     */
+    public readonly msiEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+     */
+    public readonly partnerId!: pulumi.Output<string | undefined>;
+    /**
+     * [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
+     *
+     * @deprecated This field is deprecated and will be removed in version 3.0 of the Azure Provider
+     */
+    public readonly skipCredentialsValidation!: pulumi.Output<boolean | undefined>;
+    /**
+     * Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
+     * registered?
+     */
+    public readonly skipProviderRegistration!: pulumi.Output<boolean | undefined>;
+    /**
+     * Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
+     */
+    public readonly storageUseAzuread!: pulumi.Output<boolean | undefined>;
+    /**
+     * The Subscription ID which should be used.
+     */
+    public readonly subscriptionId!: pulumi.Output<string | undefined>;
+    /**
+     * The Tenant ID which should be used.
+     */
+    public readonly tenantId!: pulumi.Output<string | undefined>;
+    /**
+     * Allowed Managed Service Identity be used for Authentication.
+     */
+    public readonly useMsi!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.

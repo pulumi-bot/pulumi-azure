@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(azure.network.getPublicIPs({
  *     attached: false,
  *     resourceGroupName: "pip-test",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPublicIPs(args: GetPublicIPsArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIPsResult> {

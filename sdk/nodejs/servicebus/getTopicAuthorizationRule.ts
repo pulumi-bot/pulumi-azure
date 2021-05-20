@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     namespaceName: "example-namespace",
  *     resourceGroupName: "example-resources",
  *     topicName: "example-servicebus_topic",
- * }, { async: true }));
+ * }));
  *
  * export const servicebusAuthorizationRuleId = azurem_servicebus_topic_authorization_rule_example.id;
  * ```

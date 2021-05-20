@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(azure.iot.getDps({
  *     name: "iot_hub_dps_test",
  *     resourceGroupName: "iothub_dps_rg",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDps(args: GetDpsArgs, opts?: pulumi.InvokeOptions): Promise<GetDpsResult> {

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -499,4 +500,155 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="auxiliaryTenantIds")
+    def auxiliary_tenant_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "auxiliary_tenant_ids")
+
+    @property
+    @pulumi.getter(name="clientCertificatePassword")
+    def client_certificate_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
+        Certificate
+        """
+        return pulumi.get(self, "client_certificate_password")
+
+    @property
+    @pulumi.getter(name="clientCertificatePath")
+    def client_certificate_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        Principal using a Client Certificate.
+        """
+        return pulumi.get(self, "client_certificate_path")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Client ID which should be used.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="disableCorrelationRequestId")
+    def disable_correlation_request_id(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This will disable the x-ms-correlation-request-id header.
+        """
+        return pulumi.get(self, "disable_correlation_request_id")
+
+    @property
+    @pulumi.getter(name="disableTerraformPartnerId")
+    def disable_terraform_partner_id(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        """
+        return pulumi.get(self, "disable_terraform_partner_id")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
+        public.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def features(self) -> pulumi.Output[Optional['outputs.ProviderFeatures']]:
+        return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter(name="metadataHost")
+    def metadata_host(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Hostname which should be used for the Azure Metadata Service.
+        """
+        return pulumi.get(self, "metadata_host")
+
+    @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Deprecated - replaced by `metadata_host`.
+        """
+        return pulumi.get(self, "metadata_url")
+
+    @property
+    @pulumi.getter(name="msiEndpoint")
+    def msi_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+        automatically.
+        """
+        return pulumi.get(self, "msi_endpoint")
+
+    @property
+    @pulumi.getter(name="partnerId")
+    def partner_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        """
+        return pulumi.get(self, "partner_id")
+
+    @property
+    @pulumi.getter(name="skipCredentialsValidation")
+    def skip_credentials_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
+        """
+        return pulumi.get(self, "skip_credentials_validation")
+
+    @property
+    @pulumi.getter(name="skipProviderRegistration")
+    def skip_provider_registration(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
+        registered?
+        """
+        return pulumi.get(self, "skip_provider_registration")
+
+    @property
+    @pulumi.getter(name="storageUseAzuread")
+    def storage_use_azuread(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
+        """
+        return pulumi.get(self, "storage_use_azuread")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Subscription ID which should be used.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Tenant ID which should be used.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="useMsi")
+    def use_msi(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allowed Managed Service Identity be used for Authentication.
+        """
+        return pulumi.get(self, "use_msi")
 

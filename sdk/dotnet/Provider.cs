@@ -18,6 +18,120 @@ namespace Pulumi.Azure
     [AzureResourceType("pulumi:providers:azure")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("auxiliaryTenantIds")]
+        public Output<string?> AuxiliaryTenantIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
+        /// Certificate
+        /// </summary>
+        [Output("clientCertificatePassword")]
+        public Output<string?> ClientCertificatePassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        /// Principal using a Client Certificate.
+        /// </summary>
+        [Output("clientCertificatePath")]
+        public Output<string?> ClientCertificatePath { get; private set; } = null!;
+
+        /// <summary>
+        /// The Client ID which should be used.
+        /// </summary>
+        [Output("clientId")]
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
+        /// </summary>
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// This will disable the x-ms-correlation-request-id header.
+        /// </summary>
+        [Output("disableCorrelationRequestId")]
+        public Output<bool?> DisableCorrelationRequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        /// </summary>
+        [Output("disableTerraformPartnerId")]
+        public Output<bool?> DisableTerraformPartnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
+        /// public.
+        /// </summary>
+        [Output("environment")]
+        public Output<string?> Environment { get; private set; } = null!;
+
+        [Output("features")]
+        public Output<string?> Features { get; private set; } = null!;
+
+        /// <summary>
+        /// The Hostname which should be used for the Azure Metadata Service.
+        /// </summary>
+        [Output("metadataHost")]
+        public Output<string?> MetadataHost { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated - replaced by `metadata_host`.
+        /// </summary>
+        [Output("metadataUrl")]
+        public Output<string?> MetadataUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+        /// automatically.
+        /// </summary>
+        [Output("msiEndpoint")]
+        public Output<string?> MsiEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        /// </summary>
+        [Output("partnerId")]
+        public Output<string?> PartnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
+        /// </summary>
+        [Output("skipCredentialsValidation")]
+        public Output<bool?> SkipCredentialsValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
+        /// registered?
+        /// </summary>
+        [Output("skipProviderRegistration")]
+        public Output<bool?> SkipProviderRegistration { get; private set; } = null!;
+
+        /// <summary>
+        /// Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
+        /// </summary>
+        [Output("storageUseAzuread")]
+        public Output<bool?> StorageUseAzuread { get; private set; } = null!;
+
+        /// <summary>
+        /// The Subscription ID which should be used.
+        /// </summary>
+        [Output("subscriptionId")]
+        public Output<string?> SubscriptionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Tenant ID which should be used.
+        /// </summary>
+        [Output("tenantId")]
+        public Output<string?> TenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// Allowed Managed Service Identity be used for Authentication.
+        /// </summary>
+        [Output("useMsi")]
+        public Output<bool?> UseMsi { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

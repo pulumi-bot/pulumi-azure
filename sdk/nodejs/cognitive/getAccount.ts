@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const test = pulumi.output(azure.cognitive.getAccount({
  *     name: "example-account",
  *     resourceGroupName: "cognitive_account_rg",
- * }, { async: true }));
+ * }));
  *
  * export const primaryAccessKey = test.primaryAccessKey;
  * ```

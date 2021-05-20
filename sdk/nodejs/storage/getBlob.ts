@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     name: "example-blob-name",
  *     storageAccountName: "example-storage-account-name",
  *     storageContainerName: "example-storage-container-name",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBlob(args: GetBlobArgs, opts?: pulumi.InvokeOptions): Promise<GetBlobResult> {

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     name: "example-dbms-project",
  *     resourceGroupName: "example-rg",
  *     serviceName: "example-dbms",
- * }, { async: true }));
+ * }));
  *
  * export const name = example.name;
  * ```

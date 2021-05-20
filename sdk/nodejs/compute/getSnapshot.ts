@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(azure.compute.getSnapshot({
  *     name: "my-snapshot",
  *     resourceGroupName: "my-resource-group",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {

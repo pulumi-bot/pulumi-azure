@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     name: "test",
  *     namespaceName: azurerm_eventhub_namespace_testName,
  *     resourceGroupName: azurerm_resource_group_testName,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAuthorizationRule(args: GetAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationRuleResult> {

@@ -16,6 +16,52 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	AuxiliaryTenantIds pulumi.StringArrayOutput `pulumi:"auxiliaryTenantIds"`
+	// The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
+	// Certificate
+	ClientCertificatePassword pulumi.StringPtrOutput `pulumi:"clientCertificatePassword"`
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate.
+	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
+	// The Client ID which should be used.
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
+	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// This will disable the x-ms-correlation-request-id header.
+	DisableCorrelationRequestId pulumi.BoolPtrOutput `pulumi:"disableCorrelationRequestId"`
+	// This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+	DisableTerraformPartnerId pulumi.BoolPtrOutput `pulumi:"disableTerraformPartnerId"`
+	// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
+	// public.
+	Environment pulumi.StringPtrOutput    `pulumi:"environment"`
+	Features    ProviderFeaturesPtrOutput `pulumi:"features"`
+	// The Hostname which should be used for the Azure Metadata Service.
+	MetadataHost pulumi.StringPtrOutput `pulumi:"metadataHost"`
+	// Deprecated - replaced by `metadata_host`.
+	//
+	// Deprecated: use `metadata_host` instead
+	MetadataUrl pulumi.StringPtrOutput `pulumi:"metadataUrl"`
+	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+	// automatically.
+	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	PartnerId pulumi.StringPtrOutput `pulumi:"partnerId"`
+	// [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
+	//
+	// Deprecated: This field is deprecated and will be removed in version 3.0 of the Azure Provider
+	SkipCredentialsValidation pulumi.BoolPtrOutput `pulumi:"skipCredentialsValidation"`
+	// Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
+	// registered?
+	SkipProviderRegistration pulumi.BoolPtrOutput `pulumi:"skipProviderRegistration"`
+	// Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
+	StorageUseAzuread pulumi.BoolPtrOutput `pulumi:"storageUseAzuread"`
+	// The Subscription ID which should be used.
+	SubscriptionId pulumi.StringPtrOutput `pulumi:"subscriptionId"`
+	// The Tenant ID which should be used.
+	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	// Allowed Managed Service Identity be used for Authentication.
+	UseMsi pulumi.BoolPtrOutput `pulumi:"useMsi"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
