@@ -42,15 +42,15 @@ export interface GetStorageContainerArgs {
     /**
      * A mapping of MetaData for this Container.
      */
-    readonly metadata?: {[key: string]: string};
+    metadata?: {[key: string]: string};
     /**
      * The name of the Container.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Storage Account where the Container exists.
      */
-    readonly storageAccountName: string;
+    storageAccountName: string;
 }
 
 /**
