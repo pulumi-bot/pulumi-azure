@@ -84,3 +84,9 @@ def get_geographical_location(name: Optional[str] = None,
     return AwaitableGetGeographicalLocationResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_geographical_location)
+def get_geographical_location_apply(name: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGeographicalLocationResult]:
+    ...

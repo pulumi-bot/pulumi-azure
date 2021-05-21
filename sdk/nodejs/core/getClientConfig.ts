@@ -43,3 +43,7 @@ export interface GetClientConfigResult {
     readonly subscriptionId: string;
     readonly tenantId: string;
 }
+
+export function getClientConfigApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
+    return pulumi.output(getClientConfig(opts))
+}

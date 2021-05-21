@@ -189,3 +189,12 @@ def get_image(name: Optional[str] = None,
         sort_descending=__ret__.sort_descending,
         tags=__ret__.tags,
         zone_resilient=__ret__.zone_resilient)
+
+
+@_utilities.lift_output_func(get_image)
+def get_image_apply(name: Optional[pulumi.Input[str]] = None,
+                    name_regex: Optional[pulumi.Input[str]] = None,
+                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                    sort_descending: Optional[pulumi.Input[bool]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+    ...

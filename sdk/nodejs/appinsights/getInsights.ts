@@ -42,11 +42,11 @@ export interface GetInsightsArgs {
     /**
      * Specifies the name of the Application Insights component.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Application Insights component is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -87,4 +87,22 @@ export interface GetInsightsResult {
      * Tags applied to the component.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getInsightsApply(args: GetInsightsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInsightsResult> {
+    return pulumi.output(args).apply(a => getInsights(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInsights.
+ */
+export interface GetInsightsApplyArgs {
+    /**
+     * Specifies the name of the Application Insights component.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Application Insights component is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

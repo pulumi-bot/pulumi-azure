@@ -4,6 +4,9 @@
 package datashare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,111 @@ type LookupAccountResult struct {
 	ResourceGroupName string               `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Data Share Account.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupAccountApply(ctx *pulumi.Context, args LookupAccountApplyInput, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
+	return args.ToLookupAccountApplyOutput().ApplyT(func(v LookupAccountArgs) (LookupAccountResult, error) {
+		r, err := LookupAccount(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAccountResultOutput)
+}
+
+// LookupAccountApplyInput is an input type that accepts LookupAccountApplyArgs and LookupAccountApplyOutput values.
+// You can construct a concrete instance of `LookupAccountApplyInput` via:
+//
+//          LookupAccountApplyArgs{...}
+type LookupAccountApplyInput interface {
+	pulumi.Input
+
+	ToLookupAccountApplyOutput() LookupAccountApplyOutput
+	ToLookupAccountApplyOutputWithContext(context.Context) LookupAccountApplyOutput
+}
+
+// A collection of arguments for invoking getAccount.
+type LookupAccountApplyArgs struct {
+	// The name of this Data Share Account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Data Share Account exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupAccountApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
+}
+
+func (i LookupAccountApplyArgs) ToLookupAccountApplyOutput() LookupAccountApplyOutput {
+	return i.ToLookupAccountApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAccountApplyArgs) ToLookupAccountApplyOutputWithContext(ctx context.Context) LookupAccountApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAccountApplyOutput)
+}
+
+// A collection of arguments for invoking getAccount.
+type LookupAccountApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
+}
+
+func (o LookupAccountApplyOutput) ToLookupAccountApplyOutput() LookupAccountApplyOutput {
+	return o
+}
+
+func (o LookupAccountApplyOutput) ToLookupAccountApplyOutputWithContext(ctx context.Context) LookupAccountApplyOutput {
+	return o
+}
+
+// The name of this Data Share Account.
+func (o LookupAccountApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Data Share Account exists.
+func (o LookupAccountApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAccount.
+type LookupAccountResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountResult)(nil)).Elem()
+}
+
+func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountResultOutput {
+	return o
+}
+
+func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An `identity` block as defined below.
+func (o LookupAccountResultOutput) Identities() GetAccountIdentityArrayOutput {
+	return o.ApplyT(func(v LookupAccountResult) []GetAccountIdentity { return v.Identities }).(GetAccountIdentityArrayOutput)
+}
+
+func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Data Share Account.
+func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountApplyOutput{})
+	pulumi.RegisterOutputType(LookupAccountResultOutput{})
 }

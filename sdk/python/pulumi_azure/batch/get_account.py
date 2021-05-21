@@ -202,3 +202,10 @@ def get_account(name: Optional[str] = None,
         secondary_access_key=__ret__.secondary_access_key,
         storage_account_id=__ret__.storage_account_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_apply(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    ...

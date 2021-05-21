@@ -42,11 +42,11 @@ export interface GetVirtualHubArgs {
     /**
      * The name of the Virtual Hub.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the Virtual Hub exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -75,4 +75,22 @@ export interface GetVirtualHubResult {
      * The ID of the Virtual WAN within which the Virtual Hub exists.
      */
     readonly virtualWanId: string;
+}
+
+export function getVirtualHubApply(args: GetVirtualHubApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHubResult> {
+    return pulumi.output(args).apply(a => getVirtualHub(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualHub.
+ */
+export interface GetVirtualHubApplyArgs {
+    /**
+     * The name of the Virtual Hub.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the Virtual Hub exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

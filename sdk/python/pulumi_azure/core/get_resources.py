@@ -129,3 +129,12 @@ def get_resources(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         resources=__ret__.resources,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_resources)
+def get_resources_apply(name: Optional[pulumi.Input[str]] = None,
+                        required_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        resource_group_name: Optional[pulumi.Input[str]] = None,
+                        type: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcesResult]:
+    ...

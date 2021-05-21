@@ -42,13 +42,13 @@ export interface GetZoneArgs {
     /**
      * The name of the DNS Zone.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the DNS Zone exists.
      * If the Name of the Resource Group is not provided, the first DNS Zone from the list of DNS Zones
      * in your subscription that matches `name` will be returned.
      */
-    readonly resourceGroupName?: string;
+    resourceGroupName?: string;
 }
 
 /**
@@ -77,4 +77,24 @@ export interface GetZoneResult {
      * A mapping of tags to assign to the EventHub Namespace.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getZoneApply(args: GetZoneApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
+    return pulumi.output(args).apply(a => getZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZone.
+ */
+export interface GetZoneApplyArgs {
+    /**
+     * The name of the DNS Zone.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the DNS Zone exists.
+     * If the Name of the Resource Group is not provided, the first DNS Zone from the list of DNS Zones
+     * in your subscription that matches `name` will be returned.
+     */
+    resourceGroupName?: pulumi.Input<string>;
 }

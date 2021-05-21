@@ -4,6 +4,9 @@
 package datafactory
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,126 @@ type LookupFactoryResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A `vstsConfiguration` block as defined below.
 	VstsConfigurations []GetFactoryVstsConfiguration `pulumi:"vstsConfigurations"`
+}
+
+func LookupFactoryApply(ctx *pulumi.Context, args LookupFactoryApplyInput, opts ...pulumi.InvokeOption) LookupFactoryResultOutput {
+	return args.ToLookupFactoryApplyOutput().ApplyT(func(v LookupFactoryArgs) (LookupFactoryResult, error) {
+		r, err := LookupFactory(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupFactoryResultOutput)
+}
+
+// LookupFactoryApplyInput is an input type that accepts LookupFactoryApplyArgs and LookupFactoryApplyOutput values.
+// You can construct a concrete instance of `LookupFactoryApplyInput` via:
+//
+//          LookupFactoryApplyArgs{...}
+type LookupFactoryApplyInput interface {
+	pulumi.Input
+
+	ToLookupFactoryApplyOutput() LookupFactoryApplyOutput
+	ToLookupFactoryApplyOutputWithContext(context.Context) LookupFactoryApplyOutput
+}
+
+// A collection of arguments for invoking getFactory.
+type LookupFactoryApplyArgs struct {
+	// The name of this Azure Data Factory.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Azure Data Factory exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupFactoryApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFactoryArgs)(nil)).Elem()
+}
+
+func (i LookupFactoryApplyArgs) ToLookupFactoryApplyOutput() LookupFactoryApplyOutput {
+	return i.ToLookupFactoryApplyOutputWithContext(context.Background())
+}
+
+func (i LookupFactoryApplyArgs) ToLookupFactoryApplyOutputWithContext(ctx context.Context) LookupFactoryApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupFactoryApplyOutput)
+}
+
+// A collection of arguments for invoking getFactory.
+type LookupFactoryApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupFactoryApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFactoryArgs)(nil)).Elem()
+}
+
+func (o LookupFactoryApplyOutput) ToLookupFactoryApplyOutput() LookupFactoryApplyOutput {
+	return o
+}
+
+func (o LookupFactoryApplyOutput) ToLookupFactoryApplyOutputWithContext(ctx context.Context) LookupFactoryApplyOutput {
+	return o
+}
+
+// The name of this Azure Data Factory.
+func (o LookupFactoryApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Azure Data Factory exists.
+func (o LookupFactoryApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getFactory.
+type LookupFactoryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFactoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFactoryResult)(nil)).Elem()
+}
+
+func (o LookupFactoryResultOutput) ToLookupFactoryResultOutput() LookupFactoryResultOutput {
+	return o
+}
+
+func (o LookupFactoryResultOutput) ToLookupFactoryResultOutputWithContext(ctx context.Context) LookupFactoryResultOutput {
+	return o
+}
+
+// A `githubConfiguration` block as defined below.
+func (o LookupFactoryResultOutput) GithubConfigurations() GetFactoryGithubConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupFactoryResult) []GetFactoryGithubConfiguration { return v.GithubConfigurations }).(GetFactoryGithubConfigurationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFactoryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An `identity` block as defined below.
+func (o LookupFactoryResultOutput) Identities() GetFactoryIdentityArrayOutput {
+	return o.ApplyT(func(v LookupFactoryResult) []GetFactoryIdentity { return v.Identities }).(GetFactoryIdentityArrayOutput)
+}
+
+// The Azure Region where the Azure Data Factory exists.
+func (o LookupFactoryResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupFactoryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFactoryResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Azure Data Factory.
+func (o LookupFactoryResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFactoryResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A `vstsConfiguration` block as defined below.
+func (o LookupFactoryResultOutput) VstsConfigurations() GetFactoryVstsConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupFactoryResult) []GetFactoryVstsConfiguration { return v.VstsConfigurations }).(GetFactoryVstsConfigurationArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFactoryApplyOutput{})
+	pulumi.RegisterOutputType(LookupFactoryResultOutput{})
 }

@@ -42,11 +42,11 @@ export interface GetKeyArgs {
     /**
      * Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
      */
-    readonly keyVaultId: string;
+    keyVaultId: string;
     /**
      * Specifies the name of the Key Vault Key.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -91,4 +91,22 @@ export interface GetKeyResult {
      * The Base ID of the Key Vault Key.
      */
     readonly versionlessId: string;
+}
+
+export function getKeyApply(args: GetKeyApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKey.
+ */
+export interface GetKeyApplyArgs {
+    /**
+     * Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
+     */
+    keyVaultId: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Key Vault Key.
+     */
+    name: pulumi.Input<string>;
 }

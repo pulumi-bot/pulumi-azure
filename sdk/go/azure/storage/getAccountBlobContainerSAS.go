@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,4 +111,216 @@ type GetAccountBlobContainerSASResult struct {
 	// The computed Blob Container Shared Access Signature (SAS).
 	Sas   string `pulumi:"sas"`
 	Start string `pulumi:"start"`
+}
+
+func GetAccountBlobContainerSASApply(ctx *pulumi.Context, args GetAccountBlobContainerSASApplyInput, opts ...pulumi.InvokeOption) GetAccountBlobContainerSASResultOutput {
+	return args.ToGetAccountBlobContainerSASApplyOutput().ApplyT(func(v GetAccountBlobContainerSASArgs) (GetAccountBlobContainerSASResult, error) {
+		r, err := GetAccountBlobContainerSAS(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAccountBlobContainerSASResultOutput)
+}
+
+// GetAccountBlobContainerSASApplyInput is an input type that accepts GetAccountBlobContainerSASApplyArgs and GetAccountBlobContainerSASApplyOutput values.
+// You can construct a concrete instance of `GetAccountBlobContainerSASApplyInput` via:
+//
+//          GetAccountBlobContainerSASApplyArgs{...}
+type GetAccountBlobContainerSASApplyInput interface {
+	pulumi.Input
+
+	ToGetAccountBlobContainerSASApplyOutput() GetAccountBlobContainerSASApplyOutput
+	ToGetAccountBlobContainerSASApplyOutputWithContext(context.Context) GetAccountBlobContainerSASApplyOutput
+}
+
+// A collection of arguments for invoking getAccountBlobContainerSAS.
+type GetAccountBlobContainerSASApplyArgs struct {
+	// The `Cache-Control` response header that is sent when this SAS token is used.
+	CacheControl pulumi.StringPtrInput `pulumi:"cacheControl"`
+	// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of an `storage.Account` resource.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// Name of the container.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The `Content-Disposition` response header that is sent when this SAS token is used.
+	ContentDisposition pulumi.StringPtrInput `pulumi:"contentDisposition"`
+	// The `Content-Encoding` response header that is sent when this SAS token is used.
+	ContentEncoding pulumi.StringPtrInput `pulumi:"contentEncoding"`
+	// The `Content-Language` response header that is sent when this SAS token is used.
+	ContentLanguage pulumi.StringPtrInput `pulumi:"contentLanguage"`
+	// The `Content-Type` response header that is sent when this SAS token is used.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+	HttpsOnly pulumi.BoolPtrInput `pulumi:"httpsOnly"`
+	// Single ipv4 address or range (connected with a dash) of ipv4 addresses.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// A `permissions` block as defined below.
+	Permissions GetAccountBlobContainerSASPermissionsInput `pulumi:"permissions"`
+	// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetAccountBlobContainerSASApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountBlobContainerSASArgs)(nil)).Elem()
+}
+
+func (i GetAccountBlobContainerSASApplyArgs) ToGetAccountBlobContainerSASApplyOutput() GetAccountBlobContainerSASApplyOutput {
+	return i.ToGetAccountBlobContainerSASApplyOutputWithContext(context.Background())
+}
+
+func (i GetAccountBlobContainerSASApplyArgs) ToGetAccountBlobContainerSASApplyOutputWithContext(ctx context.Context) GetAccountBlobContainerSASApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountBlobContainerSASApplyOutput)
+}
+
+// A collection of arguments for invoking getAccountBlobContainerSAS.
+type GetAccountBlobContainerSASApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAccountBlobContainerSASApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountBlobContainerSASArgs)(nil)).Elem()
+}
+
+func (o GetAccountBlobContainerSASApplyOutput) ToGetAccountBlobContainerSASApplyOutput() GetAccountBlobContainerSASApplyOutput {
+	return o
+}
+
+func (o GetAccountBlobContainerSASApplyOutput) ToGetAccountBlobContainerSASApplyOutputWithContext(ctx context.Context) GetAccountBlobContainerSASApplyOutput {
+	return o
+}
+
+// The `Cache-Control` response header that is sent when this SAS token is used.
+func (o GetAccountBlobContainerSASApplyOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of an `storage.Account` resource.
+func (o GetAccountBlobContainerSASApplyOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// Name of the container.
+func (o GetAccountBlobContainerSASApplyOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The `Content-Disposition` response header that is sent when this SAS token is used.
+func (o GetAccountBlobContainerSASApplyOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+// The `Content-Encoding` response header that is sent when this SAS token is used.
+func (o GetAccountBlobContainerSASApplyOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// The `Content-Language` response header that is sent when this SAS token is used.
+func (o GetAccountBlobContainerSASApplyOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.ContentLanguage }).(pulumi.StringPtrOutput)
+}
+
+// The `Content-Type` response header that is sent when this SAS token is used.
+func (o GetAccountBlobContainerSASApplyOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+func (o GetAccountBlobContainerSASApplyOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+func (o GetAccountBlobContainerSASApplyOutput) HttpsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *bool { return v.HttpsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Single ipv4 address or range (connected with a dash) of ipv4 addresses.
+func (o GetAccountBlobContainerSASApplyOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// A `permissions` block as defined below.
+func (o GetAccountBlobContainerSASApplyOutput) Permissions() GetAccountBlobContainerSASPermissionsOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) GetAccountBlobContainerSASPermissions { return v.Permissions }).(GetAccountBlobContainerSASPermissionsOutput)
+}
+
+// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+func (o GetAccountBlobContainerSASApplyOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASArgs) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAccountBlobContainerSAS.
+type GetAccountBlobContainerSASResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountBlobContainerSASResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountBlobContainerSASResult)(nil)).Elem()
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ToGetAccountBlobContainerSASResultOutput() GetAccountBlobContainerSASResultOutput {
+	return o
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ToGetAccountBlobContainerSASResultOutputWithContext(ctx context.Context) GetAccountBlobContainerSASResultOutput {
+	return o
+}
+
+func (o GetAccountBlobContainerSASResultOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.ContentLanguage }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) HttpsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *bool { return v.HttpsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountBlobContainerSASResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) Permissions() GetAccountBlobContainerSASPermissionsOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) GetAccountBlobContainerSASPermissions { return v.Permissions }).(GetAccountBlobContainerSASPermissionsOutput)
+}
+
+// The computed Blob Container Shared Access Signature (SAS).
+func (o GetAccountBlobContainerSASResultOutput) Sas() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.Sas }).(pulumi.StringOutput)
+}
+
+func (o GetAccountBlobContainerSASResultOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountBlobContainerSASResult) string { return v.Start }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountBlobContainerSASApplyOutput{})
+	pulumi.RegisterOutputType(GetAccountBlobContainerSASResultOutput{})
 }

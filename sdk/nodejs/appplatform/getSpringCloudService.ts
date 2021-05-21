@@ -42,11 +42,11 @@ export interface GetSpringCloudServiceArgs {
     /**
      * Specifies The name of the Spring Cloud Service resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Resource Group where the Spring Cloud Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,22 @@ export interface GetSpringCloudServiceResult {
      * A mapping of tags assigned to Spring Cloud Service.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getSpringCloudServiceApply(args: GetSpringCloudServiceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpringCloudServiceResult> {
+    return pulumi.output(args).apply(a => getSpringCloudService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSpringCloudService.
+ */
+export interface GetSpringCloudServiceApplyArgs {
+    /**
+     * Specifies The name of the Spring Cloud Service resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the Spring Cloud Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

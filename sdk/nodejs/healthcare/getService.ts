@@ -44,15 +44,15 @@ export interface GetServiceArgs {
     /**
      * The Azure Region where the Service is located.
      */
-    readonly location: string;
+    location: string;
     /**
      * Specifies the name of the Healthcare Service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Healthcare Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -94,4 +94,26 @@ export interface GetServiceResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getServiceApply(args: GetServiceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceApplyArgs {
+    /**
+     * The Azure Region where the Service is located.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Healthcare Service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Healthcare Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

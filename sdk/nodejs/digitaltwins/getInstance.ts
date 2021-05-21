@@ -42,11 +42,11 @@ export interface GetInstanceArgs {
     /**
      * The name of this Digital Twins instance.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Digital Twins instance exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetInstanceResult {
      * A mapping of tags assigned to the Digital Twins instance.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getInstanceApply(args: GetInstanceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstance.
+ */
+export interface GetInstanceApplyArgs {
+    /**
+     * The name of this Digital Twins instance.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Digital Twins instance exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

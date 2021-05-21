@@ -24,9 +24,9 @@ export function getNamespaceDisasterRecoveryConfig(args: GetNamespaceDisasterRec
  * A collection of arguments for invoking getNamespaceDisasterRecoveryConfig.
  */
 export interface GetNamespaceDisasterRecoveryConfigArgs {
-    readonly name: string;
-    readonly namespaceName: string;
-    readonly resourceGroupName: string;
+    name: string;
+    namespaceName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -45,4 +45,17 @@ export interface GetNamespaceDisasterRecoveryConfigResult {
     readonly namespaceName: string;
     readonly partnerNamespaceId: string;
     readonly resourceGroupName: string;
+}
+
+export function getNamespaceDisasterRecoveryConfigApply(args: GetNamespaceDisasterRecoveryConfigApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceDisasterRecoveryConfigResult> {
+    return pulumi.output(args).apply(a => getNamespaceDisasterRecoveryConfig(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespaceDisasterRecoveryConfig.
+ */
+export interface GetNamespaceDisasterRecoveryConfigApplyArgs {
+    name: pulumi.Input<string>;
+    namespaceName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
 }

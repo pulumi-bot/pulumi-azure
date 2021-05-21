@@ -4,6 +4,9 @@
 package core
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,106 @@ type GetSubscriptionsResult struct {
 	Id string `pulumi:"id"`
 	// One or more `subscription` blocks as defined below.
 	Subscriptions []GetSubscriptionsSubscription `pulumi:"subscriptions"`
+}
+
+func GetSubscriptionsApply(ctx *pulumi.Context, args GetSubscriptionsApplyInput, opts ...pulumi.InvokeOption) GetSubscriptionsResultOutput {
+	return args.ToGetSubscriptionsApplyOutput().ApplyT(func(v GetSubscriptionsArgs) (GetSubscriptionsResult, error) {
+		r, err := GetSubscriptions(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetSubscriptionsResultOutput)
+}
+
+// GetSubscriptionsApplyInput is an input type that accepts GetSubscriptionsApplyArgs and GetSubscriptionsApplyOutput values.
+// You can construct a concrete instance of `GetSubscriptionsApplyInput` via:
+//
+//          GetSubscriptionsApplyArgs{...}
+type GetSubscriptionsApplyInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionsApplyOutput() GetSubscriptionsApplyOutput
+	ToGetSubscriptionsApplyOutputWithContext(context.Context) GetSubscriptionsApplyOutput
+}
+
+// A collection of arguments for invoking getSubscriptions.
+type GetSubscriptionsApplyArgs struct {
+	// A case-insensitive value which must be contained within the `displayName` field, used to filter the results
+	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
+	// A case-insensitive prefix which can be used to filter on the `displayName` field
+	DisplayNamePrefix pulumi.StringPtrInput `pulumi:"displayNamePrefix"`
+}
+
+func (GetSubscriptionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionsArgs)(nil)).Elem()
+}
+
+func (i GetSubscriptionsApplyArgs) ToGetSubscriptionsApplyOutput() GetSubscriptionsApplyOutput {
+	return i.ToGetSubscriptionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionsApplyArgs) ToGetSubscriptionsApplyOutputWithContext(ctx context.Context) GetSubscriptionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionsApplyOutput)
+}
+
+// A collection of arguments for invoking getSubscriptions.
+type GetSubscriptionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionsArgs)(nil)).Elem()
+}
+
+func (o GetSubscriptionsApplyOutput) ToGetSubscriptionsApplyOutput() GetSubscriptionsApplyOutput {
+	return o
+}
+
+func (o GetSubscriptionsApplyOutput) ToGetSubscriptionsApplyOutputWithContext(ctx context.Context) GetSubscriptionsApplyOutput {
+	return o
+}
+
+// A case-insensitive value which must be contained within the `displayName` field, used to filter the results
+func (o GetSubscriptionsApplyOutput) DisplayNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionsArgs) *string { return v.DisplayNameContains }).(pulumi.StringPtrOutput)
+}
+
+// A case-insensitive prefix which can be used to filter on the `displayName` field
+func (o GetSubscriptionsApplyOutput) DisplayNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionsArgs) *string { return v.DisplayNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getSubscriptions.
+type GetSubscriptionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionsResult)(nil)).Elem()
+}
+
+func (o GetSubscriptionsResultOutput) ToGetSubscriptionsResultOutput() GetSubscriptionsResultOutput {
+	return o
+}
+
+func (o GetSubscriptionsResultOutput) ToGetSubscriptionsResultOutputWithContext(ctx context.Context) GetSubscriptionsResultOutput {
+	return o
+}
+
+func (o GetSubscriptionsResultOutput) DisplayNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionsResult) *string { return v.DisplayNameContains }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubscriptionsResultOutput) DisplayNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionsResult) *string { return v.DisplayNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSubscriptionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// One or more `subscription` blocks as defined below.
+func (o GetSubscriptionsResultOutput) Subscriptions() GetSubscriptionsSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionsResult) []GetSubscriptionsSubscription { return v.Subscriptions }).(GetSubscriptionsSubscriptionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSubscriptionsApplyOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionsResultOutput{})
 }

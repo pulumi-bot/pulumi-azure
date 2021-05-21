@@ -4,6 +4,9 @@
 package cdn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupProfileResult struct {
 	Sku string `pulumi:"sku"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupProfileApply(ctx *pulumi.Context, args LookupProfileApplyInput, opts ...pulumi.InvokeOption) LookupProfileResultOutput {
+	return args.ToLookupProfileApplyOutput().ApplyT(func(v LookupProfileArgs) (LookupProfileResult, error) {
+		r, err := LookupProfile(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupProfileResultOutput)
+}
+
+// LookupProfileApplyInput is an input type that accepts LookupProfileApplyArgs and LookupProfileApplyOutput values.
+// You can construct a concrete instance of `LookupProfileApplyInput` via:
+//
+//          LookupProfileApplyArgs{...}
+type LookupProfileApplyInput interface {
+	pulumi.Input
+
+	ToLookupProfileApplyOutput() LookupProfileApplyOutput
+	ToLookupProfileApplyOutputWithContext(context.Context) LookupProfileApplyOutput
+}
+
+// A collection of arguments for invoking getProfile.
+type LookupProfileApplyArgs struct {
+	// The name of the CDN Profile.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group in which the CDN Profile exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupProfileApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProfileArgs)(nil)).Elem()
+}
+
+func (i LookupProfileApplyArgs) ToLookupProfileApplyOutput() LookupProfileApplyOutput {
+	return i.ToLookupProfileApplyOutputWithContext(context.Background())
+}
+
+func (i LookupProfileApplyArgs) ToLookupProfileApplyOutputWithContext(ctx context.Context) LookupProfileApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupProfileApplyOutput)
+}
+
+// A collection of arguments for invoking getProfile.
+type LookupProfileApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupProfileApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProfileArgs)(nil)).Elem()
+}
+
+func (o LookupProfileApplyOutput) ToLookupProfileApplyOutput() LookupProfileApplyOutput {
+	return o
+}
+
+func (o LookupProfileApplyOutput) ToLookupProfileApplyOutputWithContext(ctx context.Context) LookupProfileApplyOutput {
+	return o
+}
+
+// The name of the CDN Profile.
+func (o LookupProfileApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the CDN Profile exists.
+func (o LookupProfileApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getProfile.
+type LookupProfileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProfileResult)(nil)).Elem()
+}
+
+func (o LookupProfileResultOutput) ToLookupProfileResultOutput() LookupProfileResultOutput {
+	return o
+}
+
+func (o LookupProfileResultOutput) ToLookupProfileResultOutputWithContext(ctx context.Context) LookupProfileResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProfileResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the resource exists.
+func (o LookupProfileResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupProfileResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The pricing related information of current CDN profile.
+func (o LookupProfileResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfileResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupProfileResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProfileResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProfileApplyOutput{})
+	pulumi.RegisterOutputType(LookupProfileResultOutput{})
 }

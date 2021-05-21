@@ -4,6 +4,9 @@
 package appinsights
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,136 @@ type LookupInsightsResult struct {
 	RetentionInDays int `pulumi:"retentionInDays"`
 	// Tags applied to the component.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupInsightsApply(ctx *pulumi.Context, args LookupInsightsApplyInput, opts ...pulumi.InvokeOption) LookupInsightsResultOutput {
+	return args.ToLookupInsightsApplyOutput().ApplyT(func(v LookupInsightsArgs) (LookupInsightsResult, error) {
+		r, err := LookupInsights(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupInsightsResultOutput)
+}
+
+// LookupInsightsApplyInput is an input type that accepts LookupInsightsApplyArgs and LookupInsightsApplyOutput values.
+// You can construct a concrete instance of `LookupInsightsApplyInput` via:
+//
+//          LookupInsightsApplyArgs{...}
+type LookupInsightsApplyInput interface {
+	pulumi.Input
+
+	ToLookupInsightsApplyOutput() LookupInsightsApplyOutput
+	ToLookupInsightsApplyOutputWithContext(context.Context) LookupInsightsApplyOutput
+}
+
+// A collection of arguments for invoking getInsights.
+type LookupInsightsApplyArgs struct {
+	// Specifies the name of the Application Insights component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group the Application Insights component is located in.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupInsightsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInsightsArgs)(nil)).Elem()
+}
+
+func (i LookupInsightsApplyArgs) ToLookupInsightsApplyOutput() LookupInsightsApplyOutput {
+	return i.ToLookupInsightsApplyOutputWithContext(context.Background())
+}
+
+func (i LookupInsightsApplyArgs) ToLookupInsightsApplyOutputWithContext(ctx context.Context) LookupInsightsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupInsightsApplyOutput)
+}
+
+// A collection of arguments for invoking getInsights.
+type LookupInsightsApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupInsightsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInsightsArgs)(nil)).Elem()
+}
+
+func (o LookupInsightsApplyOutput) ToLookupInsightsApplyOutput() LookupInsightsApplyOutput {
+	return o
+}
+
+func (o LookupInsightsApplyOutput) ToLookupInsightsApplyOutputWithContext(ctx context.Context) LookupInsightsApplyOutput {
+	return o
+}
+
+// Specifies the name of the Application Insights component.
+func (o LookupInsightsApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group the Application Insights component is located in.
+func (o LookupInsightsApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getInsights.
+type LookupInsightsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInsightsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInsightsResult)(nil)).Elem()
+}
+
+func (o LookupInsightsResultOutput) ToLookupInsightsResultOutput() LookupInsightsResultOutput {
+	return o
+}
+
+func (o LookupInsightsResultOutput) ToLookupInsightsResultOutputWithContext(ctx context.Context) LookupInsightsResultOutput {
+	return o
+}
+
+// The App ID associated with this Application Insights component.
+func (o LookupInsightsResultOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The type of the component.
+func (o LookupInsightsResultOutput) ApplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.ApplicationType }).(pulumi.StringOutput)
+}
+
+// The connection string of the Application Insights component. (Sensitive)
+func (o LookupInsightsResultOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInsightsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instrumentation key of the Application Insights component.
+func (o LookupInsightsResultOutput) InstrumentationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.InstrumentationKey }).(pulumi.StringOutput)
+}
+
+// The Azure location where the component exists.
+func (o LookupInsightsResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupInsightsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupInsightsResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInsightsResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The retention period in days.
+func (o LookupInsightsResultOutput) RetentionInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInsightsResult) int { return v.RetentionInDays }).(pulumi.IntOutput)
+}
+
+// Tags applied to the component.
+func (o LookupInsightsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInsightsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInsightsApplyOutput{})
+	pulumi.RegisterOutputType(LookupInsightsResultOutput{})
 }

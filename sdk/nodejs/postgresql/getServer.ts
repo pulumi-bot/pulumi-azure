@@ -42,11 +42,11 @@ export interface GetServerArgs {
     /**
      * The name of the PostgreSQL Server.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Resource Group where the PostgreSQL Server exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -87,4 +87,22 @@ export interface GetServerResult {
      * The version of the PostgreSQL Server.
      */
     readonly version: string;
+}
+
+export function getServerApply(args: GetServerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
+    return pulumi.output(args).apply(a => getServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServer.
+ */
+export interface GetServerApplyArgs {
+    /**
+     * The name of the PostgreSQL Server.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the PostgreSQL Server exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

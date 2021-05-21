@@ -121,3 +121,9 @@ def get_access_policy(name: Optional[str] = None,
         key_permissions=__ret__.key_permissions,
         name=__ret__.name,
         secret_permissions=__ret__.secret_permissions)
+
+
+@_utilities.lift_output_func(get_access_policy)
+def get_access_policy_apply(name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPolicyResult]:
+    ...

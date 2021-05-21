@@ -44,15 +44,15 @@ export interface GetVirtualNetworkArgs {
     /**
      * Specifies the name of the Dev Test Lab.
      */
-    readonly labName: string;
+    labName: string;
     /**
      * Specifies the name of the Virtual Network.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group that contains the Virtual Network.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -78,4 +78,26 @@ export interface GetVirtualNetworkResult {
      * The unique immutable identifier of the virtual network.
      */
     readonly uniqueIdentifier: string;
+}
+
+export function getVirtualNetworkApply(args: GetVirtualNetworkApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkResult> {
+    return pulumi.output(args).apply(a => getVirtualNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualNetwork.
+ */
+export interface GetVirtualNetworkApplyArgs {
+    /**
+     * Specifies the name of the Dev Test Lab.
+     */
+    labName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Virtual Network.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group that contains the Virtual Network.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

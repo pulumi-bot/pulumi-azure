@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,4 +98,172 @@ type GetAccountSASResult struct {
 	Services      GetAccountSASServices `pulumi:"services"`
 	SignedVersion *string               `pulumi:"signedVersion"`
 	Start         string                `pulumi:"start"`
+}
+
+func GetAccountSASApply(ctx *pulumi.Context, args GetAccountSASApplyInput, opts ...pulumi.InvokeOption) GetAccountSASResultOutput {
+	return args.ToGetAccountSASApplyOutput().ApplyT(func(v GetAccountSASArgs) (GetAccountSASResult, error) {
+		r, err := GetAccountSAS(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAccountSASResultOutput)
+}
+
+// GetAccountSASApplyInput is an input type that accepts GetAccountSASApplyArgs and GetAccountSASApplyOutput values.
+// You can construct a concrete instance of `GetAccountSASApplyInput` via:
+//
+//          GetAccountSASApplyArgs{...}
+type GetAccountSASApplyInput interface {
+	pulumi.Input
+
+	ToGetAccountSASApplyOutput() GetAccountSASApplyOutput
+	ToGetAccountSASApplyOutputWithContext(context.Context) GetAccountSASApplyOutput
+}
+
+// A collection of arguments for invoking getAccountSAS.
+type GetAccountSASApplyArgs struct {
+	// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of a `storage.Account` resource.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+	HttpsOnly pulumi.BoolPtrInput `pulumi:"httpsOnly"`
+	// A `permissions` block as defined below.
+	Permissions GetAccountSASPermissionsInput `pulumi:"permissions"`
+	// A `resourceTypes` block as defined below.
+	ResourceTypes GetAccountSASResourceTypesInput `pulumi:"resourceTypes"`
+	// A `services` block as defined below.
+	Services GetAccountSASServicesInput `pulumi:"services"`
+	// Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
+	SignedVersion pulumi.StringPtrInput `pulumi:"signedVersion"`
+	// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetAccountSASApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountSASArgs)(nil)).Elem()
+}
+
+func (i GetAccountSASApplyArgs) ToGetAccountSASApplyOutput() GetAccountSASApplyOutput {
+	return i.ToGetAccountSASApplyOutputWithContext(context.Background())
+}
+
+func (i GetAccountSASApplyArgs) ToGetAccountSASApplyOutputWithContext(ctx context.Context) GetAccountSASApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountSASApplyOutput)
+}
+
+// A collection of arguments for invoking getAccountSAS.
+type GetAccountSASApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAccountSASApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountSASArgs)(nil)).Elem()
+}
+
+func (o GetAccountSASApplyOutput) ToGetAccountSASApplyOutput() GetAccountSASApplyOutput {
+	return o
+}
+
+func (o GetAccountSASApplyOutput) ToGetAccountSASApplyOutputWithContext(ctx context.Context) GetAccountSASApplyOutput {
+	return o
+}
+
+// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of a `storage.Account` resource.
+func (o GetAccountSASApplyOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+func (o GetAccountSASApplyOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+func (o GetAccountSASApplyOutput) HttpsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) *bool { return v.HttpsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// A `permissions` block as defined below.
+func (o GetAccountSASApplyOutput) Permissions() GetAccountSASPermissionsOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) GetAccountSASPermissions { return v.Permissions }).(GetAccountSASPermissionsOutput)
+}
+
+// A `resourceTypes` block as defined below.
+func (o GetAccountSASApplyOutput) ResourceTypes() GetAccountSASResourceTypesOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) GetAccountSASResourceTypes { return v.ResourceTypes }).(GetAccountSASResourceTypesOutput)
+}
+
+// A `services` block as defined below.
+func (o GetAccountSASApplyOutput) Services() GetAccountSASServicesOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) GetAccountSASServices { return v.Services }).(GetAccountSASServicesOutput)
+}
+
+// Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
+func (o GetAccountSASApplyOutput) SignedVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) *string { return v.SignedVersion }).(pulumi.StringPtrOutput)
+}
+
+// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+func (o GetAccountSASApplyOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASArgs) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAccountSAS.
+type GetAccountSASResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountSASResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountSASResult)(nil)).Elem()
+}
+
+func (o GetAccountSASResultOutput) ToGetAccountSASResultOutput() GetAccountSASResultOutput {
+	return o
+}
+
+func (o GetAccountSASResultOutput) ToGetAccountSASResultOutputWithContext(ctx context.Context) GetAccountSASResultOutput {
+	return o
+}
+
+func (o GetAccountSASResultOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASResult) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+func (o GetAccountSASResultOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASResult) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+func (o GetAccountSASResultOutput) HttpsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountSASResult) *bool { return v.HttpsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountSASResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountSASResultOutput) Permissions() GetAccountSASPermissionsOutput {
+	return o.ApplyT(func(v GetAccountSASResult) GetAccountSASPermissions { return v.Permissions }).(GetAccountSASPermissionsOutput)
+}
+
+func (o GetAccountSASResultOutput) ResourceTypes() GetAccountSASResourceTypesOutput {
+	return o.ApplyT(func(v GetAccountSASResult) GetAccountSASResourceTypes { return v.ResourceTypes }).(GetAccountSASResourceTypesOutput)
+}
+
+// The computed Account Shared Access Signature (SAS).
+func (o GetAccountSASResultOutput) Sas() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASResult) string { return v.Sas }).(pulumi.StringOutput)
+}
+
+func (o GetAccountSASResultOutput) Services() GetAccountSASServicesOutput {
+	return o.ApplyT(func(v GetAccountSASResult) GetAccountSASServices { return v.Services }).(GetAccountSASServicesOutput)
+}
+
+func (o GetAccountSASResultOutput) SignedVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountSASResult) *string { return v.SignedVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountSASResultOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountSASResult) string { return v.Start }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountSASApplyOutput{})
+	pulumi.RegisterOutputType(GetAccountSASResultOutput{})
 }

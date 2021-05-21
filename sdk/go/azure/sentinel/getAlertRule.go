@@ -4,6 +4,9 @@
 package sentinel
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,101 @@ type GetAlertRuleResult struct {
 	Id                      string `pulumi:"id"`
 	LogAnalyticsWorkspaceId string `pulumi:"logAnalyticsWorkspaceId"`
 	Name                    string `pulumi:"name"`
+}
+
+func GetAlertRuleApply(ctx *pulumi.Context, args GetAlertRuleApplyInput, opts ...pulumi.InvokeOption) GetAlertRuleResultOutput {
+	return args.ToGetAlertRuleApplyOutput().ApplyT(func(v GetAlertRuleArgs) (GetAlertRuleResult, error) {
+		r, err := GetAlertRule(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAlertRuleResultOutput)
+}
+
+// GetAlertRuleApplyInput is an input type that accepts GetAlertRuleApplyArgs and GetAlertRuleApplyOutput values.
+// You can construct a concrete instance of `GetAlertRuleApplyInput` via:
+//
+//          GetAlertRuleApplyArgs{...}
+type GetAlertRuleApplyInput interface {
+	pulumi.Input
+
+	ToGetAlertRuleApplyOutput() GetAlertRuleApplyOutput
+	ToGetAlertRuleApplyOutputWithContext(context.Context) GetAlertRuleApplyOutput
+}
+
+// A collection of arguments for invoking getAlertRule.
+type GetAlertRuleApplyArgs struct {
+	// The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
+	LogAnalyticsWorkspaceId pulumi.StringInput `pulumi:"logAnalyticsWorkspaceId"`
+	// The name which should be used for this Sentinel Alert Rule.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAlertRuleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRuleArgs)(nil)).Elem()
+}
+
+func (i GetAlertRuleApplyArgs) ToGetAlertRuleApplyOutput() GetAlertRuleApplyOutput {
+	return i.ToGetAlertRuleApplyOutputWithContext(context.Background())
+}
+
+func (i GetAlertRuleApplyArgs) ToGetAlertRuleApplyOutputWithContext(ctx context.Context) GetAlertRuleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRuleApplyOutput)
+}
+
+// A collection of arguments for invoking getAlertRule.
+type GetAlertRuleApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRuleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRuleArgs)(nil)).Elem()
+}
+
+func (o GetAlertRuleApplyOutput) ToGetAlertRuleApplyOutput() GetAlertRuleApplyOutput {
+	return o
+}
+
+func (o GetAlertRuleApplyOutput) ToGetAlertRuleApplyOutputWithContext(ctx context.Context) GetAlertRuleApplyOutput {
+	return o
+}
+
+// The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
+func (o GetAlertRuleApplyOutput) LogAnalyticsWorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRuleArgs) string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringOutput)
+}
+
+// The name which should be used for this Sentinel Alert Rule.
+func (o GetAlertRuleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRuleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAlertRule.
+type GetAlertRuleResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRuleResult)(nil)).Elem()
+}
+
+func (o GetAlertRuleResultOutput) ToGetAlertRuleResultOutput() GetAlertRuleResultOutput {
+	return o
+}
+
+func (o GetAlertRuleResultOutput) ToGetAlertRuleResultOutputWithContext(ctx context.Context) GetAlertRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlertRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAlertRuleResultOutput) LogAnalyticsWorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRuleResult) string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringOutput)
+}
+
+func (o GetAlertRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlertRuleApplyOutput{})
+	pulumi.RegisterOutputType(GetAlertRuleResultOutput{})
 }

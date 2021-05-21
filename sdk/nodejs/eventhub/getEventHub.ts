@@ -44,15 +44,15 @@ export interface GetEventHubArgs {
     /**
      * The name of this EventHub.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the EventHub Namespace where the EventHub exists.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the Resource Group where the EventHub exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -74,4 +74,26 @@ export interface GetEventHubResult {
      */
     readonly partitionIds: string[];
     readonly resourceGroupName: string;
+}
+
+export function getEventHubApply(args: GetEventHubApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventHubResult> {
+    return pulumi.output(args).apply(a => getEventHub(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEventHub.
+ */
+export interface GetEventHubApplyArgs {
+    /**
+     * The name of this EventHub.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the EventHub Namespace where the EventHub exists.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the EventHub exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package keyvault
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,125 @@ type LookupSecretResult struct {
 	// The current version of the Key Vault Secret.
 	Version       string `pulumi:"version"`
 	VersionlessId string `pulumi:"versionlessId"`
+}
+
+func LookupSecretApply(ctx *pulumi.Context, args LookupSecretApplyInput, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
+	return args.ToLookupSecretApplyOutput().ApplyT(func(v LookupSecretArgs) (LookupSecretResult, error) {
+		r, err := LookupSecret(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSecretResultOutput)
+}
+
+// LookupSecretApplyInput is an input type that accepts LookupSecretApplyArgs and LookupSecretApplyOutput values.
+// You can construct a concrete instance of `LookupSecretApplyInput` via:
+//
+//          LookupSecretApplyArgs{...}
+type LookupSecretApplyInput interface {
+	pulumi.Input
+
+	ToLookupSecretApplyOutput() LookupSecretApplyOutput
+	ToLookupSecretApplyOutputWithContext(context.Context) LookupSecretApplyOutput
+}
+
+// A collection of arguments for invoking getSecret.
+type LookupSecretApplyArgs struct {
+	// Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.
+	KeyVaultId pulumi.StringInput `pulumi:"keyVaultId"`
+	// Specifies the name of the Key Vault Secret.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupSecretApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretArgs)(nil)).Elem()
+}
+
+func (i LookupSecretApplyArgs) ToLookupSecretApplyOutput() LookupSecretApplyOutput {
+	return i.ToLookupSecretApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSecretApplyArgs) ToLookupSecretApplyOutputWithContext(ctx context.Context) LookupSecretApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSecretApplyOutput)
+}
+
+// A collection of arguments for invoking getSecret.
+type LookupSecretApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretArgs)(nil)).Elem()
+}
+
+func (o LookupSecretApplyOutput) ToLookupSecretApplyOutput() LookupSecretApplyOutput {
+	return o
+}
+
+func (o LookupSecretApplyOutput) ToLookupSecretApplyOutputWithContext(ctx context.Context) LookupSecretApplyOutput {
+	return o
+}
+
+// Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.
+func (o LookupSecretApplyOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretArgs) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Key Vault Secret.
+func (o LookupSecretApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSecret.
+type LookupSecretResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretResult)(nil)).Elem()
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResultOutput {
+	return o
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
+	return o
+}
+
+// The content type for the Key Vault Secret.
+func (o LookupSecretResultOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Any tags assigned to this resource.
+func (o LookupSecretResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The value of the Key Vault Secret.
+func (o LookupSecretResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// The current version of the Key Vault Secret.
+func (o LookupSecretResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) VersionlessId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.VersionlessId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretApplyOutput{})
+	pulumi.RegisterOutputType(LookupSecretResultOutput{})
 }

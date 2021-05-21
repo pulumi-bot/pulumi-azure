@@ -4,6 +4,9 @@
 package datashare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,121 @@ type LookupDatasetDataLakeGen1Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupDatasetDataLakeGen1Apply(ctx *pulumi.Context, args LookupDatasetDataLakeGen1ApplyInput, opts ...pulumi.InvokeOption) LookupDatasetDataLakeGen1ResultOutput {
+	return args.ToLookupDatasetDataLakeGen1ApplyOutput().ApplyT(func(v LookupDatasetDataLakeGen1Args) (LookupDatasetDataLakeGen1Result, error) {
+		r, err := LookupDatasetDataLakeGen1(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDatasetDataLakeGen1ResultOutput)
+}
+
+// LookupDatasetDataLakeGen1ApplyInput is an input type that accepts LookupDatasetDataLakeGen1ApplyArgs and LookupDatasetDataLakeGen1ApplyOutput values.
+// You can construct a concrete instance of `LookupDatasetDataLakeGen1ApplyInput` via:
+//
+//          LookupDatasetDataLakeGen1ApplyArgs{...}
+type LookupDatasetDataLakeGen1ApplyInput interface {
+	pulumi.Input
+
+	ToLookupDatasetDataLakeGen1ApplyOutput() LookupDatasetDataLakeGen1ApplyOutput
+	ToLookupDatasetDataLakeGen1ApplyOutputWithContext(context.Context) LookupDatasetDataLakeGen1ApplyOutput
+}
+
+// A collection of arguments for invoking getDatasetDataLakeGen1.
+type LookupDatasetDataLakeGen1ApplyArgs struct {
+	// The resource ID of the Data Share where this Data Share Data Lake Gen1 Dataset should be created.
+	DataShareId pulumi.StringInput `pulumi:"dataShareId"`
+	// The name of the Data Share Data Lake Gen1 Dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupDatasetDataLakeGen1ApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetDataLakeGen1Args)(nil)).Elem()
+}
+
+func (i LookupDatasetDataLakeGen1ApplyArgs) ToLookupDatasetDataLakeGen1ApplyOutput() LookupDatasetDataLakeGen1ApplyOutput {
+	return i.ToLookupDatasetDataLakeGen1ApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDatasetDataLakeGen1ApplyArgs) ToLookupDatasetDataLakeGen1ApplyOutputWithContext(ctx context.Context) LookupDatasetDataLakeGen1ApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDatasetDataLakeGen1ApplyOutput)
+}
+
+// A collection of arguments for invoking getDatasetDataLakeGen1.
+type LookupDatasetDataLakeGen1ApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDatasetDataLakeGen1ApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetDataLakeGen1Args)(nil)).Elem()
+}
+
+func (o LookupDatasetDataLakeGen1ApplyOutput) ToLookupDatasetDataLakeGen1ApplyOutput() LookupDatasetDataLakeGen1ApplyOutput {
+	return o
+}
+
+func (o LookupDatasetDataLakeGen1ApplyOutput) ToLookupDatasetDataLakeGen1ApplyOutputWithContext(ctx context.Context) LookupDatasetDataLakeGen1ApplyOutput {
+	return o
+}
+
+// The resource ID of the Data Share where this Data Share Data Lake Gen1 Dataset should be created.
+func (o LookupDatasetDataLakeGen1ApplyOutput) DataShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Args) string { return v.DataShareId }).(pulumi.StringOutput)
+}
+
+// The name of the Data Share Data Lake Gen1 Dataset.
+func (o LookupDatasetDataLakeGen1ApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Args) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDatasetDataLakeGen1.
+type LookupDatasetDataLakeGen1ResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatasetDataLakeGen1ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetDataLakeGen1Result)(nil)).Elem()
+}
+
+func (o LookupDatasetDataLakeGen1ResultOutput) ToLookupDatasetDataLakeGen1ResultOutput() LookupDatasetDataLakeGen1ResultOutput {
+	return o
+}
+
+func (o LookupDatasetDataLakeGen1ResultOutput) ToLookupDatasetDataLakeGen1ResultOutputWithContext(ctx context.Context) LookupDatasetDataLakeGen1ResultOutput {
+	return o
+}
+
+// The resource ID of the Data Lake Store to be shared with the receiver.
+func (o LookupDatasetDataLakeGen1ResultOutput) DataLakeStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.DataLakeStoreId }).(pulumi.StringOutput)
+}
+
+func (o LookupDatasetDataLakeGen1ResultOutput) DataShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.DataShareId }).(pulumi.StringOutput)
+}
+
+// The displayed name of the Data Share Dataset.
+func (o LookupDatasetDataLakeGen1ResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The file name of the data lake store to be shared with the receiver.
+func (o LookupDatasetDataLakeGen1ResultOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// The folder path of the data lake store to be shared with the receiver.
+func (o LookupDatasetDataLakeGen1ResultOutput) FolderPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.FolderPath }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatasetDataLakeGen1ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatasetDataLakeGen1ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetDataLakeGen1Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatasetDataLakeGen1ApplyOutput{})
+	pulumi.RegisterOutputType(LookupDatasetDataLakeGen1ResultOutput{})
 }

@@ -42,11 +42,11 @@ export interface GetServiceArgs {
     /**
      * The name of the API Management service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group in which the API Management Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -127,4 +127,22 @@ export interface GetServiceResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getServiceApply(args: GetServiceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceApplyArgs {
+    /**
+     * The name of the API Management service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group in which the API Management Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

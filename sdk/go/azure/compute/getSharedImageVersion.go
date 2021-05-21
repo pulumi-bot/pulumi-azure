@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,159 @@ type LookupSharedImageVersionResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// One or more `targetRegion` blocks as documented below.
 	TargetRegions []GetSharedImageVersionTargetRegion `pulumi:"targetRegions"`
+}
+
+func LookupSharedImageVersionApply(ctx *pulumi.Context, args LookupSharedImageVersionApplyInput, opts ...pulumi.InvokeOption) LookupSharedImageVersionResultOutput {
+	return args.ToLookupSharedImageVersionApplyOutput().ApplyT(func(v LookupSharedImageVersionArgs) (LookupSharedImageVersionResult, error) {
+		r, err := LookupSharedImageVersion(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSharedImageVersionResultOutput)
+}
+
+// LookupSharedImageVersionApplyInput is an input type that accepts LookupSharedImageVersionApplyArgs and LookupSharedImageVersionApplyOutput values.
+// You can construct a concrete instance of `LookupSharedImageVersionApplyInput` via:
+//
+//          LookupSharedImageVersionApplyArgs{...}
+type LookupSharedImageVersionApplyInput interface {
+	pulumi.Input
+
+	ToLookupSharedImageVersionApplyOutput() LookupSharedImageVersionApplyOutput
+	ToLookupSharedImageVersionApplyOutputWithContext(context.Context) LookupSharedImageVersionApplyOutput
+}
+
+// A collection of arguments for invoking getSharedImageVersion.
+type LookupSharedImageVersionApplyArgs struct {
+	// The name of the Shared Image Gallery in which the Shared Image exists.
+	GalleryName pulumi.StringInput `pulumi:"galleryName"`
+	// The name of the Shared Image in which this Version exists.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The name of the Image Version.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group in which the Shared Image Gallery exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupSharedImageVersionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSharedImageVersionArgs)(nil)).Elem()
+}
+
+func (i LookupSharedImageVersionApplyArgs) ToLookupSharedImageVersionApplyOutput() LookupSharedImageVersionApplyOutput {
+	return i.ToLookupSharedImageVersionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSharedImageVersionApplyArgs) ToLookupSharedImageVersionApplyOutputWithContext(ctx context.Context) LookupSharedImageVersionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSharedImageVersionApplyOutput)
+}
+
+// A collection of arguments for invoking getSharedImageVersion.
+type LookupSharedImageVersionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSharedImageVersionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSharedImageVersionArgs)(nil)).Elem()
+}
+
+func (o LookupSharedImageVersionApplyOutput) ToLookupSharedImageVersionApplyOutput() LookupSharedImageVersionApplyOutput {
+	return o
+}
+
+func (o LookupSharedImageVersionApplyOutput) ToLookupSharedImageVersionApplyOutputWithContext(ctx context.Context) LookupSharedImageVersionApplyOutput {
+	return o
+}
+
+// The name of the Shared Image Gallery in which the Shared Image exists.
+func (o LookupSharedImageVersionApplyOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionArgs) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+// The name of the Shared Image in which this Version exists.
+func (o LookupSharedImageVersionApplyOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionArgs) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The name of the Image Version.
+func (o LookupSharedImageVersionApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the Shared Image Gallery exists.
+func (o LookupSharedImageVersionApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSharedImageVersion.
+type LookupSharedImageVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSharedImageVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSharedImageVersionResult)(nil)).Elem()
+}
+
+func (o LookupSharedImageVersionResultOutput) ToLookupSharedImageVersionResultOutput() LookupSharedImageVersionResultOutput {
+	return o
+}
+
+func (o LookupSharedImageVersionResultOutput) ToLookupSharedImageVersionResultOutputWithContext(ctx context.Context) LookupSharedImageVersionResultOutput {
+	return o
+}
+
+// Is this Image Version excluded from the `latest` filter?
+func (o LookupSharedImageVersionResultOutput) ExcludeFromLatest() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) bool { return v.ExcludeFromLatest }).(pulumi.BoolOutput)
+}
+
+func (o LookupSharedImageVersionResultOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSharedImageVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSharedImageVersionResultOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the Shared Image Gallery exists.
+func (o LookupSharedImageVersionResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The ID of the Managed Image which was the source of this Shared Image Version.
+func (o LookupSharedImageVersionResultOutput) ManagedImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.ManagedImageId }).(pulumi.StringOutput)
+}
+
+// The Azure Region in which this Image Version exists.
+func (o LookupSharedImageVersionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The size of the OS disk snapshot (in Gigabytes) which was the source of this Shared Image Version.
+func (o LookupSharedImageVersionResultOutput) OsDiskImageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) int { return v.OsDiskImageSizeGb }).(pulumi.IntOutput)
+}
+
+// The ID of the OS disk snapshot which was the source of this Shared Image Version.
+func (o LookupSharedImageVersionResultOutput) OsDiskSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.OsDiskSnapshotId }).(pulumi.StringOutput)
+}
+
+func (o LookupSharedImageVersionResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Shared Image.
+func (o LookupSharedImageVersionResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// One or more `targetRegion` blocks as documented below.
+func (o LookupSharedImageVersionResultOutput) TargetRegions() GetSharedImageVersionTargetRegionArrayOutput {
+	return o.ApplyT(func(v LookupSharedImageVersionResult) []GetSharedImageVersionTargetRegion { return v.TargetRegions }).(GetSharedImageVersionTargetRegionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSharedImageVersionApplyOutput{})
+	pulumi.RegisterOutputType(LookupSharedImageVersionResultOutput{})
 }

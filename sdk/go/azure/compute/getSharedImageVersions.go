@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,128 @@ type GetSharedImageVersionsResult struct {
 	Images            []GetSharedImageVersionsImage `pulumi:"images"`
 	ResourceGroupName string                        `pulumi:"resourceGroupName"`
 	TagsFilter        map[string]string             `pulumi:"tagsFilter"`
+}
+
+func GetSharedImageVersionsApply(ctx *pulumi.Context, args GetSharedImageVersionsApplyInput, opts ...pulumi.InvokeOption) GetSharedImageVersionsResultOutput {
+	return args.ToGetSharedImageVersionsApplyOutput().ApplyT(func(v GetSharedImageVersionsArgs) (GetSharedImageVersionsResult, error) {
+		r, err := GetSharedImageVersions(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetSharedImageVersionsResultOutput)
+}
+
+// GetSharedImageVersionsApplyInput is an input type that accepts GetSharedImageVersionsApplyArgs and GetSharedImageVersionsApplyOutput values.
+// You can construct a concrete instance of `GetSharedImageVersionsApplyInput` via:
+//
+//          GetSharedImageVersionsApplyArgs{...}
+type GetSharedImageVersionsApplyInput interface {
+	pulumi.Input
+
+	ToGetSharedImageVersionsApplyOutput() GetSharedImageVersionsApplyOutput
+	ToGetSharedImageVersionsApplyOutputWithContext(context.Context) GetSharedImageVersionsApplyOutput
+}
+
+// A collection of arguments for invoking getSharedImageVersions.
+type GetSharedImageVersionsApplyArgs struct {
+	// The name of the Shared Image in which the Shared Image exists.
+	GalleryName pulumi.StringInput `pulumi:"galleryName"`
+	// The name of the Shared Image in which this Version exists.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The name of the Resource Group in which the Shared Image Gallery exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// A mapping of tags to filter the list of images against.
+	TagsFilter pulumi.StringMapInput `pulumi:"tagsFilter"`
+}
+
+func (GetSharedImageVersionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedImageVersionsArgs)(nil)).Elem()
+}
+
+func (i GetSharedImageVersionsApplyArgs) ToGetSharedImageVersionsApplyOutput() GetSharedImageVersionsApplyOutput {
+	return i.ToGetSharedImageVersionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetSharedImageVersionsApplyArgs) ToGetSharedImageVersionsApplyOutputWithContext(ctx context.Context) GetSharedImageVersionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSharedImageVersionsApplyOutput)
+}
+
+// A collection of arguments for invoking getSharedImageVersions.
+type GetSharedImageVersionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetSharedImageVersionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedImageVersionsArgs)(nil)).Elem()
+}
+
+func (o GetSharedImageVersionsApplyOutput) ToGetSharedImageVersionsApplyOutput() GetSharedImageVersionsApplyOutput {
+	return o
+}
+
+func (o GetSharedImageVersionsApplyOutput) ToGetSharedImageVersionsApplyOutputWithContext(ctx context.Context) GetSharedImageVersionsApplyOutput {
+	return o
+}
+
+// The name of the Shared Image in which the Shared Image exists.
+func (o GetSharedImageVersionsApplyOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsArgs) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+// The name of the Shared Image in which this Version exists.
+func (o GetSharedImageVersionsApplyOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsArgs) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the Shared Image Gallery exists.
+func (o GetSharedImageVersionsApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to filter the list of images against.
+func (o GetSharedImageVersionsApplyOutput) TagsFilter() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsArgs) map[string]string { return v.TagsFilter }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getSharedImageVersions.
+type GetSharedImageVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSharedImageVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSharedImageVersionsResult)(nil)).Elem()
+}
+
+func (o GetSharedImageVersionsResultOutput) ToGetSharedImageVersionsResultOutput() GetSharedImageVersionsResultOutput {
+	return o
+}
+
+func (o GetSharedImageVersionsResultOutput) ToGetSharedImageVersionsResultOutputWithContext(ctx context.Context) GetSharedImageVersionsResultOutput {
+	return o
+}
+
+func (o GetSharedImageVersionsResultOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSharedImageVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSharedImageVersionsResultOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// An `images` block as defined below:
+func (o GetSharedImageVersionsResultOutput) Images() GetSharedImageVersionsImageArrayOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) []GetSharedImageVersionsImage { return v.Images }).(GetSharedImageVersionsImageArrayOutput)
+}
+
+func (o GetSharedImageVersionsResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetSharedImageVersionsResultOutput) TagsFilter() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSharedImageVersionsResult) map[string]string { return v.TagsFilter }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSharedImageVersionsApplyOutput{})
+	pulumi.RegisterOutputType(GetSharedImageVersionsResultOutput{})
 }

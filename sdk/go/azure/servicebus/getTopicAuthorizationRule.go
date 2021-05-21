@@ -4,6 +4,9 @@
 package servicebus
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,155 @@ type LookupTopicAuthorizationRuleResult struct {
 	SecondaryKey string `pulumi:"secondaryKey"`
 	Send         bool   `pulumi:"send"`
 	TopicName    string `pulumi:"topicName"`
+}
+
+func LookupTopicAuthorizationRuleApply(ctx *pulumi.Context, args LookupTopicAuthorizationRuleApplyInput, opts ...pulumi.InvokeOption) LookupTopicAuthorizationRuleResultOutput {
+	return args.ToLookupTopicAuthorizationRuleApplyOutput().ApplyT(func(v LookupTopicAuthorizationRuleArgs) (LookupTopicAuthorizationRuleResult, error) {
+		r, err := LookupTopicAuthorizationRule(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupTopicAuthorizationRuleResultOutput)
+}
+
+// LookupTopicAuthorizationRuleApplyInput is an input type that accepts LookupTopicAuthorizationRuleApplyArgs and LookupTopicAuthorizationRuleApplyOutput values.
+// You can construct a concrete instance of `LookupTopicAuthorizationRuleApplyInput` via:
+//
+//          LookupTopicAuthorizationRuleApplyArgs{...}
+type LookupTopicAuthorizationRuleApplyInput interface {
+	pulumi.Input
+
+	ToLookupTopicAuthorizationRuleApplyOutput() LookupTopicAuthorizationRuleApplyOutput
+	ToLookupTopicAuthorizationRuleApplyOutputWithContext(context.Context) LookupTopicAuthorizationRuleApplyOutput
+}
+
+// A collection of arguments for invoking getTopicAuthorizationRule.
+type LookupTopicAuthorizationRuleApplyArgs struct {
+	// The name of the ServiceBus Topic Authorization Rule resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the ServiceBus Namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the resource group in which the ServiceBus Namespace exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the ServiceBus Topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
+}
+
+func (LookupTopicAuthorizationRuleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicAuthorizationRuleArgs)(nil)).Elem()
+}
+
+func (i LookupTopicAuthorizationRuleApplyArgs) ToLookupTopicAuthorizationRuleApplyOutput() LookupTopicAuthorizationRuleApplyOutput {
+	return i.ToLookupTopicAuthorizationRuleApplyOutputWithContext(context.Background())
+}
+
+func (i LookupTopicAuthorizationRuleApplyArgs) ToLookupTopicAuthorizationRuleApplyOutputWithContext(ctx context.Context) LookupTopicAuthorizationRuleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupTopicAuthorizationRuleApplyOutput)
+}
+
+// A collection of arguments for invoking getTopicAuthorizationRule.
+type LookupTopicAuthorizationRuleApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicAuthorizationRuleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicAuthorizationRuleArgs)(nil)).Elem()
+}
+
+func (o LookupTopicAuthorizationRuleApplyOutput) ToLookupTopicAuthorizationRuleApplyOutput() LookupTopicAuthorizationRuleApplyOutput {
+	return o
+}
+
+func (o LookupTopicAuthorizationRuleApplyOutput) ToLookupTopicAuthorizationRuleApplyOutputWithContext(ctx context.Context) LookupTopicAuthorizationRuleApplyOutput {
+	return o
+}
+
+// The name of the ServiceBus Topic Authorization Rule resource.
+func (o LookupTopicAuthorizationRuleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Namespace.
+func (o LookupTopicAuthorizationRuleApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the ServiceBus Namespace exists.
+func (o LookupTopicAuthorizationRuleApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Topic.
+func (o LookupTopicAuthorizationRuleApplyOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleArgs) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getTopicAuthorizationRule.
+type LookupTopicAuthorizationRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicAuthorizationRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicAuthorizationRuleResult)(nil)).Elem()
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) ToLookupTopicAuthorizationRuleResultOutput() LookupTopicAuthorizationRuleResultOutput {
+	return o
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) ToLookupTopicAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupTopicAuthorizationRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTopicAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) Listen() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) bool { return v.Listen }).(pulumi.BoolOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) Manage() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) bool { return v.Manage }).(pulumi.BoolOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The Primary Connection String for the ServiceBus Topic authorization Rule.
+func (o LookupTopicAuthorizationRuleResultOutput) PrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The Primary Key for the ServiceBus Topic authorization Rule.
+func (o LookupTopicAuthorizationRuleResultOutput) PrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Secondary Connection String for the ServiceBus Topic authorization Rule.
+func (o LookupTopicAuthorizationRuleResultOutput) SecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The Secondary Key for the ServiceBus Topic authorization Rule.
+func (o LookupTopicAuthorizationRuleResultOutput) SecondaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) Send() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) bool { return v.Send }).(pulumi.BoolOutput)
+}
+
+func (o LookupTopicAuthorizationRuleResultOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicAuthorizationRuleResult) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTopicAuthorizationRuleApplyOutput{})
+	pulumi.RegisterOutputType(LookupTopicAuthorizationRuleResultOutput{})
 }

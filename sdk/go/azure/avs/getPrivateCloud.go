@@ -4,6 +4,9 @@
 package avs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,176 @@ type LookupPrivateCloudResult struct {
 	VcsaEndpoint string `pulumi:"vcsaEndpoint"`
 	// The network which is used for live migration of virtual machines.
 	VmotionSubnetCidr string `pulumi:"vmotionSubnetCidr"`
+}
+
+func LookupPrivateCloudApply(ctx *pulumi.Context, args LookupPrivateCloudApplyInput, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
+	return args.ToLookupPrivateCloudApplyOutput().ApplyT(func(v LookupPrivateCloudArgs) (LookupPrivateCloudResult, error) {
+		r, err := LookupPrivateCloud(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPrivateCloudResultOutput)
+}
+
+// LookupPrivateCloudApplyInput is an input type that accepts LookupPrivateCloudApplyArgs and LookupPrivateCloudApplyOutput values.
+// You can construct a concrete instance of `LookupPrivateCloudApplyInput` via:
+//
+//          LookupPrivateCloudApplyArgs{...}
+type LookupPrivateCloudApplyInput interface {
+	pulumi.Input
+
+	ToLookupPrivateCloudApplyOutput() LookupPrivateCloudApplyOutput
+	ToLookupPrivateCloudApplyOutputWithContext(context.Context) LookupPrivateCloudApplyOutput
+}
+
+// A collection of arguments for invoking getPrivateCloud.
+type LookupPrivateCloudApplyArgs struct {
+	// The name of this Vmware Private Cloud.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Vmware Private Cloud exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupPrivateCloudApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPrivateCloudArgs)(nil)).Elem()
+}
+
+func (i LookupPrivateCloudApplyArgs) ToLookupPrivateCloudApplyOutput() LookupPrivateCloudApplyOutput {
+	return i.ToLookupPrivateCloudApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPrivateCloudApplyArgs) ToLookupPrivateCloudApplyOutputWithContext(ctx context.Context) LookupPrivateCloudApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPrivateCloudApplyOutput)
+}
+
+// A collection of arguments for invoking getPrivateCloud.
+type LookupPrivateCloudApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPrivateCloudApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPrivateCloudArgs)(nil)).Elem()
+}
+
+func (o LookupPrivateCloudApplyOutput) ToLookupPrivateCloudApplyOutput() LookupPrivateCloudApplyOutput {
+	return o
+}
+
+func (o LookupPrivateCloudApplyOutput) ToLookupPrivateCloudApplyOutputWithContext(ctx context.Context) LookupPrivateCloudApplyOutput {
+	return o
+}
+
+// The name of this Vmware Private Cloud.
+func (o LookupPrivateCloudApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Vmware Private Cloud exists.
+func (o LookupPrivateCloudApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getPrivateCloud.
+type LookupPrivateCloudResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPrivateCloudResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPrivateCloudResult)(nil)).Elem()
+}
+
+func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutput() LookupPrivateCloudResultOutput {
+	return o
+}
+
+func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithContext(ctx context.Context) LookupPrivateCloudResultOutput {
+	return o
+}
+
+// A `circuit` block as defined below.
+func (o LookupPrivateCloudResultOutput) Circuits() GetPrivateCloudCircuitArrayOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) []GetPrivateCloudCircuit { return v.Circuits }).(GetPrivateCloudCircuitArrayOutput)
+}
+
+// The endpoint for the HCX Cloud Manager.
+func (o LookupPrivateCloudResultOutput) HcxCloudManagerEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.HcxCloudManagerEndpoint }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPrivateCloudResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Is the Vmware Private Cluster connected to the internet?
+func (o LookupPrivateCloudResultOutput) InternetConnectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) bool { return v.InternetConnectionEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure Region where the Vmware Private Cloud exists.
+func (o LookupPrivateCloudResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// A `managementCluster` block as defined below.
+func (o LookupPrivateCloudResultOutput) ManagementClusters() GetPrivateCloudManagementClusterArrayOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) []GetPrivateCloudManagementCluster { return v.ManagementClusters }).(GetPrivateCloudManagementClusterArrayOutput)
+}
+
+// The network used to access vCenter Server and NSX-T Manager.
+func (o LookupPrivateCloudResultOutput) ManagementSubnetCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ManagementSubnetCidr }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The subnet cidr of the Vmware Private Cloud.
+func (o LookupPrivateCloudResultOutput) NetworkSubnetCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.NetworkSubnetCidr }).(pulumi.StringOutput)
+}
+
+// The thumbprint of the NSX-T Manager SSL certificate.
+func (o LookupPrivateCloudResultOutput) NsxtCertificateThumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.NsxtCertificateThumbprint }).(pulumi.StringOutput)
+}
+
+// The endpoint for the NSX-T Data Center manager.
+func (o LookupPrivateCloudResultOutput) NsxtManagerEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.NsxtManagerEndpoint }).(pulumi.StringOutput)
+}
+
+// The network which isused for virtual machine cold migration, cloning, and snapshot migration.
+func (o LookupPrivateCloudResultOutput) ProvisioningSubnetCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ProvisioningSubnetCidr }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Name of the SKU used for this Private Cloud.
+func (o LookupPrivateCloudResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Vmware Private Cloud.
+func (o LookupPrivateCloudResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The thumbprint of the vCenter Server SSL certificate.
+func (o LookupPrivateCloudResultOutput) VcenterCertificateThumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.VcenterCertificateThumbprint }).(pulumi.StringOutput)
+}
+
+// The endpoint for Virtual Center Server Appliance.
+func (o LookupPrivateCloudResultOutput) VcsaEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.VcsaEndpoint }).(pulumi.StringOutput)
+}
+
+// The network which is used for live migration of virtual machines.
+func (o LookupPrivateCloudResultOutput) VmotionSubnetCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.VmotionSubnetCidr }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPrivateCloudApplyOutput{})
+	pulumi.RegisterOutputType(LookupPrivateCloudResultOutput{})
 }

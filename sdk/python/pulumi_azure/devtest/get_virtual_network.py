@@ -148,3 +148,11 @@ def get_virtual_network(lab_name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         subnet_overrides=__ret__.subnet_overrides,
         unique_identifier=__ret__.unique_identifier)
+
+
+@_utilities.lift_output_func(get_virtual_network)
+def get_virtual_network_apply(lab_name: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              resource_group_name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualNetworkResult]:
+    ...

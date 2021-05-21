@@ -4,6 +4,9 @@
 package core
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,100 @@ type LookupResourceGroupResult struct {
 	Name     string `pulumi:"name"`
 	// A mapping of tags assigned to the Resource Group.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupResourceGroupApply(ctx *pulumi.Context, args LookupResourceGroupApplyInput, opts ...pulumi.InvokeOption) LookupResourceGroupResultOutput {
+	return args.ToLookupResourceGroupApplyOutput().ApplyT(func(v LookupResourceGroupArgs) (LookupResourceGroupResult, error) {
+		r, err := LookupResourceGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupResourceGroupResultOutput)
+}
+
+// LookupResourceGroupApplyInput is an input type that accepts LookupResourceGroupApplyArgs and LookupResourceGroupApplyOutput values.
+// You can construct a concrete instance of `LookupResourceGroupApplyInput` via:
+//
+//          LookupResourceGroupApplyArgs{...}
+type LookupResourceGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupResourceGroupApplyOutput() LookupResourceGroupApplyOutput
+	ToLookupResourceGroupApplyOutputWithContext(context.Context) LookupResourceGroupApplyOutput
+}
+
+// A collection of arguments for invoking getResourceGroup.
+type LookupResourceGroupApplyArgs struct {
+	// The Name of this Resource Group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupResourceGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceGroupArgs)(nil)).Elem()
+}
+
+func (i LookupResourceGroupApplyArgs) ToLookupResourceGroupApplyOutput() LookupResourceGroupApplyOutput {
+	return i.ToLookupResourceGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupResourceGroupApplyArgs) ToLookupResourceGroupApplyOutputWithContext(ctx context.Context) LookupResourceGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupResourceGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getResourceGroup.
+type LookupResourceGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceGroupArgs)(nil)).Elem()
+}
+
+func (o LookupResourceGroupApplyOutput) ToLookupResourceGroupApplyOutput() LookupResourceGroupApplyOutput {
+	return o
+}
+
+func (o LookupResourceGroupApplyOutput) ToLookupResourceGroupApplyOutputWithContext(ctx context.Context) LookupResourceGroupApplyOutput {
+	return o
+}
+
+// The Name of this Resource Group.
+func (o LookupResourceGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getResourceGroup.
+type LookupResourceGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceGroupResult)(nil)).Elem()
+}
+
+func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutput() LookupResourceGroupResultOutput {
+	return o
+}
+
+func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutputWithContext(ctx context.Context) LookupResourceGroupResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourceGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the Resource Group exists.
+func (o LookupResourceGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupResourceGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Resource Group.
+func (o LookupResourceGroupResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourceGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupResourceGroupResultOutput{})
 }

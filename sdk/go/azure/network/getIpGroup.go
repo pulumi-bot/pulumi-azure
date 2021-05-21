@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type GetIpGroupResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetIpGroupApply(ctx *pulumi.Context, args GetIpGroupApplyInput, opts ...pulumi.InvokeOption) GetIpGroupResultOutput {
+	return args.ToGetIpGroupApplyOutput().ApplyT(func(v GetIpGroupArgs) (GetIpGroupResult, error) {
+		r, err := GetIpGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetIpGroupResultOutput)
+}
+
+// GetIpGroupApplyInput is an input type that accepts GetIpGroupApplyArgs and GetIpGroupApplyOutput values.
+// You can construct a concrete instance of `GetIpGroupApplyInput` via:
+//
+//          GetIpGroupApplyArgs{...}
+type GetIpGroupApplyInput interface {
+	pulumi.Input
+
+	ToGetIpGroupApplyOutput() GetIpGroupApplyOutput
+	ToGetIpGroupApplyOutputWithContext(context.Context) GetIpGroupApplyOutput
+}
+
+// A collection of arguments for invoking getIpGroup.
+type GetIpGroupApplyArgs struct {
+	// Specifies the Name of the IP Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the Name of the Resource Group within which the IP Group exists
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetIpGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpGroupArgs)(nil)).Elem()
+}
+
+func (i GetIpGroupApplyArgs) ToGetIpGroupApplyOutput() GetIpGroupApplyOutput {
+	return i.ToGetIpGroupApplyOutputWithContext(context.Background())
+}
+
+func (i GetIpGroupApplyArgs) ToGetIpGroupApplyOutputWithContext(ctx context.Context) GetIpGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getIpGroup.
+type GetIpGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (GetIpGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpGroupArgs)(nil)).Elem()
+}
+
+func (o GetIpGroupApplyOutput) ToGetIpGroupApplyOutput() GetIpGroupApplyOutput {
+	return o
+}
+
+func (o GetIpGroupApplyOutput) ToGetIpGroupApplyOutputWithContext(ctx context.Context) GetIpGroupApplyOutput {
+	return o
+}
+
+// Specifies the Name of the IP Group.
+func (o GetIpGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Resource Group within which the IP Group exists
+func (o GetIpGroupApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getIpGroup.
+type GetIpGroupResultOutput struct{ *pulumi.OutputState }
+
+func (GetIpGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpGroupResult)(nil)).Elem()
+}
+
+func (o GetIpGroupResultOutput) ToGetIpGroupResultOutput() GetIpGroupResultOutput {
+	return o
+}
+
+func (o GetIpGroupResultOutput) ToGetIpGroupResultOutputWithContext(ctx context.Context) GetIpGroupResultOutput {
+	return o
+}
+
+// A list of CIDRs or IP addresses.
+func (o GetIpGroupResultOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpGroupResult) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIpGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the resource exists.
+func (o GetIpGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetIpGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetIpGroupResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpGroupResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetIpGroupResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIpGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIpGroupApplyOutput{})
+	pulumi.RegisterOutputType(GetIpGroupResultOutput{})
 }

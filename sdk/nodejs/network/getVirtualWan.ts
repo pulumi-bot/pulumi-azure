@@ -50,11 +50,11 @@ export interface GetVirtualWanArgs {
     /**
      * The name of this Virtual Wan.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Virtual Wan exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetVirtualWanResult {
      * A list of VPN Site ID's attached to this Virtual WAN.
      */
     readonly vpnSiteIds: string[];
+}
+
+export function getVirtualWanApply(args: GetVirtualWanApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualWanResult> {
+    return pulumi.output(args).apply(a => getVirtualWan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualWan.
+ */
+export interface GetVirtualWanApplyArgs {
+    /**
+     * The name of this Virtual Wan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Virtual Wan exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

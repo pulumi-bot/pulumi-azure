@@ -46,11 +46,11 @@ export interface GetEncryptionScopeArgs {
     /**
      * The name of this Storage Encryption Scope.
      */
-    readonly name: string;
+    name: string;
     /**
      * The ID of the Storage Account where this Storage Encryption Scope exists.
      */
-    readonly storageAccountId: string;
+    storageAccountId: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetEncryptionScopeResult {
      */
     readonly source: string;
     readonly storageAccountId: string;
+}
+
+export function getEncryptionScopeApply(args: GetEncryptionScopeApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptionScopeResult> {
+    return pulumi.output(args).apply(a => getEncryptionScope(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEncryptionScope.
+ */
+export interface GetEncryptionScopeApplyArgs {
+    /**
+     * The name of this Storage Encryption Scope.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the Storage Account where this Storage Encryption Scope exists.
+     */
+    storageAccountId: pulumi.Input<string>;
 }

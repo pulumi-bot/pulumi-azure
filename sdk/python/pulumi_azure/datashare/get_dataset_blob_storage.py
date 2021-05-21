@@ -163,3 +163,10 @@ def get_dataset_blob_storage(data_share_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         storage_accounts=__ret__.storage_accounts)
+
+
+@_utilities.lift_output_func(get_dataset_blob_storage)
+def get_dataset_blob_storage_apply(data_share_id: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetBlobStorageResult]:
+    ...

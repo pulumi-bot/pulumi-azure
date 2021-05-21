@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,101 @@ type LookupSyncGroupResult struct {
 	Id            string `pulumi:"id"`
 	Name          string `pulumi:"name"`
 	StorageSyncId string `pulumi:"storageSyncId"`
+}
+
+func LookupSyncGroupApply(ctx *pulumi.Context, args LookupSyncGroupApplyInput, opts ...pulumi.InvokeOption) LookupSyncGroupResultOutput {
+	return args.ToLookupSyncGroupApplyOutput().ApplyT(func(v LookupSyncGroupArgs) (LookupSyncGroupResult, error) {
+		r, err := LookupSyncGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSyncGroupResultOutput)
+}
+
+// LookupSyncGroupApplyInput is an input type that accepts LookupSyncGroupApplyArgs and LookupSyncGroupApplyOutput values.
+// You can construct a concrete instance of `LookupSyncGroupApplyInput` via:
+//
+//          LookupSyncGroupApplyArgs{...}
+type LookupSyncGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupSyncGroupApplyOutput() LookupSyncGroupApplyOutput
+	ToLookupSyncGroupApplyOutputWithContext(context.Context) LookupSyncGroupApplyOutput
+}
+
+// A collection of arguments for invoking getSyncGroup.
+type LookupSyncGroupApplyArgs struct {
+	// The name of this Storage Sync Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource ID of the Storage Sync where this Storage Sync Group is.
+	StorageSyncId pulumi.StringInput `pulumi:"storageSyncId"`
+}
+
+func (LookupSyncGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncGroupArgs)(nil)).Elem()
+}
+
+func (i LookupSyncGroupApplyArgs) ToLookupSyncGroupApplyOutput() LookupSyncGroupApplyOutput {
+	return i.ToLookupSyncGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSyncGroupApplyArgs) ToLookupSyncGroupApplyOutputWithContext(ctx context.Context) LookupSyncGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSyncGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getSyncGroup.
+type LookupSyncGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSyncGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncGroupArgs)(nil)).Elem()
+}
+
+func (o LookupSyncGroupApplyOutput) ToLookupSyncGroupApplyOutput() LookupSyncGroupApplyOutput {
+	return o
+}
+
+func (o LookupSyncGroupApplyOutput) ToLookupSyncGroupApplyOutputWithContext(ctx context.Context) LookupSyncGroupApplyOutput {
+	return o
+}
+
+// The name of this Storage Sync Group.
+func (o LookupSyncGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource ID of the Storage Sync where this Storage Sync Group is.
+func (o LookupSyncGroupApplyOutput) StorageSyncId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupArgs) string { return v.StorageSyncId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSyncGroup.
+type LookupSyncGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSyncGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncGroupResult)(nil)).Elem()
+}
+
+func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutput() LookupSyncGroupResultOutput {
+	return o
+}
+
+func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ctx context.Context) LookupSyncGroupResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSyncGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSyncGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSyncGroupResultOutput) StorageSyncId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.StorageSyncId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSyncGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupSyncGroupResultOutput{})
 }

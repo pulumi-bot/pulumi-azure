@@ -4,6 +4,9 @@
 package billing
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,112 @@ type GetMcaAccountScopeResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                 string `pulumi:"id"`
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
+}
+
+func GetMcaAccountScopeApply(ctx *pulumi.Context, args GetMcaAccountScopeApplyInput, opts ...pulumi.InvokeOption) GetMcaAccountScopeResultOutput {
+	return args.ToGetMcaAccountScopeApplyOutput().ApplyT(func(v GetMcaAccountScopeArgs) (GetMcaAccountScopeResult, error) {
+		r, err := GetMcaAccountScope(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetMcaAccountScopeResultOutput)
+}
+
+// GetMcaAccountScopeApplyInput is an input type that accepts GetMcaAccountScopeApplyArgs and GetMcaAccountScopeApplyOutput values.
+// You can construct a concrete instance of `GetMcaAccountScopeApplyInput` via:
+//
+//          GetMcaAccountScopeApplyArgs{...}
+type GetMcaAccountScopeApplyInput interface {
+	pulumi.Input
+
+	ToGetMcaAccountScopeApplyOutput() GetMcaAccountScopeApplyOutput
+	ToGetMcaAccountScopeApplyOutputWithContext(context.Context) GetMcaAccountScopeApplyOutput
+}
+
+// A collection of arguments for invoking getMcaAccountScope.
+type GetMcaAccountScopeApplyArgs struct {
+	// The Billing Account Name of the MCA account.
+	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
+	// The Billing Profile Name in the above Billing Account.
+	BillingProfileName pulumi.StringInput `pulumi:"billingProfileName"`
+	// The Invoice Section Name in the above Billing Profile.
+	InvoiceSectionName pulumi.StringInput `pulumi:"invoiceSectionName"`
+}
+
+func (GetMcaAccountScopeApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMcaAccountScopeArgs)(nil)).Elem()
+}
+
+func (i GetMcaAccountScopeApplyArgs) ToGetMcaAccountScopeApplyOutput() GetMcaAccountScopeApplyOutput {
+	return i.ToGetMcaAccountScopeApplyOutputWithContext(context.Background())
+}
+
+func (i GetMcaAccountScopeApplyArgs) ToGetMcaAccountScopeApplyOutputWithContext(ctx context.Context) GetMcaAccountScopeApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMcaAccountScopeApplyOutput)
+}
+
+// A collection of arguments for invoking getMcaAccountScope.
+type GetMcaAccountScopeApplyOutput struct{ *pulumi.OutputState }
+
+func (GetMcaAccountScopeApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMcaAccountScopeArgs)(nil)).Elem()
+}
+
+func (o GetMcaAccountScopeApplyOutput) ToGetMcaAccountScopeApplyOutput() GetMcaAccountScopeApplyOutput {
+	return o
+}
+
+func (o GetMcaAccountScopeApplyOutput) ToGetMcaAccountScopeApplyOutputWithContext(ctx context.Context) GetMcaAccountScopeApplyOutput {
+	return o
+}
+
+// The Billing Account Name of the MCA account.
+func (o GetMcaAccountScopeApplyOutput) BillingAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeArgs) string { return v.BillingAccountName }).(pulumi.StringOutput)
+}
+
+// The Billing Profile Name in the above Billing Account.
+func (o GetMcaAccountScopeApplyOutput) BillingProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeArgs) string { return v.BillingProfileName }).(pulumi.StringOutput)
+}
+
+// The Invoice Section Name in the above Billing Profile.
+func (o GetMcaAccountScopeApplyOutput) InvoiceSectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeArgs) string { return v.InvoiceSectionName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getMcaAccountScope.
+type GetMcaAccountScopeResultOutput struct{ *pulumi.OutputState }
+
+func (GetMcaAccountScopeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMcaAccountScopeResult)(nil)).Elem()
+}
+
+func (o GetMcaAccountScopeResultOutput) ToGetMcaAccountScopeResultOutput() GetMcaAccountScopeResultOutput {
+	return o
+}
+
+func (o GetMcaAccountScopeResultOutput) ToGetMcaAccountScopeResultOutputWithContext(ctx context.Context) GetMcaAccountScopeResultOutput {
+	return o
+}
+
+func (o GetMcaAccountScopeResultOutput) BillingAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeResult) string { return v.BillingAccountName }).(pulumi.StringOutput)
+}
+
+func (o GetMcaAccountScopeResultOutput) BillingProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeResult) string { return v.BillingProfileName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMcaAccountScopeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMcaAccountScopeResultOutput) InvoiceSectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcaAccountScopeResult) string { return v.InvoiceSectionName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMcaAccountScopeApplyOutput{})
+	pulumi.RegisterOutputType(GetMcaAccountScopeResultOutput{})
 }

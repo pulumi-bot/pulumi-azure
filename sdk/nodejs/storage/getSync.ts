@@ -42,11 +42,11 @@ export interface GetSyncArgs {
     /**
      * The name of this Storage Sync.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Storage Sync exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetSyncResult {
      * A mapping of tags assigned to the Storage Sync.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getSyncApply(args: GetSyncApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSyncResult> {
+    return pulumi.output(args).apply(a => getSync(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSync.
+ */
+export interface GetSyncApplyArgs {
+    /**
+     * The name of this Storage Sync.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Storage Sync exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

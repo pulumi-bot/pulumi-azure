@@ -267,3 +267,20 @@ def get_account_blob_container_sas(cache_control: Optional[str] = None,
         permissions=__ret__.permissions,
         sas=__ret__.sas,
         start=__ret__.start)
+
+
+@_utilities.lift_output_func(get_account_blob_container_sas)
+def get_account_blob_container_sas_apply(cache_control: Optional[pulumi.Input[str]] = None,
+                                         connection_string: Optional[pulumi.Input[str]] = None,
+                                         container_name: Optional[pulumi.Input[str]] = None,
+                                         content_disposition: Optional[pulumi.Input[str]] = None,
+                                         content_encoding: Optional[pulumi.Input[str]] = None,
+                                         content_language: Optional[pulumi.Input[str]] = None,
+                                         content_type: Optional[pulumi.Input[str]] = None,
+                                         expiry: Optional[pulumi.Input[str]] = None,
+                                         https_only: Optional[pulumi.Input[bool]] = None,
+                                         ip_address: Optional[pulumi.Input[str]] = None,
+                                         permissions: Optional[pulumi.Input[pulumi.InputType['GetAccountBlobContainerSASPermissionsArgs']]] = None,
+                                         start: Optional[pulumi.Input[str]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountBlobContainerSASResult]:
+    ...

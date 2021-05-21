@@ -4,6 +4,9 @@
 package core
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,126 @@ type LookupSubscriptionResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The subscription tenant ID.
 	TenantId string `pulumi:"tenantId"`
+}
+
+func LookupSubscriptionApply(ctx *pulumi.Context, args LookupSubscriptionApplyInput, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
+	return args.ToLookupSubscriptionApplyOutput().ApplyT(func(v LookupSubscriptionArgs) (LookupSubscriptionResult, error) {
+		r, err := LookupSubscription(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSubscriptionResultOutput)
+}
+
+// LookupSubscriptionApplyInput is an input type that accepts LookupSubscriptionApplyArgs and LookupSubscriptionApplyOutput values.
+// You can construct a concrete instance of `LookupSubscriptionApplyInput` via:
+//
+//          LookupSubscriptionApplyArgs{...}
+type LookupSubscriptionApplyInput interface {
+	pulumi.Input
+
+	ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput
+	ToLookupSubscriptionApplyOutputWithContext(context.Context) LookupSubscriptionApplyOutput
+}
+
+// A collection of arguments for invoking getSubscription.
+type LookupSubscriptionApplyArgs struct {
+	// Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+}
+
+func (LookupSubscriptionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+func (i LookupSubscriptionApplyArgs) ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput {
+	return i.ToLookupSubscriptionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSubscriptionApplyArgs) ToLookupSubscriptionApplyOutputWithContext(ctx context.Context) LookupSubscriptionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSubscriptionApplyOutput)
+}
+
+// A collection of arguments for invoking getSubscription.
+type LookupSubscriptionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+func (o LookupSubscriptionApplyOutput) ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput {
+	return o
+}
+
+func (o LookupSubscriptionApplyOutput) ToLookupSubscriptionApplyOutputWithContext(ctx context.Context) LookupSubscriptionApplyOutput {
+	return o
+}
+
+// Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
+func (o LookupSubscriptionApplyOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSubscriptionArgs) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getSubscription.
+type LookupSubscriptionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionResult)(nil)).Elem()
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() LookupSubscriptionResultOutput {
+	return o
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
+	return o
+}
+
+// The subscription display name.
+func (o LookupSubscriptionResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSubscriptionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The subscription location placement ID.
+func (o LookupSubscriptionResultOutput) LocationPlacementId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.LocationPlacementId }).(pulumi.StringOutput)
+}
+
+// The subscription quota ID.
+func (o LookupSubscriptionResultOutput) QuotaId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.QuotaId }).(pulumi.StringOutput)
+}
+
+// The subscription spending limit.
+func (o LookupSubscriptionResultOutput) SpendingLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.SpendingLimit }).(pulumi.StringOutput)
+}
+
+// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
+func (o LookupSubscriptionResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The subscription GUID.
+func (o LookupSubscriptionResultOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Subscription.
+func (o LookupSubscriptionResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The subscription tenant ID.
+func (o LookupSubscriptionResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSubscriptionApplyOutput{})
+	pulumi.RegisterOutputType(LookupSubscriptionResultOutput{})
 }

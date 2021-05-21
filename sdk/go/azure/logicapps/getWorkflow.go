@@ -4,6 +4,9 @@
 package logicapps
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,156 @@ type LookupWorkflowResult struct {
 	WorkflowSchema string `pulumi:"workflowSchema"`
 	// The version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`.
 	WorkflowVersion string `pulumi:"workflowVersion"`
+}
+
+func LookupWorkflowApply(ctx *pulumi.Context, args LookupWorkflowApplyInput, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
+	return args.ToLookupWorkflowApplyOutput().ApplyT(func(v LookupWorkflowArgs) (LookupWorkflowResult, error) {
+		r, err := LookupWorkflow(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupWorkflowResultOutput)
+}
+
+// LookupWorkflowApplyInput is an input type that accepts LookupWorkflowApplyArgs and LookupWorkflowApplyOutput values.
+// You can construct a concrete instance of `LookupWorkflowApplyInput` via:
+//
+//          LookupWorkflowApplyArgs{...}
+type LookupWorkflowApplyInput interface {
+	pulumi.Input
+
+	ToLookupWorkflowApplyOutput() LookupWorkflowApplyOutput
+	ToLookupWorkflowApplyOutputWithContext(context.Context) LookupWorkflowApplyOutput
+}
+
+// A collection of arguments for invoking getWorkflow.
+type LookupWorkflowApplyArgs struct {
+	// The name of the Logic App Workflow.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group in which the Logic App Workflow exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupWorkflowApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkflowArgs)(nil)).Elem()
+}
+
+func (i LookupWorkflowApplyArgs) ToLookupWorkflowApplyOutput() LookupWorkflowApplyOutput {
+	return i.ToLookupWorkflowApplyOutputWithContext(context.Background())
+}
+
+func (i LookupWorkflowApplyArgs) ToLookupWorkflowApplyOutputWithContext(ctx context.Context) LookupWorkflowApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupWorkflowApplyOutput)
+}
+
+// A collection of arguments for invoking getWorkflow.
+type LookupWorkflowApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkflowApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkflowArgs)(nil)).Elem()
+}
+
+func (o LookupWorkflowApplyOutput) ToLookupWorkflowApplyOutput() LookupWorkflowApplyOutput {
+	return o
+}
+
+func (o LookupWorkflowApplyOutput) ToLookupWorkflowApplyOutputWithContext(ctx context.Context) LookupWorkflowApplyOutput {
+	return o
+}
+
+// The name of the Logic App Workflow.
+func (o LookupWorkflowApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the Logic App Workflow exists.
+func (o LookupWorkflowApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getWorkflow.
+type LookupWorkflowResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkflowResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkflowResult)(nil)).Elem()
+}
+
+func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutput() LookupWorkflowResultOutput {
+	return o
+}
+
+func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx context.Context) LookupWorkflowResultOutput {
+	return o
+}
+
+// The Access Endpoint for the Logic App Workflow
+func (o LookupWorkflowResultOutput) AccessEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AccessEndpoint }).(pulumi.StringOutput)
+}
+
+// The list of access endpoint ip addresses of connector.
+func (o LookupWorkflowResultOutput) ConnectorEndpointIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) []string { return v.ConnectorEndpointIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The list of outgoing ip addresses of connector.
+func (o LookupWorkflowResultOutput) ConnectorOutboundIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) []string { return v.ConnectorOutboundIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkflowResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the Logic App Workflow exists.
+func (o LookupWorkflowResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The ID of the integration account linked by this Logic App Workflow.
+func (o LookupWorkflowResultOutput) LogicAppIntegrationAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.LogicAppIntegrationAccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of Key-Value pairs.
+func (o LookupWorkflowResultOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+func (o LookupWorkflowResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupWorkflowResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The list of access endpoint ip addresses of workflow.
+func (o LookupWorkflowResultOutput) WorkflowEndpointIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) []string { return v.WorkflowEndpointIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The list of outgoing ip addresses of workflow.
+func (o LookupWorkflowResultOutput) WorkflowOutboundIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) []string { return v.WorkflowOutboundIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The Schema used for this Logic App Workflow.
+func (o LookupWorkflowResultOutput) WorkflowSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.WorkflowSchema }).(pulumi.StringOutput)
+}
+
+// The version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`.
+func (o LookupWorkflowResultOutput) WorkflowVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.WorkflowVersion }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkflowApplyOutput{})
+	pulumi.RegisterOutputType(LookupWorkflowResultOutput{})
 }

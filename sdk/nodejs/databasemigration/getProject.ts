@@ -45,15 +45,15 @@ export interface GetProjectArgs {
     /**
      * Name of the database migration project.
      */
-    readonly name: string;
+    name: string;
     /**
      * Name of the resource group where resource belongs to.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * Name of the database migration service where resource belongs to.
      */
-    readonly serviceName: string;
+    serviceName: string;
 }
 
 /**
@@ -83,4 +83,26 @@ export interface GetProjectResult {
      * The platform type of the migration target.
      */
     readonly targetPlatform: string;
+}
+
+export function getProjectApply(args: GetProjectApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectApplyArgs {
+    /**
+     * Name of the database migration project.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Name of the resource group where resource belongs to.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * Name of the database migration service where resource belongs to.
+     */
+    serviceName: pulumi.Input<string>;
 }
