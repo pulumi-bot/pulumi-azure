@@ -314,3 +314,10 @@ def get_server(name: Optional[str] = None,
         tags=__ret__.tags,
         threat_detection_policies=__ret__.threat_detection_policies,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_server)
+def get_server_output(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerResult]:
+    ...

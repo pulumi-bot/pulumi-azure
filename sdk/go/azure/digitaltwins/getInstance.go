@@ -4,6 +4,9 @@
 package digitaltwins
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupInstanceResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Digital Twins instance.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupInstanceApply(ctx *pulumi.Context, args LookupInstanceApplyInput, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return args.ToLookupInstanceApplyOutput().ApplyT(func(v LookupInstanceArgs) (LookupInstanceResult, error) {
+		r, err := LookupInstance(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupInstanceResultOutput)
+}
+
+// LookupInstanceApplyInput is an input type that accepts LookupInstanceApplyArgs and LookupInstanceApplyOutput values.
+// You can construct a concrete instance of `LookupInstanceApplyInput` via:
+//
+//          LookupInstanceApplyArgs{...}
+type LookupInstanceApplyInput interface {
+	pulumi.Input
+
+	ToLookupInstanceApplyOutput() LookupInstanceApplyOutput
+	ToLookupInstanceApplyOutputWithContext(context.Context) LookupInstanceApplyOutput
+}
+
+// A collection of arguments for invoking getInstance.
+type LookupInstanceApplyArgs struct {
+	// The name of this Digital Twins instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Digital Twins instance exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupInstanceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+func (i LookupInstanceApplyArgs) ToLookupInstanceApplyOutput() LookupInstanceApplyOutput {
+	return i.ToLookupInstanceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupInstanceApplyArgs) ToLookupInstanceApplyOutputWithContext(ctx context.Context) LookupInstanceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupInstanceApplyOutput)
+}
+
+// A collection of arguments for invoking getInstance.
+type LookupInstanceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+func (o LookupInstanceApplyOutput) ToLookupInstanceApplyOutput() LookupInstanceApplyOutput {
+	return o
+}
+
+func (o LookupInstanceApplyOutput) ToLookupInstanceApplyOutputWithContext(ctx context.Context) LookupInstanceApplyOutput {
+	return o
+}
+
+// The name of this Digital Twins instance.
+func (o LookupInstanceApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Digital Twins instance exists.
+func (o LookupInstanceApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getInstance.
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// The Api endpoint to work with this Digital Twins instance.
+func (o LookupInstanceResultOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the Digital Twins instance exists.
+func (o LookupInstanceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Digital Twins instance.
+func (o LookupInstanceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceApplyOutput{})
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

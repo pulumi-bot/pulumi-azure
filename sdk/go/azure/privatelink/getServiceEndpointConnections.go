@@ -4,6 +4,9 @@
 package privatelink
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,116 @@ type GetServiceEndpointConnectionsResult struct {
 	ServiceId                  string                                                   `pulumi:"serviceId"`
 	// The name of the private link service.
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func GetServiceEndpointConnectionsApply(ctx *pulumi.Context, args GetServiceEndpointConnectionsApplyInput, opts ...pulumi.InvokeOption) GetServiceEndpointConnectionsResultOutput {
+	return args.ToGetServiceEndpointConnectionsApplyOutput().ApplyT(func(v GetServiceEndpointConnectionsArgs) (GetServiceEndpointConnectionsResult, error) {
+		r, err := GetServiceEndpointConnections(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetServiceEndpointConnectionsResultOutput)
+}
+
+// GetServiceEndpointConnectionsApplyInput is an input type that accepts GetServiceEndpointConnectionsApplyArgs and GetServiceEndpointConnectionsApplyOutput values.
+// You can construct a concrete instance of `GetServiceEndpointConnectionsApplyInput` via:
+//
+//          GetServiceEndpointConnectionsApplyArgs{...}
+type GetServiceEndpointConnectionsApplyInput interface {
+	pulumi.Input
+
+	ToGetServiceEndpointConnectionsApplyOutput() GetServiceEndpointConnectionsApplyOutput
+	ToGetServiceEndpointConnectionsApplyOutputWithContext(context.Context) GetServiceEndpointConnectionsApplyOutput
+}
+
+// A collection of arguments for invoking getServiceEndpointConnections.
+type GetServiceEndpointConnectionsApplyArgs struct {
+	// The name of the resource group in which the private link service resides.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The resource ID of the private link service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+}
+
+func (GetServiceEndpointConnectionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceEndpointConnectionsArgs)(nil)).Elem()
+}
+
+func (i GetServiceEndpointConnectionsApplyArgs) ToGetServiceEndpointConnectionsApplyOutput() GetServiceEndpointConnectionsApplyOutput {
+	return i.ToGetServiceEndpointConnectionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetServiceEndpointConnectionsApplyArgs) ToGetServiceEndpointConnectionsApplyOutputWithContext(ctx context.Context) GetServiceEndpointConnectionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceEndpointConnectionsApplyOutput)
+}
+
+// A collection of arguments for invoking getServiceEndpointConnections.
+type GetServiceEndpointConnectionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetServiceEndpointConnectionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceEndpointConnectionsArgs)(nil)).Elem()
+}
+
+func (o GetServiceEndpointConnectionsApplyOutput) ToGetServiceEndpointConnectionsApplyOutput() GetServiceEndpointConnectionsApplyOutput {
+	return o
+}
+
+func (o GetServiceEndpointConnectionsApplyOutput) ToGetServiceEndpointConnectionsApplyOutputWithContext(ctx context.Context) GetServiceEndpointConnectionsApplyOutput {
+	return o
+}
+
+// The name of the resource group in which the private link service resides.
+func (o GetServiceEndpointConnectionsApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The resource ID of the private link service.
+func (o GetServiceEndpointConnectionsApplyOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsArgs) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getServiceEndpointConnections.
+type GetServiceEndpointConnectionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceEndpointConnectionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceEndpointConnectionsResult)(nil)).Elem()
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) ToGetServiceEndpointConnectionsResultOutput() GetServiceEndpointConnectionsResultOutput {
+	return o
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) ToGetServiceEndpointConnectionsResultOutputWithContext(ctx context.Context) GetServiceEndpointConnectionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceEndpointConnectionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) PrivateEndpointConnections() GetServiceEndpointConnectionsPrivateEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) []GetServiceEndpointConnectionsPrivateEndpointConnection {
+		return v.PrivateEndpointConnections
+	}).(GetServiceEndpointConnectionsPrivateEndpointConnectionArrayOutput)
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetServiceEndpointConnectionsResultOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The name of the private link service.
+func (o GetServiceEndpointConnectionsResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceEndpointConnectionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceEndpointConnectionsApplyOutput{})
+	pulumi.RegisterOutputType(GetServiceEndpointConnectionsResultOutput{})
 }

@@ -156,3 +156,10 @@ def get_secret(key_vault_id: Optional[str] = None,
         value=__ret__.value,
         version=__ret__.version,
         versionless_id=__ret__.versionless_id)
+
+
+@_utilities.lift_output_func(get_secret)
+def get_secret_output(key_vault_id: Optional[pulumi.Input[str]] = None,
+                      name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+    ...

@@ -42,11 +42,11 @@ export interface GetServiceArgs {
     /**
      * The name of the private link service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the private link service resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -94,4 +94,22 @@ export interface GetServiceResult {
      * The list of subscription(s) globally unique identifiers(GUID) that will be able to see the private link service.
      */
     readonly visibilitySubscriptionIds: string[];
+}
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * The name of the private link service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the private link service resides.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

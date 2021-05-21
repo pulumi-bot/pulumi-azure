@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,165 @@ type LookupFirewallResult struct {
 	VirtualHubs []GetFirewallVirtualHub `pulumi:"virtualHubs"`
 	// The availability zones in which the Azure Firewall is created.
 	Zones []string `pulumi:"zones"`
+}
+
+func LookupFirewallApply(ctx *pulumi.Context, args LookupFirewallApplyInput, opts ...pulumi.InvokeOption) LookupFirewallResultOutput {
+	return args.ToLookupFirewallApplyOutput().ApplyT(func(v LookupFirewallArgs) (LookupFirewallResult, error) {
+		r, err := LookupFirewall(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupFirewallResultOutput)
+}
+
+// LookupFirewallApplyInput is an input type that accepts LookupFirewallApplyArgs and LookupFirewallApplyOutput values.
+// You can construct a concrete instance of `LookupFirewallApplyInput` via:
+//
+//          LookupFirewallApplyArgs{...}
+type LookupFirewallApplyInput interface {
+	pulumi.Input
+
+	ToLookupFirewallApplyOutput() LookupFirewallApplyOutput
+	ToLookupFirewallApplyOutputWithContext(context.Context) LookupFirewallApplyOutput
+}
+
+// A collection of arguments for invoking getFirewall.
+type LookupFirewallApplyArgs struct {
+	// The name of the Azure Firewall.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group in which the Azure Firewall exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The availability zones in which the Azure Firewall is created.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (LookupFirewallApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFirewallArgs)(nil)).Elem()
+}
+
+func (i LookupFirewallApplyArgs) ToLookupFirewallApplyOutput() LookupFirewallApplyOutput {
+	return i.ToLookupFirewallApplyOutputWithContext(context.Background())
+}
+
+func (i LookupFirewallApplyArgs) ToLookupFirewallApplyOutputWithContext(ctx context.Context) LookupFirewallApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupFirewallApplyOutput)
+}
+
+// A collection of arguments for invoking getFirewall.
+type LookupFirewallApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupFirewallApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFirewallArgs)(nil)).Elem()
+}
+
+func (o LookupFirewallApplyOutput) ToLookupFirewallApplyOutput() LookupFirewallApplyOutput {
+	return o
+}
+
+func (o LookupFirewallApplyOutput) ToLookupFirewallApplyOutputWithContext(ctx context.Context) LookupFirewallApplyOutput {
+	return o
+}
+
+// The name of the Azure Firewall.
+func (o LookupFirewallApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the Azure Firewall exists.
+func (o LookupFirewallApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The availability zones in which the Azure Firewall is created.
+func (o LookupFirewallApplyOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFirewallArgs) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+// A collection of values returned by getFirewall.
+type LookupFirewallResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFirewallResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFirewallResult)(nil)).Elem()
+}
+
+func (o LookupFirewallResultOutput) ToLookupFirewallResultOutput() LookupFirewallResultOutput {
+	return o
+}
+
+func (o LookupFirewallResultOutput) ToLookupFirewallResultOutputWithContext(ctx context.Context) LookupFirewallResultOutput {
+	return o
+}
+
+// The list of DNS servers that the Azure Firewall will direct DNS traffic to the for name resolution.
+func (o LookupFirewallResultOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the Firewall Policy applied to the Azure Firewall.
+func (o LookupFirewallResultOutput) FirewallPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.FirewallPolicyId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A `ipConfiguration` block as defined below.
+func (o LookupFirewallResultOutput) IpConfigurations() GetFirewallIpConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallIpConfiguration { return v.IpConfigurations }).(GetFirewallIpConfigurationArrayOutput)
+}
+
+// The Azure location where the Azure Firewall exists.
+func (o LookupFirewallResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// A `managementIpConfiguration` block as defined below, which allows force-tunnelling of traffic to be performed by the firewall.
+func (o LookupFirewallResultOutput) ManagementIpConfigurations() GetFirewallManagementIpConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallManagementIpConfiguration {
+		return v.ManagementIpConfigurations
+	}).(GetFirewallManagementIpConfigurationArrayOutput)
+}
+
+func (o LookupFirewallResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFirewallResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The sku name of the Azure Firewall.
+func (o LookupFirewallResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// The sku tier of the Azure Firewall.
+func (o LookupFirewallResultOutput) SkuTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.SkuTier }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Azure Firewall.
+func (o LookupFirewallResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFirewallResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The operation mode for threat intelligence-based filtering.
+func (o LookupFirewallResultOutput) ThreatIntelMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.ThreatIntelMode }).(pulumi.StringOutput)
+}
+
+// A `virtualHub` block as defined below.
+func (o LookupFirewallResultOutput) VirtualHubs() GetFirewallVirtualHubArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []GetFirewallVirtualHub { return v.VirtualHubs }).(GetFirewallVirtualHubArrayOutput)
+}
+
+// The availability zones in which the Azure Firewall is created.
+func (o LookupFirewallResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFirewallResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFirewallApplyOutput{})
+	pulumi.RegisterOutputType(LookupFirewallResultOutput{})
 }

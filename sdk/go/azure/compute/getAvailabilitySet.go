@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,126 @@ type LookupAvailabilitySetResult struct {
 	ResourceGroupName         string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupAvailabilitySetApply(ctx *pulumi.Context, args LookupAvailabilitySetApplyInput, opts ...pulumi.InvokeOption) LookupAvailabilitySetResultOutput {
+	return args.ToLookupAvailabilitySetApplyOutput().ApplyT(func(v LookupAvailabilitySetArgs) (LookupAvailabilitySetResult, error) {
+		r, err := LookupAvailabilitySet(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAvailabilitySetResultOutput)
+}
+
+// LookupAvailabilitySetApplyInput is an input type that accepts LookupAvailabilitySetApplyArgs and LookupAvailabilitySetApplyOutput values.
+// You can construct a concrete instance of `LookupAvailabilitySetApplyInput` via:
+//
+//          LookupAvailabilitySetApplyArgs{...}
+type LookupAvailabilitySetApplyInput interface {
+	pulumi.Input
+
+	ToLookupAvailabilitySetApplyOutput() LookupAvailabilitySetApplyOutput
+	ToLookupAvailabilitySetApplyOutputWithContext(context.Context) LookupAvailabilitySetApplyOutput
+}
+
+// A collection of arguments for invoking getAvailabilitySet.
+type LookupAvailabilitySetApplyArgs struct {
+	// The name of the Availability Set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group in which the Availability Set exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupAvailabilitySetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAvailabilitySetArgs)(nil)).Elem()
+}
+
+func (i LookupAvailabilitySetApplyArgs) ToLookupAvailabilitySetApplyOutput() LookupAvailabilitySetApplyOutput {
+	return i.ToLookupAvailabilitySetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAvailabilitySetApplyArgs) ToLookupAvailabilitySetApplyOutputWithContext(ctx context.Context) LookupAvailabilitySetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAvailabilitySetApplyOutput)
+}
+
+// A collection of arguments for invoking getAvailabilitySet.
+type LookupAvailabilitySetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAvailabilitySetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAvailabilitySetArgs)(nil)).Elem()
+}
+
+func (o LookupAvailabilitySetApplyOutput) ToLookupAvailabilitySetApplyOutput() LookupAvailabilitySetApplyOutput {
+	return o
+}
+
+func (o LookupAvailabilitySetApplyOutput) ToLookupAvailabilitySetApplyOutputWithContext(ctx context.Context) LookupAvailabilitySetApplyOutput {
+	return o
+}
+
+// The name of the Availability Set.
+func (o LookupAvailabilitySetApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the Availability Set exists.
+func (o LookupAvailabilitySetApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAvailabilitySet.
+type LookupAvailabilitySetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAvailabilitySetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAvailabilitySetResult)(nil)).Elem()
+}
+
+func (o LookupAvailabilitySetResultOutput) ToLookupAvailabilitySetResultOutput() LookupAvailabilitySetResultOutput {
+	return o
+}
+
+func (o LookupAvailabilitySetResultOutput) ToLookupAvailabilitySetResultOutputWithContext(ctx context.Context) LookupAvailabilitySetResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAvailabilitySetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the Availability Set exists.
+func (o LookupAvailabilitySetResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Whether the availability set is managed or not.
+func (o LookupAvailabilitySetResultOutput) Managed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) bool { return v.Managed }).(pulumi.BoolOutput)
+}
+
+func (o LookupAvailabilitySetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of fault domains that are used.
+func (o LookupAvailabilitySetResultOutput) PlatformFaultDomainCount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.PlatformFaultDomainCount }).(pulumi.StringOutput)
+}
+
+// The number of update domains that are used.
+func (o LookupAvailabilitySetResultOutput) PlatformUpdateDomainCount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.PlatformUpdateDomainCount }).(pulumi.StringOutput)
+}
+
+func (o LookupAvailabilitySetResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupAvailabilitySetResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAvailabilitySetApplyOutput{})
+	pulumi.RegisterOutputType(LookupAvailabilitySetResultOutput{})
 }

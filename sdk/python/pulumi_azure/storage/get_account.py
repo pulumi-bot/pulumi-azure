@@ -661,3 +661,11 @@ def get_account(min_tls_version: Optional[str] = None,
         secondary_web_endpoint=__ret__.secondary_web_endpoint,
         secondary_web_host=__ret__.secondary_web_host,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(min_tls_version: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    ...

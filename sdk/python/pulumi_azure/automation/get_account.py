@@ -133,3 +133,10 @@ def get_account(name: Optional[str] = None,
         primary_key=__ret__.primary_key,
         resource_group_name=__ret__.resource_group_name,
         secondary_key=__ret__.secondary_key)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    ...

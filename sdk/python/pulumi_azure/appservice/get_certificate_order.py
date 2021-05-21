@@ -316,3 +316,10 @@ def get_certificate_order(name: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         validity_in_years=__ret__.validity_in_years)
+
+
+@_utilities.lift_output_func(get_certificate_order)
+def get_certificate_order_output(name: Optional[pulumi.Input[str]] = None,
+                                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateOrderResult]:
+    ...

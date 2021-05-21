@@ -31,15 +31,15 @@ export interface GetRoleDefinitionArgs {
     /**
      * Specifies the Name of either a built-in or custom Role Definition.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Specifies the ID of the Role Definition as a UUID/GUID.
      */
-    readonly roleDefinitionId?: string;
+    roleDefinitionId?: string;
     /**
      * Specifies the Scope at which the Custom Role Definition exists.
      */
-    readonly scope?: string;
+    scope?: string;
 }
 
 /**
@@ -69,4 +69,26 @@ export interface GetRoleDefinitionResult {
      * the Type of the Role.
      */
     readonly type: string;
+}
+
+export function getRoleDefinitionOutput(args?: GetRoleDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleDefinitionResult> {
+    return pulumi.output(args).apply(a => getRoleDefinition(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRoleDefinition.
+ */
+export interface GetRoleDefinitionOutputArgs {
+    /**
+     * Specifies the Name of either a built-in or custom Role Definition.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Specifies the ID of the Role Definition as a UUID/GUID.
+     */
+    roleDefinitionId?: pulumi.Input<string>;
+    /**
+     * Specifies the Scope at which the Custom Role Definition exists.
+     */
+    scope?: pulumi.Input<string>;
 }

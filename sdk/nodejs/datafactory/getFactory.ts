@@ -42,11 +42,11 @@ export interface GetFactoryArgs {
     /**
      * The name of this Azure Data Factory.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Azure Data Factory exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -79,4 +79,22 @@ export interface GetFactoryResult {
      * A `vstsConfiguration` block as defined below.
      */
     readonly vstsConfigurations: outputs.datafactory.GetFactoryVstsConfiguration[];
+}
+
+export function getFactoryOutput(args: GetFactoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFactoryResult> {
+    return pulumi.output(args).apply(a => getFactory(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFactory.
+ */
+export interface GetFactoryOutputArgs {
+    /**
+     * The name of this Azure Data Factory.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Azure Data Factory exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

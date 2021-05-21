@@ -4,6 +4,9 @@
 package logicapps
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupIntegrationAccountResult struct {
 	SkuName string `pulumi:"skuName"`
 	// A mapping of tags assigned to the Logic App Integration Account.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupIntegrationAccountApply(ctx *pulumi.Context, args LookupIntegrationAccountApplyInput, opts ...pulumi.InvokeOption) LookupIntegrationAccountResultOutput {
+	return args.ToLookupIntegrationAccountApplyOutput().ApplyT(func(v LookupIntegrationAccountArgs) (LookupIntegrationAccountResult, error) {
+		r, err := LookupIntegrationAccount(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupIntegrationAccountResultOutput)
+}
+
+// LookupIntegrationAccountApplyInput is an input type that accepts LookupIntegrationAccountApplyArgs and LookupIntegrationAccountApplyOutput values.
+// You can construct a concrete instance of `LookupIntegrationAccountApplyInput` via:
+//
+//          LookupIntegrationAccountApplyArgs{...}
+type LookupIntegrationAccountApplyInput interface {
+	pulumi.Input
+
+	ToLookupIntegrationAccountApplyOutput() LookupIntegrationAccountApplyOutput
+	ToLookupIntegrationAccountApplyOutputWithContext(context.Context) LookupIntegrationAccountApplyOutput
+}
+
+// A collection of arguments for invoking getIntegrationAccount.
+type LookupIntegrationAccountApplyArgs struct {
+	// The name of this Logic App Integration Account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Logic App Integration Account exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupIntegrationAccountApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntegrationAccountArgs)(nil)).Elem()
+}
+
+func (i LookupIntegrationAccountApplyArgs) ToLookupIntegrationAccountApplyOutput() LookupIntegrationAccountApplyOutput {
+	return i.ToLookupIntegrationAccountApplyOutputWithContext(context.Background())
+}
+
+func (i LookupIntegrationAccountApplyArgs) ToLookupIntegrationAccountApplyOutputWithContext(ctx context.Context) LookupIntegrationAccountApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupIntegrationAccountApplyOutput)
+}
+
+// A collection of arguments for invoking getIntegrationAccount.
+type LookupIntegrationAccountApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupIntegrationAccountApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntegrationAccountArgs)(nil)).Elem()
+}
+
+func (o LookupIntegrationAccountApplyOutput) ToLookupIntegrationAccountApplyOutput() LookupIntegrationAccountApplyOutput {
+	return o
+}
+
+func (o LookupIntegrationAccountApplyOutput) ToLookupIntegrationAccountApplyOutputWithContext(ctx context.Context) LookupIntegrationAccountApplyOutput {
+	return o
+}
+
+// The name of this Logic App Integration Account.
+func (o LookupIntegrationAccountApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Logic App Integration Account exists.
+func (o LookupIntegrationAccountApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getIntegrationAccount.
+type LookupIntegrationAccountResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIntegrationAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntegrationAccountResult)(nil)).Elem()
+}
+
+func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOutput() LookupIntegrationAccountResultOutput {
+	return o
+}
+
+func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOutputWithContext(ctx context.Context) LookupIntegrationAccountResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupIntegrationAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the Logic App Integration Account exists.
+func (o LookupIntegrationAccountResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupIntegrationAccountResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupIntegrationAccountResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The sku name of the Logic App Integration Account.
+func (o LookupIntegrationAccountResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Logic App Integration Account.
+func (o LookupIntegrationAccountResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIntegrationAccountApplyOutput{})
+	pulumi.RegisterOutputType(LookupIntegrationAccountResultOutput{})
 }

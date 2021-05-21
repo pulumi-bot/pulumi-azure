@@ -4,6 +4,9 @@
 package containerservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,122 @@ type GetKubernetesServiceVersionsResult struct {
 	VersionPrefix *string `pulumi:"versionPrefix"`
 	// The list of all supported versions.
 	Versions []string `pulumi:"versions"`
+}
+
+func GetKubernetesServiceVersionsApply(ctx *pulumi.Context, args GetKubernetesServiceVersionsApplyInput, opts ...pulumi.InvokeOption) GetKubernetesServiceVersionsResultOutput {
+	return args.ToGetKubernetesServiceVersionsApplyOutput().ApplyT(func(v GetKubernetesServiceVersionsArgs) (GetKubernetesServiceVersionsResult, error) {
+		r, err := GetKubernetesServiceVersions(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetKubernetesServiceVersionsResultOutput)
+}
+
+// GetKubernetesServiceVersionsApplyInput is an input type that accepts GetKubernetesServiceVersionsApplyArgs and GetKubernetesServiceVersionsApplyOutput values.
+// You can construct a concrete instance of `GetKubernetesServiceVersionsApplyInput` via:
+//
+//          GetKubernetesServiceVersionsApplyArgs{...}
+type GetKubernetesServiceVersionsApplyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesServiceVersionsApplyOutput() GetKubernetesServiceVersionsApplyOutput
+	ToGetKubernetesServiceVersionsApplyOutputWithContext(context.Context) GetKubernetesServiceVersionsApplyOutput
+}
+
+// A collection of arguments for invoking getKubernetesServiceVersions.
+type GetKubernetesServiceVersionsApplyArgs struct {
+	// Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
+	IncludePreview pulumi.BoolPtrInput `pulumi:"includePreview"`
+	// Specifies the location in which to query for versions.
+	Location pulumi.StringInput `pulumi:"location"`
+	// A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
+	VersionPrefix pulumi.StringPtrInput `pulumi:"versionPrefix"`
+}
+
+func (GetKubernetesServiceVersionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesServiceVersionsArgs)(nil)).Elem()
+}
+
+func (i GetKubernetesServiceVersionsApplyArgs) ToGetKubernetesServiceVersionsApplyOutput() GetKubernetesServiceVersionsApplyOutput {
+	return i.ToGetKubernetesServiceVersionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesServiceVersionsApplyArgs) ToGetKubernetesServiceVersionsApplyOutputWithContext(ctx context.Context) GetKubernetesServiceVersionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesServiceVersionsApplyOutput)
+}
+
+// A collection of arguments for invoking getKubernetesServiceVersions.
+type GetKubernetesServiceVersionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesServiceVersionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesServiceVersionsArgs)(nil)).Elem()
+}
+
+func (o GetKubernetesServiceVersionsApplyOutput) ToGetKubernetesServiceVersionsApplyOutput() GetKubernetesServiceVersionsApplyOutput {
+	return o
+}
+
+func (o GetKubernetesServiceVersionsApplyOutput) ToGetKubernetesServiceVersionsApplyOutputWithContext(ctx context.Context) GetKubernetesServiceVersionsApplyOutput {
+	return o
+}
+
+// Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
+func (o GetKubernetesServiceVersionsApplyOutput) IncludePreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsArgs) *bool { return v.IncludePreview }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the location in which to query for versions.
+func (o GetKubernetesServiceVersionsApplyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsArgs) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
+func (o GetKubernetesServiceVersionsApplyOutput) VersionPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsArgs) *string { return v.VersionPrefix }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getKubernetesServiceVersions.
+type GetKubernetesServiceVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesServiceVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesServiceVersionsResult)(nil)).Elem()
+}
+
+func (o GetKubernetesServiceVersionsResultOutput) ToGetKubernetesServiceVersionsResultOutput() GetKubernetesServiceVersionsResultOutput {
+	return o
+}
+
+func (o GetKubernetesServiceVersionsResultOutput) ToGetKubernetesServiceVersionsResultOutputWithContext(ctx context.Context) GetKubernetesServiceVersionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetKubernetesServiceVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesServiceVersionsResultOutput) IncludePreview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) *bool { return v.IncludePreview }).(pulumi.BoolPtrOutput)
+}
+
+// The most recent version available. If `includePreview == false`, this is the most recent non-preview version available.
+func (o GetKubernetesServiceVersionsResultOutput) LatestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) string { return v.LatestVersion }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesServiceVersionsResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesServiceVersionsResultOutput) VersionPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) *string { return v.VersionPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The list of all supported versions.
+func (o GetKubernetesServiceVersionsResultOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesServiceVersionsResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKubernetesServiceVersionsApplyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesServiceVersionsResultOutput{})
 }

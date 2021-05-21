@@ -42,11 +42,11 @@ export interface GetServiceEndpointConnectionsArgs {
     /**
      * The name of the resource group in which the private link service resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The resource ID of the private link service.
      */
-    readonly serviceId: string;
+    serviceId: string;
 }
 
 /**
@@ -65,4 +65,22 @@ export interface GetServiceEndpointConnectionsResult {
      * The name of the private link service.
      */
     readonly serviceName: string;
+}
+
+export function getServiceEndpointConnectionsOutput(args: GetServiceEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceEndpointConnectionsResult> {
+    return pulumi.output(args).apply(a => getServiceEndpointConnections(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceEndpointConnections.
+ */
+export interface GetServiceEndpointConnectionsOutputArgs {
+    /**
+     * The name of the resource group in which the private link service resides.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The resource ID of the private link service.
+     */
+    serviceId: pulumi.Input<string>;
 }

@@ -42,11 +42,11 @@ export interface GetAppServiceArgs {
     /**
      * The name of the App Service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the App Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -131,4 +131,22 @@ export interface GetAppServiceResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getAppServiceOutput(args: GetAppServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppServiceResult> {
+    return pulumi.output(args).apply(a => getAppService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppService.
+ */
+export interface GetAppServiceOutputArgs {
+    /**
+     * The name of the App Service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the App Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

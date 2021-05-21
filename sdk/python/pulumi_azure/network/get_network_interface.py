@@ -267,3 +267,10 @@ def get_network_interface(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags,
         virtual_machine_id=__ret__.virtual_machine_id)
+
+
+@_utilities.lift_output_func(get_network_interface)
+def get_network_interface_output(name: Optional[pulumi.Input[str]] = None,
+                                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkInterfaceResult]:
+    ...

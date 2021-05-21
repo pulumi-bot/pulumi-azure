@@ -188,3 +188,12 @@ def get_blob(metadata: Optional[Mapping[str, str]] = None,
         storage_container_name=__ret__.storage_container_name,
         type=__ret__.type,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_blob)
+def get_blob_output(metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                    name: Optional[pulumi.Input[str]] = None,
+                    storage_account_name: Optional[pulumi.Input[str]] = None,
+                    storage_container_name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlobResult]:
+    ...

@@ -200,3 +200,10 @@ def get_maria_db_server(name: Optional[str] = None,
         storage_profiles=__ret__.storage_profiles,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_maria_db_server)
+def get_maria_db_server_output(name: Optional[pulumi.Input[str]] = None,
+                               resource_group_name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMariaDbServerResult]:
+    ...

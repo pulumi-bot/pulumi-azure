@@ -134,3 +134,11 @@ def get_registry_token(container_registry_name: Optional[str] = None,
         name=__ret__.name,
         resource_group_name=__ret__.resource_group_name,
         scope_map_id=__ret__.scope_map_id)
+
+
+@_utilities.lift_output_func(get_registry_token)
+def get_registry_token_output(container_registry_name: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              resource_group_name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryTokenResult]:
+    ...

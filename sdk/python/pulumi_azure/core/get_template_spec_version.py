@@ -134,3 +134,11 @@ def get_template_spec_version(name: Optional[str] = None,
         tags=__ret__.tags,
         template_body=__ret__.template_body,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_template_spec_version)
+def get_template_spec_version_output(name: Optional[pulumi.Input[str]] = None,
+                                     resource_group_name: Optional[pulumi.Input[str]] = None,
+                                     version: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateSpecVersionResult]:
+    ...

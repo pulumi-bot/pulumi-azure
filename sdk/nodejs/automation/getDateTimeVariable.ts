@@ -44,15 +44,15 @@ export interface GetDateTimeVariableArgs {
     /**
      * The name of the automation account in which the Automation Variable exists.
      */
-    readonly automationAccountName: string;
+    automationAccountName: string;
     /**
      * The name of the Automation Variable.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the automation account exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -78,4 +78,26 @@ export interface GetDateTimeVariableResult {
      * The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
      */
     readonly value: string;
+}
+
+export function getDateTimeVariableOutput(args: GetDateTimeVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDateTimeVariableResult> {
+    return pulumi.output(args).apply(a => getDateTimeVariable(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDateTimeVariable.
+ */
+export interface GetDateTimeVariableOutputArgs {
+    /**
+     * The name of the automation account in which the Automation Variable exists.
+     */
+    automationAccountName: pulumi.Input<string>;
+    /**
+     * The name of the Automation Variable.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the automation account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

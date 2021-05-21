@@ -128,3 +128,10 @@ def get_service_endpoint_connections(resource_group_name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         service_id=__ret__.service_id,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_service_endpoint_connections)
+def get_service_endpoint_connections_output(resource_group_name: Optional[pulumi.Input[str]] = None,
+                                            service_id: Optional[pulumi.Input[str]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceEndpointConnectionsResult]:
+    ...

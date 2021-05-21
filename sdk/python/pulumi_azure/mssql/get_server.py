@@ -186,3 +186,10 @@ def get_server(name: Optional[str] = None,
         restorable_dropped_database_ids=__ret__.restorable_dropped_database_ids,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_server)
+def get_server_output(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerResult]:
+    ...

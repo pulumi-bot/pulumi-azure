@@ -176,3 +176,11 @@ def get_certificate_data(key_vault_id: Optional[str] = None,
         pem=__ret__.pem,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_certificate_data)
+def get_certificate_data_output(key_vault_id: Optional[pulumi.Input[str]] = None,
+                                name: Optional[pulumi.Input[str]] = None,
+                                version: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateDataResult]:
+    ...

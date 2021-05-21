@@ -147,3 +147,11 @@ def get_bool_variable(automation_account_name: Optional[str] = None,
         name=__ret__.name,
         resource_group_name=__ret__.resource_group_name,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_bool_variable)
+def get_bool_variable_output(automation_account_name: Optional[pulumi.Input[str]] = None,
+                             name: Optional[pulumi.Input[str]] = None,
+                             resource_group_name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBoolVariableResult]:
+    ...

@@ -136,3 +136,11 @@ def get_group(display_name: Optional[str] = None,
         name=__ret__.name,
         parent_management_group_id=__ret__.parent_management_group_id,
         subscription_ids=__ret__.subscription_ids)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_output(display_name: Optional[pulumi.Input[str]] = None,
+                     group_id: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    ...

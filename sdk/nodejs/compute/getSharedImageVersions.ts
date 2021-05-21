@@ -44,19 +44,19 @@ export interface GetSharedImageVersionsArgs {
     /**
      * The name of the Shared Image in which the Shared Image exists.
      */
-    readonly galleryName: string;
+    galleryName: string;
     /**
      * The name of the Shared Image in which this Version exists.
      */
-    readonly imageName: string;
+    imageName: string;
     /**
      * The name of the Resource Group in which the Shared Image Gallery exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags to filter the list of images against.
      */
-    readonly tagsFilter?: {[key: string]: string};
+    tagsFilter?: {[key: string]: string};
 }
 
 /**
@@ -75,4 +75,30 @@ export interface GetSharedImageVersionsResult {
     readonly images: outputs.compute.GetSharedImageVersionsImage[];
     readonly resourceGroupName: string;
     readonly tagsFilter?: {[key: string]: string};
+}
+
+export function getSharedImageVersionsOutput(args: GetSharedImageVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedImageVersionsResult> {
+    return pulumi.output(args).apply(a => getSharedImageVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedImageVersions.
+ */
+export interface GetSharedImageVersionsOutputArgs {
+    /**
+     * The name of the Shared Image in which the Shared Image exists.
+     */
+    galleryName: pulumi.Input<string>;
+    /**
+     * The name of the Shared Image in which this Version exists.
+     */
+    imageName: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Shared Image Gallery exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags to filter the list of images against.
+     */
+    tagsFilter?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

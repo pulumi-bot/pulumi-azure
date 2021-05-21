@@ -111,3 +111,10 @@ def get_recommendations(filter_by_categories: Optional[Sequence[str]] = None,
         filter_by_resource_groups=__ret__.filter_by_resource_groups,
         id=__ret__.id,
         recommendations=__ret__.recommendations)
+
+
+@_utilities.lift_output_func(get_recommendations)
+def get_recommendations_output(filter_by_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                               filter_by_resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecommendationsResult]:
+    ...

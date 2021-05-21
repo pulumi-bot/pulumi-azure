@@ -202,3 +202,10 @@ def get_app_service_environment(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         service_ip_address=__ret__.service_ip_address,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_app_service_environment)
+def get_app_service_environment_output(name: Optional[pulumi.Input[str]] = None,
+                                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppServiceEnvironmentResult]:
+    ...

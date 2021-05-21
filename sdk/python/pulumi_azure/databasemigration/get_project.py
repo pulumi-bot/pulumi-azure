@@ -160,3 +160,11 @@ def get_project(name: Optional[str] = None,
         source_platform=__ret__.source_platform,
         tags=__ret__.tags,
         target_platform=__ret__.target_platform)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       service_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    ...

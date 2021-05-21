@@ -303,3 +303,11 @@ def get_queue(name: Optional[str] = None,
         requires_session=__ret__.requires_session,
         resource_group_name=__ret__.resource_group_name,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_queue)
+def get_queue_output(name: Optional[pulumi.Input[str]] = None,
+                     namespace_name: Optional[pulumi.Input[str]] = None,
+                     resource_group_name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueueResult]:
+    ...

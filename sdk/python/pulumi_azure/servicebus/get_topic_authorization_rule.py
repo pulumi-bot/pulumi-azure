@@ -204,3 +204,12 @@ def get_topic_authorization_rule(name: Optional[str] = None,
         secondary_key=__ret__.secondary_key,
         send=__ret__.send,
         topic_name=__ret__.topic_name)
+
+
+@_utilities.lift_output_func(get_topic_authorization_rule)
+def get_topic_authorization_rule_output(name: Optional[pulumi.Input[str]] = None,
+                                        namespace_name: Optional[pulumi.Input[str]] = None,
+                                        resource_group_name: Optional[pulumi.Input[str]] = None,
+                                        topic_name: Optional[pulumi.Input[str]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicAuthorizationRuleResult]:
+    ...

@@ -4,6 +4,9 @@
 package blueprint
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,140 @@ type GetPublishedVersionResult struct {
 	// The type of the Blueprint
 	Type    string `pulumi:"type"`
 	Version string `pulumi:"version"`
+}
+
+func GetPublishedVersionApply(ctx *pulumi.Context, args GetPublishedVersionApplyInput, opts ...pulumi.InvokeOption) GetPublishedVersionResultOutput {
+	return args.ToGetPublishedVersionApplyOutput().ApplyT(func(v GetPublishedVersionArgs) (GetPublishedVersionResult, error) {
+		r, err := GetPublishedVersion(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetPublishedVersionResultOutput)
+}
+
+// GetPublishedVersionApplyInput is an input type that accepts GetPublishedVersionApplyArgs and GetPublishedVersionApplyOutput values.
+// You can construct a concrete instance of `GetPublishedVersionApplyInput` via:
+//
+//          GetPublishedVersionApplyArgs{...}
+type GetPublishedVersionApplyInput interface {
+	pulumi.Input
+
+	ToGetPublishedVersionApplyOutput() GetPublishedVersionApplyOutput
+	ToGetPublishedVersionApplyOutputWithContext(context.Context) GetPublishedVersionApplyOutput
+}
+
+// A collection of arguments for invoking getPublishedVersion.
+type GetPublishedVersionApplyArgs struct {
+	// The name of the Blueprint Definition
+	BlueprintName pulumi.StringInput `pulumi:"blueprintName"`
+	// The ID of the Management Group / Subscription where this Blueprint Definition is stored.
+	ScopeId pulumi.StringInput `pulumi:"scopeId"`
+	// The Version name of the Published Version of the Blueprint Definition
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetPublishedVersionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublishedVersionArgs)(nil)).Elem()
+}
+
+func (i GetPublishedVersionApplyArgs) ToGetPublishedVersionApplyOutput() GetPublishedVersionApplyOutput {
+	return i.ToGetPublishedVersionApplyOutputWithContext(context.Background())
+}
+
+func (i GetPublishedVersionApplyArgs) ToGetPublishedVersionApplyOutputWithContext(ctx context.Context) GetPublishedVersionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPublishedVersionApplyOutput)
+}
+
+// A collection of arguments for invoking getPublishedVersion.
+type GetPublishedVersionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetPublishedVersionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublishedVersionArgs)(nil)).Elem()
+}
+
+func (o GetPublishedVersionApplyOutput) ToGetPublishedVersionApplyOutput() GetPublishedVersionApplyOutput {
+	return o
+}
+
+func (o GetPublishedVersionApplyOutput) ToGetPublishedVersionApplyOutputWithContext(ctx context.Context) GetPublishedVersionApplyOutput {
+	return o
+}
+
+// The name of the Blueprint Definition
+func (o GetPublishedVersionApplyOutput) BlueprintName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionArgs) string { return v.BlueprintName }).(pulumi.StringOutput)
+}
+
+// The ID of the Management Group / Subscription where this Blueprint Definition is stored.
+func (o GetPublishedVersionApplyOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionArgs) string { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// The Version name of the Published Version of the Blueprint Definition
+func (o GetPublishedVersionApplyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionArgs) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getPublishedVersion.
+type GetPublishedVersionResultOutput struct{ *pulumi.OutputState }
+
+func (GetPublishedVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublishedVersionResult)(nil)).Elem()
+}
+
+func (o GetPublishedVersionResultOutput) ToGetPublishedVersionResultOutput() GetPublishedVersionResultOutput {
+	return o
+}
+
+func (o GetPublishedVersionResultOutput) ToGetPublishedVersionResultOutputWithContext(ctx context.Context) GetPublishedVersionResultOutput {
+	return o
+}
+
+func (o GetPublishedVersionResultOutput) BlueprintName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.BlueprintName }).(pulumi.StringOutput)
+}
+
+// The description of the Blueprint Published Version
+func (o GetPublishedVersionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the Blueprint Published Version
+func (o GetPublishedVersionResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPublishedVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPublishedVersionResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o GetPublishedVersionResultOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// The target scope
+func (o GetPublishedVersionResultOutput) TargetScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.TargetScope }).(pulumi.StringOutput)
+}
+
+func (o GetPublishedVersionResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// The type of the Blueprint
+func (o GetPublishedVersionResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetPublishedVersionResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublishedVersionResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPublishedVersionApplyOutput{})
+	pulumi.RegisterOutputType(GetPublishedVersionResultOutput{})
 }

@@ -4,6 +4,9 @@
 package privatedns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,130 @@ type GetDnsZoneResult struct {
 	ResourceGroupName  string `pulumi:"resourceGroupName"`
 	// A mapping of tags for the zone.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetDnsZoneApply(ctx *pulumi.Context, args GetDnsZoneApplyInput, opts ...pulumi.InvokeOption) GetDnsZoneResultOutput {
+	return args.ToGetDnsZoneApplyOutput().ApplyT(func(v GetDnsZoneArgs) (GetDnsZoneResult, error) {
+		r, err := GetDnsZone(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetDnsZoneResultOutput)
+}
+
+// GetDnsZoneApplyInput is an input type that accepts GetDnsZoneApplyArgs and GetDnsZoneApplyOutput values.
+// You can construct a concrete instance of `GetDnsZoneApplyInput` via:
+//
+//          GetDnsZoneApplyArgs{...}
+type GetDnsZoneApplyInput interface {
+	pulumi.Input
+
+	ToGetDnsZoneApplyOutput() GetDnsZoneApplyOutput
+	ToGetDnsZoneApplyOutputWithContext(context.Context) GetDnsZoneApplyOutput
+}
+
+// A collection of arguments for invoking getDnsZone.
+type GetDnsZoneApplyArgs struct {
+	// The name of the Private DNS Zone.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the Private DNS Zone exists.
+	// If the Name of the Resource Group is not provided, the first Private DNS Zone from the list of Private
+	// DNS Zones in your subscription that matches `name` will be returned.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+}
+
+func (GetDnsZoneApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZoneArgs)(nil)).Elem()
+}
+
+func (i GetDnsZoneApplyArgs) ToGetDnsZoneApplyOutput() GetDnsZoneApplyOutput {
+	return i.ToGetDnsZoneApplyOutputWithContext(context.Background())
+}
+
+func (i GetDnsZoneApplyArgs) ToGetDnsZoneApplyOutputWithContext(ctx context.Context) GetDnsZoneApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZoneApplyOutput)
+}
+
+// A collection of arguments for invoking getDnsZone.
+type GetDnsZoneApplyOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZoneApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZoneArgs)(nil)).Elem()
+}
+
+func (o GetDnsZoneApplyOutput) ToGetDnsZoneApplyOutput() GetDnsZoneApplyOutput {
+	return o
+}
+
+func (o GetDnsZoneApplyOutput) ToGetDnsZoneApplyOutputWithContext(ctx context.Context) GetDnsZoneApplyOutput {
+	return o
+}
+
+// The name of the Private DNS Zone.
+func (o GetDnsZoneApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZoneArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the Private DNS Zone exists.
+// If the Name of the Resource Group is not provided, the first Private DNS Zone from the list of Private
+// DNS Zones in your subscription that matches `name` will be returned.
+func (o GetDnsZoneApplyOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDnsZoneArgs) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getDnsZone.
+type GetDnsZoneResultOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZoneResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZoneResult)(nil)).Elem()
+}
+
+func (o GetDnsZoneResultOutput) ToGetDnsZoneResultOutput() GetDnsZoneResultOutput {
+	return o
+}
+
+func (o GetDnsZoneResultOutput) ToGetDnsZoneResultOutputWithContext(ctx context.Context) GetDnsZoneResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDnsZoneResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum number of recordsets that can be created in this Private Zone.
+func (o GetDnsZoneResultOutput) MaxNumberOfRecordSets() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) int { return v.MaxNumberOfRecordSets }).(pulumi.IntOutput)
+}
+
+// Maximum number of Virtual Networks that can be linked to this Private Zone.
+func (o GetDnsZoneResultOutput) MaxNumberOfVirtualNetworkLinks() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) int { return v.MaxNumberOfVirtualNetworkLinks }).(pulumi.IntOutput)
+}
+
+// Maximum number of Virtual Networks that can be linked to this Private Zone with registration enabled.
+func (o GetDnsZoneResultOutput) MaxNumberOfVirtualNetworkLinksWithRegistration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) int { return v.MaxNumberOfVirtualNetworkLinksWithRegistration }).(pulumi.IntOutput)
+}
+
+func (o GetDnsZoneResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of recordsets currently in the zone.
+func (o GetDnsZoneResultOutput) NumberOfRecordSets() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) int { return v.NumberOfRecordSets }).(pulumi.IntOutput)
+}
+
+func (o GetDnsZoneResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags for the zone.
+func (o GetDnsZoneResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDnsZoneApplyOutput{})
+	pulumi.RegisterOutputType(GetDnsZoneResultOutput{})
 }

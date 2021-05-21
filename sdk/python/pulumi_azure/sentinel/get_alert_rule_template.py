@@ -134,3 +134,11 @@ def get_alert_rule_template(display_name: Optional[str] = None,
         name=__ret__.name,
         scheduled_templates=__ret__.scheduled_templates,
         security_incident_templates=__ret__.security_incident_templates)
+
+
+@_utilities.lift_output_func(get_alert_rule_template)
+def get_alert_rule_template_output(display_name: Optional[pulumi.Input[str]] = None,
+                                   log_analytics_workspace_id: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertRuleTemplateResult]:
+    ...

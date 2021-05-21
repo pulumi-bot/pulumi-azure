@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,137 @@ type LookupSnapshotResult struct {
 	// The ID of an storage account.
 	StorageAccountId string `pulumi:"storageAccountId"`
 	TimeCreated      string `pulumi:"timeCreated"`
+}
+
+func LookupSnapshotApply(ctx *pulumi.Context, args LookupSnapshotApplyInput, opts ...pulumi.InvokeOption) LookupSnapshotResultOutput {
+	return args.ToLookupSnapshotApplyOutput().ApplyT(func(v LookupSnapshotArgs) (LookupSnapshotResult, error) {
+		r, err := LookupSnapshot(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSnapshotResultOutput)
+}
+
+// LookupSnapshotApplyInput is an input type that accepts LookupSnapshotApplyArgs and LookupSnapshotApplyOutput values.
+// You can construct a concrete instance of `LookupSnapshotApplyInput` via:
+//
+//          LookupSnapshotApplyArgs{...}
+type LookupSnapshotApplyInput interface {
+	pulumi.Input
+
+	ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput
+	ToLookupSnapshotApplyOutputWithContext(context.Context) LookupSnapshotApplyOutput
+}
+
+// A collection of arguments for invoking getSnapshot.
+type LookupSnapshotApplyArgs struct {
+	// Specifies the name of the Snapshot.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group the Snapshot is located in.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupSnapshotApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotArgs)(nil)).Elem()
+}
+
+func (i LookupSnapshotApplyArgs) ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput {
+	return i.ToLookupSnapshotApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSnapshotApplyArgs) ToLookupSnapshotApplyOutputWithContext(ctx context.Context) LookupSnapshotApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSnapshotApplyOutput)
+}
+
+// A collection of arguments for invoking getSnapshot.
+type LookupSnapshotApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSnapshotApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotArgs)(nil)).Elem()
+}
+
+func (o LookupSnapshotApplyOutput) ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput {
+	return o
+}
+
+func (o LookupSnapshotApplyOutput) ToLookupSnapshotApplyOutputWithContext(ctx context.Context) LookupSnapshotApplyOutput {
+	return o
+}
+
+// Specifies the name of the Snapshot.
+func (o LookupSnapshotApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group the Snapshot is located in.
+func (o LookupSnapshotApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSnapshot.
+type LookupSnapshotResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSnapshotResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotResult)(nil)).Elem()
+}
+
+func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutput() LookupSnapshotResultOutput {
+	return o
+}
+
+func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx context.Context) LookupSnapshotResultOutput {
+	return o
+}
+
+func (o LookupSnapshotResultOutput) CreationOption() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.CreationOption }).(pulumi.StringOutput)
+}
+
+// The size of the Snapshotted Disk in GB.
+func (o LookupSnapshotResultOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+func (o LookupSnapshotResultOutput) EncryptionSettings() GetSnapshotEncryptionSettingArrayOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) []GetSnapshotEncryptionSetting { return v.EncryptionSettings }).(GetSnapshotEncryptionSettingArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSnapshotResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The reference to an existing snapshot.
+func (o LookupSnapshotResultOutput) SourceResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceResourceId }).(pulumi.StringOutput)
+}
+
+// The URI to a Managed or Unmanaged Disk.
+func (o LookupSnapshotResultOutput) SourceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceUri }).(pulumi.StringOutput)
+}
+
+// The ID of an storage account.
+func (o LookupSnapshotResultOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSnapshotApplyOutput{})
+	pulumi.RegisterOutputType(LookupSnapshotResultOutput{})
 }

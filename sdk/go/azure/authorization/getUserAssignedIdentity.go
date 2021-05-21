@@ -4,6 +4,9 @@
 package authorization
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,126 @@ type LookupUserAssignedIdentityResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The Tenant ID of the User Assigned Identity.
 	TenantId string `pulumi:"tenantId"`
+}
+
+func LookupUserAssignedIdentityApply(ctx *pulumi.Context, args LookupUserAssignedIdentityApplyInput, opts ...pulumi.InvokeOption) LookupUserAssignedIdentityResultOutput {
+	return args.ToLookupUserAssignedIdentityApplyOutput().ApplyT(func(v LookupUserAssignedIdentityArgs) (LookupUserAssignedIdentityResult, error) {
+		r, err := LookupUserAssignedIdentity(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupUserAssignedIdentityResultOutput)
+}
+
+// LookupUserAssignedIdentityApplyInput is an input type that accepts LookupUserAssignedIdentityApplyArgs and LookupUserAssignedIdentityApplyOutput values.
+// You can construct a concrete instance of `LookupUserAssignedIdentityApplyInput` via:
+//
+//          LookupUserAssignedIdentityApplyArgs{...}
+type LookupUserAssignedIdentityApplyInput interface {
+	pulumi.Input
+
+	ToLookupUserAssignedIdentityApplyOutput() LookupUserAssignedIdentityApplyOutput
+	ToLookupUserAssignedIdentityApplyOutputWithContext(context.Context) LookupUserAssignedIdentityApplyOutput
+}
+
+// A collection of arguments for invoking getUserAssignedIdentity.
+type LookupUserAssignedIdentityApplyArgs struct {
+	// The name of the User Assigned Identity.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group in which the User Assigned Identity exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupUserAssignedIdentityApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserAssignedIdentityArgs)(nil)).Elem()
+}
+
+func (i LookupUserAssignedIdentityApplyArgs) ToLookupUserAssignedIdentityApplyOutput() LookupUserAssignedIdentityApplyOutput {
+	return i.ToLookupUserAssignedIdentityApplyOutputWithContext(context.Background())
+}
+
+func (i LookupUserAssignedIdentityApplyArgs) ToLookupUserAssignedIdentityApplyOutputWithContext(ctx context.Context) LookupUserAssignedIdentityApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupUserAssignedIdentityApplyOutput)
+}
+
+// A collection of arguments for invoking getUserAssignedIdentity.
+type LookupUserAssignedIdentityApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupUserAssignedIdentityApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserAssignedIdentityArgs)(nil)).Elem()
+}
+
+func (o LookupUserAssignedIdentityApplyOutput) ToLookupUserAssignedIdentityApplyOutput() LookupUserAssignedIdentityApplyOutput {
+	return o
+}
+
+func (o LookupUserAssignedIdentityApplyOutput) ToLookupUserAssignedIdentityApplyOutputWithContext(ctx context.Context) LookupUserAssignedIdentityApplyOutput {
+	return o
+}
+
+// The name of the User Assigned Identity.
+func (o LookupUserAssignedIdentityApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the User Assigned Identity exists.
+func (o LookupUserAssignedIdentityApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getUserAssignedIdentity.
+type LookupUserAssignedIdentityResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserAssignedIdentityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserAssignedIdentityResult)(nil)).Elem()
+}
+
+func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResultOutput() LookupUserAssignedIdentityResultOutput {
+	return o
+}
+
+func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResultOutputWithContext(ctx context.Context) LookupUserAssignedIdentityResultOutput {
+	return o
+}
+
+// The Client ID of the User Assigned Identity.
+func (o LookupUserAssignedIdentityResultOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserAssignedIdentityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the User Assigned Identity exists.
+func (o LookupUserAssignedIdentityResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupUserAssignedIdentityResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Service Principal ID of the User Assigned Identity.
+func (o LookupUserAssignedIdentityResultOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+func (o LookupUserAssignedIdentityResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the User Assigned Identity.
+func (o LookupUserAssignedIdentityResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The Tenant ID of the User Assigned Identity.
+func (o LookupUserAssignedIdentityResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserAssignedIdentityApplyOutput{})
+	pulumi.RegisterOutputType(LookupUserAssignedIdentityResultOutput{})
 }

@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,114 @@ type GetFirewallPolicyResult struct {
 	Name              string            `pulumi:"name"`
 	ResourceGroupName string            `pulumi:"resourceGroupName"`
 	Tags              map[string]string `pulumi:"tags"`
+}
+
+func GetFirewallPolicyApply(ctx *pulumi.Context, args GetFirewallPolicyApplyInput, opts ...pulumi.InvokeOption) GetFirewallPolicyResultOutput {
+	return args.ToGetFirewallPolicyApplyOutput().ApplyT(func(v GetFirewallPolicyArgs) (GetFirewallPolicyResult, error) {
+		r, err := GetFirewallPolicy(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetFirewallPolicyResultOutput)
+}
+
+// GetFirewallPolicyApplyInput is an input type that accepts GetFirewallPolicyApplyArgs and GetFirewallPolicyApplyOutput values.
+// You can construct a concrete instance of `GetFirewallPolicyApplyInput` via:
+//
+//          GetFirewallPolicyApplyArgs{...}
+type GetFirewallPolicyApplyInput interface {
+	pulumi.Input
+
+	ToGetFirewallPolicyApplyOutput() GetFirewallPolicyApplyOutput
+	ToGetFirewallPolicyApplyOutputWithContext(context.Context) GetFirewallPolicyApplyOutput
+}
+
+// A collection of arguments for invoking getFirewallPolicy.
+type GetFirewallPolicyApplyArgs struct {
+	// The name of the Web Application Firewall Policy
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Web Application Firewall Policy exists.
+	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	Tags              pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetFirewallPolicyApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallPolicyArgs)(nil)).Elem()
+}
+
+func (i GetFirewallPolicyApplyArgs) ToGetFirewallPolicyApplyOutput() GetFirewallPolicyApplyOutput {
+	return i.ToGetFirewallPolicyApplyOutputWithContext(context.Background())
+}
+
+func (i GetFirewallPolicyApplyArgs) ToGetFirewallPolicyApplyOutputWithContext(ctx context.Context) GetFirewallPolicyApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallPolicyApplyOutput)
+}
+
+// A collection of arguments for invoking getFirewallPolicy.
+type GetFirewallPolicyApplyOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallPolicyApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallPolicyArgs)(nil)).Elem()
+}
+
+func (o GetFirewallPolicyApplyOutput) ToGetFirewallPolicyApplyOutput() GetFirewallPolicyApplyOutput {
+	return o
+}
+
+func (o GetFirewallPolicyApplyOutput) ToGetFirewallPolicyApplyOutputWithContext(ctx context.Context) GetFirewallPolicyApplyOutput {
+	return o
+}
+
+// The name of the Web Application Firewall Policy
+func (o GetFirewallPolicyApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Web Application Firewall Policy exists.
+func (o GetFirewallPolicyApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallPolicyApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFirewallPolicyArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getFirewallPolicy.
+type GetFirewallPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallPolicyResult)(nil)).Elem()
+}
+
+func (o GetFirewallPolicyResultOutput) ToGetFirewallPolicyResultOutput() GetFirewallPolicyResultOutput {
+	return o
+}
+
+func (o GetFirewallPolicyResultOutput) ToGetFirewallPolicyResultOutputWithContext(ctx context.Context) GetFirewallPolicyResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFirewallPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallPolicyResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallPolicyResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallPolicyResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallPolicyResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFirewallPolicyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFirewallPolicyApplyOutput{})
+	pulumi.RegisterOutputType(GetFirewallPolicyResultOutput{})
 }

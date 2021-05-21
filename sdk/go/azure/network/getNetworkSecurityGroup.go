@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,117 @@ type LookupNetworkSecurityGroupResult struct {
 	SecurityRules []GetNetworkSecurityGroupSecurityRule `pulumi:"securityRules"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupNetworkSecurityGroupApply(ctx *pulumi.Context, args LookupNetworkSecurityGroupApplyInput, opts ...pulumi.InvokeOption) LookupNetworkSecurityGroupResultOutput {
+	return args.ToLookupNetworkSecurityGroupApplyOutput().ApplyT(func(v LookupNetworkSecurityGroupArgs) (LookupNetworkSecurityGroupResult, error) {
+		r, err := LookupNetworkSecurityGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupNetworkSecurityGroupResultOutput)
+}
+
+// LookupNetworkSecurityGroupApplyInput is an input type that accepts LookupNetworkSecurityGroupApplyArgs and LookupNetworkSecurityGroupApplyOutput values.
+// You can construct a concrete instance of `LookupNetworkSecurityGroupApplyInput` via:
+//
+//          LookupNetworkSecurityGroupApplyArgs{...}
+type LookupNetworkSecurityGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupNetworkSecurityGroupApplyOutput() LookupNetworkSecurityGroupApplyOutput
+	ToLookupNetworkSecurityGroupApplyOutputWithContext(context.Context) LookupNetworkSecurityGroupApplyOutput
+}
+
+// A collection of arguments for invoking getNetworkSecurityGroup.
+type LookupNetworkSecurityGroupApplyArgs struct {
+	// Specifies the Name of the Network Security Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the Name of the Resource Group within which the Network Security Group exists
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupNetworkSecurityGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkSecurityGroupArgs)(nil)).Elem()
+}
+
+func (i LookupNetworkSecurityGroupApplyArgs) ToLookupNetworkSecurityGroupApplyOutput() LookupNetworkSecurityGroupApplyOutput {
+	return i.ToLookupNetworkSecurityGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupNetworkSecurityGroupApplyArgs) ToLookupNetworkSecurityGroupApplyOutputWithContext(ctx context.Context) LookupNetworkSecurityGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupNetworkSecurityGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getNetworkSecurityGroup.
+type LookupNetworkSecurityGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupNetworkSecurityGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkSecurityGroupArgs)(nil)).Elem()
+}
+
+func (o LookupNetworkSecurityGroupApplyOutput) ToLookupNetworkSecurityGroupApplyOutput() LookupNetworkSecurityGroupApplyOutput {
+	return o
+}
+
+func (o LookupNetworkSecurityGroupApplyOutput) ToLookupNetworkSecurityGroupApplyOutputWithContext(ctx context.Context) LookupNetworkSecurityGroupApplyOutput {
+	return o
+}
+
+// Specifies the Name of the Network Security Group.
+func (o LookupNetworkSecurityGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Resource Group within which the Network Security Group exists
+func (o LookupNetworkSecurityGroupApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getNetworkSecurityGroup.
+type LookupNetworkSecurityGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNetworkSecurityGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkSecurityGroupResult)(nil)).Elem()
+}
+
+func (o LookupNetworkSecurityGroupResultOutput) ToLookupNetworkSecurityGroupResultOutput() LookupNetworkSecurityGroupResultOutput {
+	return o
+}
+
+func (o LookupNetworkSecurityGroupResultOutput) ToLookupNetworkSecurityGroupResultOutputWithContext(ctx context.Context) LookupNetworkSecurityGroupResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNetworkSecurityGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the resource exists.
+func (o LookupNetworkSecurityGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the security rule.
+func (o LookupNetworkSecurityGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkSecurityGroupResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// One or more `securityRule` blocks as defined below.
+func (o LookupNetworkSecurityGroupResultOutput) SecurityRules() GetNetworkSecurityGroupSecurityRuleArrayOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) []GetNetworkSecurityGroupSecurityRule { return v.SecurityRules }).(GetNetworkSecurityGroupSecurityRuleArrayOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupNetworkSecurityGroupResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNetworkSecurityGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupNetworkSecurityGroupResultOutput{})
 }

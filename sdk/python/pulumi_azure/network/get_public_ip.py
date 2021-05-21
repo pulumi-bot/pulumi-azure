@@ -287,3 +287,12 @@ def get_public_ip(name: Optional[str] = None,
         sku=__ret__.sku,
         tags=__ret__.tags,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_public_ip)
+def get_public_ip_output(name: Optional[pulumi.Input[str]] = None,
+                         resource_group_name: Optional[pulumi.Input[str]] = None,
+                         tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                         zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIPResult]:
+    ...

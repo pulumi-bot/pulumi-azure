@@ -137,3 +137,10 @@ def get_environment_v3(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         subnet_id=__ret__.subnet_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_environment_v3)
+def get_environment_v3_output(name: Optional[pulumi.Input[str]] = None,
+                              resource_group_name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentV3Result]:
+    ...

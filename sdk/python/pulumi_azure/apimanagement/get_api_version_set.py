@@ -170,3 +170,11 @@ def get_api_version_set(api_management_name: Optional[str] = None,
         version_header_name=__ret__.version_header_name,
         version_query_name=__ret__.version_query_name,
         versioning_scheme=__ret__.versioning_scheme)
+
+
+@_utilities.lift_output_func(get_api_version_set)
+def get_api_version_set_output(api_management_name: Optional[pulumi.Input[str]] = None,
+                               name: Optional[pulumi.Input[str]] = None,
+                               resource_group_name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiVersionSetResult]:
+    ...

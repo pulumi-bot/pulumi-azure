@@ -161,3 +161,11 @@ def get_hub(name: Optional[str] = None,
         namespace_name=__ret__.namespace_name,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_hub)
+def get_hub_output(name: Optional[pulumi.Input[str]] = None,
+                   namespace_name: Optional[pulumi.Input[str]] = None,
+                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHubResult]:
+    ...

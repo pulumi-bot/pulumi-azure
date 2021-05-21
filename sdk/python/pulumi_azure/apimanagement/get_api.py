@@ -279,3 +279,12 @@ def get_api(api_management_name: Optional[str] = None,
         subscription_required=__ret__.subscription_required,
         version=__ret__.version,
         version_set_id=__ret__.version_set_id)
+
+
+@_utilities.lift_output_func(get_api)
+def get_api_output(api_management_name: Optional[pulumi.Input[str]] = None,
+                   name: Optional[pulumi.Input[str]] = None,
+                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                   revision: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiResult]:
+    ...

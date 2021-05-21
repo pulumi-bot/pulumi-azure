@@ -133,3 +133,10 @@ def get_configuration(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         scope=__ret__.scope,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_configuration)
+def get_configuration_output(name: Optional[pulumi.Input[str]] = None,
+                             resource_group_name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigurationResult]:
+    ...

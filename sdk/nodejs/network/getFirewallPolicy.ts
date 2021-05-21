@@ -42,11 +42,11 @@ export interface GetFirewallPolicyArgs {
     /**
      * The name of this Firewall Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Firewall Policy exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetFirewallPolicyResult {
     readonly tags: {[key: string]: string};
     readonly threatIntelligenceAllowlists: outputs.network.GetFirewallPolicyThreatIntelligenceAllowlist[];
     readonly threatIntelligenceMode: string;
+}
+
+export function getFirewallPolicyOutput(args: GetFirewallPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyResult> {
+    return pulumi.output(args).apply(a => getFirewallPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFirewallPolicy.
+ */
+export interface GetFirewallPolicyOutputArgs {
+    /**
+     * The name of this Firewall Policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Firewall Policy exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

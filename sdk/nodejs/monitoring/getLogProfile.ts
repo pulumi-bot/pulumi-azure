@@ -40,7 +40,7 @@ export interface GetLogProfileArgs {
     /**
      * Specifies the Name of the Log Profile.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -69,4 +69,18 @@ export interface GetLogProfileResult {
      * The resource id of the storage account in which the Activity Log is stored.
      */
     readonly storageAccountId: string;
+}
+
+export function getLogProfileOutput(args: GetLogProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogProfileResult> {
+    return pulumi.output(args).apply(a => getLogProfile(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLogProfile.
+ */
+export interface GetLogProfileOutputArgs {
+    /**
+     * Specifies the Name of the Log Profile.
+     */
+    name: pulumi.Input<string>;
 }

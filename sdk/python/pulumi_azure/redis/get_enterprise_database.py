@@ -141,3 +141,11 @@ def get_enterprise_database(cluster_id: Optional[str] = None,
         primary_access_key=__ret__.primary_access_key,
         resource_group_name=__ret__.resource_group_name,
         secondary_access_key=__ret__.secondary_access_key)
+
+
+@_utilities.lift_output_func(get_enterprise_database)
+def get_enterprise_database_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   resource_group_name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseDatabaseResult]:
+    ...

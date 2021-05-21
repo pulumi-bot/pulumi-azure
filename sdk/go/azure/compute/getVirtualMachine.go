@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,110 @@ type LookupVirtualMachineResult struct {
 	Location          string                      `pulumi:"location"`
 	Name              string                      `pulumi:"name"`
 	ResourceGroupName string                      `pulumi:"resourceGroupName"`
+}
+
+func LookupVirtualMachineApply(ctx *pulumi.Context, args LookupVirtualMachineApplyInput, opts ...pulumi.InvokeOption) LookupVirtualMachineResultOutput {
+	return args.ToLookupVirtualMachineApplyOutput().ApplyT(func(v LookupVirtualMachineArgs) (LookupVirtualMachineResult, error) {
+		r, err := LookupVirtualMachine(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupVirtualMachineResultOutput)
+}
+
+// LookupVirtualMachineApplyInput is an input type that accepts LookupVirtualMachineApplyArgs and LookupVirtualMachineApplyOutput values.
+// You can construct a concrete instance of `LookupVirtualMachineApplyInput` via:
+//
+//          LookupVirtualMachineApplyArgs{...}
+type LookupVirtualMachineApplyInput interface {
+	pulumi.Input
+
+	ToLookupVirtualMachineApplyOutput() LookupVirtualMachineApplyOutput
+	ToLookupVirtualMachineApplyOutputWithContext(context.Context) LookupVirtualMachineApplyOutput
+}
+
+// A collection of arguments for invoking getVirtualMachine.
+type LookupVirtualMachineApplyArgs struct {
+	// Specifies the name of the Virtual Machine.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group the Virtual Machine is located in.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupVirtualMachineApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualMachineArgs)(nil)).Elem()
+}
+
+func (i LookupVirtualMachineApplyArgs) ToLookupVirtualMachineApplyOutput() LookupVirtualMachineApplyOutput {
+	return i.ToLookupVirtualMachineApplyOutputWithContext(context.Background())
+}
+
+func (i LookupVirtualMachineApplyArgs) ToLookupVirtualMachineApplyOutputWithContext(ctx context.Context) LookupVirtualMachineApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupVirtualMachineApplyOutput)
+}
+
+// A collection of arguments for invoking getVirtualMachine.
+type LookupVirtualMachineApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupVirtualMachineApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualMachineArgs)(nil)).Elem()
+}
+
+func (o LookupVirtualMachineApplyOutput) ToLookupVirtualMachineApplyOutput() LookupVirtualMachineApplyOutput {
+	return o
+}
+
+func (o LookupVirtualMachineApplyOutput) ToLookupVirtualMachineApplyOutputWithContext(ctx context.Context) LookupVirtualMachineApplyOutput {
+	return o
+}
+
+// Specifies the name of the Virtual Machine.
+func (o LookupVirtualMachineApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group the Virtual Machine is located in.
+func (o LookupVirtualMachineApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getVirtualMachine.
+type LookupVirtualMachineResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVirtualMachineResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualMachineResult)(nil)).Elem()
+}
+
+func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutput() LookupVirtualMachineResultOutput {
+	return o
+}
+
+func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWithContext(ctx context.Context) LookupVirtualMachineResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A `identity` block as defined below.
+func (o LookupVirtualMachineResultOutput) Identities() GetVirtualMachineIdentityArrayOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) []GetVirtualMachineIdentity { return v.Identities }).(GetVirtualMachineIdentityArrayOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVirtualMachineApplyOutput{})
+	pulumi.RegisterOutputType(LookupVirtualMachineResultOutput{})
 }

@@ -134,3 +134,12 @@ def get_table_entity(partition_key: Optional[str] = None,
         row_key=__ret__.row_key,
         storage_account_name=__ret__.storage_account_name,
         table_name=__ret__.table_name)
+
+
+@_utilities.lift_output_func(get_table_entity)
+def get_table_entity_output(partition_key: Optional[pulumi.Input[str]] = None,
+                            row_key: Optional[pulumi.Input[str]] = None,
+                            storage_account_name: Optional[pulumi.Input[str]] = None,
+                            table_name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableEntityResult]:
+    ...

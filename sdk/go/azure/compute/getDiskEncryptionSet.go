@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,111 @@ type LookupDiskEncryptionSetResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Disk Encryption Set.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupDiskEncryptionSetApply(ctx *pulumi.Context, args LookupDiskEncryptionSetApplyInput, opts ...pulumi.InvokeOption) LookupDiskEncryptionSetResultOutput {
+	return args.ToLookupDiskEncryptionSetApplyOutput().ApplyT(func(v LookupDiskEncryptionSetArgs) (LookupDiskEncryptionSetResult, error) {
+		r, err := LookupDiskEncryptionSet(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDiskEncryptionSetResultOutput)
+}
+
+// LookupDiskEncryptionSetApplyInput is an input type that accepts LookupDiskEncryptionSetApplyArgs and LookupDiskEncryptionSetApplyOutput values.
+// You can construct a concrete instance of `LookupDiskEncryptionSetApplyInput` via:
+//
+//          LookupDiskEncryptionSetApplyArgs{...}
+type LookupDiskEncryptionSetApplyInput interface {
+	pulumi.Input
+
+	ToLookupDiskEncryptionSetApplyOutput() LookupDiskEncryptionSetApplyOutput
+	ToLookupDiskEncryptionSetApplyOutputWithContext(context.Context) LookupDiskEncryptionSetApplyOutput
+}
+
+// A collection of arguments for invoking getDiskEncryptionSet.
+type LookupDiskEncryptionSetApplyArgs struct {
+	// The name of the Disk Encryption Set exists.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Disk Encryption Set exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupDiskEncryptionSetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDiskEncryptionSetArgs)(nil)).Elem()
+}
+
+func (i LookupDiskEncryptionSetApplyArgs) ToLookupDiskEncryptionSetApplyOutput() LookupDiskEncryptionSetApplyOutput {
+	return i.ToLookupDiskEncryptionSetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDiskEncryptionSetApplyArgs) ToLookupDiskEncryptionSetApplyOutputWithContext(ctx context.Context) LookupDiskEncryptionSetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDiskEncryptionSetApplyOutput)
+}
+
+// A collection of arguments for invoking getDiskEncryptionSet.
+type LookupDiskEncryptionSetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDiskEncryptionSetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDiskEncryptionSetArgs)(nil)).Elem()
+}
+
+func (o LookupDiskEncryptionSetApplyOutput) ToLookupDiskEncryptionSetApplyOutput() LookupDiskEncryptionSetApplyOutput {
+	return o
+}
+
+func (o LookupDiskEncryptionSetApplyOutput) ToLookupDiskEncryptionSetApplyOutputWithContext(ctx context.Context) LookupDiskEncryptionSetApplyOutput {
+	return o
+}
+
+// The name of the Disk Encryption Set exists.
+func (o LookupDiskEncryptionSetApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Disk Encryption Set exists.
+func (o LookupDiskEncryptionSetApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDiskEncryptionSet.
+type LookupDiskEncryptionSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDiskEncryptionSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDiskEncryptionSetResult)(nil)).Elem()
+}
+
+func (o LookupDiskEncryptionSetResultOutput) ToLookupDiskEncryptionSetResultOutput() LookupDiskEncryptionSetResultOutput {
+	return o
+}
+
+func (o LookupDiskEncryptionSetResultOutput) ToLookupDiskEncryptionSetResultOutputWithContext(ctx context.Context) LookupDiskEncryptionSetResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDiskEncryptionSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The location where the Disk Encryption Set exists.
+func (o LookupDiskEncryptionSetResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskEncryptionSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskEncryptionSetResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Disk Encryption Set.
+func (o LookupDiskEncryptionSetResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDiskEncryptionSetApplyOutput{})
+	pulumi.RegisterOutputType(LookupDiskEncryptionSetResultOutput{})
 }

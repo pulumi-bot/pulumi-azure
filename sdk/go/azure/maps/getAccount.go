@@ -4,6 +4,9 @@
 package maps
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,130 @@ type LookupAccountResult struct {
 	Tags    map[string]string `pulumi:"tags"`
 	// A unique identifier for the Maps Account.
 	XMsClientId string `pulumi:"xMsClientId"`
+}
+
+func LookupAccountApply(ctx *pulumi.Context, args LookupAccountApplyInput, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
+	return args.ToLookupAccountApplyOutput().ApplyT(func(v LookupAccountArgs) (LookupAccountResult, error) {
+		r, err := LookupAccount(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAccountResultOutput)
+}
+
+// LookupAccountApplyInput is an input type that accepts LookupAccountApplyArgs and LookupAccountApplyOutput values.
+// You can construct a concrete instance of `LookupAccountApplyInput` via:
+//
+//          LookupAccountApplyArgs{...}
+type LookupAccountApplyInput interface {
+	pulumi.Input
+
+	ToLookupAccountApplyOutput() LookupAccountApplyOutput
+	ToLookupAccountApplyOutputWithContext(context.Context) LookupAccountApplyOutput
+}
+
+// A collection of arguments for invoking getAccount.
+type LookupAccountApplyArgs struct {
+	// Specifies the name of the Maps Account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the Resource Group in which the Maps Account is located.
+	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	Tags              pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupAccountApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
+}
+
+func (i LookupAccountApplyArgs) ToLookupAccountApplyOutput() LookupAccountApplyOutput {
+	return i.ToLookupAccountApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAccountApplyArgs) ToLookupAccountApplyOutputWithContext(ctx context.Context) LookupAccountApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAccountApplyOutput)
+}
+
+// A collection of arguments for invoking getAccount.
+type LookupAccountApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
+}
+
+func (o LookupAccountApplyOutput) ToLookupAccountApplyOutput() LookupAccountApplyOutput {
+	return o
+}
+
+func (o LookupAccountApplyOutput) ToLookupAccountApplyOutputWithContext(ctx context.Context) LookupAccountApplyOutput {
+	return o
+}
+
+// Specifies the name of the Maps Account.
+func (o LookupAccountApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Resource Group in which the Maps Account is located.
+func (o LookupAccountApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAccountArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getAccount.
+type LookupAccountResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountResult)(nil)).Elem()
+}
+
+func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountResultOutput {
+	return o
+}
+
+func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary key used to authenticate and authorize access to the Maps REST APIs.
+func (o LookupAccountResultOutput) PrimaryAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.PrimaryAccessKey }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The primary key used to authenticate and authorize access to the Maps REST APIs. The second key is given to provide seamless key regeneration.
+func (o LookupAccountResultOutput) SecondaryAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.SecondaryAccessKey }).(pulumi.StringOutput)
+}
+
+// The sku of the Azure Maps Account.
+func (o LookupAccountResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A unique identifier for the Maps Account.
+func (o LookupAccountResultOutput) XMsClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.XMsClientId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountApplyOutput{})
+	pulumi.RegisterOutputType(LookupAccountResultOutput{})
 }

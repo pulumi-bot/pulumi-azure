@@ -108,3 +108,11 @@ def get_mca_account_scope(billing_account_name: Optional[str] = None,
         billing_profile_name=__ret__.billing_profile_name,
         id=__ret__.id,
         invoice_section_name=__ret__.invoice_section_name)
+
+
+@_utilities.lift_output_func(get_mca_account_scope)
+def get_mca_account_scope_output(billing_account_name: Optional[pulumi.Input[str]] = None,
+                                 billing_profile_name: Optional[pulumi.Input[str]] = None,
+                                 invoice_section_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMcaAccountScopeResult]:
+    ...

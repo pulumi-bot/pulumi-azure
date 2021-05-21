@@ -172,3 +172,10 @@ def get_virtual_network(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         subnets=__ret__.subnets,
         vnet_peerings=__ret__.vnet_peerings)
+
+
+@_utilities.lift_output_func(get_virtual_network)
+def get_virtual_network_output(name: Optional[pulumi.Input[str]] = None,
+                               resource_group_name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualNetworkResult]:
+    ...

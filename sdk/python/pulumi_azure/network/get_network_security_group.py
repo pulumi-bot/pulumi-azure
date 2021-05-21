@@ -137,3 +137,10 @@ def get_network_security_group(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         security_rules=__ret__.security_rules,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_network_security_group)
+def get_network_security_group_output(name: Optional[pulumi.Input[str]] = None,
+                                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkSecurityGroupResult]:
+    ...

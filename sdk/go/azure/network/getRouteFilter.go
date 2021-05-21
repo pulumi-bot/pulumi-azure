@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,117 @@ type LookupRouteFilterResult struct {
 	Rules []GetRouteFilterRule `pulumi:"rules"`
 	// A mapping of tags assigned to the Route Filter.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupRouteFilterApply(ctx *pulumi.Context, args LookupRouteFilterApplyInput, opts ...pulumi.InvokeOption) LookupRouteFilterResultOutput {
+	return args.ToLookupRouteFilterApplyOutput().ApplyT(func(v LookupRouteFilterArgs) (LookupRouteFilterResult, error) {
+		r, err := LookupRouteFilter(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRouteFilterResultOutput)
+}
+
+// LookupRouteFilterApplyInput is an input type that accepts LookupRouteFilterApplyArgs and LookupRouteFilterApplyOutput values.
+// You can construct a concrete instance of `LookupRouteFilterApplyInput` via:
+//
+//          LookupRouteFilterApplyArgs{...}
+type LookupRouteFilterApplyInput interface {
+	pulumi.Input
+
+	ToLookupRouteFilterApplyOutput() LookupRouteFilterApplyOutput
+	ToLookupRouteFilterApplyOutputWithContext(context.Context) LookupRouteFilterApplyOutput
+}
+
+// A collection of arguments for invoking getRouteFilter.
+type LookupRouteFilterApplyArgs struct {
+	// The Name of this Route Filter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Route Filter exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupRouteFilterApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteFilterArgs)(nil)).Elem()
+}
+
+func (i LookupRouteFilterApplyArgs) ToLookupRouteFilterApplyOutput() LookupRouteFilterApplyOutput {
+	return i.ToLookupRouteFilterApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRouteFilterApplyArgs) ToLookupRouteFilterApplyOutputWithContext(ctx context.Context) LookupRouteFilterApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRouteFilterApplyOutput)
+}
+
+// A collection of arguments for invoking getRouteFilter.
+type LookupRouteFilterApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRouteFilterApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteFilterArgs)(nil)).Elem()
+}
+
+func (o LookupRouteFilterApplyOutput) ToLookupRouteFilterApplyOutput() LookupRouteFilterApplyOutput {
+	return o
+}
+
+func (o LookupRouteFilterApplyOutput) ToLookupRouteFilterApplyOutputWithContext(ctx context.Context) LookupRouteFilterApplyOutput {
+	return o
+}
+
+// The Name of this Route Filter.
+func (o LookupRouteFilterApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Route Filter exists.
+func (o LookupRouteFilterApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRouteFilter.
+type LookupRouteFilterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRouteFilterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteFilterResult)(nil)).Elem()
+}
+
+func (o LookupRouteFilterResultOutput) ToLookupRouteFilterResultOutput() LookupRouteFilterResultOutput {
+	return o
+}
+
+func (o LookupRouteFilterResultOutput) ToLookupRouteFilterResultOutputWithContext(ctx context.Context) LookupRouteFilterResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRouteFilterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the Route Filter exists.
+func (o LookupRouteFilterResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The Name of Route Filter Rule
+func (o LookupRouteFilterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRouteFilterResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A `rule` block as defined below.
+func (o LookupRouteFilterResultOutput) Rules() GetRouteFilterRuleArrayOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) []GetRouteFilterRule { return v.Rules }).(GetRouteFilterRuleArrayOutput)
+}
+
+// A mapping of tags assigned to the Route Filter.
+func (o LookupRouteFilterResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRouteFilterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRouteFilterApplyOutput{})
+	pulumi.RegisterOutputType(LookupRouteFilterResultOutput{})
 }

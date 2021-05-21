@@ -159,3 +159,10 @@ def get_dedicated_host_group(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_dedicated_host_group)
+def get_dedicated_host_group_output(name: Optional[pulumi.Input[str]] = None,
+                                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostGroupResult]:
+    ...

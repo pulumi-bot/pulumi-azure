@@ -4,6 +4,9 @@
 package signalr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,150 @@ type LookupServiceResult struct {
 	// The publicly accessible port of the SignalR service which is designed for customer server side use.
 	ServerPort int               `pulumi:"serverPort"`
 	Tags       map[string]string `pulumi:"tags"`
+}
+
+func LookupServiceApply(ctx *pulumi.Context, args LookupServiceApplyInput, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return args.ToLookupServiceApplyOutput().ApplyT(func(v LookupServiceArgs) (LookupServiceResult, error) {
+		r, err := LookupService(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupServiceResultOutput)
+}
+
+// LookupServiceApplyInput is an input type that accepts LookupServiceApplyArgs and LookupServiceApplyOutput values.
+// You can construct a concrete instance of `LookupServiceApplyInput` via:
+//
+//          LookupServiceApplyArgs{...}
+type LookupServiceApplyInput interface {
+	pulumi.Input
+
+	ToLookupServiceApplyOutput() LookupServiceApplyOutput
+	ToLookupServiceApplyOutputWithContext(context.Context) LookupServiceApplyOutput
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceApplyArgs struct {
+	// Specifies the name of the SignalR service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group the SignalR service is located in.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupServiceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+func (i LookupServiceApplyArgs) ToLookupServiceApplyOutput() LookupServiceApplyOutput {
+	return i.ToLookupServiceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupServiceApplyArgs) ToLookupServiceApplyOutputWithContext(ctx context.Context) LookupServiceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupServiceApplyOutput)
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+func (o LookupServiceApplyOutput) ToLookupServiceApplyOutput() LookupServiceApplyOutput {
+	return o
+}
+
+func (o LookupServiceApplyOutput) ToLookupServiceApplyOutputWithContext(ctx context.Context) LookupServiceApplyOutput {
+	return o
+}
+
+// Specifies the name of the SignalR service.
+func (o LookupServiceApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group the SignalR service is located in.
+func (o LookupServiceApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getService.
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+// The FQDN of the SignalR service.
+func (o LookupServiceResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The publicly accessible IP of the SignalR service.
+func (o LookupServiceResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Specifies the supported Azure location where the SignalR service exists.
+func (o LookupServiceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary access key of the SignalR service.
+func (o LookupServiceResultOutput) PrimaryAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.PrimaryAccessKey }).(pulumi.StringOutput)
+}
+
+// The primary connection string of the SignalR service.
+func (o LookupServiceResultOutput) PrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The publicly accessible port of the SignalR service which is designed for browser/client use.
+func (o LookupServiceResultOutput) PublicPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.PublicPort }).(pulumi.IntOutput)
+}
+
+func (o LookupServiceResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The secondary access key of the SignalR service.
+func (o LookupServiceResultOutput) SecondaryAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.SecondaryAccessKey }).(pulumi.StringOutput)
+}
+
+// The secondary connection string of the SignalR service.
+func (o LookupServiceResultOutput) SecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The publicly accessible port of the SignalR service which is designed for customer server side use.
+func (o LookupServiceResultOutput) ServerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.ServerPort }).(pulumi.IntOutput)
+}
+
+func (o LookupServiceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceApplyOutput{})
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

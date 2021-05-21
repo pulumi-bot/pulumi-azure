@@ -107,3 +107,9 @@ def get_diagnostic_categories(resource_id: Optional[str] = None,
         logs=__ret__.logs,
         metrics=__ret__.metrics,
         resource_id=__ret__.resource_id)
+
+
+@_utilities.lift_output_func(get_diagnostic_categories)
+def get_diagnostic_categories_output(resource_id: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiagnosticCategoriesResult]:
+    ...

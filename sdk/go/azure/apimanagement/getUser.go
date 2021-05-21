@@ -4,6 +4,9 @@
 package apimanagement
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,137 @@ type LookupUserResult struct {
 	// The current state of this User, for example `active`, `blocked` or `pending`.
 	State  string `pulumi:"state"`
 	UserId string `pulumi:"userId"`
+}
+
+func LookupUserApply(ctx *pulumi.Context, args LookupUserApplyInput, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return args.ToLookupUserApplyOutput().ApplyT(func(v LookupUserArgs) (LookupUserResult, error) {
+		r, err := LookupUser(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupUserResultOutput)
+}
+
+// LookupUserApplyInput is an input type that accepts LookupUserApplyArgs and LookupUserApplyOutput values.
+// You can construct a concrete instance of `LookupUserApplyInput` via:
+//
+//          LookupUserApplyArgs{...}
+type LookupUserApplyInput interface {
+	pulumi.Input
+
+	ToLookupUserApplyOutput() LookupUserApplyOutput
+	ToLookupUserApplyOutputWithContext(context.Context) LookupUserApplyOutput
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserApplyArgs struct {
+	// The Name of the API Management Service in which this User exists.
+	ApiManagementName pulumi.StringInput `pulumi:"apiManagementName"`
+	// The Name of the Resource Group in which the API Management Service exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Identifier for the User.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (LookupUserApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+func (i LookupUserApplyArgs) ToLookupUserApplyOutput() LookupUserApplyOutput {
+	return i.ToLookupUserApplyOutputWithContext(context.Background())
+}
+
+func (i LookupUserApplyArgs) ToLookupUserApplyOutputWithContext(ctx context.Context) LookupUserApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupUserApplyOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupUserApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+func (o LookupUserApplyOutput) ToLookupUserApplyOutput() LookupUserApplyOutput {
+	return o
+}
+
+func (o LookupUserApplyOutput) ToLookupUserApplyOutputWithContext(ctx context.Context) LookupUserApplyOutput {
+	return o
+}
+
+// The Name of the API Management Service in which this User exists.
+func (o LookupUserApplyOutput) ApiManagementName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserArgs) string { return v.ApiManagementName }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group in which the API Management Service exists.
+func (o LookupUserApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Identifier for the User.
+func (o LookupUserApplyOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserArgs) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getUser.
+type LookupUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ApiManagementName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ApiManagementName }).(pulumi.StringOutput)
+}
+
+// The Email Address used for this User.
+func (o LookupUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The First Name for the User.
+func (o LookupUserResultOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Last Name for the User.
+func (o LookupUserResultOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+// Any notes about this User.
+func (o LookupUserResultOutput) Note() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Note }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The current state of this User, for example `active`, `blocked` or `pending`.
+func (o LookupUserResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserApplyOutput{})
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

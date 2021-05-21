@@ -4,6 +4,9 @@
 package lb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,132 @@ type GetLBResult struct {
 	Sku string `pulumi:"sku"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetLBApply(ctx *pulumi.Context, args GetLBApplyInput, opts ...pulumi.InvokeOption) GetLBResultOutput {
+	return args.ToGetLBApplyOutput().ApplyT(func(v GetLBArgs) (GetLBResult, error) {
+		r, err := GetLB(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetLBResultOutput)
+}
+
+// GetLBApplyInput is an input type that accepts GetLBApplyArgs and GetLBApplyOutput values.
+// You can construct a concrete instance of `GetLBApplyInput` via:
+//
+//          GetLBApplyArgs{...}
+type GetLBApplyInput interface {
+	pulumi.Input
+
+	ToGetLBApplyOutput() GetLBApplyOutput
+	ToGetLBApplyOutputWithContext(context.Context) GetLBApplyOutput
+}
+
+// A collection of arguments for invoking getLB.
+type GetLBApplyArgs struct {
+	// Specifies the name of the Load Balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group in which the Load Balancer exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetLBApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLBArgs)(nil)).Elem()
+}
+
+func (i GetLBApplyArgs) ToGetLBApplyOutput() GetLBApplyOutput {
+	return i.ToGetLBApplyOutputWithContext(context.Background())
+}
+
+func (i GetLBApplyArgs) ToGetLBApplyOutputWithContext(ctx context.Context) GetLBApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLBApplyOutput)
+}
+
+// A collection of arguments for invoking getLB.
+type GetLBApplyOutput struct{ *pulumi.OutputState }
+
+func (GetLBApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLBArgs)(nil)).Elem()
+}
+
+func (o GetLBApplyOutput) ToGetLBApplyOutput() GetLBApplyOutput {
+	return o
+}
+
+func (o GetLBApplyOutput) ToGetLBApplyOutputWithContext(ctx context.Context) GetLBApplyOutput {
+	return o
+}
+
+// Specifies the name of the Load Balancer.
+func (o GetLBApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group in which the Load Balancer exists.
+func (o GetLBApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getLB.
+type GetLBResultOutput struct{ *pulumi.OutputState }
+
+func (GetLBResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLBResult)(nil)).Elem()
+}
+
+func (o GetLBResultOutput) ToGetLBResultOutput() GetLBResultOutput {
+	return o
+}
+
+func (o GetLBResultOutput) ToGetLBResultOutputWithContext(ctx context.Context) GetLBResultOutput {
+	return o
+}
+
+// A `frontendIpConfiguration` block as documented below.
+func (o GetLBResultOutput) FrontendIpConfigurations() GetLBFrontendIpConfigurationArrayOutput {
+	return o.ApplyT(func(v GetLBResult) []GetLBFrontendIpConfiguration { return v.FrontendIpConfigurations }).(GetLBFrontendIpConfigurationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLBResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the Load Balancer exists.
+func (o GetLBResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Frontend IP Configuration.
+func (o GetLBResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Private IP Address to assign to the Load Balancer.
+func (o GetLBResultOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The list of private IP address assigned to the load balancer in `frontendIpConfiguration` blocks, if any.
+func (o GetLBResultOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLBResult) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLBResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The SKU of the Load Balancer.
+func (o GetLBResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLBResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetLBResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLBResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLBApplyOutput{})
+	pulumi.RegisterOutputType(GetLBResultOutput{})
 }

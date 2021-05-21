@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,126 @@ type LookupDedicatedHostGroupResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The Availability Zones in which this Dedicated Host Group is located.
 	Zones []string `pulumi:"zones"`
+}
+
+func LookupDedicatedHostGroupApply(ctx *pulumi.Context, args LookupDedicatedHostGroupApplyInput, opts ...pulumi.InvokeOption) LookupDedicatedHostGroupResultOutput {
+	return args.ToLookupDedicatedHostGroupApplyOutput().ApplyT(func(v LookupDedicatedHostGroupArgs) (LookupDedicatedHostGroupResult, error) {
+		r, err := LookupDedicatedHostGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDedicatedHostGroupResultOutput)
+}
+
+// LookupDedicatedHostGroupApplyInput is an input type that accepts LookupDedicatedHostGroupApplyArgs and LookupDedicatedHostGroupApplyOutput values.
+// You can construct a concrete instance of `LookupDedicatedHostGroupApplyInput` via:
+//
+//          LookupDedicatedHostGroupApplyArgs{...}
+type LookupDedicatedHostGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupDedicatedHostGroupApplyOutput() LookupDedicatedHostGroupApplyOutput
+	ToLookupDedicatedHostGroupApplyOutputWithContext(context.Context) LookupDedicatedHostGroupApplyOutput
+}
+
+// A collection of arguments for invoking getDedicatedHostGroup.
+type LookupDedicatedHostGroupApplyArgs struct {
+	// Specifies the name of the Dedicated Host Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group the Dedicated Host Group is located in.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupDedicatedHostGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostGroupArgs)(nil)).Elem()
+}
+
+func (i LookupDedicatedHostGroupApplyArgs) ToLookupDedicatedHostGroupApplyOutput() LookupDedicatedHostGroupApplyOutput {
+	return i.ToLookupDedicatedHostGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDedicatedHostGroupApplyArgs) ToLookupDedicatedHostGroupApplyOutputWithContext(ctx context.Context) LookupDedicatedHostGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDedicatedHostGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getDedicatedHostGroup.
+type LookupDedicatedHostGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDedicatedHostGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostGroupArgs)(nil)).Elem()
+}
+
+func (o LookupDedicatedHostGroupApplyOutput) ToLookupDedicatedHostGroupApplyOutput() LookupDedicatedHostGroupApplyOutput {
+	return o
+}
+
+func (o LookupDedicatedHostGroupApplyOutput) ToLookupDedicatedHostGroupApplyOutputWithContext(ctx context.Context) LookupDedicatedHostGroupApplyOutput {
+	return o
+}
+
+// Specifies the name of the Dedicated Host Group.
+func (o LookupDedicatedHostGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group the Dedicated Host Group is located in.
+func (o LookupDedicatedHostGroupApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDedicatedHostGroup.
+type LookupDedicatedHostGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDedicatedHostGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostGroupResult)(nil)).Elem()
+}
+
+func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOutput() LookupDedicatedHostGroupResultOutput {
+	return o
+}
+
+func (o LookupDedicatedHostGroupResultOutput) ToLookupDedicatedHostGroupResultOutputWithContext(ctx context.Context) LookupDedicatedHostGroupResultOutput {
+	return o
+}
+
+// Whether virtual machines or virtual machine scale sets be placed automatically on this Dedicated Host Group.
+func (o LookupDedicatedHostGroupResultOutput) AutomaticPlacementEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) bool { return v.AutomaticPlacementEnabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDedicatedHostGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the Dedicated Host Group exists.
+func (o LookupDedicatedHostGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of fault domains that the Dedicated Host Group spans.
+func (o LookupDedicatedHostGroupResultOutput) PlatformFaultDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) int { return v.PlatformFaultDomainCount }).(pulumi.IntOutput)
+}
+
+func (o LookupDedicatedHostGroupResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupDedicatedHostGroupResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The Availability Zones in which this Dedicated Host Group is located.
+func (o LookupDedicatedHostGroupResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDedicatedHostGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupDedicatedHostGroupResultOutput{})
 }

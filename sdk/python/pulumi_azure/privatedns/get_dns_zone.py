@@ -161,3 +161,10 @@ def get_dns_zone(name: Optional[str] = None,
         number_of_record_sets=__ret__.number_of_record_sets,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_dns_zone)
+def get_dns_zone_output(name: Optional[pulumi.Input[str]] = None,
+                        resource_group_name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
+    ...

@@ -4,6 +4,9 @@
 package containerservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,122 @@ type LookupRegistryTokenResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The Scope Map ID used by the token.
 	ScopeMapId string `pulumi:"scopeMapId"`
+}
+
+func LookupRegistryTokenApply(ctx *pulumi.Context, args LookupRegistryTokenApplyInput, opts ...pulumi.InvokeOption) LookupRegistryTokenResultOutput {
+	return args.ToLookupRegistryTokenApplyOutput().ApplyT(func(v LookupRegistryTokenArgs) (LookupRegistryTokenResult, error) {
+		r, err := LookupRegistryToken(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRegistryTokenResultOutput)
+}
+
+// LookupRegistryTokenApplyInput is an input type that accepts LookupRegistryTokenApplyArgs and LookupRegistryTokenApplyOutput values.
+// You can construct a concrete instance of `LookupRegistryTokenApplyInput` via:
+//
+//          LookupRegistryTokenApplyArgs{...}
+type LookupRegistryTokenApplyInput interface {
+	pulumi.Input
+
+	ToLookupRegistryTokenApplyOutput() LookupRegistryTokenApplyOutput
+	ToLookupRegistryTokenApplyOutputWithContext(context.Context) LookupRegistryTokenApplyOutput
+}
+
+// A collection of arguments for invoking getRegistryToken.
+type LookupRegistryTokenApplyArgs struct {
+	// The Name of the Container Registry where the token exists.
+	ContainerRegistryName pulumi.StringInput `pulumi:"containerRegistryName"`
+	// The name of the Container Registry token.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where this Container Registry token exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupRegistryTokenApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryTokenArgs)(nil)).Elem()
+}
+
+func (i LookupRegistryTokenApplyArgs) ToLookupRegistryTokenApplyOutput() LookupRegistryTokenApplyOutput {
+	return i.ToLookupRegistryTokenApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRegistryTokenApplyArgs) ToLookupRegistryTokenApplyOutputWithContext(ctx context.Context) LookupRegistryTokenApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRegistryTokenApplyOutput)
+}
+
+// A collection of arguments for invoking getRegistryToken.
+type LookupRegistryTokenApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistryTokenApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryTokenArgs)(nil)).Elem()
+}
+
+func (o LookupRegistryTokenApplyOutput) ToLookupRegistryTokenApplyOutput() LookupRegistryTokenApplyOutput {
+	return o
+}
+
+func (o LookupRegistryTokenApplyOutput) ToLookupRegistryTokenApplyOutputWithContext(ctx context.Context) LookupRegistryTokenApplyOutput {
+	return o
+}
+
+// The Name of the Container Registry where the token exists.
+func (o LookupRegistryTokenApplyOutput) ContainerRegistryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenArgs) string { return v.ContainerRegistryName }).(pulumi.StringOutput)
+}
+
+// The name of the Container Registry token.
+func (o LookupRegistryTokenApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where this Container Registry token exists.
+func (o LookupRegistryTokenApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRegistryToken.
+type LookupRegistryTokenResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistryTokenResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryTokenResult)(nil)).Elem()
+}
+
+func (o LookupRegistryTokenResultOutput) ToLookupRegistryTokenResultOutput() LookupRegistryTokenResultOutput {
+	return o
+}
+
+func (o LookupRegistryTokenResultOutput) ToLookupRegistryTokenResultOutputWithContext(ctx context.Context) LookupRegistryTokenResultOutput {
+	return o
+}
+
+func (o LookupRegistryTokenResultOutput) ContainerRegistryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) string { return v.ContainerRegistryName }).(pulumi.StringOutput)
+}
+
+// Whether this Token is enabled.
+func (o LookupRegistryTokenResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRegistryTokenResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegistryTokenResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRegistryTokenResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Scope Map ID used by the token.
+func (o LookupRegistryTokenResultOutput) ScopeMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryTokenResult) string { return v.ScopeMapId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegistryTokenApplyOutput{})
+	pulumi.RegisterOutputType(LookupRegistryTokenResultOutput{})
 }

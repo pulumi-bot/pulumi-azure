@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,111 @@ type LookupEncryptionScopeResult struct {
 	// The source of the Storage Encryption Scope.
 	Source           string `pulumi:"source"`
 	StorageAccountId string `pulumi:"storageAccountId"`
+}
+
+func LookupEncryptionScopeApply(ctx *pulumi.Context, args LookupEncryptionScopeApplyInput, opts ...pulumi.InvokeOption) LookupEncryptionScopeResultOutput {
+	return args.ToLookupEncryptionScopeApplyOutput().ApplyT(func(v LookupEncryptionScopeArgs) (LookupEncryptionScopeResult, error) {
+		r, err := LookupEncryptionScope(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupEncryptionScopeResultOutput)
+}
+
+// LookupEncryptionScopeApplyInput is an input type that accepts LookupEncryptionScopeApplyArgs and LookupEncryptionScopeApplyOutput values.
+// You can construct a concrete instance of `LookupEncryptionScopeApplyInput` via:
+//
+//          LookupEncryptionScopeApplyArgs{...}
+type LookupEncryptionScopeApplyInput interface {
+	pulumi.Input
+
+	ToLookupEncryptionScopeApplyOutput() LookupEncryptionScopeApplyOutput
+	ToLookupEncryptionScopeApplyOutputWithContext(context.Context) LookupEncryptionScopeApplyOutput
+}
+
+// A collection of arguments for invoking getEncryptionScope.
+type LookupEncryptionScopeApplyArgs struct {
+	// The name of this Storage Encryption Scope.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the Storage Account where this Storage Encryption Scope exists.
+	StorageAccountId pulumi.StringInput `pulumi:"storageAccountId"`
+}
+
+func (LookupEncryptionScopeApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEncryptionScopeArgs)(nil)).Elem()
+}
+
+func (i LookupEncryptionScopeApplyArgs) ToLookupEncryptionScopeApplyOutput() LookupEncryptionScopeApplyOutput {
+	return i.ToLookupEncryptionScopeApplyOutputWithContext(context.Background())
+}
+
+func (i LookupEncryptionScopeApplyArgs) ToLookupEncryptionScopeApplyOutputWithContext(ctx context.Context) LookupEncryptionScopeApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupEncryptionScopeApplyOutput)
+}
+
+// A collection of arguments for invoking getEncryptionScope.
+type LookupEncryptionScopeApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupEncryptionScopeApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEncryptionScopeArgs)(nil)).Elem()
+}
+
+func (o LookupEncryptionScopeApplyOutput) ToLookupEncryptionScopeApplyOutput() LookupEncryptionScopeApplyOutput {
+	return o
+}
+
+func (o LookupEncryptionScopeApplyOutput) ToLookupEncryptionScopeApplyOutputWithContext(ctx context.Context) LookupEncryptionScopeApplyOutput {
+	return o
+}
+
+// The name of this Storage Encryption Scope.
+func (o LookupEncryptionScopeApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the Storage Account where this Storage Encryption Scope exists.
+func (o LookupEncryptionScopeApplyOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeArgs) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getEncryptionScope.
+type LookupEncryptionScopeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEncryptionScopeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEncryptionScopeResult)(nil)).Elem()
+}
+
+func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutput() LookupEncryptionScopeResultOutput {
+	return o
+}
+
+func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutputWithContext(ctx context.Context) LookupEncryptionScopeResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupEncryptionScopeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Key Vault Key.
+func (o LookupEncryptionScopeResultOutput) KeyVaultKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.KeyVaultKeyId }).(pulumi.StringOutput)
+}
+
+func (o LookupEncryptionScopeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the Storage Encryption Scope.
+func (o LookupEncryptionScopeResultOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o LookupEncryptionScopeResultOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEncryptionScopeApplyOutput{})
+	pulumi.RegisterOutputType(LookupEncryptionScopeResultOutput{})
 }

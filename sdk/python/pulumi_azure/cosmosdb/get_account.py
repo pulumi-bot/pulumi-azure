@@ -418,3 +418,10 @@ def get_account(name: Optional[str] = None,
         tags=__ret__.tags,
         virtual_network_rules=__ret__.virtual_network_rules,
         write_endpoints=__ret__.write_endpoints)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    ...

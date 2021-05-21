@@ -44,15 +44,15 @@ export interface GetQueueArgs {
     /**
      * The name of this Service Bus Queue.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the ServiceBus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the Resource Group where the Service Bus Queue exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -126,4 +126,26 @@ export interface GetQueueResult {
      * The status of the Queue. Possible values are `Active`, `Creating`, `Deleting`, `Disabled`, `ReceiveDisabled`, `Renaming`, `SendDisabled`, `Unknown`.
      */
     readonly status: string;
+}
+
+export function getQueueOutput(args: GetQueueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueResult> {
+    return pulumi.output(args).apply(a => getQueue(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQueue.
+ */
+export interface GetQueueOutputArgs {
+    /**
+     * The name of this Service Bus Queue.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the ServiceBus Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Service Bus Queue exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

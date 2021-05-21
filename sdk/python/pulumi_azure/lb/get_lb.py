@@ -176,3 +176,10 @@ def get_lb(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         sku=__ret__.sku,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_lb)
+def get_lb_output(name: Optional[pulumi.Input[str]] = None,
+                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLBResult]:
+    ...

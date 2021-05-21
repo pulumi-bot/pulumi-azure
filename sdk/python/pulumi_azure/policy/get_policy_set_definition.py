@@ -204,3 +204,11 @@ def get_policy_set_definition(display_name: Optional[str] = None,
         policy_definition_references=__ret__.policy_definition_references,
         policy_definitions=__ret__.policy_definitions,
         policy_type=__ret__.policy_type)
+
+
+@_utilities.lift_output_func(get_policy_set_definition)
+def get_policy_set_definition_output(display_name: Optional[pulumi.Input[str]] = None,
+                                     management_group_name: Optional[pulumi.Input[str]] = None,
+                                     name: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicySetDefinitionResult]:
+    ...

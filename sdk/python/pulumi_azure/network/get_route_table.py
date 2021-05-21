@@ -149,3 +149,10 @@ def get_route_table(name: Optional[str] = None,
         routes=__ret__.routes,
         subnets=__ret__.subnets,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_route_table)
+def get_route_table_output(name: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTableResult]:
+    ...

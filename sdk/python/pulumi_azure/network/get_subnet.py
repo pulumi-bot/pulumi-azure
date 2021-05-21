@@ -199,3 +199,11 @@ def get_subnet(name: Optional[str] = None,
         route_table_id=__ret__.route_table_id,
         service_endpoints=__ret__.service_endpoints,
         virtual_network_name=__ret__.virtual_network_name)
+
+
+@_utilities.lift_output_func(get_subnet)
+def get_subnet_output(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      virtual_network_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
+    ...
