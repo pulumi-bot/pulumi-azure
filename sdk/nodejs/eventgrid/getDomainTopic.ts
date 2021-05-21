@@ -42,15 +42,15 @@ export interface GetDomainTopicArgs {
     /**
      * The name of the EventGrid Domain Topic domain.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * The name of the EventGrid Domain Topic resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the EventGrid Domain Topic exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

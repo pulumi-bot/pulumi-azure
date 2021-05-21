@@ -43,11 +43,11 @@ export interface GetServiceArgs {
     /**
      * Specify the name of the database migration service.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the Name of the Resource Group within which the database migration service exists
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

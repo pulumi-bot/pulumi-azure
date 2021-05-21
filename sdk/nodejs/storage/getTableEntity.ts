@@ -45,19 +45,19 @@ export interface GetTableEntityArgs {
     /**
      * The key for the partition where the entity will be retrieved.
      */
-    readonly partitionKey: string;
+    partitionKey: string;
     /**
      * The key for the row where the entity will be retrieved.
      */
-    readonly rowKey: string;
+    rowKey: string;
     /**
      * The name of the Storage Account where the Table exists.
      */
-    readonly storageAccountName: string;
+    storageAccountName: string;
     /**
      * The name of the Table.
      */
-    readonly tableName: string;
+    tableName: string;
 }
 
 /**
