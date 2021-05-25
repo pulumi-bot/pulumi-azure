@@ -43,15 +43,15 @@ export interface GetPolicyVMArgs {
     /**
      * Specifies the name of the VM Backup Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Recovery Services Vault.
      */
-    readonly recoveryVaultName: string;
+    recoveryVaultName: string;
     /**
      * The name of the resource group in which the VM Backup Policy resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
