@@ -41,11 +41,11 @@ export interface GetRouteTableArgs {
     /**
      * The name of the Route Table.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Route Table exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

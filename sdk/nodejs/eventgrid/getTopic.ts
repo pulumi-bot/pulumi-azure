@@ -42,12 +42,12 @@ export interface GetTopicArgs {
     /**
      * The name of the EventGrid Topic resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the EventGrid Topic exists.
      */
-    readonly resourceGroupName: string;
-    readonly tags?: {[key: string]: string};
+    resourceGroupName: string;
+    tags?: {[key: string]: string};
 }
 
 /**
