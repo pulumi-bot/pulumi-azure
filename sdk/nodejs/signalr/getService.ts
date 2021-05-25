@@ -41,11 +41,11 @@ export interface GetServiceArgs {
     /**
      * Specifies the name of the SignalR service.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the SignalR service is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
