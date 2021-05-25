@@ -41,11 +41,11 @@ export interface GetSnapshotArgs {
     /**
      * Specifies the name of the Snapshot.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Snapshot is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**

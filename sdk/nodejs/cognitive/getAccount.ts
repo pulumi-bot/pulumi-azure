@@ -43,11 +43,11 @@ export interface GetAccountArgs {
     /**
      * Specifies the name of the Cognitive Services Account.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group where the Cognitive Services Account resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
