@@ -4,6 +4,9 @@
 package keyvault
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,121 @@ type LookupCertificateIssuerResult struct {
 	OrgId string `pulumi:"orgId"`
 	// The name of the third-party Certificate Issuer.
 	ProviderName string `pulumi:"providerName"`
+}
+
+func LookupCertificateIssuerApply(ctx *pulumi.Context, args LookupCertificateIssuerApplyInput, opts ...pulumi.InvokeOption) LookupCertificateIssuerResultOutput {
+	return args.ToLookupCertificateIssuerApplyOutput().ApplyT(func(v LookupCertificateIssuerArgs) (LookupCertificateIssuerResult, error) {
+		r, err := LookupCertificateIssuer(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupCertificateIssuerResultOutput)
+}
+
+// LookupCertificateIssuerApplyInput is an input type that accepts LookupCertificateIssuerApplyArgs and LookupCertificateIssuerApplyOutput values.
+// You can construct a concrete instance of `LookupCertificateIssuerApplyInput` via:
+//
+//          LookupCertificateIssuerApplyArgs{...}
+type LookupCertificateIssuerApplyInput interface {
+	pulumi.Input
+
+	ToLookupCertificateIssuerApplyOutput() LookupCertificateIssuerApplyOutput
+	ToLookupCertificateIssuerApplyOutputWithContext(context.Context) LookupCertificateIssuerApplyOutput
+}
+
+// A collection of arguments for invoking getCertificateIssuer.
+type LookupCertificateIssuerApplyArgs struct {
+	// The ID of the Key Vault in which to locate the Certificate Issuer.
+	KeyVaultId pulumi.StringInput `pulumi:"keyVaultId"`
+	// The name of the Key Vault Certificate Issuer.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupCertificateIssuerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateIssuerArgs)(nil)).Elem()
+}
+
+func (i LookupCertificateIssuerApplyArgs) ToLookupCertificateIssuerApplyOutput() LookupCertificateIssuerApplyOutput {
+	return i.ToLookupCertificateIssuerApplyOutputWithContext(context.Background())
+}
+
+func (i LookupCertificateIssuerApplyArgs) ToLookupCertificateIssuerApplyOutputWithContext(ctx context.Context) LookupCertificateIssuerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupCertificateIssuerApplyOutput)
+}
+
+// A collection of arguments for invoking getCertificateIssuer.
+type LookupCertificateIssuerApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateIssuerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateIssuerArgs)(nil)).Elem()
+}
+
+func (o LookupCertificateIssuerApplyOutput) ToLookupCertificateIssuerApplyOutput() LookupCertificateIssuerApplyOutput {
+	return o
+}
+
+func (o LookupCertificateIssuerApplyOutput) ToLookupCertificateIssuerApplyOutputWithContext(ctx context.Context) LookupCertificateIssuerApplyOutput {
+	return o
+}
+
+// The ID of the Key Vault in which to locate the Certificate Issuer.
+func (o LookupCertificateIssuerApplyOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerArgs) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The name of the Key Vault Certificate Issuer.
+func (o LookupCertificateIssuerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getCertificateIssuer.
+type LookupCertificateIssuerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateIssuerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateIssuerResult)(nil)).Elem()
+}
+
+func (o LookupCertificateIssuerResultOutput) ToLookupCertificateIssuerResultOutput() LookupCertificateIssuerResultOutput {
+	return o
+}
+
+func (o LookupCertificateIssuerResultOutput) ToLookupCertificateIssuerResultOutputWithContext(ctx context.Context) LookupCertificateIssuerResultOutput {
+	return o
+}
+
+// The account number with the third-party Certificate Issuer.
+func (o LookupCertificateIssuerResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// A list of `admin` blocks as defined below.
+func (o LookupCertificateIssuerResultOutput) Admins() GetCertificateIssuerAdminArrayOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) []GetCertificateIssuerAdmin { return v.Admins }).(GetCertificateIssuerAdminArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCertificateIssuerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateIssuerResultOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateIssuerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization ID with the third-party Certificate Issuer.
+func (o LookupCertificateIssuerResultOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The name of the third-party Certificate Issuer.
+func (o LookupCertificateIssuerResultOutput) ProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateIssuerResult) string { return v.ProviderName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCertificateIssuerApplyOutput{})
+	pulumi.RegisterOutputType(LookupCertificateIssuerResultOutput{})
 }

@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetDedicatedHostGroupResult> InvokeAsync(GetDedicatedHostGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostGroupResult>("azure:compute/getDedicatedHostGroup:getDedicatedHostGroup", args ?? new GetDedicatedHostGroupArgs(), options.WithVersion());
+
+        public static Output<GetDedicatedHostGroupResult> Apply(GetDedicatedHostGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDedicatedHostGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDedicatedHostGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetDedicatedHostGroupApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Dedicated Host Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Dedicated Host Group is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDedicatedHostGroupApplyArgs()
         {
         }
     }

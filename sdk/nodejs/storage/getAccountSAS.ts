@@ -87,35 +87,35 @@ export interface GetAccountSASArgs {
     /**
      * The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of a `azure.storage.Account` resource.
      */
-    readonly connectionString: string;
+    connectionString: string;
     /**
      * The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
      */
-    readonly expiry: string;
+    expiry: string;
     /**
      * Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
      */
-    readonly httpsOnly?: boolean;
+    httpsOnly?: boolean;
     /**
      * A `permissions` block as defined below.
      */
-    readonly permissions: inputs.storage.GetAccountSASPermissions;
+    permissions: inputs.storage.GetAccountSASPermissions;
     /**
      * A `resourceTypes` block as defined below.
      */
-    readonly resourceTypes: inputs.storage.GetAccountSASResourceTypes;
+    resourceTypes: inputs.storage.GetAccountSASResourceTypes;
     /**
      * A `services` block as defined below.
      */
-    readonly services: inputs.storage.GetAccountSASServices;
+    services: inputs.storage.GetAccountSASServices;
     /**
      * Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
      */
-    readonly signedVersion?: string;
+    signedVersion?: string;
     /**
      * The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
      */
-    readonly start: string;
+    start: string;
 }
 
 /**
@@ -138,4 +138,46 @@ export interface GetAccountSASResult {
     readonly services: outputs.storage.GetAccountSASServices;
     readonly signedVersion?: string;
     readonly start: string;
+}
+
+export function getAccountSASApply(args: GetAccountSASApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountSASResult> {
+    return pulumi.output(args).apply(a => getAccountSAS(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountSAS.
+ */
+export interface GetAccountSASApplyArgs {
+    /**
+     * The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of a `azure.storage.Account` resource.
+     */
+    connectionString: pulumi.Input<string>;
+    /**
+     * The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+     */
+    expiry: pulumi.Input<string>;
+    /**
+     * Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+     */
+    httpsOnly?: pulumi.Input<boolean>;
+    /**
+     * A `permissions` block as defined below.
+     */
+    permissions: pulumi.Input<inputs.storage.GetAccountSASPermissions>;
+    /**
+     * A `resourceTypes` block as defined below.
+     */
+    resourceTypes: pulumi.Input<inputs.storage.GetAccountSASResourceTypes>;
+    /**
+     * A `services` block as defined below.
+     */
+    services: pulumi.Input<inputs.storage.GetAccountSASServices>;
+    /**
+     * Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
+     */
+    signedVersion?: pulumi.Input<string>;
+    /**
+     * The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+     */
+    start: pulumi.Input<string>;
 }

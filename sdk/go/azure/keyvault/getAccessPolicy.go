@@ -4,6 +4,9 @@
 package keyvault
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,109 @@ type LookupAccessPolicyResult struct {
 	Name           string   `pulumi:"name"`
 	// the secret permissions for the access policy
 	SecretPermissions []string `pulumi:"secretPermissions"`
+}
+
+func LookupAccessPolicyApply(ctx *pulumi.Context, args LookupAccessPolicyApplyInput, opts ...pulumi.InvokeOption) LookupAccessPolicyResultOutput {
+	return args.ToLookupAccessPolicyApplyOutput().ApplyT(func(v LookupAccessPolicyArgs) (LookupAccessPolicyResult, error) {
+		r, err := LookupAccessPolicy(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAccessPolicyResultOutput)
+}
+
+// LookupAccessPolicyApplyInput is an input type that accepts LookupAccessPolicyApplyArgs and LookupAccessPolicyApplyOutput values.
+// You can construct a concrete instance of `LookupAccessPolicyApplyInput` via:
+//
+//          LookupAccessPolicyApplyArgs{...}
+type LookupAccessPolicyApplyInput interface {
+	pulumi.Input
+
+	ToLookupAccessPolicyApplyOutput() LookupAccessPolicyApplyOutput
+	ToLookupAccessPolicyApplyOutputWithContext(context.Context) LookupAccessPolicyApplyOutput
+}
+
+// A collection of arguments for invoking getAccessPolicy.
+type LookupAccessPolicyApplyArgs struct {
+	// Specifies the name of the Management Template. Possible values are: `Key Management`,
+	// `Secret Management`, `Certificate Management`, `Key & Secret Management`, `Key & Certificate Management`,
+	// `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupAccessPolicyApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessPolicyArgs)(nil)).Elem()
+}
+
+func (i LookupAccessPolicyApplyArgs) ToLookupAccessPolicyApplyOutput() LookupAccessPolicyApplyOutput {
+	return i.ToLookupAccessPolicyApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAccessPolicyApplyArgs) ToLookupAccessPolicyApplyOutputWithContext(ctx context.Context) LookupAccessPolicyApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAccessPolicyApplyOutput)
+}
+
+// A collection of arguments for invoking getAccessPolicy.
+type LookupAccessPolicyApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAccessPolicyApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessPolicyArgs)(nil)).Elem()
+}
+
+func (o LookupAccessPolicyApplyOutput) ToLookupAccessPolicyApplyOutput() LookupAccessPolicyApplyOutput {
+	return o
+}
+
+func (o LookupAccessPolicyApplyOutput) ToLookupAccessPolicyApplyOutputWithContext(ctx context.Context) LookupAccessPolicyApplyOutput {
+	return o
+}
+
+// Specifies the name of the Management Template. Possible values are: `Key Management`,
+// `Secret Management`, `Certificate Management`, `Key & Secret Management`, `Key & Certificate Management`,
+// `Secret & Certificate Management`,  `Key, Secret, & Certificate Management`
+func (o LookupAccessPolicyApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAccessPolicy.
+type LookupAccessPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccessPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccessPolicyResult)(nil)).Elem()
+}
+
+func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() LookupAccessPolicyResultOutput {
+	return o
+}
+
+func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
+	return o
+}
+
+// the certificate permissions for the access policy
+func (o LookupAccessPolicyResultOutput) CertificatePermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) []string { return v.CertificatePermissions }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccessPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// the key permissions for the access policy
+func (o LookupAccessPolicyResultOutput) KeyPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) []string { return v.KeyPermissions }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupAccessPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the secret permissions for the access policy
+func (o LookupAccessPolicyResultOutput) SecretPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) []string { return v.SecretPermissions }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccessPolicyApplyOutput{})
+	pulumi.RegisterOutputType(LookupAccessPolicyResultOutput{})
 }

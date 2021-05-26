@@ -4,6 +4,9 @@
 package iot
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,112 @@ type GetIotHubResult struct {
 	Name              string            `pulumi:"name"`
 	ResourceGroupName string            `pulumi:"resourceGroupName"`
 	Tags              map[string]string `pulumi:"tags"`
+}
+
+func GetIotHubApply(ctx *pulumi.Context, args GetIotHubApplyInput, opts ...pulumi.InvokeOption) GetIotHubResultOutput {
+	return args.ToGetIotHubApplyOutput().ApplyT(func(v GetIotHubArgs) (GetIotHubResult, error) {
+		r, err := GetIotHub(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetIotHubResultOutput)
+}
+
+// GetIotHubApplyInput is an input type that accepts GetIotHubApplyArgs and GetIotHubApplyOutput values.
+// You can construct a concrete instance of `GetIotHubApplyInput` via:
+//
+//          GetIotHubApplyArgs{...}
+type GetIotHubApplyInput interface {
+	pulumi.Input
+
+	ToGetIotHubApplyOutput() GetIotHubApplyOutput
+	ToGetIotHubApplyOutputWithContext(context.Context) GetIotHubApplyOutput
+}
+
+// A collection of arguments for invoking getIotHub.
+type GetIotHubApplyArgs struct {
+	// The name of this IoTHub.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the IoTHub exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// A mapping of tags which should be assigned to the IoTHub.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetIotHubApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIotHubArgs)(nil)).Elem()
+}
+
+func (i GetIotHubApplyArgs) ToGetIotHubApplyOutput() GetIotHubApplyOutput {
+	return i.ToGetIotHubApplyOutputWithContext(context.Background())
+}
+
+func (i GetIotHubApplyArgs) ToGetIotHubApplyOutputWithContext(ctx context.Context) GetIotHubApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIotHubApplyOutput)
+}
+
+// A collection of arguments for invoking getIotHub.
+type GetIotHubApplyOutput struct{ *pulumi.OutputState }
+
+func (GetIotHubApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIotHubArgs)(nil)).Elem()
+}
+
+func (o GetIotHubApplyOutput) ToGetIotHubApplyOutput() GetIotHubApplyOutput {
+	return o
+}
+
+func (o GetIotHubApplyOutput) ToGetIotHubApplyOutputWithContext(ctx context.Context) GetIotHubApplyOutput {
+	return o
+}
+
+// The name of this IoTHub.
+func (o GetIotHubApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIotHubArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the IoTHub exists.
+func (o GetIotHubApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIotHubArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags which should be assigned to the IoTHub.
+func (o GetIotHubApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIotHubArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getIotHub.
+type GetIotHubResultOutput struct{ *pulumi.OutputState }
+
+func (GetIotHubResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIotHubResult)(nil)).Elem()
+}
+
+func (o GetIotHubResultOutput) ToGetIotHubResultOutput() GetIotHubResultOutput {
+	return o
+}
+
+func (o GetIotHubResultOutput) ToGetIotHubResultOutputWithContext(ctx context.Context) GetIotHubResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIotHubResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIotHubResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIotHubResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIotHubResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetIotHubResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIotHubResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetIotHubResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIotHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIotHubApplyOutput{})
+	pulumi.RegisterOutputType(GetIotHubResultOutput{})
 }

@@ -42,11 +42,11 @@ export interface GetRegistryArgs {
     /**
      * The name of the Container Registry.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where this Container Registry exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -91,4 +91,22 @@ export interface GetRegistryResult {
      * A map of tags assigned to the Container Registry.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getRegistryApply(args: GetRegistryApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
+    return pulumi.output(args).apply(a => getRegistry(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistry.
+ */
+export interface GetRegistryApplyArgs {
+    /**
+     * The name of the Container Registry.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where this Container Registry exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

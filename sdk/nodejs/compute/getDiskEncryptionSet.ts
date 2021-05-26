@@ -29,11 +29,11 @@ export interface GetDiskEncryptionSetArgs {
     /**
      * The name of the Disk Encryption Set exists.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Disk Encryption Set exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -54,4 +54,22 @@ export interface GetDiskEncryptionSetResult {
      * A mapping of tags assigned to the Disk Encryption Set.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getDiskEncryptionSetApply(args: GetDiskEncryptionSetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskEncryptionSetResult> {
+    return pulumi.output(args).apply(a => getDiskEncryptionSet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDiskEncryptionSet.
+ */
+export interface GetDiskEncryptionSetApplyArgs {
+    /**
+     * The name of the Disk Encryption Set exists.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Disk Encryption Set exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,95 @@ type GetPolicyResult struct {
 	// A `rule` block as documented below.
 	Rules            []GetPolicyRule `pulumi:"rules"`
 	StorageAccountId string          `pulumi:"storageAccountId"`
+}
+
+func GetPolicyApply(ctx *pulumi.Context, args GetPolicyApplyInput, opts ...pulumi.InvokeOption) GetPolicyResultOutput {
+	return args.ToGetPolicyApplyOutput().ApplyT(func(v GetPolicyArgs) (GetPolicyResult, error) {
+		r, err := GetPolicy(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetPolicyResultOutput)
+}
+
+// GetPolicyApplyInput is an input type that accepts GetPolicyApplyArgs and GetPolicyApplyOutput values.
+// You can construct a concrete instance of `GetPolicyApplyInput` via:
+//
+//          GetPolicyApplyArgs{...}
+type GetPolicyApplyInput interface {
+	pulumi.Input
+
+	ToGetPolicyApplyOutput() GetPolicyApplyOutput
+	ToGetPolicyApplyOutputWithContext(context.Context) GetPolicyApplyOutput
+}
+
+// A collection of arguments for invoking getPolicy.
+type GetPolicyApplyArgs struct {
+	// Specifies the id of the storage account to retrieve the management policy for.
+	StorageAccountId pulumi.StringInput `pulumi:"storageAccountId"`
+}
+
+func (GetPolicyApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyArgs)(nil)).Elem()
+}
+
+func (i GetPolicyApplyArgs) ToGetPolicyApplyOutput() GetPolicyApplyOutput {
+	return i.ToGetPolicyApplyOutputWithContext(context.Background())
+}
+
+func (i GetPolicyApplyArgs) ToGetPolicyApplyOutputWithContext(ctx context.Context) GetPolicyApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyApplyOutput)
+}
+
+// A collection of arguments for invoking getPolicy.
+type GetPolicyApplyOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyArgs)(nil)).Elem()
+}
+
+func (o GetPolicyApplyOutput) ToGetPolicyApplyOutput() GetPolicyApplyOutput {
+	return o
+}
+
+func (o GetPolicyApplyOutput) ToGetPolicyApplyOutputWithContext(ctx context.Context) GetPolicyApplyOutput {
+	return o
+}
+
+// Specifies the id of the storage account to retrieve the management policy for.
+func (o GetPolicyApplyOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyArgs) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getPolicy.
+type GetPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyResult)(nil)).Elem()
+}
+
+func (o GetPolicyResultOutput) ToGetPolicyResultOutput() GetPolicyResultOutput {
+	return o
+}
+
+func (o GetPolicyResultOutput) ToGetPolicyResultOutputWithContext(ctx context.Context) GetPolicyResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A `rule` block as documented below.
+func (o GetPolicyResultOutput) Rules() GetPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GetPolicyResult) []GetPolicyRule { return v.Rules }).(GetPolicyRuleArrayOutput)
+}
+
+func (o GetPolicyResultOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyResult) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPolicyApplyOutput{})
+	pulumi.RegisterOutputType(GetPolicyResultOutput{})
 }

@@ -45,17 +45,17 @@ export interface GetManagementGroupArgs {
     /**
      * Specifies the display name of this Management Group.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * Specifies the name or UUID of this Management Group.
      *
      * @deprecated Deprecated in favour of `name`
      */
-    readonly groupId?: string;
+    groupId?: string;
     /**
      * Specifies the name or UUID of this Management Group.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -80,4 +80,28 @@ export interface GetManagementGroupResult {
      * A list of Subscription IDs which are assigned to the Management Group.
      */
     readonly subscriptionIds: string[];
+}
+
+export function getManagementGroupApply(args?: GetManagementGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementGroupResult> {
+    return pulumi.output(args).apply(a => getManagementGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getManagementGroup.
+ */
+export interface GetManagementGroupApplyArgs {
+    /**
+     * Specifies the display name of this Management Group.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Specifies the name or UUID of this Management Group.
+     *
+     * @deprecated Deprecated in favour of `name`
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Specifies the name or UUID of this Management Group.
+     */
+    name?: pulumi.Input<string>;
 }

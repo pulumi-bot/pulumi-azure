@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Core
         /// </summary>
         public static Task<GetTemplateSpecVersionResult> InvokeAsync(GetTemplateSpecVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTemplateSpecVersionResult>("azure:core/getTemplateSpecVersion:getTemplateSpecVersion", args ?? new GetTemplateSpecVersionArgs(), options.WithVersion());
+
+        public static Output<GetTemplateSpecVersionResult> Apply(GetTemplateSpecVersionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetTemplateSpecVersionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Core
         public string Version { get; set; } = null!;
 
         public GetTemplateSpecVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetTemplateSpecVersionApplyArgs
+    {
+        /// <summary>
+        /// The name of this Template Spec.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Template Spec exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The Version Name of the Template Spec.
+        /// </summary>
+        [Input("version", required: true)]
+        public Input<string> Version { get; set; } = null!;
+
+        public GetTemplateSpecVersionApplyArgs()
         {
         }
     }

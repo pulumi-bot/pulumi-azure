@@ -39,7 +39,7 @@ export interface GetSubscriptionArgs {
     /**
      * Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
      */
-    readonly subscriptionId?: string;
+    subscriptionId?: string;
 }
 
 /**
@@ -82,4 +82,18 @@ export interface GetSubscriptionResult {
      * The subscription tenant ID.
      */
     readonly tenantId: string;
+}
+
+export function getSubscriptionApply(args?: GetSubscriptionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
+    return pulumi.output(args).apply(a => getSubscription(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubscription.
+ */
+export interface GetSubscriptionApplyArgs {
+    /**
+     * Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
+     */
+    subscriptionId?: pulumi.Input<string>;
 }

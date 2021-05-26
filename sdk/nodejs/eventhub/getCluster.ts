@@ -42,11 +42,11 @@ export interface GetClusterArgs {
     /**
      * The name of this EventHub Cluster.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the EventHub Cluster exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -67,4 +67,22 @@ export interface GetClusterResult {
      * SKU name of the EventHub Cluster.
      */
     readonly skuName: string;
+}
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * The name of this EventHub Cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the EventHub Cluster exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

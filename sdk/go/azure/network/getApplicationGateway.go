@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupApplicationGatewayResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Application Gateway.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupApplicationGatewayApply(ctx *pulumi.Context, args LookupApplicationGatewayApplyInput, opts ...pulumi.InvokeOption) LookupApplicationGatewayResultOutput {
+	return args.ToLookupApplicationGatewayApplyOutput().ApplyT(func(v LookupApplicationGatewayArgs) (LookupApplicationGatewayResult, error) {
+		r, err := LookupApplicationGateway(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupApplicationGatewayResultOutput)
+}
+
+// LookupApplicationGatewayApplyInput is an input type that accepts LookupApplicationGatewayApplyArgs and LookupApplicationGatewayApplyOutput values.
+// You can construct a concrete instance of `LookupApplicationGatewayApplyInput` via:
+//
+//          LookupApplicationGatewayApplyArgs{...}
+type LookupApplicationGatewayApplyInput interface {
+	pulumi.Input
+
+	ToLookupApplicationGatewayApplyOutput() LookupApplicationGatewayApplyOutput
+	ToLookupApplicationGatewayApplyOutputWithContext(context.Context) LookupApplicationGatewayApplyOutput
+}
+
+// A collection of arguments for invoking getApplicationGateway.
+type LookupApplicationGatewayApplyArgs struct {
+	// The name of this Application Gateway.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Application Gateway exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupApplicationGatewayApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApplicationGatewayArgs)(nil)).Elem()
+}
+
+func (i LookupApplicationGatewayApplyArgs) ToLookupApplicationGatewayApplyOutput() LookupApplicationGatewayApplyOutput {
+	return i.ToLookupApplicationGatewayApplyOutputWithContext(context.Background())
+}
+
+func (i LookupApplicationGatewayApplyArgs) ToLookupApplicationGatewayApplyOutputWithContext(ctx context.Context) LookupApplicationGatewayApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupApplicationGatewayApplyOutput)
+}
+
+// A collection of arguments for invoking getApplicationGateway.
+type LookupApplicationGatewayApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupApplicationGatewayApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApplicationGatewayArgs)(nil)).Elem()
+}
+
+func (o LookupApplicationGatewayApplyOutput) ToLookupApplicationGatewayApplyOutput() LookupApplicationGatewayApplyOutput {
+	return o
+}
+
+func (o LookupApplicationGatewayApplyOutput) ToLookupApplicationGatewayApplyOutputWithContext(ctx context.Context) LookupApplicationGatewayApplyOutput {
+	return o
+}
+
+// The name of this Application Gateway.
+func (o LookupApplicationGatewayApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Application Gateway exists.
+func (o LookupApplicationGatewayApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getApplicationGateway.
+type LookupApplicationGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupApplicationGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApplicationGatewayResult)(nil)).Elem()
+}
+
+func (o LookupApplicationGatewayResultOutput) ToLookupApplicationGatewayResultOutput() LookupApplicationGatewayResultOutput {
+	return o
+}
+
+func (o LookupApplicationGatewayResultOutput) ToLookupApplicationGatewayResultOutputWithContext(ctx context.Context) LookupApplicationGatewayResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupApplicationGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A `identity` block as defined below.
+func (o LookupApplicationGatewayResultOutput) Identities() GetApplicationGatewayIdentityArrayOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) []GetApplicationGatewayIdentity { return v.Identities }).(GetApplicationGatewayIdentityArrayOutput)
+}
+
+// The Azure Region where the Application Gateway exists.
+func (o LookupApplicationGatewayResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupApplicationGatewayResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupApplicationGatewayResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Application Gateway.
+func (o LookupApplicationGatewayResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupApplicationGatewayApplyOutput{})
+	pulumi.RegisterOutputType(LookupApplicationGatewayResultOutput{})
 }

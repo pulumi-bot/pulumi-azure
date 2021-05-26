@@ -4,6 +4,9 @@
 package recoveryservices
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,116 @@ type LookupVaultResult struct {
 	Sku string `pulumi:"sku"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupVaultApply(ctx *pulumi.Context, args LookupVaultApplyInput, opts ...pulumi.InvokeOption) LookupVaultResultOutput {
+	return args.ToLookupVaultApplyOutput().ApplyT(func(v LookupVaultArgs) (LookupVaultResult, error) {
+		r, err := LookupVault(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupVaultResultOutput)
+}
+
+// LookupVaultApplyInput is an input type that accepts LookupVaultApplyArgs and LookupVaultApplyOutput values.
+// You can construct a concrete instance of `LookupVaultApplyInput` via:
+//
+//          LookupVaultApplyArgs{...}
+type LookupVaultApplyInput interface {
+	pulumi.Input
+
+	ToLookupVaultApplyOutput() LookupVaultApplyOutput
+	ToLookupVaultApplyOutputWithContext(context.Context) LookupVaultApplyOutput
+}
+
+// A collection of arguments for invoking getVault.
+type LookupVaultApplyArgs struct {
+	// Specifies the name of the Recovery Services Vault.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group in which the Recovery Services Vault resides.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupVaultApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVaultArgs)(nil)).Elem()
+}
+
+func (i LookupVaultApplyArgs) ToLookupVaultApplyOutput() LookupVaultApplyOutput {
+	return i.ToLookupVaultApplyOutputWithContext(context.Background())
+}
+
+func (i LookupVaultApplyArgs) ToLookupVaultApplyOutputWithContext(ctx context.Context) LookupVaultApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupVaultApplyOutput)
+}
+
+// A collection of arguments for invoking getVault.
+type LookupVaultApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupVaultApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVaultArgs)(nil)).Elem()
+}
+
+func (o LookupVaultApplyOutput) ToLookupVaultApplyOutput() LookupVaultApplyOutput {
+	return o
+}
+
+func (o LookupVaultApplyOutput) ToLookupVaultApplyOutputWithContext(ctx context.Context) LookupVaultApplyOutput {
+	return o
+}
+
+// Specifies the name of the Recovery Services Vault.
+func (o LookupVaultApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the Recovery Services Vault resides.
+func (o LookupVaultApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getVault.
+type LookupVaultResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVaultResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVaultResult)(nil)).Elem()
+}
+
+func (o LookupVaultResultOutput) ToLookupVaultResultOutput() LookupVaultResultOutput {
+	return o
+}
+
+func (o LookupVaultResultOutput) ToLookupVaultResultOutputWithContext(ctx context.Context) LookupVaultResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVaultResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the resource resides.
+func (o LookupVaultResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupVaultResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVaultResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The vault's current SKU.
+func (o LookupVaultResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupVaultResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVaultResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVaultApplyOutput{})
+	pulumi.RegisterOutputType(LookupVaultResultOutput{})
 }

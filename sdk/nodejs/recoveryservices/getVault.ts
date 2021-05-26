@@ -41,11 +41,11 @@ export interface GetVaultArgs {
     /**
      * Specifies the name of the Recovery Services Vault.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the Recovery Services Vault resides.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -70,4 +70,22 @@ export interface GetVaultResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getVaultApply(args: GetVaultApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultResult> {
+    return pulumi.output(args).apply(a => getVault(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVault.
+ */
+export interface GetVaultApplyArgs {
+    /**
+     * Specifies the name of the Recovery Services Vault.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the Recovery Services Vault resides.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

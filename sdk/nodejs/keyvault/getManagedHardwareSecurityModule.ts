@@ -42,11 +42,11 @@ export interface GetManagedHardwareSecurityModuleArgs {
     /**
      * The name of the Key Vault Managed Hardware Security Module.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -91,4 +91,22 @@ export interface GetManagedHardwareSecurityModuleResult {
      * The Azure Active Directory Tenant ID used for authenticating requests to the Key Vault Managed Hardware Security Module.
      */
     readonly tenantId: string;
+}
+
+export function getManagedHardwareSecurityModuleApply(args: GetManagedHardwareSecurityModuleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedHardwareSecurityModuleResult> {
+    return pulumi.output(args).apply(a => getManagedHardwareSecurityModule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getManagedHardwareSecurityModule.
+ */
+export interface GetManagedHardwareSecurityModuleApplyArgs {
+    /**
+     * The name of the Key Vault Managed Hardware Security Module.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

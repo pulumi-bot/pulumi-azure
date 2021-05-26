@@ -136,6 +136,23 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetPublicIPResult> InvokeAsync(GetPublicIPArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicIPResult>("azure:network/getPublicIP:getPublicIP", args ?? new GetPublicIPArgs(), options.WithVersion());
+
+        public static Output<GetPublicIPResult> Apply(GetPublicIPApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Tags.ToDict().Box(),
+                args.Zones.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetPublicIPArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Tags));
+                    a[3].Set(args, nameof(args.Zones));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -174,6 +191,45 @@ namespace Pulumi.Azure.Network
         }
 
         public GetPublicIPArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublicIPApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the public IP address.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assigned to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetPublicIPApplyArgs()
         {
         }
     }

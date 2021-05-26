@@ -4,6 +4,9 @@
 package eventhub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,122 @@ type LookupEventHubResult struct {
 	// The identifiers for the partitions of this EventHub.
 	PartitionIds      []string `pulumi:"partitionIds"`
 	ResourceGroupName string   `pulumi:"resourceGroupName"`
+}
+
+func LookupEventHubApply(ctx *pulumi.Context, args LookupEventHubApplyInput, opts ...pulumi.InvokeOption) LookupEventHubResultOutput {
+	return args.ToLookupEventHubApplyOutput().ApplyT(func(v LookupEventHubArgs) (LookupEventHubResult, error) {
+		r, err := LookupEventHub(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupEventHubResultOutput)
+}
+
+// LookupEventHubApplyInput is an input type that accepts LookupEventHubApplyArgs and LookupEventHubApplyOutput values.
+// You can construct a concrete instance of `LookupEventHubApplyInput` via:
+//
+//          LookupEventHubApplyArgs{...}
+type LookupEventHubApplyInput interface {
+	pulumi.Input
+
+	ToLookupEventHubApplyOutput() LookupEventHubApplyOutput
+	ToLookupEventHubApplyOutputWithContext(context.Context) LookupEventHubApplyOutput
+}
+
+// A collection of arguments for invoking getEventHub.
+type LookupEventHubApplyArgs struct {
+	// The name of this EventHub.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the EventHub Namespace where the EventHub exists.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the Resource Group where the EventHub exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupEventHubApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEventHubArgs)(nil)).Elem()
+}
+
+func (i LookupEventHubApplyArgs) ToLookupEventHubApplyOutput() LookupEventHubApplyOutput {
+	return i.ToLookupEventHubApplyOutputWithContext(context.Background())
+}
+
+func (i LookupEventHubApplyArgs) ToLookupEventHubApplyOutputWithContext(ctx context.Context) LookupEventHubApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupEventHubApplyOutput)
+}
+
+// A collection of arguments for invoking getEventHub.
+type LookupEventHubApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupEventHubApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEventHubArgs)(nil)).Elem()
+}
+
+func (o LookupEventHubApplyOutput) ToLookupEventHubApplyOutput() LookupEventHubApplyOutput {
+	return o
+}
+
+func (o LookupEventHubApplyOutput) ToLookupEventHubApplyOutputWithContext(ctx context.Context) LookupEventHubApplyOutput {
+	return o
+}
+
+// The name of this EventHub.
+func (o LookupEventHubApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the EventHub Namespace where the EventHub exists.
+func (o LookupEventHubApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the EventHub exists.
+func (o LookupEventHubApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getEventHub.
+type LookupEventHubResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEventHubResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEventHubResult)(nil)).Elem()
+}
+
+func (o LookupEventHubResultOutput) ToLookupEventHubResultOutput() LookupEventHubResultOutput {
+	return o
+}
+
+func (o LookupEventHubResultOutput) ToLookupEventHubResultOutputWithContext(ctx context.Context) LookupEventHubResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupEventHubResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupEventHubResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupEventHubResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The number of partitions in the EventHub.
+func (o LookupEventHubResultOutput) PartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupEventHubResult) int { return v.PartitionCount }).(pulumi.IntOutput)
+}
+
+// The identifiers for the partitions of this EventHub.
+func (o LookupEventHubResultOutput) PartitionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupEventHubResult) []string { return v.PartitionIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupEventHubResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEventHubApplyOutput{})
+	pulumi.RegisterOutputType(LookupEventHubResultOutput{})
 }

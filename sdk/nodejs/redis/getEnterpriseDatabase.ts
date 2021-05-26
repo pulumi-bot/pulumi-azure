@@ -45,15 +45,15 @@ export interface GetEnterpriseDatabaseArgs {
     /**
      * The resource ID of Redis Enterprise Cluster which hosts the Redis Enterprise Database instance.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The name of the Redis Enterprise Database.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group the Redis Enterprise Database instance is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -81,4 +81,26 @@ export interface GetEnterpriseDatabaseResult {
      * The Secondary Access Key for the Redis Enterprise Database instance.
      */
     readonly secondaryAccessKey: string;
+}
+
+export function getEnterpriseDatabaseApply(args: GetEnterpriseDatabaseApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseDatabaseResult> {
+    return pulumi.output(args).apply(a => getEnterpriseDatabase(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnterpriseDatabase.
+ */
+export interface GetEnterpriseDatabaseApplyArgs {
+    /**
+     * The resource ID of Redis Enterprise Cluster which hosts the Redis Enterprise Database instance.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the Redis Enterprise Database.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group the Redis Enterprise Database instance is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

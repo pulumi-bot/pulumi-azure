@@ -52,6 +52,19 @@ namespace Pulumi.Azure.Lb
         /// </summary>
         public static Task<GetBackendAddressPoolResult> InvokeAsync(GetBackendAddressPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendAddressPoolResult>("azure:lb/getBackendAddressPool:getBackendAddressPool", args ?? new GetBackendAddressPoolArgs(), options.WithVersion());
+
+        public static Output<GetBackendAddressPoolResult> Apply(GetBackendAddressPoolApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.LoadbalancerId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetBackendAddressPoolArgs();
+                    a[0].Set(args, nameof(args.LoadbalancerId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +83,25 @@ namespace Pulumi.Azure.Lb
         public string Name { get; set; } = null!;
 
         public GetBackendAddressPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackendAddressPoolApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Load Balancer in which the Backend Address Pool exists.
+        /// </summary>
+        [Input("loadbalancerId", required: true)]
+        public Input<string> LoadbalancerId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Backend Address Pool.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetBackendAddressPoolApplyArgs()
         {
         }
     }

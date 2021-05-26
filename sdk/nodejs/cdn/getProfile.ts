@@ -42,11 +42,11 @@ export interface GetProfileArgs {
     /**
      * The name of the CDN Profile.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the resource group in which the CDN Profile exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetProfileResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getProfileApply(args: GetProfileApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProfileResult> {
+    return pulumi.output(args).apply(a => getProfile(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProfile.
+ */
+export interface GetProfileApplyArgs {
+    /**
+     * The name of the CDN Profile.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the CDN Profile exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

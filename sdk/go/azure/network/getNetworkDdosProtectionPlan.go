@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,123 @@ type GetNetworkDdosProtectionPlanResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A list of ID's of the Virtual Networks associated with this DDoS Protection Plan.
 	VirtualNetworkIds []string `pulumi:"virtualNetworkIds"`
+}
+
+func GetNetworkDdosProtectionPlanApply(ctx *pulumi.Context, args GetNetworkDdosProtectionPlanApplyInput, opts ...pulumi.InvokeOption) GetNetworkDdosProtectionPlanResultOutput {
+	return args.ToGetNetworkDdosProtectionPlanApplyOutput().ApplyT(func(v GetNetworkDdosProtectionPlanArgs) (GetNetworkDdosProtectionPlanResult, error) {
+		r, err := GetNetworkDdosProtectionPlan(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetNetworkDdosProtectionPlanResultOutput)
+}
+
+// GetNetworkDdosProtectionPlanApplyInput is an input type that accepts GetNetworkDdosProtectionPlanApplyArgs and GetNetworkDdosProtectionPlanApplyOutput values.
+// You can construct a concrete instance of `GetNetworkDdosProtectionPlanApplyInput` via:
+//
+//          GetNetworkDdosProtectionPlanApplyArgs{...}
+type GetNetworkDdosProtectionPlanApplyInput interface {
+	pulumi.Input
+
+	ToGetNetworkDdosProtectionPlanApplyOutput() GetNetworkDdosProtectionPlanApplyOutput
+	ToGetNetworkDdosProtectionPlanApplyOutputWithContext(context.Context) GetNetworkDdosProtectionPlanApplyOutput
+}
+
+// A collection of arguments for invoking getNetworkDdosProtectionPlan.
+type GetNetworkDdosProtectionPlanApplyArgs struct {
+	// The name of the Network DDoS Protection Plan.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group where the Network DDoS Protection Plan exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// A mapping of tags assigned to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetNetworkDdosProtectionPlanApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkDdosProtectionPlanArgs)(nil)).Elem()
+}
+
+func (i GetNetworkDdosProtectionPlanApplyArgs) ToGetNetworkDdosProtectionPlanApplyOutput() GetNetworkDdosProtectionPlanApplyOutput {
+	return i.ToGetNetworkDdosProtectionPlanApplyOutputWithContext(context.Background())
+}
+
+func (i GetNetworkDdosProtectionPlanApplyArgs) ToGetNetworkDdosProtectionPlanApplyOutputWithContext(ctx context.Context) GetNetworkDdosProtectionPlanApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkDdosProtectionPlanApplyOutput)
+}
+
+// A collection of arguments for invoking getNetworkDdosProtectionPlan.
+type GetNetworkDdosProtectionPlanApplyOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkDdosProtectionPlanApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkDdosProtectionPlanArgs)(nil)).Elem()
+}
+
+func (o GetNetworkDdosProtectionPlanApplyOutput) ToGetNetworkDdosProtectionPlanApplyOutput() GetNetworkDdosProtectionPlanApplyOutput {
+	return o
+}
+
+func (o GetNetworkDdosProtectionPlanApplyOutput) ToGetNetworkDdosProtectionPlanApplyOutputWithContext(ctx context.Context) GetNetworkDdosProtectionPlanApplyOutput {
+	return o
+}
+
+// The name of the Network DDoS Protection Plan.
+func (o GetNetworkDdosProtectionPlanApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group where the Network DDoS Protection Plan exists.
+func (o GetNetworkDdosProtectionPlanApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetNetworkDdosProtectionPlanApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getNetworkDdosProtectionPlan.
+type GetNetworkDdosProtectionPlanResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkDdosProtectionPlanResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkDdosProtectionPlanResult)(nil)).Elem()
+}
+
+func (o GetNetworkDdosProtectionPlanResultOutput) ToGetNetworkDdosProtectionPlanResultOutput() GetNetworkDdosProtectionPlanResultOutput {
+	return o
+}
+
+func (o GetNetworkDdosProtectionPlanResultOutput) ToGetNetworkDdosProtectionPlanResultOutputWithContext(ctx context.Context) GetNetworkDdosProtectionPlanResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkDdosProtectionPlanResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the supported Azure location where the resource exists.
+func (o GetNetworkDdosProtectionPlanResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkDdosProtectionPlanResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkDdosProtectionPlanResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetNetworkDdosProtectionPlanResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A list of ID's of the Virtual Networks associated with this DDoS Protection Plan.
+func (o GetNetworkDdosProtectionPlanResultOutput) VirtualNetworkIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkDdosProtectionPlanResult) []string { return v.VirtualNetworkIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkDdosProtectionPlanApplyOutput{})
+	pulumi.RegisterOutputType(GetNetworkDdosProtectionPlanResultOutput{})
 }

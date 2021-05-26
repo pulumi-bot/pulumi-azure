@@ -42,11 +42,11 @@ export interface GetDefinitionArgs {
     /**
      * Specifies the name of the Managed Application Definition.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Resource Group where this Managed Application Definition exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -60,4 +60,22 @@ export interface GetDefinitionResult {
     readonly location: string;
     readonly name: string;
     readonly resourceGroupName: string;
+}
+
+export function getDefinitionApply(args: GetDefinitionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefinitionResult> {
+    return pulumi.output(args).apply(a => getDefinition(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDefinition.
+ */
+export interface GetDefinitionApplyArgs {
+    /**
+     * Specifies the name of the Managed Application Definition.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where this Managed Application Definition exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

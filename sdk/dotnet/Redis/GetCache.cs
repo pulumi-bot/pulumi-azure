@@ -46,6 +46,21 @@ namespace Pulumi.Azure.Redis
         /// </summary>
         public static Task<GetCacheResult> InvokeAsync(GetCacheArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCacheResult>("azure:redis/getCache:getCache", args ?? new GetCacheArgs(), options.WithVersion());
+
+        public static Output<GetCacheResult> Apply(GetCacheApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Zones.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetCacheArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Zones));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +87,33 @@ namespace Pulumi.Azure.Redis
         }
 
         public GetCacheArgs()
+        {
+        }
+    }
+
+    public sealed class GetCacheApplyArgs
+    {
+        /// <summary>
+        /// The name of the Redis cache
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group the Redis cache instance is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetCacheApplyArgs()
         {
         }
     }

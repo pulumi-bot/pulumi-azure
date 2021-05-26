@@ -42,6 +42,23 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetSharedImageVersionResult> InvokeAsync(GetSharedImageVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSharedImageVersionResult>("azure:compute/getSharedImageVersion:getSharedImageVersion", args ?? new GetSharedImageVersionArgs(), options.WithVersion());
+
+        public static Output<GetSharedImageVersionResult> Apply(GetSharedImageVersionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.GalleryName.Box(),
+                args.ImageName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetSharedImageVersionArgs();
+                    a[0].Set(args, nameof(args.GalleryName));
+                    a[1].Set(args, nameof(args.ImageName));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +89,37 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetSharedImageVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSharedImageVersionApplyArgs
+    {
+        /// <summary>
+        /// The name of the Shared Image Gallery in which the Shared Image exists.
+        /// </summary>
+        [Input("galleryName", required: true)]
+        public Input<string> GalleryName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Shared Image in which this Version exists.
+        /// </summary>
+        [Input("imageName", required: true)]
+        public Input<string> ImageName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Image Version.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Shared Image Gallery exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetSharedImageVersionApplyArgs()
         {
         }
     }

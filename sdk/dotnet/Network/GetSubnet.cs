@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("azure:network/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
+
+        public static Output<GetSubnetResult> Apply(GetSubnetApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.VirtualNetworkName.Box()
+            ).Apply(a => {
+                    var args = new GetSubnetArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.VirtualNetworkName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Network
         public string VirtualNetworkName { get; set; } = null!;
 
         public GetSubnetArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Subnet.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Virtual Network is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Virtual Network this Subnet is located within.
+        /// </summary>
+        [Input("virtualNetworkName", required: true)]
+        public Input<string> VirtualNetworkName { get; set; } = null!;
+
+        public GetSubnetApplyArgs()
         {
         }
     }

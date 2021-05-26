@@ -48,6 +48,19 @@ namespace Pulumi.Azure.DataShare
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("azure:datashare/getShare:getShare", args ?? new GetShareArgs(), options.WithVersion());
+
+        public static Output<GetShareResult> Apply(GetShareApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccountId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetShareArgs();
+                    a[0].Set(args, nameof(args.AccountId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,25 @@ namespace Pulumi.Azure.DataShare
         public string Name { get; set; } = null!;
 
         public GetShareArgs()
+        {
+        }
+    }
+
+    public sealed class GetShareApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Data Share account in which the Data Share is created.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this Data Share.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetShareApplyArgs()
         {
         }
     }

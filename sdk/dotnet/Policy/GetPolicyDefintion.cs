@@ -42,6 +42,24 @@ namespace Pulumi.Azure.Policy
         /// </summary>
         public static Task<GetPolicyDefintionResult> InvokeAsync(GetPolicyDefintionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyDefintionResult>("azure:policy/getPolicyDefintion:getPolicyDefintion", args ?? new GetPolicyDefintionArgs(), options.WithVersion());
+
+        public static Output<GetPolicyDefintionResult> Apply(GetPolicyDefintionApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetPolicyDefintionApplyArgs();
+            return Pulumi.Output.All(
+                args.DisplayName.Box(),
+                args.ManagementGroupId.Box(),
+                args.ManagementGroupName.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetPolicyDefintionArgs();
+                    a[0].Set(args, nameof(args.DisplayName));
+                    a[1].Set(args, nameof(args.ManagementGroupId));
+                    a[2].Set(args, nameof(args.ManagementGroupName));
+                    a[3].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +87,34 @@ namespace Pulumi.Azure.Policy
         public string? Name { get; set; }
 
         public GetPolicyDefintionArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyDefintionApplyArgs
+    {
+        /// <summary>
+        /// Specifies the display name of the Policy Definition. Conflicts with `name`.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        [Input("managementGroupId")]
+        public Input<string>? ManagementGroupId { get; set; }
+
+        /// <summary>
+        /// Only retrieve Policy Definitions from this Management Group.
+        /// </summary>
+        [Input("managementGroupName")]
+        public Input<string>? ManagementGroupName { get; set; }
+
+        /// <summary>
+        /// Specifies the name of the Policy Definition. Conflicts with `display_name`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetPolicyDefintionApplyArgs()
         {
         }
     }

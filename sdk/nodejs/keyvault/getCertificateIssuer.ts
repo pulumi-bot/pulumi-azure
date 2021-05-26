@@ -46,11 +46,11 @@ export interface GetCertificateIssuerArgs {
     /**
      * The ID of the Key Vault in which to locate the Certificate Issuer.
      */
-    readonly keyVaultId: string;
+    keyVaultId: string;
     /**
      * The name of the Key Vault Certificate Issuer.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -79,4 +79,22 @@ export interface GetCertificateIssuerResult {
      * The name of the third-party Certificate Issuer.
      */
     readonly providerName: string;
+}
+
+export function getCertificateIssuerApply(args: GetCertificateIssuerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateIssuerResult> {
+    return pulumi.output(args).apply(a => getCertificateIssuer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificateIssuer.
+ */
+export interface GetCertificateIssuerApplyArgs {
+    /**
+     * The ID of the Key Vault in which to locate the Certificate Issuer.
+     */
+    keyVaultId: pulumi.Input<string>;
+    /**
+     * The name of the Key Vault Certificate Issuer.
+     */
+    name: pulumi.Input<string>;
 }

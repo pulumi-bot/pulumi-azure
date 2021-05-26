@@ -152,3 +152,10 @@ def get_share(account_id: Optional[str] = None,
         name=__ret__.name,
         snapshot_schedules=__ret__.snapshot_schedules,
         terms=__ret__.terms)
+
+
+@_utilities.lift_output_func(get_share)
+def get_share_apply(account_id: Optional[pulumi.Input[str]] = None,
+                    name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
+    ...

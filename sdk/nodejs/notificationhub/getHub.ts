@@ -44,15 +44,15 @@ export interface GetHubArgs {
     /**
      * Specifies the Name of the Notification Hub.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * Specifies the Name of the Resource Group within which the Notification Hub exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,26 @@ export interface GetHubResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getHubApply(args: GetHubApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHubResult> {
+    return pulumi.output(args).apply(a => getHub(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHub.
+ */
+export interface GetHubApplyArgs {
+    /**
+     * Specifies the Name of the Notification Hub.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * Specifies the Name of the Resource Group within which the Notification Hub exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

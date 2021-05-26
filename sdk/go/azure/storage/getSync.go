@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupSyncResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Storage Sync.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupSyncApply(ctx *pulumi.Context, args LookupSyncApplyInput, opts ...pulumi.InvokeOption) LookupSyncResultOutput {
+	return args.ToLookupSyncApplyOutput().ApplyT(func(v LookupSyncArgs) (LookupSyncResult, error) {
+		r, err := LookupSync(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSyncResultOutput)
+}
+
+// LookupSyncApplyInput is an input type that accepts LookupSyncApplyArgs and LookupSyncApplyOutput values.
+// You can construct a concrete instance of `LookupSyncApplyInput` via:
+//
+//          LookupSyncApplyArgs{...}
+type LookupSyncApplyInput interface {
+	pulumi.Input
+
+	ToLookupSyncApplyOutput() LookupSyncApplyOutput
+	ToLookupSyncApplyOutputWithContext(context.Context) LookupSyncApplyOutput
+}
+
+// A collection of arguments for invoking getSync.
+type LookupSyncApplyArgs struct {
+	// The name of this Storage Sync.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Storage Sync exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupSyncApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncArgs)(nil)).Elem()
+}
+
+func (i LookupSyncApplyArgs) ToLookupSyncApplyOutput() LookupSyncApplyOutput {
+	return i.ToLookupSyncApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSyncApplyArgs) ToLookupSyncApplyOutputWithContext(ctx context.Context) LookupSyncApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSyncApplyOutput)
+}
+
+// A collection of arguments for invoking getSync.
+type LookupSyncApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSyncApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncArgs)(nil)).Elem()
+}
+
+func (o LookupSyncApplyOutput) ToLookupSyncApplyOutput() LookupSyncApplyOutput {
+	return o
+}
+
+func (o LookupSyncApplyOutput) ToLookupSyncApplyOutputWithContext(ctx context.Context) LookupSyncApplyOutput {
+	return o
+}
+
+// The name of this Storage Sync.
+func (o LookupSyncApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Storage Sync exists.
+func (o LookupSyncApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSync.
+type LookupSyncResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSyncResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSyncResult)(nil)).Elem()
+}
+
+func (o LookupSyncResultOutput) ToLookupSyncResultOutput() LookupSyncResultOutput {
+	return o
+}
+
+func (o LookupSyncResultOutput) ToLookupSyncResultOutputWithContext(ctx context.Context) LookupSyncResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSyncResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Incoming traffic policy.
+func (o LookupSyncResultOutput) IncomingTrafficPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncResult) string { return v.IncomingTrafficPolicy }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the Storage Sync exists.
+func (o LookupSyncResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupSyncResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSyncResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Storage Sync.
+func (o LookupSyncResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSyncResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSyncApplyOutput{})
+	pulumi.RegisterOutputType(LookupSyncResultOutput{})
 }

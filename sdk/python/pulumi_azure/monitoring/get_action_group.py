@@ -254,3 +254,10 @@ def get_action_group(name: Optional[str] = None,
         sms_receivers=__ret__.sms_receivers,
         voice_receivers=__ret__.voice_receivers,
         webhook_receivers=__ret__.webhook_receivers)
+
+
+@_utilities.lift_output_func(get_action_group)
+def get_action_group_apply(name: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActionGroupResult]:
+    ...

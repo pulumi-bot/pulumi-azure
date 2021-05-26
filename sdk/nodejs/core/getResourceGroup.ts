@@ -40,7 +40,7 @@ export interface GetResourceGroupArgs {
     /**
      * The Name of this Resource Group.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -60,4 +60,18 @@ export interface GetResourceGroupResult {
      * A mapping of tags assigned to the Resource Group.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getResourceGroupApply(args: GetResourceGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupResult> {
+    return pulumi.output(args).apply(a => getResourceGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourceGroup.
+ */
+export interface GetResourceGroupApplyArgs {
+    /**
+     * The Name of this Resource Group.
+     */
+    name: pulumi.Input<string>;
 }

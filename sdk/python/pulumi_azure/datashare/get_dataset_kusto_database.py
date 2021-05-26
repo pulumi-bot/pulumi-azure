@@ -133,3 +133,10 @@ def get_dataset_kusto_database(name: Optional[str] = None,
         kusto_database_id=__ret__.kusto_database_id,
         name=__ret__.name,
         share_id=__ret__.share_id)
+
+
+@_utilities.lift_output_func(get_dataset_kusto_database)
+def get_dataset_kusto_database_apply(name: Optional[pulumi.Input[str]] = None,
+                                     share_id: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetKustoDatabaseResult]:
+    ...

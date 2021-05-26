@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Blueprint
         /// </summary>
         public static Task<GetPublishedVersionResult> InvokeAsync(GetPublishedVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublishedVersionResult>("azure:blueprint/getPublishedVersion:getPublishedVersion", args ?? new GetPublishedVersionArgs(), options.WithVersion());
+
+        public static Output<GetPublishedVersionResult> Apply(GetPublishedVersionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.BlueprintName.Box(),
+                args.ScopeId.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetPublishedVersionArgs();
+                    a[0].Set(args, nameof(args.BlueprintName));
+                    a[1].Set(args, nameof(args.ScopeId));
+                    a[2].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Blueprint
         public string Version { get; set; } = null!;
 
         public GetPublishedVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublishedVersionApplyArgs
+    {
+        /// <summary>
+        /// The name of the Blueprint Definition
+        /// </summary>
+        [Input("blueprintName", required: true)]
+        public Input<string> BlueprintName { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the Management Group / Subscription where this Blueprint Definition is stored.
+        /// </summary>
+        [Input("scopeId", required: true)]
+        public Input<string> ScopeId { get; set; } = null!;
+
+        /// <summary>
+        /// The Version name of the Published Version of the Blueprint Definition
+        /// </summary>
+        [Input("version", required: true)]
+        public Input<string> Version { get; set; } = null!;
+
+        public GetPublishedVersionApplyArgs()
         {
         }
     }

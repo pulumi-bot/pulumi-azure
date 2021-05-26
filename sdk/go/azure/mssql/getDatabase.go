@@ -4,6 +4,9 @@
 package mssql
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,151 @@ type LookupDatabaseResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
 	ZoneRedundant bool `pulumi:"zoneRedundant"`
+}
+
+func LookupDatabaseApply(ctx *pulumi.Context, args LookupDatabaseApplyInput, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
+	return args.ToLookupDatabaseApplyOutput().ApplyT(func(v LookupDatabaseArgs) (LookupDatabaseResult, error) {
+		r, err := LookupDatabase(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDatabaseResultOutput)
+}
+
+// LookupDatabaseApplyInput is an input type that accepts LookupDatabaseApplyArgs and LookupDatabaseApplyOutput values.
+// You can construct a concrete instance of `LookupDatabaseApplyInput` via:
+//
+//          LookupDatabaseApplyArgs{...}
+type LookupDatabaseApplyInput interface {
+	pulumi.Input
+
+	ToLookupDatabaseApplyOutput() LookupDatabaseApplyOutput
+	ToLookupDatabaseApplyOutputWithContext(context.Context) LookupDatabaseApplyOutput
+}
+
+// A collection of arguments for invoking getDatabase.
+type LookupDatabaseApplyArgs struct {
+	// The name of the Ms SQL Database.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the Ms SQL Server on which to create the database.
+	ServerId pulumi.StringInput `pulumi:"serverId"`
+}
+
+func (LookupDatabaseApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseArgs)(nil)).Elem()
+}
+
+func (i LookupDatabaseApplyArgs) ToLookupDatabaseApplyOutput() LookupDatabaseApplyOutput {
+	return i.ToLookupDatabaseApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDatabaseApplyArgs) ToLookupDatabaseApplyOutputWithContext(ctx context.Context) LookupDatabaseApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDatabaseApplyOutput)
+}
+
+// A collection of arguments for invoking getDatabase.
+type LookupDatabaseApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDatabaseApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseArgs)(nil)).Elem()
+}
+
+func (o LookupDatabaseApplyOutput) ToLookupDatabaseApplyOutput() LookupDatabaseApplyOutput {
+	return o
+}
+
+func (o LookupDatabaseApplyOutput) ToLookupDatabaseApplyOutputWithContext(ctx context.Context) LookupDatabaseApplyOutput {
+	return o
+}
+
+// The name of the Ms SQL Database.
+func (o LookupDatabaseApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the Ms SQL Server on which to create the database.
+func (o LookupDatabaseApplyOutput) ServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseArgs) string { return v.ServerId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDatabase.
+type LookupDatabaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatabaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseResult)(nil)).Elem()
+}
+
+func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutput() LookupDatabaseResultOutput {
+	return o
+}
+
+func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx context.Context) LookupDatabaseResultOutput {
+	return o
+}
+
+// The collation of the database.
+func (o LookupDatabaseResultOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+// The id of the elastic pool containing this database.
+func (o LookupDatabaseResultOutput) ElasticPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ElasticPoolId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The license type to apply for this database.
+func (o LookupDatabaseResultOutput) LicenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.LicenseType }).(pulumi.StringOutput)
+}
+
+// The max size of the database in gigabytes.
+func (o LookupDatabaseResultOutput) MaxSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) int { return v.MaxSizeGb }).(pulumi.IntOutput)
+}
+
+func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed.
+func (o LookupDatabaseResultOutput) ReadReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) int { return v.ReadReplicaCount }).(pulumi.IntOutput)
+}
+
+// If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica.
+func (o LookupDatabaseResultOutput) ReadScale() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) bool { return v.ReadScale }).(pulumi.BoolOutput)
+}
+
+func (o LookupDatabaseResultOutput) ServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ServerId }).(pulumi.StringOutput)
+}
+
+// The name of the sku of the database.
+func (o LookupDatabaseResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// The storage account type used to store backups for this database.
+func (o LookupDatabaseResultOutput) StorageAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.StorageAccountType }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o LookupDatabaseResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
+func (o LookupDatabaseResultOutput) ZoneRedundant() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) bool { return v.ZoneRedundant }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatabaseApplyOutput{})
+	pulumi.RegisterOutputType(LookupDatabaseResultOutput{})
 }

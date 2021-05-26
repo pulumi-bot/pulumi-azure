@@ -42,11 +42,11 @@ export interface GetDatabaseArgs {
     /**
      * The name of the Ms SQL Database.
      */
-    readonly name: string;
+    name: string;
     /**
      * The id of the Ms SQL Server on which to create the database.
      */
-    readonly serverId: string;
+    serverId: string;
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetDatabaseResult {
      * Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
      */
     readonly zoneRedundant: boolean;
+}
+
+export function getDatabaseApply(args: GetDatabaseApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatabase(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabase.
+ */
+export interface GetDatabaseApplyArgs {
+    /**
+     * The name of the Ms SQL Database.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The id of the Ms SQL Server on which to create the database.
+     */
+    serverId: pulumi.Input<string>;
 }

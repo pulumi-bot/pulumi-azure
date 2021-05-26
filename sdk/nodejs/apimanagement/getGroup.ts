@@ -44,15 +44,15 @@ export interface GetGroupArgs {
     /**
      * The Name of the API Management Service in which this Group exists.
      */
-    readonly apiManagementName: string;
+    apiManagementName: string;
     /**
      * The Name of the API Management Group.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group in which the API Management Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -82,4 +82,26 @@ export interface GetGroupResult {
      * The type of this API Management Group, such as `custom` or `external`.
      */
     readonly type: string;
+}
+
+export function getGroupApply(args: GetGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupApplyArgs {
+    /**
+     * The Name of the API Management Service in which this Group exists.
+     */
+    apiManagementName: pulumi.Input<string>;
+    /**
+     * The Name of the API Management Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group in which the API Management Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package datashare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,116 @@ type LookupDatasetKustoDatabaseResult struct {
 	KustoDatabaseId string `pulumi:"kustoDatabaseId"`
 	Name            string `pulumi:"name"`
 	ShareId         string `pulumi:"shareId"`
+}
+
+func LookupDatasetKustoDatabaseApply(ctx *pulumi.Context, args LookupDatasetKustoDatabaseApplyInput, opts ...pulumi.InvokeOption) LookupDatasetKustoDatabaseResultOutput {
+	return args.ToLookupDatasetKustoDatabaseApplyOutput().ApplyT(func(v LookupDatasetKustoDatabaseArgs) (LookupDatasetKustoDatabaseResult, error) {
+		r, err := LookupDatasetKustoDatabase(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDatasetKustoDatabaseResultOutput)
+}
+
+// LookupDatasetKustoDatabaseApplyInput is an input type that accepts LookupDatasetKustoDatabaseApplyArgs and LookupDatasetKustoDatabaseApplyOutput values.
+// You can construct a concrete instance of `LookupDatasetKustoDatabaseApplyInput` via:
+//
+//          LookupDatasetKustoDatabaseApplyArgs{...}
+type LookupDatasetKustoDatabaseApplyInput interface {
+	pulumi.Input
+
+	ToLookupDatasetKustoDatabaseApplyOutput() LookupDatasetKustoDatabaseApplyOutput
+	ToLookupDatasetKustoDatabaseApplyOutputWithContext(context.Context) LookupDatasetKustoDatabaseApplyOutput
+}
+
+// A collection of arguments for invoking getDatasetKustoDatabase.
+type LookupDatasetKustoDatabaseApplyArgs struct {
+	// The name of this Data Share Kusto Database Dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
+	ShareId pulumi.StringInput `pulumi:"shareId"`
+}
+
+func (LookupDatasetKustoDatabaseApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetKustoDatabaseArgs)(nil)).Elem()
+}
+
+func (i LookupDatasetKustoDatabaseApplyArgs) ToLookupDatasetKustoDatabaseApplyOutput() LookupDatasetKustoDatabaseApplyOutput {
+	return i.ToLookupDatasetKustoDatabaseApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDatasetKustoDatabaseApplyArgs) ToLookupDatasetKustoDatabaseApplyOutputWithContext(ctx context.Context) LookupDatasetKustoDatabaseApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDatasetKustoDatabaseApplyOutput)
+}
+
+// A collection of arguments for invoking getDatasetKustoDatabase.
+type LookupDatasetKustoDatabaseApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDatasetKustoDatabaseApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetKustoDatabaseArgs)(nil)).Elem()
+}
+
+func (o LookupDatasetKustoDatabaseApplyOutput) ToLookupDatasetKustoDatabaseApplyOutput() LookupDatasetKustoDatabaseApplyOutput {
+	return o
+}
+
+func (o LookupDatasetKustoDatabaseApplyOutput) ToLookupDatasetKustoDatabaseApplyOutputWithContext(ctx context.Context) LookupDatasetKustoDatabaseApplyOutput {
+	return o
+}
+
+// The name of this Data Share Kusto Database Dataset.
+func (o LookupDatasetKustoDatabaseApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
+func (o LookupDatasetKustoDatabaseApplyOutput) ShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseArgs) string { return v.ShareId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDatasetKustoDatabase.
+type LookupDatasetKustoDatabaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatasetKustoDatabaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatasetKustoDatabaseResult)(nil)).Elem()
+}
+
+func (o LookupDatasetKustoDatabaseResultOutput) ToLookupDatasetKustoDatabaseResultOutput() LookupDatasetKustoDatabaseResultOutput {
+	return o
+}
+
+func (o LookupDatasetKustoDatabaseResultOutput) ToLookupDatasetKustoDatabaseResultOutputWithContext(ctx context.Context) LookupDatasetKustoDatabaseResultOutput {
+	return o
+}
+
+// The name of the Data Share Dataset.
+func (o LookupDatasetKustoDatabaseResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatasetKustoDatabaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The location of the Kusto Cluster.
+func (o LookupDatasetKustoDatabaseResultOutput) KustoClusterLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.KustoClusterLocation }).(pulumi.StringOutput)
+}
+
+// The resource ID of the Kusto Cluster Database to be shared with the receiver.
+func (o LookupDatasetKustoDatabaseResultOutput) KustoDatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.KustoDatabaseId }).(pulumi.StringOutput)
+}
+
+func (o LookupDatasetKustoDatabaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDatasetKustoDatabaseResultOutput) ShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetKustoDatabaseResult) string { return v.ShareId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatasetKustoDatabaseApplyOutput{})
+	pulumi.RegisterOutputType(LookupDatasetKustoDatabaseResultOutput{})
 }

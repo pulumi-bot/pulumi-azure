@@ -329,3 +329,10 @@ def get_app_service(name: Optional[str] = None,
         site_credentials=__ret__.site_credentials,
         source_controls=__ret__.source_controls,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_app_service)
+def get_app_service_apply(name: Optional[pulumi.Input[str]] = None,
+                          resource_group_name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppServiceResult]:
+    ...

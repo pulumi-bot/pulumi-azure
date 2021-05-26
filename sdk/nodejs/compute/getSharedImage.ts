@@ -43,15 +43,15 @@ export interface GetSharedImageArgs {
     /**
      * The name of the Shared Image Gallery in which the Shared Image exists.
      */
-    readonly galleryName: string;
+    galleryName: string;
     /**
      * The name of the Shared Image.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group in which the Shared Image Gallery exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -105,4 +105,26 @@ export interface GetSharedImageResult {
      * A mapping of tags assigned to the Shared Image.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getSharedImageApply(args: GetSharedImageApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedImageResult> {
+    return pulumi.output(args).apply(a => getSharedImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedImage.
+ */
+export interface GetSharedImageApplyArgs {
+    /**
+     * The name of the Shared Image Gallery in which the Shared Image exists.
+     */
+    galleryName: pulumi.Input<string>;
+    /**
+     * The name of the Shared Image.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Shared Image Gallery exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

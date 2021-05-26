@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,90 @@ type GetTrafficManagerResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func GetTrafficManagerApply(ctx *pulumi.Context, args GetTrafficManagerApplyInput, opts ...pulumi.InvokeOption) GetTrafficManagerResultOutput {
+	return args.ToGetTrafficManagerApplyOutput().ApplyT(func(v GetTrafficManagerArgs) (GetTrafficManagerResult, error) {
+		r, err := GetTrafficManager(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetTrafficManagerResultOutput)
+}
+
+// GetTrafficManagerApplyInput is an input type that accepts GetTrafficManagerApplyArgs and GetTrafficManagerApplyOutput values.
+// You can construct a concrete instance of `GetTrafficManagerApplyInput` via:
+//
+//          GetTrafficManagerApplyArgs{...}
+type GetTrafficManagerApplyInput interface {
+	pulumi.Input
+
+	ToGetTrafficManagerApplyOutput() GetTrafficManagerApplyOutput
+	ToGetTrafficManagerApplyOutputWithContext(context.Context) GetTrafficManagerApplyOutput
+}
+
+// A collection of arguments for invoking getTrafficManager.
+type GetTrafficManagerApplyArgs struct {
+	// Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetTrafficManagerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficManagerArgs)(nil)).Elem()
+}
+
+func (i GetTrafficManagerApplyArgs) ToGetTrafficManagerApplyOutput() GetTrafficManagerApplyOutput {
+	return i.ToGetTrafficManagerApplyOutputWithContext(context.Background())
+}
+
+func (i GetTrafficManagerApplyArgs) ToGetTrafficManagerApplyOutputWithContext(ctx context.Context) GetTrafficManagerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficManagerApplyOutput)
+}
+
+// A collection of arguments for invoking getTrafficManager.
+type GetTrafficManagerApplyOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficManagerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficManagerArgs)(nil)).Elem()
+}
+
+func (o GetTrafficManagerApplyOutput) ToGetTrafficManagerApplyOutput() GetTrafficManagerApplyOutput {
+	return o
+}
+
+func (o GetTrafficManagerApplyOutput) ToGetTrafficManagerApplyOutputWithContext(ctx context.Context) GetTrafficManagerApplyOutput {
+	return o
+}
+
+// Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+func (o GetTrafficManagerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficManagerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getTrafficManager.
+type GetTrafficManagerResultOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficManagerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficManagerResult)(nil)).Elem()
+}
+
+func (o GetTrafficManagerResultOutput) ToGetTrafficManagerResultOutput() GetTrafficManagerResultOutput {
+	return o
+}
+
+func (o GetTrafficManagerResultOutput) ToGetTrafficManagerResultOutputWithContext(ctx context.Context) GetTrafficManagerResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTrafficManagerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficManagerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTrafficManagerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficManagerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTrafficManagerApplyOutput{})
+	pulumi.RegisterOutputType(GetTrafficManagerResultOutput{})
 }

@@ -42,11 +42,11 @@ export interface GetJobArgs {
     /**
      * Specifies the name of the Stream Analytics Job.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Stream Analytics Job is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetJobResult {
      * The query that will be run in the streaming job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
      */
     readonly transformationQuery: string;
+}
+
+export function getJobApply(args: GetJobApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
+    return pulumi.output(args).apply(a => getJob(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getJob.
+ */
+export interface GetJobApplyArgs {
+    /**
+     * Specifies the name of the Stream Analytics Job.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Stream Analytics Job is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

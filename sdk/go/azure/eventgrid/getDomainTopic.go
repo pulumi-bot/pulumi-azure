@@ -4,6 +4,9 @@
 package eventgrid
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,113 @@ type LookupDomainTopicResult struct {
 	Id                string `pulumi:"id"`
 	Name              string `pulumi:"name"`
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+func LookupDomainTopicApply(ctx *pulumi.Context, args LookupDomainTopicApplyInput, opts ...pulumi.InvokeOption) LookupDomainTopicResultOutput {
+	return args.ToLookupDomainTopicApplyOutput().ApplyT(func(v LookupDomainTopicArgs) (LookupDomainTopicResult, error) {
+		r, err := LookupDomainTopic(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDomainTopicResultOutput)
+}
+
+// LookupDomainTopicApplyInput is an input type that accepts LookupDomainTopicApplyArgs and LookupDomainTopicApplyOutput values.
+// You can construct a concrete instance of `LookupDomainTopicApplyInput` via:
+//
+//          LookupDomainTopicApplyArgs{...}
+type LookupDomainTopicApplyInput interface {
+	pulumi.Input
+
+	ToLookupDomainTopicApplyOutput() LookupDomainTopicApplyOutput
+	ToLookupDomainTopicApplyOutputWithContext(context.Context) LookupDomainTopicApplyOutput
+}
+
+// A collection of arguments for invoking getDomainTopic.
+type LookupDomainTopicApplyArgs struct {
+	// The name of the EventGrid Domain Topic domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the EventGrid Domain Topic resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group in which the EventGrid Domain Topic exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupDomainTopicApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainTopicArgs)(nil)).Elem()
+}
+
+func (i LookupDomainTopicApplyArgs) ToLookupDomainTopicApplyOutput() LookupDomainTopicApplyOutput {
+	return i.ToLookupDomainTopicApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDomainTopicApplyArgs) ToLookupDomainTopicApplyOutputWithContext(ctx context.Context) LookupDomainTopicApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDomainTopicApplyOutput)
+}
+
+// A collection of arguments for invoking getDomainTopic.
+type LookupDomainTopicApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainTopicApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainTopicArgs)(nil)).Elem()
+}
+
+func (o LookupDomainTopicApplyOutput) ToLookupDomainTopicApplyOutput() LookupDomainTopicApplyOutput {
+	return o
+}
+
+func (o LookupDomainTopicApplyOutput) ToLookupDomainTopicApplyOutputWithContext(ctx context.Context) LookupDomainTopicApplyOutput {
+	return o
+}
+
+// The name of the EventGrid Domain Topic domain.
+func (o LookupDomainTopicApplyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicArgs) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The name of the EventGrid Domain Topic resource.
+func (o LookupDomainTopicApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the EventGrid Domain Topic exists.
+func (o LookupDomainTopicApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDomainTopic.
+type LookupDomainTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainTopicResult)(nil)).Elem()
+}
+
+func (o LookupDomainTopicResultOutput) ToLookupDomainTopicResultOutput() LookupDomainTopicResultOutput {
+	return o
+}
+
+func (o LookupDomainTopicResultOutput) ToLookupDomainTopicResultOutputWithContext(ctx context.Context) LookupDomainTopicResultOutput {
+	return o
+}
+
+// The EventGrid Domain Topic Domain name.
+func (o LookupDomainTopicResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDomainTopicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainTopicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainTopicResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainTopicApplyOutput{})
+	pulumi.RegisterOutputType(LookupDomainTopicResultOutput{})
 }

@@ -4,6 +4,9 @@
 package policy
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,154 @@ type GetPolicyDefintionResult struct {
 	PolicyType string `pulumi:"policyType"`
 	// The Type of Policy.
 	Type string `pulumi:"type"`
+}
+
+func GetPolicyDefintionApply(ctx *pulumi.Context, args GetPolicyDefintionApplyInput, opts ...pulumi.InvokeOption) GetPolicyDefintionResultOutput {
+	return args.ToGetPolicyDefintionApplyOutput().ApplyT(func(v GetPolicyDefintionArgs) (GetPolicyDefintionResult, error) {
+		r, err := GetPolicyDefintion(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetPolicyDefintionResultOutput)
+}
+
+// GetPolicyDefintionApplyInput is an input type that accepts GetPolicyDefintionApplyArgs and GetPolicyDefintionApplyOutput values.
+// You can construct a concrete instance of `GetPolicyDefintionApplyInput` via:
+//
+//          GetPolicyDefintionApplyArgs{...}
+type GetPolicyDefintionApplyInput interface {
+	pulumi.Input
+
+	ToGetPolicyDefintionApplyOutput() GetPolicyDefintionApplyOutput
+	ToGetPolicyDefintionApplyOutputWithContext(context.Context) GetPolicyDefintionApplyOutput
+}
+
+// A collection of arguments for invoking getPolicyDefintion.
+type GetPolicyDefintionApplyArgs struct {
+	// Specifies the display name of the Policy Definition. Conflicts with `name`.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Deprecated: Deprecated in favour of `management_group_name`
+	ManagementGroupId pulumi.StringPtrInput `pulumi:"managementGroupId"`
+	// Only retrieve Policy Definitions from this Management Group.
+	ManagementGroupName pulumi.StringPtrInput `pulumi:"managementGroupName"`
+	// Specifies the name of the Policy Definition. Conflicts with `displayName`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetPolicyDefintionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDefintionArgs)(nil)).Elem()
+}
+
+func (i GetPolicyDefintionApplyArgs) ToGetPolicyDefintionApplyOutput() GetPolicyDefintionApplyOutput {
+	return i.ToGetPolicyDefintionApplyOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDefintionApplyArgs) ToGetPolicyDefintionApplyOutputWithContext(ctx context.Context) GetPolicyDefintionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDefintionApplyOutput)
+}
+
+// A collection of arguments for invoking getPolicyDefintion.
+type GetPolicyDefintionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDefintionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDefintionArgs)(nil)).Elem()
+}
+
+func (o GetPolicyDefintionApplyOutput) ToGetPolicyDefintionApplyOutput() GetPolicyDefintionApplyOutput {
+	return o
+}
+
+func (o GetPolicyDefintionApplyOutput) ToGetPolicyDefintionApplyOutputWithContext(ctx context.Context) GetPolicyDefintionApplyOutput {
+	return o
+}
+
+// Specifies the display name of the Policy Definition. Conflicts with `name`.
+func (o GetPolicyDefintionApplyOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionArgs) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Deprecated in favour of `management_group_name`
+func (o GetPolicyDefintionApplyOutput) ManagementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionArgs) *string { return v.ManagementGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Only retrieve Policy Definitions from this Management Group.
+func (o GetPolicyDefintionApplyOutput) ManagementGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionArgs) *string { return v.ManagementGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the Policy Definition. Conflicts with `displayName`.
+func (o GetPolicyDefintionApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getPolicyDefintion.
+type GetPolicyDefintionResultOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDefintionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDefintionResult)(nil)).Elem()
+}
+
+func (o GetPolicyDefintionResultOutput) ToGetPolicyDefintionResultOutput() GetPolicyDefintionResultOutput {
+	return o
+}
+
+func (o GetPolicyDefintionResultOutput) ToGetPolicyDefintionResultOutputWithContext(ctx context.Context) GetPolicyDefintionResultOutput {
+	return o
+}
+
+// The Description of the Policy.
+func (o GetPolicyDefintionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyDefintionResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPolicyDefintionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Deprecated: Deprecated in favour of `management_group_name`
+func (o GetPolicyDefintionResultOutput) ManagementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) *string { return v.ManagementGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyDefintionResultOutput) ManagementGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) *string { return v.ManagementGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Any Metadata defined in the Policy.
+func (o GetPolicyDefintionResultOutput) Metadata() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Metadata }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyDefintionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Any Parameters defined in the Policy.
+func (o GetPolicyDefintionResultOutput) Parameters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Parameters }).(pulumi.StringOutput)
+}
+
+// The Rule as defined (in JSON) in the Policy.
+func (o GetPolicyDefintionResultOutput) PolicyRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.PolicyRule }).(pulumi.StringOutput)
+}
+
+// The Type of the Policy. Possible values are "BuiltIn", "Custom" and "NotSpecified".
+func (o GetPolicyDefintionResultOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The Type of Policy.
+func (o GetPolicyDefintionResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDefintionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPolicyDefintionApplyOutput{})
+	pulumi.RegisterOutputType(GetPolicyDefintionResultOutput{})
 }

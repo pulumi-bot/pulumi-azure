@@ -95,3 +95,9 @@ def get_policy(storage_account_id: Optional[str] = None,
         id=__ret__.id,
         rules=__ret__.rules,
         storage_account_id=__ret__.storage_account_id)
+
+
+@_utilities.lift_output_func(get_policy)
+def get_policy_apply(storage_account_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+    ...

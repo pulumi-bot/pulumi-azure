@@ -47,23 +47,23 @@ export interface GetPlatformImageArgs {
     /**
      * Specifies the Location to pull information about this Platform Image from.
      */
-    readonly location: string;
+    location: string;
     /**
      * Specifies the Offer associated with the Platform Image.
      */
-    readonly offer: string;
+    offer: string;
     /**
      * Specifies the Publisher associated with the Platform Image.
      */
-    readonly publisher: string;
+    publisher: string;
     /**
      * Specifies the SKU of the Platform Image.
      */
-    readonly sku: string;
+    sku: string;
     /**
      * The version of the Platform Image.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**
@@ -79,4 +79,34 @@ export interface GetPlatformImageResult {
     readonly publisher: string;
     readonly sku: string;
     readonly version: string;
+}
+
+export function getPlatformImageApply(args: GetPlatformImageApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlatformImageResult> {
+    return pulumi.output(args).apply(a => getPlatformImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPlatformImage.
+ */
+export interface GetPlatformImageApplyArgs {
+    /**
+     * Specifies the Location to pull information about this Platform Image from.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Specifies the Offer associated with the Platform Image.
+     */
+    offer: pulumi.Input<string>;
+    /**
+     * Specifies the Publisher associated with the Platform Image.
+     */
+    publisher: pulumi.Input<string>;
+    /**
+     * Specifies the SKU of the Platform Image.
+     */
+    sku: pulumi.Input<string>;
+    /**
+     * The version of the Platform Image.
+     */
+    version?: pulumi.Input<string>;
 }

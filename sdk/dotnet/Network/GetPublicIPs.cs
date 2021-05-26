@@ -40,6 +40,23 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetPublicIPsResult> InvokeAsync(GetPublicIPsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicIPsResult>("azure:network/getPublicIPs:getPublicIPs", args ?? new GetPublicIPsArgs(), options.WithVersion());
+
+        public static Output<GetPublicIPsResult> Apply(GetPublicIPsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AllocationType.Box(),
+                args.Attached.Box(),
+                args.NamePrefix.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetPublicIPsArgs();
+                    a[0].Set(args, nameof(args.AllocationType));
+                    a[1].Set(args, nameof(args.Attached));
+                    a[2].Set(args, nameof(args.NamePrefix));
+                    a[3].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +87,37 @@ namespace Pulumi.Azure.Network
         public string ResourceGroupName { get; set; } = null!;
 
         public GetPublicIPsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublicIPsApplyArgs
+    {
+        /// <summary>
+        /// The Allocation Type for the Public IP Address. Possible values include `Static` or `Dynamic`.
+        /// </summary>
+        [Input("allocationType")]
+        public Input<string>? AllocationType { get; set; }
+
+        /// <summary>
+        /// Filter to include IP Addresses which are attached to a device, such as a VM/LB (`true`) or unattached (`false`).
+        /// </summary>
+        [Input("attached")]
+        public Input<bool>? Attached { get; set; }
+
+        /// <summary>
+        /// A prefix match used for the IP Addresses `name` field, case sensitive.
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// Specifies the name of the resource group.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetPublicIPsApplyArgs()
         {
         }
     }

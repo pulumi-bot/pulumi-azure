@@ -44,6 +44,21 @@ namespace Pulumi.Azure.AppPlatform
         /// </summary>
         public static Task<GetSpringCloudAppResult> InvokeAsync(GetSpringCloudAppArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpringCloudAppResult>("azure:appplatform/getSpringCloudApp:getSpringCloudApp", args ?? new GetSpringCloudAppArgs(), options.WithVersion());
+
+        public static Output<GetSpringCloudAppResult> Apply(GetSpringCloudAppApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.ServiceName.Box()
+            ).Apply(a => {
+                    var args = new GetSpringCloudAppArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.ServiceName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.AppPlatform
         public string ServiceName { get; set; } = null!;
 
         public GetSpringCloudAppArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpringCloudAppApplyArgs
+    {
+        /// <summary>
+        /// The name of the Spring Cloud Application.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Spring Cloud Application exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Spring Cloud Service.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetSpringCloudAppApplyArgs()
         {
         }
     }

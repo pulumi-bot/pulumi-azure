@@ -4,6 +4,9 @@
 package appservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,122 @@ type GetFunctionAppHostKeysResult struct {
 	Name              string `pulumi:"name"`
 	PrimaryKey        string `pulumi:"primaryKey"`
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+func GetFunctionAppHostKeysApply(ctx *pulumi.Context, args GetFunctionAppHostKeysApplyInput, opts ...pulumi.InvokeOption) GetFunctionAppHostKeysResultOutput {
+	return args.ToGetFunctionAppHostKeysApplyOutput().ApplyT(func(v GetFunctionAppHostKeysArgs) (GetFunctionAppHostKeysResult, error) {
+		r, err := GetFunctionAppHostKeys(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetFunctionAppHostKeysResultOutput)
+}
+
+// GetFunctionAppHostKeysApplyInput is an input type that accepts GetFunctionAppHostKeysApplyArgs and GetFunctionAppHostKeysApplyOutput values.
+// You can construct a concrete instance of `GetFunctionAppHostKeysApplyInput` via:
+//
+//          GetFunctionAppHostKeysApplyArgs{...}
+type GetFunctionAppHostKeysApplyInput interface {
+	pulumi.Input
+
+	ToGetFunctionAppHostKeysApplyOutput() GetFunctionAppHostKeysApplyOutput
+	ToGetFunctionAppHostKeysApplyOutputWithContext(context.Context) GetFunctionAppHostKeysApplyOutput
+}
+
+// A collection of arguments for invoking getFunctionAppHostKeys.
+type GetFunctionAppHostKeysApplyArgs struct {
+	// The name of the Function App.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Function App exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetFunctionAppHostKeysApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionAppHostKeysArgs)(nil)).Elem()
+}
+
+func (i GetFunctionAppHostKeysApplyArgs) ToGetFunctionAppHostKeysApplyOutput() GetFunctionAppHostKeysApplyOutput {
+	return i.ToGetFunctionAppHostKeysApplyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionAppHostKeysApplyArgs) ToGetFunctionAppHostKeysApplyOutputWithContext(ctx context.Context) GetFunctionAppHostKeysApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionAppHostKeysApplyOutput)
+}
+
+// A collection of arguments for invoking getFunctionAppHostKeys.
+type GetFunctionAppHostKeysApplyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionAppHostKeysApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionAppHostKeysArgs)(nil)).Elem()
+}
+
+func (o GetFunctionAppHostKeysApplyOutput) ToGetFunctionAppHostKeysApplyOutput() GetFunctionAppHostKeysApplyOutput {
+	return o
+}
+
+func (o GetFunctionAppHostKeysApplyOutput) ToGetFunctionAppHostKeysApplyOutputWithContext(ctx context.Context) GetFunctionAppHostKeysApplyOutput {
+	return o
+}
+
+// The name of the Function App.
+func (o GetFunctionAppHostKeysApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Function App exists.
+func (o GetFunctionAppHostKeysApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getFunctionAppHostKeys.
+type GetFunctionAppHostKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionAppHostKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionAppHostKeysResult)(nil)).Elem()
+}
+
+func (o GetFunctionAppHostKeysResultOutput) ToGetFunctionAppHostKeysResultOutput() GetFunctionAppHostKeysResultOutput {
+	return o
+}
+
+func (o GetFunctionAppHostKeysResultOutput) ToGetFunctionAppHostKeysResultOutputWithContext(ctx context.Context) GetFunctionAppHostKeysResultOutput {
+	return o
+}
+
+// Function App resource's default function key.
+func (o GetFunctionAppHostKeysResultOutput) DefaultFunctionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.DefaultFunctionKey }).(pulumi.StringOutput)
+}
+
+// Function App resource's Event Grid Extension Config system key.
+func (o GetFunctionAppHostKeysResultOutput) EventGridExtensionConfigKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.EventGridExtensionConfigKey }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFunctionAppHostKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Function App resource's secret key
+//
+// Deprecated: This property has been renamed to `primary_key` and will be removed in v3.0 of the provider in support of HashiCorp's inclusive language policy which can be found here: https://discuss.hashicorp.com/t/inclusive-language-changes
+func (o GetFunctionAppHostKeysResultOutput) MasterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.MasterKey }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionAppHostKeysResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionAppHostKeysResultOutput) PrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionAppHostKeysResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionAppHostKeysResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFunctionAppHostKeysApplyOutput{})
+	pulumi.RegisterOutputType(GetFunctionAppHostKeysResultOutput{})
 }

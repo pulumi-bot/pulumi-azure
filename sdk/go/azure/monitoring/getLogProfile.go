@@ -4,6 +4,9 @@
 package monitoring
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,114 @@ type LookupLogProfileResult struct {
 	ServicebusRuleId string `pulumi:"servicebusRuleId"`
 	// The resource id of the storage account in which the Activity Log is stored.
 	StorageAccountId string `pulumi:"storageAccountId"`
+}
+
+func LookupLogProfileApply(ctx *pulumi.Context, args LookupLogProfileApplyInput, opts ...pulumi.InvokeOption) LookupLogProfileResultOutput {
+	return args.ToLookupLogProfileApplyOutput().ApplyT(func(v LookupLogProfileArgs) (LookupLogProfileResult, error) {
+		r, err := LookupLogProfile(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupLogProfileResultOutput)
+}
+
+// LookupLogProfileApplyInput is an input type that accepts LookupLogProfileApplyArgs and LookupLogProfileApplyOutput values.
+// You can construct a concrete instance of `LookupLogProfileApplyInput` via:
+//
+//          LookupLogProfileApplyArgs{...}
+type LookupLogProfileApplyInput interface {
+	pulumi.Input
+
+	ToLookupLogProfileApplyOutput() LookupLogProfileApplyOutput
+	ToLookupLogProfileApplyOutputWithContext(context.Context) LookupLogProfileApplyOutput
+}
+
+// A collection of arguments for invoking getLogProfile.
+type LookupLogProfileApplyArgs struct {
+	// Specifies the Name of the Log Profile.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupLogProfileApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLogProfileArgs)(nil)).Elem()
+}
+
+func (i LookupLogProfileApplyArgs) ToLookupLogProfileApplyOutput() LookupLogProfileApplyOutput {
+	return i.ToLookupLogProfileApplyOutputWithContext(context.Background())
+}
+
+func (i LookupLogProfileApplyArgs) ToLookupLogProfileApplyOutputWithContext(ctx context.Context) LookupLogProfileApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupLogProfileApplyOutput)
+}
+
+// A collection of arguments for invoking getLogProfile.
+type LookupLogProfileApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupLogProfileApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLogProfileArgs)(nil)).Elem()
+}
+
+func (o LookupLogProfileApplyOutput) ToLookupLogProfileApplyOutput() LookupLogProfileApplyOutput {
+	return o
+}
+
+func (o LookupLogProfileApplyOutput) ToLookupLogProfileApplyOutputWithContext(ctx context.Context) LookupLogProfileApplyOutput {
+	return o
+}
+
+// Specifies the Name of the Log Profile.
+func (o LookupLogProfileApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogProfileArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getLogProfile.
+type LookupLogProfileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLogProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLogProfileResult)(nil)).Elem()
+}
+
+func (o LookupLogProfileResultOutput) ToLookupLogProfileResultOutput() LookupLogProfileResultOutput {
+	return o
+}
+
+func (o LookupLogProfileResultOutput) ToLookupLogProfileResultOutputWithContext(ctx context.Context) LookupLogProfileResultOutput {
+	return o
+}
+
+// List of categories of the logs.
+func (o LookupLogProfileResultOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLogProfileResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of regions for which Activity Log events are stored or streamed.
+func (o LookupLogProfileResultOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupLogProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupLogProfileResultOutput) RetentionPolicies() GetLogProfileRetentionPolicyArrayOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) []GetLogProfileRetentionPolicy { return v.RetentionPolicies }).(GetLogProfileRetentionPolicyArrayOutput)
+}
+
+// The service bus (or event hub) rule ID of the service bus (or event hub) namespace in which the Activity Log is streamed to.
+func (o LookupLogProfileResultOutput) ServicebusRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) string { return v.ServicebusRuleId }).(pulumi.StringOutput)
+}
+
+// The resource id of the storage account in which the Activity Log is stored.
+func (o LookupLogProfileResultOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogProfileResult) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLogProfileApplyOutput{})
+	pulumi.RegisterOutputType(LookupLogProfileResultOutput{})
 }

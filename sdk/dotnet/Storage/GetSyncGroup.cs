@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetSyncGroupResult> InvokeAsync(GetSyncGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSyncGroupResult>("azure:storage/getSyncGroup:getSyncGroup", args ?? new GetSyncGroupArgs(), options.WithVersion());
+
+        public static Output<GetSyncGroupResult> Apply(GetSyncGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.StorageSyncId.Box()
+            ).Apply(a => {
+                    var args = new GetSyncGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.StorageSyncId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Storage
         public string StorageSyncId { get; set; } = null!;
 
         public GetSyncGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetSyncGroupApplyArgs
+    {
+        /// <summary>
+        /// The name of this Storage Sync Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The resource ID of the Storage Sync where this Storage Sync Group is.
+        /// </summary>
+        [Input("storageSyncId", required: true)]
+        public Input<string> StorageSyncId { get; set; } = null!;
+
+        public GetSyncGroupApplyArgs()
         {
         }
     }

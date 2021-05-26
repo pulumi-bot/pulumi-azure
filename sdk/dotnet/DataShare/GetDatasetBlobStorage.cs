@@ -43,6 +43,19 @@ namespace Pulumi.Azure.DataShare
         /// </summary>
         public static Task<GetDatasetBlobStorageResult> InvokeAsync(GetDatasetBlobStorageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetBlobStorageResult>("azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage", args ?? new GetDatasetBlobStorageArgs(), options.WithVersion());
+
+        public static Output<GetDatasetBlobStorageResult> Apply(GetDatasetBlobStorageApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DataShareId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetDatasetBlobStorageArgs();
+                    a[0].Set(args, nameof(args.DataShareId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.DataShare
         public string Name { get; set; } = null!;
 
         public GetDatasetBlobStorageArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetBlobStorageApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Data Share in which this Data Share Blob Storage Dataset should be created.
+        /// </summary>
+        [Input("dataShareId", required: true)]
+        public Input<string> DataShareId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this Data Share Blob Storage Dataset.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetDatasetBlobStorageApplyArgs()
         {
         }
     }
