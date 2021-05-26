@@ -4,6 +4,9 @@
 package automation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,127 @@ type LookupBoolVariableResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The value of the Automation Variable as a `boolean`.
 	Value bool `pulumi:"value"`
+}
+
+func LookupBoolVariableApply(ctx *pulumi.Context, args LookupBoolVariableApplyInput, opts ...pulumi.InvokeOption) LookupBoolVariableResultOutput {
+	return args.ToLookupBoolVariableApplyOutput().ApplyT(func(v LookupBoolVariableArgs) (LookupBoolVariableResult, error) {
+		r, err := LookupBoolVariable(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupBoolVariableResultOutput)
+}
+
+// LookupBoolVariableApplyInput is an input type that accepts LookupBoolVariableApplyArgs and LookupBoolVariableApplyOutput values.
+// You can construct a concrete instance of `LookupBoolVariableApplyInput` via:
+//
+//          LookupBoolVariableApplyArgs{...}
+type LookupBoolVariableApplyInput interface {
+	pulumi.Input
+
+	ToLookupBoolVariableApplyOutput() LookupBoolVariableApplyOutput
+	ToLookupBoolVariableApplyOutputWithContext(context.Context) LookupBoolVariableApplyOutput
+}
+
+// A collection of arguments for invoking getBoolVariable.
+type LookupBoolVariableApplyArgs struct {
+	// The name of the automation account in which the Automation Variable exists.
+	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
+	// The name of the Automation Variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the automation account exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupBoolVariableApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBoolVariableArgs)(nil)).Elem()
+}
+
+func (i LookupBoolVariableApplyArgs) ToLookupBoolVariableApplyOutput() LookupBoolVariableApplyOutput {
+	return i.ToLookupBoolVariableApplyOutputWithContext(context.Background())
+}
+
+func (i LookupBoolVariableApplyArgs) ToLookupBoolVariableApplyOutputWithContext(ctx context.Context) LookupBoolVariableApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupBoolVariableApplyOutput)
+}
+
+// A collection of arguments for invoking getBoolVariable.
+type LookupBoolVariableApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupBoolVariableApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBoolVariableArgs)(nil)).Elem()
+}
+
+func (o LookupBoolVariableApplyOutput) ToLookupBoolVariableApplyOutput() LookupBoolVariableApplyOutput {
+	return o
+}
+
+func (o LookupBoolVariableApplyOutput) ToLookupBoolVariableApplyOutputWithContext(ctx context.Context) LookupBoolVariableApplyOutput {
+	return o
+}
+
+// The name of the automation account in which the Automation Variable exists.
+func (o LookupBoolVariableApplyOutput) AutomationAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableArgs) string { return v.AutomationAccountName }).(pulumi.StringOutput)
+}
+
+// The name of the Automation Variable.
+func (o LookupBoolVariableApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the automation account exists.
+func (o LookupBoolVariableApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getBoolVariable.
+type LookupBoolVariableResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBoolVariableResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBoolVariableResult)(nil)).Elem()
+}
+
+func (o LookupBoolVariableResultOutput) ToLookupBoolVariableResultOutput() LookupBoolVariableResultOutput {
+	return o
+}
+
+func (o LookupBoolVariableResultOutput) ToLookupBoolVariableResultOutputWithContext(ctx context.Context) LookupBoolVariableResultOutput {
+	return o
+}
+
+func (o LookupBoolVariableResultOutput) AutomationAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) string { return v.AutomationAccountName }).(pulumi.StringOutput)
+}
+
+// The description of the Automation Variable.
+func (o LookupBoolVariableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies if the Automation Variable is encrypted. Defaults to `false`.
+func (o LookupBoolVariableResultOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBoolVariableResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBoolVariableResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupBoolVariableResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The value of the Automation Variable as a `boolean`.
+func (o LookupBoolVariableResultOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBoolVariableResult) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBoolVariableApplyOutput{})
+	pulumi.RegisterOutputType(LookupBoolVariableResultOutput{})
 }

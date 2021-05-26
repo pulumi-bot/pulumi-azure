@@ -42,11 +42,11 @@ export interface GetDatasetDataLakeGen2Args {
     /**
      * The name of this Data Share Data Lake Gen2 Dataset.
      */
-    readonly name: string;
+    name: string;
     /**
      * The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
      */
-    readonly shareId: string;
+    shareId: string;
 }
 
 /**
@@ -79,4 +79,22 @@ export interface GetDatasetDataLakeGen2Result {
      * The resource ID of the storage account of the data lake file system to be shared with the receiver.
      */
     readonly storageAccountId: string;
+}
+
+export function getDatasetDataLakeGen2Apply(args: GetDatasetDataLakeGen2ApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetDataLakeGen2Result> {
+    return pulumi.output(args).apply(a => getDatasetDataLakeGen2(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatasetDataLakeGen2.
+ */
+export interface GetDatasetDataLakeGen2ApplyArgs {
+    /**
+     * The name of this Data Share Data Lake Gen2 Dataset.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created.
+     */
+    shareId: pulumi.Input<string>;
 }

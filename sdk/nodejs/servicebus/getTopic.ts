@@ -44,15 +44,15 @@ export interface GetTopicArgs {
     /**
      * The name of this Service Bus Topic.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Service Bus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the Resource Group where the Service Bus Topic exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -106,4 +106,26 @@ export interface GetTopicResult {
      * Boolean flag which controls whether the Topic supports ordering.
      */
     readonly supportOrdering: boolean;
+}
+
+export function getTopicApply(args: GetTopicApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopic.
+ */
+export interface GetTopicApplyArgs {
+    /**
+     * The name of this Service Bus Topic.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Service Bus Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Service Bus Topic exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

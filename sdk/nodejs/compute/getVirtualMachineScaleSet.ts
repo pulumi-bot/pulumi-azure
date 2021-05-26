@@ -42,11 +42,11 @@ export interface GetVirtualMachineScaleSetArgs {
     /**
      * The name of this Virtual Machine Scale Set.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Virtual Machine Scale Set exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetVirtualMachineScaleSetResult {
      */
     readonly networkInterfaces: outputs.compute.GetVirtualMachineScaleSetNetworkInterface[];
     readonly resourceGroupName: string;
+}
+
+export function getVirtualMachineScaleSetApply(args: GetVirtualMachineScaleSetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetResult> {
+    return pulumi.output(args).apply(a => getVirtualMachineScaleSet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualMachineScaleSet.
+ */
+export interface GetVirtualMachineScaleSetApplyArgs {
+    /**
+     * The name of this Virtual Machine Scale Set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Virtual Machine Scale Set exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

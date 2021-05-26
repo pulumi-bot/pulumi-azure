@@ -44,15 +44,15 @@ export interface GetSubnetArgs {
     /**
      * Specifies the name of the Subnet.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Virtual Network is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * Specifies the name of the Virtual Network this Subnet is located within.
      */
-    readonly virtualNetworkName: string;
+    virtualNetworkName: string;
 }
 
 /**
@@ -94,4 +94,26 @@ export interface GetSubnetResult {
      */
     readonly serviceEndpoints: string[];
     readonly virtualNetworkName: string;
+}
+
+export function getSubnetApply(args: GetSubnetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
+    return pulumi.output(args).apply(a => getSubnet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubnet.
+ */
+export interface GetSubnetApplyArgs {
+    /**
+     * Specifies the name of the Subnet.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Virtual Network is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Virtual Network this Subnet is located within.
+     */
+    virtualNetworkName: pulumi.Input<string>;
 }

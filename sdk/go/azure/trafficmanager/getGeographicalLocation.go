@@ -4,6 +4,9 @@
 package trafficmanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,90 @@ type GetGeographicalLocationResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func GetGeographicalLocationApply(ctx *pulumi.Context, args GetGeographicalLocationApplyInput, opts ...pulumi.InvokeOption) GetGeographicalLocationResultOutput {
+	return args.ToGetGeographicalLocationApplyOutput().ApplyT(func(v GetGeographicalLocationArgs) (GetGeographicalLocationResult, error) {
+		r, err := GetGeographicalLocation(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetGeographicalLocationResultOutput)
+}
+
+// GetGeographicalLocationApplyInput is an input type that accepts GetGeographicalLocationApplyArgs and GetGeographicalLocationApplyOutput values.
+// You can construct a concrete instance of `GetGeographicalLocationApplyInput` via:
+//
+//          GetGeographicalLocationApplyArgs{...}
+type GetGeographicalLocationApplyInput interface {
+	pulumi.Input
+
+	ToGetGeographicalLocationApplyOutput() GetGeographicalLocationApplyOutput
+	ToGetGeographicalLocationApplyOutputWithContext(context.Context) GetGeographicalLocationApplyOutput
+}
+
+// A collection of arguments for invoking getGeographicalLocation.
+type GetGeographicalLocationApplyArgs struct {
+	// Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGeographicalLocationApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGeographicalLocationArgs)(nil)).Elem()
+}
+
+func (i GetGeographicalLocationApplyArgs) ToGetGeographicalLocationApplyOutput() GetGeographicalLocationApplyOutput {
+	return i.ToGetGeographicalLocationApplyOutputWithContext(context.Background())
+}
+
+func (i GetGeographicalLocationApplyArgs) ToGetGeographicalLocationApplyOutputWithContext(ctx context.Context) GetGeographicalLocationApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGeographicalLocationApplyOutput)
+}
+
+// A collection of arguments for invoking getGeographicalLocation.
+type GetGeographicalLocationApplyOutput struct{ *pulumi.OutputState }
+
+func (GetGeographicalLocationApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGeographicalLocationArgs)(nil)).Elem()
+}
+
+func (o GetGeographicalLocationApplyOutput) ToGetGeographicalLocationApplyOutput() GetGeographicalLocationApplyOutput {
+	return o
+}
+
+func (o GetGeographicalLocationApplyOutput) ToGetGeographicalLocationApplyOutputWithContext(ctx context.Context) GetGeographicalLocationApplyOutput {
+	return o
+}
+
+// Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+func (o GetGeographicalLocationApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGeographicalLocationArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getGeographicalLocation.
+type GetGeographicalLocationResultOutput struct{ *pulumi.OutputState }
+
+func (GetGeographicalLocationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGeographicalLocationResult)(nil)).Elem()
+}
+
+func (o GetGeographicalLocationResultOutput) ToGetGeographicalLocationResultOutput() GetGeographicalLocationResultOutput {
+	return o
+}
+
+func (o GetGeographicalLocationResultOutput) ToGetGeographicalLocationResultOutputWithContext(ctx context.Context) GetGeographicalLocationResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGeographicalLocationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGeographicalLocationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGeographicalLocationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGeographicalLocationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGeographicalLocationApplyOutput{})
+	pulumi.RegisterOutputType(GetGeographicalLocationResultOutput{})
 }

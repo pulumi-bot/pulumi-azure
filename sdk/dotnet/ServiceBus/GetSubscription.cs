@@ -45,6 +45,23 @@ namespace Pulumi.Azure.ServiceBus
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("azure:servicebus/getSubscription:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+
+        public static Output<GetSubscriptionResult> Apply(GetSubscriptionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.NamespaceName.Box(),
+                args.ResourceGroupName.Box(),
+                args.TopicName.Box()
+            ).Apply(a => {
+                    var args = new GetSubscriptionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.NamespaceName));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    a[3].Set(args, nameof(args.TopicName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +92,37 @@ namespace Pulumi.Azure.ServiceBus
         public string TopicName { get; set; } = null!;
 
         public GetSubscriptionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the ServiceBus Subscription.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the ServiceBus Namespace.
+        /// </summary>
+        [Input("namespaceName", required: true)]
+        public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the ServiceBus Topic.
+        /// </summary>
+        [Input("topicName", required: true)]
+        public Input<string> TopicName { get; set; } = null!;
+
+        public GetSubscriptionApplyArgs()
         {
         }
     }

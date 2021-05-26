@@ -42,6 +42,22 @@ namespace Pulumi.Azure.Policy
         /// </summary>
         public static Task<GetPolicySetDefinitionResult> InvokeAsync(GetPolicySetDefinitionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicySetDefinitionResult>("azure:policy/getPolicySetDefinition:getPolicySetDefinition", args ?? new GetPolicySetDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetPolicySetDefinitionResult> Apply(GetPolicySetDefinitionApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetPolicySetDefinitionApplyArgs();
+            return Pulumi.Output.All(
+                args.DisplayName.Box(),
+                args.ManagementGroupName.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetPolicySetDefinitionArgs();
+                    a[0].Set(args, nameof(args.DisplayName));
+                    a[1].Set(args, nameof(args.ManagementGroupName));
+                    a[2].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +82,31 @@ namespace Pulumi.Azure.Policy
         public string? Name { get; set; }
 
         public GetPolicySetDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicySetDefinitionApplyArgs
+    {
+        /// <summary>
+        /// Specifies the display name of the Policy Set Definition. Conflicts with `name`.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Only retrieve Policy Set Definitions from this Management Group.
+        /// </summary>
+        [Input("managementGroupName")]
+        public Input<string>? ManagementGroupName { get; set; }
+
+        /// <summary>
+        /// Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetPolicySetDefinitionApplyArgs()
         {
         }
     }

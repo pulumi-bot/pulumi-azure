@@ -42,6 +42,17 @@ namespace Pulumi.Azure.Core
         /// </summary>
         public static Task<GetResourceGroupResult> InvokeAsync(GetResourceGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("azure:core/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithVersion());
+
+        public static Output<GetResourceGroupResult> Apply(GetResourceGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetResourceGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -54,6 +65,19 @@ namespace Pulumi.Azure.Core
         public string Name { get; set; } = null!;
 
         public GetResourceGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceGroupApplyArgs
+    {
+        /// <summary>
+        /// The Name of this Resource Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetResourceGroupApplyArgs()
         {
         }
     }

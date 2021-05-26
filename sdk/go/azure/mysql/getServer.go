@@ -4,6 +4,9 @@
 package mysql
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,4 +93,186 @@ type LookupServerResult struct {
 	ThreatDetectionPolicies []GetServerThreatDetectionPolicy `pulumi:"threatDetectionPolicies"`
 	// The version of this MySQL Server.
 	Version string `pulumi:"version"`
+}
+
+func LookupServerApply(ctx *pulumi.Context, args LookupServerApplyInput, opts ...pulumi.InvokeOption) LookupServerResultOutput {
+	return args.ToLookupServerApplyOutput().ApplyT(func(v LookupServerArgs) (LookupServerResult, error) {
+		r, err := LookupServer(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupServerResultOutput)
+}
+
+// LookupServerApplyInput is an input type that accepts LookupServerApplyArgs and LookupServerApplyOutput values.
+// You can construct a concrete instance of `LookupServerApplyInput` via:
+//
+//          LookupServerApplyArgs{...}
+type LookupServerApplyInput interface {
+	pulumi.Input
+
+	ToLookupServerApplyOutput() LookupServerApplyOutput
+	ToLookupServerApplyOutputWithContext(context.Context) LookupServerApplyOutput
+}
+
+// A collection of arguments for invoking getServer.
+type LookupServerApplyArgs struct {
+	// Specifies the name of the MySQL Server.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group for the MySQL Server.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupServerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerArgs)(nil)).Elem()
+}
+
+func (i LookupServerApplyArgs) ToLookupServerApplyOutput() LookupServerApplyOutput {
+	return i.ToLookupServerApplyOutputWithContext(context.Background())
+}
+
+func (i LookupServerApplyArgs) ToLookupServerApplyOutputWithContext(ctx context.Context) LookupServerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupServerApplyOutput)
+}
+
+// A collection of arguments for invoking getServer.
+type LookupServerApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupServerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerArgs)(nil)).Elem()
+}
+
+func (o LookupServerApplyOutput) ToLookupServerApplyOutput() LookupServerApplyOutput {
+	return o
+}
+
+func (o LookupServerApplyOutput) ToLookupServerApplyOutputWithContext(ctx context.Context) LookupServerApplyOutput {
+	return o
+}
+
+// Specifies the name of the MySQL Server.
+func (o LookupServerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group for the MySQL Server.
+func (o LookupServerApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getServer.
+type LookupServerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerResult)(nil)).Elem()
+}
+
+func (o LookupServerResultOutput) ToLookupServerResultOutput() LookupServerResultOutput {
+	return o
+}
+
+func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx context.Context) LookupServerResultOutput {
+	return o
+}
+
+// The Administrator Login for the MySQL Server.
+func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AdministratorLogin }).(pulumi.StringOutput)
+}
+
+// The auto grow setting for this MySQL Server.
+func (o LookupServerResultOutput) AutoGrowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.AutoGrowEnabled }).(pulumi.BoolOutput)
+}
+
+// The backup retention days for this MySQL server.
+func (o LookupServerResultOutput) BackupRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.BackupRetentionDays }).(pulumi.IntOutput)
+}
+
+// The FQDN of the MySQL Server.
+func (o LookupServerResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The geo redundant backup setting for this MySQL Server.
+func (o LookupServerResultOutput) GeoRedundantBackupEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.GeoRedundantBackupEnabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An `identity` block for this MySQL server as defined below.
+func (o LookupServerResultOutput) Identities() GetServerIdentityArrayOutput {
+	return o.ApplyT(func(v LookupServerResult) []GetServerIdentity { return v.Identities }).(GetServerIdentityArrayOutput)
+}
+
+// Whether or not infrastructure is encrypted for this MySQL Server.
+func (o LookupServerResultOutput) InfrastructureEncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.InfrastructureEncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure location where the resource exists.
+func (o LookupServerResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupServerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether or not public network access is allowed for this MySQL Server.
+func (o LookupServerResultOutput) PublicNetworkAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.PublicNetworkAccessEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupServerResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupServerResultOutput) RestorePointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.RestorePointInTime }).(pulumi.StringOutput)
+}
+
+// The SKU Name for this MySQL Server.
+func (o LookupServerResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// Specifies if SSL should be enforced on connections for this MySQL Server.
+func (o LookupServerResultOutput) SslEnforcementEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.SslEnforcementEnabled }).(pulumi.BoolOutput)
+}
+
+// The minimum TLS version to support for this MySQL Server.
+func (o LookupServerResultOutput) SslMinimalTlsVersionEnforced() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.SslMinimalTlsVersionEnforced }).(pulumi.StringOutput)
+}
+
+// Max storage allowed for this MySQL Server.
+func (o LookupServerResultOutput) StorageMb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.StorageMb }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// ---
+func (o LookupServerResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Threat detection policy configuration, known in the API as Server Security Alerts Policy. The `threatDetectionPolicy` block exports fields documented below.
+func (o LookupServerResultOutput) ThreatDetectionPolicies() GetServerThreatDetectionPolicyArrayOutput {
+	return o.ApplyT(func(v LookupServerResult) []GetServerThreatDetectionPolicy { return v.ThreatDetectionPolicies }).(GetServerThreatDetectionPolicyArrayOutput)
+}
+
+// The version of this MySQL Server.
+func (o LookupServerResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServerApplyOutput{})
+	pulumi.RegisterOutputType(LookupServerResultOutput{})
 }

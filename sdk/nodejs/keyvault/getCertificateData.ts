@@ -49,15 +49,15 @@ export interface GetCertificateDataArgs {
     /**
      * Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
      */
-    readonly keyVaultId: string;
+    keyVaultId: string;
     /**
      * Specifies the name of the Key Vault Secret.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the version of the certificate to look up.  (Defaults to latest)
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**
@@ -91,4 +91,26 @@ export interface GetCertificateDataResult {
      */
     readonly tags: {[key: string]: string};
     readonly version: string;
+}
+
+export function getCertificateDataApply(args: GetCertificateDataApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateDataResult> {
+    return pulumi.output(args).apply(a => getCertificateData(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificateData.
+ */
+export interface GetCertificateDataApplyArgs {
+    /**
+     * Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
+     */
+    keyVaultId: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Key Vault Secret.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the version of the certificate to look up.  (Defaults to latest)
+     */
+    version?: pulumi.Input<string>;
 }

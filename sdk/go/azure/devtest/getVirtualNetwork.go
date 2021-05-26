@@ -4,6 +4,9 @@
 package devtest
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,127 @@ type LookupVirtualNetworkResult struct {
 	SubnetOverrides []GetVirtualNetworkSubnetOverride `pulumi:"subnetOverrides"`
 	// The unique immutable identifier of the virtual network.
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
+}
+
+func LookupVirtualNetworkApply(ctx *pulumi.Context, args LookupVirtualNetworkApplyInput, opts ...pulumi.InvokeOption) LookupVirtualNetworkResultOutput {
+	return args.ToLookupVirtualNetworkApplyOutput().ApplyT(func(v LookupVirtualNetworkArgs) (LookupVirtualNetworkResult, error) {
+		r, err := LookupVirtualNetwork(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupVirtualNetworkResultOutput)
+}
+
+// LookupVirtualNetworkApplyInput is an input type that accepts LookupVirtualNetworkApplyArgs and LookupVirtualNetworkApplyOutput values.
+// You can construct a concrete instance of `LookupVirtualNetworkApplyInput` via:
+//
+//          LookupVirtualNetworkApplyArgs{...}
+type LookupVirtualNetworkApplyInput interface {
+	pulumi.Input
+
+	ToLookupVirtualNetworkApplyOutput() LookupVirtualNetworkApplyOutput
+	ToLookupVirtualNetworkApplyOutputWithContext(context.Context) LookupVirtualNetworkApplyOutput
+}
+
+// A collection of arguments for invoking getVirtualNetwork.
+type LookupVirtualNetworkApplyArgs struct {
+	// Specifies the name of the Dev Test Lab.
+	LabName pulumi.StringInput `pulumi:"labName"`
+	// Specifies the name of the Virtual Network.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group that contains the Virtual Network.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupVirtualNetworkApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualNetworkArgs)(nil)).Elem()
+}
+
+func (i LookupVirtualNetworkApplyArgs) ToLookupVirtualNetworkApplyOutput() LookupVirtualNetworkApplyOutput {
+	return i.ToLookupVirtualNetworkApplyOutputWithContext(context.Background())
+}
+
+func (i LookupVirtualNetworkApplyArgs) ToLookupVirtualNetworkApplyOutputWithContext(ctx context.Context) LookupVirtualNetworkApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupVirtualNetworkApplyOutput)
+}
+
+// A collection of arguments for invoking getVirtualNetwork.
+type LookupVirtualNetworkApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupVirtualNetworkApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualNetworkArgs)(nil)).Elem()
+}
+
+func (o LookupVirtualNetworkApplyOutput) ToLookupVirtualNetworkApplyOutput() LookupVirtualNetworkApplyOutput {
+	return o
+}
+
+func (o LookupVirtualNetworkApplyOutput) ToLookupVirtualNetworkApplyOutputWithContext(ctx context.Context) LookupVirtualNetworkApplyOutput {
+	return o
+}
+
+// Specifies the name of the Dev Test Lab.
+func (o LookupVirtualNetworkApplyOutput) LabName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkArgs) string { return v.LabName }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Virtual Network.
+func (o LookupVirtualNetworkApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group that contains the Virtual Network.
+func (o LookupVirtualNetworkApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getVirtualNetwork.
+type LookupVirtualNetworkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVirtualNetworkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVirtualNetworkResult)(nil)).Elem()
+}
+
+func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutput() LookupVirtualNetworkResultOutput {
+	return o
+}
+
+func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWithContext(ctx context.Context) LookupVirtualNetworkResultOutput {
+	return o
+}
+
+// The list of subnets enabled for the virtual network as defined below.
+func (o LookupVirtualNetworkResultOutput) AllowedSubnets() GetVirtualNetworkAllowedSubnetArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) []GetVirtualNetworkAllowedSubnet { return v.AllowedSubnets }).(GetVirtualNetworkAllowedSubnetArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVirtualNetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupVirtualNetworkResultOutput) LabName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.LabName }).(pulumi.StringOutput)
+}
+
+func (o LookupVirtualNetworkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVirtualNetworkResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The list of permission overrides for the subnets as defined below.
+func (o LookupVirtualNetworkResultOutput) SubnetOverrides() GetVirtualNetworkSubnetOverrideArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) []GetVirtualNetworkSubnetOverride { return v.SubnetOverrides }).(GetVirtualNetworkSubnetOverrideArrayOutput)
+}
+
+// The unique immutable identifier of the virtual network.
+func (o LookupVirtualNetworkResultOutput) UniqueIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.UniqueIdentifier }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVirtualNetworkApplyOutput{})
+	pulumi.RegisterOutputType(LookupVirtualNetworkResultOutput{})
 }

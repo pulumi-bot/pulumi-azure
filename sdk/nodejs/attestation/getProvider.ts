@@ -23,8 +23,8 @@ export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getProvider.
  */
 export interface GetProviderArgs {
-    readonly name: string;
-    readonly resourceGroupName: string;
+    name: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -41,4 +41,16 @@ export interface GetProviderResult {
     readonly resourceGroupName: string;
     readonly tags: {[key: string]: string};
     readonly trustModel: string;
+}
+
+export function getProviderApply(args: GetProviderApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderResult> {
+    return pulumi.output(args).apply(a => getProvider(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProvider.
+ */
+export interface GetProviderApplyArgs {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
 }

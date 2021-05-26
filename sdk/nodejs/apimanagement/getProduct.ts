@@ -44,15 +44,15 @@ export interface GetProductArgs {
     /**
      * The Name of the API Management Service in which this Product exists.
      */
-    readonly apiManagementName: string;
+    apiManagementName: string;
     /**
      * The Identifier for the API Management Product.
      */
-    readonly productId: string;
+    productId: string;
     /**
      * The Name of the Resource Group in which the API Management Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -94,4 +94,26 @@ export interface GetProductResult {
      * Any Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
      */
     readonly terms: string;
+}
+
+export function getProductApply(args: GetProductApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
+    return pulumi.output(args).apply(a => getProduct(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProduct.
+ */
+export interface GetProductApplyArgs {
+    /**
+     * The Name of the API Management Service in which this Product exists.
+     */
+    apiManagementName: pulumi.Input<string>;
+    /**
+     * The Identifier for the API Management Product.
+     */
+    productId: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group in which the API Management Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

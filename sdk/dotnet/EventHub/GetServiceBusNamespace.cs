@@ -44,6 +44,19 @@ namespace Pulumi.Azure.EventHub
         /// </summary>
         public static Task<GetServiceBusNamespaceResult> InvokeAsync(GetServiceBusNamespaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceBusNamespaceResult>("azure:eventhub/getServiceBusNamespace:getServiceBusNamespace", args ?? new GetServiceBusNamespaceArgs(), options.WithVersion());
+
+        public static Output<GetServiceBusNamespaceResult> Apply(GetServiceBusNamespaceApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetServiceBusNamespaceArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -62,6 +75,25 @@ namespace Pulumi.Azure.EventHub
         public string ResourceGroupName { get; set; } = null!;
 
         public GetServiceBusNamespaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceBusNamespaceApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the ServiceBus Namespace.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetServiceBusNamespaceApplyArgs()
         {
         }
     }

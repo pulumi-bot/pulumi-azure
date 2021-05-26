@@ -4,6 +4,9 @@
 package servicebus
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,155 @@ type LookupQueueAuthorizationRuleResult struct {
 	// The Secondary Key for the ServiceBus Queue authorization Rule.
 	SecondaryKey string `pulumi:"secondaryKey"`
 	Send         bool   `pulumi:"send"`
+}
+
+func LookupQueueAuthorizationRuleApply(ctx *pulumi.Context, args LookupQueueAuthorizationRuleApplyInput, opts ...pulumi.InvokeOption) LookupQueueAuthorizationRuleResultOutput {
+	return args.ToLookupQueueAuthorizationRuleApplyOutput().ApplyT(func(v LookupQueueAuthorizationRuleArgs) (LookupQueueAuthorizationRuleResult, error) {
+		r, err := LookupQueueAuthorizationRule(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupQueueAuthorizationRuleResultOutput)
+}
+
+// LookupQueueAuthorizationRuleApplyInput is an input type that accepts LookupQueueAuthorizationRuleApplyArgs and LookupQueueAuthorizationRuleApplyOutput values.
+// You can construct a concrete instance of `LookupQueueAuthorizationRuleApplyInput` via:
+//
+//          LookupQueueAuthorizationRuleApplyArgs{...}
+type LookupQueueAuthorizationRuleApplyInput interface {
+	pulumi.Input
+
+	ToLookupQueueAuthorizationRuleApplyOutput() LookupQueueAuthorizationRuleApplyOutput
+	ToLookupQueueAuthorizationRuleApplyOutputWithContext(context.Context) LookupQueueAuthorizationRuleApplyOutput
+}
+
+// A collection of arguments for invoking getQueueAuthorizationRule.
+type LookupQueueAuthorizationRuleApplyArgs struct {
+	// The name of this ServiceBus Queue Authorisation Rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the ServiceBus Namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the ServiceBus Queue.
+	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// The name of the Resource Group where the ServiceBus Queue Authorisation Rule exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupQueueAuthorizationRuleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueAuthorizationRuleArgs)(nil)).Elem()
+}
+
+func (i LookupQueueAuthorizationRuleApplyArgs) ToLookupQueueAuthorizationRuleApplyOutput() LookupQueueAuthorizationRuleApplyOutput {
+	return i.ToLookupQueueAuthorizationRuleApplyOutputWithContext(context.Background())
+}
+
+func (i LookupQueueAuthorizationRuleApplyArgs) ToLookupQueueAuthorizationRuleApplyOutputWithContext(ctx context.Context) LookupQueueAuthorizationRuleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupQueueAuthorizationRuleApplyOutput)
+}
+
+// A collection of arguments for invoking getQueueAuthorizationRule.
+type LookupQueueAuthorizationRuleApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupQueueAuthorizationRuleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueAuthorizationRuleArgs)(nil)).Elem()
+}
+
+func (o LookupQueueAuthorizationRuleApplyOutput) ToLookupQueueAuthorizationRuleApplyOutput() LookupQueueAuthorizationRuleApplyOutput {
+	return o
+}
+
+func (o LookupQueueAuthorizationRuleApplyOutput) ToLookupQueueAuthorizationRuleApplyOutputWithContext(ctx context.Context) LookupQueueAuthorizationRuleApplyOutput {
+	return o
+}
+
+// The name of this ServiceBus Queue Authorisation Rule.
+func (o LookupQueueAuthorizationRuleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Namespace.
+func (o LookupQueueAuthorizationRuleApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Queue.
+func (o LookupQueueAuthorizationRuleApplyOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleArgs) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the ServiceBus Queue Authorisation Rule exists.
+func (o LookupQueueAuthorizationRuleApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getQueueAuthorizationRule.
+type LookupQueueAuthorizationRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupQueueAuthorizationRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueAuthorizationRuleResult)(nil)).Elem()
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRuleResultOutput() LookupQueueAuthorizationRuleResultOutput {
+	return o
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupQueueAuthorizationRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupQueueAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) Listen() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) bool { return v.Listen }).(pulumi.BoolOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) Manage() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) bool { return v.Manage }).(pulumi.BoolOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The Primary Connection String for the ServiceBus Queue authorization Rule.
+func (o LookupQueueAuthorizationRuleResultOutput) PrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.PrimaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The Primary Key for the ServiceBus Queue authorization Rule.
+func (o LookupQueueAuthorizationRuleResultOutput) PrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.PrimaryKey }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Secondary Connection String for the ServiceBus Queue authorization Rule.
+func (o LookupQueueAuthorizationRuleResultOutput) SecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.SecondaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The Secondary Key for the ServiceBus Queue authorization Rule.
+func (o LookupQueueAuthorizationRuleResultOutput) SecondaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.SecondaryKey }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueAuthorizationRuleResultOutput) Send() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) bool { return v.Send }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupQueueAuthorizationRuleApplyOutput{})
+	pulumi.RegisterOutputType(LookupQueueAuthorizationRuleResultOutput{})
 }

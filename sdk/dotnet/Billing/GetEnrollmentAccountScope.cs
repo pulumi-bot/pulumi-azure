@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Billing
         /// </summary>
         public static Task<GetEnrollmentAccountScopeResult> InvokeAsync(GetEnrollmentAccountScopeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnrollmentAccountScopeResult>("azure:billing/getEnrollmentAccountScope:getEnrollmentAccountScope", args ?? new GetEnrollmentAccountScopeArgs(), options.WithVersion());
+
+        public static Output<GetEnrollmentAccountScopeResult> Apply(GetEnrollmentAccountScopeApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.BillingAccountName.Box(),
+                args.EnrollmentAccountName.Box()
+            ).Apply(a => {
+                    var args = new GetEnrollmentAccountScopeArgs();
+                    a[0].Set(args, nameof(args.BillingAccountName));
+                    a[1].Set(args, nameof(args.EnrollmentAccountName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Billing
         public string EnrollmentAccountName { get; set; } = null!;
 
         public GetEnrollmentAccountScopeArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnrollmentAccountScopeApplyArgs
+    {
+        /// <summary>
+        /// The Billing Account Name of the Enterprise Account.
+        /// </summary>
+        [Input("billingAccountName", required: true)]
+        public Input<string> BillingAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The Enrollment Account Name in the above Enterprise Account.
+        /// </summary>
+        [Input("enrollmentAccountName", required: true)]
+        public Input<string> EnrollmentAccountName { get; set; } = null!;
+
+        public GetEnrollmentAccountScopeApplyArgs()
         {
         }
     }

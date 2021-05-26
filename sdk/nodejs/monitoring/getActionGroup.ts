@@ -42,11 +42,11 @@ export interface GetActionGroupArgs {
     /**
      * Specifies the name of the Action Group.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Action Group is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -110,4 +110,22 @@ export interface GetActionGroupResult {
      * One or more `webhookReceiver` blocks as defined below.
      */
     readonly webhookReceivers: outputs.monitoring.GetActionGroupWebhookReceiver[];
+}
+
+export function getActionGroupApply(args: GetActionGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActionGroupResult> {
+    return pulumi.output(args).apply(a => getActionGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getActionGroup.
+ */
+export interface GetActionGroupApplyArgs {
+    /**
+     * Specifies the name of the Action Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Action Group is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

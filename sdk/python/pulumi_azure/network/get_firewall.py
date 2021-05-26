@@ -241,3 +241,11 @@ def get_firewall(name: Optional[str] = None,
         threat_intel_mode=__ret__.threat_intel_mode,
         virtual_hubs=__ret__.virtual_hubs,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_firewall)
+def get_firewall_apply(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallResult]:
+    ...

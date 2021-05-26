@@ -188,3 +188,10 @@ def get_firewall_policy(name: Optional[str] = None,
         tags=__ret__.tags,
         threat_intelligence_allowlists=__ret__.threat_intelligence_allowlists,
         threat_intelligence_mode=__ret__.threat_intelligence_mode)
+
+
+@_utilities.lift_output_func(get_firewall_policy)
+def get_firewall_policy_apply(name: Optional[pulumi.Input[str]] = None,
+                              resource_group_name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallPolicyResult]:
+    ...

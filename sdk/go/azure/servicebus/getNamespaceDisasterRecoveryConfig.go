@@ -4,6 +4,9 @@
 package servicebus
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,126 @@ type LookupNamespaceDisasterRecoveryConfigResult struct {
 	NamespaceName      string `pulumi:"namespaceName"`
 	PartnerNamespaceId string `pulumi:"partnerNamespaceId"`
 	ResourceGroupName  string `pulumi:"resourceGroupName"`
+}
+
+func LookupNamespaceDisasterRecoveryConfigApply(ctx *pulumi.Context, args LookupNamespaceDisasterRecoveryConfigApplyInput, opts ...pulumi.InvokeOption) LookupNamespaceDisasterRecoveryConfigResultOutput {
+	return args.ToLookupNamespaceDisasterRecoveryConfigApplyOutput().ApplyT(func(v LookupNamespaceDisasterRecoveryConfigArgs) (LookupNamespaceDisasterRecoveryConfigResult, error) {
+		r, err := LookupNamespaceDisasterRecoveryConfig(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupNamespaceDisasterRecoveryConfigResultOutput)
+}
+
+// LookupNamespaceDisasterRecoveryConfigApplyInput is an input type that accepts LookupNamespaceDisasterRecoveryConfigApplyArgs and LookupNamespaceDisasterRecoveryConfigApplyOutput values.
+// You can construct a concrete instance of `LookupNamespaceDisasterRecoveryConfigApplyInput` via:
+//
+//          LookupNamespaceDisasterRecoveryConfigApplyArgs{...}
+type LookupNamespaceDisasterRecoveryConfigApplyInput interface {
+	pulumi.Input
+
+	ToLookupNamespaceDisasterRecoveryConfigApplyOutput() LookupNamespaceDisasterRecoveryConfigApplyOutput
+	ToLookupNamespaceDisasterRecoveryConfigApplyOutputWithContext(context.Context) LookupNamespaceDisasterRecoveryConfigApplyOutput
+}
+
+// A collection of arguments for invoking getNamespaceDisasterRecoveryConfig.
+type LookupNamespaceDisasterRecoveryConfigApplyArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	NamespaceName     pulumi.StringInput `pulumi:"namespaceName"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupNamespaceDisasterRecoveryConfigApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceDisasterRecoveryConfigArgs)(nil)).Elem()
+}
+
+func (i LookupNamespaceDisasterRecoveryConfigApplyArgs) ToLookupNamespaceDisasterRecoveryConfigApplyOutput() LookupNamespaceDisasterRecoveryConfigApplyOutput {
+	return i.ToLookupNamespaceDisasterRecoveryConfigApplyOutputWithContext(context.Background())
+}
+
+func (i LookupNamespaceDisasterRecoveryConfigApplyArgs) ToLookupNamespaceDisasterRecoveryConfigApplyOutputWithContext(ctx context.Context) LookupNamespaceDisasterRecoveryConfigApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupNamespaceDisasterRecoveryConfigApplyOutput)
+}
+
+// A collection of arguments for invoking getNamespaceDisasterRecoveryConfig.
+type LookupNamespaceDisasterRecoveryConfigApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupNamespaceDisasterRecoveryConfigApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceDisasterRecoveryConfigArgs)(nil)).Elem()
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigApplyOutput) ToLookupNamespaceDisasterRecoveryConfigApplyOutput() LookupNamespaceDisasterRecoveryConfigApplyOutput {
+	return o
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigApplyOutput) ToLookupNamespaceDisasterRecoveryConfigApplyOutputWithContext(ctx context.Context) LookupNamespaceDisasterRecoveryConfigApplyOutput {
+	return o
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getNamespaceDisasterRecoveryConfig.
+type LookupNamespaceDisasterRecoveryConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNamespaceDisasterRecoveryConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNamespaceDisasterRecoveryConfigResult)(nil)).Elem()
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) ToLookupNamespaceDisasterRecoveryConfigResultOutput() LookupNamespaceDisasterRecoveryConfigResultOutput {
+	return o
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) ToLookupNamespaceDisasterRecoveryConfigResultOutputWithContext(ctx context.Context) LookupNamespaceDisasterRecoveryConfigResultOutput {
+	return o
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) AliasPrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.AliasPrimaryConnectionString }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) AliasSecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.AliasSecondaryConnectionString }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) DefaultPrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.DefaultPrimaryKey }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) DefaultSecondaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.DefaultSecondaryKey }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) PartnerNamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.PartnerNamespaceId }).(pulumi.StringOutput)
+}
+
+func (o LookupNamespaceDisasterRecoveryConfigResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceDisasterRecoveryConfigResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNamespaceDisasterRecoveryConfigApplyOutput{})
+	pulumi.RegisterOutputType(LookupNamespaceDisasterRecoveryConfigResultOutput{})
 }

@@ -4,6 +4,9 @@
 package containerservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,141 @@ type LookupRegistryResult struct {
 	StorageAccountId string `pulumi:"storageAccountId"`
 	// A map of tags assigned to the Container Registry.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupRegistryApply(ctx *pulumi.Context, args LookupRegistryApplyInput, opts ...pulumi.InvokeOption) LookupRegistryResultOutput {
+	return args.ToLookupRegistryApplyOutput().ApplyT(func(v LookupRegistryArgs) (LookupRegistryResult, error) {
+		r, err := LookupRegistry(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRegistryResultOutput)
+}
+
+// LookupRegistryApplyInput is an input type that accepts LookupRegistryApplyArgs and LookupRegistryApplyOutput values.
+// You can construct a concrete instance of `LookupRegistryApplyInput` via:
+//
+//          LookupRegistryApplyArgs{...}
+type LookupRegistryApplyInput interface {
+	pulumi.Input
+
+	ToLookupRegistryApplyOutput() LookupRegistryApplyOutput
+	ToLookupRegistryApplyOutputWithContext(context.Context) LookupRegistryApplyOutput
+}
+
+// A collection of arguments for invoking getRegistry.
+type LookupRegistryApplyArgs struct {
+	// The name of the Container Registry.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where this Container Registry exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupRegistryApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryArgs)(nil)).Elem()
+}
+
+func (i LookupRegistryApplyArgs) ToLookupRegistryApplyOutput() LookupRegistryApplyOutput {
+	return i.ToLookupRegistryApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRegistryApplyArgs) ToLookupRegistryApplyOutputWithContext(ctx context.Context) LookupRegistryApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRegistryApplyOutput)
+}
+
+// A collection of arguments for invoking getRegistry.
+type LookupRegistryApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistryApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryArgs)(nil)).Elem()
+}
+
+func (o LookupRegistryApplyOutput) ToLookupRegistryApplyOutput() LookupRegistryApplyOutput {
+	return o
+}
+
+func (o LookupRegistryApplyOutput) ToLookupRegistryApplyOutputWithContext(ctx context.Context) LookupRegistryApplyOutput {
+	return o
+}
+
+// The name of the Container Registry.
+func (o LookupRegistryApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where this Container Registry exists.
+func (o LookupRegistryApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRegistry.
+type LookupRegistryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistryResult)(nil)).Elem()
+}
+
+func (o LookupRegistryResultOutput) ToLookupRegistryResultOutput() LookupRegistryResultOutput {
+	return o
+}
+
+func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx context.Context) LookupRegistryResultOutput {
+	return o
+}
+
+// Is the Administrator account enabled for this Container Registry.
+func (o LookupRegistryResultOutput) AdminEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegistryResult) bool { return v.AdminEnabled }).(pulumi.BoolOutput)
+}
+
+// The Password associated with the Container Registry Admin account - if the admin account is enabled.
+func (o LookupRegistryResultOutput) AdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.AdminPassword }).(pulumi.StringOutput)
+}
+
+// The Username associated with the Container Registry Admin account - if the admin account is enabled.
+func (o LookupRegistryResultOutput) AdminUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.AdminUsername }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region in which this Container Registry exists.
+func (o LookupRegistryResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The URL that can be used to log into the container registry.
+func (o LookupRegistryResultOutput) LoginServer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.LoginServer }).(pulumi.StringOutput)
+}
+
+func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRegistryResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The SKU of this Container Registry, such as `Basic`.
+func (o LookupRegistryResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// The ID of the Storage Account used for this Container Registry. This is only returned for `Classic` SKU's.
+func (o LookupRegistryResultOutput) StorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.StorageAccountId }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the Container Registry.
+func (o LookupRegistryResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegistryResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegistryApplyOutput{})
+	pulumi.RegisterOutputType(LookupRegistryResultOutput{})
 }

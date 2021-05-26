@@ -4,6 +4,9 @@
 package mariadb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,142 @@ type GetMariaDbServerResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The version of MariaDB being used.
 	Version string `pulumi:"version"`
+}
+
+func GetMariaDbServerApply(ctx *pulumi.Context, args GetMariaDbServerApplyInput, opts ...pulumi.InvokeOption) GetMariaDbServerResultOutput {
+	return args.ToGetMariaDbServerApplyOutput().ApplyT(func(v GetMariaDbServerArgs) (GetMariaDbServerResult, error) {
+		r, err := GetMariaDbServer(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetMariaDbServerResultOutput)
+}
+
+// GetMariaDbServerApplyInput is an input type that accepts GetMariaDbServerApplyArgs and GetMariaDbServerApplyOutput values.
+// You can construct a concrete instance of `GetMariaDbServerApplyInput` via:
+//
+//          GetMariaDbServerApplyArgs{...}
+type GetMariaDbServerApplyInput interface {
+	pulumi.Input
+
+	ToGetMariaDbServerApplyOutput() GetMariaDbServerApplyOutput
+	ToGetMariaDbServerApplyOutputWithContext(context.Context) GetMariaDbServerApplyOutput
+}
+
+// A collection of arguments for invoking getMariaDbServer.
+type GetMariaDbServerApplyArgs struct {
+	// The name of the MariaDB Server to retrieve information about.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group where the MariaDB Server exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetMariaDbServerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMariaDbServerArgs)(nil)).Elem()
+}
+
+func (i GetMariaDbServerApplyArgs) ToGetMariaDbServerApplyOutput() GetMariaDbServerApplyOutput {
+	return i.ToGetMariaDbServerApplyOutputWithContext(context.Background())
+}
+
+func (i GetMariaDbServerApplyArgs) ToGetMariaDbServerApplyOutputWithContext(ctx context.Context) GetMariaDbServerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMariaDbServerApplyOutput)
+}
+
+// A collection of arguments for invoking getMariaDbServer.
+type GetMariaDbServerApplyOutput struct{ *pulumi.OutputState }
+
+func (GetMariaDbServerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMariaDbServerArgs)(nil)).Elem()
+}
+
+func (o GetMariaDbServerApplyOutput) ToGetMariaDbServerApplyOutput() GetMariaDbServerApplyOutput {
+	return o
+}
+
+func (o GetMariaDbServerApplyOutput) ToGetMariaDbServerApplyOutputWithContext(ctx context.Context) GetMariaDbServerApplyOutput {
+	return o
+}
+
+// The name of the MariaDB Server to retrieve information about.
+func (o GetMariaDbServerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group where the MariaDB Server exists.
+func (o GetMariaDbServerApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getMariaDbServer.
+type GetMariaDbServerResultOutput struct{ *pulumi.OutputState }
+
+func (GetMariaDbServerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMariaDbServerResult)(nil)).Elem()
+}
+
+func (o GetMariaDbServerResultOutput) ToGetMariaDbServerResultOutput() GetMariaDbServerResultOutput {
+	return o
+}
+
+func (o GetMariaDbServerResultOutput) ToGetMariaDbServerResultOutputWithContext(ctx context.Context) GetMariaDbServerResultOutput {
+	return o
+}
+
+// The Administrator Login for the MariaDB Server.
+func (o GetMariaDbServerResultOutput) AdministratorLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.AdministratorLogin }).(pulumi.StringOutput)
+}
+
+// The FQDN of the MariaDB Server.
+func (o GetMariaDbServerResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMariaDbServerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure location where the resource exists.
+func (o GetMariaDbServerResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetMariaDbServerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetMariaDbServerResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The SKU Name for this MariaDB Server.
+func (o GetMariaDbServerResultOutput) SkuName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.SkuName }).(pulumi.StringOutput)
+}
+
+// The SSL being enforced on connections.
+func (o GetMariaDbServerResultOutput) SslEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.SslEnforcement }).(pulumi.StringOutput)
+}
+
+// A `storageProfile` block as defined below.
+func (o GetMariaDbServerResultOutput) StorageProfiles() GetMariaDbServerStorageProfileArrayOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) []GetMariaDbServerStorageProfile { return v.StorageProfiles }).(GetMariaDbServerStorageProfileArrayOutput)
+}
+
+// A mapping of tags assigned to the resource.
+// ---
+func (o GetMariaDbServerResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The version of MariaDB being used.
+func (o GetMariaDbServerResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMariaDbServerResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMariaDbServerApplyOutput{})
+	pulumi.RegisterOutputType(GetMariaDbServerResultOutput{})
 }

@@ -44,6 +44,21 @@ namespace Pulumi.Azure.ApiManagement
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("azure:apimanagement/getProduct:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+
+        public static Output<GetProductResult> Apply(GetProductApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApiManagementName.Box(),
+                args.ProductId.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetProductArgs();
+                    a[0].Set(args, nameof(args.ApiManagementName));
+                    a[1].Set(args, nameof(args.ProductId));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.ApiManagement
         public string ResourceGroupName { get; set; } = null!;
 
         public GetProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetProductApplyArgs
+    {
+        /// <summary>
+        /// The Name of the API Management Service in which this Product exists.
+        /// </summary>
+        [Input("apiManagementName", required: true)]
+        public Input<string> ApiManagementName { get; set; } = null!;
+
+        /// <summary>
+        /// The Identifier for the API Management Product.
+        /// </summary>
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group in which the API Management Service exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetProductApplyArgs()
         {
         }
     }

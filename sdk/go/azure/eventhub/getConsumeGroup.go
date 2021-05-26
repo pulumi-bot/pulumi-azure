@@ -4,6 +4,9 @@
 package eventhub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,132 @@ type GetConsumeGroupResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies the user metadata.
 	UserMetadata string `pulumi:"userMetadata"`
+}
+
+func GetConsumeGroupApply(ctx *pulumi.Context, args GetConsumeGroupApplyInput, opts ...pulumi.InvokeOption) GetConsumeGroupResultOutput {
+	return args.ToGetConsumeGroupApplyOutput().ApplyT(func(v GetConsumeGroupArgs) (GetConsumeGroupResult, error) {
+		r, err := GetConsumeGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetConsumeGroupResultOutput)
+}
+
+// GetConsumeGroupApplyInput is an input type that accepts GetConsumeGroupApplyArgs and GetConsumeGroupApplyOutput values.
+// You can construct a concrete instance of `GetConsumeGroupApplyInput` via:
+//
+//          GetConsumeGroupApplyArgs{...}
+type GetConsumeGroupApplyInput interface {
+	pulumi.Input
+
+	ToGetConsumeGroupApplyOutput() GetConsumeGroupApplyOutput
+	ToGetConsumeGroupApplyOutputWithContext(context.Context) GetConsumeGroupApplyOutput
+}
+
+// A collection of arguments for invoking getConsumeGroup.
+type GetConsumeGroupApplyArgs struct {
+	// Specifies the name of the EventHub.
+	EventhubName pulumi.StringInput `pulumi:"eventhubName"`
+	// Specifies the name of the EventHub Consumer Group resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the grandparent EventHub Namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetConsumeGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumeGroupArgs)(nil)).Elem()
+}
+
+func (i GetConsumeGroupApplyArgs) ToGetConsumeGroupApplyOutput() GetConsumeGroupApplyOutput {
+	return i.ToGetConsumeGroupApplyOutputWithContext(context.Background())
+}
+
+func (i GetConsumeGroupApplyArgs) ToGetConsumeGroupApplyOutputWithContext(ctx context.Context) GetConsumeGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumeGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getConsumeGroup.
+type GetConsumeGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (GetConsumeGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumeGroupArgs)(nil)).Elem()
+}
+
+func (o GetConsumeGroupApplyOutput) ToGetConsumeGroupApplyOutput() GetConsumeGroupApplyOutput {
+	return o
+}
+
+func (o GetConsumeGroupApplyOutput) ToGetConsumeGroupApplyOutputWithContext(ctx context.Context) GetConsumeGroupApplyOutput {
+	return o
+}
+
+// Specifies the name of the EventHub.
+func (o GetConsumeGroupApplyOutput) EventhubName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupArgs) string { return v.EventhubName }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the EventHub Consumer Group resource.
+func (o GetConsumeGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the grandparent EventHub Namespace.
+func (o GetConsumeGroupApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
+func (o GetConsumeGroupApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getConsumeGroup.
+type GetConsumeGroupResultOutput struct{ *pulumi.OutputState }
+
+func (GetConsumeGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumeGroupResult)(nil)).Elem()
+}
+
+func (o GetConsumeGroupResultOutput) ToGetConsumeGroupResultOutput() GetConsumeGroupResultOutput {
+	return o
+}
+
+func (o GetConsumeGroupResultOutput) ToGetConsumeGroupResultOutputWithContext(ctx context.Context) GetConsumeGroupResultOutput {
+	return o
+}
+
+func (o GetConsumeGroupResultOutput) EventhubName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.EventhubName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetConsumeGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConsumeGroupResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetConsumeGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetConsumeGroupResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o GetConsumeGroupResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Specifies the user metadata.
+func (o GetConsumeGroupResultOutput) UserMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumeGroupResult) string { return v.UserMetadata }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetConsumeGroupApplyOutput{})
+	pulumi.RegisterOutputType(GetConsumeGroupResultOutput{})
 }

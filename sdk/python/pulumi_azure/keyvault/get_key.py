@@ -198,3 +198,10 @@ def get_key(key_vault_id: Optional[str] = None,
         tags=__ret__.tags,
         version=__ret__.version,
         versionless_id=__ret__.versionless_id)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_apply(key_vault_id: Optional[pulumi.Input[str]] = None,
+                  name: Optional[pulumi.Input[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    ...

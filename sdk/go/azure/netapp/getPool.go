@@ -4,6 +4,9 @@
 package netapp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,127 @@ type LookupPoolResult struct {
 	ServiceLevel string `pulumi:"serviceLevel"`
 	// Provisioned size of the pool in TB.
 	SizeInTb int `pulumi:"sizeInTb"`
+}
+
+func LookupPoolApply(ctx *pulumi.Context, args LookupPoolApplyInput, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
+	return args.ToLookupPoolApplyOutput().ApplyT(func(v LookupPoolArgs) (LookupPoolResult, error) {
+		r, err := LookupPool(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPoolResultOutput)
+}
+
+// LookupPoolApplyInput is an input type that accepts LookupPoolApplyArgs and LookupPoolApplyOutput values.
+// You can construct a concrete instance of `LookupPoolApplyInput` via:
+//
+//          LookupPoolApplyArgs{...}
+type LookupPoolApplyInput interface {
+	pulumi.Input
+
+	ToLookupPoolApplyOutput() LookupPoolApplyOutput
+	ToLookupPoolApplyOutputWithContext(context.Context) LookupPoolApplyOutput
+}
+
+// A collection of arguments for invoking getPool.
+type LookupPoolApplyArgs struct {
+	// The name of the NetApp account where the NetApp pool exists.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The name of the NetApp Pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the NetApp Pool exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupPoolApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPoolArgs)(nil)).Elem()
+}
+
+func (i LookupPoolApplyArgs) ToLookupPoolApplyOutput() LookupPoolApplyOutput {
+	return i.ToLookupPoolApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPoolApplyArgs) ToLookupPoolApplyOutputWithContext(ctx context.Context) LookupPoolApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPoolApplyOutput)
+}
+
+// A collection of arguments for invoking getPool.
+type LookupPoolApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPoolApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPoolArgs)(nil)).Elem()
+}
+
+func (o LookupPoolApplyOutput) ToLookupPoolApplyOutput() LookupPoolApplyOutput {
+	return o
+}
+
+func (o LookupPoolApplyOutput) ToLookupPoolApplyOutputWithContext(ctx context.Context) LookupPoolApplyOutput {
+	return o
+}
+
+// The name of the NetApp account where the NetApp pool exists.
+func (o LookupPoolApplyOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolArgs) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The name of the NetApp Pool.
+func (o LookupPoolApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the NetApp Pool exists.
+func (o LookupPoolApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getPool.
+type LookupPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPoolResult)(nil)).Elem()
+}
+
+func (o LookupPoolResultOutput) ToLookupPoolResultOutput() LookupPoolResultOutput {
+	return o
+}
+
+func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.Context) LookupPoolResultOutput {
+	return o
+}
+
+func (o LookupPoolResultOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the NetApp Pool exists.
+func (o LookupPoolResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupPoolResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The service level of the file system.
+func (o LookupPoolResultOutput) ServiceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.ServiceLevel }).(pulumi.StringOutput)
+}
+
+// Provisioned size of the pool in TB.
+func (o LookupPoolResultOutput) SizeInTb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPoolResult) int { return v.SizeInTb }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPoolApplyOutput{})
+	pulumi.RegisterOutputType(LookupPoolResultOutput{})
 }

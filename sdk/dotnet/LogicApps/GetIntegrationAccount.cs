@@ -43,6 +43,19 @@ namespace Pulumi.Azure.LogicApps
         /// </summary>
         public static Task<GetIntegrationAccountResult> InvokeAsync(GetIntegrationAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationAccountResult>("azure:logicapps/getIntegrationAccount:getIntegrationAccount", args ?? new GetIntegrationAccountArgs(), options.WithVersion());
+
+        public static Output<GetIntegrationAccountResult> Apply(GetIntegrationAccountApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetIntegrationAccountArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.LogicApps
         public string ResourceGroupName { get; set; } = null!;
 
         public GetIntegrationAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetIntegrationAccountApplyArgs
+    {
+        /// <summary>
+        /// The name of this Logic App Integration Account.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Logic App Integration Account exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetIntegrationAccountApplyArgs()
         {
         }
     }

@@ -153,3 +153,10 @@ def get_backend_address_pool(loadbalancer_id: Optional[str] = None,
         loadbalancer_id=__ret__.loadbalancer_id,
         name=__ret__.name,
         outbound_rules=__ret__.outbound_rules)
+
+
+@_utilities.lift_output_func(get_backend_address_pool)
+def get_backend_address_pool_apply(loadbalancer_id: Optional[pulumi.Input[str]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendAddressPoolResult]:
+    ...

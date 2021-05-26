@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,136 @@ type LookupPublicIpPrefixResult struct {
 	// A mapping of tags to assigned to the resource.
 	Tags  map[string]string `pulumi:"tags"`
 	Zones []string          `pulumi:"zones"`
+}
+
+func LookupPublicIpPrefixApply(ctx *pulumi.Context, args LookupPublicIpPrefixApplyInput, opts ...pulumi.InvokeOption) LookupPublicIpPrefixResultOutput {
+	return args.ToLookupPublicIpPrefixApplyOutput().ApplyT(func(v LookupPublicIpPrefixArgs) (LookupPublicIpPrefixResult, error) {
+		r, err := LookupPublicIpPrefix(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPublicIpPrefixResultOutput)
+}
+
+// LookupPublicIpPrefixApplyInput is an input type that accepts LookupPublicIpPrefixApplyArgs and LookupPublicIpPrefixApplyOutput values.
+// You can construct a concrete instance of `LookupPublicIpPrefixApplyInput` via:
+//
+//          LookupPublicIpPrefixApplyArgs{...}
+type LookupPublicIpPrefixApplyInput interface {
+	pulumi.Input
+
+	ToLookupPublicIpPrefixApplyOutput() LookupPublicIpPrefixApplyOutput
+	ToLookupPublicIpPrefixApplyOutputWithContext(context.Context) LookupPublicIpPrefixApplyOutput
+}
+
+// A collection of arguments for invoking getPublicIpPrefix.
+type LookupPublicIpPrefixApplyArgs struct {
+	// Specifies the name of the public IP prefix.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the resource group.
+	ResourceGroupName pulumi.StringInput      `pulumi:"resourceGroupName"`
+	Zones             pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (LookupPublicIpPrefixApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPublicIpPrefixArgs)(nil)).Elem()
+}
+
+func (i LookupPublicIpPrefixApplyArgs) ToLookupPublicIpPrefixApplyOutput() LookupPublicIpPrefixApplyOutput {
+	return i.ToLookupPublicIpPrefixApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPublicIpPrefixApplyArgs) ToLookupPublicIpPrefixApplyOutputWithContext(ctx context.Context) LookupPublicIpPrefixApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPublicIpPrefixApplyOutput)
+}
+
+// A collection of arguments for invoking getPublicIpPrefix.
+type LookupPublicIpPrefixApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPublicIpPrefixApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPublicIpPrefixArgs)(nil)).Elem()
+}
+
+func (o LookupPublicIpPrefixApplyOutput) ToLookupPublicIpPrefixApplyOutput() LookupPublicIpPrefixApplyOutput {
+	return o
+}
+
+func (o LookupPublicIpPrefixApplyOutput) ToLookupPublicIpPrefixApplyOutputWithContext(ctx context.Context) LookupPublicIpPrefixApplyOutput {
+	return o
+}
+
+// Specifies the name of the public IP prefix.
+func (o LookupPublicIpPrefixApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the resource group.
+func (o LookupPublicIpPrefixApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupPublicIpPrefixApplyOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixArgs) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+// A collection of values returned by getPublicIpPrefix.
+type LookupPublicIpPrefixResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPublicIpPrefixResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPublicIpPrefixResult)(nil)).Elem()
+}
+
+func (o LookupPublicIpPrefixResultOutput) ToLookupPublicIpPrefixResultOutput() LookupPublicIpPrefixResultOutput {
+	return o
+}
+
+func (o LookupPublicIpPrefixResultOutput) ToLookupPublicIpPrefixResultOutputWithContext(ctx context.Context) LookupPublicIpPrefixResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPublicIpPrefixResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupPublicIpPrefixResultOutput) IpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.IpPrefix }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the resource exists.
+func (o LookupPublicIpPrefixResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Public IP prefix resource.
+func (o LookupPublicIpPrefixResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of bits of the prefix.
+func (o LookupPublicIpPrefixResultOutput) PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) int { return v.PrefixLength }).(pulumi.IntOutput)
+}
+
+// The name of the resource group in which to create the public IP.
+func (o LookupPublicIpPrefixResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The SKU of the Public IP Prefix.
+func (o LookupPublicIpPrefixResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assigned to the resource.
+func (o LookupPublicIpPrefixResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupPublicIpPrefixResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPublicIpPrefixResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPublicIpPrefixApplyOutput{})
+	pulumi.RegisterOutputType(LookupPublicIpPrefixResultOutput{})
 }

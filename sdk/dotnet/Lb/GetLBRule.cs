@@ -49,6 +49,21 @@ namespace Pulumi.Azure.Lb
         /// </summary>
         public static Task<GetLBRuleResult> InvokeAsync(GetLBRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLBRuleResult>("azure:lb/getLBRule:getLBRule", args ?? new GetLBRuleArgs(), options.WithVersion());
+
+        public static Output<GetLBRuleResult> Apply(GetLBRuleApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.LoadbalancerId.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetLBRuleArgs();
+                    a[0].Set(args, nameof(args.LoadbalancerId));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -73,6 +88,31 @@ namespace Pulumi.Azure.Lb
         public string ResourceGroupName { get; set; } = null!;
 
         public GetLBRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetLBRuleApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Load Balancer Rule.
+        /// </summary>
+        [Input("loadbalancerId", required: true)]
+        public Input<string> LoadbalancerId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this Load Balancer Rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Load Balancer Rule exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetLBRuleApplyArgs()
         {
         }
     }

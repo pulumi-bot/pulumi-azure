@@ -44,11 +44,11 @@ export interface GetEventhubNamespaceArgs {
     /**
      * The name of the EventHub Namespace.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the EventHub Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -122,4 +122,22 @@ export interface GetEventhubNamespaceResult {
      * Is this EventHub Namespace deployed across Availability Zones?
      */
     readonly zoneRedundant: boolean;
+}
+
+export function getEventhubNamespaceApply(args: GetEventhubNamespaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventhubNamespaceResult> {
+    return pulumi.output(args).apply(a => getEventhubNamespace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEventhubNamespace.
+ */
+export interface GetEventhubNamespaceApplyArgs {
+    /**
+     * The name of the EventHub Namespace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the EventHub Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

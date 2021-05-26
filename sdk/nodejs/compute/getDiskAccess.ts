@@ -43,15 +43,15 @@ export interface GetDiskAccessArgs {
     /**
      * The name of this Disk Access.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the Disk Access exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags which should be assigned to the Disk Access.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -65,4 +65,26 @@ export interface GetDiskAccessResult {
     readonly name: string;
     readonly resourceGroupName: string;
     readonly tags?: {[key: string]: string};
+}
+
+export function getDiskAccessApply(args: GetDiskAccessApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskAccessResult> {
+    return pulumi.output(args).apply(a => getDiskAccess(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDiskAccess.
+ */
+export interface GetDiskAccessApplyArgs {
+    /**
+     * The name of this Disk Access.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Disk Access exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags which should be assigned to the Disk Access.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

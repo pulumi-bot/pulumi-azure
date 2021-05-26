@@ -4,6 +4,9 @@
 package compute
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,106 @@ type GetImagesResult struct {
 	Images            []GetImagesImage  `pulumi:"images"`
 	ResourceGroupName string            `pulumi:"resourceGroupName"`
 	TagsFilter        map[string]string `pulumi:"tagsFilter"`
+}
+
+func GetImagesApply(ctx *pulumi.Context, args GetImagesApplyInput, opts ...pulumi.InvokeOption) GetImagesResultOutput {
+	return args.ToGetImagesApplyOutput().ApplyT(func(v GetImagesArgs) (GetImagesResult, error) {
+		r, err := GetImages(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetImagesResultOutput)
+}
+
+// GetImagesApplyInput is an input type that accepts GetImagesApplyArgs and GetImagesApplyOutput values.
+// You can construct a concrete instance of `GetImagesApplyInput` via:
+//
+//          GetImagesApplyArgs{...}
+type GetImagesApplyInput interface {
+	pulumi.Input
+
+	ToGetImagesApplyOutput() GetImagesApplyOutput
+	ToGetImagesApplyOutputWithContext(context.Context) GetImagesApplyOutput
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesApplyArgs struct {
+	// The name of the Resource Group in which the Image exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// A mapping of tags to filter the list of images against.
+	TagsFilter pulumi.StringMapInput `pulumi:"tagsFilter"`
+}
+
+func (GetImagesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+func (i GetImagesApplyArgs) ToGetImagesApplyOutput() GetImagesApplyOutput {
+	return i.ToGetImagesApplyOutputWithContext(context.Background())
+}
+
+func (i GetImagesApplyArgs) ToGetImagesApplyOutputWithContext(ctx context.Context) GetImagesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesApplyOutput)
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetImagesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+func (o GetImagesApplyOutput) ToGetImagesApplyOutput() GetImagesApplyOutput {
+	return o
+}
+
+func (o GetImagesApplyOutput) ToGetImagesApplyOutputWithContext(ctx context.Context) GetImagesApplyOutput {
+	return o
+}
+
+// The name of the Resource Group in which the Image exists.
+func (o GetImagesApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to filter the list of images against.
+func (o GetImagesApplyOutput) TagsFilter() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesArgs) map[string]string { return v.TagsFilter }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getImages.
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// One or more `images` blocks as defined below:
+func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func (o GetImagesResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultOutput) TagsFilter() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesResult) map[string]string { return v.TagsFilter }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImagesApplyOutput{})
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
 }

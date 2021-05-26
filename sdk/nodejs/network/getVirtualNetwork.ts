@@ -42,11 +42,11 @@ export interface GetVirtualNetworkArgs {
     /**
      * Specifies the name of the Virtual Network.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Virtual Network is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -83,4 +83,22 @@ export interface GetVirtualNetworkResult {
      * A mapping of name - virtual network id of the virtual network peerings.
      */
     readonly vnetPeerings: {[key: string]: string};
+}
+
+export function getVirtualNetworkApply(args: GetVirtualNetworkApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkResult> {
+    return pulumi.output(args).apply(a => getVirtualNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualNetwork.
+ */
+export interface GetVirtualNetworkApplyArgs {
+    /**
+     * Specifies the name of the Virtual Network.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Virtual Network is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

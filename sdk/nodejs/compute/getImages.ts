@@ -40,11 +40,11 @@ export interface GetImagesArgs {
     /**
      * The name of the Resource Group in which the Image exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags to filter the list of images against.
      */
-    readonly tagsFilter?: {[key: string]: string};
+    tagsFilter?: {[key: string]: string};
 }
 
 /**
@@ -61,4 +61,22 @@ export interface GetImagesResult {
     readonly images: outputs.compute.GetImagesImage[];
     readonly resourceGroupName: string;
     readonly tagsFilter?: {[key: string]: string};
+}
+
+export function getImagesApply(args: GetImagesApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+    return pulumi.output(args).apply(a => getImages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImages.
+ */
+export interface GetImagesApplyArgs {
+    /**
+     * The name of the Resource Group in which the Image exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags to filter the list of images against.
+     */
+    tagsFilter?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

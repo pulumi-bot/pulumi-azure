@@ -44,15 +44,15 @@ export interface GetRegistryTokenArgs {
     /**
      * The Name of the Container Registry where the token exists.
      */
-    readonly containerRegistryName: string;
+    containerRegistryName: string;
     /**
      * The name of the Container Registry token.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where this Container Registry token exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -74,4 +74,26 @@ export interface GetRegistryTokenResult {
      * The Scope Map ID used by the token.
      */
     readonly scopeMapId: string;
+}
+
+export function getRegistryTokenApply(args: GetRegistryTokenApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryTokenResult> {
+    return pulumi.output(args).apply(a => getRegistryToken(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistryToken.
+ */
+export interface GetRegistryTokenApplyArgs {
+    /**
+     * The Name of the Container Registry where the token exists.
+     */
+    containerRegistryName: pulumi.Input<string>;
+    /**
+     * The name of the Container Registry token.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where this Container Registry token exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

@@ -41,6 +41,23 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetSharedImageVersionsResult> InvokeAsync(GetSharedImageVersionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSharedImageVersionsResult>("azure:compute/getSharedImageVersions:getSharedImageVersions", args ?? new GetSharedImageVersionsArgs(), options.WithVersion());
+
+        public static Output<GetSharedImageVersionsResult> Apply(GetSharedImageVersionsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.GalleryName.Box(),
+                args.ImageName.Box(),
+                args.ResourceGroupName.Box(),
+                args.TagsFilter.Box()
+            ).Apply(a => {
+                    var args = new GetSharedImageVersionsArgs();
+                    a[0].Set(args, nameof(args.GalleryName));
+                    a[1].Set(args, nameof(args.ImageName));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    a[3].Set(args, nameof(args.TagsFilter));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -77,6 +94,43 @@ namespace Pulumi.Azure.Compute
         }
 
         public GetSharedImageVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSharedImageVersionsApplyArgs
+    {
+        /// <summary>
+        /// The name of the Shared Image in which the Shared Image exists.
+        /// </summary>
+        [Input("galleryName", required: true)]
+        public Input<string> GalleryName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Shared Image in which this Version exists.
+        /// </summary>
+        [Input("imageName", required: true)]
+        public Input<string> ImageName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Shared Image Gallery exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tagsFilter")]
+        private InputMap<string>? _tagsFilter;
+
+        /// <summary>
+        /// A mapping of tags to filter the list of images against.
+        /// </summary>
+        public InputMap<string> TagsFilter
+        {
+            get => _tagsFilter ?? (_tagsFilter = new InputMap<string>());
+            set => _tagsFilter = value;
+        }
+
+        public GetSharedImageVersionsApplyArgs()
         {
         }
     }

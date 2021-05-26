@@ -4,6 +4,9 @@
 package keyvault
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,144 @@ type LookupCertificateResult struct {
 	Thumbprint string `pulumi:"thumbprint"`
 	// The current version of the Key Vault Certificate.
 	Version string `pulumi:"version"`
+}
+
+func LookupCertificateApply(ctx *pulumi.Context, args LookupCertificateApplyInput, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
+	return args.ToLookupCertificateApplyOutput().ApplyT(func(v LookupCertificateArgs) (LookupCertificateResult, error) {
+		r, err := LookupCertificate(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupCertificateResultOutput)
+}
+
+// LookupCertificateApplyInput is an input type that accepts LookupCertificateApplyArgs and LookupCertificateApplyOutput values.
+// You can construct a concrete instance of `LookupCertificateApplyInput` via:
+//
+//          LookupCertificateApplyArgs{...}
+type LookupCertificateApplyInput interface {
+	pulumi.Input
+
+	ToLookupCertificateApplyOutput() LookupCertificateApplyOutput
+	ToLookupCertificateApplyOutputWithContext(context.Context) LookupCertificateApplyOutput
+}
+
+// A collection of arguments for invoking getCertificate.
+type LookupCertificateApplyArgs struct {
+	// Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.
+	KeyVaultId pulumi.StringInput `pulumi:"keyVaultId"`
+	// Specifies the name of the Key Vault Certificate.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the version of the certificate to look up.  (Defaults to latest)
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (LookupCertificateApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateArgs)(nil)).Elem()
+}
+
+func (i LookupCertificateApplyArgs) ToLookupCertificateApplyOutput() LookupCertificateApplyOutput {
+	return i.ToLookupCertificateApplyOutputWithContext(context.Background())
+}
+
+func (i LookupCertificateApplyArgs) ToLookupCertificateApplyOutputWithContext(ctx context.Context) LookupCertificateApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupCertificateApplyOutput)
+}
+
+// A collection of arguments for invoking getCertificate.
+type LookupCertificateApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateArgs)(nil)).Elem()
+}
+
+func (o LookupCertificateApplyOutput) ToLookupCertificateApplyOutput() LookupCertificateApplyOutput {
+	return o
+}
+
+func (o LookupCertificateApplyOutput) ToLookupCertificateApplyOutputWithContext(ctx context.Context) LookupCertificateApplyOutput {
+	return o
+}
+
+// Specifies the ID of the Key Vault instance where the Secret resides, available on the `keyvault.KeyVault` Data Source / Resource.
+func (o LookupCertificateApplyOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateArgs) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Key Vault Certificate.
+func (o LookupCertificateApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the version of the certificate to look up.  (Defaults to latest)
+func (o LookupCertificateApplyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificateArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getCertificate.
+type LookupCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCertificateResult)(nil)).Elem()
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupCertificateResultOutput {
+	return o
+}
+
+func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
+	return o
+}
+
+// The raw Key Vault Certificate data represented as a hexadecimal string.
+func (o LookupCertificateResultOutput) CertificateData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.CertificateData }).(pulumi.StringOutput)
+}
+
+// The raw Key Vault Certificate data represented as a base64 string.
+func (o LookupCertificateResultOutput) CertificateDataBase64() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.CertificateDataBase64 }).(pulumi.StringOutput)
+}
+
+// A `certificatePolicy` block as defined below.
+func (o LookupCertificateResultOutput) CertificatePolicies() GetCertificateCertificatePolicyArrayOutput {
+	return o.ApplyT(func(v LookupCertificateResult) []GetCertificateCertificatePolicy { return v.CertificatePolicies }).(GetCertificateCertificatePolicyArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCertificateResultOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The name of the Certificate Issuer.
+func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the associated Key Vault Secret.
+func (o LookupCertificateResultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o LookupCertificateResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCertificateResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The X509 Thumbprint of the Key Vault Certificate represented as a hexadecimal string.
+func (o LookupCertificateResultOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// The current version of the Key Vault Certificate.
+func (o LookupCertificateResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCertificateApplyOutput{})
+	pulumi.RegisterOutputType(LookupCertificateResultOutput{})
 }

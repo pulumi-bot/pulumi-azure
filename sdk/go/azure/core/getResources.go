@@ -4,6 +4,9 @@
 package core
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,4 +44,130 @@ type GetResourcesResult struct {
 	Resources []GetResourcesResource `pulumi:"resources"`
 	// The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
 	Type string `pulumi:"type"`
+}
+
+func GetResourcesApply(ctx *pulumi.Context, args GetResourcesApplyInput, opts ...pulumi.InvokeOption) GetResourcesResultOutput {
+	return args.ToGetResourcesApplyOutput().ApplyT(func(v GetResourcesArgs) (GetResourcesResult, error) {
+		r, err := GetResources(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetResourcesResultOutput)
+}
+
+// GetResourcesApplyInput is an input type that accepts GetResourcesApplyArgs and GetResourcesApplyOutput values.
+// You can construct a concrete instance of `GetResourcesApplyInput` via:
+//
+//          GetResourcesApplyArgs{...}
+type GetResourcesApplyInput interface {
+	pulumi.Input
+
+	ToGetResourcesApplyOutput() GetResourcesApplyOutput
+	ToGetResourcesApplyOutputWithContext(context.Context) GetResourcesApplyOutput
+}
+
+// A collection of arguments for invoking getResources.
+type GetResourcesApplyArgs struct {
+	// The name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A mapping of tags which the resource has to have in order to be included in the result.
+	RequiredTags pulumi.StringMapInput `pulumi:"requiredTags"`
+	// The name of the Resource group where the Resources are located.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+	// The Resource Type of the Resources you want to list (e.g. `Microsoft.Network/virtualNetworks`). A full list of available Resource Types can be found [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/azure-services-resource-providers).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetResourcesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcesArgs)(nil)).Elem()
+}
+
+func (i GetResourcesApplyArgs) ToGetResourcesApplyOutput() GetResourcesApplyOutput {
+	return i.ToGetResourcesApplyOutputWithContext(context.Background())
+}
+
+func (i GetResourcesApplyArgs) ToGetResourcesApplyOutputWithContext(ctx context.Context) GetResourcesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcesApplyOutput)
+}
+
+// A collection of arguments for invoking getResources.
+type GetResourcesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcesArgs)(nil)).Elem()
+}
+
+func (o GetResourcesApplyOutput) ToGetResourcesApplyOutput() GetResourcesApplyOutput {
+	return o
+}
+
+func (o GetResourcesApplyOutput) ToGetResourcesApplyOutputWithContext(ctx context.Context) GetResourcesApplyOutput {
+	return o
+}
+
+// The name of the Resource.
+func (o GetResourcesApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourcesArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags which the resource has to have in order to be included in the result.
+func (o GetResourcesApplyOutput) RequiredTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourcesArgs) map[string]string { return v.RequiredTags }).(pulumi.StringMapOutput)
+}
+
+// The name of the Resource group where the Resources are located.
+func (o GetResourcesApplyOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourcesArgs) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The Resource Type of the Resources you want to list (e.g. `Microsoft.Network/virtualNetworks`). A full list of available Resource Types can be found [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/azure-services-resource-providers).
+func (o GetResourcesApplyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourcesArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getResources.
+type GetResourcesResultOutput struct{ *pulumi.OutputState }
+
+func (GetResourcesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcesResult)(nil)).Elem()
+}
+
+func (o GetResourcesResultOutput) ToGetResourcesResultOutput() GetResourcesResultOutput {
+	return o
+}
+
+func (o GetResourcesResultOutput) ToGetResourcesResultOutputWithContext(ctx context.Context) GetResourcesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetResourcesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of this Resource.
+func (o GetResourcesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetResourcesResultOutput) RequiredTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourcesResult) map[string]string { return v.RequiredTags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourcesResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// One or more `resource` blocks as defined below.
+func (o GetResourcesResultOutput) Resources() GetResourcesResourceArrayOutput {
+	return o.ApplyT(func(v GetResourcesResult) []GetResourcesResource { return v.Resources }).(GetResourcesResourceArrayOutput)
+}
+
+// The type of this Resource. (e.g. `Microsoft.Network/virtualNetworks`).
+func (o GetResourcesResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetResourcesApplyOutput{})
+	pulumi.RegisterOutputType(GetResourcesResultOutput{})
 }

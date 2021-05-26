@@ -42,11 +42,11 @@ export interface GetCertificateOrderArgs {
     /**
      * The name of the App Service.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group where the App Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -127,4 +127,22 @@ export interface GetCertificateOrderResult {
      * Duration in years (must be between 1 and 3).
      */
     readonly validityInYears: number;
+}
+
+export function getCertificateOrderApply(args: GetCertificateOrderApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateOrderResult> {
+    return pulumi.output(args).apply(a => getCertificateOrder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificateOrder.
+ */
+export interface GetCertificateOrderApplyArgs {
+    /**
+     * The name of the App Service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the App Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

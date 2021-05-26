@@ -106,3 +106,9 @@ def get_resource_group(name: Optional[str] = None,
         location=__ret__.location,
         name=__ret__.name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_resource_group)
+def get_resource_group_apply(name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupResult]:
+    ...

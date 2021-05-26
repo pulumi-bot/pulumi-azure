@@ -182,3 +182,11 @@ def get_published_version(blueprint_name: Optional[str] = None,
         time_created=__ret__.time_created,
         type=__ret__.type,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_published_version)
+def get_published_version_apply(blueprint_name: Optional[pulumi.Input[str]] = None,
+                                scope_id: Optional[pulumi.Input[str]] = None,
+                                version: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublishedVersionResult]:
+    ...

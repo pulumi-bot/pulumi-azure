@@ -44,6 +44,21 @@ namespace Pulumi.Azure.ContainerService
         /// </summary>
         public static Task<GetRegistryScopeMapResult> InvokeAsync(GetRegistryScopeMapArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryScopeMapResult>("azure:containerservice/getRegistryScopeMap:getRegistryScopeMap", args ?? new GetRegistryScopeMapArgs(), options.WithVersion());
+
+        public static Output<GetRegistryScopeMapResult> Apply(GetRegistryScopeMapApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ContainerRegistryName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetRegistryScopeMapArgs();
+                    a[0].Set(args, nameof(args.ContainerRegistryName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.ContainerService
         public string ResourceGroupName { get; set; } = null!;
 
         public GetRegistryScopeMapArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegistryScopeMapApplyArgs
+    {
+        /// <summary>
+        /// The Name of the Container Registry where the token exists.
+        /// </summary>
+        [Input("containerRegistryName", required: true)]
+        public Input<string> ContainerRegistryName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Container Registry token.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where this Container Registry token exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetRegistryScopeMapApplyArgs()
         {
         }
     }

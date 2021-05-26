@@ -4,6 +4,9 @@
 package eventhub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,4 +94,179 @@ type GetEventhubNamespaceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Is this EventHub Namespace deployed across Availability Zones?
 	ZoneRedundant bool `pulumi:"zoneRedundant"`
+}
+
+func GetEventhubNamespaceApply(ctx *pulumi.Context, args GetEventhubNamespaceApplyInput, opts ...pulumi.InvokeOption) GetEventhubNamespaceResultOutput {
+	return args.ToGetEventhubNamespaceApplyOutput().ApplyT(func(v GetEventhubNamespaceArgs) (GetEventhubNamespaceResult, error) {
+		r, err := GetEventhubNamespace(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetEventhubNamespaceResultOutput)
+}
+
+// GetEventhubNamespaceApplyInput is an input type that accepts GetEventhubNamespaceApplyArgs and GetEventhubNamespaceApplyOutput values.
+// You can construct a concrete instance of `GetEventhubNamespaceApplyInput` via:
+//
+//          GetEventhubNamespaceApplyArgs{...}
+type GetEventhubNamespaceApplyInput interface {
+	pulumi.Input
+
+	ToGetEventhubNamespaceApplyOutput() GetEventhubNamespaceApplyOutput
+	ToGetEventhubNamespaceApplyOutputWithContext(context.Context) GetEventhubNamespaceApplyOutput
+}
+
+// A collection of arguments for invoking getEventhubNamespace.
+type GetEventhubNamespaceApplyArgs struct {
+	// The name of the EventHub Namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the EventHub Namespace exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetEventhubNamespaceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventhubNamespaceArgs)(nil)).Elem()
+}
+
+func (i GetEventhubNamespaceApplyArgs) ToGetEventhubNamespaceApplyOutput() GetEventhubNamespaceApplyOutput {
+	return i.ToGetEventhubNamespaceApplyOutputWithContext(context.Background())
+}
+
+func (i GetEventhubNamespaceApplyArgs) ToGetEventhubNamespaceApplyOutputWithContext(ctx context.Context) GetEventhubNamespaceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventhubNamespaceApplyOutput)
+}
+
+// A collection of arguments for invoking getEventhubNamespace.
+type GetEventhubNamespaceApplyOutput struct{ *pulumi.OutputState }
+
+func (GetEventhubNamespaceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventhubNamespaceArgs)(nil)).Elem()
+}
+
+func (o GetEventhubNamespaceApplyOutput) ToGetEventhubNamespaceApplyOutput() GetEventhubNamespaceApplyOutput {
+	return o
+}
+
+func (o GetEventhubNamespaceApplyOutput) ToGetEventhubNamespaceApplyOutputWithContext(ctx context.Context) GetEventhubNamespaceApplyOutput {
+	return o
+}
+
+// The name of the EventHub Namespace.
+func (o GetEventhubNamespaceApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the EventHub Namespace exists.
+func (o GetEventhubNamespaceApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getEventhubNamespace.
+type GetEventhubNamespaceResultOutput struct{ *pulumi.OutputState }
+
+func (GetEventhubNamespaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventhubNamespaceResult)(nil)).Elem()
+}
+
+func (o GetEventhubNamespaceResultOutput) ToGetEventhubNamespaceResultOutput() GetEventhubNamespaceResultOutput {
+	return o
+}
+
+func (o GetEventhubNamespaceResultOutput) ToGetEventhubNamespaceResultOutputWithContext(ctx context.Context) GetEventhubNamespaceResultOutput {
+	return o
+}
+
+// Is Auto Inflate enabled for the EventHub Namespace?
+func (o GetEventhubNamespaceResultOutput) AutoInflateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) bool { return v.AutoInflateEnabled }).(pulumi.BoolOutput)
+}
+
+// The Capacity / Throughput Units for a `Standard` SKU namespace.
+func (o GetEventhubNamespaceResultOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) int { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// The ID of the EventHub Dedicated Cluster where this Namespace exists.
+func (o GetEventhubNamespaceResultOutput) DedicatedClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DedicatedClusterId }).(pulumi.StringOutput)
+}
+
+// The primary connection string for the authorization
+// rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultPrimaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultPrimaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The alias of the primary connection string for the authorization
+// rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultPrimaryConnectionStringAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultPrimaryConnectionStringAlias }).(pulumi.StringOutput)
+}
+
+// The primary access key for the authorization rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultPrimaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultPrimaryKey }).(pulumi.StringOutput)
+}
+
+// The secondary connection string for the
+// authorization rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultSecondaryConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultSecondaryConnectionString }).(pulumi.StringOutput)
+}
+
+// The alias of the secondary connection string for the
+// authorization rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultSecondaryConnectionStringAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultSecondaryConnectionStringAlias }).(pulumi.StringOutput)
+}
+
+// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
+func (o GetEventhubNamespaceResultOutput) DefaultSecondaryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.DefaultSecondaryKey }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEventhubNamespaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEventhubNamespaceResultOutput) KafkaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) bool { return v.KafkaEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure location where the EventHub Namespace exists
+func (o GetEventhubNamespaceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Specifies the maximum number of throughput units when Auto Inflate is Enabled.
+func (o GetEventhubNamespaceResultOutput) MaximumThroughputUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) int { return v.MaximumThroughputUnits }).(pulumi.IntOutput)
+}
+
+func (o GetEventhubNamespaceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetEventhubNamespaceResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Defines which tier to use.
+func (o GetEventhubNamespaceResultOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the EventHub Namespace.
+func (o GetEventhubNamespaceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Is this EventHub Namespace deployed across Availability Zones?
+func (o GetEventhubNamespaceResultOutput) ZoneRedundant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEventhubNamespaceResult) bool { return v.ZoneRedundant }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEventhubNamespaceApplyOutput{})
+	pulumi.RegisterOutputType(GetEventhubNamespaceResultOutput{})
 }

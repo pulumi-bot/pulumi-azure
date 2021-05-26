@@ -43,6 +43,21 @@ namespace Pulumi.Azure.Waf
         /// </summary>
         public static Task<GetFirewallPolicyResult> InvokeAsync(GetFirewallPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallPolicyResult>("azure:waf/getFirewallPolicy:getFirewallPolicy", args ?? new GetFirewallPolicyArgs(), options.WithVersion());
+
+        public static Output<GetFirewallPolicyResult> Apply(GetFirewallPolicyApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetFirewallPolicyArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +84,33 @@ namespace Pulumi.Azure.Waf
         }
 
         public GetFirewallPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFirewallPolicyApplyArgs
+    {
+        /// <summary>
+        /// The name of the Web Application Firewall Policy
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Web Application Firewall Policy exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetFirewallPolicyApplyArgs()
         {
         }
     }

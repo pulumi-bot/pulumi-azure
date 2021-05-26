@@ -4,6 +4,9 @@
 package appservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,151 @@ type GetAppServicePlanResult struct {
 	Sku GetAppServicePlanSku `pulumi:"sku"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetAppServicePlanApply(ctx *pulumi.Context, args GetAppServicePlanApplyInput, opts ...pulumi.InvokeOption) GetAppServicePlanResultOutput {
+	return args.ToGetAppServicePlanApplyOutput().ApplyT(func(v GetAppServicePlanArgs) (GetAppServicePlanResult, error) {
+		r, err := GetAppServicePlan(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAppServicePlanResultOutput)
+}
+
+// GetAppServicePlanApplyInput is an input type that accepts GetAppServicePlanApplyArgs and GetAppServicePlanApplyOutput values.
+// You can construct a concrete instance of `GetAppServicePlanApplyInput` via:
+//
+//          GetAppServicePlanApplyArgs{...}
+type GetAppServicePlanApplyInput interface {
+	pulumi.Input
+
+	ToGetAppServicePlanApplyOutput() GetAppServicePlanApplyOutput
+	ToGetAppServicePlanApplyOutputWithContext(context.Context) GetAppServicePlanApplyOutput
+}
+
+// A collection of arguments for invoking getAppServicePlan.
+type GetAppServicePlanApplyArgs struct {
+	// The name of the App Service Plan.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the App Service Plan exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetAppServicePlanApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServicePlanArgs)(nil)).Elem()
+}
+
+func (i GetAppServicePlanApplyArgs) ToGetAppServicePlanApplyOutput() GetAppServicePlanApplyOutput {
+	return i.ToGetAppServicePlanApplyOutputWithContext(context.Background())
+}
+
+func (i GetAppServicePlanApplyArgs) ToGetAppServicePlanApplyOutputWithContext(ctx context.Context) GetAppServicePlanApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppServicePlanApplyOutput)
+}
+
+// A collection of arguments for invoking getAppServicePlan.
+type GetAppServicePlanApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAppServicePlanApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServicePlanArgs)(nil)).Elem()
+}
+
+func (o GetAppServicePlanApplyOutput) ToGetAppServicePlanApplyOutput() GetAppServicePlanApplyOutput {
+	return o
+}
+
+func (o GetAppServicePlanApplyOutput) ToGetAppServicePlanApplyOutputWithContext(ctx context.Context) GetAppServicePlanApplyOutput {
+	return o
+}
+
+// The name of the App Service Plan.
+func (o GetAppServicePlanApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the App Service Plan exists.
+func (o GetAppServicePlanApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAppServicePlan.
+type GetAppServicePlanResultOutput struct{ *pulumi.OutputState }
+
+func (GetAppServicePlanResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServicePlanResult)(nil)).Elem()
+}
+
+func (o GetAppServicePlanResultOutput) ToGetAppServicePlanResultOutput() GetAppServicePlanResultOutput {
+	return o
+}
+
+func (o GetAppServicePlanResultOutput) ToGetAppServicePlanResultOutputWithContext(ctx context.Context) GetAppServicePlanResultOutput {
+	return o
+}
+
+// The ID of the App Service Environment where the App Service Plan is located.
+func (o GetAppServicePlanResultOutput) AppServiceEnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.AppServiceEnvironmentId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAppServicePlanResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A flag that indicates if it's a xenon plan (support for Windows Container)
+func (o GetAppServicePlanResultOutput) IsXenon() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) bool { return v.IsXenon }).(pulumi.BoolOutput)
+}
+
+// The Operating System type of the App Service Plan
+func (o GetAppServicePlanResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The Azure location where the App Service Plan exists
+func (o GetAppServicePlanResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan.
+func (o GetAppServicePlanResultOutput) MaximumElasticWorkerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) int { return v.MaximumElasticWorkerCount }).(pulumi.IntOutput)
+}
+
+// The maximum number of workers supported with the App Service Plan's sku.
+func (o GetAppServicePlanResultOutput) MaximumNumberOfWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) int { return v.MaximumNumberOfWorkers }).(pulumi.IntOutput)
+}
+
+func (o GetAppServicePlanResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Can Apps assigned to this App Service Plan be scaled independently?
+func (o GetAppServicePlanResultOutput) PerSiteScaling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) bool { return v.PerSiteScaling }).(pulumi.BoolOutput)
+}
+
+// Is this App Service Plan `Reserved`?
+func (o GetAppServicePlanResultOutput) Reserved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+func (o GetAppServicePlanResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A `sku` block as documented below.
+func (o GetAppServicePlanResultOutput) Sku() GetAppServicePlanSkuOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) GetAppServicePlanSku { return v.Sku }).(GetAppServicePlanSkuOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetAppServicePlanResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAppServicePlanResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAppServicePlanApplyOutput{})
+	pulumi.RegisterOutputType(GetAppServicePlanResultOutput{})
 }

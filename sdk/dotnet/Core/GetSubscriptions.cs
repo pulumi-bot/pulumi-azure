@@ -42,6 +42,20 @@ namespace Pulumi.Azure.Core
         /// </summary>
         public static Task<GetSubscriptionsResult> InvokeAsync(GetSubscriptionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionsResult>("azure:core/getSubscriptions:getSubscriptions", args ?? new GetSubscriptionsArgs(), options.WithVersion());
+
+        public static Output<GetSubscriptionsResult> Apply(GetSubscriptionsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSubscriptionsApplyArgs();
+            return Pulumi.Output.All(
+                args.DisplayNameContains.Box(),
+                args.DisplayNamePrefix.Box()
+            ).Apply(a => {
+                    var args = new GetSubscriptionsArgs();
+                    a[0].Set(args, nameof(args.DisplayNameContains));
+                    a[1].Set(args, nameof(args.DisplayNamePrefix));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -60,6 +74,25 @@ namespace Pulumi.Azure.Core
         public string? DisplayNamePrefix { get; set; }
 
         public GetSubscriptionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionsApplyArgs
+    {
+        /// <summary>
+        /// A case-insensitive value which must be contained within the `display_name` field, used to filter the results
+        /// </summary>
+        [Input("displayNameContains")]
+        public Input<string>? DisplayNameContains { get; set; }
+
+        /// <summary>
+        /// A case-insensitive prefix which can be used to filter on the `display_name` field
+        /// </summary>
+        [Input("displayNamePrefix")]
+        public Input<string>? DisplayNamePrefix { get; set; }
+
+        public GetSubscriptionsApplyArgs()
         {
         }
     }

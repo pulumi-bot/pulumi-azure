@@ -46,15 +46,15 @@ export interface GetPublishedVersionArgs {
     /**
      * The name of the Blueprint Definition
      */
-    readonly blueprintName: string;
+    blueprintName: string;
     /**
      * The ID of the Management Group / Subscription where this Blueprint Definition is stored.
      */
-    readonly scopeId: string;
+    scopeId: string;
     /**
      * The Version name of the Published Version of the Blueprint Definition
      */
-    readonly version: string;
+    version: string;
 }
 
 /**
@@ -86,4 +86,26 @@ export interface GetPublishedVersionResult {
      */
     readonly type: string;
     readonly version: string;
+}
+
+export function getPublishedVersionApply(args: GetPublishedVersionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublishedVersionResult> {
+    return pulumi.output(args).apply(a => getPublishedVersion(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPublishedVersion.
+ */
+export interface GetPublishedVersionApplyArgs {
+    /**
+     * The name of the Blueprint Definition
+     */
+    blueprintName: pulumi.Input<string>;
+    /**
+     * The ID of the Management Group / Subscription where this Blueprint Definition is stored.
+     */
+    scopeId: pulumi.Input<string>;
+    /**
+     * The Version name of the Published Version of the Blueprint Definition
+     */
+    version: pulumi.Input<string>;
 }

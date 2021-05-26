@@ -4,6 +4,9 @@
 package automation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,127 @@ type LookupDateTimeVariableResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
 	Value string `pulumi:"value"`
+}
+
+func LookupDateTimeVariableApply(ctx *pulumi.Context, args LookupDateTimeVariableApplyInput, opts ...pulumi.InvokeOption) LookupDateTimeVariableResultOutput {
+	return args.ToLookupDateTimeVariableApplyOutput().ApplyT(func(v LookupDateTimeVariableArgs) (LookupDateTimeVariableResult, error) {
+		r, err := LookupDateTimeVariable(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDateTimeVariableResultOutput)
+}
+
+// LookupDateTimeVariableApplyInput is an input type that accepts LookupDateTimeVariableApplyArgs and LookupDateTimeVariableApplyOutput values.
+// You can construct a concrete instance of `LookupDateTimeVariableApplyInput` via:
+//
+//          LookupDateTimeVariableApplyArgs{...}
+type LookupDateTimeVariableApplyInput interface {
+	pulumi.Input
+
+	ToLookupDateTimeVariableApplyOutput() LookupDateTimeVariableApplyOutput
+	ToLookupDateTimeVariableApplyOutputWithContext(context.Context) LookupDateTimeVariableApplyOutput
+}
+
+// A collection of arguments for invoking getDateTimeVariable.
+type LookupDateTimeVariableApplyArgs struct {
+	// The name of the automation account in which the Automation Variable exists.
+	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
+	// The name of the Automation Variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Name of the Resource Group where the automation account exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupDateTimeVariableApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDateTimeVariableArgs)(nil)).Elem()
+}
+
+func (i LookupDateTimeVariableApplyArgs) ToLookupDateTimeVariableApplyOutput() LookupDateTimeVariableApplyOutput {
+	return i.ToLookupDateTimeVariableApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDateTimeVariableApplyArgs) ToLookupDateTimeVariableApplyOutputWithContext(ctx context.Context) LookupDateTimeVariableApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDateTimeVariableApplyOutput)
+}
+
+// A collection of arguments for invoking getDateTimeVariable.
+type LookupDateTimeVariableApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDateTimeVariableApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDateTimeVariableArgs)(nil)).Elem()
+}
+
+func (o LookupDateTimeVariableApplyOutput) ToLookupDateTimeVariableApplyOutput() LookupDateTimeVariableApplyOutput {
+	return o
+}
+
+func (o LookupDateTimeVariableApplyOutput) ToLookupDateTimeVariableApplyOutputWithContext(ctx context.Context) LookupDateTimeVariableApplyOutput {
+	return o
+}
+
+// The name of the automation account in which the Automation Variable exists.
+func (o LookupDateTimeVariableApplyOutput) AutomationAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableArgs) string { return v.AutomationAccountName }).(pulumi.StringOutput)
+}
+
+// The name of the Automation Variable.
+func (o LookupDateTimeVariableApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Name of the Resource Group where the automation account exists.
+func (o LookupDateTimeVariableApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDateTimeVariable.
+type LookupDateTimeVariableResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDateTimeVariableResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDateTimeVariableResult)(nil)).Elem()
+}
+
+func (o LookupDateTimeVariableResultOutput) ToLookupDateTimeVariableResultOutput() LookupDateTimeVariableResultOutput {
+	return o
+}
+
+func (o LookupDateTimeVariableResultOutput) ToLookupDateTimeVariableResultOutputWithContext(ctx context.Context) LookupDateTimeVariableResultOutput {
+	return o
+}
+
+func (o LookupDateTimeVariableResultOutput) AutomationAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.AutomationAccountName }).(pulumi.StringOutput)
+}
+
+// The description of the Automation Variable.
+func (o LookupDateTimeVariableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies if the Automation Variable is encrypted. Defaults to `false`.
+func (o LookupDateTimeVariableResultOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDateTimeVariableResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDateTimeVariableResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDateTimeVariableResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
+func (o LookupDateTimeVariableResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDateTimeVariableResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDateTimeVariableApplyOutput{})
+	pulumi.RegisterOutputType(LookupDateTimeVariableResultOutput{})
 }
