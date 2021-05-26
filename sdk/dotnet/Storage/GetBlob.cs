@@ -41,6 +41,23 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetBlobResult> InvokeAsync(GetBlobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBlobResult>("azure:storage/getBlob:getBlob", args ?? new GetBlobArgs(), options.WithVersion());
+
+        public static Output<GetBlobResult> Apply(GetBlobApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Metadata.Box(),
+                args.Name.Box(),
+                args.StorageAccountName.Box(),
+                args.StorageContainerName.Box()
+            ).Apply(a => {
+                    var args = new GetBlobArgs();
+                    a[0].Set(args, nameof(args.Metadata));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.StorageAccountName));
+                    a[3].Set(args, nameof(args.StorageContainerName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -77,6 +94,43 @@ namespace Pulumi.Azure.Storage
         public string StorageContainerName { get; set; } = null!;
 
         public GetBlobArgs()
+        {
+        }
+    }
+
+    public sealed class GetBlobApplyArgs
+    {
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// A map of custom blob metadata.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
+        /// <summary>
+        /// The name of the Blob.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Storage Account where the Container exists.
+        /// </summary>
+        [Input("storageAccountName", required: true)]
+        public Input<string> StorageAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Storage Container where the Blob exists.
+        /// </summary>
+        [Input("storageContainerName", required: true)]
+        public Input<string> StorageContainerName { get; set; } = null!;
+
+        public GetBlobApplyArgs()
         {
         }
     }

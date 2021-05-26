@@ -42,11 +42,11 @@ export interface GetDatasetKustoClusterArgs {
     /**
      * The name of this Data Share Kusto Cluster Dataset.
      */
-    readonly name: string;
+    name: string;
     /**
      * The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created.
      */
-    readonly shareId: string;
+    shareId: string;
 }
 
 /**
@@ -71,4 +71,22 @@ export interface GetDatasetKustoClusterResult {
     readonly kustoClusterLocation: string;
     readonly name: string;
     readonly shareId: string;
+}
+
+export function getDatasetKustoClusterApply(args: GetDatasetKustoClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetKustoClusterResult> {
+    return pulumi.output(args).apply(a => getDatasetKustoCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatasetKustoCluster.
+ */
+export interface GetDatasetKustoClusterApplyArgs {
+    /**
+     * The name of this Data Share Kusto Cluster Dataset.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created.
+     */
+    shareId: pulumi.Input<string>;
 }

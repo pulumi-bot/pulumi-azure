@@ -43,6 +43,21 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetFirewallResult> InvokeAsync(GetFirewallArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFirewallResult>("azure:network/getFirewall:getFirewall", args ?? new GetFirewallArgs(), options.WithVersion());
+
+        public static Output<GetFirewallResult> Apply(GetFirewallApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Zones.Box()
+            ).Apply(a => {
+                    var args = new GetFirewallArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Zones));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -73,6 +88,37 @@ namespace Pulumi.Azure.Network
         }
 
         public GetFirewallArgs()
+        {
+        }
+    }
+
+    public sealed class GetFirewallApplyArgs
+    {
+        /// <summary>
+        /// The name of the Azure Firewall.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Azure Firewall exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// The availability zones in which the Azure Firewall is created.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetFirewallApplyArgs()
         {
         }
     }

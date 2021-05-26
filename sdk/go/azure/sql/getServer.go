@@ -4,6 +4,9 @@
 package sql
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,131 @@ type GetServerResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The version of the SQL Server.
 	Version string `pulumi:"version"`
+}
+
+func GetServerApply(ctx *pulumi.Context, args GetServerApplyInput, opts ...pulumi.InvokeOption) GetServerResultOutput {
+	return args.ToGetServerApplyOutput().ApplyT(func(v GetServerArgs) (GetServerResult, error) {
+		r, err := GetServer(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetServerResultOutput)
+}
+
+// GetServerApplyInput is an input type that accepts GetServerApplyArgs and GetServerApplyOutput values.
+// You can construct a concrete instance of `GetServerApplyInput` via:
+//
+//          GetServerApplyArgs{...}
+type GetServerApplyInput interface {
+	pulumi.Input
+
+	ToGetServerApplyOutput() GetServerApplyOutput
+	ToGetServerApplyOutputWithContext(context.Context) GetServerApplyOutput
+}
+
+// A collection of arguments for invoking getServer.
+type GetServerApplyArgs struct {
+	// The name of the SQL Server.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the Resource Group where the SQL Server exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetServerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerArgs)(nil)).Elem()
+}
+
+func (i GetServerApplyArgs) ToGetServerApplyOutput() GetServerApplyOutput {
+	return i.ToGetServerApplyOutputWithContext(context.Background())
+}
+
+func (i GetServerApplyArgs) ToGetServerApplyOutputWithContext(ctx context.Context) GetServerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerApplyOutput)
+}
+
+// A collection of arguments for invoking getServer.
+type GetServerApplyOutput struct{ *pulumi.OutputState }
+
+func (GetServerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerArgs)(nil)).Elem()
+}
+
+func (o GetServerApplyOutput) ToGetServerApplyOutput() GetServerApplyOutput {
+	return o
+}
+
+func (o GetServerApplyOutput) ToGetServerApplyOutputWithContext(ctx context.Context) GetServerApplyOutput {
+	return o
+}
+
+// The name of the SQL Server.
+func (o GetServerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Resource Group where the SQL Server exists.
+func (o GetServerApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getServer.
+type GetServerResultOutput struct{ *pulumi.OutputState }
+
+func (GetServerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerResult)(nil)).Elem()
+}
+
+func (o GetServerResultOutput) ToGetServerResultOutput() GetServerResultOutput {
+	return o
+}
+
+func (o GetServerResultOutput) ToGetServerResultOutputWithContext(ctx context.Context) GetServerResultOutput {
+	return o
+}
+
+// The administrator username of the SQL Server.
+func (o GetServerResultOutput) AdministratorLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.AdministratorLogin }).(pulumi.StringOutput)
+}
+
+// The fully qualified domain name of the SQL Server.
+func (o GetServerResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An `identity` block as defined below.
+func (o GetServerResultOutput) Identities() GetServerIdentityArrayOutput {
+	return o.ApplyT(func(v GetServerResult) []GetServerIdentity { return v.Identities }).(GetServerIdentityArrayOutput)
+}
+
+// The location of the Resource Group in which the SQL Server exists.
+func (o GetServerResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetServerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServerResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o GetServerResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The version of the SQL Server.
+func (o GetServerResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServerApplyOutput{})
+	pulumi.RegisterOutputType(GetServerResultOutput{})
 }

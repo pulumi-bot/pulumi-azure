@@ -161,3 +161,11 @@ def get_storage_container(metadata: Optional[Mapping[str, str]] = None,
         name=__ret__.name,
         resource_manager_id=__ret__.resource_manager_id,
         storage_account_name=__ret__.storage_account_name)
+
+
+@_utilities.lift_output_func(get_storage_container)
+def get_storage_container_apply(metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                name: Optional[pulumi.Input[str]] = None,
+                                storage_account_name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageContainerResult]:
+    ...

@@ -4,6 +4,9 @@
 package iot
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,135 @@ type GetDpsResult struct {
 	// The service endpoint of the IoT Device Provisioning Service.
 	ServiceOperationsHostName string            `pulumi:"serviceOperationsHostName"`
 	Tags                      map[string]string `pulumi:"tags"`
+}
+
+func GetDpsApply(ctx *pulumi.Context, args GetDpsApplyInput, opts ...pulumi.InvokeOption) GetDpsResultOutput {
+	return args.ToGetDpsApplyOutput().ApplyT(func(v GetDpsArgs) (GetDpsResult, error) {
+		r, err := GetDps(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetDpsResultOutput)
+}
+
+// GetDpsApplyInput is an input type that accepts GetDpsApplyArgs and GetDpsApplyOutput values.
+// You can construct a concrete instance of `GetDpsApplyInput` via:
+//
+//          GetDpsApplyArgs{...}
+type GetDpsApplyInput interface {
+	pulumi.Input
+
+	ToGetDpsApplyOutput() GetDpsApplyOutput
+	ToGetDpsApplyOutputWithContext(context.Context) GetDpsApplyOutput
+}
+
+// A collection of arguments for invoking getDps.
+type GetDpsApplyArgs struct {
+	// Specifies the name of the Iot Device Provisioning Service resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the resource group under which the Iot Device Provisioning Service is located in.
+	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	Tags              pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetDpsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDpsArgs)(nil)).Elem()
+}
+
+func (i GetDpsApplyArgs) ToGetDpsApplyOutput() GetDpsApplyOutput {
+	return i.ToGetDpsApplyOutputWithContext(context.Background())
+}
+
+func (i GetDpsApplyArgs) ToGetDpsApplyOutputWithContext(ctx context.Context) GetDpsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDpsApplyOutput)
+}
+
+// A collection of arguments for invoking getDps.
+type GetDpsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetDpsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDpsArgs)(nil)).Elem()
+}
+
+func (o GetDpsApplyOutput) ToGetDpsApplyOutput() GetDpsApplyOutput {
+	return o
+}
+
+func (o GetDpsApplyOutput) ToGetDpsApplyOutputWithContext(ctx context.Context) GetDpsApplyOutput {
+	return o
+}
+
+// Specifies the name of the Iot Device Provisioning Service resource.
+func (o GetDpsApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource group under which the Iot Device Provisioning Service is located in.
+func (o GetDpsApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetDpsApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDpsArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getDps.
+type GetDpsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDpsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDpsResult)(nil)).Elem()
+}
+
+func (o GetDpsResultOutput) ToGetDpsResultOutput() GetDpsResultOutput {
+	return o
+}
+
+func (o GetDpsResultOutput) ToGetDpsResultOutputWithContext(ctx context.Context) GetDpsResultOutput {
+	return o
+}
+
+// The allocation policy of the IoT Device Provisioning Service.
+func (o GetDpsResultOutput) AllocationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.AllocationPolicy }).(pulumi.StringOutput)
+}
+
+// The device endpoint of the IoT Device Provisioning Service.
+func (o GetDpsResultOutput) DeviceProvisioningHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.DeviceProvisioningHostName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDpsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the IoT Device Provisioning Service.
+func (o GetDpsResultOutput) IdScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.IdScope }).(pulumi.StringOutput)
+}
+
+// Specifies the supported Azure location where the IoT Device Provisioning Service exists.
+func (o GetDpsResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetDpsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDpsResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The service endpoint of the IoT Device Provisioning Service.
+func (o GetDpsResultOutput) ServiceOperationsHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDpsResult) string { return v.ServiceOperationsHostName }).(pulumi.StringOutput)
+}
+
+func (o GetDpsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDpsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDpsApplyOutput{})
+	pulumi.RegisterOutputType(GetDpsResultOutput{})
 }

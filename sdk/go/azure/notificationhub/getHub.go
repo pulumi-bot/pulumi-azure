@@ -4,6 +4,9 @@
 package notificationhub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,132 @@ type LookupHubResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupHubApply(ctx *pulumi.Context, args LookupHubApplyInput, opts ...pulumi.InvokeOption) LookupHubResultOutput {
+	return args.ToLookupHubApplyOutput().ApplyT(func(v LookupHubArgs) (LookupHubResult, error) {
+		r, err := LookupHub(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupHubResultOutput)
+}
+
+// LookupHubApplyInput is an input type that accepts LookupHubApplyArgs and LookupHubApplyOutput values.
+// You can construct a concrete instance of `LookupHubApplyInput` via:
+//
+//          LookupHubApplyArgs{...}
+type LookupHubApplyInput interface {
+	pulumi.Input
+
+	ToLookupHubApplyOutput() LookupHubApplyOutput
+	ToLookupHubApplyOutputWithContext(context.Context) LookupHubApplyOutput
+}
+
+// A collection of arguments for invoking getHub.
+type LookupHubApplyArgs struct {
+	// Specifies the Name of the Notification Hub.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Specifies the Name of the Resource Group within which the Notification Hub exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupHubApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHubArgs)(nil)).Elem()
+}
+
+func (i LookupHubApplyArgs) ToLookupHubApplyOutput() LookupHubApplyOutput {
+	return i.ToLookupHubApplyOutputWithContext(context.Background())
+}
+
+func (i LookupHubApplyArgs) ToLookupHubApplyOutputWithContext(ctx context.Context) LookupHubApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupHubApplyOutput)
+}
+
+// A collection of arguments for invoking getHub.
+type LookupHubApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupHubApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHubArgs)(nil)).Elem()
+}
+
+func (o LookupHubApplyOutput) ToLookupHubApplyOutput() LookupHubApplyOutput {
+	return o
+}
+
+func (o LookupHubApplyOutput) ToLookupHubApplyOutputWithContext(ctx context.Context) LookupHubApplyOutput {
+	return o
+}
+
+// Specifies the Name of the Notification Hub.
+func (o LookupHubApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
+func (o LookupHubApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Resource Group within which the Notification Hub exists.
+func (o LookupHubApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getHub.
+type LookupHubResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHubResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHubResult)(nil)).Elem()
+}
+
+func (o LookupHubResultOutput) ToLookupHubResultOutput() LookupHubResultOutput {
+	return o
+}
+
+func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Context) LookupHubResultOutput {
+	return o
+}
+
+// A `apnsCredential` block as defined below.
+func (o LookupHubResultOutput) ApnsCredentials() GetHubApnsCredentialArrayOutput {
+	return o.ApplyT(func(v LookupHubResult) []GetHubApnsCredential { return v.ApnsCredentials }).(GetHubApnsCredentialArrayOutput)
+}
+
+// A `gcmCredential` block as defined below.
+func (o LookupHubResultOutput) GcmCredentials() GetHubGcmCredentialArrayOutput {
+	return o.ApplyT(func(v LookupHubResult) []GetHubGcmCredential { return v.GcmCredentials }).(GetHubGcmCredentialArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupHubResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Azure Region in which this Notification Hub exists.
+func (o LookupHubResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupHubResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupHubResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o LookupHubResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHubResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o LookupHubResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHubResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHubApplyOutput{})
+	pulumi.RegisterOutputType(LookupHubResultOutput{})
 }

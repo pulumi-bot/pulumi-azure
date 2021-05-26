@@ -50,6 +50,19 @@ namespace Pulumi.Azure.Authorization
         /// </summary>
         public static Task<GetUserAssignedIdentityResult> InvokeAsync(GetUserAssignedIdentityArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserAssignedIdentityResult>("azure:authorization/getUserAssignedIdentity:getUserAssignedIdentity", args ?? new GetUserAssignedIdentityArgs(), options.WithVersion());
+
+        public static Output<GetUserAssignedIdentityResult> Apply(GetUserAssignedIdentityApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetUserAssignedIdentityArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +81,25 @@ namespace Pulumi.Azure.Authorization
         public string ResourceGroupName { get; set; } = null!;
 
         public GetUserAssignedIdentityArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserAssignedIdentityApplyArgs
+    {
+        /// <summary>
+        /// The name of the User Assigned Identity.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the User Assigned Identity exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetUserAssignedIdentityApplyArgs()
         {
         }
     }

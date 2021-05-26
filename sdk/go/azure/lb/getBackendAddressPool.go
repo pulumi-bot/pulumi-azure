@@ -4,6 +4,9 @@
 package lb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,126 @@ type LookupBackendAddressPoolResult struct {
 	Name string `pulumi:"name"`
 	// A list of the Load Balancing Outbound Rules associated with this Backend Address Pool.
 	OutboundRules []string `pulumi:"outboundRules"`
+}
+
+func LookupBackendAddressPoolApply(ctx *pulumi.Context, args LookupBackendAddressPoolApplyInput, opts ...pulumi.InvokeOption) LookupBackendAddressPoolResultOutput {
+	return args.ToLookupBackendAddressPoolApplyOutput().ApplyT(func(v LookupBackendAddressPoolArgs) (LookupBackendAddressPoolResult, error) {
+		r, err := LookupBackendAddressPool(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupBackendAddressPoolResultOutput)
+}
+
+// LookupBackendAddressPoolApplyInput is an input type that accepts LookupBackendAddressPoolApplyArgs and LookupBackendAddressPoolApplyOutput values.
+// You can construct a concrete instance of `LookupBackendAddressPoolApplyInput` via:
+//
+//          LookupBackendAddressPoolApplyArgs{...}
+type LookupBackendAddressPoolApplyInput interface {
+	pulumi.Input
+
+	ToLookupBackendAddressPoolApplyOutput() LookupBackendAddressPoolApplyOutput
+	ToLookupBackendAddressPoolApplyOutputWithContext(context.Context) LookupBackendAddressPoolApplyOutput
+}
+
+// A collection of arguments for invoking getBackendAddressPool.
+type LookupBackendAddressPoolApplyArgs struct {
+	// The ID of the Load Balancer in which the Backend Address Pool exists.
+	LoadbalancerId pulumi.StringInput `pulumi:"loadbalancerId"`
+	// Specifies the name of the Backend Address Pool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupBackendAddressPoolApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackendAddressPoolArgs)(nil)).Elem()
+}
+
+func (i LookupBackendAddressPoolApplyArgs) ToLookupBackendAddressPoolApplyOutput() LookupBackendAddressPoolApplyOutput {
+	return i.ToLookupBackendAddressPoolApplyOutputWithContext(context.Background())
+}
+
+func (i LookupBackendAddressPoolApplyArgs) ToLookupBackendAddressPoolApplyOutputWithContext(ctx context.Context) LookupBackendAddressPoolApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupBackendAddressPoolApplyOutput)
+}
+
+// A collection of arguments for invoking getBackendAddressPool.
+type LookupBackendAddressPoolApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupBackendAddressPoolApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackendAddressPoolArgs)(nil)).Elem()
+}
+
+func (o LookupBackendAddressPoolApplyOutput) ToLookupBackendAddressPoolApplyOutput() LookupBackendAddressPoolApplyOutput {
+	return o
+}
+
+func (o LookupBackendAddressPoolApplyOutput) ToLookupBackendAddressPoolApplyOutputWithContext(ctx context.Context) LookupBackendAddressPoolApplyOutput {
+	return o
+}
+
+// The ID of the Load Balancer in which the Backend Address Pool exists.
+func (o LookupBackendAddressPoolApplyOutput) LoadbalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolArgs) string { return v.LoadbalancerId }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Backend Address Pool.
+func (o LookupBackendAddressPoolApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getBackendAddressPool.
+type LookupBackendAddressPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBackendAddressPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBackendAddressPoolResult)(nil)).Elem()
+}
+
+func (o LookupBackendAddressPoolResultOutput) ToLookupBackendAddressPoolResultOutput() LookupBackendAddressPoolResultOutput {
+	return o
+}
+
+func (o LookupBackendAddressPoolResultOutput) ToLookupBackendAddressPoolResultOutputWithContext(ctx context.Context) LookupBackendAddressPoolResultOutput {
+	return o
+}
+
+// A list of `backendAddress` block as defined below.
+func (o LookupBackendAddressPoolResultOutput) BackendAddresses() GetBackendAddressPoolBackendAddressArrayOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) []GetBackendAddressPoolBackendAddress {
+		return v.BackendAddresses
+	}).(GetBackendAddressPoolBackendAddressArrayOutput)
+}
+
+// A list of references to IP addresses defined in network interfaces.
+func (o LookupBackendAddressPoolResultOutput) BackendIpConfigurations() GetBackendAddressPoolBackendIpConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) []GetBackendAddressPoolBackendIpConfiguration {
+		return v.BackendIpConfigurations
+	}).(GetBackendAddressPoolBackendIpConfigurationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBackendAddressPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of the Load Balancing Rules associated with this Backend Address Pool.
+func (o LookupBackendAddressPoolResultOutput) LoadBalancingRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) []string { return v.LoadBalancingRules }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupBackendAddressPoolResultOutput) LoadbalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) string { return v.LoadbalancerId }).(pulumi.StringOutput)
+}
+
+// The name of the Backend Address.
+func (o LookupBackendAddressPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of the Load Balancing Outbound Rules associated with this Backend Address Pool.
+func (o LookupBackendAddressPoolResultOutput) OutboundRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackendAddressPoolResult) []string { return v.OutboundRules }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBackendAddressPoolApplyOutput{})
+	pulumi.RegisterOutputType(LookupBackendAddressPoolResultOutput{})
 }

@@ -47,23 +47,23 @@ export interface GetVolumeArgs {
     /**
      * The name of the NetApp account where the NetApp pool exists.
      */
-    readonly accountName: string;
+    accountName: string;
     /**
      * The name of the NetApp Volume.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the NetApp pool where the NetApp volume exists.
      */
-    readonly poolName: string;
+    poolName: string;
     /**
      * The Name of the Resource Group where the NetApp Volume exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * Volume security style
      */
-    readonly securityStyle?: string;
+    securityStyle?: string;
 }
 
 /**
@@ -115,4 +115,34 @@ export interface GetVolumeResult {
      * The unique file path of the volume.
      */
     readonly volumePath: string;
+}
+
+export function getVolumeApply(args: GetVolumeApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
+    return pulumi.output(args).apply(a => getVolume(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVolume.
+ */
+export interface GetVolumeApplyArgs {
+    /**
+     * The name of the NetApp account where the NetApp pool exists.
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the NetApp Volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the NetApp pool where the NetApp volume exists.
+     */
+    poolName: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the NetApp Volume exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * Volume security style
+     */
+    securityStyle?: pulumi.Input<string>;
 }

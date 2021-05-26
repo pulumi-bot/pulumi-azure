@@ -4,6 +4,9 @@
 package privatelink
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,113 @@ type GetEndpointConnectionResult struct {
 	Name                      string                                          `pulumi:"name"`
 	PrivateServiceConnections []GetEndpointConnectionPrivateServiceConnection `pulumi:"privateServiceConnections"`
 	ResourceGroupName         string                                          `pulumi:"resourceGroupName"`
+}
+
+func GetEndpointConnectionApply(ctx *pulumi.Context, args GetEndpointConnectionApplyInput, opts ...pulumi.InvokeOption) GetEndpointConnectionResultOutput {
+	return args.ToGetEndpointConnectionApplyOutput().ApplyT(func(v GetEndpointConnectionArgs) (GetEndpointConnectionResult, error) {
+		r, err := GetEndpointConnection(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetEndpointConnectionResultOutput)
+}
+
+// GetEndpointConnectionApplyInput is an input type that accepts GetEndpointConnectionApplyArgs and GetEndpointConnectionApplyOutput values.
+// You can construct a concrete instance of `GetEndpointConnectionApplyInput` via:
+//
+//          GetEndpointConnectionApplyArgs{...}
+type GetEndpointConnectionApplyInput interface {
+	pulumi.Input
+
+	ToGetEndpointConnectionApplyOutput() GetEndpointConnectionApplyOutput
+	ToGetEndpointConnectionApplyOutputWithContext(context.Context) GetEndpointConnectionApplyOutput
+}
+
+// A collection of arguments for invoking getEndpointConnection.
+type GetEndpointConnectionApplyArgs struct {
+	// Specifies the Name of the private endpoint.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the Name of the Resource Group within which the private endpoint exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetEndpointConnectionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointConnectionArgs)(nil)).Elem()
+}
+
+func (i GetEndpointConnectionApplyArgs) ToGetEndpointConnectionApplyOutput() GetEndpointConnectionApplyOutput {
+	return i.ToGetEndpointConnectionApplyOutputWithContext(context.Background())
+}
+
+func (i GetEndpointConnectionApplyArgs) ToGetEndpointConnectionApplyOutputWithContext(ctx context.Context) GetEndpointConnectionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointConnectionApplyOutput)
+}
+
+// A collection of arguments for invoking getEndpointConnection.
+type GetEndpointConnectionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointConnectionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointConnectionArgs)(nil)).Elem()
+}
+
+func (o GetEndpointConnectionApplyOutput) ToGetEndpointConnectionApplyOutput() GetEndpointConnectionApplyOutput {
+	return o
+}
+
+func (o GetEndpointConnectionApplyOutput) ToGetEndpointConnectionApplyOutputWithContext(ctx context.Context) GetEndpointConnectionApplyOutput {
+	return o
+}
+
+// Specifies the Name of the private endpoint.
+func (o GetEndpointConnectionApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Resource Group within which the private endpoint exists.
+func (o GetEndpointConnectionApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getEndpointConnection.
+type GetEndpointConnectionResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointConnectionResult)(nil)).Elem()
+}
+
+func (o GetEndpointConnectionResultOutput) ToGetEndpointConnectionResultOutput() GetEndpointConnectionResultOutput {
+	return o
+}
+
+func (o GetEndpointConnectionResultOutput) ToGetEndpointConnectionResultOutputWithContext(ctx context.Context) GetEndpointConnectionResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointConnectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the resource exists.
+func (o GetEndpointConnectionResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the private endpoint.
+func (o GetEndpointConnectionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointConnectionResultOutput) PrivateServiceConnections() GetEndpointConnectionPrivateServiceConnectionArrayOutput {
+	return o.ApplyT(func(v GetEndpointConnectionResult) []GetEndpointConnectionPrivateServiceConnection {
+		return v.PrivateServiceConnections
+	}).(GetEndpointConnectionPrivateServiceConnectionArrayOutput)
+}
+
+func (o GetEndpointConnectionResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointConnectionResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointConnectionApplyOutput{})
+	pulumi.RegisterOutputType(GetEndpointConnectionResultOutput{})
 }

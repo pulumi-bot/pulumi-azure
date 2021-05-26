@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,111 @@ type LookupNetworkWatcherResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupNetworkWatcherApply(ctx *pulumi.Context, args LookupNetworkWatcherApplyInput, opts ...pulumi.InvokeOption) LookupNetworkWatcherResultOutput {
+	return args.ToLookupNetworkWatcherApplyOutput().ApplyT(func(v LookupNetworkWatcherArgs) (LookupNetworkWatcherResult, error) {
+		r, err := LookupNetworkWatcher(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupNetworkWatcherResultOutput)
+}
+
+// LookupNetworkWatcherApplyInput is an input type that accepts LookupNetworkWatcherApplyArgs and LookupNetworkWatcherApplyOutput values.
+// You can construct a concrete instance of `LookupNetworkWatcherApplyInput` via:
+//
+//          LookupNetworkWatcherApplyArgs{...}
+type LookupNetworkWatcherApplyInput interface {
+	pulumi.Input
+
+	ToLookupNetworkWatcherApplyOutput() LookupNetworkWatcherApplyOutput
+	ToLookupNetworkWatcherApplyOutputWithContext(context.Context) LookupNetworkWatcherApplyOutput
+}
+
+// A collection of arguments for invoking getNetworkWatcher.
+type LookupNetworkWatcherApplyArgs struct {
+	// Specifies the Name of the Network Watcher.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the Name of the Resource Group within which the Network Watcher exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupNetworkWatcherApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkWatcherArgs)(nil)).Elem()
+}
+
+func (i LookupNetworkWatcherApplyArgs) ToLookupNetworkWatcherApplyOutput() LookupNetworkWatcherApplyOutput {
+	return i.ToLookupNetworkWatcherApplyOutputWithContext(context.Background())
+}
+
+func (i LookupNetworkWatcherApplyArgs) ToLookupNetworkWatcherApplyOutputWithContext(ctx context.Context) LookupNetworkWatcherApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupNetworkWatcherApplyOutput)
+}
+
+// A collection of arguments for invoking getNetworkWatcher.
+type LookupNetworkWatcherApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupNetworkWatcherApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkWatcherArgs)(nil)).Elem()
+}
+
+func (o LookupNetworkWatcherApplyOutput) ToLookupNetworkWatcherApplyOutput() LookupNetworkWatcherApplyOutput {
+	return o
+}
+
+func (o LookupNetworkWatcherApplyOutput) ToLookupNetworkWatcherApplyOutputWithContext(ctx context.Context) LookupNetworkWatcherApplyOutput {
+	return o
+}
+
+// Specifies the Name of the Network Watcher.
+func (o LookupNetworkWatcherApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the Name of the Resource Group within which the Network Watcher exists.
+func (o LookupNetworkWatcherApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getNetworkWatcher.
+type LookupNetworkWatcherResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNetworkWatcherResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNetworkWatcherResult)(nil)).Elem()
+}
+
+func (o LookupNetworkWatcherResultOutput) ToLookupNetworkWatcherResultOutput() LookupNetworkWatcherResultOutput {
+	return o
+}
+
+func (o LookupNetworkWatcherResultOutput) ToLookupNetworkWatcherResultOutputWithContext(ctx context.Context) LookupNetworkWatcherResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupNetworkWatcherResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The supported Azure location where the resource exists.
+func (o LookupNetworkWatcherResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkWatcherResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkWatcherResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupNetworkWatcherResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNetworkWatcherResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNetworkWatcherApplyOutput{})
+	pulumi.RegisterOutputType(LookupNetworkWatcherResultOutput{})
 }

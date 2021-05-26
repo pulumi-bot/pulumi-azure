@@ -4,6 +4,9 @@
 package appservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,117 @@ type LookupEnvironmentV3Result struct {
 	SubnetId string `pulumi:"subnetId"`
 	// A mapping of tags assigned to the v3 App Service Environment.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupEnvironmentV3Apply(ctx *pulumi.Context, args LookupEnvironmentV3ApplyInput, opts ...pulumi.InvokeOption) LookupEnvironmentV3ResultOutput {
+	return args.ToLookupEnvironmentV3ApplyOutput().ApplyT(func(v LookupEnvironmentV3Args) (LookupEnvironmentV3Result, error) {
+		r, err := LookupEnvironmentV3(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupEnvironmentV3ResultOutput)
+}
+
+// LookupEnvironmentV3ApplyInput is an input type that accepts LookupEnvironmentV3ApplyArgs and LookupEnvironmentV3ApplyOutput values.
+// You can construct a concrete instance of `LookupEnvironmentV3ApplyInput` via:
+//
+//          LookupEnvironmentV3ApplyArgs{...}
+type LookupEnvironmentV3ApplyInput interface {
+	pulumi.Input
+
+	ToLookupEnvironmentV3ApplyOutput() LookupEnvironmentV3ApplyOutput
+	ToLookupEnvironmentV3ApplyOutputWithContext(context.Context) LookupEnvironmentV3ApplyOutput
+}
+
+// A collection of arguments for invoking getEnvironmentV3.
+type LookupEnvironmentV3ApplyArgs struct {
+	// The name of this v3 App Service Environment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the v3 App Service Environment exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupEnvironmentV3ApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentV3Args)(nil)).Elem()
+}
+
+func (i LookupEnvironmentV3ApplyArgs) ToLookupEnvironmentV3ApplyOutput() LookupEnvironmentV3ApplyOutput {
+	return i.ToLookupEnvironmentV3ApplyOutputWithContext(context.Background())
+}
+
+func (i LookupEnvironmentV3ApplyArgs) ToLookupEnvironmentV3ApplyOutputWithContext(ctx context.Context) LookupEnvironmentV3ApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupEnvironmentV3ApplyOutput)
+}
+
+// A collection of arguments for invoking getEnvironmentV3.
+type LookupEnvironmentV3ApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentV3ApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentV3Args)(nil)).Elem()
+}
+
+func (o LookupEnvironmentV3ApplyOutput) ToLookupEnvironmentV3ApplyOutput() LookupEnvironmentV3ApplyOutput {
+	return o
+}
+
+func (o LookupEnvironmentV3ApplyOutput) ToLookupEnvironmentV3ApplyOutputWithContext(ctx context.Context) LookupEnvironmentV3ApplyOutput {
+	return o
+}
+
+// The name of this v3 App Service Environment.
+func (o LookupEnvironmentV3ApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Args) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the v3 App Service Environment exists.
+func (o LookupEnvironmentV3ApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Args) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getEnvironmentV3.
+type LookupEnvironmentV3ResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentV3ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentV3Result)(nil)).Elem()
+}
+
+func (o LookupEnvironmentV3ResultOutput) ToLookupEnvironmentV3ResultOutput() LookupEnvironmentV3ResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentV3ResultOutput) ToLookupEnvironmentV3ResultOutputWithContext(ctx context.Context) LookupEnvironmentV3ResultOutput {
+	return o
+}
+
+// A `clusterSetting` block as defined below.
+func (o LookupEnvironmentV3ResultOutput) ClusterSettings() GetEnvironmentV3ClusterSettingArrayOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) []GetEnvironmentV3ClusterSetting { return v.ClusterSettings }).(GetEnvironmentV3ClusterSettingArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupEnvironmentV3ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Cluster Setting.
+func (o LookupEnvironmentV3ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupEnvironmentV3ResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the v3 App Service Environment Subnet.
+func (o LookupEnvironmentV3ResultOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the v3 App Service Environment.
+func (o LookupEnvironmentV3ResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentV3Result) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentV3ApplyOutput{})
+	pulumi.RegisterOutputType(LookupEnvironmentV3ResultOutput{})
 }

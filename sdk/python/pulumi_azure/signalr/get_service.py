@@ -220,3 +220,10 @@ def get_service(name: Optional[str] = None,
         secondary_connection_string=__ret__.secondary_connection_string,
         server_port=__ret__.server_port,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_apply(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    ...

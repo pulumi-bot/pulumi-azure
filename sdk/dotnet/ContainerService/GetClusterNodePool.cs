@@ -44,6 +44,21 @@ namespace Pulumi.Azure.ContainerService
         /// </summary>
         public static Task<GetClusterNodePoolResult> InvokeAsync(GetClusterNodePoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterNodePoolResult>("azure:containerservice/getClusterNodePool:getClusterNodePool", args ?? new GetClusterNodePoolArgs(), options.WithVersion());
+
+        public static Output<GetClusterNodePoolResult> Apply(GetClusterNodePoolApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.KubernetesClusterName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetClusterNodePoolArgs();
+                    a[0].Set(args, nameof(args.KubernetesClusterName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.ContainerService
         public string ResourceGroupName { get; set; } = null!;
 
         public GetClusterNodePoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterNodePoolApplyArgs
+    {
+        /// <summary>
+        /// The Name of the Kubernetes Cluster where this Node Pool is located.
+        /// </summary>
+        [Input("kubernetesClusterName", required: true)]
+        public Input<string> KubernetesClusterName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this Kubernetes Cluster Node Pool.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Kubernetes Cluster exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetClusterNodePoolApplyArgs()
         {
         }
     }

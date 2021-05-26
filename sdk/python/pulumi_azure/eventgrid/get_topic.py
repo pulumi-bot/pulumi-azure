@@ -154,3 +154,11 @@ def get_topic(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         secondary_access_key=__ret__.secondary_access_key,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_apply(name: Optional[pulumi.Input[str]] = None,
+                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    ...

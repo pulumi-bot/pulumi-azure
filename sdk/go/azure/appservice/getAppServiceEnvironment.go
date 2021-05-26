@@ -4,6 +4,9 @@
 package appservice
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,144 @@ type GetAppServiceEnvironmentResult struct {
 	ServiceIpAddress string `pulumi:"serviceIpAddress"`
 	// A mapping of tags assigned to the App Service Environment.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetAppServiceEnvironmentApply(ctx *pulumi.Context, args GetAppServiceEnvironmentApplyInput, opts ...pulumi.InvokeOption) GetAppServiceEnvironmentResultOutput {
+	return args.ToGetAppServiceEnvironmentApplyOutput().ApplyT(func(v GetAppServiceEnvironmentArgs) (GetAppServiceEnvironmentResult, error) {
+		r, err := GetAppServiceEnvironment(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAppServiceEnvironmentResultOutput)
+}
+
+// GetAppServiceEnvironmentApplyInput is an input type that accepts GetAppServiceEnvironmentApplyArgs and GetAppServiceEnvironmentApplyOutput values.
+// You can construct a concrete instance of `GetAppServiceEnvironmentApplyInput` via:
+//
+//          GetAppServiceEnvironmentApplyArgs{...}
+type GetAppServiceEnvironmentApplyInput interface {
+	pulumi.Input
+
+	ToGetAppServiceEnvironmentApplyOutput() GetAppServiceEnvironmentApplyOutput
+	ToGetAppServiceEnvironmentApplyOutputWithContext(context.Context) GetAppServiceEnvironmentApplyOutput
+}
+
+// A collection of arguments for invoking getAppServiceEnvironment.
+type GetAppServiceEnvironmentApplyArgs struct {
+	// The name of this App Service Environment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the App Service Environment exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (GetAppServiceEnvironmentApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServiceEnvironmentArgs)(nil)).Elem()
+}
+
+func (i GetAppServiceEnvironmentApplyArgs) ToGetAppServiceEnvironmentApplyOutput() GetAppServiceEnvironmentApplyOutput {
+	return i.ToGetAppServiceEnvironmentApplyOutputWithContext(context.Background())
+}
+
+func (i GetAppServiceEnvironmentApplyArgs) ToGetAppServiceEnvironmentApplyOutputWithContext(ctx context.Context) GetAppServiceEnvironmentApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppServiceEnvironmentApplyOutput)
+}
+
+// A collection of arguments for invoking getAppServiceEnvironment.
+type GetAppServiceEnvironmentApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAppServiceEnvironmentApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServiceEnvironmentArgs)(nil)).Elem()
+}
+
+func (o GetAppServiceEnvironmentApplyOutput) ToGetAppServiceEnvironmentApplyOutput() GetAppServiceEnvironmentApplyOutput {
+	return o
+}
+
+func (o GetAppServiceEnvironmentApplyOutput) ToGetAppServiceEnvironmentApplyOutputWithContext(ctx context.Context) GetAppServiceEnvironmentApplyOutput {
+	return o
+}
+
+// The name of this App Service Environment.
+func (o GetAppServiceEnvironmentApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the App Service Environment exists.
+func (o GetAppServiceEnvironmentApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAppServiceEnvironment.
+type GetAppServiceEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (GetAppServiceEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppServiceEnvironmentResult)(nil)).Elem()
+}
+
+func (o GetAppServiceEnvironmentResultOutput) ToGetAppServiceEnvironmentResultOutput() GetAppServiceEnvironmentResultOutput {
+	return o
+}
+
+func (o GetAppServiceEnvironmentResultOutput) ToGetAppServiceEnvironmentResultOutputWithContext(ctx context.Context) GetAppServiceEnvironmentResultOutput {
+	return o
+}
+
+// Zero or more `clusterSetting` blocks as defined below.
+func (o GetAppServiceEnvironmentResultOutput) ClusterSettings() GetAppServiceEnvironmentClusterSettingArrayOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) []GetAppServiceEnvironmentClusterSetting {
+		return v.ClusterSettings
+	}).(GetAppServiceEnvironmentClusterSettingArrayOutput)
+}
+
+// The number of app instances per App Service Environment Front End.
+func (o GetAppServiceEnvironmentResultOutput) FrontEndScaleFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) int { return v.FrontEndScaleFactor }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAppServiceEnvironmentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP address of internal load balancer of the App Service Environment.
+func (o GetAppServiceEnvironmentResultOutput) InternalIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.InternalIpAddress }).(pulumi.StringOutput)
+}
+
+// The Azure Region where the App Service Environment exists.
+func (o GetAppServiceEnvironmentResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Cluster Setting.
+func (o GetAppServiceEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of outbound IP addresses of the App Service Environment.
+func (o GetAppServiceEnvironmentResultOutput) OutboundIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) []string { return v.OutboundIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The Pricing Tier (Isolated SKU) of the App Service Environment.
+func (o GetAppServiceEnvironmentResultOutput) PricingTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.PricingTier }).(pulumi.StringOutput)
+}
+
+func (o GetAppServiceEnvironmentResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// IP address of service endpoint of the App Service Environment.
+func (o GetAppServiceEnvironmentResultOutput) ServiceIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) string { return v.ServiceIpAddress }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the App Service Environment.
+func (o GetAppServiceEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAppServiceEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAppServiceEnvironmentApplyOutput{})
+	pulumi.RegisterOutputType(GetAppServiceEnvironmentResultOutput{})
 }

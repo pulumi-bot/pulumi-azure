@@ -4,6 +4,9 @@
 package backup
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,117 @@ type LookupPolicyVMResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupPolicyVMApply(ctx *pulumi.Context, args LookupPolicyVMApplyInput, opts ...pulumi.InvokeOption) LookupPolicyVMResultOutput {
+	return args.ToLookupPolicyVMApplyOutput().ApplyT(func(v LookupPolicyVMArgs) (LookupPolicyVMResult, error) {
+		r, err := LookupPolicyVM(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPolicyVMResultOutput)
+}
+
+// LookupPolicyVMApplyInput is an input type that accepts LookupPolicyVMApplyArgs and LookupPolicyVMApplyOutput values.
+// You can construct a concrete instance of `LookupPolicyVMApplyInput` via:
+//
+//          LookupPolicyVMApplyArgs{...}
+type LookupPolicyVMApplyInput interface {
+	pulumi.Input
+
+	ToLookupPolicyVMApplyOutput() LookupPolicyVMApplyOutput
+	ToLookupPolicyVMApplyOutputWithContext(context.Context) LookupPolicyVMApplyOutput
+}
+
+// A collection of arguments for invoking getPolicyVM.
+type LookupPolicyVMApplyArgs struct {
+	// Specifies the name of the VM Backup Policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the name of the Recovery Services Vault.
+	RecoveryVaultName pulumi.StringInput `pulumi:"recoveryVaultName"`
+	// The name of the resource group in which the VM Backup Policy resides.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupPolicyVMApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyVMArgs)(nil)).Elem()
+}
+
+func (i LookupPolicyVMApplyArgs) ToLookupPolicyVMApplyOutput() LookupPolicyVMApplyOutput {
+	return i.ToLookupPolicyVMApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPolicyVMApplyArgs) ToLookupPolicyVMApplyOutputWithContext(ctx context.Context) LookupPolicyVMApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPolicyVMApplyOutput)
+}
+
+// A collection of arguments for invoking getPolicyVM.
+type LookupPolicyVMApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPolicyVMApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyVMArgs)(nil)).Elem()
+}
+
+func (o LookupPolicyVMApplyOutput) ToLookupPolicyVMApplyOutput() LookupPolicyVMApplyOutput {
+	return o
+}
+
+func (o LookupPolicyVMApplyOutput) ToLookupPolicyVMApplyOutputWithContext(ctx context.Context) LookupPolicyVMApplyOutput {
+	return o
+}
+
+// Specifies the name of the VM Backup Policy.
+func (o LookupPolicyVMApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Recovery Services Vault.
+func (o LookupPolicyVMApplyOutput) RecoveryVaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMArgs) string { return v.RecoveryVaultName }).(pulumi.StringOutput)
+}
+
+// The name of the resource group in which the VM Backup Policy resides.
+func (o LookupPolicyVMApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getPolicyVM.
+type LookupPolicyVMResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPolicyVMResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPolicyVMResult)(nil)).Elem()
+}
+
+func (o LookupPolicyVMResultOutput) ToLookupPolicyVMResultOutput() LookupPolicyVMResultOutput {
+	return o
+}
+
+func (o LookupPolicyVMResultOutput) ToLookupPolicyVMResultOutputWithContext(ctx context.Context) LookupPolicyVMResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPolicyVMResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupPolicyVMResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupPolicyVMResultOutput) RecoveryVaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMResult) string { return v.RecoveryVaultName }).(pulumi.StringOutput)
+}
+
+func (o LookupPolicyVMResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyVMResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the resource.
+func (o LookupPolicyVMResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPolicyVMResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPolicyVMApplyOutput{})
+	pulumi.RegisterOutputType(LookupPolicyVMResultOutput{})
 }

@@ -42,11 +42,11 @@ export interface GetEnvironmentV3Args {
     /**
      * The name of this v3 App Service Environment.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Resource Group where the v3 App Service Environment exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -74,4 +74,22 @@ export interface GetEnvironmentV3Result {
      * A mapping of tags assigned to the v3 App Service Environment.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getEnvironmentV3Apply(args: GetEnvironmentV3ApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentV3Result> {
+    return pulumi.output(args).apply(a => getEnvironmentV3(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnvironmentV3.
+ */
+export interface GetEnvironmentV3ApplyArgs {
+    /**
+     * The name of this v3 App Service Environment.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the v3 App Service Environment exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

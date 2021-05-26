@@ -46,11 +46,11 @@ export interface GetAlertRuleArgs {
     /**
      * The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
      */
-    readonly logAnalyticsWorkspaceId: string;
+    logAnalyticsWorkspaceId: string;
     /**
      * The name which should be used for this Sentinel Alert Rule.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -63,4 +63,22 @@ export interface GetAlertRuleResult {
     readonly id: string;
     readonly logAnalyticsWorkspaceId: string;
     readonly name: string;
+}
+
+export function getAlertRuleApply(args: GetAlertRuleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertRuleResult> {
+    return pulumi.output(args).apply(a => getAlertRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlertRule.
+ */
+export interface GetAlertRuleApplyArgs {
+    /**
+     * The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
+     */
+    logAnalyticsWorkspaceId: pulumi.Input<string>;
+    /**
+     * The name which should be used for this Sentinel Alert Rule.
+     */
+    name: pulumi.Input<string>;
 }

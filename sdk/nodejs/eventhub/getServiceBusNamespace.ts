@@ -44,11 +44,11 @@ export interface GetServiceBusNamespaceArgs {
     /**
      * Specifies the name of the ServiceBus Namespace.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetServiceBusNamespaceResult {
      * Whether or not this ServiceBus Namespace is zone redundant.
      */
     readonly zoneRedundant: boolean;
+}
+
+export function getServiceBusNamespaceApply(args: GetServiceBusNamespaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceBusNamespaceResult> {
+    return pulumi.output(args).apply(a => getServiceBusNamespace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceBusNamespace.
+ */
+export interface GetServiceBusNamespaceApplyArgs {
+    /**
+     * Specifies the name of the ServiceBus Namespace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

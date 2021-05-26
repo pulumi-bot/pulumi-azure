@@ -46,19 +46,19 @@ export interface GetApiArgs {
     /**
      * The name of the API Management Service in which the API Management API exists.
      */
-    readonly apiManagementName: string;
+    apiManagementName: string;
     /**
      * The name of the API Management API.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Name of the Resource Group in which the API Management Service exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The Revision of the API Management API.
      */
-    readonly revision: string;
+    revision: string;
 }
 
 /**
@@ -121,4 +121,30 @@ export interface GetApiResult {
      * The ID of the Version Set which this API is associated with.
      */
     readonly versionSetId: string;
+}
+
+export function getApiApply(args: GetApiApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
+    return pulumi.output(args).apply(a => getApi(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApi.
+ */
+export interface GetApiApplyArgs {
+    /**
+     * The name of the API Management Service in which the API Management API exists.
+     */
+    apiManagementName: pulumi.Input<string>;
+    /**
+     * The name of the API Management API.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group in which the API Management Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The Revision of the API Management API.
+     */
+    revision: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package servicebus
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,173 @@ type LookupSubscriptionResult struct {
 	RequiresSession   bool   `pulumi:"requiresSession"`
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	TopicName         string `pulumi:"topicName"`
+}
+
+func LookupSubscriptionApply(ctx *pulumi.Context, args LookupSubscriptionApplyInput, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
+	return args.ToLookupSubscriptionApplyOutput().ApplyT(func(v LookupSubscriptionArgs) (LookupSubscriptionResult, error) {
+		r, err := LookupSubscription(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSubscriptionResultOutput)
+}
+
+// LookupSubscriptionApplyInput is an input type that accepts LookupSubscriptionApplyArgs and LookupSubscriptionApplyOutput values.
+// You can construct a concrete instance of `LookupSubscriptionApplyInput` via:
+//
+//          LookupSubscriptionApplyArgs{...}
+type LookupSubscriptionApplyInput interface {
+	pulumi.Input
+
+	ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput
+	ToLookupSubscriptionApplyOutputWithContext(context.Context) LookupSubscriptionApplyOutput
+}
+
+// A collection of arguments for invoking getSubscription.
+type LookupSubscriptionApplyArgs struct {
+	// Specifies the name of the ServiceBus Subscription.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the ServiceBus Namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the ServiceBus Topic.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
+}
+
+func (LookupSubscriptionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+func (i LookupSubscriptionApplyArgs) ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput {
+	return i.ToLookupSubscriptionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSubscriptionApplyArgs) ToLookupSubscriptionApplyOutputWithContext(ctx context.Context) LookupSubscriptionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSubscriptionApplyOutput)
+}
+
+// A collection of arguments for invoking getSubscription.
+type LookupSubscriptionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionArgs)(nil)).Elem()
+}
+
+func (o LookupSubscriptionApplyOutput) ToLookupSubscriptionApplyOutput() LookupSubscriptionApplyOutput {
+	return o
+}
+
+func (o LookupSubscriptionApplyOutput) ToLookupSubscriptionApplyOutputWithContext(ctx context.Context) LookupSubscriptionApplyOutput {
+	return o
+}
+
+// Specifies the name of the ServiceBus Subscription.
+func (o LookupSubscriptionApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Namespace.
+func (o LookupSubscriptionApplyOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionArgs) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the Resource Group where the ServiceBus Namespace exists.
+func (o LookupSubscriptionApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceBus Topic.
+func (o LookupSubscriptionApplyOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionArgs) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSubscription.
+type LookupSubscriptionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSubscriptionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionResult)(nil)).Elem()
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() LookupSubscriptionResultOutput {
+	return o
+}
+
+func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
+	return o
+}
+
+// The idle interval after which the topic is automatically deleted.
+func (o LookupSubscriptionResultOutput) AutoDeleteOnIdle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.AutoDeleteOnIdle }).(pulumi.StringOutput)
+}
+
+// Does the ServiceBus Subscription have dead letter support on filter evaluation exceptions?
+func (o LookupSubscriptionResultOutput) DeadLetteringOnFilterEvaluationError() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.DeadLetteringOnFilterEvaluationError }).(pulumi.BoolOutput)
+}
+
+// Does the Service Bus Subscription have dead letter support when a message expires?
+func (o LookupSubscriptionResultOutput) DeadLetteringOnMessageExpiration() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.DeadLetteringOnMessageExpiration }).(pulumi.BoolOutput)
+}
+
+// The Default message timespan to live. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
+func (o LookupSubscriptionResultOutput) DefaultMessageTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.DefaultMessageTtl }).(pulumi.StringOutput)
+}
+
+// Are batched operations enabled on this ServiceBus Subscription?
+func (o LookupSubscriptionResultOutput) EnableBatchedOperations() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.EnableBatchedOperations }).(pulumi.BoolOutput)
+}
+
+// The name of a Queue or Topic to automatically forward Dead Letter messages to.
+func (o LookupSubscriptionResultOutput) ForwardDeadLetteredMessagesTo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.ForwardDeadLetteredMessagesTo }).(pulumi.StringOutput)
+}
+
+// The name of a ServiceBus Queue or ServiceBus Topic where messages are automatically forwarded.
+func (o LookupSubscriptionResultOutput) ForwardTo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.ForwardTo }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSubscriptionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lock duration for the subscription.
+func (o LookupSubscriptionResultOutput) LockDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.LockDuration }).(pulumi.StringOutput)
+}
+
+// The maximum number of deliveries.
+func (o LookupSubscriptionResultOutput) MaxDeliveryCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) int { return v.MaxDeliveryCount }).(pulumi.IntOutput)
+}
+
+func (o LookupSubscriptionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSubscriptionResultOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Whether or not this ServiceBus Subscription supports session.
+func (o LookupSubscriptionResultOutput) RequiresSession() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.RequiresSession }).(pulumi.BoolOutput)
+}
+
+func (o LookupSubscriptionResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupSubscriptionResultOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSubscriptionApplyOutput{})
+	pulumi.RegisterOutputType(LookupSubscriptionResultOutput{})
 }

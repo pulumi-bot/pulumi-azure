@@ -4,6 +4,9 @@
 package network
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,117 @@ type GetServiceTagsResult struct {
 	Location       string  `pulumi:"location"`
 	LocationFilter *string `pulumi:"locationFilter"`
 	Service        string  `pulumi:"service"`
+}
+
+func GetServiceTagsApply(ctx *pulumi.Context, args GetServiceTagsApplyInput, opts ...pulumi.InvokeOption) GetServiceTagsResultOutput {
+	return args.ToGetServiceTagsApplyOutput().ApplyT(func(v GetServiceTagsArgs) (GetServiceTagsResult, error) {
+		r, err := GetServiceTags(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetServiceTagsResultOutput)
+}
+
+// GetServiceTagsApplyInput is an input type that accepts GetServiceTagsApplyArgs and GetServiceTagsApplyOutput values.
+// You can construct a concrete instance of `GetServiceTagsApplyInput` via:
+//
+//          GetServiceTagsApplyArgs{...}
+type GetServiceTagsApplyInput interface {
+	pulumi.Input
+
+	ToGetServiceTagsApplyOutput() GetServiceTagsApplyOutput
+	ToGetServiceTagsApplyOutputWithContext(context.Context) GetServiceTagsApplyOutput
+}
+
+// A collection of arguments for invoking getServiceTags.
+type GetServiceTagsApplyArgs struct {
+	// The Azure Region where the Service Tags exists. This value is not used to filter the results but for specifying the region to request. For filtering by region use `locationFilter` instead.  More information can be found here: [Service Tags URL parameters](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/servicetags/list#uri-parameters).
+	Location pulumi.StringInput `pulumi:"location"`
+	// Changes the scope of the service tags. Can be any value that is also valid for `location`. If this field is empty then all address prefixes are considered instead of only location specific ones.
+	LocationFilter pulumi.StringPtrInput `pulumi:"locationFilter"`
+	// The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview#available-service-tags).
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetServiceTagsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTagsArgs)(nil)).Elem()
+}
+
+func (i GetServiceTagsApplyArgs) ToGetServiceTagsApplyOutput() GetServiceTagsApplyOutput {
+	return i.ToGetServiceTagsApplyOutputWithContext(context.Background())
+}
+
+func (i GetServiceTagsApplyArgs) ToGetServiceTagsApplyOutputWithContext(ctx context.Context) GetServiceTagsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTagsApplyOutput)
+}
+
+// A collection of arguments for invoking getServiceTags.
+type GetServiceTagsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTagsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTagsArgs)(nil)).Elem()
+}
+
+func (o GetServiceTagsApplyOutput) ToGetServiceTagsApplyOutput() GetServiceTagsApplyOutput {
+	return o
+}
+
+func (o GetServiceTagsApplyOutput) ToGetServiceTagsApplyOutputWithContext(ctx context.Context) GetServiceTagsApplyOutput {
+	return o
+}
+
+// The Azure Region where the Service Tags exists. This value is not used to filter the results but for specifying the region to request. For filtering by region use `locationFilter` instead.  More information can be found here: [Service Tags URL parameters](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/servicetags/list#uri-parameters).
+func (o GetServiceTagsApplyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTagsArgs) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Changes the scope of the service tags. Can be any value that is also valid for `location`. If this field is empty then all address prefixes are considered instead of only location specific ones.
+func (o GetServiceTagsApplyOutput) LocationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceTagsArgs) *string { return v.LocationFilter }).(pulumi.StringPtrOutput)
+}
+
+// The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview#available-service-tags).
+func (o GetServiceTagsApplyOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTagsArgs) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getServiceTags.
+type GetServiceTagsResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTagsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTagsResult)(nil)).Elem()
+}
+
+func (o GetServiceTagsResultOutput) ToGetServiceTagsResultOutput() GetServiceTagsResultOutput {
+	return o
+}
+
+func (o GetServiceTagsResultOutput) ToGetServiceTagsResultOutputWithContext(ctx context.Context) GetServiceTagsResultOutput {
+	return o
+}
+
+// List of address prefixes for the service type (and optionally a specific region).
+func (o GetServiceTagsResultOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTagsResult) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceTagsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTagsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTagsResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTagsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTagsResultOutput) LocationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceTagsResult) *string { return v.LocationFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceTagsResultOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTagsResult) string { return v.Service }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceTagsApplyOutput{})
+	pulumi.RegisterOutputType(GetServiceTagsResultOutput{})
 }

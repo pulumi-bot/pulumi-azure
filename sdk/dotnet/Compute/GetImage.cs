@@ -43,6 +43,23 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("azure:compute/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+
+        public static Output<GetImageResult> Apply(GetImageApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.NameRegex.Box(),
+                args.ResourceGroupName.Box(),
+                args.SortDescending.Box()
+            ).Apply(a => {
+                    var args = new GetImageArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.NameRegex));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    a[3].Set(args, nameof(args.SortDescending));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -73,6 +90,37 @@ namespace Pulumi.Azure.Compute
         public bool? SortDescending { get; set; }
 
         public GetImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageApplyArgs
+    {
+        /// <summary>
+        /// The name of the Image.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Regex pattern of the image to match.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The Name of the Resource Group where this Image exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
+        /// </summary>
+        [Input("sortDescending")]
+        public Input<bool>? SortDescending { get; set; }
+
+        public GetImageApplyArgs()
         {
         }
     }

@@ -48,23 +48,23 @@ export interface GetSnapshotArgs {
     /**
      * The name of the NetApp Account where the NetApp Pool exists.
      */
-    readonly accountName: string;
+    accountName: string;
     /**
      * The name of the NetApp Snapshot.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the NetApp Pool where the NetApp Volume exists.
      */
-    readonly poolName: string;
+    poolName: string;
     /**
      * The Name of the Resource Group where the NetApp Snapshot exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The name of the NetApp Volume where the NetApp Snapshot exists.
      */
-    readonly volumeName: string;
+    volumeName: string;
 }
 
 /**
@@ -84,4 +84,34 @@ export interface GetSnapshotResult {
     readonly poolName: string;
     readonly resourceGroupName: string;
     readonly volumeName: string;
+}
+
+export function getSnapshotApply(args: GetSnapshotApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
+    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSnapshot.
+ */
+export interface GetSnapshotApplyArgs {
+    /**
+     * The name of the NetApp Account where the NetApp Pool exists.
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the NetApp Snapshot.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the NetApp Pool where the NetApp Volume exists.
+     */
+    poolName: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the NetApp Snapshot exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the NetApp Volume where the NetApp Snapshot exists.
+     */
+    volumeName: pulumi.Input<string>;
 }

@@ -44,6 +44,17 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("azure:storage/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());
+
+        public static Output<GetPolicyResult> Apply(GetPolicyApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.StorageAccountId.Box()
+            ).Apply(a => {
+                    var args = new GetPolicyArgs();
+                    a[0].Set(args, nameof(args.StorageAccountId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -56,6 +67,19 @@ namespace Pulumi.Azure.Storage
         public string StorageAccountId { get; set; } = null!;
 
         public GetPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyApplyArgs
+    {
+        /// <summary>
+        /// Specifies the id of the storage account to retrieve the management policy for.
+        /// </summary>
+        [Input("storageAccountId", required: true)]
+        public Input<string> StorageAccountId { get; set; } = null!;
+
+        public GetPolicyApplyArgs()
         {
         }
     }

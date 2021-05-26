@@ -16,6 +16,21 @@ namespace Pulumi.Azure.EventGrid
         /// </summary>
         public static Task<GetDomainTopicResult> InvokeAsync(GetDomainTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainTopicResult>("azure:eventgrid/getDomainTopic:getDomainTopic", args ?? new GetDomainTopicArgs(), options.WithVersion());
+
+        public static Output<GetDomainTopicResult> Apply(GetDomainTopicApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DomainName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDomainTopicArgs();
+                    a[0].Set(args, nameof(args.DomainName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -40,6 +55,31 @@ namespace Pulumi.Azure.EventGrid
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDomainTopicArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainTopicApplyArgs
+    {
+        /// <summary>
+        /// The name of the EventGrid Domain Topic domain.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the EventGrid Domain Topic resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the EventGrid Domain Topic exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDomainTopicApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package managementgroups
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,127 @@ type LookupManagementGroupResult struct {
 	ParentManagementGroupId string `pulumi:"parentManagementGroupId"`
 	// A list of Subscription IDs which are assigned to the Management Group.
 	SubscriptionIds []string `pulumi:"subscriptionIds"`
+}
+
+func LookupManagementGroupApply(ctx *pulumi.Context, args LookupManagementGroupApplyInput, opts ...pulumi.InvokeOption) LookupManagementGroupResultOutput {
+	return args.ToLookupManagementGroupApplyOutput().ApplyT(func(v LookupManagementGroupArgs) (LookupManagementGroupResult, error) {
+		r, err := LookupManagementGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupManagementGroupResultOutput)
+}
+
+// LookupManagementGroupApplyInput is an input type that accepts LookupManagementGroupApplyArgs and LookupManagementGroupApplyOutput values.
+// You can construct a concrete instance of `LookupManagementGroupApplyInput` via:
+//
+//          LookupManagementGroupApplyArgs{...}
+type LookupManagementGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupManagementGroupApplyOutput() LookupManagementGroupApplyOutput
+	ToLookupManagementGroupApplyOutputWithContext(context.Context) LookupManagementGroupApplyOutput
+}
+
+// A collection of arguments for invoking getManagementGroup.
+type LookupManagementGroupApplyArgs struct {
+	// Specifies the display name of this Management Group.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Specifies the name or UUID of this Management Group.
+	//
+	// Deprecated: Deprecated in favour of `name`
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Specifies the name or UUID of this Management Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupManagementGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagementGroupArgs)(nil)).Elem()
+}
+
+func (i LookupManagementGroupApplyArgs) ToLookupManagementGroupApplyOutput() LookupManagementGroupApplyOutput {
+	return i.ToLookupManagementGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupManagementGroupApplyArgs) ToLookupManagementGroupApplyOutputWithContext(ctx context.Context) LookupManagementGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupManagementGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getManagementGroup.
+type LookupManagementGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupManagementGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagementGroupArgs)(nil)).Elem()
+}
+
+func (o LookupManagementGroupApplyOutput) ToLookupManagementGroupApplyOutput() LookupManagementGroupApplyOutput {
+	return o
+}
+
+func (o LookupManagementGroupApplyOutput) ToLookupManagementGroupApplyOutputWithContext(ctx context.Context) LookupManagementGroupApplyOutput {
+	return o
+}
+
+// Specifies the display name of this Management Group.
+func (o LookupManagementGroupApplyOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagementGroupArgs) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name or UUID of this Management Group.
+//
+// Deprecated: Deprecated in favour of `name`
+func (o LookupManagementGroupApplyOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagementGroupArgs) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name or UUID of this Management Group.
+func (o LookupManagementGroupApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagementGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getManagementGroup.
+type LookupManagementGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupManagementGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagementGroupResult)(nil)).Elem()
+}
+
+func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutput() LookupManagementGroupResultOutput {
+	return o
+}
+
+func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutputWithContext(ctx context.Context) LookupManagementGroupResultOutput {
+	return o
+}
+
+func (o LookupManagementGroupResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Deprecated: Deprecated in favour of `name`
+func (o LookupManagementGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupManagementGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupManagementGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of any Parent Management Group.
+func (o LookupManagementGroupResultOutput) ParentManagementGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.ParentManagementGroupId }).(pulumi.StringOutput)
+}
+
+// A list of Subscription IDs which are assigned to the Management Group.
+func (o LookupManagementGroupResultOutput) SubscriptionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) []string { return v.SubscriptionIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupManagementGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupManagementGroupResultOutput{})
 }

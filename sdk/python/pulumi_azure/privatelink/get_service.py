@@ -202,3 +202,10 @@ def get_service(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         tags=__ret__.tags,
         visibility_subscription_ids=__ret__.visibility_subscription_ids)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_apply(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    ...

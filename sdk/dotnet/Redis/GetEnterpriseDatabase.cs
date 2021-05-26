@@ -47,6 +47,21 @@ namespace Pulumi.Azure.Redis
         /// </summary>
         public static Task<GetEnterpriseDatabaseResult> InvokeAsync(GetEnterpriseDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseDatabaseResult>("azure:redis/getEnterpriseDatabase:getEnterpriseDatabase", args ?? new GetEnterpriseDatabaseArgs(), options.WithVersion());
+
+        public static Output<GetEnterpriseDatabaseResult> Apply(GetEnterpriseDatabaseApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterId.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetEnterpriseDatabaseArgs();
+                    a[0].Set(args, nameof(args.ClusterId));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -71,6 +86,31 @@ namespace Pulumi.Azure.Redis
         public string ResourceGroupName { get; set; } = null!;
 
         public GetEnterpriseDatabaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnterpriseDatabaseApplyArgs
+    {
+        /// <summary>
+        /// The resource ID of Redis Enterprise Cluster which hosts the Redis Enterprise Database instance.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Redis Enterprise Database.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group the Redis Enterprise Database instance is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetEnterpriseDatabaseApplyArgs()
         {
         }
     }

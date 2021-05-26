@@ -4,6 +4,9 @@
 package machinelearning
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,115 @@ type LookupWorkspaceResult struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A mapping of tags assigned to the Machine Learning Workspace.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupWorkspaceApply(ctx *pulumi.Context, args LookupWorkspaceApplyInput, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
+	return args.ToLookupWorkspaceApplyOutput().ApplyT(func(v LookupWorkspaceArgs) (LookupWorkspaceResult, error) {
+		r, err := LookupWorkspace(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupWorkspaceResultOutput)
+}
+
+// LookupWorkspaceApplyInput is an input type that accepts LookupWorkspaceApplyArgs and LookupWorkspaceApplyOutput values.
+// You can construct a concrete instance of `LookupWorkspaceApplyInput` via:
+//
+//          LookupWorkspaceApplyArgs{...}
+type LookupWorkspaceApplyInput interface {
+	pulumi.Input
+
+	ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput
+	ToLookupWorkspaceApplyOutputWithContext(context.Context) LookupWorkspaceApplyOutput
+}
+
+// A collection of arguments for invoking getWorkspace.
+type LookupWorkspaceApplyArgs struct {
+	// The name of the Machine Learning Workspace exists.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Machine Learning Workspace exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupWorkspaceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceArgs)(nil)).Elem()
+}
+
+func (i LookupWorkspaceApplyArgs) ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput {
+	return i.ToLookupWorkspaceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupWorkspaceApplyArgs) ToLookupWorkspaceApplyOutputWithContext(ctx context.Context) LookupWorkspaceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupWorkspaceApplyOutput)
+}
+
+// A collection of arguments for invoking getWorkspace.
+type LookupWorkspaceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkspaceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceArgs)(nil)).Elem()
+}
+
+func (o LookupWorkspaceApplyOutput) ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput {
+	return o
+}
+
+func (o LookupWorkspaceApplyOutput) ToLookupWorkspaceApplyOutputWithContext(ctx context.Context) LookupWorkspaceApplyOutput {
+	return o
+}
+
+// The name of the Machine Learning Workspace exists.
+func (o LookupWorkspaceApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Machine Learning Workspace exists.
+func (o LookupWorkspaceApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getWorkspace.
+type LookupWorkspaceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkspaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceResult)(nil)).Elem()
+}
+
+func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutput() LookupWorkspaceResultOutput {
+	return o
+}
+
+func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ctx context.Context) LookupWorkspaceResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) Identities() GetWorkspaceIdentityArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceIdentity { return v.Identities }).(GetWorkspaceIdentityArrayOutput)
+}
+
+// The location where the Machine Learning Workspace exists.
+func (o LookupWorkspaceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags assigned to the Machine Learning Workspace.
+func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkspaceApplyOutput{})
+	pulumi.RegisterOutputType(LookupWorkspaceResultOutput{})
 }

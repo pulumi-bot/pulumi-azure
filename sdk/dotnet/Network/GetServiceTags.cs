@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetServiceTagsResult> InvokeAsync(GetServiceTagsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceTagsResult>("azure:network/getServiceTags:getServiceTags", args ?? new GetServiceTagsArgs(), options.WithVersion());
+
+        public static Output<GetServiceTagsResult> Apply(GetServiceTagsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Location.Box(),
+                args.LocationFilter.Box(),
+                args.Service.Box()
+            ).Apply(a => {
+                    var args = new GetServiceTagsArgs();
+                    a[0].Set(args, nameof(args.Location));
+                    a[1].Set(args, nameof(args.LocationFilter));
+                    a[2].Set(args, nameof(args.Service));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Network
         public string Service { get; set; } = null!;
 
         public GetServiceTagsArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceTagsApplyArgs
+    {
+        /// <summary>
+        /// The Azure Region where the Service Tags exists. This value is not used to filter the results but for specifying the region to request. For filtering by region use `location_filter` instead.  More information can be found here: [Service Tags URL parameters](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/servicetags/list#uri-parameters).
+        /// </summary>
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Changes the scope of the service tags. Can be any value that is also valid for `location`. If this field is empty then all address prefixes are considered instead of only location specific ones.
+        /// </summary>
+        [Input("locationFilter")]
+        public Input<string>? LocationFilter { get; set; }
+
+        /// <summary>
+        /// The type of the service for which address prefixes will be fetched. Available service tags can be found here: [Available service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview#available-service-tags).
+        /// </summary>
+        [Input("service", required: true)]
+        public Input<string> Service { get; set; } = null!;
+
+        public GetServiceTagsApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package appplatform
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,147 @@ type LookupSpringCloudAppResult struct {
 	TlsEnabled bool `pulumi:"tlsEnabled"`
 	// The public endpoint of the Spring Cloud Application.
 	Url string `pulumi:"url"`
+}
+
+func LookupSpringCloudAppApply(ctx *pulumi.Context, args LookupSpringCloudAppApplyInput, opts ...pulumi.InvokeOption) LookupSpringCloudAppResultOutput {
+	return args.ToLookupSpringCloudAppApplyOutput().ApplyT(func(v LookupSpringCloudAppArgs) (LookupSpringCloudAppResult, error) {
+		r, err := LookupSpringCloudApp(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSpringCloudAppResultOutput)
+}
+
+// LookupSpringCloudAppApplyInput is an input type that accepts LookupSpringCloudAppApplyArgs and LookupSpringCloudAppApplyOutput values.
+// You can construct a concrete instance of `LookupSpringCloudAppApplyInput` via:
+//
+//          LookupSpringCloudAppApplyArgs{...}
+type LookupSpringCloudAppApplyInput interface {
+	pulumi.Input
+
+	ToLookupSpringCloudAppApplyOutput() LookupSpringCloudAppApplyOutput
+	ToLookupSpringCloudAppApplyOutputWithContext(context.Context) LookupSpringCloudAppApplyOutput
+}
+
+// A collection of arguments for invoking getSpringCloudApp.
+type LookupSpringCloudAppApplyArgs struct {
+	// The name of the Spring Cloud Application.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Resource Group where the Spring Cloud Application exists.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The name of the Spring Cloud Service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (LookupSpringCloudAppApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpringCloudAppArgs)(nil)).Elem()
+}
+
+func (i LookupSpringCloudAppApplyArgs) ToLookupSpringCloudAppApplyOutput() LookupSpringCloudAppApplyOutput {
+	return i.ToLookupSpringCloudAppApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSpringCloudAppApplyArgs) ToLookupSpringCloudAppApplyOutputWithContext(ctx context.Context) LookupSpringCloudAppApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSpringCloudAppApplyOutput)
+}
+
+// A collection of arguments for invoking getSpringCloudApp.
+type LookupSpringCloudAppApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSpringCloudAppApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpringCloudAppArgs)(nil)).Elem()
+}
+
+func (o LookupSpringCloudAppApplyOutput) ToLookupSpringCloudAppApplyOutput() LookupSpringCloudAppApplyOutput {
+	return o
+}
+
+func (o LookupSpringCloudAppApplyOutput) ToLookupSpringCloudAppApplyOutputWithContext(ctx context.Context) LookupSpringCloudAppApplyOutput {
+	return o
+}
+
+// The name of the Spring Cloud Application.
+func (o LookupSpringCloudAppApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Resource Group where the Spring Cloud Application exists.
+func (o LookupSpringCloudAppApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the Spring Cloud Service.
+func (o LookupSpringCloudAppApplyOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppArgs) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getSpringCloudApp.
+type LookupSpringCloudAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSpringCloudAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSpringCloudAppResult)(nil)).Elem()
+}
+
+func (o LookupSpringCloudAppResultOutput) ToLookupSpringCloudAppResultOutput() LookupSpringCloudAppResultOutput {
+	return o
+}
+
+func (o LookupSpringCloudAppResultOutput) ToLookupSpringCloudAppResultOutputWithContext(ctx context.Context) LookupSpringCloudAppResultOutput {
+	return o
+}
+
+// The Fully Qualified DNS Name.
+func (o LookupSpringCloudAppResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// Is only https allowed?
+func (o LookupSpringCloudAppResultOutput) HttpsOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) bool { return v.HttpsOnly }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSpringCloudAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An `identity` block as defined below.
+func (o LookupSpringCloudAppResultOutput) Identities() GetSpringCloudAppIdentityArrayOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) []GetSpringCloudAppIdentity { return v.Identities }).(GetSpringCloudAppIdentityArrayOutput)
+}
+
+// Does the Spring Cloud Application have public endpoint?
+func (o LookupSpringCloudAppResultOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+func (o LookupSpringCloudAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A `persistentDisk` block as defined below.
+func (o LookupSpringCloudAppResultOutput) PersistentDisks() GetSpringCloudAppPersistentDiskArrayOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) []GetSpringCloudAppPersistentDisk { return v.PersistentDisks }).(GetSpringCloudAppPersistentDiskArrayOutput)
+}
+
+func (o LookupSpringCloudAppResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupSpringCloudAppResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Is End to End TLS Enabled?
+func (o LookupSpringCloudAppResultOutput) TlsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) bool { return v.TlsEnabled }).(pulumi.BoolOutput)
+}
+
+// The public endpoint of the Spring Cloud Application.
+func (o LookupSpringCloudAppResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringCloudAppResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSpringCloudAppApplyOutput{})
+	pulumi.RegisterOutputType(LookupSpringCloudAppResultOutput{})
 }

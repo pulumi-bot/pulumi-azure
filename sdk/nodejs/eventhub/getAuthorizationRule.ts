@@ -48,22 +48,22 @@ export interface GetAuthorizationRuleArgs {
     /**
      * Specifies the name of the EventHub.
      */
-    readonly eventhubName: string;
-    readonly listen?: boolean;
-    readonly manage?: boolean;
+    eventhubName: string;
+    listen?: boolean;
+    manage?: boolean;
     /**
      * Specifies the name of the EventHub Authorization Rule resource. be created.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the grandparent EventHub Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
      */
-    readonly resourceGroupName: string;
-    readonly send?: boolean;
+    resourceGroupName: string;
+    send?: boolean;
 }
 
 /**
@@ -106,4 +106,33 @@ export interface GetAuthorizationRuleResult {
      */
     readonly secondaryKey: string;
     readonly send?: boolean;
+}
+
+export function getAuthorizationRuleApply(args: GetAuthorizationRuleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationRuleResult> {
+    return pulumi.output(args).apply(a => getAuthorizationRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAuthorizationRule.
+ */
+export interface GetAuthorizationRuleApplyArgs {
+    /**
+     * Specifies the name of the EventHub.
+     */
+    eventhubName: pulumi.Input<string>;
+    listen?: pulumi.Input<boolean>;
+    manage?: pulumi.Input<boolean>;
+    /**
+     * Specifies the name of the EventHub Authorization Rule resource. be created.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the grandparent EventHub Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    send?: pulumi.Input<boolean>;
 }

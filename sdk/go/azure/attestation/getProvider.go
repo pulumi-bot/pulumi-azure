@@ -4,6 +4,9 @@
 package attestation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,113 @@ type LookupProviderResult struct {
 	ResourceGroupName string            `pulumi:"resourceGroupName"`
 	Tags              map[string]string `pulumi:"tags"`
 	TrustModel        string            `pulumi:"trustModel"`
+}
+
+func LookupProviderApply(ctx *pulumi.Context, args LookupProviderApplyInput, opts ...pulumi.InvokeOption) LookupProviderResultOutput {
+	return args.ToLookupProviderApplyOutput().ApplyT(func(v LookupProviderArgs) (LookupProviderResult, error) {
+		r, err := LookupProvider(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupProviderResultOutput)
+}
+
+// LookupProviderApplyInput is an input type that accepts LookupProviderApplyArgs and LookupProviderApplyOutput values.
+// You can construct a concrete instance of `LookupProviderApplyInput` via:
+//
+//          LookupProviderApplyArgs{...}
+type LookupProviderApplyInput interface {
+	pulumi.Input
+
+	ToLookupProviderApplyOutput() LookupProviderApplyOutput
+	ToLookupProviderApplyOutputWithContext(context.Context) LookupProviderApplyOutput
+}
+
+// A collection of arguments for invoking getProvider.
+type LookupProviderApplyArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (LookupProviderApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProviderArgs)(nil)).Elem()
+}
+
+func (i LookupProviderApplyArgs) ToLookupProviderApplyOutput() LookupProviderApplyOutput {
+	return i.ToLookupProviderApplyOutputWithContext(context.Background())
+}
+
+func (i LookupProviderApplyArgs) ToLookupProviderApplyOutputWithContext(ctx context.Context) LookupProviderApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupProviderApplyOutput)
+}
+
+// A collection of arguments for invoking getProvider.
+type LookupProviderApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupProviderApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProviderArgs)(nil)).Elem()
+}
+
+func (o LookupProviderApplyOutput) ToLookupProviderApplyOutput() LookupProviderApplyOutput {
+	return o
+}
+
+func (o LookupProviderApplyOutput) ToLookupProviderApplyOutputWithContext(ctx context.Context) LookupProviderApplyOutput {
+	return o
+}
+
+func (o LookupProviderApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupProviderApplyOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderArgs) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getProvider.
+type LookupProviderResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProviderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProviderResult)(nil)).Elem()
+}
+
+func (o LookupProviderResultOutput) ToLookupProviderResultOutput() LookupProviderResultOutput {
+	return o
+}
+
+func (o LookupProviderResultOutput) ToLookupProviderResultOutputWithContext(ctx context.Context) LookupProviderResultOutput {
+	return o
+}
+
+func (o LookupProviderResultOutput) AttestationUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.AttestationUri }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProviderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupProviderResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupProviderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupProviderResultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupProviderResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProviderResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupProviderResultOutput) TrustModel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderResult) string { return v.TrustModel }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProviderApplyOutput{})
+	pulumi.RegisterOutputType(LookupProviderResultOutput{})
 }

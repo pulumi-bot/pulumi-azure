@@ -237,3 +237,10 @@ def get_flexible_server(name: Optional[str] = None,
         storage_mb=__ret__.storage_mb,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_flexible_server)
+def get_flexible_server_apply(name: Optional[pulumi.Input[str]] = None,
+                              resource_group_name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlexibleServerResult]:
+    ...

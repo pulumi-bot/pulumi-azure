@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Monitoring
         /// </summary>
         public static Task<GetScheduledQueryRulesAlertResult> InvokeAsync(GetScheduledQueryRulesAlertArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScheduledQueryRulesAlertResult>("azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert", args ?? new GetScheduledQueryRulesAlertArgs(), options.WithVersion());
+
+        public static Output<GetScheduledQueryRulesAlertResult> Apply(GetScheduledQueryRulesAlertApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetScheduledQueryRulesAlertArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Monitoring
         public string ResourceGroupName { get; set; } = null!;
 
         public GetScheduledQueryRulesAlertArgs()
+        {
+        }
+    }
+
+    public sealed class GetScheduledQueryRulesAlertApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the scheduled query rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group where the scheduled query rule is located.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetScheduledQueryRulesAlertApplyArgs()
         {
         }
     }

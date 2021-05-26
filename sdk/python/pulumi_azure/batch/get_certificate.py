@@ -160,3 +160,11 @@ def get_certificate(account_name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         thumbprint=__ret__.thumbprint,
         thumbprint_algorithm=__ret__.thumbprint_algorithm)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_apply(account_name: Optional[pulumi.Input[str]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          resource_group_name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

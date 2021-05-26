@@ -193,3 +193,12 @@ def get_nat_gateway(name: Optional[str] = None,
         sku_name=__ret__.sku_name,
         tags=__ret__.tags,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_nat_gateway)
+def get_nat_gateway_apply(name: Optional[pulumi.Input[str]] = None,
+                          public_ip_address_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                          public_ip_prefix_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                          resource_group_name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatGatewayResult]:
+    ...

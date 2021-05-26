@@ -44,6 +44,17 @@ namespace Pulumi.Azure.Monitoring
         /// </summary>
         public static Task<GetDiagnosticCategoriesResult> InvokeAsync(GetDiagnosticCategoriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDiagnosticCategoriesResult>("azure:monitoring/getDiagnosticCategories:getDiagnosticCategories", args ?? new GetDiagnosticCategoriesArgs(), options.WithVersion());
+
+        public static Output<GetDiagnosticCategoriesResult> Apply(GetDiagnosticCategoriesApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ResourceId.Box()
+            ).Apply(a => {
+                    var args = new GetDiagnosticCategoriesArgs();
+                    a[0].Set(args, nameof(args.ResourceId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -56,6 +67,19 @@ namespace Pulumi.Azure.Monitoring
         public string ResourceId { get; set; } = null!;
 
         public GetDiagnosticCategoriesArgs()
+        {
+        }
+    }
+
+    public sealed class GetDiagnosticCategoriesApplyArgs
+    {
+        /// <summary>
+        /// The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
+
+        public GetDiagnosticCategoriesApplyArgs()
         {
         }
     }

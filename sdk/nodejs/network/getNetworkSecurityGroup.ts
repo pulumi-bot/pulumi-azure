@@ -42,11 +42,11 @@ export interface GetNetworkSecurityGroupArgs {
     /**
      * Specifies the Name of the Network Security Group.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the Name of the Resource Group within which the Network Security Group exists
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -74,4 +74,22 @@ export interface GetNetworkSecurityGroupResult {
      * A mapping of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getNetworkSecurityGroupApply(args: GetNetworkSecurityGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSecurityGroupResult> {
+    return pulumi.output(args).apply(a => getNetworkSecurityGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkSecurityGroup.
+ */
+export interface GetNetworkSecurityGroupApplyArgs {
+    /**
+     * Specifies the Name of the Network Security Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the Name of the Resource Group within which the Network Security Group exists
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

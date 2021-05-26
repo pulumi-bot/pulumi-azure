@@ -42,11 +42,11 @@ export interface GetNamespaceArgs {
     /**
      * Specifies the Name of the Notification Hub Namespace.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the Name of the Resource Group within which the Notification Hub exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -83,4 +83,22 @@ export interface GetNamespaceResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getNamespaceApply(args: GetNamespaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceResult> {
+    return pulumi.output(args).apply(a => getNamespace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespace.
+ */
+export interface GetNamespaceApplyArgs {
+    /**
+     * Specifies the Name of the Notification Hub Namespace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the Name of the Resource Group within which the Notification Hub exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }

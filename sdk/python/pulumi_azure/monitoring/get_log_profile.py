@@ -143,3 +143,9 @@ def get_log_profile(name: Optional[str] = None,
         retention_policies=__ret__.retention_policies,
         servicebus_rule_id=__ret__.servicebus_rule_id,
         storage_account_id=__ret__.storage_account_id)
+
+
+@_utilities.lift_output_func(get_log_profile)
+def get_log_profile_apply(name: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogProfileResult]:
+    ...

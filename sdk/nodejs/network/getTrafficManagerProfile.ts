@@ -44,19 +44,19 @@ export interface GetTrafficManagerProfileArgs {
     /**
      * Specifies the name of the Traffic Manager Profile.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Traffic Manager Profile is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * Indicates whether Traffic View is enabled for the Traffic Manager profile.
      */
-    readonly trafficViewEnabled?: boolean;
+    trafficViewEnabled?: boolean;
 }
 
 /**
@@ -100,4 +100,30 @@ export interface GetTrafficManagerProfileResult {
      * Indicates whether Traffic View is enabled for the Traffic Manager profile.
      */
     readonly trafficViewEnabled?: boolean;
+}
+
+export function getTrafficManagerProfileApply(args: GetTrafficManagerProfileApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficManagerProfileResult> {
+    return pulumi.output(args).apply(a => getTrafficManagerProfile(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrafficManagerProfile.
+ */
+export interface GetTrafficManagerProfileApplyArgs {
+    /**
+     * Specifies the name of the Traffic Manager Profile.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Traffic Manager Profile is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates whether Traffic View is enabled for the Traffic Manager profile.
+     */
+    trafficViewEnabled?: pulumi.Input<boolean>;
 }

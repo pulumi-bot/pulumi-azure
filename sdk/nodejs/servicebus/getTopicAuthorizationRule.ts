@@ -47,19 +47,19 @@ export interface GetTopicAuthorizationRuleArgs {
     /**
      * The name of the ServiceBus Topic Authorization Rule resource.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the ServiceBus Namespace.
      */
-    readonly namespaceName: string;
+    namespaceName: string;
     /**
      * The name of the resource group in which the ServiceBus Namespace exists.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
     /**
      * The name of the ServiceBus Topic.
      */
-    readonly topicName: string;
+    topicName: string;
 }
 
 /**
@@ -93,4 +93,30 @@ export interface GetTopicAuthorizationRuleResult {
     readonly secondaryKey: string;
     readonly send: boolean;
     readonly topicName: string;
+}
+
+export function getTopicAuthorizationRuleApply(args: GetTopicAuthorizationRuleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicAuthorizationRuleResult> {
+    return pulumi.output(args).apply(a => getTopicAuthorizationRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopicAuthorizationRule.
+ */
+export interface GetTopicAuthorizationRuleApplyArgs {
+    /**
+     * The name of the ServiceBus Topic Authorization Rule resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the ServiceBus Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the ServiceBus Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the ServiceBus Topic.
+     */
+    topicName: pulumi.Input<string>;
 }

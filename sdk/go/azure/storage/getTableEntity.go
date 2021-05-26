@@ -4,6 +4,9 @@
 package storage
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,128 @@ type LookupTableEntityResult struct {
 	RowKey             string `pulumi:"rowKey"`
 	StorageAccountName string `pulumi:"storageAccountName"`
 	TableName          string `pulumi:"tableName"`
+}
+
+func LookupTableEntityApply(ctx *pulumi.Context, args LookupTableEntityApplyInput, opts ...pulumi.InvokeOption) LookupTableEntityResultOutput {
+	return args.ToLookupTableEntityApplyOutput().ApplyT(func(v LookupTableEntityArgs) (LookupTableEntityResult, error) {
+		r, err := LookupTableEntity(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupTableEntityResultOutput)
+}
+
+// LookupTableEntityApplyInput is an input type that accepts LookupTableEntityApplyArgs and LookupTableEntityApplyOutput values.
+// You can construct a concrete instance of `LookupTableEntityApplyInput` via:
+//
+//          LookupTableEntityApplyArgs{...}
+type LookupTableEntityApplyInput interface {
+	pulumi.Input
+
+	ToLookupTableEntityApplyOutput() LookupTableEntityApplyOutput
+	ToLookupTableEntityApplyOutputWithContext(context.Context) LookupTableEntityApplyOutput
+}
+
+// A collection of arguments for invoking getTableEntity.
+type LookupTableEntityApplyArgs struct {
+	// The key for the partition where the entity will be retrieved.
+	PartitionKey pulumi.StringInput `pulumi:"partitionKey"`
+	// The key for the row where the entity will be retrieved.
+	RowKey pulumi.StringInput `pulumi:"rowKey"`
+	// The name of the Storage Account where the Table exists.
+	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
+	// The name of the Table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+}
+
+func (LookupTableEntityApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTableEntityArgs)(nil)).Elem()
+}
+
+func (i LookupTableEntityApplyArgs) ToLookupTableEntityApplyOutput() LookupTableEntityApplyOutput {
+	return i.ToLookupTableEntityApplyOutputWithContext(context.Background())
+}
+
+func (i LookupTableEntityApplyArgs) ToLookupTableEntityApplyOutputWithContext(ctx context.Context) LookupTableEntityApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupTableEntityApplyOutput)
+}
+
+// A collection of arguments for invoking getTableEntity.
+type LookupTableEntityApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupTableEntityApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTableEntityArgs)(nil)).Elem()
+}
+
+func (o LookupTableEntityApplyOutput) ToLookupTableEntityApplyOutput() LookupTableEntityApplyOutput {
+	return o
+}
+
+func (o LookupTableEntityApplyOutput) ToLookupTableEntityApplyOutputWithContext(ctx context.Context) LookupTableEntityApplyOutput {
+	return o
+}
+
+// The key for the partition where the entity will be retrieved.
+func (o LookupTableEntityApplyOutput) PartitionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityArgs) string { return v.PartitionKey }).(pulumi.StringOutput)
+}
+
+// The key for the row where the entity will be retrieved.
+func (o LookupTableEntityApplyOutput) RowKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityArgs) string { return v.RowKey }).(pulumi.StringOutput)
+}
+
+// The name of the Storage Account where the Table exists.
+func (o LookupTableEntityApplyOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityArgs) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+// The name of the Table.
+func (o LookupTableEntityApplyOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityArgs) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getTableEntity.
+type LookupTableEntityResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTableEntityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTableEntityResult)(nil)).Elem()
+}
+
+func (o LookupTableEntityResultOutput) ToLookupTableEntityResultOutput() LookupTableEntityResultOutput {
+	return o
+}
+
+func (o LookupTableEntityResultOutput) ToLookupTableEntityResultOutputWithContext(ctx context.Context) LookupTableEntityResultOutput {
+	return o
+}
+
+// A map of key/value pairs that describe the entity to be stored in the storage table.
+func (o LookupTableEntityResultOutput) Entity() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) map[string]string { return v.Entity }).(pulumi.StringMapOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTableEntityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTableEntityResultOutput) PartitionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) string { return v.PartitionKey }).(pulumi.StringOutput)
+}
+
+func (o LookupTableEntityResultOutput) RowKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) string { return v.RowKey }).(pulumi.StringOutput)
+}
+
+func (o LookupTableEntityResultOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+func (o LookupTableEntityResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableEntityResult) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTableEntityApplyOutput{})
+	pulumi.RegisterOutputType(LookupTableEntityResultOutput{})
 }

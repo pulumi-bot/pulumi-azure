@@ -42,11 +42,11 @@ export interface GetVirtualNetworkGatewayArgs {
     /**
      * Specifies the name of the Virtual Network Gateway.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies the name of the resource group the Virtual Network Gateway is located in.
      */
-    readonly resourceGroupName: string;
+    resourceGroupName: string;
 }
 
 /**
@@ -116,4 +116,22 @@ export interface GetVirtualNetworkGatewayResult {
      * The routing type of the Virtual Network Gateway.
      */
     readonly vpnType: string;
+}
+
+export function getVirtualNetworkGatewayApply(args: GetVirtualNetworkGatewayApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkGatewayResult> {
+    return pulumi.output(args).apply(a => getVirtualNetworkGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualNetworkGateway.
+ */
+export interface GetVirtualNetworkGatewayApplyArgs {
+    /**
+     * Specifies the name of the Virtual Network Gateway.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Virtual Network Gateway is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
 }
