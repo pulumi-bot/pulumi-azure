@@ -44,19 +44,19 @@ export interface GetBlobArgs {
     /**
      * A map of custom blob metadata.
      */
-    readonly metadata?: {[key: string]: string};
+    metadata?: {[key: string]: string};
     /**
      * The name of the Blob.
      */
-    readonly name: string;
+    name: string;
     /**
      * The name of the Storage Account where the Container exists.
      */
-    readonly storageAccountName: string;
+    storageAccountName: string;
     /**
      * The name of the Storage Container where the Blob exists.
      */
-    readonly storageContainerName: string;
+    storageContainerName: string;
 }
 
 /**
