@@ -43,6 +43,19 @@ namespace Pulumi.Azure.StreamAnalytics
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("azure:streamanalytics/getJob:getJob", args ?? new GetJobArgs(), options.WithVersion());
+
+        public static Output<GetJobResult> Invoke(GetJobOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetJobArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.StreamAnalytics
         public string ResourceGroupName { get; set; } = null!;
 
         public GetJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Stream Analytics Job.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Stream Analytics Job is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetJobOutputArgs()
         {
         }
     }

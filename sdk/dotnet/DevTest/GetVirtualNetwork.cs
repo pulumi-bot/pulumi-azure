@@ -44,6 +44,21 @@ namespace Pulumi.Azure.DevTest
         /// </summary>
         public static Task<GetVirtualNetworkResult> InvokeAsync(GetVirtualNetworkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNetworkResult>("azure:devtest/getVirtualNetwork:getVirtualNetwork", args ?? new GetVirtualNetworkArgs(), options.WithVersion());
+
+        public static Output<GetVirtualNetworkResult> Invoke(GetVirtualNetworkOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.LabName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetVirtualNetworkArgs();
+                    a[0].Set(args, nameof(args.LabName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.DevTest
         public string ResourceGroupName { get; set; } = null!;
 
         public GetVirtualNetworkArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualNetworkOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Dev Test Lab.
+        /// </summary>
+        [Input("labName", required: true)]
+        public Input<string> LabName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Virtual Network.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group that contains the Virtual Network.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetVirtualNetworkOutputArgs()
         {
         }
     }

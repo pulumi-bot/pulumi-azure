@@ -48,6 +48,21 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("azure:keyvault/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
+
+        public static Output<GetCertificateResult> Invoke(GetCertificateOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.KeyVaultId.Box(),
+                args.Name.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetCertificateArgs();
+                    a[0].Set(args, nameof(args.KeyVaultId));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +87,31 @@ namespace Pulumi.Azure.KeyVault
         public string? Version { get; set; }
 
         public GetCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateOutputArgs
+    {
+        /// <summary>
+        /// Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
+        /// </summary>
+        [Input("keyVaultId", required: true)]
+        public Input<string> KeyVaultId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Key Vault Certificate.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the version of the certificate to look up.  (Defaults to latest)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetCertificateOutputArgs()
         {
         }
     }

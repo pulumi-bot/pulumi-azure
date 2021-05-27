@@ -104,3 +104,10 @@ def get_definition(name: Optional[str] = None,
         location=__ret__.location,
         name=__ret__.name,
         resource_group_name=__ret__.resource_group_name)
+
+
+@_utilities.lift_output_func(get_definition)
+def get_definition_apply(name: Optional[pulumi.Input[str]] = None,
+                         resource_group_name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefinitionResult]:
+    ...

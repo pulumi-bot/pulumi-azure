@@ -278,3 +278,10 @@ def get_virtual_network_gateway(name: Optional[str] = None,
         type=__ret__.type,
         vpn_client_configurations=__ret__.vpn_client_configurations,
         vpn_type=__ret__.vpn_type)
+
+
+@_utilities.lift_output_func(get_virtual_network_gateway)
+def get_virtual_network_gateway_apply(name: Optional[pulumi.Input[str]] = None,
+                                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualNetworkGatewayResult]:
+    ...

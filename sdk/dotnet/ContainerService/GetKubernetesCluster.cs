@@ -40,6 +40,19 @@ namespace Pulumi.Azure.ContainerService
         /// </summary>
         public static Task<GetKubernetesClusterResult> InvokeAsync(GetKubernetesClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterResult>("azure:containerservice/getKubernetesCluster:getKubernetesCluster", args ?? new GetKubernetesClusterArgs(), options.WithVersion());
+
+        public static Output<GetKubernetesClusterResult> Invoke(GetKubernetesClusterOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetKubernetesClusterArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Azure.ContainerService
         public string ResourceGroupName { get; set; } = null!;
 
         public GetKubernetesClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesClusterOutputArgs
+    {
+        /// <summary>
+        /// The name of the managed Kubernetes Cluster.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the managed Kubernetes Cluster exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetKubernetesClusterOutputArgs()
         {
         }
     }

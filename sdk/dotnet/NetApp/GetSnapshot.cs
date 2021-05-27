@@ -42,6 +42,25 @@ namespace Pulumi.Azure.NetApp
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("azure:netapp/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+
+        public static Output<GetSnapshotResult> Invoke(GetSnapshotOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccountName.Box(),
+                args.Name.Box(),
+                args.PoolName.Box(),
+                args.ResourceGroupName.Box(),
+                args.VolumeName.Box()
+            ).Apply(a => {
+                    var args = new GetSnapshotArgs();
+                    a[0].Set(args, nameof(args.AccountName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.PoolName));
+                    a[3].Set(args, nameof(args.ResourceGroupName));
+                    a[4].Set(args, nameof(args.VolumeName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -78,6 +97,43 @@ namespace Pulumi.Azure.NetApp
         public string VolumeName { get; set; } = null!;
 
         public GetSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotOutputArgs
+    {
+        /// <summary>
+        /// The name of the NetApp Account where the NetApp Pool exists.
+        /// </summary>
+        [Input("accountName", required: true)]
+        public Input<string> AccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp Snapshot.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp Pool where the NetApp Volume exists.
+        /// </summary>
+        [Input("poolName", required: true)]
+        public Input<string> PoolName { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the NetApp Snapshot exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp Volume where the NetApp Snapshot exists.
+        /// </summary>
+        [Input("volumeName", required: true)]
+        public Input<string> VolumeName { get; set; } = null!;
+
+        public GetSnapshotOutputArgs()
         {
         }
     }

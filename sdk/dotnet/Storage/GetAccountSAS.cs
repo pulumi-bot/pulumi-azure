@@ -90,6 +90,31 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetAccountSASResult> InvokeAsync(GetAccountSASArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountSASResult>("azure:storage/getAccountSAS:getAccountSAS", args ?? new GetAccountSASArgs(), options.WithVersion());
+
+        public static Output<GetAccountSASResult> Invoke(GetAccountSASOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ConnectionString.Box(),
+                args.Expiry.Box(),
+                args.HttpsOnly.Box(),
+                args.Permissions.Box(),
+                args.ResourceTypes.Box(),
+                args.Services.Box(),
+                args.SignedVersion.Box(),
+                args.Start.Box()
+            ).Apply(a => {
+                    var args = new GetAccountSASArgs();
+                    a[0].Set(args, nameof(args.ConnectionString));
+                    a[1].Set(args, nameof(args.Expiry));
+                    a[2].Set(args, nameof(args.HttpsOnly));
+                    a[3].Set(args, nameof(args.Permissions));
+                    a[4].Set(args, nameof(args.ResourceTypes));
+                    a[5].Set(args, nameof(args.Services));
+                    a[6].Set(args, nameof(args.SignedVersion));
+                    a[7].Set(args, nameof(args.Start));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -144,6 +169,61 @@ namespace Pulumi.Azure.Storage
         public string Start { get; set; } = null!;
 
         public GetAccountSASArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountSASOutputArgs
+    {
+        /// <summary>
+        /// The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of a `azure.storage.Account` resource.
+        /// </summary>
+        [Input("connectionString", required: true)]
+        public Input<string> ConnectionString { get; set; } = null!;
+
+        /// <summary>
+        /// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+        /// </summary>
+        [Input("expiry", required: true)]
+        public Input<string> Expiry { get; set; } = null!;
+
+        /// <summary>
+        /// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+        /// </summary>
+        [Input("httpsOnly")]
+        public Input<bool>? HttpsOnly { get; set; }
+
+        /// <summary>
+        /// A `permissions` block as defined below.
+        /// </summary>
+        [Input("permissions", required: true)]
+        public Input<Inputs.GetAccountSASPermissionsArgs> Permissions { get; set; } = null!;
+
+        /// <summary>
+        /// A `resource_types` block as defined below.
+        /// </summary>
+        [Input("resourceTypes", required: true)]
+        public Input<Inputs.GetAccountSASResourceTypesArgs> ResourceTypes { get; set; } = null!;
+
+        /// <summary>
+        /// A `services` block as defined below.
+        /// </summary>
+        [Input("services", required: true)]
+        public Input<Inputs.GetAccountSASServicesArgs> Services { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2017-07-29`.
+        /// </summary>
+        [Input("signedVersion")]
+        public Input<string>? SignedVersion { get; set; }
+
+        /// <summary>
+        /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+        /// </summary>
+        [Input("start", required: true)]
+        public Input<string> Start { get; set; } = null!;
+
+        public GetAccountSASOutputArgs()
         {
         }
     }

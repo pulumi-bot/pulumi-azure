@@ -48,6 +48,19 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetCertificateIssuerResult> InvokeAsync(GetCertificateIssuerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateIssuerResult>("azure:keyvault/getCertificateIssuer:getCertificateIssuer", args ?? new GetCertificateIssuerArgs(), options.WithVersion());
+
+        public static Output<GetCertificateIssuerResult> Invoke(GetCertificateIssuerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.KeyVaultId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetCertificateIssuerArgs();
+                    a[0].Set(args, nameof(args.KeyVaultId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,25 @@ namespace Pulumi.Azure.KeyVault
         public string Name { get; set; } = null!;
 
         public GetCertificateIssuerArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateIssuerOutputArgs
+    {
+        /// <summary>
+        /// The ID of the Key Vault in which to locate the Certificate Issuer.
+        /// </summary>
+        [Input("keyVaultId", required: true)]
+        public Input<string> KeyVaultId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Key Vault Certificate Issuer.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetCertificateIssuerOutputArgs()
         {
         }
     }

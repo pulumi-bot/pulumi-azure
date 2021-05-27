@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Maintenance
         /// </summary>
         public static Task<GetConfigurationResult> InvokeAsync(GetConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationResult>("azure:maintenance/getConfiguration:getConfiguration", args ?? new GetConfigurationArgs(), options.WithVersion());
+
+        public static Output<GetConfigurationResult> Invoke(GetConfigurationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetConfigurationArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Maintenance
         public string ResourceGroupName { get; set; } = null!;
 
         public GetConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigurationOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Maintenance Configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where this Maintenance Configuration exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetConfigurationOutputArgs()
         {
         }
     }

@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetRouteFilterResult> InvokeAsync(GetRouteFilterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteFilterResult>("azure:network/getRouteFilter:getRouteFilter", args ?? new GetRouteFilterArgs(), options.WithVersion());
+
+        public static Output<GetRouteFilterResult> Invoke(GetRouteFilterOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetRouteFilterArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Network
         public string ResourceGroupName { get; set; } = null!;
 
         public GetRouteFilterArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteFilterOutputArgs
+    {
+        /// <summary>
+        /// The Name of this Route Filter.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Route Filter exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetRouteFilterOutputArgs()
         {
         }
     }

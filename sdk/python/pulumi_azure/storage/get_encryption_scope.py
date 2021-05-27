@@ -122,3 +122,10 @@ def get_encryption_scope(name: Optional[str] = None,
         name=__ret__.name,
         source=__ret__.source,
         storage_account_id=__ret__.storage_account_id)
+
+
+@_utilities.lift_output_func(get_encryption_scope)
+def get_encryption_scope_apply(name: Optional[pulumi.Input[str]] = None,
+                               storage_account_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEncryptionScopeResult]:
+    ...

@@ -43,6 +43,19 @@ namespace Pulumi.Azure.DataLake
         /// </summary>
         public static Task<GetStoreResult> InvokeAsync(GetStoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStoreResult>("azure:datalake/getStore:getStore", args ?? new GetStoreArgs(), options.WithVersion());
+
+        public static Output<GetStoreResult> Invoke(GetStoreOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetStoreArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.DataLake
         public string ResourceGroupName { get; set; } = null!;
 
         public GetStoreArgs()
+        {
+        }
+    }
+
+    public sealed class GetStoreOutputArgs
+    {
+        /// <summary>
+        /// The name of the Data Lake Store.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the Data Lake Store exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetStoreOutputArgs()
         {
         }
     }

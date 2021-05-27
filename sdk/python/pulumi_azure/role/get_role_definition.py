@@ -135,3 +135,11 @@ def get_role_definition(name: Optional[str] = None,
         role_definition_id=__ret__.role_definition_id,
         scope=__ret__.scope,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_role_definition)
+def get_role_definition_apply(name: Optional[pulumi.Input[str]] = None,
+                              role_definition_id: Optional[pulumi.Input[str]] = None,
+                              scope: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleDefinitionResult]:
+    ...

@@ -94,3 +94,10 @@ def get_sync_group(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         storage_sync_id=__ret__.storage_sync_id)
+
+
+@_utilities.lift_output_func(get_sync_group)
+def get_sync_group_apply(name: Optional[pulumi.Input[str]] = None,
+                         storage_sync_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSyncGroupResult]:
+    ...

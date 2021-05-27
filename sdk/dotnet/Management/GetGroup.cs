@@ -42,6 +42,22 @@ namespace Pulumi.Azure.Management
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("azure:management/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        public static Output<GetGroupResult> Invoke(GetGroupOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetGroupOutputArgs();
+            return Pulumi.Output.All(
+                args.DisplayName.Box(),
+                args.GroupId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetGroupArgs();
+                    a[0].Set(args, nameof(args.DisplayName));
+                    a[1].Set(args, nameof(args.GroupId));
+                    a[2].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +82,31 @@ namespace Pulumi.Azure.Management
         public string? Name { get; set; }
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupOutputArgs
+    {
+        /// <summary>
+        /// Specifies the display name of this Management Group.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Specifies the name or UUID of this Management Group.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// Specifies the name or UUID of this Management Group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetGroupOutputArgs()
         {
         }
     }

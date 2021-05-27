@@ -149,3 +149,10 @@ def get_certificate_issuer(key_vault_id: Optional[str] = None,
         name=__ret__.name,
         org_id=__ret__.org_id,
         provider_name=__ret__.provider_name)
+
+
+@_utilities.lift_output_func(get_certificate_issuer)
+def get_certificate_issuer_apply(key_vault_id: Optional[pulumi.Input[str]] = None,
+                                 name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateIssuerResult]:
+    ...

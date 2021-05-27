@@ -146,3 +146,10 @@ def get_dataset_data_lake_gen1(data_share_id: Optional[str] = None,
         folder_path=__ret__.folder_path,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_dataset_data_lake_gen1)
+def get_dataset_data_lake_gen1_apply(data_share_id: Optional[pulumi.Input[str]] = None,
+                                     name: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetDataLakeGen1Result]:
+    ...

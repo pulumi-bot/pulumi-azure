@@ -149,3 +149,13 @@ def get_snapshot(account_name: Optional[str] = None,
         pool_name=__ret__.pool_name,
         resource_group_name=__ret__.resource_group_name,
         volume_name=__ret__.volume_name)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_apply(account_name: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       pool_name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       volume_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    ...

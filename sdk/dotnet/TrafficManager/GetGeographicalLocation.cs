@@ -44,6 +44,17 @@ namespace Pulumi.Azure.TrafficManager
         /// </summary>
         public static Task<GetGeographicalLocationResult> InvokeAsync(GetGeographicalLocationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGeographicalLocationResult>("azure:trafficmanager/getGeographicalLocation:getGeographicalLocation", args ?? new GetGeographicalLocationArgs(), options.WithVersion());
+
+        public static Output<GetGeographicalLocationResult> Invoke(GetGeographicalLocationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetGeographicalLocationArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -56,6 +67,19 @@ namespace Pulumi.Azure.TrafficManager
         public string Name { get; set; } = null!;
 
         public GetGeographicalLocationArgs()
+        {
+        }
+    }
+
+    public sealed class GetGeographicalLocationOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGeographicalLocationOutputArgs()
         {
         }
     }

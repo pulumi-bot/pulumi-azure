@@ -41,6 +41,21 @@ namespace Pulumi.Azure.NetApp
         /// </summary>
         public static Task<GetPoolResult> InvokeAsync(GetPoolArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoolResult>("azure:netapp/getPool:getPool", args ?? new GetPoolArgs(), options.WithVersion());
+
+        public static Output<GetPoolResult> Invoke(GetPoolOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccountName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetPoolArgs();
+                    a[0].Set(args, nameof(args.AccountName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +80,31 @@ namespace Pulumi.Azure.NetApp
         public string ResourceGroupName { get; set; } = null!;
 
         public GetPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetPoolOutputArgs
+    {
+        /// <summary>
+        /// The name of the NetApp account where the NetApp pool exists.
+        /// </summary>
+        [Input("accountName", required: true)]
+        public Input<string> AccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp Pool.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the NetApp Pool exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetPoolOutputArgs()
         {
         }
     }

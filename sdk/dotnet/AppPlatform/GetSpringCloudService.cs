@@ -43,6 +43,19 @@ namespace Pulumi.Azure.AppPlatform
         /// </summary>
         public static Task<GetSpringCloudServiceResult> InvokeAsync(GetSpringCloudServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpringCloudServiceResult>("azure:appplatform/getSpringCloudService:getSpringCloudService", args ?? new GetSpringCloudServiceArgs(), options.WithVersion());
+
+        public static Output<GetSpringCloudServiceResult> Invoke(GetSpringCloudServiceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetSpringCloudServiceArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.AppPlatform
         public string ResourceGroupName { get; set; } = null!;
 
         public GetSpringCloudServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpringCloudServiceOutputArgs
+    {
+        /// <summary>
+        /// Specifies The name of the Spring Cloud Service resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where the Spring Cloud Service exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetSpringCloudServiceOutputArgs()
         {
         }
     }

@@ -43,6 +43,21 @@ namespace Pulumi.Azure.Sentinel
         /// </summary>
         public static Task<GetAlertRuleTemplateResult> InvokeAsync(GetAlertRuleTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlertRuleTemplateResult>("azure:sentinel/getAlertRuleTemplate:getAlertRuleTemplate", args ?? new GetAlertRuleTemplateArgs(), options.WithVersion());
+
+        public static Output<GetAlertRuleTemplateResult> Invoke(GetAlertRuleTemplateOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DisplayName.Box(),
+                args.LogAnalyticsWorkspaceId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetAlertRuleTemplateArgs();
+                    a[0].Set(args, nameof(args.DisplayName));
+                    a[1].Set(args, nameof(args.LogAnalyticsWorkspaceId));
+                    a[2].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +82,31 @@ namespace Pulumi.Azure.Sentinel
         public string? Name { get; set; }
 
         public GetAlertRuleTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlertRuleTemplateOutputArgs
+    {
+        /// <summary>
+        /// The display name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The ID of the Log Analytics Workspace.
+        /// </summary>
+        [Input("logAnalyticsWorkspaceId", required: true)]
+        public Input<string> LogAnalyticsWorkspaceId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetAlertRuleTemplateOutputArgs()
         {
         }
     }

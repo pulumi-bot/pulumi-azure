@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Monitoring
         /// </summary>
         public static Task<GetActionGroupResult> InvokeAsync(GetActionGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActionGroupResult>("azure:monitoring/getActionGroup:getActionGroup", args ?? new GetActionGroupArgs(), options.WithVersion());
+
+        public static Output<GetActionGroupResult> Invoke(GetActionGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetActionGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Monitoring
         public string ResourceGroupName { get; set; } = null!;
 
         public GetActionGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetActionGroupOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Action Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Action Group is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetActionGroupOutputArgs()
         {
         }
     }
