@@ -225,3 +225,16 @@ def get_account_sas(connection_string: Optional[str] = None,
         services=__ret__.services,
         signed_version=__ret__.signed_version,
         start=__ret__.start)
+
+
+@_utilities.lift_output_func(get_account_sas)
+def get_account_sas_apply(connection_string: Optional[pulumi.Input[str]] = None,
+                          expiry: Optional[pulumi.Input[str]] = None,
+                          https_only: Optional[pulumi.Input[bool]] = None,
+                          permissions: Optional[pulumi.Input[pulumi.InputType['GetAccountSASPermissionsArgs']]] = None,
+                          resource_types: Optional[pulumi.Input[pulumi.InputType['GetAccountSASResourceTypesArgs']]] = None,
+                          services: Optional[pulumi.Input[pulumi.InputType['GetAccountSASServicesArgs']]] = None,
+                          signed_version: Optional[pulumi.Input[str]] = None,
+                          start: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountSASResult]:
+    ...

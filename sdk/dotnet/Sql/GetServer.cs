@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Sql
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("azure:sql/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());
+
+        public static Output<GetServerResult> Invoke(GetServerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetServerArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Sql
         public string ResourceGroupName { get; set; } = null!;
 
         public GetServerArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerOutputArgs
+    {
+        /// <summary>
+        /// The name of the SQL Server.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where the SQL Server exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetServerOutputArgs()
         {
         }
     }

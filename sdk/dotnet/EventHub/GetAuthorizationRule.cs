@@ -42,6 +42,29 @@ namespace Pulumi.Azure.EventHub
         /// </summary>
         public static Task<GetAuthorizationRuleResult> InvokeAsync(GetAuthorizationRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationRuleResult>("azure:eventhub/getAuthorizationRule:getAuthorizationRule", args ?? new GetAuthorizationRuleArgs(), options.WithVersion());
+
+        public static Output<GetAuthorizationRuleResult> Invoke(GetAuthorizationRuleOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.EventhubName.Box(),
+                args.Listen.Box(),
+                args.Manage.Box(),
+                args.Name.Box(),
+                args.NamespaceName.Box(),
+                args.ResourceGroupName.Box(),
+                args.Send.Box()
+            ).Apply(a => {
+                    var args = new GetAuthorizationRuleArgs();
+                    a[0].Set(args, nameof(args.EventhubName));
+                    a[1].Set(args, nameof(args.Listen));
+                    a[2].Set(args, nameof(args.Manage));
+                    a[3].Set(args, nameof(args.Name));
+                    a[4].Set(args, nameof(args.NamespaceName));
+                    a[5].Set(args, nameof(args.ResourceGroupName));
+                    a[6].Set(args, nameof(args.Send));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -81,6 +104,46 @@ namespace Pulumi.Azure.EventHub
         public bool? Send { get; set; }
 
         public GetAuthorizationRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizationRuleOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the EventHub.
+        /// </summary>
+        [Input("eventhubName", required: true)]
+        public Input<string> EventhubName { get; set; } = null!;
+
+        [Input("listen")]
+        public Input<bool>? Listen { get; set; }
+
+        [Input("manage")]
+        public Input<bool>? Manage { get; set; }
+
+        /// <summary>
+        /// Specifies the name of the EventHub Authorization Rule resource. be created.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the grandparent EventHub Namespace.
+        /// </summary>
+        [Input("namespaceName", required: true)]
+        public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("send")]
+        public Input<bool>? Send { get; set; }
+
+        public GetAuthorizationRuleOutputArgs()
         {
         }
     }

@@ -159,3 +159,10 @@ def get_dataset_data_lake_gen2(name: Optional[str] = None,
         name=__ret__.name,
         share_id=__ret__.share_id,
         storage_account_id=__ret__.storage_account_id)
+
+
+@_utilities.lift_output_func(get_dataset_data_lake_gen2)
+def get_dataset_data_lake_gen2_apply(name: Optional[pulumi.Input[str]] = None,
+                                     share_id: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetDataLakeGen2Result]:
+    ...

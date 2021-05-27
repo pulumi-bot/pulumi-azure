@@ -16,6 +16,19 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetDiskEncryptionSetResult> InvokeAsync(GetDiskEncryptionSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDiskEncryptionSetResult>("azure:compute/getDiskEncryptionSet:getDiskEncryptionSet", args ?? new GetDiskEncryptionSetArgs(), options.WithVersion());
+
+        public static Output<GetDiskEncryptionSetResult> Invoke(GetDiskEncryptionSetOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDiskEncryptionSetArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -34,6 +47,25 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDiskEncryptionSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetDiskEncryptionSetOutputArgs
+    {
+        /// <summary>
+        /// The name of the Disk Encryption Set exists.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Disk Encryption Set exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDiskEncryptionSetOutputArgs()
         {
         }
     }

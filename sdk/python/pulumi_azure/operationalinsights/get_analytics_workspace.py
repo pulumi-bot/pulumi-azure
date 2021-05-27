@@ -209,3 +209,10 @@ def get_analytics_workspace(name: Optional[str] = None,
         sku=__ret__.sku,
         tags=__ret__.tags,
         workspace_id=__ret__.workspace_id)
+
+
+@_utilities.lift_output_func(get_analytics_workspace)
+def get_analytics_workspace_apply(name: Optional[pulumi.Input[str]] = None,
+                                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnalyticsWorkspaceResult]:
+    ...

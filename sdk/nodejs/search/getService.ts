@@ -91,3 +91,21 @@ export interface GetServiceResult {
      */
     readonly secondaryKey: string;
 }
+
+export function getServiceApply(args: GetServiceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceApplyArgs {
+    /**
+     * The Name of the Search Service.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Search Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

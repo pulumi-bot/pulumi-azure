@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetVirtualNetworkGatewayResult> InvokeAsync(GetVirtualNetworkGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNetworkGatewayResult>("azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway", args ?? new GetVirtualNetworkGatewayArgs(), options.WithVersion());
+
+        public static Output<GetVirtualNetworkGatewayResult> Invoke(GetVirtualNetworkGatewayOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetVirtualNetworkGatewayArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Network
         public string ResourceGroupName { get; set; } = null!;
 
         public GetVirtualNetworkGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualNetworkGatewayOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Virtual Network Gateway.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Virtual Network Gateway is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetVirtualNetworkGatewayOutputArgs()
         {
         }
     }

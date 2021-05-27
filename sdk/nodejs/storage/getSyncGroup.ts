@@ -60,3 +60,21 @@ export interface GetSyncGroupResult {
     readonly name: string;
     readonly storageSyncId: string;
 }
+
+export function getSyncGroupApply(args: GetSyncGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSyncGroupResult> {
+    return pulumi.output(args).apply(a => getSyncGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSyncGroup.
+ */
+export interface GetSyncGroupApplyArgs {
+    /**
+     * The name of this Storage Sync Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The resource ID of the Storage Sync where this Storage Sync Group is.
+     */
+    storageSyncId: pulumi.Input<string>;
+}

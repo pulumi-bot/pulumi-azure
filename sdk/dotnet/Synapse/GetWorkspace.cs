@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Synapse
         /// </summary>
         public static Task<GetWorkspaceResult> InvokeAsync(GetWorkspaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceResult>("azure:synapse/getWorkspace:getWorkspace", args ?? new GetWorkspaceArgs(), options.WithVersion());
+
+        public static Output<GetWorkspaceResult> Invoke(GetWorkspaceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetWorkspaceArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Synapse
         public string ResourceGroupName { get; set; } = null!;
 
         public GetWorkspaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkspaceOutputArgs
+    {
+        /// <summary>
+        /// The name of this Synapse Workspace.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Synapse Workspace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetWorkspaceOutputArgs()
         {
         }
     }

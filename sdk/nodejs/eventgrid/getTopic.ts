@@ -75,3 +75,22 @@ export interface GetTopicResult {
     readonly secondaryAccessKey: string;
     readonly tags?: {[key: string]: string};
 }
+
+export function getTopicApply(args: GetTopicApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopic.
+ */
+export interface GetTopicApplyArgs {
+    /**
+     * The name of the EventGrid Topic resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the EventGrid Topic exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

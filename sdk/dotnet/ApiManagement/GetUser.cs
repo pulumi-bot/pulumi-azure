@@ -16,6 +16,21 @@ namespace Pulumi.Azure.ApiManagement
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azure:apimanagement/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        public static Output<GetUserResult> Invoke(GetUserOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApiManagementName.Box(),
+                args.ResourceGroupName.Box(),
+                args.UserId.Box()
+            ).Apply(a => {
+                    var args = new GetUserArgs();
+                    a[0].Set(args, nameof(args.ApiManagementName));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.UserId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -40,6 +55,31 @@ namespace Pulumi.Azure.ApiManagement
         public string UserId { get; set; } = null!;
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserOutputArgs
+    {
+        /// <summary>
+        /// The Name of the API Management Service in which this User exists.
+        /// </summary>
+        [Input("apiManagementName", required: true)]
+        public Input<string> ApiManagementName { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group in which the API Management Service exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The Identifier for the User.
+        /// </summary>
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
+
+        public GetUserOutputArgs()
         {
         }
     }

@@ -14,6 +14,22 @@ namespace Pulumi.Azure.Role
     {
         public static Task<GetRoleDefinitionResult> InvokeAsync(GetRoleDefinitionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleDefinitionResult>("azure:role/getRoleDefinition:getRoleDefinition", args ?? new GetRoleDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetRoleDefinitionResult> Invoke(GetRoleDefinitionOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRoleDefinitionOutputArgs();
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.RoleDefinitionId.Box(),
+                args.Scope.Box()
+            ).Apply(a => {
+                    var args = new GetRoleDefinitionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.RoleDefinitionId));
+                    a[2].Set(args, nameof(args.Scope));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -29,6 +45,22 @@ namespace Pulumi.Azure.Role
         public string? Scope { get; set; }
 
         public GetRoleDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleDefinitionOutputArgs
+    {
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("roleDefinitionId")]
+        public Input<string>? RoleDefinitionId { get; set; }
+
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
+
+        public GetRoleDefinitionOutputArgs()
         {
         }
     }

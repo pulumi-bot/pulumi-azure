@@ -42,6 +42,23 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetTableEntityResult> InvokeAsync(GetTableEntityArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTableEntityResult>("azure:storage/getTableEntity:getTableEntity", args ?? new GetTableEntityArgs(), options.WithVersion());
+
+        public static Output<GetTableEntityResult> Invoke(GetTableEntityOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.PartitionKey.Box(),
+                args.RowKey.Box(),
+                args.StorageAccountName.Box(),
+                args.TableName.Box()
+            ).Apply(a => {
+                    var args = new GetTableEntityArgs();
+                    a[0].Set(args, nameof(args.PartitionKey));
+                    a[1].Set(args, nameof(args.RowKey));
+                    a[2].Set(args, nameof(args.StorageAccountName));
+                    a[3].Set(args, nameof(args.TableName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +89,37 @@ namespace Pulumi.Azure.Storage
         public string TableName { get; set; } = null!;
 
         public GetTableEntityArgs()
+        {
+        }
+    }
+
+    public sealed class GetTableEntityOutputArgs
+    {
+        /// <summary>
+        /// The key for the partition where the entity will be retrieved.
+        /// </summary>
+        [Input("partitionKey", required: true)]
+        public Input<string> PartitionKey { get; set; } = null!;
+
+        /// <summary>
+        /// The key for the row where the entity will be retrieved.
+        /// </summary>
+        [Input("rowKey", required: true)]
+        public Input<string> RowKey { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Storage Account where the Table exists.
+        /// </summary>
+        [Input("storageAccountName", required: true)]
+        public Input<string> StorageAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Table.
+        /// </summary>
+        [Input("tableName", required: true)]
+        public Input<string> TableName { get; set; } = null!;
+
+        public GetTableEntityOutputArgs()
         {
         }
     }

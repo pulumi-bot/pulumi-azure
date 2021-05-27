@@ -84,6 +84,39 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetAccountBlobContainerSASResult> InvokeAsync(GetAccountBlobContainerSASArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountBlobContainerSASResult>("azure:storage/getAccountBlobContainerSAS:getAccountBlobContainerSAS", args ?? new GetAccountBlobContainerSASArgs(), options.WithVersion());
+
+        public static Output<GetAccountBlobContainerSASResult> Invoke(GetAccountBlobContainerSASOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.CacheControl.Box(),
+                args.ConnectionString.Box(),
+                args.ContainerName.Box(),
+                args.ContentDisposition.Box(),
+                args.ContentEncoding.Box(),
+                args.ContentLanguage.Box(),
+                args.ContentType.Box(),
+                args.Expiry.Box(),
+                args.HttpsOnly.Box(),
+                args.IpAddress.Box(),
+                args.Permissions.Box(),
+                args.Start.Box()
+            ).Apply(a => {
+                    var args = new GetAccountBlobContainerSASArgs();
+                    a[0].Set(args, nameof(args.CacheControl));
+                    a[1].Set(args, nameof(args.ConnectionString));
+                    a[2].Set(args, nameof(args.ContainerName));
+                    a[3].Set(args, nameof(args.ContentDisposition));
+                    a[4].Set(args, nameof(args.ContentEncoding));
+                    a[5].Set(args, nameof(args.ContentLanguage));
+                    a[6].Set(args, nameof(args.ContentType));
+                    a[7].Set(args, nameof(args.Expiry));
+                    a[8].Set(args, nameof(args.HttpsOnly));
+                    a[9].Set(args, nameof(args.IpAddress));
+                    a[10].Set(args, nameof(args.Permissions));
+                    a[11].Set(args, nameof(args.Start));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -162,6 +195,85 @@ namespace Pulumi.Azure.Storage
         public string Start { get; set; } = null!;
 
         public GetAccountBlobContainerSASArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountBlobContainerSASOutputArgs
+    {
+        /// <summary>
+        /// The `Cache-Control` response header that is sent when this SAS token is used.
+        /// </summary>
+        [Input("cacheControl")]
+        public Input<string>? CacheControl { get; set; }
+
+        /// <summary>
+        /// The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of an `azure.storage.Account` resource.
+        /// </summary>
+        [Input("connectionString", required: true)]
+        public Input<string> ConnectionString { get; set; } = null!;
+
+        /// <summary>
+        /// Name of the container.
+        /// </summary>
+        [Input("containerName", required: true)]
+        public Input<string> ContainerName { get; set; } = null!;
+
+        /// <summary>
+        /// The `Content-Disposition` response header that is sent when this SAS token is used.
+        /// </summary>
+        [Input("contentDisposition")]
+        public Input<string>? ContentDisposition { get; set; }
+
+        /// <summary>
+        /// The `Content-Encoding` response header that is sent when this SAS token is used.
+        /// </summary>
+        [Input("contentEncoding")]
+        public Input<string>? ContentEncoding { get; set; }
+
+        /// <summary>
+        /// The `Content-Language` response header that is sent when this SAS token is used.
+        /// </summary>
+        [Input("contentLanguage")]
+        public Input<string>? ContentLanguage { get; set; }
+
+        /// <summary>
+        /// The `Content-Type` response header that is sent when this SAS token is used.
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
+
+        /// <summary>
+        /// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
+        /// </summary>
+        [Input("expiry", required: true)]
+        public Input<string> Expiry { get; set; } = null!;
+
+        /// <summary>
+        /// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
+        /// </summary>
+        [Input("httpsOnly")]
+        public Input<bool>? HttpsOnly { get; set; }
+
+        /// <summary>
+        /// Single ipv4 address or range (connected with a dash) of ipv4 addresses.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// A `permissions` block as defined below.
+        /// </summary>
+        [Input("permissions", required: true)]
+        public Input<Inputs.GetAccountBlobContainerSASPermissionsArgs> Permissions { get; set; } = null!;
+
+        /// <summary>
+        /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
+        /// </summary>
+        [Input("start", required: true)]
+        public Input<string> Start { get; set; } = null!;
+
+        public GetAccountBlobContainerSASOutputArgs()
         {
         }
     }

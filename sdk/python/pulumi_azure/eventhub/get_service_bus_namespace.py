@@ -216,3 +216,10 @@ def get_service_bus_namespace(name: Optional[str] = None,
         sku=__ret__.sku,
         tags=__ret__.tags,
         zone_redundant=__ret__.zone_redundant)
+
+
+@_utilities.lift_output_func(get_service_bus_namespace)
+def get_service_bus_namespace_apply(name: Optional[pulumi.Input[str]] = None,
+                                    resource_group_name: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceBusNamespaceResult]:
+    ...

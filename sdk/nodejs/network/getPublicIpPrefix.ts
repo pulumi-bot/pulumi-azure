@@ -87,3 +87,22 @@ export interface GetPublicIpPrefixResult {
     readonly tags: {[key: string]: string};
     readonly zones: string[];
 }
+
+export function getPublicIpPrefixApply(args: GetPublicIpPrefixApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpPrefixResult> {
+    return pulumi.output(args).apply(a => getPublicIpPrefix(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPublicIpPrefix.
+ */
+export interface GetPublicIpPrefixApplyArgs {
+    /**
+     * Specifies the name of the public IP prefix.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
+}

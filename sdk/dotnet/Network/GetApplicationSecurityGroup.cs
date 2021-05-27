@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetApplicationSecurityGroupResult> InvokeAsync(GetApplicationSecurityGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationSecurityGroupResult>("azure:network/getApplicationSecurityGroup:getApplicationSecurityGroup", args ?? new GetApplicationSecurityGroupArgs(), options.WithVersion());
+
+        public static Output<GetApplicationSecurityGroupResult> Invoke(GetApplicationSecurityGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetApplicationSecurityGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Network
         public string ResourceGroupName { get; set; } = null!;
 
         public GetApplicationSecurityGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationSecurityGroupOutputArgs
+    {
+        /// <summary>
+        /// The name of the Application Security Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the Application Security Group exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetApplicationSecurityGroupOutputArgs()
         {
         }
     }

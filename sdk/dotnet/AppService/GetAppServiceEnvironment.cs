@@ -43,6 +43,19 @@ namespace Pulumi.Azure.AppService
         /// </summary>
         public static Task<GetAppServiceEnvironmentResult> InvokeAsync(GetAppServiceEnvironmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppServiceEnvironmentResult>("azure:appservice/getAppServiceEnvironment:getAppServiceEnvironment", args ?? new GetAppServiceEnvironmentArgs(), options.WithVersion());
+
+        public static Output<GetAppServiceEnvironmentResult> Invoke(GetAppServiceEnvironmentOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetAppServiceEnvironmentArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.AppService
         public string ResourceGroupName { get; set; } = null!;
 
         public GetAppServiceEnvironmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppServiceEnvironmentOutputArgs
+    {
+        /// <summary>
+        /// The name of this App Service Environment.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the App Service Environment exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetAppServiceEnvironmentOutputArgs()
         {
         }
     }

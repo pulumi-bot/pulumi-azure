@@ -42,6 +42,17 @@ namespace Pulumi.Azure.Monitoring
         /// </summary>
         public static Task<GetLogProfileResult> InvokeAsync(GetLogProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLogProfileResult>("azure:monitoring/getLogProfile:getLogProfile", args ?? new GetLogProfileArgs(), options.WithVersion());
+
+        public static Output<GetLogProfileResult> Invoke(GetLogProfileOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetLogProfileArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -54,6 +65,19 @@ namespace Pulumi.Azure.Monitoring
         public string Name { get; set; } = null!;
 
         public GetLogProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetLogProfileOutputArgs
+    {
+        /// <summary>
+        /// Specifies the Name of the Log Profile.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetLogProfileOutputArgs()
         {
         }
     }

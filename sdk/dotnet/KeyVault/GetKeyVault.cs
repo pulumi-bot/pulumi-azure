@@ -43,6 +43,19 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetKeyVaultResult> InvokeAsync(GetKeyVaultArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyVaultResult>("azure:keyvault/getKeyVault:getKeyVault", args ?? new GetKeyVaultArgs(), options.WithVersion());
+
+        public static Output<GetKeyVaultResult> Invoke(GetKeyVaultOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetKeyVaultArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.KeyVault
         public string ResourceGroupName { get; set; } = null!;
 
         public GetKeyVaultArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyVaultOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Key Vault.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Key Vault exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetKeyVaultOutputArgs()
         {
         }
     }

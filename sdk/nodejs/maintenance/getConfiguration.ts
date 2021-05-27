@@ -72,3 +72,21 @@ export interface GetConfigurationResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getConfigurationApply(args: GetConfigurationApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationResult> {
+    return pulumi.output(args).apply(a => getConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfiguration.
+ */
+export interface GetConfigurationApplyArgs {
+    /**
+     * Specifies the name of the Maintenance Configuration.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where this Maintenance Configuration exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

@@ -45,6 +45,23 @@ namespace Pulumi.Azure.ApiManagement
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("azure:apimanagement/getApi:getApi", args ?? new GetApiArgs(), options.WithVersion());
+
+        public static Output<GetApiResult> Invoke(GetApiOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApiManagementName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Revision.Box()
+            ).Apply(a => {
+                    var args = new GetApiArgs();
+                    a[0].Set(args, nameof(args.ApiManagementName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    a[3].Set(args, nameof(args.Revision));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +92,37 @@ namespace Pulumi.Azure.ApiManagement
         public string Revision { get; set; } = null!;
 
         public GetApiArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiOutputArgs
+    {
+        /// <summary>
+        /// The name of the API Management Service in which the API Management API exists.
+        /// </summary>
+        [Input("apiManagementName", required: true)]
+        public Input<string> ApiManagementName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the API Management API.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group in which the API Management Service exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// The Revision of the API Management API.
+        /// </summary>
+        [Input("revision", required: true)]
+        public Input<string> Revision { get; set; } = null!;
+
+        public GetApiOutputArgs()
         {
         }
     }

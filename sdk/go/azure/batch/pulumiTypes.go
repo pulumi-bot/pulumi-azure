@@ -3220,6 +3220,47 @@ func (i GetPoolStartTaskArgs) ToGetPoolStartTaskOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoolStartTaskOutput)
 }
 
+func (i GetPoolStartTaskArgs) ToGetPoolStartTaskPtrOutput() GetPoolStartTaskPtrOutput {
+	return i.ToGetPoolStartTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetPoolStartTaskArgs) ToGetPoolStartTaskPtrOutputWithContext(ctx context.Context) GetPoolStartTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolStartTaskOutput).ToGetPoolStartTaskPtrOutputWithContext(ctx)
+}
+
+// GetPoolStartTaskPtrInput is an input type that accepts GetPoolStartTaskArgs, GetPoolStartTaskPtr and GetPoolStartTaskPtrOutput values.
+// You can construct a concrete instance of `GetPoolStartTaskPtrInput` via:
+//
+//          GetPoolStartTaskArgs{...}
+//
+//  or:
+//
+//          nil
+type GetPoolStartTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetPoolStartTaskPtrOutput() GetPoolStartTaskPtrOutput
+	ToGetPoolStartTaskPtrOutputWithContext(context.Context) GetPoolStartTaskPtrOutput
+}
+
+type getPoolStartTaskPtrType GetPoolStartTaskArgs
+
+func GetPoolStartTaskPtr(v *GetPoolStartTaskArgs) GetPoolStartTaskPtrInput {
+	return (*getPoolStartTaskPtrType)(v)
+}
+
+func (*getPoolStartTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPoolStartTask)(nil)).Elem()
+}
+
+func (i *getPoolStartTaskPtrType) ToGetPoolStartTaskPtrOutput() GetPoolStartTaskPtrOutput {
+	return i.ToGetPoolStartTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getPoolStartTaskPtrType) ToGetPoolStartTaskPtrOutputWithContext(ctx context.Context) GetPoolStartTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolStartTaskPtrOutput)
+}
+
 type GetPoolStartTaskOutput struct{ *pulumi.OutputState }
 
 func (GetPoolStartTaskOutput) ElementType() reflect.Type {
@@ -3232,6 +3273,16 @@ func (o GetPoolStartTaskOutput) ToGetPoolStartTaskOutput() GetPoolStartTaskOutpu
 
 func (o GetPoolStartTaskOutput) ToGetPoolStartTaskOutputWithContext(ctx context.Context) GetPoolStartTaskOutput {
 	return o
+}
+
+func (o GetPoolStartTaskOutput) ToGetPoolStartTaskPtrOutput() GetPoolStartTaskPtrOutput {
+	return o.ToGetPoolStartTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetPoolStartTaskOutput) ToGetPoolStartTaskPtrOutputWithContext(ctx context.Context) GetPoolStartTaskPtrOutput {
+	return o.ApplyT(func(v GetPoolStartTask) *GetPoolStartTask {
+		return &v
+	}).(GetPoolStartTaskPtrOutput)
 }
 
 // The command line executed by the start task.
@@ -3262,6 +3313,84 @@ func (o GetPoolStartTaskOutput) UserIdentities() GetPoolStartTaskUserIdentityArr
 // A flag that indicates if the Batch pool should wait for the start task to be completed.
 func (o GetPoolStartTaskOutput) WaitForSuccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPoolStartTask) *bool { return v.WaitForSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type GetPoolStartTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPoolStartTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPoolStartTask)(nil)).Elem()
+}
+
+func (o GetPoolStartTaskPtrOutput) ToGetPoolStartTaskPtrOutput() GetPoolStartTaskPtrOutput {
+	return o
+}
+
+func (o GetPoolStartTaskPtrOutput) ToGetPoolStartTaskPtrOutputWithContext(ctx context.Context) GetPoolStartTaskPtrOutput {
+	return o
+}
+
+func (o GetPoolStartTaskPtrOutput) Elem() GetPoolStartTaskOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) GetPoolStartTask { return *v }).(GetPoolStartTaskOutput)
+}
+
+// The command line executed by the start task.
+func (o GetPoolStartTaskPtrOutput) CommandLine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommandLine
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of strings (key,value) that represents the environment variables to set in the start task.
+func (o GetPoolStartTaskPtrOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// The number of retry count.
+func (o GetPoolStartTaskPtrOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTaskRetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// One or more `resourceFile` blocks that describe the files to be downloaded to a compute node.
+func (o GetPoolStartTaskPtrOutput) ResourceFiles() GetPoolStartTaskResourceFileArrayOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) []GetPoolStartTaskResourceFile {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceFiles
+	}).(GetPoolStartTaskResourceFileArrayOutput)
+}
+
+// A `userIdentity` block that describes the user identity under which the start task runs.
+func (o GetPoolStartTaskPtrOutput) UserIdentities() GetPoolStartTaskUserIdentityArrayOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) []GetPoolStartTaskUserIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserIdentities
+	}).(GetPoolStartTaskUserIdentityArrayOutput)
+}
+
+// A flag that indicates if the Batch pool should wait for the start task to be completed.
+func (o GetPoolStartTaskPtrOutput) WaitForSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPoolStartTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForSuccess
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetPoolStartTaskResourceFile struct {
@@ -3785,6 +3914,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleOutput{})
 	pulumi.RegisterOutputType(GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetPoolStartTaskOutput{})
+	pulumi.RegisterOutputType(GetPoolStartTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetPoolStartTaskResourceFileOutput{})
 	pulumi.RegisterOutputType(GetPoolStartTaskResourceFileArrayOutput{})
 	pulumi.RegisterOutputType(GetPoolStartTaskUserIdentityOutput{})

@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetVirtualMachineScaleSetResult> InvokeAsync(GetVirtualMachineScaleSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineScaleSetResult>("azure:compute/getVirtualMachineScaleSet:getVirtualMachineScaleSet", args ?? new GetVirtualMachineScaleSetArgs(), options.WithVersion());
+
+        public static Output<GetVirtualMachineScaleSetResult> Invoke(GetVirtualMachineScaleSetOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetVirtualMachineScaleSetArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetVirtualMachineScaleSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualMachineScaleSetOutputArgs
+    {
+        /// <summary>
+        /// The name of this Virtual Machine Scale Set.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Virtual Machine Scale Set exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetVirtualMachineScaleSetOutputArgs()
         {
         }
     }

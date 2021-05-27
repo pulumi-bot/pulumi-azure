@@ -67,6 +67,19 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetVirtualWanResult> InvokeAsync(GetVirtualWanArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualWanResult>("azure:network/getVirtualWan:getVirtualWan", args ?? new GetVirtualWanArgs(), options.WithVersion());
+
+        public static Output<GetVirtualWanResult> Invoke(GetVirtualWanOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetVirtualWanArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -85,6 +98,25 @@ namespace Pulumi.Azure.Network
         public string ResourceGroupName { get; set; } = null!;
 
         public GetVirtualWanArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualWanOutputArgs
+    {
+        /// <summary>
+        /// The name of this Virtual Wan.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Virtual Wan exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetVirtualWanOutputArgs()
         {
         }
     }

@@ -43,6 +43,19 @@ namespace Pulumi.Azure.MariaDB
         /// </summary>
         public static Task<GetMariaDbServerResult> InvokeAsync(GetMariaDbServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMariaDbServerResult>("azure:mariadb/getMariaDbServer:getMariaDbServer", args ?? new GetMariaDbServerArgs(), options.WithVersion());
+
+        public static Output<GetMariaDbServerResult> Invoke(GetMariaDbServerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetMariaDbServerArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.MariaDB
         public string ResourceGroupName { get; set; } = null!;
 
         public GetMariaDbServerArgs()
+        {
+        }
+    }
+
+    public sealed class GetMariaDbServerOutputArgs
+    {
+        /// <summary>
+        /// The name of the MariaDB Server to retrieve information about.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group where the MariaDB Server exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetMariaDbServerOutputArgs()
         {
         }
     }

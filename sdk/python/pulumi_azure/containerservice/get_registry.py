@@ -198,3 +198,10 @@ def get_registry(name: Optional[str] = None,
         sku=__ret__.sku,
         storage_account_id=__ret__.storage_account_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_registry)
+def get_registry_apply(name: Optional[pulumi.Input[str]] = None,
+                       resource_group_name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
+    ...

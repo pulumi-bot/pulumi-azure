@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Billing
         /// </summary>
         public static Task<GetMcaAccountScopeResult> InvokeAsync(GetMcaAccountScopeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMcaAccountScopeResult>("azure:billing/getMcaAccountScope:getMcaAccountScope", args ?? new GetMcaAccountScopeArgs(), options.WithVersion());
+
+        public static Output<GetMcaAccountScopeResult> Invoke(GetMcaAccountScopeOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.BillingAccountName.Box(),
+                args.BillingProfileName.Box(),
+                args.InvoiceSectionName.Box()
+            ).Apply(a => {
+                    var args = new GetMcaAccountScopeArgs();
+                    a[0].Set(args, nameof(args.BillingAccountName));
+                    a[1].Set(args, nameof(args.BillingProfileName));
+                    a[2].Set(args, nameof(args.InvoiceSectionName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Billing
         public string InvoiceSectionName { get; set; } = null!;
 
         public GetMcaAccountScopeArgs()
+        {
+        }
+    }
+
+    public sealed class GetMcaAccountScopeOutputArgs
+    {
+        /// <summary>
+        /// The Billing Account Name of the MCA account.
+        /// </summary>
+        [Input("billingAccountName", required: true)]
+        public Input<string> BillingAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The Billing Profile Name in the above Billing Account.
+        /// </summary>
+        [Input("billingProfileName", required: true)]
+        public Input<string> BillingProfileName { get; set; } = null!;
+
+        /// <summary>
+        /// The Invoice Section Name in the above Billing Profile.
+        /// </summary>
+        [Input("invoiceSectionName", required: true)]
+        public Input<string> InvoiceSectionName { get; set; } = null!;
+
+        public GetMcaAccountScopeOutputArgs()
         {
         }
     }

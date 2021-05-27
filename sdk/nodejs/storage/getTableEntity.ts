@@ -77,3 +77,29 @@ export interface GetTableEntityResult {
     readonly storageAccountName: string;
     readonly tableName: string;
 }
+
+export function getTableEntityApply(args: GetTableEntityApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableEntityResult> {
+    return pulumi.output(args).apply(a => getTableEntity(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTableEntity.
+ */
+export interface GetTableEntityApplyArgs {
+    /**
+     * The key for the partition where the entity will be retrieved.
+     */
+    partitionKey: pulumi.Input<string>;
+    /**
+     * The key for the row where the entity will be retrieved.
+     */
+    rowKey: pulumi.Input<string>;
+    /**
+     * The name of the Storage Account where the Table exists.
+     */
+    storageAccountName: pulumi.Input<string>;
+    /**
+     * The name of the Table.
+     */
+    tableName: pulumi.Input<string>;
+}

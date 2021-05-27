@@ -41,6 +41,21 @@ namespace Pulumi.Azure.Iot
         /// </summary>
         public static Task<GetSharedAccessPolicyResult> InvokeAsync(GetSharedAccessPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSharedAccessPolicyResult>("azure:iot/getSharedAccessPolicy:getSharedAccessPolicy", args ?? new GetSharedAccessPolicyArgs(), options.WithVersion());
+
+        public static Output<GetSharedAccessPolicyResult> Invoke(GetSharedAccessPolicyOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.IothubName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetSharedAccessPolicyArgs();
+                    a[0].Set(args, nameof(args.IothubName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +80,31 @@ namespace Pulumi.Azure.Iot
         public string ResourceGroupName { get; set; } = null!;
 
         public GetSharedAccessPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetSharedAccessPolicyOutputArgs
+    {
+        /// <summary>
+        /// The name of the IoTHub to which this Shared Access Policy belongs.
+        /// </summary>
+        [Input("iothubName", required: true)]
+        public Input<string> IothubName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the IotHub Shared Access Policy resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetSharedAccessPolicyOutputArgs()
         {
         }
     }

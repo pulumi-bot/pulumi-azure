@@ -60,3 +60,17 @@ export interface GetPolicyResult {
     readonly rules: outputs.storage.GetPolicyRule[];
     readonly storageAccountId: string;
 }
+
+export function getPolicyApply(args: GetPolicyApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+    return pulumi.output(args).apply(a => getPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicy.
+ */
+export interface GetPolicyApplyArgs {
+    /**
+     * Specifies the id of the storage account to retrieve the management policy for.
+     */
+    storageAccountId: pulumi.Input<string>;
+}

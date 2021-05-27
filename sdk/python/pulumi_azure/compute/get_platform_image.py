@@ -135,3 +135,13 @@ def get_platform_image(location: Optional[str] = None,
         publisher=__ret__.publisher,
         sku=__ret__.sku,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_platform_image)
+def get_platform_image_apply(location: Optional[pulumi.Input[str]] = None,
+                             offer: Optional[pulumi.Input[str]] = None,
+                             publisher: Optional[pulumi.Input[str]] = None,
+                             sku: Optional[pulumi.Input[str]] = None,
+                             version: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlatformImageResult]:
+    ...
