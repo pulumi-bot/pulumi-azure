@@ -43,6 +43,19 @@ namespace Pulumi.Azure.PrivateLink
         /// </summary>
         public static Task<GetEndpointConnectionResult> InvokeAsync(GetEndpointConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointConnectionResult>("azure:privatelink/getEndpointConnection:getEndpointConnection", args ?? new GetEndpointConnectionArgs(), options.WithVersion());
+
+        public static Output<GetEndpointConnectionResult> Apply(GetEndpointConnectionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetEndpointConnectionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.PrivateLink
         public string ResourceGroupName { get; set; } = null!;
 
         public GetEndpointConnectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointConnectionApplyArgs
+    {
+        /// <summary>
+        /// Specifies the Name of the private endpoint.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the Name of the Resource Group within which the private endpoint exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetEndpointConnectionApplyArgs()
         {
         }
     }

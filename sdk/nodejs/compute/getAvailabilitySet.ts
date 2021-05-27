@@ -80,3 +80,21 @@ export interface GetAvailabilitySetResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getAvailabilitySetApply(args: GetAvailabilitySetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilitySetResult> {
+    return pulumi.output(args).apply(a => getAvailabilitySet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAvailabilitySet.
+ */
+export interface GetAvailabilitySetApplyArgs {
+    /**
+     * The name of the Availability Set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the Availability Set exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

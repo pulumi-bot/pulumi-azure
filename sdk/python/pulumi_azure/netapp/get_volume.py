@@ -244,3 +244,13 @@ def get_volume(account_name: Optional[str] = None,
         storage_quota_in_gb=__ret__.storage_quota_in_gb,
         subnet_id=__ret__.subnet_id,
         volume_path=__ret__.volume_path)
+
+
+@_utilities.lift_output_func(get_volume)
+def get_volume_apply(account_name: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     pool_name: Optional[pulumi.Input[str]] = None,
+                     resource_group_name: Optional[pulumi.Input[str]] = None,
+                     security_style: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
+    ...

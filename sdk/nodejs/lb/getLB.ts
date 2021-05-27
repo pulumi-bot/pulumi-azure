@@ -87,3 +87,21 @@ export interface GetLBResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getLBApply(args: GetLBApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLBResult> {
+    return pulumi.output(args).apply(a => getLB(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLB.
+ */
+export interface GetLBApplyArgs {
+    /**
+     * Specifies the name of the Load Balancer.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Load Balancer exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

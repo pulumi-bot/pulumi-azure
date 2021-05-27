@@ -72,3 +72,21 @@ export interface GetAccountResult {
      */
     readonly secondaryKey: string;
 }
+
+export function getAccountApply(args: GetAccountApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(args).apply(a => getAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccount.
+ */
+export interface GetAccountApplyArgs {
+    /**
+     * The name of the Automation Account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group where the Automation Account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

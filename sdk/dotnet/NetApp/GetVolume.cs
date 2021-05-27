@@ -41,6 +41,25 @@ namespace Pulumi.Azure.NetApp
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("azure:netapp/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
+
+        public static Output<GetVolumeResult> Apply(GetVolumeApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccountName.Box(),
+                args.Name.Box(),
+                args.PoolName.Box(),
+                args.ResourceGroupName.Box(),
+                args.SecurityStyle.Box()
+            ).Apply(a => {
+                    var args = new GetVolumeArgs();
+                    a[0].Set(args, nameof(args.AccountName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.PoolName));
+                    a[3].Set(args, nameof(args.ResourceGroupName));
+                    a[4].Set(args, nameof(args.SecurityStyle));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -77,6 +96,43 @@ namespace Pulumi.Azure.NetApp
         public string? SecurityStyle { get; set; }
 
         public GetVolumeArgs()
+        {
+        }
+    }
+
+    public sealed class GetVolumeApplyArgs
+    {
+        /// <summary>
+        /// The name of the NetApp account where the NetApp pool exists.
+        /// </summary>
+        [Input("accountName", required: true)]
+        public Input<string> AccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp Volume.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the NetApp pool where the NetApp volume exists.
+        /// </summary>
+        [Input("poolName", required: true)]
+        public Input<string> PoolName { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the NetApp Volume exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// Volume security style
+        /// </summary>
+        [Input("securityStyle")]
+        public Input<string>? SecurityStyle { get; set; }
+
+        public GetVolumeApplyArgs()
         {
         }
     }

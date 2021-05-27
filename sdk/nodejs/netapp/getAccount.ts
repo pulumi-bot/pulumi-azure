@@ -64,3 +64,21 @@ export interface GetAccountResult {
     readonly name: string;
     readonly resourceGroupName: string;
 }
+
+export function getAccountApply(args: GetAccountApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(args).apply(a => getAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccount.
+ */
+export interface GetAccountApplyArgs {
+    /**
+     * The name of the NetApp Account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the NetApp Account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

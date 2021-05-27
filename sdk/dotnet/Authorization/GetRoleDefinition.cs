@@ -16,6 +16,22 @@ namespace Pulumi.Azure.Authorization
         /// </summary>
         public static Task<GetRoleDefinitionResult> InvokeAsync(GetRoleDefinitionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleDefinitionResult>("azure:authorization/getRoleDefinition:getRoleDefinition", args ?? new GetRoleDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetRoleDefinitionResult> Apply(GetRoleDefinitionApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRoleDefinitionApplyArgs();
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.RoleDefinitionId.Box(),
+                args.Scope.Box()
+            ).Apply(a => {
+                    var args = new GetRoleDefinitionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.RoleDefinitionId));
+                    a[2].Set(args, nameof(args.Scope));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -40,6 +56,31 @@ namespace Pulumi.Azure.Authorization
         public string? Scope { get; set; }
 
         public GetRoleDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleDefinitionApplyArgs
+    {
+        /// <summary>
+        /// Specifies the Name of either a built-in or custom Role Definition.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies the ID of the Role Definition as a UUID/GUID.
+        /// </summary>
+        [Input("roleDefinitionId")]
+        public Input<string>? RoleDefinitionId { get; set; }
+
+        /// <summary>
+        /// Specifies the Scope at which the Custom Role Definition exists.
+        /// </summary>
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
+
+        public GetRoleDefinitionApplyArgs()
         {
         }
     }

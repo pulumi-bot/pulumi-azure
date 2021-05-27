@@ -88,3 +88,21 @@ export interface GetServerResult {
      */
     readonly version: string;
 }
+
+export function getServerApply(args: GetServerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
+    return pulumi.output(args).apply(a => getServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServer.
+ */
+export interface GetServerApplyArgs {
+    /**
+     * The name of this Microsoft SQL Server.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Microsoft SQL Server exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

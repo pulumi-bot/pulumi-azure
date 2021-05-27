@@ -43,6 +43,19 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetManagedHardwareSecurityModuleResult> InvokeAsync(GetManagedHardwareSecurityModuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedHardwareSecurityModuleResult>("azure:keyvault/getManagedHardwareSecurityModule:getManagedHardwareSecurityModule", args ?? new GetManagedHardwareSecurityModuleArgs(), options.WithVersion());
+
+        public static Output<GetManagedHardwareSecurityModuleResult> Apply(GetManagedHardwareSecurityModuleApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetManagedHardwareSecurityModuleArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.KeyVault
         public string ResourceGroupName { get; set; } = null!;
 
         public GetManagedHardwareSecurityModuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetManagedHardwareSecurityModuleApplyArgs
+    {
+        /// <summary>
+        /// The name of the Key Vault Managed Hardware Security Module.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetManagedHardwareSecurityModuleApplyArgs()
         {
         }
     }

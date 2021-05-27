@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetDedicatedHostResult> InvokeAsync(GetDedicatedHostArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostResult>("azure:compute/getDedicatedHost:getDedicatedHost", args ?? new GetDedicatedHostArgs(), options.WithVersion());
+
+        public static Output<GetDedicatedHostResult> Apply(GetDedicatedHostApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DedicatedHostGroupName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDedicatedHostArgs();
+                    a[0].Set(args, nameof(args.DedicatedHostGroupName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDedicatedHostArgs()
+        {
+        }
+    }
+
+    public sealed class GetDedicatedHostApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Dedicated Host Group the Dedicated Host is located in.
+        /// </summary>
+        [Input("dedicatedHostGroupName", required: true)]
+        public Input<string> DedicatedHostGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Dedicated Host.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Dedicated Host is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDedicatedHostApplyArgs()
         {
         }
     }

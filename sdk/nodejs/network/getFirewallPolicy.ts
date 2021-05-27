@@ -72,3 +72,21 @@ export interface GetFirewallPolicyResult {
     readonly threatIntelligenceAllowlists: outputs.network.GetFirewallPolicyThreatIntelligenceAllowlist[];
     readonly threatIntelligenceMode: string;
 }
+
+export function getFirewallPolicyApply(args: GetFirewallPolicyApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyResult> {
+    return pulumi.output(args).apply(a => getFirewallPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFirewallPolicy.
+ */
+export interface GetFirewallPolicyApplyArgs {
+    /**
+     * The name of this Firewall Policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Firewall Policy exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

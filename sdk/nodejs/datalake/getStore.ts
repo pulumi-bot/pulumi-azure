@@ -85,3 +85,21 @@ export interface GetStoreResult {
      */
     readonly tier: string;
 }
+
+export function getStoreApply(args: GetStoreApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoreResult> {
+    return pulumi.output(args).apply(a => getStore(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStore.
+ */
+export interface GetStoreApplyArgs {
+    /**
+     * The name of the Data Lake Store.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the Data Lake Store exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

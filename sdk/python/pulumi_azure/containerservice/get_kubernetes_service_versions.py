@@ -133,3 +133,11 @@ def get_kubernetes_service_versions(include_preview: Optional[bool] = None,
         location=__ret__.location,
         version_prefix=__ret__.version_prefix,
         versions=__ret__.versions)
+
+
+@_utilities.lift_output_func(get_kubernetes_service_versions)
+def get_kubernetes_service_versions_apply(include_preview: Optional[pulumi.Input[bool]] = None,
+                                          location: Optional[pulumi.Input[str]] = None,
+                                          version_prefix: Optional[pulumi.Input[str]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesServiceVersionsResult]:
+    ...

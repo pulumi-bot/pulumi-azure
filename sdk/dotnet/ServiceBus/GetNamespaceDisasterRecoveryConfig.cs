@@ -13,6 +13,21 @@ namespace Pulumi.Azure.ServiceBus
     {
         public static Task<GetNamespaceDisasterRecoveryConfigResult> InvokeAsync(GetNamespaceDisasterRecoveryConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceDisasterRecoveryConfigResult>("azure:servicebus/getNamespaceDisasterRecoveryConfig:getNamespaceDisasterRecoveryConfig", args ?? new GetNamespaceDisasterRecoveryConfigArgs(), options.WithVersion());
+
+        public static Output<GetNamespaceDisasterRecoveryConfigResult> Apply(GetNamespaceDisasterRecoveryConfigApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.NamespaceName.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetNamespaceDisasterRecoveryConfigArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.NamespaceName));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -28,6 +43,22 @@ namespace Pulumi.Azure.ServiceBus
         public string ResourceGroupName { get; set; } = null!;
 
         public GetNamespaceDisasterRecoveryConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespaceDisasterRecoveryConfigApplyArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("namespaceName", required: true)]
+        public Input<string> NamespaceName { get; set; } = null!;
+
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetNamespaceDisasterRecoveryConfigApplyArgs()
         {
         }
     }

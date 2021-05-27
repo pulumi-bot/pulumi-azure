@@ -81,3 +81,27 @@ export interface GetManagementGroupResult {
      */
     readonly subscriptionIds: string[];
 }
+
+export function getManagementGroupApply(args?: GetManagementGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementGroupResult> {
+    return pulumi.output(args).apply(a => getManagementGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getManagementGroup.
+ */
+export interface GetManagementGroupApplyArgs {
+    /**
+     * Specifies the display name of this Management Group.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Specifies the name or UUID of this Management Group.
+     *
+     * @deprecated Deprecated in favour of `name`
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Specifies the name or UUID of this Management Group.
+     */
+    name?: pulumi.Input<string>;
+}

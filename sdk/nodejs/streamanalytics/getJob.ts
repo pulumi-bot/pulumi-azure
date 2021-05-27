@@ -100,3 +100,21 @@ export interface GetJobResult {
      */
     readonly transformationQuery: string;
 }
+
+export function getJobApply(args: GetJobApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
+    return pulumi.output(args).apply(a => getJob(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getJob.
+ */
+export interface GetJobApplyArgs {
+    /**
+     * Specifies the name of the Stream Analytics Job.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group the Stream Analytics Job is located in.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

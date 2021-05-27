@@ -141,3 +141,11 @@ def get_namespace_disaster_recovery_config(name: Optional[str] = None,
         namespace_name=__ret__.namespace_name,
         partner_namespace_id=__ret__.partner_namespace_id,
         resource_group_name=__ret__.resource_group_name)
+
+
+@_utilities.lift_output_func(get_namespace_disaster_recovery_config)
+def get_namespace_disaster_recovery_config_apply(name: Optional[pulumi.Input[str]] = None,
+                                                 namespace_name: Optional[pulumi.Input[str]] = None,
+                                                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceDisasterRecoveryConfigResult]:
+    ...

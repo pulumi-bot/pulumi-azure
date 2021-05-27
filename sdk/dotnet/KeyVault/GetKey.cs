@@ -43,6 +43,19 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("azure:keyvault/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        public static Output<GetKeyResult> Apply(GetKeyApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.KeyVaultId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetKeyArgs();
+                    a[0].Set(args, nameof(args.KeyVaultId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.KeyVault
         public string Name { get; set; } = null!;
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyApplyArgs
+    {
+        /// <summary>
+        /// Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
+        /// </summary>
+        [Input("keyVaultId", required: true)]
+        public Input<string> KeyVaultId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Key Vault Key.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetKeyApplyArgs()
         {
         }
     }

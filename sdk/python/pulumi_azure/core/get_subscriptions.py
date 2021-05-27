@@ -108,3 +108,10 @@ def get_subscriptions(display_name_contains: Optional[str] = None,
         display_name_prefix=__ret__.display_name_prefix,
         id=__ret__.id,
         subscriptions=__ret__.subscriptions)
+
+
+@_utilities.lift_output_func(get_subscriptions)
+def get_subscriptions_apply(display_name_contains: Optional[pulumi.Input[str]] = None,
+                            display_name_prefix: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionsResult]:
+    ...

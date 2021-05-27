@@ -160,3 +160,11 @@ def get_namespace_authorization_rule(name: Optional[str] = None,
         resource_group_name=__ret__.resource_group_name,
         secondary_connection_string=__ret__.secondary_connection_string,
         secondary_key=__ret__.secondary_key)
+
+
+@_utilities.lift_output_func(get_namespace_authorization_rule)
+def get_namespace_authorization_rule_apply(name: Optional[pulumi.Input[str]] = None,
+                                           namespace_name: Optional[pulumi.Input[str]] = None,
+                                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceAuthorizationRuleResult]:
+    ...

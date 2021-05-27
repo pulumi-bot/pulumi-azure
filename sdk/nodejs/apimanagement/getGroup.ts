@@ -83,3 +83,25 @@ export interface GetGroupResult {
      */
     readonly type: string;
 }
+
+export function getGroupApply(args: GetGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupApplyArgs {
+    /**
+     * The Name of the API Management Service in which this Group exists.
+     */
+    apiManagementName: pulumi.Input<string>;
+    /**
+     * The Name of the API Management Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group in which the API Management Service exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

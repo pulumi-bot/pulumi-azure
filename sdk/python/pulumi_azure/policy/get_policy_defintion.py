@@ -200,3 +200,12 @@ def get_policy_defintion(display_name: Optional[str] = None,
         policy_rule=__ret__.policy_rule,
         policy_type=__ret__.policy_type,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_policy_defintion)
+def get_policy_defintion_apply(display_name: Optional[pulumi.Input[str]] = None,
+                               management_group_id: Optional[pulumi.Input[str]] = None,
+                               management_group_name: Optional[pulumi.Input[str]] = None,
+                               name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyDefintionResult]:
+    ...

@@ -48,6 +48,19 @@ namespace Pulumi.Azure.Sentinel
         /// </summary>
         public static Task<GetAlertRuleResult> InvokeAsync(GetAlertRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlertRuleResult>("azure:sentinel/getAlertRule:getAlertRule", args ?? new GetAlertRuleArgs(), options.WithVersion());
+
+        public static Output<GetAlertRuleResult> Apply(GetAlertRuleApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.LogAnalyticsWorkspaceId.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetAlertRuleArgs();
+                    a[0].Set(args, nameof(args.LogAnalyticsWorkspaceId));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,25 @@ namespace Pulumi.Azure.Sentinel
         public string Name { get; set; } = null!;
 
         public GetAlertRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlertRuleApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
+        /// </summary>
+        [Input("logAnalyticsWorkspaceId", required: true)]
+        public Input<string> LogAnalyticsWorkspaceId { get; set; } = null!;
+
+        /// <summary>
+        /// The name which should be used for this Sentinel Alert Rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetAlertRuleApplyArgs()
         {
         }
     }

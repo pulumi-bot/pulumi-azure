@@ -85,3 +85,21 @@ export interface GetExpressRouteCircuitResult {
      */
     readonly sku: outputs.network.GetExpressRouteCircuitSku;
 }
+
+export function getExpressRouteCircuitApply(args: GetExpressRouteCircuitApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressRouteCircuitResult> {
+    return pulumi.output(args).apply(a => getExpressRouteCircuit(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getExpressRouteCircuit.
+ */
+export interface GetExpressRouteCircuitApplyArgs {
+    /**
+     * The name of the ExpressRoute circuit.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the ExpressRoute circuit exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

@@ -50,6 +50,21 @@ namespace Pulumi.Azure.KeyVault
         /// </summary>
         public static Task<GetCertificateDataResult> InvokeAsync(GetCertificateDataArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateDataResult>("azure:keyvault/getCertificateData:getCertificateData", args ?? new GetCertificateDataArgs(), options.WithVersion());
+
+        public static Output<GetCertificateDataResult> Apply(GetCertificateDataApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.KeyVaultId.Box(),
+                args.Name.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetCertificateDataArgs();
+                    a[0].Set(args, nameof(args.KeyVaultId));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -74,6 +89,31 @@ namespace Pulumi.Azure.KeyVault
         public string? Version { get; set; }
 
         public GetCertificateDataArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateDataApplyArgs
+    {
+        /// <summary>
+        /// Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
+        /// </summary>
+        [Input("keyVaultId", required: true)]
+        public Input<string> KeyVaultId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Key Vault Secret.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the version of the certificate to look up.  (Defaults to latest)
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetCertificateDataApplyArgs()
         {
         }
     }

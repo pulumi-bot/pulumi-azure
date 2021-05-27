@@ -77,3 +77,25 @@ export interface GetNetworkDdosProtectionPlanResult {
      */
     readonly virtualNetworkIds: string[];
 }
+
+export function getNetworkDdosProtectionPlanApply(args: GetNetworkDdosProtectionPlanApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkDdosProtectionPlanResult> {
+    return pulumi.output(args).apply(a => getNetworkDdosProtectionPlan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkDdosProtectionPlan.
+ */
+export interface GetNetworkDdosProtectionPlanApplyArgs {
+    /**
+     * The name of the Network DDoS Protection Plan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group where the Network DDoS Protection Plan exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags assigned to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

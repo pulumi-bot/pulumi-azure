@@ -43,6 +43,19 @@ namespace Pulumi.Azure.PrivateDns
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("azure:privatedns/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithVersion());
+
+        public static Output<GetDnsZoneResult> Apply(GetDnsZoneApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDnsZoneArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,27 @@ namespace Pulumi.Azure.PrivateDns
         public string? ResourceGroupName { get; set; }
 
         public GetDnsZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetDnsZoneApplyArgs
+    {
+        /// <summary>
+        /// The name of the Private DNS Zone.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the Private DNS Zone exists.
+        /// If the Name of the Resource Group is not provided, the first Private DNS Zone from the list of Private
+        /// DNS Zones in your subscription that matches `name` will be returned.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
+
+        public GetDnsZoneApplyArgs()
         {
         }
     }

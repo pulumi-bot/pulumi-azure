@@ -44,6 +44,21 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetPublicIpPrefixResult> InvokeAsync(GetPublicIpPrefixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPublicIpPrefixResult>("azure:network/getPublicIpPrefix:getPublicIpPrefix", args ?? new GetPublicIpPrefixArgs(), options.WithVersion());
+
+        public static Output<GetPublicIpPrefixResult> Apply(GetPublicIpPrefixApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Zones.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetPublicIpPrefixArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Zones));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +85,33 @@ namespace Pulumi.Azure.Network
         }
 
         public GetPublicIpPrefixArgs()
+        {
+        }
+    }
+
+    public sealed class GetPublicIpPrefixApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the public IP prefix.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetPublicIpPrefixApplyArgs()
         {
         }
     }

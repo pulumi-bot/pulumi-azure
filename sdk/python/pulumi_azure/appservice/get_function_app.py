@@ -298,3 +298,11 @@ def get_function_app(name: Optional[str] = None,
         site_credentials=__ret__.site_credentials,
         source_controls=__ret__.source_controls,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_function_app)
+def get_function_app_apply(name: Optional[pulumi.Input[str]] = None,
+                           resource_group_name: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionAppResult]:
+    ...

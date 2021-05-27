@@ -62,3 +62,21 @@ export interface GetPlacementGroupResult {
     readonly resourceGroupName: string;
     readonly tags: {[key: string]: string};
 }
+
+export function getPlacementGroupApply(args: GetPlacementGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlacementGroupResult> {
+    return pulumi.output(args).apply(a => getPlacementGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPlacementGroup.
+ */
+export interface GetPlacementGroupApplyArgs {
+    /**
+     * The name of the Proximity Placement Group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the Proximity Placement Group exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

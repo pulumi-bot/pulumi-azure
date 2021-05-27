@@ -72,3 +72,21 @@ export interface GetIntegrationAccountResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getIntegrationAccountApply(args: GetIntegrationAccountApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationAccountResult> {
+    return pulumi.output(args).apply(a => getIntegrationAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIntegrationAccount.
+ */
+export interface GetIntegrationAccountApplyArgs {
+    /**
+     * The name of this Logic App Integration Account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Logic App Integration Account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

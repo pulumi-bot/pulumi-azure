@@ -43,6 +43,23 @@ namespace Pulumi.Azure.Network
         /// </summary>
         public static Task<GetTrafficManagerProfileResult> InvokeAsync(GetTrafficManagerProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficManagerProfileResult>("azure:network/getTrafficManagerProfile:getTrafficManagerProfile", args ?? new GetTrafficManagerProfileArgs(), options.WithVersion());
+
+        public static Output<GetTrafficManagerProfileResult> Apply(GetTrafficManagerProfileApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Tags.ToDict().Box(),
+                args.TrafficViewEnabled.Box()
+            ).Apply(a => {
+                    var args = new GetTrafficManagerProfileArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Tags));
+                    a[3].Set(args, nameof(args.TrafficViewEnabled));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -79,6 +96,43 @@ namespace Pulumi.Azure.Network
         public bool? TrafficViewEnabled { get; set; }
 
         public GetTrafficManagerProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrafficManagerProfileApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Traffic Manager Profile.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Traffic Manager Profile is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
+        /// </summary>
+        [Input("trafficViewEnabled")]
+        public Input<bool>? TrafficViewEnabled { get; set; }
+
+        public GetTrafficManagerProfileApplyArgs()
         {
         }
     }

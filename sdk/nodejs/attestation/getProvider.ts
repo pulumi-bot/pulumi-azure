@@ -42,3 +42,15 @@ export interface GetProviderResult {
     readonly tags: {[key: string]: string};
     readonly trustModel: string;
 }
+
+export function getProviderApply(args: GetProviderApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderResult> {
+    return pulumi.output(args).apply(a => getProvider(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProvider.
+ */
+export interface GetProviderApplyArgs {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}

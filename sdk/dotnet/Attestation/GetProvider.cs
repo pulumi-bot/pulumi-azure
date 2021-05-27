@@ -13,6 +13,19 @@ namespace Pulumi.Azure.Attestation
     {
         public static Task<GetProviderResult> InvokeAsync(GetProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProviderResult>("azure:attestation/getProvider:getProvider", args ?? new GetProviderArgs(), options.WithVersion());
+
+        public static Output<GetProviderResult> Apply(GetProviderApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetProviderArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -25,6 +38,19 @@ namespace Pulumi.Azure.Attestation
         public string ResourceGroupName { get; set; } = null!;
 
         public GetProviderArgs()
+        {
+        }
+    }
+
+    public sealed class GetProviderApplyArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetProviderApplyArgs()
         {
         }
     }

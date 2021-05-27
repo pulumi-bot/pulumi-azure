@@ -94,3 +94,10 @@ def get_enrollment_account_scope(billing_account_name: Optional[str] = None,
         billing_account_name=__ret__.billing_account_name,
         enrollment_account_name=__ret__.enrollment_account_name,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_enrollment_account_scope)
+def get_enrollment_account_scope_apply(billing_account_name: Optional[pulumi.Input[str]] = None,
+                                       enrollment_account_name: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnrollmentAccountScopeResult]:
+    ...

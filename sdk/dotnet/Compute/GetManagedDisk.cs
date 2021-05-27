@@ -43,6 +43,23 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetManagedDiskResult> InvokeAsync(GetManagedDiskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedDiskResult>("azure:compute/getManagedDisk:getManagedDisk", args ?? new GetManagedDiskArgs(), options.WithVersion());
+
+        public static Output<GetManagedDiskResult> Apply(GetManagedDiskApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Tags.ToDict().Box(),
+                args.Zones.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetManagedDiskArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Tags));
+                    a[3].Set(args, nameof(args.Zones));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -85,6 +102,49 @@ namespace Pulumi.Azure.Compute
         }
 
         public GetManagedDiskArgs()
+        {
+        }
+    }
+
+    public sealed class GetManagedDiskApplyArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Managed Disk.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where this Managed Disk exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags assigned to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// A list of Availability Zones where the Managed Disk exists.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
+        public GetManagedDiskApplyArgs()
         {
         }
     }
